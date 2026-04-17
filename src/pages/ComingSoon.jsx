@@ -6,7 +6,7 @@ import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
-export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId, seoKeywords }) {
+export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId, seoKeywords, children }) {
   const location = useLocation();
   const { lang } = useApp();
 
@@ -105,6 +105,13 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
                 <div style={{ fontSize: 10.5, color: C.dim, lineHeight: 1.5 }}>{f.desc}</div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* F05 — Rich preview content slot (teams, dates, host cities, etc.). */}
+        {children && (
+          <div style={{ padding: '8px 24px 32px' }}>
+            {children}
           </div>
         )}
 

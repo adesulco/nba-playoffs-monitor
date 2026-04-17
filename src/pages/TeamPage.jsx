@@ -87,9 +87,13 @@ export default function TeamPage() {
   const confLabel = meta.conf === 'E'
     ? (lang === 'id' ? 'Wilayah Timur' : 'Eastern Conference')
     : (lang === 'id' ? 'Wilayah Barat' : 'Western Conference');
-  const seedLabel = meta.seed
+
+  // F06 — non-playoff teams need explicit messaging so fans don't bounce confused.
+  // Teams with seed === null didn't qualify for the 2026 playoff bracket.
+  const didQualify = meta.seed !== null && meta.seed !== undefined;
+  const seedLabel = didQualify
     ? `#${meta.seed} ${lang === 'id' ? 'Unggulan' : 'Seed'}`
-    : (lang === 'id' ? 'Play-In' : 'Play-In');
+    : (lang === 'id' ? 'Tidak Lolos Playoff' : 'Did Not Qualify');
 
   // ─── SEO ───────────────────────────────────────────────────────────
   const seoTitle = lang === 'id'
@@ -215,6 +219,66 @@ export default function TeamPage() {
 
         {/* ─── Body ─────────────────────────────────────────────── */}
         <div style={{ padding: '20px 16px' }}>
+
+          {/* F06 — non-playoff team banner. Clear, immediate message so users
+              who googled "skor lakers" don't bounce confused. */}
+          {!didQualify && (
+            <div style={{
+              padding: '16px 18px',
+              marginBottom: 14,
+              background: '#2a1a0a',
+              border: '1px solid #8a4d00',
+              borderLeft: '4px solid #ffb347',
+              borderRadius: 4,
+              fontSize: 13,
+              lineHeight: 1.6,
+            }}>
+              <div style={{
+                fontSize: 10, letterSpacing: 2, color: '#ffb347', fontWeight: 700,
+                marginBottom: 6, textTransform: 'uppercase',
+              }}>
+                {lang === 'id' ? '⚠ Tidak Lolos Playoff 2026' : '⚠ Did Not Qualify for 2026 Playoffs'}
+              </div>
+              <div style={{ color: C.text, marginBottom: 8 }}>
+                {lang === 'id'
+                  ? <>{teamName} tidak berkompetisi di Playoff NBA 2026. Musim reguler sudah selesai dan tim finis di luar 8 besar wilayah.</>
+                  : <>{teamName} did not qualify for the 2026 NBA Playoffs. Their regular season ended outside the conference's top 8.</>}
+              </div>
+              <div style={{ color: C.dim, fontSize: 11.5 }}>
+                {lang === 'id'
+                  ? <>Kami tetap menampilkan rekor musim reguler, statistik pemain, dan laporan cedera di halaman ini untuk fan yang ingin tetap mengikuti tim favoritnya.{' '}
+                      <a href="/nba-playoff-2026" style={{ color: '#ffb347', textDecoration: 'none', fontWeight: 600 }}>Lihat tim yang lolos playoff →</a></>
+                  : <>We still show regular-season record, player stats, and injury report here for fans who want to follow their team.{' '}
+                      <a href="/nba-playoff-2026" style={{ color: '#ffb347', textDecoration: 'none', fontWeight: 600 }}>See teams that qualified →</a></>}
+              </div>
+            </div>
+          )}
+
+          {/* F29 — cross-link to daily recaps; helps team fans find recent coverage */}
+          {didQualify && (
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
+              padding: '10px 14px',
+              marginBottom: 12,
+              background: C.panelRow,
+              border: `1px solid ${C.lineSoft}`,
+              borderRadius: 3,
+              fontSize: 11.5,
+            }}>
+              <span style={{ fontSize: 10, letterSpacing: 1.5, color: C.dim, fontWeight: 600 }}>
+                📖 {lang === 'id' ? 'LIHAT JUGA' : 'SEE ALSO'}
+              </span>
+              <a href="/recap" style={{ color: C.text, textDecoration: 'none', padding: '3px 8px', background: C.panel, border: `1px solid ${C.line}`, borderRadius: 3 }}>
+                {lang === 'id' ? 'Catatan Playoff harian' : 'Daily Playoff Recap'}
+              </a>
+              <a href="/nba-playoff-2026" style={{ color: C.text, textDecoration: 'none', padding: '3px 8px', background: C.panel, border: `1px solid ${C.line}`, borderRadius: 3 }}>
+                {lang === 'id' ? 'Dashboard Live' : 'Live Dashboard'}
+              </a>
+              <a href="/glossary" style={{ color: C.text, textDecoration: 'none', padding: '3px 8px', background: C.panel, border: `1px solid ${C.line}`, borderRadius: 3 }}>
+                {lang === 'id' ? 'Glosarium Istilah' : 'Glossary'}
+              </a>
+            </div>
+          )}
 
           {/* Next game */}
           {upcomingGame && (

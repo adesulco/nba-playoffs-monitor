@@ -161,6 +161,9 @@ export default function Home() {
 
   const heroTitleId = 'GILA BOLA.';
   const heroSubId = 'Dashboard live untuk olahraga yang kamu cintai.';
+  // F08 — founder-adjacent hook line. Short, Bahasa-first, fan-to-fan voice.
+  const heroHookId = 'Dari fan, untuk fan Indonesia. Dibangun di Jakarta, dirilis ke dunia.';
+  const heroHookEn = 'From fans, for fans. Built in Jakarta, shipped to the world.';
   const heroTitle = 'GILA BOLA.';
   const heroSub = 'Live dashboards for the sports you love.';
 
@@ -195,6 +198,14 @@ export default function Home() {
             margin: '0 auto', lineHeight: 1.5,
           }}>
             {lang === 'id' ? heroSubId : heroSub}
+          </div>
+          {/* F08 — founder-fan hook line, the "why" behind gibol.co */}
+          <div style={{
+            marginTop: 12, fontSize: 12, color: C.text, letterSpacing: 0.3,
+            maxWidth: 560, margin: '12px auto 0', lineHeight: 1.5,
+            fontStyle: 'italic', opacity: 0.85,
+          }}>
+            — {lang === 'id' ? heroHookId : heroHookEn}
           </div>
           <div style={{
             marginTop: 16, fontSize: 10, color: C.muted, letterSpacing: 1.5,
