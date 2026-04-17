@@ -5,11 +5,13 @@ import Home from './pages/Home.jsx';
 import NBADashboard from './pages/NBADashboard.jsx';
 import IBL from './pages/IBL.jsx';
 import FIFA from './pages/FIFA.jsx';
+import AnalyticsTracker from './components/AnalyticsTracker.jsx';
 
 export default function App() {
   return (
     <AppProvider>
       <BrowserRouter>
+        <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/nba-playoff-2026" element={<NBADashboard />} />
