@@ -257,11 +257,22 @@ export async function fetchGameSummary(eventId) {
     text: p.text,
     period: p.period?.number,
     clock: p.clock?.displayValue,
+    // Many plays have `clock.value` as seconds remaining in the period
+    clockSeconds: p.clock?.value,
     teamId: p.team?.id,
     awayScore: p.awayScore,
     homeScore: p.homeScore,
     scoringPlay: p.scoringPlay,
     scoreValue: p.scoreValue,
+    // Shot-chart coordinates (when available): ESPN gives { x, y } in a half-court system
+    coordinate: p.coordinate ? { x: p.coordinate.x, y: p.coordinate.y } : null,
+    // Primary player attribution — ESPN puts the main athlete first
+    athleteId: p.athletesInvolved?.[0]?.id ?? p.participants?.[0]?.athlete?.id,
+    athleteName: p.athletesInvolved?.[0]?.displayName ?? p.participants?.[0]?.athlete?.displayName,
+    shootingPlay: p.shootingPlay,
+    // Play type (e.g. '3PT Jumper', 'Layup', 'Free Throw')
+    typeText: p.type?.text,
+    typeId: p.type?.id,
     wallclock: p.wallclock,
   }));
 
@@ -269,6 +280,11 @@ export async function fetchGameSummary(eventId) {
   const competitors = header?.competitors || [];
   const home = competitors.find((c) => c.homeAway === 'home') || competitors[0];
   const away = competitors.find((c) => c.homeAway === 'away') || competitors[1];
+
+  // Per-quarter scoring (linescores array — one entry per period)
+  const parseLineScores = (cmp) => (cmp?.linescores || []).map((ls) => ls.displayValue ?? ls.value ?? '—');
+  const awayLine = parseLineScores(away);
+  const homeLine = parseLineScores(home);
 
   // Parse boxscore — ESPN returns per-team player stat lines
   const boxscore = (data.boxscore?.players || []).map((t) => {
@@ -306,6 +322,8 @@ export async function fetchGameSummary(eventId) {
     awayId: away?.team?.id,
     homeScore: home?.score,
     awayScore: away?.score,
+    homeLine,
+    awayLine,
     status: header?.status?.type?.shortDetail,
     statusState: header?.status?.type?.state,
     clock: header?.status?.displayClock,

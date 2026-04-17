@@ -22,6 +22,7 @@ import { useTeamSchedule, computeStreak, computeH2H } from '../hooks/useTeamSche
 import { useGameDetails } from '../hooks/useGameDetails.js';
 import { useApp } from '../lib/AppContext.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
+import ClutchLeaderboard from '../components/ClutchLeaderboard.jsx';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 
@@ -530,6 +531,9 @@ export default function NBADashboard() {
                 ))}
               </div>
             </div>
+
+            {/* Clutch leaderboard — aggregates across all completed playoff games */}
+            <ClutchLeaderboard watchlist={watchlist} accent={accent} lang={lang} />
           </div>
 
           {/* COL 3: Title Path + Watchlist + Team Player Stats */}

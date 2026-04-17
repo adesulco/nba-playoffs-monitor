@@ -58,6 +58,161 @@ function detectScoringRun(plays, homeId, homeAbbr, awayId, awayAbbr) {
   return null;
 }
 
+function LineScoreTable({ awayAbbr, homeAbbr, awayLine, homeLine, awayColor, homeColor, awayScore, homeScore }) {
+  if (!awayLine || !homeLine || awayLine.length === 0) return null;
+  const periods = Math.max(awayLine.length, homeLine.length);
+  const headers = [];
+  for (let i = 0; i < periods; i++) {
+    if (i < 4) headers.push(`Q${i + 1}`);
+    else headers.push(i === 4 ? 'OT' : `OT${i - 3}`);
+  }
+
+  const cell = (v) => v === undefined || v === null || v === '' ? '—' : v;
+
+  return (
+    <div style={{ padding: '0 14px 10px' }}>
+      <div style={{ fontSize: 9.5, letterSpacing: 1, color: C.dim, margin: '8px 0 5px' }}>QUARTER SCORING</div>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: `38px repeat(${periods}, 1fr) 48px`,
+        gap: 0,
+        fontSize: 10.5, border: `1px solid ${C.lineSoft}`, background: C.panelSoft,
+      }}>
+        <div />
+        {headers.map((h, i) => (
+          <div key={i} style={{ padding: '4px 6px', textAlign: 'center', color: C.dim, fontSize: 9, letterSpacing: 0.8, borderLeft: `1px solid ${C.lineSoft}` }}>{h}</div>
+        ))}
+        <div style={{ padding: '4px 6px', textAlign: 'center', color: C.amber, fontSize: 9, letterSpacing: 0.8, borderLeft: `1px solid ${C.lineSoft}`, fontWeight: 600 }}>FINAL</div>
+
+        {[{ abbr: awayAbbr, line: awayLine, color: awayColor, total: awayScore },
+          { abbr: homeAbbr, line: homeLine, color: homeColor, total: homeScore }].map((row, ri) => (
+          <React.Fragment key={ri}>
+            <div style={{ padding: '5px 6px', borderTop: `1px solid ${C.lineSoft}` }}>
+              <span style={{ padding: '1px 5px', background: row.color, color: '#fff', fontSize: 8.5, fontWeight: 700, borderRadius: 2 }}>{row.abbr}</span>
+            </div>
+            {Array.from({ length: periods }).map((_, i) => (
+              <div key={i} style={{
+                padding: '5px 6px', textAlign: 'center',
+                borderTop: `1px solid ${C.lineSoft}`,
+                borderLeft: `1px solid ${C.lineSoft}`,
+                color: C.text,
+              }}>
+                {cell(row.line[i])}
+              </div>
+            ))}
+            <div style={{
+              padding: '5px 6px', textAlign: 'center',
+              borderTop: `1px solid ${C.lineSoft}`,
+              borderLeft: `1px solid ${C.lineSoft}`,
+              color: C.amberBright,
+              fontFamily: '"Space Grotesk", sans-serif',
+              fontWeight: 600,
+            }}>
+              {row.total ?? '—'}
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ShotChart({ plays, awayId, homeId, awayAbbr, homeAbbr, awayColor, homeColor }) {
+  // ESPN shot coordinates: x in 0..50 (court width), y in 0..50 (half-court depth)
+  // Basket is at (25, 5.25). Half court = 47 feet from baseline.
+  const W = 520;
+  const H = 320;
+  const courtW = 50; // feet
+  const courtH = 47; // feet
+  const xFt = (x) => (x / courtW) * W;
+  const yFt = (y) => ((courtH - y) / courtH) * H; // flip so basket is at bottom of viewport
+
+  // Extract shooting plays with coordinates
+  const shots = plays.filter((p) => p.coordinate && p.shootingPlay !== undefined)
+    .map((p) => ({
+      x: p.coordinate.x,
+      y: p.coordinate.y,
+      made: !!p.scoringPlay,
+      teamId: p.teamId,
+      scoreValue: p.scoreValue,
+      player: p.athleteName,
+      text: p.text,
+      period: p.period,
+      clock: p.clock,
+    }));
+
+  if (shots.length === 0) {
+    return (
+      <div style={{ padding: 20, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
+        Shot chart opens once field goals are attempted.
+      </div>
+    );
+  }
+
+  // Basket + key half-court lines
+  const basket = { x: xFt(25), y: yFt(5.25) };
+  const threePtR = xFt(23.75) - xFt(0); // 3pt arc radius in px
+  const ftCircle = { cx: xFt(25), cy: yFt(19), r: xFt(6) - xFt(0) };
+
+  return (
+    <div style={{ padding: '10px 14px' }}>
+      {/* Legend */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 9.5, color: C.dim, marginBottom: 6 }}>
+        <div style={{ display: 'flex', gap: 14 }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+            <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: awayColor }} />
+            <span style={{ color: C.text, fontWeight: 600 }}>{awayAbbr}</span>
+          </span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+            <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: homeColor }} />
+            <span style={{ color: C.text, fontWeight: 600 }}>{homeAbbr}</span>
+          </span>
+        </div>
+        <span style={{ color: C.muted }}>● made · ○ miss · {shots.length} shots</span>
+      </div>
+
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} style={{ display: 'block', background: C.panelSoft, border: `1px solid ${C.lineSoft}` }}>
+        {/* Court outline */}
+        <rect x="0" y="0" width={W} height={H} fill="none" stroke={C.lineSoft} strokeWidth="1" />
+        {/* Lane (paint) — 16ft wide × 19ft deep */}
+        <rect x={xFt(17)} y={yFt(19)} width={xFt(33) - xFt(17)} height={H - yFt(19)} fill="none" stroke={C.lineSoft} strokeWidth="1" />
+        {/* Free throw line circle */}
+        <circle cx={ftCircle.cx} cy={ftCircle.cy} r={ftCircle.r} fill="none" stroke={C.lineSoft} strokeWidth="1" />
+        {/* Restricted area arc (4ft radius at basket) */}
+        <path d={`M ${basket.x - xFt(4) + xFt(0)} ${basket.y} A ${xFt(4) - xFt(0)} ${xFt(4) - xFt(0)} 0 0 0 ${basket.x + xFt(4) - xFt(0)} ${basket.y}`} fill="none" stroke={C.lineSoft} strokeWidth="1" />
+        {/* 3pt arc: approximate (23.75 at top, 22 at corners) */}
+        <path
+          d={`M ${xFt(3)} ${H} L ${xFt(3)} ${yFt(14)} A ${threePtR} ${threePtR} 0 0 0 ${xFt(47)} ${yFt(14)} L ${xFt(47)} ${H}`}
+          fill="none"
+          stroke={C.lineSoft}
+          strokeWidth="1.2"
+        />
+        {/* Basket */}
+        <circle cx={basket.x} cy={basket.y} r="4" fill="none" stroke={C.amber} strokeWidth="1.5" />
+        <line x1={basket.x - 8} x2={basket.x + 8} y1={basket.y + 4} y2={basket.y + 4} stroke={C.amber} strokeWidth="1.5" />
+        {/* Center circle at top (half-court line) */}
+        <line x1="0" x2={W} y1={yFt(47)} y2={yFt(47)} stroke={C.lineSoft} strokeWidth="1" strokeDasharray="3,4" />
+
+        {/* Shots */}
+        {shots.map((s, i) => {
+          const color = s.teamId === String(homeId) ? homeColor : awayColor;
+          const cx = xFt(s.x);
+          const cy = yFt(s.y);
+          if (s.made) {
+            return <circle key={i} cx={cx} cy={cy} r="4.5" fill={color} fillOpacity="0.8" stroke="#fff" strokeWidth="1" />;
+          }
+          return (
+            <g key={i} stroke={color} strokeWidth="1.2" fill="none" opacity="0.65">
+              <line x1={cx - 3.5} x2={cx + 3.5} y1={cy - 3.5} y2={cy + 3.5} />
+              <line x1={cx - 3.5} x2={cx + 3.5} y1={cy + 3.5} y2={cy - 3.5} />
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 function H2HStrip({ h2h, focusTeamAbbr, color }) {
   if (!h2h || h2h.length === 0) return null;
   return (
@@ -239,7 +394,7 @@ function InjuryList({ abbr, list, color }) {
 
 export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onClose, summary, winProb, lastUpdate, watchlist, h2h }) {
   const tickerRef = useRef(null);
-  const [rightTab, setRightTab] = useState('plays'); // 'plays' | 'stats'
+  const [rightTab, setRightTab] = useState('plays'); // 'plays' | 'stats' | 'shots'
 
   // Resolve team meta from abbr
   const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
@@ -344,7 +499,7 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: 200 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 14px 0' }}>
             <div style={{ display: 'flex', gap: 0 }}>
-              {['plays', 'stats'].map((tab) => (
+              {['plays', 'stats', 'shots'].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setRightTab(tab)}
@@ -360,12 +515,12 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
                     textTransform: 'uppercase',
                   }}
                 >
-                  {tab === 'plays' ? 'Play-by-play' : 'Box Score'}
+                  {tab === 'plays' ? 'Play-by-play' : tab === 'stats' ? 'Box Score' : 'Shot Chart'}
                 </button>
               ))}
             </div>
             <span style={{ fontSize: 9.5, color: C.muted }}>
-              {rightTab === 'plays' ? `${plays.length} plays` : 'ESPN box'} · {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s ago` : '—'}
+              {rightTab === 'plays' ? `${plays.length} plays` : rightTab === 'stats' ? 'ESPN box' : 'ESPN plays'} · {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s ago` : '—'}
             </span>
           </div>
 
@@ -380,6 +535,18 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
             <div style={{ padding: 20, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
               Box score opens at tip-off.
             </div>
+          )}
+
+          {rightTab === 'shots' && summary && (
+            <ShotChart
+              plays={summary.plays || []}
+              awayId={summary.awayId}
+              homeId={summary.homeId}
+              awayAbbr={summary.awayAbbr}
+              homeAbbr={summary.homeAbbr}
+              awayColor={awayMeta.color}
+              homeColor={homeMeta.color}
+            />
           )}
 
           {rightTab === 'plays' && (
@@ -428,6 +595,20 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
           )}
         </div>
       </div>
+
+      {/* Quarter-by-quarter line score, always visible when available */}
+      {summary?.awayLine?.length > 0 && (
+        <LineScoreTable
+          awayAbbr={summary.awayAbbr}
+          homeAbbr={summary.homeAbbr}
+          awayLine={summary.awayLine}
+          homeLine={summary.homeLine}
+          awayColor={awayMeta.color}
+          homeColor={homeMeta.color}
+          awayScore={summary.awayScore}
+          homeScore={summary.homeScore}
+        />
+      )}
     </div>
   );
 }
