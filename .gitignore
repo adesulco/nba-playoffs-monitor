@@ -10,3 +10,7 @@ dist-ssr
 *.log
 .vite
 .cache
+
+# build artifacts that sometimes linger
+vite.config.js.timestamp-*
+nba-playoffs-monitor-committed.tar.gz
