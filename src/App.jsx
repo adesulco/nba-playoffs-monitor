@@ -7,8 +7,10 @@ import Bracket from './components/Bracket.jsx';
 import TeamPicker from './components/TeamPicker.jsx';
 import LiveGameFocus from './components/LiveGameFocus.jsx';
 import { useSeriesState } from './hooks/useSeriesState.js';
+import { useInjuries } from './hooks/useInjuries.js';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
+const THEME_STORAGE_KEY = 'gibol:theme';
 
 // Mix a hex color toward white by `mix` (0..1). Produces a readable accent on dark bg
 // regardless of how dark the source team color is.
@@ -23,7 +25,31 @@ function brighten(hex, mix = 0.5) {
   return '#' + [f(r), f(g), f(b)].map((v) => v.toString(16).padStart(2, '0')).join('');
 }
 
-function GameCard({ g, favTeam, isActive, onClick }) {
+function InjuryBadge({ awayAbbr, homeAbbr, injuries }) {
+  const gather = (abbr) => (injuries?.[abbr] || []).filter((i) => {
+    const s = (i.shortStatus || '').toUpperCase();
+    return s.startsWith('OUT') || s.startsWith('QUE') || s.startsWith('DAY');
+  });
+  const away = gather(awayAbbr);
+  const home = gather(homeAbbr);
+  const total = away.length + home.length;
+  if (total === 0) return null;
+  return (
+    <span style={{
+      display: 'inline-flex', alignItems: 'center', gap: 3,
+      padding: '1px 6px',
+      background: 'rgba(255, 92, 92, 0.12)',
+      border: '1px solid rgba(255, 92, 92, 0.3)',
+      color: 'var(--red)',
+      fontSize: 9, letterSpacing: 0.3, fontWeight: 600,
+      borderRadius: 3,
+    }}>
+      ⚠ {total} INJ
+    </span>
+  );
+}
+
+function GameCard({ g, favTeam, isActive, onClick, injuries }) {
   const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
   const awayFullName = findByAbbr(g.away?.abbr);
   const homeFullName = findByAbbr(g.home?.abbr);
@@ -73,7 +99,7 @@ function GameCard({ g, favTeam, isActive, onClick }) {
         transition: 'background 0.15s',
         position: 'relative',
       }}
-      onMouseEnter={(e) => { if (onClick && !isActive) e.currentTarget.style.background = '#0d1d34'; }}
+      onMouseEnter={(e) => { if (onClick && !isActive) e.currentTarget.style.background = 'var(--hover)'; }}
       onMouseLeave={(e) => { if (onClick && !isActive) e.currentTarget.style.background = favInGame ? `${favColor}14` : 'transparent'; }}
     >
       {isActive && (
@@ -86,9 +112,12 @@ function GameCard({ g, favTeam, isActive, onClick }) {
           {isLive && <span className="live-dot" style={{ background: C.red }} />}
           <span style={{ letterSpacing: 0.3 }}>{g.status || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}</span>
         </div>
-        {favInGame && (
-          <span style={{ fontSize: 9, letterSpacing: 0.5, color: favColor, fontWeight: 600 }}>★ YOUR TEAM</span>
-        )}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <InjuryBadge awayAbbr={g.away?.abbr} homeAbbr={g.home?.abbr} injuries={injuries} />
+          {favInGame && (
+            <span style={{ fontSize: 9, letterSpacing: 0.5, color: favColor, fontWeight: 600 }}>★ YOUR TEAM</span>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -100,6 +129,23 @@ export default function App() {
   const [favTeam, setFavTeam] = useState(() => {
     try { return localStorage.getItem(FAV_STORAGE_KEY) || null; } catch { return null; }
   });
+
+  // Theme state — 'dark' or 'light'. Default respects OS preference.
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem(THEME_STORAGE_KEY);
+      if (saved === 'light' || saved === 'dark') return saved;
+      if (window.matchMedia?.('(prefers-color-scheme: light)').matches) return 'light';
+    } catch {}
+    return 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem(THEME_STORAGE_KEY, theme); } catch {}
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
   const favMeta = favTeam ? TEAM_META[favTeam] : null;
   // Theme: selected team's color overrides amber accents
@@ -131,6 +177,8 @@ export default function App() {
 
   // Series standings for bracket watermark
   const { seriesMap } = useSeriesState('2026-04-18', '2026-05-03');
+  // Injury report
+  const { byTeam: injuriesByTeam } = useInjuries();
 
   // Top 3 teams get WebSocket ticks
   const topTokenIds = useMemo(
@@ -165,7 +213,7 @@ export default function App() {
   const panelBox = { borderBottom: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' };
   const panelHeader = {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    padding: '7px 12px', borderBottom: `1px solid ${C.lineSoft}`, background: '#0a1728',
+    padding: '7px 12px', borderBottom: `1px solid ${C.lineSoft}`, background: C.panelRow,
   };
   const panelTitle = { fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 };
   const panelMeta = { fontSize: 9.5, color: C.dim, letterSpacing: 0.5 };
@@ -175,7 +223,7 @@ export default function App() {
       <div className="dashboard-wrap">
 
         {/* ================== TOP BAR ================== */}
-        <div className="topbar" style={{ display: 'grid', gridTemplateColumns: 'auto auto 1fr auto', gap: 18, alignItems: 'center', padding: '12px 16px', borderBottom: `1px solid ${C.line}`, background: 'linear-gradient(180deg, #0d1c33 0%, #0a1628 100%)' }}>
+        <div className="topbar" style={{ display: 'grid', gridTemplateColumns: 'auto auto 1fr auto', gap: 18, alignItems: 'center', padding: '12px 16px', borderBottom: `1px solid ${C.line}`, background: C.topbarBg }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <div style={{ width: 22, height: 22, borderRadius: '50%', background: 'radial-gradient(circle at 30% 30%, #e8502e 0%, #8c1a1a 100%)', position: 'relative' }}>
               <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: 'rgba(0,0,0,0.4)' }} />
@@ -188,6 +236,28 @@ export default function App() {
           </div>
           <TeamPicker selectedTeam={favTeam} onSelect={setFav} />
           <div className="topbar-meta" style={{ display: 'flex', gap: 16, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
+            <button
+              onClick={toggleTheme}
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label="Toggle theme"
+              style={{
+                background: 'transparent',
+                border: `1px solid ${C.lineSoft}`,
+                color: C.dim,
+                width: 26, height: 26,
+                borderRadius: 4,
+                cursor: 'pointer',
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 12,
+                padding: 0,
+                fontFamily: 'inherit',
+                transition: 'all 0.15s',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.amber; e.currentTarget.style.color = C.amber; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.lineSoft; e.currentTarget.style.color = C.dim; }}
+            >
+              {theme === 'dark' ? '☀' : '☾'}
+            </button>
             <span style={{ display: 'inline-flex', alignItems: 'center' }}><span className="live-dot" style={{ background: statusColor }} /> {statusLabel}</span>
             <span style={{ color: accentBright, fontWeight: 600, fontSize: 13, fontFamily: '"Space Grotesk", sans-serif' }}>
               {now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' })} ET
@@ -200,7 +270,7 @@ export default function App() {
         </div>
 
         {/* ================== LIVE SCOREBOARD HERO ================== */}
-        <div className="scoreboard-hero" style={{ borderBottom: `1px solid ${C.line}`, background: 'linear-gradient(180deg, #0b1a30 0%, #0a1525 100%)' }}>
+        <div className="scoreboard-hero" style={{ borderBottom: `1px solid ${C.line}`, background: C.heroBg }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', borderBottom: `1px solid ${C.lineSoft}` }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>LIVE SCOREBOARD</span>
@@ -214,7 +284,7 @@ export default function App() {
             {games.length === 0 && [
               { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, status: 'FRI 7:30 PM ET', statusState: 'pre' },
               { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, status: 'FRI 10:00 PM ET', statusState: 'pre' },
-            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => setActiveMatchId(g.id)} />)}
+            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => setActiveMatchId(g.id)} injuries={injuriesByTeam} />)}
             {games.slice(0, 6).map((g, i) => (
               <GameCard
                 key={g.id || i}
@@ -222,6 +292,7 @@ export default function App() {
                 favTeam={favTeam}
                 isActive={activeMatchId === g.id}
                 onClick={() => setActiveMatchId(g.id)}
+                injuries={injuriesByTeam}
               />
             ))}
           </div>
@@ -232,11 +303,12 @@ export default function App() {
           eventId={activeMatchId && !String(activeMatchId).startsWith('sched-') ? activeMatchId : null}
           favTeam={favTeam}
           accent={accent}
+          injuries={injuriesByTeam}
           onClose={() => setActiveMatchId(null)}
         />
 
         {/* ================== CONTEXT STRIP (odds demoted) ================== */}
-        <div className="stat-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderBottom: `1px solid ${C.line}`, background: '#091422' }}>
+        <div className="stat-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderBottom: `1px solid ${C.line}`, background: C.panelSoft }}>
           {[
             { label: 'MVP LOCK', value: `${topMvp.name.split(' ').map((x) => x[0]).join('')} ${topMvp.pct}%`, sub: topMvp.name.split(' ').slice(-1)[0] },
             { label: 'TITLE FAVORITE', value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`, sub: topChamp.name.split(' ').slice(-1)[0] },
@@ -267,7 +339,7 @@ export default function App() {
             </div>
 
             <div style={{ ...panelBox, flex: 1 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 12px', borderBottom: `1px solid ${C.lineSoft}`, background: '#091524', fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 12px', borderBottom: `1px solid ${C.lineSoft}`, background: C.panelSoft, fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>
                 <span>⚡ {favMeta ? `${favMeta.abbr} FEED` : 'KEY ACCOUNTS'}</span>
                 <span style={{ color: accent, letterSpacing: 0.5, fontSize: 9.5, fontWeight: 500 }}>
                   {favMeta ? `#${favMeta.abbr}${favTeam.split(' ').slice(-1)[0]}` : '#NBAPLAYOFFS'}
@@ -312,7 +384,7 @@ export default function App() {
                   {wsStatus === 'live' && <span style={{ color: C.green, marginLeft: 6 }}>· WS TICK</span>}
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '22px 1fr 70px 52px 36px', gap: 4, padding: '5px 12px', fontSize: 9, color: C.dim, letterSpacing: 1, borderBottom: `1px solid ${C.lineSoft}`, background: '#091524' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '22px 1fr 70px 52px 36px', gap: 4, padding: '5px 12px', fontSize: 9, color: C.dim, letterSpacing: 1, borderBottom: `1px solid ${C.lineSoft}`, background: C.panelSoft }}>
                 <div>#</div><div>TEAM</div><div style={{ textAlign: 'center' }}>7D</div><div style={{ textAlign: 'right' }}>ODDS</div><div style={{ textAlign: 'right' }}>Δ</div>
               </div>
               <div>
@@ -382,7 +454,7 @@ export default function App() {
               </div>
             </div>
 
-            <div style={{ padding: 16, background: favMeta ? `linear-gradient(180deg, ${favMeta.color}40 0%, ${favMeta.color}15 100%)` : 'linear-gradient(180deg, #10243c 0%, #0a1a30 100%)', borderTop: `1px solid ${accent}` }}>
+            <div style={{ padding: 16, background: favMeta ? `linear-gradient(180deg, ${favMeta.color}40 0%, ${favMeta.color}15 100%)` : `linear-gradient(180deg, ${C.panel2} 0%, ${C.panel} 100%)`, borderTop: `1px solid ${accent}` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, color: C.dim, letterSpacing: 1, marginBottom: 8 }}>
                 <span style={{ color: accentBright }}>{favMeta ? `${favMeta.abbr} · KEY MAN` : 'MVP FRONTRUNNER'}</span>
                 <span style={{ color: C.text, fontWeight: 600 }}>LOCKED</span>
@@ -399,7 +471,7 @@ export default function App() {
 
           {/* COL 4: Tonight + Stories + Status */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ padding: '14px 16px', borderBottom: `1px solid ${C.line}`, background: favMeta ? `linear-gradient(180deg, ${favMeta.color}30 0%, #0a1729 100%)` : 'linear-gradient(180deg, #0d1f36 0%, #0a1729 100%)' }}>
+            <div style={{ padding: '14px 16px', borderBottom: `1px solid ${C.line}`, background: favMeta ? `linear-gradient(180deg, ${favMeta.color}30 0%, ${C.panel} 100%)` : `linear-gradient(180deg, ${C.panel2} 0%, ${C.panel} 100%)` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
                 <div>
                   <div style={{ fontSize: 11, color: C.text, fontWeight: 600 }}>TONIGHT · PLAY-IN FINALE</div>
@@ -445,7 +517,7 @@ export default function App() {
                   className="link-row"
                   style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: 10, padding: '10px 12px', borderBottom: `1px solid ${C.lineSoft}`, alignItems: 'center', textDecoration: 'none', color: 'inherit' }}
                 >
-                  <div style={{ aspectRatio: '1.4', background: '#0a1a2e', border: `1px solid ${C.lineSoft}`, position: 'relative' }}>
+                  <div style={{ aspectRatio: '1.4', background: C.panel, border: `1px solid ${C.lineSoft}`, position: 'relative' }}>
                     <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 55%, #d4601e 0%, #8c3a10 70%)' }} />
                     <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: 'rgba(0,0,0,0.4)' }} />
                     <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', width: 1, background: 'rgba(0,0,0,0.4)' }} />
@@ -470,7 +542,7 @@ export default function App() {
         </div>
 
         {/* ================== TICKER ================== */}
-        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', borderTop: `1px solid ${C.line}`, background: '#091524' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', borderTop: `1px solid ${C.line}`, background: C.panelSoft }}>
           <div style={{ background: C.nbaRed, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>NEWS</div>
           <div style={{ overflow: 'hidden', padding: '9px 0' }}>
             <div className="ticker-inner">

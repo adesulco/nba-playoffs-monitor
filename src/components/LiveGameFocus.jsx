@@ -11,7 +11,7 @@ function WinProbChart({ points, awayAbbr, homeAbbr, awayColor, homeColor }) {
 
   if (!points || points.length < 2) {
     return (
-      <div style={{ height: H, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.dim, fontSize: 10.5, letterSpacing: 0.5, background: '#091524', border: `1px solid ${C.lineSoft}` }}>
+      <div style={{ height: H, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.dim, fontSize: 10.5, letterSpacing: 0.5, background: C.panelSoft, border: `1px solid ${C.lineSoft}` }}>
         Win probability stream opens at tip-off
       </div>
     );
@@ -40,7 +40,7 @@ function WinProbChart({ points, awayAbbr, homeAbbr, awayColor, homeColor }) {
   const latestAway = 100 - latestHome;
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" style={{ display: 'block', background: '#091524', border: `1px solid ${C.lineSoft}` }}>
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" style={{ display: 'block', background: C.panelSoft, border: `1px solid ${C.lineSoft}` }}>
       {/* horizontal midline */}
       <line x1={PAD_X} x2={W - PAD_X} y1={mid} y2={mid} stroke={C.lineSoft} strokeDasharray="2,3" />
       {/* fills */}
@@ -57,7 +57,35 @@ function WinProbChart({ points, awayAbbr, homeAbbr, awayColor, homeColor }) {
   );
 }
 
-export default function LiveGameFocus({ eventId, favTeam, accent, onClose }) {
+function InjuryList({ abbr, list, color }) {
+  if (!list || list.length === 0) return null;
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 9, letterSpacing: 0.8, color: C.dim }}>
+        <span style={{ padding: '1px 5px', background: color, color: '#fff', fontWeight: 700, borderRadius: 2, fontSize: 8.5 }}>{abbr}</span>
+        INJURY REPORT · {list.length}
+      </div>
+      {list.slice(0, 6).map((inj) => (
+        <a
+          key={inj.athleteId || inj.athlete}
+          href={inj.athleteId ? `https://www.espn.com/nba/player/_/id/${inj.athleteId}` : `https://www.espn.com/nba/team/injuries/_/name/${abbr.toLowerCase()}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: 'flex', justifyContent: 'space-between', gap: 6, fontSize: 10, color: C.text, textDecoration: 'none', padding: '2px 0', borderBottom: `1px solid ${C.lineSoft}` }}
+        >
+          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {inj.athlete}{inj.position ? ` · ${inj.position}` : ''}
+          </span>
+          <span style={{ color: inj.shortStatus?.startsWith('OUT') ? C.red : C.amber, fontWeight: 600, fontSize: 9, letterSpacing: 0.3, whiteSpace: 'nowrap' }}>
+            {inj.shortStatus || '—'}
+          </span>
+        </a>
+      ))}
+    </div>
+  );
+}
+
+export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onClose }) {
   const { summary, winProb, lastUpdate } = useGameDetails(eventId);
   const tickerRef = useRef(null);
 
@@ -78,7 +106,7 @@ export default function LiveGameFocus({ eventId, favTeam, accent, onClose }) {
 
   if (!eventId) {
     return (
-      <div style={{ padding: '14px 16px', borderBottom: `1px solid ${C.line}`, background: '#081221', color: C.dim, fontSize: 10.5, letterSpacing: 0.5, textAlign: 'center' }}>
+      <div style={{ padding: '14px 16px', borderBottom: `1px solid ${C.line}`, background: C.bg, color: C.dim, fontSize: 10.5, letterSpacing: 0.5, textAlign: 'center' }}>
         <span style={{ color: accent }}>●</span> Tap any game above to follow live — win probability, play-by-play, and live score.
       </div>
     );
@@ -89,9 +117,9 @@ export default function LiveGameFocus({ eventId, favTeam, accent, onClose }) {
   const favInGame = favTeam && (awayFull === favTeam || homeFull === favTeam);
 
   return (
-    <div style={{ borderBottom: `1px solid ${C.line}`, background: '#081221' }}>
+    <div style={{ borderBottom: `1px solid ${C.line}`, background: C.bg }}>
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', borderBottom: `1px solid ${C.lineSoft}`, background: '#0a1525' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', borderBottom: `1px solid ${C.lineSoft}`, background: C.panelSoft }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 10, letterSpacing: 1.2, fontWeight: 600, color: C.text }}>
           <span style={{ color: isLive ? C.green : isFinal ? C.dim : accent }}>
             {isLive && <span className="live-dot" style={{ background: C.red }} />}
@@ -111,6 +139,14 @@ export default function LiveGameFocus({ eventId, favTeam, accent, onClose }) {
           × CLOSE FOCUS
         </button>
       </div>
+
+      {/* Injury strip */}
+      {(injuries && (injuries[summary?.awayAbbr]?.length || injuries[summary?.homeAbbr]?.length)) && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, padding: '10px 14px', borderBottom: `1px solid ${C.lineSoft}`, background: C.panelSoft }}>
+          <InjuryList abbr={summary?.awayAbbr} list={injuries?.[summary?.awayAbbr]} color={awayMeta.color} />
+          <InjuryList abbr={summary?.homeAbbr} list={injuries?.[summary?.homeAbbr]} color={homeMeta.color} />
+        </div>
+      )}
 
       {/* Body: probability chart + play-by-play ticker */}
       <div className="focus-body" style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 0 }}>

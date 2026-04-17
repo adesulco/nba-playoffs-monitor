@@ -12,7 +12,7 @@ function TeamRow({ name, seed, odds, highlight }) {
         alignItems: 'center',
         gap: 6,
         padding: '5px 7px',
-        background: highlight ? 'rgba(255,179,71,0.08)' : '#0a1728',
+        background: highlight ? 'rgba(255,179,71,0.08)' : COLORS.panelRow,
         borderLeft: highlight ? `2px solid ${COLORS.amber}` : '2px solid transparent',
         fontSize: 10,
       }}
@@ -70,7 +70,7 @@ function SeriesWatermark({ a, b, aAbbr, bAbbr, seriesMap }) {
         color: COLORS.amber,
         padding: '2px 7px',
         borderTop: `1px solid ${COLORS.lineSoft}`,
-        background: '#091524',
+        background: COLORS.panelSoft,
         fontWeight: 600,
         textAlign: 'center',
       }}
@@ -92,7 +92,7 @@ function Series({ series, oddsMap, seriesMap }) {
     <div
       style={{
         border: `1px solid ${COLORS.lineSoft}`,
-        background: '#08111f',
+        background: COLORS.bg,
         marginBottom: 6,
       }}
     >

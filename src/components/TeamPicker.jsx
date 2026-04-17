@@ -29,7 +29,7 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
           alignItems: 'center',
           gap: 8,
           padding: '6px 10px',
-          background: meta ? meta.color : '#0f2038',
+          background: meta ? meta.color : C.panel2,
           border: `1px solid ${meta ? meta.color : C.line}`,
           borderRadius: 4,
           color: C.text,
@@ -65,7 +65,7 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
             top: 'calc(100% + 4px)',
             left: 0,
             width: 280,
-            background: '#0a1628',
+            background: C.panel,
             border: `1px solid ${C.line}`,
             borderRadius: 4,
             zIndex: 100,
@@ -88,7 +88,7 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
                 cursor: 'pointer',
                 letterSpacing: 0.3,
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = '#0d1d34')}
+              onMouseEnter={(e) => (e.currentTarget.style.background = C.hover)}
               onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
             >
               × Clear selection
@@ -102,7 +102,7 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
                   fontSize: 9,
                   letterSpacing: 1.2,
                   color: C.dim,
-                  background: '#081221',
+                  background: C.bg,
                   borderBottom: `1px solid ${C.lineSoft}`,
                   fontWeight: 600,
                 }}
@@ -132,7 +132,7 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
                       transition: 'background 0.1s',
                     }}
                     onMouseEnter={(e) => {
-                      if (!isSel) e.currentTarget.style.background = '#0d1d34';
+                      if (!isSel) e.currentTarget.style.background = C.hover;
                     }}
                     onMouseLeave={(e) => {
                       if (!isSel) e.currentTarget.style.background = 'transparent';

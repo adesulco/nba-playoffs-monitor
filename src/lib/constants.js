@@ -65,19 +65,26 @@ export const BRACKET_R1 = {
   ],
 };
 
+// Theme-aware colors use CSS vars; light/dark values live in index.css.
+// Brand colors (nbaRed, cut) are theme-independent and stay as hex.
 export const COLORS = {
-  bg: '#08111f',
-  panel: '#0c1a2e',
-  panel2: '#0f2038',
-  line: '#1a2d4a',
-  lineSoft: '#152339',
-  text: '#e6edf5',
-  dim: '#8a9bb4',
-  muted: '#56688a',
-  amber: '#ffb347',
-  amberBright: '#ffcc66',
-  green: '#3ddb84',
-  red: '#ff5c5c',
+  bg: 'var(--bg)',
+  panel: 'var(--panel)',
+  panel2: 'var(--panel2)',
+  panelSoft: 'var(--panel-soft)',
+  panelRow: 'var(--panel-row)',
+  line: 'var(--line)',
+  lineSoft: 'var(--line-soft)',
+  text: 'var(--text)',
+  dim: 'var(--dim)',
+  muted: 'var(--muted)',
+  amber: 'var(--amber)',
+  amberBright: 'var(--amber-bright)',
+  green: 'var(--green)',
+  red: 'var(--red)',
+  hover: 'var(--hover)',
+  topbarBg: 'var(--topbar-bg)',
+  heroBg: 'var(--hero-bg)',
   nbaRed: '#c8102e',
   cut: '#b89b5e',
 };

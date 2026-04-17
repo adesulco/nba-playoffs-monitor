@@ -163,6 +163,31 @@ export async function fetchScoreboardForDate(yyyymmdd) {
 }
 
 /**
+ * ESPN injury report — returns map of team abbr -> injuries[].
+ * Each injury: { athlete, status (Out, Day-To-Day, Questionable, etc.), description }.
+ */
+export async function fetchInjuries() {
+  const res = await fetch(`${ESPN_BASE}/injuries`);
+  if (!res.ok) throw new Error(`ESPN injuries: HTTP ${res.status}`);
+  const data = await res.json();
+  const byTeam = {};
+  for (const t of data.injuries || []) {
+    const abbr = t?.team?.abbreviation;
+    if (!abbr) continue;
+    byTeam[abbr] = (t.injuries || []).map((i) => ({
+      athleteId: i.athlete?.id,
+      athlete: i.athlete?.displayName,
+      position: i.athlete?.position?.abbreviation,
+      status: i.status,                       // "Out", "Day-To-Day", "Questionable", etc
+      shortStatus: (i.status || '').split('-')[0].trim().toUpperCase().slice(0, 4),
+      returnDate: i.details?.returnDate,
+      description: i.shortComment || i.longComment,
+    }));
+  }
+  return byTeam;
+}
+
+/**
  * ESPN summary endpoint — play-by-play + header for one event.
  */
 export async function fetchGameSummary(eventId) {
