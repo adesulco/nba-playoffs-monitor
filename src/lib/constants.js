@@ -1,3 +1,21 @@
+// Slug overrides for teams whose common SEO nickname differs from the last word of the team name.
+// "76ers" is the team's actual name but "sixers" is the fan nickname that indexes better.
+// "Trail Blazers" as one word is harder to type; "blazers" is the common nickname.
+const SLUG_OVERRIDES = {
+  'Philadelphia 76ers': 'sixers',
+  'Portland Trail Blazers': 'blazers',
+};
+
+/**
+ * Convert a team name to its URL slug. Used for /nba-playoff-2026/:teamSlug routes.
+ * Defaults to the lowercase of the last word (e.g. "Boston Celtics" → "celtics").
+ */
+export function teamSlug(teamName) {
+  if (!teamName) return '';
+  if (SLUG_OVERRIDES[teamName]) return SLUG_OVERRIDES[teamName];
+  return teamName.split(' ').pop().toLowerCase();
+}
+
 export const TEAM_META = {
   'Oklahoma City Thunder':   { abbr: 'OKC', color: '#007ac1', conf: 'W', seed: 1,    handle: 'okcthunder',    star: 'Shai Gilgeous-Alexander' },
   'San Antonio Spurs':       { abbr: 'SAS', color: '#c4ced4', conf: 'W', seed: 2,    handle: 'spurs',         star: 'Victor Wembanyama' },
@@ -30,6 +48,11 @@ export const TEAM_META = {
   'Utah Jazz':               { abbr: 'UTA', color: '#002b5c', conf: 'W', seed: null, handle: 'utahjazz',      star: 'Lauri Markkanen' },
   'Los Angeles Clippers':    { abbr: 'LAC', color: '#c8102e', conf: 'W', seed: null, handle: 'LAClippers',    star: 'James Harden' },
 };
+
+// Reverse lookup: slug → full team name. Built once at import time.
+export const TEAM_BY_SLUG = Object.fromEntries(
+  Object.keys(TEAM_META).map((name) => [teamSlug(name), name])
+);
 
 export const FALLBACK_CHAMPION = [
   { name: 'Oklahoma City Thunder', pct: 44, change: 2, volume: 0 },

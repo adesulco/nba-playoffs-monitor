@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { AppProvider } from './lib/AppContext.jsx';
 import Home from './pages/Home.jsx';
 import NBADashboard from './pages/NBADashboard.jsx';
+import TeamPage from './pages/TeamPage.jsx';
 import IBL from './pages/IBL.jsx';
 import FIFA from './pages/FIFA.jsx';
 import Recap from './pages/Recap.jsx';
@@ -18,6 +19,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/nba-playoff-2026" element={<NBADashboard />} />
+          <Route path="/nba-playoff-2026/:teamSlug" element={<TeamPage />} />
           {/* legacy path used briefly while the NBA dashboard was at root */}
           <Route path="/nba" element={<Navigate to="/nba-playoff-2026" replace />} />
           <Route path="/ibl" element={<IBL />} />
