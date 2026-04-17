@@ -8,6 +8,7 @@ import TeamPicker from './components/TeamPicker.jsx';
 import LiveGameFocus from './components/LiveGameFocus.jsx';
 import { useSeriesState } from './hooks/useSeriesState.js';
 import { useInjuries } from './hooks/useInjuries.js';
+import { useTeamLeaders } from './hooks/useTeamLeaders.js';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 const THEME_STORAGE_KEY = 'gibol:theme';
@@ -179,6 +180,10 @@ export default function App() {
   const { seriesMap } = useSeriesState('2026-04-18', '2026-05-03');
   // Injury report
   const { byTeam: injuriesByTeam } = useInjuries();
+  // Team player leaders (for the selected team — falls back to top title-favorite if no pick)
+  const topChampName = champion?.odds?.[0]?.name;
+  const leaderTeamAbbr = favMeta?.abbr || (topChampName ? TEAM_META[topChampName]?.abbr : null);
+  const { leaders: teamLeaders } = useTeamLeaders(leaderTeamAbbr);
 
   // Top 3 teams get WebSocket ticks
   const topTokenIds = useMemo(
@@ -206,8 +211,6 @@ export default function App() {
   const statusColor = { live: C.green, stale: C.amber, error: C.red, connecting: C.dim }[status];
   const statusLabel = { live: 'LIVE', stale: 'PARTIAL', error: 'OFFLINE', connecting: 'CONNECTING' }[status];
   const topChamp = liveOdds[0] || { name: 'Oklahoma City Thunder', pct: 44 };
-  const topMvp = mvp[0] || { name: 'Shai Gilgeous-Alexander', pct: 95 };
-  const secondMvp = mvp[1] || { name: 'Victor Wembanyama', pct: 3 };
   const fmtVol = (v) => (v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : `$${(v / 1e3).toFixed(0)}K`);
 
   const panelBox = { borderBottom: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' };
@@ -310,8 +313,8 @@ export default function App() {
         {/* ================== CONTEXT STRIP (odds demoted) ================== */}
         <div className="stat-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderBottom: `1px solid ${C.line}`, background: C.panelSoft }}>
           {[
-            { label: 'MVP LOCK', value: `${topMvp.name.split(' ').map((x) => x[0]).join('')} ${topMvp.pct}%`, sub: topMvp.name.split(' ').slice(-1)[0] },
             { label: 'TITLE FAVORITE', value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`, sub: topChamp.name.split(' ').slice(-1)[0] },
+            { label: 'ROUND 1 TIPS', value: 'APR 18', sub: `${games.length || 2} games Friday` },
             { label: 'FINALS TIP-OFF', value: 'JUN 3', sub: 'ABC · Best-of-7' },
             { label: 'NEXT TIP', value: games[0]?.status || '7:30 ET', sub: games[0] ? `${games[0].away.abbr} @ ${games[0].home.abbr}` : 'ORL @ CHA' },
           ].map((s, i) => (
@@ -433,40 +436,90 @@ export default function App() {
             </div>
           </div>
 
-          {/* COL 3: MVP */}
+          {/* COL 3: Team Player Stats */}
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
             <div style={panelBox}>
               <div style={panelHeader}>
-                <div style={panelTitle}>MVP RACE</div>
-                <div style={panelMeta}>{errors.mvp ? <span style={{ color: C.red }}>● CACHED</span> : <span style={{ color: C.green }}>● LIVE</span>}</div>
+                <div style={panelTitle}>
+                  {leaderTeamAbbr ? `${leaderTeamAbbr} · PLAYER STATS` : 'PLAYER STATS'}
+                </div>
+                <div style={panelMeta}>
+                  {favMeta ? (
+                    <span style={{ color: C.green }}>● {favMeta.abbr} FOCUSED</span>
+                  ) : (
+                    <span style={{ color: C.dim }}>PICK A TEAM ↗</span>
+                  )}
+                </div>
               </div>
               <div>
-                {mvp.slice(0, 5).map((p, i) => {
-                  const isFavStar = favMeta && p.name === favMeta.star;
+                {teamLeaders.length === 0 && (
+                  <div style={{ padding: 20, fontSize: 10.5, color: C.dim, textAlign: 'center', lineHeight: 1.5 }}>
+                    {leaderTeamAbbr ? (
+                      <>Loading {leaderTeamAbbr} leaders…<br /><span style={{ fontSize: 9.5 }}>ESPN · updates every 15 min</span></>
+                    ) : (
+                      <>Pick a team in the top bar to see their player stats.</>
+                    )}
+                  </div>
+                )}
+                {teamLeaders.slice(0, 5).map((cat) => {
+                  const top = cat.athletes?.[0];
+                  if (!top) return null;
+                  const href = top.id ? `https://www.espn.com/nba/player/_/id/${top.id}` : null;
                   return (
-                    <div key={p.name} style={{ display: 'grid', gridTemplateColumns: '22px 1fr auto', gap: 8, padding: '7px 12px', borderBottom: `1px solid ${C.lineSoft}`, background: isFavStar ? `${favMeta.color}22` : 'transparent', borderLeft: isFavStar ? `2px solid ${favMeta.color}` : '2px solid transparent', fontSize: 11 }}>
-                      <div style={{ color: C.dim }}>{i + 1}</div>
-                      <div>{p.name}{isFavStar && <span style={{ color: accentBright, marginLeft: 6, fontSize: 9 }}>★ YOUR TEAM</span>}</div>
-                      <div style={{ color: isFavStar ? accentBright : C.amberBright, fontWeight: 600 }}>{p.pct}%</div>
-                    </div>
+                    <a
+                      key={cat.category}
+                      href={href || '#'}
+                      target={href ? '_blank' : undefined}
+                      rel={href ? 'noopener noreferrer' : undefined}
+                      className={href ? 'link-row' : ''}
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '80px 1fr auto',
+                        gap: 8,
+                        padding: '8px 12px',
+                        borderBottom: `1px solid ${C.lineSoft}`,
+                        fontSize: 11,
+                        alignItems: 'center',
+                        textDecoration: 'none',
+                        color: 'inherit',
+                        cursor: href ? 'pointer' : 'default',
+                      }}
+                    >
+                      <div style={{ color: C.dim, fontSize: 9, letterSpacing: 0.5, textTransform: 'uppercase' }}>
+                        {cat.displayName || cat.category}
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                        <span style={{ color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {top.name}
+                          {href && <span style={{ color: C.muted, marginLeft: 6, fontSize: 9 }}>↗</span>}
+                        </span>
+                        {top.position && <span style={{ fontSize: 9, color: C.muted }}>{top.position}{top.jersey ? ` · #${top.jersey}` : ''}</span>}
+                      </div>
+                      <div style={{ color: accentBright, fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600, letterSpacing: -0.2 }}>
+                        {top.displayValue || (top.value != null ? top.value.toFixed(1) : '—')}
+                      </div>
+                    </a>
                   );
                 })}
               </div>
             </div>
 
-            <div style={{ padding: 16, background: favMeta ? `linear-gradient(180deg, ${favMeta.color}40 0%, ${favMeta.color}15 100%)` : `linear-gradient(180deg, ${C.panel2} 0%, ${C.panel} 100%)`, borderTop: `1px solid ${accent}` }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, color: C.dim, letterSpacing: 1, marginBottom: 8 }}>
-                <span style={{ color: accentBright }}>{favMeta ? `${favMeta.abbr} · KEY MAN` : 'MVP FRONTRUNNER'}</span>
-                <span style={{ color: C.text, fontWeight: 600 }}>LOCKED</span>
+            {favMeta && (
+              <div style={{ padding: '12px 16px', background: `linear-gradient(180deg, ${favMeta.color}40 0%, ${favMeta.color}12 100%)`, borderTop: `1px solid ${accent}` }}>
+                <div style={{ fontSize: 9.5, color: C.dim, letterSpacing: 1, marginBottom: 4 }}>FULL ROSTER</div>
+                <a
+                  href={`https://www.espn.com/nba/team/roster/_/name/${favMeta.abbr.toLowerCase()}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: C.text, fontSize: 11, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }}
+                >
+                  espn.com/{favMeta.abbr.toLowerCase()}/roster <span style={{ color: C.muted }}>↗</span>
+                </a>
+                <div style={{ fontSize: 9.5, color: C.dim, marginTop: 6 }}>
+                  Stats update as the {favTeam.split(' ').slice(-1)[0]} advance through the playoffs.
+                </div>
               </div>
-              <div style={{ display: 'inline-block', padding: '3px 10px', background: accent, color: favMeta ? '#fff' : '#000', fontSize: 9.5, fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>
-                {favMeta ? `${favMeta.abbr} STAR` : `${topMvp.pct}% POLYMARKET`}
-              </div>
-              <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 32, lineHeight: 1, color: C.text, marginTop: 6, marginBottom: 4 }}>{favMeta ? favMeta.star : topMvp.name}</div>
-              <div style={{ color: C.dim, fontSize: 10.5 }}>
-                {favMeta ? `Leading the ${favTeam.split(' ').slice(-1)[0]} into the ${favMeta.conf === 'E' ? 'East' : 'West'} playoffs` : 'Back-to-back MVP frontrunner · Resolves Jun 10'}
-              </div>
-            </div>
+            )}
           </div>
 
           {/* COL 4: Tonight + Stories + Status */}
@@ -533,7 +586,7 @@ export default function App() {
             <div style={{ padding: '10px 16px', fontSize: 9.5, color: C.muted, letterSpacing: 0.3, display: 'flex', flexDirection: 'column', gap: 3 }}>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <span>Scores · <span style={{ color: errors.scores ? C.red : C.green }}>{errors.scores ? 'cached' : 'ESPN live'}</span></span>
-                <span>MVP · <span style={{ color: errors.mvp ? C.red : C.green }}>{errors.mvp ? 'cached' : 'Polymarket'}</span></span>
+                {leaderTeamAbbr && <span>Players · <span style={{ color: C.green }}>ESPN {leaderTeamAbbr}</span></span>}
                 <span>Odds · <span style={{ color: errors.champion ? C.red : C.green }}>{errors.champion ? 'cached' : 'Polymarket'}</span></span>
               </div>
               <div>Poll 30s · WS {wsStatus} · last {lastUpdate?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) || '—'}</div>
@@ -548,7 +601,7 @@ export default function App() {
             <div className="ticker-inner">
               {[
                 `Thunder ${topChamp.pct}% title favorite · Polymarket ${fmtVol(champion.volume)} volume`,
-                `${topMvp.name} MVP ${topMvp.pct}% · ${secondMvp.name} ${secondMvp.pct}%`,
+                `Round 1 tips Apr 18 · 8 best-of-7 series to start the bracket`,
                 'Play-In finale tonight: ORL-CHA and PHX-GSW on Prime',
                 'Pistons earn East No. 1 seed for first time since 2007–08',
                 'LeBron-Durant headline Lakers-Rockets, first since 2018 Finals',

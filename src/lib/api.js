@@ -163,6 +163,38 @@ export async function fetchScoreboardForDate(yyyymmdd) {
 }
 
 /**
+ * ESPN team leaders endpoint — returns top players by stat for a given team abbr.
+ * Returns: [{ category, displayName, athletes: [{ id, name, position, value, displayValue }] }]
+ * Categories: "avgPoints", "avgRebounds", "avgAssists", "avgSteals", "avgBlocks" etc.
+ */
+export async function fetchTeamLeaders(teamAbbr) {
+  if (!teamAbbr) return [];
+  const res = await fetch(`${ESPN_BASE}/teams/${teamAbbr.toLowerCase()}/statistics/0`);
+  // Fallback: the teams/<abbr> endpoint has .team.record + leaders
+  if (!res.ok) {
+    // Try the alternate path
+    const alt = await fetch(`${ESPN_BASE}/teams/${teamAbbr.toLowerCase()}`);
+    if (!alt.ok) throw new Error(`ESPN team leaders: HTTP ${alt.status}`);
+    const altData = await alt.json();
+    const cats = altData?.team?.leaders || [];
+    return cats.map((c) => ({
+      category: c.shortDisplayName || c.displayName,
+      displayName: c.displayName,
+      athletes: (c.leaders || []).map((l) => ({
+        id: l.athlete?.id,
+        name: l.athlete?.displayName,
+        position: l.athlete?.position?.abbreviation,
+        jersey: l.athlete?.jersey,
+        value: l.value,
+        displayValue: l.displayValue,
+      })),
+    }));
+  }
+  const data = await res.json();
+  return data.categories || [];
+}
+
+/**
  * ESPN injury report — returns map of team abbr -> injuries[].
  * Each injury: { athlete, status (Out, Day-To-Day, Questionable, etc.), description }.
  */
