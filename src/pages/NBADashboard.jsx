@@ -21,6 +21,7 @@ import { useWatchlistAlerts } from '../hooks/useWatchlistAlerts.js';
 import { useTeamSchedule, computeStreak, computeH2H } from '../hooks/useTeamSchedule.js';
 import { useGameDetails } from '../hooks/useGameDetails.js';
 import { useApp } from '../lib/AppContext.jsx';
+import FangirBanner from '../components/FangirBanner.jsx';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 
@@ -723,6 +724,9 @@ export default function NBADashboard() {
             </div>
           </div>
         </div>
+
+        {/* ================== FANGIR PARTNER BANNER ================== */}
+        <FangirBanner />
 
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 14px', borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted }}>
           <div>Polymarket Gamma + CLOB WS · ESPN Scoreboard · 30s poll + live ticks</div>

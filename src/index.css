@@ -120,6 +120,21 @@ html, body, #root {
     border-right: none !important;
     border-bottom: 1px solid var(--line);
   }
+  .fangir-banner {
+    grid-template-columns: 1fr !important;
+  }
+  .fangir-banner > div:first-child {
+    min-height: 80px;
+    border-right: none !important;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .fangir-banner > div:last-child {
+    border-left: none !important;
+    border-top: 1px solid var(--line-soft);
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
   .topbar-meta {
     flex-wrap: wrap;
     justify-content: flex-start !important;
