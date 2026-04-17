@@ -23,6 +23,8 @@ import { useGameDetails } from '../hooks/useGameDetails.js';
 import { useApp } from '../lib/AppContext.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
 import ClutchLeaderboard from '../components/ClutchLeaderboard.jsx';
+import SEO from '../components/SEO.jsx';
+import SEOContent from '../components/SEOContent.jsx';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 
@@ -275,6 +277,30 @@ export default function NBADashboard() {
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', overflowX: 'auto', fontFamily: '"JetBrains Mono", monospace', color: C.text, fontSize: 11.5, lineHeight: 1.4 }}>
+      <SEO
+        title="Skor NBA Playoff 2026 Live · Bracket, Peluang Juara, Play-by-Play | gibol.co"
+        description="Dashboard live NBA Playoff 2026: skor real-time, bracket Ronde 1, peluang juara Polymarket (OKC 44%), win probability, play-by-play, shot chart, statistik pemain, laporan cedera, dan watchlist. Update setiap 10–30 detik."
+        path="/nba-playoff-2026"
+        lang={lang}
+        keywords={`skor nba, skor basket, skor playoff nba, skor nba live, skor nba hari ini, peluang juara nba 2026, bracket nba playoff 2026, jadwal nba playoff, ${favMeta ? `skor ${favMeta.abbr.toLowerCase()}, skor ${favTeam}` : 'skor lakers, skor celtics, skor okc, skor thunder, skor pistons'}, live nba indonesia`}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "SportsEvent",
+          "name": "2026 NBA Playoffs",
+          "description": "Postseason NBA 2025–26. Ronde 1 mulai 18 April 2026. Finals tip-off 3 Juni 2026 di ABC.",
+          "startDate": "2026-04-17",
+          "endDate": "2026-06-20",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "sport": "Basketball",
+          "organizer": {
+            "@type": "SportsOrganization",
+            "name": "National Basketball Association",
+            "url": "https://www.nba.com"
+          },
+          "url": "https://gibol.co/nba-playoff-2026",
+          "inLanguage": ["id-ID", "en-US"]
+        }}
+      />
       <AlertToasts toasts={alertToasts} dismissToast={dismissToast} />
       <div className="dashboard-wrap">
 
@@ -731,6 +757,9 @@ export default function NBADashboard() {
 
         {/* ================== FANGIR PARTNER BANNER ================== */}
         <FangirBanner />
+
+        {/* ================== SEO CONTENT (crawlable Bahasa + EN prose + FAQ) ================== */}
+        <SEOContent lang={lang} />
 
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 14px', borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted }}>
           <div>Polymarket Gamma + CLOB WS · ESPN Scoreboard · 30s poll + live ticks</div>

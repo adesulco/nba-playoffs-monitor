@@ -1,9 +1,12 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
+import SEO from '../components/SEO.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
-export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId }) {
+export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId, seoKeywords }) {
+  const location = useLocation();
   const { lang } = useApp();
 
   const displayTitle = lang === 'id' && titleId ? titleId : title;
@@ -12,6 +15,13 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
+      <SEO
+        title={`${displayTitle} · gibol.co — segera hadir`}
+        description={displayBlurb}
+        path={location.pathname}
+        lang={lang}
+        keywords={seoKeywords}
+      />
       <div className="dashboard-wrap">
         <TopBar showBackLink accent={accent} />
 

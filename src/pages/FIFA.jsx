@@ -32,6 +32,7 @@ export default function FIFA() {
       glyph="⚽"
       features={features}
       featuresId={featuresId}
+      seoKeywords="fifa world cup 2026, piala dunia 2026, jadwal piala dunia 2026, skor piala dunia, grup piala dunia 2026, kickoff piala dunia 11 juni 2026, USA Mexico Canada world cup, FIFA 2026, world cup indonesia"
     />
   );
 }

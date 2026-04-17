@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
+import SEO from '../components/SEO.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
 const DASHBOARDS = [
@@ -148,6 +149,13 @@ export default function Home() {
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
+      <SEO
+        title="gibol.co — gila bola · skor live NBA, IBL, Piala Dunia 2026"
+        description="Dashboard live untuk NBA Playoffs 2026, IBL (Liga Basket Indonesia), dan Piala Dunia FIFA 2026. Skor live, peluang juara Polymarket, bracket, play-by-play, dan statistik pemain dalam satu halaman."
+        path="/"
+        lang={lang}
+        keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, IBL, liga basket indonesia, FIFA world cup 2026, piala dunia 2026"
+      />
       <div className="dashboard-wrap">
         <TopBar />
 

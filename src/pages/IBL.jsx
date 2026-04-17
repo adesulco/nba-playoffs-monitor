@@ -32,6 +32,7 @@ export default function IBL() {
       glyph="🇮🇩"
       features={features}
       featuresId={featuresId}
+      seoKeywords="IBL, liga basket indonesia, skor IBL, jadwal IBL, klasemen IBL, pelita jaya, prawira bandung, satria muda, rans simba, pro basket indonesia, IBL season 2025-26, liga basket indonesia 2026"
     />
   );
 }

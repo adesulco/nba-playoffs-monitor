@@ -1,0 +1,54 @@
+# gibol.co
+
+> Live sports dashboards built for Indonesian fans — NBA Playoffs, IBL (Indonesia Basketball League), and FIFA World Cup 2026. "Gibol" is Indonesian slang for "gila bola" (sports-obsessed). One hub, live data, zero backend.
+
+gibol.co is a real-time sports companion aggregating Polymarket prediction odds, ESPN scoreboard data, and play-by-play action into a single terminal-style dashboard. Content updates every 10–30 seconds during live games. All data is sourced from public APIs and displayed with attribution.
+
+## Live dashboards
+
+- [NBA Playoffs 2026](https://gibol.co/nba-playoff-2026): Live scores, play-by-play, win probability, shot chart, box score, injury report, championship odds, bracket, series standings, team player stats, clutch leaders, watchlist, Fangir IBL trading-card partner banner. 2025–26 postseason, Apr 17 – Jun 20 2026.
+- [IBL — Indonesia Basketball League](https://gibol.co/ibl): Coming soon.
+- [FIFA World Cup 2026](https://gibol.co/fifa-world-cup-2026): Coming soon.
+
+## Key facts (NBA Playoffs 2026)
+
+- Round 1 tips: April 18, 2026
+- Play-in finale: April 17, 2026 (ORL vs CHA 7:30 PM ET, PHX vs GSW 10:00 PM ET)
+- Finals tip-off: June 3, 2026 on ABC (best-of-7)
+- 2025–26 title favorite (per Polymarket): Oklahoma City Thunder (~44%)
+- TV rights deal: $76B 11-year Disney/NBC/Amazon
+
+## Features
+
+- Live win probability chart (ESPN probabilities API, per-play)
+- Play-by-play ticker with team-color scoring highlights
+- Shot chart overlay on half-court SVG
+- Quarter-by-quarter line score
+- Clutch leaderboard (Q4 ≤ 5 min, margin ≤ 5 pts)
+- Team picker with full theming (30 NBA teams)
+- Player watchlist with live milestone alerts
+- Head-to-head history per matchup
+- Streak chips (W5/L3) per team
+- Championship path visualization for your selected team
+- Scoring run detection
+- Yesterday recap with biggest-upset detection
+- Injury report from ESPN
+- Bahasa Indonesia and English language toggle
+- Light and dark theme toggle
+- Mobile responsive below 1280px
+
+## Data sources
+
+- Polymarket Gamma API (championship + MVP event markets)
+- Polymarket CLOB WebSocket (live price ticks for top contenders)
+- ESPN Scoreboard + Summary + Probabilities + Team Schedule + Injuries (all undocumented public endpoints)
+
+## Brand
+
+- Tagline: "Gila bola · live sports dashboards"
+- Voice: Indonesian-native, casual, sports-fan-first
+- Partners: Fangir.com (2026 IBL Trading Cards pre-order)
+
+## Attribution
+
+Created by Ade Sulistio Putra (Indonesia). Built with Claude. Open to partnerships with Indonesian sports media, broadcasters, and leagues.

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { AppProvider } from './lib/AppContext.jsx';
 import Home from './pages/Home.jsx';
 import NBADashboard from './pages/NBADashboard.jsx';
@@ -9,8 +10,9 @@ import AnalyticsTracker from './components/AnalyticsTracker.jsx';
 
 export default function App() {
   return (
-    <AppProvider>
-      <BrowserRouter>
+    <HelmetProvider>
+      <AppProvider>
+        <BrowserRouter>
         <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -21,7 +23,8 @@ export default function App() {
           <Route path="/fifa-world-cup-2026" element={<FIFA />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
-    </AppProvider>
+        </BrowserRouter>
+      </AppProvider>
+    </HelmetProvider>
   );
 }
