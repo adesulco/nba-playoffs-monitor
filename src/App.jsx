@@ -5,6 +5,58 @@ import { TEAM_META, COLORS as C } from './lib/constants.js';
 import Sparkline from './components/Sparkline.jsx';
 import Bracket from './components/Bracket.jsx';
 
+function GameCard({ g }) {
+  const awayMeta = TEAM_META[Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === g.away?.abbr)] || { color: '#2a3a52' };
+  const homeMeta = TEAM_META[Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === g.home?.abbr)] || { color: '#2a3a52' };
+  const isLive = g.statusState === 'in';
+  const isFinal = g.statusState === 'post';
+  const awayScore = g.away?.score;
+  const homeScore = g.home?.score;
+  const hasScore = awayScore !== null && awayScore !== undefined && awayScore !== '';
+  const awayWon = hasScore && parseInt(awayScore) > parseInt(homeScore);
+  const homeWon = hasScore && parseInt(homeScore) > parseInt(awayScore);
+
+  return (
+    <div style={{
+      padding: '10px 14px',
+      borderRight: `1px solid ${C.lineSoft}`,
+      borderBottom: `1px solid ${C.lineSoft}`,
+      display: 'flex', flexDirection: 'column', gap: 6,
+      minWidth: 0,
+    }}>
+      {/* Away */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+          <div style={{ width: 22, height: 22, borderRadius: 3, background: awayMeta.color, color: '#fff', fontSize: 9, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            {g.away?.abbr || '—'}
+          </div>
+          <span style={{ fontSize: 12, color: awayWon ? C.text : hasScore && !awayWon ? C.muted : C.text, fontWeight: awayWon ? 600 : 400 }}>{g.away?.abbr || '—'}</span>
+        </div>
+        {hasScore && (
+          <span style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: awayWon ? C.amberBright : C.text, letterSpacing: -0.3 }}>{awayScore}</span>
+        )}
+      </div>
+      {/* Home */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+          <div style={{ width: 22, height: 22, borderRadius: 3, background: homeMeta.color, color: '#fff', fontSize: 9, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            {g.home?.abbr || '—'}
+          </div>
+          <span style={{ fontSize: 12, color: homeWon ? C.text : hasScore && !homeWon ? C.muted : C.text, fontWeight: homeWon ? 600 : 400 }}>{g.home?.abbr || '—'}</span>
+        </div>
+        {hasScore && (
+          <span style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: homeWon ? C.amberBright : C.text, letterSpacing: -0.3 }}>{homeScore}</span>
+        )}
+      </div>
+      {/* Status */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, paddingTop: 2, borderTop: `1px solid ${C.lineSoft}`, marginTop: 2, color: isLive ? C.green : isFinal ? C.dim : C.amber }}>
+        {isLive && <span className="live-dot" style={{ background: C.red }} />}
+        <span style={{ letterSpacing: 0.3 }}>{g.status || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const { champion, mvp, games, sparklines, lastUpdate, status, errors } = usePlayoffData(30000);
   const [now, setNow] = useState(new Date());
@@ -63,34 +115,49 @@ export default function App() {
               <div style={{ fontSize: 10.5, color: C.dim, letterSpacing: 0.5 }}>NBA <strong style={{ color: C.amber }}>•</strong> 2025–26 POSTSEASON <strong style={{ color: C.amber }}>•</strong> LIVE</div>
             </div>
           </div>
-          <div className="topbar-meta" style={{ display: 'flex', gap: 20, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
-            <span><span className="live-dot" style={{ background: statusColor }} /> {statusLabel}</span>
-            <span style={{ color: wsStatus === 'live' ? C.green : C.muted }}>
-              WS · {wsStatus.toUpperCase()}
-            </span>
-            <span style={{ color: C.amber }}>▲ {(TEAM_META[topChamp.name]?.abbr || 'OKC')} {topChamp.pct}%</span>
-            <span style={{ color: C.amberBright, fontWeight: 600, fontSize: 12 }}>
-              {now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'America/New_York' })} ET
+          <div className="topbar-meta" style={{ display: 'flex', gap: 16, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center' }}><span className="live-dot" style={{ background: statusColor }} /> {statusLabel}</span>
+            <span style={{ color: C.amberBright, fontWeight: 600, fontSize: 13, fontFamily: '"Space Grotesk", sans-serif' }}>
+              {now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' })} ET
             </span>
             <span>{now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
           </div>
-          <div style={{ fontSize: 10, color: C.dim }}>
+          <div style={{ fontSize: 10, color: C.dim, textAlign: 'right' }}>
             {lastUpdate ? `refresh ${Math.round((now - lastUpdate) / 1000)}s ago` : 'connecting...'}
           </div>
         </div>
 
-        {/* ================== STAT STRIP ================== */}
-        <div className="stat-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', borderBottom: `1px solid ${C.line}`, background: '#0a1525' }}>
+        {/* ================== LIVE SCOREBOARD HERO ================== */}
+        <div className="scoreboard-hero" style={{ borderBottom: `1px solid ${C.line}`, background: 'linear-gradient(180deg, #0b1a30 0%, #0a1525 100%)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', borderBottom: `1px solid ${C.lineSoft}` }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <span style={{ fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>LIVE SCOREBOARD</span>
+              <span style={{ fontSize: 9.5, color: C.dim }}>{games.length > 0 ? `${games.length} GAMES` : 'TODAY'}</span>
+            </div>
+            <div style={{ fontSize: 9.5, color: C.dim, letterSpacing: 0.5 }}>
+              {errors.scores ? <span style={{ color: C.red }}>● ESPN OFF · SHOWING SCHEDULE</span> : <span style={{ color: C.green }}>● ESPN LIVE</span>}
+            </div>
+          </div>
+          <div className="game-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 0 }}>
+            {games.length === 0 && [
+              { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, status: 'FRI 7:30 PM ET', statusState: 'pre' },
+              { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, status: 'FRI 10:00 PM ET', statusState: 'pre' },
+            ].map((g) => <GameCard key={g.id} g={g} />)}
+            {games.slice(0, 6).map((g, i) => <GameCard key={g.id || i} g={g} />)}
+          </div>
+        </div>
+
+        {/* ================== CONTEXT STRIP (odds demoted) ================== */}
+        <div className="stat-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderBottom: `1px solid ${C.line}`, background: '#091422' }}>
           {[
-            { label: 'TV RIGHTS DEAL', value: '$76.0B', sub: '11-yr Disney/NBC/Amazon' },
-            { label: 'CHAMP POLY VOL', value: fmtVol(champion.volume), sub: `24H ${fmtVol(champion.volume24h)}` },
-            { label: 'FAVORITE', value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`, sub: topChamp.name.split(' ').slice(-1)[0] },
-            { label: 'MVP LOCK', value: `${topMvp.name.split(' ').map((x) => x[0]).join('')} ${topMvp.pct}%`, sub: topMvp.name },
+            { label: 'MVP LOCK', value: `${topMvp.name.split(' ').map((x) => x[0]).join('')} ${topMvp.pct}%`, sub: topMvp.name.split(' ').slice(-1)[0] },
+            { label: 'TITLE FAVORITE', value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`, sub: topChamp.name.split(' ').slice(-1)[0] },
             { label: 'FINALS TIP-OFF', value: 'JUN 3', sub: 'ABC · Best-of-7' },
+            { label: 'NEXT TIP', value: games[0]?.status || '7:30 ET', sub: games[0] ? `${games[0].away.abbr} @ ${games[0].home.abbr}` : 'ORL @ CHA' },
           ].map((s, i) => (
-            <div key={i} style={{ padding: '10px 14px', borderRight: `1px solid ${C.lineSoft}`, display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <div style={{ fontSize: 9.5, color: C.dim, letterSpacing: 0.8, textTransform: 'uppercase' }}>{s.label}</div>
-              <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: C.amberBright, letterSpacing: -0.3 }}>{s.value}</div>
+            <div key={i} style={{ padding: '8px 14px', borderRight: i < 3 ? `1px solid ${C.lineSoft}` : 'none', display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <div style={{ fontSize: 9, color: C.dim, letterSpacing: 0.8, textTransform: 'uppercase' }}>{s.label}</div>
+              <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600, color: C.amberBright, letterSpacing: -0.2 }}>{s.value}</div>
               <div style={{ fontSize: 9.5, color: C.dim }}>{s.sub}</div>
             </div>
           ))}
@@ -117,18 +184,25 @@ export default function App() {
                 <span style={{ color: C.amber, letterSpacing: 0.5, fontSize: 9.5, fontWeight: 500 }}>#NBAPLAYOFFS</span>
               </div>
               {[
-                { handle: '@NBA', age: '1h', text: 'Play-In Finale tonight on Prime — 8-seeds on the line in both conferences.' },
-                { handle: '@espn', age: '2h', text: 'Pistons earn No. 1 seed in the East — first time since 2007–08.' },
-                { handle: '@BleacherReport', age: '3h', text: 'LeBron vs KD in the playoffs for the first time since 2018 Finals.' },
-                { handle: '@PolymarketSport', age: '5h', text: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} champ odds at ${topChamp.pct}%, volume tops ${fmtVol(champion.volume)}.` },
+                { handle: '@NBA', url: 'https://x.com/NBA', age: '1h', text: 'Play-In Finale tonight on Prime — 8-seeds on the line in both conferences.' },
+                { handle: '@espn', url: 'https://x.com/espn', age: '2h', text: 'Pistons earn No. 1 seed in the East — first time since 2007–08.' },
+                { handle: '@BleacherReport', url: 'https://x.com/BleacherReport', age: '3h', text: 'LeBron vs KD in the playoffs for the first time since 2018 Finals.' },
+                { handle: '@PolymarketSport', url: 'https://x.com/Polymarket', age: '5h', text: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} champ odds at ${topChamp.pct}%, volume tops ${fmtVol(champion.volume)}.` },
               ].map((a, i) => (
-                <div key={i} style={{ padding: '8px 12px', borderBottom: `1px solid ${C.lineSoft}`, fontSize: 10.5 }}>
+                <a
+                  key={i}
+                  href={a.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-row"
+                  style={{ display: 'block', padding: '8px 12px', borderBottom: `1px solid ${C.lineSoft}`, fontSize: 10.5, textDecoration: 'none', color: 'inherit' }}
+                >
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <span style={{ color: C.text, display: 'flex', gap: 6, alignItems: 'center' }}>{a.handle} <span style={{ color: C.amber }}>✓</span></span>
-                    <span style={{ color: C.dim, fontSize: 9.5 }}>{a.age}</span>
+                    <span style={{ color: C.dim, fontSize: 9.5 }}>{a.age} ↗</span>
                   </div>
                   <div style={{ color: C.dim, marginTop: 3, lineHeight: 1.35 }}>{a.text}</div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -192,45 +266,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* COL 3: Live Games + MVP */}
+          {/* COL 3: MVP */}
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
-            <div style={panelBox}>
-              <div style={panelHeader}>
-                <div style={panelTitle}>TODAY'S GAMES</div>
-                <div style={panelMeta}>{errors.scores ? <span style={{ color: C.red }}>● ESPN OFF</span> : <span style={{ color: C.green }}>● ESPN LIVE</span>}</div>
-              </div>
-              <div>
-                {games.length === 0 && (
-                  <div style={{ padding: 16, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
-                    {errors.scores ? 'ESPN unreachable — showing schedule' : 'Loading…'}
-                  </div>
-                )}
-                {games.length === 0 && [
-                  { name: 'ORL @ CHA', status: 'Fri 7:30 PM ET' },
-                  { name: 'PHX @ GSW', status: 'Fri 10:00 PM ET' },
-                ].map((g, i) => (
-                  <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto', padding: '10px 12px', borderBottom: `1px solid ${C.lineSoft}`, fontSize: 11 }}>
-                    <div style={{ color: C.text }}>{g.name}</div>
-                    <div style={{ color: C.amber, fontSize: 10 }}>{g.status}</div>
-                  </div>
-                ))}
-                {games.slice(0, 6).map((g, i) => (
-                  <div key={g.id || i} style={{ padding: '8px 12px', borderBottom: `1px solid ${C.lineSoft}`, fontSize: 11 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span>{g.away.abbr}</span>{g.away.score && <span style={{ color: C.amberBright, fontWeight: 600 }}>{g.away.score}</span>}</div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span>{g.home.abbr}</span>{g.home.score && <span style={{ color: C.amberBright, fontWeight: 600 }}>{g.home.score}</span>}</div>
-                      </div>
-                      <div style={{ fontSize: 10, color: g.statusState === 'in' ? C.green : g.statusState === 'post' ? C.dim : C.amber, textAlign: 'right' }}>
-                        {g.statusState === 'in' && <span className="live-dot" style={{ background: C.red }} />}
-                        {g.status}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div style={panelBox}>
               <div style={panelHeader}>
                 <div style={panelTitle}>MVP RACE</div>
@@ -288,12 +325,19 @@ export default function App() {
                 <div style={panelMeta}>PREVIEW · ANALYSIS</div>
               </div>
               {[
-                { title: 'Thunder enter playoffs as consensus favorite after 64–18 season', src: 'ESPN', age: '2h' },
-                { title: 'Pistons clinch East No. 1 seed in historic resurgence', src: 'The Athletic', age: '4h' },
-                { title: 'LeBron-KD renewed: first playoff clash since 2018 Finals', src: 'CBS Sports', age: '5h' },
-                { title: "Wembanyama's first playoff test vs Portland", src: 'NBA.com', age: '6h' },
+                { title: 'Thunder enter playoffs as consensus favorite after 64–18 season', src: 'ESPN', age: '2h', url: 'https://www.espn.com/nba/team/_/name/okc/oklahoma-city-thunder' },
+                { title: 'Pistons clinch East No. 1 seed in historic resurgence', src: 'The Athletic', age: '4h', url: 'https://www.nytimes.com/athletic/nba/team/pistons/' },
+                { title: 'LeBron-KD renewed: first playoff clash since 2018 Finals', src: 'CBS Sports', age: '5h', url: 'https://www.cbssports.com/nba/' },
+                { title: "Wembanyama's first playoff test vs Portland", src: 'NBA.com', age: '6h', url: 'https://www.nba.com/news' },
               ].map((s, i) => (
-                <div key={i} style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: 10, padding: '10px 12px', borderBottom: `1px solid ${C.lineSoft}`, alignItems: 'center' }}>
+                <a
+                  key={i}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-row"
+                  style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: 10, padding: '10px 12px', borderBottom: `1px solid ${C.lineSoft}`, alignItems: 'center', textDecoration: 'none', color: 'inherit' }}
+                >
                   <div style={{ aspectRatio: '1.4', background: '#0a1a2e', border: `1px solid ${C.lineSoft}`, position: 'relative' }}>
                     <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 55%, #d4601e 0%, #8c3a10 70%)' }} />
                     <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: 'rgba(0,0,0,0.4)' }} />
@@ -301,18 +345,19 @@ export default function App() {
                   </div>
                   <div style={{ fontSize: 10.5, lineHeight: 1.35 }}>
                     <div>{s.title}</div>
-                    <div style={{ color: C.dim, fontSize: 9.5, marginTop: 3 }}><span style={{ color: C.amber }}>{s.src}</span> · {s.age}</div>
+                    <div style={{ color: C.dim, fontSize: 9.5, marginTop: 3 }}><span style={{ color: C.amber }}>{s.src}</span> · {s.age} <span style={{ color: C.muted }}>↗</span></div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
 
-            <div style={{ padding: '12px 16px', fontSize: 10, color: C.dim, lineHeight: 1.5 }}>
-              <div style={{ color: C.amber, letterSpacing: 1, fontSize: 9.5, marginBottom: 6 }}>DATA STATUS</div>
-              <div>Champion: {errors.champion ? <span style={{ color: C.red }}>fallback</span> : <span style={{ color: C.green }}>live poll + {wsStatus === 'live' ? 'WS ticks' : 'polling only'}</span>}</div>
-              <div>MVP: {errors.mvp ? <span style={{ color: C.red }}>fallback</span> : <span style={{ color: C.green }}>live (Gamma)</span>}</div>
-              <div>Scores: {errors.scores ? <span style={{ color: C.red }}>fallback</span> : <span style={{ color: C.green }}>live (ESPN)</span>}</div>
-              <div style={{ marginTop: 6, color: C.muted }}>Poll: 30s · WS: {wsStatus} · Last: {lastUpdate?.toLocaleTimeString('en-US', { hour12: false }) || '—'}</div>
+            <div style={{ padding: '10px 16px', fontSize: 9.5, color: C.muted, letterSpacing: 0.3, display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                <span>Scores · <span style={{ color: errors.scores ? C.red : C.green }}>{errors.scores ? 'cached' : 'ESPN live'}</span></span>
+                <span>MVP · <span style={{ color: errors.mvp ? C.red : C.green }}>{errors.mvp ? 'cached' : 'Polymarket'}</span></span>
+                <span>Odds · <span style={{ color: errors.champion ? C.red : C.green }}>{errors.champion ? 'cached' : 'Polymarket'}</span></span>
+              </div>
+              <div>Poll 30s · WS {wsStatus} · last {lastUpdate?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) || '—'}</div>
             </div>
           </div>
         </div>

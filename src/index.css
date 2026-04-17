@@ -32,6 +32,10 @@ html, body, #root {
 .lb-row.flash-up   { animation: flash-green 1.2s ease-out; }
 .lb-row.flash-down { animation: flash-red 1.2s ease-out; }
 
+.link-row { transition: background 0.15s; cursor: pointer; }
+.link-row:hover { background: #0d1d34; }
+.link-row:hover .external-arrow { color: #ffb347; }
+
 .dashboard-wrap {
   width: 1280px;
   margin: 0 auto;
@@ -55,7 +59,15 @@ html, body, #root {
   .stat-strip {
     grid-template-columns: repeat(2, 1fr) !important;
   }
-  .stat-strip > div:nth-child(n+5) { display: none; }
+  .stat-strip > div:nth-child(odd) {
+    border-right: 1px solid #1a2d4a !important;
+  }
+  .stat-strip > div:nth-child(-n+2) {
+    border-bottom: 1px solid #1a2d4a;
+  }
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
   .topbar-meta {
     flex-wrap: wrap;
     justify-content: flex-start !important;

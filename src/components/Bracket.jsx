@@ -68,60 +68,42 @@ function Series({ series, oddsMap }) {
 export default function Bracket({ championOdds }) {
   const oddsMap = Object.fromEntries(championOdds.map((o) => [o.name, o.pct]));
 
+  const ConfHeader = ({ label }) => (
+    <div
+      style={{
+        fontSize: 9,
+        letterSpacing: 1.2,
+        color: COLORS.dim,
+        marginBottom: 6,
+        borderBottom: `1px solid ${COLORS.lineSoft}`,
+        paddingBottom: 3,
+      }}
+    >
+      {label}
+    </div>
+  );
+
   return (
     <div style={{ padding: '10px 12px' }}>
+      <ConfHeader label="EASTERN CONFERENCE" />
+      {BRACKET_R1.east.map((s, i) => (
+        <Series key={`e-${i}`} series={s} oddsMap={oddsMap} />
+      ))}
+      <div style={{ height: 10 }} />
+      <ConfHeader label="WESTERN CONFERENCE" />
+      {BRACKET_R1.west.map((s, i) => (
+        <Series key={`w-${i}`} series={s} oddsMap={oddsMap} />
+      ))}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 14,
-        }}
-      >
-        <div>
-          <div
-            style={{
-              fontSize: 9,
-              letterSpacing: 1.2,
-              color: COLORS.dim,
-              marginBottom: 6,
-              borderBottom: `1px solid ${COLORS.lineSoft}`,
-              paddingBottom: 3,
-            }}
-          >
-            EASTERN CONFERENCE
-          </div>
-          {BRACKET_R1.east.map((s, i) => (
-            <Series key={i} series={s} oddsMap={oddsMap} />
-          ))}
-        </div>
-        <div>
-          <div
-            style={{
-              fontSize: 9,
-              letterSpacing: 1.2,
-              color: COLORS.dim,
-              marginBottom: 6,
-              borderBottom: `1px solid ${COLORS.lineSoft}`,
-              paddingBottom: 3,
-            }}
-          >
-            WESTERN CONFERENCE
-          </div>
-          {BRACKET_R1.west.map((s, i) => (
-            <Series key={i} series={s} oddsMap={oddsMap} />
-          ))}
-        </div>
-      </div>
-      <div
-        style={{
-          marginTop: 8,
+          marginTop: 10,
           fontSize: 9,
           color: COLORS.muted,
           textAlign: 'center',
           letterSpacing: 0.5,
         }}
       >
-        Highlighted team = championship favorite per Polymarket
+        Highlighted = title favorite per Polymarket
       </div>
     </div>
   );
