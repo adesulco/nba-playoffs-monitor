@@ -138,3 +138,85 @@ export async function fetchScoreboard() {
     };
   });
 }
+
+/**
+ * ESPN scoreboard for a specific date. Used for series-state history lookups.
+ * yyyymmdd format: '20260418'
+ */
+export async function fetchScoreboardForDate(yyyymmdd) {
+  const res = await fetch(`${ESPN_BASE}/scoreboard?dates=${yyyymmdd}`);
+  if (!res.ok) throw new Error(`ESPN scoreboard (${yyyymmdd}): HTTP ${res.status}`);
+  const data = await res.json();
+  return (data.events || []).map((e) => {
+    const c = e.competitions?.[0];
+    const teams = c?.competitors || [];
+    const home = teams.find((t) => t.homeAway === 'home') || teams[0];
+    const away = teams.find((t) => t.homeAway === 'away') || teams[1];
+    return {
+      id: e.id,
+      date: e.date,
+      statusState: c?.status?.type?.state,
+      home: { abbr: home?.team?.abbreviation, score: home?.score, winner: home?.winner },
+      away: { abbr: away?.team?.abbreviation, score: away?.score, winner: away?.winner },
+    };
+  });
+}
+
+/**
+ * ESPN summary endpoint — play-by-play + header for one event.
+ */
+export async function fetchGameSummary(eventId) {
+  const res = await fetch(`${ESPN_BASE}/summary?event=${eventId}`);
+  if (!res.ok) throw new Error(`ESPN summary: HTTP ${res.status}`);
+  const data = await res.json();
+
+  const plays = (data.plays || []).map((p) => ({
+    id: p.id,
+    text: p.text,
+    period: p.period?.number,
+    clock: p.clock?.displayValue,
+    teamId: p.team?.id,
+    awayScore: p.awayScore,
+    homeScore: p.homeScore,
+    scoringPlay: p.scoringPlay,
+    scoreValue: p.scoreValue,
+    wallclock: p.wallclock,
+  }));
+
+  const header = data.header?.competitions?.[0];
+  const competitors = header?.competitors || [];
+  const home = competitors.find((c) => c.homeAway === 'home') || competitors[0];
+  const away = competitors.find((c) => c.homeAway === 'away') || competitors[1];
+
+  return {
+    plays,
+    homeAbbr: home?.team?.abbreviation,
+    awayAbbr: away?.team?.abbreviation,
+    homeId: home?.team?.id,
+    awayId: away?.team?.id,
+    homeScore: home?.score,
+    awayScore: away?.score,
+    status: header?.status?.type?.shortDetail,
+    statusState: header?.status?.type?.state,
+    clock: header?.status?.displayClock,
+    period: header?.status?.period,
+  };
+}
+
+/**
+ * Live win-probability points. Each item: homePct 0..1, awayPct 0..1, ordered by play sequence.
+ */
+export async function fetchWinProbabilities(eventId) {
+  const url = `https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/${eventId}/competitions/${eventId}/probabilities?limit=500`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`ESPN probabilities: HTTP ${res.status}`);
+  const data = await res.json();
+  return (data.items || [])
+    .map((p, i) => ({
+      i,
+      homePct: typeof p.homeWinPercentage === 'number' ? p.homeWinPercentage : null,
+      awayPct: typeof p.awayWinPercentage === 'number' ? p.awayWinPercentage : null,
+      seq: p.sequenceNumber,
+    }))
+    .filter((p) => p.homePct !== null);
+}

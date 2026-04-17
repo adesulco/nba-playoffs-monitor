@@ -1,0 +1,178 @@
+import React, { useEffect, useRef, useMemo } from 'react';
+import { useGameDetails } from '../hooks/useGameDetails.js';
+import { TEAM_META, COLORS as C } from '../lib/constants.js';
+
+function WinProbChart({ points, awayAbbr, homeAbbr, awayColor, homeColor }) {
+  // 0..1 home win prob becomes the y axis; above 0.5 = home favored, below = away favored
+  const W = 520;
+  const H = 110;
+  const PAD_X = 8;
+  const PAD_Y = 10;
+
+  if (!points || points.length < 2) {
+    return (
+      <div style={{ height: H, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.dim, fontSize: 10.5, letterSpacing: 0.5, background: '#091524', border: `1px solid ${C.lineSoft}` }}>
+        Win probability stream opens at tip-off
+      </div>
+    );
+  }
+
+  const n = points.length;
+  const xOf = (i) => PAD_X + (i / (n - 1)) * (W - 2 * PAD_X);
+  const yOf = (homePct) => PAD_Y + (1 - homePct) * (H - 2 * PAD_Y);
+
+  const homeLine = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${xOf(i).toFixed(1)},${yOf(p.homePct).toFixed(1)}`).join(' ');
+  const mid = yOf(0.5);
+
+  // Fills: above midline = home color, below = away color
+  const homeFillPath =
+    `M${PAD_X},${mid} ` +
+    points.map((p, i) => `L${xOf(i).toFixed(1)},${yOf(Math.max(p.homePct, 0.5)).toFixed(1)}`).join(' ') +
+    ` L${xOf(n - 1).toFixed(1)},${mid} Z`;
+
+  const awayFillPath =
+    `M${PAD_X},${mid} ` +
+    points.map((p, i) => `L${xOf(i).toFixed(1)},${yOf(Math.min(p.homePct, 0.5)).toFixed(1)}`).join(' ') +
+    ` L${xOf(n - 1).toFixed(1)},${mid} Z`;
+
+  const latest = points[points.length - 1];
+  const latestHome = Math.round(latest.homePct * 100);
+  const latestAway = 100 - latestHome;
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" style={{ display: 'block', background: '#091524', border: `1px solid ${C.lineSoft}` }}>
+      {/* horizontal midline */}
+      <line x1={PAD_X} x2={W - PAD_X} y1={mid} y2={mid} stroke={C.lineSoft} strokeDasharray="2,3" />
+      {/* fills */}
+      <path d={homeFillPath} fill={homeColor} opacity="0.25" />
+      <path d={awayFillPath} fill={awayColor} opacity="0.25" />
+      {/* border line */}
+      <path d={homeLine} fill="none" stroke={C.text} strokeWidth="1.5" />
+      {/* endpoint dot */}
+      <circle cx={xOf(n - 1)} cy={yOf(latest.homePct)} r="3" fill={latest.homePct >= 0.5 ? homeColor : awayColor} stroke="#fff" strokeWidth="1" />
+      {/* labels */}
+      <text x={PAD_X + 4} y={PAD_Y + 10} fontSize="9" fill={awayColor} fontFamily="JetBrains Mono, monospace" fontWeight="600">{awayAbbr} {latestAway}%</text>
+      <text x={W - PAD_X - 4} y={H - PAD_Y - 2} textAnchor="end" fontSize="9" fill={homeColor} fontFamily="JetBrains Mono, monospace" fontWeight="600">{homeAbbr} {latestHome}%</text>
+    </svg>
+  );
+}
+
+export default function LiveGameFocus({ eventId, favTeam, accent, onClose }) {
+  const { summary, winProb, lastUpdate } = useGameDetails(eventId);
+  const tickerRef = useRef(null);
+
+  // Resolve team meta from abbr
+  const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
+  const awayFull = summary ? findByAbbr(summary.awayAbbr) : null;
+  const homeFull = summary ? findByAbbr(summary.homeAbbr) : null;
+  const awayMeta = awayFull ? TEAM_META[awayFull] : { color: '#555' };
+  const homeMeta = homeFull ? TEAM_META[homeFull] : { color: '#777' };
+
+  // Most recent plays first in the ticker (but limited for perf)
+  const plays = useMemo(() => (summary?.plays || []).slice(-40).reverse(), [summary]);
+
+  // Auto-scroll ticker to top when new plays arrive
+  useEffect(() => {
+    if (tickerRef.current) tickerRef.current.scrollTop = 0;
+  }, [summary?.plays?.length]);
+
+  if (!eventId) {
+    return (
+      <div style={{ padding: '14px 16px', borderBottom: `1px solid ${C.line}`, background: '#081221', color: C.dim, fontSize: 10.5, letterSpacing: 0.5, textAlign: 'center' }}>
+        <span style={{ color: accent }}>●</span> Tap any game above to follow live — win probability, play-by-play, and live score.
+      </div>
+    );
+  }
+
+  const isLive = summary?.statusState === 'in';
+  const isFinal = summary?.statusState === 'post';
+  const favInGame = favTeam && (awayFull === favTeam || homeFull === favTeam);
+
+  return (
+    <div style={{ borderBottom: `1px solid ${C.line}`, background: '#081221' }}>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', borderBottom: `1px solid ${C.lineSoft}`, background: '#0a1525' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 10, letterSpacing: 1.2, fontWeight: 600, color: C.text }}>
+          <span style={{ color: isLive ? C.green : isFinal ? C.dim : accent }}>
+            {isLive && <span className="live-dot" style={{ background: C.red }} />}
+            {isLive ? 'LIVE FOCUS' : isFinal ? 'FINAL' : 'TIP-OFF PENDING'}
+          </span>
+          {summary && (
+            <span style={{ color: C.dim, letterSpacing: 0.5, fontSize: 10.5 }}>
+              {summary.awayAbbr} {summary.awayScore} — {summary.homeScore} {summary.homeAbbr}{summary.clock && isLive ? ` · Q${summary.period} ${summary.clock}` : ''}
+              {favInGame && <span style={{ color: accent, marginLeft: 8 }}>★ YOUR TEAM</span>}
+            </span>
+          )}
+        </div>
+        <button
+          onClick={onClose}
+          style={{ background: 'transparent', border: `1px solid ${C.lineSoft}`, color: C.dim, fontSize: 10, padding: '3px 8px', borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: 0.5 }}
+        >
+          × CLOSE FOCUS
+        </button>
+      </div>
+
+      {/* Body: probability chart + play-by-play ticker */}
+      <div className="focus-body" style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 0 }}>
+        {/* Win probability */}
+        <div style={{ padding: '10px 14px', borderRight: `1px solid ${C.lineSoft}` }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, letterSpacing: 1, color: C.dim, marginBottom: 6 }}>
+            <span>WIN PROBABILITY</span>
+            <span style={{ color: C.muted }}>ESPN · updates every play</span>
+          </div>
+          <WinProbChart points={winProb} awayAbbr={summary?.awayAbbr || 'AWAY'} homeAbbr={summary?.homeAbbr || 'HOME'} awayColor={awayMeta.color} homeColor={homeMeta.color} />
+        </div>
+
+        {/* Play-by-play ticker */}
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: 200 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, letterSpacing: 1, color: C.dim, padding: '10px 14px 6px' }}>
+            <span>PLAY-BY-PLAY</span>
+            <span style={{ color: C.muted }}>{plays.length} plays · {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s ago` : '—'}</span>
+          </div>
+          <div ref={tickerRef} style={{ maxHeight: 170, overflowY: 'auto', padding: '0 14px 10px' }}>
+            {plays.length === 0 && (
+              <div style={{ fontSize: 10.5, color: C.dim, padding: 20, textAlign: 'center' }}>
+                {eventId ? 'No plays yet — check back at tip-off.' : 'Pick a match above.'}
+              </div>
+            )}
+            {plays.map((p) => {
+              const isScoring = p.scoringPlay;
+              const isMajor = p.scoreValue === 3 || p.scoreValue === 2;
+              // Determine scoring team by matching ESPN team id to home/away
+              const scoringTeamAbbr = p.teamId === summary?.homeId ? summary?.homeAbbr : p.teamId === summary?.awayId ? summary?.awayAbbr : null;
+              const scoringColor = p.teamId === summary?.homeId ? homeMeta.color : p.teamId === summary?.awayId ? awayMeta.color : '#888';
+              return (
+                <div
+                  key={p.id}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '44px 1fr auto',
+                    gap: 8,
+                    padding: '5px 0',
+                    borderBottom: `1px solid ${C.lineSoft}`,
+                    fontSize: 10.5,
+                    borderLeft: isScoring ? `2px solid ${scoringColor}` : '2px solid transparent',
+                    paddingLeft: 8,
+                    background: isScoring && isMajor ? `${scoringColor}12` : 'transparent',
+                  }}
+                >
+                  <div style={{ color: C.muted, fontSize: 9.5, letterSpacing: 0.3 }}>
+                    {p.period ? `Q${p.period}` : '—'}<br />
+                    <span style={{ color: C.dim }}>{p.clock || ''}</span>
+                  </div>
+                  <div style={{ color: isScoring ? C.text : C.dim, lineHeight: 1.3 }}>
+                    {scoringTeamAbbr && <span style={{ color: scoringColor, fontWeight: 600, marginRight: 4 }}>{scoringTeamAbbr}</span>}
+                    {p.text}
+                  </div>
+                  <div style={{ fontSize: 9.5, color: C.muted, fontFamily: '"Space Grotesk", sans-serif', minWidth: 48, textAlign: 'right' }}>
+                    {p.awayScore !== undefined && p.homeScore !== undefined ? `${p.awayScore}-${p.homeScore}` : ''}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

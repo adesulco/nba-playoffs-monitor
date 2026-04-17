@@ -68,6 +68,13 @@ html, body, #root {
   .game-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+  .focus-body {
+    grid-template-columns: 1fr !important;
+  }
+  .focus-body > div:first-child {
+    border-right: none !important;
+    border-bottom: 1px solid #1a2d4a;
+  }
   .topbar-meta {
     flex-wrap: wrap;
     justify-content: flex-start !important;

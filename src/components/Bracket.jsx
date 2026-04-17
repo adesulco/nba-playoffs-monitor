@@ -44,11 +44,49 @@ function TeamRow({ name, seed, odds, highlight }) {
   );
 }
 
-function Series({ series, oddsMap }) {
+function SeriesWatermark({ a, b, aAbbr, bAbbr, seriesMap }) {
+  if (!aAbbr || !bAbbr || !seriesMap) return null;
+  const key = [aAbbr, bAbbr].sort().join('|');
+  const rec = seriesMap[key];
+  if (!rec) return null;
+  const aW = rec[aAbbr] || 0;
+  const bW = rec[bAbbr] || 0;
+  if (aW + bW === 0) return null;
+
+  let label;
+  if (aW + bW >= 4 && (aW === 4 || bW === 4)) {
+    label = `${aW > bW ? aAbbr : bAbbr} WINS ${Math.max(aW, bW)}-${Math.min(aW, bW)}`;
+  } else if (aW === bW) {
+    label = `TIED ${aW}-${bW}`;
+  } else {
+    label = `${aW > bW ? aAbbr : bAbbr} LEADS ${Math.max(aW, bW)}-${Math.min(aW, bW)}`;
+  }
+
+  return (
+    <div
+      style={{
+        fontSize: 8.5,
+        letterSpacing: 0.5,
+        color: COLORS.amber,
+        padding: '2px 7px',
+        borderTop: `1px solid ${COLORS.lineSoft}`,
+        background: '#091524',
+        fontWeight: 600,
+        textAlign: 'center',
+      }}
+    >
+      {label}
+    </div>
+  );
+}
+
+function Series({ series, oddsMap, seriesMap }) {
   const [a, b] = series.teams;
   const oA = oddsMap[a];
   const oB = oddsMap[b];
   const favorite = (oA || 0) >= (oB || 0) ? a : b;
+  const aAbbr = TEAM_META[a]?.abbr;
+  const bAbbr = TEAM_META[b]?.abbr;
 
   return (
     <div
@@ -61,11 +99,12 @@ function Series({ series, oddsMap }) {
       <TeamRow name={a} seed={series.seeds[0]} odds={oA} highlight={favorite === a} />
       <div style={{ height: 1, background: COLORS.lineSoft }} />
       <TeamRow name={b} seed={series.seeds[1]} odds={oB} highlight={favorite === b} />
+      <SeriesWatermark a={a} b={b} aAbbr={aAbbr} bAbbr={bAbbr} seriesMap={seriesMap} />
     </div>
   );
 }
 
-export default function Bracket({ championOdds }) {
+export default function Bracket({ championOdds, seriesMap }) {
   const oddsMap = Object.fromEntries(championOdds.map((o) => [o.name, o.pct]));
 
   const ConfHeader = ({ label }) => (
@@ -87,12 +126,12 @@ export default function Bracket({ championOdds }) {
     <div style={{ padding: '10px 12px' }}>
       <ConfHeader label="EASTERN CONFERENCE" />
       {BRACKET_R1.east.map((s, i) => (
-        <Series key={`e-${i}`} series={s} oddsMap={oddsMap} />
+        <Series key={`e-${i}`} series={s} oddsMap={oddsMap} seriesMap={seriesMap} />
       ))}
       <div style={{ height: 10 }} />
       <ConfHeader label="WESTERN CONFERENCE" />
       {BRACKET_R1.west.map((s, i) => (
-        <Series key={`w-${i}`} series={s} oddsMap={oddsMap} />
+        <Series key={`w-${i}`} series={s} oddsMap={oddsMap} seriesMap={seriesMap} />
       ))}
       <div
         style={{

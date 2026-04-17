@@ -5,6 +5,8 @@ import { TEAM_META, COLORS as C } from './lib/constants.js';
 import Sparkline from './components/Sparkline.jsx';
 import Bracket from './components/Bracket.jsx';
 import TeamPicker from './components/TeamPicker.jsx';
+import LiveGameFocus from './components/LiveGameFocus.jsx';
+import { useSeriesState } from './hooks/useSeriesState.js';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 
@@ -21,7 +23,7 @@ function brighten(hex, mix = 0.5) {
   return '#' + [f(r), f(g), f(b)].map((v) => v.toString(16).padStart(2, '0')).join('');
 }
 
-function GameCard({ g, favTeam }) {
+function GameCard({ g, favTeam, isActive, onClick }) {
   const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
   const awayFullName = findByAbbr(g.away?.abbr);
   const homeFullName = findByAbbr(g.home?.abbr);
@@ -57,15 +59,26 @@ function GameCard({ g, favTeam }) {
   );
 
   return (
-    <div style={{
-      padding: '12px 14px',
-      borderRight: `1px solid ${C.lineSoft}`,
-      borderBottom: `1px solid ${C.lineSoft}`,
-      borderLeft: favInGame ? `3px solid ${favColor}` : '3px solid transparent',
-      background: favInGame ? `${favColor}14` : 'transparent',
-      display: 'flex', flexDirection: 'column', gap: 8,
-      minWidth: 0,
-    }}>
+    <div
+      onClick={onClick}
+      style={{
+        padding: '12px 14px',
+        borderRight: `1px solid ${C.lineSoft}`,
+        borderBottom: `1px solid ${C.lineSoft}`,
+        borderLeft: favInGame ? `3px solid ${favColor}` : isActive ? `3px solid ${C.amber}` : '3px solid transparent',
+        background: isActive ? '#10243c' : favInGame ? `${favColor}14` : 'transparent',
+        display: 'flex', flexDirection: 'column', gap: 8,
+        minWidth: 0,
+        cursor: onClick ? 'pointer' : 'default',
+        transition: 'background 0.15s',
+        position: 'relative',
+      }}
+      onMouseEnter={(e) => { if (onClick && !isActive) e.currentTarget.style.background = '#0d1d34'; }}
+      onMouseLeave={(e) => { if (onClick && !isActive) e.currentTarget.style.background = favInGame ? `${favColor}14` : 'transparent'; }}
+    >
+      {isActive && (
+        <div style={{ position: 'absolute', top: 6, right: 6, fontSize: 8, letterSpacing: 0.5, color: C.amber, fontWeight: 600 }}>● FOLLOWING</div>
+      )}
       <Row abbr={g.away?.abbr} nickname={awayNickname} meta={awayMeta} score={awayScore} won={awayWon} record={g.away?.record} />
       <Row abbr={g.home?.abbr} nickname={homeNickname} meta={homeMeta} score={homeScore} won={homeWon} record={g.home?.record} />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, fontSize: 10, paddingTop: 6, borderTop: `1px solid ${C.lineSoft}` }}>
@@ -100,6 +113,24 @@ export default function App() {
       else localStorage.removeItem(FAV_STORAGE_KEY);
     } catch {}
   }
+
+  // Active match to follow (live game focus)
+  const [activeMatchId, setActiveMatchId] = useState(null);
+  // Auto-select the first live game, falling back to the first upcoming game
+  useEffect(() => {
+    if (activeMatchId) return;
+    const live = games.find((g) => g.statusState === 'in');
+    if (live) { setActiveMatchId(live.id); return; }
+    // Else: if user's team is playing today, pick that
+    if (favMeta) {
+      const favAbbr = favMeta.abbr;
+      const favGame = games.find((g) => g.away?.abbr === favAbbr || g.home?.abbr === favAbbr);
+      if (favGame) setActiveMatchId(favGame.id);
+    }
+  }, [games, activeMatchId, favMeta]);
+
+  // Series standings for bracket watermark
+  const { seriesMap } = useSeriesState('2026-04-18', '2026-05-03');
 
   // Top 3 teams get WebSocket ticks
   const topTokenIds = useMemo(
@@ -183,10 +214,26 @@ export default function App() {
             {games.length === 0 && [
               { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, status: 'FRI 7:30 PM ET', statusState: 'pre' },
               { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, status: 'FRI 10:00 PM ET', statusState: 'pre' },
-            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} />)}
-            {games.slice(0, 6).map((g, i) => <GameCard key={g.id || i} g={g} favTeam={favTeam} />)}
+            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => setActiveMatchId(g.id)} />)}
+            {games.slice(0, 6).map((g, i) => (
+              <GameCard
+                key={g.id || i}
+                g={g}
+                favTeam={favTeam}
+                isActive={activeMatchId === g.id}
+                onClick={() => setActiveMatchId(g.id)}
+              />
+            ))}
           </div>
         </div>
+
+        {/* ================== LIVE GAME FOCUS ================== */}
+        <LiveGameFocus
+          eventId={activeMatchId && !String(activeMatchId).startsWith('sched-') ? activeMatchId : null}
+          favTeam={favTeam}
+          accent={accent}
+          onClose={() => setActiveMatchId(null)}
+        />
 
         {/* ================== CONTEXT STRIP (odds demoted) ================== */}
         <div className="stat-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderBottom: `1px solid ${C.line}`, background: '#091422' }}>
@@ -215,7 +262,7 @@ export default function App() {
                 <div style={panelMeta}>APR 18 – MAY 3</div>
               </div>
               <div className="bracket-viz">
-                <Bracket championOdds={liveOdds} />
+                <Bracket championOdds={liveOdds} seriesMap={seriesMap} />
               </div>
             </div>
 
