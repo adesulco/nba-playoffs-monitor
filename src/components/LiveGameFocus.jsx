@@ -1,8 +1,91 @@
 import React, { useEffect, useRef, useMemo, useState } from 'react';
 import { useGameDetails } from '../hooks/useGameDetails.js';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
+import PlayerHead from './PlayerHead.jsx';
+import WatchStar from './WatchStar.jsx';
 
-function BoxScoreTable({ team, color }) {
+/**
+ * Derive the most recent scoring run from the play list.
+ * Walks from the most recent scoring play backward, accumulating a team's scoring
+ * streak vs the opposing team. Returns e.g. "12-2 run for DET" when a run >=8 differential exists.
+ */
+function detectScoringRun(plays, homeId, homeAbbr, awayId, awayAbbr) {
+  if (!plays || plays.length === 0) return null;
+
+  // Walk plays backward (they're chronological with scoring updates)
+  const scoringPlays = plays.filter((p) => p.scoringPlay && (p.awayScore !== undefined && p.homeScore !== undefined));
+  if (scoringPlays.length < 3) return null;
+
+  // Compare most recent to the point where one team went on a continuous streak
+  const latest = scoringPlays[scoringPlays.length - 1];
+
+  // Walk back and find the last moment the margin was equal-or-opposite
+  let homeStreakPts = 0;
+  let awayStreakPts = 0;
+  let lastRunStart = null;
+  for (let i = scoringPlays.length - 1; i >= 0; i--) {
+    const curr = scoringPlays[i];
+    const prev = i > 0 ? scoringPlays[i - 1] : { homeScore: 0, awayScore: 0 };
+    const deltaHome = (curr.homeScore || 0) - (prev.homeScore || 0);
+    const deltaAway = (curr.awayScore || 0) - (prev.awayScore || 0);
+    if (deltaHome > 0 && deltaAway === 0) homeStreakPts += deltaHome;
+    else if (deltaAway > 0 && deltaHome === 0) awayStreakPts += deltaAway;
+    else { lastRunStart = i; break; }
+  }
+
+  if (homeStreakPts >= 8 && awayStreakPts === 0) {
+    return { team: homeAbbr, run: `${homeStreakPts}-0` };
+  }
+  if (awayStreakPts >= 8 && homeStreakPts === 0) {
+    return { team: awayAbbr, run: `${awayStreakPts}-0` };
+  }
+
+  // Also detect partial (e.g. 12-2) from last 10 scoring plays
+  const window = scoringPlays.slice(-12);
+  if (window.length >= 2) {
+    const first = window[0];
+    const last = window[window.length - 1];
+    const homeScored = (last.homeScore || 0) - (first.homeScore || 0);
+    const awayScored = (last.awayScore || 0) - (first.awayScore || 0);
+    if (homeScored - awayScored >= 10 && homeScored >= 10) {
+      return { team: homeAbbr, run: `${homeScored}-${awayScored}` };
+    }
+    if (awayScored - homeScored >= 10 && awayScored >= 10) {
+      return { team: awayAbbr, run: `${awayScored}-${homeScored}` };
+    }
+  }
+
+  return null;
+}
+
+function H2HStrip({ h2h, focusTeamAbbr, color }) {
+  if (!h2h || h2h.length === 0) return null;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 9.5, color: C.muted, letterSpacing: 0.3 }}>
+      <span style={{ color: C.dim, fontWeight: 600 }}>H2H:</span>
+      {h2h.map((g) => {
+        const isHome = g.home.abbr === focusTeamAbbr;
+        const myScore = isHome ? g.home.score : g.away.score;
+        const theirScore = isHome ? g.away.score : g.home.score;
+        const won = isHome ? g.home.winner : g.away.winner;
+        return (
+          <span
+            key={g.id}
+            style={{
+              display: 'inline-flex', gap: 2, fontSize: 9,
+              color: won ? color : C.muted, fontWeight: 600,
+            }}
+          >
+            <span style={{ color: won ? C.green : C.red }}>{won ? 'W' : 'L'}</span>
+            <span style={{ color: C.dim }}>{myScore}-{theirScore}</span>
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+function BoxScoreTable({ team, color, watchlist }) {
   if (!team?.players?.length) {
     return (
       <div style={{ padding: 14, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
@@ -16,43 +99,57 @@ function BoxScoreTable({ team, color }) {
     .sort((a, b) => (b.pts || 0) - (a.pts || 0))
     .slice(0, 6);
 
+  const gridCols = '14px 26px 1fr 24px 24px 24px 36px';
+
   return (
     <div>
       <div style={{
-        display: 'grid', gridTemplateColumns: '1fr 28px 28px 28px 40px',
+        display: 'grid', gridTemplateColumns: gridCols,
         gap: 6, padding: '5px 10px', borderBottom: `1px solid ${C.lineSoft}`,
         background: C.panelSoft, fontSize: 8.5, letterSpacing: 0.8, color: C.dim,
       }}>
+        <div />
+        <div />
         <div><span style={{ padding: '1px 5px', background: color, color: '#fff', borderRadius: 2, fontWeight: 700 }}>{team.abbr}</span></div>
         <div style={{ textAlign: 'right' }}>PTS</div>
         <div style={{ textAlign: 'right' }}>REB</div>
         <div style={{ textAlign: 'right' }}>AST</div>
         <div style={{ textAlign: 'right' }}>FG</div>
       </div>
-      {leaders.map((p) => (
-        <a
-          key={p.id}
-          href={p.id ? `https://www.espn.com/nba/player/_/id/${p.id}` : '#'}
-          target={p.id ? '_blank' : undefined}
-          rel={p.id ? 'noopener noreferrer' : undefined}
-          className="link-row"
-          style={{
-            display: 'grid', gridTemplateColumns: '1fr 28px 28px 28px 40px',
-            gap: 6, padding: '5px 10px', borderBottom: `1px solid ${C.lineSoft}`,
-            fontSize: 10.5, textDecoration: 'none', color: 'inherit', alignItems: 'center',
-          }}
-        >
-          <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-            {p.starter && <span style={{ color, marginRight: 4, fontSize: 9 }}>●</span>}
-            {p.short || p.name}
-            {p.position && <span style={{ color: C.muted, marginLeft: 4, fontSize: 9 }}>· {p.position}</span>}
+      {leaders.map((p) => {
+        const player = { id: p.id, name: p.name || p.short, position: p.position, teamAbbr: team.abbr };
+        return (
+          <div
+            key={p.id}
+            style={{
+              display: 'grid', gridTemplateColumns: gridCols,
+              gap: 6, padding: '5px 10px', borderBottom: `1px solid ${C.lineSoft}`,
+              fontSize: 10.5, alignItems: 'center',
+            }}
+          >
+            {watchlist && <WatchStar player={player} watchlist={watchlist} size={11} />}
+            {!watchlist && <div />}
+            <PlayerHead id={p.id} name={p.name} color={color} size={22} />
+            <a
+              href={p.id ? `https://www.espn.com/nba/player/_/id/${p.id}` : '#'}
+              target={p.id ? '_blank' : undefined}
+              rel={p.id ? 'noopener noreferrer' : undefined}
+              style={{
+                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                textDecoration: 'none', color: C.text,
+              }}
+            >
+              {p.starter && <span style={{ color, marginRight: 4, fontSize: 9 }}>●</span>}
+              {p.short || p.name}
+              {p.position && <span style={{ color: C.muted, marginLeft: 4, fontSize: 9 }}>· {p.position}</span>}
+            </a>
+            <div style={{ textAlign: 'right', color: C.amberBright, fontWeight: 600 }}>{p.pts}</div>
+            <div style={{ textAlign: 'right', color: C.text }}>{p.reb}</div>
+            <div style={{ textAlign: 'right', color: C.text }}>{p.ast}</div>
+            <div style={{ textAlign: 'right', color: C.muted, fontSize: 9.5 }}>{p.fg}</div>
           </div>
-          <div style={{ textAlign: 'right', color: C.amberBright, fontWeight: 600 }}>{p.pts}</div>
-          <div style={{ textAlign: 'right', color: C.text }}>{p.reb}</div>
-          <div style={{ textAlign: 'right', color: C.text }}>{p.ast}</div>
-          <div style={{ textAlign: 'right', color: C.muted, fontSize: 9.5 }}>{p.fg}</div>
-        </a>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -140,8 +237,7 @@ function InjuryList({ abbr, list, color }) {
   );
 }
 
-export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onClose }) {
-  const { summary, winProb, lastUpdate } = useGameDetails(eventId);
+export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onClose, summary, winProb, lastUpdate, watchlist, h2h }) {
   const tickerRef = useRef(null);
   const [rightTab, setRightTab] = useState('plays'); // 'plays' | 'stats'
 
@@ -172,6 +268,12 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
   const isFinal = summary?.statusState === 'post';
   const favInGame = favTeam && (awayFull === favTeam || homeFull === favTeam);
 
+  const scoringRun = useMemo(() => {
+    if (!isLive || !summary?.plays) return null;
+    return detectScoringRun(summary.plays, summary.homeId, summary.homeAbbr, summary.awayId, summary.awayAbbr);
+  }, [summary, isLive]);
+  const runColor = scoringRun?.team === summary?.homeAbbr ? homeMeta.color : scoringRun?.team === summary?.awayAbbr ? awayMeta.color : accent;
+
   return (
     <div style={{ borderBottom: `1px solid ${C.line}`, background: C.bg }}>
       {/* Header */}
@@ -195,6 +297,29 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
           × CLOSE FOCUS
         </button>
       </div>
+
+      {/* Scoring run banner */}
+      {scoringRun && (
+        <div style={{
+          display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 8,
+          padding: '5px 16px',
+          background: `linear-gradient(90deg, transparent 0%, ${runColor}30 50%, transparent 100%)`,
+          borderBottom: `1px solid ${C.lineSoft}`,
+          fontSize: 10.5, letterSpacing: 0.8,
+        }}>
+          <span style={{ color: runColor, fontWeight: 700, letterSpacing: 1 }}>⚡ {scoringRun.team}</span>
+          <span style={{ color: C.text, fontWeight: 600 }}>on a</span>
+          <span style={{ color: runColor, fontWeight: 700, fontFamily: '"Space Grotesk", sans-serif', fontSize: 13 }}>{scoringRun.run}</span>
+          <span style={{ color: C.text, fontWeight: 600 }}>run</span>
+        </div>
+      )}
+
+      {/* Head-to-head strip */}
+      {h2h && h2h.length > 0 && summary?.awayAbbr && (
+        <div style={{ padding: '5px 16px', borderBottom: `1px solid ${C.lineSoft}`, background: C.panelSoft }}>
+          <H2HStrip h2h={h2h} focusTeamAbbr={summary.awayAbbr} color={awayMeta.color} />
+        </div>
+      )}
 
       {/* Injury strip */}
       {(injuries && (injuries[summary?.awayAbbr]?.length || injuries[summary?.homeAbbr]?.length)) && (
@@ -247,7 +372,7 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
           {rightTab === 'stats' && summary?.boxscore?.length > 0 && (
             <div style={{ maxHeight: 260, overflowY: 'auto' }}>
               {summary.boxscore.map((t) => (
-                <BoxScoreTable key={t.abbr} team={t} color={t.abbr === summary.awayAbbr ? awayMeta.color : homeMeta.color} />
+                <BoxScoreTable key={t.abbr} team={t} color={t.abbr === summary.awayAbbr ? awayMeta.color : homeMeta.color} watchlist={watchlist} />
               ))}
             </div>
           )}

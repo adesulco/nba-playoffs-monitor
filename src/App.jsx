@@ -10,7 +10,16 @@ import { useSeriesState } from './hooks/useSeriesState.js';
 import { useInjuries } from './hooks/useInjuries.js';
 import { useTeamLeaders } from './hooks/useTeamLeaders.js';
 import YesterdayRecap from './components/YesterdayRecap.jsx';
+import TitlePath from './components/TitlePath.jsx';
+import WatchlistPanel from './components/WatchlistPanel.jsx';
+import AlertToasts from './components/AlertToasts.jsx';
+import PlayerHead from './components/PlayerHead.jsx';
+import WatchStar from './components/WatchStar.jsx';
 import { createTranslator } from './lib/i18n.js';
+import { useWatchlist } from './hooks/useWatchlist.js';
+import { useWatchlistAlerts } from './hooks/useWatchlistAlerts.js';
+import { useTeamSchedule, computeStreak, computeH2H } from './hooks/useTeamSchedule.js';
+import { useGameDetails } from './hooks/useGameDetails.js';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 const THEME_STORAGE_KEY = 'gibol:theme';
@@ -53,7 +62,27 @@ function InjuryBadge({ awayAbbr, homeAbbr, injuries }) {
   );
 }
 
-function GameCard({ g, favTeam, isActive, onClick, injuries }) {
+function StreakChip({ streak, color }) {
+  if (!streak) return null;
+  const isWin = streak.startsWith('W');
+  const bg = isWin ? color : '#5a2020';
+  return (
+    <span style={{
+      padding: '1px 5px',
+      background: bg,
+      color: '#fff',
+      fontSize: 8.5,
+      letterSpacing: 0.5,
+      fontWeight: 700,
+      borderRadius: 2,
+      display: 'inline-flex', alignItems: 'center',
+    }}>
+      {streak}
+    </span>
+  );
+}
+
+function GameCard({ g, favTeam, isActive, onClick, injuries, streaks }) {
   const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
   const awayFullName = findByAbbr(g.away?.abbr);
   const homeFullName = findByAbbr(g.home?.abbr);
@@ -71,14 +100,17 @@ function GameCard({ g, favTeam, isActive, onClick, injuries }) {
   const awayWon = hasScore && parseInt(awayScore) > parseInt(homeScore);
   const homeWon = hasScore && parseInt(homeScore) > parseInt(awayScore);
 
-  const Row = ({ abbr, nickname, meta, score, won, record }) => (
+  const Row = ({ abbr, nickname, meta, score, won, record, streak }) => (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
         <div style={{ width: 24, height: 24, borderRadius: 3, background: meta.color, color: '#fff', fontSize: 9, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           {abbr || '—'}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-          <span style={{ fontSize: 12, color: won ? C.text : hasScore && !won ? C.muted : C.text, fontWeight: won ? 600 : 400, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{nickname}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+            <span style={{ fontSize: 12, color: won ? C.text : hasScore && !won ? C.muted : C.text, fontWeight: won ? 600 : 400, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{nickname}</span>
+            <StreakChip streak={streak} color={meta.color} />
+          </div>
           {record && <span style={{ fontSize: 9, color: C.muted }}>{record}</span>}
         </div>
       </div>
@@ -109,8 +141,8 @@ function GameCard({ g, favTeam, isActive, onClick, injuries }) {
       {isActive && (
         <div style={{ position: 'absolute', top: 6, right: 6, fontSize: 8, letterSpacing: 0.5, color: C.amber, fontWeight: 600 }}>● FOLLOWING</div>
       )}
-      <Row abbr={g.away?.abbr} nickname={awayNickname} meta={awayMeta} score={awayScore} won={awayWon} record={g.away?.record} />
-      <Row abbr={g.home?.abbr} nickname={homeNickname} meta={homeMeta} score={homeScore} won={homeWon} record={g.home?.record} />
+      <Row abbr={g.away?.abbr} nickname={awayNickname} meta={awayMeta} score={awayScore} won={awayWon} record={g.away?.record} streak={streaks?.[g.away?.abbr]} />
+      <Row abbr={g.home?.abbr} nickname={homeNickname} meta={homeMeta} score={homeScore} won={homeWon} record={g.home?.record} streak={streaks?.[g.home?.abbr]} />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, fontSize: 10, paddingTop: 6, borderTop: `1px solid ${C.lineSoft}` }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: isLive ? C.green : isFinal ? C.dim : '#ffb347' }}>
           {isLive && <span className="live-dot" style={{ background: C.red }} />}
@@ -201,6 +233,38 @@ export default function App() {
   const leaderTeamAbbr = favMeta?.abbr || (topChampName ? TEAM_META[topChampName]?.abbr : null);
   const { leaders: teamLeaders } = useTeamLeaders(leaderTeamAbbr);
 
+  // Watchlist + live alerts
+  const watchlist = useWatchlist();
+  // Lift LiveGameFocus summary up so the watchlist alerts can read it
+  const focusEventId = activeMatchId && !String(activeMatchId).startsWith('sched-') ? activeMatchId : null;
+  const { summary: focusSummary, winProb: focusWinProb, lastUpdate: focusLastUpdate } = useGameDetails(focusEventId);
+  const { toasts: alertToasts, dismissToast } = useWatchlistAlerts(watchlist.list, focusSummary, focusEventId);
+
+  function requestNotifications() {
+    if (typeof Notification === 'undefined') return;
+    if (Notification.permission === 'default') Notification.requestPermission();
+  }
+
+  // Team schedules for streak + H2H — fetch both teams of the active match
+  const awayAbbr = (() => {
+    const g = games.find((gm) => gm.id === activeMatchId);
+    return g?.away?.abbr;
+  })();
+  const homeAbbr = (() => {
+    const g = games.find((gm) => gm.id === activeMatchId);
+    return g?.home?.abbr;
+  })();
+  const { schedule: awaySchedule } = useTeamSchedule(awayAbbr);
+  const { schedule: homeSchedule } = useTeamSchedule(homeAbbr);
+
+  // Streak map for teams visible in today's scoreboard
+  const streaks = useMemo(() => {
+    const map = {};
+    if (awaySchedule && awayAbbr) map[awayAbbr] = computeStreak(awaySchedule, awayAbbr);
+    if (homeSchedule && homeAbbr) map[homeAbbr] = computeStreak(homeSchedule, homeAbbr);
+    return map;
+  }, [awaySchedule, homeSchedule, awayAbbr, homeAbbr]);
+
   // Top 3 teams get WebSocket ticks
   const topTokenIds = useMemo(
     () => champion.odds.slice(0, 3).map((o) => o.yesTokenId).filter(Boolean),
@@ -239,6 +303,7 @@ export default function App() {
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', overflowX: 'auto', fontFamily: '"JetBrains Mono", monospace', color: C.text, fontSize: 11.5, lineHeight: 1.4 }}>
+      <AlertToasts toasts={alertToasts} dismissToast={dismissToast} />
       <div className="dashboard-wrap">
 
         {/* ================== TOP BAR ================== */}
@@ -329,7 +394,7 @@ export default function App() {
             {games.length === 0 && [
               { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, status: 'FRI 7:30 PM ET', statusState: 'pre' },
               { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, status: 'FRI 10:00 PM ET', statusState: 'pre' },
-            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => setActiveMatchId(g.id)} injuries={injuriesByTeam} />)}
+            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => setActiveMatchId(g.id)} injuries={injuriesByTeam} streaks={streaks} />)}
             {games.slice(0, 6).map((g, i) => (
               <GameCard
                 key={g.id || i}
@@ -338,6 +403,7 @@ export default function App() {
                 isActive={activeMatchId === g.id}
                 onClick={() => setActiveMatchId(g.id)}
                 injuries={injuriesByTeam}
+                streaks={streaks}
               />
             ))}
           </div>
@@ -345,11 +411,16 @@ export default function App() {
 
         {/* ================== LIVE GAME FOCUS ================== */}
         <LiveGameFocus
-          eventId={activeMatchId && !String(activeMatchId).startsWith('sched-') ? activeMatchId : null}
+          eventId={focusEventId}
           favTeam={favTeam}
           accent={accent}
           injuries={injuriesByTeam}
           onClose={() => setActiveMatchId(null)}
+          summary={focusSummary}
+          winProb={focusWinProb}
+          lastUpdate={focusLastUpdate}
+          watchlist={watchlist}
+          h2h={awaySchedule && homeSchedule ? computeH2H([...(awaySchedule || []), ...(homeSchedule || [])], awayAbbr, homeAbbr, 3) : []}
         />
 
         {/* ================== CONTEXT STRIP (odds demoted) ================== */}
@@ -478,8 +549,17 @@ export default function App() {
             </div>
           </div>
 
-          {/* COL 3: Team Player Stats */}
+          {/* COL 3: Title Path + Watchlist + Team Player Stats */}
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
+            {favMeta && <TitlePath favTeam={favTeam} championOdds={liveOdds} t={t} />}
+
+            <WatchlistPanel
+              watchlist={watchlist}
+              summary={focusSummary}
+              onRequestNotifications={requestNotifications}
+              t={t}
+            />
+
             <div style={panelBox}>
               <div style={panelHeader}>
                 <div style={panelTitle}>
@@ -507,40 +587,45 @@ export default function App() {
                   const top = cat.athletes?.[0];
                   if (!top) return null;
                   const href = top.id ? `https://www.espn.com/nba/player/_/id/${top.id}` : null;
+                  const player = { id: top.id, name: top.name, position: top.position, teamAbbr: leaderTeamAbbr };
                   return (
-                    <a
+                    <div
                       key={cat.category}
-                      href={href || '#'}
-                      target={href ? '_blank' : undefined}
-                      rel={href ? 'noopener noreferrer' : undefined}
-                      className={href ? 'link-row' : ''}
+                      className="link-row"
                       style={{
                         display: 'grid',
-                        gridTemplateColumns: '80px 1fr auto',
+                        gridTemplateColumns: '64px 28px 1fr 14px auto',
                         gap: 8,
-                        padding: '8px 12px',
+                        padding: '7px 12px',
                         borderBottom: `1px solid ${C.lineSoft}`,
                         fontSize: 11,
                         alignItems: 'center',
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        cursor: href ? 'pointer' : 'default',
                       }}
                     >
                       <div style={{ color: C.dim, fontSize: 9, letterSpacing: 0.5, textTransform: 'uppercase' }}>
                         {cat.displayName || cat.category}
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                      <PlayerHead id={top.id} name={top.name} color={favMeta?.color || '#2a3a52'} size={26} />
+                      <a
+                        href={href || '#'}
+                        target={href ? '_blank' : undefined}
+                        rel={href ? 'noopener noreferrer' : undefined}
+                        style={{
+                          textDecoration: 'none', color: 'inherit',
+                          display: 'flex', flexDirection: 'column', minWidth: 0,
+                        }}
+                      >
                         <span style={{ color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {top.name}
                           {href && <span style={{ color: C.muted, marginLeft: 6, fontSize: 9 }}>↗</span>}
                         </span>
                         {top.position && <span style={{ fontSize: 9, color: C.muted }}>{top.position}{top.jersey ? ` · #${top.jersey}` : ''}</span>}
-                      </div>
+                      </a>
+                      <WatchStar player={player} watchlist={watchlist} size={12} />
                       <div style={{ color: accentBright, fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600, letterSpacing: -0.2 }}>
                         {top.displayValue || (top.value != null ? top.value.toFixed(1) : '—')}
                       </div>
-                    </a>
+                    </div>
                   );
                 })}
               </div>

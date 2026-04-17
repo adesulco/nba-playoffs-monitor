@@ -163,6 +163,31 @@ export async function fetchScoreboardForDate(yyyymmdd) {
 }
 
 /**
+ * ESPN team schedule — returns past + upcoming events for a given team abbr.
+ * Used for: recent-form streak + head-to-head lookups.
+ */
+export async function fetchTeamSchedule(teamAbbr) {
+  if (!teamAbbr) return [];
+  const res = await fetch(`${ESPN_BASE}/teams/${teamAbbr.toLowerCase()}/schedule`);
+  if (!res.ok) throw new Error(`ESPN team schedule: HTTP ${res.status}`);
+  const data = await res.json();
+  return (data.events || []).map((e) => {
+    const c = e.competitions?.[0];
+    const comps = c?.competitors || [];
+    const home = comps.find((cm) => cm.homeAway === 'home') || comps[0];
+    const away = comps.find((cm) => cm.homeAway === 'away') || comps[1];
+    return {
+      id: e.id,
+      date: e.date,
+      statusState: c?.status?.type?.state,
+      isCompleted: c?.status?.type?.completed,
+      home: { abbr: home?.team?.abbreviation, score: home?.score?.value ?? home?.score, winner: home?.winner },
+      away: { abbr: away?.team?.abbreviation, score: away?.score?.value ?? away?.score, winner: away?.winner },
+    };
+  });
+}
+
+/**
  * ESPN team leaders endpoint — returns top players by stat for a given team abbr.
  * Returns: [{ category, displayName, athletes: [{ id, name, position, value, displayValue }] }]
  * Categories: "avgPoints", "avgRebounds", "avgAssists", "avgSteals", "avgBlocks" etc.
