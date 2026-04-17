@@ -454,7 +454,7 @@ export default function NBADashboard() {
             { label: t('titleFavorite'), value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`, sub: topChamp.name.split(' ').slice(-1)[0] },
             { label: t('round1Tips'), value: 'APR 18', sub: `${games.length || 2} ${t('gamesFriday')}` },
             { label: t('finalsTipoff'), value: 'JUN 3', sub: 'ABC · Best-of-7' },
-            { label: t('nextTip'), value: games[0]?.status || '7:30 ET', sub: games[0] ? `${games[0].away.abbr} @ ${games[0].home.abbr}` : 'ORL @ CHA' },
+            { label: t('nextTip'), value: games[0]?.date ? formatKickoff(games[0].date, lang) : (localizeGameStatus(games[0]?.status, games[0]?.date, games[0]?.statusState, lang) || `6:30 ${getUserTzLabel()}`), sub: games[0] ? `${games[0].away.abbr} @ ${games[0].home.abbr}` : 'ORL @ CHA' },
           ].map((s, i) => (
             <div key={i} style={{ padding: '8px 14px', borderRight: i < 3 ? `1px solid ${C.lineSoft}` : 'none', display: 'flex', flexDirection: 'column', gap: 1 }}>
               <div style={{ fontSize: 9, color: C.dim, letterSpacing: 0.8, textTransform: 'uppercase' }}>{s.label}</div>
@@ -682,22 +682,30 @@ export default function NBADashboard() {
             <div style={{ padding: '14px 16px', borderBottom: `1px solid ${C.line}`, background: favMeta ? `linear-gradient(180deg, ${favMeta.color}30 0%, ${C.panel} 100%)` : `linear-gradient(180deg, ${C.panel2} 0%, ${C.panel} 100%)` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
                 <div>
-                  <div style={{ fontSize: 11, color: C.text, fontWeight: 600 }}>TONIGHT · PLAY-IN FINALE</div>
-                  <div style={{ fontSize: 9.5, color: C.dim }}>Prime Video · Winners take 8-seed</div>
+                  <div style={{ fontSize: 11, color: C.text, fontWeight: 600 }}>{t('tonightPlayIn')}</div>
+                  <div style={{ fontSize: 9.5, color: C.dim }}>{lang === 'id' ? 'Prime Video · Pemenang dapat seed 8' : 'Prime Video · Winners take 8-seed'}</div>
                 </div>
                 <div style={{ fontSize: 9.5, color: C.dim, textAlign: 'right' }}>CONFERENCE<br />FINALE</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 20, marginTop: 10 }}>
                 <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 52, lineHeight: 1, color: C.text, letterSpacing: -1 }}>2<span style={{ fontSize: 24, color: accent, verticalAlign: 'top' }}>GMS</span></div>
                 <div style={{ textAlign: 'right', fontSize: 10, color: C.dim, lineHeight: 1.6 }}>
-                  <div style={{ fontSize: 14, color: C.text, fontWeight: 600 }}>7:30 <span style={{ color: accent }}>ET</span></div>
+                  <div style={{ fontSize: 14, color: C.text, fontWeight: 600 }}>
+                    {formatKickoff('2026-04-17T23:30:00Z', lang).replace(/\s/, ' ').split(' ').slice(0, -1).join(' ')}{' '}
+                    <span style={{ color: accent }}>{getUserTzLabel()}</span>
+                  </div>
                   <div>ORL vs CHA (E)</div>
-                  <div style={{ fontSize: 14, color: C.text, fontWeight: 600, marginTop: 6 }}>10:00 <span style={{ color: accent }}>ET</span></div>
+                  <div style={{ fontSize: 14, color: C.text, fontWeight: 600, marginTop: 6 }}>
+                    {formatKickoff('2026-04-18T02:00:00Z', lang).replace(/\s/, ' ').split(' ').slice(0, -1).join(' ')}{' '}
+                    <span style={{ color: accent }}>{getUserTzLabel()}</span>
+                  </div>
                   <div>PHX vs GSW (W)</div>
                 </div>
               </div>
               <div style={{ fontSize: 9.5, color: C.dim, marginTop: 8, borderTop: `1px solid ${C.lineSoft}`, paddingTop: 8 }}>
-                Winners face <strong style={{ color: C.text }}>Pistons</strong> (E1) and <strong style={{ color: C.text }}>Thunder</strong> (W1) Sunday.
+                {lang === 'id'
+                  ? <>Pemenang hadapi <strong style={{ color: C.text }}>Pistons</strong> (E1) dan <strong style={{ color: C.text }}>Thunder</strong> (W1) hari Minggu.</>
+                  : <>Winners face <strong style={{ color: C.text }}>Pistons</strong> (E1) and <strong style={{ color: C.text }}>Thunder</strong> (W1) Sunday.</>}
               </div>
             </div>
 
