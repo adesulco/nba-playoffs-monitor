@@ -1,28 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
 export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId }) {
   const { lang } = useApp();
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
 
   const displayTitle = lang === 'id' && titleId ? titleId : title;
   const displayBlurb = lang === 'id' && blurbId ? blurbId : blurb;
   const displayFeatures = lang === 'id' && featuresId ? featuresId : features;
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!email.includes('@')) return;
-    // For now, just visually confirm. Future: wire to a mailing service.
-    try {
-      const stored = JSON.parse(localStorage.getItem('gibol:notify') || '[]');
-      stored.push({ email, league, at: Date.now() });
-      localStorage.setItem('gibol:notify', JSON.stringify(stored));
-    } catch {}
-    setSubmitted(true);
-  }
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
@@ -72,64 +58,22 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
             {displayBlurb}
           </div>
 
-          {/* Notify form */}
-          {!submitted ? (
-            <form onSubmit={handleSubmit} style={{
-              display: 'flex', gap: 0, maxWidth: 420, margin: '0 auto',
-              border: `1px solid ${C.line}`,
-              borderRadius: 4,
-              overflow: 'hidden',
-              background: C.panel,
-            }}>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={lang === 'id' ? 'email@kamu.com' : 'you@email.com'}
-                required
-                style={{
-                  flex: 1,
-                  background: 'transparent',
-                  border: 'none',
-                  color: C.text,
-                  padding: '10px 14px',
-                  fontFamily: 'inherit',
-                  fontSize: 12,
-                  outline: 'none',
-                }}
-              />
-              <button
-                type="submit"
-                style={{
-                  background: accent,
-                  color: '#fff',
-                  border: 'none',
-                  padding: '10px 18px',
-                  fontFamily: 'inherit',
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: 0.5,
-                  cursor: 'pointer',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {lang === 'id' ? 'BERI TAHU SAYA' : 'NOTIFY ME'}
-              </button>
-            </form>
-          ) : (
-            <div style={{
-              padding: '12px 18px',
-              background: `${accent}20`,
-              border: `1px solid ${accent}`,
-              borderRadius: 4,
-              color: C.text,
-              fontSize: 12,
-              maxWidth: 420,
-              margin: '0 auto',
-            }}>
-              ✓ {lang === 'id' ? 'Kamu akan diberi tahu saat launching.' : 'You\'ll be notified at launch.'}
-            </div>
-          )}
+          {/* Static launch note */}
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            padding: '10px 18px',
+            background: `${accent}18`,
+            border: `1px solid ${accent}`,
+            borderRadius: 4,
+            color: C.text,
+            fontSize: 12,
+            letterSpacing: 0.3,
+          }}>
+            <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: accent }} />
+            {lang === 'id'
+              ? launchDate ? `Dijadwalkan rilis ${launchDate}. Pantau terus gibol.co.` : 'Segera hadir. Pantau terus gibol.co.'
+              : launchDate ? `Launching ${launchDate}. Check back on gibol.co.` : 'Launching soon. Check back on gibol.co.'}
+          </div>
         </div>
 
         {/* Features preview */}

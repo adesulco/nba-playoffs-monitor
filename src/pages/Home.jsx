@@ -34,8 +34,8 @@ const DASHBOARDS = [
     accent: '#d2191f',
     launchDate: null,
     glyph: '🇮🇩',
-    cta: 'Notify me',
-    ctaId: 'Beri tahu saya',
+    cta: 'Coming Soon',
+    ctaId: 'Segera Hadir',
   },
   {
     id: 'fifa',
@@ -50,8 +50,8 @@ const DASHBOARDS = [
     accent: '#2c8ad6',
     launchDate: 'Jun 11, 2026',
     glyph: '⚽',
-    cta: 'Notify me',
-    ctaId: 'Beri tahu saya',
+    cta: 'Coming Soon',
+    ctaId: 'Segera Hadir',
   },
 ];
 
