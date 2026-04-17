@@ -406,6 +406,16 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
   // Most recent plays first in the ticker (but limited for perf)
   const plays = useMemo(() => (summary?.plays || []).slice(-40).reverse(), [summary]);
 
+  const isLive = summary?.statusState === 'in';
+  const isFinal = summary?.statusState === 'post';
+
+  // IMPORTANT: all hooks must be called in the same order on every render.
+  // Compute scoringRun BEFORE the early-return guard below.
+  const scoringRun = useMemo(() => {
+    if (!isLive || !summary?.plays) return null;
+    return detectScoringRun(summary.plays, summary.homeId, summary.homeAbbr, summary.awayId, summary.awayAbbr);
+  }, [summary, isLive]);
+
   // Auto-scroll ticker to top when new plays arrive
   useEffect(() => {
     if (tickerRef.current) tickerRef.current.scrollTop = 0;
@@ -419,14 +429,7 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
     );
   }
 
-  const isLive = summary?.statusState === 'in';
-  const isFinal = summary?.statusState === 'post';
   const favInGame = favTeam && (awayFull === favTeam || homeFull === favTeam);
-
-  const scoringRun = useMemo(() => {
-    if (!isLive || !summary?.plays) return null;
-    return detectScoringRun(summary.plays, summary.homeId, summary.homeAbbr, summary.awayId, summary.awayAbbr);
-  }, [summary, isLive]);
   const runColor = scoringRun?.team === summary?.homeAbbr ? homeMeta.color : scoringRun?.team === summary?.awayAbbr ? awayMeta.color : accent;
 
   return (
