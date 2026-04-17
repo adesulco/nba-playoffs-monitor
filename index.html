@@ -99,6 +99,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+    <!-- Google Analytics 4 (hardcoded in HTML so crawlers / GSC verification find it) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLYNEMRZCE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      // send_page_view=false so our React Router pageview tracker handles SPA navigation
+      gtag('config', 'G-BLYNEMRZCE', { send_page_view: false, anonymize_ip: true });
+    </script>
   </head>
   <body>
     <!-- SEO content: rendered in HTML source for crawlers even before React hydrates. -->
