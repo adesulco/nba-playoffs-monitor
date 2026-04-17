@@ -245,8 +245,36 @@ export async function fetchGameSummary(eventId) {
   const home = competitors.find((c) => c.homeAway === 'home') || competitors[0];
   const away = competitors.find((c) => c.homeAway === 'away') || competitors[1];
 
+  // Parse boxscore — ESPN returns per-team player stat lines
+  const boxscore = (data.boxscore?.players || []).map((t) => {
+    const abbr = t.team?.abbreviation;
+    const s = t.statistics?.[0];
+    const names = s?.names || [];
+    const players = (s?.athletes || []).map((a) => {
+      const line = {};
+      (a.stats || []).forEach((v, i) => { if (names[i]) line[names[i]] = v; });
+      return {
+        id: a.athlete?.id,
+        name: a.athlete?.displayName,
+        short: a.athlete?.shortName,
+        position: a.athlete?.position?.abbreviation,
+        starter: !!a.starter,
+        dnp: !!a.didNotPlay,
+        min: line.MIN || '—',
+        pts: parseInt(line.PTS || 0),
+        reb: parseInt(line.REB || 0),
+        ast: parseInt(line.AST || 0),
+        fg: line.FG || '—',
+        tp: line['3PT'] || '—',
+        plusMinus: line['+/-'] || '—',
+      };
+    });
+    return { abbr, players };
+  });
+
   return {
     plays,
+    boxscore,
     homeAbbr: home?.team?.abbreviation,
     awayAbbr: away?.team?.abbreviation,
     homeId: home?.team?.id,

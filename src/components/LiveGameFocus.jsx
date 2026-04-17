@@ -1,6 +1,61 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useRef, useMemo, useState } from 'react';
 import { useGameDetails } from '../hooks/useGameDetails.js';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
+
+function BoxScoreTable({ team, color }) {
+  if (!team?.players?.length) {
+    return (
+      <div style={{ padding: 14, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
+        Stats populate at tip-off.
+      </div>
+    );
+  }
+  // Sort by PTS desc, filter DNP players, take top 6
+  const leaders = [...team.players]
+    .filter((p) => !p.dnp)
+    .sort((a, b) => (b.pts || 0) - (a.pts || 0))
+    .slice(0, 6);
+
+  return (
+    <div>
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1fr 28px 28px 28px 40px',
+        gap: 6, padding: '5px 10px', borderBottom: `1px solid ${C.lineSoft}`,
+        background: C.panelSoft, fontSize: 8.5, letterSpacing: 0.8, color: C.dim,
+      }}>
+        <div><span style={{ padding: '1px 5px', background: color, color: '#fff', borderRadius: 2, fontWeight: 700 }}>{team.abbr}</span></div>
+        <div style={{ textAlign: 'right' }}>PTS</div>
+        <div style={{ textAlign: 'right' }}>REB</div>
+        <div style={{ textAlign: 'right' }}>AST</div>
+        <div style={{ textAlign: 'right' }}>FG</div>
+      </div>
+      {leaders.map((p) => (
+        <a
+          key={p.id}
+          href={p.id ? `https://www.espn.com/nba/player/_/id/${p.id}` : '#'}
+          target={p.id ? '_blank' : undefined}
+          rel={p.id ? 'noopener noreferrer' : undefined}
+          className="link-row"
+          style={{
+            display: 'grid', gridTemplateColumns: '1fr 28px 28px 28px 40px',
+            gap: 6, padding: '5px 10px', borderBottom: `1px solid ${C.lineSoft}`,
+            fontSize: 10.5, textDecoration: 'none', color: 'inherit', alignItems: 'center',
+          }}
+        >
+          <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {p.starter && <span style={{ color, marginRight: 4, fontSize: 9 }}>●</span>}
+            {p.short || p.name}
+            {p.position && <span style={{ color: C.muted, marginLeft: 4, fontSize: 9 }}>· {p.position}</span>}
+          </div>
+          <div style={{ textAlign: 'right', color: C.amberBright, fontWeight: 600 }}>{p.pts}</div>
+          <div style={{ textAlign: 'right', color: C.text }}>{p.reb}</div>
+          <div style={{ textAlign: 'right', color: C.text }}>{p.ast}</div>
+          <div style={{ textAlign: 'right', color: C.muted, fontSize: 9.5 }}>{p.fg}</div>
+        </a>
+      ))}
+    </div>
+  );
+}
 
 function WinProbChart({ points, awayAbbr, homeAbbr, awayColor, homeColor }) {
   // 0..1 home win prob becomes the y axis; above 0.5 = home favored, below = away favored
@@ -88,6 +143,7 @@ function InjuryList({ abbr, list, color }) {
 export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onClose }) {
   const { summary, winProb, lastUpdate } = useGameDetails(eventId);
   const tickerRef = useRef(null);
+  const [rightTab, setRightTab] = useState('plays'); // 'plays' | 'stats'
 
   // Resolve team meta from abbr
   const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
@@ -159,13 +215,50 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
           <WinProbChart points={winProb} awayAbbr={summary?.awayAbbr || 'AWAY'} homeAbbr={summary?.homeAbbr || 'HOME'} awayColor={awayMeta.color} homeColor={homeMeta.color} />
         </div>
 
-        {/* Play-by-play ticker */}
+        {/* Right column: tabs — PLAYS / STATS */}
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: 200 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, letterSpacing: 1, color: C.dim, padding: '10px 14px 6px' }}>
-            <span>PLAY-BY-PLAY</span>
-            <span style={{ color: C.muted }}>{plays.length} plays · {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s ago` : '—'}</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 14px 0' }}>
+            <div style={{ display: 'flex', gap: 0 }}>
+              {['plays', 'stats'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setRightTab(tab)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    borderBottom: rightTab === tab ? `2px solid ${accent}` : '2px solid transparent',
+                    color: rightTab === tab ? C.text : C.dim,
+                    fontFamily: 'inherit',
+                    fontSize: 9.5, letterSpacing: 1, fontWeight: 600,
+                    padding: '6px 10px 8px',
+                    cursor: 'pointer',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {tab === 'plays' ? 'Play-by-play' : 'Box Score'}
+                </button>
+              ))}
+            </div>
+            <span style={{ fontSize: 9.5, color: C.muted }}>
+              {rightTab === 'plays' ? `${plays.length} plays` : 'ESPN box'} · {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s ago` : '—'}
+            </span>
           </div>
-          <div ref={tickerRef} style={{ maxHeight: 170, overflowY: 'auto', padding: '0 14px 10px' }}>
+
+          {rightTab === 'stats' && summary?.boxscore?.length > 0 && (
+            <div style={{ maxHeight: 260, overflowY: 'auto' }}>
+              {summary.boxscore.map((t) => (
+                <BoxScoreTable key={t.abbr} team={t} color={t.abbr === summary.awayAbbr ? awayMeta.color : homeMeta.color} />
+              ))}
+            </div>
+          )}
+          {rightTab === 'stats' && (!summary?.boxscore?.length) && (
+            <div style={{ padding: 20, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
+              Box score opens at tip-off.
+            </div>
+          )}
+
+          {rightTab === 'plays' && (
+          <div ref={tickerRef} style={{ maxHeight: 260, overflowY: 'auto', padding: '0 14px 10px' }}>
             {plays.length === 0 && (
               <div style={{ fontSize: 10.5, color: C.dim, padding: 20, textAlign: 'center' }}>
                 {eventId ? 'No plays yet — check back at tip-off.' : 'Pick a match above.'}
@@ -207,6 +300,7 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
               );
             })}
           </div>
+          )}
         </div>
       </div>
     </div>

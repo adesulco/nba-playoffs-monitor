@@ -9,9 +9,12 @@ import LiveGameFocus from './components/LiveGameFocus.jsx';
 import { useSeriesState } from './hooks/useSeriesState.js';
 import { useInjuries } from './hooks/useInjuries.js';
 import { useTeamLeaders } from './hooks/useTeamLeaders.js';
+import YesterdayRecap from './components/YesterdayRecap.jsx';
+import { createTranslator } from './lib/i18n.js';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 const THEME_STORAGE_KEY = 'gibol:theme';
+const LANG_STORAGE_KEY = 'gibol:lang';
 
 // Mix a hex color toward white by `mix` (0..1). Produces a readable accent on dark bg
 // regardless of how dark the source team color is.
@@ -148,6 +151,19 @@ export default function App() {
 
   const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
+  // Language state — 'en' or 'id'. Auto-detects navigator.language on first load.
+  const [lang, setLang] = useState(() => {
+    try {
+      const saved = localStorage.getItem(LANG_STORAGE_KEY);
+      if (saved === 'en' || saved === 'id') return saved;
+      if ((navigator.language || '').toLowerCase().startsWith('id')) return 'id';
+    } catch {}
+    return 'en';
+  });
+  useEffect(() => { try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch {} }, [lang]);
+  const t = useMemo(() => createTranslator(lang), [lang]);
+  const toggleLang = () => setLang((l) => (l === 'en' ? 'id' : 'en'));
+
   const favMeta = favTeam ? TEAM_META[favTeam] : null;
   // Theme: selected team's color overrides amber accents
   const accent = favMeta ? favMeta.color : C.amber;
@@ -234,14 +250,37 @@ export default function App() {
             </div>
             <div>
               <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: 14 }}>Monitoring the Playoffs</div>
-              <div style={{ fontSize: 10.5, color: C.dim, letterSpacing: 0.5 }}>NBA <strong style={{ color: accent }}>•</strong> 2025–26 POSTSEASON <strong style={{ color: accent }}>•</strong> LIVE</div>
+              <div style={{ fontSize: 10.5, color: C.dim, letterSpacing: 0.5 }}>NBA <strong style={{ color: accent }}>•</strong> {t('tagline')} <strong style={{ color: accent }}>•</strong> {t('liveLabel')}</div>
             </div>
           </div>
           <TeamPicker selectedTeam={favTeam} onSelect={setFav} />
-          <div className="topbar-meta" style={{ display: 'flex', gap: 16, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
+          <div className="topbar-meta" style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
+            <button
+              onClick={toggleLang}
+              title={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
+              aria-label="Toggle language"
+              style={{
+                background: 'transparent',
+                border: `1px solid ${C.lineSoft}`,
+                color: C.dim,
+                height: 26,
+                padding: '0 8px',
+                borderRadius: 4,
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                fontSize: 10,
+                letterSpacing: 1,
+                fontWeight: 600,
+                transition: 'all 0.15s',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.amber; e.currentTarget.style.color = C.amber; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.lineSoft; e.currentTarget.style.color = C.dim; }}
+            >
+              {lang === 'en' ? 'EN' : 'ID'}
+            </button>
             <button
               onClick={toggleTheme}
-              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
               aria-label="Toggle theme"
               style={{
                 background: 'transparent',
@@ -261,7 +300,7 @@ export default function App() {
             >
               {theme === 'dark' ? '☀' : '☾'}
             </button>
-            <span style={{ display: 'inline-flex', alignItems: 'center' }}><span className="live-dot" style={{ background: statusColor }} /> {statusLabel}</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center' }}><span className="live-dot" style={{ background: statusColor }} /> {t(statusLabel.toLowerCase()) || statusLabel}</span>
             <span style={{ color: accentBright, fontWeight: 600, fontSize: 13, fontFamily: '"Space Grotesk", sans-serif' }}>
               {now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' })} ET
             </span>
@@ -272,15 +311,18 @@ export default function App() {
           </div>
         </div>
 
+        {/* ================== YESTERDAY RECAP (collapsible) ================== */}
+        <YesterdayRecap favTeam={favTeam} t={t} />
+
         {/* ================== LIVE SCOREBOARD HERO ================== */}
         <div className="scoreboard-hero" style={{ borderBottom: `1px solid ${C.line}`, background: C.heroBg }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', borderBottom: `1px solid ${C.lineSoft}` }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <span style={{ fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>LIVE SCOREBOARD</span>
-              <span style={{ fontSize: 9.5, color: C.dim }}>{games.length > 0 ? `${games.length} GAMES` : 'TODAY'}</span>
+              <span style={{ fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>{t('liveScoreboard')}</span>
+              <span style={{ fontSize: 9.5, color: C.dim }}>{games.length > 0 ? `${games.length} ${t('games')}` : t('today')}</span>
             </div>
             <div style={{ fontSize: 9.5, color: C.dim, letterSpacing: 0.5 }}>
-              {errors.scores ? <span style={{ color: C.red }}>● ESPN OFF · SHOWING SCHEDULE</span> : <span style={{ color: C.green }}>● ESPN LIVE</span>}
+              {errors.scores ? <span style={{ color: C.red }}>● {t('espnOff')}</span> : <span style={{ color: C.green }}>● {t('espnLive')}</span>}
             </div>
           </div>
           <div className="game-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 0 }}>
@@ -313,10 +355,10 @@ export default function App() {
         {/* ================== CONTEXT STRIP (odds demoted) ================== */}
         <div className="stat-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderBottom: `1px solid ${C.line}`, background: C.panelSoft }}>
           {[
-            { label: 'TITLE FAVORITE', value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`, sub: topChamp.name.split(' ').slice(-1)[0] },
-            { label: 'ROUND 1 TIPS', value: 'APR 18', sub: `${games.length || 2} games Friday` },
-            { label: 'FINALS TIP-OFF', value: 'JUN 3', sub: 'ABC · Best-of-7' },
-            { label: 'NEXT TIP', value: games[0]?.status || '7:30 ET', sub: games[0] ? `${games[0].away.abbr} @ ${games[0].home.abbr}` : 'ORL @ CHA' },
+            { label: t('titleFavorite'), value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`, sub: topChamp.name.split(' ').slice(-1)[0] },
+            { label: t('round1Tips'), value: 'APR 18', sub: `${games.length || 2} ${t('gamesFriday')}` },
+            { label: t('finalsTipoff'), value: 'JUN 3', sub: 'ABC · Best-of-7' },
+            { label: t('nextTip'), value: games[0]?.status || '7:30 ET', sub: games[0] ? `${games[0].away.abbr} @ ${games[0].home.abbr}` : 'ORL @ CHA' },
           ].map((s, i) => (
             <div key={i} style={{ padding: '8px 14px', borderRight: i < 3 ? `1px solid ${C.lineSoft}` : 'none', display: 'flex', flexDirection: 'column', gap: 1 }}>
               <div style={{ fontSize: 9, color: C.dim, letterSpacing: 0.8, textTransform: 'uppercase' }}>{s.label}</div>
@@ -333,7 +375,7 @@ export default function App() {
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
             <div style={panelBox}>
               <div style={panelHeader}>
-                <div style={panelTitle}>ROUND 1 BRACKET</div>
+                <div style={panelTitle}>{t('round1Bracket')}</div>
                 <div style={panelMeta}>APR 18 – MAY 3</div>
               </div>
               <div className="bracket-viz">
@@ -381,7 +423,7 @@ export default function App() {
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
             <div style={panelBox}>
               <div style={panelHeader}>
-                <div style={panelTitle}>TITLE ODDS</div>
+                <div style={panelTitle}>{t('titleOdds')}</div>
                 <div style={panelMeta}>
                   {errors.champion ? <span style={{ color: C.red }}>● CACHED</span> : <span style={{ color: C.green }}>● POLYMARKET</span>}
                   {wsStatus === 'live' && <span style={{ color: C.green, marginLeft: 6 }}>· WS TICK</span>}
@@ -417,7 +459,7 @@ export default function App() {
 
             <div style={panelBox}>
               <div style={panelHeader}>
-                <div style={panelTitle}>FEATURED SERIES</div>
+                <div style={panelTitle}>{t('featuredSeries')}</div>
                 <div style={panelMeta}>ROUND 1</div>
               </div>
               <div>
@@ -548,7 +590,7 @@ export default function App() {
 
             <div style={panelBox}>
               <div style={panelHeader}>
-                <div style={panelTitle}>PLAYOFF STORIES</div>
+                <div style={panelTitle}>{t('playoffStories')}</div>
                 <div style={panelMeta}>PREVIEW · ANALYSIS</div>
               </div>
               {(favMeta ? [
