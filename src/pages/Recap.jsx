@@ -5,6 +5,7 @@ import { TEAM_META, COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import PlayerHead from '../components/PlayerHead.jsx';
+import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { trackEvent } from '../lib/analytics.js';
 
@@ -397,8 +398,10 @@ export default function Recap() {
           padding: '14px 24px',
           borderTop: `1px solid ${C.line}`,
           fontSize: 9.5, color: C.muted, letterSpacing: 0.3,
+          alignItems: 'center', flexWrap: 'wrap', gap: 8,
         }}>
           <div>gibol.co · catatan playoff harian</div>
+          <ContactBar lang={lang} variant="inline" />
           <div>ESPN · Polymarket</div>
         </div>
       </div>

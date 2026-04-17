@@ -25,6 +25,8 @@ import FangirBanner from '../components/FangirBanner.jsx';
 import ClutchLeaderboard from '../components/ClutchLeaderboard.jsx';
 import SEO from '../components/SEO.jsx';
 import SEOContent from '../components/SEOContent.jsx';
+import ContactBar from '../components/ContactBar.jsx';
+import { localizeGameStatus, formatKickoff, getUserTzLabel } from '../lib/timezone.js';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 
@@ -85,7 +87,7 @@ function StreakChip({ streak, color }) {
   );
 }
 
-function GameCard({ g, favTeam, isActive, onClick, injuries, streaks }) {
+function GameCard({ g, favTeam, isActive, onClick, injuries, streaks, lang }) {
   const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
   const awayFullName = findByAbbr(g.away?.abbr);
   const homeFullName = findByAbbr(g.home?.abbr);
@@ -149,7 +151,7 @@ function GameCard({ g, favTeam, isActive, onClick, injuries, streaks }) {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, fontSize: 10, paddingTop: 6, borderTop: `1px solid ${C.lineSoft}` }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: isLive ? C.green : isFinal ? C.dim : '#ffb347' }}>
           {isLive && <span className="live-dot" style={{ background: C.red }} />}
-          <span style={{ letterSpacing: 0.3 }}>{g.status || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}</span>
+          <span style={{ letterSpacing: 0.3 }}>{localizeGameStatus(g.status, g.date, g.statusState, lang) || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <InjuryBadge awayAbbr={g.away?.abbr} homeAbbr={g.home?.abbr} injuries={injuries} />
@@ -389,9 +391,9 @@ export default function NBADashboard() {
             </button>
             <span style={{ display: 'inline-flex', alignItems: 'center' }}><span className="live-dot" style={{ background: statusColor }} /> {t(statusLabel.toLowerCase()) || statusLabel}</span>
             <span style={{ color: accentBright, fontWeight: 600, fontSize: 13, fontFamily: '"Space Grotesk", sans-serif' }}>
-              {now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' })} ET
+              {new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { hour: '2-digit', minute: '2-digit', hour12: lang !== 'id' }).format(now)} {getUserTzLabel()}
             </span>
-            <span>{now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
+            <span>{new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(now)}</span>
           </div>
           <div style={{ fontSize: 10, color: C.dim, textAlign: 'right' }}>
             {lastUpdate ? `refresh ${Math.round((now - lastUpdate) / 1000)}s ago` : 'connecting...'}
@@ -414,9 +416,9 @@ export default function NBADashboard() {
           </div>
           <div className="game-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 0 }}>
             {games.length === 0 && [
-              { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, status: 'FRI 7:30 PM ET', statusState: 'pre' },
-              { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, status: 'FRI 10:00 PM ET', statusState: 'pre' },
-            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => setActiveMatchId(g.id)} injuries={injuriesByTeam} streaks={streaks} />)}
+              { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, date: '2026-04-17T23:30:00Z', status: 'FRI 7:30 PM ET', statusState: 'pre' },
+              { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, date: '2026-04-18T02:00:00Z', status: 'FRI 10:00 PM ET', statusState: 'pre' },
+            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => setActiveMatchId(g.id)} injuries={injuriesByTeam} streaks={streaks} lang={lang} />)}
             {games.slice(0, 6).map((g, i) => (
               <GameCard
                 key={g.id || i}
@@ -426,6 +428,7 @@ export default function NBADashboard() {
                 onClick={() => setActiveMatchId(g.id)}
                 injuries={injuriesByTeam}
                 streaks={streaks}
+                lang={lang}
               />
             ))}
           </div>
@@ -773,8 +776,9 @@ export default function NBADashboard() {
         {/* ================== SEO CONTENT (crawlable Bahasa + EN prose + FAQ) ================== */}
         <SEOContent lang={lang} />
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 14px', borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 14px', borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted, alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
           <div>Polymarket Gamma + CLOB WS · ESPN Scoreboard · 30s poll + live ticks</div>
+          <ContactBar lang={lang} variant="inline" />
           <div style={{ color: C.dim }}>ESPN · Polymarket · Built by Claude</div>
         </div>
       </div>

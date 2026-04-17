@@ -11,6 +11,8 @@ import TopBar from '../components/TopBar.jsx';
 import TitlePath from '../components/TitlePath.jsx';
 import PlayerHead from '../components/PlayerHead.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
+import ContactBar from '../components/ContactBar.jsx';
+import { formatGameDateTime } from '../lib/timezone.js';
 
 // Convert hex to rgba for glass effect on team-color hero.
 function withAlpha(hex, a) {
@@ -35,15 +37,9 @@ function computeRecord(schedule, abbr) {
 }
 
 function formatGameDate(isoDate, lang) {
-  try {
-    const d = new Date(isoDate);
-    if (lang === 'id') {
-      return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', weekday: 'short' });
-    }
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', weekday: 'short' });
-  } catch {
-    return isoDate;
-  }
+  // Delegates to shared timezone util — returns localized date + tipoff time
+  // like "Sab 18 Apr · 10:30 WIB" or "Sat Apr 18 · 10:30 AM WIB"
+  return formatGameDateTime(isoDate, lang) || isoDate;
 }
 
 export default function TeamPage() {
@@ -407,8 +403,10 @@ export default function TeamPage() {
         <div style={{
           display: 'flex', justifyContent: 'space-between', padding: '14px 24px',
           borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted, letterSpacing: 0.3,
+          alignItems: 'center', flexWrap: 'wrap', gap: 8,
         }}>
           <div>gibol.co · {lang === 'id' ? `halaman tim ${nickname}` : `${nickname} team page`}</div>
+          <ContactBar lang={lang} variant="inline" />
           <div>ESPN · Polymarket · NBA</div>
         </div>
       </div>

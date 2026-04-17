@@ -123,6 +123,7 @@ export async function fetchScoreboard() {
     return {
       id: e.id,
       name: e.shortName,
+      date: e.date, // ISO UTC — used for local-timezone tipoff display
       status: c?.status?.type?.shortDetail || c?.status?.type?.description || '',
       statusState: c?.status?.type?.state,
       home: {

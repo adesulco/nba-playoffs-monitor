@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
+import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
 const DASHBOARDS = [
@@ -211,6 +212,9 @@ export default function Home() {
             <DashboardCard key={d.id} d={d} lang={lang} />
           ))}
         </div>
+
+        {/* Contact card — partnership / sponsorship */}
+        <ContactBar lang={lang} variant="card" />
 
         {/* Footer */}
         <div style={{

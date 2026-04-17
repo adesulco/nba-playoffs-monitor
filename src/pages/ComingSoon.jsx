@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
+import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
 export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId, seoKeywords }) {
@@ -112,8 +113,10 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
           padding: '14px 24px',
           borderTop: `1px solid ${C.line}`,
           fontSize: 9.5, color: C.muted, letterSpacing: 0.3,
+          alignItems: 'center', flexWrap: 'wrap', gap: 8,
         }}>
           <div>gibol.co · part of the family</div>
+          <ContactBar lang={lang} variant="inline" />
           <div>← <a href="/" style={{ color: C.dim, textDecoration: 'none' }}>back to all dashboards</a></div>
         </div>
       </div>
