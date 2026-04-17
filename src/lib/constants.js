@@ -54,6 +54,36 @@ export const TEAM_BY_SLUG = Object.fromEntries(
   Object.keys(TEAM_META).map((name) => [teamSlug(name), name])
 );
 
+// F14 — derive an on-dark-bg safe color from a team's brand color.
+// Blends the team color toward panel dark at given intensity.
+// Fully-bright team colors (Warriors yellow, Lakers purple, Heat pink)
+// often fail WCAG AA (4.5:1) against body text, so use this when
+// tinting large surfaces (hero backgrounds, panel borders).
+export function softTeamColor(hex, mix = 0.35) {
+  if (!hex || typeof hex !== 'string' || hex.length < 7) return hex;
+  const target = { r: 12, g: 26, b: 46 }; // panel dark
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  const nr = Math.round(r + (target.r - r) * mix);
+  const ng = Math.round(g + (target.g - g) * mix);
+  const nb = Math.round(b + (target.b - b) * mix);
+  return `#${nr.toString(16).padStart(2, '0')}${ng.toString(16).padStart(2, '0')}${nb.toString(16).padStart(2, '0')}`;
+}
+
+// Returns whether a given hex color has sufficient contrast (~WCAG AA) against
+// dark panel background. Used to decide whether to use the full brand color
+// for text-on-dark or swap to a tinted/lightened version.
+export function hasGoodContrastOnDark(hex) {
+  if (!hex || typeof hex !== 'string' || hex.length < 7) return true;
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  // Rough luminance — team color needs to be bright-enough to read on dark bg.
+  const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return lum > 90; // empirical threshold — dark teams (Spurs, Celtics) fail.
+}
+
 export const FALLBACK_CHAMPION = [
   { name: 'Oklahoma City Thunder', pct: 44, change: 2, volume: 0 },
   { name: 'San Antonio Spurs',     pct: 15, change: 1, volume: 0 },

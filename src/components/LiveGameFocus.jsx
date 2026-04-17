@@ -171,7 +171,14 @@ function ShotChart({ plays, awayId, homeId, awayAbbr, homeAbbr, awayColor, homeC
         <span style={{ color: C.muted }}>● made · ○ miss · {shots.length} shots</span>
       </div>
 
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} style={{ display: 'block', background: C.panelSoft, border: `1px solid ${C.lineSoft}` }}>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        width="100%"
+        height={H}
+        role="img"
+        aria-label={`Shot chart: ${shots.length} shots plotted on half-court. ${shots.filter((s) => s.made).length} made, ${shots.filter((s) => !s.made).length} missed.`}
+        style={{ display: 'block', background: C.panelSoft, border: `1px solid ${C.lineSoft}` }}
+      >
         {/* Court outline */}
         <rect x="0" y="0" width={W} height={H} fill="none" stroke={C.lineSoft} strokeWidth="1" />
         {/* Lane (paint) — 16ft wide × 19ft deep */}
@@ -346,21 +353,37 @@ function WinProbChart({ points, awayAbbr, homeAbbr, awayColor, homeColor }) {
   const latestHome = Math.round(latest.homePct * 100);
   const latestAway = 100 - latestHome;
 
+  // F10 — accessible summary for screen readers (SVG is visual-only otherwise)
+  const leader = latest.homePct >= 0.5 ? homeAbbr : awayAbbr;
+  const leaderPct = Math.max(latestHome, latestAway);
+  const ariaSummary = `Win probability chart: ${leader} favored ${leaderPct} percent. Away team ${awayAbbr} ${latestAway} percent, home team ${homeAbbr} ${latestHome} percent.`;
+
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" style={{ display: 'block', background: C.panelSoft, border: `1px solid ${C.lineSoft}` }}>
-      {/* horizontal midline */}
-      <line x1={PAD_X} x2={W - PAD_X} y1={mid} y2={mid} stroke={C.lineSoft} strokeDasharray="2,3" />
-      {/* fills */}
-      <path d={homeFillPath} fill={homeColor} opacity="0.25" />
-      <path d={awayFillPath} fill={awayColor} opacity="0.25" />
-      {/* border line */}
-      <path d={homeLine} fill="none" stroke={C.text} strokeWidth="1.5" />
-      {/* endpoint dot */}
-      <circle cx={xOf(n - 1)} cy={yOf(latest.homePct)} r="3" fill={latest.homePct >= 0.5 ? homeColor : awayColor} stroke="#fff" strokeWidth="1" />
-      {/* labels */}
-      <text x={PAD_X + 4} y={PAD_Y + 10} fontSize="9" fill={awayColor} fontFamily="JetBrains Mono, monospace" fontWeight="600">{awayAbbr} {latestAway}%</text>
-      <text x={W - PAD_X - 4} y={H - PAD_Y - 2} textAnchor="end" fontSize="9" fill={homeColor} fontFamily="JetBrains Mono, monospace" fontWeight="600">{homeAbbr} {latestHome}%</text>
-    </svg>
+    <>
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        width="100%"
+        height={H}
+        preserveAspectRatio="none"
+        role="img"
+        aria-label={ariaSummary}
+        style={{ display: 'block', background: C.panelSoft, border: `1px solid ${C.lineSoft}` }}
+      >
+        {/* horizontal midline */}
+        <line x1={PAD_X} x2={W - PAD_X} y1={mid} y2={mid} stroke={C.lineSoft} strokeDasharray="2,3" />
+        {/* fills */}
+        <path d={homeFillPath} fill={homeColor} opacity="0.25" />
+        <path d={awayFillPath} fill={awayColor} opacity="0.25" />
+        {/* border line */}
+        <path d={homeLine} fill="none" stroke={C.text} strokeWidth="1.5" />
+        {/* endpoint dot */}
+        <circle cx={xOf(n - 1)} cy={yOf(latest.homePct)} r="3" fill={latest.homePct >= 0.5 ? homeColor : awayColor} stroke="#fff" strokeWidth="1" />
+        {/* labels */}
+        <text x={PAD_X + 4} y={PAD_Y + 10} fontSize="9" fill={awayColor} fontFamily="JetBrains Mono, monospace" fontWeight="600">{awayAbbr} {latestAway}%</text>
+        <text x={W - PAD_X - 4} y={H - PAD_Y - 2} textAnchor="end" fontSize="9" fill={homeColor} fontFamily="JetBrains Mono, monospace" fontWeight="600">{homeAbbr} {latestHome}%</text>
+      </svg>
+      <span className="sr-only">{ariaSummary}</span>
+    </>
   );
 }
 

@@ -42,8 +42,14 @@ export default function SEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
+      {/* jsonLd may be a single schema object OR an array of schemas.
+          Each gets its own <script> block so validators parse them independently. */}
       {jsonLd && (
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        Array.isArray(jsonLd)
+          ? jsonLd.map((schema, i) => (
+              <script key={i} type="application/ld+json">{JSON.stringify(schema)}</script>
+            ))
+          : <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       )}
     </Helmet>
   );

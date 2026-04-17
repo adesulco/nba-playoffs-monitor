@@ -9,9 +9,17 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
     function handleClick(e) {
       if (ref.current && !ref.current.contains(e.target)) setOpen(false);
     }
+    // F09 — Escape key closes the dropdown
+    function handleKey(e) {
+      if (e.key === 'Escape' && open) setOpen(false);
+    }
     document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, []);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, [open]);
 
   const meta = selectedTeam ? TEAM_META[selectedTeam] : null;
   const sortedTeams = Object.keys(TEAM_META).sort();
@@ -24,6 +32,9 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
     <div ref={ref} style={{ position: 'relative' }}>
       <button
         onClick={() => setOpen(!open)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={meta ? `Tim terpilih: ${selectedTeam}. Klik untuk ganti tim.` : 'Pilih tim favorit NBA'}
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -60,6 +71,8 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
 
       {open && (
         <div
+          role="listbox"
+          aria-label="Daftar tim NBA"
           style={{
             position: 'absolute',
             top: 'calc(100% + 4px)',

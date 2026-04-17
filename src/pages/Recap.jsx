@@ -296,6 +296,27 @@ export default function Recap() {
   const ogSubtitle = biggestMoment?.caption || (lang === 'id' ? 'Hasil lengkap, top scorer, momen terbesar' : 'Full results, top scorers, biggest moments');
   const ogImage = `https://www.gibol.co/api/og-recap?date=${encodeURIComponent(dateIso)}&headline=${encodeURIComponent(ogHeadline)}&subtitle=${encodeURIComponent(ogSubtitle)}&games=${games.length || ''}`;
 
+  // F11 / audit recommendation — NewsArticle JSON-LD for Google News eligibility.
+  // Each dated recap has its own unique schema with publish date + author.
+  const newsArticleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: ogHeadline,
+    description: seoDescription,
+    image: [ogImage, 'https://www.gibol.co/og-image.png'],
+    datePublished: `${dateIso}T23:59:00+07:00`,
+    dateModified: `${dateIso}T23:59:00+07:00`,
+    author: { '@type': 'Organization', name: 'gibol.co', url: 'https://www.gibol.co' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'gibol.co',
+      logo: { '@type': 'ImageObject', url: 'https://www.gibol.co/og-image.png' },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    articleSection: 'NBA Playoff 2026',
+    inLanguage: lang === 'id' ? 'id-ID' : 'en-US',
+  };
+
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO
@@ -305,6 +326,7 @@ export default function Recap() {
         lang={lang}
         image={ogImage}
         keywords={`hasil nba, hasil playoff nba, catatan playoff, recap nba playoff, skor akhir nba, hasil nba hari ini, hasil nba kemarin, rekap playoff nba ${dateIso}, skor akhir playoff`}
+        jsonLd={newsArticleJsonLd}
       />
       <div className="dashboard-wrap">
         <TopBar showBackLink title="gibol.co" subtitle="catatan playoff · live recap" />
