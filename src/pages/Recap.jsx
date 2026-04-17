@@ -275,6 +275,13 @@ export default function Recap() {
       ? `Hasil lengkap NBA Playoff ${humanDate}. Skor akhir, top scorer, momen terbesar, dan analisis per laga. Catatan Playoff harian dari gibol.co.`
       : `Complete NBA Playoff results for ${humanDate}. Final scores, top performers, biggest moments, per-game analysis.`);
 
+  // Dynamic OG image URL — generated on-the-fly by /api/og-recap Edge function.
+  // Updates per-date with the actual biggest moment headline so each shared recap
+  // gets its own branded social card (great for WhatsApp/Twitter/Instagram).
+  const ogHeadline = biggestMoment?.headline || (lang === 'id' ? `Catatan Playoff ${humanDate}` : `Playoff Recap ${humanDate}`);
+  const ogSubtitle = biggestMoment?.caption || (lang === 'id' ? 'Hasil lengkap, top scorer, momen terbesar' : 'Full results, top scorers, biggest moments');
+  const ogImage = `https://www.gibol.co/api/og-recap?date=${encodeURIComponent(dateIso)}&headline=${encodeURIComponent(ogHeadline)}&subtitle=${encodeURIComponent(ogSubtitle)}&games=${games.length || ''}`;
+
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO
@@ -282,6 +289,7 @@ export default function Recap() {
         description={seoDescription}
         path={`/recap/${dateIso}`}
         lang={lang}
+        image={ogImage}
         keywords={`hasil nba, hasil playoff nba, catatan playoff, recap nba playoff, skor akhir nba, hasil nba hari ini, hasil nba kemarin, rekap playoff nba ${dateIso}, skor akhir playoff`}
       />
       <div className="dashboard-wrap">
