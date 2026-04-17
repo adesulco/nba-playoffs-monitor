@@ -6,9 +6,9 @@ gibol.co is a real-time sports companion aggregating Polymarket prediction odds,
 
 ## Live dashboards
 
-- [NBA Playoffs 2026](https://gibol.co/nba-playoff-2026): Live scores, play-by-play, win probability, shot chart, box score, injury report, championship odds, bracket, series standings, team player stats, clutch leaders, watchlist, Fangir IBL trading-card partner banner. 2025–26 postseason, Apr 17 – Jun 20 2026.
-- [IBL — Indonesia Basketball League](https://gibol.co/ibl): Coming soon.
-- [FIFA World Cup 2026](https://gibol.co/fifa-world-cup-2026): Coming soon.
+- [NBA Playoffs 2026](https://www.gibol.co/nba-playoff-2026): Live scores, play-by-play, win probability, shot chart, box score, injury report, championship odds, bracket, series standings, team player stats, clutch leaders, watchlist, Fangir IBL trading-card partner banner. 2025–26 postseason, Apr 17 – Jun 20 2026.
+- [IBL — Indonesia Basketball League](https://www.gibol.co/ibl): Coming soon.
+- [FIFA World Cup 2026](https://www.gibol.co/fifa-world-cup-2026): Coming soon.
 
 ## Key facts (NBA Playoffs 2026)
 

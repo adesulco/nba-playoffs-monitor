@@ -297,7 +297,7 @@ export default function NBADashboard() {
             "name": "National Basketball Association",
             "url": "https://www.nba.com"
           },
-          "url": "https://gibol.co/nba-playoff-2026",
+          "url": "https://www.gibol.co/nba-playoff-2026",
           "inLanguage": ["id-ID", "en-US"]
         }}
       />

@@ -3,38 +3,38 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://gibol.co/</loc>
+    <loc>https://www.gibol.co/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gibol.co/" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://gibol.co/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gibol.co/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gibol.co/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.gibol.co/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gibol.co/" />
   </url>
 
   <url>
-    <loc>https://gibol.co/nba-playoff-2026</loc>
+    <loc>https://www.gibol.co/nba-playoff-2026</loc>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gibol.co/nba-playoff-2026" />
-    <xhtml:link rel="alternate" hreflang="id" href="https://gibol.co/nba-playoff-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gibol.co/nba-playoff-2026" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.gibol.co/nba-playoff-2026" />
   </url>
 
   <url>
-    <loc>https://gibol.co/recap</loc>
+    <loc>https://www.gibol.co/recap</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="id" href="https://gibol.co/recap" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://gibol.co/recap" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.gibol.co/recap" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gibol.co/recap" />
   </url>
 
   <url>
-    <loc>https://gibol.co/ibl</loc>
+    <loc>https://www.gibol.co/ibl</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://gibol.co/fifa-world-cup-2026</loc>
+    <loc>https://www.gibol.co/fifa-world-cup-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -42,4 +42,4 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://gibol.co/sitemap.xml
+Sitemap: https://www.gibol.co/sitemap.xml

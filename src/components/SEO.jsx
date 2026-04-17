@@ -9,12 +9,12 @@ export default function SEO({
   title,
   description,
   path = '/',
-  image = 'https://gibol.co/og-image.png',
+  image = 'https://www.gibol.co/og-image.png',
   lang = 'id',
   jsonLd,
   keywords,
 }) {
-  const canonical = `https://gibol.co${path}`;
+  const canonical = `https://www.gibol.co${path}`;
 
   return (
     <Helmet>

@@ -258,7 +258,7 @@ export default function Recap() {
   }, [date, dateIso, navigate]);
 
   const { games, summaries, topPerformers, biggestMoment, loading } = useDailyRecap(dateIso);
-  const url = `https://gibol.co/recap/${dateIso}`;
+  const url = `https://www.gibol.co/recap/${dateIso}`;
   const humanDate = formatJakartaDate(dateIso, lang);
   const accent = C.amber;
 
