@@ -7,6 +7,22 @@ import { useApp } from '../lib/AppContext.jsx';
 
 const DASHBOARDS = [
   {
+    id: 'recap',
+    href: '/recap',
+    status: 'live',
+    tag: 'BARU',
+    title: 'Catatan Playoff · Recap Harian',
+    titleId: 'Catatan Playoff · Recap Harian NBA',
+    league: 'NBA · DAILY RECAP',
+    blurb: 'Hasil playoff kemarin dalam satu halaman — skor akhir, top scorer, momen terbesar. Tiap pagi, update otomatis. Shareable ke WhatsApp + Instagram.',
+    blurbId: 'Hasil playoff kemarin dalam satu halaman — skor akhir, top scorer, momen terbesar. Tiap pagi, update otomatis. Tinggal share ke WhatsApp atau Instagram.',
+    accent: '#ffb347',
+    launchDate: null,
+    glyph: '📖',
+    cta: 'Baca hari ini →',
+    ctaId: 'Baca hari ini →',
+  },
+  {
     id: 'nba',
     href: '/nba-playoff-2026',
     status: 'live',

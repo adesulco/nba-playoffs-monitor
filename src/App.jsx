@@ -6,6 +6,7 @@ import Home from './pages/Home.jsx';
 import NBADashboard from './pages/NBADashboard.jsx';
 import IBL from './pages/IBL.jsx';
 import FIFA from './pages/FIFA.jsx';
+import Recap from './pages/Recap.jsx';
 import AnalyticsTracker from './components/AnalyticsTracker.jsx';
 
 export default function App() {
@@ -21,6 +22,8 @@ export default function App() {
           <Route path="/nba" element={<Navigate to="/nba-playoff-2026" replace />} />
           <Route path="/ibl" element={<IBL />} />
           <Route path="/fifa-world-cup-2026" element={<FIFA />} />
+          <Route path="/recap" element={<Recap />} />
+          <Route path="/recap/:date" element={<Recap />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </BrowserRouter>

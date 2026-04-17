@@ -327,6 +327,18 @@ export default function NBADashboard() {
             >
               ← gibol.co
             </Link>
+            <Link
+              to="/recap"
+              style={{
+                fontSize: 9.5, color: accent, textDecoration: 'none', letterSpacing: 0.5,
+                padding: '4px 8px', border: `1px solid ${accent}`, borderRadius: 3,
+                marginLeft: 6, transition: 'all 0.15s', fontWeight: 600,
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = `${accent}20`; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+            >
+              📖 CATATAN PLAYOFF
+            </Link>
           </div>
           <TeamPicker selectedTeam={favTeam} onSelect={setFav} />
           <div className="topbar-meta" style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
