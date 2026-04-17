@@ -1,0 +1,128 @@
+import React from 'react';
+import { TEAM_META, BRACKET_R1, COLORS } from '../lib/constants.js';
+
+function TeamRow({ name, seed, odds, highlight }) {
+  const meta = TEAM_META[name] || { abbr: name.slice(0, 3).toUpperCase(), color: '#333' };
+  const isTBD = name.startsWith('TBD');
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '18px 20px 1fr auto',
+        alignItems: 'center',
+        gap: 6,
+        padding: '5px 7px',
+        background: highlight ? 'rgba(255,179,71,0.08)' : '#0a1728',
+        borderLeft: highlight ? `2px solid ${COLORS.amber}` : '2px solid transparent',
+        fontSize: 10,
+      }}
+    >
+      <span style={{ color: COLORS.muted, fontSize: 9 }}>{seed}</span>
+      <div
+        style={{
+          width: 16,
+          height: 16,
+          borderRadius: 3,
+          background: isTBD ? '#333' : meta.color,
+          fontSize: 7.5,
+          fontWeight: 700,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#fff',
+        }}
+      >
+        {isTBD ? '?' : meta.abbr}
+      </div>
+      <span style={{ color: isTBD ? COLORS.muted : COLORS.text }}>
+        {isTBD ? 'Play-In TBD' : name.split(' ').slice(-1)[0]}
+      </span>
+      {odds && !isTBD && (
+        <span style={{ color: COLORS.amberBright, fontSize: 9.5, fontWeight: 600 }}>{odds}%</span>
+      )}
+    </div>
+  );
+}
+
+function Series({ series, oddsMap }) {
+  const [a, b] = series.teams;
+  const oA = oddsMap[a];
+  const oB = oddsMap[b];
+  const favorite = (oA || 0) >= (oB || 0) ? a : b;
+
+  return (
+    <div
+      style={{
+        border: `1px solid ${COLORS.lineSoft}`,
+        background: '#08111f',
+        marginBottom: 6,
+      }}
+    >
+      <TeamRow name={a} seed={series.seeds[0]} odds={oA} highlight={favorite === a} />
+      <div style={{ height: 1, background: COLORS.lineSoft }} />
+      <TeamRow name={b} seed={series.seeds[1]} odds={oB} highlight={favorite === b} />
+    </div>
+  );
+}
+
+export default function Bracket({ championOdds }) {
+  const oddsMap = Object.fromEntries(championOdds.map((o) => [o.name, o.pct]));
+
+  return (
+    <div style={{ padding: '10px 12px' }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 14,
+        }}
+      >
+        <div>
+          <div
+            style={{
+              fontSize: 9,
+              letterSpacing: 1.2,
+              color: COLORS.dim,
+              marginBottom: 6,
+              borderBottom: `1px solid ${COLORS.lineSoft}`,
+              paddingBottom: 3,
+            }}
+          >
+            EASTERN CONFERENCE
+          </div>
+          {BRACKET_R1.east.map((s, i) => (
+            <Series key={i} series={s} oddsMap={oddsMap} />
+          ))}
+        </div>
+        <div>
+          <div
+            style={{
+              fontSize: 9,
+              letterSpacing: 1.2,
+              color: COLORS.dim,
+              marginBottom: 6,
+              borderBottom: `1px solid ${COLORS.lineSoft}`,
+              paddingBottom: 3,
+            }}
+          >
+            WESTERN CONFERENCE
+          </div>
+          {BRACKET_R1.west.map((s, i) => (
+            <Series key={i} series={s} oddsMap={oddsMap} />
+          ))}
+        </div>
+      </div>
+      <div
+        style={{
+          marginTop: 8,
+          fontSize: 9,
+          color: COLORS.muted,
+          textAlign: 'center',
+          letterSpacing: 0.5,
+        }}
+      >
+        Highlighted team = championship favorite per Polymarket
+      </div>
+    </div>
+  );
+}
