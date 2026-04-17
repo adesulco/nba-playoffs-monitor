@@ -4,6 +4,7 @@
 
   <url>
     <loc>https://www.gibol.co/</loc>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gibol.co/" />
@@ -13,6 +14,7 @@
 
   <url>
     <loc>https://www.gibol.co/nba-playoff-2026</loc>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gibol.co/nba-playoff-2026" />
@@ -21,52 +23,69 @@
 
   <url>
     <loc>https://www.gibol.co/recap</loc>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="id" href="https://www.gibol.co/recap" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gibol.co/recap" />
   </url>
 
-  <!-- 30 NBA team pages — each a long-tail Bahasa+EN landing page for per-team search intent -->
-  <url><loc>https://www.gibol.co/nba-playoff-2026/thunder</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/spurs</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/celtics</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/nuggets</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/pistons</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/cavaliers</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/knicks</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/rockets</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/lakers</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/timberwolves</loc><changefreq>hourly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/raptors</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/hawks</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/sixers</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/blazers</loc><changefreq>hourly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/warriors</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/suns</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/magic</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/hornets</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/heat</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/bucks</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/bulls</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/nets</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/pacers</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/wizards</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/mavericks</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/grizzlies</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/pelicans</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/kings</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/jazz</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.gibol.co/nba-playoff-2026/clippers</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://www.gibol.co/about</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.gibol.co/glossary</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- 30 NBA team pages — long-tail Bahasa+EN landing pages for per-team search intent -->
+  <url><loc>https://www.gibol.co/nba-playoff-2026/thunder</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/spurs</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/celtics</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/nuggets</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/pistons</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/cavaliers</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/knicks</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/rockets</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/lakers</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/timberwolves</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/raptors</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/hawks</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/sixers</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/blazers</loc><lastmod>2026-04-18</lastmod><changefreq>hourly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/warriors</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/suns</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/magic</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/hornets</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/heat</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/bucks</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/bulls</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/nets</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/pacers</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/wizards</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/mavericks</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/grizzlies</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/pelicans</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/kings</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/jazz</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/nba-playoff-2026/clippers</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
 
   <url>
     <loc>https://www.gibol.co/ibl</loc>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://www.gibol.co/fifa-world-cup-2026</loc>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

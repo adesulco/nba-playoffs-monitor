@@ -85,9 +85,22 @@
     }
     </script>
 
+    <!-- Font loading strategy (F22):
+         • Preconnect to both fonts.googleapis.com and fonts.gstatic.com
+         • Fetch the main CSS stylesheet normally (non-blocking via media="print" → swap to "all" on load)
+         • font-display: swap is inline in the CSS Google serves, so system-font fallback renders immediately
+         • Priority weights: Space Grotesk 400/600 (body + UI), Bebas Neue (display), JetBrains Mono 500 (numerics). -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" />
+    </noscript>
 
     <!-- Google Analytics 4 (hardcoded in HTML so crawlers / GSC verification find it) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLYNEMRZCE"></script>

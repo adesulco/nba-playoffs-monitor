@@ -7,9 +7,18 @@ import { useApp } from '../lib/AppContext.jsx';
  * Shared masthead used across Home + dashboard pages.
  * `children` slot is for page-specific content (e.g. TeamPicker, status line).
  */
-export default function TopBar({ showBackLink = false, title = 'gibol.co', subtitle = 'gila bola · live sports dashboards', children, accent }) {
+export default function TopBar({
+  showBackLink = false,
+  backTo = '/',
+  backLabel,
+  title = 'gibol.co',
+  subtitle = 'gila bola · live sports dashboards',
+  children,
+  accent,
+}) {
   const { theme, toggleTheme, lang, toggleLang, t } = useApp();
   const accentColor = accent || C.amber;
+  const resolvedBackLabel = backLabel || (lang === 'id' ? '← SEMUA DASHBOARD' : '← ALL DASHBOARDS');
 
   return (
     <div className="topbar" style={{
@@ -39,7 +48,7 @@ export default function TopBar({ showBackLink = false, title = 'gibol.co', subti
       <div>
         {showBackLink && (
           <Link
-            to="/"
+            to={backTo}
             style={{
               fontSize: 10.5, color: C.dim, textDecoration: 'none', letterSpacing: 0.5,
               padding: '5px 10px', border: `1px solid ${C.lineSoft}`, borderRadius: 4,
@@ -48,7 +57,7 @@ export default function TopBar({ showBackLink = false, title = 'gibol.co', subti
             onMouseEnter={(e) => { e.currentTarget.style.color = accentColor; e.currentTarget.style.borderColor = accentColor; }}
             onMouseLeave={(e) => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.lineSoft; }}
           >
-            ← ALL DASHBOARDS
+            {resolvedBackLabel}
           </Link>
         )}
       </div>
@@ -59,7 +68,7 @@ export default function TopBar({ showBackLink = false, title = 'gibol.co', subti
         <button
           onClick={toggleLang}
           title={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
-          aria-label="Toggle language"
+          aria-label={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
           style={{
             background: 'transparent',
             border: `1px solid ${C.lineSoft}`,
@@ -82,7 +91,7 @@ export default function TopBar({ showBackLink = false, title = 'gibol.co', subti
         <button
           onClick={toggleTheme}
           title={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-          aria-label="Toggle theme"
+          aria-label={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
           style={{
             background: 'transparent',
             border: `1px solid ${C.lineSoft}`,

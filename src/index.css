@@ -53,6 +53,38 @@ html, body, #root {
 
 * { box-sizing: border-box; }
 
+/* ============ Accessibility ============ */
+/* F19: visible focus ring for keyboard users (not stolen by click). */
+*:focus { outline: none; }
+*:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* F20: respect user's reduced-motion preference — kill non-essential animation. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .live-dot { animation: none !important; }
+  .ticker-inner { animation: none !important; }
+}
+
+/* Screen-reader only utility (used for chart/sparkline alt text). */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 @keyframes flash-green { 0% { background: rgba(61,219,132,0.3); } 100% { background: transparent; } }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { COLORS as C } from '../lib/constants.js';
+import { trackEvent } from '../lib/analytics.js';
 
 /**
  * Partnership / sponsorship / press contact bar.
@@ -17,11 +18,14 @@ export default function ContactBar({ lang = 'id', variant = 'inline' }) {
 
   const href = `mailto:${email}?subject=${encodeURIComponent(copy.subject)}`;
 
+  const onClick = () => trackEvent('partnership_cta_click', { variant });
+
   // Card variant — prominent panel for Home page
   if (variant === 'card') {
     return (
       <a
         href={href}
+        onClick={onClick}
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '14px 18px',
@@ -70,6 +74,7 @@ export default function ContactBar({ lang = 'id', variant = 'inline' }) {
       {copy.label} ·{' '}
       <a
         href={href}
+        onClick={onClick}
         style={{ color: '#ffb347', textDecoration: 'none', fontWeight: 600 }}
       >
         {copy.cta}

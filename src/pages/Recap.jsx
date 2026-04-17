@@ -23,6 +23,17 @@ function isoYesterday() {
   return d.toISOString().slice(0, 10);
 }
 
+function todayIso() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+// Shift an ISO date string by N days (positive or negative). Used for prev/next day nav.
+function isoShift(iso, days) {
+  const d = new Date(iso + 'T12:00:00Z');
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
 function BigMomentHero({ moment, lang, accent }) {
   if (!moment) return null;
   const { game, tag, headline, caption, topPerformer } = moment;
@@ -194,7 +205,9 @@ function ShareBar({ url, lang, biggestMoment }) {
   const encodedUrl = encodeURIComponent(url);
   const encodedText = encodeURIComponent(text);
 
-  const waLink = `https://wa.me/?text=${encodedText}%20${encodedUrl}`;
+  // api.whatsapp.com/send works on both desktop (WhatsApp Web) and mobile.
+  // wa.me fails silently on desktop — per audit F12.
+  const waLink = `https://api.whatsapp.com/send?text=${encodedText}%20${encodedUrl}`;
   const xLink = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
   const tgLink = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
 
@@ -318,6 +331,57 @@ export default function Recap() {
               : games.length === 0
               ? (lang === 'id' ? 'Belum ada laga yang selesai hari ini.' : 'No games completed yet.')
               : (lang === 'id' ? `${games.length} laga · semua hasil di bawah` : `${games.length} games · all results below`)}
+          </div>
+
+          {/* Day-to-day nav — F28: internal linking between dated recaps */}
+          <div style={{
+            display: 'flex', gap: 8, marginTop: 14, fontSize: 11, flexWrap: 'wrap',
+          }}>
+            <Link
+              to={`/recap/${isoShift(dateIso, -1)}`}
+              aria-label={lang === 'id' ? `Catatan playoff kemarin, ${isoShift(dateIso, -1)}` : `Previous day's recap`}
+              style={{
+                padding: '6px 12px', background: C.panel, color: C.text,
+                border: `1px solid ${C.line}`, borderRadius: 3, textDecoration: 'none',
+                letterSpacing: 0.3, fontWeight: 500,
+              }}
+            >
+              ← {lang === 'id' ? 'Kemarin' : 'Previous day'}
+            </Link>
+            <Link
+              to="/recap"
+              aria-label={lang === 'id' ? 'Catatan playoff hari ini' : `Today's recap`}
+              style={{
+                padding: '6px 12px', background: C.panel, color: C.text,
+                border: `1px solid ${C.line}`, borderRadius: 3, textDecoration: 'none',
+                letterSpacing: 0.3, fontWeight: 500,
+              }}
+            >
+              {lang === 'id' ? 'Hari Ini' : 'Today'}
+            </Link>
+            {isoShift(dateIso, 1) <= todayIso() && (
+              <Link
+                to={`/recap/${isoShift(dateIso, 1)}`}
+                aria-label={lang === 'id' ? `Catatan playoff besok, ${isoShift(dateIso, 1)}` : `Next day's recap`}
+                style={{
+                  padding: '6px 12px', background: C.panel, color: C.text,
+                  border: `1px solid ${C.line}`, borderRadius: 3, textDecoration: 'none',
+                  letterSpacing: 0.3, fontWeight: 500,
+                }}
+              >
+                {lang === 'id' ? 'Besok' : 'Next day'} →
+              </Link>
+            )}
+            <Link
+              to="/nba-playoff-2026"
+              style={{
+                padding: '6px 12px', background: 'transparent', color: accent,
+                border: `1px solid ${accent}`, borderRadius: 3, textDecoration: 'none',
+                letterSpacing: 0.3, fontWeight: 600, marginLeft: 'auto',
+              }}
+            >
+              🏀 {lang === 'id' ? 'Dashboard Playoff Live' : 'Live Playoffs Dashboard'} →
+            </Link>
           </div>
         </div>
 

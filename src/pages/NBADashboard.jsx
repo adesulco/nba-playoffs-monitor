@@ -183,6 +183,10 @@ export default function NBADashboard() {
       if (name) localStorage.setItem(FAV_STORAGE_KEY, name);
       else localStorage.removeItem(FAV_STORAGE_KEY);
     } catch {}
+    // F35 — tracking favorite team selection to measure team-picker engagement
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', name ? 'team_pick' : 'team_clear', { team_name: name || 'none' });
+    }
   }
 
   // Active match to follow (live game focus)
@@ -347,7 +351,7 @@ export default function NBADashboard() {
             <button
               onClick={toggleLang}
               title={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
-              aria-label="Toggle language"
+              aria-label={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
               style={{
                 background: 'transparent',
                 border: `1px solid ${C.lineSoft}`,
@@ -370,7 +374,7 @@ export default function NBADashboard() {
             <button
               onClick={toggleTheme}
               title={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-              aria-label="Toggle theme"
+              aria-label={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
               style={{
                 background: 'transparent',
                 border: `1px solid ${C.lineSoft}`,

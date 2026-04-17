@@ -151,7 +151,13 @@ export default function TeamPage() {
       />
 
       <div className="dashboard-wrap" style={{ maxWidth: 980, margin: '0 auto' }}>
-        <TopBar showBackLink title="gibol.co" subtitle={`${teamName.toUpperCase()} · NBA PLAYOFF 2026`} />
+        <TopBar
+          showBackLink
+          backTo="/nba-playoff-2026"
+          backLabel={lang === 'id' ? '← SEMUA TIM PLAYOFF' : '← ALL PLAYOFF TEAMS'}
+          title="gibol.co"
+          subtitle={`${teamName.toUpperCase()} · NBA PLAYOFF 2026`}
+        />
 
         {/* ─── Team Hero ────────────────────────────────────────── */}
         <div style={{

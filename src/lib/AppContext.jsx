@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { createTranslator } from './i18n.js';
+import { trackEvent } from './analytics.js';
 
 const THEME_STORAGE_KEY = 'gibol:theme';
 const LANG_STORAGE_KEY = 'gibol:lang';
@@ -32,15 +33,27 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch {}
+    // F18 — sync <html lang> globally so screen readers + translators pick the
+    // right mode. Helmet also sets this per-route via SEO.jsx; this line makes
+    // sure the attribute is correct on first paint even before Helmet hydrates.
+    document.documentElement.setAttribute('lang', lang);
   }, [lang]);
 
   const t = useMemo(() => createTranslator(lang), [lang]);
 
   const value = {
     theme,
-    toggleTheme: () => setTheme((x) => (x === 'dark' ? 'light' : 'dark')),
+    toggleTheme: () => setTheme((x) => {
+      const next = x === 'dark' ? 'light' : 'dark';
+      trackEvent('theme_toggle', { to: next });
+      return next;
+    }),
     lang,
-    toggleLang: () => setLang((x) => (x === 'en' ? 'id' : 'en')),
+    toggleLang: () => setLang((x) => {
+      const next = x === 'en' ? 'id' : 'en';
+      trackEvent('lang_toggle', { to: next });
+      return next;
+    }),
     t,
   };
 
