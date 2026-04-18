@@ -82,85 +82,125 @@ function DashboardCard({ d, lang }) {
   const blurb = lang === 'id' ? d.blurbId : d.blurb;
   const cta = lang === 'id' ? d.ctaId : d.cta;
 
-  // Featured card = the primary CTA on home, visually hero-sized. Everything else
-  // stays secondary.
-  const padding = isFeatured ? '36px 32px' : '22px 24px';
-  const glyphSize = isFeatured ? 72 : 36;
-  const glyphBoxSize = isFeatured ? 96 : 56;
-  const titleSize = isFeatured ? 34 : 22;
-  const blurbSize = isFeatured ? 13 : 11;
-  const ctaFont = isFeatured ? 16 : 13;
-  const ctaPadding = isFeatured ? '14px 22px' : '8px 14px';
-  const leftBorder = isFeatured ? 6 : 4;
-
-  const content = (
-    <div style={{
-      padding,
-      background: isFeatured
-        ? `linear-gradient(135deg, ${d.accent}28 0%, ${C.panelRow} 70%)`
-        : C.panelRow,
-      border: `1px solid ${isLive ? d.accent : C.line}`,
-      borderLeft: `${leftBorder}px solid ${d.accent}`,
-      borderRadius: 4,
-      display: 'grid',
-      gridTemplateColumns: 'auto 1fr auto',
-      gap: isFeatured ? 28 : 20,
-      alignItems: 'center',
-      transition: 'all 0.2s',
-      cursor: isLive ? 'pointer' : 'default',
-      opacity: isLive ? 1 : 0.85,
-      boxShadow: isFeatured ? `0 6px 28px -16px ${d.accent}` : 'none',
-    }}
-    className={isLive ? 'home-card-live' : 'home-card-soon'}
+  // Featured NBA card stays horizontal; secondary cards stack vertically (icon on top)
+  // so they read well in a 3-column row at desktop and a 1-column stack on mobile.
+  const content = isFeatured ? (
+    <div
+      className="home-card-live home-featured"
+      style={{
+        padding: '22px 24px',
+        background: `linear-gradient(135deg, ${d.accent}28 0%, ${C.panelRow} 70%)`,
+        border: `1px solid ${d.accent}`,
+        borderLeft: `5px solid ${d.accent}`,
+        borderRadius: 4,
+        display: 'grid',
+        gridTemplateColumns: 'auto 1fr auto',
+        gap: 20,
+        alignItems: 'center',
+        transition: 'all 0.2s',
+        cursor: 'pointer',
+        boxShadow: `0 6px 24px -14px ${d.accent}`,
+      }}
     >
       <div style={{
-        fontSize: glyphSize, lineHeight: 1,
-        width: glyphBoxSize, height: glyphBoxSize, borderRadius: 4,
+        fontSize: 44, lineHeight: 1,
+        width: 72, height: 72, borderRadius: 4,
         background: `${d.accent}20`,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexShrink: 0,
-      }}>
-        {d.glyph}
-      </div>
+      }}>{d.glyph}</div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{
             fontSize: 9, letterSpacing: 1.2, fontWeight: 700,
             padding: '2px 7px',
-            background: isLive ? d.accent : 'transparent',
-            color: isLive ? '#fff' : d.accent,
-            border: isLive ? 'none' : `1px solid ${d.accent}`,
+            background: d.accent, color: '#fff',
             borderRadius: 2,
           }}>
-            {isLive && <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: '#fff', marginRight: 4, verticalAlign: 'middle' }} />}
+            <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: '#fff', marginRight: 4, verticalAlign: 'middle' }} />
             {d.tag}
           </span>
           <span style={{ fontSize: 9.5, color: C.dim, letterSpacing: 1, fontWeight: 500 }}>{d.league}</span>
-          {d.launchDate && <span style={{ fontSize: 9.5, color: C.muted }}>· {d.launchDate}</span>}
         </div>
         <div style={{
           fontFamily: '"Space Grotesk", sans-serif',
-          fontSize: titleSize, fontWeight: 600, color: C.text,
-          letterSpacing: -0.3,
+          fontSize: 26, fontWeight: 600, color: C.text, letterSpacing: -0.3,
         }}>
           {title}
         </div>
-        <div style={{ fontSize: blurbSize, color: C.dim, lineHeight: 1.5, maxWidth: isFeatured ? 720 : 640 }}>
+        <div style={{ fontSize: 11.5, color: C.dim, lineHeight: 1.5, maxWidth: 780 }}>
           {blurb}
         </div>
       </div>
 
-      <div style={{
+      <div className="home-featured-cta" style={{
         fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: ctaFont, fontWeight: 700,
-        padding: ctaPadding,
-        background: isLive ? d.accent : 'transparent',
-        color: isLive ? '#fff' : d.accent,
-        border: isLive ? 'none' : `1px solid ${d.accent}`,
+        fontSize: 14, fontWeight: 700,
+        padding: '11px 18px',
+        background: d.accent, color: '#fff',
         borderRadius: 3,
         whiteSpace: 'nowrap',
         letterSpacing: 0.3,
+      }}>
+        {cta}
+      </div>
+    </div>
+  ) : (
+    // Secondary card — compact, icon+title stacked, no separate CTA button.
+    // Whole card is clickable (wrapped in Link below).
+    <div
+      className={isLive ? 'home-card-live home-secondary' : 'home-card-soon home-secondary'}
+      style={{
+        padding: '14px 16px',
+        background: C.panelRow,
+        border: `1px solid ${isLive ? d.accent : C.line}`,
+        borderLeft: `3px solid ${d.accent}`,
+        borderRadius: 4,
+        display: 'flex', flexDirection: 'column', gap: 8,
+        minHeight: 150, height: '100%',
+        transition: 'all 0.2s',
+        cursor: isLive ? 'pointer' : 'default',
+        opacity: isLive ? 1 : 0.82,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{
+          fontSize: 22, lineHeight: 1,
+          width: 36, height: 36, borderRadius: 3,
+          background: `${d.accent}20`,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexShrink: 0,
+        }}>{d.glyph}</div>
+        <span style={{
+          fontSize: 8.5, letterSpacing: 1.2, fontWeight: 700,
+          padding: '2px 6px',
+          background: isLive ? d.accent : 'transparent',
+          color: isLive ? '#fff' : d.accent,
+          border: isLive ? 'none' : `1px solid ${d.accent}`,
+          borderRadius: 2,
+        }}>
+          {isLive && <span style={{ display: 'inline-block', width: 4, height: 4, borderRadius: '50%', background: '#fff', marginRight: 3, verticalAlign: 'middle' }} />}
+          {d.tag}
+        </span>
+      </div>
+      <div style={{
+        fontFamily: '"Space Grotesk", sans-serif',
+        fontSize: 15, fontWeight: 600, color: C.text, letterSpacing: -0.2,
+        lineHeight: 1.25,
+      }}>
+        {title}
+      </div>
+      <div style={{ fontSize: 10.5, color: C.dim, lineHeight: 1.45, flex: 1 }}>
+        {blurb}
+      </div>
+      <div style={{
+        fontFamily: '"Space Grotesk", sans-serif',
+        fontSize: 11, fontWeight: 700,
+        color: isLive ? d.accent : C.muted,
+        letterSpacing: 0.5,
+        textTransform: 'uppercase',
+        marginTop: 'auto',
       }}>
         {cta}
       </div>
@@ -196,58 +236,66 @@ export default function Home() {
       <div className="dashboard-wrap">
         <TopBar />
 
-        {/* Compact hero — wordmark-style, not a giant splash. Pushes NBA CTA above the fold. */}
+        {/* Ultra-compact hero — wordmark line + tagline. Keeps dashboard grid above the fold. */}
         <div style={{
-          padding: '20px 24px 18px',
+          padding: '14px 20px 12px',
           borderBottom: `1px solid ${C.line}`,
           background: C.heroBg,
           textAlign: 'center',
         }}>
           <div style={{
             fontFamily: '"Bebas Neue", sans-serif',
-            fontSize: 38, lineHeight: 1, letterSpacing: -0.5,
-            color: C.text, marginBottom: 4,
+            fontSize: 28, lineHeight: 1, letterSpacing: -0.3,
+            color: C.text, marginBottom: 2,
           }}>
             {lang === 'id' ? heroTitleId : heroTitle}
           </div>
           <div style={{
-            fontSize: 12, color: C.dim, letterSpacing: 0.5,
-            maxWidth: 560, margin: '0 auto', lineHeight: 1.5,
+            fontSize: 11, color: C.dim, letterSpacing: 0.3,
+            maxWidth: 560, margin: '0 auto', lineHeight: 1.4,
           }}>
             {lang === 'id' ? heroSubId : heroSub}
-            {' · '}
-            <span style={{ fontStyle: 'italic', opacity: 0.8 }}>
-              {lang === 'id' ? heroHookId : heroHookEn}
-            </span>
           </div>
         </div>
 
-        {/* Dashboard cards */}
-        <div style={{
-          display: 'flex', flexDirection: 'column', gap: 12,
-          padding: '28px 24px',
+        {/* Dashboard grid — NBA featured card spans full width, 3 secondary cards
+            share a row below on desktop, collapse to 1 column on mobile. Designed
+            so all 4 options are visible without scrolling on ≥768px viewports. */}
+        <div className="home-dashboard-grid" style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateAreas: `
+            "featured featured featured"
+            "a b c"
+          `,
+          gap: 10,
+          padding: '16px 20px 20px',
         }}>
-          {DASHBOARDS.map((d) => (
-            <DashboardCard key={d.id} d={d} lang={lang} />
+          {DASHBOARDS.map((d, i) => (
+            <div
+              key={d.id}
+              style={{
+                gridArea: d.featured ? 'featured' : ['a', 'b', 'c'][i - 1] || 'a',
+                minWidth: 0,
+              }}
+            >
+              <DashboardCard d={d} lang={lang} />
+            </div>
           ))}
         </div>
 
-        {/* Contact card — partnership / sponsorship */}
-        <ContactBar lang={lang} variant="card" />
-
-        {/* Footer */}
+        {/* Footer — compact, with inline contact link */}
         <div style={{
-          display: 'flex', justifyContent: 'space-between',
-          padding: '14px 24px',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          padding: '10px 20px', flexWrap: 'wrap', gap: 8,
           borderTop: `1px solid ${C.line}`,
           fontSize: 9.5, color: C.muted, letterSpacing: 0.3,
         }}>
           <div>
-            gibol.co · {lang === 'id' ? 'dibuat untuk para pecinta bola di Indonesia' : 'built for sports fans in Indonesia and worldwide'}
+            gibol.co · {lang === 'id' ? 'dari fan, untuk fan Indonesia' : 'from fans, for fans'}
           </div>
-          <div>
-            Polymarket · ESPN · FIFA.com
-          </div>
+          <ContactBar lang={lang} variant="inline" />
+          <div>ESPN · Polymarket · FIFA.com</div>
         </div>
       </div>
     </div>

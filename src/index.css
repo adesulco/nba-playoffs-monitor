@@ -182,3 +182,53 @@ html, body, #root {
     overflow-x: auto;
   }
 }
+
+/* ============ Home page responsive grid ============ */
+/* Desktop: NBA featured row + 3-card row. All 4 fit above the fold on ≥900px viewports. */
+.home-dashboard-grid {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* Tablet: 2-column grid, NBA still spans full width */
+@media (max-width: 820px) {
+  .home-dashboard-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas:
+      "featured featured"
+      "a b"
+      "c c" !important;
+  }
+}
+
+/* Mobile: single column, tight spacing, everything still reachable */
+@media (max-width: 560px) {
+  .home-dashboard-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "featured"
+      "a"
+      "b"
+      "c" !important;
+    gap: 8px !important;
+    padding: 12px !important;
+  }
+  .home-featured {
+    padding: 14px 16px !important;
+    grid-template-columns: auto 1fr !important;
+    gap: 12px !important;
+  }
+  .home-featured > div:last-child {
+    grid-column: 1 / -1;
+    width: 100%;
+    text-align: center;
+  }
+  .home-secondary {
+    min-height: auto !important;
+    padding: 12px 14px !important;
+  }
+}
+
+.home-card-live:hover {
+  transform: translateY(-1px);
+}
