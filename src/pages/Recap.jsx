@@ -310,7 +310,7 @@ export default function Recap() {
     publisher: {
       '@type': 'Organization',
       name: 'gibol.co',
-      logo: { '@type': 'ImageObject', url: 'https://www.gibol.co/og-image.png' },
+      logo: { '@type': 'ImageObject', url: 'https://www.gibol.co/gibol-logo-512.png' },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     articleSection: 'NBA Playoff 2026',

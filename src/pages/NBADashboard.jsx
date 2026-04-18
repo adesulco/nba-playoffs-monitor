@@ -316,10 +316,13 @@ export default function NBADashboard() {
         {/* ================== TOP BAR ================== */}
         <div className="topbar" style={{ display: 'grid', gridTemplateColumns: 'auto auto 1fr auto', gap: 18, alignItems: 'center', padding: '12px 16px', borderBottom: `1px solid ${C.line}`, background: C.topbarBg }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ width: 22, height: 22, borderRadius: '50%', background: 'radial-gradient(circle at 30% 30%, #e8502e 0%, #8c1a1a 100%)', position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: 'rgba(0,0,0,0.4)' }} />
-              <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', width: 1, background: 'rgba(0,0,0,0.4)' }} />
-            </div>
+            <img
+              src="/gibol-logo.svg"
+              alt="gibol.co"
+              width={26}
+              height={26}
+              style={{ display: 'block', borderRadius: 4, flexShrink: 0 }}
+            />
             <div>
               <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: 14 }}>Monitoring the Playoffs</div>
               <div style={{ fontSize: 10.5, color: C.dim, letterSpacing: 0.5 }}>NBA <strong style={{ color: accent }}>•</strong> {t('tagline')} <strong style={{ color: accent }}>•</strong> {t('liveLabel')}</div>

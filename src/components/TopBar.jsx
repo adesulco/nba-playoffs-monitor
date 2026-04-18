@@ -30,15 +30,18 @@ export default function TopBar({
       borderBottom: `1px solid ${C.line}`,
       background: C.topbarBg,
     }}>
-      <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'inherit' }}>
-        <div style={{
-          width: 22, height: 22, borderRadius: '50%',
-          background: 'radial-gradient(circle at 30% 30%, #e8502e 0%, #8c1a1a 100%)',
-          position: 'relative',
-        }}>
-          <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: 'rgba(0,0,0,0.4)' }} />
-          <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', width: 1, background: 'rgba(0,0,0,0.4)' }} />
-        </div>
+      <Link
+        to="/"
+        aria-label="gibol.co home"
+        style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'inherit' }}
+      >
+        <img
+          src="/gibol-logo.svg"
+          alt="gibol.co"
+          width={28}
+          height={28}
+          style={{ display: 'block', borderRadius: 4, flexShrink: 0 }}
+        />
         <div>
           <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: 14, color: C.text }}>{title}</div>
           <div style={{ fontSize: 10.5, color: C.dim, letterSpacing: 0.5 }}>{subtitle}</div>
