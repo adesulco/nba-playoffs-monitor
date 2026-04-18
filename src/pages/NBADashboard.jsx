@@ -317,7 +317,7 @@ export default function NBADashboard() {
         <div className="topbar" style={{ display: 'grid', gridTemplateColumns: 'auto auto 1fr auto', gap: 18, alignItems: 'center', padding: '12px 16px', borderBottom: `1px solid ${C.line}`, background: C.topbarBg }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <img
-              src="/gibol-logo.svg"
+              src="/favicon-64.png"
               alt="gibol.co"
               width={26}
               height={26}

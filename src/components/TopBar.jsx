@@ -36,7 +36,7 @@ export default function TopBar({
         style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'inherit' }}
       >
         <img
-          src="/gibol-logo.svg"
+          src="/favicon-64.png"
           alt="gibol.co"
           width={28}
           height={28}
