@@ -6,7 +6,25 @@ import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
+// NBA first — it's the live product right now (playoff tip-off). Featured prominently in the hero area.
 const DASHBOARDS = [
+  {
+    id: 'nba',
+    href: '/nba-playoff-2026',
+    status: 'live',
+    featured: true, // renders as larger hero card
+    tag: 'LIVE',
+    title: 'NBA Playoffs 2026',
+    titleId: 'NBA Playoff 2026',
+    league: 'NBA · POSTSEASON',
+    blurb: 'Round 1 tips Apr 18 · OKC 44% title favorite · Polymarket odds + ESPN live scoring, play-by-play, box scores, injury report, watchlist, team path to title.',
+    blurbId: 'Babak 1 mulai 18 April · OKC unggulan juara 44% · peluang Polymarket + live score ESPN, play-by-play, statistik, laporan cedera, watchlist, jalan menuju juara.',
+    accent: '#e8502e',
+    launchDate: null,
+    glyph: '🏀',
+    cta: 'Masuk Dashboard →',
+    ctaId: 'Masuk Dashboard Live →',
+  },
   {
     id: 'recap',
     href: '/recap',
@@ -22,22 +40,6 @@ const DASHBOARDS = [
     glyph: '📖',
     cta: 'Baca hari ini →',
     ctaId: 'Baca hari ini →',
-  },
-  {
-    id: 'nba',
-    href: '/nba-playoff-2026',
-    status: 'live',
-    tag: 'LIVE',
-    title: 'NBA Playoffs 2026',
-    titleId: 'NBA Playoff 2026',
-    league: 'NBA · POSTSEASON',
-    blurb: 'Round 1 tips Apr 18 · OKC 44% title favorite · Polymarket odds + ESPN live scoring, play-by-play, box scores, injury report, watchlist, team path to title.',
-    blurbId: 'Babak 1 mulai 18 April · OKC unggulan juara 44% · peluang Polymarket + live score ESPN, play-by-play, statistik, laporan cedera, watchlist, jalan menuju juara.',
-    accent: '#e8502e',
-    launchDate: null,
-    glyph: '🏀',
-    cta: 'Enter →',
-    ctaId: 'Masuk →',
   },
   {
     id: 'ibl',
@@ -75,30 +77,45 @@ const DASHBOARDS = [
 
 function DashboardCard({ d, lang }) {
   const isLive = d.status === 'live';
+  const isFeatured = d.featured;
   const title = lang === 'id' ? d.titleId : d.title;
   const blurb = lang === 'id' ? d.blurbId : d.blurb;
   const cta = lang === 'id' ? d.ctaId : d.cta;
 
+  // Featured card = the primary CTA on home, visually hero-sized. Everything else
+  // stays secondary.
+  const padding = isFeatured ? '36px 32px' : '22px 24px';
+  const glyphSize = isFeatured ? 72 : 36;
+  const glyphBoxSize = isFeatured ? 96 : 56;
+  const titleSize = isFeatured ? 34 : 22;
+  const blurbSize = isFeatured ? 13 : 11;
+  const ctaFont = isFeatured ? 16 : 13;
+  const ctaPadding = isFeatured ? '14px 22px' : '8px 14px';
+  const leftBorder = isFeatured ? 6 : 4;
+
   const content = (
     <div style={{
-      padding: '22px 24px',
-      background: C.panelRow,
+      padding,
+      background: isFeatured
+        ? `linear-gradient(135deg, ${d.accent}28 0%, ${C.panelRow} 70%)`
+        : C.panelRow,
       border: `1px solid ${isLive ? d.accent : C.line}`,
-      borderLeft: `4px solid ${d.accent}`,
+      borderLeft: `${leftBorder}px solid ${d.accent}`,
       borderRadius: 4,
       display: 'grid',
       gridTemplateColumns: 'auto 1fr auto',
-      gap: 20,
+      gap: isFeatured ? 28 : 20,
       alignItems: 'center',
       transition: 'all 0.2s',
       cursor: isLive ? 'pointer' : 'default',
       opacity: isLive ? 1 : 0.85,
+      boxShadow: isFeatured ? `0 6px 28px -16px ${d.accent}` : 'none',
     }}
     className={isLive ? 'home-card-live' : 'home-card-soon'}
     >
       <div style={{
-        fontSize: 36, lineHeight: 1,
-        width: 56, height: 56, borderRadius: 4,
+        fontSize: glyphSize, lineHeight: 1,
+        width: glyphBoxSize, height: glyphBoxSize, borderRadius: 4,
         background: `${d.accent}20`,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexShrink: 0,
@@ -124,20 +141,20 @@ function DashboardCard({ d, lang }) {
         </div>
         <div style={{
           fontFamily: '"Space Grotesk", sans-serif',
-          fontSize: 22, fontWeight: 600, color: C.text,
+          fontSize: titleSize, fontWeight: 600, color: C.text,
           letterSpacing: -0.3,
         }}>
           {title}
         </div>
-        <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 640 }}>
+        <div style={{ fontSize: blurbSize, color: C.dim, lineHeight: 1.5, maxWidth: isFeatured ? 720 : 640 }}>
           {blurb}
         </div>
       </div>
 
       <div style={{
         fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: 13, fontWeight: 600,
-        padding: '8px 14px',
+        fontSize: ctaFont, fontWeight: 700,
+        padding: ctaPadding,
         background: isLive ? d.accent : 'transparent',
         color: isLive ? '#fff' : d.accent,
         border: isLive ? 'none' : `1px solid ${d.accent}`,
@@ -179,38 +196,29 @@ export default function Home() {
       <div className="dashboard-wrap">
         <TopBar />
 
-        {/* Hero */}
+        {/* Compact hero — wordmark-style, not a giant splash. Pushes NBA CTA above the fold. */}
         <div style={{
-          padding: '48px 24px 32px',
+          padding: '20px 24px 18px',
           borderBottom: `1px solid ${C.line}`,
           background: C.heroBg,
           textAlign: 'center',
         }}>
           <div style={{
             fontFamily: '"Bebas Neue", sans-serif',
-            fontSize: 68, lineHeight: 1, letterSpacing: -1,
-            color: C.text, marginBottom: 8,
+            fontSize: 38, lineHeight: 1, letterSpacing: -0.5,
+            color: C.text, marginBottom: 4,
           }}>
             {lang === 'id' ? heroTitleId : heroTitle}
           </div>
           <div style={{
-            fontSize: 13, color: C.dim, letterSpacing: 1, maxWidth: 560,
-            margin: '0 auto', lineHeight: 1.5,
+            fontSize: 12, color: C.dim, letterSpacing: 0.5,
+            maxWidth: 560, margin: '0 auto', lineHeight: 1.5,
           }}>
             {lang === 'id' ? heroSubId : heroSub}
-          </div>
-          {/* F08 — founder-fan hook line, the "why" behind gibol.co */}
-          <div style={{
-            marginTop: 12, fontSize: 12, color: C.text, letterSpacing: 0.3,
-            maxWidth: 560, margin: '12px auto 0', lineHeight: 1.5,
-            fontStyle: 'italic', opacity: 0.85,
-          }}>
-            — {lang === 'id' ? heroHookId : heroHookEn}
-          </div>
-          <div style={{
-            marginTop: 16, fontSize: 10, color: C.muted, letterSpacing: 1.5,
-          }}>
-            NBA · IBL · FIFA — {lang === 'id' ? 'ONE HUB, LIVE DATA' : 'ONE HUB, LIVE DATA'}
+            {' · '}
+            <span style={{ fontStyle: 'italic', opacity: 0.8 }}>
+              {lang === 'id' ? heroHookId : heroHookEn}
+            </span>
           </div>
         </div>
 

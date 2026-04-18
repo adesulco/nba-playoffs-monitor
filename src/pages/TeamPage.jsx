@@ -88,12 +88,20 @@ export default function TeamPage() {
     ? (lang === 'id' ? 'Wilayah Timur' : 'Eastern Conference')
     : (lang === 'id' ? 'Wilayah Barat' : 'Western Conference');
 
-  // F06 — non-playoff teams need explicit messaging so fans don't bounce confused.
-  // Teams with seed === null didn't qualify for the 2026 playoff bracket.
+  // F06 — team status logic. Three tiers:
+  //   1. didQualify — has a playoff seed (1-8), clearly in bracket
+  //   2. isPlayIn — still alive via play-in tournament (ORL, CHA, PHX, GSW for 2026)
+  //   3. eliminated — regular season ended outside conf top 10
   const didQualify = meta.seed !== null && meta.seed !== undefined;
+  const PLAY_IN_TEAMS = new Set(['Orlando Magic', 'Charlotte Hornets', 'Phoenix Suns', 'Golden State Warriors']);
+  const isPlayIn = !didQualify && PLAY_IN_TEAMS.has(teamName);
+  const isEliminated = !didQualify && !isPlayIn;
+
   const seedLabel = didQualify
     ? `#${meta.seed} ${lang === 'id' ? 'Unggulan' : 'Seed'}`
-    : (lang === 'id' ? 'Tidak Lolos Playoff' : 'Did Not Qualify');
+    : isPlayIn
+      ? (lang === 'id' ? 'Play-In · Malam Ini' : 'Play-In · Tonight')
+      : (lang === 'id' ? 'Tidak Lolos Playoff' : 'Did Not Qualify');
 
   // ─── SEO ───────────────────────────────────────────────────────────
   const seoTitle = lang === 'id'
@@ -220,9 +228,40 @@ export default function TeamPage() {
         {/* ─── Body ─────────────────────────────────────────────── */}
         <div style={{ padding: '20px 16px' }}>
 
-          {/* F06 — non-playoff team banner. Clear, immediate message so users
-              who googled "skor lakers" don't bounce confused. */}
-          {!didQualify && (
+          {/* F06 — team-status banners.
+              Play-in teams get positive messaging (they're still alive tonight).
+              Eliminated teams get the "tidak lolos" callout. */}
+          {isPlayIn && (
+            <div style={{
+              padding: '16px 18px',
+              marginBottom: 14,
+              background: '#0a2a1a',
+              border: '1px solid #1f7c44',
+              borderLeft: '4px solid #3ddb84',
+              borderRadius: 4,
+              fontSize: 13,
+              lineHeight: 1.6,
+            }}>
+              <div style={{
+                fontSize: 10, letterSpacing: 2, color: '#3ddb84', fontWeight: 700,
+                marginBottom: 6, textTransform: 'uppercase',
+              }}>
+                {lang === 'id' ? '⚡ Malam Ini · Final Play-In' : '⚡ Tonight · Play-In Finale'}
+              </div>
+              <div style={{ color: C.text, marginBottom: 8 }}>
+                {lang === 'id'
+                  ? <>{teamName} main di final play-in malam ini. Satu kemenangan lagi untuk mengunci seed #8 dan lolos ke Ronde 1 Playoff.</>
+                  : <>{teamName} plays the play-in finale tonight. One win away from locking the #8 seed and advancing to Round 1.</>}
+              </div>
+              <div style={{ color: C.dim, fontSize: 11.5 }}>
+                {lang === 'id'
+                  ? <>Pantau live di <a href="/nba-playoff-2026" style={{ color: '#3ddb84', textDecoration: 'none', fontWeight: 600 }}>dashboard gibol.co →</a> — skor real-time, play-by-play, dan win probability.</>
+                  : <>Follow live at <a href="/nba-playoff-2026" style={{ color: '#3ddb84', textDecoration: 'none', fontWeight: 600 }}>the gibol.co dashboard →</a> — real-time score, play-by-play, win probability.</>}
+              </div>
+            </div>
+          )}
+
+          {isEliminated && (
             <div style={{
               padding: '16px 18px',
               marginBottom: 14,
@@ -241,14 +280,14 @@ export default function TeamPage() {
               </div>
               <div style={{ color: C.text, marginBottom: 8 }}>
                 {lang === 'id'
-                  ? <>{teamName} tidak berkompetisi di Playoff NBA 2026. Musim reguler sudah selesai dan tim finis di luar 8 besar wilayah.</>
-                  : <>{teamName} did not qualify for the 2026 NBA Playoffs. Their regular season ended outside the conference's top 8.</>}
+                  ? <>{teamName} tidak berkompetisi di Playoff NBA 2026. Musim reguler sudah selesai dan tim finis di luar 10 besar wilayah.</>
+                  : <>{teamName} did not qualify for the 2026 NBA Playoffs. Their regular season ended outside the conference's top 10.</>}
               </div>
               <div style={{ color: C.dim, fontSize: 11.5 }}>
                 {lang === 'id'
-                  ? <>Kami tetap menampilkan rekor musim reguler, statistik pemain, dan laporan cedera di halaman ini untuk fan yang ingin tetap mengikuti tim favoritnya.{' '}
+                  ? <>Kami tetap menampilkan rekor musim reguler dan statistik pemain di halaman ini.{' '}
                       <a href="/nba-playoff-2026" style={{ color: '#ffb347', textDecoration: 'none', fontWeight: 600 }}>Lihat tim yang lolos playoff →</a></>
-                  : <>We still show regular-season record, player stats, and injury report here for fans who want to follow their team.{' '}
+                  : <>We still show regular-season record and player stats here.{' '}
                       <a href="/nba-playoff-2026" style={{ color: '#ffb347', textDecoration: 'none', fontWeight: 600 }}>See teams that qualified →</a></>}
               </div>
             </div>
@@ -407,7 +446,9 @@ export default function TeamPage() {
                   <strong>{teamName}</strong> ({meta.abbr}) adalah tim NBA yang berkompetisi di {confLabel} pada Playoffs NBA 2025–26.
                   {meta.seed ? ` Tim menduduki peringkat unggulan #${meta.seed} dengan rekor reguler season ${record.str || '—'}.` : ` Tim harus melewati babak play-in untuk masuk bracket playoff.`}
                   {' '}Bintang utama tim adalah <strong>{meta.star}</strong>.
-                  {myOdds ? ` Peluang juara NBA 2026 tim berdasarkan pasar prediksi Polymarket saat ini adalah <strong>${myOdds.pct}%</strong>.` : ''}
+                  {myOdds && (
+                    <> Peluang juara NBA 2026 tim berdasarkan pasar prediksi Polymarket saat ini adalah <strong>{myOdds.pct}%</strong>.</>
+                  )}
                 </p>
                 <p>
                   Pantau skor live <strong>{nickname}</strong> di setiap laga Playoff 2026 langsung dari gibol.co — win probability real-time, play-by-play tick-by-tick,
@@ -426,7 +467,9 @@ export default function TeamPage() {
                   <strong>{teamName}</strong> ({meta.abbr}) is an NBA team competing in the {confLabel} during the 2025–26 Playoffs.
                   {meta.seed ? ` The team holds the #${meta.seed} seed with a regular season record of ${record.str || '—'}.` : ` The team must navigate the play-in tournament to reach the bracket.`}
                   {' '}Their franchise star is <strong>{meta.star}</strong>.
-                  {myOdds ? ` Their current 2026 NBA championship odds on Polymarket are <strong>${myOdds.pct}%</strong>.` : ''}
+                  {myOdds && (
+                    <> Their current 2026 NBA championship odds on Polymarket are <strong>{myOdds.pct}%</strong>.</>
+                  )}
                 </p>
                 <p>
                   Track live <strong>{nickname}</strong> scores from every 2026 Playoff game directly on gibol.co — real-time win probability, tick-by-tick play-by-play,

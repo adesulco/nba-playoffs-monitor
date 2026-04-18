@@ -143,15 +143,18 @@ function GameCard({ g, favTeam, isActive, onClick, injuries, streaks, lang }) {
       onMouseEnter={(e) => { if (onClick && !isActive) e.currentTarget.style.background = 'var(--hover)'; }}
       onMouseLeave={(e) => { if (onClick && !isActive) e.currentTarget.style.background = favInGame ? `${favColor}14` : 'transparent'; }}
     >
-      {isActive && (
-        <div style={{ position: 'absolute', top: 6, right: 6, fontSize: 8, letterSpacing: 0.5, color: C.amber, fontWeight: 600 }}>● FOLLOWING</div>
-      )}
+      {/* Moved to bottom-left status row so it no longer overlaps the big score text */}
       <Row abbr={g.away?.abbr} nickname={awayNickname} meta={awayMeta} score={awayScore} won={awayWon} record={g.away?.record} streak={streaks?.[g.away?.abbr]} />
       <Row abbr={g.home?.abbr} nickname={homeNickname} meta={homeMeta} score={homeScore} won={homeWon} record={g.home?.record} streak={streaks?.[g.home?.abbr]} />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, fontSize: 10, paddingTop: 6, borderTop: `1px solid ${C.lineSoft}` }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: isLive ? C.green : isFinal ? C.dim : '#ffb347' }}>
           {isLive && <span className="live-dot" style={{ background: C.red }} />}
           <span style={{ letterSpacing: 0.3 }}>{localizeGameStatus(g.status, g.date, g.statusState, lang) || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}</span>
+          {isActive && (
+            <span style={{ fontSize: 8, letterSpacing: 0.5, color: C.amber, fontWeight: 600, marginLeft: 4 }}>
+              ● FOLLOWING
+            </span>
+          )}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <InjuryBadge awayAbbr={g.away?.abbr} homeAbbr={g.home?.abbr} injuries={injuries} />

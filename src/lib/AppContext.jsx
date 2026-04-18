@@ -24,10 +24,12 @@ export function AppProvider({ children }) {
 
   const [lang, setLang] = useState(() => {
     try {
+      // Respect the user's explicit choice if they've toggled before.
       const saved = localStorage.getItem(LANG_STORAGE_KEY);
       if (saved === 'en' || saved === 'id') return saved;
-      if ((navigator.language || '').toLowerCase().startsWith('id')) return 'id';
     } catch {}
+    // Default to English for all first-time visitors regardless of browser locale.
+    // Users can flip to Bahasa Indonesia via the ID/EN toggle in the TopBar.
     return 'en';
   });
 
