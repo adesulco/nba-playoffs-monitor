@@ -101,13 +101,12 @@ function BigMomentHero({ moment, lang, accent }) {
   );
 }
 
-function GameRecapCard({ game, summary, topPerformer, lang }) {
+function GameRecapCard({ game, summary, topPerformer, narrative, lang }) {
   const awayMeta = TEAM_META[byAbbr(game.away?.abbr)] || { color: '#555' };
   const homeMeta = TEAM_META[byAbbr(game.home?.abbr)] || { color: '#777' };
   const wonByAway = game.away?.winner;
   const wonByHome = game.home?.winner;
   const winnerColor = wonByAway ? awayMeta.color : homeMeta.color;
-  const margin = Math.abs(parseInt(game.away?.score || 0) - parseInt(game.home?.score || 0));
 
   return (
     <div style={{
@@ -126,42 +125,51 @@ function GameRecapCard({ game, summary, topPerformer, lang }) {
         <TeamScore abbr={game.home?.abbr} score={game.home?.score} won={wonByHome} color={homeMeta.color} align="right" />
       </div>
 
-      {/* Narrative */}
+      {/* 1–2 sentence storyline (lang-aware from hook) + top performer chip */}
       <div style={{
-        padding: '10px 18px',
+        padding: '12px 18px 14px',
         borderTop: `1px solid ${C.lineSoft}`,
         background: C.panelSoft,
-        display: 'grid',
-        gridTemplateColumns: topPerformer ? 'auto 1fr' : '1fr',
-        gap: 12,
-        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10,
       }}>
+        {/* Narrative — 1-2 sentences describing what happened in the game */}
+        {narrative && (
+          <div style={{ fontSize: 12, color: C.text, lineHeight: 1.5, letterSpacing: 0.1 }}>
+            {narrative}
+          </div>
+        )}
+
+        {/* Top performer chip — links to ESPN player page */}
         {topPerformer && (
           <a
             href={topPerformer.id ? `https://www.espn.com/nba/player/_/id/${topPerformer.id}` : '#'}
             target={topPerformer.id ? '_blank' : undefined}
             rel={topPerformer.id ? 'noopener noreferrer' : undefined}
-            style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: 10 }}
+            style={{
+              textDecoration: 'none', color: 'inherit',
+              display: 'inline-flex', alignItems: 'center', gap: 10,
+              padding: '6px 10px 6px 6px',
+              background: `${winnerColor}18`,
+              border: `1px solid ${winnerColor}40`,
+              borderRadius: 20,
+              alignSelf: 'flex-start',
+              maxWidth: '100%',
+            }}
           >
-            <PlayerHead id={topPerformer.id} name={topPerformer.name} color={winnerColor} size={36} />
-            <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: 12, color: C.text, fontWeight: 600, whiteSpace: 'nowrap' }}>
+            <PlayerHead id={topPerformer.id} name={topPerformer.name} color={winnerColor} size={28} />
+            <div style={{ minWidth: 0, display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
+              <span style={{ fontSize: 11.5, color: C.text, fontWeight: 600, whiteSpace: 'nowrap' }}>
                 {topPerformer.short || topPerformer.name}
-              </div>
-              <div style={{ fontSize: 10, color: C.dim }}>
+              </span>
+              <span style={{ fontSize: 10, color: C.dim, letterSpacing: 0.3 }}>
                 <span style={{ color: winnerColor, fontWeight: 700 }}>{topPerformer.pts} PTS</span>
                 {' · '}{topPerformer.reb} REB · {topPerformer.ast} AST
-              </div>
+              </span>
             </div>
           </a>
         )}
-        <div style={{ fontSize: 11.5, color: C.dim, lineHeight: 1.45 }}>
-          {margin <= 3
-            ? (lang === 'id' ? `Selisih ${margin} poin — laga ketat sampai akhir.` : `${margin}-point thriller.`)
-            : margin >= 20
-            ? (lang === 'id' ? `Kemenangan dominan dengan selisih ${margin}.` : `Dominant ${margin}-point win.`)
-            : (lang === 'id' ? `Margin ${margin} poin.` : `Final margin: ${margin}.`)}
-        </div>
       </div>
     </div>
   );
@@ -271,20 +279,26 @@ export default function Recap() {
     if (!date) navigate(`/recap/${dateIso}`, { replace: true });
   }, [date, dateIso, navigate]);
 
-  const { games, summaries, topPerformers, biggestMoment, loading } = useDailyRecap(dateIso);
+  // lang is passed through so the hook rebuilds narratives + biggestMoment headline/caption
+  // whenever the user flips the EN/ID toggle.
+  const { games, summaries, topPerformers, narratives, biggestMoment, loading } = useDailyRecap(dateIso, lang);
   const url = `https://www.gibol.co/recap/${dateIso}`;
   const humanDate = formatJakartaDate(dateIso, lang);
   const accent = C.amber;
 
-  // Generate Bahasa-first dynamic title for SEO
+  // Dynamic title — biggestMoment.headline is already lang-aware from the hook.
   const seoTitle = biggestMoment
-    ? `${biggestMoment.headline} · Catatan Playoff NBA ${humanDate} | gibol.co`
+    ? (lang === 'id'
+        ? `${biggestMoment.headline} · Catatan Playoff NBA ${humanDate} | gibol.co`
+        : `${biggestMoment.headline} · NBA Playoff Recap ${humanDate} | gibol.co`)
     : (lang === 'id'
       ? `Catatan Playoff NBA · ${humanDate} | gibol.co`
       : `NBA Playoff Recap · ${humanDate} | gibol.co`);
 
   const seoDescription = biggestMoment
-    ? biggestMoment.caption + ' Hasil lengkap semua laga, top scorer, dan momen terbesar — hanya di gibol.co.'
+    ? (lang === 'id'
+        ? biggestMoment.caption + ' Hasil lengkap semua laga, top scorer, dan momen terbesar — hanya di gibol.co.'
+        : biggestMoment.caption + ' Full results, top performers, and the biggest moments — only on gibol.co.')
     : (lang === 'id'
       ? `Hasil lengkap NBA Playoff ${humanDate}. Skor akhir, top scorer, momen terbesar, dan analisis per laga. Catatan Playoff harian dari gibol.co.`
       : `Complete NBA Playoff results for ${humanDate}. Final scores, top performers, biggest moments, per-game analysis.`);
@@ -329,7 +343,11 @@ export default function Recap() {
         jsonLd={newsArticleJsonLd}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink title="gibol.co" subtitle="catatan playoff · live recap" />
+        <TopBar
+          showBackLink
+          title="gibol.co"
+          subtitle={lang === 'id' ? 'catatan playoff · recap harian' : 'playoff journal · daily recap'}
+        />
 
         {/* Date masthead */}
         <div style={{
@@ -432,6 +450,7 @@ export default function Recap() {
                   game={g}
                   summary={summaries[g.id]}
                   topPerformer={topPerformers[g.id]}
+                  narrative={narratives[g.id]}
                   lang={lang}
                 />
               ))}
@@ -486,7 +505,7 @@ export default function Recap() {
           fontSize: 9.5, color: C.muted, letterSpacing: 0.3,
           alignItems: 'center', flexWrap: 'wrap', gap: 8,
         }}>
-          <div>gibol.co · catatan playoff harian</div>
+          <div>gibol.co · {lang === 'id' ? 'catatan playoff harian' : 'daily playoff recap'}</div>
           <ContactBar lang={lang} variant="inline" />
           <div>ESPN · Polymarket</div>
         </div>

@@ -17,29 +17,31 @@ const DASHBOARDS = [
     title: 'NBA Playoffs 2026',
     titleId: 'NBA Playoff 2026',
     league: 'NBA · POSTSEASON',
-    blurb: 'Round 1 tips Apr 18 · OKC 44% title favorite · Polymarket odds + ESPN live scoring, play-by-play, box scores, injury report, watchlist, team path to title.',
-    blurbId: 'Babak 1 mulai 18 April · OKC unggulan juara 44% · peluang Polymarket + live score ESPN, play-by-play, statistik, laporan cedera, watchlist, jalan menuju juara.',
+    blurb: 'Round 1 tips tonight · OKC 44% favorite · live scores, play-by-play, bracket, odds.',
+    blurbId: 'Ronde 1 malam ini · OKC favorit juara 44% · skor live, play-by-play, bracket, peluang juara.',
     accent: '#e8502e',
     launchDate: null,
     glyph: '🏀',
-    cta: 'Masuk Dashboard →',
-    ctaId: 'Masuk Dashboard Live →',
+    cta: 'Enter →',
+    ctaId: 'Masuk →',
   },
   {
     id: 'recap',
     href: '/recap',
     status: 'live',
     tag: 'BARU',
-    title: 'Catatan Playoff · Recap Harian',
-    titleId: 'Catatan Playoff · Recap Harian NBA',
-    league: 'NBA · DAILY RECAP',
-    blurb: 'Hasil playoff kemarin dalam satu halaman — skor akhir, top scorer, momen terbesar. Tiap pagi, update otomatis. Shareable ke WhatsApp + Instagram.',
-    blurbId: 'Hasil playoff kemarin dalam satu halaman — skor akhir, top scorer, momen terbesar. Tiap pagi, update otomatis. Tinggal share ke WhatsApp atau Instagram.',
-    accent: '#ffb347',
+    title: 'Daily Recap',
+    titleId: 'Catatan Playoff',
+    league: 'NBA · DAILY',
+    blurb: 'Yesterday\'s playoff results — final scores, top scorers, biggest moments. Shareable.',
+    blurbId: 'Hasil playoff kemarin — skor akhir, top scorer, momen terbesar. Share-ready.',
+    // Deeper amber (#d97706) — #ffb347 was too pale against the cream light-theme
+    // background, making the border + CTA text nearly invisible. Works on both themes.
+    accent: '#d97706',
     launchDate: null,
     glyph: '📖',
-    cta: 'Baca hari ini →',
-    ctaId: 'Baca hari ini →',
+    cta: 'Read →',
+    ctaId: 'Baca →',
   },
   {
     id: 'ibl',
@@ -88,56 +90,57 @@ function DashboardCard({ d, lang }) {
     <div
       className="home-card-live home-featured"
       style={{
-        padding: '22px 24px',
+        padding: '12px 16px',
         background: `linear-gradient(135deg, ${d.accent}28 0%, ${C.panelRow} 70%)`,
         border: `1px solid ${d.accent}`,
-        borderLeft: `5px solid ${d.accent}`,
+        borderLeft: `4px solid ${d.accent}`,
         borderRadius: 4,
         display: 'grid',
         gridTemplateColumns: 'auto 1fr auto',
-        gap: 20,
+        gap: 14,
         alignItems: 'center',
         transition: 'all 0.2s',
         cursor: 'pointer',
-        boxShadow: `0 6px 24px -14px ${d.accent}`,
+        boxShadow: `0 4px 18px -12px ${d.accent}`,
       }}
     >
       <div style={{
-        fontSize: 44, lineHeight: 1,
-        width: 72, height: 72, borderRadius: 4,
+        fontSize: 30, lineHeight: 1,
+        width: 52, height: 52, borderRadius: 4,
         background: `${d.accent}20`,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         flexShrink: 0,
       }}>{d.glyph}</div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{
-            fontSize: 9, letterSpacing: 1.2, fontWeight: 700,
-            padding: '2px 7px',
+            fontSize: 8.5, letterSpacing: 1.2, fontWeight: 700,
+            padding: '2px 6px',
             background: d.accent, color: '#fff',
             borderRadius: 2,
           }}>
-            <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: '#fff', marginRight: 4, verticalAlign: 'middle' }} />
+            <span style={{ display: 'inline-block', width: 4, height: 4, borderRadius: '50%', background: '#fff', marginRight: 3, verticalAlign: 'middle' }} />
             {d.tag}
           </span>
-          <span style={{ fontSize: 9.5, color: C.dim, letterSpacing: 1, fontWeight: 500 }}>{d.league}</span>
+          <span style={{ fontSize: 9, color: C.dim, letterSpacing: 1, fontWeight: 500 }}>{d.league}</span>
         </div>
         <div style={{
           fontFamily: '"Space Grotesk", sans-serif',
-          fontSize: 26, fontWeight: 600, color: C.text, letterSpacing: -0.3,
+          fontSize: 19, fontWeight: 600, color: C.text, letterSpacing: -0.2,
+          lineHeight: 1.2,
         }}>
           {title}
         </div>
-        <div style={{ fontSize: 11.5, color: C.dim, lineHeight: 1.5, maxWidth: 780 }}>
+        <div style={{ fontSize: 10.5, color: C.dim, lineHeight: 1.4, maxWidth: 680 }}>
           {blurb}
         </div>
       </div>
 
       <div className="home-featured-cta" style={{
         fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: 14, fontWeight: 700,
-        padding: '11px 18px',
+        fontSize: 12, fontWeight: 700,
+        padding: '8px 14px',
         background: d.accent, color: '#fff',
         borderRadius: 3,
         whiteSpace: 'nowrap',
@@ -152,29 +155,29 @@ function DashboardCard({ d, lang }) {
     <div
       className={isLive ? 'home-card-live home-secondary' : 'home-card-soon home-secondary'}
       style={{
-        padding: '14px 16px',
+        padding: '12px 14px',
         background: C.panelRow,
         border: `1px solid ${isLive ? d.accent : C.line}`,
         borderLeft: `3px solid ${d.accent}`,
         borderRadius: 4,
-        display: 'flex', flexDirection: 'column', gap: 8,
-        minHeight: 150, height: '100%',
+        display: 'flex', flexDirection: 'column', gap: 6,
+        minHeight: 120, height: '100%',
         transition: 'all 0.2s',
         cursor: isLive ? 'pointer' : 'default',
         opacity: isLive ? 1 : 0.82,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <div style={{
-          fontSize: 22, lineHeight: 1,
-          width: 36, height: 36, borderRadius: 3,
+          fontSize: 18, lineHeight: 1,
+          width: 30, height: 30, borderRadius: 3,
           background: `${d.accent}20`,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0,
         }}>{d.glyph}</div>
         <span style={{
-          fontSize: 8.5, letterSpacing: 1.2, fontWeight: 700,
-          padding: '2px 6px',
+          fontSize: 8, letterSpacing: 1.2, fontWeight: 700,
+          padding: '2px 5px',
           background: isLive ? d.accent : 'transparent',
           color: isLive ? '#fff' : d.accent,
           border: isLive ? 'none' : `1px solid ${d.accent}`,
@@ -186,17 +189,17 @@ function DashboardCard({ d, lang }) {
       </div>
       <div style={{
         fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: 15, fontWeight: 600, color: C.text, letterSpacing: -0.2,
-        lineHeight: 1.25,
+        fontSize: 14, fontWeight: 600, color: C.text, letterSpacing: -0.2,
+        lineHeight: 1.2,
       }}>
         {title}
       </div>
-      <div style={{ fontSize: 10.5, color: C.dim, lineHeight: 1.45, flex: 1 }}>
+      <div style={{ fontSize: 10, color: C.dim, lineHeight: 1.4, flex: 1 }}>
         {blurb}
       </div>
       <div style={{
         fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: 11, fontWeight: 700,
+        fontSize: 10.5, fontWeight: 700,
         color: isLive ? d.accent : C.muted,
         letterSpacing: 0.5,
         textTransform: 'uppercase',
@@ -234,29 +237,11 @@ export default function Home() {
         keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, IBL, liga basket indonesia, FIFA world cup 2026, piala dunia 2026"
       />
       <div className="dashboard-wrap">
-        <TopBar />
-
-        {/* Ultra-compact hero — wordmark line + tagline. Keeps dashboard grid above the fold. */}
-        <div style={{
-          padding: '14px 20px 12px',
-          borderBottom: `1px solid ${C.line}`,
-          background: C.heroBg,
-          textAlign: 'center',
-        }}>
-          <div style={{
-            fontFamily: '"Bebas Neue", sans-serif',
-            fontSize: 28, lineHeight: 1, letterSpacing: -0.3,
-            color: C.text, marginBottom: 2,
-          }}>
-            {lang === 'id' ? heroTitleId : heroTitle}
-          </div>
-          <div style={{
-            fontSize: 11, color: C.dim, letterSpacing: 0.3,
-            maxWidth: 560, margin: '0 auto', lineHeight: 1.4,
-          }}>
-            {lang === 'id' ? heroSubId : heroSub}
-          </div>
-        </div>
+        {/* TopBar (gibol logo + lang/theme toggles) carries the brand.
+            No separate hero block — saves ~80px so all dashboards fit above the fold. */}
+        <TopBar
+          subtitle={lang === 'id' ? 'gila bola · dashboard live olahraga' : 'gila bola · live sports dashboards'}
+        />
 
         {/* Dashboard grid — NBA featured card spans full width, 3 secondary cards
             share a row below on desktop, collapse to 1 column on mobile. Designed

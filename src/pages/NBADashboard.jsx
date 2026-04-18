@@ -192,11 +192,16 @@ export default function NBADashboard() {
     }
   }
 
-  // Active match to follow (live game focus)
+  // Active match to follow (live game focus).
+  // `userDismissed` flips to true when the user clicks CLOSE FOCUS — this prevents
+  // the auto-select effect from immediately re-opening the panel with a live game.
+  // Clicking any GameCard afterwards resets it (handleGameCardClick below).
   const [activeMatchId, setActiveMatchId] = useState(null);
-  // Auto-select the first live game, falling back to the first upcoming game
+  const [userDismissed, setUserDismissed] = useState(false);
+  // Auto-select the first live game, falling back to the first upcoming game.
+  // Skipped once the user has explicitly dismissed the focus for this session.
   useEffect(() => {
-    if (activeMatchId) return;
+    if (activeMatchId || userDismissed) return;
     const live = games.find((g) => g.statusState === 'in');
     if (live) { setActiveMatchId(live.id); return; }
     // Else: if user's team is playing today, pick that
@@ -205,7 +210,13 @@ export default function NBADashboard() {
       const favGame = games.find((g) => g.away?.abbr === favAbbr || g.home?.abbr === favAbbr);
       if (favGame) setActiveMatchId(favGame.id);
     }
-  }, [games, activeMatchId, favMeta]);
+  }, [games, activeMatchId, favMeta, userDismissed]);
+
+  // Clicking a GameCard always wins: re-engage focus even if user had dismissed.
+  const handleGameCardClick = (id) => {
+    setUserDismissed(false);
+    setActiveMatchId(id);
+  };
 
   // Series standings for bracket watermark
   const { seriesMap } = useSeriesState('2026-04-18', '2026-05-03');
@@ -428,14 +439,14 @@ export default function NBADashboard() {
             {games.length === 0 && [
               { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, date: '2026-04-17T23:30:00Z', status: 'FRI 7:30 PM ET', statusState: 'pre' },
               { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, date: '2026-04-18T02:00:00Z', status: 'FRI 10:00 PM ET', statusState: 'pre' },
-            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => setActiveMatchId(g.id)} injuries={injuriesByTeam} streaks={streaks} lang={lang} />)}
+            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => handleGameCardClick(g.id)} injuries={injuriesByTeam} streaks={streaks} lang={lang} />)}
             {games.slice(0, 6).map((g, i) => (
               <GameCard
                 key={g.id || i}
                 g={g}
                 favTeam={favTeam}
                 isActive={activeMatchId === g.id}
-                onClick={() => setActiveMatchId(g.id)}
+                onClick={() => handleGameCardClick(g.id)}
                 injuries={injuriesByTeam}
                 streaks={streaks}
                 lang={lang}
@@ -450,7 +461,7 @@ export default function NBADashboard() {
           favTeam={favTeam}
           accent={accent}
           injuries={injuriesByTeam}
-          onClose={() => setActiveMatchId(null)}
+          onClose={() => { setActiveMatchId(null); setUserDismissed(true); }}
           summary={focusSummary}
           winProb={focusWinProb}
           lastUpdate={focusLastUpdate}
