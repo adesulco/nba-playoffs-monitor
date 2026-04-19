@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useYesterday } from '../hooks/useYesterday.js';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
+import { useApp } from '../lib/AppContext.jsx';
 
 export default function YesterdayRecap({ favTeam, t }) {
   const [collapsed, setCollapsed] = useState(false);
   const { games, loading } = useYesterday();
+  const { lang } = useApp();
 
   if (loading || games.length === 0) return null;
 
@@ -12,7 +15,10 @@ export default function YesterdayRecap({ favTeam, t }) {
   const byAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
 
   const d = new Date(Date.now() - 24 * 60 * 60 * 1000);
-  const dateLabel = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  const dateLabel = d.toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  const dateIso = d.toISOString().slice(0, 10);
+  const recapHref = `/recap/${dateIso}`;
+  const recapLabel = lang === 'id' ? 'Baca catatan →' : 'Read recap →';
 
   return (
     <div style={{ borderBottom: `1px solid ${C.line}`, background: C.panelSoft }}>
@@ -36,8 +42,20 @@ export default function YesterdayRecap({ favTeam, t }) {
             {games.length} {games.length === 1 ? 'game' : 'games'}
           </span>
         </span>
-        <span style={{ fontSize: 9.5, color: C.muted, letterSpacing: 0.5 }}>
-          {collapsed ? t('show') : t('hide')} ↕
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+          <Link
+            to={recapHref}
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              fontSize: 9.5, letterSpacing: 0.5, color: C.amber,
+              textDecoration: 'none', fontWeight: 600,
+            }}
+          >
+            {recapLabel}
+          </Link>
+          <span style={{ fontSize: 9.5, color: C.muted, letterSpacing: 0.5 }}>
+            {collapsed ? t('show') : t('hide')} ↕
+          </span>
         </span>
       </button>
 

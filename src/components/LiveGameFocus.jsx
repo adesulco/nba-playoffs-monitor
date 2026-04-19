@@ -3,6 +3,116 @@ import { useGameDetails } from '../hooks/useGameDetails.js';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
 import PlayerHead from './PlayerHead.jsx';
 import WatchStar from './WatchStar.jsx';
+import { useApp } from '../lib/AppContext.jsx';
+
+// ---- share helpers (mirrors DayScoreboard ShareBtn, scoped to the focused game) ----
+function buildFocusShareText(s, lang) {
+  if (!s) return '';
+  const isLive = s.statusState === 'in';
+  const isFinal = s.statusState === 'post';
+  const a = s.awayAbbr || '—';
+  const h = s.homeAbbr || '—';
+  const as = s.awayScore ?? '0';
+  const hs = s.homeScore ?? '0';
+  if (isLive) {
+    const clock = s.clock ? `Q${s.period || '?'} ${s.clock}` : 'LIVE';
+    return lang === 'id'
+      ? `${a} ${as} – ${hs} ${h} · ${clock} · live-update-nya di gibol.co 🏀`
+      : `${a} ${as} – ${hs} ${h} · ${clock} · live updates at gibol.co 🏀`;
+  }
+  if (isFinal) {
+    return lang === 'id'
+      ? `FINAL · ${a} ${as} – ${hs} ${h} · recap + bracket di gibol.co 🏀`
+      : `FINAL · ${a} ${as} – ${hs} ${h} · recap + bracket at gibol.co 🏀`;
+  }
+  return '';
+}
+
+function FocusShareBtn({ summary, lang, accent }) {
+  const [copied, setCopied] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const isLive = summary?.statusState === 'in';
+  const isFinal = summary?.statusState === 'post';
+  if (!summary || (!isLive && !isFinal)) return null;
+
+  const text = buildFocusShareText(summary, lang);
+  const eventId = summary.eventId || summary.id;
+  const url = eventId
+    ? `https://www.gibol.co/nba-playoff-2026?game=${eventId}`
+    : 'https://www.gibol.co/nba-playoff-2026';
+  const encT = encodeURIComponent(text);
+  const encU = encodeURIComponent(url);
+  const waLink = `https://api.whatsapp.com/send?text=${encT}%20${encU}`;
+  const xLink  = `https://twitter.com/intent/tweet?text=${encT}&url=${encU}`;
+  const thLink = `https://www.threads.net/intent/post?text=${encT}%20${encU}`;
+
+  async function onShare(e) {
+    e.stopPropagation();
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try { await navigator.share({ title: 'gibol.co', text, url }); return; }
+      catch (_) { /* cancelled — fall through */ }
+    }
+    setMenuOpen((v) => !v);
+  }
+  async function copyLink(e) {
+    e.stopPropagation();
+    try {
+      await navigator.clipboard?.writeText(`${text} ${url}`);
+      setCopied(true);
+      setMenuOpen(false);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (_) {}
+  }
+
+  const chip = {
+    display: 'inline-flex', alignItems: 'center', gap: 4,
+    padding: '3px 8px',
+    fontSize: 10, letterSpacing: 0.5, fontWeight: 600,
+    borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit',
+    whiteSpace: 'nowrap', textDecoration: 'none',
+  };
+  const label = copied ? (lang === 'id' ? '✓ Tersalin' : '✓ Copied') : (lang === 'id' ? 'Bagikan' : 'Share');
+
+  return (
+    <span style={{ position: 'relative', display: 'inline-flex', marginRight: 6 }}>
+      <button
+        type="button"
+        onClick={onShare}
+        title={text}
+        style={{
+          ...chip,
+          background: copied ? C.green : 'transparent',
+          border: `1px solid ${copied ? C.green : accent || C.lineSoft}`,
+          color: copied ? '#fff' : accent || C.dim,
+        }}
+      >
+        ↗ {label}
+      </button>
+      {menuOpen && (
+        <div
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            position: 'absolute', top: 'calc(100% + 4px)', right: 0, zIndex: 20,
+            display: 'flex', gap: 4, padding: 4,
+            background: C.panel, border: `1px solid ${C.line}`, borderRadius: 4,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.35)',
+          }}
+        >
+          <a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
+             style={{ ...chip, background: '#25D366', color: '#fff', border: 'none' }}>WA</a>
+          <a href={xLink} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
+             style={{ ...chip, background: '#000', color: '#fff', border: 'none' }}>X</a>
+          <a href={thLink} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
+             style={{ ...chip, background: '#101010', color: '#fff', border: `1px solid #333` }}>Threads</a>
+          <button type="button" onClick={copyLink}
+                  style={{ ...chip, background: C.panelRow, color: C.text, border: `1px solid ${C.line}` }}>
+            {lang === 'id' ? 'Salin' : 'Copy'}
+          </button>
+        </div>
+      )}
+    </span>
+  );
+}
 
 /**
  * Derive the most recent scoring run from the play list.
@@ -418,6 +528,7 @@ function InjuryList({ abbr, list, color }) {
 }
 
 export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onClose, summary, winProb, lastUpdate, watchlist, h2h }) {
+  const { lang } = useApp();
   const tickerRef = useRef(null);
   const [rightTab, setRightTab] = useState('plays'); // 'plays' | 'stats' | 'shots'
 
@@ -473,12 +584,19 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
             </span>
           )}
         </div>
-        <button
-          onClick={onClose}
-          style={{ background: 'transparent', border: `1px solid ${C.lineSoft}`, color: C.dim, fontSize: 10, padding: '3px 8px', borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: 0.5 }}
-        >
-          × CLOSE FOCUS
-        </button>
+        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
+          <FocusShareBtn
+            summary={summary ? { ...summary, eventId } : null}
+            lang={lang}
+            accent={isLive ? C.green : accent}
+          />
+          <button
+            onClick={onClose}
+            style={{ background: 'transparent', border: `1px solid ${C.lineSoft}`, color: C.dim, fontSize: 10, padding: '3px 8px', borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: 0.5 }}
+          >
+            × CLOSE FOCUS
+          </button>
+        </div>
       </div>
 
       {/* Scoring run banner */}

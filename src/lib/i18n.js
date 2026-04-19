@@ -96,6 +96,15 @@ export const LOCALES = {
     by: 'by',
     blowout: 'BLOWOUT',
 
+    // Catatan Playoff (daily recap brand/label)
+    catatanPlayoff: 'Playoff Notes',
+    catatanPlayoffSub: 'Daily Playoff Recap',
+    catatanPlayoffLead: 'Daily playoff recap — a screenshot-ready wrap of every game.',
+    catatanTodays: "Today's Playoff Notes",
+    catatanYesterdays: "Yesterday's Playoff Notes",
+    catatanDaily: 'Daily Playoff Recap',
+    readRecap: 'Read recap',
+
     // Footer
     poll: 'Poll',
     last: 'last',
@@ -202,6 +211,15 @@ export const LOCALES = {
     hide: 'sembunyikan',
     by: 'selisih',
     blowout: 'KEMENANGAN TELAK',
+
+    // Catatan Playoff (brand lokal — tidak diterjemahkan di versi ID)
+    catatanPlayoff: 'Catatan Playoff',
+    catatanPlayoffSub: 'Catatan Playoff harian',
+    catatanPlayoffLead: 'Catatan Playoff harian — rekap semua laga siap di-screenshot.',
+    catatanTodays: 'Catatan Playoff Hari Ini',
+    catatanYesterdays: 'Catatan Playoff Kemarin',
+    catatanDaily: 'Catatan Playoff harian',
+    readRecap: 'Baca catatan',
 
     // Footer
     poll: 'Poll',

@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useEffect, useState, useCallback } from 'react';
 import { useApp } from '../lib/AppContext.jsx';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
-import { formatKickoff, getUserTzLabel } from '../lib/timezone.js';
+import { formatKickoff, getUserTzLabel, localizeGameStatus } from '../lib/timezone.js';
 
 // ---- date helpers (locale-aware via Intl) -----------------------------------
 
@@ -95,35 +95,39 @@ function OddsBar({ winProb, awayAbbr, homeAbbr, awayColor, homeColor }) {
 
 function ShareBtn({ g, lang, accent }) {
   const [copied, setCopied] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const isLive = g.statusState === 'in';
   const isFinal = g.statusState === 'post';
   if (!isLive && !isFinal) return null; // Only for live / final.
   const text = isLive ? buildLiveShareText(g) : buildFinalShareText(g);
   const url = GAME_SHARE_URL(g);
-  const waLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}%20${encodeURIComponent(url)}`;
+  const encodedText = encodeURIComponent(text);
+  const encodedUrl = encodeURIComponent(url);
+  const waLink = `https://api.whatsapp.com/send?text=${encodedText}%20${encodedUrl}`;
+  const xLink  = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+  const thLink = `https://www.threads.net/intent/post?text=${encodedText}%20${encodedUrl}`;
 
   async function onShare(e) {
     e.stopPropagation();
-    // Prefer native Web Share (WhatsApp sits natively on Android/iOS);
-    // fall back to WhatsApp deep-link, then clipboard.
+    // Prefer native Web Share on mobile — the OS sheet already offers WhatsApp,
+    // X, Threads, and friends natively. On desktop or where navigator.share
+    // is missing, open our own mini-menu with WA/X/Threads/copy.
     const payload = { title: 'gibol.co', text, url };
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share(payload);
         return;
-      } catch (_) {
-        // User cancelled or share failed — fall through.
-      }
+      } catch (_) { /* cancelled — fall through to menu */ }
     }
-    // Try WhatsApp deep link as the default Indonesian surface.
-    try {
-      window.open(waLink, '_blank', 'noopener,noreferrer');
-      return;
-    } catch (_) {}
-    // Clipboard fallback
+    setMenuOpen((v) => !v);
+  }
+
+  async function copyLink(e) {
+    e.stopPropagation();
     try {
       await navigator.clipboard?.writeText(`${text} ${url}`);
       setCopied(true);
+      setMenuOpen(false);
       setTimeout(() => setCopied(false), 1500);
     } catch (_) {}
   }
@@ -132,24 +136,71 @@ function ShareBtn({ g, lang, accent }) {
     ? (lang === 'id' ? '✓ Tersalin' : '✓ Copied')
     : (lang === 'id' ? 'Bagikan' : 'Share');
 
+  const chip = {
+    display: 'inline-flex', alignItems: 'center', gap: 4,
+    padding: '3px 7px',
+    fontSize: 9, letterSpacing: 0.4, fontWeight: 600,
+    borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit',
+    whiteSpace: 'nowrap', textDecoration: 'none',
+  };
+
   return (
-    <button
-      type="button"
-      onClick={onShare}
-      title={text}
-      style={{
-        display: 'inline-flex', alignItems: 'center', gap: 4,
-        padding: '3px 7px',
-        background: copied ? C.green : 'transparent',
-        border: `1px solid ${copied ? C.green : accent || C.lineSoft}`,
-        color: copied ? '#fff' : accent || C.text,
-        fontSize: 9, letterSpacing: 0.4, fontWeight: 600,
-        borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit',
-        whiteSpace: 'nowrap',
-      }}
-    >
-      <span aria-hidden="true">↗</span>{label}
-    </button>
+    <span style={{ position: 'relative', display: 'inline-flex' }}>
+      <button
+        type="button"
+        onClick={onShare}
+        title={text}
+        style={{
+          ...chip,
+          background: copied ? C.green : 'transparent',
+          border: `1px solid ${copied ? C.green : accent || C.lineSoft}`,
+          color: copied ? '#fff' : accent || C.text,
+        }}
+      >
+        <span aria-hidden="true">↗</span>{label}
+      </button>
+
+      {menuOpen && (
+        <div
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            position: 'absolute',
+            top: 'calc(100% + 4px)',
+            right: 0,
+            zIndex: 20,
+            display: 'flex', gap: 4,
+            padding: 4,
+            background: C.panel,
+            border: `1px solid ${C.line}`,
+            borderRadius: 4,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.35)',
+          }}
+        >
+          <a href={waLink} target="_blank" rel="noopener noreferrer"
+             onClick={() => setMenuOpen(false)}
+             style={{ ...chip, background: '#25D366', color: '#fff', border: 'none' }}>
+            WA
+          </a>
+          <a href={xLink} target="_blank" rel="noopener noreferrer"
+             onClick={() => setMenuOpen(false)}
+             style={{ ...chip, background: '#000', color: '#fff', border: 'none' }}>
+            X
+          </a>
+          <a href={thLink} target="_blank" rel="noopener noreferrer"
+             onClick={() => setMenuOpen(false)}
+             style={{ ...chip, background: '#101010', color: '#fff', border: `1px solid #333` }}>
+            Threads
+          </a>
+          <button
+            type="button"
+            onClick={copyLink}
+            style={{ ...chip, background: C.panelRow, color: C.text, border: `1px solid ${C.line}` }}
+          >
+            {lang === 'id' ? 'Salin' : 'Copy'}
+          </button>
+        </div>
+      )}
+    </span>
   );
 }
 
@@ -257,7 +308,7 @@ function GameCard({ g, lang, onClick, isActive, winProb, favTeam, accent }) {
       >
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, letterSpacing: 0.3 }}>
           {isLive && <span className="live-dot" style={{ background: C.red }} />}
-          {g.status || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}
+          {localizeGameStatus(g.status, g.date, g.statusState, lang) || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}
         </span>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
           {tip && !isLive && !isFinal && (

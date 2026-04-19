@@ -218,6 +218,10 @@ function ShareBar({ url, lang, biggestMoment }) {
   const waLink = `https://api.whatsapp.com/send?text=${encodedText}%20${encodedUrl}`;
   const xLink = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
   const tgLink = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
+  // Threads (Meta) — intent/post accepts ?text=... and deep-links to the native app
+  // on iOS/Android, falls back to threads.net on desktop. No url param supported; we
+  // inline the URL in the text, same pattern as WhatsApp.
+  const thLink  = `https://www.threads.net/intent/post?text=${encodedText}%20${encodedUrl}`;
 
   function copyLink() {
     navigator.clipboard?.writeText(url).then(() => {
@@ -255,6 +259,10 @@ function ShareBar({ url, lang, biggestMoment }) {
       <a href={xLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'x' })}
          style={{ ...btn, background: '#000', color: '#fff' }}>
         X / Twitter
+      </a>
+      <a href={thLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'threads' })}
+         style={{ ...btn, background: '#101010', color: '#fff', border: `1px solid #333` }}>
+        Threads
       </a>
       <a href={tgLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'telegram' })}
          style={{ ...btn, background: '#0088cc', color: '#fff' }}>

@@ -31,7 +31,7 @@ const DASHBOARDS = [
     href: '/recap',
     status: 'live',
     tag: 'BARU',
-    title: 'Daily Recap',
+    title: 'Playoff Notes',
     titleId: 'Catatan Playoff',
     league: 'NBA · DAILY',
     blurb: 'Yesterday\'s playoff results — final scores, top scorers, biggest moments. Shareable.',
