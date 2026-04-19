@@ -163,6 +163,61 @@ export async function fetchScoreboardForDate(yyyymmdd) {
   });
 }
 
+// yyyymmdd helper for ESPN's ?dates= param.
+function toYYYYMMDD(date) {
+  const d = typeof date === 'string' ? new Date(date) : date;
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const da = String(d.getDate()).padStart(2, '0');
+  return `${y}${m}${da}`;
+}
+
+/**
+ * ESPN scoreboard over a window of days. Returns { 'YYYYMMDD': games[] }.
+ * Each day's entry has the same shape as fetchScoreboard() elements (plus `.date`).
+ * Errors on any single day resolve that day to [] — the rest still returns.
+ */
+export async function fetchScoreboardRange(dates) {
+  const keys = dates.map(toYYYYMMDD);
+  const results = await Promise.allSettled(
+    keys.map((k) =>
+      fetch(`${ESPN_BASE}/scoreboard?dates=${k}`).then((r) => (r.ok ? r.json() : null))
+    )
+  );
+  const out = {};
+  results.forEach((r, i) => {
+    const key = keys[i];
+    if (r.status !== 'fulfilled' || !r.value) {
+      out[key] = [];
+      return;
+    }
+    out[key] = (r.value.events || []).map((e) => {
+      const c = e.competitions?.[0];
+      const teams = c?.competitors || [];
+      const home = teams.find((t) => t.homeAway === 'home') || teams[0];
+      const away = teams.find((t) => t.homeAway === 'away') || teams[1];
+      return {
+        id: e.id,
+        name: e.shortName,
+        date: e.date,
+        status: c?.status?.type?.shortDetail || c?.status?.type?.description || '',
+        statusState: c?.status?.type?.state,
+        home: {
+          abbr: home?.team?.abbreviation,
+          score: home?.score,
+          record: home?.records?.[0]?.summary,
+        },
+        away: {
+          abbr: away?.team?.abbreviation,
+          score: away?.score,
+          record: away?.records?.[0]?.summary,
+        },
+      };
+    });
+  });
+  return out;
+}
+
 /**
  * ESPN team schedule — returns past + upcoming events for a given team abbr.
  * Used for: recent-form streak + head-to-head lookups.

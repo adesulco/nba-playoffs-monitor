@@ -5,6 +5,7 @@ import { usePolymarketWS } from '../hooks/usePolymarketWS.js';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
 import Sparkline from '../components/Sparkline.jsx';
 import Bracket from '../components/Bracket.jsx';
+import DayScoreboard from '../components/DayScoreboard.jsx';
 import TeamPicker from '../components/TeamPicker.jsx';
 import LiveGameFocus from '../components/LiveGameFocus.jsx';
 import { useSeriesState } from '../hooks/useSeriesState.js';
@@ -27,6 +28,7 @@ import SEO from '../components/SEO.jsx';
 import SEOContent from '../components/SEOContent.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import { localizeGameStatus, formatKickoff, getUserTzLabel } from '../lib/timezone.js';
+import { VERSION_LABEL } from '../lib/version.js';
 
 const FAV_STORAGE_KEY = 'gibol:favTeam';
 
@@ -169,7 +171,7 @@ function GameCard({ g, favTeam, isActive, onClick, injuries, streaks, lang }) {
 
 export default function NBADashboard() {
   const { theme, toggleTheme, lang, toggleLang, t } = useApp();
-  const { champion, mvp, games, sparklines, lastUpdate, status, errors } = usePlayoffData(30000);
+  const { champion, mvp, games, gamesByDay, sparklines, lastUpdate, status, errors } = usePlayoffData(30000);
   const [now, setNow] = useState(new Date());
   const [favTeam, setFavTeam] = useState(() => {
     try { return localStorage.getItem(FAV_STORAGE_KEY) || null; } catch { return null; }
@@ -424,22 +426,19 @@ export default function NBADashboard() {
         {/* ================== YESTERDAY RECAP (collapsible) ================== */}
         <YesterdayRecap favTeam={favTeam} t={t} />
 
-        {/* ================== LIVE SCOREBOARD HERO ================== */}
-        <div className="scoreboard-hero" style={{ borderBottom: `1px solid ${C.line}`, background: C.heroBg }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 16px', borderBottom: `1px solid ${C.lineSoft}` }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <span style={{ fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>{t('liveScoreboard')}</span>
-              <span style={{ fontSize: 9.5, color: C.dim }}>{games.length > 0 ? `${games.length} ${t('games')}` : t('today')}</span>
-            </div>
-            <div style={{ fontSize: 9.5, color: C.dim, letterSpacing: 0.5 }}>
-              {errors.scores ? <span style={{ color: C.red }}>● {t('espnOff')}</span> : <span style={{ color: C.green }}>● {t('espnLive')}</span>}
-            </div>
-          </div>
-          <div className="game-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 0 }}>
-            {games.length === 0 && [
-              { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, date: '2026-04-17T23:30:00Z', status: 'FRI 7:30 PM ET', statusState: 'pre' },
-              { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, date: '2026-04-18T02:00:00Z', status: 'FRI 10:00 PM ET', statusState: 'pre' },
-            ].map((g) => <GameCard key={g.id} g={g} favTeam={favTeam} isActive={activeMatchId === g.id} onClick={() => handleGameCardClick(g.id)} injuries={injuriesByTeam} streaks={streaks} lang={lang} />)}
+        {/* ================== SCORES & SCHEDULE (day-by-day swipe) ================== */}
+        <DayScoreboard
+          gamesByDay={gamesByDay}
+          fallbackGames={games.length > 0 ? games : [
+            { id: 'sched-1', name: 'ORL @ CHA', away: { abbr: 'ORL', score: null }, home: { abbr: 'CHA', score: null }, date: '2026-04-17T23:30:00Z', status: 'FRI 7:30 PM ET', statusState: 'pre' },
+            { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, date: '2026-04-18T02:00:00Z', status: 'FRI 10:00 PM ET', statusState: 'pre' },
+          ]}
+          errors={errors}
+        />
+
+        {/* Keep the interactive GameCard row for click-to-focus (live match picker) */}
+        {games.length > 0 && (
+          <div className="game-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 0, borderBottom: `1px solid ${C.line}` }}>
             {games.slice(0, 6).map((g, i) => (
               <GameCard
                 key={g.id || i}
@@ -453,7 +452,7 @@ export default function NBADashboard() {
               />
             ))}
           </div>
-        </div>
+        )}
 
         {/* ================== LIVE GAME FOCUS ================== */}
         <LiveGameFocus
@@ -496,7 +495,7 @@ export default function NBADashboard() {
                 <div style={panelMeta}>APR 18 – MAY 3</div>
               </div>
               <div className="bracket-viz">
-                <Bracket championOdds={liveOdds} seriesMap={seriesMap} />
+                <Bracket championOdds={liveOdds} seriesMap={seriesMap} games={games} />
               </div>
             </div>
 
@@ -808,7 +807,23 @@ export default function NBADashboard() {
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 14px', borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted, alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
           <div>Polymarket Gamma + CLOB WS · ESPN Scoreboard · 30s poll + live ticks</div>
           <ContactBar lang={lang} variant="inline" />
-          <div style={{ color: C.dim }}>ESPN · Polymarket · Built by Claude</div>
+          <div style={{ color: C.dim, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span
+              title="App version"
+              style={{
+                padding: '1px 6px',
+                border: `1px solid ${C.lineSoft}`,
+                borderRadius: 3,
+                fontFamily: '"JetBrains Mono", monospace',
+                fontSize: 9,
+                letterSpacing: 0.3,
+                color: C.dim,
+              }}
+            >
+              {VERSION_LABEL}
+            </span>
+            ESPN · Polymarket · Built by Claude
+          </div>
         </div>
       </div>
     </div>

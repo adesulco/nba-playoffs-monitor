@@ -5,6 +5,7 @@ import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
+import { VERSION_LABEL } from '../lib/version.js';
 
 // NBA first — it's the live product right now (playoff tip-off). Featured prominently in the hero area.
 const DASHBOARDS = [
@@ -280,7 +281,22 @@ export default function Home() {
             gibol.co · {lang === 'id' ? 'dari fan, untuk fan Indonesia' : 'from fans, for fans'}
           </div>
           <ContactBar lang={lang} variant="inline" />
-          <div>ESPN · Polymarket · FIFA.com</div>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span
+              title="App version"
+              style={{
+                padding: '1px 6px',
+                border: `1px solid var(--line-soft)`,
+                borderRadius: 3,
+                fontFamily: '"JetBrains Mono", monospace',
+                fontSize: 9,
+                letterSpacing: 0.3,
+              }}
+            >
+              {VERSION_LABEL}
+            </span>
+            ESPN · Polymarket · FIFA.com
+          </div>
         </div>
       </div>
     </div>

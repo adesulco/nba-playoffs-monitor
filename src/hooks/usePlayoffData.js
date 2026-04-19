@@ -1,6 +1,23 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { fetchChampionOdds, fetchMvpOdds, fetchScoreboard, fetchPriceHistory } from '../lib/api.js';
+import {
+  fetchChampionOdds,
+  fetchMvpOdds,
+  fetchScoreboard,
+  fetchScoreboardRange,
+  fetchPriceHistory,
+} from '../lib/api.js';
 import { FALLBACK_CHAMPION, FALLBACK_MVP } from '../lib/constants.js';
+
+// Build a 7-day window (today ±3) of Date objects for the day-tab scoreboard.
+function buildWindow(anchor = new Date(), pastDays = 3, futureDays = 3) {
+  const dates = [];
+  for (let i = -pastDays; i <= futureDays; i++) {
+    const d = new Date(anchor);
+    d.setDate(anchor.getDate() + i);
+    dates.push(d);
+  }
+  return dates;
+}
 
 export function usePlayoffData(refreshMs = 30000) {
   const [champion, setChampion] = useState({
@@ -11,6 +28,7 @@ export function usePlayoffData(refreshMs = 30000) {
   });
   const [mvp, setMvp] = useState(FALLBACK_MVP);
   const [games, setGames] = useState([]);
+  const [gamesByDay, setGamesByDay] = useState({}); // 'YYYYMMDD' -> games[]
   const [sparklines, setSparklines] = useState({}); // team -> number[]
   const [lastUpdate, setLastUpdate] = useState(null);
   const [status, setStatus] = useState('connecting');
@@ -18,12 +36,14 @@ export function usePlayoffData(refreshMs = 30000) {
   const prevOddsRef = useRef({});
 
   const refresh = useCallback(async () => {
+    const windowDates = buildWindow();
     const results = await Promise.allSettled([
       fetchChampionOdds(),
       fetchMvpOdds(),
       fetchScoreboard(),
+      fetchScoreboardRange(windowDates),
     ]);
-    const [champRes, mvpRes, scoresRes] = results;
+    const [champRes, mvpRes, scoresRes, rangeRes] = results;
     const errs = { champion: null, mvp: null, scores: null };
     let successes = 0;
 
@@ -59,6 +79,11 @@ export function usePlayoffData(refreshMs = 30000) {
       errs.scores = scoresRes.reason?.message || 'failed';
     }
 
+    // 7-day window is supplementary — failures shouldn't affect main status.
+    if (rangeRes.status === 'fulfilled') {
+      setGamesByDay(rangeRes.value);
+    }
+
     setErrors(errs);
     setLastUpdate(new Date());
     setStatus(successes === 0 ? 'error' : successes < 3 ? 'stale' : 'live');
@@ -91,5 +116,5 @@ export function usePlayoffData(refreshMs = 30000) {
     return () => { cancelled = true; };
   }, [champion.clobTokens]);
 
-  return { champion, mvp, games, sparklines, lastUpdate, status, errors, refresh };
+  return { champion, mvp, games, gamesByDay, sparklines, lastUpdate, status, errors, refresh };
 }

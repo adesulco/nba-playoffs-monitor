@@ -22,6 +22,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="shortcut icon" href="/favicon.ico" />
 
+    <!-- PWA — installable on Android/iOS/desktop. SW registered in src/lib/pwa.js -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Gibol" />
+
     <!-- Canonical, hreflang, OG, and Twitter are set per-route by React Helmet (src/components/SEO.jsx).
          Do NOT hardcode them here — duplicates create canonical conflicts that Google reports as
          "Redirect error" or "Duplicate without user-selected canonical". -->

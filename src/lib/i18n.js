@@ -16,7 +16,9 @@ export const LOCALES = {
 
     // Hero / scoreboard
     liveScoreboard: 'LIVE SCOREBOARD',
+    scoresSchedule: 'SCORES & SCHEDULE',
     today: 'TODAY',
+    tomorrow: 'TOMORROW',
     games: 'GAMES',
     game: 'GAME',
     upcoming: 'UPCOMING',
@@ -26,6 +28,9 @@ export const LOCALES = {
     espnOff: 'ESPN OFF · SHOWING SCHEDULE',
     yourTeam: '★ YOUR TEAM',
     following: '● FOLLOWING',
+    swipeHint: 'SWIPE ← →',
+    noGamesDay: 'No games',
+    offDay: 'OFF DAY',
 
     // Context strip
     titleFavorite: 'TITLE FAVORITE',
@@ -118,7 +123,9 @@ export const LOCALES = {
 
     // Hero
     liveScoreboard: 'PAPAN SKOR LANGSUNG',
+    scoresSchedule: 'SKOR & JADWAL',
     today: 'HARI INI',
+    tomorrow: 'BESOK',
     games: 'LAGA',
     game: 'LAGA',
     upcoming: 'AKAN MAIN',
@@ -128,6 +135,9 @@ export const LOCALES = {
     espnOff: 'ESPN OFF · TAMPILKAN JADWAL',
     yourTeam: '★ TIM KAMU',
     following: '● DIIKUTI',
+    swipeHint: 'GESER ← →',
+    noGamesDay: 'Belum ada laga',
+    offDay: 'OFF DAY',
 
     // Context strip
     titleFavorite: 'FAVORIT JUARA',

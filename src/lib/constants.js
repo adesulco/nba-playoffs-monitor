@@ -101,8 +101,18 @@ export const FALLBACK_MVP = [
   { name: 'Victor Wembanyama',       pct: 3 },
 ];
 
+// Pool of teams that were in each conference's play-in tournament. The 8-seed
+// that actually advances gets auto-detected from ESPN R1 game data in the
+// Bracket component (see resolvePlayInWinner). This pool is the fallback list
+// we show as "Play-In TBD (ORL/CHA)" etc. until ESPN confirms the winner.
+export const PLAYIN_POOL = {
+  east: ['Orlando Magic', 'Charlotte Hornets'],
+  west: ['Phoenix Suns', 'Golden State Warriors'],
+};
+
 // 2026 Round 1 bracket — confirmed by ESPN/CBS/NBA.com
-// 8-seeds resolve from tonight's play-in (Apr 17)
+// 8-seeds are placeholders; real team name is resolved at render-time from
+// live ESPN R1 matchups. See Bracket.jsx.
 export const BRACKET_R1 = {
   east: [
     { seeds: [1, 8], teams: ['Detroit Pistons', 'TBD (ORL/CHA)'] },
