@@ -4,13 +4,18 @@
 // close enough.
 //
 // Convention:
-//   - Treat this moment (post-recovery from origin/main, April 2026) as
-//     the true v0.1.0 baseline.
+//   - Treat post-recovery from origin/main (Apr 2026) as the true v0.1.0 baseline.
 //   - Patch bumps for bug-fix-only ships (0.1.x).
-//   - Minor bumps for new features (0.2.0, 0.3.0…).
-//   - Major bump when a sport beyond NBA goes live (1.0.0 when IBL ships).
+//   - Minor bumps for new-feature / infra milestones (0.2.0, 0.3.0…).
+//   - Major bump when the first non-NBA sport goes live to users (1.0.0).
+//
+// v0.2.0 — multi-sport infra milestone. Home now shows NBA + F1/EPL/FIFA/Liga 1
+// as coming-soon cards. Adapter pattern, /api/proxy edge cache, feature flags,
+// SportErrorBoundary, generic prerender, /api/health/data-sources all landed.
+// NBA stack itself is untouched — live hooks still hit ESPN/Polymarket directly
+// until each sport adapter migrates through the proxy in its phase.
 
-export const APP_VERSION = '0.1.5';
+export const APP_VERSION = '0.2.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

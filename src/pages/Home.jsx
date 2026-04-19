@@ -6,8 +6,17 @@ import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
+import { VISIBLE, LIVE } from '../lib/flags.js';
 
-// NBA first — it's the live product right now (playoff tip-off). Featured prominently in the hero area.
+// Multi-sport build plan §1 — five-card layout. NBA is the featured live
+// dashboard; F1, EPL, FIFA WC, Liga 1 (Super League Indonesia) are coming-soon
+// cards that link to stub pages. IBL is deliberately NOT on Home in v0.2.0 —
+// parked until a data source materializes. The /ibl route still exists for
+// direct access.
+//
+// Every sport here should stay in sync with src/lib/sports/index.js. The card
+// metadata here is layout-specific (blurb copy, cta, glyph). The adapter
+// registry owns routes, accents, and SEO.
 const DASHBOARDS = [
   {
     id: 'nba',
@@ -18,8 +27,8 @@ const DASHBOARDS = [
     title: 'NBA Playoffs 2026',
     titleId: 'NBA Playoff 2026',
     league: 'NBA · POSTSEASON',
-    blurb: 'Round 1 tips tonight · OKC 44% favorite · live scores, play-by-play, bracket, odds.',
-    blurbId: 'Ronde 1 malam ini · OKC favorit juara 44% · skor live, play-by-play, bracket, peluang juara.',
+    blurb: 'Round 1 live · OKC 44% title favorite · live scores, play-by-play, bracket, odds.',
+    blurbId: 'Ronde 1 live · OKC favorit juara 44% · skor live, play-by-play, bracket, peluang juara.',
     accent: '#e8502e',
     launchDate: null,
     glyph: '🏀',
@@ -27,63 +36,79 @@ const DASHBOARDS = [
     ctaId: 'Masuk →',
   },
   {
-    id: 'recap',
-    href: '/recap',
-    status: 'live',
-    tag: 'BARU',
-    title: 'Playoff Notes',
-    titleId: 'Catatan Playoff',
-    league: 'NBA · DAILY',
-    blurb: 'Yesterday\'s playoff results — final scores, top scorers, biggest moments. Shareable.',
-    blurbId: 'Hasil playoff kemarin — skor akhir, top scorer, momen terbesar. Share-ready.',
-    // Deeper amber (#d97706) — #ffb347 was too pale against the cream light-theme
-    // background, making the border + CTA text nearly invisible. Works on both themes.
-    accent: '#d97706',
-    launchDate: null,
-    glyph: '📖',
-    cta: 'Read →',
-    ctaId: 'Baca →',
-  },
-  {
-    id: 'ibl',
-    href: '/ibl',
+    id: 'f1',
+    href: '/formula-1-2026',
     status: 'soon',
     tag: 'COMING SOON',
-    title: 'IBL — Indonesia Basketball League',
-    titleId: 'IBL — Liga Basket Indonesia',
-    league: 'IBL · SEASON 2025–26',
-    blurb: 'Live scores, standings, and player watchlist for Indonesia\'s top professional basketball league. Full Bahasa coverage, local broadcast schedule, team deep dives.',
-    blurbId: 'Skor live, klasemen, dan watchlist pemain untuk liga basket profesional teratas Indonesia. Coverage Bahasa penuh, jadwal siaran lokal, analisis tim.',
-    accent: '#d2191f',
-    launchDate: null,
-    glyph: '🇮🇩',
+    title: 'Formula 1 2026',
+    titleId: 'Formula 1 2026',
+    league: 'F1 · MAR – DES 2026',
+    blurb: 'Live calendar in WIB, driver + constructor standings, race-mode telemetry, Polymarket title odds.',
+    blurbId: 'Kalender WIB, klasemen pembalap + konstruktor, mode balapan dengan telemetri, peluang juara Polymarket.',
+    accent: '#E10600',
+    launchDate: 'Mid 2026',
+    glyph: '🏎️',
     cta: 'Coming Soon',
     ctaId: 'Segera Hadir',
   },
   {
-    id: 'fifa',
+    id: 'epl',
+    href: '/premier-league-2025-26',
+    status: 'soon',
+    tag: 'COMING SOON',
+    title: 'Premier League 2025-26',
+    titleId: 'Liga Inggris 2025-26',
+    league: 'EPL · AGU 2025 – MEI 2026',
+    blurb: '20-club table, match-day scores, Golden Boot race, title + relegation odds from Polymarket.',
+    blurbId: 'Klasemen 20 klub, skor match-day, ras top skor Golden Boot, peluang juara + degradasi Polymarket.',
+    accent: '#37003C',
+    launchDate: 'Mid 2026',
+    glyph: '⚽',
+    cta: 'Coming Soon',
+    ctaId: 'Segera Hadir',
+  },
+  {
+    id: 'fifa_wc',
     href: '/fifa-world-cup-2026',
     status: 'soon',
     tag: 'COMING SOON',
     title: 'FIFA World Cup 2026',
-    titleId: 'Piala Dunia FIFA 2026',
-    league: 'FIFA · JUN 11 – JUL 19',
-    blurb: '48 teams · 104 matches · 16 host cities across USA, Mexico, and Canada. Live scores, group tables, knockout bracket, player tracking, and prediction markets.',
-    blurbId: '48 tim · 104 pertandingan · 16 kota tuan rumah di AS, Meksiko, dan Kanada. Skor live, tabel grup, bagan gugur, tracking pemain, dan pasar prediksi.',
-    accent: '#2c8ad6',
+    titleId: 'Piala Dunia 2026',
+    league: 'FIFA WC · 11 JUN – 19 JUL',
+    blurb: '48 teams · 104 matches · 16 host cities. Group stage, knockout bracket, outright odds in Bahasa.',
+    blurbId: '48 tim · 104 laga · 16 kota tuan rumah. Tabel grup, bagan gugur, peluang juara dalam Bahasa.',
+    accent: '#326295',
     launchDate: 'Jun 11, 2026',
-    glyph: '⚽',
+    glyph: '🏆',
+    cta: 'Coming Soon',
+    ctaId: 'Segera Hadir',
+  },
+  {
+    id: 'liga_1_id',
+    href: '/liga-1-2026',
+    status: 'soon',
+    tag: 'COMING SOON',
+    title: 'Super League Indonesia',
+    titleId: 'Super League Indonesia',
+    league: 'BRI LIGA 1 · 2025–26',
+    blurb: '18 clubs, Persija vs Persib tracker, Golden Boot race, relegation + AFC qualification watch.',
+    blurbId: '18 klub, tracker derby Persija vs Persib, ras top skor, pantauan degradasi + kualifikasi AFC.',
+    accent: '#0057A8',
+    launchDate: 'Late 2026',
+    glyph: '🇮🇩',
     cta: 'Coming Soon',
     ctaId: 'Segera Hadir',
   },
 ];
 
 function DashboardCard({ d, lang }) {
-  const isLive = d.status === 'live';
+  // A sport is "live" only if (a) its card says so AND (b) the flag is on. Any
+  // emergency flag flip hides the card without a redeploy. §2.3.
+  const isLive = d.status === 'live' && LIVE[d.id] !== false;
   const isFeatured = d.featured;
   const title = lang === 'id' ? d.titleId : d.title;
   const blurb = lang === 'id' ? d.blurbId : d.blurb;
-  const cta = lang === 'id' ? d.ctaId : d.cta;
+  const cta = lang === 'id' ? (isLive ? d.ctaId : d.ctaId) : (isLive ? d.cta : d.cta);
 
   // Featured NBA card stays horizontal; secondary cards stack vertically (icon on top)
   // so they read well in a 3-column row at desktop and a 1-column stack on mobile.
@@ -164,8 +189,8 @@ function DashboardCard({ d, lang }) {
         display: 'flex', flexDirection: 'column', gap: 6,
         minHeight: 120, height: '100%',
         transition: 'all 0.2s',
-        cursor: isLive ? 'pointer' : 'default',
-        opacity: isLive ? 1 : 0.82,
+        cursor: 'pointer',
+        opacity: isLive ? 1 : 0.88,
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -211,63 +236,76 @@ function DashboardCard({ d, lang }) {
     </div>
   );
 
-  if (isLive) {
-    return <Link to={d.href} style={{ textDecoration: 'none' }}>{content}</Link>;
-  }
-  return <div style={{ textDecoration: 'none' }}>{content}</div>;
+  // All cards clickable — coming-soon pages are real routes with meaningful
+  // preview content (see ComingSoon.jsx). SEO wins, plus the PWA manifest
+  // can deep-link to them without 404ing.
+  return <Link to={d.href} style={{ textDecoration: 'none' }}>{content}</Link>;
 }
 
 export default function Home() {
-  const { lang, t } = useApp();
+  const { lang } = useApp();
 
-  const heroTitleId = 'GILA BOLA.';
-  const heroSubId = 'Dashboard live untuk olahraga yang kamu cintai.';
-  // F08 — founder-adjacent hook line. Short, Bahasa-first, fan-to-fan voice.
-  const heroHookId = 'Dari fan, untuk fan Indonesia. Dibangun di Jakarta, dirilis ke dunia.';
-  const heroHookEn = 'From fans, for fans. Built in Jakarta, shipped to the world.';
-  const heroTitle = 'GILA BOLA.';
-  const heroSub = 'Live dashboards for the sports you love.';
+  // Flag-filter before render so we can kill a misbehaving card in prod
+  // without a redeploy. Routes themselves still work via direct URL.
+  const visibleDashboards = DASHBOARDS.filter((d) => VISIBLE[d.id] !== false);
+  const featured = visibleDashboards.find((d) => d.featured);
+  const secondaries = visibleDashboards.filter((d) => !d.featured);
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO
-        title="gibol.co — gila bola · skor live NBA, IBL, Piala Dunia 2026"
-        description="Dashboard live untuk NBA Playoffs 2026, IBL (Liga Basket Indonesia), dan Piala Dunia FIFA 2026. Skor live, peluang juara Polymarket, bracket, play-by-play, dan statistik pemain dalam satu halaman."
+        title="gibol.co — gila bola · skor live NBA, F1, Liga Inggris, Piala Dunia 2026"
+        description="Dashboard live untuk NBA Playoffs 2026, Formula 1, Liga Inggris, Piala Dunia FIFA 2026, dan Super League Indonesia (Liga 1). Skor live, peluang juara Polymarket, klasemen, bracket, dan statistik — semua dalam Bahasa Indonesia."
         path="/"
         lang={lang}
-        keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, IBL, liga basket indonesia, FIFA world cup 2026, piala dunia 2026"
+        keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 bahasa indonesia, liga inggris, premier league, epl, FIFA world cup 2026, piala dunia 2026, liga 1 indonesia, bri liga 1"
       />
       <div className="dashboard-wrap">
-        {/* TopBar (gibol logo + lang/theme toggles) carries the brand.
-            No separate hero block — saves ~80px so all dashboards fit above the fold. */}
+        {/* TopBar carries the brand. No separate hero — saves ~80px so all
+            5 dashboards fit above the fold on ≥1024px. */}
         <TopBar
           subtitle={lang === 'id' ? 'gila bola · dashboard live olahraga' : 'gila bola · live sports dashboards'}
         />
 
-        {/* Dashboard grid — NBA featured card spans full width, 3 secondary cards
-            share a row below on desktop, collapse to 1 column on mobile. Designed
-            so all 4 options are visible without scrolling on ≥768px viewports. */}
+        {/* Dashboard grid — NBA featured spans full width; 4 secondaries share
+            the row below on desktop (2×2 on narrower screens, 1-col mobile). */}
         <div className="home-dashboard-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gridTemplateAreas: `
-            "featured featured featured"
-            "a b c"
-          `,
+          gridTemplateColumns: 'repeat(4, 1fr)',
           gap: 10,
           padding: '16px 20px 20px',
         }}>
-          {DASHBOARDS.map((d, i) => (
-            <div
-              key={d.id}
-              style={{
-                gridArea: d.featured ? 'featured' : ['a', 'b', 'c'][i - 1] || 'a',
-                minWidth: 0,
-              }}
-            >
+          {featured && (
+            <div style={{ gridColumn: '1 / -1', minWidth: 0 }}>
+              <DashboardCard d={featured} lang={lang} />
+            </div>
+          )}
+          {secondaries.map((d) => (
+            <div key={d.id} style={{ minWidth: 0 }}>
               <DashboardCard d={d} lang={lang} />
             </div>
           ))}
+        </div>
+
+        {/* Secondary quick-link row: Recap is an NBA *feature* not a sport, so
+            it lives here (not in the card grid). Keeps the card grid sport-pure. */}
+        <div style={{
+          padding: '0 20px 16px',
+          display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center',
+          fontSize: 10.5, color: C.dim, letterSpacing: 0.3,
+        }}>
+          <span>{lang === 'id' ? 'Lebih lanjut:' : 'More:'}</span>
+          <Link to="/recap" style={{ color: C.text, textDecoration: 'underline', textUnderlineOffset: 3 }}>
+            {lang === 'id' ? 'Catatan Playoff NBA (recap harian)' : 'NBA Playoff Notes (daily recap)'}
+          </Link>
+          <span style={{ color: C.muted }}>·</span>
+          <Link to="/glossary" style={{ color: C.dim, textDecoration: 'underline', textUnderlineOffset: 3 }}>
+            {lang === 'id' ? 'Glosarium istilah' : 'Glossary'}
+          </Link>
+          <span style={{ color: C.muted }}>·</span>
+          <Link to="/about" style={{ color: C.dim, textDecoration: 'underline', textUnderlineOffset: 3 }}>
+            {lang === 'id' ? 'Tentang gibol' : 'About gibol'}
+          </Link>
         </div>
 
         {/* Footer — compact, with inline contact link */}
@@ -295,7 +333,7 @@ export default function Home() {
             >
               {VERSION_LABEL}
             </span>
-            ESPN · Polymarket · FIFA.com
+            ESPN · Polymarket · OpenF1 · football-data.org · FIFA.com
           </div>
         </div>
       </div>

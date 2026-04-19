@@ -1,7 +1,7 @@
 {
   "name": "Gibol — Gila Bola",
   "short_name": "Gibol",
-  "description": "Skor live NBA, IBL, dan Piala Dunia 2026 dalam Bahasa Indonesia. Bracket playoff, recap, dan komunitas basket Indonesia.",
+  "description": "Skor live NBA, Formula 1, Liga Inggris, Piala Dunia 2026, dan Liga 1 Indonesia dalam Bahasa Indonesia. Bracket playoff, recap, dan companion multi-olahraga untuk fan Indonesia.",
   "id": "/",
   "start_url": "/?utm_source=pwa",
   "scope": "/",
@@ -35,10 +35,10 @@
       "icons": [{ "src": "/icons/shortcut-pickem.png", "sizes": "96x96", "type": "image/png" }]
     },
     {
-      "name": "IBL 2026",
-      "short_name": "IBL",
-      "description": "Liga Basket Indonesia (segera hadir)",
-      "url": "/ibl?utm_source=pwa_shortcut",
+      "name": "Liga 1 Indonesia",
+      "short_name": "Liga 1",
+      "description": "BRI Liga 1 Super League Indonesia (segera hadir)",
+      "url": "/liga-1-2026?utm_source=pwa_shortcut",
       "icons": [{ "src": "/icons/shortcut-ibl.png", "sizes": "96x96", "type": "image/png" }]
     }
   ],
