@@ -101,12 +101,66 @@ function BigMomentHero({ moment, lang, accent }) {
   );
 }
 
-function GameRecapCard({ game, summary, topPerformer, narrative, lang }) {
+function PerformerChip({ player, teamColor, accent }) {
+  if (!player) return null;
+  return (
+    <a
+      href={player.id ? `https://www.espn.com/nba/player/_/id/${player.id}` : '#'}
+      target={player.id ? '_blank' : undefined}
+      rel={player.id ? 'noopener noreferrer' : undefined}
+      style={{
+        textDecoration: 'none', color: 'inherit',
+        display: 'inline-flex', alignItems: 'center', gap: 8,
+        padding: '5px 10px 5px 5px',
+        background: `${teamColor}18`,
+        border: `1px solid ${teamColor}40`,
+        borderRadius: 20,
+        minWidth: 0,
+      }}
+    >
+      <PlayerHead id={player.id} name={player.name} color={teamColor} size={24} />
+      <div style={{ minWidth: 0, display: 'flex', alignItems: 'baseline', gap: 6, flexWrap: 'wrap' }}>
+        <span style={{ fontSize: 11, color: C.text, fontWeight: 600, whiteSpace: 'nowrap' }}>
+          {player.short || player.name}
+        </span>
+        <span style={{ fontSize: 9.5, color: C.dim, letterSpacing: 0.3 }}>
+          <span style={{ color: accent, fontWeight: 700 }}>{player.pts} PTS</span>
+          {' · '}{player.reb}R · {player.ast}A
+        </span>
+      </div>
+    </a>
+  );
+}
+
+function StatEdgePill({ edge, lang }) {
+  const color = TEAM_META[byAbbr(edge.winnerAbbr)]?.color || C.amber;
+  return (
+    <div style={{
+      display: 'inline-flex', alignItems: 'center', gap: 6,
+      padding: '3px 8px',
+      border: `1px solid ${color}40`,
+      background: `${color}10`,
+      borderRadius: 3,
+      fontSize: 10, letterSpacing: 0.3,
+    }}>
+      <span style={{ color: C.dim, fontWeight: 600 }}>{edge.label}</span>
+      <span style={{ color, fontWeight: 700 }}>{edge.winnerAbbr}</span>
+      <span style={{ color: C.text, fontFamily: '"Space Grotesk", sans-serif' }}>{edge.winnerVal}</span>
+      <span style={{ color: C.muted }}>{edge.diff}</span>
+    </div>
+  );
+}
+
+function GameRecapCard({ game, summary, topPerformer, topByTeamMap, statEdges, deepDetails, narrative, lang }) {
   const awayMeta = TEAM_META[byAbbr(game.away?.abbr)] || { color: '#555' };
   const homeMeta = TEAM_META[byAbbr(game.home?.abbr)] || { color: '#777' };
   const wonByAway = game.away?.winner;
   const wonByHome = game.home?.winner;
   const winnerColor = wonByAway ? awayMeta.color : homeMeta.color;
+  const accent = C.amber;
+
+  const awayTop = topByTeamMap?.[game.away?.abbr];
+  const homeTop = topByTeamMap?.[game.home?.abbr];
 
   return (
     <div style={{
@@ -125,7 +179,7 @@ function GameRecapCard({ game, summary, topPerformer, narrative, lang }) {
         <TeamScore abbr={game.home?.abbr} score={game.home?.score} won={wonByHome} color={homeMeta.color} align="right" />
       </div>
 
-      {/* 1–2 sentence storyline (lang-aware from hook) + top performer chip */}
+      {/* Narrative + deep details + head-to-head performers + stat edges */}
       <div style={{
         padding: '12px 18px 14px',
         borderTop: `1px solid ${C.lineSoft}`,
@@ -134,41 +188,31 @@ function GameRecapCard({ game, summary, topPerformer, narrative, lang }) {
         flexDirection: 'column',
         gap: 10,
       }}>
-        {/* Narrative — 1-2 sentences describing what happened in the game */}
+        {/* Headline narrative (1-2 sentences) + deep details (2-3 sentences) */}
         {narrative && (
-          <div style={{ fontSize: 12, color: C.text, lineHeight: 1.5, letterSpacing: 0.1 }}>
-            {narrative}
+          <div style={{ fontSize: 12, color: C.text, lineHeight: 1.55, letterSpacing: 0.1 }}>
+            <span style={{ fontWeight: 600 }}>{narrative}</span>
+            {deepDetails && deepDetails.length > 0 && (
+              <span style={{ color: C.dim, marginLeft: 4 }}>
+                {' '}{deepDetails.join(' ')}
+              </span>
+            )}
           </div>
         )}
 
-        {/* Top performer chip — links to ESPN player page */}
-        {topPerformer && (
-          <a
-            href={topPerformer.id ? `https://www.espn.com/nba/player/_/id/${topPerformer.id}` : '#'}
-            target={topPerformer.id ? '_blank' : undefined}
-            rel={topPerformer.id ? 'noopener noreferrer' : undefined}
-            style={{
-              textDecoration: 'none', color: 'inherit',
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              padding: '6px 10px 6px 6px',
-              background: `${winnerColor}18`,
-              border: `1px solid ${winnerColor}40`,
-              borderRadius: 20,
-              alignSelf: 'flex-start',
-              maxWidth: '100%',
-            }}
-          >
-            <PlayerHead id={topPerformer.id} name={topPerformer.name} color={winnerColor} size={28} />
-            <div style={{ minWidth: 0, display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
-              <span style={{ fontSize: 11.5, color: C.text, fontWeight: 600, whiteSpace: 'nowrap' }}>
-                {topPerformer.short || topPerformer.name}
-              </span>
-              <span style={{ fontSize: 10, color: C.dim, letterSpacing: 0.3 }}>
-                <span style={{ color: winnerColor, fontWeight: 700 }}>{topPerformer.pts} PTS</span>
-                {' · '}{topPerformer.reb} REB · {topPerformer.ast} AST
-              </span>
-            </div>
-          </a>
+        {/* Head-to-head performer chips — top scorer from BOTH teams */}
+        {(awayTop || homeTop) && (
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {awayTop && <PerformerChip player={awayTop} teamColor={awayMeta.color} accent={wonByAway ? awayMeta.color : C.dim} />}
+            {homeTop && <PerformerChip player={homeTop} teamColor={homeMeta.color} accent={wonByHome ? homeMeta.color : C.dim} />}
+          </div>
+        )}
+
+        {/* Stat edge pills */}
+        {statEdges && statEdges.length > 0 && (
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+            {statEdges.map((e, i) => <StatEdgePill key={i} edge={e} lang={lang} />)}
+          </div>
         )}
       </div>
     </div>
@@ -203,14 +247,36 @@ function TeamScore({ abbr, score, won, color, align }) {
   );
 }
 
-function ShareBar({ url, lang, biggestMoment }) {
+function ShareBar({ url, lang, biggestMoment, gameDigests, humanDate, dateIso, gamesCount }) {
   const [copied, setCopied] = useState(false);
+  // Default to "MOMENT OF THE DAY" — punchier for first-share. Users can
+  // flip to "FULL RECAP" to share a digest of every game that day.
+  const [mode, setMode] = useState('moment'); // 'moment' | 'fullday'
 
-  const text = biggestMoment
+  const hasFullDay = Array.isArray(gameDigests) && gameDigests.length > 0;
+
+  // Build the full-day digest text: headline line + 1 per game.
+  // Kept compact — WhatsApp/Threads/X all respect newlines, and Bahasa fans
+  // prefer list form on mobile. Capped at 6 lines to stay share-friendly.
+  const fullDayText = useMemo(() => {
+    const head = lang === 'id'
+      ? `Rekap NBA Playoff · ${humanDate}`
+      : `NBA Playoff Recap · ${humanDate}`;
+    const lines = (gameDigests || []).slice(0, 6);
+    return [head, ...lines, 'via gibol.co'].join('\n');
+  }, [lang, humanDate, gameDigests]);
+
+  const momentText = biggestMoment
     ? `${biggestMoment.headline} · via gibol.co`
     : (lang === 'id' ? 'Catatan Playoff hari ini · gibol.co' : 'Today\'s playoff recap · gibol.co');
 
-  const encodedUrl = encodeURIComponent(url);
+  const text = mode === 'fullday' ? fullDayText : momentText;
+
+  // Full-day mode appends ?share=fullday so both the visited page and the OG
+  // image can show "all games" framing without breaking the canonical URL.
+  const shareUrl = mode === 'fullday' ? `${url}?share=fullday` : url;
+
+  const encodedUrl = encodeURIComponent(shareUrl);
   const encodedText = encodeURIComponent(text);
 
   // api.whatsapp.com/send works on both desktop (WhatsApp Web) and mobile.
@@ -224,12 +290,29 @@ function ShareBar({ url, lang, biggestMoment }) {
   const thLink  = `https://www.threads.net/intent/post?text=${encodedText}%20${encodedUrl}`;
 
   function copyLink() {
-    navigator.clipboard?.writeText(url).then(() => {
+    // In full-day mode, copy the digest text + URL as one block — much more
+    // useful when pasted into WhatsApp / group chats. Falls back to URL only
+    // if clipboard API rejects (some older browsers block multiline).
+    const payload = mode === 'fullday' ? `${text}\n${shareUrl}` : shareUrl;
+    navigator.clipboard?.writeText(payload).then(() => {
       setCopied(true);
-      trackEvent('recap_share', { method: 'copy' });
+      trackEvent('recap_share', { method: 'copy', mode });
       setTimeout(() => setCopied(false), 2000);
     });
   }
+
+  const tabBtn = (active) => ({
+    padding: '4px 10px',
+    fontSize: 10,
+    letterSpacing: 0.5,
+    fontWeight: 700,
+    border: 'none',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+    background: active ? C.amber : 'transparent',
+    color: active ? '#000' : C.dim,
+    borderRadius: 2,
+  });
 
   const btn = {
     display: 'inline-flex', alignItems: 'center', gap: 6,
@@ -243,34 +326,62 @@ function ShareBar({ url, lang, biggestMoment }) {
 
   return (
     <div style={{
-      display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
+      display: 'flex', flexDirection: 'column', gap: 10,
       padding: '14px 18px',
       background: C.panel,
       border: `1px solid ${C.line}`,
       borderRadius: 4,
     }}>
-      <span style={{ fontSize: 10.5, color: C.dim, letterSpacing: 1, fontWeight: 600, marginRight: 4 }}>
-        {lang === 'id' ? 'BAGIKAN' : 'SHARE'}
-      </span>
-      <a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'whatsapp' })}
-         style={{ ...btn, background: '#25D366', color: '#fff' }}>
-        WhatsApp
-      </a>
-      <a href={xLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'x' })}
-         style={{ ...btn, background: '#000', color: '#fff' }}>
-        X / Twitter
-      </a>
-      <a href={thLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'threads' })}
-         style={{ ...btn, background: '#101010', color: '#fff', border: `1px solid #333` }}>
-        Threads
-      </a>
-      <a href={tgLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'telegram' })}
-         style={{ ...btn, background: '#0088cc', color: '#fff' }}>
-        Telegram
-      </a>
-      <button onClick={copyLink} style={{ ...btn, background: copied ? C.green : C.panelRow, color: C.text, border: `1px solid ${C.line}` }}>
-        {copied ? (lang === 'id' ? '✓ Tersalin' : '✓ Copied') : (lang === 'id' ? 'Salin link' : 'Copy link')}
-      </button>
+      {/* Mode toggle — only if we have multiple games to make FULL RECAP meaningful */}
+      {hasFullDay && gamesCount > 1 && (
+        <div style={{
+          display: 'inline-flex', alignSelf: 'flex-start', gap: 4,
+          padding: 3, background: C.panelRow, border: `1px solid ${C.line}`, borderRadius: 4,
+        }}>
+          <button onClick={() => setMode('moment')} style={tabBtn(mode === 'moment')}>
+            ⚡ {lang === 'id' ? 'MOMEN HARI INI' : 'MOMENT OF THE DAY'}
+          </button>
+          <button onClick={() => setMode('fullday')} style={tabBtn(mode === 'fullday')}>
+            📋 {lang === 'id' ? 'REKAP LENGKAP' : 'FULL RECAP'}
+          </button>
+        </div>
+      )}
+
+      {/* Preview of what will be shared — helps user decide before clicking */}
+      {mode === 'fullday' && hasFullDay && (
+        <div style={{
+          fontSize: 11, color: C.dim, whiteSpace: 'pre-line', lineHeight: 1.55,
+          padding: '8px 10px', background: C.panelSoft, border: `1px dashed ${C.line}`,
+          borderRadius: 3, maxHeight: 140, overflow: 'hidden',
+        }}>
+          {text}
+        </div>
+      )}
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+        <span style={{ fontSize: 10.5, color: C.dim, letterSpacing: 1, fontWeight: 600, marginRight: 4 }}>
+          {lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+        </span>
+        <a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'whatsapp', mode })}
+           style={{ ...btn, background: '#25D366', color: '#fff' }}>
+          WhatsApp
+        </a>
+        <a href={xLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'x', mode })}
+           style={{ ...btn, background: '#000', color: '#fff' }}>
+          X / Twitter
+        </a>
+        <a href={thLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'threads', mode })}
+           style={{ ...btn, background: '#101010', color: '#fff', border: `1px solid #333` }}>
+          Threads
+        </a>
+        <a href={tgLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('recap_share', { method: 'telegram', mode })}
+           style={{ ...btn, background: '#0088cc', color: '#fff' }}>
+          Telegram
+        </a>
+        <button onClick={copyLink} style={{ ...btn, background: copied ? C.green : C.panelRow, color: C.text, border: `1px solid ${C.line}` }}>
+          {copied ? (lang === 'id' ? '✓ Tersalin' : '✓ Copied') : (lang === 'id' ? 'Salin' : 'Copy')}
+        </button>
+      </div>
     </div>
   );
 }
@@ -289,7 +400,18 @@ export default function Recap() {
 
   // lang is passed through so the hook rebuilds narratives + biggestMoment headline/caption
   // whenever the user flips the EN/ID toggle.
-  const { games, summaries, topPerformers, narratives, biggestMoment, loading } = useDailyRecap(dateIso, lang);
+  const {
+    games,
+    summaries,
+    topPerformers,
+    topByTeamPerGame,
+    statEdgesPerGame,
+    deepDetailsPerGame,
+    narratives,
+    biggestMoment,
+    gameDigests,
+    loading,
+  } = useDailyRecap(dateIso, lang);
   const url = `https://www.gibol.co/recap/${dateIso}`;
   const humanDate = formatJakartaDate(dateIso, lang);
   const accent = C.amber;
@@ -438,7 +560,15 @@ export default function Recap() {
 
         {/* Share bar — sticky position, first impression */}
         <div style={{ padding: '14px 24px 0' }}>
-          <ShareBar url={url} lang={lang} biggestMoment={biggestMoment} />
+          <ShareBar
+            url={url}
+            lang={lang}
+            biggestMoment={biggestMoment}
+            gameDigests={gameDigests}
+            humanDate={humanDate}
+            dateIso={dateIso}
+            gamesCount={games.length}
+          />
         </div>
 
         {/* All games */}
@@ -458,6 +588,9 @@ export default function Recap() {
                   game={g}
                   summary={summaries[g.id]}
                   topPerformer={topPerformers[g.id]}
+                  topByTeamMap={topByTeamPerGame[g.id]}
+                  statEdges={statEdgesPerGame[g.id]}
+                  deepDetails={deepDetailsPerGame[g.id]}
                   narrative={narratives[g.id]}
                   lang={lang}
                 />

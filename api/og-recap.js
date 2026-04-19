@@ -25,6 +25,14 @@ export default function handler(req) {
   const rawSubtitle = url.searchParams.get('subtitle') || '';
   const gamesCount = url.searchParams.get('games') || '';
   const accent = url.searchParams.get('accent') || ORANGE;
+  // v0.1.4: full-day mode renders a mini scoreboard instead of a single headline.
+  // Digests are passed as pipe-delimited strings, e.g.
+  //   digests=LAL 112-108 DEN · LeBron 32|BOS 104-98 MIA · Tatum 38
+  const mode = url.searchParams.get('mode') || 'moment';
+  const rawDigests = url.searchParams.get('digests') || '';
+  const digests = mode === 'fullday' && rawDigests
+    ? rawDigests.split('|').map((s) => s.trim()).filter(Boolean).slice(0, 6)
+    : [];
 
   const headline = rawHeadline.slice(0, 90) || 'Catatan Playoff NBA';
   const subtitle = rawSubtitle.slice(0, 120) || 'Skor · Top Scorer · Momen Terbesar';
@@ -143,41 +151,97 @@ export default function handler(req) {
       },
       displayDate || 'NBA POSTSEASON 2025–26'
     ),
-    // Headline
-    h(
-      'div',
-      {
-        style: {
-          fontSize: headline.length > 50 ? 58 : 72,
-          fontWeight: 800,
-          color: '#fff',
-          lineHeight: 1.08,
-          letterSpacing: -1.5,
-          marginBottom: 24,
-          maxWidth: 1060,
-          zIndex: 2,
-          display: 'flex',
-        },
-      },
-      headline
-    ),
-    // Subtitle
-    h(
-      'div',
-      {
-        style: {
-          fontSize: 26,
-          color: TEXT,
-          lineHeight: 1.35,
-          marginBottom: 'auto',
-          maxWidth: 1020,
-          opacity: 0.85,
-          zIndex: 2,
-          display: 'flex',
-        },
-      },
-      subtitle
-    ),
+    // Headline OR full-day scoreboard — different framing depending on mode
+    mode === 'fullday'
+      ? h(
+          'div',
+          {
+            style: {
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 14,
+              marginBottom: 'auto',
+              maxWidth: 1060,
+              zIndex: 2,
+            },
+          },
+          h(
+            'div',
+            {
+              style: {
+                fontSize: 54,
+                fontWeight: 900,
+                color: '#fff',
+                letterSpacing: -1.2,
+                marginBottom: 10,
+                display: 'flex',
+              },
+            },
+            'REKAP LENGKAP'
+          ),
+          ...digests.slice(0, 5).map((line, i) =>
+            h(
+              'div',
+              {
+                key: i,
+                style: {
+                  display: 'flex',
+                  fontSize: 30,
+                  fontWeight: 700,
+                  color: TEXT,
+                  lineHeight: 1.25,
+                  letterSpacing: -0.3,
+                  borderLeft: `4px solid ${accent}`,
+                  paddingLeft: 16,
+                },
+              },
+              line.slice(0, 70)
+            )
+          )
+        )
+      : h(
+          'div',
+          {
+            style: {
+              display: 'flex',
+              flexDirection: 'column',
+              marginBottom: 'auto',
+              zIndex: 2,
+            },
+          },
+          // Headline
+          h(
+            'div',
+            {
+              style: {
+                fontSize: headline.length > 50 ? 58 : 72,
+                fontWeight: 800,
+                color: '#fff',
+                lineHeight: 1.08,
+                letterSpacing: -1.5,
+                marginBottom: 24,
+                maxWidth: 1060,
+                display: 'flex',
+              },
+            },
+            headline
+          ),
+          // Subtitle
+          h(
+            'div',
+            {
+              style: {
+                fontSize: 26,
+                color: TEXT,
+                lineHeight: 1.35,
+                maxWidth: 1020,
+                opacity: 0.85,
+                display: 'flex',
+              },
+            },
+            subtitle
+          )
+        ),
     // Footer
     h(
       'div',
