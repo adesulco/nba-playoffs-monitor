@@ -10,7 +10,7 @@
 //   - Minor bumps for new features (0.2.0, 0.3.0…).
 //   - Major bump when a sport beyond NBA goes live (1.0.0 when IBL ships).
 
-export const APP_VERSION = '0.1.2';
+export const APP_VERSION = '0.1.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

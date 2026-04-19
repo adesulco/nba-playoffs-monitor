@@ -366,7 +366,7 @@ export default function NBADashboard() {
               onMouseEnter={(e) => { e.currentTarget.style.background = `${accent}20`; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
             >
-              📖 CATATAN PLAYOFF
+              {lang === 'id' ? '📖 CATATAN PLAYOFF' : '📖 PLAYOFF NOTES'}
             </Link>
           </div>
           <TeamPicker selectedTeam={favTeam} onSelect={setFav} />

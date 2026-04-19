@@ -24,11 +24,12 @@ function resolvePlayInWinner(games, oneSeedAbbr, poolNames) {
 
 function TeamRow({ name, seed, odds, highlight, playInWinner }) {
   // If the raw bracket entry is a TBD placeholder and we've detected a winner,
-  // swap it out for the real team. Keeps the visual "just won the play-in"
-  // sense by flagging the row with a subtle chip.
+  // swap it out for the real team. Once R1 tips off the team is no longer "the
+  // play-in winner" in any meaningful sense — it's just the 8-seed — so we
+  // don't flag the row anymore (was causing confusion for users who thought
+  // the team was still in the play-in).
   const isTBD = typeof name === 'string' && name.startsWith('TBD');
-  const fromPlayIn = isTBD && playInWinner;
-  const resolvedName = fromPlayIn ? playInWinner : name;
+  const resolvedName = isTBD && playInWinner ? playInWinner : name;
   const meta = TEAM_META[resolvedName] || { abbr: (resolvedName || '').slice(0, 3).toUpperCase(), color: '#333' };
   const stillTBD = isTBD && !playInWinner;
   return (
@@ -61,25 +62,8 @@ function TeamRow({ name, seed, odds, highlight, playInWinner }) {
       >
         {stillTBD ? '?' : meta.abbr}
       </div>
-      <span style={{ color: stillTBD ? COLORS.muted : COLORS.text, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+      <span style={{ color: stillTBD ? COLORS.muted : COLORS.text }}>
         {stillTBD ? 'Play-In TBD' : (resolvedName || '').split(' ').slice(-1)[0]}
-        {fromPlayIn && (
-          <span
-            title="Won play-in"
-            style={{
-              fontSize: 7.5,
-              letterSpacing: 0.5,
-              padding: '0 4px',
-              borderRadius: 2,
-              background: 'rgba(255,179,71,0.18)',
-              color: COLORS.amber,
-              fontWeight: 600,
-              lineHeight: '11px',
-            }}
-          >
-            PLAY-IN
-          </span>
-        )}
       </span>
       {odds && !stillTBD && (
         <span style={{ color: COLORS.amberBright, fontSize: 9.5, fontWeight: 600 }}>{odds}%</span>

@@ -163,7 +163,7 @@ export async function fetchScoreboardForDate(yyyymmdd) {
   });
 }
 
-// yyyymmdd helper for ESPN's ?dates= param.
+// yyyymmdd helper — browser-local date (matches what user sees in day tabs).
 function toYYYYMMDD(date) {
   const d = typeof date === 'string' ? new Date(date) : date;
   const y = d.getFullYear();
@@ -172,31 +172,63 @@ function toYYYYMMDD(date) {
   return `${y}${m}${da}`;
 }
 
+function addDays(date, n) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + n);
+  return d;
+}
+
 /**
- * ESPN scoreboard over a window of days. Returns { 'YYYYMMDD': games[] }.
- * Each day's entry has the same shape as fetchScoreboard() elements (plus `.date`).
- * Errors on any single day resolve that day to [] — the rest still returns.
+ * ESPN scoreboard over a window of days. Returns { 'YYYYMMDD': games[] } keyed
+ * by **user-local date** (browser TZ), not ESPN's ET date.
+ *
+ * ESPN `?dates=YYYYMMDD` buckets by ET. For a Jakarta user (UTC+7), a game that
+ * tips at Mon 02:30 WIB is Sun 13:30 ET — so asking ESPN for `dates=MON` misses
+ * it. We fetch a slightly wider window (±1 day beyond the requested range) and
+ * re-bucket every event by `game.date` (ISO UTC) in user-local time, deduped
+ * by event id.
  */
 export async function fetchScoreboardRange(dates) {
-  const keys = dates.map(toYYYYMMDD);
+  // User-local keys the caller asked for (the only keys we return)
+  const userKeys = dates.map(toYYYYMMDD);
+  const userKeySet = new Set(userKeys);
+
+  // Expand ±1 day on each end to catch ET/local spillover. Dedupe by key.
+  const fetchDateSet = new Map(); // key -> Date
+  for (const d of dates) {
+    for (const offset of [-1, 0, 1]) {
+      const nd = addDays(d, offset);
+      fetchDateSet.set(toYYYYMMDD(nd), nd);
+    }
+  }
+  const fetchKeys = Array.from(fetchDateSet.keys());
+
   const results = await Promise.allSettled(
-    keys.map((k) =>
+    fetchKeys.map((k) =>
       fetch(`${ESPN_BASE}/scoreboard?dates=${k}`).then((r) => (r.ok ? r.json() : null))
     )
   );
+
+  // Initialize output with empty arrays for every requested user-local key.
   const out = {};
-  results.forEach((r, i) => {
-    const key = keys[i];
-    if (r.status !== 'fulfilled' || !r.value) {
-      out[key] = [];
-      return;
-    }
-    out[key] = (r.value.events || []).map((e) => {
+  for (const k of userKeys) out[k] = [];
+
+  const seen = new Set(); // event ids we've already bucketed (dedupe across ET/local overlap)
+
+  results.forEach((r) => {
+    if (r.status !== 'fulfilled' || !r.value) return;
+    for (const e of r.value.events || []) {
+      if (!e?.id || seen.has(e.id)) continue;
       const c = e.competitions?.[0];
       const teams = c?.competitors || [];
       const home = teams.find((t) => t.homeAway === 'home') || teams[0];
       const away = teams.find((t) => t.homeAway === 'away') || teams[1];
-      return {
+
+      const localKey = e.date ? toYYYYMMDD(new Date(e.date)) : null;
+      if (!localKey || !userKeySet.has(localKey)) continue;
+      seen.add(e.id);
+
+      out[localKey].push({
         id: e.id,
         name: e.shortName,
         date: e.date,
@@ -212,9 +244,15 @@ export async function fetchScoreboardRange(dates) {
           score: away?.score,
           record: away?.records?.[0]?.summary,
         },
-      };
-    });
+      });
+    }
   });
+
+  // Sort each day's games by tipoff so the user sees them in chronological order.
+  for (const k of userKeys) {
+    out[k].sort((a, b) => new Date(a.date) - new Date(b.date));
+  }
+
   return out;
 }
 
@@ -369,9 +407,23 @@ export async function fetchGameSummary(eventId) {
     return { abbr, players };
   });
 
+  // Parse team totals — used by Team Comparison tab. ESPN returns each team's
+  // aggregated stats under boxscore.teams[].statistics[]. We pick the common
+  // ones (shooting splits, rebs, assists, turnovers, fouls).
+  const teamTotals = (data.boxscore?.teams || []).map((t) => {
+    const abbr = t.team?.abbreviation;
+    const byLabel = {};
+    (t.statistics || []).forEach((stat) => {
+      const label = stat.label || stat.name;
+      if (label) byLabel[label] = stat.displayValue ?? stat.value;
+    });
+    return { abbr, stats: byLabel };
+  });
+
   return {
     plays,
     boxscore,
+    teamTotals,
     homeAbbr: home?.team?.abbreviation,
     awayAbbr: away?.team?.abbreviation,
     homeId: home?.team?.id,

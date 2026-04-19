@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useEffect, useState, useCallback } from 'react';
 import { useApp } from '../lib/AppContext.jsx';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
-import { formatKickoff, getUserTzLabel, localizeGameStatus } from '../lib/timezone.js';
+import { getUserTzLabel, localizeGameStatus } from '../lib/timezone.js';
 
 // ---- date helpers (locale-aware via Intl) -----------------------------------
 
@@ -218,7 +218,6 @@ function GameCard({ g, lang, onClick, isActive, winProb, favTeam, accent }) {
   const hasScore = awayScore !== null && awayScore !== undefined && awayScore !== '';
   const awayWon = hasScore && parseInt(awayScore) > parseInt(homeScore);
   const homeWon = hasScore && parseInt(homeScore) > parseInt(awayScore);
-  const tip = !isFinal && g.date ? formatKickoff(g.date, lang) : null;
 
   return (
     <div
@@ -311,9 +310,6 @@ function GameCard({ g, lang, onClick, isActive, winProb, favTeam, accent }) {
           {localizeGameStatus(g.status, g.date, g.statusState, lang) || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}
         </span>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-          {tip && !isLive && !isFinal && (
-            <span style={{ color: C.dim, fontSize: 9.5, letterSpacing: 0.3 }}>{tip}</span>
-          )}
           {(isLive || isFinal) && <ShareBtn g={g} lang={lang} accent={isLive ? C.green : accent} />}
         </div>
       </div>

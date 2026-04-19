@@ -431,9 +431,9 @@ function BoxScoreTable({ team, color, watchlist }) {
 function WinProbChart({ points, awayAbbr, homeAbbr, awayColor, homeColor }) {
   // 0..1 home win prob becomes the y axis; above 0.5 = home favored, below = away favored
   const W = 520;
-  const H = 110;
+  const H = 200;
   const PAD_X = 8;
-  const PAD_Y = 10;
+  const PAD_Y = 14;
 
   if (!points || points.length < 2) {
     return (
@@ -527,10 +527,169 @@ function InjuryList({ abbr, list, color }) {
   );
 }
 
+// Team Comparison — side-by-side team totals (shooting, rebs, ast, to) with
+// proportional bars so the user sees who's winning each category at a glance.
+function TeamComparison({ teamTotals, awayAbbr, homeAbbr, awayColor, homeColor, lang }) {
+  if (!teamTotals || teamTotals.length < 2) {
+    return (
+      <div style={{ padding: 24, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
+        {lang === 'id' ? 'Statistik tim muncul saat tip-off.' : 'Team stats open at tip-off.'}
+      </div>
+    );
+  }
+  const away = teamTotals.find((t) => t.abbr === awayAbbr) || teamTotals[0];
+  const home = teamTotals.find((t) => t.abbr === homeAbbr) || teamTotals[1];
+
+  // Pick the stats that are most legible at a glance. ESPN labels vary —
+  // we try a few aliases and skip missing keys.
+  const ROWS = [
+    { key: 'fg%', label: 'FG%',     aliases: ['Field Goal %', 'FG %', 'FG%'],        pct: true },
+    { key: '3p%', label: '3P%',     aliases: ['Three Point %', '3P %', '3P%'],        pct: true },
+    { key: 'ft%', label: 'FT%',     aliases: ['Free Throw %', 'FT %', 'FT%'],         pct: true },
+    { key: 'reb', label: lang === 'id' ? 'Rebound' : 'Rebounds', aliases: ['Rebounds', 'Total Rebounds', 'REB'] },
+    { key: 'ast', label: lang === 'id' ? 'Assist'  : 'Assists',  aliases: ['Assists', 'AST'] },
+    { key: 'to',  label: lang === 'id' ? 'Turnover (makin kecil makin bagus)' : 'Turnovers (lower is better)', aliases: ['Turnovers', 'TO'], lowerWins: true },
+    { key: 'blk', label: lang === 'id' ? 'Blok' : 'Blocks',      aliases: ['Blocks', 'BLK'] },
+    { key: 'stl', label: lang === 'id' ? 'Steal' : 'Steals',     aliases: ['Steals', 'STL'] },
+  ];
+
+  const pick = (stats, aliases) => {
+    if (!stats) return null;
+    for (const a of aliases) {
+      if (stats[a] !== undefined && stats[a] !== null) return stats[a];
+    }
+    return null;
+  };
+
+  const toNum = (v) => {
+    if (v === null || v === undefined) return null;
+    const s = String(v).replace('%', '').trim();
+    const n = parseFloat(s);
+    return Number.isFinite(n) ? n : null;
+  };
+
+  return (
+    <div style={{ padding: '8px 14px 14px', maxHeight: 360, overflowY: 'auto' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 90px 1fr', gap: 6, fontSize: 9.5, letterSpacing: 0.8, color: C.dim, padding: '0 0 6px', borderBottom: `1px solid ${C.lineSoft}` }}>
+        <div style={{ textAlign: 'left', color: awayColor, fontWeight: 700 }}>{awayAbbr}</div>
+        <div style={{ textAlign: 'center' }}>STAT</div>
+        <div style={{ textAlign: 'right', color: homeColor, fontWeight: 700 }}>{homeAbbr}</div>
+      </div>
+      {ROWS.map((row) => {
+        const aRaw = pick(away.stats, row.aliases);
+        const hRaw = pick(home.stats, row.aliases);
+        const aN = toNum(aRaw);
+        const hN = toNum(hRaw);
+        if (aRaw === null && hRaw === null) return null;
+
+        const total = (aN || 0) + (hN || 0);
+        let awayPct = 50, homePct = 50;
+        if (total > 0 && aN !== null && hN !== null) {
+          awayPct = (aN / total) * 100;
+          homePct = (hN / total) * 100;
+        }
+        const awayWins = row.lowerWins ? (aN !== null && hN !== null && aN < hN) : (aN !== null && hN !== null && aN > hN);
+        const homeWins = row.lowerWins ? (aN !== null && hN !== null && hN < aN) : (aN !== null && hN !== null && hN > aN);
+
+        return (
+          <div key={row.key} style={{ padding: '8px 0', borderBottom: `1px solid ${C.lineSoft}` }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 90px 1fr', gap: 6, fontSize: 10.5, alignItems: 'center', marginBottom: 4 }}>
+              <div style={{ textAlign: 'left', color: awayWins ? C.text : C.dim, fontWeight: awayWins ? 700 : 500, fontFamily: '"Space Grotesk", sans-serif' }}>
+                {aRaw ?? '—'}
+              </div>
+              <div style={{ textAlign: 'center', color: C.muted, fontSize: 9.5, letterSpacing: 0.5 }}>{row.label}</div>
+              <div style={{ textAlign: 'right', color: homeWins ? C.text : C.dim, fontWeight: homeWins ? 700 : 500, fontFamily: '"Space Grotesk", sans-serif' }}>
+                {hRaw ?? '—'}
+              </div>
+            </div>
+            <div style={{ display: 'flex', height: 4, background: C.lineSoft, borderRadius: 2, overflow: 'hidden' }}>
+              <div style={{ width: `${awayPct}%`, background: awayColor, opacity: awayWins ? 1 : 0.45 }} />
+              <div style={{ width: `${homePct}%`, background: homeColor, opacity: homeWins ? 1 : 0.45 }} />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// Lead Tracker — SVG chart of lead (home − away) across plays. Positive = home
+// leads; negative = away leads. Derived purely from play-by-play score data.
+function LeadTracker({ plays, awayAbbr, homeAbbr, awayColor, homeColor, lang }) {
+  const series = useMemo(() => {
+    if (!Array.isArray(plays) || plays.length === 0) return [];
+    const out = [];
+    for (const p of plays) {
+      if (p.awayScore === undefined || p.homeScore === undefined) continue;
+      const a = parseInt(p.awayScore, 10);
+      const h = parseInt(p.homeScore, 10);
+      if (!Number.isFinite(a) || !Number.isFinite(h)) continue;
+      out.push({ lead: h - a, period: p.period || 1 });
+    }
+    return out;
+  }, [plays]);
+
+  if (series.length < 2) {
+    return (
+      <div style={{ padding: 24, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
+        {lang === 'id' ? 'Grafik selisih skor muncul saat tip-off.' : 'Lead tracker opens at tip-off.'}
+      </div>
+    );
+  }
+
+  const W = 520, H = 200, PAD_X = 10, PAD_Y = 16;
+  const maxAbs = Math.max(6, ...series.map((s) => Math.abs(s.lead)));
+  const n = series.length;
+  const xOf = (i) => PAD_X + (i / (n - 1)) * (W - 2 * PAD_X);
+  const yOf = (lead) => (H / 2) - (lead / maxAbs) * ((H - 2 * PAD_Y) / 2);
+  const mid = H / 2;
+
+  const linePath = series.map((s, i) => `${i === 0 ? 'M' : 'L'}${xOf(i).toFixed(1)},${yOf(s.lead).toFixed(1)}`).join(' ');
+  const homeFill = `M${PAD_X},${mid} ` +
+    series.map((s, i) => `L${xOf(i).toFixed(1)},${yOf(Math.max(s.lead, 0)).toFixed(1)}`).join(' ') +
+    ` L${xOf(n - 1).toFixed(1)},${mid} Z`;
+  const awayFill = `M${PAD_X},${mid} ` +
+    series.map((s, i) => `L${xOf(i).toFixed(1)},${yOf(Math.min(s.lead, 0)).toFixed(1)}`).join(' ') +
+    ` L${xOf(n - 1).toFixed(1)},${mid} Z`;
+
+  const currentLead = series[series.length - 1].lead;
+  const leaderAbbr = currentLead > 0 ? homeAbbr : currentLead < 0 ? awayAbbr : null;
+  const leaderColor = currentLead > 0 ? homeColor : currentLead < 0 ? awayColor : C.muted;
+  const biggest = series.reduce((max, s) => Math.abs(s.lead) > Math.abs(max) ? s.lead : max, 0);
+  const biggestAbbr = biggest > 0 ? homeAbbr : biggest < 0 ? awayAbbr : null;
+
+  return (
+    <div style={{ padding: '6px 14px 10px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, letterSpacing: 0.8, color: C.dim, marginBottom: 6 }}>
+        <span>
+          {lang === 'id' ? 'UNGGUL' : 'LEAD'}:{' '}
+          <span style={{ color: leaderColor, fontWeight: 700 }}>
+            {leaderAbbr ? `${leaderAbbr} +${Math.abs(currentLead)}` : (lang === 'id' ? 'SERI' : 'TIED')}
+          </span>
+        </span>
+        <span>
+          {lang === 'id' ? 'UNGGUL TERBESAR' : 'BIGGEST LEAD'}:{' '}
+          <span style={{ color: biggestAbbr === homeAbbr ? homeColor : awayColor, fontWeight: 700 }}>
+            {biggestAbbr ? `${biggestAbbr} +${Math.abs(biggest)}` : '—'}
+          </span>
+        </span>
+      </div>
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} preserveAspectRatio="none" style={{ display: 'block', background: C.panelSoft, border: `1px solid ${C.lineSoft}` }}>
+        <line x1={PAD_X} x2={W - PAD_X} y1={mid} y2={mid} stroke={C.lineSoft} strokeDasharray="2,3" />
+        <path d={homeFill} fill={homeColor} opacity="0.28" />
+        <path d={awayFill} fill={awayColor} opacity="0.28" />
+        <path d={linePath} fill="none" stroke={C.text} strokeWidth="1.5" />
+        <text x={PAD_X + 4} y={PAD_Y} fontSize="9" fill={homeColor} fontFamily="JetBrains Mono, monospace" fontWeight="600">{homeAbbr}</text>
+        <text x={PAD_X + 4} y={H - PAD_Y + 4} fontSize="9" fill={awayColor} fontFamily="JetBrains Mono, monospace" fontWeight="600">{awayAbbr}</text>
+      </svg>
+    </div>
+  );
+}
+
 export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onClose, summary, winProb, lastUpdate, watchlist, h2h }) {
   const { lang } = useApp();
   const tickerRef = useRef(null);
-  const [rightTab, setRightTab] = useState('plays'); // 'plays' | 'stats' | 'shots'
+  const [rightTab, setRightTab] = useState('winprob'); // 'winprob' | 'plays' | 'stats' | 'shots' | 'comparison' | 'leads'
 
   // Resolve team meta from abbr
   const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
@@ -630,48 +789,55 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
         </div>
       )}
 
-      {/* Body: probability chart + play-by-play ticker */}
-      <div className="focus-body" style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 0 }}>
-        {/* Win probability */}
-        <div style={{ padding: '10px 14px', borderRight: `1px solid ${C.lineSoft}` }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, letterSpacing: 1, color: C.dim, marginBottom: 6 }}>
-            <span>WIN PROBABILITY</span>
-            <span style={{ color: C.muted }}>ESPN · updates every play</span>
+      {/* Body: tabbed viz (win prob, plays, box, shots, comparison, leads) */}
+      <div className="focus-body" style={{ display: 'flex', flexDirection: 'column', minHeight: 240 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 14px 0', borderBottom: `1px solid ${C.lineSoft}` }}>
+          <div style={{ display: 'flex', gap: 0, overflowX: 'auto' }}>
+            {[
+              { key: 'winprob',    id: lang === 'id' ? 'Prob. Menang' : 'Win Prob' },
+              { key: 'plays',      id: lang === 'id' ? 'Play-by-play' : 'Play-by-play' },
+              { key: 'stats',      id: lang === 'id' ? 'Box Score'    : 'Box Score' },
+              { key: 'shots',      id: lang === 'id' ? 'Shot Chart'   : 'Shot Chart' },
+              { key: 'comparison', id: lang === 'id' ? 'Statistik Tim': 'Team Stats' },
+              { key: 'leads',      id: lang === 'id' ? 'Selisih Skor' : 'Lead Tracker' },
+            ].map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setRightTab(tab.key)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  borderBottom: rightTab === tab.key ? `2px solid ${accent}` : '2px solid transparent',
+                  color: rightTab === tab.key ? C.text : C.dim,
+                  fontFamily: 'inherit',
+                  fontSize: 9.5, letterSpacing: 1, fontWeight: 600,
+                  padding: '6px 10px 8px',
+                  cursor: 'pointer',
+                  textTransform: 'uppercase',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {tab.id}
+              </button>
+            ))}
           </div>
-          <WinProbChart points={winProb} awayAbbr={summary?.awayAbbr || 'AWAY'} homeAbbr={summary?.homeAbbr || 'HOME'} awayColor={awayMeta.color} homeColor={homeMeta.color} />
+          <span style={{ fontSize: 9.5, color: C.muted, whiteSpace: 'nowrap', paddingLeft: 10 }}>
+            {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s` : '—'}
+          </span>
         </div>
 
-        {/* Right column: tabs — PLAYS / STATS */}
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: 200 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 14px 0' }}>
-            <div style={{ display: 'flex', gap: 0 }}>
-              {['plays', 'stats', 'shots'].map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setRightTab(tab)}
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    borderBottom: rightTab === tab ? `2px solid ${accent}` : '2px solid transparent',
-                    color: rightTab === tab ? C.text : C.dim,
-                    fontFamily: 'inherit',
-                    fontSize: 9.5, letterSpacing: 1, fontWeight: 600,
-                    padding: '6px 10px 8px',
-                    cursor: 'pointer',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {tab === 'plays' ? 'Play-by-play' : tab === 'stats' ? 'Box Score' : 'Shot Chart'}
-                </button>
-              ))}
+          {rightTab === 'winprob' && (
+            <div style={{ padding: '10px 14px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, letterSpacing: 1, color: C.dim, marginBottom: 6 }}>
+                <span>{lang === 'id' ? 'PROBABILITAS MENANG' : 'WIN PROBABILITY'}</span>
+                <span style={{ color: C.muted }}>{lang === 'id' ? 'ESPN · update tiap play' : 'ESPN · updates every play'}</span>
+              </div>
+              <WinProbChart points={winProb} awayAbbr={summary?.awayAbbr || 'AWAY'} homeAbbr={summary?.homeAbbr || 'HOME'} awayColor={awayMeta.color} homeColor={homeMeta.color} />
             </div>
-            <span style={{ fontSize: 9.5, color: C.muted }}>
-              {rightTab === 'plays' ? `${plays.length} plays` : rightTab === 'stats' ? 'ESPN box' : 'ESPN plays'} · {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s ago` : '—'}
-            </span>
-          </div>
+          )}
 
           {rightTab === 'stats' && summary?.boxscore?.length > 0 && (
-            <div style={{ maxHeight: 260, overflowY: 'auto' }}>
+            <div style={{ maxHeight: 360, overflowY: 'auto' }}>
               {summary.boxscore.map((t) => (
                 <BoxScoreTable key={t.abbr} team={t} color={t.abbr === summary.awayAbbr ? awayMeta.color : homeMeta.color} watchlist={watchlist} />
               ))}
@@ -679,7 +845,7 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
           )}
           {rightTab === 'stats' && (!summary?.boxscore?.length) && (
             <div style={{ padding: 20, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
-              Box score opens at tip-off.
+              {lang === 'id' ? 'Box score muncul saat tip-off.' : 'Box score opens at tip-off.'}
             </div>
           )}
 
@@ -695,11 +861,33 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
             />
           )}
 
+          {rightTab === 'comparison' && (
+            <TeamComparison
+              teamTotals={summary?.teamTotals}
+              awayAbbr={summary?.awayAbbr}
+              homeAbbr={summary?.homeAbbr}
+              awayColor={awayMeta.color}
+              homeColor={homeMeta.color}
+              lang={lang}
+            />
+          )}
+
+          {rightTab === 'leads' && (
+            <LeadTracker
+              plays={summary?.plays || []}
+              awayAbbr={summary?.awayAbbr}
+              homeAbbr={summary?.homeAbbr}
+              awayColor={awayMeta.color}
+              homeColor={homeMeta.color}
+              lang={lang}
+            />
+          )}
+
           {rightTab === 'plays' && (
-          <div ref={tickerRef} style={{ maxHeight: 260, overflowY: 'auto', padding: '0 14px 10px' }}>
+          <div ref={tickerRef} style={{ maxHeight: 360, overflowY: 'auto', padding: '0 14px 10px' }}>
             {plays.length === 0 && (
               <div style={{ fontSize: 10.5, color: C.dim, padding: 20, textAlign: 'center' }}>
-                {eventId ? 'No plays yet — check back at tip-off.' : 'Pick a match above.'}
+                {eventId ? (lang === 'id' ? 'Belum ada play — cek lagi saat tip-off.' : 'No plays yet — check back at tip-off.') : (lang === 'id' ? 'Pilih pertandingan di atas.' : 'Pick a match above.')}
               </div>
             )}
             {plays.map((p) => {
@@ -739,7 +927,6 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
             })}
           </div>
           )}
-        </div>
       </div>
 
       {/* Quarter-by-quarter line score, always visible when available */}
