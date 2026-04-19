@@ -18,13 +18,24 @@ function formatJakartaDate(iso, lang) {
   return d.toLocaleDateString(locale, opts);
 }
 
-function isoYesterday() {
-  const d = new Date(Date.now() - 24 * 60 * 60 * 1000);
-  return d.toISOString().slice(0, 10);
+// Use **user-local** date — toISOString() uses UTC and would flip the day for
+// Jakarta users in the evening (UTC is already next-day) or in the morning
+// (UTC is still yesterday). This must match NBADashboard's day-tab key scheme.
+function todayIso() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const da = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${da}`;
 }
 
-function todayIso() {
-  return new Date().toISOString().slice(0, 10);
+function isoYesterday() {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const da = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${da}`;
 }
 
 // Shift an ISO date string by N days (positive or negative). Used for prev/next day nav.
@@ -391,8 +402,9 @@ export default function Recap() {
   const navigate = useNavigate();
   const { lang } = useApp();
 
-  // If no date in URL, use yesterday (most common case — someone sharing morning-after)
-  const dateIso = date || isoYesterday();
+  // If no date in URL, default to today (user-local). The "Today" button also
+  // links here explicitly so the label always matches the destination.
+  const dateIso = date || todayIso();
 
   useEffect(() => {
     if (!date) navigate(`/recap/${dateIso}`, { replace: true });
@@ -519,12 +531,15 @@ export default function Recap() {
               ← {lang === 'id' ? 'Kemarin' : 'Previous day'}
             </Link>
             <Link
-              to="/recap"
+              to={`/recap/${todayIso()}`}
               aria-label={lang === 'id' ? 'Catatan playoff hari ini' : `Today's recap`}
               style={{
-                padding: '6px 12px', background: C.panel, color: C.text,
-                border: `1px solid ${C.line}`, borderRadius: 3, textDecoration: 'none',
-                letterSpacing: 0.3, fontWeight: 500,
+                padding: '6px 12px',
+                background: dateIso === todayIso() ? C.amber : C.panel,
+                color: dateIso === todayIso() ? '#000' : C.text,
+                border: `1px solid ${dateIso === todayIso() ? C.amber : C.line}`,
+                borderRadius: 3, textDecoration: 'none',
+                letterSpacing: 0.3, fontWeight: 600,
               }}
             >
               {lang === 'id' ? 'Hari Ini' : 'Today'}

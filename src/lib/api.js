@@ -257,6 +257,19 @@ export async function fetchScoreboardRange(dates) {
 }
 
 /**
+ * Scoreboard for a single **user-local** date (YYYY-MM-DD). Uses the same
+ * ±1-day expansion + local re-bucket logic as fetchScoreboardRange, so the
+ * recap view's bucketing matches the homepage's day-tabs. Otherwise a Jakarta
+ * user on Sunday would miss Sunday-morning games that ESPN tagged ET-Saturday.
+ */
+export async function fetchScoreboardForLocalDate(dateIso) {
+  const midday = new Date(`${dateIso}T12:00:00`); // noon-local to avoid TZ edges
+  const map = await fetchScoreboardRange([midday]);
+  const key = toYYYYMMDD(midday);
+  return map[key] || [];
+}
+
+/**
  * ESPN team schedule — returns past + upcoming events for a given team abbr.
  * Used for: recent-form streak + head-to-head lookups.
  */

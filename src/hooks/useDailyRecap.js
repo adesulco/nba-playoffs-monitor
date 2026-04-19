@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { fetchScoreboardForDate, fetchGameSummary } from '../lib/api.js';
+import { fetchScoreboardForLocalDate, fetchGameSummary } from '../lib/api.js';
 
 const summaryCache = new Map(); // eventId -> { at, data }
 const TTL = 30 * 60 * 1000;
@@ -239,12 +239,15 @@ export function useDailyRecap(dateIso, lang = 'id') {
   useEffect(() => {
     if (!dateIso) { setLoading(false); return; }
     let cancelled = false;
-    const yyyymmdd = dateIso.replace(/-/g, '');
 
     async function load() {
       setLoading(true);
       try {
-        const results = await fetchScoreboardForDate(yyyymmdd);
+        // Use local-date bucketing so recap matches the homepage's day tabs.
+        // ESPN's ?dates=YYYYMMDD is ET — a Jakarta Sunday would miss Sunday-
+        // morning games that ESPN tagged Saturday-ET. fetchScoreboardForLocalDate
+        // expands ±1 day and re-buckets by user-local date.
+        const results = await fetchScoreboardForLocalDate(dateIso);
         if (cancelled) return;
         const completed = (results || []).filter((g) => g.statusState === 'post');
         setGames(completed);
