@@ -21,6 +21,7 @@ import { useWatchlist } from '../hooks/useWatchlist.js';
 import { useWatchlistAlerts } from '../hooks/useWatchlistAlerts.js';
 import { useTeamSchedule, computeStreak, computeH2H } from '../hooks/useTeamSchedule.js';
 import { useGameDetails } from '../hooks/useGameDetails.js';
+import { useLiveWinProbs } from '../hooks/useLiveWinProbs.js';
 import { useApp } from '../lib/AppContext.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
 import ClutchLeaderboard from '../components/ClutchLeaderboard.jsx';
@@ -261,6 +262,9 @@ export default function NBADashboard() {
     return map;
   }, [awaySchedule, homeSchedule, awayAbbr, homeAbbr]);
 
+  // Per-game live win probabilities from ESPN — only polls in-progress games.
+  const liveWinProbs = useLiveWinProbs(games);
+
   // Top 3 teams get WebSocket ticks
   const topTokenIds = useMemo(
     () => champion.odds.slice(0, 3).map((o) => o.yesTokenId).filter(Boolean),
@@ -427,6 +431,11 @@ export default function NBADashboard() {
         <YesterdayRecap favTeam={favTeam} t={t} />
 
         {/* ================== SCORES & SCHEDULE (day-by-day swipe) ================== */}
+        {/* DayScoreboard is now the single surface for browsing + clicking games:
+            - click any card → sets active match for LiveGameFocus below
+            - live cards render ESPN win-odds bar + Bagikan share button
+            - day tabs handle YESTERDAY / TODAY / TOMORROW, so we no longer render
+              a duplicate "today-only" game-grid row. */}
         <DayScoreboard
           gamesByDay={gamesByDay}
           fallbackGames={games.length > 0 ? games : [
@@ -434,25 +443,12 @@ export default function NBADashboard() {
             { id: 'sched-2', name: 'PHX @ GSW', away: { abbr: 'PHX', score: null }, home: { abbr: 'GSW', score: null }, date: '2026-04-18T02:00:00Z', status: 'FRI 10:00 PM ET', statusState: 'pre' },
           ]}
           errors={errors}
+          onGameClick={(g) => handleGameCardClick(g.id)}
+          activeMatchId={activeMatchId}
+          winProbs={liveWinProbs}
+          favTeam={favTeam}
+          accent={accent}
         />
-
-        {/* Keep the interactive GameCard row for click-to-focus (live match picker) */}
-        {games.length > 0 && (
-          <div className="game-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 0, borderBottom: `1px solid ${C.line}` }}>
-            {games.slice(0, 6).map((g, i) => (
-              <GameCard
-                key={g.id || i}
-                g={g}
-                favTeam={favTeam}
-                isActive={activeMatchId === g.id}
-                onClick={() => handleGameCardClick(g.id)}
-                injuries={injuriesByTeam}
-                streaks={streaks}
-                lang={lang}
-              />
-            ))}
-          </div>
-        )}
 
         {/* ================== LIVE GAME FOCUS ================== */}
         <LiveGameFocus

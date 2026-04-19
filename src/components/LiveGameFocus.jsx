@@ -255,11 +255,13 @@ function BoxScoreTable({ team, color, watchlist }) {
       </div>
     );
   }
-  // Sort by PTS desc, filter DNP players, take top 6
-  const leaders = [...team.players]
-    .filter((p) => !p.dnp)
-    .sort((a, b) => (b.pts || 0) - (a.pts || 0))
-    .slice(0, 6);
+  // Show every player who actually saw court time — starters first (sorted by PTS),
+  // then bench (also by PTS). DNP players are excluded. Previously capped at 6.
+  const active = [...team.players].filter((p) => !p.dnp);
+  const leaders = [
+    ...active.filter((p) => p.starter).sort((a, b) => (b.pts || 0) - (a.pts || 0)),
+    ...active.filter((p) => !p.starter).sort((a, b) => (b.pts || 0) - (a.pts || 0)),
+  ];
 
   const gridCols = '14px 26px 1fr 24px 24px 24px 36px';
 
