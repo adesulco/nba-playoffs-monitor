@@ -1,0 +1,43 @@
+import { useEffect, useState } from 'react';
+
+/**
+ * Bilingual tennis news — hits /api/tennis-news?lang={lang}.
+ *
+ * Bahasa sources: detikSport, CNN Indonesia, Antara (filtered to tennis-only
+ * keywords — no machine translation per project rule feedback_news_bilingual).
+ * English sources: BBC Sport (tennis), Reuters (tennis), ATP Tour, Tennis.com.
+ *
+ * Refresh cadence: 15 min matches the endpoint's s-maxage.
+ */
+export function useTennisNews(lang = 'id') {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [updatedAt, setUpdatedAt] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      setLoading(true);
+      try {
+        const r = await fetch(`/api/tennis-news?lang=${lang}&limit=15`);
+        if (!r.ok) throw new Error(`tennis-news ${r.status}`);
+        const json = await r.json();
+        if (!cancelled) {
+          setItems(Array.isArray(json.items) ? json.items : []);
+          setUpdatedAt(json.updatedAt || null);
+          setError(null);
+        }
+      } catch (e) {
+        if (!cancelled) setError(String(e?.message || e));
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+    load();
+    const id = setInterval(load, 15 * 60 * 1000);
+    return () => { cancelled = true; clearInterval(id); };
+  }, [lang]);
+
+  return { items, loading, error, updatedAt };
+}

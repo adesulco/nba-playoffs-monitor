@@ -1,0 +1,41 @@
+{
+  "version": "v0.5.0",
+  "note": "Phase 1A seed. Marquee players only. Phase 2 expands to top 200 per tour via scripts/seed-tennis-players.mjs using ATPTour / WTA rankings snapshot. Diacritics preserved (Alcaraz Garfía, Muchová, etc.) — do not strip on slug derivation; see playerSlug() in constants.js.",
+  "generatedAt": "2026-04-20",
+  "atp": [
+    { "slug": "jannik-sinner",      "firstName": "Jannik",  "lastName": "Sinner",         "country": "Italy",         "countryCode": "ITA" },
+    { "slug": "carlos-alcaraz",     "firstName": "Carlos",  "lastName": "Alcaraz",        "country": "Spain",         "countryCode": "ESP" },
+    { "slug": "alexander-zverev",   "firstName": "Alexander", "lastName": "Zverev",       "country": "Germany",       "countryCode": "GER" },
+    { "slug": "daniil-medvedev",    "firstName": "Daniil",  "lastName": "Medvedev",       "country": "Russia",        "countryCode": "RUS" },
+    { "slug": "novak-djokovic",     "firstName": "Novak",   "lastName": "Djokovic",       "country": "Serbia",        "countryCode": "SRB" },
+    { "slug": "taylor-fritz",       "firstName": "Taylor",  "lastName": "Fritz",          "country": "United States", "countryCode": "USA" },
+    { "slug": "casper-ruud",        "firstName": "Casper",  "lastName": "Ruud",           "country": "Norway",        "countryCode": "NOR" },
+    { "slug": "andrey-rublev",      "firstName": "Andrey",  "lastName": "Rublev",         "country": "Russia",        "countryCode": "RUS" },
+    { "slug": "holger-rune",        "firstName": "Holger",  "lastName": "Rune",           "country": "Denmark",       "countryCode": "DEN" },
+    { "slug": "grigor-dimitrov",    "firstName": "Grigor",  "lastName": "Dimitrov",       "country": "Bulgaria",      "countryCode": "BUL" },
+    { "slug": "stefanos-tsitsipas", "firstName": "Stefanos","lastName": "Tsitsipas",      "country": "Greece",        "countryCode": "GRE" },
+    { "slug": "ben-shelton",        "firstName": "Ben",     "lastName": "Shelton",        "country": "United States", "countryCode": "USA" },
+    { "slug": "tommy-paul",         "firstName": "Tommy",   "lastName": "Paul",           "country": "United States", "countryCode": "USA" },
+    { "slug": "jack-draper",        "firstName": "Jack",    "lastName": "Draper",         "country": "United Kingdom","countryCode": "GBR" },
+    { "slug": "lorenzo-musetti",    "firstName": "Lorenzo", "lastName": "Musetti",        "country": "Italy",         "countryCode": "ITA" },
+    { "slug": "christopher-rungkat","firstName": "Christopher", "lastName": "Rungkat",    "country": "Indonesia",     "countryCode": "IDN", "focus": "Doubles" }
+  ],
+  "wta": [
+    { "slug": "aryna-sabalenka",    "firstName": "Aryna",   "lastName": "Sabalenka",      "country": "Belarus",       "countryCode": "BLR" },
+    { "slug": "iga-świątek",        "firstName": "Iga",     "lastName": "Świątek",        "country": "Poland",        "countryCode": "POL" },
+    { "slug": "coco-gauff",         "firstName": "Coco",    "lastName": "Gauff",          "country": "United States", "countryCode": "USA" },
+    { "slug": "elena-rybakina",     "firstName": "Elena",   "lastName": "Rybakina",       "country": "Kazakhstan",    "countryCode": "KAZ" },
+    { "slug": "jessica-pegula",     "firstName": "Jessica", "lastName": "Pegula",         "country": "United States", "countryCode": "USA" },
+    { "slug": "qinwen-zheng",       "firstName": "Qinwen",  "lastName": "Zheng",          "country": "China",         "countryCode": "CHN" },
+    { "slug": "jasmine-paolini",    "firstName": "Jasmine", "lastName": "Paolini",        "country": "Italy",         "countryCode": "ITA" },
+    { "slug": "emma-navarro",       "firstName": "Emma",    "lastName": "Navarro",        "country": "United States", "countryCode": "USA" },
+    { "slug": "daria-kasatkina",    "firstName": "Daria",   "lastName": "Kasatkina",      "country": "Russia",        "countryCode": "RUS" },
+    { "slug": "barbora-krejčíková", "firstName": "Barbora", "lastName": "Krejčíková",     "country": "Czechia",       "countryCode": "CZE" },
+    { "slug": "madison-keys",       "firstName": "Madison", "lastName": "Keys",           "country": "United States", "countryCode": "USA" },
+    { "slug": "mirra-andreeva",     "firstName": "Mirra",   "lastName": "Andreeva",       "country": "Russia",        "countryCode": "RUS" },
+    { "slug": "paula-badosa",       "firstName": "Paula",   "lastName": "Badosa",         "country": "Spain",         "countryCode": "ESP" },
+    { "slug": "karolína-muchová",   "firstName": "Karolína","lastName": "Muchová",        "country": "Czechia",       "countryCode": "CZE" },
+    { "slug": "aldila-sutjiadi",    "firstName": "Aldila",  "lastName": "Sutjiadi",       "country": "Indonesia",     "countryCode": "IDN", "focus": "Doubles" },
+    { "slug": "priska-madelyn-nugroho","firstName": "Priska Madelyn","lastName":"Nugroho","country": "Indonesia",     "countryCode": "IDN" }
+  ]
+}

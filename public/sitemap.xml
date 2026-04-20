@@ -185,6 +185,36 @@
   <url><loc>https://www.gibol.co/premier-league-2025-26/club/west-ham</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.gibol.co/premier-league-2025-26/club/wolves</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
 
+  <!-- Tennis — v0.5.0 Phase 1A — 1 hub + 2 rankings + 18 tournaments = 21 URLs. -->
+  <url>
+    <loc>https://www.gibol.co/tennis</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://www.gibol.co/tennis" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gibol.co/tennis" />
+  </url>
+  <url><loc>https://www.gibol.co/tennis/rankings/atp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/tennis/rankings/wta</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/tennis/australian-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/tennis/roland-garros-2026</loc><lastmod>2026-04-20</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.gibol.co/tennis/wimbledon-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/tennis/us-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.gibol.co/tennis/indian-wells-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/miami-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/madrid-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/italian-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/canadian-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/cincinnati-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/monte-carlo-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/paris-masters-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/shanghai-masters-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/dubai-championships-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/china-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/wuhan-open-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/tennis/atp-finals-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.gibol.co/tennis/wta-finals-2026</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
   <url>
     <loc>https://www.gibol.co/fifa-world-cup-2026</loc>
     <lastmod>2026-04-20</lastmod>

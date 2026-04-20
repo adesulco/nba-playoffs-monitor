@@ -170,6 +170,20 @@ export const COLORS = {
   // Brand-identity hex colors (theme-independent).
   nbaRed: '#c8102e',
   cut: '#b89b5e',
+
+  // Tennis — surface + tier accents (v0.5.0 Phase 1A).
+  // Per docs/tennis/03-ui-spec.md. Theme-independent hex; components
+  // override contextually (e.g. SurfaceChip uses tennisClay/Grass/Hard/Indoor
+  // as bg, TournamentCard uses tennisSlamGold/MastersSilv/FinalsRed as accent).
+  tennisClay:        '#D2691E',
+  tennisGrass:       '#4A8F3C',
+  tennisHard:        '#1F6FB4',
+  tennisIndoor:      '#6B3FA0',
+  tennisSlamGold:    '#D4A13A',
+  tennisMastersSilv: '#9DA6AD',
+  tennisFinalsRed:   '#C83030',
+  tennisLive:        '#D13D44',
+  tennisTiebreak:    '#7E7E7E',
 };
 
 /**

@@ -17,11 +17,13 @@
 import nba from './nba/adapter.js';
 import f1 from './f1/adapter.js';
 import epl from './epl/adapter.js';
+import tennis from './tennis/adapter.js';
 import fifa from './fifa-wc-2026/adapter.js';
 import liga1 from './liga-1-id/adapter.js';
 
 // Ordered — this is the same order used on Home so we control card layout here.
-export const SPORTS = [nba, f1, epl, fifa, liga1];
+// Tennis slots in after EPL per 6-card Home grid (v0.5.0 Phase 1A).
+export const SPORTS = [nba, f1, epl, tennis, fifa, liga1];
 
 export const SPORTS_BY_ID = SPORTS.reduce((acc, s) => {
   acc[s.id] = s;

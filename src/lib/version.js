@@ -304,8 +304,83 @@
 // No NBA, F1, FIFA, Liga 1, or Recap changes. Status for Liga 1 +
 // FIFA WC unchanged (still 'soon').
 // Full changelog + QA checklist: v0.4.0-SHIP-NOTES.md at repo root.
+//
+// v0.5.0 — Tennis Phase 1A live (minor milestone bump, fourth sport LIVE). Hub
+// at /tennis plus 18 per-tournament SEO pages and 2 per-tour rankings pages —
+// the biggest single surface expansion since the EPL ship. Compounding wins:
+//   1. Tennis adapter + registry — src/lib/sports/tennis/ drops a full sport
+//      module in the same shape as NBA / F1 / EPL: adapter.js registers the
+//      sport in the SPORTS array, constants.js owns SEASON / TOURS /
+//      TOUR_LABEL / INDONESIAN_PLAYERS / date + WIB helpers, tournaments.js
+//      holds the 18-tournament registry (4 Slams, 2 combined-1000s, 7 ATP
+//      Masters, 3 WTA 1000, 2 year-end Finals, 2 early-500s), with
+//      nextSlam() + tournamentPath() exported for UI. Tennis-specific color
+//      tokens — tennisSlamGold (#D4A13A), tennisClayRust, tennisGrassGreen,
+//      tennisHardBlue, tennisMastersSilv, tennisLive, tennisAccent, and
+//      surface chips tints — live on the COLORS constant so every component
+//      renders token-driven (no hardcoded hex).
+//   2. Hub at /tennis — 36/700/-0.025em Inter Tight hero (matches the v0.3.0
+//      brand spec), CountdownToSlam block with venue + date + LIVE pulse
+//      when a Slam is in-progress, LiveTicker merging ATP + WTA scoreboard
+//      priority-sorted (live > pre > post, limit 8), TierSection per tier
+//      (slam / combined1000 / masters / wta1000 / finals) with
+//      TournamentCard previews, RankingsSnapshot showing top 10 ATP + top 10
+//      WTA side-by-side, IndonesianSpotlight (Aldila Sutjiadi / Priska
+//      Madelyn Nugroho / Christopher Rungkat), TennisNewsList, and the
+//      standard disclaimer + footer pattern.
+//   3. 18 per-tournament pages at /tennis/{slug}-2026 — each parses slug via
+//      useTennisTournament hook → {tournament, year, phase} then branches on
+//      phase: UpcomingBody renders CountdownToSlam + TournamentFactSheet +
+//      humanRelativeDays countdown, LiveBody renders TournamentFactSheet +
+//      scoreboard filtered to matches matching the tournament name, and
+//      CompletedBody renders TournamentFactSheet + archive note. Fact sheet
+//      exposes venue / city / dates / tours / organizer / web as Fact cards.
+//      RelatedTournaments chip strip at the bottom closes the internal link
+//      graph. Every page emits JSON-LD SportsEvent schema via adapter
+//      prerenderRoutes().
+//   4. Rankings at /tennis/rankings/:tour — TourSwitcher pill toggle between
+//      ATP and WTA, TopPodium top-10 grid (cards with rank / country code /
+//      name / points), inline Indonesian-players-in-top-500 highlight when
+//      any IDN / INA / ID code matches, then full RankingsTable limit=100
+//      with weekly up/down trend chips. Invalid :tour values redirect to
+//      /tennis/rankings/atp.
+//   5. Data layer — four new hooks (useTennisScoreboard, useTennisRankings,
+//      useTennisNews, useTennisTournament) all route through the existing
+//      edge-cached /api/proxy/espn/* provider; no new proxy provider
+//      needed. Bilingual tennis news at /api/tennis-news?lang=id|en
+//      aggregates Bahasa (detikSport + Antara + CNN Indonesia) and English
+//      (ESPN + BBC Sport + Tennis.com) RSS feeds with the same parser and
+//      cache strategy as /api/f1-news.
+//   6. 8 new components under src/components/tennis/ — SurfaceChip, TierChip,
+//      ScoreLine (per-set with tiebreak superscripts + server dot),
+//      PlayerChip (seed · name · CC, indonesian tint), LiveMatchCard,
+//      TournamentCard, RankingsTable (5-col grid, trend arrows,
+//      Indonesian-CC row tint), and CountdownToSlam (full + compact
+//      variants, null post-US-Open).
+// Routing: App.jsx adds three lazy-loaded routes — /tennis, /tennis/rankings/
+// :tour, /tennis/:slug — all wrapped in SportErrorBoundary. Order matters:
+// /tennis/rankings/:tour must precede /tennis/:slug so "rankings" doesn't
+// match the slug parameter.
+// SEO: sitemap.xml adds 21 tennis URLs (1 hub at priority 0.9, 2 rankings at
+// 0.8, 18 per-tournament at 0.6-0.9 weighted by prestige — Roland Garros 0.9,
+// other slams 0.8, finals 0.7, 1000s 0.6). llms.txt moves Tennis to "Live
+// dashboards" with a dedicated Key facts block mirroring the F1 block so
+// GPT / Claude / Perplexity crawlers understand tournament slugs, surfaces,
+// ranking URLs, and Indonesian-player hooks. Adapter prerenderRoutes emits
+// 21 route metadata objects (title / description / keywords / jsonLd) that
+// the generic scripts/prerender.mjs auto-iterates — no prerender script
+// edits needed.
+// Home: 6th dashboard card at #D4A13A accent flipped LIVE between EPL and
+// FIFA WC, blurb "4 Grand Slams · Masters 1000 · WTA 1000 · Year-End Finals.
+// Live sets, ATP + WTA rankings, Indonesian player spotlight." Home SEO
+// keywords extended with tenis / atp / wta / grand slam / roland garros /
+// peringkat terms.
+// No NBA, F1, EPL, FIFA, Liga 1, or Recap changes. Status for FIFA WC +
+// Liga 1 unchanged (still 'soon'). Ships ahead of Roland Garros (May 24,
+// 2026) so the 34-day pre-tournament SEO indexing window is live.
+// Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 
-export const APP_VERSION = '0.4.0';
+export const APP_VERSION = '0.5.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

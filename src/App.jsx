@@ -25,6 +25,10 @@ const EPL = lazy(() => import('./pages/EPL.jsx'));
 // v0.4.0 — EPL Phase 1A: per-club SEO pages (20 URLs).
 const EPLClub = lazy(() => import('./pages/EPLClub.jsx'));
 const LigaIndonesia = lazy(() => import('./pages/LigaIndonesia.jsx'));
+// v0.5.0 — Tennis Phase 1A: hub, per-tournament, and rankings pages.
+const Tennis = lazy(() => import('./pages/Tennis.jsx'));
+const TennisTournament = lazy(() => import('./pages/TennisTournament.jsx'));
+const TennisRankings = lazy(() => import('./pages/TennisRankings.jsx'));
 const Recap = lazy(() => import('./pages/Recap.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
 const Glossary = lazy(() => import('./pages/Glossary.jsx'));
@@ -77,6 +81,12 @@ export default function App() {
             <Route path="/premier-league-2025-26/club/:slug" element={<Sport sport="epl" sportLabel="Liga Inggris 2025-26"><EPLClub /></Sport>} />
             <Route path="/fifa-world-cup-2026" element={<Sport sport="fifa_wc" sportLabel="Piala Dunia FIFA 2026"><FIFA /></Sport>} />
             <Route path="/liga-1-2026" element={<Sport sport="liga_1_id" sportLabel="Super League Indonesia"><LigaIndonesia /></Sport>} />
+
+            {/* v0.5.0 — Tennis Phase 1A: hub, per-tournament SEO pages,
+                and per-tour rankings landings (ATP / WTA). */}
+            <Route path="/tennis" element={<Sport sport="tennis" sportLabel="Tenis 2026"><Tennis /></Sport>} />
+            <Route path="/tennis/rankings/:tour" element={<Sport sport="tennis" sportLabel="Tenis 2026"><TennisRankings /></Sport>} />
+            <Route path="/tennis/:slug" element={<Sport sport="tennis" sportLabel="Tenis 2026"><TennisTournament /></Sport>} />
 
             {/* NBA recap surface — per multi-sport build plan this becomes
                 sport-generic eventually; for now it's NBA-only. */}

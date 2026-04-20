@@ -69,6 +69,22 @@ const DASHBOARDS = [
     ctaId: 'Masuk →',
   },
   {
+    id: 'tennis',
+    href: '/tennis',
+    status: 'live',
+    tag: 'LIVE',
+    title: 'Tennis 2026',
+    titleId: 'Tenis 2026',
+    league: 'ATP · WTA · JAN – NOV 2026',
+    blurb: '4 Grand Slams · Masters 1000 · WTA 1000 · Year-End Finals. Live sets, ATP + WTA rankings, Indonesian player spotlight.',
+    blurbId: '4 Grand Slam · Masters 1000 · WTA 1000 · Year-End Finals. Set live, peringkat ATP + WTA, sorotan petenis Indonesia.',
+    accent: '#D4A13A',
+    launchDate: null,
+    icon: 'tennis',
+    cta: 'Enter →',
+    ctaId: 'Masuk →',
+  },
+  {
     id: 'fifa_wc',
     href: '/fifa-world-cup-2026',
     status: 'soon',
@@ -114,11 +130,11 @@ export default function Home() {
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO
-        title="gibol.co — gila bola · skor live NBA, F1, Liga Inggris, Piala Dunia 2026"
-        description="Dashboard live untuk NBA Playoffs 2026, Formula 1, Liga Inggris, Piala Dunia FIFA 2026, dan Super League Indonesia (Liga 1). Skor live, peluang juara Polymarket, klasemen, bracket, dan statistik — semua dalam Bahasa Indonesia."
+        title="gibol.co — gila bola · skor live NBA, F1, Liga Inggris, Tenis, Piala Dunia 2026"
+        description="Dashboard live untuk NBA Playoffs 2026, Formula 1, Liga Inggris, Tenis ATP + WTA, Piala Dunia FIFA 2026, dan Super League Indonesia (Liga 1). Skor live, peluang juara Polymarket, klasemen, bracket, peringkat, dan statistik — semua dalam Bahasa Indonesia."
         path="/"
         lang={lang}
-        keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 bahasa indonesia, liga inggris, premier league, epl, FIFA world cup 2026, piala dunia 2026, liga 1 indonesia, bri liga 1"
+        keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 bahasa indonesia, liga inggris, premier league, epl, tenis 2026, atp tour 2026, wta tour 2026, grand slam 2026, roland garros 2026, wimbledon 2026, peringkat atp, peringkat wta, FIFA world cup 2026, piala dunia 2026, liga 1 indonesia, bri liga 1"
       />
       <div className="dashboard-wrap">
         {/* TopBar carries the brand. No separate hero — saves ~80px so all
