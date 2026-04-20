@@ -65,8 +65,38 @@
 // pages) and bumps /formula-1-2026 to priority 0.9; llms.txt moves F1 from
 // "Coming soon" to "Live dashboards" with a dedicated F1 facts block so
 // GPT/Claude/Perplexity crawlers understand the structure.
+//
+// v0.2.6 — F1 storyshare + bilingual news. Two compounding wins for the
+// F1 window:
+//   1. Catatan Race — static share-card PNG generator at
+//      scripts/generate-f1-recap.mjs produces og (1200×630), story
+//      (1080×1920), and square (1080×1080) variants per completed GP.
+//      Design mirrors the NBA recap card (dark gradient, gibol.co
+//      wordmark, team-color podium chips, Bahasa hook quote, F1-red
+//      footer accent). Fonts (Bebas Neue + Space Grotesk) are base64-
+//      embedded in the SVG via `scripts/fonts/` for reproducible
+//      runs — no network, no @vercel/og runtime dependency. PNGs ship
+//      to public/og/f1/2026-R{nn}-{slug}-{variant}.png. F1Race.jsx
+//      wires og:image when the race date has passed so WhatsApp /
+//      X / IG share previews show the podium card automatically.
+//      CLI: `node scripts/generate-f1-recap.mjs --all-past` regenerates
+//      every completed GP; `--round N` does a single round; `--dry-run`
+//      previews without writing. Rounds 1-3 shipped (9 PNGs).
+//   2. Bilingual F1 news — /api/f1-news accepts ?lang=id|en and
+//      returns a 15-item feed curated natively in that language. ID
+//      sources: detikSport, Bola.com, CNN Indonesia, Kompas. EN
+//      sources: Autosport, Motorsport.com, BBC Sport, Formula1.com.
+//      Native regex-based RSS 2.0 + Atom parser (no xml2js dep),
+//      8s AbortController timeout across all fetches, URL dedup,
+//      sort newest-first. Cache: s-maxage=900, stale-while-revalidate=
+//      1800. Per feedback_news_bilingual: NO machine translation —
+//      the ID dashboard shows real Bahasa articles, the EN dashboard
+//      shows real English articles. useF1News hook + F1News component
+//      (terminal-style list with source chips + relative timestamps)
+//      drop into the F1 dashboard as a third column alongside driver
+//      and constructor standings.
 
-export const APP_VERSION = '0.2.5';
+export const APP_VERSION = '0.2.6';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

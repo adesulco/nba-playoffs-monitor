@@ -5,6 +5,7 @@ import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import ConstructorPicker from '../components/ConstructorPicker.jsx';
+import F1News from '../components/F1News.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { useF1Schedule } from '../hooks/useF1Schedule.js';
 import { useF1Standings } from '../hooks/useF1Standings.js';
@@ -633,6 +634,7 @@ export default function F1() {
           }}>
             <DriverStandings drivers={drivers} loading={loading} error={error} lang={lang} selectedConstructor={selectedConstructor} />
             <ConstructorStandings teams={teams} loading={loading} error={error} lang={lang} selectedConstructor={selectedConstructor} />
+            <F1News />
           </div>
         </div>
 

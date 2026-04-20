@@ -7,7 +7,7 @@ gibol.co is a real-time sports companion aggregating Polymarket prediction odds,
 ## Live dashboards
 
 - [NBA Playoffs 2026](https://www.gibol.co/nba-playoff-2026): Live scores, play-by-play, win probability, shot chart, box score, injury report, championship odds, bracket, series standings, team player stats, clutch leaders, watchlist, Fangir IBL trading-card partner banner. 2025–26 postseason, Apr 17 – Jun 20 2026.
-- [Formula 1 2026](https://www.gibol.co/formula-1-2026): Kalender 23 balapan F1 dengan jam WIB, klasemen pembalap + konstruktor live dari Jolpica-F1, halaman per-GP terindeks, halaman per-tim (11 konstruktor) + per-pembalap (22 driver), constructor picker ala team picker NBA. 2026 FIA F1 World Championship, Mar 8 – Dec 6 2026.
+- [Formula 1 2026](https://www.gibol.co/formula-1-2026): Kalender 23 balapan F1 dengan jam WIB, klasemen pembalap + konstruktor live dari Jolpica-F1, halaman per-GP terindeks, halaman per-tim (11 konstruktor) + per-pembalap (22 driver), constructor picker ala team picker NBA, bilingual F1 news feed (Bahasa + English, native sources, no machine translation), shareable "Catatan Race" podium cards per GP. 2026 FIA F1 World Championship, Mar 8 – Dec 6 2026.
 
 ## Coming soon
 
@@ -26,6 +26,8 @@ gibol.co is a real-time sports companion aggregating Polymarket prediction odds,
 - Each constructor has a per-team SEO page at `/formula-1-2026/team/{slug}` with JSON-LD SportsTeam schema and driver line-up
 - Data source: Jolpica-F1 (Ergast successor) via edge-cached proxy
 - Sprint weekends in 2026: 6 rounds flagged as sprint format
+- Bilingual news: /api/f1-news?lang=id|en aggregates native Bahasa (detikSport, Bola.com, CNN Indonesia, Kompas) and English (Autosport, Motorsport.com, BBC Sport, Formula1.com) RSS feeds, refreshed every 15 min
+- "Catatan Race" share-card PNGs at /og/f1/2026-R{nn}-{slug}-{og,story,square}.png for every completed GP — Bahasa podium recap optimized for WhatsApp / Instagram / X
 
 ## Key facts (NBA Playoffs 2026)
 
