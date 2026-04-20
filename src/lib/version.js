@@ -379,8 +379,30 @@
 // Liga 1 unchanged (still 'soon'). Ships ahead of Roland Garros (May 24,
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
+//
+// v0.5.1 — Tennis Home-card hotfix + Liga 1 temporary remove. Two symptoms
+// in the v0.5.0 prod build:
+//   1. The tennis dashboard card never rendered on Home. Root cause: three
+//      shared lookups still had hardcoded sport-id whitelists that didn't
+//      include `tennis` — SportIcon PATHS + BG_BY_ID, sportColor
+//      SPORT_COLOR_DARK + SPORT_COLOR_LIGHT, and the `--sport-*` CSS vars
+//      in index.css. SportIcon returned null for unknown id which broke
+//      the Chip accent resolution and prevented the card from prerendering.
+//   2. The 6-card layout wrapped awkwardly (4+1 in the secondary row).
+// Fix:
+//   - Added `tennis` to SportIcon PATHS (ball + seam curves, same viewBox
+//     pattern as nba/pl) and BG_BY_ID (`rgba(212,161,58,.22)`).
+//   - Added `tennis` to sportColor dark (`#e6c47a`) + light (`#d4a13a`).
+//     Lightened dark hex passes AA on --ink-1 parchment.
+//   - Added `--sport-tennis: #D4A13A` to both dark + light root tokens.
+//   - Dropped Super League Indonesia (`liga_1_id`) from Home DASHBOARDS so
+//     the secondary row is a clean 4-wide: f1 · epl · tennis · fifa_wc.
+//     The /liga-1-2026 route stays live in App.jsx for direct-link access;
+//     entry restored when Liga 1 data ships.
+// No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
+// cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.0';
+export const APP_VERSION = '0.5.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

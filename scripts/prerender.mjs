@@ -38,9 +38,9 @@ const DEFAULT_OG = `${SITE}/og-image.png`;
 const STATIC_ROUTES = [
   {
     path: '/',
-    title: 'gibol.co — gila bola · skor live NBA, F1, Liga Inggris, Piala Dunia 2026',
-    description: 'Dashboard live untuk NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, Piala Dunia FIFA 2026, dan Liga 1 Indonesia. Skor live, peluang juara Polymarket, klasemen, dan recap Bahasa.',
-    keywords: 'gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 2026, liga inggris, premier league, FIFA world cup 2026, piala dunia 2026, liga 1 indonesia',
+    title: 'gibol.co — gila bola · skor live NBA, F1, Liga Inggris, Tenis, Piala Dunia 2026',
+    description: 'Dashboard live untuk NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, Tenis ATP + WTA 2026, dan Piala Dunia FIFA 2026. Skor live, peluang juara Polymarket, klasemen, bracket, peringkat, dan recap Bahasa.',
+    keywords: 'gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 2026, liga inggris, premier league, tenis 2026, atp tour 2026, wta tour 2026, grand slam 2026, roland garros 2026, peringkat atp, peringkat wta, FIFA world cup 2026, piala dunia 2026',
     ogImage: DEFAULT_OG,
   },
   {

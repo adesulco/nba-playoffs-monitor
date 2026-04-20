@@ -17,7 +17,7 @@ import { resolveSportColor } from '../lib/sportColor.js';
  *   id  → local sport (sport-id  tint) — used for Liga 1 and IBL
  *
  * Props:
- *   id     — one of 'nba' | 'f1' | 'pl' | 'wc' | 'id' (required)
+ *   id     — one of 'nba' | 'f1' | 'pl' | 'tennis' | 'wc' | 'id' (required)
  *   size   — tile width/height in px (default 40). SVG scales to 55% of tile.
  *            Passing size with `inline` renders bare SVG at that size instead.
  *   inline — if true, render only the stroked SVG (no tile, no background).
@@ -69,16 +69,25 @@ const PATHS = {
       <path d="M7 12h10" />
     </>
   ),
+  tennis: (
+    // tennis ball — circle + curved seam
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M4 9c5 1 11 1 16 0" />
+      <path d="M4 15c5-1 11-1 16 0" />
+    </>
+  ),
 };
 
 // Tile background (sport color at low alpha) — theme-independent because
 // rgba() sits on whatever surface is behind it.
 const BG_BY_ID = {
-  nba: 'rgba(201,8,42,.18)',
-  f1:  'rgba(225,6,0,.18)',
-  pl:  'rgba(61,25,91,.35)',
-  wc:  'rgba(50,98,149,.28)',
-  id:  'rgba(193,39,45,.22)',
+  nba:    'rgba(201,8,42,.18)',
+  f1:     'rgba(225,6,0,.18)',
+  pl:     'rgba(61,25,91,.35)',
+  wc:     'rgba(50,98,149,.28)',
+  id:     'rgba(193,39,45,.22)',
+  tennis: 'rgba(212,161,58,.22)',
 };
 
 // Stroke color lives in src/lib/sportColor.js so Chip, Button, and SportIcon

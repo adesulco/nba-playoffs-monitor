@@ -87,11 +87,12 @@
 
   /* Sport accent primitives — use for sport-keyed surfaces,
      NOT for brand CTAs (use --blue or --amber for those). */
-  --sport-f1:  #E10600;
-  --sport-pl:  #3D195B;
-  --sport-nba: #C9082A;
-  --sport-wc:  #326295;
-  --sport-id:  #C1272D;
+  --sport-f1:     #E10600;
+  --sport-pl:     #3D195B;
+  --sport-nba:    #C9082A;
+  --sport-wc:     #326295;
+  --sport-id:     #C1272D;
+  --sport-tennis: #D4A13A;
 
   /* Semantic roles — consume from components, not the primitives. */
   --bg-page:        var(--bg);
@@ -211,11 +212,12 @@
   --danger:      var(--down);
 
   /* Sport accents unchanged (brand identity). */
-  --sport-f1:  #E10600;
-  --sport-pl:  #3D195B;
-  --sport-nba: #C9082A;
-  --sport-wc:  #326295;
-  --sport-id:  #C1272D;
+  --sport-f1:     #E10600;
+  --sport-pl:     #3D195B;
+  --sport-nba:    #C9082A;
+  --sport-wc:     #326295;
+  --sport-id:     #C1272D;
+  --sport-tennis: #D4A13A;
 
   /* Elevation — black shadow, low alpha, no white inset. */
   --e-0: none;

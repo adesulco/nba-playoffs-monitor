@@ -100,22 +100,11 @@ const DASHBOARDS = [
     cta: 'Coming Soon',
     ctaId: 'Segera Hadir',
   },
-  {
-    id: 'liga_1_id',
-    href: '/liga-1-2026',
-    status: 'soon',
-    tag: 'COMING SOON',
-    title: 'Super League Indonesia',
-    titleId: 'Super League Indonesia',
-    league: 'BRI LIGA 1 · 2025–26',
-    blurb: '18 clubs, Persija vs Persib tracker, Golden Boot race, relegation + AFC qualification watch.',
-    blurbId: '18 klub, tracker derby Persija vs Persib, ras top skor, pantauan degradasi + kualifikasi AFC.',
-    accent: '#0057A8',
-    launchDate: 'Late 2026',
-    icon: 'id',
-    cta: 'Coming Soon',
-    ctaId: 'Segera Hadir',
-  },
+  // v0.5.1 — Super League Indonesia (BRI Liga 1) temporarily removed from Home
+  // to keep the grid a clean 4-wide secondary row (f1 · epl · tennis · fifa_wc)
+  // under the NBA hero. The /liga-1-2026 route stays live via App.jsx so any
+  // previously-shared link still works. Restore this entry when Liga 1 ships
+  // live (Phase 2 target).
 ];
 
 export default function Home() {

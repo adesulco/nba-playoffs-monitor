@@ -12,19 +12,21 @@
  */
 
 export const SPORT_COLOR_DARK = {
-  nba: '#ff8795',
-  f1:  '#ff8a8a',
-  pl:  '#d7b5f5',
-  wc:  '#a0c2ea',
-  id:  '#ff9ea0',
+  nba:    '#ff8795',
+  f1:     '#ff8a8a',
+  pl:     '#d7b5f5',
+  wc:     '#a0c2ea',
+  id:     '#ff9ea0',
+  tennis: '#e6c47a',
 };
 
 export const SPORT_COLOR_LIGHT = {
-  nba: '#c9082a',
-  f1:  '#e10600',
-  pl:  '#3d195b',
-  wc:  '#326295',
-  id:  '#c1272d',
+  nba:    '#c9082a',
+  f1:     '#e10600',
+  pl:     '#3d195b',
+  wc:     '#326295',
+  id:     '#c1272d',
+  tennis: '#d4a13a',
 };
 
 /**
