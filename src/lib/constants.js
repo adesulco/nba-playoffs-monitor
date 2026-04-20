@@ -151,3 +151,99 @@ export const COLORS = {
   nbaRed: '#c8102e',
   cut: '#b89b5e',
 };
+
+/**
+ * Phase 1 design-system tokens — JS mirror of the CSS custom properties
+ * defined in src/index.css. Values are `var(--token)` strings so they
+ * remain theme-aware when consumed from an inline `style={{}}` prop.
+ *
+ * Use these from new components (Chip, Button, Card, Icon, Hero) introduced
+ * in Steps 2–6. Existing components keep consuming `COLORS` until migrated.
+ */
+export const TOKENS = {
+  // Color primitives — ink scale
+  ink0: 'var(--ink-0)',
+  ink1: 'var(--ink-1)',
+  ink2: 'var(--ink-2)',
+  ink3: 'var(--ink-3)',
+
+  // Color primitives — foreground
+  fg1: 'var(--fg-1)',
+  fg2: 'var(--fg-2)',
+  fg3: 'var(--fg-3)',
+
+  // Color primitives — lines
+  line1: 'var(--line-1)',
+  line2: 'var(--line-2)',
+  line3: 'var(--line-3)',
+
+  // Brand + signal
+  accent: 'var(--accent)',
+  accentSoft: 'var(--accent-soft)',
+  live: 'var(--live)',
+  soon: 'var(--soon)',
+  success: 'var(--success)',
+  warn: 'var(--warn)',
+  danger: 'var(--danger)',
+
+  // Sport accents
+  sportF1:  'var(--sport-f1)',
+  sportPL:  'var(--sport-pl)',
+  sportNBA: 'var(--sport-nba)',
+  sportWC:  'var(--sport-wc)',
+  sportID:  'var(--sport-id)',
+
+  // Semantic roles
+  bgPage:        'var(--bg-page)',
+  bgSurface:     'var(--bg-surface)',
+  bgRaised:      'var(--bg-raised)',
+  bgElevated:    'var(--bg-elevated)',
+  fgPrimary:     'var(--fg-primary)',
+  fgSecondary:   'var(--fg-secondary)',
+  fgTertiary:    'var(--fg-tertiary)',
+  borderSubtle:  'var(--border-subtle)',
+  borderDefault: 'var(--border-default)',
+  borderStrong:  'var(--border-strong)',
+  accentDefault: 'var(--accent-default)',
+  signalLive:    'var(--signal-live)',
+
+  // Typography
+  fontSans: 'var(--font-sans)',
+  fontMono: 'var(--font-mono)',
+
+  // Type scale (8 steps)
+  sizeCaption:   'var(--size-caption)',
+  sizeLabel:     'var(--size-label)',
+  sizeBodySm:    'var(--size-body-sm)',
+  sizeBody:      'var(--size-body)',
+  sizeBodyLg:    'var(--size-body-lg)',
+  sizeTitle:     'var(--size-title)',
+  sizeDisplay:   'var(--size-display)',
+  sizeDisplayLg: 'var(--size-display-lg)',
+
+  // Spacing (9 steps, 4pt grid)
+  space1: 'var(--space-1)', space2: 'var(--space-2)', space3: 'var(--space-3)',
+  space4: 'var(--space-4)', space5: 'var(--space-5)', space6: 'var(--space-6)',
+  space7: 'var(--space-7)', space8: 'var(--space-8)', space9: 'var(--space-9)',
+
+  // Radius
+  rSharp:   'var(--r-sharp)',
+  rSoft:    'var(--r-soft)',
+  rRounded: 'var(--r-rounded)',
+  rPill:    'var(--r-pill)',
+
+  // Elevation
+  e0: 'var(--e-0)',
+  e1: 'var(--e-1)',
+  e2: 'var(--e-2)',
+  e3: 'var(--e-3)',
+
+  // Motion
+  easeStandard: 'var(--ease-standard)',
+  easeEntrance: 'var(--ease-entrance)',
+  easeExit:     'var(--ease-exit)',
+  durMicro: 'var(--dur-micro)',
+  durShort: 'var(--dur-short)',
+  durBase:  'var(--dur-base)',
+  durLong:  'var(--dur-long)',
+};

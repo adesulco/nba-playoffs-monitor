@@ -103,17 +103,19 @@
          • Preconnect to both fonts.googleapis.com and fonts.gstatic.com
          • Fetch the main CSS stylesheet normally (non-blocking via media="print" → swap to "all" on load)
          • font-display: swap is inline in the CSS Google serves, so system-font fallback renders immediately
-         • Priority weights: Space Grotesk 400/600 (body + UI), Bebas Neue (display), JetBrains Mono 500 (numerics). -->
+         • Priority weights: Inter 400/500/600/700 (body + UI, Phase 1 design system),
+           Space Grotesk 400/600 (legacy titles — migrating out), Bebas Neue (display),
+           JetBrains Mono 500 (numerics + metadata rows). -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" />
     </noscript>
 
     <!-- Google Analytics 4 (hardcoded in HTML so crawlers / GSC verification find it) -->

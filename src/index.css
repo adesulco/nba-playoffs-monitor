@@ -1,5 +1,8 @@
 /* ============ Theme tokens ============ */
 :root, :root[data-theme="dark"] {
+  /* Legacy tokens — consumed by existing components.
+     Do NOT remove; Phase 1 tokens live alongside these until
+     components are migrated in later phases. */
   --bg: #08111f;
   --panel: #0c1a2e;
   --panel2: #0f2038;
@@ -17,10 +20,112 @@
   --topbar-bg: linear-gradient(180deg, #0d1c33 0%, #0a1628 100%);
   --hero-bg: linear-gradient(180deg, #0b1a30 0%, #0a1525 100%);
   --hover: #0d1d34;
+
+  /* ==================================================================
+     Phase 1 design-system tokens (dark)
+     Source: gibol-design-system.html
+     Scope: color primitives → semantic roles → type/spacing/radius/
+     elevation/motion. Components will consume these in Steps 2–6.
+     ================================================================== */
+
+  /* Color primitives — ink scale */
+  --ink-0: #060d18;
+  --ink-1: #08111f;
+  --ink-2: #0d172a;
+  --ink-3: #121d33;
+
+  /* Color primitives — lines (as rgba so they blend over any bg) */
+  --line-1: rgba(255,255,255,.06);
+  --line-2: rgba(255,255,255,.10);
+  --line-3: rgba(255,255,255,.16);
+
+  /* Color primitives — foreground */
+  --fg-1: #edf1f8;
+  --fg-2: #9aa7bc;
+  --fg-3: #64748b;
+
+  /* Brand + signal primitives */
+  --accent: #ff5a1f;
+  --accent-soft: #ff8a5c;
+  --live: #ff4439;
+  --soon: #6b7280;
+  --success: #10b981;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+
+  /* Sport accent primitives — use for sport-keyed surfaces,
+     NOT for brand CTAs (use --accent for those). */
+  --sport-f1: #e10600;
+  --sport-pl: #3d195b;
+  --sport-nba: #c9082a;
+  --sport-wc: #326295;
+  --sport-id: #c1272d;
+
+  /* Semantic roles — consume these from components, not the primitives */
+  --bg-page: var(--ink-0);
+  --bg-surface: var(--ink-1);
+  --bg-raised: var(--ink-2);
+  --bg-elevated: var(--ink-3);
+  --fg-primary: var(--fg-1);
+  --fg-secondary: var(--fg-2);
+  --fg-tertiary: var(--fg-3);
+  --border-subtle: var(--line-1);
+  --border-default: var(--line-2);
+  --border-strong: var(--line-3);
+  --accent-default: var(--accent);
+  --signal-live: var(--live);
+
+  /* Typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Type scale (8 steps) */
+  --size-caption: 11px;
+  --size-label: 12px;
+  --size-body-sm: 13px;
+  --size-body: 15px;
+  --size-body-lg: 17px;
+  --size-title: 20px;
+  --size-display: 28px;
+  --size-display-lg: 36px;
+
+  /* Spacing scale (9 steps, 4pt grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+  --space-9: 64px;
+
+  /* Radius scale */
+  --r-sharp: 0;
+  --r-soft: 6px;
+  --r-rounded: 12px;
+  --r-pill: 999px;
+
+  /* Elevation scale */
+  --e-0: none;
+  --e-1: 0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.4);
+  --e-2: 0 1px 0 rgba(255,255,255,.04) inset, 0 6px 20px rgba(0,0,0,.35);
+  --e-3: 0 1px 0 rgba(255,255,255,.05) inset, 0 20px 60px rgba(0,0,0,.5);
+
+  /* Motion — durations + easings */
+  --ease-standard: cubic-bezier(.2,.8,.2,1);
+  --ease-entrance: cubic-bezier(.16,1,.3,1);
+  --ease-exit:     cubic-bezier(.4,0,1,1);
+  --dur-micro: 120ms;
+  --dur-short: 180ms;
+  --dur-base:  240ms;
+  --dur-long:  400ms;
+
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
+  /* Legacy tokens (parchment/cream light theme, unchanged) */
   --bg: #f5f1e6;
   --panel: #fbf8ee;
   --panel2: #efe9d9;
@@ -38,6 +143,45 @@
   --topbar-bg: linear-gradient(180deg, #eae2cd 0%, #f3ecd7 100%);
   --hero-bg: linear-gradient(180deg, #efe8d4 0%, #f5eedd 100%);
   --hover: #ece4ce;
+
+  /* Phase 1 tokens (light) — ink scale inverts to the parchment family;
+     brand/sport primitives stay on the same hexes so identity is stable
+     across themes; line/elevation flip to black-on-light. */
+  --ink-0: #f1ecdc;
+  --ink-1: #f5f1e6;
+  --ink-2: #fbf8ee;
+  --ink-3: #ffffff;
+
+  --line-1: rgba(17,26,46,.08);
+  --line-2: rgba(17,26,46,.14);
+  --line-3: rgba(17,26,46,.22);
+
+  --fg-1: #111a2e;
+  --fg-2: #556074;
+  --fg-3: #8c92a0;
+
+  /* Brand + signal — slightly darker in light for AA contrast */
+  --accent: #e8491a;
+  --accent-soft: #ff8a5c;
+  --live: #d9342a;
+  --soon: #8c92a0;
+  --success: #0e8f6a;
+  --warn: #b36b00;
+  --danger: #c52828;
+
+  /* Sport accents unchanged (brand identity) */
+  --sport-f1: #e10600;
+  --sport-pl: #3d195b;
+  --sport-nba: #c9082a;
+  --sport-wc: #326295;
+  --sport-id: #c1272d;
+
+  /* Elevation — black shadow, low alpha, no white inset */
+  --e-0: none;
+  --e-1: 0 1px 0 rgba(0,0,0,.03) inset, 0 1px 2px rgba(0,0,0,.06);
+  --e-2: 0 1px 0 rgba(0,0,0,.03) inset, 0 6px 20px rgba(0,0,0,.10);
+  --e-3: 0 1px 0 rgba(0,0,0,.04) inset, 0 20px 60px rgba(0,0,0,.14);
+
   color-scheme: light;
 }
 
@@ -89,6 +233,13 @@ html, body, #root {
 @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 @keyframes flash-green { 0% { background: rgba(61,219,132,0.3); } 100% { background: transparent; } }
 @keyframes flash-red   { 0% { background: rgba(255,92,92,0.3); }  100% { background: transparent; } }
+/* Phase 1 — live-signal breathing animation (consumed by the new chip-live
+   component in Step 3). Honored by the existing prefers-reduced-motion block
+   above, which zeroes every animation-duration. */
+@keyframes livepulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.85); }
+}
 
 .live-dot {
   display: inline-block;
