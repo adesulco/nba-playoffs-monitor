@@ -33,6 +33,7 @@ export const VISIBLE = {
   nba:        envFlag('VITE_FLAG_NBA', true),
   f1:         envFlag('VITE_FLAG_F1_VISIBLE', true),
   epl:        envFlag('VITE_FLAG_EPL_VISIBLE', true),
+  tennis:     envFlag('VITE_FLAG_TENNIS_VISIBLE', true),
   fifa_wc:    envFlag('VITE_FLAG_FIFA_WC_VISIBLE', true),
   liga_1_id:  envFlag('VITE_FLAG_LIGA_1_ID_VISIBLE', true),
 };
@@ -43,6 +44,7 @@ export const LIVE = {
   nba:        envFlag('VITE_FLAG_NBA', true),          // NBA is the recovery baseline
   f1:         envFlag('VITE_FLAG_F1', false),          // Phase 1 flips this
   epl:        envFlag('VITE_FLAG_EPL', false),         // Phase 2
+  tennis:     envFlag('VITE_FLAG_TENNIS', true),       // v0.5.0 ships live
   fifa_wc:    envFlag('VITE_FLAG_FIFA_WC', false),     // Phase 3
   liga_1_id:  envFlag('VITE_FLAG_LIGA_1_ID', false),   // Phase 4
 };
