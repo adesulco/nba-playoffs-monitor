@@ -1,14 +1,25 @@
 /**
  * Edge-cached multi-provider proxy — multi-sport build plan §2.2.
  *
- * v0.2.3 fix: flattened from api/proxy/[provider]/[...path].js to
- * api/proxy/[...slug].js. Reason: Vercel's classic (non-Next.js) function
- * router drops the [...path] capture when it's nested under another dynamic
- * segment. Symptom: /api/proxy/jolpica-f1/2026.json was calling upstream
- * without the year, returning 1950 race data and causing the F1 calendar to
- * show historical dates. Single-level catch-all works correctly.
+ * v0.2.4 fix: Vercel's classic (non-Next.js) Serverless Functions do NOT
+ * support `[...catchall].js` patterns — that's a Next.js pages-router feature.
+ * v0.2.3 tried api/proxy/[...slug].js and Vercel returned HTTP 404
+ * NOT_FOUND because the route was never registered. The real fix is a
+ * bracket-free filename + a `vercel.json` rewrite that feeds the tail path
+ * through a query parameter.
  *
- * Why this exists:
+ *   vercel.json:
+ *     { "source": "/api/proxy/:path*", "destination": "/api/proxy?path=:path*" }
+ *
+ *   This file:  api/proxy.js   (no brackets — deterministic routing)
+ *
+ * Browser URL shape is UNCHANGED — hooks still call:
+ *   fetch('/api/proxy/polymarket-gamma/events?slug=2026-nba-champion')
+ *   fetch('/api/proxy/espn/basketball/nba/scoreboard')
+ *   fetch('/api/proxy/openf1/drivers?session_key=latest')
+ *   fetch('/api/proxy/jolpica-f1/2026/driverStandings.json')
+ *
+ * Why this proxy exists:
  *   - API-Football (Phase 4, Liga 1) ships a paid key that MUST NOT reach the
  *     browser. A server proxy is the only safe way.
  *   - ESPN / Polymarket / OpenF1 / Jolpica hosted endpoints get hit by every
@@ -17,15 +28,9 @@
  *     in 20s cost 1 upstream request instead of N.
  *   - Observability: one place to see which provider is flaky.
  *
- * Usage from the browser (unchanged — URL structure is identical):
- *   fetch('/api/proxy/polymarket-gamma/events?slug=2026-nba-champion')
- *   fetch('/api/proxy/espn/basketball/nba/scoreboard')
- *   fetch('/api/proxy/openf1/drivers?session_key=latest')
- *   fetch('/api/proxy/jolpica-f1/2026/driverStandings.json')
- *
- * The first path segment after /api/proxy/ selects the upstream via the
- * whitelist in PROVIDERS below. Unknown providers → 404. Query string is
- * passed through (minus the Next.js-style `slug` synthetic key).
+ * First path segment after /api/proxy/ selects the upstream via the whitelist
+ * below. Unknown providers → 404. Query string passes through (minus the
+ * synthetic `path` key set by the rewrite).
  *
  * NOTE: NBA hooks still talk to ESPN/Polymarket directly in v0.2.0. The
  * migration through this proxy lands per-sport as each phase ships — so a
@@ -34,14 +39,11 @@
  */
 
 // ─── Provider registry ───────────────────────────────────────────────────────
-// Each entry: base URL, optional header factory that runs server-side (safe to
-// read process.env), and the default edge cache TTL in seconds.
 const PROVIDERS = {
-  // NBA / basketball (ESPN unofficial — no key required, no formal ToS)
   'espn': {
     base: 'https://site.api.espn.com/apis/site/v2/sports',
     headers: () => ({ accept: 'application/json' }),
-    cacheS: 20,              // live windows dominate; 20s edge cache is a good default
+    cacheS: 20,
   },
   'espn-core': {
     base: 'https://sports.core.api.espn.com/v2/sports',
@@ -49,7 +51,6 @@ const PROVIDERS = {
     cacheS: 20,
   },
 
-  // Polymarket — Gamma (markets/events metadata) + CLOB (price history)
   'polymarket-gamma': {
     base: 'https://gamma-api.polymarket.com',
     headers: () => ({ accept: 'application/json' }),
@@ -58,47 +59,39 @@ const PROVIDERS = {
   'polymarket-clob': {
     base: 'https://clob.polymarket.com',
     headers: () => ({ accept: 'application/json' }),
-    cacheS: 300,             // price-history sparklines — 5 min is plenty
+    cacheS: 300,
   },
 
-  // Formula 1 — OpenF1 (real-time) + Jolpica (historical, Ergast successor)
   'openf1': {
     base: 'https://api.openf1.org/v1',
     headers: () => ({ accept: 'application/json' }),
-    cacheS: 15,              // live positions / intervals — keep tight during sessions
+    cacheS: 15,
   },
   'jolpica-f1': {
     base: 'https://api.jolpi.ca/ergast/f1',
     headers: () => ({ accept: 'application/json' }),
-    cacheS: 3600,            // standings / calendar — slow-moving
+    cacheS: 3600,
   },
 
-  // Soccer — free tiers
   'football-data': {
     base: 'https://api.football-data.org/v4',
     headers: (env) => ({
       accept: 'application/json',
       'X-Auth-Token': env.FOOTBALL_DATA_TOKEN || '',
     }),
-    cacheS: 300,             // 5 min is fine; their free tier rate limit is strict
+    cacheS: 300,
   },
 
-  // Phase 4 only — API-Football (paid, NEVER expose key in browser)
   'api-football': {
     base: 'https://v3.football.api-sports.io',
     headers: (env) => ({
       accept: 'application/json',
       'x-apisports-key': env.API_FOOTBALL_KEY || '',
     }),
-    cacheS: 60,              // live Liga 1 match polling
+    cacheS: 60,
   },
 };
 
-// Per-path-prefix TTL overrides (tuned for the multi-sport build plan §2.2):
-//   - Scoreboard live-window → 20s
-//   - Scoreboard off-window → 5 min
-//   - Schedules → 1 hr
-//   - Team/player stats → 1 hr
 function effectiveTtl(provider, pathParts) {
   const provCfg = PROVIDERS[provider];
   if (!provCfg) return 30;
@@ -108,25 +101,49 @@ function effectiveTtl(provider, pathParts) {
   return provCfg.cacheS ?? 30;
 }
 
+/**
+ * Parse the tail path (everything after /api/proxy/) into segments.
+ *
+ * Vercel's rewrite `/api/proxy/:path*` → `/api/proxy?path=:path*` gives us
+ * `req.query.path` as either a single string with slashes preserved OR an
+ * array of segments, depending on Vercel version. Handle both shapes.
+ *
+ * Fallback: if the rewrite is somehow missing, parse req.url ourselves.
+ */
+function extractPathParts(req) {
+  const rawPath = req.query?.path;
+  if (Array.isArray(rawPath)) {
+    return rawPath.filter(Boolean);
+  }
+  if (typeof rawPath === 'string' && rawPath.length > 0) {
+    return rawPath.split('/').filter(Boolean);
+  }
+  // Fallback: derive from req.url if the rewrite didn't fire.
+  const urlPath = (req.url || '').split('?')[0];
+  const match = urlPath.match(/^\/api\/proxy\/?(.*)$/);
+  if (match && match[1]) {
+    return match[1].split('/').filter(Boolean);
+  }
+  return [];
+}
+
 export default async function handler(req, res) {
   try {
-    // Single catch-all: slug[0] = provider, slug[1..] = upstream path.
-    const { slug = [] } = req.query;
-    const slugParts = Array.isArray(slug) ? slug : (slug ? [slug] : []);
-    const providerKey = slugParts[0];
-    const pathParts = slugParts.slice(1);
+    const pathParts = extractPathParts(req);
+    const providerKey = pathParts[0];
+    const upstreamParts = pathParts.slice(1);
 
     const cfg = PROVIDERS[providerKey];
     if (!cfg) {
+      res.setHeader('X-Gibol-Proxy-Debug', `path=${pathParts.join('/') || '(empty)'}`);
       res.status(404).json({ error: `unknown provider: ${providerKey || '(none)'}` });
       return;
     }
 
-    // Rebuild the upstream URL. Strip the synthetic slug key from query.
-    const upstreamPath = pathParts.join('/');
+    const upstreamPath = upstreamParts.join('/');
     const qs = new URLSearchParams();
-    for (const [k, v] of Object.entries(req.query)) {
-      if (k === 'slug') continue;
+    for (const [k, v] of Object.entries(req.query || {})) {
+      if (k === 'path') continue; // synthetic from rewrite
       if (Array.isArray(v)) v.forEach((x) => qs.append(k, x));
       else if (v !== undefined && v !== null) qs.append(k, v);
     }
@@ -138,7 +155,7 @@ export default async function handler(req, res) {
     const upstreamRes = await fetch(url, { headers, method: req.method || 'GET' });
     const body = await upstreamRes.text();
 
-    const ttl = effectiveTtl(providerKey, pathParts);
+    const ttl = effectiveTtl(providerKey, upstreamParts);
     res.setHeader('Cache-Control', `s-maxage=${ttl}, stale-while-revalidate=${Math.max(60, ttl * 4)}`);
     res.setHeader('Content-Type', upstreamRes.headers.get('content-type') || 'application/json');
     res.setHeader('X-Gibol-Proxy', providerKey);
