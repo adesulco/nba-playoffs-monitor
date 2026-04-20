@@ -85,8 +85,12 @@ const SOURCES = [
     lang: 'en',
   },
   {
+    // v0.2.9: old /content/fom-website/en/latest/all.xml 301-redirects here.
+    // Vercel's Node runtime should auto-follow, but CloudFront is flaky on
+    // the redirect path from our IPs (silently returns 0 bytes ~50% of the
+    // time). Canonical URL works reliably.
     name: 'Formula1.com',
-    url: 'https://www.formula1.com/content/fom-website/en/latest/all.xml',
+    url: 'https://www.formula1.com/en/latest/all.xml',
     lang: 'en',
   },
 ];

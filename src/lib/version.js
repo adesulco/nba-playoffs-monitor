@@ -128,8 +128,20 @@
 // component already renders "Belum ada berita F1 terbaru" on empty.
 // Short-TTL (60s) on empty responses so we don't cache stale-empty
 // when a race weekend starts and coverage resumes.
+//
+// v0.2.9 — EN news feed one-line URL fix. Post-v0.2.8 smoke test showed
+// Formula1.com contributing zero items to /api/f1-news?lang=en
+// (Motorsport.com 25, Autosport 3, BBC Sport 2, Formula1.com 0 at
+// limit=30). Root cause: the shipped URL
+// https://www.formula1.com/content/fom-website/en/latest/all.xml
+// 301-redirects to https://www.formula1.com/en/latest/all.xml.
+// Node's fetch() should follow, but CloudFront is flaky on the redirect
+// path from Vercel's IPs — silently returns 0 bytes ~half the time, so
+// our parser sees an empty body and drops the source. Canonical URL
+// returns the same 10-item feed reliably. One-liner in api/f1-news.js
+// SOURCES block; no behavior change elsewhere.
 
-export const APP_VERSION = '0.2.8';
+export const APP_VERSION = '0.2.9';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
