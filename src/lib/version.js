@@ -140,8 +140,18 @@
 // our parser sees an empty body and drops the source. Canonical URL
 // returns the same 10-item feed reliably. One-liner in api/f1-news.js
 // SOURCES block; no behavior change elsewhere.
+//
+// v0.2.10 — dropped Formula1.com from the EN source pool. The canonical
+// URL landed in v0.2.9 but production still returned 0 items from F1.com
+// while my sandbox got 3/3 reliable 200s with the exact same UA. That
+// isolated the failure: CloudFront is blocking Vercel's AWS IP ranges
+// specifically for formula1.com, not our URL or UA. Same call as Kompas
+// in v0.2.8 — stop pretending the source works. Motorsport.com +
+// Autosport + BBC Sport together already return 30 items at limit=30 so
+// there's no product loss. Updated F1News footnote and llms.txt to drop
+// the Formula1.com mention.
 
-export const APP_VERSION = '0.2.9';
+export const APP_VERSION = '0.2.10';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -26,7 +26,7 @@ gibol.co is a real-time sports companion aggregating Polymarket prediction odds,
 - Each constructor has a per-team SEO page at `/formula-1-2026/team/{slug}` with JSON-LD SportsTeam schema and driver line-up
 - Data source: Jolpica-F1 (Ergast successor) via edge-cached proxy
 - Sprint weekends in 2026: 6 rounds flagged as sprint format
-- Bilingual news: /api/f1-news?lang=id|en aggregates native Bahasa (detikSport, detikOto, CNN Indonesia, Antara) and English (Autosport, Motorsport.com, BBC Sport, Formula1.com) RSS feeds, refreshed every 15 min. Bahasa coverage is sparse outside race weekends; empty feed returns 200 with empty items array.
+- Bilingual news: /api/f1-news?lang=id|en aggregates native Bahasa (detikSport, detikOto, CNN Indonesia, Antara) and English (Autosport, Motorsport.com, BBC Sport) RSS feeds, refreshed every 15 min. Bahasa coverage is sparse outside race weekends; empty feed returns 200 with empty items array.
 - "Catatan Race" share-card PNGs at /og/f1/2026-R{nn}-{slug}-{og,story,square}.png for every completed GP — Bahasa podium recap optimized for WhatsApp / Instagram / X
 
 ## Key facts (NBA Playoffs 2026)

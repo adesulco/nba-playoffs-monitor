@@ -84,15 +84,12 @@ const SOURCES = [
     url: 'https://feeds.bbci.co.uk/sport/formula1/rss.xml',
     lang: 'en',
   },
-  {
-    // v0.2.9: old /content/fom-website/en/latest/all.xml 301-redirects here.
-    // Vercel's Node runtime should auto-follow, but CloudFront is flaky on
-    // the redirect path from our IPs (silently returns 0 bytes ~50% of the
-    // time). Canonical URL works reliably.
-    name: 'Formula1.com',
-    url: 'https://www.formula1.com/en/latest/all.xml',
-    lang: 'en',
-  },
+  // v0.2.10: Formula1.com dropped. v0.2.9 pointed at the canonical URL
+  // (bypassing a flaky 301) but it still returned 0 items from Vercel
+  // while 3/3 reliably from the sandbox. CloudFront is blocking Vercel's
+  // AWS IP ranges for formula1.com specifically. Same call as Kompas in
+  // v0.2.8 — drop it; Motorsport.com + Autosport + BBC Sport together
+  // already return 30 items at limit=30 so there's no product loss.
 ];
 
 // ─── Minimal RSS parser ─────────────────────────────────────────────────────

@@ -195,7 +195,7 @@ export default function F1News({ limit = 12 }) {
       }}>
         {lang === 'id'
           ? 'Sumber: detikSport · detikOto · CNN Indonesia · Antara (refresh tiap 15 mnt)'
-          : 'Sources: Autosport · Motorsport.com · BBC Sport · Formula1.com (refresh every 15 min)'}
+          : 'Sources: Autosport · Motorsport.com · BBC Sport (refresh every 15 min)'}
       </div>
     </section>
   );
