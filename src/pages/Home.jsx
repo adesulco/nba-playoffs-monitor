@@ -4,12 +4,10 @@ import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
-import SportIcon from '../components/SportIcon.jsx';
-import Chip from '../components/Chip.jsx';
-import Button from '../components/Button.jsx';
+import Card from '../components/Card.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
-import { VISIBLE, LIVE } from '../lib/flags.js';
+import { VISIBLE } from '../lib/flags.js';
 
 // Multi-sport build plan §1 — five-card layout. NBA is the featured live
 // dashboard; F1, EPL, FIFA WC, Liga 1 (Super League Indonesia) are coming-soon
@@ -104,124 +102,6 @@ const DASHBOARDS = [
   },
 ];
 
-function DashboardCard({ d, lang }) {
-  // A sport is "live" only if (a) its card says so AND (b) the flag is on. Any
-  // emergency flag flip hides the card without a redeploy. §2.3.
-  const isLive = d.status === 'live' && LIVE[d.id] !== false;
-  const isFeatured = d.featured;
-  const title = lang === 'id' ? d.titleId : d.title;
-  const blurb = lang === 'id' ? d.blurbId : d.blurb;
-  const cta = lang === 'id' ? (isLive ? d.ctaId : d.ctaId) : (isLive ? d.cta : d.cta);
-
-  // Featured NBA card stays horizontal; secondary cards stack vertically (icon on top)
-  // so they read well in a 3-column row at desktop and a 1-column stack on mobile.
-  const content = isFeatured ? (
-    <div
-      className="home-card-live home-featured"
-      style={{
-        padding: '12px 16px',
-        background: `linear-gradient(135deg, ${d.accent}28 0%, ${C.panelRow} 70%)`,
-        border: `1px solid ${d.accent}`,
-        borderLeft: `4px solid ${d.accent}`,
-        borderRadius: 4,
-        display: 'grid',
-        gridTemplateColumns: 'auto 1fr auto',
-        gap: 14,
-        alignItems: 'center',
-        transition: 'all 0.2s',
-        cursor: 'pointer',
-        boxShadow: `0 4px 18px -12px ${d.accent}`,
-      }}
-    >
-      <SportIcon id={d.icon} size={52} />
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Chip
-            variant={isLive ? 'live' : 'soon'}
-            sportId={d.icon}
-            accent={d.accent}
-            label={d.tag}
-          />
-          <span style={{ fontSize: 9, color: C.dim, letterSpacing: 1, fontWeight: 500 }}>{d.league}</span>
-        </div>
-        <div style={{
-          fontFamily: '"Space Grotesk", sans-serif',
-          fontSize: 19, fontWeight: 600, color: C.text, letterSpacing: -0.2,
-          lineHeight: 1.2,
-        }}>
-          {title}
-        </div>
-        <div style={{ fontSize: 10.5, color: C.dim, lineHeight: 1.4, maxWidth: 680 }}>
-          {blurb}
-        </div>
-      </div>
-
-      <Button
-        as="span"
-        variant="primary"
-        sportId={d.icon}
-        accent={d.accent}
-        label={cta}
-        className="home-featured-cta"
-      />
-    </div>
-  ) : (
-    // Secondary card — compact, icon+title stacked, no separate CTA button.
-    // Whole card is clickable (wrapped in Link below).
-    <div
-      className={isLive ? 'home-card-live home-secondary' : 'home-card-soon home-secondary'}
-      style={{
-        padding: '12px 14px',
-        background: C.panelRow,
-        border: `1px solid ${isLive ? d.accent : C.line}`,
-        borderLeft: `3px solid ${d.accent}`,
-        borderRadius: 4,
-        display: 'flex', flexDirection: 'column', gap: 6,
-        minHeight: 120, height: '100%',
-        transition: 'all 0.2s',
-        cursor: 'pointer',
-        opacity: isLive ? 1 : 0.88,
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <SportIcon id={d.icon} size={30} />
-        <Chip
-          variant={isLive ? 'live' : 'soon'}
-          sportId={d.icon}
-          accent={d.accent}
-          label={d.tag}
-        />
-      </div>
-      <div style={{
-        fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: 14, fontWeight: 600, color: C.text, letterSpacing: -0.2,
-        lineHeight: 1.2,
-      }}>
-        {title}
-      </div>
-      <div style={{ fontSize: 10, color: C.dim, lineHeight: 1.4, flex: 1 }}>
-        {blurb}
-      </div>
-      <div style={{
-        fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: 10.5, fontWeight: 700,
-        color: isLive ? d.accent : C.muted,
-        letterSpacing: 0.5,
-        textTransform: 'uppercase',
-        marginTop: 'auto',
-      }}>
-        {cta}
-      </div>
-    </div>
-  );
-
-  // All cards clickable — coming-soon pages are real routes with meaningful
-  // preview content (see ComingSoon.jsx). SEO wins, plus the PWA manifest
-  // can deep-link to them without 404ing.
-  return <Link to={d.href} style={{ textDecoration: 'none' }}>{content}</Link>;
-}
-
 export default function Home() {
   const { lang } = useApp();
 
@@ -257,12 +137,12 @@ export default function Home() {
         }}>
           {featured && (
             <div style={{ gridColumn: '1 / -1', minWidth: 0 }}>
-              <DashboardCard d={featured} lang={lang} />
+              <Card d={featured} lang={lang} variant="featured" />
             </div>
           )}
           {secondaries.map((d) => (
             <div key={d.id} style={{ minWidth: 0 }}>
-              <DashboardCard d={d} lang={lang} />
+              <Card d={d} lang={lang} variant="secondary" />
             </div>
           ))}
         </div>

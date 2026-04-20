@@ -229,7 +229,9 @@ html, body, #root {
   border: 0;
 }
 
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+/* Legacy `pulse` keyframe retired in step 5 — `.live-dot` now uses the
+   livepulse keyframe defined below (opacity + scale, matches Chip's dot
+   so every "live" signal on the page breathes in lockstep). */
 @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 @keyframes flash-green { 0% { background: rgba(61,219,132,0.3); } 100% { background: transparent; } }
 @keyframes flash-red   { 0% { background: rgba(255,92,92,0.3); }  100% { background: transparent; } }
@@ -246,7 +248,7 @@ html, body, #root {
   width: 6px; height: 6px;
   border-radius: 50%;
   margin-right: 5px;
-  animation: pulse 1.6s ease-in-out infinite;
+  animation: livepulse 1.6s ease-in-out infinite;
 }
 
 .ticker-inner {
@@ -380,6 +382,15 @@ html, body, #root {
   }
 }
 
+/* Card hover lift — step 5. Matches Button's hover curve
+   (translateY(-1px) + var(--e-1) over var(--dur-base) var(--ease-standard))
+   so the card + inline CTA lift as one gesture. Transition properties
+   live on the card's inline style; this rule only sets the hover target. */
 .home-card-live:hover {
   transform: translateY(-1px);
+  box-shadow: var(--e-1);
+}
+.home-card-soon:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
 }
