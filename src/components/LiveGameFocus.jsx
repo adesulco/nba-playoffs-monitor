@@ -215,7 +215,7 @@ function LineScoreTable({ awayAbbr, homeAbbr, awayLine, homeLine, awayColor, hom
               borderTop: `1px solid ${C.lineSoft}`,
               borderLeft: `1px solid ${C.lineSoft}`,
               color: C.amberBright,
-              fontFamily: '"Space Grotesk", sans-serif',
+              fontFamily: 'var(--font-sans)',
               fontWeight: 600,
             }}>
               {row.total ?? '—'}
@@ -594,11 +594,11 @@ function TeamComparison({ teamTotals, awayAbbr, homeAbbr, awayColor, homeColor, 
         return (
           <div key={row.key} style={{ padding: '8px 0', borderBottom: `1px solid ${C.lineSoft}` }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 90px 1fr', gap: 6, fontSize: 10.5, alignItems: 'center', marginBottom: 4 }}>
-              <div style={{ textAlign: 'left', color: awayWins ? C.text : C.dim, fontWeight: awayWins ? 700 : 500, fontFamily: '"Space Grotesk", sans-serif' }}>
+              <div style={{ textAlign: 'left', color: awayWins ? C.text : C.dim, fontWeight: awayWins ? 700 : 500, fontFamily: 'var(--font-sans)' }}>
                 {aRaw ?? '—'}
               </div>
               <div style={{ textAlign: 'center', color: C.muted, fontSize: 9.5, letterSpacing: 0.5 }}>{row.label}</div>
-              <div style={{ textAlign: 'right', color: homeWins ? C.text : C.dim, fontWeight: homeWins ? 700 : 500, fontFamily: '"Space Grotesk", sans-serif' }}>
+              <div style={{ textAlign: 'right', color: homeWins ? C.text : C.dim, fontWeight: homeWins ? 700 : 500, fontFamily: 'var(--font-sans)' }}>
                 {hRaw ?? '—'}
               </div>
             </div>
@@ -769,7 +769,7 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
         }}>
           <span style={{ color: runColor, fontWeight: 700, letterSpacing: 1 }}>⚡ {scoringRun.team}</span>
           <span style={{ color: C.text, fontWeight: 600 }}>on a</span>
-          <span style={{ color: runColor, fontWeight: 700, fontFamily: '"Space Grotesk", sans-serif', fontSize: 13 }}>{scoringRun.run}</span>
+          <span style={{ color: runColor, fontWeight: 700, fontFamily: 'var(--font-sans)', fontSize: 13 }}>{scoringRun.run}</span>
           <span style={{ color: C.text, fontWeight: 600 }}>run</span>
         </div>
       )}
@@ -919,7 +919,7 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
                     {scoringTeamAbbr && <span style={{ color: scoringColor, fontWeight: 600, marginRight: 4 }}>{scoringTeamAbbr}</span>}
                     {p.text}
                   </div>
-                  <div style={{ fontSize: 9.5, color: C.muted, fontFamily: '"Space Grotesk", sans-serif', minWidth: 48, textAlign: 'right' }}>
+                  <div style={{ fontSize: 9.5, color: C.muted, fontFamily: 'var(--font-sans)', minWidth: 48, textAlign: 'right' }}>
                     {p.awayScore !== undefined && p.homeScore !== undefined ? `${p.awayScore}-${p.homeScore}` : ''}
                   </div>
                 </div>

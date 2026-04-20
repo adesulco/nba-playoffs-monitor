@@ -122,7 +122,7 @@ export default function F1Race() {
             />
           </div>
           <h1 style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0, marginBottom: 6,
             letterSpacing: '-0.025em', color: C.text, textWrap: 'balance',
           }}>
@@ -141,7 +141,7 @@ export default function F1Race() {
             padding: 14, background: C.panel, border: `1px solid ${C.line}`,
             borderLeft: `3px solid ${F1_RED}`, borderRadius: 3, fontSize: 12, lineHeight: 1.7,
           }}>
-            <h2 style={{ fontSize: 14, margin: '0 0 6px', color: C.text, fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600 }}>
+            <h2 style={{ fontSize: 14, margin: '0 0 6px', color: C.text, fontFamily: 'var(--font-sans)', fontWeight: 600 }}>
               {lang === 'id' ? 'Tentang balapan ini' : 'About this race'}
             </h2>
             <p style={{ margin: 0, color: C.dim }}>
@@ -155,7 +155,7 @@ export default function F1Race() {
             padding: 14, background: C.panel, border: `1px solid ${C.line}`,
             borderLeft: `3px solid ${F1_RED}`, borderRadius: 3, fontSize: 12, lineHeight: 1.6,
           }}>
-            <h2 style={{ fontSize: 14, margin: '0 0 6px', color: C.text, fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600 }}>
+            <h2 style={{ fontSize: 14, margin: '0 0 6px', color: C.text, fontFamily: 'var(--font-sans)', fontWeight: 600 }}>
               {lang === 'id' ? 'Hasil + telemetri live' : 'Live results + telemetry'}
             </h2>
             <p style={{ margin: 0, color: C.dim }}>

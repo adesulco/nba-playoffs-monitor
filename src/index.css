@@ -1,85 +1,113 @@
-/* ============ Theme tokens ============ */
+/* ==================================================================
+   Gibol — Brand tokens v1 (Apr 2026)
+   -------------------------------------------------------------------
+   Source of truth: Gibol Brand Handoff v1. Dark is the default; light
+   lives under [data-theme="light"]. Legacy token names (--panel,
+   --text, --dim, --green, --red, --hover, --topbar-bg, --hero-bg,
+   --ink-0..1, --fg-1..3, --accent, etc.) are preserved as aliases on
+   top of the new palette so every existing component keeps rendering
+   without a per-file edit.
+   ================================================================== */
 :root, :root[data-theme="dark"] {
-  /* Legacy tokens — consumed by existing components.
-     Do NOT remove; Phase 1 tokens live alongside these until
-     components are migrated in later phases. */
-  --bg: #08111f;
-  --panel: #0c1a2e;
-  --panel2: #0f2038;
-  --panel-soft: #091524;
-  --panel-row: #0a1728;
-  --line: #1a2d4a;
-  --line-soft: #152339;
-  --text: #e6edf5;
-  --dim: #8a9bb4;
-  --muted: #56688a;
-  --amber: #ffb347;
-  --amber-bright: #ffcc66;
-  --green: #3ddb84;
-  --red: #ff5c5c;
-  --topbar-bg: linear-gradient(180deg, #0d1c33 0%, #0a1628 100%);
-  --hero-bg: linear-gradient(180deg, #0b1a30 0%, #0a1525 100%);
-  --hover: #0d1d34;
+  /* ---- Brand surfaces ---- */
+  --bg:         #0A1628;
+  --bg-2:       #0F1E36;
+  --bg-3:       #16273F;
+  --line-soft:  #1A2A44;
+  --line:       #223552;
+
+  /* ---- Brand ink scale (foreground) ---- */
+  --ink:   #E6EEF9;
+  --ink-2: #B6C4D8;
+  --ink-3: #7388A5;
+  --ink-4: #4A5D7A;
+
+  /* ---- Brand accents ---- */
+  --blue:    #3B82F6;
+  --blue-2:  #60A5FA;
+  --amber:   #F59E0B;
+  --amber-2: #FBBF24;
+
+  /* ---- Semantic signals ---- */
+  --live: #EF4444;
+  --up:   #10B981;
+  --down: #EF4444;
+  --warn: #F59E0B; /* same hex as brand amber per spec */
+
+  /* ---- Radius & type ---- */
+  --radius-sm: 6px;
+  --radius:    10px;
+  --font-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* ==================================================================
-     Phase 1 design-system tokens (dark)
-     Source: gibol-design-system.html
-     Scope: color primitives → semantic roles → type/spacing/radius/
-     elevation/motion. Components will consume these in Steps 2–6.
+     Legacy aliases — every name below is kept for backwards compat so
+     existing components render on the new palette without edits.
      ================================================================== */
+  --panel:        var(--bg-2);
+  --panel2:       var(--bg-3);
+  --panel-soft:   var(--bg-2);
+  --panel-row:    var(--bg-2);
+  --text:         var(--ink);
+  --dim:          var(--ink-2);
+  --muted:        var(--ink-3);
+  --amber-bright: var(--amber-2);
+  --green:        var(--up);
+  --red:          var(--down);
+  --hover:        var(--bg-3);
+  --topbar-bg:    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+  --hero-bg:      linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
 
-  /* Color primitives — ink scale */
-  --ink-0: #060d18;
-  --ink-1: #08111f;
-  --ink-2: #0d172a;
-  --ink-3: #121d33;
+  /* Phase-1 surface primitives are re-aliased onto brand surfaces so
+     any component still using --ink-0 / --ink-1 or the semantic
+     --bg-page / --bg-surface / --bg-raised / --bg-elevated roles
+     resolves to the new broadcast palette. NOTE: the brand spec
+     re-defines --ink-2 / --ink-3 as FOREGROUND tokens, so those
+     primitives are no longer usable as surfaces — consume
+     --bg-raised / --bg-elevated instead. */
+  --ink-0: var(--bg);
+  --ink-1: var(--bg);
 
-  /* Color primitives — lines (as rgba so they blend over any bg) */
+  /* Phase-1 line primitives kept (RGBA so they blend on any surface). */
   --line-1: rgba(255,255,255,.06);
   --line-2: rgba(255,255,255,.10);
   --line-3: rgba(255,255,255,.16);
 
-  /* Color primitives — foreground */
-  --fg-1: #edf1f8;
-  --fg-2: #9aa7bc;
-  --fg-3: #64748b;
+  /* Phase-1 foreground primitives mirrored to brand ink. */
+  --fg-1: var(--ink);
+  --fg-2: var(--ink-2);
+  --fg-3: var(--ink-3);
 
-  /* Brand + signal primitives */
-  --accent: #ff5a1f;
-  --accent-soft: #ff8a5c;
-  --live: #ff4439;
-  --soon: #6b7280;
-  --success: #10b981;
-  --warn: #f59e0b;
-  --danger: #ef4444;
+  /* Brand + signal primitives (Phase-1 names preserved). */
+  --accent:      var(--amber);
+  --accent-soft: var(--amber-2);
+  --soon:        var(--ink-4);
+  --success:     var(--up);
+  --danger:      var(--down);
 
   /* Sport accent primitives — use for sport-keyed surfaces,
-     NOT for brand CTAs (use --accent for those). */
-  --sport-f1: #e10600;
-  --sport-pl: #3d195b;
-  --sport-nba: #c9082a;
-  --sport-wc: #326295;
-  --sport-id: #c1272d;
+     NOT for brand CTAs (use --blue or --amber for those). */
+  --sport-f1:  #E10600;
+  --sport-pl:  #3D195B;
+  --sport-nba: #C9082A;
+  --sport-wc:  #326295;
+  --sport-id:  #C1272D;
 
-  /* Semantic roles — consume these from components, not the primitives */
-  --bg-page: var(--ink-0);
-  --bg-surface: var(--ink-1);
-  --bg-raised: var(--ink-2);
-  --bg-elevated: var(--ink-3);
-  --fg-primary: var(--fg-1);
-  --fg-secondary: var(--fg-2);
-  --fg-tertiary: var(--fg-3);
-  --border-subtle: var(--line-1);
+  /* Semantic roles — consume from components, not the primitives. */
+  --bg-page:        var(--bg);
+  --bg-surface:     var(--bg);
+  --bg-raised:      var(--bg-2);
+  --bg-elevated:    var(--bg-3);
+  --fg-primary:     var(--ink);
+  --fg-secondary:   var(--ink-2);
+  --fg-tertiary:    var(--ink-3);
+  --border-subtle:  var(--line-1);
   --border-default: var(--line-2);
-  --border-strong: var(--line-3);
-  --accent-default: var(--accent);
-  --signal-live: var(--live);
+  --border-strong:  var(--line-3);
+  --accent-default: var(--blue); /* per spec: interactive primary = blue */
+  --signal-live:    var(--live);
 
-  /* Typography */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-
-  /* Type scale (8 steps) */
+  /* Type scale (8 steps) — unchanged, consumed by existing components. */
   --size-caption: 11px;
   --size-label: 12px;
   --size-body-sm: 13px;
@@ -89,7 +117,7 @@
   --size-display: 28px;
   --size-display-lg: 36px;
 
-  /* Spacing scale (9 steps, 4pt grid) */
+  /* Spacing scale (9 steps, 4pt grid). */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -100,19 +128,19 @@
   --space-8: 48px;
   --space-9: 64px;
 
-  /* Radius scale */
-  --r-sharp: 0;
-  --r-soft: 6px;
-  --r-rounded: 12px;
-  --r-pill: 999px;
+  /* Radius scale — --r-rounded now 10px per brand spec (cards). */
+  --r-sharp:   0;
+  --r-soft:    var(--radius-sm); /* 6px — buttons */
+  --r-rounded: var(--radius);    /* 10px — cards */
+  --r-pill:    999px;
 
-  /* Elevation scale */
+  /* Elevation scale. */
   --e-0: none;
   --e-1: 0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.4);
   --e-2: 0 1px 0 rgba(255,255,255,.04) inset, 0 6px 20px rgba(0,0,0,.35);
   --e-3: 0 1px 0 rgba(255,255,255,.05) inset, 0 20px 60px rgba(0,0,0,.5);
 
-  /* Motion — durations + easings */
+  /* Motion — durations + easings. */
   --ease-standard: cubic-bezier(.2,.8,.2,1);
   --ease-entrance: cubic-bezier(.16,1,.3,1);
   --ease-exit:     cubic-bezier(.4,0,1,1);
@@ -125,58 +153,71 @@
 }
 
 :root[data-theme="light"] {
-  /* Legacy tokens (parchment/cream light theme, unchanged) */
-  --bg: #f5f1e6;
-  --panel: #fbf8ee;
-  --panel2: #efe9d9;
-  --panel-soft: #ede7d5;
-  --panel-row: #faf5e5;
-  --line: #cbc4b0;
-  --line-soft: #e0d8c2;
-  --text: #111a2e;
-  --dim: #556074;
-  --muted: #8c92a0;
-  --amber: #b36b00;
-  --amber-bright: #8a4d00;
-  --green: #1f7c44;
-  --red: #c52828;
-  --topbar-bg: linear-gradient(180deg, #eae2cd 0%, #f3ecd7 100%);
-  --hero-bg: linear-gradient(180deg, #efe8d4 0%, #f5eedd 100%);
-  --hover: #ece4ce;
+  /* ---- Brand surfaces (light / paper) ---- */
+  --bg:         #F5F1EA;
+  --bg-2:       #FFFFFF;
+  --bg-3:       #FAF7F2;
+  --line:       #E3DCCF;
+  --line-soft:  #EDE7DB;
 
-  /* Phase 1 tokens (light) — ink scale inverts to the parchment family;
-     brand/sport primitives stay on the same hexes so identity is stable
-     across themes; line/elevation flip to black-on-light. */
-  --ink-0: #f1ecdc;
-  --ink-1: #f5f1e6;
-  --ink-2: #fbf8ee;
-  --ink-3: #ffffff;
+  /* ---- Brand ink scale ---- */
+  --ink:   #0A0A0A;
+  --ink-2: #333333;
+  --ink-3: #5C5C5C;
+  --ink-4: #9A9A9A;
+
+  /* ---- Brand accents — darker for AA on paper ---- */
+  --blue:    #1E40AF;
+  --blue-2:  #2563EB;
+  --amber:   #C2410C;
+  --amber-2: #EA580C;
+
+  /* ---- Signals ---- */
+  --live: #B91C1C;
+  --up:   #0E8F6A;
+  --down: #B91C1C;
+  --warn: #C2410C;
+
+  /* Legacy aliases */
+  --panel:        var(--bg-2);
+  --panel2:       var(--bg-3);
+  --panel-soft:   var(--bg-3);
+  --panel-row:    var(--bg-2);
+  --text:         var(--ink);
+  --dim:          var(--ink-2);
+  --muted:        var(--ink-3);
+  --amber-bright: var(--amber-2);
+  --green:        var(--up);
+  --red:          var(--down);
+  --hover:        #ECE4CE;
+  --topbar-bg:    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+  --hero-bg:      linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+
+  --ink-0: var(--bg);
+  --ink-1: var(--bg);
 
   --line-1: rgba(17,26,46,.08);
   --line-2: rgba(17,26,46,.14);
   --line-3: rgba(17,26,46,.22);
 
-  --fg-1: #111a2e;
-  --fg-2: #556074;
-  --fg-3: #8c92a0;
+  --fg-1: var(--ink);
+  --fg-2: var(--ink-2);
+  --fg-3: var(--ink-3);
 
-  /* Brand + signal — slightly darker in light for AA contrast */
-  --accent: #e8491a;
-  --accent-soft: #ff8a5c;
-  --live: #d9342a;
-  --soon: #8c92a0;
-  --success: #0e8f6a;
-  --warn: #b36b00;
-  --danger: #c52828;
+  --accent:      var(--amber);
+  --accent-soft: var(--amber-2);
+  --soon:        var(--ink-4);
+  --success:     var(--up);
+  --danger:      var(--down);
 
-  /* Sport accents unchanged (brand identity) */
-  --sport-f1: #e10600;
-  --sport-pl: #3d195b;
-  --sport-nba: #c9082a;
-  --sport-wc: #326295;
-  --sport-id: #c1272d;
+  /* Sport accents unchanged (brand identity). */
+  --sport-f1:  #E10600;
+  --sport-pl:  #3D195B;
+  --sport-nba: #C9082A;
+  --sport-wc:  #326295;
+  --sport-id:  #C1272D;
 
-  /* Elevation — black shadow, low alpha, no white inset */
+  /* Elevation — black shadow, low alpha, no white inset. */
   --e-0: none;
   --e-1: 0 1px 0 rgba(0,0,0,.03) inset, 0 1px 2px rgba(0,0,0,.06);
   --e-2: 0 1px 0 rgba(0,0,0,.03) inset, 0 6px 20px rgba(0,0,0,.10);
@@ -189,10 +230,51 @@ html, body, #root {
   margin: 0;
   padding: 0;
   background: var(--bg);
-  color: var(--text);
-  font-family: 'JetBrains Mono', monospace;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  /* Tabular nums kick in automatically for anything using var(--font-mono)
+     (see .mono utility below) — body stays proportional for Bahasa copy. */
   min-height: 100vh;
   transition: background 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Numeric UI utility — scores, timers, xG, timestamps. Per brand spec:
+   tabular-nums on top of JetBrains Mono so every digit aligns on a grid. */
+.mono, .tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Big numeric moments (scores, hero match score) — Inter Tight 900,
+   extra-tight tracking. Apply via className="big-score". */
+.big-score {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Brand wordmark rendered as type, not an image. Consumed by <Logo/>. */
+.brand-wordmark {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+.brand-wordmark-dot {
+  color: var(--amber);
+}
+
+/* Card title eyebrow — 11px / 0.14em uppercase in --ink-3, per spec. */
+.card-title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
 }
 
 * { box-sizing: border-box; }

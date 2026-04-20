@@ -88,7 +88,7 @@ function BigMomentHero({ moment, lang, accent }) {
             />
           </div>
           <h2 style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
             color: C.text, marginBottom: 14, marginTop: 0,
             maxWidth: 780,
@@ -120,7 +120,7 @@ function BigMomentHero({ moment, lang, accent }) {
             <span style={{ fontSize: 12, color: C.text, fontWeight: 600 }}>
               {topPerformer.short || topPerformer.name}
             </span>
-            <span style={{ fontSize: 11, color: accent, fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600 }}>
+            <span style={{ fontSize: 11, color: accent, fontFamily: 'var(--font-sans)', fontWeight: 600 }}>
               {topPerformer.pts}/{topPerformer.reb}/{topPerformer.ast}
             </span>
           </div>
@@ -174,7 +174,7 @@ function StatEdgePill({ edge, lang }) {
     }}>
       <span style={{ color: C.dim, fontWeight: 600 }}>{edge.label}</span>
       <span style={{ color, fontWeight: 700 }}>{edge.winnerAbbr}</span>
-      <span style={{ color: C.text, fontFamily: '"Space Grotesk", sans-serif' }}>{edge.winnerVal}</span>
+      <span style={{ color: C.text, fontFamily: 'var(--font-sans)' }}>{edge.winnerVal}</span>
       <span style={{ color: C.muted }}>{edge.diff}</span>
     </div>
   );
@@ -259,7 +259,7 @@ function TeamScore({ abbr, score, won, color, align }) {
         }}>{abbr}</div>
       )}
       <span style={{
-        fontFamily: '"Space Grotesk", sans-serif',
+        fontFamily: 'var(--font-sans)',
         fontSize: 28, fontWeight: 700, letterSpacing: -0.5,
         color: won ? C.text : C.muted,
       }}>
@@ -519,7 +519,7 @@ export default function Recap() {
             {lang === 'id' ? 'CATATAN PLAYOFF' : 'PLAYOFF JOURNAL'} · NBA · POSTSEASON 2026
           </div>
           <h1 style={{
-            fontFamily: '"Bebas Neue", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 44, lineHeight: 1, letterSpacing: -0.8,
             color: C.text, margin: 0,
           }}>
@@ -609,7 +609,7 @@ export default function Recap() {
         {games.length > 0 && (
           <div style={{ padding: '18px 24px' }}>
             <h2 style={{
-              fontFamily: '"Space Grotesk", sans-serif',
+              fontFamily: 'var(--font-sans)',
               fontSize: 18, fontWeight: 600, color: C.text,
               letterSpacing: -0.2, marginBottom: 12, marginTop: 0,
             }}>

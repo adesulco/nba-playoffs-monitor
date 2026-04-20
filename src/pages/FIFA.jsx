@@ -53,7 +53,7 @@ function FIFAPreviewBlock() {
       {/* Host cities */}
       <section>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 600,
           margin: '16px 0 10px', color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? '16 kota tuan rumah · 3 negara' : '16 host cities · 3 countries'}
@@ -83,7 +83,7 @@ function FIFAPreviewBlock() {
       {/* Key fixtures / dates */}
       <section>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 600,
           margin: '8px 0 10px', color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? 'Jadwal kunci turnamen' : 'Key tournament dates'}
@@ -106,7 +106,7 @@ function FIFAPreviewBlock() {
       {/* Format explainer cards */}
       <section>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 600,
           margin: '8px 0 10px', color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? 'Format turnamen' : 'Tournament format'}

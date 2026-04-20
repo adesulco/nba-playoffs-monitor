@@ -81,7 +81,7 @@ export default function TitlePath({ favTeam, championOdds, t }) {
         <span style={{ fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>
           {favMeta.abbr} · PATH TO TITLE
         </span>
-        <span style={{ fontSize: 11, color, fontWeight: 700, fontFamily: '"Space Grotesk", sans-serif', letterSpacing: -0.3 }}>
+        <span style={{ fontSize: 11, color, fontWeight: 700, fontFamily: 'var(--font-sans)', letterSpacing: -0.3 }}>
           {favChamp}%
         </span>
       </div>

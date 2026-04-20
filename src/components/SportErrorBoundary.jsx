@@ -60,7 +60,7 @@ export default class SportErrorBoundary extends React.Component {
         }}>
           <div style={{ fontSize: 48, marginBottom: 8 }}>⚠️</div>
           <div style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 20, fontWeight: 600, marginBottom: 8,
             color: C.text, letterSpacing: -0.2,
           }}>

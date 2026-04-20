@@ -24,7 +24,7 @@ export default function About() {
         <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? 'tentang kami' : 'about'} />
         <main style={{ padding: '40px 8px' }}>
           <h1 style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
             letterSpacing: '-0.025em', textWrap: 'balance',
           }}>
@@ -39,7 +39,7 @@ export default function About() {
               <>
                 <p><strong>gibol.co</strong> (gila bola) adalah dashboard olahraga live yang dibangun untuk penggemar bola Indonesia. Tujuan kami sederhana: berikan fan apa yang mereka butuhkan untuk menikmati pertandingan — skor live, statistik, peluang juara, dan konteks — semua dalam Bahasa Indonesia dengan waktu WIB.</p>
                 <p>Kami percaya fan Indonesia pantas mendapat pengalaman nonton yang setara dengan fan di luar negeri. Jadi kami bangun dashboard yang fokus: tanpa iklan mengganggu, tanpa pop-up, tanpa login. Buka di browser, nikmati pertandingan.</p>
-                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: '"Space Grotesk", sans-serif' }}>Apa yang kami sajikan</h2>
+                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Apa yang kami sajikan</h2>
                 <ul style={{ paddingLeft: 24, lineHeight: 1.9 }}>
                   <li><strong>NBA Playoffs 2026</strong> — live score, play-by-play, win probability, shot chart, peluang juara Polymarket, watchlist pemain, bracket, dan jalan menuju juara untuk 30 tim NBA.</li>
                   <li><strong>Catatan Playoff harian</strong> — rekap hasil tiap hari dengan momen terbesar, top scorer, dan analisis singkat.</li>
@@ -48,26 +48,26 @@ export default function About() {
                   <li><strong>Piala Dunia FIFA 2026</strong> (segera hadir) — 48 tim, 104 pertandingan, 16 kota tuan rumah.</li>
                   <li><strong>BRI Liga 1 2026 Indonesia</strong> (segera hadir) — klasemen, jadwal, hasil Super League Indonesia.</li>
                 </ul>
-                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: '"Space Grotesk", sans-serif' }}>Sumber data</h2>
+                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Sumber data</h2>
                 <p>Kami menggunakan API publik dari ESPN (skor & statistik) dan Polymarket (peluang juara). Semua sumber dicantumkan di tiap halaman. Data di-refresh setiap 10–30 detik saat laga berlangsung.</p>
-                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: '"Space Grotesk", sans-serif' }}>Partnership &amp; kerjasama</h2>
-                <p>Tertarik bekerjasama? Kami terbuka untuk sponsor, press coverage, data partnership, dan kolaborasi editorial. Hubungi kami di <a href="mailto:hi@gibol.co" style={{ color: '#ffb347', fontWeight: 600 }}>hi@gibol.co</a>.</p>
+                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Partnership &amp; kerjasama</h2>
+                <p>Tertarik bekerjasama? Kami terbuka untuk sponsor, press coverage, data partnership, dan kolaborasi editorial. Hubungi kami di <a href="mailto:hi@gibol.co" style={{ color: 'var(--amber)', fontWeight: 600 }}>hi@gibol.co</a>.</p>
               </>
             ) : (
               <>
                 <p><strong>gibol.co</strong> ("gila bola" — Indonesian slang for sports-crazy) is a live sports dashboard built for Indonesian fans. Our goal is simple: give fans what they need to enjoy the game — live scores, stats, championship odds, and context — all in Bahasa Indonesia with WIB timezone.</p>
                 <p>Indonesian fans deserve the same viewing experience as fans overseas. So we built a focused dashboard: no intrusive ads, no popups, no login. Open your browser, enjoy the game.</p>
-                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: '"Space Grotesk", sans-serif' }}>What we cover</h2>
+                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>What we cover</h2>
                 <ul style={{ paddingLeft: 24, lineHeight: 1.9 }}>
                   <li><strong>NBA Playoffs 2026</strong> — live scores, play-by-play, win probability, shot charts, Polymarket championship odds, player watchlist, bracket, and title path for all 30 NBA teams.</li>
                   <li><strong>Daily Playoff Recap</strong> — every day's results with biggest moment, top scorer, and quick analysis.</li>
                   <li><strong>IBL — Indonesia Basketball League</strong> (coming soon).</li>
                   <li><strong>FIFA World Cup 2026</strong> (coming soon) — 48 teams, 104 matches, 16 host cities.</li>
                 </ul>
-                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: '"Space Grotesk", sans-serif' }}>Data sources</h2>
+                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Data sources</h2>
                 <p>We use ESPN's public APIs (scores &amp; stats) and Polymarket (title odds). All sources are credited on every page. Data refreshes every 10–30 seconds during live games.</p>
-                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: '"Space Grotesk", sans-serif' }}>Partnerships</h2>
-                <p>Interested in working with us? We're open to sponsorships, press coverage, data partnerships, and editorial collaborations. Reach out at <a href="mailto:hi@gibol.co" style={{ color: '#ffb347', fontWeight: 600 }}>hi@gibol.co</a>.</p>
+                <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Partnerships</h2>
+                <p>Interested in working with us? We're open to sponsorships, press coverage, data partnerships, and editorial collaborations. Reach out at <a href="mailto:hi@gibol.co" style={{ color: 'var(--amber)', fontWeight: 600 }}>hi@gibol.co</a>.</p>
               </>
             )}
           </div>

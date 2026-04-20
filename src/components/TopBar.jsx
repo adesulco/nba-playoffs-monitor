@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
 import ToolbarButton from './ToolbarButton.jsx';
+import { Glyph } from './Logo.jsx';
 
 /**
  * Shared masthead used across Home + dashboard pages.
@@ -36,15 +37,19 @@ export default function TopBar({
         aria-label="gibol.co home"
         style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'inherit' }}
       >
-        <img
-          src="/favicon-64.png"
-          alt="gibol.co"
-          width={28}
-          height={28}
-          style={{ display: 'block', borderRadius: 4, flexShrink: 0 }}
-        />
+        <span style={{ color: C.text, display: 'inline-flex' }}>
+          <Glyph size={28} title="gibol" />
+        </span>
         <div>
-          <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: 14, color: C.text }}>{title}</div>
+          <div
+            className="brand-wordmark"
+            style={{ fontSize: 16, color: C.text }}
+          >
+            gibol<span className="brand-wordmark-dot">.</span>
+            <span style={{ fontWeight: 400, letterSpacing: 0, color: C.dim, fontSize: 12, marginLeft: 4 }}>
+              {title === 'gibol.co' ? 'co' : title}
+            </span>
+          </div>
           <div style={{ fontSize: 10.5, color: C.dim, letterSpacing: 0.5 }}>{subtitle}</div>
         </div>
       </Link>

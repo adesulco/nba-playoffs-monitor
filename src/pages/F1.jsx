@@ -153,7 +153,7 @@ function RoundDetail({ gp, result, lang }) {
         marginBottom: 12,
       }}>
         <div style={{
-          fontFamily: '"Bebas Neue", sans-serif',
+          fontFamily: 'var(--font-sans)',
           fontSize: 48, color: F1_RED, letterSpacing: -0.5,
           padding: '0 12px 0 0',
           borderRight: `1px solid ${C.lineSoft}`,
@@ -171,7 +171,7 @@ function RoundDetail({ gp, result, lang }) {
             {gp.sprint && <span style={{ marginLeft: 8, padding: '1px 5px', background: F1_RED, color: '#fff', borderRadius: 2, fontSize: 8 }}>SPRINT</span>}
           </div>
           <div style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 22, fontWeight: 600, color: C.text, letterSpacing: -0.2,
             lineHeight: 1.1, marginBottom: 6,
           }}>
@@ -187,7 +187,7 @@ function RoundDetail({ gp, result, lang }) {
         </div>
         {gp.slug && (
           <Link to={`/formula-1-2026/race/${gp.slug}`} style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 11, fontWeight: 700,
             padding: '8px 14px',
             background: F1_RED, color: '#fff',
@@ -333,7 +333,7 @@ function DriverStandings({ drivers, loading, error, lang, selectedConstructor })
       padding: '14px 14px 8px',
     }}>
       <h2 style={{
-        fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600,
+        fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
         margin: '0 0 10px', color: C.text, letterSpacing: -0.2,
       }}>
         {lang === 'id' ? 'Klasemen Pembalap' : 'Drivers Standings'}
@@ -434,7 +434,7 @@ function ConstructorStandings({ teams, loading, error, lang, selectedConstructor
       padding: '14px 14px 8px',
     }}>
       <h2 style={{
-        fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600,
+        fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
         margin: '0 0 10px', color: C.text, letterSpacing: -0.2,
       }}>
         {lang === 'id' ? 'Klasemen Konstruktor' : 'Constructors Standings'}
@@ -598,7 +598,7 @@ export default function F1() {
             <Chip variant="live" sportId="f1" accent={activeAccent} label="LIVE" />
           </div>
           <div style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
             color: C.text, marginBottom: 8,
             textWrap: 'balance',
@@ -617,7 +617,7 @@ export default function F1() {
           <div style={{ display: 'grid', gap: 10 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
               <div style={{
-                fontFamily: '"Space Grotesk", sans-serif', fontSize: 13, fontWeight: 600,
+                fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600,
                 color: C.text, letterSpacing: -0.2,
               }}>
                 {lang === 'id' ? 'Kalender 2026 · geser kiri-kanan' : '2026 Calendar · swipe'}

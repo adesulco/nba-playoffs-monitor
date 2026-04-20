@@ -30,7 +30,7 @@ const Glossary = lazy(() => import('./pages/Glossary.jsx'));
 // Minimal blank fallback — keeps layout shift near zero while the chunk streams.
 function RouteFallback() {
   return (
-    <div style={{ background: '#08111f', minHeight: '100vh' }} aria-busy="true" />
+    <div style={{ background: 'var(--bg)', minHeight: '100vh' }} aria-busy="true" />
   );
 }
 

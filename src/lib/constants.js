@@ -61,7 +61,7 @@ export const TEAM_BY_SLUG = Object.fromEntries(
 // tinting large surfaces (hero backgrounds, panel borders).
 export function softTeamColor(hex, mix = 0.35) {
   if (!hex || typeof hex !== 'string' || hex.length < 7) return hex;
-  const target = { r: 12, g: 26, b: 46 }; // panel dark
+  const target = { r: 10, g: 22, b: 40 }; // brand v1 --bg (#0A1628)
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
@@ -130,7 +130,10 @@ export const BRACKET_R1 = {
 
 // Theme-aware colors use CSS vars; light/dark values live in index.css.
 // Brand colors (nbaRed, cut) are theme-independent and stay as hex.
+// Legacy keys (panel, text, dim, green, red) resolve through the aliases
+// in index.css onto the new brand-v1 palette — no per-component edits.
 export const COLORS = {
+  // Legacy aliases — still authoritative for every existing component.
   bg: 'var(--bg)',
   panel: 'var(--panel)',
   panel2: 'var(--panel2)',
@@ -148,6 +151,23 @@ export const COLORS = {
   hover: 'var(--hover)',
   topbarBg: 'var(--topbar-bg)',
   heroBg: 'var(--hero-bg)',
+
+  // Brand-v1 names — prefer these in any new component. Legacy keys
+  // above are mirrored onto the same tokens, so both work.
+  bg2:    'var(--bg-2)',
+  bg3:    'var(--bg-3)',
+  ink:    'var(--ink)',
+  ink2:   'var(--ink-2)',
+  ink3:   'var(--ink-3)',
+  ink4:   'var(--ink-4)',
+  blue:   'var(--blue)',
+  blue2:  'var(--blue-2)',
+  amber2: 'var(--amber-2)',
+  up:     'var(--up)',
+  down:   'var(--down)',
+  live:   'var(--live)',
+
+  // Brand-identity hex colors (theme-independent).
   nbaRed: '#c8102e',
   cut: '#b89b5e',
 };

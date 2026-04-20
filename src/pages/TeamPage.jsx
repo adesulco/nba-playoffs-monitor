@@ -184,7 +184,7 @@ export default function TeamPage() {
             position: 'absolute', right: -20, bottom: -40,
             fontSize: 220, fontWeight: 900, lineHeight: 1,
             color: 'rgba(255,255,255,0.07)',
-            fontFamily: '"Bebas Neue", sans-serif',
+            fontFamily: 'var(--font-sans)',
             letterSpacing: -4, pointerEvents: 'none',
           }}>{meta.abbr}</div>
 
@@ -193,7 +193,7 @@ export default function TeamPage() {
               NBA · {confLabel.toUpperCase()} · {seedLabel.toUpperCase()}
             </div>
             <h1 style={{
-              fontFamily: '"Space Grotesk", sans-serif',
+              fontFamily: 'var(--font-sans)',
               fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
               color: '#fff', margin: 0, marginBottom: 8, textWrap: 'balance',
             }}>{teamName}</h1>
@@ -267,13 +267,13 @@ export default function TeamPage() {
               marginBottom: 14,
               background: '#2a1a0a',
               border: '1px solid #8a4d00',
-              borderLeft: '4px solid #ffb347',
+              borderLeft: '4px solid var(--amber)',
               borderRadius: 4,
               fontSize: 13,
               lineHeight: 1.6,
             }}>
               <div style={{
-                fontSize: 10, letterSpacing: 2, color: '#ffb347', fontWeight: 700,
+                fontSize: 10, letterSpacing: 2, color: 'var(--amber)', fontWeight: 700,
                 marginBottom: 6, textTransform: 'uppercase',
               }}>
                 {lang === 'id' ? '⚠ Tidak Lolos Playoff 2026' : '⚠ Did Not Qualify for 2026 Playoffs'}
@@ -286,9 +286,9 @@ export default function TeamPage() {
               <div style={{ color: C.dim, fontSize: 11.5 }}>
                 {lang === 'id'
                   ? <>Kami tetap menampilkan rekor musim reguler dan statistik pemain di halaman ini.{' '}
-                      <a href="/nba-playoff-2026" style={{ color: '#ffb347', textDecoration: 'none', fontWeight: 600 }}>Lihat tim yang lolos playoff →</a></>
+                      <a href="/nba-playoff-2026" style={{ color: 'var(--amber)', textDecoration: 'none', fontWeight: 600 }}>Lihat tim yang lolos playoff →</a></>
                   : <>We still show regular-season record and player stats here.{' '}
-                      <a href="/nba-playoff-2026" style={{ color: '#ffb347', textDecoration: 'none', fontWeight: 600 }}>See teams that qualified →</a></>}
+                      <a href="/nba-playoff-2026" style={{ color: 'var(--amber)', textDecoration: 'none', fontWeight: 600 }}>See teams that qualified →</a></>}
               </div>
             </div>
           )}
@@ -439,7 +439,7 @@ export default function TeamPage() {
           <div style={{ ...panel, background: C.panelSoft, fontSize: 12, lineHeight: 1.7 }}>
             {lang === 'id' ? (
               <>
-                <h2 style={{ fontSize: 16, marginTop: 0, marginBottom: 10, fontFamily: '"Space Grotesk", sans-serif' }}>
+                <h2 style={{ fontSize: 16, marginTop: 0, marginBottom: 10, fontFamily: 'var(--font-sans)' }}>
                   Tentang {teamName} di NBA Playoff 2026
                 </h2>
                 <p>
@@ -460,7 +460,7 @@ export default function TeamPage() {
               </>
             ) : (
               <>
-                <h2 style={{ fontSize: 16, marginTop: 0, marginBottom: 10, fontFamily: '"Space Grotesk", sans-serif' }}>
+                <h2 style={{ fontSize: 16, marginTop: 0, marginBottom: 10, fontFamily: 'var(--font-sans)' }}>
                   About {teamName} in the 2026 NBA Playoffs
                 </h2>
                 <p>

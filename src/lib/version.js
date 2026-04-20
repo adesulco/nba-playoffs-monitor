@@ -217,8 +217,42 @@
 // src/pages/F1Driver.jsx, src/pages/F1Team.jsx, src/pages/F1Race.jsx,
 // src/pages/TeamPage.jsx. No routing, data, or behavioural change.
 // Step 8 of the 9-step design revamp; only Step 9 (mockup QA) remains.
+//
+// v0.3.0 — Brand v1 refresh (minor milestone bump). Full supersede of the
+// Phase 1 visual direction per the "Gibol — Brand Handoff v1" PDF:
+//   - Palette: #0A1628 / #0E1E36 / #13253F navy surfaces, #E6EEF9 ink,
+//     #3B82F6 interactive blue, #F59E0B amber accent, #EF4444 LIVE, new
+//     #10B981 / #EF4444 up/down semantics. All legacy tokens aliased onto
+//     the new primitives (--panel, --text, --dim, --green, --red, etc.)
+//     so no component code had to change to pick up the new palette.
+//   - Typography: Inter Tight 400-900 (replaces Inter / Space Grotesk /
+//     Bebas Neue for both display and body) + JetBrains Mono 400-700 for
+//     every numeric UI. Google Fonts URL in index.html swapped in one
+//     shot. All inline `font-family` references mass-replaced across 24
+//     src/ files (.jsx/.js) from "Space Grotesk" / "Bebas Neue" →
+//     var(--font-sans).
+//   - Logo: new src/components/Logo.jsx exports <Glyph> (target-mark SVG
+//     using currentColor) + <Logo> (Glyph + "gibol." Inter Tight 900
+//     wordmark with amber final dot). TopBar masthead swaps the PNG
+//     favicon for inline <Glyph size=28/> + typographic wordmark.
+//   - Favicons + PWA icons: regenerated from gen_favicons.py — 13 PNGs
+//     (favicon 16/32/64, apple-touch 180, gibol-logo 512/1024, icons/
+//     icon 192/512, icon-maskable 192/512, apple-touch, badge-72) plus
+//     multi-size favicon.ico.
+//   - Meta theme-color updated #08111f → #0A1628. The <noscript> SEO
+//     fallback div in index.html also takes the new navy.
+//   - Sanity cleanup: last runtime #ffb347 / #08111f literals in
+//     ContactBar, App.jsx RouteFallback, Sparkline (up/down trend),
+//     NBADashboard, About, Glossary, TeamPage all replaced with token
+//     refs (C.amber, C.bg, var(--amber), var(--bg)).
+//   - .gitignore broadened from `dist/` → `dist*` to ignore Finder " 2"
+//     duplicates and timestamped dist.old-* archives.
+// Accessibility: primary ink on bg = 15.9:1, secondary 8.8:1, muted 4.7:1,
+// amber 8.1:1, live 4.9:1 — all AA+ on every surface in use.
+// No component structure, route, data-fetch, state, or backend edits.
+// Full changelog + QA checklist: v0.3.0-SHIP-NOTES.md at repo root.
 
-export const APP_VERSION = '0.2.13';
+export const APP_VERSION = '0.3.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

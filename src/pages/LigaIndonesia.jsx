@@ -36,7 +36,7 @@ function LigaPreviewBlock() {
     <div style={{ display: 'grid', gap: 18 }}>
       <section>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 600,
           margin: '10px 0 10px', color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? 'BRI Liga 1 — Super League Indonesia' : 'BRI Liga 1 — Super League Indonesia'}
@@ -67,7 +67,7 @@ function LigaPreviewBlock() {
 
       <section>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 600,
           margin: '8px 0 10px', color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? 'Jadwal musim' : 'Season calendar'}

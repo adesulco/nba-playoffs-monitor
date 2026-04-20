@@ -46,7 +46,7 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
             <Chip variant="soon" sportId={icon} accent={accent} label="COMING SOON" />
           </div>
           <div style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
             color: C.text, marginBottom: 8,
             textWrap: 'balance',

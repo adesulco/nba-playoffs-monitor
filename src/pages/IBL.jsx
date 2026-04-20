@@ -57,7 +57,7 @@ function IBLPreviewBlock() {
       {/* Teams section */}
       <section>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 600,
           margin: '16px 0 12px', color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? '16 klub IBL musim 2025–26' : '16 IBL clubs in the 2025–26 season'}
@@ -88,7 +88,7 @@ function IBLPreviewBlock() {
       {/* Key dates */}
       <section>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 600,
           margin: '8px 0 12px', color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? 'Jadwal musim IBL' : 'Season schedule'}

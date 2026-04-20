@@ -124,7 +124,7 @@ function GameCard({ g, favTeam, isActive, onClick, injuries, streaks, lang }) {
         </div>
       </div>
       {hasScore && (
-        <span style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 22, fontWeight: 600, color: won ? C.amberBright : C.text, letterSpacing: -0.3, lineHeight: 1 }}>{score}</span>
+        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 22, fontWeight: 600, color: won ? C.amberBright : C.text, letterSpacing: -0.3, lineHeight: 1 }}>{score}</span>
       )}
     </div>
   );
@@ -151,7 +151,7 @@ function GameCard({ g, favTeam, isActive, onClick, injuries, streaks, lang }) {
       <Row abbr={g.away?.abbr} nickname={awayNickname} meta={awayMeta} score={awayScore} won={awayWon} record={g.away?.record} streak={streaks?.[g.away?.abbr]} />
       <Row abbr={g.home?.abbr} nickname={homeNickname} meta={homeMeta} score={homeScore} won={homeWon} record={g.home?.record} streak={streaks?.[g.home?.abbr]} />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, fontSize: 10, paddingTop: 6, borderTop: `1px solid ${C.lineSoft}` }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: isLive ? C.green : isFinal ? C.dim : '#ffb347' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: isLive ? C.green : isFinal ? C.dim : C.amber }}>
           {isLive && <span className="live-dot" style={{ background: C.red }} />}
           <span style={{ letterSpacing: 0.3 }}>{localizeGameStatus(g.status, g.date, g.statusState, lang) || (isLive ? 'LIVE' : isFinal ? 'FINAL' : 'UPCOMING')}</span>
           {isActive && (
@@ -342,7 +342,7 @@ export default function NBADashboard() {
               style={{ display: 'block', borderRadius: 4, flexShrink: 0 }}
             />
             <div>
-              <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, fontSize: 14 }}>Monitoring the Playoffs</div>
+              <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14 }}>Monitoring the Playoffs</div>
               <div style={{ fontSize: 10.5, color: C.dim, letterSpacing: 0.5 }}>NBA <strong style={{ color: accent }}>•</strong> {t('tagline')} <strong style={{ color: accent }}>•</strong> {t('liveLabel')}</div>
             </div>
             <Link
@@ -387,7 +387,7 @@ export default function NBADashboard() {
               accent={C.amber}
             />
             <span style={{ display: 'inline-flex', alignItems: 'center' }}><span className="live-dot" style={{ background: statusColor }} /> {t(statusLabel.toLowerCase()) || statusLabel}</span>
-            <span style={{ color: accentBright, fontWeight: 600, fontSize: 13, fontFamily: '"Space Grotesk", sans-serif' }}>
+            <span style={{ color: accentBright, fontWeight: 600, fontSize: 13, fontFamily: 'var(--font-sans)' }}>
               {new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { hour: '2-digit', minute: '2-digit', hour12: lang !== 'id' }).format(now)} {getUserTzLabel()}
             </span>
             <span>{new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(now)}</span>
@@ -444,7 +444,7 @@ export default function NBADashboard() {
           ].map((s, i) => (
             <div key={i} style={{ padding: '8px 14px', borderRight: i < 3 ? `1px solid ${C.lineSoft}` : 'none', display: 'flex', flexDirection: 'column', gap: 1 }}>
               <div style={{ fontSize: 9, color: C.dim, letterSpacing: 0.8, textTransform: 'uppercase' }}>{s.label}</div>
-              <div style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600, color: accentBright, letterSpacing: -0.2 }}>{s.value}</div>
+              <div style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, color: accentBright, letterSpacing: -0.2 }}>{s.value}</div>
               <div style={{ fontSize: 9.5, color: C.dim }}>{s.sub}</div>
             </div>
           ))}
@@ -636,7 +636,7 @@ export default function NBADashboard() {
                         {top.position && <span style={{ fontSize: 9, color: C.muted }}>{top.position}{top.jersey ? ` · #${top.jersey}` : ''}</span>}
                       </a>
                       <WatchStar player={player} watchlist={watchlist} size={12} />
-                      <div style={{ color: accentBright, fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600, letterSpacing: -0.2 }}>
+                      <div style={{ color: accentBright, fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, letterSpacing: -0.2 }}>
                         {top.displayValue || (top.value != null ? top.value.toFixed(1) : '—')}
                       </div>
                     </div>
@@ -674,7 +674,7 @@ export default function NBADashboard() {
                 <div style={{ fontSize: 9.5, color: C.dim, textAlign: 'right' }}>CONFERENCE<br />FINALE</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 20, marginTop: 10 }}>
-                <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 52, lineHeight: 1, color: C.text, letterSpacing: -1 }}>2<span style={{ fontSize: 24, color: accent, verticalAlign: 'top' }}>GMS</span></div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 52, lineHeight: 1, color: C.text, letterSpacing: -1 }}>2<span style={{ fontSize: 24, color: accent, verticalAlign: 'top' }}>GMS</span></div>
                 <div style={{ textAlign: 'right', fontSize: 10, color: C.dim, lineHeight: 1.6 }}>
                   <div style={{ fontSize: 14, color: C.text, fontWeight: 600 }}>
                     {formatKickoff('2026-04-17T23:30:00Z', lang).replace(/\s/, ' ').split(' ').slice(0, -1).join(' ')}{' '}

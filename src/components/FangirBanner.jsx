@@ -89,7 +89,7 @@ export default function FangirBanner() {
           </span>
         </div>
         <div style={{
-          fontFamily: '"Space Grotesk", sans-serif',
+          fontFamily: 'var(--font-sans)',
           fontSize: 17, fontWeight: 600, color: C.text,
           letterSpacing: -0.2, lineHeight: 1.1,
         }}>
@@ -114,7 +114,7 @@ export default function FangirBanner() {
         whiteSpace: 'nowrap',
       }}>
         <div style={{
-          fontFamily: '"Space Grotesk", sans-serif',
+          fontFamily: 'var(--font-sans)',
           fontSize: 14, fontWeight: 600, color: C.text, letterSpacing: -0.2,
         }}>
           {copy.price}

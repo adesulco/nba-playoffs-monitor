@@ -29,7 +29,7 @@ export default function SEOContent({ lang = 'id' }) {
         <script type="application/ld+json">{JSON.stringify(faqSchema(content.faqs))}</script>
       </Helmet>
 
-      <h1 style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: C.text, letterSpacing: -0.3, marginBottom: 10 }}>
+      <h1 style={{ fontFamily: 'var(--font-sans)', fontSize: 20, fontWeight: 600, color: C.text, letterSpacing: -0.3, marginBottom: 10 }}>
         {content.h1}
       </h1>
       <p style={{ color: C.dim, maxWidth: 820, marginBottom: 22 }}>{content.intro}</p>
@@ -43,7 +43,7 @@ export default function SEOContent({ lang = 'id' }) {
         ))}
       </div>
 
-      <h2 style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 10 }}>
+      <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 10 }}>
         {content.faqHeading}
       </h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 16 }}>

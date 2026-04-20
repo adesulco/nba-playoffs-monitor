@@ -80,7 +80,7 @@ export default function F1News({ limit = 12 }) {
         marginBottom: 10,
       }}>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
           margin: 0, color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? 'Berita F1' : 'F1 News'}

@@ -89,7 +89,7 @@ export default function F1Team() {
             F1 2026 · {lang === 'id' ? 'KONSTRUKTOR' : 'CONSTRUCTOR'}
           </div>
           <h1 style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0, marginBottom: 8,
             letterSpacing: '-0.025em', color: C.text, textWrap: 'balance',
           }}>
@@ -162,19 +162,19 @@ export default function F1Team() {
               <div style={{ display: 'flex', gap: 18, alignItems: 'baseline', flexWrap: 'wrap' }}>
                 <div>
                   <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>{lang === 'id' ? 'POSISI' : 'POSITION'}</div>
-                  <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 36, lineHeight: 1, color: team.accent }}>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 36, lineHeight: 1, color: team.accent }}>
                     P{teamStanding.position}
                   </div>
                 </div>
                 <div>
                   <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>{lang === 'id' ? 'POIN' : 'POINTS'}</div>
-                  <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 36, lineHeight: 1, color: C.text }}>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 36, lineHeight: 1, color: C.text }}>
                     {teamStanding.points}
                   </div>
                 </div>
                 <div>
                   <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>{lang === 'id' ? 'MENANG' : 'WINS'}</div>
-                  <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 36, lineHeight: 1, color: C.text }}>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 36, lineHeight: 1, color: C.text }}>
                     {teamStanding.wins}
                   </div>
                 </div>
@@ -209,7 +209,7 @@ export default function F1Team() {
                     onMouseLeave={(e) => (e.currentTarget.style.background = C.panelRow)}
                   >
                     <div style={{
-                      fontFamily: '"Bebas Neue", sans-serif',
+                      fontFamily: 'var(--font-sans)',
                       fontSize: 32, lineHeight: 1, color: team.accent, minWidth: 48, textAlign: 'right',
                     }}>
                       #{d.number}

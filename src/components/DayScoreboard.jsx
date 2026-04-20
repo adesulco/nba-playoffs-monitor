@@ -255,7 +255,7 @@ function GameCard({ g, lang, onClick, isActive, winProb, favTeam, accent }) {
           </span>
         </div>
         {hasScore && (
-          <span style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: awayWon ? C.amberBright : C.text, letterSpacing: -0.3 }}>
+          <span style={{ fontFamily: 'var(--font-sans)', fontSize: 20, fontWeight: 600, color: awayWon ? C.amberBright : C.text, letterSpacing: -0.3 }}>
             {awayScore}
           </span>
         )}
@@ -279,7 +279,7 @@ function GameCard({ g, lang, onClick, isActive, winProb, favTeam, accent }) {
           </span>
         </div>
         {hasScore && (
-          <span style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 20, fontWeight: 600, color: homeWon ? C.amberBright : C.text, letterSpacing: -0.3 }}>
+          <span style={{ fontFamily: 'var(--font-sans)', fontSize: 20, fontWeight: 600, color: homeWon ? C.amberBright : C.text, letterSpacing: -0.3 }}>
             {homeScore}
           </span>
         )}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Sparkline({ data, width = 60, height = 18, color = '#ffb347' }) {
+export default function Sparkline({ data, width = 60, height = 18, color = '#F59E0B' }) {
   if (!data || data.length < 2) {
     return <svg width={width} height={height} />;
   }
@@ -16,7 +16,7 @@ export default function Sparkline({ data, width = 60, height = 18, color = '#ffb
 
   const last = data[data.length - 1];
   const first = data[0];
-  const trendColor = last >= first ? '#3ddb84' : '#ff5c5c';
+  const trendColor = last >= first ? '#10B981' : '#EF4444';
 
   return (
     <svg width={width} height={height} style={{ display: 'block' }}>

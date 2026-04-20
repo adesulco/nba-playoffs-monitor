@@ -99,7 +99,7 @@ export default function F1Driver() {
           </div>
           <h1 style={{
             display: 'flex', alignItems: 'baseline', gap: 14, flexWrap: 'wrap',
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
             letterSpacing: '-0.025em', textWrap: 'balance',
           }}>
@@ -149,25 +149,25 @@ export default function F1Driver() {
               <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
                 <div>
                   <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>{lang === 'id' ? 'POSISI' : 'POSITION'}</div>
-                  <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 38, lineHeight: 1, color: accent }}>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 38, lineHeight: 1, color: accent }}>
                     P{standing.position}
                   </div>
                 </div>
                 <div>
                   <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>{lang === 'id' ? 'POIN' : 'POINTS'}</div>
-                  <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 38, lineHeight: 1, color: C.text }}>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 38, lineHeight: 1, color: C.text }}>
                     {standing.points}
                   </div>
                 </div>
                 <div>
                   <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>{lang === 'id' ? 'MENANG' : 'WINS'}</div>
-                  <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 38, lineHeight: 1, color: C.text }}>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 38, lineHeight: 1, color: C.text }}>
                     {standing.wins || wins}
                   </div>
                 </div>
                 <div>
                   <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>{lang === 'id' ? 'PODIUM' : 'PODIUMS'}</div>
-                  <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 38, lineHeight: 1, color: C.text }}>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 38, lineHeight: 1, color: C.text }}>
                     {podiums}
                   </div>
                 </div>

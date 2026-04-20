@@ -32,7 +32,7 @@ export default function ContactBar({ lang = 'id', variant = 'inline' }) {
           margin: '0 24px 16px',
           background: C.panelRow,
           border: `1px solid ${C.line}`,
-          borderLeft: `3px solid #ffb347`,
+          borderLeft: `3px solid ${C.amber}`,
           borderRadius: 4,
           textDecoration: 'none',
           color: C.text,
@@ -54,8 +54,8 @@ export default function ContactBar({ lang = 'id', variant = 'inline' }) {
         </div>
         <div style={{
           padding: '6px 12px',
-          background: '#ffb347',
-          color: '#08111f',
+          background: C.amber,
+          color: C.bg,
           fontSize: 11,
           fontWeight: 700,
           letterSpacing: 0.5,
@@ -75,7 +75,7 @@ export default function ContactBar({ lang = 'id', variant = 'inline' }) {
       <a
         href={href}
         onClick={onClick}
-        style={{ color: '#ffb347', textDecoration: 'none', fontWeight: 600 }}
+        style={{ color: C.amber, textDecoration: 'none', fontWeight: 600 }}
       >
         {copy.cta}
       </a>

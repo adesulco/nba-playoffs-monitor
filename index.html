@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#08111f" />
+    <meta name="theme-color" content="#0A1628" />
 
     <!-- Title + meta description (Bahasa-first, English in og alt). -->
     <title>gibol.co — skor NBA playoff 2026 live, peluang juara, bracket, dan statistik</title>
@@ -99,23 +99,21 @@
     }
     </script>
 
-    <!-- Font loading strategy (F22):
+    <!-- Font loading strategy (Brand v1):
          • Preconnect to both fonts.googleapis.com and fonts.gstatic.com
          • Fetch the main CSS stylesheet normally (non-blocking via media="print" → swap to "all" on load)
-         • font-display: swap is inline in the CSS Google serves, so system-font fallback renders immediately
-         • Priority weights: Inter 400/500/600/700 (body + UI, Phase 1 design system),
-           Space Grotesk 400/600 (legacy titles — migrating out), Bebas Neue (display),
-           JetBrains Mono 500 (numerics + metadata rows). -->
+         • font-display: swap ships inline in Google's CSS, so the system fallback renders immediately
+         • Inter Tight 400–900 powers body + display; JetBrains Mono 400–700 powers every numeric UI. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
     </noscript>
 
     <!-- Google Analytics 4 (hardcoded in HTML so crawlers / GSC verification find it) -->
@@ -131,7 +129,7 @@
   <body>
     <!-- SEO content: rendered in HTML source for crawlers even before React hydrates. -->
     <noscript>
-      <div style="padding:20px;font-family:system-ui;max-width:720px;margin:40px auto;color:#e6edf5;background:#08111f;">
+      <div style="padding:20px;font-family:system-ui;max-width:720px;margin:40px auto;color:#E6EEF9;background:#0A1628;">
         <h1>gibol.co — Skor NBA Playoff 2026 Live</h1>
         <p>Dashboard olahraga Bahasa-first untuk NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, Piala Dunia FIFA 2026, dan BRI Liga 1 Indonesia. Aktifkan JavaScript untuk melihat dashboard penuh.</p>
         <ul>

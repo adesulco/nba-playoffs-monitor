@@ -36,7 +36,7 @@ function EPLPreviewBlock() {
     <div style={{ display: 'grid', gap: 18 }}>
       <section>
         <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 18, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 600,
           margin: '10px 0 10px', color: C.text, letterSpacing: -0.2,
         }}>
           {lang === 'id' ? 'Enam klub papan atas musim 2025-26' : 'Six title-picture clubs this season'}

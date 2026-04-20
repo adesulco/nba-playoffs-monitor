@@ -70,7 +70,7 @@ function Featured({ d, isLive, title, blurb, cta }) {
           <span style={{ fontSize: 9, color: C.dim, letterSpacing: 1, fontWeight: 500 }}>{d.league}</span>
         </div>
         <div style={{
-          fontFamily: '"Space Grotesk", sans-serif',
+          fontFamily: 'var(--font-sans)',
           fontSize: 19, fontWeight: 600, color: C.text, letterSpacing: -0.2,
           lineHeight: 1.2,
           textWrap: 'balance',
@@ -122,7 +122,7 @@ function Secondary({ d, isLive, title, blurb, cta }) {
         />
       </div>
       <div style={{
-        fontFamily: '"Space Grotesk", sans-serif',
+        fontFamily: 'var(--font-sans)',
         fontSize: 14, fontWeight: 600, color: C.text, letterSpacing: -0.2,
         lineHeight: 1.2,
         textWrap: 'balance',
@@ -133,7 +133,7 @@ function Secondary({ d, isLive, title, blurb, cta }) {
         {blurb}
       </div>
       <div style={{
-        fontFamily: '"Space Grotesk", sans-serif',
+        fontFamily: 'var(--font-sans)',
         fontSize: 10.5, fontWeight: 700,
         color: isLive ? d.accent : C.muted,
         letterSpacing: 0.5,

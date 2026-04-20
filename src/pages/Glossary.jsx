@@ -51,7 +51,7 @@ export default function Glossary() {
         <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? 'glosarium istilah NBA' : 'NBA glossary'} />
         <main style={{ padding: '32px 8px' }}>
           <h1 style={{
-            fontFamily: '"Space Grotesk", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
             letterSpacing: '-0.025em', textWrap: 'balance',
           }}>
@@ -69,12 +69,12 @@ export default function Glossary() {
                 padding: '16px 18px',
                 background: C.panel,
                 border: `1px solid ${C.line}`,
-                borderLeft: `3px solid #ffb347`,
+                borderLeft: `3px solid var(--amber)`,
                 borderRadius: 4,
               }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 8 }}>
                   <h2 style={{
-                    fontFamily: '"Space Grotesk", sans-serif',
+                    fontFamily: 'var(--font-sans)',
                     fontSize: 18, fontWeight: 600, margin: 0, letterSpacing: -0.2,
                   }}>
                     {e.term}
@@ -97,7 +97,7 @@ export default function Glossary() {
           }}>
             <strong>{lang === 'id' ? 'Siap nonton live?' : 'Ready to watch live?'}</strong>{' '}
             {lang === 'id' ? 'Semua istilah di atas bisa kamu lihat beraksi di' : 'See every one of these live at'}{' '}
-            <Link to="/nba-playoff-2026" style={{ color: '#ffb347', fontWeight: 600 }}>
+            <Link to="/nba-playoff-2026" style={{ color: 'var(--amber)', fontWeight: 600 }}>
               /nba-playoff-2026
             </Link>
             {' — '}
