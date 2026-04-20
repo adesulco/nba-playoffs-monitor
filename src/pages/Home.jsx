@@ -6,6 +6,7 @@ import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import SportIcon from '../components/SportIcon.jsx';
 import Chip from '../components/Chip.jsx';
+import Button from '../components/Button.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
 import { VISIBLE, LIVE } from '../lib/flags.js';
@@ -156,17 +157,14 @@ function DashboardCard({ d, lang }) {
         </div>
       </div>
 
-      <div className="home-featured-cta" style={{
-        fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: 12, fontWeight: 700,
-        padding: '8px 14px',
-        background: d.accent, color: '#fff',
-        borderRadius: 3,
-        whiteSpace: 'nowrap',
-        letterSpacing: 0.3,
-      }}>
-        {cta}
-      </div>
+      <Button
+        as="span"
+        variant="primary"
+        sportId={d.icon}
+        accent={d.accent}
+        label={cta}
+        className="home-featured-cta"
+      />
     </div>
   ) : (
     // Secondary card — compact, icon+title stacked, no separate CTA button.

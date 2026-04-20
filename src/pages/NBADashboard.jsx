@@ -28,6 +28,7 @@ import ClutchLeaderboard from '../components/ClutchLeaderboard.jsx';
 import SEO from '../components/SEO.jsx';
 import SEOContent from '../components/SEOContent.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+import ToolbarButton from '../components/ToolbarButton.jsx';
 import { localizeGameStatus, formatKickoff, getUserTzLabel } from '../lib/timezone.js';
 import { VERSION_LABEL } from '../lib/version.js';
 
@@ -371,51 +372,20 @@ export default function NBADashboard() {
           </div>
           <TeamPicker selectedTeam={favTeam} onSelect={setFav} />
           <div className="topbar-meta" style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
-            <button
+            <ToolbarButton
               onClick={toggleLang}
+              label={lang === 'en' ? 'EN' : 'ID'}
               title={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
-              aria-label={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
-              style={{
-                background: 'transparent',
-                border: `1px solid ${C.lineSoft}`,
-                color: C.dim,
-                height: 26,
-                padding: '0 8px',
-                borderRadius: 4,
-                cursor: 'pointer',
-                fontFamily: 'inherit',
-                fontSize: 10,
-                letterSpacing: 1,
-                fontWeight: 600,
-                transition: 'all 0.15s',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.amber; e.currentTarget.style.color = C.amber; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.lineSoft; e.currentTarget.style.color = C.dim; }}
-            >
-              {lang === 'en' ? 'EN' : 'ID'}
-            </button>
-            <button
+              ariaLabel={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
+              accent={C.amber}
+            />
+            <ToolbarButton
               onClick={toggleTheme}
+              icon={theme === 'dark' ? '☀' : '☾'}
               title={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-              aria-label={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-              style={{
-                background: 'transparent',
-                border: `1px solid ${C.lineSoft}`,
-                color: C.dim,
-                width: 26, height: 26,
-                borderRadius: 4,
-                cursor: 'pointer',
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 12,
-                padding: 0,
-                fontFamily: 'inherit',
-                transition: 'all 0.15s',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.amber; e.currentTarget.style.color = C.amber; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.lineSoft; e.currentTarget.style.color = C.dim; }}
-            >
-              {theme === 'dark' ? '☀' : '☾'}
-            </button>
+              ariaLabel={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
+              accent={C.amber}
+            />
             <span style={{ display: 'inline-flex', alignItems: 'center' }}><span className="live-dot" style={{ background: statusColor }} /> {t(statusLabel.toLowerCase()) || statusLabel}</span>
             <span style={{ color: accentBright, fontWeight: 600, fontSize: 13, fontFamily: '"Space Grotesk", sans-serif' }}>
               {new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { hour: '2-digit', minute: '2-digit', hour12: lang !== 'id' }).format(now)} {getUserTzLabel()}

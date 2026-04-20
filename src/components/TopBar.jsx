@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
+import ToolbarButton from './ToolbarButton.jsx';
 
 /**
  * Shared masthead used across Home + dashboard pages.
@@ -68,51 +69,20 @@ export default function TopBar({
       <div style={{ flex: 1 }}>{children}</div>
 
       <div className="topbar-meta" style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
-        <button
+        <ToolbarButton
           onClick={toggleLang}
+          label={lang === 'en' ? 'EN' : 'ID'}
           title={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
-          aria-label={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
-          style={{
-            background: 'transparent',
-            border: `1px solid ${C.lineSoft}`,
-            color: C.dim,
-            height: 26,
-            padding: '0 8px',
-            borderRadius: 4,
-            cursor: 'pointer',
-            fontFamily: 'inherit',
-            fontSize: 10,
-            letterSpacing: 1,
-            fontWeight: 600,
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = accentColor; e.currentTarget.style.color = accentColor; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.lineSoft; e.currentTarget.style.color = C.dim; }}
-        >
-          {lang === 'en' ? 'EN' : 'ID'}
-        </button>
-        <button
+          ariaLabel={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
+          accent={accentColor}
+        />
+        <ToolbarButton
           onClick={toggleTheme}
+          icon={theme === 'dark' ? '☀' : '☾'}
           title={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-          aria-label={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-          style={{
-            background: 'transparent',
-            border: `1px solid ${C.lineSoft}`,
-            color: C.dim,
-            width: 26, height: 26,
-            borderRadius: 4,
-            cursor: 'pointer',
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 12,
-            padding: 0,
-            fontFamily: 'inherit',
-            transition: 'all 0.15s',
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = accentColor; e.currentTarget.style.color = accentColor; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.lineSoft; e.currentTarget.style.color = C.dim; }}
-        >
-          {theme === 'dark' ? '☀' : '☾'}
-        </button>
+          ariaLabel={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
+          accent={accentColor}
+        />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useApp } from '../lib/AppContext.jsx';
+import { resolveSportColor } from '../lib/sportColor.js';
 
 /**
  * Chip — shared status/metadata pill for Home + ComingSoon (step 3/9).
@@ -20,27 +21,7 @@ import { useApp } from '../lib/AppContext.jsx';
  *   and is already honored by the global prefers-reduced-motion block.
  */
 
-const SPORT_COLOR_DARK = {
-  nba: '#ff8795',
-  f1:  '#ff8a8a',
-  pl:  '#d7b5f5',
-  wc:  '#a0c2ea',
-  id:  '#ff9ea0',
-};
-const SPORT_COLOR_LIGHT = {
-  nba: '#c9082a',
-  f1:  '#e10600',
-  pl:  '#3d195b',
-  wc:  '#326295',
-  id:  '#c1272d',
-};
-
-function resolveColor({ theme, sportId, accent }) {
-  if (sportId && SPORT_COLOR_DARK[sportId]) {
-    return theme === 'light' ? SPORT_COLOR_LIGHT[sportId] : SPORT_COLOR_DARK[sportId];
-  }
-  return accent;
-}
+// Sport-accent lookup lives in src/lib/sportColor.js — see Button + SportIcon.
 
 const BASE_STYLE = {
   display: 'inline-flex',
@@ -59,7 +40,7 @@ const BASE_STYLE = {
 
 export default function Chip({ variant = 'neutral', sportId, accent, label, style }) {
   const { theme } = useApp();
-  const color = resolveColor({ theme, sportId, accent });
+  const color = resolveSportColor({ theme, sportId, accent });
 
   if (variant === 'live') {
     const bg = color || 'var(--live)';

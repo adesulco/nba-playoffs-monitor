@@ -1,5 +1,6 @@
 import React from 'react';
 import { useApp } from '../lib/AppContext.jsx';
+import { resolveSportColor } from '../lib/sportColor.js';
 
 /**
  * SportIcon — Phase 1 design-system icon family.
@@ -80,22 +81,9 @@ const BG_BY_ID = {
   id:  'rgba(193,39,45,.22)',
 };
 
-// Stroke color — lighter tint in dark mode (per design system §08),
-// full sport hex in light mode (cream bg needs stronger contrast).
-const STROKE_DARK = {
-  nba: '#ff8795',
-  f1:  '#ff8a8a',
-  pl:  '#d7b5f5',
-  wc:  '#a0c2ea',
-  id:  '#ff9ea0',
-};
-const STROKE_LIGHT = {
-  nba: '#c9082a',
-  f1:  '#e10600',
-  pl:  '#3d195b',
-  wc:  '#326295',
-  id:  '#c1272d',
-};
+// Stroke color lives in src/lib/sportColor.js so Chip, Button, and SportIcon
+// share one lookup. Lighter hex in dark (passes AA on --ink-1); full brand
+// hex in light (passes AA on cream).
 
 export default function SportIcon({ id, size = 40, inline = false, label, style }) {
   const { theme } = useApp();
@@ -105,7 +93,7 @@ export default function SportIcon({ id, size = 40, inline = false, label, style 
     return null;
   }
 
-  const stroke = theme === 'light' ? STROKE_LIGHT[id] : STROKE_DARK[id];
+  const stroke = resolveSportColor({ theme, sportId: id });
   // SVG sits at ~55% of tile size; clamped to a minimum of 12 so small
   // in-button uses still render crisply on retina.
   const svgSize = inline ? size : Math.max(12, Math.round(size * 0.55));

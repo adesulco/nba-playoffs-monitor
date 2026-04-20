@@ -1,6 +1,7 @@
 import React from 'react';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
+import Button from './Button.jsx';
 
 const FANGIR_URL = 'https://fangir.com/products/2026-ibl-trading-cards';
 const HERO_IMG = 'https://fangir.com/cdn/shop/files/Slide-1_1946x.jpg?v=1776145319';
@@ -118,20 +119,17 @@ export default function FangirBanner() {
         }}>
           {copy.price}
         </div>
-        <div style={{
-          padding: '6px 12px',
-          background: '#d2191f',
-          color: '#fff',
-          fontSize: 10.5,
-          fontWeight: 700,
-          letterSpacing: 0.3,
-          borderRadius: 3,
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 4,
-        }}>
-          {copy.cta} <span style={{ fontSize: 11 }}>↗</span>
-        </div>
+        {/* Presentational pill — parent <a> owns the click. Fangir red (#d2191f)
+            passed as `accent` since no sportId maps to it. `as="span"` keeps
+            the DOM valid inside the banner-wide anchor. */}
+        <Button
+          as="span"
+          variant="primary"
+          size="sm"
+          accent="#d2191f"
+          label={copy.cta}
+          rightIcon="↗"
+        />
       </div>
     </a>
   );

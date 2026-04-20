@@ -7,6 +7,7 @@ import SEO from '../components/SEO.jsx';
 import PlayerHead from '../components/PlayerHead.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import SportIcon from '../components/SportIcon.jsx';
+import Button from '../components/Button.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { trackEvent } from '../lib/analytics.js';
 
@@ -641,18 +642,14 @@ export default function Recap() {
                 : 'Full live NBA Playoff dashboard — scores, win probability, play-by-play in real time.'}
             </div>
           </div>
-          <Link
+          <Button
+            variant="primary"
+            sportId="nba"
+            accent={accent}
             to="/nba-playoff-2026"
             onClick={() => trackEvent('recap_cta_click', { target: 'nba_dashboard' })}
-            style={{
-              padding: '10px 18px', background: accent, color: '#000',
-              fontWeight: 700, fontSize: 12, letterSpacing: 0.5,
-              borderRadius: 4, textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {lang === 'id' ? 'Buka Dashboard Live →' : 'Open Live Dashboard →'}
-          </Link>
+            label={lang === 'id' ? 'Buka Dashboard Live →' : 'Open Live Dashboard →'}
+          />
         </div>
 
         {/* Footer */}
