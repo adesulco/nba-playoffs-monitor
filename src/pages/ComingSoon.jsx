@@ -5,6 +5,7 @@ import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import SportIcon from '../components/SportIcon.jsx';
+import Chip from '../components/Chip.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
 export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, icon, features, featuresId, seoKeywords, jsonLd, children }) {
@@ -40,17 +41,8 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
           }}>
             {icon && <SportIcon id={icon} size={80} />}
           </div>
-          <div style={{
-            fontSize: 9, letterSpacing: 1.5, fontWeight: 700,
-            padding: '3px 10px',
-            background: 'transparent',
-            border: `1px solid ${accent}`,
-            color: accent,
-            borderRadius: 2,
-            display: 'inline-block',
-            marginBottom: 16,
-          }}>
-            COMING SOON
+          <div style={{ display: 'inline-block', marginBottom: 16 }}>
+            <Chip variant="soon" sportId={icon} accent={accent} label="COMING SOON" />
           </div>
           <div style={{
             fontFamily: '"Bebas Neue", sans-serif',

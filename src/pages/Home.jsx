@@ -5,6 +5,7 @@ import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import SportIcon from '../components/SportIcon.jsx';
+import Chip from '../components/Chip.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
 import { VISIBLE, LIVE } from '../lib/flags.js';
@@ -135,15 +136,12 @@ function DashboardCard({ d, lang }) {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{
-            fontSize: 8.5, letterSpacing: 1.2, fontWeight: 700,
-            padding: '2px 6px',
-            background: d.accent, color: '#fff',
-            borderRadius: 2,
-          }}>
-            <span style={{ display: 'inline-block', width: 4, height: 4, borderRadius: '50%', background: '#fff', marginRight: 3, verticalAlign: 'middle' }} />
-            {d.tag}
-          </span>
+          <Chip
+            variant={isLive ? 'live' : 'soon'}
+            sportId={d.icon}
+            accent={d.accent}
+            label={d.tag}
+          />
           <span style={{ fontSize: 9, color: C.dim, letterSpacing: 1, fontWeight: 500 }}>{d.league}</span>
         </div>
         <div style={{
@@ -190,17 +188,12 @@ function DashboardCard({ d, lang }) {
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <SportIcon id={d.icon} size={30} />
-        <span style={{
-          fontSize: 8, letterSpacing: 1.2, fontWeight: 700,
-          padding: '2px 5px',
-          background: isLive ? d.accent : 'transparent',
-          color: isLive ? '#fff' : d.accent,
-          border: isLive ? 'none' : `1px solid ${d.accent}`,
-          borderRadius: 2,
-        }}>
-          {isLive && <span style={{ display: 'inline-block', width: 4, height: 4, borderRadius: '50%', background: '#fff', marginRight: 3, verticalAlign: 'middle' }} />}
-          {d.tag}
-        </span>
+        <Chip
+          variant={isLive ? 'live' : 'soon'}
+          sportId={d.icon}
+          accent={d.accent}
+          label={d.tag}
+        />
       </div>
       <div style={{
         fontFamily: '"Space Grotesk", sans-serif',
