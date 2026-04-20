@@ -39,17 +39,24 @@
 // feeds where we only want F1 stories (e.g. Kompas Olahraga).
 const SOURCES = [
   // ── Bahasa Indonesia ─────────────────────────────────────────────────────
+  // v0.2.6 hotfix 2026-04-20: three of the four original URLs were dead.
+  //   - rss.detik.com/index.php/sport   → connection refused (subdomain moved)
+  //   - bola.com/feed/rss2/otomotif      → 301 → feed.bola.com 404
+  //   - kompas.com/tag/formula-1/rss     → 404 (Kompas moved tag RSS to indeks.)
+  // Replacements below verified live. Added detikOto (motorsport vertical) and
+  // Antara (national wire) for resilience; 5 sources means up to 2 can fail
+  // silently and the feed still looks populated.
   {
     name: 'detikSport',
-    url: 'https://rss.detik.com/index.php/sport',
+    url: 'https://sport.detik.com/rss',
     lang: 'id',
-    keyword: /formula ?1|f1|verstappen|hamilton|norris|leclerc|ferrari|mercedes|red bull|mclaren/i,
+    keyword: /formula ?1|f1|verstappen|hamilton|norris|leclerc|ferrari|mercedes|red bull|mclaren|gp|grand prix|balap/i,
   },
   {
-    name: 'Bola.com',
-    url: 'https://www.bola.com/feed/rss2/otomotif',
+    name: 'detikOto',
+    url: 'https://oto.detik.com/rss',
     lang: 'id',
-    keyword: /formula ?1|f1|balap|gp|grand prix|verstappen|ferrari|mclaren|mercedes/i,
+    keyword: /formula ?1|f1|verstappen|hamilton|norris|leclerc|ferrari|mercedes|red bull|mclaren|gp|grand prix/i,
   },
   {
     name: 'CNN Indonesia',
@@ -59,8 +66,14 @@ const SOURCES = [
   },
   {
     name: 'Kompas.com',
-    url: 'https://www.kompas.com/tag/formula-1/rss',
+    url: 'https://indeks.kompas.com/tag/formula-1/rss',
     lang: 'id',
+  },
+  {
+    name: 'Antara',
+    url: 'https://www.antaranews.com/rss/olahraga.xml',
+    lang: 'id',
+    keyword: /formula ?1|f1|verstappen|ferrari|mclaren|mercedes|red bull|hamilton|norris|leclerc|gp|grand prix/i,
   },
 
   // ── English ──────────────────────────────────────────────────────────────
@@ -138,7 +151,8 @@ async function fetchOne(src, signal) {
     const r = await fetch(src.url, {
       signal,
       headers: {
-        'User-Agent': 'gibol.co f1-news/1.0 (+https://www.gibol.co)',
+        // Mimic a well-known feed reader — some publishers 403 unknown UAs.
+        'User-Agent': 'Mozilla/5.0 (compatible; gibol.co/1.0; +https://www.gibol.co/about) Feedfetcher',
         accept: 'application/rss+xml, application/atom+xml, application/xml;q=0.9, text/xml;q=0.8',
       },
     });

@@ -13,9 +13,10 @@ const F1_RED = '#E10600';
 const SOURCE_META = {
   // ID
   'detikSport':     { color: '#E8002D', short: 'detik'    },
-  'Bola.com':       { color: '#1F8A4C', short: 'Bola'     },
+  'detikOto':       { color: '#D4002A', short: 'detikOto' },
   'CNN Indonesia':  { color: '#CC0000', short: 'CNN ID'   },
   'Kompas.com':     { color: '#0061A0', short: 'Kompas'   },
+  'Antara':         { color: '#E2B800', short: 'Antara'   },
   // EN
   'Autosport':      { color: '#FFDB00', short: 'Autosport' },
   'Motorsport.com': { color: '#E8002D', short: 'Motorspt'  },
@@ -194,7 +195,7 @@ export default function F1News({ limit = 12 }) {
         borderTop: `1px solid ${C.lineSoft}`, marginTop: 8, paddingTop: 8,
       }}>
         {lang === 'id'
-          ? 'Sumber: detikSport · Bola.com · CNN Indonesia · Kompas (refresh tiap 15 mnt)'
+          ? 'Sumber: detikSport · detikOto · CNN Indonesia · Kompas · Antara (refresh tiap 15 mnt)'
           : 'Sources: Autosport · Motorsport.com · BBC Sport · Formula1.com (refresh every 15 min)'}
       </div>
     </section>

@@ -95,8 +95,23 @@
 //      (terminal-style list with source chips + relative timestamps)
 //      drop into the F1 dashboard as a third column alongside driver
 //      and constructor standings.
+//
+// v0.2.7 — same-day hotfix for v0.2.6 bilingual news. Three of the
+// four Bahasa RSS URLs we shipped were dead:
+//   - rss.detik.com/index.php/sport → connection refused (subdomain
+//     was retired; detik moved per-vertical to sport.detik.com/rss)
+//   - bola.com/feed/rss2/otomotif → 301 → feed.bola.com 404 (Bola's
+//     feed endpoint was removed entirely)
+//   - kompas.com/tag/formula-1/rss → 404 (Kompas moved tag-scoped
+//     RSS to indeks.kompas.com subdomain)
+// All three URLs swapped to verified-live alternatives + added
+// detikOto (motorsport vertical) and Antara (national wire) so the
+// ID source pool is 5 deep and can absorb 1-2 failures silently.
+// Also tightened the fetch User-Agent to a feed-reader-style string
+// (some publishers 403 unknown UAs). EN feed was already working
+// and is unchanged.
 
-export const APP_VERSION = '0.2.6';
+export const APP_VERSION = '0.2.7';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
