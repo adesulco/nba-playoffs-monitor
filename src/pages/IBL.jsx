@@ -167,7 +167,7 @@ export default function IBL() {
       blurbId="Companion live definitif untuk liga basket profesional teratas Indonesia. Pelita Jaya, Prawira Bandung, Rans Simba, Satria Muda — semuanya live, di satu tempat."
       accent="#d2191f"
       launchDate="Oct 2026"
-      glyph="🇮🇩"
+      icon="id"
       features={features}
       featuresId={featuresId}
       seoKeywords="IBL, liga basket indonesia, skor IBL, jadwal IBL, klasemen IBL, pelita jaya, prawira bandung, satria muda, rans simba, pro basket indonesia, IBL season 2025-26, liga basket indonesia 2026"

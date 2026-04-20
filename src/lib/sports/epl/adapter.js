@@ -39,7 +39,7 @@ export const adapter = {
   nameId: 'Liga Inggris 2025-26',
   routeBase,
   accent: '#37003C',
-  glyph: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+  icon: 'pl',
   status: 'soon',
   prerenderRoutes,
 };

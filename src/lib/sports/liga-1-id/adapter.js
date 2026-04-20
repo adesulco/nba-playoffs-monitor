@@ -38,7 +38,7 @@ export const adapter = {
   nameId: 'Super League Indonesia',
   routeBase,
   accent: '#0057A8',
-  glyph: '🇮🇩',
+  icon: 'id',
   status: 'soon',
   prerenderRoutes,
 };

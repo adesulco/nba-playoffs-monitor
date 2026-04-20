@@ -43,7 +43,7 @@ export const adapter = {
   nameId: 'Piala Dunia FIFA 2026',
   routeBase,
   accent: '#326295',
-  glyph: '⚽',
+  icon: 'wc',
   status: 'soon',
   prerenderRoutes,
 };

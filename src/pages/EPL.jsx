@@ -92,7 +92,7 @@ export default function EPL() {
       blurbId="Companion Bahasa-first untuk Liga Inggris — skor live, klasemen 20 klub plus form guide, ras Golden Boot, dan peluang juara + degradasi Polymarket. Rilis pertengahan 2026."
       accent="#37003C"
       launchDate="Mid 2026"
-      glyph="⚽"
+      icon="pl"
       features={features}
       featuresId={featuresId}
       seoKeywords="liga inggris, premier league, epl 2025-26, klasemen liga inggris, top skor epl, skor liga inggris, jadwal liga inggris, arsenal liverpool manchester city chelsea, epl bahasa indonesia"

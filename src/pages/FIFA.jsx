@@ -174,7 +174,7 @@ export default function FIFA() {
       blurbId="48 tim. 104 pertandingan. 16 kota tuan rumah di tiga negara. Skor live, tabel grup, bagan gugur, tracking pemain, dan pasar prediksi — dari laga pembuka di Mexico City hingga final di MetLife Stadium."
       accent="#2c8ad6"
       launchDate="Jun 11, 2026 · kickoff"
-      glyph="⚽"
+      icon="wc"
       features={features}
       featuresId={featuresId}
       seoKeywords="fifa world cup 2026, piala dunia 2026, jadwal piala dunia 2026, skor piala dunia, grup piala dunia 2026, kickoff piala dunia 11 juni 2026, USA Mexico Canada world cup, FIFA 2026, world cup indonesia"

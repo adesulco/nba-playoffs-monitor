@@ -114,7 +114,7 @@ export default function LigaIndonesia() {
       blurbId="Companion Bahasa-casual untuk BRI Liga 1 — skor live via API-Football, klasemen 18 klub plus form, ras top skor, tracker derby Persija-Persib, plus pantauan degradasi + kualifikasi AFC. Rilis 2026."
       accent="#0057A8"
       launchDate="Late 2026"
-      glyph="🇮🇩"
+      icon="id"
       features={features}
       featuresId={featuresId}
       seoKeywords="liga 1 indonesia, super league indonesia, bri liga 1, klasemen liga 1, jadwal liga 1, top skor liga 1, persija persib, el clasico indonesia, liga 1 2025-26, sepakbola indonesia"

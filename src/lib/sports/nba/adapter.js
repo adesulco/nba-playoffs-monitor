@@ -7,7 +7,7 @@
  * For now this adapter supplies:
  *   - Route + SEO metadata (so the generic prerender can replace the
  *     hardcoded NBA entries in scripts/prerender.mjs)
- *   - The sport's identity (id, accent, glyph, status)
+ *   - The sport's identity (id, accent, icon, status)
  *
  * The actual data hooks (useLivePlayoffs, usePolymarketWS, etc.) continue to
  * live under src/hooks/ and be imported directly by NBADashboard.jsx. That
@@ -68,7 +68,7 @@ export const adapter = {
   nameId: 'NBA Playoff 2026',
   routeBase,
   accent: '#e8502e',
-  glyph: '🏀',
+  icon: 'nba',
   status: 'live',
   prerenderRoutes,
 };

@@ -4,9 +4,10 @@ import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+import SportIcon from '../components/SportIcon.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
-export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId, seoKeywords, jsonLd, children }) {
+export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, icon, features, featuresId, seoKeywords, jsonLd, children }) {
   const location = useLocation();
   const { lang } = useApp();
 
@@ -34,10 +35,10 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
           textAlign: 'center',
         }}>
           <div style={{
-            fontSize: 72, lineHeight: 1, marginBottom: 16,
-            filter: 'grayscale(0)',
+            display: 'inline-flex', justifyContent: 'center',
+            lineHeight: 1, marginBottom: 16,
           }}>
-            {glyph}
+            {icon && <SportIcon id={icon} size={80} />}
           </div>
           <div style={{
             fontSize: 9, letterSpacing: 1.5, fontWeight: 700,

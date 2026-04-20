@@ -4,6 +4,7 @@ import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+import SportIcon from '../components/SportIcon.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
 import { VISIBLE, LIVE } from '../lib/flags.js';
@@ -15,7 +16,7 @@ import { VISIBLE, LIVE } from '../lib/flags.js';
 // direct access.
 //
 // Every sport here should stay in sync with src/lib/sports/index.js. The card
-// metadata here is layout-specific (blurb copy, cta, glyph). The adapter
+// metadata here is layout-specific (blurb copy, cta, icon). The adapter
 // registry owns routes, accents, and SEO.
 const DASHBOARDS = [
   {
@@ -31,7 +32,7 @@ const DASHBOARDS = [
     blurbId: 'Ronde 1 live · OKC favorit juara 44% · skor live, play-by-play, bracket, peluang juara.',
     accent: '#e8502e',
     launchDate: null,
-    glyph: '🏀',
+    icon: 'nba',
     cta: 'Enter →',
     ctaId: 'Masuk →',
   },
@@ -47,7 +48,7 @@ const DASHBOARDS = [
     blurbId: 'Klasemen pembalap + konstruktor, kalender 23 GP dengan jam WIB, halaman SEO per-race. Mode live balapan menyusul.',
     accent: '#E10600',
     launchDate: null,
-    glyph: '🏎️',
+    icon: 'f1',
     cta: 'Enter →',
     ctaId: 'Masuk →',
   },
@@ -63,7 +64,7 @@ const DASHBOARDS = [
     blurbId: 'Klasemen 20 klub, skor match-day, ras top skor Golden Boot, peluang juara + degradasi Polymarket.',
     accent: '#37003C',
     launchDate: 'Mid 2026',
-    glyph: '⚽',
+    icon: 'pl',
     cta: 'Coming Soon',
     ctaId: 'Segera Hadir',
   },
@@ -79,7 +80,7 @@ const DASHBOARDS = [
     blurbId: '48 tim · 104 laga · 16 kota tuan rumah. Tabel grup, bagan gugur, peluang juara dalam Bahasa.',
     accent: '#326295',
     launchDate: 'Jun 11, 2026',
-    glyph: '🏆',
+    icon: 'wc',
     cta: 'Coming Soon',
     ctaId: 'Segera Hadir',
   },
@@ -95,7 +96,7 @@ const DASHBOARDS = [
     blurbId: '18 klub, tracker derby Persija vs Persib, ras top skor, pantauan degradasi + kualifikasi AFC.',
     accent: '#0057A8',
     launchDate: 'Late 2026',
-    glyph: '🇮🇩',
+    icon: 'id',
     cta: 'Coming Soon',
     ctaId: 'Segera Hadir',
   },
@@ -130,13 +131,7 @@ function DashboardCard({ d, lang }) {
         boxShadow: `0 4px 18px -12px ${d.accent}`,
       }}
     >
-      <div style={{
-        fontSize: 30, lineHeight: 1,
-        width: 52, height: 52, borderRadius: 4,
-        background: `${d.accent}20`,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        flexShrink: 0,
-      }}>{d.glyph}</div>
+      <SportIcon id={d.icon} size={52} />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -194,13 +189,7 @@ function DashboardCard({ d, lang }) {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <div style={{
-          fontSize: 18, lineHeight: 1,
-          width: 30, height: 30, borderRadius: 3,
-          background: `${d.accent}20`,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          flexShrink: 0,
-        }}>{d.glyph}</div>
+        <SportIcon id={d.icon} size={30} />
         <span style={{
           fontSize: 8, letterSpacing: 1.2, fontWeight: 700,
           padding: '2px 5px',

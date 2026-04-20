@@ -11,7 +11,9 @@
  * @property {string} nameId                  — display name in Bahasa
  * @property {string} routeBase               — e.g. '/formula-1-2026'
  * @property {string} accent                  — hex color for the card/border
- * @property {string} glyph                   — emoji used on Home card
+ * @property {'nba'|'f1'|'pl'|'wc'|'id'} icon — design-system SportIcon id
+ *                                            — (replaces the emoji `glyph` field
+ *                                               retired in the Phase 1 UI refresh)
  * @property {'live'|'soon'} status           — drives Home card rendering
  * @property {() => Array<{path: string, title: string, description: string, keywords?: string, ogImage?: string}>} prerenderRoutes
  *                                            — list of routes to statically prerender for scrapers/SEO
@@ -23,7 +25,7 @@
  *   getEventSharePayload(event, lang) → { text, url }
  *
  * When a sport is 'soon' it only needs id, name/nameId, routeBase, accent,
- * glyph, status, and prerenderRoutes (which should emit the coming-soon route
+ * icon, status, and prerenderRoutes (which should emit the coming-soon route
  * with its SEO meta so WhatsApp previews still work).
  */
 export const SPORT_ADAPTER_SHAPE = null; // placeholder so the file has a real export

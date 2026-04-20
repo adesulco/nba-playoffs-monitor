@@ -6,6 +6,7 @@ import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import PlayerHead from '../components/PlayerHead.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+import SportIcon from '../components/SportIcon.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { trackEvent } from '../lib/analytics.js';
 
@@ -565,7 +566,8 @@ export default function Recap() {
                 letterSpacing: 0.3, fontWeight: 600, marginLeft: 'auto',
               }}
             >
-              🏀 {lang === 'id' ? 'Dashboard Playoff Live' : 'Live Playoffs Dashboard'} →
+              <SportIcon id="nba" inline size={14} style={{ marginRight: 6 }} />
+              {lang === 'id' ? 'Dashboard Playoff Live' : 'Live Playoffs Dashboard'} →
             </Link>
           </div>
         </div>

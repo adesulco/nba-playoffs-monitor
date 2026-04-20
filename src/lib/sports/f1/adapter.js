@@ -177,7 +177,7 @@ export const adapter = {
   nameId: 'Formula 1 2026',
   routeBase,
   accent: '#E10600',
-  glyph: '🏎️',
+  icon: 'f1',
   status: 'live', // flipped from 'soon' in v0.2.2
   prerenderRoutes,
   teams,
