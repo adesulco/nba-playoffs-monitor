@@ -114,7 +114,7 @@ export default function ShareButton({
           fontFamily: 'inherit',
         }}
       >
-        <span style={{ fontSize: fontSize + 1 }}>⤴</span>
+        <span aria-hidden="true" style={{ fontSize: fontSize + 1 }}>⤴</span>
         <span>{label || 'SHARE'}</span>
       </button>
 

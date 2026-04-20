@@ -62,7 +62,7 @@ export default function ContactBar({ lang = 'id', variant = 'inline' }) {
           borderRadius: 3,
           whiteSpace: 'nowrap',
         }}>
-          {copy.cta} →
+          {copy.cta} <span aria-hidden="true">→</span>
         </div>
       </a>
     );

@@ -169,8 +169,29 @@
 //     {kicker, chip, title, caption} — consistent across all three.
 // Touched: src/pages/F1.jsx, src/pages/ComingSoon.jsx, src/pages/Recap.jsx.
 // No behavioural or routing changes. Step 6 of the 9-step design revamp.
+//
+// v0.2.12 — Phase 1 revamp step 7: a11y sweep. Three small but load-bearing
+// fixes to the keyboard / screen-reader / reduced-motion surface:
+//   - :focus-visible outline-offset tightened 3px → 2px to match the
+//     step-1 "2px/2px" spec. Ring color (var(--amber)) unchanged.
+//   - @media (prefers-reduced-motion: reduce) gains an explicit
+//     `transform: none !important` override on every hover-lift selector
+//     landed in steps 4-5 (.home-card-live/soon:hover, .gibol-card:hover
+//     + featured/secondary variants, .btn-primary/secondary:hover,
+//     .toolbar-btn:hover). The existing wildcard zeros animation and
+//     transition durations but not static transforms, so the 1px nudge
+//     was still firing for users who opted out of motion.
+//   - Decorative glyphs hidden from assistive tech:
+//       · ShareButton trigger's ⤴ arrow wrapped in aria-hidden="true"
+//         (VoiceOver was announcing "Share up-right arrow"; now says
+//         "Share, menu pop-up" per the existing aria-haspopup="menu").
+//       · ContactBar card-variant's → arrow wrapped in aria-hidden
+//         (AT already reads the mailto label; the arrow was noise).
+// Touched: src/index.css, src/components/ShareButton.jsx,
+// src/components/ContactBar.jsx. No visual change for sighted users
+// without reduced-motion enabled. Step 7 of the 9-step design revamp.
 
-export const APP_VERSION = '0.2.11';
+export const APP_VERSION = '0.2.12';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
