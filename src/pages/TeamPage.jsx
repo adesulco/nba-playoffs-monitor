@@ -193,9 +193,9 @@ export default function TeamPage() {
               NBA · {confLabel.toUpperCase()} · {seedLabel.toUpperCase()}
             </div>
             <h1 style={{
-              fontFamily: '"Bebas Neue", sans-serif',
-              fontSize: 58, lineHeight: 1, letterSpacing: -1,
-              color: '#fff', margin: 0, marginBottom: 8,
+              fontFamily: '"Space Grotesk", sans-serif',
+              fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
+              color: '#fff', margin: 0, marginBottom: 8, textWrap: 'balance',
             }}>{teamName}</h1>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center', fontSize: 13, color: 'rgba(255,255,255,0.9)' }}>
               <div style={{ fontSize: 28, fontWeight: 700, color: '#fff' }}>{record.str}</div>

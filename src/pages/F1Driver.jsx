@@ -91,26 +91,21 @@ export default function F1Driver() {
         {/* Driver hero tinted with team accent */}
         <div style={{
           padding: '28px 20px 22px',
-          background: `linear-gradient(135deg, ${accent}26 0%, ${C.bg} 85%)`,
+          background: `linear-gradient(135deg, ${accent}14 0%, ${C.bg} 85%)`,
           borderBottom: `1px solid ${C.line}`,
         }}>
           <div style={{ fontSize: 9, letterSpacing: 1.5, color: accent, fontWeight: 700, marginBottom: 4 }}>
             F1 2026 · {lang === 'id' ? 'PEMBALAP' : 'DRIVER'}
           </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, flexWrap: 'wrap' }}>
-            <div style={{
-              fontFamily: '"Bebas Neue", sans-serif',
-              fontSize: 56, lineHeight: 1, letterSpacing: -1, color: accent,
-            }}>
-              #{driver.number}
-            </div>
-            <div style={{
-              fontFamily: '"Bebas Neue", sans-serif',
-              fontSize: 52, lineHeight: 1, letterSpacing: -0.5, color: C.text,
-            }}>
-              {driver.name}
-            </div>
-          </div>
+          <h1 style={{
+            display: 'flex', alignItems: 'baseline', gap: 14, flexWrap: 'wrap',
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
+            letterSpacing: '-0.025em', textWrap: 'balance',
+          }}>
+            <span style={{ color: accent }}>#{driver.number}</span>
+            <span style={{ color: C.text }}>{driver.name}</span>
+          </h1>
           <div style={{ fontSize: 11, color: C.dim, marginTop: 10, display: 'flex', flexWrap: 'wrap', gap: '4px 12px' }}>
             <span>{driver.code}</span>
             {team && (

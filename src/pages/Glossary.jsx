@@ -51,8 +51,9 @@ export default function Glossary() {
         <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? 'glosarium istilah NBA' : 'NBA glossary'} />
         <main style={{ padding: '32px 8px' }}>
           <h1 style={{
-            fontFamily: '"Bebas Neue", sans-serif',
-            fontSize: 44, lineHeight: 1, margin: 0, letterSpacing: -0.5,
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
+            letterSpacing: '-0.025em', textWrap: 'balance',
           }}>
             {lang === 'id' ? 'Glosarium NBA Playoff' : 'NBA Playoff Glossary'}
           </h1>

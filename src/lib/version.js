@@ -190,8 +190,35 @@
 // Touched: src/index.css, src/components/ShareButton.jsx,
 // src/components/ContactBar.jsx. No visual change for sighted users
 // without reduced-motion enabled. Step 7 of the 9-step design revamp.
+//
+// v0.2.13 — Phase 1 revamp step 8: platform consistency pass. Propagates
+// the Step 6 hero spec (Space Grotesk 36 / weight 700 / letter-spacing
+// -0.025em / line-height 1.05 / text-wrap: balance) into every secondary
+// page header that was still using the old Bebas Neue 44-58px display
+// pattern. Also dials F1 driver + team hero tint from accent26 (~15%) →
+// accent14 (~8%) to match the <=12% ceiling established on Home / F1 /
+// ComingSoon / Recap.
+//   - About.jsx: h1 Bebas Neue 48 → Space Grotesk 36/700. No tint change.
+//   - Glossary.jsx: h1 Bebas Neue 44 → Space Grotesk 36/700. No tint.
+//   - F1Driver.jsx: the two-div {#number, name} display collapses into a
+//     single <h1> (Space Grotesk 36/700, inline flex, -0.025em), with
+//     #number in team accent and name in C.text. Hero tint 26 → 14.
+//   - F1Team.jsx: h1 Bebas Neue 52 → Space Grotesk 36/700. Tint 26 → 14.
+//   - F1Race.jsx: div Bebas Neue 52 → <h1> Space Grotesk 36/700. Tint
+//     already at F1_RED1a (~10%) from earlier passes; left alone.
+//   - TeamPage.jsx: h1 Bebas Neue 58 → Space Grotesk 36/700 / color #fff
+//     preserved. Saturated team-color wash + 220px abbr watermark are
+//     intentional brand-moment design and stay as-is — this is a type
+//     swap, not a hero rewrite.
+// Every edited page now exposes exactly one <h1> at the top of the
+// primary content (F1Driver + F1Race gain a semantic h1 they did not
+// previously have).
+// Touched: src/pages/About.jsx, src/pages/Glossary.jsx,
+// src/pages/F1Driver.jsx, src/pages/F1Team.jsx, src/pages/F1Race.jsx,
+// src/pages/TeamPage.jsx. No routing, data, or behavioural change.
+// Step 8 of the 9-step design revamp; only Step 9 (mockup QA) remains.
 
-export const APP_VERSION = '0.2.12';
+export const APP_VERSION = '0.2.13';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

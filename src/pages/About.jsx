@@ -24,8 +24,9 @@ export default function About() {
         <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? 'tentang kami' : 'about'} />
         <main style={{ padding: '40px 8px' }}>
           <h1 style={{
-            fontFamily: '"Bebas Neue", sans-serif',
-            fontSize: 48, lineHeight: 1, margin: 0, letterSpacing: -0.5,
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
+            letterSpacing: '-0.025em', textWrap: 'balance',
           }}>
             {lang === 'id' ? 'Tentang gibol.co' : 'About gibol.co'}
           </h1>

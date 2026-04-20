@@ -121,12 +121,13 @@ export default function F1Race() {
               label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
             />
           </div>
-          <div style={{
-            fontFamily: '"Bebas Neue", sans-serif',
-            fontSize: 52, lineHeight: 1, letterSpacing: -0.5, color: C.text, marginBottom: 6,
+          <h1 style={{
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0, marginBottom: 6,
+            letterSpacing: '-0.025em', color: C.text, textWrap: 'balance',
           }}>
             {gp.name} 2026
-          </div>
+          </h1>
           <div style={{ fontSize: 12, color: C.dim, marginBottom: 2 }}>
             {gp.circuit} · {countryLabel}
           </div>
