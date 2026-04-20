@@ -251,8 +251,16 @@
 // amber 8.1:1, live 4.9:1 — all AA+ on every surface in use.
 // No component structure, route, data-fetch, state, or backend edits.
 // Full changelog + QA checklist: v0.3.0-SHIP-NOTES.md at repo root.
+//
+// v0.3.1 — Remove stale "MALAM INI · FINAL PLAY-IN" widget from Col 4 of the
+// NBA dashboard (src/pages/NBADashboard.jsx ~L667-696). The block hardcoded
+// 2026-04-17/18 kick-offs and the ORL vs CHA / PHX vs GSW matchups, so two
+// days into Round 1 it read as stuck. Playoff Stories + Status sections in
+// Col 4 are preserved. i18n keys (tonightPlayIn, winnersFace, primeNote) left
+// in place as harmless dead keys for a future date-gated reintroduction.
+// No routing, data, or styling changes.
 
-export const APP_VERSION = '0.3.0';
+export const APP_VERSION = '0.3.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

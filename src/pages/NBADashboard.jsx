@@ -663,38 +663,10 @@ export default function NBADashboard() {
             )}
           </div>
 
-          {/* COL 4: Tonight + Stories + Status */}
+          {/* COL 4: Stories + Status
+              Play-In box removed 2026-04-20 — dates 2026-04-17/18 hardcoded, stale two days after Round 1 began.
+              If Play-In returns (next season), reintroduce as a date-gated block, not hardcoded. */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ padding: '14px 16px', borderBottom: `1px solid ${C.line}`, background: favMeta ? `linear-gradient(180deg, ${favMeta.color}30 0%, ${C.panel} 100%)` : `linear-gradient(180deg, ${C.panel2} 0%, ${C.panel} 100%)` }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-                <div>
-                  <div style={{ fontSize: 11, color: C.text, fontWeight: 600 }}>{t('tonightPlayIn')}</div>
-                  <div style={{ fontSize: 9.5, color: C.dim }}>{lang === 'id' ? 'Prime Video · Pemenang dapat seed 8' : 'Prime Video · Winners take 8-seed'}</div>
-                </div>
-                <div style={{ fontSize: 9.5, color: C.dim, textAlign: 'right' }}>CONFERENCE<br />FINALE</div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 20, marginTop: 10 }}>
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 52, lineHeight: 1, color: C.text, letterSpacing: -1 }}>2<span style={{ fontSize: 24, color: accent, verticalAlign: 'top' }}>GMS</span></div>
-                <div style={{ textAlign: 'right', fontSize: 10, color: C.dim, lineHeight: 1.6 }}>
-                  <div style={{ fontSize: 14, color: C.text, fontWeight: 600 }}>
-                    {formatKickoff('2026-04-17T23:30:00Z', lang).replace(/\s/, ' ').split(' ').slice(0, -1).join(' ')}{' '}
-                    <span style={{ color: accent }}>{getUserTzLabel()}</span>
-                  </div>
-                  <div>ORL vs CHA (E)</div>
-                  <div style={{ fontSize: 14, color: C.text, fontWeight: 600, marginTop: 6 }}>
-                    {formatKickoff('2026-04-18T02:00:00Z', lang).replace(/\s/, ' ').split(' ').slice(0, -1).join(' ')}{' '}
-                    <span style={{ color: accent }}>{getUserTzLabel()}</span>
-                  </div>
-                  <div>PHX vs GSW (W)</div>
-                </div>
-              </div>
-              <div style={{ fontSize: 9.5, color: C.dim, marginTop: 8, borderTop: `1px solid ${C.lineSoft}`, paddingTop: 8 }}>
-                {lang === 'id'
-                  ? <>Pemenang hadapi <strong style={{ color: C.text }}>Pistons</strong> (E1) dan <strong style={{ color: C.text }}>Thunder</strong> (W1) hari Minggu.</>
-                  : <>Winners face <strong style={{ color: C.text }}>Pistons</strong> (E1) and <strong style={{ color: C.text }}>Thunder</strong> (W1) Sunday.</>}
-              </div>
-            </div>
-
             <div style={panelBox}>
               <div style={panelHeader}>
                 <div style={panelTitle}>{t('playoffStories')}</div>
