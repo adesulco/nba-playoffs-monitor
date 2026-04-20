@@ -50,6 +50,22 @@ const PROVIDERS = {
     headers: () => ({ accept: 'application/json' }),
     cacheS: 20,
   },
+  // v0.4.0 — EPL needs these two extra ESPN bases:
+  //   espn-v2     → /apis/v2/sports/...  (standings: groups + records)
+  //   espn-common → /apis/common/v3/sports/... (athletes + leaders for
+  //                 Golden Boot / top-scorer endpoint)
+  // Kept as separate provider keys so we never silently cross paths —
+  // ESPN's APIs are siblings, not substitutable.
+  'espn-v2': {
+    base: 'https://site.api.espn.com/apis/v2/sports',
+    headers: () => ({ accept: 'application/json' }),
+    cacheS: 60,
+  },
+  'espn-common': {
+    base: 'https://site.web.api.espn.com/apis/common/v3/sports',
+    headers: () => ({ accept: 'application/json' }),
+    cacheS: 300,
+  },
 
   'polymarket-gamma': {
     base: 'https://gamma-api.polymarket.com',

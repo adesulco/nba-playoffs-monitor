@@ -22,6 +22,8 @@ const F1Race = lazy(() => import('./pages/F1Race.jsx'));
 const F1Team = lazy(() => import('./pages/F1Team.jsx'));
 const F1Driver = lazy(() => import('./pages/F1Driver.jsx'));
 const EPL = lazy(() => import('./pages/EPL.jsx'));
+// v0.4.0 — EPL Phase 1A: per-club SEO pages (20 URLs).
+const EPLClub = lazy(() => import('./pages/EPLClub.jsx'));
 const LigaIndonesia = lazy(() => import('./pages/LigaIndonesia.jsx'));
 const Recap = lazy(() => import('./pages/Recap.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
@@ -72,6 +74,7 @@ export default function App() {
             <Route path="/formula-1-2026/team/:slug" element={<Sport sport="f1" sportLabel="Formula 1 2026"><F1Team /></Sport>} />
             <Route path="/formula-1-2026/driver/:slug" element={<Sport sport="f1" sportLabel="Formula 1 2026"><F1Driver /></Sport>} />
             <Route path="/premier-league-2025-26" element={<Sport sport="epl" sportLabel="Liga Inggris 2025-26"><EPL /></Sport>} />
+            <Route path="/premier-league-2025-26/club/:slug" element={<Sport sport="epl" sportLabel="Liga Inggris 2025-26"><EPLClub /></Sport>} />
             <Route path="/fifa-world-cup-2026" element={<Sport sport="fifa_wc" sportLabel="Piala Dunia FIFA 2026"><FIFA /></Sport>} />
             <Route path="/liga-1-2026" element={<Sport sport="liga_1_id" sportLabel="Super League Indonesia"><LigaIndonesia /></Sport>} />
 

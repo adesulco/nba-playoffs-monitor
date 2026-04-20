@@ -259,8 +259,53 @@
 // Col 4 are preserved. i18n keys (tonightPlayIn, winnersFace, primeNote) left
 // in place as harmless dead keys for a future date-gated reintroduction.
 // No routing, data, or styling changes.
+//
+// v0.4.0 — EPL Phase 1A live (minor milestone bump, third sport LIVE). Real
+// /premier-league-2025-26 dashboard replaces the coming-soon stub plus 20
+// per-club SEO pages. Compounding wins:
+//   1. Klasemen 20 klub — ESPN apis/v2/sports standings (proxied via new
+//      'espn-v2' provider in api/proxy.js) with rank, points, W-D-L,
+//      goals for/against, goal difference, and a 5-match form guide.
+//      Qualification zones tinted on the row background: 1-4 UCL (blue),
+//      5 UEL (amber), 6 UECL (green), 18-20 relegation (red). Legend
+//      row explains the zones. Row tint uses 0d alpha (~5%) so stays
+//      well under the Phase 1 <12% accent ceiling.
+//   2. Jadwal + Hasil — ESPN scoreboard endpoint scoped to a 14-day
+//      window (7 back, 7 forward) then split into upcoming vs post
+//      by status.type.state. Kickoff times shifted UTC → WIB in
+//      clubs.js::formatFixtureDate (no ICU dep). Club slugs on both
+//      sides link to the per-club SEO pages — internal link graph.
+//   3. Top skor — ESPN apis/common/v3/sports leaders endpoint (new
+//      'espn-common' proxy provider), goals category, limit=10.
+//      Each entry team-coloured via CLUBS_BY_ESPN_ID lookup.
+//   4. Per-club SEO pages at /premier-league-2025-26/club/:slug —
+//      20 indexable Bahasa-first URLs, each with its own SportsTeam
+//      JSON-LD (adapter.clubSchema + EPLClub.jsx useMemo both emit).
+//      Sections per club: hero with stadium + city + founded, current
+//      standing summary (rank, points, W-D-L, GD), last-5 form,
+//      upcoming 5 fixtures, last 5 results, top scorers from this
+//      club, and one Bahasa "Tentang" paragraph from clubs.js bio.
+//      Promoted trio (Leeds, Burnley, Sunderland) included.
+//   5. ClubIndex grid on dashboard — all 20 clubs as cards linking
+//      to their pages. Closes the internal link graph: every crawl
+//      from / → /premier-league-2025-26 → club/:slug is one hop.
+// Data layer: four new hooks (useEPLStandings, useEPLFixtures,
+// useEPLScorers, useEPLTeam), all proxied so client-side CORS + rate
+// limits are never hit. api/proxy.js gains 'espn-v2' (60s cache) and
+// 'espn-common' (300s cache) on top of existing 'espn' (60s) + 'espn-
+// core' (300s) providers.
+// Routing: EPL route lazy-loaded + new /:slug subroute both wrapped
+// in SportErrorBoundary. Home card flipped COMING SOON → LIVE, blurb
+// rewritten to match v0.4.0 surface.
+// SEO: sitemap.xml adds 20 club URLs at priority 0.6 and bumps
+// /premier-league-2025-26 from 0.7 → 0.9 (matching F1 / NBA). Adapter
+// prerenderRoutes returns 21 routes (1 dashboard + 20 clubs) — the
+// prerender script now emits 21 net-new HTML files.
+// No NBA, F1, FIFA, Liga 1, or Recap changes. Status for Liga 1 +
+// FIFA WC unchanged (still 'soon').
+// Full changelog + QA checklist: v0.4.0-SHIP-NOTES.md at repo root.
 
-export const APP_VERSION = '0.3.1';
+export const APP_VERSION = '0.4.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
