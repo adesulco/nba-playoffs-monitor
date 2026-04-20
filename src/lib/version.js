@@ -30,8 +30,20 @@
 // under the championship superEvent. Home F1 card flipped COMING SOON → LIVE.
 // Phase 1B (next ship) adds OpenF1 live session mode, telemetry, Polymarket
 // championship odds, and per-driver / per-team SEO pages.
+//
+// v0.2.3 — F1 hotfix + UX pivot. Fixes production bug where Jolpica proxy
+// was returning 1950s historical data instead of 2026, causing driver +
+// constructor standings to be empty AND calendar cards to show wrong years.
+// Root cause: Vercel's classic function router drops `[...path]` captures
+// when nested under another dynamic segment, so /api/proxy/jolpica-f1/2026.json
+// was hitting upstream without the season. Fix: flattened nested proxy to
+// single catch-all at api/proxy/[...slug].js. F1 dashboard UX also replaced:
+// the old NextRaceHero + 23-card calendar grid is gone, replaced with an
+// NBA-style horizontal round scroller (R01-R23) + detail panel below. Past
+// rounds show podium + points via new useF1Results hook; upcoming rounds
+// show WIB schedule + countdown + circuit.
 
-export const APP_VERSION = '0.2.2';
+export const APP_VERSION = '0.2.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

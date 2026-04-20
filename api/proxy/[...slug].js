@@ -1,6 +1,13 @@
 /**
  * Edge-cached multi-provider proxy — multi-sport build plan §2.2.
  *
+ * v0.2.3 fix: flattened from api/proxy/[provider]/[...path].js to
+ * api/proxy/[...slug].js. Reason: Vercel's classic (non-Next.js) function
+ * router drops the [...path] capture when it's nested under another dynamic
+ * segment. Symptom: /api/proxy/jolpica-f1/2026.json was calling upstream
+ * without the year, returning 1950 race data and causing the F1 calendar to
+ * show historical dates. Single-level catch-all works correctly.
+ *
  * Why this exists:
  *   - API-Football (Phase 4, Liga 1) ships a paid key that MUST NOT reach the
  *     browser. A server proxy is the only safe way.
@@ -10,15 +17,15 @@
  *     in 20s cost 1 upstream request instead of N.
  *   - Observability: one place to see which provider is flaky.
  *
- * Usage from the browser:
+ * Usage from the browser (unchanged — URL structure is identical):
  *   fetch('/api/proxy/polymarket-gamma/events?slug=2026-nba-champion')
  *   fetch('/api/proxy/espn/basketball/nba/scoreboard')
  *   fetch('/api/proxy/openf1/drivers?session_key=latest')
- *   fetch('/api/proxy/api-football/fixtures?league=274&season=2025')
+ *   fetch('/api/proxy/jolpica-f1/2026/driverStandings.json')
  *
  * The first path segment after /api/proxy/ selects the upstream via the
  * whitelist in PROVIDERS below. Unknown providers → 404. Query string is
- * passed through (minus the Next.js-style `provider` / `path` synthetic keys).
+ * passed through (minus the Next.js-style `slug` synthetic key).
  *
  * NOTE: NBA hooks still talk to ESPN/Polymarket directly in v0.2.0. The
  * migration through this proxy lands per-sport as each phase ships — so a
@@ -103,9 +110,11 @@ function effectiveTtl(provider, pathParts) {
 
 export default async function handler(req, res) {
   try {
-    const { provider, path = [] } = req.query;
-    const providerKey = Array.isArray(provider) ? provider[0] : provider;
-    const pathParts = Array.isArray(path) ? path : (path ? [path] : []);
+    // Single catch-all: slug[0] = provider, slug[1..] = upstream path.
+    const { slug = [] } = req.query;
+    const slugParts = Array.isArray(slug) ? slug : (slug ? [slug] : []);
+    const providerKey = slugParts[0];
+    const pathParts = slugParts.slice(1);
 
     const cfg = PROVIDERS[providerKey];
     if (!cfg) {
@@ -113,11 +122,11 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Rebuild the upstream URL. Strip the synthetic provider/path keys.
+    // Rebuild the upstream URL. Strip the synthetic slug key from query.
     const upstreamPath = pathParts.join('/');
     const qs = new URLSearchParams();
     for (const [k, v] of Object.entries(req.query)) {
-      if (k === 'provider' || k === 'path') continue;
+      if (k === 'slug') continue;
       if (Array.isArray(v)) v.forEach((x) => qs.append(k, x));
       else if (v !== undefined && v !== null) qs.append(k, v);
     }
@@ -132,10 +141,9 @@ export default async function handler(req, res) {
     const ttl = effectiveTtl(providerKey, pathParts);
     res.setHeader('Cache-Control', `s-maxage=${ttl}, stale-while-revalidate=${Math.max(60, ttl * 4)}`);
     res.setHeader('Content-Type', upstreamRes.headers.get('content-type') || 'application/json');
-    // Let the browser follow our edge-cache policy without also caching privately.
-    // (The edge cache is the one doing the heavy lifting.)
     res.setHeader('X-Gibol-Proxy', providerKey);
     res.setHeader('X-Gibol-Upstream-Status', String(upstreamRes.status));
+    res.setHeader('X-Gibol-Upstream-Url', url);
     res.status(upstreamRes.status).send(body);
   } catch (err) {
     res.setHeader('Cache-Control', 'no-store');

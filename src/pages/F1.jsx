@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
@@ -7,7 +7,8 @@ import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { useF1Schedule } from '../hooks/useF1Schedule.js';
 import { useF1Standings } from '../hooks/useF1Standings.js';
-import { CALENDAR_2026, TEAMS_BY_ID, nextGP, formatGPDate, SEASON } from '../lib/sports/f1/constants.js';
+import { useF1Results } from '../hooks/useF1Results.js';
+import { TEAMS_BY_ID, nextGP, formatGPDate, SEASON } from '../lib/sports/f1/constants.js';
 
 const F1_RED = '#E10600';
 
@@ -25,75 +26,295 @@ const CHAMPIONSHIP_JSONLD = {
   url: 'https://www.gibol.co/formula-1-2026',
 };
 
-// ─── Next-race hero ─────────────────────────────────────────────────────────
-function NextRaceHero({ races, lang }) {
-  const gp = useMemo(() => nextGP(), []);
+// ─── Round strip (horizontal scroll, NBA day-scroller pattern) ──────────────
+function RoundStrip({ races, activeRound, onSelect, resultsByRound, lang }) {
+  const tabRefs = useRef({});
+  const trackRef = useRef(null);
+
+  // Center the active round whenever it changes (including on mount).
+  useEffect(() => {
+    const el = tabRefs.current[activeRound];
+    if (el && el.scrollIntoView) {
+      el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }, [activeRound]);
+
+  const todayISO = new Date().toISOString().slice(0, 10);
+
+  return (
+    <div
+      ref={trackRef}
+      style={{
+        display: 'flex',
+        overflowX: 'auto',
+        background: C.panelSoft,
+        border: `1px solid ${C.line}`,
+        borderLeft: `3px solid ${F1_RED}`,
+        borderRadius: 3,
+        WebkitOverflowScrolling: 'touch',
+      }}
+    >
+      {races.map((gp) => {
+        const isActive = gp.round === activeRound;
+        const hasResult = !!(resultsByRound && resultsByRound[gp.round]?.podium?.length);
+        const isPast = hasResult || gp.dateISO < todayISO;
+        const winner = hasResult ? resultsByRound[gp.round].podium[0] : null;
+        return (
+          <button
+            key={gp.round}
+            ref={(el) => { tabRefs.current[gp.round] = el; }}
+            type="button"
+            onClick={() => onSelect(gp.round)}
+            style={{
+              flex: '0 0 auto',
+              minWidth: 112,
+              padding: '10px 14px',
+              background: isActive ? C.heroBg : 'transparent',
+              border: 'none',
+              borderRight: `1px solid ${C.lineSoft}`,
+              borderBottom: isActive ? `3px solid ${F1_RED}` : '3px solid transparent',
+              color: isActive ? C.text : C.dim,
+              textAlign: 'left',
+              cursor: 'pointer',
+              fontFamily: '"JetBrains Mono", monospace',
+              transition: 'background 0.15s, color 0.15s',
+            }}
+          >
+            <div style={{
+              fontSize: 9.5, letterSpacing: 1, fontWeight: 700,
+              color: isActive ? F1_RED : C.muted,
+            }}>
+              R{String(gp.round).padStart(2, '0')}
+              {gp.sprint && <span style={{ marginLeft: 6, fontSize: 8, opacity: 0.8 }}>· S</span>}
+            </div>
+            <div style={{ fontSize: 11, marginTop: 3, fontWeight: 600, lineHeight: 1.15, whiteSpace: 'nowrap' }}>
+              {gp.name.replace(' GP', '')}
+            </div>
+            <div style={{ fontSize: 9.5, marginTop: 2, color: C.muted, letterSpacing: 0.3 }}>
+              {formatGPDate(gp.dateISO, lang).replace(`, ${SEASON}`, '').replace(` ${SEASON}`, '')}
+            </div>
+            <div style={{ fontSize: 8.5, marginTop: 4, letterSpacing: 0.4 }}>
+              {isPast && winner ? (
+                <span style={{ color: F1_RED, fontWeight: 700 }}>● {winner.code || winner.name.split(' ').pop()}</span>
+              ) : isPast ? (
+                <span style={{ color: C.muted }}>● {lang === 'id' ? 'selesai' : 'done'}</span>
+              ) : (
+                <span style={{ color: C.green }}>● {gp.wibTime} WIB</span>
+              )}
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── Detail panel for the selected round ────────────────────────────────────
+function RoundDetail({ gp, result, lang }) {
   if (!gp) return null;
 
   const countryLabel = lang === 'id' ? (gp.countryId || gp.country) : gp.country;
+  const todayISO = new Date().toISOString().slice(0, 10);
+  const hasPodium = !!(result?.podium?.length);
+  const isPast = hasPodium || gp.dateISO < todayISO;
 
-  // Days until race (date-only, not time-zone precise — UX, not countdown timer).
-  const today = new Date();
+  // Days until race (positive = future, 0 = today, negative = past).
   const raceDate = new Date(gp.dateISO + 'T00:00:00Z');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const daysUntil = Math.ceil((raceDate - today) / (1000 * 60 * 60 * 24));
-  const countdown = daysUntil <= 0
-    ? (lang === 'id' ? 'Akhir pekan ini' : 'This weekend')
-    : (lang === 'id' ? `${daysUntil} hari lagi` : `in ${daysUntil} day${daysUntil === 1 ? '' : 's'}`);
+
+  let countdown;
+  if (daysUntil === 0) countdown = lang === 'id' ? 'Hari ini' : 'Today';
+  else if (daysUntil === 1) countdown = lang === 'id' ? 'Besok' : 'Tomorrow';
+  else if (daysUntil > 1 && daysUntil <= 7) countdown = lang === 'id' ? `${daysUntil} hari lagi` : `in ${daysUntil} days`;
+  else if (daysUntil < 0) countdown = lang === 'id' ? 'Selesai' : 'Completed';
+  else countdown = lang === 'id' ? `${daysUntil} hari lagi` : `in ${daysUntil} days`;
 
   return (
-    <div style={{
-      padding: '24px 20px',
-      background: `linear-gradient(135deg, ${F1_RED}22 0%, ${C.panelRow} 80%)`,
-      border: `1px solid ${F1_RED}`,
-      borderLeft: `4px solid ${F1_RED}`,
-      borderRadius: 4,
-      display: 'grid',
-      gridTemplateColumns: 'auto 1fr auto',
-      gap: 18,
-      alignItems: 'center',
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${F1_RED}`,
+      borderRadius: 3,
+      padding: '16px 18px 14px',
     }}>
+      {/* Header: round, name, circuit, date/time */}
       <div style={{
-        fontFamily: '"Bebas Neue", sans-serif',
-        fontSize: 44, color: F1_RED, letterSpacing: -0.5,
-        padding: '0 14px',
-        borderRight: `1px solid ${C.lineSoft}`,
-        lineHeight: 1,
+        display: 'grid',
+        gridTemplateColumns: 'auto 1fr auto',
+        gap: 16,
+        alignItems: 'center',
+        paddingBottom: 12,
+        borderBottom: `1px solid ${C.lineSoft}`,
+        marginBottom: 12,
       }}>
-        R{String(gp.round).padStart(2, '0')}
-      </div>
-
-      <div style={{ minWidth: 0 }}>
-        <div style={{ fontSize: 9, letterSpacing: 1.5, color: F1_RED, fontWeight: 700, marginBottom: 4 }}>
-          {lang === 'id' ? 'BALAPAN BERIKUTNYA' : 'NEXT RACE'}
-          {gp.sprint && <span style={{ marginLeft: 8, padding: '1px 5px', background: F1_RED, color: '#fff', borderRadius: 2, fontSize: 8 }}>SPRINT</span>}
-        </div>
         <div style={{
-          fontFamily: '"Space Grotesk", sans-serif',
-          fontSize: 22, fontWeight: 600, color: C.text, letterSpacing: -0.2,
-          lineHeight: 1.1, marginBottom: 6,
+          fontFamily: '"Bebas Neue", sans-serif',
+          fontSize: 48, color: F1_RED, letterSpacing: -0.5,
+          padding: '0 12px 0 0',
+          borderRight: `1px solid ${C.lineSoft}`,
+          lineHeight: 1,
         }}>
-          {gp.name} 2026
+          R{String(gp.round).padStart(2, '0')}
         </div>
-        <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5 }}>
-          {gp.circuit} · {countryLabel}
+        <div style={{ minWidth: 0 }}>
+          <div style={{ fontSize: 9, letterSpacing: 1.5, color: F1_RED, fontWeight: 700, marginBottom: 4 }}>
+            {isPast
+              ? (lang === 'id' ? 'HASIL BALAPAN' : 'RACE RESULT')
+              : daysUntil <= 0
+                ? (lang === 'id' ? 'BALAPAN HARI INI' : 'RACING TODAY')
+                : (lang === 'id' ? 'BALAPAN BERIKUTNYA' : 'UPCOMING RACE')}
+            {gp.sprint && <span style={{ marginLeft: 8, padding: '1px 5px', background: F1_RED, color: '#fff', borderRadius: 2, fontSize: 8 }}>SPRINT</span>}
+          </div>
+          <div style={{
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 22, fontWeight: 600, color: C.text, letterSpacing: -0.2,
+            lineHeight: 1.1, marginBottom: 6,
+          }}>
+            {gp.name} 2026
+          </div>
+          <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5 }}>
+            {gp.circuit} · {countryLabel}
+          </div>
+          <div style={{ fontSize: 11, color: C.text, marginTop: 4, fontWeight: 500 }}>
+            {formatGPDate(gp.dateISO, lang)} · {gp.wibTime} WIB
+            {!isPast && <> · <span style={{ color: F1_RED }}>{countdown}</span></>}
+          </div>
         </div>
-        <div style={{ fontSize: 11, color: C.text, marginTop: 4, fontWeight: 500 }}>
-          {formatGPDate(gp.dateISO, lang)} · {gp.wibTime} WIB · <span style={{ color: F1_RED }}>{countdown}</span>
-        </div>
+        {gp.slug && (
+          <Link to={`/formula-1-2026/race/${gp.slug}`} style={{
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 11, fontWeight: 700,
+            padding: '8px 14px',
+            background: F1_RED, color: '#fff',
+            borderRadius: 3,
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+            letterSpacing: 0.3,
+          }}>
+            {lang === 'id' ? 'Detail →' : 'Details →'}
+          </Link>
+        )}
       </div>
 
-      <Link to={`/formula-1-2026/race/${gp.slug}`} style={{
-        fontFamily: '"Space Grotesk", sans-serif',
-        fontSize: 11, fontWeight: 700,
-        padding: '8px 14px',
-        background: F1_RED, color: '#fff',
-        borderRadius: 3,
-        textDecoration: 'none',
-        whiteSpace: 'nowrap',
-        letterSpacing: 0.3,
+      {/* Body: podium if past with results, otherwise race info */}
+      {hasPodium ? (
+        <Podium podium={result.podium} lang={lang} />
+      ) : isPast ? (
+        <div style={{ fontSize: 11, color: C.dim, padding: '8px 0' }}>
+          {lang === 'id'
+            ? 'Hasil balapan belum masuk dari Jolpica-F1. Coba refresh beberapa menit lagi.'
+            : 'Race results not yet available from Jolpica-F1. Try refreshing in a few minutes.'}
+        </div>
+      ) : (
+        <UpcomingInfo gp={gp} lang={lang} />
+      )}
+    </section>
+  );
+}
+
+// ─── Podium (top-3 finishers for past races) ────────────────────────────────
+function Podium({ podium, lang }) {
+  const labels = ['🥇', '🥈', '🥉'];
+  return (
+    <div>
+      <div style={{ fontSize: 9, letterSpacing: 1.5, color: C.muted, fontWeight: 700, marginBottom: 10 }}>
+        {lang === 'id' ? 'PODIUM' : 'PODIUM'}
+      </div>
+      <div style={{ display: 'grid', gap: 6 }}>
+        {podium.map((p, i) => {
+          const teamKey = Object.keys(TEAMS_BY_ID).find((k) => {
+            const t = TEAMS_BY_ID[k];
+            return t.name === p.teamName || t.short === p.teamName || p.teamName?.toLowerCase().includes(t.short.toLowerCase());
+          });
+          const accent = teamKey ? TEAMS_BY_ID[teamKey].accent : C.muted;
+          return (
+            <div key={p.code || i} style={{
+              display: 'grid',
+              gridTemplateColumns: 'auto 1fr auto auto',
+              gap: 12,
+              alignItems: 'center',
+              padding: '8px 10px',
+              background: i === 0 ? `${F1_RED}10` : C.panelRow,
+              border: `1px solid ${C.lineSoft}`,
+              borderLeft: `3px solid ${accent}`,
+              borderRadius: 3,
+            }}>
+              <span style={{ fontSize: 18 }}>{labels[i]}</span>
+              <div style={{ minWidth: 0 }}>
+                <div style={{ fontSize: 12.5, color: C.text, fontWeight: 600, lineHeight: 1.1 }}>
+                  {p.name}
+                  {p.code && <span style={{ marginLeft: 6, color: C.muted, fontSize: 10, letterSpacing: 0.5 }}>{p.code}</span>}
+                </div>
+                <div style={{ fontSize: 10, color: C.dim, marginTop: 2 }}>
+                  {p.teamName}
+                </div>
+              </div>
+              <div style={{ fontSize: 10, color: C.muted, fontFamily: '"JetBrains Mono", monospace', textAlign: 'right' }}>
+                {p.time || '—'}
+              </div>
+              <div style={{
+                fontSize: 11, color: C.text, fontWeight: 700, textAlign: 'right',
+                minWidth: 36,
+              }}>
+                {p.points} pt
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── Upcoming race info (schedule + circuit) ────────────────────────────────
+function UpcomingInfo({ gp, lang }) {
+  return (
+    <div>
+      <div style={{ fontSize: 9, letterSpacing: 1.5, color: C.muted, fontWeight: 700, marginBottom: 10 }}>
+        {lang === 'id' ? 'JADWAL BALAPAN · WIB' : 'RACE SCHEDULE · WIB'}
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+        gap: 8,
       }}>
-        {lang === 'id' ? 'Detail →' : 'Details →'}
-      </Link>
+        <InfoBlock label={lang === 'id' ? 'LOMBA' : 'RACE'} value={`${gp.wibTime} WIB`} accent />
+        <InfoBlock label={lang === 'id' ? 'TANGGAL' : 'DATE'} value={formatGPDate(gp.dateISO, lang)} />
+        <InfoBlock label={lang === 'id' ? 'SIRKUIT' : 'CIRCUIT'} value={gp.circuit} />
+        <InfoBlock
+          label={lang === 'id' ? 'FORMAT' : 'FORMAT'}
+          value={gp.sprint ? (lang === 'id' ? 'Sprint Weekend' : 'Sprint Weekend') : (lang === 'id' ? 'Standard' : 'Standard')}
+        />
+      </div>
+
+      <div style={{ fontSize: 10, color: C.muted, marginTop: 10, letterSpacing: 0.3, lineHeight: 1.5 }}>
+        {lang === 'id'
+          ? 'Jadwal sesi FP, Kualifikasi, dan Sprint lengkap dalam WIB muncul di halaman detail race.'
+          : 'Full FP, qualifying, and sprint session WIB times on the race detail page.'}
+      </div>
+    </div>
+  );
+}
+
+function InfoBlock({ label, value, accent }) {
+  return (
+    <div style={{
+      padding: '8px 10px',
+      background: C.panelRow,
+      border: `1px solid ${C.lineSoft}`,
+      borderRadius: 3,
+    }}>
+      <div style={{ fontSize: 8.5, letterSpacing: 1.5, color: C.muted, fontWeight: 700 }}>{label}</div>
+      <div style={{
+        fontSize: 12, marginTop: 4,
+        color: accent ? F1_RED : C.text, fontWeight: accent ? 700 : 500,
+        lineHeight: 1.25,
+      }}>
+        {value}
+      </div>
     </div>
   );
 }
@@ -250,83 +471,6 @@ function ConstructorStandings({ teams, loading, error, lang }) {
   );
 }
 
-// ─── Race calendar (full 23 GPs, WIB, next-race highlighted) ────────────────
-function RaceCalendar({ races, source, lang }) {
-  const nextRound = useMemo(() => nextGP()?.round, []);
-
-  return (
-    <section style={{
-      background: C.panel,
-      border: `1px solid ${C.line}`,
-      borderLeft: `3px solid ${F1_RED}`,
-      borderRadius: 3,
-      padding: '14px 14px 10px',
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-        <h2 style={{
-          fontFamily: '"Space Grotesk", sans-serif', fontSize: 15, fontWeight: 600,
-          margin: 0, color: C.text, letterSpacing: -0.2,
-        }}>
-          {lang === 'id' ? 'Kalender 2026 · WIB' : '2026 Calendar · WIB'}
-        </h2>
-        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
-          {races.length} {lang === 'id' ? 'BALAPAN' : 'ROUNDS'}
-        </div>
-      </div>
-
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))',
-        gap: 8,
-      }}>
-        {races.map((gp) => {
-          const isNext = gp.round === nextRound;
-          const countryLabel = lang === 'id' ? (gp.countryId || gp.country) : gp.country;
-          return (
-            <Link
-              key={gp.round}
-              to={gp.slug ? `/formula-1-2026/race/${gp.slug}` : '#'}
-              style={{
-                textDecoration: 'none',
-                padding: '9px 11px',
-                background: isNext ? `${F1_RED}18` : C.panelRow,
-                border: `1px solid ${isNext ? F1_RED : C.lineSoft}`,
-                borderLeft: `3px solid ${F1_RED}`,
-                borderRadius: 3,
-                display: 'block',
-              }}
-            >
-              <div style={{
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                marginBottom: 3,
-              }}>
-                <span style={{ color: F1_RED, fontWeight: 700, fontSize: 9.5, letterSpacing: 1 }}>
-                  R{String(gp.round).padStart(2, '0')}
-                </span>
-                <span style={{ fontSize: 9, color: C.muted, letterSpacing: 0.5 }}>
-                  {gp.sprint ? 'SPRINT · ' : ''}{gp.wibTime} WIB
-                </span>
-              </div>
-              <div style={{ fontSize: 11.5, color: C.text, fontWeight: 600, lineHeight: 1.2 }}>
-                {gp.name}
-              </div>
-              <div style={{ fontSize: 10, color: C.dim, marginTop: 2 }}>
-                {countryLabel} · {formatGPDate(gp.dateISO, lang)}
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-
-      <div style={{ fontSize: 9, color: C.muted, padding: '10px 0 2px', letterSpacing: 0.3 }}>
-        {lang === 'id'
-          ? `Data: ${source === 'jolpica' ? 'Jolpica-F1 (live)' : 'snapshot lokal'} · waktu race ditampilkan dalam WIB`
-          : `Data: ${source === 'jolpica' ? 'Jolpica-F1 (live)' : 'local snapshot'} · race times shown in WIB`}
-      </div>
-    </section>
-  );
-}
-
 // ─── Disclaimer footer ──────────────────────────────────────────────────────
 function Disclaimer({ lang }) {
   return (
@@ -348,6 +492,17 @@ export default function F1() {
   const { lang } = useApp();
   const { races, source } = useF1Schedule();
   const { drivers, teams, loading, error } = useF1Standings();
+  const { resultsByRound } = useF1Results();
+
+  // Default active round = next upcoming GP. Recomputed once races load.
+  const initialRound = useMemo(() => nextGP()?.round || 1, []);
+  const [activeRound, setActiveRound] = useState(initialRound);
+
+  const activeGP = useMemo(
+    () => races.find((gp) => gp.round === activeRound) || null,
+    [races, activeRound]
+  );
+  const activeResult = resultsByRound?.[activeRound] || null;
 
   const title = lang === 'id'
     ? 'Formula 1 2026 · Klasemen Pembalap, Jadwal 23 GP (WIB), Hasil Live | gibol.co'
@@ -381,13 +536,37 @@ export default function F1() {
           </div>
           <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 700 }}>
             {lang === 'id'
-              ? 'Klasemen pembalap + konstruktor, kalender 23 Grand Prix dalam WIB, dan link ke recap tiap race. Regulasi chassis + power unit baru, Audi & Cadillac gabung — musim paling seru dalam dekade.'
-              : 'Driver + constructor standings, 23-GP calendar in WIB, and links to each race recap. New chassis + power unit rules, Audi & Cadillac join — most compelling F1 season in a decade.'}
+              ? 'Klasemen pembalap + konstruktor, kalender 23 Grand Prix dalam WIB, dan hasil tiap race. Regulasi chassis + power unit baru, Audi & Cadillac gabung — musim paling seru dalam dekade.'
+              : 'Driver + constructor standings, 23-GP calendar in WIB, and per-race results. New chassis + power unit rules, Audi & Cadillac join — most compelling F1 season in a decade.'}
           </div>
         </div>
 
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 14 }}>
-          <NextRaceHero races={races} lang={lang} />
+          {/* Round-by-round scroller + detail panel (NBA day-scroller pattern) */}
+          <div style={{ display: 'grid', gap: 10 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+              <div style={{
+                fontFamily: '"Space Grotesk", sans-serif', fontSize: 13, fontWeight: 600,
+                color: C.text, letterSpacing: -0.2,
+              }}>
+                {lang === 'id' ? 'Kalender 2026 · geser kiri-kanan' : '2026 Calendar · swipe'}
+              </div>
+              <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
+                {races.length} {lang === 'id' ? 'BALAPAN' : 'ROUNDS'} ·{' '}
+                {source === 'jolpica'
+                  ? (lang === 'id' ? 'Jolpica-F1 live' : 'Jolpica-F1 live')
+                  : (lang === 'id' ? 'snapshot lokal' : 'local snapshot')}
+              </div>
+            </div>
+            <RoundStrip
+              races={races}
+              activeRound={activeRound}
+              onSelect={setActiveRound}
+              resultsByRound={resultsByRound}
+              lang={lang}
+            />
+            <RoundDetail gp={activeGP} result={activeResult} lang={lang} />
+          </div>
 
           <div style={{
             display: 'grid',
@@ -397,8 +576,6 @@ export default function F1() {
             <DriverStandings drivers={drivers} loading={loading} error={error} lang={lang} />
             <ConstructorStandings teams={teams} loading={loading} error={error} lang={lang} />
           </div>
-
-          <RaceCalendar races={races} source={source} lang={lang} />
         </div>
 
         <Disclaimer lang={lang} />
