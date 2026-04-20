@@ -150,8 +150,27 @@
 // Autosport + BBC Sport together already return 30 items at limit=30 so
 // there's no product loss. Updated F1News footnote and llms.txt to drop
 // the Formula1.com mention.
+//
+// v0.2.11 — Phase 1 revamp step 6: hero refresh. Three dashboard heroes
+// re-proportioned to a single consistent spec:
+//   - Title swaps Bebas Neue (44–56px, letterSpacing -0.5 to -1) for
+//     Space Grotesk 36/700/-0.025em with text-wrap: balance. Matches the
+//     step-1 body font stack and reads tighter above the fold.
+//   - Accent tints dialed to <12%: F1 keeps accent14 (~8%) when a team
+//     is picked + adds a soft F1_RED 0d wash otherwise; ComingSoon drops
+//     from accent20 (~12.5%) → accent14 (~8%); Recap collapses a 2-layer
+//     (linear50 + radial60) wash into a single linear1a (~10%).
+//   - Status chip moves to the top-right corner via <Chip> (replaces
+//     "F1 2026 · LIVE" baked into title text on F1; replaces centered
+//     COMING SOON pill on ComingSoon; replaces top-left MOMENT OF THE
+//     DAY solid block on Recap).
+//   - Recap topPerformer pill is lifted out of the hero into its own
+//     sibling row (still with winner accent) so the hero body is purely
+//     {kicker, chip, title, caption} — consistent across all three.
+// Touched: src/pages/F1.jsx, src/pages/ComingSoon.jsx, src/pages/Recap.jsx.
+// No behavioural or routing changes. Step 6 of the 9-step design revamp.
 
-export const APP_VERSION = '0.2.10';
+export const APP_VERSION = '0.2.11';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

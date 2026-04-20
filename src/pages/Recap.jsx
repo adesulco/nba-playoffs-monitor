@@ -8,6 +8,7 @@ import PlayerHead from '../components/PlayerHead.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import SportIcon from '../components/SportIcon.jsx';
 import Button from '../components/Button.jsx';
+import Chip from '../components/Chip.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { trackEvent } from '../lib/analytics.js';
 
@@ -55,49 +56,64 @@ function BigMomentHero({ moment, lang, accent }) {
   const wonByAway = game.away?.winner;
   const winnerColor = wonByAway ? awayMeta.color : homeMeta.color;
 
+  // Step 6: collapsed from (linear@50 + radial@60) → single soft wash at ~10%.
+  // Title moved from Bebas Neue 48/-0.8em to Space Grotesk 36/700/-0.025em.
+  // Tag chip pinned top-right (<Chip>). Top performer moved out of hero into
+  // its own sibling row below so the hero is strictly {kicker, chip, title, caption}.
   return (
-    <div
-      style={{
-        padding: '28px 24px',
-        background: `linear-gradient(135deg, ${winnerColor}50 0%, ${C.bg} 75%)`,
-        borderBottom: `1px solid ${C.line}`,
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: `radial-gradient(circle at 20% 20%, ${winnerColor}60 0%, transparent 55%)`,
-        pointerEvents: 'none',
-      }} />
-      <div style={{ position: 'relative', zIndex: 1, maxWidth: 900 }}>
-        <div style={{
-          display: 'inline-block', padding: '4px 10px',
-          background: winnerColor, color: '#fff',
-          fontSize: 10, fontWeight: 800, letterSpacing: 1.5,
-          borderRadius: 2, marginBottom: 16,
-        }}>
-          ⚡ {lang === 'id' ? 'MOMEN HARI INI' : 'MOMENT OF THE DAY'} · {tag}
+    <>
+      <div
+        style={{
+          padding: '28px 24px',
+          background: `linear-gradient(135deg, ${winnerColor}1a 0%, ${C.bg} 70%)`,
+          borderBottom: topPerformer ? 'none' : `1px solid ${C.line}`,
+        }}
+      >
+        <div style={{ maxWidth: 900 }}>
+          <div style={{
+            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
+            gap: 12, marginBottom: 14,
+          }}>
+            <div style={{
+              fontSize: 10, color: C.dim, letterSpacing: 1.5, fontWeight: 700,
+              paddingTop: 6,
+            }}>
+              {lang === 'id' ? 'MOMEN HARI INI' : 'MOMENT OF THE DAY'}
+            </div>
+            <Chip
+              variant="live"
+              sportId="nba"
+              accent={winnerColor}
+              label={`⚡ ${tag}`}
+            />
+          </div>
+          <h2 style={{
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
+            color: C.text, marginBottom: 14, marginTop: 0,
+            maxWidth: 780,
+            textWrap: 'balance',
+          }}>
+            {headline}
+          </h2>
+          {caption && (
+            <p style={{ fontSize: 14, color: C.dim, lineHeight: 1.55, margin: 0, maxWidth: 640 }}>
+              {caption}
+            </p>
+          )}
         </div>
-        <h2 style={{
-          fontFamily: '"Bebas Neue", sans-serif',
-          fontSize: 48, lineHeight: 1.05, letterSpacing: -0.8,
-          color: C.text, marginBottom: 14, marginTop: 0,
-          maxWidth: 780,
+      </div>
+      {topPerformer && (
+        <div style={{
+          padding: '14px 24px',
+          borderBottom: `1px solid ${C.line}`,
+          background: C.bg,
         }}>
-          {headline}
-        </h2>
-        {caption && (
-          <p style={{ fontSize: 14, color: C.dim, lineHeight: 1.55, marginBottom: 20, maxWidth: 640 }}>
-            {caption}
-          </p>
-        )}
-        {topPerformer && (
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             padding: '6px 12px 6px 6px',
-            background: `${winnerColor}30`,
-            border: `1px solid ${winnerColor}80`,
+            background: `${winnerColor}18`,
+            border: `1px solid ${winnerColor}60`,
             borderRadius: 24,
           }}>
             <PlayerHead id={topPerformer.id} name={topPerformer.name} color={winnerColor} size={32} ring />
@@ -108,9 +124,9 @@ function BigMomentHero({ moment, lang, accent }) {
               {topPerformer.pts}/{topPerformer.reb}/{topPerformer.ast}
             </span>
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 

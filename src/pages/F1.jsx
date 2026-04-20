@@ -6,6 +6,7 @@ import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import ConstructorPicker from '../components/ConstructorPicker.jsx';
 import F1News from '../components/F1News.jsx';
+import Chip from '../components/Chip.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { useF1Schedule } from '../hooks/useF1Schedule.js';
 import { useF1Standings } from '../hooks/useF1Standings.js';
@@ -569,29 +570,40 @@ export default function F1() {
           </div>
         </TopBar>
 
+        {/* Step 6 hero — Space Grotesk 36/700/-0.025em, chip top-right, tint ≤8%.
+            Status moved out of title text into explicit <Chip> for screen readers
+            and visual parity with Home/ComingSoon/Recap heroes. */}
         <div style={{
-          padding: '16px 20px 8px',
+          padding: '20px 20px 14px',
           background: pickedTeam
             ? `linear-gradient(135deg, ${activeAccent}14 0%, transparent 70%)`
-            : undefined,
+            : `linear-gradient(135deg, ${F1_RED}0d 0%, transparent 70%)`,
           transition: 'background 0.3s',
         }}>
-          <div style={{ fontSize: 9, letterSpacing: 1.5, color: activeAccent, fontWeight: 700, marginBottom: 4 }}>
-            FORMULA 1 · SEASON {SEASON}
-            {pickedTeam && (
-              <span style={{ marginLeft: 10, color: C.muted, fontWeight: 500, letterSpacing: 0.8 }}>
-                · {lang === 'id' ? 'TIM KAMU' : 'YOUR TEAM'}: <Link
-                  to={`/formula-1-2026/team/${pickedTeam.slug}`}
-                  style={{ color: activeAccent, textDecoration: 'none', fontWeight: 700 }}
-                >{pickedTeam.short}</Link>
-              </span>
-            )}
+          <div style={{
+            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
+            gap: 12, marginBottom: 6,
+          }}>
+            <div style={{ fontSize: 9, letterSpacing: 1.5, color: activeAccent, fontWeight: 700, paddingTop: 4 }}>
+              FORMULA 1 · SEASON {SEASON}
+              {pickedTeam && (
+                <span style={{ marginLeft: 10, color: C.muted, fontWeight: 500, letterSpacing: 0.8 }}>
+                  · {lang === 'id' ? 'TIM KAMU' : 'YOUR TEAM'}: <Link
+                    to={`/formula-1-2026/team/${pickedTeam.slug}`}
+                    style={{ color: activeAccent, textDecoration: 'none', fontWeight: 700 }}
+                  >{pickedTeam.short}</Link>
+                </span>
+              )}
+            </div>
+            <Chip variant="live" sportId="f1" accent={activeAccent} label="LIVE" />
           </div>
           <div style={{
-            fontFamily: '"Bebas Neue", sans-serif',
-            fontSize: 44, lineHeight: 1, letterSpacing: -0.5, color: C.text, marginBottom: 4,
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
+            color: C.text, marginBottom: 8,
+            textWrap: 'balance',
           }}>
-            {lang === 'id' ? 'F1 2026 · LIVE' : 'F1 2026 · LIVE'}
+            Formula 1 2026
           </div>
           <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 700 }}>
             {lang === 'id'

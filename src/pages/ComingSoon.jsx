@@ -29,36 +29,40 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
       <div className="dashboard-wrap">
         <TopBar showBackLink accent={accent} />
 
+        {/* Step 6 hero — left-aligned, 36/700/-0.025em, chip top-right,
+            tint dropped from ${accent}20 (~12.5%) → ${accent}14 (~8%). */}
         <div style={{
-          padding: '48px 24px',
+          padding: '36px 24px 32px',
           borderBottom: `1px solid ${C.line}`,
-          background: `linear-gradient(180deg, ${accent}20 0%, ${C.bg} 100%)`,
-          textAlign: 'center',
+          background: `linear-gradient(180deg, ${accent}14 0%, ${C.bg} 100%)`,
         }}>
           <div style={{
-            display: 'inline-flex', justifyContent: 'center',
-            lineHeight: 1, marginBottom: 16,
+            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
+            gap: 16, marginBottom: 16,
           }}>
-            {icon && <SportIcon id={icon} size={80} />}
-          </div>
-          <div style={{ display: 'inline-block', marginBottom: 16 }}>
+            <div style={{ lineHeight: 1 }}>
+              {icon && <SportIcon id={icon} size={64} />}
+            </div>
             <Chip variant="soon" sportId={icon} accent={accent} label="COMING SOON" />
           </div>
           <div style={{
-            fontFamily: '"Bebas Neue", sans-serif',
-            fontSize: 56, lineHeight: 1, letterSpacing: -1, color: C.text, marginBottom: 8,
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
+            color: C.text, marginBottom: 8,
+            textWrap: 'balance',
+            maxWidth: 720,
           }}>
             {displayTitle}
           </div>
           <div style={{
-            fontSize: 11, color: C.dim, letterSpacing: 1, marginBottom: 20,
+            fontSize: 11, color: C.dim, letterSpacing: 1, marginBottom: 16,
           }}>
             {league}
             {launchDate && <span> · {launchDate}</span>}
           </div>
           <div style={{
             fontSize: 13, color: C.dim, lineHeight: 1.6,
-            maxWidth: 600, margin: '0 auto 28px',
+            maxWidth: 640, marginBottom: 22,
           }}>
             {displayBlurb}
           </div>
@@ -67,7 +71,7 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '10px 18px',
-            background: `${accent}18`,
+            background: `${accent}14`,
             border: `1px solid ${accent}`,
             borderRadius: 4,
             color: C.text,
