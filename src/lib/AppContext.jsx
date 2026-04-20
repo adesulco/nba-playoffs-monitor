@@ -4,6 +4,7 @@ import { trackEvent } from './analytics.js';
 
 const THEME_STORAGE_KEY = 'gibol:theme';
 const LANG_STORAGE_KEY = 'gibol:lang';
+const F1_CONSTRUCTOR_KEY = 'gibol:f1:constructor';
 
 export const AppContext = createContext(null);
 
@@ -43,6 +44,28 @@ export function AppProvider({ children }) {
 
   const t = useMemo(() => createTranslator(lang), [lang]);
 
+  // v0.2.5 — F1 constructor pick (parallel to NBA TeamPicker). Persists
+  // across reloads via localStorage. Stored as the team `id` (e.g. 'mclaren')
+  // not the slug; UI resolves id → meta via TEAMS_BY_ID.
+  const [selectedConstructor, setSelectedConstructor] = useState(() => {
+    try {
+      const saved = localStorage.getItem(F1_CONSTRUCTOR_KEY);
+      return saved && saved !== 'null' ? saved : null;
+    } catch {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      if (selectedConstructor) {
+        localStorage.setItem(F1_CONSTRUCTOR_KEY, selectedConstructor);
+      } else {
+        localStorage.removeItem(F1_CONSTRUCTOR_KEY);
+      }
+    } catch {}
+  }, [selectedConstructor]);
+
   const value = {
     theme,
     toggleTheme: () => setTheme((x) => {
@@ -57,6 +80,11 @@ export function AppProvider({ children }) {
       return next;
     }),
     t,
+    selectedConstructor,
+    setSelectedConstructor: (id) => {
+      trackEvent('f1_constructor_select', { to: id || 'clear' });
+      setSelectedConstructor(id);
+    },
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

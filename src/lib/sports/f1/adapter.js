@@ -13,7 +13,7 @@
  * couple Jolpica downtime to OpenF1 downtime.
  */
 
-import { CALENDAR_2026, formatGPDate, SEASON, TEAMS_2026, DRIVERS_2026 } from './constants.js';
+import { CALENDAR_2026, formatGPDate, SEASON, TEAMS_2026, TEAMS_BY_ID, DRIVERS_2026 } from './constants.js';
 
 const SITE = 'https://www.gibol.co';
 const DEFAULT_OG = `${SITE}/og-image.png`;
@@ -61,6 +61,52 @@ function gpSchema(gp) {
   };
 }
 
+// Per-constructor SportsTeam + SportsOrganization (hybrid) — emitted on
+// /formula-1-2026/team/:slug pages. Uses memberOf to tie back to the
+// championship superEvent, and subOrganization list of drivers.
+function teamSchema(team, driversForTeam) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SportsTeam',
+    name: team.name,
+    alternateName: team.short,
+    sport: 'Formula 1',
+    url: `${SITE}${routeBase}/team/${team.slug}`,
+    foundingDate: String(team.founded),
+    location: { '@type': 'Place', name: team.base },
+    memberOf: {
+      '@type': 'SportsOrganization',
+      name: '2026 FIA Formula One World Championship',
+      url: `${SITE}${routeBase}`,
+    },
+    athlete: driversForTeam.map((d) => ({
+      '@type': 'Person',
+      name: d.name,
+      jobTitle: 'Formula 1 Driver',
+      url: `${SITE}${routeBase}/driver/${d.slug}`,
+    })),
+  };
+}
+
+// Per-driver Person (athlete) — emitted on /formula-1-2026/driver/:slug.
+function driverSchema(driver, team) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: driver.name,
+    jobTitle: 'Formula 1 Driver',
+    url: `${SITE}${routeBase}/driver/${driver.slug}`,
+    identifier: driver.code,
+    memberOf: team
+      ? {
+          '@type': 'SportsTeam',
+          name: team.name,
+          url: `${SITE}${routeBase}/team/${team.slug}`,
+        }
+      : undefined,
+  };
+}
+
 function prerenderRoutes() {
   const out = [];
 
@@ -83,6 +129,37 @@ function prerenderRoutes() {
       keywords: `${gp.name.toLowerCase()} 2026, ${gp.slug.replace(/-/g, ' ')} 2026, jadwal ${gp.name.toLowerCase()}, hasil ${gp.name.toLowerCase()} 2026, f1 round ${gp.round}, ${gp.circuit.toLowerCase()}, f1 ${gp.country.toLowerCase()}, WIB f1 ${gp.round}`,
       ogImage: DEFAULT_OG,
       jsonLd: gpSchema(gp),
+    });
+  }
+
+  // Per-constructor pages — 11 indexable URLs (v0.2.5).
+  const driversByTeam = DRIVERS_2026.reduce((acc, d) => {
+    (acc[d.teamId] = acc[d.teamId] || []).push(d);
+    return acc;
+  }, {});
+  for (const team of TEAMS_2026) {
+    const driversForTeam = driversByTeam[team.id] || [];
+    const driverNames = driversForTeam.map((d) => d.name).join(' · ');
+    out.push({
+      path: `${routeBase}/team/${team.slug}`,
+      title: `${team.name} F1 2026 · Pembalap, Poin, Klasemen Konstruktor | gibol.co`,
+      description: `${team.name} di musim F1 2026 — line-up pembalap ${driverNames}, basis tim ${team.base}, power unit ${team.power}. Poin, klasemen konstruktor, hasil balapan dan peluang juara.`,
+      keywords: `${team.name.toLowerCase()} f1 2026, ${team.short.toLowerCase()} 2026, ${team.slug.replace(/-/g, ' ')} f1, pembalap ${team.short.toLowerCase()}, klasemen konstruktor 2026, ${driversForTeam.map((d) => d.name.toLowerCase()).join(', ')}`,
+      ogImage: DEFAULT_OG,
+      jsonLd: teamSchema(team, driversForTeam),
+    });
+  }
+
+  // Per-driver pages — 22 indexable URLs (v0.2.5).
+  for (const driver of DRIVERS_2026) {
+    const team = TEAMS_BY_ID[driver.teamId];
+    out.push({
+      path: `${routeBase}/driver/${driver.slug}`,
+      title: `${driver.name} F1 2026 · Poin, Podium, Stats Pembalap ${team ? team.short : ''} | gibol.co`,
+      description: `${driver.name} (#${driver.number}, ${driver.code}) membalap untuk ${team ? team.name : 'F1 2026'} di musim 2026. Poin klasemen, jumlah podium, jumlah menang, dan peluang juara pembalap.`,
+      keywords: `${driver.name.toLowerCase()}, ${driver.slug}, ${driver.code.toLowerCase()} f1, f1 2026 ${driver.slug}, pembalap ${team ? team.short.toLowerCase() : 'f1'}, klasemen pembalap, podium ${driver.name.toLowerCase()}`,
+      ogImage: DEFAULT_OG,
+      jsonLd: driverSchema(driver, team),
     });
   }
 

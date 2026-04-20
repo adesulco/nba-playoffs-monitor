@@ -45,8 +45,28 @@
 // keep calling /api/proxy/<provider>/<upstream-path>. Unblocks F1 standings
 // + calendar, and unblocks every future proxied provider (API-Football,
 // football-data, ESPN, Polymarket) before their hooks migrate through it.
+//
+// v0.2.5 — F1 feature parity with NBA surface. Three big compounding wins:
+//   1. ConstructorPicker (the F1 equivalent of the NBA team picker) lets
+//      fans "Follow" a team; selection persists in localStorage and tints
+//      the dashboard chrome + highlights that team's rows in both driver
+//      and constructor standings. Tracks `f1_constructor_select`.
+//   2. Per-constructor pages at /formula-1-2026/team/:slug (11 URLs, one
+//      per 2026 team) and per-driver pages at /formula-1-2026/driver/:slug
+//      (22 URLs) — each with team-accent-tinted hero, standing summary,
+//      line-up grid (teams) or season stats + per-race podium finishes
+//      (drivers). Emits SportsTeam and Person JSON-LD.
+//   3. ShareButton component on F1Race pages — native navigator.share on
+//      mobile, falls back to WhatsApp / X / Copy-link popover on desktop.
+//      Share text recaps the podium if the race has run, otherwise shares
+//      the schedule. The component is reusable for every future "share a
+//      match" surface across sports.
+// SEO: sitemap.xml adds 11 team + 22 driver URLs (34 net-new indexable
+// pages) and bumps /formula-1-2026 to priority 0.9; llms.txt moves F1 from
+// "Coming soon" to "Live dashboards" with a dedicated F1 facts block so
+// GPT/Claude/Perplexity crawlers understand the structure.
 
-export const APP_VERSION = '0.2.4';
+export const APP_VERSION = '0.2.5';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

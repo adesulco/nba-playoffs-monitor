@@ -18,6 +18,9 @@ const FIFA = lazy(() => import('./pages/FIFA.jsx'));
 // v0.2.2 — F1 flipped live (Phase 1A): Jolpica-powered dashboard + per-GP pages.
 const F1 = lazy(() => import('./pages/F1.jsx'));
 const F1Race = lazy(() => import('./pages/F1Race.jsx'));
+// v0.2.5 — per-constructor + per-driver SEO pages.
+const F1Team = lazy(() => import('./pages/F1Team.jsx'));
+const F1Driver = lazy(() => import('./pages/F1Driver.jsx'));
 const EPL = lazy(() => import('./pages/EPL.jsx'));
 const LigaIndonesia = lazy(() => import('./pages/LigaIndonesia.jsx'));
 const Recap = lazy(() => import('./pages/Recap.jsx'));
@@ -66,6 +69,8 @@ export default function App() {
                 a broken F1 adapter (Phase 1) can't white-screen NBA. */}
             <Route path="/formula-1-2026" element={<Sport sport="f1" sportLabel="Formula 1 2026"><F1 /></Sport>} />
             <Route path="/formula-1-2026/race/:slug" element={<Sport sport="f1" sportLabel="Formula 1 2026"><F1Race /></Sport>} />
+            <Route path="/formula-1-2026/team/:slug" element={<Sport sport="f1" sportLabel="Formula 1 2026"><F1Team /></Sport>} />
+            <Route path="/formula-1-2026/driver/:slug" element={<Sport sport="f1" sportLabel="Formula 1 2026"><F1Driver /></Sport>} />
             <Route path="/premier-league-2025-26" element={<Sport sport="epl" sportLabel="Liga Inggris 2025-26"><EPL /></Sport>} />
             <Route path="/fifa-world-cup-2026" element={<Sport sport="fifa_wc" sportLabel="Piala Dunia FIFA 2026"><FIFA /></Sport>} />
             <Route path="/liga-1-2026" element={<Sport sport="liga_1_id" sportLabel="Super League Indonesia"><LigaIndonesia /></Sport>} />

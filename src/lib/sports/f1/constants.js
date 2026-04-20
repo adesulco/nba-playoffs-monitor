@@ -20,21 +20,24 @@
 export const SEASON = '2026';
 
 // ─── Constructors (11 — Audi and Cadillac join in 2026) ─────────────────────
+// `slug` is the URL-safe handle for /formula-1-2026/team/:slug (v0.2.5).
+// `base` is the 2025 constructor base city (for SEO + SportsOrganization).
 export const TEAMS_2026 = [
-  { id: 'red_bull',      name: 'Red Bull Racing',       short: 'Red Bull',     accent: '#3671C6' },
-  { id: 'mclaren',       name: 'McLaren',               short: 'McLaren',      accent: '#FF8000' },
-  { id: 'ferrari',       name: 'Scuderia Ferrari',      short: 'Ferrari',      accent: '#E8002D' },
-  { id: 'mercedes',      name: 'Mercedes-AMG Petronas', short: 'Mercedes',     accent: '#27F4D2' },
-  { id: 'aston_martin',  name: 'Aston Martin Aramco',   short: 'Aston Martin', accent: '#229971' },
-  { id: 'alpine',        name: 'BWT Alpine F1 Team',    short: 'Alpine',       accent: '#FF87BC' },
-  { id: 'williams',      name: 'Williams Racing',       short: 'Williams',     accent: '#64C4FF' },
-  { id: 'rb',            name: 'Racing Bulls',          short: 'Racing Bulls', accent: '#6692FF' },
-  { id: 'sauber_audi',   name: 'Audi F1 Team',          short: 'Audi',         accent: '#00A19B' },
-  { id: 'haas',          name: 'MoneyGram Haas',        short: 'Haas',         accent: '#B6BABD' },
-  { id: 'cadillac',      name: 'Cadillac F1 Team',      short: 'Cadillac',     accent: '#C6AF7F' },
+  { id: 'red_bull',     slug: 'red-bull',     name: 'Red Bull Racing',         short: 'Red Bull',     accent: '#3671C6', base: 'Milton Keynes, UK',  power: 'Red Bull Ford',     founded: 2005 },
+  { id: 'mclaren',      slug: 'mclaren',      name: 'McLaren',                 short: 'McLaren',      accent: '#FF8000', base: 'Woking, UK',         power: 'Mercedes',          founded: 1966 },
+  { id: 'ferrari',      slug: 'ferrari',      name: 'Scuderia Ferrari',        short: 'Ferrari',      accent: '#E8002D', base: 'Maranello, Italy',   power: 'Ferrari',           founded: 1950 },
+  { id: 'mercedes',     slug: 'mercedes',     name: 'Mercedes-AMG Petronas',   short: 'Mercedes',     accent: '#27F4D2', base: 'Brackley, UK',       power: 'Mercedes',          founded: 2010 },
+  { id: 'aston_martin', slug: 'aston-martin', name: 'Aston Martin Aramco',     short: 'Aston Martin', accent: '#229971', base: 'Silverstone, UK',    power: 'Honda',             founded: 2021 },
+  { id: 'alpine',       slug: 'alpine',       name: 'BWT Alpine F1 Team',      short: 'Alpine',       accent: '#FF87BC', base: 'Enstone, UK',        power: 'Mercedes',          founded: 2021 },
+  { id: 'williams',     slug: 'williams',     name: 'Williams Racing',         short: 'Williams',     accent: '#64C4FF', base: 'Grove, UK',          power: 'Mercedes',          founded: 1977 },
+  { id: 'rb',           slug: 'racing-bulls', name: 'Racing Bulls',            short: 'Racing Bulls', accent: '#6692FF', base: 'Faenza, Italy',      power: 'Red Bull Ford',     founded: 2024 },
+  { id: 'sauber_audi',  slug: 'audi',         name: 'Audi F1 Team',            short: 'Audi',         accent: '#00A19B', base: 'Hinwil, Switzerland',power: 'Audi',              founded: 2026 },
+  { id: 'haas',         slug: 'haas',         name: 'MoneyGram Haas',          short: 'Haas',         accent: '#B6BABD', base: 'Kannapolis, USA',    power: 'Ferrari',           founded: 2016 },
+  { id: 'cadillac',     slug: 'cadillac',     name: 'Cadillac F1 Team',        short: 'Cadillac',     accent: '#C6AF7F', base: 'Silverstone, UK',    power: 'Ferrari (interim)', founded: 2026 },
 ];
 
 export const TEAMS_BY_ID = Object.fromEntries(TEAMS_2026.map((t) => [t.id, t]));
+export const TEAMS_BY_SLUG = Object.fromEntries(TEAMS_2026.map((t) => [t.slug, t]));
 
 // ─── Drivers (22 — indicative 2026 line-up; will be overridden by Jolpica) ─
 // Note: 2026 silly season finalized by end of 2025. We list known signings;
@@ -65,6 +68,11 @@ export const DRIVERS_2026 = [
 ];
 
 export const DRIVERS_BY_CODE = Object.fromEntries(DRIVERS_2026.map((d) => [d.code, d]));
+export const DRIVERS_BY_SLUG = Object.fromEntries(DRIVERS_2026.map((d) => [d.slug, d]));
+export const DRIVERS_BY_TEAM = DRIVERS_2026.reduce((acc, d) => {
+  (acc[d.teamId] = acc[d.teamId] || []).push(d);
+  return acc;
+}, {});
 
 // ─── Calendar (24 rounds, dates in WIB for the SUNDAY main race) ────────────
 // Source: FIA provisional calendar announced Sep 2024. Sprint weekends: six.

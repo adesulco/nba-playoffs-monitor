@@ -4,6 +4,7 @@ import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+import ConstructorPicker from '../components/ConstructorPicker.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { useF1Schedule } from '../hooks/useF1Schedule.js';
 import { useF1Standings } from '../hooks/useF1Standings.js';
@@ -320,7 +321,7 @@ function InfoBlock({ label, value, accent }) {
 }
 
 // ─── Driver standings table ─────────────────────────────────────────────────
-function DriverStandings({ drivers, loading, error, lang }) {
+function DriverStandings({ drivers, loading, error, lang, selectedConstructor }) {
   return (
     <section style={{
       background: C.panel,
@@ -372,20 +373,38 @@ function DriverStandings({ drivers, loading, error, lang }) {
             {drivers.map((d, i) => {
               const teamMeta = d.teamId ? TEAMS_BY_ID[d.teamId] : null;
               const accent = teamMeta?.accent || C.muted;
+              const isHighlighted = selectedConstructor && d.teamId === selectedConstructor;
               return (
-                <tr key={d.code || i} style={{ borderTop: `1px solid ${C.lineSoft}` }}>
+                <tr key={d.code || i} style={{
+                  borderTop: `1px solid ${C.lineSoft}`,
+                  background: isHighlighted ? `${accent}18` : 'transparent',
+                }}>
                   <td style={{ padding: '6px 0', color: i === 0 ? F1_RED : C.dim, fontWeight: i === 0 ? 700 : 500 }}>
                     {d.position ?? i + 1}
                   </td>
                   <td style={{ padding: '6px 0', color: C.text, fontWeight: 500 }}>
                     <span style={{
-                      display: 'inline-block', width: 3, height: 14,
+                      display: 'inline-block', width: isHighlighted ? 4 : 3, height: 14,
                       background: accent, verticalAlign: 'middle', marginRight: 8,
                     }} />
-                    {d.name}
+                    {d.slug ? (
+                      <Link to={`/formula-1-2026/driver/${d.slug}`} style={{ color: C.text, textDecoration: 'none', fontWeight: isHighlighted ? 700 : 500 }}>
+                        {d.name}
+                      </Link>
+                    ) : (
+                      d.name
+                    )}
                     {d.code && <span style={{ marginLeft: 6, color: C.muted, fontSize: 9.5, letterSpacing: 0.5 }}>{d.code}</span>}
                   </td>
-                  <td style={{ padding: '6px 0', color: C.dim }}>{teamMeta?.short || d.teamName || '—'}</td>
+                  <td style={{ padding: '6px 0', color: C.dim }}>
+                    {teamMeta?.slug ? (
+                      <Link to={`/formula-1-2026/team/${teamMeta.slug}`} style={{ color: isHighlighted ? accent : C.dim, textDecoration: 'none', fontWeight: isHighlighted ? 600 : 400 }}>
+                        {teamMeta.short}
+                      </Link>
+                    ) : (
+                      teamMeta?.short || d.teamName || '—'
+                    )}
+                  </td>
                   <td style={{ padding: '6px 6px', color: C.dim, textAlign: 'right' }}>{d.wins || 0}</td>
                   <td style={{ padding: '6px 0', color: C.text, textAlign: 'right', fontWeight: 600 }}>{d.points}</td>
                 </tr>
@@ -403,7 +422,7 @@ function DriverStandings({ drivers, loading, error, lang }) {
 }
 
 // ─── Constructor standings table ────────────────────────────────────────────
-function ConstructorStandings({ teams, loading, error, lang }) {
+function ConstructorStandings({ teams, loading, error, lang, selectedConstructor }) {
   return (
     <section style={{
       background: C.panel,
@@ -448,22 +467,35 @@ function ConstructorStandings({ teams, loading, error, lang }) {
             </tr>
           </thead>
           <tbody>
-            {teams.map((t, i) => (
-              <tr key={t.id || i} style={{ borderTop: `1px solid ${C.lineSoft}` }}>
-                <td style={{ padding: '6px 0', color: i === 0 ? F1_RED : C.dim, fontWeight: i === 0 ? 700 : 500 }}>
-                  {t.position ?? i + 1}
-                </td>
-                <td style={{ padding: '6px 0', color: C.text, fontWeight: 500 }}>
-                  <span style={{
-                    display: 'inline-block', width: 3, height: 14,
-                    background: t.accent, verticalAlign: 'middle', marginRight: 8,
-                  }} />
-                  {t.short || t.name}
-                </td>
-                <td style={{ padding: '6px 6px', color: C.dim, textAlign: 'right' }}>{t.wins || 0}</td>
-                <td style={{ padding: '6px 0', color: C.text, textAlign: 'right', fontWeight: 600 }}>{t.points}</td>
-              </tr>
-            ))}
+            {teams.map((t, i) => {
+              const teamMeta = t.id ? TEAMS_BY_ID[t.id] : null;
+              const isHighlighted = selectedConstructor && t.id === selectedConstructor;
+              return (
+                <tr key={t.id || i} style={{
+                  borderTop: `1px solid ${C.lineSoft}`,
+                  background: isHighlighted ? `${t.accent}18` : 'transparent',
+                }}>
+                  <td style={{ padding: '6px 0', color: i === 0 ? F1_RED : C.dim, fontWeight: i === 0 ? 700 : 500 }}>
+                    {t.position ?? i + 1}
+                  </td>
+                  <td style={{ padding: '6px 0', color: C.text, fontWeight: isHighlighted ? 700 : 500 }}>
+                    <span style={{
+                      display: 'inline-block', width: isHighlighted ? 4 : 3, height: 14,
+                      background: t.accent, verticalAlign: 'middle', marginRight: 8,
+                    }} />
+                    {teamMeta?.slug ? (
+                      <Link to={`/formula-1-2026/team/${teamMeta.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
+                        {t.short || t.name}
+                      </Link>
+                    ) : (
+                      t.short || t.name
+                    )}
+                  </td>
+                  <td style={{ padding: '6px 6px', color: C.dim, textAlign: 'right' }}>{t.wins || 0}</td>
+                  <td style={{ padding: '6px 0', color: C.text, textAlign: 'right', fontWeight: 600 }}>{t.points}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       )}
@@ -489,10 +521,15 @@ function Disclaimer({ lang }) {
 // ─── Page shell ─────────────────────────────────────────────────────────────
 export default function F1() {
   const location = useLocation();
-  const { lang } = useApp();
+  const { lang, selectedConstructor, setSelectedConstructor } = useApp();
   const { races, source } = useF1Schedule();
   const { drivers, teams, loading, error } = useF1Standings();
   const { resultsByRound } = useF1Results();
+
+  // v0.2.5 — if a constructor is picked, tint the dashboard chrome with its
+  // accent. Falls back to the F1 brand red.
+  const activeAccent = (selectedConstructor && TEAMS_BY_ID[selectedConstructor]?.accent) || F1_RED;
+  const pickedTeam = selectedConstructor ? TEAMS_BY_ID[selectedConstructor] : null;
 
   // Default active round = next upcoming GP. Recomputed once races load.
   const initialRound = useMemo(() => nextGP()?.round || 1, []);
@@ -522,11 +559,32 @@ export default function F1() {
         jsonLd={CHAMPIONSHIP_JSONLD}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={F1_RED} />
+        <TopBar showBackLink accent={activeAccent}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <ConstructorPicker
+              selectedConstructor={selectedConstructor}
+              onSelect={setSelectedConstructor}
+            />
+          </div>
+        </TopBar>
 
-        <div style={{ padding: '16px 20px 8px' }}>
-          <div style={{ fontSize: 9, letterSpacing: 1.5, color: F1_RED, fontWeight: 700, marginBottom: 4 }}>
+        <div style={{
+          padding: '16px 20px 8px',
+          background: pickedTeam
+            ? `linear-gradient(135deg, ${activeAccent}14 0%, transparent 70%)`
+            : undefined,
+          transition: 'background 0.3s',
+        }}>
+          <div style={{ fontSize: 9, letterSpacing: 1.5, color: activeAccent, fontWeight: 700, marginBottom: 4 }}>
             FORMULA 1 · SEASON {SEASON}
+            {pickedTeam && (
+              <span style={{ marginLeft: 10, color: C.muted, fontWeight: 500, letterSpacing: 0.8 }}>
+                · {lang === 'id' ? 'TIM KAMU' : 'YOUR TEAM'}: <Link
+                  to={`/formula-1-2026/team/${pickedTeam.slug}`}
+                  style={{ color: activeAccent, textDecoration: 'none', fontWeight: 700 }}
+                >{pickedTeam.short}</Link>
+              </span>
+            )}
           </div>
           <div style={{
             fontFamily: '"Bebas Neue", sans-serif',
@@ -573,8 +631,8 @@ export default function F1() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: 14,
           }}>
-            <DriverStandings drivers={drivers} loading={loading} error={error} lang={lang} />
-            <ConstructorStandings teams={teams} loading={loading} error={error} lang={lang} />
+            <DriverStandings drivers={drivers} loading={loading} error={error} lang={lang} selectedConstructor={selectedConstructor} />
+            <ConstructorStandings teams={teams} loading={loading} error={error} lang={lang} selectedConstructor={selectedConstructor} />
           </div>
         </div>
 

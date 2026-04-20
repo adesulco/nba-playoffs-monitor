@@ -76,40 +76,80 @@
   <url><loc>https://www.gibol.co/nba-playoff-2026/jazz</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.gibol.co/nba-playoff-2026/clippers</loc><lastmod>2026-04-18</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
 
-  <!-- v0.2.2 — F1 Phase 1A live. Main F1 dashboard bumped to 0.8. 23 per-GP
-       race pages added at 0.5 — each has its own SportsEvent JSON-LD. -->
+  <!-- v0.2.5 — F1 sitemap expanded: main dashboard bumped to 0.9, 23 per-GP
+       pages at 0.6, 11 constructor pages at 0.6, 22 driver pages at 0.6.
+       Each indexable route emits its own JSON-LD (SportsEvent / SportsTeam /
+       Person) via the static prerender. -->
   <url>
     <loc>https://www.gibol.co/formula-1-2026</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="id" href="https://www.gibol.co/formula-1-2026" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gibol.co/formula-1-2026" />
   </url>
 
-  <url><loc>https://www.gibol.co/formula-1-2026/race/australian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/chinese-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/japanese-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/bahrain-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/saudi-arabian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/miami-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/canadian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/monaco-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/spanish-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/austrian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/british-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/hungarian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/belgian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/dutch-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/italian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/azerbaijan-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/singapore-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/united-states-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/mexico-city-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/sao-paulo-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/las-vegas-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/qatar-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.gibol.co/formula-1-2026/race/abu-dhabi-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <!-- Per-GP pages (23 rounds of the 2026 FIA calendar) -->
+  <url><loc>https://www.gibol.co/formula-1-2026/race/australian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/chinese-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/japanese-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/bahrain-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/saudi-arabian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/miami-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/canadian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/monaco-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/spanish-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/austrian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/british-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/hungarian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/belgian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/dutch-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/italian-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/azerbaijan-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/singapore-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/united-states-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/mexico-city-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/sao-paulo-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/las-vegas-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/qatar-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/race/abu-dhabi-gp</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+
+  <!-- Per-constructor pages (11 teams — 2026 grid with Audi and Cadillac new) -->
+  <url><loc>https://www.gibol.co/formula-1-2026/team/red-bull</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/mclaren</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/ferrari</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/mercedes</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/aston-martin</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/alpine</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/williams</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/racing-bulls</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/audi</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/haas</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/team/cadillac</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+
+  <!-- Per-driver pages (22 — full 2026 grid) -->
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/verstappen</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/tsunoda</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/norris</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/piastri</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/leclerc</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/hamilton</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/russell</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/antonelli</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/alonso</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/stroll</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/gasly</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/colapinto</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/albon</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/sainz</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/hadjar</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/lawson</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/hulkenberg</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/bortoleto</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/ocon</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/bearman</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/perez</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.gibol.co/formula-1-2026/driver/bottas</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
 
   <url>
     <loc>https://www.gibol.co/premier-league-2025-26</loc>

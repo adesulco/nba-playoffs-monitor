@@ -4,8 +4,10 @@ import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+import ShareButton from '../components/ShareButton.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { CALENDAR_BY_SLUG, CALENDAR_2026, formatGPDate, nextGP } from '../lib/sports/f1/constants.js';
+import { useF1Results } from '../hooks/useF1Results.js';
 
 const F1_RED = '#E10600';
 
@@ -27,6 +29,21 @@ export default function F1Race() {
 
   const countryLabel = lang === 'id' ? (gp.countryId || gp.country) : gp.country;
   const isNext = gp.round === nextGP()?.round;
+
+  // If the race has already happened, pull the podium so the share text
+  // reads like a real recap. Missing results = upcoming race, share the
+  // schedule instead.
+  const { resultsByRound } = useF1Results();
+  const podium = resultsByRound?.[gp.round]?.podium || [];
+  const hasPodium = podium.length >= 3;
+
+  const shareText = hasPodium
+    ? (lang === 'id'
+        ? `Hasil ${gp.name} 2026 · R${String(gp.round).padStart(2, '0')} di ${gp.circuit} — P1 ${podium[0].code}, P2 ${podium[1].code}, P3 ${podium[2].code}`
+        : `${gp.name} 2026 · R${String(gp.round).padStart(2, '0')} at ${gp.circuit} — P1 ${podium[0].code}, P2 ${podium[1].code}, P3 ${podium[2].code}`)
+    : (lang === 'id'
+        ? `${gp.name} 2026 · R${String(gp.round).padStart(2, '0')} di ${gp.circuit} — Minggu ${formatGPDate(gp.dateISO, 'id')} ${gp.wibTime} WIB${gp.sprint ? ' (weekend sprint)' : ''}`
+        : `${gp.name} 2026 · R${String(gp.round).padStart(2, '0')} at ${gp.circuit} — Sunday ${formatGPDate(gp.dateISO, 'en')} at ${gp.wibTime} WIB${gp.sprint ? ' (sprint weekend)' : ''}`);
 
   const schema = {
     '@context': 'https://schema.org',
@@ -74,9 +91,23 @@ export default function F1Race() {
           background: `linear-gradient(135deg, ${F1_RED}1a 0%, ${C.bg} 80%)`,
           borderBottom: `1px solid ${C.line}`,
         }}>
-          <div style={{ fontSize: 9, letterSpacing: 1.5, color: F1_RED, fontWeight: 700, marginBottom: 4 }}>
-            F1 2026 · ROUND {String(gp.round).padStart(2, '0')} {isNext ? `· ${lang === 'id' ? 'BERIKUTNYA' : 'NEXT'}` : ''}
-            {gp.sprint && <span style={{ marginLeft: 8, padding: '1px 5px', background: F1_RED, color: '#fff', borderRadius: 2, fontSize: 8 }}>SPRINT</span>}
+          <div style={{
+            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
+            gap: 12, marginBottom: 4,
+          }}>
+            <div style={{ fontSize: 9, letterSpacing: 1.5, color: F1_RED, fontWeight: 700 }}>
+              F1 2026 · ROUND {String(gp.round).padStart(2, '0')} {isNext ? `· ${lang === 'id' ? 'BERIKUTNYA' : 'NEXT'}` : ''}
+              {gp.sprint && <span style={{ marginLeft: 8, padding: '1px 5px', background: F1_RED, color: '#fff', borderRadius: 2, fontSize: 8 }}>SPRINT</span>}
+            </div>
+            <ShareButton
+              url={`/formula-1-2026/race/${gp.slug}`}
+              title={`${gp.name} 2026 · gibol.co`}
+              text={shareText}
+              accent={F1_RED}
+              analyticsEvent="f1_race_share"
+              size="sm"
+              label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+            />
           </div>
           <div style={{
             fontFamily: '"Bebas Neue", sans-serif',
