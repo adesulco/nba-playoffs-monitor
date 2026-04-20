@@ -37,44 +37,36 @@
 // Each source: { name, url, lang, keyword? }.
 // `keyword` (optional) filters items by title regex — used for general-news
 // feeds where we only want F1 stories (e.g. Kompas Olahraga).
+// v0.2.8 keyword regex — shared across all Bahasa general-news feeds.
+// The v0.2.7 version was too loose: bare `f1` matched Yamaha F1ZR motorbikes,
+// and bare team names like `ferrari` or `mercedes` matched paint jobs, car
+// reviews, and even a "Ferrari Kuning" taxi story from detikOto. Word
+// boundaries (\b) fix the F1ZR false positive, and removing bare team names
+// forces items to name an actual F1-unique term: the series name, the race
+// format, or a 2026 driver's surname.
+const ID_F1_KEYWORD = new RegExp(
+  '\\b(' + [
+    'formula ?1',                                       // series name
+    'grand prix',                                       // race format
+    'f1',                                               // \bf1\b excludes F1ZR
+    // 2026 F1 drivers — surnames are uniquely identifying
+    'verstappen','hamilton','norris','leclerc','piastri','russell',
+    'sainz','alonso','albon','gasly','hulkenberg','ocon','bortoleto',
+    'tsunoda','hadjar','lawson','colapinto','stroll','bearman',
+    'antonelli','perez','bottas',
+  ].join('|') + ')\\b',
+  'i'
+);
+
 const SOURCES = [
   // ── Bahasa Indonesia ─────────────────────────────────────────────────────
-  // v0.2.6 hotfix 2026-04-20: three of the four original URLs were dead.
-  //   - rss.detik.com/index.php/sport   → connection refused (subdomain moved)
-  //   - bola.com/feed/rss2/otomotif      → 301 → feed.bola.com 404
-  //   - kompas.com/tag/formula-1/rss     → 404 (Kompas moved tag RSS to indeks.)
-  // Replacements below verified live. Added detikOto (motorsport vertical) and
-  // Antara (national wire) for resilience; 5 sources means up to 2 can fail
-  // silently and the feed still looks populated.
-  {
-    name: 'detikSport',
-    url: 'https://sport.detik.com/rss',
-    lang: 'id',
-    keyword: /formula ?1|f1|verstappen|hamilton|norris|leclerc|ferrari|mercedes|red bull|mclaren|gp|grand prix|balap/i,
-  },
-  {
-    name: 'detikOto',
-    url: 'https://oto.detik.com/rss',
-    lang: 'id',
-    keyword: /formula ?1|f1|verstappen|hamilton|norris|leclerc|ferrari|mercedes|red bull|mclaren|gp|grand prix/i,
-  },
-  {
-    name: 'CNN Indonesia',
-    url: 'https://www.cnnindonesia.com/olahraga/rss',
-    lang: 'id',
-    keyword: /formula ?1|f1|verstappen|ferrari|mclaren|mercedes|red bull|hamilton|norris|leclerc/i,
-  },
-  {
-    name: 'Kompas.com',
-    url: 'https://indeks.kompas.com/tag/formula-1/rss',
-    lang: 'id',
-  },
-  {
-    name: 'Antara',
-    url: 'https://www.antaranews.com/rss/olahraga.xml',
-    lang: 'id',
-    keyword: /formula ?1|f1|verstappen|ferrari|mclaren|mercedes|red bull|hamilton|norris|leclerc|gp|grand prix/i,
-  },
+  // v0.2.7 hotfix: swapped 3 dead URLs (detik rss subdomain moved, Bola feed
+  // removed, Kompas tag RSS 404). v0.2.8: dropped Kompas entirely (all variants
+  // return empty body), tightened keyword regex to F1-unique terms.
+  { name: 'detikSport',     url: 'https://sport.detik.com/rss',                lang: 'id', keyword: ID_F1_KEYWORD },
+  { name: 'detikOto',       url: 'https://oto.detik.com/rss',                  lang: 'id', keyword: ID_F1_KEYWORD },
+  { name: 'CNN Indonesia',  url: 'https://www.cnnindonesia.com/olahraga/rss',  lang: 'id', keyword: ID_F1_KEYWORD },
+  { name: 'Antara',         url: 'https://www.antaranews.com/rss/olahraga.xml', lang: 'id', keyword: ID_F1_KEYWORD },
 
   // ── English ──────────────────────────────────────────────────────────────
   {
@@ -208,11 +200,16 @@ export default async function handler(req, res) {
   items.sort((a, b) => (b.pubDate || '').localeCompare(a.pubDate || ''));
   items = items.slice(0, limit);
 
+  // v0.2.8: return 200 with an empty array instead of 503. In the Indonesian
+  // news landscape, F1 coverage is sparse outside race weekends — an empty
+  // feed is a real, valid state, not a failure. F1News.jsx handles empty by
+  // rendering "Belum ada berita F1 terbaru". Short-TTL so we don't cache the
+  // empty state for long when the race window reopens.
   if (items.length === 0) {
-    res.setHeader('cache-control', 's-maxage=60, stale-while-revalidate=120');
-    return res.status(503).json({
-      error: 'all sources failed',
+    res.setHeader('cache-control', 'public, s-maxage=60, stale-while-revalidate=120');
+    return res.status(200).json({
       lang,
+      updatedAt: new Date().toISOString(),
       items: [],
     });
   }

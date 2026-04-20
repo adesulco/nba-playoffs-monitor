@@ -110,8 +110,26 @@
 // Also tightened the fetch User-Agent to a feed-reader-style string
 // (some publishers 403 unknown UAs). EN feed was already working
 // and is unchanged.
+//
+// v0.2.8 — Bahasa news filter quality. v0.2.7 shipped with live ID
+// URLs but the keyword regex was too loose, so detikOto returned
+// "Yamaha F1ZR" motorbike reviews and "Ferrari Kuning" taxi stories
+// as "F1 news." Two fixes:
+//   1. Keyword now requires word boundaries (\bf1\b excludes F1ZR)
+//      and matches only F1-unique terms: "formula 1", "grand prix",
+//      or a 2026 driver's surname. Bare team names removed (too
+//      ambiguous in general-news contexts).
+//   2. Dropped Kompas entirely — every Kompas RSS variant returns
+//      an empty body despite 200 status. Pool is now 4: detikSport,
+//      detikOto, CNN Indonesia, Antara.
+// Also: empty feed is now 200 (not 503). In the Indonesian news
+// landscape F1 gets sparse coverage outside race weekends — an
+// empty feed is a legitimate state, not a failure. The F1News
+// component already renders "Belum ada berita F1 terbaru" on empty.
+// Short-TTL (60s) on empty responses so we don't cache stale-empty
+// when a race weekend starts and coverage resumes.
 
-export const APP_VERSION = '0.2.7';
+export const APP_VERSION = '0.2.8';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
