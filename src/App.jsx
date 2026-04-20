@@ -15,7 +15,9 @@ const TeamPage = lazy(() => import('./pages/TeamPage.jsx'));
 const IBL = lazy(() => import('./pages/IBL.jsx'));
 const FIFA = lazy(() => import('./pages/FIFA.jsx'));
 // v0.2.0 — multi-sport stubs (coming-soon pages; phases 1/2/4 replace these).
+// v0.2.2 — F1 flipped live (Phase 1A): Jolpica-powered dashboard + per-GP pages.
 const F1 = lazy(() => import('./pages/F1.jsx'));
+const F1Race = lazy(() => import('./pages/F1Race.jsx'));
 const EPL = lazy(() => import('./pages/EPL.jsx'));
 const LigaIndonesia = lazy(() => import('./pages/LigaIndonesia.jsx'));
 const Recap = lazy(() => import('./pages/Recap.jsx'));
@@ -63,6 +65,7 @@ export default function App() {
             {/* v0.2.0 — new sport stub routes. All use SportErrorBoundary so
                 a broken F1 adapter (Phase 1) can't white-screen NBA. */}
             <Route path="/formula-1-2026" element={<Sport sport="f1" sportLabel="Formula 1 2026"><F1 /></Sport>} />
+            <Route path="/formula-1-2026/race/:slug" element={<Sport sport="f1" sportLabel="Formula 1 2026"><F1Race /></Sport>} />
             <Route path="/premier-league-2025-26" element={<Sport sport="epl" sportLabel="Liga Inggris 2025-26"><EPL /></Sport>} />
             <Route path="/fifa-world-cup-2026" element={<Sport sport="fifa_wc" sportLabel="Piala Dunia FIFA 2026"><FIFA /></Sport>} />
             <Route path="/liga-1-2026" element={<Sport sport="liga_1_id" sportLabel="Super League Indonesia"><LigaIndonesia /></Sport>} />

@@ -63,6 +63,17 @@ const STATIC_ROUTES = [
     description: 'Dashboard live untuk Indonesian Basketball League (IBL). Skor live, klasemen, dan watchlist pemain untuk liga basket profesional teratas Indonesia. Coverage Bahasa penuh. Segera hadir.',
     keywords: 'IBL, liga basket indonesia, skor IBL, jadwal IBL, basket indonesia, iblindonesia',
     ogImage: DEFAULT_OG,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'SportsEvent',
+      name: 'Indonesia Basketball League 2026-27',
+      description: "The Indonesia Basketball League (IBL) 2026-27 season — Indonesia's top-tier professional basketball league featuring Pelita Jaya Bakrie Jakarta, Prawira Harum Bandung, Satria Muda Pertamina, RANS Simba Bogor, and 12+ other clubs.",
+      eventStatus: 'https://schema.org/EventScheduled',
+      sport: 'Basketball',
+      location: { '@type': 'Country', name: 'Indonesia' },
+      organizer: { '@type': 'SportsOrganization', name: 'PT Bola Basket Indonesia (IBL)', url: 'https://iblindonesia.com' },
+      url: 'https://www.gibol.co/ibl',
+    },
   },
 ];
 
@@ -140,7 +151,19 @@ function renderHtml(template, route) {
     <meta name="twitter:image" content="${ogImage}" />
 `;
 
-  html = html.replace(/<\/head>/, `${metaBlock}  </head>`);
+  // Per-route JSON-LD structured data (SportsEvent for sport routes, etc.).
+  // Emitted here so crawlers pick it up without executing React/Helmet.
+  // Accepts a single object OR an array — each becomes its own <script> block.
+  let jsonLdBlock = '';
+  if (route.jsonLd) {
+    const schemas = Array.isArray(route.jsonLd) ? route.jsonLd : [route.jsonLd];
+    jsonLdBlock = schemas
+      .map((schema) => `    <script type="application/ld+json">${JSON.stringify(schema)}</script>`)
+      .join('\n');
+    jsonLdBlock = `\n${jsonLdBlock}\n`;
+  }
+
+  html = html.replace(/<\/head>/, `${metaBlock}${jsonLdBlock}  </head>`);
 
   return html;
 }

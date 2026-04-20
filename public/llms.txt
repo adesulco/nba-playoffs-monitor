@@ -1,14 +1,20 @@
 # gibol.co
 
-> Live sports dashboards built for Indonesian fans — NBA Playoffs, IBL (Indonesia Basketball League), and FIFA World Cup 2026. "Gibol" is Indonesian slang for "gila bola" (sports-obsessed). One hub, live data, zero backend.
+> Bahasa-first multi-sport dashboards for Indonesian fans — NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, FIFA World Cup 2026, and BRI Liga 1 Indonesia. "Gibol" is Indonesian slang for "gila bola" (sports-obsessed). One hub, live data, zero backend.
 
 gibol.co is a real-time sports companion aggregating Polymarket prediction odds, ESPN scoreboard data, and play-by-play action into a single terminal-style dashboard. Content updates every 10–30 seconds during live games. All data is sourced from public APIs and displayed with attribution.
 
 ## Live dashboards
 
 - [NBA Playoffs 2026](https://www.gibol.co/nba-playoff-2026): Live scores, play-by-play, win probability, shot chart, box score, injury report, championship odds, bracket, series standings, team player stats, clutch leaders, watchlist, Fangir IBL trading-card partner banner. 2025–26 postseason, Apr 17 – Jun 20 2026.
-- [IBL — Indonesia Basketball League](https://www.gibol.co/ibl): Coming soon.
-- [FIFA World Cup 2026](https://www.gibol.co/fifa-world-cup-2026): Coming soon.
+
+## Coming soon
+
+- [Formula 1 2026](https://www.gibol.co/formula-1-2026): Jadwal balap, klasemen pembalap, klasemen konstruktor, live timing. 2026 FIA F1 World Championship, Mar – Dec 2026.
+- [Liga Inggris 2025-26](https://www.gibol.co/premier-league-2025-26): Klasemen, jadwal, hasil, top skorer Premier League musim 2025-26, Aug 2025 – May 2026.
+- [FIFA World Cup 2026](https://www.gibol.co/fifa-world-cup-2026): Piala Dunia FIFA 2026 di USA, Canada, Mexico — grup, bracket knockout, jadwal, Jun 11 – Jul 19 2026.
+- [BRI Liga 1 Indonesia 2026](https://www.gibol.co/liga-1-2026): Super League Indonesia — Persija, Persib, klasemen, jadwal, hasil.
+- [IBL — Indonesia Basketball League](https://www.gibol.co/ibl): Musim 2026-27 akan menyusul.
 
 ## Key facts (NBA Playoffs 2026)
 

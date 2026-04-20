@@ -1,24 +1,98 @@
 /**
- * Formula 1 2026 adapter — Phase 1 target (v0.2.1). For v0.2.0 this is a stub
- * that only ships the route + SEO meta so the coming-soon page gets indexed
- * and shareable. Real data hooks (OpenF1, Jolpica, Polymarket) land in Phase 1.
+ * Formula 1 2026 adapter — live in v0.2.2 (F1 Phase 1A).
+ *
+ * Phase 1A scope (this ship): real dashboard at /formula-1-2026 powered by
+ * Jolpica-F1 (schedule + driver + constructor standings) behind /api/proxy/
+ * jolpica-f1. Per-GP SEO routes for each of the 23 announced rounds + the
+ * main dashboard + driver + constructor landing stubs. Status flipped
+ * 'soon' → 'live' so Home shows the LIVE badge.
+ *
+ * Phase 1B (v0.2.3, next ship): OpenF1 live session mode (positions, intervals,
+ * pit stops, telemetry), Polymarket championship odds, per-driver + per-team
+ * SEO pages with career stats. Intentionally deferred so this ship doesn't
+ * couple Jolpica downtime to OpenF1 downtime.
  */
+
+import { CALENDAR_2026, formatGPDate, SEASON, TEAMS_2026, DRIVERS_2026 } from './constants.js';
 
 const SITE = 'https://www.gibol.co';
 const DEFAULT_OG = `${SITE}/og-image.png`;
 const routeBase = '/formula-1-2026';
 
-function prerenderRoutes() {
-  return [
-    {
-      path: routeBase,
-      title: 'Formula 1 2026 · Klasemen Pembalap, Jadwal GP, Peluang Juara (Segera Hadir) | gibol.co',
-      description: 'Dashboard live Formula 1 musim 2026 — klasemen pembalap dan konstruktor, kalender 24 Grand Prix dalam WIB, mode balapan live (posisi, interval, pit stop, telemetri), dan peluang juara Polymarket. Segera hadir di gibol.co.',
-      keywords: 'formula 1 2026, f1 2026, jadwal f1 2026, klasemen f1, peluang juara f1, hasil grand prix, max verstappen, lewis hamilton, lando norris, charles leclerc, oscar piastri, f1 bahasa indonesia',
-      ogImage: DEFAULT_OG,
+// Championship-level SportsEvent schema — emitted on the main dashboard page.
+const CHAMPIONSHIP_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsEvent',
+  name: '2026 FIA Formula One World Championship',
+  description: "The 2026 Formula 1 World Championship — 23+ Grand Prix across four continents, new chassis + power unit regulations, Audi and Cadillac entering as constructors.",
+  startDate: '2026-03-06',
+  endDate: '2026-12-06',
+  eventStatus: 'https://schema.org/EventScheduled',
+  sport: 'Formula 1',
+  location: { '@type': 'Place', name: 'Worldwide' },
+  organizer: { '@type': 'SportsOrganization', name: "Fédération Internationale de l'Automobile (FIA)", url: 'https://www.fia.com' },
+  url: `${SITE}${routeBase}`,
+};
+
+// Per-GP SportsEvent schema builder. Each race = its own indexable page with
+// its own schema so search engines can surface "Japanese GP 2026 start time".
+function gpSchema(gp) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SportsEvent',
+    name: `${gp.name} 2026 · Round ${gp.round}`,
+    description: `The 2026 ${gp.name} — Round ${gp.round} of the FIA Formula One World Championship, held at ${gp.circuit}, ${gp.country}. Race date ${gp.dateISO}, main race ${gp.wibTime} WIB.`,
+    startDate: gp.dateISO,
+    endDate: gp.dateISO,
+    eventStatus: 'https://schema.org/EventScheduled',
+    sport: 'Formula 1',
+    location: {
+      '@type': 'Place',
+      name: gp.circuit,
+      address: { '@type': 'PostalAddress', addressCountry: gp.country },
     },
-  ];
+    superEvent: {
+      '@type': 'SportsEvent',
+      name: '2026 FIA Formula One World Championship',
+      url: `${SITE}${routeBase}`,
+    },
+    organizer: { '@type': 'SportsOrganization', name: "Fédération Internationale de l'Automobile (FIA)", url: 'https://www.fia.com' },
+    url: `${SITE}${routeBase}/race/${gp.slug}`,
+  };
 }
+
+function prerenderRoutes() {
+  const out = [];
+
+  // Main dashboard — live now.
+  out.push({
+    path: routeBase,
+    title: 'Formula 1 2026 · Klasemen Pembalap, Jadwal 23 GP (WIB), Hasil Live | gibol.co',
+    description: `Dashboard live F1 ${SEASON} dalam Bahasa Indonesia — klasemen pembalap + konstruktor, kalender 23 Grand Prix dengan jam start WIB, hasil balapan terbaru, podium, dan tracking juara. Dari fan F1 Indonesia untuk fan F1 Indonesia.`,
+    keywords: 'formula 1 2026, f1 2026, klasemen f1, jadwal f1 2026, hasil grand prix, peluang juara f1, max verstappen, lando norris, lewis hamilton, charles leclerc, oscar piastri, kimi antonelli, f1 bahasa indonesia, WIB f1',
+    ogImage: DEFAULT_OG,
+    jsonLd: CHAMPIONSHIP_JSONLD,
+  });
+
+  // Per-GP race pages — 23 unique indexable URLs with per-race JSON-LD.
+  for (const gp of CALENDAR_2026) {
+    out.push({
+      path: `${routeBase}/race/${gp.slug}`,
+      title: `${gp.name} 2026 · Jadwal WIB, Hasil, Klasemen Sementara (R${String(gp.round).padStart(2, '0')}) | gibol.co`,
+      description: `${gp.name} 2026 — Round ${gp.round} F1 di sirkuit ${gp.circuit}, ${gp.country}. Jadwal race hari Minggu ${formatGPDate(gp.dateISO, 'id')} pukul ${gp.wibTime} WIB${gp.sprint ? ' (weekend sprint)' : ''}. Klasemen sementara, prediksi juara, dan recap Bahasa pasca-balapan.`,
+      keywords: `${gp.name.toLowerCase()} 2026, ${gp.slug.replace(/-/g, ' ')} 2026, jadwal ${gp.name.toLowerCase()}, hasil ${gp.name.toLowerCase()} 2026, f1 round ${gp.round}, ${gp.circuit.toLowerCase()}, f1 ${gp.country.toLowerCase()}, WIB f1 ${gp.round}`,
+      ogImage: DEFAULT_OG,
+      jsonLd: gpSchema(gp),
+    });
+  }
+
+  return out;
+}
+
+// Helper so UI components don't need to re-import constants for display lookups.
+function teams() { return TEAMS_2026; }
+function drivers() { return DRIVERS_2026; }
+function calendar() { return CALENDAR_2026; }
 
 export const adapter = {
   id: 'f1',
@@ -27,8 +101,11 @@ export const adapter = {
   routeBase,
   accent: '#E10600',
   glyph: '🏎️',
-  status: 'soon',
+  status: 'live', // flipped from 'soon' in v0.2.2
   prerenderRoutes,
+  teams,
+  drivers,
+  calendar,
 };
 
 export default adapter;

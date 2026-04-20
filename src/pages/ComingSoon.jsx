@@ -6,7 +6,7 @@ import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
-export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId, seoKeywords, children }) {
+export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, glyph, features, featuresId, seoKeywords, jsonLd, children }) {
   const location = useLocation();
   const { lang } = useApp();
 
@@ -22,6 +22,7 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
         path={location.pathname}
         lang={lang}
         keywords={seoKeywords}
+        jsonLd={jsonLd}
       />
       <div className="dashboard-wrap">
         <TopBar showBackLink accent={accent} />

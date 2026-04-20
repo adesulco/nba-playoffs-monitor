@@ -90,6 +90,20 @@ function LigaPreviewBlock() {
   );
 }
 
+const LIGA1_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsEvent',
+  name: 'BRI Liga 1 · Super League Indonesia 2025-26',
+  description: 'The 2025-26 season of BRI Liga 1, Indonesia\'s top-flight football league — 18 clubs including Persija Jakarta, Persib Bandung, Arema FC, and Persebaya Surabaya. Season runs August 2025 through May 2026.',
+  startDate: '2025-08-08',
+  endDate: '2026-05-31',
+  eventStatus: 'https://schema.org/EventScheduled',
+  sport: 'Soccer',
+  location: { '@type': 'Country', name: 'Indonesia' },
+  organizer: { '@type': 'SportsOrganization', name: 'PT Liga Indonesia Baru', url: 'https://ligaindonesiabaru.com' },
+  url: 'https://www.gibol.co/liga-1-2026',
+};
+
 export default function LigaIndonesia() {
   return (
     <ComingSoon
@@ -104,6 +118,7 @@ export default function LigaIndonesia() {
       features={features}
       featuresId={featuresId}
       seoKeywords="liga 1 indonesia, super league indonesia, bri liga 1, klasemen liga 1, jadwal liga 1, top skor liga 1, persija persib, el clasico indonesia, liga 1 2025-26, sepakbola indonesia"
+      jsonLd={LIGA1_JSONLD}
     >
       <LigaPreviewBlock />
     </ComingSoon>

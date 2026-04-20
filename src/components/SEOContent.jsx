@@ -132,12 +132,24 @@ const idContent = {
       a: '"Gibol" singkatan dari "gila bola" — slang Indonesia untuk pecinta olahraga yang maniak. Kami dibangun untuk audiens Indonesia yang gila bola basket.',
     },
     {
-      q: 'Dashboard IBL kapan launching?',
-      a: 'Dashboard IBL (Liga Basket Indonesia) direncanakan rilis Oktober 2026 untuk musim 2026–27. Cek halaman IBL di gibol.co untuk update.',
+      q: 'Dashboard Formula 1 2026 kapan hadir?',
+      a: 'Dashboard F1 2026 aktif April–Mei 2026 — jadwal balap, klasemen pembalap & konstruktor, serta live timing tiap GP. Musim FIA F1 2026 mulai 6 Maret di Australia, finale Abu Dhabi 6 Desember.',
+    },
+    {
+      q: 'Dashboard Liga Inggris kapan hadir?',
+      a: 'Dashboard Liga Inggris (Premier League 2025-26) akan aktif menjelang akhir April 2026 — klasemen, hasil, top skorer. Musim berjalan Agustus 2025 – Mei 2026.',
     },
     {
       q: 'Dashboard FIFA World Cup 2026 kapan?',
       a: 'Dashboard Piala Dunia FIFA 2026 akan aktif saat kickoff 11 Juni 2026. Mencakup 48 tim, 104 pertandingan, dan 16 kota tuan rumah di USA, Meksiko, dan Kanada.',
+    },
+    {
+      q: 'Dashboard BRI Liga 1 Indonesia kapan hadir?',
+      a: 'Dashboard Liga 1 Indonesia (BRI Super League) akan menyusul untuk musim 2026 — klasemen, jadwal, hasil Persija, Persib, dan 18 klub lainnya.',
+    },
+    {
+      q: 'Dashboard IBL kapan launching?',
+      a: 'Dashboard IBL (Liga Basket Indonesia) direncanakan menyusul untuk musim 2026–27. Cek halaman IBL di gibol.co untuk update.',
     },
   ],
 };
@@ -197,12 +209,24 @@ const enContent = {
       a: '"Gibol" is short for "gila bola" — Indonesian slang for a sports-obsessed fan. gibol.co is built for Indonesian basketball fans.',
     },
     {
-      q: 'When is the IBL dashboard launching?',
-      a: 'The IBL (Indonesian Basketball League) dashboard is planned for October 2026 — the 2026–27 season. Check the IBL page on gibol.co for updates.',
+      q: 'When does the Formula 1 2026 dashboard go live?',
+      a: 'The F1 2026 dashboard ships late April 2026 — schedule, driver & constructor standings, and live timing. The FIA F1 2026 season runs March 6 (Australia) through December 6 (Abu Dhabi).',
+    },
+    {
+      q: 'When does the Premier League dashboard go live?',
+      a: 'The Premier League 2025-26 dashboard ships late April 2026 — table, fixtures, top scorers. Season runs August 2025 – May 2026.',
     },
     {
       q: 'When does the FIFA World Cup 2026 dashboard go live?',
       a: 'The World Cup 2026 dashboard activates at kickoff on June 11, 2026. Covers 48 teams, 104 matches, and 16 host cities across the USA, Mexico, and Canada.',
+    },
+    {
+      q: 'When does the BRI Liga 1 Indonesia dashboard go live?',
+      a: 'The Liga 1 Indonesia (BRI Super League) dashboard ships for the 2026 season — table, fixtures, results for Persija, Persib, and 18 other clubs.',
+    },
+    {
+      q: 'When is the IBL dashboard launching?',
+      a: 'The IBL (Indonesian Basketball League) dashboard is planned for the 2026–27 season. Check the IBL page on gibol.co for updates.',
     },
   ],
 };

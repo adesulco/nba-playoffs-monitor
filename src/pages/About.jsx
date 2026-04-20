@@ -15,8 +15,8 @@ export default function About() {
           ? 'Tentang gibol.co — dashboard olahraga live untuk fan Indonesia'
           : 'About gibol.co — live sports dashboards for Indonesian fans'}
         description={lang === 'id'
-          ? 'gibol.co dibangun untuk para penggemar bola — live score NBA, IBL, dan Piala Dunia 2026 dalam Bahasa Indonesia dengan waktu WIB.'
-          : 'gibol.co is built for sports fans — live scores for NBA, IBL, and FIFA World Cup 2026 in Bahasa Indonesia with WIB timezone.'}
+          ? 'gibol.co dibangun untuk para penggemar bola — live score NBA, Formula 1, Liga Inggris, Piala Dunia 2026, dan BRI Liga 1 Indonesia dalam Bahasa Indonesia dengan waktu WIB.'
+          : 'gibol.co is built for sports fans — live scores for NBA, Formula 1, Premier League, FIFA World Cup 2026, and BRI Liga 1 Indonesia in Bahasa Indonesia with WIB timezone.'}
         path="/about"
         lang={lang}
       />
@@ -42,8 +42,10 @@ export default function About() {
                 <ul style={{ paddingLeft: 24, lineHeight: 1.9 }}>
                   <li><strong>NBA Playoffs 2026</strong> — live score, play-by-play, win probability, shot chart, peluang juara Polymarket, watchlist pemain, bracket, dan jalan menuju juara untuk 30 tim NBA.</li>
                   <li><strong>Catatan Playoff harian</strong> — rekap hasil tiap hari dengan momen terbesar, top scorer, dan analisis singkat.</li>
-                  <li><strong>IBL — Liga Basket Indonesia</strong> (segera hadir) — dashboard khusus untuk basket lokal.</li>
+                  <li><strong>Formula 1 2026</strong> (segera hadir) — jadwal balap, klasemen pembalap &amp; konstruktor, hasil tiap GP.</li>
+                  <li><strong>Liga Inggris 2025-26</strong> (segera hadir) — klasemen, jadwal, hasil, top skorer Premier League.</li>
                   <li><strong>Piala Dunia FIFA 2026</strong> (segera hadir) — 48 tim, 104 pertandingan, 16 kota tuan rumah.</li>
+                  <li><strong>BRI Liga 1 2026 Indonesia</strong> (segera hadir) — klasemen, jadwal, hasil Super League Indonesia.</li>
                 </ul>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: '"Space Grotesk", sans-serif' }}>Sumber data</h2>
                 <p>Kami menggunakan API publik dari ESPN (skor & statistik) dan Polymarket (peluang juara). Semua sumber dicantumkan di tiap halaman. Data di-refresh setiap 10–30 detik saat laga berlangsung.</p>

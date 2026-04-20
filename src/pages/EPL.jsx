@@ -68,6 +68,20 @@ function EPLPreviewBlock() {
   );
 }
 
+const EPL_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsEvent',
+  name: 'Premier League 2025-26',
+  description: 'The 2025-26 English Premier League season — 20 clubs, 380 matches, August 2025 through May 2026. Title, European qualification, and relegation races tracked live.',
+  startDate: '2025-08-15',
+  endDate: '2026-05-24',
+  eventStatus: 'https://schema.org/EventScheduled',
+  sport: 'Soccer',
+  location: { '@type': 'Place', name: 'England & Wales' },
+  organizer: { '@type': 'SportsOrganization', name: 'The Premier League', url: 'https://www.premierleague.com' },
+  url: 'https://www.gibol.co/premier-league-2025-26',
+};
+
 export default function EPL() {
   return (
     <ComingSoon
@@ -82,6 +96,7 @@ export default function EPL() {
       features={features}
       featuresId={featuresId}
       seoKeywords="liga inggris, premier league, epl 2025-26, klasemen liga inggris, top skor epl, skor liga inggris, jadwal liga inggris, arsenal liverpool manchester city chelsea, epl bahasa indonesia"
+      jsonLd={EPL_JSONLD}
     >
       <EPLPreviewBlock />
     </ComingSoon>

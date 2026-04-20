@@ -145,6 +145,18 @@ function IBLPreviewBlock() {
   );
 }
 
+const IBL_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsEvent',
+  name: 'Indonesia Basketball League 2026-27',
+  description: 'The Indonesia Basketball League (IBL) 2026-27 season — Indonesia\'s top-tier professional basketball league featuring Pelita Jaya Bakrie Jakarta, Prawira Harum Bandung, Satria Muda Pertamina, RANS Simba Bogor, and 12+ other clubs.',
+  eventStatus: 'https://schema.org/EventScheduled',
+  sport: 'Basketball',
+  location: { '@type': 'Country', name: 'Indonesia' },
+  organizer: { '@type': 'SportsOrganization', name: 'PT Bola Basket Indonesia (IBL)', url: 'https://iblindonesia.com' },
+  url: 'https://www.gibol.co/ibl',
+};
+
 export default function IBL() {
   return (
     <ComingSoon
@@ -159,6 +171,7 @@ export default function IBL() {
       features={features}
       featuresId={featuresId}
       seoKeywords="IBL, liga basket indonesia, skor IBL, jadwal IBL, klasemen IBL, pelita jaya, prawira bandung, satria muda, rans simba, pro basket indonesia, IBL season 2025-26, liga basket indonesia 2026"
+      jsonLd={IBL_JSONLD}
     >
       <IBLPreviewBlock />
     </ComingSoon>

@@ -146,6 +146,24 @@ function FIFAPreviewBlock() {
   );
 }
 
+const FIFA_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsEvent',
+  name: '2026 FIFA World Cup',
+  description: 'The 23rd FIFA World Cup — the first with 48 teams and the first co-hosted by three nations (USA, Mexico, Canada). 104 matches across 16 host cities, opening match June 11, final July 19 at MetLife Stadium.',
+  startDate: '2026-06-11',
+  endDate: '2026-07-19',
+  eventStatus: 'https://schema.org/EventScheduled',
+  sport: 'Soccer',
+  location: [
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'Mexico' },
+    { '@type': 'Country', name: 'Canada' },
+  ],
+  organizer: { '@type': 'SportsOrganization', name: 'FIFA', url: 'https://www.fifa.com' },
+  url: 'https://www.gibol.co/fifa-world-cup-2026',
+};
+
 export default function FIFA() {
   return (
     <ComingSoon
@@ -160,6 +178,7 @@ export default function FIFA() {
       features={features}
       featuresId={featuresId}
       seoKeywords="fifa world cup 2026, piala dunia 2026, jadwal piala dunia 2026, skor piala dunia, grup piala dunia 2026, kickoff piala dunia 11 juni 2026, USA Mexico Canada world cup, FIFA 2026, world cup indonesia"
+      jsonLd={FIFA_JSONLD}
     >
       <FIFAPreviewBlock />
     </ComingSoon>
