@@ -380,6 +380,26 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.2 — EPL dashboard revamped to NBA pattern: scores-first, table
+// secondary. New EPLDayScoreboard replaces Jadwal+Hasil with a 7-day
+// swipe scoreboard (horizontal scroll-snap tabs, match cards with
+// per-match Polymarket odds + Share button per row). Live matches get
+// a red-accented border + pulsing LIVE indicator.
+//
+// New ContextStrip at the top of the page: 4-cell dashboard bar
+// (TITLE FAVORITE · TOP-4 RACE · RELEGATION CUT · GOLDEN BOOT). Mirrors
+// NBA's context strip above its scoreboard. Each cell: tiny uppercase
+// label + big tabular value + subtitle.
+//
+// Klasemen demoted to sidebar alongside Peluang juara + Top Skor —
+// the table is now secondary info, as Ade requested. Scores get the
+// prime real estate. Old Jadwal + Hasil components left in the file
+// as unused dead code (tree-shaken) in case we want to revert; next
+// ship can prune them.
+//
+// No API, hook, or route change. Only src/pages/EPL.jsx edited +
+// src/components/EPLDayScoreboard.jsx added.
+//
 // v0.6.1 — HomeV1 Following + Live grid upgrades (sprint ship).
 //
 // Following card now reads real user state instead of hardcoded seed:
@@ -772,7 +792,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.1';
+export const APP_VERSION = '0.6.2';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -7,6 +7,7 @@ import ContactBar from '../components/ContactBar.jsx';
 import Chip from '../components/Chip.jsx';
 import ShareButton from '../components/ShareButton.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
+import EPLDayScoreboard from '../components/EPLDayScoreboard.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
@@ -277,6 +278,177 @@ function Klasemen({ rows, loading, error, lang }) {
           <span><span style={{ display: 'inline-block', width: 8, height: 8, background: '#EF4444', marginRight: 3, verticalAlign: 'middle' }} />{lang === 'id' ? 'Degradasi 18–20' : 'REL 18–20'}</span>
         </div>
       )}
+    </section>
+  );
+}
+
+// ─── Context strip ──────────────────────────────────────────────────────────
+// 4-cell "dashboard at-a-glance" bar above the scoreboard. Mirrors NBA's
+// context strip (title favorite · next tip · finals tip · series lead).
+// Each cell: small uppercase label + big tabular value.
+//
+// Values:
+//   · TITLE FAVORITE   — top Polymarket champion-odds entry
+//   · TOP-4 RACE       — gap from 4th to 5th place (UCL cut-off)
+//   · RELEGATION BATTLE — gap from 17th to 18th place (drop cut-off)
+//   · GOLDEN BOOT      — current top scorer + goals
+function ContextStrip({ standings, championOdds, scorers, lang }) {
+  const titleFav = (championOdds || [])[0];
+
+  const top4Gap = useMemo(() => {
+    if (!standings || standings.length < 5) return null;
+    const fourth = standings.find((r) => r.rank === 4);
+    const fifth = standings.find((r) => r.rank === 5);
+    if (!fourth || !fifth) return null;
+    return { club: fourth.clubName, delta: fourth.points - fifth.points, fourthAccent: fourth.clubAccent };
+  }, [standings]);
+
+  const relGap = useMemo(() => {
+    if (!standings || standings.length < 18) return null;
+    const seventeenth = standings.find((r) => r.rank === 17);
+    const eighteenth = standings.find((r) => r.rank === 18);
+    if (!seventeenth || !eighteenth) return null;
+    return { club: seventeenth.clubName, delta: seventeenth.points - eighteenth.points };
+  }, [standings]);
+
+  const goldenBoot = (scorers || [])[0];
+
+  const cell = (label, valueNode, accent, sub) => (
+    <div style={{
+      padding: '12px 14px',
+      borderRight: `1px solid ${C.lineSoft}`,
+      minWidth: 0,
+    }}>
+      <div style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: 9,
+        letterSpacing: 1,
+        color: accent || C.muted,
+        fontWeight: 700,
+        marginBottom: 4,
+      }}>
+        {label}
+      </div>
+      <div style={{
+        fontFamily: 'var(--font-sans)',
+        fontSize: 18,
+        fontWeight: 700,
+        color: C.text,
+        letterSpacing: '-0.01em',
+        lineHeight: 1.15,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }}>
+        {valueNode}
+      </div>
+      {sub && (
+        <div style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9,
+          color: C.muted,
+          letterSpacing: 0.3,
+          marginTop: 4,
+        }}>
+          {sub}
+        </div>
+      )}
+    </div>
+  );
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${EPL_PURPLE}`,
+      borderRadius: 3,
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+    }}>
+      {cell(
+        lang === 'id' ? 'FAVORIT JUARA' : 'TITLE FAVORITE',
+        titleFav ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 3, height: 16, background: titleFav.club?.accent || EPL_PURPLE }} />
+            {titleFav.canonicalName || titleFav.name}
+            <span style={{ color: EPL_PURPLE, fontFamily: 'var(--font-mono)', fontSize: 16 }}>{titleFav.pct}%</span>
+          </span>
+        ) : '—',
+        EPL_PURPLE,
+        lang === 'id' ? 'Polymarket · live' : 'Polymarket · live'
+      )}
+      {cell(
+        lang === 'id' ? 'TOP-4 KETAT' : 'TOP-4 RACE',
+        top4Gap ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 3, height: 16, background: top4Gap.fourthAccent || EPL_PURPLE }} />
+            {top4Gap.club}
+            <span style={{ color: '#2563EB', fontFamily: 'var(--font-mono)', fontSize: 16 }}>
+              +{top4Gap.delta}
+            </span>
+          </span>
+        ) : '—',
+        '#2563EB',
+        lang === 'id' ? 'Selisih ke peringkat 5' : 'Gap to 5th (UCL cut)'
+      )}
+      {cell(
+        lang === 'id' ? 'ZONA DEGRADASI' : 'RELEGATION CUT',
+        relGap ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            {relGap.club}
+            <span style={{ color: '#EF4444', fontFamily: 'var(--font-mono)', fontSize: 16 }}>
+              +{relGap.delta}
+            </span>
+          </span>
+        ) : '—',
+        '#EF4444',
+        lang === 'id' ? 'Selisih 17 ke 18' : 'Gap from 17th to 18th'
+      )}
+      <div style={{
+        padding: '12px 14px',
+        minWidth: 0,
+      }}>
+        <div style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9,
+          letterSpacing: 1,
+          color: '#F59E0B',
+          fontWeight: 700,
+          marginBottom: 4,
+        }}>
+          {lang === 'id' ? 'GOLDEN BOOT' : 'GOLDEN BOOT'}
+        </div>
+        <div style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: 18,
+          fontWeight: 700,
+          color: C.text,
+          letterSpacing: '-0.01em',
+          lineHeight: 1.15,
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}>
+          {goldenBoot ? (
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ width: 3, height: 16, background: goldenBoot.team?.accent || EPL_PURPLE }} />
+              {goldenBoot.name}
+              <span style={{ color: '#F59E0B', fontFamily: 'var(--font-mono)', fontSize: 16 }}>
+                {goldenBoot.goals}
+              </span>
+            </span>
+          ) : '—'}
+        </div>
+        <div style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9,
+          color: C.muted,
+          letterSpacing: 0.3,
+          marginTop: 4,
+        }}>
+          {goldenBoot ? `${goldenBoot.team?.shortName || goldenBoot.team?.name || ''} · ESPN` : 'ESPN'}
+        </div>
+      </div>
     </section>
   );
 }
@@ -905,25 +1077,34 @@ export default function EPL() {
         </div>
 
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 14 }}>
-          {/* ── Row 1 — Live match spotlight (top focus). Hidden off-days. ── */}
+          {/* ── Row 1 — Context strip (4 dashboard-level stats).
+              Mirrors NBA's context strip above the scoreboard. ── */}
+          <ContextStrip
+            standings={rows}
+            championOdds={championOdds}
+            scorers={scorers}
+            lang={lang}
+          />
+
+          {/* ── Row 2 — Live match spotlight (when any match is live).
+              Hidden off-days. ── */}
           <LiveSpotlight live={live} oddsByMatchId={oddsByMatchId} lang={lang} />
 
-          {/* ── Row 2 — Schedule-first: Jadwal + Hasil side-by-side. NBA
-              pattern inverted: scoreboard-equivalent gets the prime real
-              estate, table compresses into the sidebar below. ── */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: 14,
-          }}>
-            <Jadwal upcoming={scheduled} oddsByMatchId={oddsByMatchId} loading={fLoading} error={fError} lang={lang} />
-            <Hasil recent={recent} loading={fLoading} error={fError} lang={lang} />
-          </div>
+          {/* ── Row 3 — Day-swipe scoreboard. NBA pattern: scoreboard is
+              the hero. Jadwal + Hasil merged here under 7-day tabs with
+              per-match Polymarket odds on every card. ── */}
+          <EPLDayScoreboard
+            upcoming={scheduled}
+            recent={recent}
+            oddsByMatchId={oddsByMatchId}
+            loading={fLoading}
+            error={fError}
+            lang={lang}
+          />
 
-          {/* ── Row 3 — Context sidebar: odds + compact klasemen +
-              top-skor side-by-side. Mirrors NBA's 3-col context grid
-              (title odds | bracket/stats | watchlist). Each card stays
-              visually compact so schedule above stays the hero. ── */}
+          {/* ── Row 4 — Stats sidebar: odds + compact klasemen +
+              top-skor side-by-side. The table is secondary — scores
+              above get the prime attention. ── */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -934,7 +1115,7 @@ export default function EPL() {
             <TopSkor scorers={scorers} loading={tLoading} error={tError} lang={lang} />
           </div>
 
-          {/* ── Row 4 — Club index (all 20 clubs, 1-click to each page) ── */}
+          {/* ── Row 5 — Club index (all 20 clubs, 1-click to each page) ── */}
           <ClubIndex lang={lang} />
         </div>
 
