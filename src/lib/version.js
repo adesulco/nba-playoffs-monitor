@@ -380,6 +380,38 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.5.3 — EPL dashboard Phase A: live spotlight + share + Fangir.
+// Pure-reuse polish — no new APIs, no schema changes, no shared-component
+// refactor (NBA untouched). Three additive wins:
+//   1. Live match spotlight — useEPLFixtures already tracks statusState
+//      ('pre'|'in'|'post'). We split upcoming[] into live[] (in-progress) +
+//      scheduled[]. New LiveSpotlight card renders at top of EPL dashboard
+//      when any match is live; disappears cleanly on off-days. Score,
+//      clock, team accents, and a prominent SHARE button per live match.
+//   2. ShareButton wired onto every fixture + result row — Jadwal,
+//      Hasil, and LiveSpotlight. Bahasa-casual share copy:
+//         Live:     "ARS 2 – 1 MCI · 67' · live-update-nya di gibol.co ⚽"
+//         Upcoming: "Arsenal vs Man City · Sab 26 Apr · 21:00 WIB · jadwal di gibol.co ⚽"
+//         Final:    "FINAL · ARS 2 – 1 MCI · recap di gibol.co ⚽"
+//      Cascading share: navigator.share → WhatsApp / X / Copy popover.
+//      Analytics events: epl_share_live / epl_share_upcoming /
+//      epl_share_final (channel breakdown auto-tagged).
+//   3. FangirBanner (live 2026 IBL Trading Cards Pack — Rp 37.500)
+//      rendered in the EPL footer. Same banner NBA already ships; zero
+//      new code for the component, just an import + mount. Partner funnel
+//      now runs off the EPL window too.
+// Bundle impact (positive): Vite extracted FangirBanner + ShareButton
+// into shared chunks because they now have multiple importers. FangirBanner
+// 10.62 KB → 2.89 KB standalone; ShareButton emerges as a 4.04 KB shared
+// chunk (previously inlined in F1 + NBA). F1Race chunk dropped 12.24 →
+// 8.31 KB in the reshuffle. EPL chunk 19.31 → 23.25 KB (+3.94 KB raw for
+// live-spotlight + share helpers + LiveSpotlight component).
+// NBA dashboard chunk: 98.49 → 98.53 KB (+40 bytes, natural Vite drift).
+// All 137 prerender routes still 200; no routing, no hook, no API
+// change. Touched only src/pages/EPL.jsx (+162 LOC).
+// Verified no shared-component source file was modified (git diff
+// --name-only returns only src/pages/EPL.jsx).
+//
 // v0.5.2 — Fangir pack-variant commercial update + v2 redesign Phase 1
 // foundation (no visible change). Two commercial + two infrastructure
 // changes in one ship:
@@ -454,7 +486,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.2';
+export const APP_VERSION = '0.5.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

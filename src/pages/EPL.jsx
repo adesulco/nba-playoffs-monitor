@@ -5,6 +5,8 @@ import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import Chip from '../components/Chip.jsx';
+import ShareButton from '../components/ShareButton.jsx';
+import FangirBanner from '../components/FangirBanner.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
@@ -14,6 +16,46 @@ import {
 } from '../lib/sports/epl/clubs.js';
 
 const EPL_PURPLE = '#37003C';
+
+// ─── Share helpers (EPL fixture share-text builders) ─────────────────────────
+// Bahasa-casual, emoji-inflected. Mirror of the NBA helpers in DayScoreboard
+// but EPL-specific (⚽, vs, statusDetail, WIB kickoff).
+
+function buildLiveShareText(m, lang) {
+  // ARS 2 – 1 MCI · 67' · live di gibol.co ⚽
+  const h = m.home?.shortName || m.home?.name || '—';
+  const a = m.away?.shortName || m.away?.name || '—';
+  const hs = m.home?.score ?? '0';
+  const as = m.away?.score ?? '0';
+  const clock = m.statusDetail ? ` · ${m.statusDetail}` : '';
+  return lang === 'id'
+    ? `${h} ${hs} – ${as} ${a}${clock} · live-update-nya di gibol.co ⚽`
+    : `${h} ${hs} – ${as} ${a}${clock} · live on gibol.co ⚽`;
+}
+
+function buildUpcomingShareText(m, lang) {
+  // ARS vs MCI · Sab 26 Apr · 21:00 WIB · jadwal di gibol.co ⚽
+  const h = m.home?.name || '—';
+  const a = m.away?.name || '—';
+  const when = formatFixtureDate(m.kickoffUtc, lang);
+  return lang === 'id'
+    ? `${h} vs ${a} · ${when} · jadwal di gibol.co ⚽`
+    : `${h} vs ${a} · ${when} · schedule on gibol.co ⚽`;
+}
+
+function buildFinalShareText(m, lang) {
+  const h = m.home?.shortName || m.home?.name || '—';
+  const a = m.away?.shortName || m.away?.name || '—';
+  return lang === 'id'
+    ? `FINAL · ${h} ${m.homeScore} – ${m.awayScore} ${a} · recap di gibol.co ⚽`
+    : `FINAL · ${h} ${m.homeScore} – ${m.awayScore} ${a} · recap on gibol.co ⚽`;
+}
+
+// Per-match share URL — dashboard with a hash-anchor fallback. Match-detail
+// pages don't exist yet, so this drives to the dashboard + club pages today.
+function matchShareUrl(m) {
+  return `https://www.gibol.co/premier-league-2025-26#${m.id || ''}`;
+}
 
 /**
  * Premier League 2025-26 dashboard — v0.4.0 Phase 1A.
@@ -205,6 +247,86 @@ function Klasemen({ rows, loading, error, lang }) {
   );
 }
 
+// ─── Live spotlight ──────────────────────────────────────────────────────────
+// Renders any currently-live matches prominently at the top. Empty if there
+// are none — the section disappears cleanly on off-days so the dashboard
+// doesn't carry dead chrome. Live matches read from upcoming[] where
+// statusState === 'in' (ESPN's in-progress state).
+function LiveSpotlight({ live, lang }) {
+  if (!live || live.length === 0) return null;
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${C.red}`,
+      borderRadius: 3,
+      padding: '14px 14px 10px',
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
+        <h2 style={{
+          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
+          margin: 0, color: C.text, letterSpacing: -0.2,
+          display: 'flex', alignItems: 'center', gap: 8,
+        }}>
+          <span className="live-dot" aria-hidden="true" />
+          {lang === 'id' ? 'Sedang main' : 'Live now'}
+        </h2>
+        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
+          {live.length} {lang === 'id' ? 'LAGA LIVE' : 'LIVE'}
+        </div>
+      </div>
+      <div style={{ display: 'grid', gap: 8 }}>
+        {live.map((m) => (
+          <div key={m.id} style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 84px 1fr auto',
+            gap: 10, alignItems: 'center',
+            padding: '10px 12px',
+            background: C.panelRow,
+            border: `1px solid ${C.lineSoft}`,
+            borderRadius: 3,
+            fontSize: 12,
+          }}>
+            <div style={{ color: C.text, textAlign: 'right', fontWeight: 600 }}>
+              <span style={{ display: 'inline-block', width: 3, height: 14, background: m.home.accent, verticalAlign: 'middle', marginRight: 6 }} />
+              {m.home.slug ? (
+                <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
+                  {m.home.name}
+                </Link>
+              ) : m.home.name}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 18, fontWeight: 700, color: C.text, lineHeight: 1 }}>
+                {m.home.score ?? '-'}–{m.away.score ?? '-'}
+              </div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: C.red, letterSpacing: 0.5, marginTop: 3 }}>
+                {m.statusDetail || (lang === 'id' ? 'LIVE' : 'LIVE')}
+              </div>
+            </div>
+            <div style={{ color: C.text, fontWeight: 600 }}>
+              {m.away.slug ? (
+                <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
+                  {m.away.name}
+                </Link>
+              ) : m.away.name}
+              <span style={{ display: 'inline-block', width: 3, height: 14, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
+            </div>
+            <ShareButton
+              url={matchShareUrl(m)}
+              title={`${m.home.name} vs ${m.away.name}`}
+              text={buildLiveShareText(m, lang)}
+              accent={EPL_PURPLE}
+              size="sm"
+              label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+              analyticsEvent="epl_share_live"
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ─── Jadwal ──────────────────────────────────────────────────────────────────
 function Jadwal({ upcoming, loading, error, lang }) {
   return (
@@ -235,7 +357,7 @@ function Jadwal({ upcoming, loading, error, lang }) {
           {upcoming.slice(0, 10).map((m) => (
             <div key={m.id} style={{
               display: 'grid',
-              gridTemplateColumns: '110px 1fr auto 1fr',
+              gridTemplateColumns: '110px 1fr auto 1fr auto',
               gap: 10, alignItems: 'center',
               padding: '8px 10px',
               background: C.panelRow,
@@ -263,6 +385,15 @@ function Jadwal({ upcoming, loading, error, lang }) {
                 ) : m.away.name}
                 <span style={{ display: 'inline-block', width: 3, height: 12, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
               </div>
+              <ShareButton
+                url={matchShareUrl(m)}
+                title={`${m.home.name} vs ${m.away.name}`}
+                text={buildUpcomingShareText(m, lang)}
+                accent={EPL_PURPLE}
+                size="sm"
+                label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+                analyticsEvent="epl_share_upcoming"
+              />
             </div>
           ))}
         </div>
@@ -304,7 +435,7 @@ function Hasil({ recent, loading, error, lang }) {
             return (
               <div key={m.id} style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 72px 1fr',
+                gridTemplateColumns: '1fr 72px 1fr auto',
                 gap: 10, alignItems: 'center',
                 padding: '8px 10px',
                 background: C.panelRow,
@@ -332,6 +463,15 @@ function Hasil({ recent, loading, error, lang }) {
                   {m.away.slug ? <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>{m.away.name}</Link> : m.away.name}
                   <span style={{ display: 'inline-block', width: 3, height: 12, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
                 </div>
+                <ShareButton
+                  url={matchShareUrl(m)}
+                  title={`${m.home.name} vs ${m.away.name}`}
+                  text={buildFinalShareText(m, lang)}
+                  accent={EPL_PURPLE}
+                  size="sm"
+                  label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+                  analyticsEvent="epl_share_final"
+                />
               </div>
             );
           })}
@@ -479,6 +619,19 @@ export default function EPL() {
   const { upcoming, recent, loading: fLoading, error: fError } = useEPLFixtures();
   const { scorers, loading: tLoading, error: tError } = useEPLScorers({ limit: 10 });
 
+  // Split upcoming into currently-live (statusState === 'in') and scheduled.
+  // Live matches get a prominent spotlight at the top; Jadwal only shows
+  // unplayed fixtures to avoid duplicating a currently-live match in two places.
+  const { live, scheduled } = useMemo(() => {
+    const l = [];
+    const s = [];
+    for (const m of upcoming) {
+      if (m.statusState === 'in') l.push(m);
+      else s.push(m);
+    }
+    return { live: l, scheduled: s };
+  }, [upcoming]);
+
   const leaders = useMemo(() => {
     const top = rows.slice(0, 3);
     const btm = rows.slice(-3);
@@ -543,6 +696,9 @@ export default function EPL() {
         </div>
 
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 14 }}>
+          {/* Live now — only renders when any match is in-progress. */}
+          <LiveSpotlight live={live} lang={lang} />
+
           <Klasemen rows={rows} loading={sLoading} error={sError} lang={lang} />
 
           <div style={{
@@ -550,7 +706,7 @@ export default function EPL() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: 14,
           }}>
-            <Jadwal upcoming={upcoming} loading={fLoading} error={fError} lang={lang} />
+            <Jadwal upcoming={scheduled} loading={fLoading} error={fError} lang={lang} />
             <Hasil recent={recent} loading={fLoading} error={fError} lang={lang} />
           </div>
 
@@ -558,6 +714,9 @@ export default function EPL() {
 
           <ClubIndex lang={lang} />
         </div>
+
+        {/* Partner slot — live IBL Trading Cards pack from Fangir CDN. */}
+        <FangirBanner />
 
         <Disclaimer lang={lang} />
 
