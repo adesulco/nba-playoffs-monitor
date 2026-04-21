@@ -30,7 +30,10 @@ import { CLUBS_BY_ESPN_ID } from '../lib/sports/epl/clubs.js';
  * for far-future fixtures or low-liquidity matches).
  */
 
-const POLY_ENDPOINT = 'https://gamma-api.polymarket.com/events?tag_slug=epl&closed=false&limit=100';
+// Edge-cached proxy via api/proxy.js → gamma-api.polymarket.com.
+// Direct browser fetches fail because Polymarket's Gamma API sends no
+// CORS headers; the proxy adds them + a 20s s-maxage cache.
+const POLY_ENDPOINT = '/api/proxy/polymarket-gamma/events?tag_slug=epl&closed=false&limit=100';
 
 // Slug variants we skip — we only care about the root 3-way (home/draw/away)
 // market, not derivative market types.

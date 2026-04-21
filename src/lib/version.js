@@ -380,6 +380,53 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.5.7 — Polymarket CORS fix (NBA odds revived + EPL odds now live).
+//
+// ROOT CAUSE: browser review of v0.5.6 revealed Peluang Juara + per-match
+// odds chips were invisible because every direct fetch to
+// gamma-api.polymarket.com throws TypeError: Failed to fetch — the Gamma
+// API sends no Access-Control-Allow-Origin header, so browsers block
+// the response from being readable. OPTIONS preflight returns 405.
+// This is a hidden pre-existing bug: NBA's fetchChampionOdds +
+// fetchMvpOdds + fetchPriceHistory have been silently failing since
+// they were written, and the NBA dashboard has been rendering
+// FALLBACK_CHAMPION from constants.js (hardcoded stale snapshot)
+// for every user, every page load, forever.
+//
+// FIX: route all Polymarket calls through our existing edge-cached
+// proxy api/proxy.js which already had polymarket-gamma + polymarket-
+// clob providers registered but the hooks never used them. Three one-
+// line swaps:
+//   - src/lib/api.js POLY_BASE: https://gamma-api.polymarket.com
+//     → /api/proxy/polymarket-gamma
+//   - src/lib/api.js POLY_CLOB_BASE (new): /api/proxy/polymarket-clob
+//   - src/hooks/useEPLMatchOdds.js POLY_ENDPOINT: direct → /api/proxy/
+//     polymarket-gamma/events?tag_slug=epl...
+//
+// IMPACT: three user-visible fixes:
+//   1. NBA title-odds column goes from stale hardcoded fallback to
+//      LIVE every 30s (OKC 48.5% · SAS 14.8% · BOS 13.8% · DEN 9.5% ·
+//      CLE 5.1% as of 2026-04-21). The price-history sparklines also
+//      fill in (fetchPriceHistory was also direct + broken).
+//   2. EPL Peluang juara section now renders with Man City 58% /
+//      Arsenal 43% instead of the empty-array-hides-section state.
+//   3. EPL per-match odds chips (HOME · DRAW · AWAY) now appear on
+//      every fixture where Polymarket has a market (~15 fixtures over
+//      the 14-day window).
+//
+// Proxy was already there; the hooks just weren't using it. Edge
+// cache s-maxage=20s means even 100 concurrent viewers cost 1 upstream
+// request per 20s window — way safer than direct hits. Verified via
+// curl on live prod: both slugs return correct JSON with 200 status.
+//
+// NO NBA STRUCTURAL CHANGE. fetchChampionOdds() body is byte-identical
+// except for the base URL. All existing callers keep working — they just
+// start getting real data for the first time.
+//
+// Files touched:
+//   M src/lib/api.js                    (POLY_BASE url + new POLY_CLOB_BASE)
+//   M src/hooks/useEPLMatchOdds.js      (POLY_ENDPOINT url)
+//
 // v0.5.6 — EPL per-match Polymarket odds + schedule-first layout revamp.
 // Phase B, ship 2 of 3.
 //
@@ -571,7 +618,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.6';
+export const APP_VERSION = '0.5.7';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

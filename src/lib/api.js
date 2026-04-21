@@ -1,6 +1,14 @@
 import { TEAM_META } from './constants.js';
 
-const POLY_BASE = 'https://gamma-api.polymarket.com';
+// Polymarket is routed through our edge-cached proxy because Gamma API does
+// not send CORS headers — direct browser fetches silently fail. Pre-v0.5.6
+// the NBA hooks hit gamma-api.polymarket.com directly and the fetches
+// rejected with 'Failed to fetch' in the browser; champion odds quietly
+// fell through to FALLBACK_CHAMPION in constants.js. Proxy path verified
+// 2026-04-21: /api/proxy/polymarket-gamma + /api/proxy/polymarket-clob
+// both return upstream payload with appropriate CORS + cache headers.
+const POLY_BASE = '/api/proxy/polymarket-gamma';
+const POLY_CLOB_BASE = '/api/proxy/polymarket-clob';
 const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba';
 
 /**
@@ -158,7 +166,7 @@ export async function fetchPriceHistory(tokenId, interval = '1d', fidelity = 60)
   if (!tokenId) return [];
   try {
     const res = await fetch(
-      `https://clob.polymarket.com/prices-history?market=${tokenId}&interval=${interval}&fidelity=${fidelity}`
+      `${POLY_CLOB_BASE}/prices-history?market=${tokenId}&interval=${interval}&fidelity=${fidelity}`
     );
     if (!res.ok) return [];
     const data = await res.json();
