@@ -6,6 +6,7 @@ import { VERSION_LABEL } from '../lib/version.js';
 import { usePlayoffData } from '../hooks/usePlayoffData.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
 import { TEAM_META } from '../lib/constants.js';
+import { TEAMS_BY_ID as F1_TEAMS_BY_ID } from '../lib/sports/f1/constants.js';
 import V2TopBar from '../components/v2/TopBar.jsx';
 import {
   Board,
@@ -176,12 +177,70 @@ function HeroGameCard({ game }) {
   );
 }
 
-function LiveGridCard({ games, lang }) {
-  const live = games?.filter((g) => g.statusState === 'in').slice(0, 6) || [];
+// Normalize a live match (NBA or EPL or other) into a single shape
+// the LiveGridCard can render against.
+function normalizeNbaLive(g) {
+  return {
+    key: `nba-${g.id}`,
+    sport: 'NBA',
+    sportLabel: 'NBA',
+    homeName: TEAM_META[g.home?.abbr]?.name || g.home?.abbr || '—',
+    awayName: TEAM_META[g.away?.abbr]?.name || g.away?.abbr || '—',
+    homeShort: g.home?.abbr || '—',
+    awayShort: g.away?.abbr || '—',
+    homeColor: teamColor(g.home?.abbr, '#0E2240'),
+    awayColor: teamColor(g.away?.abbr, '#C8102E'),
+    homeScore: g.home?.score,
+    awayScore: g.away?.score,
+    status: g.status,
+    href: `/nba-playoff-2026?game=${g.id}`,
+  };
+}
+
+function normalizeEplLive(m) {
+  return {
+    key: `epl-${m.id}`,
+    sport: 'Football',
+    sportLabel: 'EPL',
+    homeName: m.home?.name || m.home?.shortName || '—',
+    awayName: m.away?.name || m.away?.shortName || '—',
+    homeShort: m.home?.shortName || '—',
+    awayShort: m.away?.shortName || '—',
+    homeColor: m.home?.accent || '#37003C',
+    awayColor: m.away?.accent || '#37003C',
+    homeScore: m.home?.score ?? '-',
+    awayScore: m.away?.score ?? '-',
+    status: m.statusDetail || 'LIVE',
+    href: `/premier-league-2025-26`,
+  };
+}
+
+function LiveGridCard({ nbaGames, eplUpcoming, lang }) {
+  const live = useMemo(() => {
+    const rows = [];
+    // NBA live
+    for (const g of nbaGames || []) {
+      if (g.statusState === 'in') rows.push(normalizeNbaLive(g));
+    }
+    // EPL live (useEPLFixtures puts live matches in `upcoming` with statusState==='in')
+    for (const m of eplUpcoming || []) {
+      if (m.statusState === 'in') rows.push(normalizeEplLive(m));
+    }
+    return rows.slice(0, 6);
+  }, [nbaGames, eplUpcoming]);
+
   return (
     <Card>
       <CardHead
         title={`${(lang === 'id' ? 'Live sekarang' : 'Live now')} · ${live.length}`}
+        right={
+          <span
+            className="mono"
+            style={{ fontSize: 9, color: 'var(--ink-3)', letterSpacing: '0.1em' }}
+          >
+            NBA · EPL
+          </span>
+        }
       />
       {live.length === 0 ? (
         <div style={{ padding: 20 }}>
@@ -194,15 +253,14 @@ function LiveGridCard({ games, lang }) {
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
           {live.map((m, i) => {
-            const homeColor = teamColor(m.home?.abbr, '#0E2240');
-            const awayColor = teamColor(m.away?.abbr, '#C8102E');
+            const isLastRow = i >= live.length - 2 - (live.length % 2);
             return (
               <Link
-                key={m.id}
-                to={`/nba-playoff-2026?game=${m.id}`}
+                key={m.key}
+                to={m.href}
                 style={{
                   padding: 10,
-                  borderBottom: i < Math.min(live.length, 6) - 2 ? '1px solid var(--line-soft)' : 0,
+                  borderBottom: isLastRow ? 0 : '1px solid var(--line-soft)',
                   borderRight: i % 2 === 0 ? '1px solid var(--line-soft)' : 0,
                   textDecoration: 'none',
                   color: 'inherit',
@@ -211,22 +269,45 @@ function LiveGridCard({ games, lang }) {
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                    <Icon name="NBA" size={11} color="var(--ink-3)" />
-                    <span className="mono" style={{ fontSize: 9, color: 'var(--ink-3)' }}>NBA</span>
+                    <Icon name={m.sport} size={11} color="var(--ink-3)" />
+                    <span className="mono" style={{ fontSize: 9, color: 'var(--ink-3)' }}>{m.sportLabel}</span>
                     <Pill variant="live" size="sm">
                       <LiveDot />
                       {m.status}
                     </Pill>
                   </span>
                 </div>
-                <Row abbr={m.home?.abbr} color={homeColor} score={m.home?.score} />
-                <Row abbr={m.away?.abbr} color={awayColor} score={m.away?.score} />
+                <RowLive abbr={m.homeShort} name={m.homeName} color={m.homeColor} score={m.homeScore} />
+                <RowLive abbr={m.awayShort} name={m.awayName} color={m.awayColor} score={m.awayScore} />
               </Link>
             );
           })}
         </div>
       )}
     </Card>
+  );
+}
+
+function RowLive({ abbr, name, color, score }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 3 }}>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
+        <Crest short={abbr} color={color} size={16} />
+        <span
+          style={{
+            font: '600 12px "Inter Tight"',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {name}
+        </span>
+      </span>
+      <span className="tab mono" style={{ fontWeight: 800, fontSize: 13 }}>
+        {score ?? '—'}
+      </span>
+    </div>
   );
 }
 
@@ -244,16 +325,63 @@ function Row({ abbr, color, score }) {
   );
 }
 
-function FollowingCard({ lang }) {
-  // Phase 3.1 will wire TeamPicker + ConstructorPicker state here.
-  // For Phase 3.0 we seed with the NBA title favorites from Polymarket +
-  // EPL top-2 so the card isn't empty on first load.
-  const items = [
-    { t: 'Thunder', c: '#007AC1', s: 'NBA · OKC', path: '/nba-playoff-2026/oklahoma-city-thunder' },
-    { t: 'Celtics', c: '#007A33', s: 'NBA · BOS', path: '/nba-playoff-2026/boston-celtics' },
-    { t: 'Arsenal', c: '#EF0107', s: 'EPL',        path: '/premier-league-2025-26/club/arsenal' },
-    { t: 'Man City', c: '#6CADDF', s: 'EPL',       path: '/premier-league-2025-26/club/manchester-city' },
-  ];
+// Slugify an NBA team name so it matches the TeamPage route slug:
+// "Oklahoma City Thunder" → "oklahoma-city-thunder"
+function slugifyTeamName(name) {
+  return (name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+function FollowingCard({ lang, selectedConstructor }) {
+  // Pulls real user-selected favorites from localStorage + AppContext.
+  //   - NBA: localStorage['gibol:favTeam'] is written by NBADashboard's
+  //     TeamPicker. Value is the full team name (e.g. "Boston Celtics").
+  //   - F1:  AppContext.selectedConstructor is the constructor id
+  //     (e.g. 'mclaren'). Resolved via F1_TEAMS_BY_ID.
+  //   - EPL: no picker yet; show a hand-picked editorial default pair
+  //     (current title-race leaders) until we wire a club picker.
+  const items = useMemo(() => {
+    const out = [];
+
+    // NBA favorite from TeamPicker
+    try {
+      const nbaFav = localStorage.getItem('gibol:favTeam');
+      if (nbaFav && TEAM_META[nbaFav]) {
+        out.push({
+          t: nbaFav.split(' ').slice(-1)[0] || nbaFav,
+          c: TEAM_META[nbaFav].color || '#3B82F6',
+          s: `NBA · ${TEAM_META[nbaFav].abbr || ''}`,
+          path: `/nba-playoff-2026/${slugifyTeamName(nbaFav)}`,
+        });
+      }
+    } catch (_) { /* private mode */ }
+
+    // F1 constructor from AppContext
+    if (selectedConstructor) {
+      const team = F1_TEAMS_BY_ID[selectedConstructor];
+      if (team) {
+        out.push({
+          t: team.short || team.name,
+          c: team.color || '#E10600',
+          s: 'F1 · KONSTRUKTOR',
+          path: `/formula-1-2026/team/${team.slug}`,
+        });
+      }
+    }
+
+    // Fill with editorial defaults until the list reaches 4 rows
+    const seed = [
+      { t: 'Thunder',  c: '#007AC1', s: 'NBA · OKC', path: '/nba-playoff-2026/oklahoma-city-thunder' },
+      { t: 'Celtics',  c: '#007A33', s: 'NBA · BOS', path: '/nba-playoff-2026/boston-celtics' },
+      { t: 'Arsenal',  c: '#EF0107', s: 'EPL',       path: '/premier-league-2025-26/club/arsenal' },
+      { t: 'Man City', c: '#6CADDF', s: 'EPL',       path: '/premier-league-2025-26/club/manchester-city' },
+    ];
+    for (const s of seed) {
+      if (out.length >= 4) break;
+      if (!out.find((x) => x.path === s.path)) out.push(s);
+    }
+    return out.slice(0, 4);
+  }, [selectedConstructor]);
+
   return (
     <Card>
       <CardHead
@@ -382,7 +510,7 @@ function FansReactingCard({ lang }) {
 }
 
 export default function HomeV1() {
-  const { lang } = useApp();
+  const { lang, selectedConstructor } = useApp();
   const { games } = usePlayoffData(30000);
   const { upcoming: eplUpcoming } = useEPLFixtures();
 
@@ -401,14 +529,14 @@ export default function HomeV1() {
       <div style={{ padding: 14, display: 'grid', gridTemplateColumns: '200px 1fr 260px', gap: 12 }}>
         {/* Left rail */}
         <aside style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <FollowingCard lang={lang} />
+          <FollowingCard lang={lang} selectedConstructor={selectedConstructor} />
           <UpcomingCard fixtures={eplUpcoming} lang={lang} />
         </aside>
 
         {/* Center */}
         <main style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
           {hero && <HeroGameCard game={hero} />}
-          <LiveGridCard games={games} lang={lang} />
+          <LiveGridCard nbaGames={games} eplUpcoming={eplUpcoming} lang={lang} />
         </main>
 
         {/* Right rail */}

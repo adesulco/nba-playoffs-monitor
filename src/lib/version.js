@@ -380,6 +380,28 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.1 — HomeV1 Following + Live grid upgrades (sprint ship).
+//
+// Following card now reads real user state instead of hardcoded seed:
+//   - NBA favorite from localStorage['gibol:favTeam'] (written by
+//     NBADashboard TeamPicker). Links through to the team's SEO page.
+//   - F1 constructor from AppContext.selectedConstructor. Links to the
+//     per-constructor page.
+// Fills remaining slots with editorial defaults (Thunder, Celtics,
+// Arsenal, Man City) up to a max of 4 rows. Later ship lets user
+// re-order + add explicit follows.
+//
+// Live Now grid expanded from NBA-only to multi-sport. useEPLFixtures
+// already carries `statusState` per match; we now surface EPL matches
+// whose statusState === 'in' in the same grid as NBA live games. Each
+// row renders the sport icon + sport tag + LIVE pill + team crests +
+// scores. Deep-link targets: NBA → /nba-playoff-2026?game=..., EPL →
+// /premier-league-2025-26.
+//
+// Backwards-compat: the old LiveGridCard API (`games` prop) is replaced
+// with `nbaGames` + `eplUpcoming` for explicit multi-sport wiring. Only
+// HomeV1 consumes this component so no external callers break.
+//
 // v0.6.0 — v2 flip: HomeV1 becomes the default `/` route (minor
 // milestone — this is the first user-visible slice of the v2 redesign).
 // Flipped `UI.v2` fallback in src/lib/flags.js from false → true so the
@@ -750,7 +772,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.0';
+export const APP_VERSION = '0.6.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
