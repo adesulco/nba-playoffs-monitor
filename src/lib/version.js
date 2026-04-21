@@ -380,6 +380,33 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.3 — HomeV1 rolled back + gateway Home polished. Ade flagged
+// that HomeV1 felt disconnected from sport dashboards (which still
+// use the v1 TopBar without search/theme), creating a visible seam
+// when navigating from Home → NBA/EPL/F1/Tennis. Until all sport
+// dashboards migrate to V2TopBar, the gateway Home is the better
+// default.
+//
+// Changes:
+//   - src/lib/flags.js UI.v2 fallback: true → false. HomeV1 code
+//     stays in tree; route swap just stops flipping to it.
+//   - src/pages/Home.jsx wires usePlayoffData + useEPLChampionOdds
+//     to compute a live-data teaser per card. Passed to <Card> as
+//     a new `liveTeaser` prop that renders a small mono chip in
+//     accent color next to the LIVE pill.
+//     NBA teaser:  "● 2 LIVE · OKC 48%" (live game count + champion)
+//     EPL teaser:  "MANCHESTER 58%" (Polymarket title-race leader)
+//     F1/Tennis/WC: no teaser for now; will come when per-sport
+//     hooks surface a headline stat.
+//   - src/components/Card.jsx Featured + Secondary accept new
+//     liveTeaser prop. Renders a ${accent}18 pill next to the LIVE
+//     chip on featured; top-right of card on secondaries. Minor
+//     spacing refinements (padding 12→14, gap 6→7, radius 4→6,
+//     blurb line-height 1.4→1.45/1.5) for smoother feel.
+//
+// No new API, no hook refactor, no route change. Rollback from the
+// flip lives in flags.js one-liner.
+//
 // v0.6.2 — EPL dashboard revamped to NBA pattern: scores-first, table
 // secondary. New EPLDayScoreboard replaces Jadwal+Hasil with a 7-day
 // swipe scoreboard (horizontal scroll-snap tabs, match cards with
@@ -792,7 +819,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.2';
+export const APP_VERSION = '0.6.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

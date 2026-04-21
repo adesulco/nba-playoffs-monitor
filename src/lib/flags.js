@@ -72,10 +72,12 @@ export function isVisible(sportId) {
 //   VITE_FLAG_WC2026_TEASER=1      → WC2026 teaser page (no email capture)
 //   VITE_FLAG_LIGA1_TEASER=1       → Liga 1 teaser page (no email capture)
 export const UI = {
-  // v0.6.0 — DEFAULT FLIPPED TO TRUE. HomeV1 is now the user-facing root.
-  // Emergency rollback: set VITE_FLAG_UI_V2=0 in Vercel production env,
-  // or change this fallback back to `false` and redeploy.
-  v2:            envFlag('VITE_FLAG_UI_V2', true),
+  // v0.6.3 — rolled back to FALSE. HomeV1 felt disconnected from the
+  // sport dashboards (which still use v1 TopBar without search/theme),
+  // creating a seam users noticed. Falling back to the gateway Home
+  // while we finish migrating all sport dashboards to V2TopBar first.
+  // Re-enable with VITE_FLAG_UI_V2=1 when the chrome is consistent.
+  v2:            envFlag('VITE_FLAG_UI_V2', false),
   cmdCenter:     envFlag('VITE_FLAG_CMD_CENTER', false),
   terminalHome:  envFlag('VITE_FLAG_TERMINAL_HOME', false),
   pickem:        envFlag('VITE_FLAG_PICKEM', false),

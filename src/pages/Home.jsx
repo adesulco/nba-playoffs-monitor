@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import TopBar from '../components/TopBar.jsx';
@@ -8,6 +8,8 @@ import Card from '../components/Card.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
 import { VISIBLE } from '../lib/flags.js';
+import { usePlayoffData } from '../hooks/usePlayoffData.js';
+import { useEPLChampionOdds } from '../hooks/useEPLChampionOdds.js';
 
 // Multi-sport build plan §1 — five-card layout. NBA is the featured live
 // dashboard; F1, EPL, FIFA WC, Liga 1 (Super League Indonesia) are coming-soon
@@ -110,6 +112,37 @@ const DASHBOARDS = [
 export default function Home() {
   const { lang } = useApp();
 
+  // v0.6.3 — live data teasers. Pulls the current title-odds leader +
+  // live-game count into small mono chips on the NBA + EPL cards so the
+  // landing page isn't just static marketing copy. Data comes from the
+  // same hooks the per-sport dashboards use — no new API calls.
+  const { games, champion } = usePlayoffData(30000);
+  const { odds: eplChampionOdds } = useEPLChampionOdds();
+
+  const liveTeaserById = useMemo(() => {
+    const map = {};
+
+    // NBA: live game count + current champion favorite
+    const liveNba = (games || []).filter((g) => g.statusState === 'in').length;
+    const champ = champion?.odds?.[0];
+    const nbaBits = [];
+    if (liveNba > 0) nbaBits.push(`● ${liveNba} LIVE`);
+    if (champ?.name && champ?.pct) {
+      const short = (champ.name.split(' ').pop() || champ.name).toUpperCase();
+      nbaBits.push(`${short} ${champ.pct}%`);
+    }
+    if (nbaBits.length > 0) map.nba = nbaBits.join(' · ');
+
+    // EPL: current title-race leader from Polymarket
+    const eplTop = (eplChampionOdds || [])[0];
+    if (eplTop?.pct && (eplTop.canonicalName || eplTop.name)) {
+      const eplShort = ((eplTop.canonicalName || eplTop.name).split(' ')[0] || '').toUpperCase();
+      map.epl = `${eplShort} ${eplTop.pct}%`;
+    }
+
+    return map;
+  }, [games, champion, eplChampionOdds]);
+
   // Flag-filter before render so we can kill a misbehaving card in prod
   // without a redeploy. Routes themselves still work via direct URL.
   const visibleDashboards = DASHBOARDS.filter((d) => VISIBLE[d.id] !== false);
@@ -142,12 +175,12 @@ export default function Home() {
         }}>
           {featured && (
             <div style={{ gridColumn: '1 / -1', minWidth: 0 }}>
-              <Card d={featured} lang={lang} variant="featured" />
+              <Card d={featured} lang={lang} variant="featured" liveTeaser={liveTeaserById[featured.id]} />
             </div>
           )}
           {secondaries.map((d) => (
             <div key={d.id} style={{ minWidth: 0 }}>
-              <Card d={d} lang={lang} variant="secondary" />
+              <Card d={d} lang={lang} variant="secondary" liveTeaser={liveTeaserById[d.id]} />
             </div>
           ))}
         </div>

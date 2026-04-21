@@ -37,30 +37,30 @@ import { LIVE } from '../lib/flags.js';
  * without a redeploy, matching §2.3.
  */
 
-function Featured({ d, isLive, title, blurb, cta }) {
+function Featured({ d, isLive, title, blurb, cta, liveTeaser }) {
   return (
     <div
       className="home-card-live home-featured gibol-card gibol-card-featured"
       style={{
-        padding: '12px 16px',
+        padding: '14px 18px',
         background: `linear-gradient(135deg, ${d.accent}28 0%, ${C.panelRow} 70%)`,
         border: `1px solid ${d.accent}`,
         borderLeft: `4px solid ${d.accent}`,
-        borderRadius: 4,
+        borderRadius: 6,
         display: 'grid',
         gridTemplateColumns: 'auto 1fr auto',
-        gap: 14,
+        gap: 16,
         alignItems: 'center',
-        transition: 'transform var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard)',
+        transition: 'transform var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard)',
         cursor: 'pointer',
-        boxShadow: `0 4px 18px -12px ${d.accent}`,
+        boxShadow: `0 4px 24px -14px ${d.accent}`,
         willChange: 'transform',
       }}
     >
       <SportIcon id={d.icon} size={52} />
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
           <Chip
             variant={isLive ? 'live' : 'soon'}
             sportId={d.icon}
@@ -68,6 +68,22 @@ function Featured({ d, isLive, title, blurb, cta }) {
             label={d.tag}
           />
           <span style={{ fontSize: 9, color: C.dim, letterSpacing: 1, fontWeight: 500 }}>{d.league}</span>
+          {liveTeaser && (
+            <span
+              style={{
+                fontSize: 9,
+                color: d.accent,
+                letterSpacing: 0.5,
+                fontWeight: 700,
+                fontFamily: 'var(--font-mono)',
+                padding: '2px 6px',
+                background: `${d.accent}18`,
+                borderRadius: 2,
+              }}
+            >
+              {liveTeaser}
+            </span>
+          )}
         </div>
         <div style={{
           fontFamily: 'var(--font-sans)',
@@ -77,7 +93,7 @@ function Featured({ d, isLive, title, blurb, cta }) {
         }}>
           {title}
         </div>
-        <div style={{ fontSize: 10.5, color: C.dim, lineHeight: 1.4, maxWidth: 680 }}>
+        <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 680 }}>
           {blurb}
         </div>
       </div>
@@ -94,32 +110,52 @@ function Featured({ d, isLive, title, blurb, cta }) {
   );
 }
 
-function Secondary({ d, isLive, title, blurb, cta }) {
+function Secondary({ d, isLive, title, blurb, cta, liveTeaser }) {
   return (
     <div
       className={`${isLive ? 'home-card-live' : 'home-card-soon'} home-secondary gibol-card gibol-card-secondary`}
       style={{
-        padding: '12px 14px',
+        padding: '14px 16px',
         background: C.panelRow,
-        border: `1px solid ${isLive ? d.accent : C.line}`,
+        border: `1px solid ${isLive ? `${d.accent}66` : C.line}`,
         borderLeft: `3px solid ${d.accent}`,
-        borderRadius: 4,
-        display: 'flex', flexDirection: 'column', gap: 6,
-        minHeight: 120, height: '100%',
+        borderRadius: 6,
+        display: 'flex', flexDirection: 'column', gap: 7,
+        minHeight: 132, height: '100%',
         transition: 'transform var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard)',
         cursor: 'pointer',
         opacity: isLive ? 1 : 0.88,
         willChange: 'transform',
+        position: 'relative',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <SportIcon id={d.icon} size={30} />
-        <Chip
-          variant={isLive ? 'live' : 'soon'}
-          sportId={d.icon}
-          accent={d.accent}
-          label={d.tag}
-        />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'space-between' }}>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <SportIcon id={d.icon} size={30} />
+          <Chip
+            variant={isLive ? 'live' : 'soon'}
+            sportId={d.icon}
+            accent={d.accent}
+            label={d.tag}
+          />
+        </span>
+        {liveTeaser && (
+          <span
+            style={{
+              fontSize: 9,
+              color: d.accent,
+              letterSpacing: 0.3,
+              fontWeight: 700,
+              fontFamily: 'var(--font-mono)',
+              padding: '2px 6px',
+              background: `${d.accent}18`,
+              borderRadius: 2,
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {liveTeaser}
+          </span>
+        )}
       </div>
       <div style={{
         fontFamily: 'var(--font-sans)',
@@ -129,7 +165,7 @@ function Secondary({ d, isLive, title, blurb, cta }) {
       }}>
         {title}
       </div>
-      <div style={{ fontSize: 10, color: C.dim, lineHeight: 1.4, flex: 1 }}>
+      <div style={{ fontSize: 10.5, color: C.dim, lineHeight: 1.45, flex: 1 }}>
         {blurb}
       </div>
       <div style={{
@@ -146,7 +182,7 @@ function Secondary({ d, isLive, title, blurb, cta }) {
   );
 }
 
-export default function Card({ d, lang, variant }) {
+export default function Card({ d, lang, variant, liveTeaser }) {
   const isLive = d.status === 'live' && LIVE[d.id] !== false;
   const resolvedVariant = variant || (d.featured ? 'featured' : 'secondary');
   const title = lang === 'id' ? d.titleId : d.title;
@@ -154,8 +190,8 @@ export default function Card({ d, lang, variant }) {
   const cta = lang === 'id' ? d.ctaId : d.cta;
 
   const body = resolvedVariant === 'featured'
-    ? <Featured d={d} isLive={isLive} title={title} blurb={blurb} cta={cta} />
-    : <Secondary d={d} isLive={isLive} title={title} blurb={blurb} cta={cta} />;
+    ? <Featured d={d} isLive={isLive} title={title} blurb={blurb} cta={cta} liveTeaser={liveTeaser} />
+    : <Secondary d={d} isLive={isLive} title={title} blurb={blurb} cta={cta} liveTeaser={liveTeaser} />;
 
   // Whole card is a single Link — SEO crawlers and keyboard tab-through both
   // hit one anchor per sport. Coming-soon routes resolve to a real page
