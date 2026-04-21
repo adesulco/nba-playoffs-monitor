@@ -380,6 +380,15 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.5.4 — EPL X/Twitter handle data. Pure data addition, zero code path
+// touched. Adds a `handle` field to every entry in src/lib/sports/epl/
+// clubs.js (20 clubs). Parallel to the NBA TEAM_META.handle pattern in
+// src/lib/constants.js. Ready for per-club "Key Accounts" panels to
+// consume via CLUBS_BY_SLUG[slug].handle — no component wiring yet; the
+// data just sits there for the next ship.
+// Handles verified against official club X profiles 2026-04-21.
+// No routing, hook, data-fetch, UI, or behavioral change.
+//
 // v0.5.3 — EPL dashboard Phase A: live spotlight + share + Fangir.
 // Pure-reuse polish — no new APIs, no schema changes, no shared-component
 // refactor (NBA untouched). Three additive wins:
@@ -486,7 +495,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.3';
+export const APP_VERSION = '0.5.4';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
