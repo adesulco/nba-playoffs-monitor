@@ -380,6 +380,41 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.5.5 — EPL Polymarket champion odds. Phase B, ship 1 of 3.
+// Adds a "Peluang juara" (Title odds) section to the EPL dashboard
+// showing live Polymarket 2025-26 Premier League champion odds.
+//
+// Zero-risk refactor approach: existing fetchChampionOdds() (NBA)
+// left untouched to guarantee no NBA regression. A NEW
+// fetchPolymarketEventOdds(slug, { validateName }) function added
+// alongside it — sport-agnostic, accepts any Polymarket event slug
+// and an optional name filter. NBA's hot path is byte-identical.
+//
+// Files:
+//   - src/lib/api.js          — add fetchPolymarketEventOdds() (+60 LOC)
+//   - src/hooks/useEPLChampion Odds.js — new hook (+109 LOC), polls 60s,
+//     aliases Polymarket shortnames (Man City / Nottm Forest / etc.) to
+//     our canonical CLUBS_BY_NAME keys, joins with club metadata
+//     (slug, accent, handle) so UI can link through to club pages and
+//     tint with the right brand color.
+//   - src/pages/EPL.jsx        — new PeluangJuara section (+108 LOC),
+//     renders top 6 clubs with accent-tinted bar, % mono 13px, and
+//     delta-vs-last-poll chip. Renders nothing when odds array is empty
+//     (error state, off-market, etc.) — zero dead chrome.
+//
+// Polymarket event: 'english-premier-league-winner' (active, $4.2M
+// liquidity, $230K 24hr volume, ends 2026-05-27). Per 2026-04-21:
+// Man City 58%, Arsenal 43%, everyone else <1%.
+//
+// Pre-refactor NBA Polymarket baseline saved + re-verified post-refactor:
+// fetchPolymarketEventOdds('2026-nba-champion') returns the same top-5
+// teams at the same percentages as the baseline (OKC 49%, SAS 15%,
+// BOS 14%, DEN 9%, CLE 5%). NBA fetchChampionOdds() itself untouched.
+//
+// No routing, no UI structure change. No existing hook edited. NBA,
+// F1, Tennis, Home untouched.
+// Full changelog: v0.5.5-SHIP-NOTES.md at repo root.
+//
 // v0.5.4 — EPL X/Twitter handle data. Pure data addition, zero code path
 // touched. Adds a `handle` field to every entry in src/lib/sports/epl/
 // clubs.js (20 clubs). Parallel to the NBA TEAM_META.handle pattern in
@@ -495,7 +530,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.4';
+export const APP_VERSION = '0.5.5';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

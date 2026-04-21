@@ -57,6 +57,66 @@ export async function fetchChampionOdds() {
 }
 
 /**
+ * Generic Polymarket event-odds fetcher. Sport-agnostic.
+ *
+ * Used for any event-level outcome market (champion, top-n, matchday
+ * three-way, etc.). Keeps the NBA-specific fetchChampionOdds() above
+ * untouched so no NBA caller sees any behavior change.
+ *
+ * Args:
+ *   - slug:         Polymarket event slug (e.g. 'english-premier-league-winner')
+ *   - validateName: (optional) fn(name) → boolean. Drops markets whose
+ *                   groupItemTitle fails the filter (e.g. placeholder
+ *                   "Club A" / "Club B" entries on PL champion market).
+ *                   Default: no filter (keeps everything with pct > 0).
+ *
+ * Returns same shape as fetchChampionOdds:
+ *   { odds, volume, volume24h, clobTokens }
+ *
+ * clobTokens is keyed by the market's display name (groupItemTitle or
+ * question), not by any sport-specific id — callers map to their own
+ * domain as needed.
+ */
+export async function fetchPolymarketEventOdds(slug, { validateName } = {}) {
+  if (!slug) throw new Error('fetchPolymarketEventOdds: slug required');
+  const res = await fetch(`${POLY_BASE}/events?slug=${encodeURIComponent(slug)}`);
+  if (!res.ok) throw new Error(`Polymarket ${slug}: HTTP ${res.status}`);
+  const data = await res.json();
+  const event = Array.isArray(data) ? data[0] : data;
+  if (!event || !event.markets) throw new Error(`Polymarket ${slug}: no markets`);
+
+  const clobTokens = {};
+  const odds = event.markets
+    .map((m) => {
+      const name = m.groupItemTitle || (m.question || '').trim();
+      const pct = Math.round((parseFloat(m.lastTradePrice) || 0) * 100);
+      let tokens = [];
+      try {
+        tokens = typeof m.clobTokenIds === 'string'
+          ? JSON.parse(m.clobTokenIds)
+          : m.clobTokenIds || [];
+      } catch (_) {}
+      if (tokens[0]) clobTokens[name] = tokens[0];
+      return {
+        name,
+        pct,
+        volume: parseFloat(m.volume) || 0,
+        volume24h: parseFloat(m.volume24hr) || 0,
+        yesTokenId: tokens[0],
+      };
+    })
+    .filter((x) => x.pct > 0 && (!validateName || validateName(x.name)))
+    .sort((a, b) => b.pct - a.pct);
+
+  return {
+    odds,
+    volume: parseFloat(event.volume) || 0,
+    volume24h: parseFloat(event.volume24hr) || 0,
+    clobTokens,
+  };
+}
+
+/**
  * Fetch MVP odds. Polymarket slug rotates — try variants.
  */
 export async function fetchMvpOdds() {

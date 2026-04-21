@@ -11,6 +11,7 @@ import { useApp } from '../lib/AppContext.jsx';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
 import { useEPLScorers } from '../hooks/useEPLScorers.js';
+import { useEPLChampionOdds } from '../hooks/useEPLChampionOdds.js';
 import {
   SEASON, SEASON_START, SEASON_END, CLUBS, formatFixtureDate,
 } from '../lib/sports/epl/clubs.js';
@@ -242,6 +243,108 @@ function Klasemen({ rows, loading, error, lang }) {
         <span><span style={{ display: 'inline-block', width: 10, height: 10, background: '#F59E0B', marginRight: 4, verticalAlign: 'middle' }} />{lang === 'id' ? 'Liga Europa (5)' : 'Europa League (5)'}</span>
         <span><span style={{ display: 'inline-block', width: 10, height: 10, background: '#10B981', marginRight: 4, verticalAlign: 'middle' }} />{lang === 'id' ? 'Conference (6)' : 'Conference (6)'}</span>
         <span><span style={{ display: 'inline-block', width: 10, height: 10, background: '#EF4444', marginRight: 4, verticalAlign: 'middle' }} />{lang === 'id' ? 'Zona degradasi (18–20)' : 'Relegation (18–20)'}</span>
+      </div>
+    </section>
+  );
+}
+
+// ─── Peluang juara (Title odds) ─────────────────────────────────────────────
+// Live Polymarket 2025-26 champion odds. Polls every 60s.
+// Renders a compact top-5 bar — each row is a club accent, name, %, and
+// change delta vs last poll. Renders nothing when the hook returns empty
+// (e.g. Polymarket market doesn't exist for this season yet).
+function PeluangJuara({ odds, loading, error, lang }) {
+  // Hide the whole section if there's nothing meaningful to show.
+  // Loading with no prior data → hide. Error → hide (the rest of the
+  // dashboard shouldn't fail because Polymarket flinched).
+  if (!odds || odds.length === 0) return null;
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${EPL_PURPLE}`,
+      borderRadius: 3,
+      padding: '14px 14px 10px',
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
+        <h2 style={{
+          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
+          margin: 0, color: C.text, letterSpacing: -0.2,
+        }}>
+          {lang === 'id' ? 'Peluang juara' : 'Title odds'}
+        </h2>
+        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
+          {lang === 'id' ? 'POLYMARKET · LIVE' : 'POLYMARKET · LIVE'}
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gap: 4 }}>
+        {odds.slice(0, 6).map((o) => {
+          const displayName = lang === 'id'
+            ? (o.club?.nameId || o.canonicalName || o.name)
+            : (o.canonicalName || o.name);
+          const slug = o.club?.slug;
+          const accent = o.club?.accent || EPL_PURPLE;
+          const pct = Math.max(1, Math.min(100, o.pct)); // bar width floor at 1%
+          const changeColor = o.change > 0 ? C.green : o.change < 0 ? C.red : C.muted;
+          const changeSign = o.change > 0 ? '+' : '';
+          return (
+            <div
+              key={o.name}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '160px 1fr 56px 42px',
+                gap: 10,
+                alignItems: 'center',
+                padding: '7px 10px',
+                background: C.panelRow,
+                border: `1px solid ${C.lineSoft}`,
+                borderLeft: `2px solid ${accent}`,
+                borderRadius: 3,
+                fontSize: 11.5,
+              }}
+            >
+              <div style={{ color: C.text, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {slug ? (
+                  <Link
+                    to={`/premier-league-2025-26/club/${slug}`}
+                    style={{ color: C.text, textDecoration: 'none' }}
+                  >
+                    {displayName}
+                  </Link>
+                ) : displayName}
+              </div>
+              <div style={{ height: 8, background: C.panel2, borderRadius: 2, overflow: 'hidden', position: 'relative' }}>
+                <div style={{
+                  width: `${pct}%`, height: '100%',
+                  background: accent,
+                  transition: 'width 400ms var(--ease-standard, ease-out)',
+                }} />
+              </div>
+              <div style={{
+                textAlign: 'right',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 13, fontWeight: 700, color: C.text,
+              }}>
+                {o.pct}%
+              </div>
+              <div style={{
+                textAlign: 'right',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 10, fontWeight: 600, color: changeColor,
+              }}>
+                {o.change !== 0 ? `${changeSign}${o.change}` : '—'}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{ fontSize: 9, color: C.muted, letterSpacing: 0.3, marginTop: 8, lineHeight: 1.4 }}>
+        {lang === 'id'
+          ? 'Probabilitas pasar prediksi Polymarket. Update tiap 60 detik. Cuma tim dengan peluang >0% yang ditampilkan.'
+          : 'Polymarket prediction-market probabilities. Refreshes every 60s. Only teams with >0% odds shown.'}
       </div>
     </section>
   );
@@ -618,6 +721,7 @@ export default function EPL() {
   const { rows, loading: sLoading, error: sError } = useEPLStandings();
   const { upcoming, recent, loading: fLoading, error: fError } = useEPLFixtures();
   const { scorers, loading: tLoading, error: tError } = useEPLScorers({ limit: 10 });
+  const { odds: championOdds, loading: oLoading, error: oError } = useEPLChampionOdds();
 
   // Split upcoming into currently-live (statusState === 'in') and scheduled.
   // Live matches get a prominent spotlight at the top; Jadwal only shows
@@ -698,6 +802,10 @@ export default function EPL() {
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 14 }}>
           {/* Live now — only renders when any match is in-progress. */}
           <LiveSpotlight live={live} lang={lang} />
+
+          {/* Peluang juara — Polymarket live champion odds. Renders nothing
+              when there's no market data (e.g. market not yet live). */}
+          <PeluangJuara odds={championOdds} loading={oLoading} error={oError} lang={lang} />
 
           <Klasemen rows={rows} loading={sLoading} error={sError} lang={lang} />
 
