@@ -3,7 +3,10 @@ import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
 import Button from './Button.jsx';
 
-const FANGIR_URL = 'https://fangir.com/products/2026-ibl-trading-cards';
+// Pack variant — Rp 37.500 for 5 random cards. Top-of-funnel product; the
+// Box / Case / Set variants live on the same product page for users who want
+// to buy bigger. Variant ID per Fangir's Shopify storefront.
+const FANGIR_URL = 'https://fangir.com/products/2026-ibl-trading-cards?variant=45045111783600';
 const HERO_IMG = 'https://fangir.com/cdn/shop/files/Slide-1_1946x.jpg?v=1776145319';
 const LOGO_IMG = 'https://fangir.com/cdn/shop/files/Fangir-Color_13d5fff6-1122-4bd9-8138-58b2a26b9983_90x.png?v=1775875309';
 
@@ -17,17 +20,17 @@ export default function FangirBanner() {
   const copy = lang === 'id' ? {
     pill: 'PARTNER',
     tag: 'PRE-ORDER · 11–25 APRIL',
-    title: '2026 IBL Trading Cards',
-    sub: 'Koleksi kartu resmi liga basket Indonesia — edisi perdana Fangir. Pengiriman minggu keempat Mei 2026.',
+    title: '2026 IBL Trading Cards · Pack',
+    sub: '5 kartu acak dari Season 2026 — 167 base cards + insert & parallel chase. Pengiriman minggu keempat Mei 2026.',
     cta: 'Pre-order di Fangir',
-    price: 'Rp 2.500.000',
+    price: 'Rp 37.500',
   } : {
     pill: 'PARTNER',
     tag: 'PRE-ORDER · APR 11–25',
-    title: '2026 IBL Trading Cards',
-    sub: 'Official collectible trading cards for Indonesia\'s top basketball league — debut Fangir series. Ships late May 2026.',
+    title: '2026 IBL Trading Cards · Pack',
+    sub: '5 random Season 2026 cards — 167 base set + insert & parallel chase. Ships late May 2026.',
     cta: 'Pre-order on Fangir',
-    price: 'Rp 2,500,000',
+    price: 'Rp 37,500',
   };
 
   return (

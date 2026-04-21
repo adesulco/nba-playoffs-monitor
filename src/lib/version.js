@@ -380,6 +380,58 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.5.2 — Fangir pack-variant commercial update + v2 redesign Phase 1
+// foundation (no visible change). Two commercial + two infrastructure
+// changes in one ship:
+//   1. FangirBanner pivots from Set variant (Rp 2.500.000) to Pack variant
+//      (Rp 37.500) — https://fangir.com/products/2026-ibl-trading-cards?
+//      variant=45045111783600. Title becomes "2026 IBL Trading Cards ·
+//      Pack"; copy updated BI + EN to reflect 5 random Season 2026 cards
+//      from 167 base + insert & parallel chase. Hero image + Fangir
+//      wordmark URLs unchanged (same Fangir CDN assets). Lower price
+//      point = materially better funnel conversion during the playoff
+//      window.
+//   2. v2 redesign Phase 1 foundation — tokens already ship in index.css
+//      (Brand v1 matches v2 spec) so no CSS work. Added:
+//      - src/lib/flags.js gains a `UI` namespace with 9 flags (ui_v2,
+//        cmd_center, terminal_home, pickem, xg_per_shot, tennis_pbp,
+//        f1_tyre_pit, wc2026_teaser, liga1_teaser) — all default FALSE.
+//        Env override via VITE_FLAG_* (same pattern as existing VISIBLE/
+//        LIVE). Flags coexist; no existing flag renamed or removed.
+//      - src/lib/AppContext.jsx extended: theme gains 'auto' value
+//        (follows OS, live-updates via matchMedia listener);
+//        effectiveTheme derived for callers that need the concrete
+//        applied value. New setTheme('auto'|'dark'|'light') method for
+//        v2 top-bar popover; toggleTheme preserved for back-compat.
+//        New accent state bridges per-user hex override to the --accent
+//        CSS var (validated as /^#[0-9A-F]{6}$/i). Lang storage keeps
+//        internal 'en'|'id' — 'bi' accepted as read synonym mapped to
+//        'id' so v2 UI can label the toggle "BI" without breaking any
+//        existing user's stored pref. All persistence via localStorage;
+//        one-time migration costs nothing to first-load users.
+//      - src/lib/i18n.js gains 34 v2 keys in both en + id blocks
+//        (home, liveNow, followingNav, addToBoard, multiMatch, aiRecap,
+//        championshipOdds, topPerformers, etc. + state + share-card +
+//        theme-popover labels). No existing key renamed or removed.
+//   3. Vocabulary guard — new scripts/check-vocab.mjs greps src/ for
+//      the forbidden-vocabulary list defined in docs/v2-design-gaps.md
+//      §D8 (Indonesian wagering terms + English equivalents). Runs as
+//      the first step of `npm run build` so regressions can't land.
+//      Tested both directions (passes clean source, fails on test
+//      regression with exit 1). `npm run check:vocab` exposes it
+//      standalone.
+//   4. Glossary copy scrub — 'Peluang juara' definition updated so
+//      "pergerakan pasar" describes the prediction-market movement
+//      rather than the prior phrasing. Only user-facing instance of
+//      the forbidden list anywhere in src/.
+// No routing, data-fetch, hook, or component rendering changes visible
+// to users (Fangir price + copy excepted). Every v2 flag defaults off
+// so ui_v2 remains entirely dormant until Phase 3 ships the feature-
+// flagged Home V1 variant. Rollback path: clear VITE_FLAG_* env vars
+// (already the default), revert the commit, or just kill the Fangir
+// pivot by editing FangirBanner back to the set-variant URL.
+// Full changelog: v0.5.2-SHIP-NOTES.md at repo root.
+//
 // v0.5.1 — Tennis Home-card hotfix + Liga 1 temporary remove. Two symptoms
 // in the v0.5.0 prod build:
 //   1. The tennis dashboard card never rendered on Home. Root cause: three
@@ -402,7 +454,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.1';
+export const APP_VERSION = '0.5.2';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

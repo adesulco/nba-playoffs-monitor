@@ -58,5 +58,34 @@ export function isVisible(sportId) {
   return !!VISIBLE[sportId];
 }
 
-export const FLAGS = { VISIBLE, LIVE, isLive, isVisible };
+// v2 redesign flags — coexist with VISIBLE/LIVE (different question: UI variant
+// vs. sport-live). All default false so Phase 1 foundation ships with zero
+// visible change. Flip per-env via Vercel.
+//
+//   VITE_FLAG_UI_V2=1              → master gate for the v2 redesign
+//   VITE_FLAG_CMD_CENTER=1         → V2 Command Center home
+//   VITE_FLAG_TERMINAL_HOME=1      → V4 Terminal home
+//   VITE_FLAG_PICKEM=1             → Pick'em MVP
+//   VITE_FLAG_XG_PER_SHOT=1        → PL per-shot xG (vs totals-only fallback)
+//   VITE_FLAG_TENNIS_PBP=1         → tennis point-by-point (vs set-score only)
+//   VITE_FLAG_F1_TYRE_PIT=1        → F1 tyre age + pit window viz
+//   VITE_FLAG_WC2026_TEASER=1      → WC2026 teaser page (no email capture)
+//   VITE_FLAG_LIGA1_TEASER=1       → Liga 1 teaser page (no email capture)
+export const UI = {
+  v2:            envFlag('VITE_FLAG_UI_V2', false),
+  cmdCenter:     envFlag('VITE_FLAG_CMD_CENTER', false),
+  terminalHome:  envFlag('VITE_FLAG_TERMINAL_HOME', false),
+  pickem:        envFlag('VITE_FLAG_PICKEM', false),
+  xgPerShot:     envFlag('VITE_FLAG_XG_PER_SHOT', false),
+  tennisPbp:     envFlag('VITE_FLAG_TENNIS_PBP', false),
+  f1TyrePit:     envFlag('VITE_FLAG_F1_TYRE_PIT', false),
+  wc2026Teaser:  envFlag('VITE_FLAG_WC2026_TEASER', false),
+  liga1Teaser:   envFlag('VITE_FLAG_LIGA1_TEASER', false),
+};
+
+export function isUiV2() {
+  return !!UI.v2;
+}
+
+export const FLAGS = { VISIBLE, LIVE, UI, isLive, isVisible, isUiV2 };
 export default FLAGS;

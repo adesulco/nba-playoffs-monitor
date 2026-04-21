@@ -10,7 +10,7 @@ import ContactBar from '../components/ContactBar.jsx';
 // Each entry ranks independently for queries like "apa itu shot chart",
 // "peluang juara NBA", "arti play-by-play", etc.
 const ENTRIES = [
-  { term: 'Peluang juara', en: 'Title odds', def: 'Probabilitas tim memenangkan NBA Championship musim ini, dihitung dari pasar prediksi seperti Polymarket. Angka berubah setiap hari sesuai hasil pertandingan dan pergerakan taruhan.' },
+  { term: 'Peluang juara', en: 'Title odds', def: 'Probabilitas tim memenangkan NBA Championship musim ini, dihitung dari pasar prediksi seperti Polymarket. Angka berubah setiap hari sesuai hasil pertandingan dan pergerakan pasar.' },
   { term: 'Bracket', en: 'Bracket', def: 'Bagan 16 tim playoff — 8 dari Wilayah Timur, 8 dari Wilayah Barat. Dari Ronde 1 lolos ke Semifinal Wilayah, lalu Final Wilayah, lalu NBA Finals. Setiap seri best-of-7.' },
   { term: 'Seed', en: 'Seed', def: 'Peringkat unggulan tim di wilayahnya. Seed 1 adalah tim dengan rekor terbaik — lawan Ronde 1-nya adalah pemenang play-in (Seed 8). Seed 4 vs 5, Seed 3 vs 6, Seed 2 vs 7.' },
   { term: 'Play-in tournament', en: 'Play-in', def: 'Mini-tournament untuk menentukan 2 tim terakhir (seed 7 dan 8) yang lolos ke playoff. Tim peringkat 7–10 reguler season harus menang di play-in untuk masuk bracket.' },
