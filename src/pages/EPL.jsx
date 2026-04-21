@@ -12,6 +12,7 @@ import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
 import { useEPLScorers } from '../hooks/useEPLScorers.js';
 import { useEPLChampionOdds } from '../hooks/useEPLChampionOdds.js';
+import { useEPLMatchOdds } from '../hooks/useEPLMatchOdds.js';
 import {
   SEASON, SEASON_START, SEASON_END, CLUBS, formatFixtureDate,
 } from '../lib/sports/epl/clubs.js';
@@ -135,116 +136,188 @@ function FormPill({ char, lang }) {
   );
 }
 
-// ─── Klasemen ────────────────────────────────────────────────────────────────
+// ─── Klasemen (compact — top 6 + bottom 3) ──────────────────────────────────
+// Schedule-first layout keeps the table small: top 6 (European places) +
+// divider "...10 lagi..." + bottom 3 (relegation zone). Expand toggle
+// reveals the full 20-row table. Form + goal diff + wins/draws/losses
+// dropped in compact mode — readers who want the full numbers expand.
 function Klasemen({ rows, loading, error, lang }) {
+  const [expanded, setExpanded] = React.useState(false);
+
+  // Compact view: top 6 + bottom 3, with a visual divider if full length is 20.
+  const compactRows = !expanded && rows.length === 20
+    ? [...rows.slice(0, 6), { __divider: true }, ...rows.slice(17)]
+    : rows;
+
   return (
     <section style={{
       background: C.panel,
       border: `1px solid ${C.line}`,
       borderLeft: `3px solid ${EPL_PURPLE}`,
       borderRadius: 3,
-      padding: '14px 14px 8px',
+      padding: '12px 14px 8px',
     }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
         <h2 style={{
-          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
+          fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
           margin: 0, color: C.text, letterSpacing: -0.2,
         }}>
-          {lang === 'id' ? 'Klasemen 20 klub' : '20-Club Table'}
+          {lang === 'id' ? 'Klasemen' : 'Table'}
         </h2>
-        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
-          {lang === 'id' ? 'FORM · 5 LAGA TERAKHIR' : 'FORM · LAST 5'}
-        </div>
+        <button
+          type="button"
+          onClick={() => setExpanded((x) => !x)}
+          style={{
+            background: 'transparent', border: 'none',
+            color: C.dim, fontSize: 9, letterSpacing: 1,
+            cursor: 'pointer', fontFamily: 'inherit',
+            padding: '2px 0',
+          }}
+        >
+          {expanded
+            ? (lang === 'id' ? 'CIUT ▲' : 'COLLAPSE ▲')
+            : (lang === 'id' ? 'LIHAT 20 KLUB ▼' : 'VIEW ALL 20 ▼')}
+        </button>
       </div>
 
       {error && (
-        <div style={{ fontSize: 11, color: C.muted, padding: '8px 0' }}>
+        <div style={{ fontSize: 11, color: C.muted, padding: '6px 0' }}>
           {lang === 'id' ? 'Data ESPN lagi lambat. Muncul lagi otomatis.' : 'ESPN data slow — will refresh.'}
         </div>
       )}
 
       {!error && loading && rows.length === 0 && (
-        <div style={{ fontSize: 11, color: C.dim, padding: '8px 0' }}>
+        <div style={{ fontSize: 11, color: C.dim, padding: '6px 0' }}>
           {lang === 'id' ? 'Memuat…' : 'Loading…'}
         </div>
       )}
 
       {rows.length > 0 && (
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11.5, minWidth: 560 }}>
-            <thead>
-              <tr style={{ color: C.muted, fontSize: 9, letterSpacing: 1, fontWeight: 600 }}>
-                <th style={{ textAlign: 'left', padding: '4px 0', width: 28 }}>#</th>
-                <th style={{ textAlign: 'left', padding: '4px 0' }}>{lang === 'id' ? 'KLUB' : 'CLUB'}</th>
-                <th style={{ textAlign: 'right', padding: '4px 4px', width: 34 }}>{lang === 'id' ? 'MAIN' : 'P'}</th>
-                <th style={{ textAlign: 'right', padding: '4px 4px', width: 28 }}>{lang === 'id' ? 'M' : 'W'}</th>
-                <th style={{ textAlign: 'right', padding: '4px 4px', width: 28 }}>{lang === 'id' ? 'S' : 'D'}</th>
-                <th style={{ textAlign: 'right', padding: '4px 4px', width: 28 }}>{lang === 'id' ? 'K' : 'L'}</th>
-                <th style={{ textAlign: 'right', padding: '4px 4px', width: 40 }}>{lang === 'id' ? 'SG' : 'GD'}</th>
-                <th style={{ textAlign: 'right', padding: '4px 4px', width: 42 }}>{lang === 'id' ? 'POIN' : 'PTS'}</th>
-                <th style={{ textAlign: 'left', padding: '4px 4px', width: 110 }}>{lang === 'id' ? 'FORM' : 'FORM'}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((r, i) => {
-                const zone = zoneFor(r.rank || i + 1);
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
+          <thead>
+            <tr style={{ color: C.muted, fontSize: 9, letterSpacing: 1, fontWeight: 600 }}>
+              <th style={{ textAlign: 'left', padding: '3px 0', width: 24 }}>#</th>
+              <th style={{ textAlign: 'left', padding: '3px 0' }}>{lang === 'id' ? 'KLUB' : 'CLUB'}</th>
+              <th style={{ textAlign: 'right', padding: '3px 4px', width: 28 }}>{lang === 'id' ? 'M' : 'P'}</th>
+              <th style={{ textAlign: 'right', padding: '3px 4px', width: 36 }}>{lang === 'id' ? 'SG' : 'GD'}</th>
+              <th style={{ textAlign: 'right', padding: '3px 4px', width: 36 }}>{lang === 'id' ? 'POIN' : 'PTS'}</th>
+              {expanded && <th style={{ textAlign: 'left', padding: '3px 4px', width: 100 }}>{lang === 'id' ? 'FORM' : 'FORM'}</th>}
+            </tr>
+          </thead>
+          <tbody>
+            {compactRows.map((r, i) => {
+              if (r.__divider) {
                 return (
-                  <tr key={r.teamId || i} style={{
-                    borderTop: `1px solid ${C.lineSoft}`,
-                    background: zone ? `${zone.color}0d` : 'transparent',
-                  }}>
-                    <td style={{ padding: '6px 0', color: zone ? zone.color : C.dim, fontWeight: zone ? 700 : 500 }}>
-                      {r.rank || i + 1}
+                  <tr key="divider">
+                    <td colSpan={5} style={{
+                      padding: '5px 0', textAlign: 'center',
+                      color: C.muted, fontSize: 9, letterSpacing: 1,
+                      borderTop: `1px dashed ${C.lineSoft}`,
+                      borderBottom: `1px dashed ${C.lineSoft}`,
+                    }}>
+                      · · · {lang === 'id' ? '10 KLUB TENGAH' : '10 MID-TABLE CLUBS'} · · ·
                     </td>
-                    <td style={{ padding: '6px 0', color: C.text, fontWeight: 500 }}>
-                      <span style={{
-                        display: 'inline-block', width: 3, height: 14,
-                        background: r.clubAccent, verticalAlign: 'middle', marginRight: 8,
-                      }} />
-                      {r.slug ? (
-                        <Link
-                          to={`/premier-league-2025-26/club/${r.slug}`}
-                          style={{ color: C.text, textDecoration: 'none', fontWeight: 500 }}
-                        >
-                          {r.clubName}
-                        </Link>
-                      ) : r.clubName}
-                    </td>
-                    <td style={{ padding: '6px 4px', color: C.dim, textAlign: 'right' }}>{r.games}</td>
-                    <td style={{ padding: '6px 4px', color: C.dim, textAlign: 'right' }}>{r.wins}</td>
-                    <td style={{ padding: '6px 4px', color: C.dim, textAlign: 'right' }}>{r.draws}</td>
-                    <td style={{ padding: '6px 4px', color: C.dim, textAlign: 'right' }}>{r.losses}</td>
-                    <td style={{ padding: '6px 4px', color: r.goalDiff >= 0 ? C.green : C.red, textAlign: 'right', fontWeight: 500 }}>
-                      {r.goalDiff > 0 ? `+${r.goalDiff}` : r.goalDiff}
-                    </td>
-                    <td style={{ padding: '6px 4px', color: C.text, textAlign: 'right', fontWeight: 700 }}>
-                      {r.points}
-                    </td>
-                    <td style={{ padding: '6px 4px' }}>
+                  </tr>
+                );
+              }
+              const zone = zoneFor(r.rank || i + 1);
+              return (
+                <tr key={r.teamId || `${r.clubName}-${i}`} style={{
+                  borderTop: `1px solid ${C.lineSoft}`,
+                  background: zone ? `${zone.color}0d` : 'transparent',
+                }}>
+                  <td style={{ padding: '5px 0', color: zone ? zone.color : C.dim, fontWeight: zone ? 700 : 500 }}>
+                    {r.rank}
+                  </td>
+                  <td style={{ padding: '5px 0', color: C.text, fontWeight: 500 }}>
+                    <span style={{
+                      display: 'inline-block', width: 3, height: 12,
+                      background: r.clubAccent, verticalAlign: 'middle', marginRight: 6,
+                    }} />
+                    {r.slug ? (
+                      <Link
+                        to={`/premier-league-2025-26/club/${r.slug}`}
+                        style={{ color: C.text, textDecoration: 'none', fontWeight: 500 }}
+                      >
+                        {r.clubName}
+                      </Link>
+                    ) : r.clubName}
+                  </td>
+                  <td style={{ padding: '5px 4px', color: C.dim, textAlign: 'right' }}>{r.games}</td>
+                  <td style={{ padding: '5px 4px', color: r.goalDiff >= 0 ? C.green : C.red, textAlign: 'right', fontWeight: 500 }}>
+                    {r.goalDiff > 0 ? `+${r.goalDiff}` : r.goalDiff}
+                  </td>
+                  <td style={{ padding: '5px 4px', color: C.text, textAlign: 'right', fontWeight: 700 }}>
+                    {r.points}
+                  </td>
+                  {expanded && (
+                    <td style={{ padding: '5px 4px' }}>
                       {r.form && r.form.length > 0
                         ? r.form.split('').map((c, idx) => <FormPill key={idx} char={c} lang={lang} />)
                         : <span style={{ color: C.muted, fontSize: 10 }}>—</span>}
                     </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+                  )}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       )}
 
-      {/* Zone legend */}
-      <div style={{
-        display: 'flex', gap: 12, flexWrap: 'wrap',
-        fontSize: 9, color: C.muted, letterSpacing: 0.3,
-        padding: '10px 0 2px', borderTop: `1px solid ${C.lineSoft}`, marginTop: 6,
-      }}>
-        <span><span style={{ display: 'inline-block', width: 10, height: 10, background: '#2563EB', marginRight: 4, verticalAlign: 'middle' }} />{lang === 'id' ? 'Liga Champions (1–4)' : 'Champions League (1–4)'}</span>
-        <span><span style={{ display: 'inline-block', width: 10, height: 10, background: '#F59E0B', marginRight: 4, verticalAlign: 'middle' }} />{lang === 'id' ? 'Liga Europa (5)' : 'Europa League (5)'}</span>
-        <span><span style={{ display: 'inline-block', width: 10, height: 10, background: '#10B981', marginRight: 4, verticalAlign: 'middle' }} />{lang === 'id' ? 'Conference (6)' : 'Conference (6)'}</span>
-        <span><span style={{ display: 'inline-block', width: 10, height: 10, background: '#EF4444', marginRight: 4, verticalAlign: 'middle' }} />{lang === 'id' ? 'Zona degradasi (18–20)' : 'Relegation (18–20)'}</span>
-      </div>
+      {/* Zone legend — compact, only when there are rows to legend */}
+      {rows.length > 0 && (
+        <div style={{
+          display: 'flex', gap: 10, flexWrap: 'wrap',
+          fontSize: 8.5, color: C.muted, letterSpacing: 0.3,
+          padding: '8px 0 2px', borderTop: `1px solid ${C.lineSoft}`, marginTop: 6,
+        }}>
+          <span><span style={{ display: 'inline-block', width: 8, height: 8, background: '#2563EB', marginRight: 3, verticalAlign: 'middle' }} />{lang === 'id' ? 'UCL 1–4' : 'UCL 1–4'}</span>
+          <span><span style={{ display: 'inline-block', width: 8, height: 8, background: '#F59E0B', marginRight: 3, verticalAlign: 'middle' }} />{lang === 'id' ? 'UEL 5' : 'UEL 5'}</span>
+          <span><span style={{ display: 'inline-block', width: 8, height: 8, background: '#10B981', marginRight: 3, verticalAlign: 'middle' }} />{lang === 'id' ? 'UECL 6' : 'UECL 6'}</span>
+          <span><span style={{ display: 'inline-block', width: 8, height: 8, background: '#EF4444', marginRight: 3, verticalAlign: 'middle' }} />{lang === 'id' ? 'Degradasi 18–20' : 'REL 18–20'}</span>
+        </div>
+      )}
     </section>
+  );
+}
+
+// ─── Per-match Polymarket odds chip ─────────────────────────────────────────
+// Compact 3-way display: [HOME % | DRAW % | AWAY %]. Renders `null` when
+// no market data is available for a fixture (most far-future matches) —
+// the parent row absorbs the empty slot gracefully.
+function MatchOddsChip({ odds, homeAccent, awayAccent, lang }) {
+  if (!odds) return null;
+  const cellStyle = (bg) => ({
+    padding: '3px 7px',
+    fontFamily: 'var(--font-mono)',
+    fontSize: 10, fontWeight: 700, color: C.text,
+    background: bg,
+    textAlign: 'center',
+    minWidth: 38,
+  });
+  return (
+    <div
+      aria-label={lang === 'id'
+        ? `Peluang pasar: Tuan rumah ${odds.home}%, Seri ${odds.draw}%, Tamu ${odds.away}%`
+        : `Market odds: Home ${odds.home}%, Draw ${odds.draw}%, Away ${odds.away}%`}
+      style={{
+        display: 'inline-flex',
+        border: `1px solid ${C.lineSoft}`,
+        borderRadius: 3,
+        overflow: 'hidden',
+        fontFamily: 'var(--font-mono)',
+      }}
+    >
+      <span style={{ ...cellStyle(`${homeAccent}22`), borderRight: `1px solid ${C.lineSoft}` }}>
+        {odds.home}%
+      </span>
+      <span style={{ ...cellStyle(C.panel2), borderRight: `1px solid ${C.lineSoft}`, color: C.dim }}>
+        {odds.draw}%
+      </span>
+      <span style={cellStyle(`${awayAccent}22`)}>
+        {odds.away}%
+      </span>
+    </div>
   );
 }
 
@@ -355,7 +428,7 @@ function PeluangJuara({ odds, loading, error, lang }) {
 // are none — the section disappears cleanly on off-days so the dashboard
 // doesn't carry dead chrome. Live matches read from upcoming[] where
 // statusState === 'in' (ESPN's in-progress state).
-function LiveSpotlight({ live, lang }) {
+function LiveSpotlight({ live, oddsByMatchId, lang }) {
   if (!live || live.length === 0) return null;
   return (
     <section style={{
@@ -379,59 +452,73 @@ function LiveSpotlight({ live, lang }) {
         </div>
       </div>
       <div style={{ display: 'grid', gap: 8 }}>
-        {live.map((m) => (
-          <div key={m.id} style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 84px 1fr auto',
-            gap: 10, alignItems: 'center',
-            padding: '10px 12px',
-            background: C.panelRow,
-            border: `1px solid ${C.lineSoft}`,
-            borderRadius: 3,
-            fontSize: 12,
-          }}>
-            <div style={{ color: C.text, textAlign: 'right', fontWeight: 600 }}>
-              <span style={{ display: 'inline-block', width: 3, height: 14, background: m.home.accent, verticalAlign: 'middle', marginRight: 6 }} />
-              {m.home.slug ? (
-                <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
-                  {m.home.name}
-                </Link>
-              ) : m.home.name}
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 18, fontWeight: 700, color: C.text, lineHeight: 1 }}>
-                {m.home.score ?? '-'}–{m.away.score ?? '-'}
+        {live.map((m) => {
+          const odds = oddsByMatchId?.[m.id];
+          return (
+            <div key={m.id} style={{
+              padding: '10px 12px',
+              background: C.panelRow,
+              border: `1px solid ${C.lineSoft}`,
+              borderRadius: 3,
+              fontSize: 12,
+            }}>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 84px 1fr auto',
+                gap: 10, alignItems: 'center',
+              }}>
+                <div style={{ color: C.text, textAlign: 'right', fontWeight: 600 }}>
+                  <span style={{ display: 'inline-block', width: 3, height: 14, background: m.home.accent, verticalAlign: 'middle', marginRight: 6 }} />
+                  {m.home.slug ? (
+                    <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
+                      {m.home.name}
+                    </Link>
+                  ) : m.home.name}
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 18, fontWeight: 700, color: C.text, lineHeight: 1 }}>
+                    {m.home.score ?? '-'}–{m.away.score ?? '-'}
+                  </div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: C.red, letterSpacing: 0.5, marginTop: 3 }}>
+                    {m.statusDetail || (lang === 'id' ? 'LIVE' : 'LIVE')}
+                  </div>
+                </div>
+                <div style={{ color: C.text, fontWeight: 600 }}>
+                  {m.away.slug ? (
+                    <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
+                      {m.away.name}
+                    </Link>
+                  ) : m.away.name}
+                  <span style={{ display: 'inline-block', width: 3, height: 14, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
+                </div>
+                <ShareButton
+                  url={matchShareUrl(m)}
+                  title={`${m.home.name} vs ${m.away.name}`}
+                  text={buildLiveShareText(m, lang)}
+                  accent={EPL_PURPLE}
+                  size="sm"
+                  label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+                  analyticsEvent="epl_share_live"
+                />
               </div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: C.red, letterSpacing: 0.5, marginTop: 3 }}>
-                {m.statusDetail || (lang === 'id' ? 'LIVE' : 'LIVE')}
-              </div>
+              {odds && (
+                <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
+                  <span style={{ fontSize: 8.5, color: C.muted, letterSpacing: 1 }}>
+                    {lang === 'id' ? 'PASAR' : 'MARKET'}
+                  </span>
+                  <MatchOddsChip odds={odds} homeAccent={m.home.accent} awayAccent={m.away.accent} lang={lang} />
+                </div>
+              )}
             </div>
-            <div style={{ color: C.text, fontWeight: 600 }}>
-              {m.away.slug ? (
-                <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
-                  {m.away.name}
-                </Link>
-              ) : m.away.name}
-              <span style={{ display: 'inline-block', width: 3, height: 14, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
-            </div>
-            <ShareButton
-              url={matchShareUrl(m)}
-              title={`${m.home.name} vs ${m.away.name}`}
-              text={buildLiveShareText(m, lang)}
-              accent={EPL_PURPLE}
-              size="sm"
-              label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
-              analyticsEvent="epl_share_live"
-            />
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
 }
 
 // ─── Jadwal ──────────────────────────────────────────────────────────────────
-function Jadwal({ upcoming, loading, error, lang }) {
+function Jadwal({ upcoming, oddsByMatchId, loading, error, lang }) {
   return (
     <section style={{
       background: C.panel,
@@ -457,48 +544,62 @@ function Jadwal({ upcoming, loading, error, lang }) {
 
       {upcoming.length > 0 && (
         <div style={{ display: 'grid', gap: 6 }}>
-          {upcoming.slice(0, 10).map((m) => (
-            <div key={m.id} style={{
-              display: 'grid',
-              gridTemplateColumns: '110px 1fr auto 1fr auto',
-              gap: 10, alignItems: 'center',
-              padding: '8px 10px',
-              background: C.panelRow,
-              border: `1px solid ${C.lineSoft}`,
-              borderRadius: 3,
-              fontSize: 11.5,
-            }}>
-              <div style={{ fontSize: 10, color: C.dim, letterSpacing: 0.3 }}>
-                {formatFixtureDate(m.kickoffUtc, lang)}
+          {upcoming.slice(0, 10).map((m) => {
+            const odds = oddsByMatchId?.[m.id];
+            return (
+              <div key={m.id} style={{
+                padding: '8px 10px',
+                background: C.panelRow,
+                border: `1px solid ${C.lineSoft}`,
+                borderRadius: 3,
+                fontSize: 11.5,
+              }}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '110px 1fr auto 1fr auto',
+                  gap: 10, alignItems: 'center',
+                }}>
+                  <div style={{ fontSize: 10, color: C.dim, letterSpacing: 0.3 }}>
+                    {formatFixtureDate(m.kickoffUtc, lang)}
+                  </div>
+                  <div style={{ color: C.text, textAlign: 'right', fontWeight: 500 }}>
+                    <span style={{ display: 'inline-block', width: 3, height: 12, background: m.home.accent, verticalAlign: 'middle', marginRight: 6 }} />
+                    {m.home.slug ? (
+                      <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
+                        {m.home.name}
+                      </Link>
+                    ) : m.home.name}
+                  </div>
+                  <div style={{ color: C.muted, fontWeight: 700, letterSpacing: 0.5, fontSize: 10 }}>vs</div>
+                  <div style={{ color: C.text, fontWeight: 500 }}>
+                    {m.away.slug ? (
+                      <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
+                        {m.away.name}
+                      </Link>
+                    ) : m.away.name}
+                    <span style={{ display: 'inline-block', width: 3, height: 12, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
+                  </div>
+                  <ShareButton
+                    url={matchShareUrl(m)}
+                    title={`${m.home.name} vs ${m.away.name}`}
+                    text={buildUpcomingShareText(m, lang)}
+                    accent={EPL_PURPLE}
+                    size="sm"
+                    label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+                    analyticsEvent="epl_share_upcoming"
+                  />
+                </div>
+                {odds && (
+                  <div style={{ marginTop: 6, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'flex-end' }}>
+                    <span style={{ fontSize: 8.5, color: C.muted, letterSpacing: 1 }}>
+                      {lang === 'id' ? 'PASAR' : 'MARKET'}
+                    </span>
+                    <MatchOddsChip odds={odds} homeAccent={m.home.accent} awayAccent={m.away.accent} lang={lang} />
+                  </div>
+                )}
               </div>
-              <div style={{ color: C.text, textAlign: 'right', fontWeight: 500 }}>
-                <span style={{ display: 'inline-block', width: 3, height: 12, background: m.home.accent, verticalAlign: 'middle', marginRight: 6 }} />
-                {m.home.slug ? (
-                  <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
-                    {m.home.name}
-                  </Link>
-                ) : m.home.name}
-              </div>
-              <div style={{ color: C.muted, fontWeight: 700, letterSpacing: 0.5, fontSize: 10 }}>vs</div>
-              <div style={{ color: C.text, fontWeight: 500 }}>
-                {m.away.slug ? (
-                  <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
-                    {m.away.name}
-                  </Link>
-                ) : m.away.name}
-                <span style={{ display: 'inline-block', width: 3, height: 12, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
-              </div>
-              <ShareButton
-                url={matchShareUrl(m)}
-                title={`${m.home.name} vs ${m.away.name}`}
-                text={buildUpcomingShareText(m, lang)}
-                accent={EPL_PURPLE}
-                size="sm"
-                label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
-                analyticsEvent="epl_share_upcoming"
-              />
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </section>
@@ -736,6 +837,10 @@ export default function EPL() {
     return { live: l, scheduled: s };
   }, [upcoming]);
 
+  // Per-match Polymarket odds keyed by ESPN event id. Batched fetch —
+  // one Polymarket request per 60s covers the full 14-day fixture window.
+  const { byMatchId: oddsByMatchId } = useEPLMatchOdds({ upcomingMatches: upcoming });
+
   const leaders = useMemo(() => {
     const top = rows.slice(0, 3);
     const btm = rows.slice(-3);
@@ -800,26 +905,36 @@ export default function EPL() {
         </div>
 
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 14 }}>
-          {/* Live now — only renders when any match is in-progress. */}
-          <LiveSpotlight live={live} lang={lang} />
+          {/* ── Row 1 — Live match spotlight (top focus). Hidden off-days. ── */}
+          <LiveSpotlight live={live} oddsByMatchId={oddsByMatchId} lang={lang} />
 
-          {/* Peluang juara — Polymarket live champion odds. Renders nothing
-              when there's no market data (e.g. market not yet live). */}
-          <PeluangJuara odds={championOdds} loading={oLoading} error={oError} lang={lang} />
-
-          <Klasemen rows={rows} loading={sLoading} error={sError} lang={lang} />
-
+          {/* ── Row 2 — Schedule-first: Jadwal + Hasil side-by-side. NBA
+              pattern inverted: scoreboard-equivalent gets the prime real
+              estate, table compresses into the sidebar below. ── */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: 14,
           }}>
-            <Jadwal upcoming={scheduled} loading={fLoading} error={fError} lang={lang} />
+            <Jadwal upcoming={scheduled} oddsByMatchId={oddsByMatchId} loading={fLoading} error={fError} lang={lang} />
             <Hasil recent={recent} loading={fLoading} error={fError} lang={lang} />
           </div>
 
-          <TopSkor scorers={scorers} loading={tLoading} error={tError} lang={lang} />
+          {/* ── Row 3 — Context sidebar: odds + compact klasemen +
+              top-skor side-by-side. Mirrors NBA's 3-col context grid
+              (title odds | bracket/stats | watchlist). Each card stays
+              visually compact so schedule above stays the hero. ── */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 14,
+          }}>
+            <PeluangJuara odds={championOdds} loading={oLoading} error={oError} lang={lang} />
+            <Klasemen rows={rows} loading={sLoading} error={sError} lang={lang} />
+            <TopSkor scorers={scorers} loading={tLoading} error={tError} lang={lang} />
+          </div>
 
+          {/* ── Row 4 — Club index (all 20 clubs, 1-click to each page) ── */}
           <ClubIndex lang={lang} />
         </div>
 

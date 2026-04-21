@@ -27,6 +27,12 @@
  *              (mirrors the NBA TEAM_META.handle pattern in constants.js).
  *              Resolve URL via `https://x.com/${club.handle}`. Verified
  *              against public club profiles 2026-04-21.
+ *   polyAbbr — Polymarket's 3-letter club abbreviation, lowercase. Used
+ *              to construct per-match event slugs
+ *              (`epl-{home}-{away}-{YYYY-MM-DD}`). Note: Polymarket
+ *              uses `mac` (not `mci`) for Manchester City — this is
+ *              Polymarket's own scheme, confirmed 2026-04-21 by
+ *              enumerating their tag_slug=epl events.
  *   bio      — one short Bahasa paragraph for the club page "Tentang"
  *              block. Casual register — gue/lo OK, stays factual.
  *
@@ -49,6 +55,7 @@ export const CLUBS = [
     stadium: 'Emirates Stadium',
     accent: '#EF0107',
     handle: 'Arsenal',
+    polyAbbr: 'ars',
     bio: 'Arsenal — "The Gunners" dari London Utara. Era Arteta dewasa: squad muda, build-up disiplin, pressing tinggi. Finis runner-up tiga musim beruntun bikin 2025-26 jadi musim "sekarang atau nggak" buat nembus gelar Premier League pertama sejak 2003-04.',
   },
   {
@@ -61,6 +68,7 @@ export const CLUBS = [
     stadium: 'Villa Park',
     accent: '#95BFE5',
     handle: 'AVFCOfficial',
+    polyAbbr: 'ast',
     bio: 'Aston Villa — salah satu klub tertua Inggris, juara Eropa 1982. Era Unai Emery bikin Villa balik ke papan atas + balik ke kompetisi Eropa. Villa Park tetap salah satu atmosfer paling keras di liga.',
   },
   {
@@ -73,6 +81,7 @@ export const CLUBS = [
     stadium: 'Vitality Stadium',
     accent: '#DA291C',
     handle: 'afcbournemouth',
+    polyAbbr: 'bou',
     bio: 'Bournemouth — "The Cherries" dari pantai selatan. Iraola ball: pressing agresif, transisi cepat, atletik banget. Meski stadion kecil (11k), tim ini rutin bikin pusing Big Six.',
   },
   {
@@ -85,6 +94,7 @@ export const CLUBS = [
     stadium: 'Gtech Community Stadium',
     accent: '#E30613',
     handle: 'BrentfordFC',
+    polyAbbr: 'bre',
     bio: 'Brentford — klub Moneyball-nya Premier League. Model data-driven + rekrut undervalued bikin klub kecil London Barat ini stabil di EPL sejak promosi 2021. Set-piece master di bawah Thomas Frank, lanjut di era Keith Andrews.',
   },
   {
@@ -97,6 +107,7 @@ export const CLUBS = [
     stadium: 'American Express Stadium',
     accent: '#0057B8',
     handle: 'OfficialBHAFC',
+    polyAbbr: 'bri',
     bio: 'Brighton — "The Seagulls". Skautinya terkenal nyari permata murah dari seluruh dunia, terus dijual mahal ke Big Six. Gaya De Zerbi bikin Brighton possession-based sekelas atas, tim kecil dengan otak paling tajam di liga.',
   },
   {
@@ -109,6 +120,7 @@ export const CLUBS = [
     stadium: 'Turf Moor',
     accent: '#6C1D45',
     handle: 'BurnleyOfficial',
+    polyAbbr: 'bur',
     bio: 'Burnley — "The Clarets" promosi ke EPL 2025-26 setelah juara Championship. Scott Parker bangun tim disiplin yang pragmatis. Turf Moor tetap salah satu lapangan tersulit buat tim tamu — dingin, sempit, fans setia.',
   },
   {
@@ -121,6 +133,7 @@ export const CLUBS = [
     stadium: 'Stamford Bridge',
     accent: '#034694',
     handle: 'ChelseaFC',
+    polyAbbr: 'che',
     bio: 'Chelsea — "The Blues" dari London Barat. Proyek Boehly kembali serius setelah Maresca ngajarin squad termuda di liga cara main bola. Juara Conference League 2025, juara Club World Cup 2025 — fondasinya makin terbentuk.',
   },
   {
@@ -133,6 +146,7 @@ export const CLUBS = [
     stadium: 'Selhurst Park',
     accent: '#1B458F',
     handle: 'CPFC',
+    polyAbbr: 'cry',
     bio: 'Crystal Palace — "The Eagles" dari London Selatan. Juara FA Cup 2025 pertama dalam sejarah klub + kualifikasi Europa League. Oliver Glasner bangun tim keras di transisi, Selhurst Park atmosfer paling otentik di London.',
   },
   {
@@ -145,6 +159,7 @@ export const CLUBS = [
     stadium: 'Hill Dickinson Stadium',
     accent: '#003399',
     handle: 'Everton',
+    polyAbbr: 'eve',
     bio: 'Everton — "The Toffees". Salah satu klub pendiri Football League 1888, nggak pernah turun dari divisi teratas lebih lama dari klub lain di Inggris. Musim 2025-26 pertama di stadion baru 53k di Bramley-Moore Dock.',
   },
   {
@@ -157,6 +172,7 @@ export const CLUBS = [
     stadium: 'Craven Cottage',
     accent: '#000000',
     handle: 'FulhamFC',
+    polyAbbr: 'ful',
     bio: 'Fulham — klub London tertua, dari tepi Sungai Thames. Marco Silva bangun tim solid + possession bersih. Craven Cottage dengan cottage di sudut lapangan tetap salah satu stadion paling ikonik di liga.',
   },
   {
@@ -169,6 +185,7 @@ export const CLUBS = [
     stadium: 'Elland Road',
     accent: '#FFCD00',
     handle: 'LUFC',
+    polyAbbr: 'lee',
     bio: 'Leeds United — "The Whites" balik ke EPL setelah juara Championship 2024-25. Daniel Farke lanjutin rebuild. Elland Road dan 37 ribu fans Yorkshire salah satu atmosfer paling keras di Inggris — "Marching on Together".',
   },
   {
@@ -181,6 +198,7 @@ export const CLUBS = [
     stadium: 'Anfield',
     accent: '#C8102E',
     handle: 'LFC',
+    polyAbbr: 'liv',
     bio: 'Liverpool — "The Reds" dari Merseyside. Era Arne Slot: juara Premier League 2024-25 di musim pertama post-Klopp. Anfield di malam hari Champions League tetap tempat paling ajaib di sepakbola Inggris. "You\'ll Never Walk Alone".',
   },
   {
@@ -193,6 +211,7 @@ export const CLUBS = [
     stadium: 'Etihad Stadium',
     accent: '#6CABDD',
     handle: 'ManCity',
+    polyAbbr: 'mac',
     bio: 'Manchester City — era Guardiola sejak 2016. Juara EPL enam dari tujuh musim antara 2017-18 sampai 2023-24. 2024-25 tumbang runner-up Liverpool — 2025-26 musim pembuktian kalau Pep masih mampu mereset squad.',
   },
   {
@@ -205,6 +224,7 @@ export const CLUBS = [
     stadium: 'Old Trafford',
     accent: '#DA291C',
     handle: 'ManUtd',
+    polyAbbr: 'mun',
     bio: 'Manchester United — "Setan Merah", klub dengan fanbase global terbesar. Era Ruben Amorim lanjutin rekonstruksi post-Ferguson yang udah jalan lebih dari satu dekade. Old Trafford tetap "Theatre of Dreams" — walaupun mimpinya sekarang cuma finis empat besar.',
   },
   {
@@ -217,6 +237,7 @@ export const CLUBS = [
     stadium: 'St James\' Park',
     accent: '#241F20',
     handle: 'NUFC',
+    polyAbbr: 'new',
     bio: 'Newcastle United — "The Magpies" dari Tyneside. Proyek PIF sejak 2021 bikin Newcastle balik ke elit Eropa. Juara League Cup 2024-25 (trofi besar pertama sejak 1955). Eddie Howe bangun tim pressing atletik, St James\' Park salah satu atmosfer paling keras di Inggris.',
   },
   {
@@ -229,6 +250,7 @@ export const CLUBS = [
     stadium: 'City Ground',
     accent: '#DD0000',
     handle: 'NFFC',
+    polyAbbr: 'not',
     bio: 'Nottingham Forest — klub tertua ketiga di dunia, juara Piala Champions 1979 & 1980 di bawah Brian Clough. Kembali ke EPL 2022, finis ke-7 musim lalu — kualifikasi Conference League. Evangelos Marinakis terus investasi, Nuno Espírito Santo bangun tim keras.',
   },
   {
@@ -241,6 +263,7 @@ export const CLUBS = [
     stadium: 'Stadium of Light',
     accent: '#EB172B',
     handle: 'SunderlandAFC',
+    polyAbbr: 'sun',
     bio: 'Sunderland — "The Black Cats" promosi ke EPL 2025-26 lewat play-off Championship (ngalahin Sheffield United di Wembley). Balik ke divisi teratas setelah 8 tahun. Stadium of Light 49 ribu fans Wearside, salah satu fanbase paling setia di Inggris.',
   },
   {
@@ -253,6 +276,7 @@ export const CLUBS = [
     stadium: 'Tottenham Hotspur Stadium',
     accent: '#132257',
     handle: 'SpursOfficial',
+    polyAbbr: 'tot',
     bio: 'Tottenham — "Spurs" dari London Utara. Juara Europa League 2024-25 — trofi besar pertama sejak 2008. Thomas Frank gantiin Postecoglou, bangun tim lebih defensif. Stadion baru 62 ribu di High Road salah satu yang terbaik di Eropa.',
   },
   {
@@ -265,6 +289,7 @@ export const CLUBS = [
     stadium: 'London Stadium',
     accent: '#7A263A',
     handle: 'WestHam',
+    polyAbbr: 'wes',
     bio: 'West Ham — "The Hammers" dari London Timur. Juara Conference League 2023, tim Inggris yang konsisten di Eropa. Graham Potter bangun ulang post-Moyes, London Stadium 62 ribu fans setia meski masih debat soal pindah dari Upton Park.',
   },
   {
@@ -277,6 +302,7 @@ export const CLUBS = [
     stadium: 'Molineux Stadium',
     accent: '#FDB913',
     handle: 'Wolves',
+    polyAbbr: 'wol',
     bio: 'Wolves — "The Wolves" dari West Midlands. Warna emas-hitam salah satu kit paling ikonik Inggris. Era Vítor Pereira: tim muda, pressing, mengandalkan transisi. Molineux atmosfer khas English football — keras, tradisional.',
   },
 ];

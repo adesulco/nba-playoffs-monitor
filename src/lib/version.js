@@ -380,6 +380,47 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.5.6 — EPL per-match Polymarket odds + schedule-first layout revamp.
+// Phase B, ship 2 of 3.
+//
+// Two merged changes:
+//
+// 1. Per-match Polymarket odds on every upcoming + live EPL fixture.
+//    New hook useEPLMatchOdds({ upcomingMatches }) batch-fetches
+//    Polymarket's tag_slug=epl event index (100 events per request,
+//    60s poll) and matches by slug pattern epl-{home3}-{away3}-
+//    {YYYY-MM-DD} → our ESPN event id via polyAbbr lookup added
+//    to each entry in clubs.js. Renders a compact 3-cell mono chip
+//    (HOME% · DRAW% · AWAY%) under each LiveSpotlight card + each
+//    Jadwal upcoming row when a market exists for the fixture. Null
+//    when Polymarket has no market (most far-future matches). Single
+//    batched request, not per-match probes — zero extra API cost vs
+//    champion-odds ship.
+//    Polymarket uses `mac` for Man City (not `mci`) and `wes` for
+//    West Ham (not `whu`). The 20-club polyAbbr mapping discovered
+//    empirically via their live event index 2026-04-21.
+//
+// 2. Layout revamp — NBA-pattern schedule-first ordering.
+//    Before: Hero → LiveSpotlight → PeluangJuara → full-width
+//      Klasemen (20 rows, ~500px) → Jadwal + Hasil side-by-side →
+//      TopSkor → ClubIndex.
+//    After:  Hero → LiveSpotlight → Jadwal + Hasil side-by-side
+//      (prime real estate) → [PeluangJuara | Klasemen-compact |
+//      TopSkor] three-col sidebar → ClubIndex.
+//    Klasemen compressed to top 6 + bottom 3 + dashed divider
+//    ("… 10 mid-table clubs …"). Expand toggle reveals full 20
+//    rows + the form pill column. Zone legend trimmed to abbreviations
+//    (UCL / UEL / UECL / REL). Schedule now dominates above the fold;
+//    table becomes a compact reference card.
+//
+// No routing, no hook refactor, no API endpoint change. EPL chunk
+// 26.84 → 30.52 KB / 7.05 → 8.57 KB gzipped (+1.52 KB gzip). NBA,
+// F1, Tennis, Home chunks byte-identical — only src/pages/EPL.jsx,
+// src/hooks/useEPLMatchOdds.js (new), src/lib/sports/epl/clubs.js
+// (polyAbbr field + doc update) touched.
+//
+// Full changelog: v0.5.6-SHIP-NOTES.md at repo root.
+//
 // v0.5.5 — EPL Polymarket champion odds. Phase B, ship 1 of 3.
 // Adds a "Peluang juara" (Title odds) section to the EPL dashboard
 // showing live Polymarket 2025-26 Premier League champion odds.
@@ -530,7 +571,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.5';
+export const APP_VERSION = '0.5.6';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
