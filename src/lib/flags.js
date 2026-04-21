@@ -72,7 +72,10 @@ export function isVisible(sportId) {
 //   VITE_FLAG_WC2026_TEASER=1      → WC2026 teaser page (no email capture)
 //   VITE_FLAG_LIGA1_TEASER=1       → Liga 1 teaser page (no email capture)
 export const UI = {
-  v2:            envFlag('VITE_FLAG_UI_V2', false),
+  // v0.6.0 — DEFAULT FLIPPED TO TRUE. HomeV1 is now the user-facing root.
+  // Emergency rollback: set VITE_FLAG_UI_V2=0 in Vercel production env,
+  // or change this fallback back to `false` and redeploy.
+  v2:            envFlag('VITE_FLAG_UI_V2', true),
   cmdCenter:     envFlag('VITE_FLAG_CMD_CENTER', false),
   terminalHome:  envFlag('VITE_FLAG_TERMINAL_HOME', false),
   pickem:        envFlag('VITE_FLAG_PICKEM', false),

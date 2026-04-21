@@ -380,6 +380,24 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.0 — v2 flip: HomeV1 becomes the default `/` route (minor
+// milestone — this is the first user-visible slice of the v2 redesign).
+// Flipped `UI.v2` fallback in src/lib/flags.js from false → true so the
+// root route renders HomeV1 without needing VITE_FLAG_UI_V2=1 at Vercel
+// build time. Emergency rollback is either (a) change the fallback back
+// to false + redeploy, or (b) set VITE_FLAG_UI_V2=0 in Vercel env (the
+// envFlag helper short-circuits to false on '0', 'false', or boolean
+// false).
+//
+// Also a lesson-learned: Vercel's CLI-added env vars can land as empty
+// strings when the claude-code plugin wrapper intercepts the "enter
+// value" prompt. Our envFlag treats empty string as unset → fallback,
+// which silently failed the first flip attempt. Changing the code
+// fallback is the clearer knob.
+//
+// No other change — browser-verified HomeV1 + Search palette + Theme
+// popover in preview (Part 4 spec) and locked in.
+//
 // v0.5.9 — v2 Phase 3: HomeV1 + TopBar + Search ⌘K + Theme popover
 // (behind ui_v2 flag · default OFF).
 //
@@ -732,7 +750,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.9';
+export const APP_VERSION = '0.6.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
