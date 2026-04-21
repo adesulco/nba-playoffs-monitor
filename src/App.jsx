@@ -9,6 +9,11 @@ import SportErrorBoundary from './components/SportErrorBoundary.jsx';
 // home hero loads without pulling 300KB of dashboard logic, and vice versa.
 // Home is eagerly imported since it's the root entry.
 import Home from './pages/Home.jsx';
+import { UI } from './lib/flags.js';
+
+// v2 redesign — Home V1 personalized-feed variant. Lazy so the v1 Home
+// doesn't pay its cost on first paint when ui_v2 is off (the default).
+const HomeV1 = lazy(() => import('./pages/HomeV1.jsx'));
 
 const NBADashboard = lazy(() => import('./pages/NBADashboard.jsx'));
 const TeamPage = lazy(() => import('./pages/TeamPage.jsx'));
@@ -58,7 +63,11 @@ export default function App() {
         <AnalyticsTracker />
         <Suspense fallback={<RouteFallback />}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            {/* v2 gate: when ui_v2 flag is on, render HomeV1 (personalized
+                feed); when off (default), render the existing gateway grid.
+                The flag is a build-time env var (VITE_FLAG_UI_V2) so the
+                inactive variant is tree-shaken out of the shipped bundle. */}
+            <Route path="/" element={UI.v2 ? <HomeV1 /> : <Home />} />
 
             {/* NBA — live sport (recovery baseline) */}
             <Route path="/nba-playoff-2026" element={<Sport sport="nba" sportLabel="NBA Playoffs 2026"><NBADashboard /></Sport>} />

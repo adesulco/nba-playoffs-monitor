@@ -380,6 +380,64 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.5.9 — v2 Phase 3: HomeV1 + TopBar + Search ⌘K + Theme popover
+// (behind ui_v2 flag · default OFF).
+//
+// Fully invisible to production users — the ui_v2 flag defaults to false,
+// so App.jsx renders the existing src/pages/Home.jsx unchanged. Flipping
+// the flag via VITE_FLAG_UI_V2=1 at Vercel build time swaps the root
+// route to the new personalized-feed HomeV1.
+//
+// Files added:
+//   A src/components/v2/TopBar.jsx        — v2 masthead: logo + nav (Home /
+//     NBA / Football / F1 / Tennis / World Cup) + search pill (⌘K) + lang
+//     chip + theme icon + avatar dot. Owns both overlay components below.
+//   A src/components/v2/SearchPalette.jsx — C3 spec: 640px centered modal,
+//     rgba(10,22,40,.72) backdrop + 2px blur. ↑↓ navigates flat across all
+//     groups, ⏎ opens, ⌘↩ opens in new tab, ⎋ closes. Default state =
+//     "Trending now" (7 curated entries). Typing groups results by kind
+//     (Teams / Matches / Players / Leagues / Pages). Catalogue is
+//     hand-curated in the component — 16 NBA teams + 5 league entry
+//     points — latency-free client-side, zero API cost. Expanding the
+//     index to full-text across live matches ships in a later phase.
+//   A src/components/v2/ThemePopover.jsx — C4 spec: 184px panel, anchored
+//     to the sun/moon icon, 8px caret top-right aligned with anchor
+//     center. Three state pills AUTO / DARK / LIGHT — active pill has
+//     amber bg on ink-0 text. Click-outside · ⎋ · click-same-anchor
+//     closes. Writes theme via AppContext.setTheme (already added in
+//     v0.5.2; this is the first caller).
+//   A src/pages/HomeV1.jsx                — Personalized-feed home:
+//     left = Following + Fixtures (EPL upcoming), center = live NBA hero
+//     (radial-gradient team-color backdrop, live pill, momentum bar) +
+//     Live grid (NBA games in progress), right = Live pulse stub +
+//     Fans-reacting stub + live Fangir pack slot. Wired to existing
+//     hooks usePlayoffData + useEPLFixtures — no new API calls.
+//
+// Files touched:
+//   M src/App.jsx                         — import UI flag + lazy HomeV1;
+//     root route ternary UI.v2 ? <HomeV1 /> : <Home />. Lazy ensures the
+//     HomeV1 chunk only loads when the flag is on (verified via build
+//     with VITE_FLAG_UI_V2=1 — produces same HomeV1-34.27KB chunk but
+//     flag-off users never request it).
+//
+// Bundle impact (flag OFF — default):
+//   - index.js: 225.88 → 227.00 KB / 74.46 → 74.82 KB gzipped (+1.12 KB
+//     / +0.36 KB gzip for the UI flag import + lazy HomeV1 shim).
+//   - NBA chunk: 98.53 → 98.60 KB (+70 bytes, natural drift).
+//   - HomeV1 chunk: 34.27 KB / 10.26 KB gzipped — exists on disk but is
+//     NEVER requested by the browser when flag is off (the ternary
+//     never renders it, so React Suspense never triggers the lazy load).
+//
+// Rollout plan:
+//   1. v0.5.9 deploys with flag OFF. Zero visible change to production.
+//   2. When ready to test, set VITE_FLAG_UI_V2=1 in Vercel preview env
+//      and push a preview deploy. Verify HomeV1 renders + NBA regression.
+//   3. When ready to flip defaults, set VITE_FLAG_UI_V2=1 in Vercel
+//      production env. One-click rollback: unset the env var.
+//
+// No routing change, no hook edits, no API change. Part 2 + Part 4
+// design specs faithfully implemented.
+//
 // v0.5.8 — EPL club pages: Key Accounts (X) + per-club top scorers,
 // assisters, and injury report via ESPN roster endpoint. Phase B ship
 // 3 of 3.
@@ -674,7 +732,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.8';
+export const APP_VERSION = '0.5.9';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
