@@ -7,8 +7,18 @@ import ContactBar from '../components/ContactBar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { useEPLTeam } from '../hooks/useEPLTeam.js';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
-import { useEPLScorers } from '../hooks/useEPLScorers.js';
+import { useEPLTeamRoster } from '../hooks/useEPLTeamRoster.js';
 import { CLUBS_BY_SLUG, formatFixtureDate } from '../lib/sports/epl/clubs.js';
+
+// ─── Key Accounts (X/Twitter) ───────────────────────────────────────────────
+// Mirrors the NBA "KEY ACCOUNTS" pattern on NBADashboard: club handle +
+// league handle + two football-news handles. No tracking, no widgets —
+// just outbound <a> links to x.com/<handle>.
+const KEY_ACCOUNTS_EPL = [
+  { handle: 'premierleague', label: 'Premier League', role: 'league' },
+  { handle: 'ESPNFC',        label: 'ESPN FC',        role: 'news' },
+  { handle: 'BBCSport',      label: 'BBC Sport',      role: 'news' },
+];
 
 /**
  * EPL per-club page — v0.4.0 Phase 1A.
@@ -74,7 +84,11 @@ export default function EPLClub() {
 
   const { info, fixtures, loading, error } = useEPLTeam(club.espnId);
   const { rows: standings } = useEPLStandings();
-  const { scorers } = useEPLScorers({ limit: 20 });
+  const {
+    topScorers: rosterTopScorers,
+    topAssisters: rosterTopAssisters,
+    injured: rosterInjured,
+  } = useEPLTeamRoster(club.espnId);
 
   // Current-season standing row for the club (if standings have loaded)
   const standing = useMemo(
@@ -111,12 +125,6 @@ export default function EPLClub() {
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 5),
     [fixtures]
-  );
-
-  // Scorers from this club (top scorers that play for us)
-  const clubScorers = useMemo(
-    () => (scorers || []).filter((s) => s.team?.id === club.espnId).slice(0, 5),
-    [scorers, club.espnId]
   );
 
   // ─── JSON-LD ──────────────────────────────────────────────────────────────
@@ -466,21 +474,168 @@ export default function EPLClub() {
             )}
           </section>
 
-          {/* ─── Top skor klub ───────────────────────────────────────────── */}
-          {clubScorers.length > 0 && (
+          {/* ─── Akun resmi (Key Accounts — X/Twitter) ──────────────────── */}
+          <section style={{
+            padding: 14, background: C.panel, border: `1px solid ${C.line}`,
+            borderLeft: `3px solid ${club.accent}`, borderRadius: 3,
+          }}>
+            <div style={{
+              fontSize: 10, letterSpacing: 1.2, color: C.muted,
+              fontWeight: 700, marginBottom: 10,
+            }}>
+              {lang === 'id' ? 'AKUN RESMI · X / TWITTER' : 'KEY ACCOUNTS · X / TWITTER'}
+            </div>
+            <div style={{ display: 'grid', gap: 6 }}>
+              {/* Club account first, accent-tinted */}
+              {club.handle && (
+                <a
+                  href={`https://x.com/${club.handle}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto',
+                    gap: 10, alignItems: 'center',
+                    padding: '8px 10px',
+                    background: `${club.accent}1a`,
+                    border: `1px solid ${club.accent}55`,
+                    borderRadius: 3,
+                    textDecoration: 'none',
+                    fontSize: 11,
+                  }}
+                >
+                  <div>
+                    <div style={{ fontWeight: 700, color: club.accent, fontFamily: 'var(--font-mono)' }}>
+                      @{club.handle}
+                    </div>
+                    <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>
+                      {lang === 'id' ? 'Akun resmi klub' : 'Official club account'}
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 11, color: club.accent, letterSpacing: 0.5 }}>↗</div>
+                </a>
+              )}
+              {/* League + news accounts */}
+              {KEY_ACCOUNTS_EPL.map((a) => (
+                <a
+                  key={a.handle}
+                  href={`https://x.com/${a.handle}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto',
+                    gap: 10, alignItems: 'center',
+                    padding: '8px 10px',
+                    background: C.panelRow,
+                    borderRadius: 3,
+                    textDecoration: 'none',
+                    fontSize: 11,
+                  }}
+                >
+                  <div>
+                    <div style={{ fontWeight: 600, color: C.text, fontFamily: 'var(--font-mono)' }}>
+                      @{a.handle}
+                    </div>
+                    <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>
+                      {a.label}
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 11, color: C.dim, letterSpacing: 0.5 }}>↗</div>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {/* ─── Top skor klub (roster-derived, full squad) ──────────────── */}
+          {/* Uses the team /roster endpoint rather than the league top-20,
+              so even clubs whose scorers aren't in the league's top 20
+              still get a "top scorers" block (e.g. relegation-zone sides). */}
+          {rosterTopScorers && rosterTopScorers.length > 0 && (
             <section style={{
               padding: 14, background: C.panel, border: `1px solid ${C.line}`,
               borderLeft: `3px solid ${club.accent}`, borderRadius: 3,
             }}>
               <div style={{
-                fontSize: 10, letterSpacing: 1.2, color: C.muted,
-                fontWeight: 700, marginBottom: 10,
+                display: 'flex', justifyContent: 'space-between',
+                alignItems: 'baseline', marginBottom: 10, gap: 8, flexWrap: 'wrap',
               }}>
-                {lang === 'id' ? `TOP SKOR ${club.name.toUpperCase()}` : `${club.name.toUpperCase()} TOP SCORERS`}
+                <div style={{
+                  fontSize: 10, letterSpacing: 1.2, color: C.muted, fontWeight: 700,
+                }}>
+                  {lang === 'id' ? 'TOP SKOR TIM' : 'TOP SCORERS'}
+                </div>
+                <div style={{ fontSize: 9, color: C.muted, letterSpacing: 0.8 }}>
+                  {lang === 'id' ? 'MUSIM 2025–26 · ESPN' : 'SEASON 2025–26 · ESPN'}
+                </div>
               </div>
               <div style={{ display: 'grid', gap: 6 }}>
-                {clubScorers.map((s) => (
-                  <div key={s.name} style={{
+                {rosterTopScorers.map((p, i) => (
+                  <div key={p.id} style={{
+                    display: 'grid',
+                    gridTemplateColumns: '30px 1fr auto auto',
+                    gap: 10, alignItems: 'center',
+                    padding: '8px 10px',
+                    background: C.panelRow,
+                    borderRadius: 3,
+                    fontSize: 11,
+                  }}>
+                    <span style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: 12, color: i === 0 ? club.accent : C.dim, fontWeight: 700,
+                      textAlign: 'center',
+                    }}>#{i + 1}</span>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontWeight: 600, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {p.name}
+                      </div>
+                      <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>
+                        {p.position || '—'} · {lang === 'id' ? 'Main' : 'Apps'} {p.appearances}
+                      </div>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 16, fontWeight: 700, color: C.text, lineHeight: 1 }}>
+                        {p.goals}
+                      </div>
+                      <div style={{ fontSize: 9, color: C.muted, letterSpacing: 0.5, marginTop: 2 }}>
+                        {lang === 'id' ? 'GOL' : 'GOALS'}
+                      </div>
+                    </div>
+                    {p.assists > 0 && (
+                      <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 14, fontWeight: 600, color: C.dim, lineHeight: 1 }}>
+                          {p.assists}
+                        </div>
+                        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 0.5, marginTop: 2 }}>
+                          {lang === 'id' ? 'ASIS' : 'AST'}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* ─── Top asis klub (only when distinct from top scorers) ───── */}
+          {rosterTopAssisters && rosterTopAssisters.length > 0 && (
+            <section style={{
+              padding: 14, background: C.panel, border: `1px solid ${C.line}`,
+              borderLeft: `3px solid ${club.accent}`, borderRadius: 3,
+            }}>
+              <div style={{
+                display: 'flex', justifyContent: 'space-between',
+                alignItems: 'baseline', marginBottom: 10, gap: 8, flexWrap: 'wrap',
+              }}>
+                <div style={{
+                  fontSize: 10, letterSpacing: 1.2, color: C.muted, fontWeight: 700,
+                }}>
+                  {lang === 'id' ? 'TOP ASIS' : 'TOP ASSISTERS'}
+                </div>
+              </div>
+              <div style={{ display: 'grid', gap: 6 }}>
+                {rosterTopAssisters.map((p, i) => (
+                  <div key={p.id} style={{
                     display: 'grid',
                     gridTemplateColumns: '30px 1fr auto',
                     gap: 10, alignItems: 'center',
@@ -491,23 +646,72 @@ export default function EPLClub() {
                   }}>
                     <span style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: 12, color: club.accent, fontWeight: 700,
+                      fontSize: 12, color: i === 0 ? club.accent : C.dim, fontWeight: 700,
                       textAlign: 'center',
-                    }}>#{s.rank}</span>
+                    }}>#{i + 1}</span>
                     <div style={{ minWidth: 0 }}>
-                      <div style={{ fontWeight: 600, color: C.text }}>{s.name}</div>
+                      <div style={{ fontWeight: 600, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {p.name}
+                      </div>
                       <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>
-                        {s.position || '—'}
+                        {p.position || '—'} · {p.goals} {lang === 'id' ? 'GOL' : 'G'}
                       </div>
                     </div>
                     <div style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: 16, fontWeight: 700, color: C.text,
                     }}>
-                      {s.goals}
+                      {p.assists}
                       <span style={{ fontSize: 9, color: C.muted, marginLeft: 4, letterSpacing: 0.5 }}>
-                        {lang === 'id' ? 'GOL' : 'G'}
+                        {lang === 'id' ? 'ASIS' : 'AST'}
                       </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* ─── Cedera (Injuries) — conditional, only when data exists ── */}
+          {rosterInjured && rosterInjured.length > 0 && (
+            <section style={{
+              padding: 14, background: C.panel, border: `1px solid ${C.line}`,
+              borderLeft: `3px solid #EF4444`, borderRadius: 3,
+            }}>
+              <div style={{
+                fontSize: 10, letterSpacing: 1.2, color: C.muted, fontWeight: 700, marginBottom: 10,
+              }}>
+                {lang === 'id' ? 'CEDERA · LAPORAN ESPN' : 'INJURY REPORT · ESPN'}
+              </div>
+              <div style={{ display: 'grid', gap: 6 }}>
+                {rosterInjured.map((p) => (
+                  <div key={p.id} style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto',
+                    gap: 10, alignItems: 'center',
+                    padding: '8px 10px',
+                    background: C.panelRow,
+                    borderRadius: 3,
+                    fontSize: 11,
+                  }}>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontWeight: 600, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {p.name}
+                      </div>
+                      <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>
+                        {p.position || '—'}{p.injuryDescription ? ` · ${p.injuryDescription}` : ''}
+                      </div>
+                    </div>
+                    <div style={{
+                      fontSize: 9, letterSpacing: 0.8, fontWeight: 700,
+                      padding: '3px 8px',
+                      background: 'rgba(239,68,68,.14)',
+                      border: '1px solid rgba(239,68,68,.4)',
+                      color: '#EF4444',
+                      borderRadius: 3,
+                      textTransform: 'uppercase',
+                    }}>
+                      {p.injuryStatus}
                     </div>
                   </div>
                 ))}

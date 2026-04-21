@@ -380,6 +380,62 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.5.8 — EPL club pages: Key Accounts (X) + per-club top scorers,
+// assisters, and injury report via ESPN roster endpoint. Phase B ship
+// 3 of 3.
+//
+// Per-club pages (/premier-league-2025-26/club/:slug — 20 URLs) now
+// gain three new data-backed sections:
+//
+//   1. AKUN RESMI · X / TWITTER — four-row card at the top of each
+//      club page. First row is the club's own handle (accent-tinted
+//      using club.handle populated in v0.5.4), followed by
+//      @premierleague · @ESPNFC · @BBCSport. Outbound <a> links,
+//      no tracking widgets. Mirrors the NBA "KEY ACCOUNTS" pattern
+//      on the main NBADashboard.
+//
+//   2. TOP SKOR TIM (roster-derived) — replaces the previous "Top skor
+//      klub" section which filtered the league top-20 scorers down to
+//      this club (often empty for mid/bottom-table clubs). New section
+//      pulls the full squad from ESPN's /teams/{id}/roster endpoint,
+//      sorts by totalGoals, and shows top 5 with goals + assists +
+//      appearances + position. Works for every club, not just the
+//      league leaders.
+//
+//   3. TOP ASIS — parallel ranking by goalAssists, top 5 players with
+//      assists > 0. Surfaces playmakers (Ødegaard, De Bruyne, Mac
+//      Allister, etc.) who don't lead the goal charts.
+//
+//   Plus conditional CEDERA (INJURY REPORT) section that renders only
+//   when ESPN populates a player's injuries[] array — currently empty
+//   for all EPL clubs but the structure is there for live injury
+//   reporting when a manager confirms + ESPN picks it up.
+//
+// New hook: src/hooks/useEPLTeamRoster.js polls /teams/{id}/roster at
+// 5-minute cadence (roster + season stats don't change mid-matchday;
+// proxy already edge-caches 20s on top). Returns players[], topScorers[],
+// topAssisters[], injured[]. Flattens ESPN's nested
+// statistics.splits.categories[] tree into a client-friendly shape per
+// player (goals, assists, appearances, yellowCards, redCards, saves,
+// etc.).
+//
+// Cleanup: removed now-unused useEPLScorers import from EPLClub.jsx
+// (the league-top-20 filter is replaced by the richer roster-based
+// approach). EPL dashboard itself still uses useEPLScorers for the
+// Golden Boot card — that caller is untouched.
+//
+// No routing, no API endpoint change, no schema change. Proxy
+// /api/proxy/espn/soccer/eng.1/teams/{id}/roster was already
+// whitelisted — just wasn't being called.
+//
+// Files touched:
+//   A src/hooks/useEPLTeamRoster.js   (+112 LOC, new hook)
+//   M src/pages/EPLClub.jsx            (+197 / -47 LOC, sections
+//     added + old club-scorer section replaced)
+//
+// EPLClub chunk: 16.37 → 23.25 KB / 5.10 → 6.37 KB gzipped.
+// NBA dashboard chunk: byte-identical (zero change).
+//
 // v0.5.7 — Polymarket CORS fix (NBA odds revived + EPL odds now live).
 //
 // ROOT CAUSE: browser review of v0.5.6 revealed Peluang Juara + per-match
@@ -618,7 +674,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.5.7';
+export const APP_VERSION = '0.5.8';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
