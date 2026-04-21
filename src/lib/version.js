@@ -380,6 +380,25 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.4 — EPL dashboard: wider day-swipe + club picker (ship 1/2).
+// Addresses two gaps Ade flagged vs NBA:
+//
+// 1. Day-swipe range widened from ±3 days (7 total) to ±7 days
+//    (15 total). EPL matches happen on weekends, so ±3 meant a
+//    Mon–Tue viewer couldn't see the upcoming weekend. useEPLFixtures
+//    already fetches 14 days — only EPLDayScoreboard was limiting.
+//
+// 2. EPLClubPicker component added — parallel to NBA TeamPicker.
+//    Dropdown of 20 clubs sorted A→Z, accent-tinted trigger button,
+//    esc-close, click-outside-close. Writes to localStorage
+//    gibol:epl:club via new AppContext.selectedEPLClub +
+//    setSelectedEPLClub. When a club is selected, the dashboard
+//    accent (hero tint + TopBar accent) switches from EPL purple
+//    to the club's color.
+//
+// Still pending in ship 2 of v0.6.4: /api/epl-news endpoint +
+// sidebar news card + per-club Key Accounts panel on the dashboard.
+//
 // v0.6.3 — HomeV1 rolled back + gateway Home polished. Ade flagged
 // that HomeV1 felt disconnected from sport dashboards (which still
 // use the v1 TopBar without search/theme), creating a visible seam
@@ -819,7 +838,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.3';
+export const APP_VERSION = '0.6.4';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

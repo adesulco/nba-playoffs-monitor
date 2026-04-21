@@ -8,6 +8,7 @@ import Chip from '../components/Chip.jsx';
 import ShareButton from '../components/ShareButton.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
 import EPLDayScoreboard from '../components/EPLDayScoreboard.jsx';
+import EPLClubPicker from '../components/EPLClubPicker.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
@@ -995,6 +996,9 @@ export default function EPL() {
   const { upcoming, recent, loading: fLoading, error: fError } = useEPLFixtures();
   const { scorers, loading: tLoading, error: tError } = useEPLScorers({ limit: 10 });
   const { odds: championOdds, loading: oLoading, error: oError } = useEPLChampionOdds();
+  const { selectedEPLClub, setSelectedEPLClub } = useApp();
+  const favClub = selectedEPLClub ? CLUBS.find((c) => c.slug === selectedEPLClub) : null;
+  const accentColor = favClub?.accent || EPL_PURPLE;
 
   // Split upcoming into currently-live (statusState === 'in') and scheduled.
   // Live matches get a prominent spotlight at the top; Jadwal only shows
@@ -1037,12 +1041,18 @@ export default function EPL() {
         jsonLd={EPL_JSONLD}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={EPL_PURPLE} />
+        <TopBar showBackLink accent={accentColor}>
+          <EPLClubPicker
+            selectedSlug={selectedEPLClub}
+            onSelect={setSelectedEPLClub}
+            lang={lang}
+          />
+        </TopBar>
 
         {/* Step 6 hero — Space Grotesk 36/700/-0.025em, chip top-right, tint ≤8%. */}
         <div style={{
           padding: '20px 20px 14px',
-          background: `linear-gradient(135deg, ${EPL_PURPLE}14 0%, transparent 70%)`,
+          background: `linear-gradient(135deg, ${accentColor}14 0%, transparent 70%)`,
         }}>
           <div style={{
             display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',

@@ -6,6 +6,7 @@ const THEME_STORAGE_KEY = 'gibol:theme';
 const LANG_STORAGE_KEY = 'gibol:lang';
 const ACCENT_STORAGE_KEY = 'gibol:accent';
 const F1_CONSTRUCTOR_KEY = 'gibol:f1:constructor';
+const EPL_CLUB_KEY = 'gibol:epl:club';
 
 // v2 introduces a third theme value ('auto' = follow OS). We resolve 'auto'
 // → 'dark' | 'light' at runtime so the rest of the app only sees the two
@@ -101,6 +102,27 @@ export function AppProvider({ children }) {
 
   const t = useMemo(() => createTranslator(lang), [lang]);
 
+  // v0.6.4 — EPL favorite club. Persists the clubs.js slug (e.g.
+  // 'arsenal'). Consumers resolve slug → metadata via CLUBS_BY_SLUG.
+  const [selectedEPLClub, setSelectedEPLClub] = useState(() => {
+    try {
+      const saved = localStorage.getItem(EPL_CLUB_KEY);
+      return saved && saved !== 'null' ? saved : null;
+    } catch {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      if (selectedEPLClub) {
+        localStorage.setItem(EPL_CLUB_KEY, selectedEPLClub);
+      } else {
+        localStorage.removeItem(EPL_CLUB_KEY);
+      }
+    } catch {}
+  }, [selectedEPLClub]);
+
   // v0.2.5 — F1 constructor pick (parallel to NBA TeamPicker). Persists
   // across reloads via localStorage. Stored as the team `id` (e.g. 'mclaren')
   // not the slug; UI resolves id → meta via TEAMS_BY_ID.
@@ -160,6 +182,11 @@ export function AppProvider({ children }) {
     setSelectedConstructor: (id) => {
       trackEvent('f1_constructor_select', { to: id || 'clear' });
       setSelectedConstructor(id);
+    },
+    selectedEPLClub,
+    setSelectedEPLClub: (slug) => {
+      trackEvent('epl_club_select', { to: slug || 'clear' });
+      setSelectedEPLClub(slug);
     },
   };
 

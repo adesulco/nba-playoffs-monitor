@@ -25,12 +25,16 @@ import ShareButton from './ShareButton.jsx';
 
 const EPL_PURPLE = '#37003C';
 
-// Build a [-3, +3] day window anchored today.
+// Build a [-7, +7] day window (15 days total) anchored today. Premier
+// League matches happen on weekends, so a ±3 window loses the next
+// weekend's fixtures if today is Mon–Tue — covering two full weekends
+// is the minimum useful range. useEPLFixtures already fetches ±7 days
+// of data, so widening here is free.
 function buildDayWindow(anchor = new Date()) {
   const days = [];
   const a = new Date(anchor);
   a.setHours(0, 0, 0, 0);
-  for (let i = -3; i <= 3; i++) {
+  for (let i = -7; i <= 7; i++) {
     const d = new Date(a);
     d.setDate(a.getDate() + i);
     days.push(d);
