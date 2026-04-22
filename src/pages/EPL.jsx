@@ -371,12 +371,12 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
         lang === 'id' ? 'FAVORIT JUARA' : 'TITLE FAVORITE',
         titleFav ? (
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ width: 3, height: 16, background: titleFav.club?.accent || EPL_PURPLE }} />
+            <span style={{ width: 3, height: 16, background: titleFav.club?.accent || '#A855F7' }} />
             {titleFav.canonicalName || titleFav.name}
-            <span style={{ color: EPL_PURPLE, fontFamily: 'var(--font-mono)', fontSize: 16 }}>{titleFav.pct}%</span>
+            <span style={{ color: '#A855F7', fontFamily: 'var(--font-mono)', fontSize: 16 }}>{titleFav.pct}%</span>
           </span>
         ) : '—',
-        EPL_PURPLE,
+        '#A855F7',
         lang === 'id' ? 'Polymarket · live' : 'Polymarket · live'
       )}
       {cell(

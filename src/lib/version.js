@@ -380,6 +380,12 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.6 — Fix: ContextStrip TITLE FAVORITE label too dark.
+// Brand EPL purple #37003C is close to black; the small mono label
+// was illegible on dark bg. Swapped to a brighter purple #A855F7
+// for the label + percent text in just that cell. Other cells
+// (TOP-4 RACE, RELEGATION, GOLDEN BOOT) unchanged.
+//
 // v0.6.5 — EPL dashboard: news feed + Key Accounts sidebar (ship 2/2
 // of the v0.6.4 gap-fill sprint).
 //
@@ -863,7 +869,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.5';
+export const APP_VERSION = '0.6.6';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
