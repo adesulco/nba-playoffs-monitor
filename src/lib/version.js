@@ -380,6 +380,34 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.7 — Tennis dashboard brought to NBA/EPL parity (Ship A).
+//
+// Adds four items from the 4-way parity matrix:
+//   1. TennisPlayerPicker — 20 curated ATP + WTA stars + 3 Indonesian
+//      players, grouped by tour. AppContext slot gibol:tennis:player.
+//   2. TopBar accent override — uses the picked player's accent color
+//      (red for ATP stars, pink for WTA, amber for Indonesian). Falls
+//      back to the tennis gold (#D4A13A).
+//   3. Tennis ContextStrip — 4 dashboard-level stats: NEXT SLAM
+//      (countdown to next Grand Slam), ATP #1, WTA #1, and YOUR PICK
+//      (favorite player). Uses useTennisRankings (already live) +
+//      nextSlam() (already exported from tournaments.js).
+//   4. TennisKeyAccounts — static panel of 5 league/press handles
+//      (@atptour, @WTA, @TennisTV, @ESPNFC, @rolandgarros). Notes
+//      below that personal player handles aren't curated in
+//      constants.js yet (v2.1 backlog).
+//
+// Day-swipe schedule deliberately skipped — tennis tournaments run
+// weekly, not daily, so the existing tiered TournamentCard grid
+// (Grand Slam / Masters 1000 / WTA 1000 / Finals) is already the
+// right primitive. A daily matches view could follow if product
+// asks for it.
+//
+// Polymarket probe done in parallel: F1 Drivers' Champion market
+// (`2026-f1-drivers-champion`) active; 4 Grand Slam winner markets
+// (`2026-mens-french-open-winner`, etc.) active. Ship C can wire
+// both when ready.
+//
 // v0.6.6 — Fix: ContextStrip TITLE FAVORITE label too dark.
 // Brand EPL purple #37003C is close to black; the small mono label
 // was illegible on dark bg. Swapped to a brighter purple #A855F7
@@ -869,7 +897,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.6';
+export const APP_VERSION = '0.6.7';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

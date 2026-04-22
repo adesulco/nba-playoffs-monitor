@@ -81,6 +81,48 @@ export const INDONESIAN_PLAYERS_BY_SLUG = Object.fromEntries(
   INDONESIAN_PLAYERS.map((p) => [p.slug, p])
 );
 
+// ─── Featured stars for the TennisPlayerPicker dropdown ─────────────────────
+// Curated list of current ATP + WTA singles stars — the players we'd expect
+// to be followed most often. Avoids depending on useTennisRankings at picker
+// open time. `tourColor` is used by the TopBar accent override + rankings
+// table highlight when the picker selects this player.
+//
+// Shape: slug (ESPN-aligned), name, short, tour, ccode, accent.
+// Accent uses a soft red for ATP + soft pink for WTA — gives the dashboard
+// a tennis-authentic tint without borrowing per-country flags.
+
+const ATP_STAR_ACCENT = '#C23C3C';
+const WTA_STAR_ACCENT = '#DB2777';
+
+export const TENNIS_STARS = [
+  // ATP
+  { slug: 'jannik-sinner',      name: 'Jannik Sinner',      short: 'J. Sinner',      tour: 'atp', ccode: 'ITA', accent: ATP_STAR_ACCENT },
+  { slug: 'carlos-alcaraz',     name: 'Carlos Alcaraz',     short: 'C. Alcaraz',     tour: 'atp', ccode: 'ESP', accent: ATP_STAR_ACCENT },
+  { slug: 'alexander-zverev',   name: 'Alexander Zverev',   short: 'A. Zverev',      tour: 'atp', ccode: 'GER', accent: ATP_STAR_ACCENT },
+  { slug: 'daniil-medvedev',    name: 'Daniil Medvedev',    short: 'D. Medvedev',    tour: 'atp', ccode: 'RUS', accent: ATP_STAR_ACCENT },
+  { slug: 'novak-djokovic',     name: 'Novak Djokovic',     short: 'N. Djokovic',    tour: 'atp', ccode: 'SRB', accent: ATP_STAR_ACCENT },
+  { slug: 'taylor-fritz',       name: 'Taylor Fritz',       short: 'T. Fritz',       tour: 'atp', ccode: 'USA', accent: ATP_STAR_ACCENT },
+  { slug: 'casper-ruud',        name: 'Casper Ruud',        short: 'C. Ruud',        tour: 'atp', ccode: 'NOR', accent: ATP_STAR_ACCENT },
+  { slug: 'andrey-rublev',      name: 'Andrey Rublev',      short: 'A. Rublev',      tour: 'atp', ccode: 'RUS', accent: ATP_STAR_ACCENT },
+  { slug: 'stefanos-tsitsipas', name: 'Stefanos Tsitsipas', short: 'S. Tsitsipas',   tour: 'atp', ccode: 'GRE', accent: ATP_STAR_ACCENT },
+  { slug: 'holger-rune',        name: 'Holger Rune',        short: 'H. Rune',        tour: 'atp', ccode: 'DEN', accent: ATP_STAR_ACCENT },
+  // WTA
+  { slug: 'iga-swiatek',        name: 'Iga Świątek',        short: 'I. Świątek',     tour: 'wta', ccode: 'POL', accent: WTA_STAR_ACCENT },
+  { slug: 'aryna-sabalenka',    name: 'Aryna Sabalenka',    short: 'A. Sabalenka',   tour: 'wta', ccode: 'BLR', accent: WTA_STAR_ACCENT },
+  { slug: 'coco-gauff',         name: 'Coco Gauff',         short: 'C. Gauff',       tour: 'wta', ccode: 'USA', accent: WTA_STAR_ACCENT },
+  { slug: 'elena-rybakina',     name: 'Elena Rybakina',     short: 'E. Rybakina',    tour: 'wta', ccode: 'KAZ', accent: WTA_STAR_ACCENT },
+  { slug: 'jessica-pegula',     name: 'Jessica Pegula',     short: 'J. Pegula',      tour: 'wta', ccode: 'USA', accent: WTA_STAR_ACCENT },
+  { slug: 'jasmine-paolini',    name: 'Jasmine Paolini',    short: 'J. Paolini',     tour: 'wta', ccode: 'ITA', accent: WTA_STAR_ACCENT },
+  { slug: 'qinwen-zheng',       name: 'Qinwen Zheng',       short: 'Q. Zheng',       tour: 'wta', ccode: 'CHN', accent: WTA_STAR_ACCENT },
+  { slug: 'emma-navarro',       name: 'Emma Navarro',       short: 'E. Navarro',     tour: 'wta', ccode: 'USA', accent: WTA_STAR_ACCENT },
+  { slug: 'ons-jabeur',         name: 'Ons Jabeur',         short: 'O. Jabeur',      tour: 'wta', ccode: 'TUN', accent: WTA_STAR_ACCENT },
+  { slug: 'madison-keys',       name: 'Madison Keys',       short: 'M. Keys',        tour: 'wta', ccode: 'USA', accent: WTA_STAR_ACCENT },
+];
+
+export const TENNIS_STARS_BY_SLUG = Object.fromEntries(
+  TENNIS_STARS.map((p) => [p.slug, p])
+);
+
 // ─── Date formatting (mirrors F1 helper pattern) ────────────────────────────
 // No ICU dep — we only need Bahasa + English month names, never locale-aware
 // weekday. WIB is UTC+7; ESPN returns ISO timestamps in UTC so rendering code

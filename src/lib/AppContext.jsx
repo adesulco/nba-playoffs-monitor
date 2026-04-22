@@ -7,6 +7,7 @@ const LANG_STORAGE_KEY = 'gibol:lang';
 const ACCENT_STORAGE_KEY = 'gibol:accent';
 const F1_CONSTRUCTOR_KEY = 'gibol:f1:constructor';
 const EPL_CLUB_KEY = 'gibol:epl:club';
+const TENNIS_PLAYER_KEY = 'gibol:tennis:player';
 
 // v2 introduces a third theme value ('auto' = follow OS). We resolve 'auto'
 // → 'dark' | 'light' at runtime so the rest of the app only sees the two
@@ -123,6 +124,27 @@ export function AppProvider({ children }) {
     } catch {}
   }, [selectedEPLClub]);
 
+  // v0.6.7 — Tennis favorite player. Persists the slug from
+  // TENNIS_STARS_BY_SLUG (ESPN-aligned) or INDONESIAN_PLAYERS_BY_SLUG.
+  const [selectedTennisPlayer, setSelectedTennisPlayer] = useState(() => {
+    try {
+      const saved = localStorage.getItem(TENNIS_PLAYER_KEY);
+      return saved && saved !== 'null' ? saved : null;
+    } catch {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      if (selectedTennisPlayer) {
+        localStorage.setItem(TENNIS_PLAYER_KEY, selectedTennisPlayer);
+      } else {
+        localStorage.removeItem(TENNIS_PLAYER_KEY);
+      }
+    } catch {}
+  }, [selectedTennisPlayer]);
+
   // v0.2.5 — F1 constructor pick (parallel to NBA TeamPicker). Persists
   // across reloads via localStorage. Stored as the team `id` (e.g. 'mclaren')
   // not the slug; UI resolves id → meta via TEAMS_BY_ID.
@@ -187,6 +209,11 @@ export function AppProvider({ children }) {
     setSelectedEPLClub: (slug) => {
       trackEvent('epl_club_select', { to: slug || 'clear' });
       setSelectedEPLClub(slug);
+    },
+    selectedTennisPlayer,
+    setSelectedTennisPlayer: (slug) => {
+      trackEvent('tennis_player_select', { to: slug || 'clear' });
+      setSelectedTennisPlayer(slug);
     },
   };
 

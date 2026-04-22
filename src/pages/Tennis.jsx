@@ -3,6 +3,11 @@ import { useLocation, Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
 import TopBar from '../components/TopBar.jsx';
+import TennisPlayerPicker from '../components/TennisPlayerPicker.jsx';
+import {
+  TENNIS_STARS_BY_SLUG,
+  INDONESIAN_PLAYERS_BY_SLUG,
+} from '../lib/sports/tennis/constants.js';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import Chip from '../components/Chip.jsx';
@@ -20,10 +25,179 @@ import {
 import {
   TOURNAMENTS_2026,
   SEASON_YEAR,
+  nextSlam,
 } from '../lib/sports/tennis/tournaments.js';
 import adapter from '../lib/sports/tennis/adapter.js';
 
 const TENNIS_ACCENT = '#D4A13A';
+
+// ─── Tennis ContextStrip ─────────────────────────────────────────────────────
+// Mirrors NBA/EPL ContextStrip. 4 dashboard-level stats for tennis:
+//   · NEXT SLAM   — countdown via CountdownToSlam data
+//   · TOP-RANKED  — world #1 (ATP singles, from useTennisRankings)
+//   · SLAM LEADER — player with most slam wins in 2026 (editorial default
+//     until we wire useTennisChampionOdds). Placeholder currently.
+//   · IDN PLAYER  — top Indonesian player by ranking or editorial pick.
+function TennisContextStrip({ accentColor, favPlayer, lang }) {
+  const { singles } = useTennisRankings('atp');
+  const { singles: wtaSingles } = useTennisRankings('wta');
+  const top = singles?.[0];
+  const topW = wtaSingles?.[0];
+  const next = nextSlam(); // returns { name, startDate, venue, city, countryCode } or null
+
+  const daysTo = useMemo(() => {
+    if (!next?.startDate) return null;
+    const now = new Date();
+    const start = new Date(next.startDate);
+    return Math.max(0, Math.round((start - now) / 86400000));
+  }, [next]);
+
+  const cell = (label, valueNode, accent, sub) => (
+    <div style={{ padding: '12px 14px', borderRight: `1px solid ${C.lineSoft}`, minWidth: 0 }}>
+      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: 1, color: accent, fontWeight: 700, marginBottom: 4 }}>
+        {label}
+      </div>
+      <div style={{ fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 700, color: C.text, letterSpacing: '-0.01em', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        {valueNode}
+      </div>
+      {sub && <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: C.muted, letterSpacing: 0.3, marginTop: 4 }}>{sub}</div>}
+    </div>
+  );
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${accentColor}`,
+      borderRadius: 3,
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+    }}>
+      {cell(
+        lang === 'id' ? 'SLAM BERIKUT' : 'NEXT SLAM',
+        next ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 3, height: 16, background: '#A855F7' }} />
+            {next.name}
+            {typeof daysTo === 'number' && (
+              <span style={{ color: '#A855F7', fontFamily: 'var(--font-mono)', fontSize: 16 }}>
+                {daysTo === 0 ? (lang === 'id' ? 'live' : 'live') : `${daysTo}d`}
+              </span>
+            )}
+          </span>
+        ) : '—',
+        '#A855F7',
+        next ? `${next.venue || ''} · ${next.city || ''}` : ''
+      )}
+      {cell(
+        'ATP #1',
+        top ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 3, height: 16, background: '#C23C3C' }} />
+            {top.name}
+            <span style={{ color: '#C23C3C', fontFamily: 'var(--font-mono)', fontSize: 16 }}>
+              {top.points?.toLocaleString?.() || top.points || ''}
+            </span>
+          </span>
+        ) : '—',
+        '#C23C3C',
+        top?.country || 'ATP singles · ESPN'
+      )}
+      {cell(
+        'WTA #1',
+        topW ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 3, height: 16, background: '#DB2777' }} />
+            {topW.name}
+            <span style={{ color: '#DB2777', fontFamily: 'var(--font-mono)', fontSize: 16 }}>
+              {topW.points?.toLocaleString?.() || topW.points || ''}
+            </span>
+          </span>
+        ) : '—',
+        '#DB2777',
+        topW?.country || 'WTA singles · ESPN'
+      )}
+      <div style={{ padding: '12px 14px', minWidth: 0 }}>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: 1, color: '#F59E0B', fontWeight: 700, marginBottom: 4 }}>
+          {lang === 'id' ? 'FAVORIT KAMU' : 'YOUR PICK'}
+        </div>
+        <div style={{ fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 700, color: C.text, letterSpacing: '-0.01em', lineHeight: 1.15, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {favPlayer ? (
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ width: 3, height: 16, background: favPlayer.accent || accentColor }} />
+              {favPlayer.name || favPlayer.displayName}
+            </span>
+          ) : (lang === 'id' ? 'Belum dipilih' : 'None picked')}
+        </div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: C.muted, letterSpacing: 0.3, marginTop: 4 }}>
+          {favPlayer
+            ? `${(favPlayer.tour || '').toUpperCase()} · ${favPlayer.ccode || favPlayer.countryCode || ''}`
+            : (lang === 'id' ? 'Pakai pemilih di kanan atas' : 'Use the picker top-right')}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Tennis Key Accounts ─────────────────────────────────────────────────────
+function TennisKeyAccounts({ favPlayer, accentColor, lang }) {
+  // Player social handles are not curated in constants.js; skip player row
+  // unless we have one. Fall back to tour + press accounts which are
+  // stable and well-known.
+  const rows = [
+    { handle: 'atptour',    label: 'ATP Tour' },
+    { handle: 'WTA',        label: 'WTA Tour' },
+    { handle: 'TennisTV',   label: 'Tennis TV (ATP live)' },
+    { handle: 'ESPNFC',     label: 'ESPN FC (general sports)' },
+    { handle: 'rolandgarros', label: 'Roland-Garros' },
+  ];
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${accentColor}`,
+      borderRadius: 3,
+      padding: '14px 14px 10px',
+    }}>
+      <div style={{ fontSize: 10, letterSpacing: 1.2, color: C.muted, fontWeight: 700, marginBottom: 10 }}>
+        {lang === 'id' ? 'AKUN RESMI · X / TWITTER' : 'KEY ACCOUNTS · X / TWITTER'}
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 6 }}>
+        {rows.map((r) => (
+          <a
+            key={r.handle}
+            href={`https://x.com/${r.handle}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              gap: 10, alignItems: 'center',
+              padding: '8px 10px',
+              background: C.panelRow,
+              borderRadius: 3,
+              textDecoration: 'none',
+              fontSize: 11,
+            }}
+          >
+            <div>
+              <div style={{ fontWeight: 600, color: C.text, fontFamily: 'var(--font-mono)' }}>@{r.handle}</div>
+              <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>{r.label}</div>
+            </div>
+            <div style={{ fontSize: 11, color: C.dim, letterSpacing: 0.5 }}>↗</div>
+          </a>
+        ))}
+      </div>
+      {favPlayer && (
+        <div style={{ fontSize: 10, color: C.muted, marginTop: 8, letterSpacing: 0.3 }}>
+          {lang === 'id'
+            ? `Handle pribadi untuk ${favPlayer.name || favPlayer.displayName} tidak dikurasikan di repo — tambahkan di constants.js kalau perlu.`
+            : `Personal X handle for ${favPlayer.name || favPlayer.displayName} not curated yet — add in constants.js if needed.`}
+        </div>
+      )}
+    </section>
+  );
+}
 
 // Find the matching prerender metadata for the hub.
 function getHubMeta() {
@@ -393,8 +567,14 @@ function TennisNewsList({ lang }) {
 // ─── Page shell ─────────────────────────────────────────────────────────────
 export default function Tennis() {
   const location = useLocation();
-  const { lang } = useApp();
+  const { lang, selectedTennisPlayer, setSelectedTennisPlayer } = useApp();
   const meta = getHubMeta();
+
+  const favPlayer = selectedTennisPlayer
+    ? (TENNIS_STARS_BY_SLUG[selectedTennisPlayer]
+        || INDONESIAN_PLAYERS_BY_SLUG[selectedTennisPlayer])
+    : null;
+  const accentColor = favPlayer?.accent || TENNIS_ACCENT;
 
   const tournamentsByTier = useMemo(() => {
     const map = {};
@@ -424,13 +604,19 @@ export default function Tennis() {
         jsonLd={meta.jsonLd}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={TENNIS_ACCENT} />
+        <TopBar showBackLink accent={accentColor}>
+          <TennisPlayerPicker
+            selectedSlug={selectedTennisPlayer}
+            onSelect={setSelectedTennisPlayer}
+            lang={lang}
+          />
+        </TopBar>
 
         {/* Hero */}
         <div
           style={{
             padding: '20px 20px 14px',
-            background: `linear-gradient(135deg, ${TENNIS_ACCENT}14 0%, transparent 70%)`,
+            background: `linear-gradient(135deg, ${accentColor}14 0%, transparent 70%)`,
           }}
         >
           <div
@@ -477,6 +663,9 @@ export default function Tennis() {
         </div>
 
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 16 }}>
+          {/* Context strip — 4 dashboard stats */}
+          <TennisContextStrip accentColor={accentColor} favPlayer={favPlayer} lang={lang} />
+
           {/* Countdown to next slam + live ticker */}
           <div
             style={{
@@ -513,6 +702,9 @@ export default function Tennis() {
             <IndonesianSpotlight lang={lang} />
             <TennisNewsList lang={lang} />
           </div>
+
+          {/* Key Accounts — favorite player (when picked) + ATP + WTA + Tennis TV */}
+          <TennisKeyAccounts favPlayer={favPlayer} accentColor={accentColor} lang={lang} />
         </div>
 
         {/* Disclaimer */}
