@@ -380,6 +380,31 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.5 — EPL dashboard: news feed + Key Accounts sidebar (ship 2/2
+// of the v0.6.4 gap-fill sprint).
+//
+// Two new sidebar panels land side-by-side below the 3-col stats strip:
+//   · Berita / News — bilingual feed via new /api/epl-news.js endpoint.
+//     Bahasa sources: detikSport, CNN Indonesia, Antara (keyword-
+//     filtered to EPL terms). English sources: BBC Sport Premier League
+//     + Guardian Premier League (dedicated feeds, no keyword filter
+//     needed). 8-item card with source chip per row. When a favorite
+//     club is selected, items mentioning that club sort to the top
+//     with a ★ highlight pill.
+//   · Akun resmi / Key Accounts — mirrors the per-club X-handle panel
+//     but on the main dashboard. Row 1 is the favorite club's own
+//     handle accent-tinted (from clubs.js), rows 2–4 are
+//     @premierleague · @ESPNFC · @BBCSport. When no club picked,
+//     just the three league/news handles render.
+//
+// Cache: /api/epl-news uses s-maxage=900 · stale-while-revalidate=1800
+// so N viewers in 15 min cost 1 upstream fetch per source. Hard 8s
+// abort timeout on the Promise.all so one slow source can't stall the
+// whole response.
+//
+// No API/hook/route change outside the new additions. NBA/F1/Tennis/
+// Home byte-identical.
+//
 // v0.6.4 — EPL dashboard: wider day-swipe + club picker (ship 1/2).
 // Addresses two gaps Ade flagged vs NBA:
 //
@@ -838,7 +863,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.4';
+export const APP_VERSION = '0.6.5';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

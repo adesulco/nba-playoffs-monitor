@@ -9,6 +9,7 @@ import ShareButton from '../components/ShareButton.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
 import EPLDayScoreboard from '../components/EPLDayScoreboard.jsx';
 import EPLClubPicker from '../components/EPLClubPicker.jsx';
+import { useEPLNews } from '../hooks/useEPLNews.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
@@ -972,6 +973,183 @@ function ClubIndex({ lang }) {
   );
 }
 
+// ─── Berita / News ──────────────────────────────────────────────────────────
+// Bilingual EPL news feed via /api/epl-news. When a club is selected,
+// we re-sort to show items mentioning that club first (simple title
+// contains-check); the full feed still renders underneath. Refresh
+// cadence: 15 min (matches the endpoint's s-maxage).
+function BeritaPanel({ items, favClubName, loading, error, lang }) {
+  const ordered = useMemo(() => {
+    if (!items) return [];
+    if (!favClubName) return items;
+    const needle = favClubName.toLowerCase();
+    const match = [];
+    const rest = [];
+    for (const it of items) {
+      if ((it.title || '').toLowerCase().includes(needle)) match.push(it);
+      else rest.push(it);
+    }
+    return [...match, ...rest];
+  }, [items, favClubName]);
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${EPL_PURPLE}`,
+      borderRadius: 3,
+      padding: '14px 14px 8px',
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
+        <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, margin: 0, color: C.text, letterSpacing: -0.2 }}>
+          {lang === 'id' ? 'Berita' : 'News'}
+        </h2>
+        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
+          {lang === 'id' ? 'BBC · GUARDIAN · DETIK · CNN · ANTARA' : 'BBC · GUARDIAN · DETIK · CNN · ANTARA'}
+        </div>
+      </div>
+      {error && (
+        <div style={{ fontSize: 11, color: C.muted, padding: '6px 0' }}>
+          {lang === 'id' ? 'Data berita lambat.' : 'News feed is slow.'}
+        </div>
+      )}
+      {!error && loading && ordered.length === 0 && (
+        <div style={{ fontSize: 11, color: C.dim, padding: '6px 0' }}>
+          {lang === 'id' ? 'Memuat…' : 'Loading…'}
+        </div>
+      )}
+      {!error && !loading && ordered.length === 0 && (
+        <div style={{ fontSize: 11, color: C.dim, padding: '6px 0' }}>
+          {lang === 'id' ? 'Belum ada berita Liga Inggris terbaru.' : 'No recent Premier League news.'}
+        </div>
+      )}
+      <div style={{ display: 'grid', gap: 2 }}>
+        {ordered.slice(0, 8).map((it, i) => {
+          const highlight = favClubName && (it.title || '').toLowerCase().includes(favClubName.toLowerCase());
+          return (
+            <a
+              key={`${it.url}-${i}`}
+              href={it.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr auto',
+                gap: 10,
+                padding: '8px 0',
+                borderTop: i ? `1px solid ${C.lineSoft}` : 0,
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+            >
+              <div style={{ minWidth: 0 }}>
+                <div style={{
+                  fontSize: 11.5,
+                  color: C.text,
+                  lineHeight: 1.35,
+                  overflow: 'hidden',
+                  display: '-webkit-box',
+                  WebkitBoxOrient: 'vertical',
+                  WebkitLineClamp: 2,
+                }}>
+                  {highlight && (
+                    <span style={{
+                      display: 'inline-block',
+                      fontSize: 8.5,
+                      letterSpacing: 0.8,
+                      padding: '1px 5px',
+                      marginRight: 6,
+                      background: `${EPL_PURPLE}2a`,
+                      color: C.text,
+                      borderRadius: 2,
+                      verticalAlign: 'middle',
+                      fontWeight: 700,
+                    }}>
+                      ★
+                    </span>
+                  )}
+                  {it.title}
+                </div>
+                <div className="mono" style={{ fontSize: 9, color: C.muted, marginTop: 3, letterSpacing: 0.3 }}>
+                  {it.source}
+                </div>
+              </div>
+              <span style={{ fontSize: 10, color: C.dim, letterSpacing: 0.5 }}>↗</span>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+// ─── Akun resmi (Key Accounts) ──────────────────────────────────────────────
+// Renders on the dashboard when a favorite club is selected. Mirrors NBA's
+// Key Accounts panel: club X handle (accent-tinted) + league + EPNFC +
+// BBCSport. When no club picked, shows generic league accounts.
+function AkunResmi({ favClub, lang }) {
+  const rows = [];
+  if (favClub?.handle) {
+    rows.push({
+      handle: favClub.handle,
+      label: lang === 'id' ? `Akun resmi ${favClub.name}` : `Official ${favClub.name} account`,
+      accent: true,
+      color: favClub.accent,
+    });
+  }
+  rows.push({ handle: 'premierleague', label: 'Premier League' });
+  rows.push({ handle: 'ESPNFC', label: 'ESPN FC' });
+  rows.push({ handle: 'BBCSport', label: 'BBC Sport' });
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${favClub?.accent || EPL_PURPLE}`,
+      borderRadius: 3,
+      padding: '14px 14px 10px',
+    }}>
+      <div style={{
+        fontSize: 10, letterSpacing: 1.2, color: C.muted,
+        fontWeight: 700, marginBottom: 10,
+      }}>
+        {lang === 'id' ? 'AKUN RESMI · X / TWITTER' : 'KEY ACCOUNTS · X / TWITTER'}
+      </div>
+      <div style={{ display: 'grid', gap: 6 }}>
+        {rows.map((r) => (
+          <a
+            key={r.handle}
+            href={`https://x.com/${r.handle}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              gap: 10, alignItems: 'center',
+              padding: '8px 10px',
+              background: r.accent ? `${r.color}1a` : C.panelRow,
+              border: r.accent ? `1px solid ${r.color}55` : 'none',
+              borderRadius: 3,
+              textDecoration: 'none',
+              fontSize: 11,
+            }}
+          >
+            <div>
+              <div style={{ fontWeight: r.accent ? 700 : 600, color: r.accent ? r.color : C.text, fontFamily: 'var(--font-mono)' }}>
+                @{r.handle}
+              </div>
+              <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>
+                {r.label}
+              </div>
+            </div>
+            <div style={{ fontSize: 11, color: r.accent ? r.color : C.dim, letterSpacing: 0.5 }}>↗</div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ─── Disclaimer ──────────────────────────────────────────────────────────────
 function Disclaimer({ lang }) {
   return (
@@ -999,6 +1177,7 @@ export default function EPL() {
   const { selectedEPLClub, setSelectedEPLClub } = useApp();
   const favClub = selectedEPLClub ? CLUBS.find((c) => c.slug === selectedEPLClub) : null;
   const accentColor = favClub?.accent || EPL_PURPLE;
+  const { items: newsItems, loading: nLoading, error: nError } = useEPLNews(lang === 'id' ? 'id' : 'en');
 
   // Split upcoming into currently-live (statusState === 'in') and scheduled.
   // Live matches get a prominent spotlight at the top; Jadwal only shows
@@ -1125,7 +1304,25 @@ export default function EPL() {
             <TopSkor scorers={scorers} loading={tLoading} error={tError} lang={lang} />
           </div>
 
-          {/* ── Row 5 — Club index (all 20 clubs, 1-click to each page) ── */}
+          {/* ── Row 5 — Berita + Akun resmi side-by-side. Matches NBA's
+              news + key-accounts pattern. Berita highlights items
+              mentioning the favorite club when one is picked. ── */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 14,
+          }}>
+            <BeritaPanel
+              items={newsItems}
+              favClubName={favClub?.name}
+              loading={nLoading}
+              error={nError}
+              lang={lang}
+            />
+            <AkunResmi favClub={favClub} lang={lang} />
+          </div>
+
+          {/* ── Row 6 — Club index (all 20 clubs, 1-click to each page) ── */}
           <ClubIndex lang={lang} />
         </div>
 
