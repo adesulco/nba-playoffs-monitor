@@ -31,6 +31,132 @@ import adapter from '../lib/sports/tennis/adapter.js';
 
 const TENNIS_ACCENT = '#D4A13A';
 
+// Tier color keys — used by the tournament toggle ribbon to give each
+// concurrent tournament a visual identity at a glance.
+const TIER_COLORS = {
+  slam: '#D4A13A',          // gold
+  combined1000: '#A855F7',  // purple
+  masters: '#C23C3C',       // red (ATP masters)
+  wta1000: '#DB2777',       // pink (WTA 1000)
+  finals: '#F59E0B',        // amber
+};
+
+// ─── Active Tournaments Ribbon ──────────────────────────────────────────────
+// Shows tournaments that are currently in progress OR start within the
+// next 14 days. Multiple tournaments often run concurrently (ATP 500 +
+// WTA 1000 + Challenger), so this ribbon lets users jump between the
+// ones they care about. Clicking opens the tournament page directly
+// (/tennis/{slug}-{year}) where the full draw + fact sheet live.
+function ActiveTournamentsRibbon({ lang }) {
+  const now = new Date();
+  const in14 = new Date(now.getTime() + 14 * 86400000);
+
+  const active = useMemo(() => {
+    const rows = [];
+    for (const t of TOURNAMENTS_2026) {
+      const start = new Date(t.startDate);
+      const end = new Date(t.endDate);
+      const isLive = now >= start && now <= end;
+      const isUpcomingSoon = start > now && start <= in14;
+      if (isLive || isUpcomingSoon) {
+        rows.push({
+          ...t,
+          status: isLive ? 'live' : 'upcoming',
+          sort: start.getTime(),
+        });
+      }
+    }
+    rows.sort((a, b) => {
+      // Live first, then upcoming by start date ascending
+      if (a.status === 'live' && b.status !== 'live') return -1;
+      if (b.status === 'live' && a.status !== 'live') return 1;
+      return a.sort - b.sort;
+    });
+    return rows;
+  }, []);
+
+  if (active.length === 0) return null;
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${TENNIS_ACCENT}`,
+      borderRadius: 3,
+      padding: '12px 14px',
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10, gap: 8, flexWrap: 'wrap' }}>
+        <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600, margin: 0, color: C.text, letterSpacing: -0.2 }}>
+          {lang === 'id' ? 'Turnamen aktif & minggu depan' : 'Active & upcoming tournaments'}
+        </h2>
+        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
+          {active.filter((t) => t.status === 'live').length > 0 && (
+            <span style={{ color: C.red, marginRight: 10 }}>
+              ● {active.filter((t) => t.status === 'live').length} LIVE
+            </span>
+          )}
+          {lang === 'id' ? 'KLIK UNTUK BUKA DRAW' : 'TAP TO OPEN DRAW'}
+        </div>
+      </div>
+      <div style={{
+        display: 'flex',
+        gap: 8,
+        overflowX: 'auto',
+        paddingBottom: 4,
+        scrollSnapType: 'x mandatory',
+      }} className="sponsor-items">
+        {active.map((t) => {
+          const color = TIER_COLORS[t.tier] || TENNIS_ACCENT;
+          const isLive = t.status === 'live';
+          const label = lang === 'id' ? (t.nameId || t.name) : t.name;
+          const toursLabel = (t.tours || []).map((x) => x.toUpperCase()).join(' · ');
+          const dateLabel = `${t.startDate.slice(5)} – ${t.endDate.slice(5)}`;
+          return (
+            <Link
+              key={t.id || t.slug}
+              to={`/tennis/${t.slug}-${SEASON_YEAR}`}
+              style={{
+                scrollSnapAlign: 'start',
+                flex: '0 0 auto',
+                minWidth: 200,
+                padding: '10px 12px',
+                background: isLive ? `${color}1f` : C.panelRow,
+                border: `1px solid ${isLive ? color : C.lineSoft}`,
+                borderLeft: `3px solid ${color}`,
+                borderRadius: 4,
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, marginBottom: 4 }}>
+                <span style={{ fontSize: 9, letterSpacing: 1, color, fontWeight: 700 }}>
+                  {toursLabel}
+                </span>
+                {isLive ? (
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 9, letterSpacing: 0.8, color: C.red, fontWeight: 700 }}>
+                    <span className="live-dot" aria-hidden="true" style={{ width: 6, height: 6, margin: 0 }} />
+                    LIVE
+                  </span>
+                ) : (
+                  <span style={{ fontSize: 9, letterSpacing: 0.8, color: C.dim, fontWeight: 700 }}>
+                    {lang === 'id' ? 'MINGGU INI' : 'SOON'}
+                  </span>
+                )}
+              </div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: C.text, letterSpacing: '-0.01em', marginBottom: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {label}
+              </div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: C.muted, letterSpacing: 0.3 }}>
+                {t.city || ''} · {dateLabel}
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 // ─── Tennis ContextStrip ─────────────────────────────────────────────────────
 // Mirrors NBA/EPL ContextStrip. 4 dashboard-level stats for tennis:
 //   · NEXT SLAM   — countdown via CountdownToSlam data
@@ -663,6 +789,11 @@ export default function Tennis() {
         </div>
 
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 16 }}>
+          {/* Active tournaments ribbon — shows in-progress + upcoming-
+              in-14-days events so viewers can jump between concurrent
+              tours (e.g. ATP 500 + WTA 1000 + Masters in the same week). */}
+          <ActiveTournamentsRibbon lang={lang} />
+
           {/* Context strip — 4 dashboard stats */}
           <TennisContextStrip accentColor={accentColor} favPlayer={favPlayer} lang={lang} />
 

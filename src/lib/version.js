@@ -380,6 +380,17 @@
 // 2026) so the 34-day pre-tournament SEO indexing window is live.
 // Full changelog + QA checklist: v0.5.0-SHIP-NOTES.md at repo root.
 //
+// v0.6.8 — Tennis active-tournaments ribbon.
+// Ade pointed out that multiple tennis tournaments run concurrently
+// (ATP 500 + WTA 1000 + Challenger overlap most weeks). Added a
+// horizontal ribbon at the top of the dashboard showing any event
+// that's currently live OR starts within 14 days.
+//   · Live events get a tier-colored tint + pulsing LIVE dot.
+//   · Upcoming events show "MINGGU INI / SOON" label.
+//   · Each chip: tier color left-border, tour labels, name, city,
+//     start-end dates. Clicking opens /tennis/{slug}-{year}.
+// Reads TOURNAMENTS_2026 directly, no new data source.
+//
 // v0.6.7 — Tennis dashboard brought to NBA/EPL parity (Ship A).
 //
 // Adds four items from the 4-way parity matrix:
@@ -897,7 +908,7 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.7';
+export const APP_VERSION = '0.6.8';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
