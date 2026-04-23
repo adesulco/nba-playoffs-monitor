@@ -11,6 +11,7 @@ import { useApp } from '../lib/AppContext.jsx';
 import { useF1Schedule } from '../hooks/useF1Schedule.js';
 import { useF1Standings } from '../hooks/useF1Standings.js';
 import { useF1Results } from '../hooks/useF1Results.js';
+import { useF1ChampionOdds } from '../hooks/useF1ChampionOdds.js';
 import { TEAMS_BY_ID, nextGP, formatGPDate, SEASON } from '../lib/sports/f1/constants.js';
 
 const F1_RED = '#E10600';
@@ -505,6 +506,400 @@ function ConstructorStandings({ teams, loading, error, lang, selectedConstructor
   );
 }
 
+// ─── Context strip (NBA/EPL parity) ─────────────────────────────────────────
+// Four-cell strip with the season's most important context at a glance.
+//
+// Cells:
+//   · NEXT RACE          — upcoming GP name + days-until countdown
+//   · DRIVERS LEADER     — top driver + points gap to 2nd
+//   · CONSTRUCTOR LEADER — top team + points gap to 2nd
+//   · CHAMPION ODDS      — top Polymarket champion-odds entry (live)
+//
+// Before the season starts, DRIVERS/CONSTRUCTOR cells show "Musim belum
+// mulai" and we lean on the next-race + champion-odds cells for signal.
+function F1ContextStrip({ drivers, teams, races, championOdds, lang }) {
+  const next = useMemo(() => nextGP(), []);
+  const todayISO = new Date().toISOString().slice(0, 10);
+
+  // Countdown to next race (positive = future, 0 = race day, negative = season over).
+  let countdown = null;
+  if (next) {
+    const raceDate = new Date(next.dateISO + 'T00:00:00Z');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const days = Math.ceil((raceDate - today) / (1000 * 60 * 60 * 24));
+    if (days === 0) countdown = lang === 'id' ? 'Hari ini' : 'Today';
+    else if (days === 1) countdown = lang === 'id' ? 'Besok' : 'Tomorrow';
+    else if (days > 1) countdown = lang === 'id' ? `${days} hari lagi` : `in ${days} days`;
+    else countdown = lang === 'id' ? 'Selesai' : 'Done';
+  }
+
+  const leader = drivers?.[0] || null;
+  const driverGap = drivers && drivers.length >= 2
+    ? (drivers[0].points - drivers[1].points)
+    : null;
+
+  const topTeam = teams?.[0] || null;
+  const teamGap = teams && teams.length >= 2
+    ? (teams[0].points - teams[1].points)
+    : null;
+
+  const titleFav = (championOdds || [])[0];
+
+  const cell = (label, valueNode, accent, sub) => (
+    <div style={{
+      padding: '12px 14px',
+      borderRight: `1px solid ${C.lineSoft}`,
+      minWidth: 0,
+    }}>
+      <div style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: 9,
+        letterSpacing: 1,
+        color: accent || C.muted,
+        fontWeight: 700,
+        marginBottom: 4,
+      }}>
+        {label}
+      </div>
+      <div style={{
+        fontFamily: 'var(--font-sans)',
+        fontSize: 18,
+        fontWeight: 700,
+        color: C.text,
+        letterSpacing: '-0.01em',
+        lineHeight: 1.15,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }}>
+        {valueNode}
+      </div>
+      {sub && (
+        <div style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9,
+          color: C.muted,
+          letterSpacing: 0.3,
+          marginTop: 4,
+        }}>
+          {sub}
+        </div>
+      )}
+    </div>
+  );
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${F1_RED}`,
+      borderRadius: 3,
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+    }}>
+      {cell(
+        lang === 'id' ? 'BALAPAN BERIKUT' : 'NEXT RACE',
+        next ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 3, height: 16, background: F1_RED }} />
+            {next.name.replace(' GP', '')}
+            {countdown && (
+              <span style={{ color: F1_RED, fontFamily: 'var(--font-mono)', fontSize: 14 }}>
+                {countdown.replace(lang === 'id' ? ' hari lagi' : 'in ', '').replace(' days', 'd')}
+              </span>
+            )}
+          </span>
+        ) : '—',
+        F1_RED,
+        next ? `${formatGPDate(next.dateISO, lang)} · ${next.wibTime} WIB` : (lang === 'id' ? 'Kalender musim' : 'Season calendar')
+      )}
+
+      {cell(
+        lang === 'id' ? 'PEMIMPIN PEMBALAP' : 'DRIVERS LEADER',
+        leader ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 3, height: 16, background: TEAMS_BY_ID[leader.teamId]?.accent || F1_RED }} />
+            {leader.name}
+            <span style={{ color: '#10B981', fontFamily: 'var(--font-mono)', fontSize: 14 }}>
+              {leader.points} pt
+            </span>
+          </span>
+        ) : (lang === 'id' ? 'Musim belum mulai' : 'Season not started'),
+        '#10B981',
+        leader && driverGap !== null
+          ? `+${driverGap} ${lang === 'id' ? 'ke P2' : 'to P2'}`
+          : (lang === 'id' ? 'Australian GP · 8 Mar' : 'Australian GP · Mar 8')
+      )}
+
+      {cell(
+        lang === 'id' ? 'PEMIMPIN KONSTRUKTOR' : 'CONSTRUCTOR LEADER',
+        topTeam ? (
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ width: 3, height: 16, background: topTeam.accent || F1_RED }} />
+            {topTeam.short || topTeam.name}
+            <span style={{ color: '#2563EB', fontFamily: 'var(--font-mono)', fontSize: 14 }}>
+              {topTeam.points} pt
+            </span>
+          </span>
+        ) : (lang === 'id' ? 'Musim belum mulai' : 'Season not started'),
+        '#2563EB',
+        topTeam && teamGap !== null
+          ? `+${teamGap} ${lang === 'id' ? 'ke P2' : 'to P2'}`
+          : (lang === 'id' ? '11 tim · regulasi baru' : '11 teams · new regs')
+      )}
+
+      <div style={{ padding: '12px 14px', minWidth: 0 }}>
+        <div style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9, letterSpacing: 1,
+          color: '#A855F7', fontWeight: 700,
+          marginBottom: 4,
+        }}>
+          {lang === 'id' ? 'FAVORIT JUARA' : 'CHAMPION FAVORITE'}
+        </div>
+        <div style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: 18, fontWeight: 700, color: C.text,
+          letterSpacing: '-0.01em', lineHeight: 1.15,
+          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+        }}>
+          {titleFav ? (
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <span style={{
+                width: 3, height: 16,
+                background: titleFav.team?.accent || '#A855F7',
+              }} />
+              {titleFav.canonicalName || titleFav.name}
+              <span style={{ color: '#A855F7', fontFamily: 'var(--font-mono)', fontSize: 14 }}>
+                {titleFav.pct}%
+              </span>
+            </span>
+          ) : '—'}
+        </div>
+        <div style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9, color: C.muted, letterSpacing: 0.3, marginTop: 4,
+        }}>
+          {lang === 'id' ? 'Polymarket · live' : 'Polymarket · live'}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── F1 title odds (top 6 champion favorites) ───────────────────────────────
+// Parallels the EPL PeluangJuara. Renders the top 6 Polymarket entries with
+// accent-tinted horizontal bars, % value, and delta vs last poll. Hidden
+// entirely when the hook returns nothing (market gone / proxy down).
+function F1PeluangJuara({ odds, lang }) {
+  if (!odds || odds.length === 0) return null;
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${F1_RED}`,
+      borderRadius: 3,
+      padding: '14px 14px 10px',
+    }}>
+      <div style={{
+        display: 'flex', justifyContent: 'space-between',
+        alignItems: 'baseline', marginBottom: 10,
+      }}>
+        <h2 style={{
+          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
+          margin: 0, color: C.text, letterSpacing: -0.2,
+        }}>
+          {lang === 'id' ? 'Peluang juara' : 'Championship odds'}
+        </h2>
+        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
+          {lang === 'id' ? 'POLYMARKET · LIVE' : 'POLYMARKET · LIVE'}
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gap: 4 }}>
+        {odds.slice(0, 6).map((o) => {
+          const displayName = o.canonicalName || o.name;
+          const accent = o.team?.accent || F1_RED;
+          const pct = Math.max(1, Math.min(100, o.pct));
+          const changeColor = o.change > 0 ? C.green : o.change < 0 ? C.red : C.muted;
+          const changeSign = o.change > 0 ? '+' : '';
+          const driverSlug = o.driver?.slug;
+          return (
+            <div
+              key={o.name}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '180px 1fr 56px 42px',
+                gap: 10,
+                alignItems: 'center',
+                padding: '7px 10px',
+                background: C.panelRow,
+                border: `1px solid ${C.lineSoft}`,
+                borderLeft: `2px solid ${accent}`,
+                borderRadius: 3,
+                fontSize: 11.5,
+              }}
+            >
+              <div style={{
+                color: C.text, fontWeight: 600,
+                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+              }}>
+                {driverSlug ? (
+                  <Link
+                    to={`/formula-1-2026/driver/${driverSlug}`}
+                    style={{ color: C.text, textDecoration: 'none' }}
+                  >
+                    {displayName}
+                  </Link>
+                ) : displayName}
+                {o.driver?.code && (
+                  <span style={{ marginLeft: 6, color: C.muted, fontSize: 9.5, letterSpacing: 0.5 }}>
+                    {o.driver.code}
+                  </span>
+                )}
+              </div>
+              <div style={{
+                height: 8, background: C.panel2,
+                borderRadius: 2, overflow: 'hidden', position: 'relative',
+              }}>
+                <div style={{
+                  width: `${pct}%`, height: '100%',
+                  background: accent,
+                  transition: 'width 400ms var(--ease-standard, ease-out)',
+                }} />
+              </div>
+              <div style={{
+                textAlign: 'right',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 13, fontWeight: 700, color: C.text,
+              }}>
+                {o.pct}%
+              </div>
+              <div style={{
+                textAlign: 'right',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 10, fontWeight: 600, color: changeColor,
+              }}>
+                {o.change !== 0 ? `${changeSign}${o.change}` : '—'}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{
+        fontSize: 9, color: C.muted, letterSpacing: 0.3,
+        marginTop: 8, lineHeight: 1.4,
+      }}>
+        {lang === 'id'
+          ? 'Probabilitas pasar prediksi Polymarket. Update tiap 60 detik. Hanya pembalap dengan peluang >0% yang ditampilkan.'
+          : 'Polymarket prediction-market probabilities. Refreshes every 60s. Only drivers with >0% odds shown.'}
+      </div>
+    </section>
+  );
+}
+
+// ─── F1 key accounts (X/Twitter) ────────────────────────────────────────────
+// Parallel to TennisKeyAccounts / EPL AkunResmi. Surfaces the essential F1
+// social handles. When a constructor is picked, we swap in its team handle
+// and the top driver for that team (from DRIVERS_BY_TEAM, if the constants
+// ever gain a `handle` field — today we fall back to a generic label).
+//
+// Handles verified current as of Apr 2026.
+function F1KeyAccounts({ selectedConstructor, accentColor, lang }) {
+  const team = selectedConstructor ? TEAMS_BY_ID[selectedConstructor] : null;
+
+  // Curated per-team X handles — verified active as of Apr 2026.
+  const TEAM_HANDLES = {
+    red_bull: 'redbullracing',
+    mclaren: 'McLarenF1',
+    ferrari: 'ScuderiaFerrari',
+    mercedes: 'MercedesAMGF1',
+    aston_martin: 'AstonMartinF1',
+    alpine: 'AlpineF1Team',
+    williams: 'WilliamsRacing',
+    rb: 'VisaRBF1Team',
+    sauber_audi: 'AudiOfficial',
+    haas: 'HaasF1Team',
+    cadillac: 'CadillacF1Team',
+  };
+
+  const rows = [
+    { handle: 'F1', label: 'Formula 1 (official)' },
+    { handle: 'fia', label: 'FIA' },
+  ];
+  if (team && TEAM_HANDLES[team.id]) {
+    rows.push({
+      handle: TEAM_HANDLES[team.id],
+      label: `${team.short} · ${lang === 'id' ? 'tim kamu' : 'your team'}`,
+    });
+  }
+  rows.push(
+    { handle: 'SkySportsF1', label: 'Sky Sports F1' },
+    { handle: 'WTF1official', label: 'WTF1 (fans)' },
+  );
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${accentColor}`,
+      borderRadius: 3,
+      padding: '14px 14px 10px',
+    }}>
+      <div style={{
+        fontSize: 10, letterSpacing: 1.2, color: C.muted,
+        fontWeight: 700, marginBottom: 10,
+      }}>
+        {lang === 'id' ? 'AKUN RESMI · X / TWITTER' : 'KEY ACCOUNTS · X / TWITTER'}
+      </div>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+        gap: 6,
+      }}>
+        {rows.map((r) => (
+          <a
+            key={r.handle}
+            href={`https://x.com/${r.handle}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr auto',
+              gap: 10, alignItems: 'center',
+              padding: '8px 10px',
+              background: C.panelRow,
+              border: `1px solid ${C.lineSoft}`,
+              borderRadius: 3,
+              textDecoration: 'none',
+              fontSize: 11,
+            }}
+          >
+            <div>
+              <div style={{ fontWeight: 600, color: C.text, fontFamily: 'var(--font-mono)' }}>
+                @{r.handle}
+              </div>
+              <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>
+                {r.label}
+              </div>
+            </div>
+            <div style={{ fontSize: 11, color: C.dim, letterSpacing: 0.5 }}>↗</div>
+          </a>
+        ))}
+      </div>
+      {!team && (
+        <div style={{ fontSize: 10, color: C.muted, marginTop: 8, letterSpacing: 0.3 }}>
+          {lang === 'id'
+            ? 'Pilih tim di kanan atas buat munculin handle tim kamu.'
+            : 'Pick a team top-right to surface that team\u2019s handle.'}
+        </div>
+      )}
+    </section>
+  );
+}
+
 // ─── Disclaimer footer ──────────────────────────────────────────────────────
 function Disclaimer({ lang }) {
   return (
@@ -527,6 +922,7 @@ export default function F1() {
   const { races, source } = useF1Schedule();
   const { drivers, teams, loading, error } = useF1Standings();
   const { resultsByRound } = useF1Results();
+  const { odds: championOdds } = useF1ChampionOdds();
 
   // v0.2.5 — if a constructor is picked, tint the dashboard chrome with its
   // accent. Falls back to the F1 brand red.
@@ -613,6 +1009,19 @@ export default function F1() {
         </div>
 
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 14 }}>
+          {/* Context strip — next race, drivers + constructor leaders,
+              Polymarket champion favorite. Parallels NBA/EPL strip. */}
+          <F1ContextStrip
+            drivers={drivers}
+            teams={teams}
+            races={races}
+            championOdds={championOdds}
+            lang={lang}
+          />
+
+          {/* Peluang juara — top 6 Polymarket champion odds. Live, 60s poll. */}
+          <F1PeluangJuara odds={championOdds} lang={lang} />
+
           {/* Round-by-round scroller + detail panel (NBA day-scroller pattern) */}
           <div style={{ display: 'grid', gap: 10 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
@@ -648,6 +1057,14 @@ export default function F1() {
             <ConstructorStandings teams={teams} loading={loading} error={error} lang={lang} selectedConstructor={selectedConstructor} />
             <F1News />
           </div>
+
+          {/* Key accounts — X/Twitter handles for F1, FIA, picked team, and
+              two global fan/broadcast feeds. Parallels Tennis + EPL. */}
+          <F1KeyAccounts
+            selectedConstructor={selectedConstructor}
+            accentColor={activeAccent}
+            lang={lang}
+          />
         </div>
 
         <Disclaimer lang={lang} />

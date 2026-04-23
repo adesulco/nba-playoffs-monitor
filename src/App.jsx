@@ -1,9 +1,12 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import { AppProvider } from './lib/AppContext.jsx';
 import AnalyticsTracker from './components/AnalyticsTracker.jsx';
 import SportErrorBoundary from './components/SportErrorBoundary.jsx';
+import { SentryErrorBoundary } from './lib/observability.js';
 
 // F21 — route-based code splitting. Each page becomes its own bundle so the
 // home hero loads without pulling 300KB of dashboard logic, and vice versa.
@@ -38,6 +41,19 @@ const Recap = lazy(() => import('./pages/Recap.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
 const Glossary = lazy(() => import('./pages/Glossary.jsx'));
 
+// Pick'em — bracket, private leagues, leaderboards. Lazy so the Supabase
+// client + auth context don't land on users who never visit /bracket.
+const Login = lazy(() => import('./pages/Login.jsx'));
+const AuthCallback = lazy(() => import('./pages/AuthCallback.jsx'));
+const Bracket = lazy(() => import('./pages/Bracket.jsx'));
+const BracketNew = lazy(() => import('./pages/BracketNew.jsx'));
+const BracketEdit = lazy(() => import('./pages/BracketEdit.jsx'));
+const BracketShare = lazy(() => import('./pages/BracketShare.jsx'));
+const LeagueNew = lazy(() => import('./pages/LeagueNew.jsx'));
+const LeagueJoin = lazy(() => import('./pages/LeagueJoin.jsx'));
+const Leaderboard = lazy(() => import('./pages/Leaderboard.jsx'));
+const LeaderboardLeague = lazy(() => import('./pages/LeaderboardLeague.jsx'));
+
 // Minimal blank fallback — keeps layout shift near zero while the chunk streams.
 function RouteFallback() {
   return (
@@ -55,8 +71,30 @@ function Sport({ sport, sportLabel, children }) {
   );
 }
 
+// Minimal fallback for Sentry's outermost error boundary. If the whole
+// React tree explodes (rare; usually a bad deploy), give the user a way
+// back to the home page without wiping the Vercel/Sentry diagnostics.
+function GlobalErrorFallback() {
+  return (
+    <div style={{
+      background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      flexDirection: 'column', padding: 24, fontFamily: 'var(--font-sans)', textAlign: 'center',
+    }}>
+      <h1 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>
+        Gibol lagi nggak enak badan.
+      </h1>
+      <p style={{ fontSize: 14, opacity: 0.8, maxWidth: 420, marginBottom: 20, lineHeight: 1.5 }}>
+        Kami sudah dapat report-nya otomatis. Coba refresh — biasanya beres.
+      </p>
+      <a href="/" style={{ fontSize: 13, textDecoration: 'underline' }}>← Balik ke Home</a>
+    </div>
+  );
+}
+
 export default function App() {
   return (
+    <SentryErrorBoundary fallback={<GlobalErrorFallback />}>
     <HelmetProvider>
       <AppProvider>
         <BrowserRouter>
@@ -104,11 +142,34 @@ export default function App() {
 
             <Route path="/about" element={<About />} />
             <Route path="/glossary" element={<Glossary />} />
+
+            {/* Pick'em — bracket, private leagues, leaderboards. Auth pages
+                (login + magic-link callback) and public share view live here.
+                Private pages enforce auth via AuthProvider + navigate to
+                /login?next=... when session is missing. */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route path="/bracket" element={<Bracket />} />
+            <Route path="/bracket/new" element={<BracketNew />} />
+            <Route path="/bracket/:id" element={<BracketEdit />} />
+            <Route path="/bracket/:id/share" element={<BracketShare />} />
+            <Route path="/league/new" element={<LeagueNew />} />
+            <Route path="/league/:id/join" element={<LeagueJoin />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/leaderboard/:leagueId" element={<LeaderboardLeague />} />
+
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
         </BrowserRouter>
+        {/* Vercel built-ins — Hobby plan includes both at no extra cost.
+            SpeedInsights pipes real-user Core Web Vitals to the Vercel
+            dashboard; Analytics adds privacy-friendly page visit counts.
+            Both are no-ops in local dev. */}
+        <SpeedInsights />
+        <Analytics />
       </AppProvider>
     </HelmetProvider>
+    </SentryErrorBoundary>
   );
 }

@@ -11,6 +11,8 @@ import Button from '../components/Button.jsx';
 import Chip from '../components/Chip.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { trackEvent } from '../lib/analytics.js';
+import ShareButton from '../components/ShareButton.jsx';
+import { buildNBAFinalShareText, buildNBAGameShareUrl, buildNBARecapPngUrl } from '../lib/share.js';
 
 const byAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n]?.abbr === abbr);
 
@@ -53,7 +55,12 @@ function BigMomentHero({ moment, lang, accent }) {
   const { game, tag, headline, caption, topPerformer } = moment;
   const awayMeta = TEAM_META[byAbbr(game.away?.abbr)] || { color: '#555' };
   const homeMeta = TEAM_META[byAbbr(game.home?.abbr)] || { color: '#777' };
-  const wonByAway = game.away?.winner;
+  // Score-derived winner — ESPN's game.away.winner / game.home.winner
+  // flags aren't reliably set on freshly-completed games. See the detailed
+  // note in useDailyRecap.js::buildGameNarrative.
+  const awayScoreN = parseInt(game.away?.score || 0);
+  const homeScoreN = parseInt(game.home?.score || 0);
+  const wonByAway = awayScoreN > homeScoreN;
   const winnerColor = wonByAway ? awayMeta.color : homeMeta.color;
 
   // Step 6: collapsed from (linear@50 + radial@60) → single soft wash at ~10%.
@@ -180,12 +187,40 @@ function StatEdgePill({ edge, lang }) {
   );
 }
 
-function GameRecapCard({ game, summary, topPerformer, topByTeamMap, statEdges, deepDetails, narrative, lang }) {
+function GameRecapCard({ game, summary, topPerformer, topByTeamMap, statEdges, deepDetails, narrative, dateIso, lang }) {
   const awayMeta = TEAM_META[byAbbr(game.away?.abbr)] || { color: '#555' };
   const homeMeta = TEAM_META[byAbbr(game.home?.abbr)] || { color: '#777' };
-  const wonByAway = game.away?.winner;
-  const wonByHome = game.home?.winner;
+  // Score-derived winner (see note in useDailyRecap.js::buildGameNarrative).
+  const awayScoreN = parseInt(game.away?.score || 0);
+  const homeScoreN = parseInt(game.home?.score || 0);
+  const wonByAway = awayScoreN > homeScoreN;
+  const wonByHome = homeScoreN > awayScoreN;
   const winnerColor = wonByAway ? awayMeta.color : homeMeta.color;
+
+  // Per-game shareable text + URL. Each card is now its own atomic
+  // WhatsApp/X/Threads/IG post — core "shareable > beautiful" principle.
+  // Uses the overall top scorer (either team) for the tail line.
+  const shareText = buildNBAFinalShareText(game, topPerformer, lang);
+  const shareUrl = buildNBAGameShareUrl(game, dateIso);
+  const shareTitle = lang === 'id'
+    ? `${game.away?.abbr || ''} vs ${game.home?.abbr || ''} · Recap gibol.co`
+    : `${game.away?.abbr || ''} vs ${game.home?.abbr || ''} · gibol.co recap`;
+
+  // v0.9.0 — dynamic IG Story PNG backed by /api/recap/[gameId]?v=story.
+  // TEAM_META is keyed by full team name; the share helper expects abbr-
+  // keyed { color } so we build a compact lookup inline. awayMeta/homeMeta
+  // above already pair with abbrs; plus the top scorer's team colour if it
+  // differs (rare — top is usually on one of the two playing teams but we
+  // hedge for completeness). Only the three possibly-referenced abbrs go
+  // in so we don't pay for a 30-team map on every render.
+  const abbrMeta = {};
+  if (game.away?.abbr) abbrMeta[game.away.abbr] = awayMeta;
+  if (game.home?.abbr) abbrMeta[game.home.abbr] = homeMeta;
+  const igStoryPngUrl = buildNBARecapPngUrl(game, topPerformer, abbrMeta, {
+    variant: 'story',
+    dateIso,
+    lang,
+  });
   const accent = C.amber;
 
   const awayTop = topByTeamMap?.[game.away?.abbr];
@@ -237,10 +272,34 @@ function GameRecapCard({ game, summary, topPerformer, topByTeamMap, statEdges, d
           </div>
         )}
 
-        {/* Stat edge pills */}
-        {statEdges && statEdges.length > 0 && (
-          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-            {statEdges.map((e, i) => <StatEdgePill key={i} edge={e} lang={lang} />)}
+        {/* Stat edge pills + per-game share — share trigger floats right
+            so the pills fill the left. On narrow cards the pills wrap
+            above the button. Every final-state card is now its own
+            shareable unit (WhatsApp / X / Threads / Copy). */}
+        {(statEdges?.length > 0 || shareText) && (
+          <div style={{
+            display: 'flex',
+            gap: 8,
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', flex: 1, minWidth: 0 }}>
+              {(statEdges || []).map((e, i) => <StatEdgePill key={i} edge={e} lang={lang} />)}
+            </div>
+            {shareText && (
+              <ShareButton
+                url={shareUrl}
+                title={shareTitle}
+                text={shareText}
+                accent={winnerColor}
+                size="sm"
+                label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+                analyticsEvent="recap_game_share"
+                igStory={igStoryPngUrl ? { pngUrl: igStoryPngUrl } : undefined}
+                dropDirection="up"
+              />
+            )}
           </div>
         )}
       </div>
@@ -626,6 +685,7 @@ export default function Recap() {
                   statEdges={statEdgesPerGame[g.id]}
                   deepDetails={deepDetailsPerGame[g.id]}
                   narrative={narratives[g.id]}
+                  dateIso={dateIso}
                   lang={lang}
                 />
               ))}

@@ -908,7 +908,257 @@
 // No routing, data-fetch, or other page changes. NBA/F1/EPL/tennis/FIFA
 // cards all render with their own icon + accent now.
 
-export const APP_VERSION = '0.6.8';
+// v0.6.9 — F1 NBA/EPL parity ship (Ship B). Brings F1 to feature-rank
+// parity with NBA + EPL + Tennis:
+//   - useF1ChampionOdds hook (new). Live Polymarket 2026 Drivers' Champion
+//     market (slug `2026-f1-drivers-champion`, verified $118M lifetime /
+//     $2M 24h vol). Wraps the generic fetchPolymarketEventOdds() added in
+//     v0.5.5. NAME_ALIAS maps Polymarket short forms (e.g. "Kimi Antonelli",
+//     "Carlos Sainz Jr.", "Sergio Perez") to our DRIVERS_2026 canonical
+//     names. validateName filter drops the "Driver A/C/E/G/I" placeholder
+//     markets and "Other". 60s polling cadence.
+//   - F1ContextStrip (new). Four-cell section above the RoundStrip:
+//     NEXT RACE (countdown + date + WIB start), DRIVERS LEADER (name +
+//     points + gap to P2), CONSTRUCTOR LEADER (short name + points +
+//     gap), CHAMPION FAVORITE (top Polymarket entry + %). Pre-season
+//     states fall back to "Musim belum mulai" + Australian GP date
+//     as the anchoring subtitle.
+//   - F1KeyAccounts (new). Three core rows (F1, FIA, SkySportsF1, WTF1)
+//     plus a dynamic "your team" row when a constructor is picked —
+//     curated TEAM_HANDLES map covers all 11 teams inc. Audi + Cadillac.
+//     Accent-border follows activeAccent (team brand color when picked,
+//     F1 red otherwise).
+//   - RoundStrip already shows the full 23-GP calendar and auto-scrolls
+//     to the active round, so no day-swipe rebuild was needed — the
+//     ±7 expansion on EPL was purely because EPL.jsx built a window
+//     view; F1 was full-calendar by design since v0.2.3.
+// No changes to: existing hooks (schedule/standings/results), SEO,
+// ConstructorPicker, or the driver/constructor/news 3-col layout.
+// Polymarket market is routed through the existing /api/proxy/polymarket-
+// gamma proxy; no new API infra.
+// Rollback: remove the two new components + useF1ChampionOdds import and
+// the 2-line ContextStrip + KeyAccounts JSX blocks in F1.jsx.
+
+// v0.7.0 — PeluangJuara (title-odds panel) parity for F1 + Tennis. The EPL
+// dashboard has had a full top-6 champion-odds bar chart since v0.5.5;
+// v0.6.9 surfaced the top entry only as a context-strip cell for F1 but
+// left the full panel missing. This ship closes the gap:
+//   - F1PeluangJuara (new). Top 6 Polymarket Drivers' Champion entries
+//     as horizontal bars. Each row: driver name + code + team-accent bar +
+//     % + delta. Links driver name → /formula-1-2026/driver/:slug when
+//     in our curated DRIVERS_2026. Hidden if the hook returns empty.
+//   - useTennisSlamOdds (new). Generic Polymarket event-odds hook keyed on
+//     a slam slug ('2026-mens-french-open-winner', etc.). Joins on lower-
+//     cased name match against TENNIS_STARS_BY_SLUG so diacritics work
+//     directly (Iga Świątek, Karolína Muchová). Filters "Player A" /
+//     "Field" placeholders.
+//   - TennisPeluangJuara + TennisSlamColumn (new). Two side-by-side top-5
+//     panels (ATP + WTA) for whatever slam nextSlam() returns. Wraps in
+//     the existing Tennis accent border. Hidden cleanly when markets
+//     aren't live yet (48h pre-final close, or slug not mapped).
+//   - SLAM_POLYMARKET_SLUGS map covers all four 2026 slams. Verified
+//     Roland Garros live today (2026-04-22): ATP 67 markets / $15.2M,
+//     WTA 74 markets / $2.4M, top entries Sinner 57% / Świątek 28%.
+// Minor bump (0.7.0) because this completes the 4-sport parity matrix —
+// every dashboard now has: picker w/ accent, scroller, context strip,
+// title odds panel, news feed, and key accounts.
+// Rollback: delete F1PeluangJuara + TennisPeluangJuara components and
+// their two JSX invocations. The two new hooks are self-contained.
+
+// v0.8.0 — Week 1 double-ship: observability foundation + Pick'em UI port.
+// This is the first minor bump since parity matrix completed (v0.7.0) —
+// starts the retention-loop arc the product team's handbook asked for.
+//
+// TRACK A · Observability (foundation before we start measuring retention):
+//   - @sentry/react + @sentry/vite-plugin — crash + error reporting,
+//     session replays on error only (2% base rate, 100% on error). Top-level
+//     SentryErrorBoundary with a Bahasa-first fallback "Gibol lagi nggak
+//     enak badan" message, keeps users one click from Home when the tree
+//     explodes instead of white-screening.
+//   - posthog-js — product analytics, funnels, retention. EU region
+//     default for lower Jakarta latency. Autocapture on, session replay
+//     off (flip later when we have time to review). Bridged through the
+//     existing analytics.js so every trackEvent() call-site lands in
+//     GA4 + PostHog simultaneously with no rewrites.
+//   - @vercel/speed-insights + @vercel/analytics — Core Web Vitals +
+//     privacy-friendly pageviews. Included on the existing Hobby plan
+//     at no additional cost. Both mount at the App root.
+//   - initObservability() called from main.jsx before React renders,
+//     no-op when env vars absent (local dev + preview without secrets).
+//   - identifyUser() / resetIdentity() helpers for the pick'em flow to
+//     stitch anonymous → signed-in sessions once Supabase auth lands.
+//   - .env.example expanded with all Week 1-4 env vars documented.
+//
+// TRACK B · Pick'em UI port (closes biggest roadmap gap — schema was live
+// since v0.1.2 but no client UI existed):
+//   - Ported 10 pages + 3 components from the Next.js 14 App Router
+//     ship-p0 package to Vite + React Router v6 + CSS-in-JS with the
+//     repo's `COLORS` token system. Zero Tailwind. Zero 'use client'.
+//   - Routes: /login, /auth/callback, /bracket, /bracket/new,
+//     /bracket/:id, /bracket/:id/share, /league/new, /league/:id/join,
+//     /leaderboard, /leaderboard/:leagueId — all lazy-loaded so the
+//     Supabase client doesn't land on users who never visit pick'em.
+//   - 6 Vercel Node serverless functions under api/pickem/ + api/auth/
+//     for pick upsert, series scoring (admin), bracket create, league
+//     create, league join, magic-link callback compat.
+//   - Supabase plumbing: src/lib/supabase.js (browser, anon),
+//     api/_lib/supabaseAdmin.js (service-role + JWT validator).
+//     Reads VITE_SUPABASE_* with NEXT_PUBLIC_* fallback so the repo's
+//     existing .env.local keeps working.
+//   - Auth: magic-link via supabase.auth.signInWithOtp with PKCE via
+//     detectSessionInUrl: true. Bahasa-first UI copy throughout.
+//   - Port decisions: service-role + explicit ownership checks in
+//     pick.js (simpler than RLS-JWT forwarding, functionally equivalent);
+//     admin token accepted as x-admin-token OR Bearer for compat with
+//     existing PICKEM_ADMIN_TOKEN. Full rationale in pickem-port-report.md
+//     at repo parent.
+//   - Home gateway now surfaces ★ Bracket link + Leaderboard link in
+//     the secondary quick-nav row so the feature is discoverable
+//     without URL typing.
+//
+// Before first pick'em user can sign in, Ade needs to add these Vercel
+// env vars: VITE_SENTRY_DSN, SENTRY_AUTH_TOKEN, VITE_POSTHOG_KEY,
+// VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE,
+// ADMIN_TOKEN. Observability + pick'em are no-ops without keys — the
+// deploy is safe with today's empty env.
+//
+// Next ship (v0.8.1 or v0.9.0): OneSignal push alerts + Resend daily
+// digest + dynamic recap card. Needs OneSignal + Resend accounts.
+
+// v0.8.1 — per-game share + recap narrative bug fix. Two shipshapes landed:
+//
+// FIX · Narrative winner/loser inversion. On freshly-completed games
+// ESPN's `competitor.winner` boolean isn't reliably set (both sides
+// may come back false until ESPN's post-game job finalizes). The old
+// ternary `game.away?.winner ? away : home` silently defaulted the
+// winner to `home` in that case — producing headlines like "BOS beat
+// PHI 111-97" when the scoreboard actually showed PHI 111, BOS 97.
+// Fix: derive the winner from the score comparison (the score is
+// truth — whoever has the higher final number won). Applied in four
+// places: useDailyRecap::buildGameNarrative, ::buildDeepDetails,
+// the ::gameDigests mapper, and ::biggestMoment scorer. Also patched
+// the two UI sites (BigMomentHero + GameRecapCard) in Recap.jsx so
+// the left-border accent color and muted/bright TeamScore text all
+// reflect the right winner. Users were actively seeing the wrong
+// headline; patch deploys inside this cycle.
+//
+// FEATURE · Per-game share buttons on /recap/:date. Every final card
+// now carries its own ShareButton (bottom-right next to stat edges),
+// auto-populated with a Bahasa/English share line that reads:
+//   "FINAL · LAL 101 — 94 HOU 🏀 LeBron 28/8/7 · recap di gibol.co"
+// Generated by new `buildNBAFinalShareText()` + `buildNBAGameShareUrl()`
+// helpers in `src/lib/share.js`. Each card shares to the date-scoped
+// recap page with a #game-<id> anchor so the receiver opens directly
+// to that game. Fires `recap_game_share` event with channel tagged
+// (whatsapp / twitter / threads / copy / native) so PostHog can
+// measure which channel pulls the biggest cross-platform gravity.
+//
+// ShareButton got a Threads option. The intent URL format is
+// `https://www.threads.net/intent/post?text=...&url=...` — the URL is
+// auto-embedded as a link card on Threads so we pass it separate
+// from the body text (avoids double-preview).
+//
+// One Supabase-free deploy — the v0.8.0 shipped plumbing is still
+// dormant while Ade registers the keys.
+
+// v0.9.0 — Week 2 Ship 1: dynamic recap PNG ("Save to IG Story" channel).
+// The ShareButton popover got its fifth channel: a 1080×1920 IG-Story-
+// shaped PNG that's generated on the fly by a new @vercel/og edge
+// function at /api/recap/[gameId]. Same endpoint serves 1200×630 (og)
+// and 1080×1080 (square) variants via ?v=, so link previews on Twitter
+// and FB eventually tap the same pipeline. Aggressively edge-cached
+// (5 min fresh, 1d SWR) so repeat shares of the same game stream from
+// Vercel's CDN rather than regenerating each hit.
+//
+// Why dynamic now: v0.8.1 shipped per-game share buttons but the static
+// PNG pipeline (scripts/generate_recap.py) only covers LAL-DEN-G3. Every
+// other game's IG export 404'd. This closes that gap — any game the
+// ESPN data-source surfaces gets a deterministic share asset in <200ms
+// (cold) and <20ms (warm).
+//
+// Implementation notes:
+//   - Edge runtime. 3 variants rendered by one handler: story / og /
+//     square. React.createElement (not JSX) because the file is .js —
+//     edge bundler can't transform JSX without a build step.
+//   - All inputs come via URL query params — no DB lookup. Caller
+//     (Recap.jsx GameRecapCard) already has the game + topPerformer
+//     from useDailyRecap and encodes them. ~200 bytes of URL per card;
+//     CDN cache key buckets perfectly per game + variant.
+//   - New helper `buildNBARecapPngUrl(game, top, teamMeta, opts)` in
+//     src/lib/share.js packages the encoding. Uses the score-derived
+//     winner logic (same as the v0.8.1 narrative fix) so the PNG can
+//     never drift from the card's own winner attribution.
+//   - ShareButton extended with an `igStory` prop. When present, a
+//     gradient "IG" badge + "Save to IG Story" item appears in the
+//     popover. On mobile with `navigator.canShare({ files: [...] })`
+//     it hands the PNG directly to the OS share sheet so the user
+//     can tap through to Instagram. Desktop gets a blob download so
+//     they can AirDrop / message it to their phone.
+//   - Analytics: new channel value `ig_story` on the existing
+//     `recap_game_share` event. Lands in GA4 + PostHog + Sentry
+//     breadcrumbs — we'll see day-one whether the PNG channel
+//     actually outperforms plain-text WhatsApp shares.
+//
+// Rollback path: remove the /api/recap/[gameId].js file and the
+// `igStory` prop wire-in at the GameRecapCard call site. ShareButton
+// keeps working with the other four channels if igStory is undefined.
+
+// v0.9.1 — popover-flip polish. v0.9.0's ShareButton always opened its
+// popover *below* the trigger. On /recap/:date the per-game share buttons
+// sit at the bottom of each card (which itself sits near the bottom of
+// the viewport on laptops), so the popover clipped past the fold — users
+// saw "WhatsApp" but had to scroll for the other four channels + IG
+// Story.
+// Added optional `dropDirection = 'down' | 'up'` prop. `up` positions the
+// popover via `bottom: calc(100% + 4px)` instead of `top:`. Recap.jsx
+// game cards pass `dropDirection="up"`. Popover width bumped 220→240px
+// to give "Save to IG Story PNG" room to breathe on one line.
+
+// v0.10.0 — Week 2 Ship 2: OneSignal close-game push alerts.
+// First proactive retention mechanic that reaches users outside the site
+// itself. When any NBA playoff game hits Q4 <2:00 with ≤5pt margin, a
+// short Bahasa-friendly push fires to every user who opted into the
+// `nba_close` tag.
+//
+// End-to-end pieces landed together:
+//   - OneSignal app `8dcf3ecf-6a5a-4188-81b9-57f0e7e64821` (Web Push
+//     platform + legacy + new API auth key). Service worker stub at
+//     /public/OneSignalSDKWorker.js importScripts from their CDN so
+//     SDK upgrades don't require a Vercel redeploy.
+//   - src/lib/push.js — deferred CDN-loaded v16 SDK, idempotent initPush()
+//     gated on VITE_ONESIGNAL_APP_ID (no-op in local dev), exposes
+//     promptPush(), setPushTag(), identifyPushUser() helpers.
+//   - src/components/PushOptInButton.jsx — opt-in CTA with all five
+//     lifecycle states (idle / unsupported / prompt / subscribed /
+//     denied). Wired into Home quick-links row between the push alerts
+//     and the Pick'em/Recap/Leaderboard links. Safari <16.4 + non-HTTPS
+//     origins auto-hide instead of showing a dead CTA.
+//   - api/cron/nba-close-game-scan.js — runs every 2 min via the new
+//     vercel.json crons entry. ESPN scoreboard filter for live Q4 games
+//     with ≤5pt margin and <2 min clock. Writes (channel, game_id,
+//     bucket) to public.push_log with UNIQUE on the tuple — insert-first
+//     semantics do the dedupe in one DB roundtrip. Only fires OneSignal
+//     on clean insert, skips on 23505 unique violation.
+//   - supabase/migrations/0003_push_log.sql — applied live. Server-only
+//     table, RLS explicit-deny-all for the anon role so a leaked anon
+//     key can't read the push history.
+//   - CRON_SECRET-authed (Bearer header from Vercel cron). Refuses when
+//     the env var is missing so we can't accidentally expose the scanner
+//     to the public internet.
+//   - main.jsx calls initPush() inside requestIdleCallback so the 30KB
+//     OneSignal SDK doesn't compete with hydration. Same discipline as
+//     the service worker registerSW() on the next line.
+//
+// PostHog funnel target (Week 2 exit criterion):
+//   pageview(home) → click(push_opt_in) → result{granted}
+//   → cron-side push_log insert → browser push_received
+// We'll know day-one whether NBA fans actually grant push permission.
+//
+// Rollback: drop the crons entry from vercel.json and/or set
+// VITE_ONESIGNAL_APP_ID to empty in Vercel env. The client code is
+// a no-op without the app id; the cron is a no-op without the REST key.
+
+export const APP_VERSION = '0.10.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

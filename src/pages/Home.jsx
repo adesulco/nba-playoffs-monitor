@@ -5,6 +5,7 @@ import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import Card from '../components/Card.jsx';
+import PushOptInButton from '../components/PushOptInButton.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
 import { VISIBLE } from '../lib/flags.js';
@@ -192,9 +193,21 @@ export default function Home() {
           display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center',
           fontSize: 10.5, color: C.dim, letterSpacing: 0.3,
         }}>
+          <PushOptInButton tag="nba_close" lang={lang} compact />
+          <span style={{ color: C.muted }}>·</span>
           <span>{lang === 'id' ? 'Lebih lanjut:' : 'More:'}</span>
+          <Link to="/bracket" style={{
+            color: '#F59E0B', textDecoration: 'underline', textUnderlineOffset: 3, fontWeight: 600,
+          }}>
+            {lang === 'id' ? '★ Bracket kamu · Pick\u2019em NBA' : '★ Your bracket · NBA Pick\u2019em'}
+          </Link>
+          <span style={{ color: C.muted }}>·</span>
           <Link to="/recap" style={{ color: C.text, textDecoration: 'underline', textUnderlineOffset: 3 }}>
             {lang === 'id' ? 'Catatan Playoff NBA (recap harian)' : 'NBA Playoff Notes (daily recap)'}
+          </Link>
+          <span style={{ color: C.muted }}>·</span>
+          <Link to="/leaderboard" style={{ color: C.dim, textDecoration: 'underline', textUnderlineOffset: 3 }}>
+            {lang === 'id' ? 'Leaderboard' : 'Leaderboard'}
           </Link>
           <span style={{ color: C.muted }}>·</span>
           <Link to="/glossary" style={{ color: C.dim, textDecoration: 'underline', textUnderlineOffset: 3 }}>

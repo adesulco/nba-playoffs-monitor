@@ -11,7 +11,13 @@
     "check:vocab": "node scripts/check-vocab.mjs"
   },
   "dependencies": {
+    "@sentry/react": "^10.49.0",
+    "@sentry/vite-plugin": "^5.2.0",
+    "@supabase/supabase-js": "^2.104.0",
+    "@vercel/analytics": "^2.0.1",
     "@vercel/og": "^0.11.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "posthog-js": "^1.370.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^3.0.0",

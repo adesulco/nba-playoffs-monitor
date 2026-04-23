@@ -18,6 +18,7 @@ import RankingsTable from '../components/tennis/RankingsTable.jsx';
 import { useTennisScoreboard } from '../hooks/useTennisScoreboard.js';
 import { useTennisRankings } from '../hooks/useTennisRankings.js';
 import { useTennisNews } from '../hooks/useTennisNews.js';
+import { useTennisSlamOdds } from '../hooks/useTennisSlamOdds.js';
 import {
   SEASON,
   INDONESIAN_PLAYERS,
@@ -322,6 +323,178 @@ function TennisKeyAccounts({ favPlayer, accentColor, lang }) {
         </div>
       )}
     </section>
+  );
+}
+
+// ─── Tennis title odds (next Grand Slam ATP + WTA) ──────────────────────────
+// Renders two side-by-side top-5 bar charts — men's + women's draws of the
+// nextSlam() result. Each row is a player name + accent bar + % + delta.
+// Slam-slug map covers the four 2026 slams; add other slugs as Polymarket
+// publishes them.
+const SLAM_POLYMARKET_SLUGS = {
+  'australian-open': {
+    atp: '2026-mens-australian-open-winner',
+    wta: '2026-womens-australian-open-winner',
+  },
+  'roland-garros': {
+    atp: '2026-mens-french-open-winner',
+    wta: '2026-womens-french-open-winner',
+  },
+  wimbledon: {
+    atp: '2026-mens-wimbledon-winner',
+    wta: '2026-womens-wimbledon-winner',
+  },
+  'us-open': {
+    atp: '2026-mens-us-open-winner',
+    wta: '2026-womens-us-open-winner',
+  },
+};
+
+function TennisPeluangJuara({ slam, accentColor, lang }) {
+  // Lookup the polymarket slugs for the current upcoming slam. If none
+  // exists (the slam identifier isn't mapped yet), render nothing so the
+  // section disappears cleanly instead of flashing a broken panel.
+  const slugs = slam?.id ? SLAM_POLYMARKET_SLUGS[slam.id] : null;
+  const atpResult = useTennisSlamOdds(slugs?.atp);
+  const wtaResult = useTennisSlamOdds(slugs?.wta);
+
+  // Bail if neither tour has markets yet (e.g. markets close 48h before
+  // the final or the slug isn't live).
+  if (!slugs) return null;
+  if ((atpResult.odds?.length || 0) + (wtaResult.odds?.length || 0) === 0) return null;
+
+  return (
+    <section style={{
+      background: C.panel,
+      border: `1px solid ${C.line}`,
+      borderLeft: `3px solid ${accentColor}`,
+      borderRadius: 3,
+      padding: '14px 14px 10px',
+    }}>
+      <div style={{
+        display: 'flex', justifyContent: 'space-between',
+        alignItems: 'baseline', marginBottom: 10,
+      }}>
+        <h2 style={{
+          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
+          margin: 0, color: C.text, letterSpacing: -0.2,
+        }}>
+          {lang === 'id' ? `Peluang juara · ${slam.name}` : `Title odds · ${slam.name}`}
+        </h2>
+        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
+          POLYMARKET · LIVE
+        </div>
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: 12,
+      }}>
+        <TennisSlamColumn
+          title={lang === 'id' ? 'PUTRA · ATP' : 'MEN · ATP'}
+          accent="#C23C3C"
+          odds={atpResult.odds}
+          lang={lang}
+        />
+        <TennisSlamColumn
+          title={lang === 'id' ? 'PUTRI · WTA' : 'WOMEN · WTA'}
+          accent="#DB2777"
+          odds={wtaResult.odds}
+          lang={lang}
+        />
+      </div>
+
+      <div style={{
+        fontSize: 9, color: C.muted, letterSpacing: 0.3,
+        marginTop: 8, lineHeight: 1.4,
+      }}>
+        {lang === 'id'
+          ? 'Probabilitas pasar prediksi Polymarket. Update tiap 60 detik. Hanya pemain dengan peluang >0% yang muncul.'
+          : 'Polymarket prediction-market probabilities. Refreshes every 60s. Only players with >0% odds shown.'}
+      </div>
+    </section>
+  );
+}
+
+function TennisSlamColumn({ title, accent, odds, lang }) {
+  if (!odds || odds.length === 0) {
+    return (
+      <div style={{ padding: '8px 10px' }}>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: 1.2, color: accent, fontWeight: 700, marginBottom: 8 }}>
+          {title}
+        </div>
+        <div style={{ fontSize: 11, color: C.muted }}>
+          {lang === 'id' ? 'Pasar belum tersedia' : 'Market not yet available'}
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: 1.2, color: accent, fontWeight: 700, marginBottom: 8, padding: '0 2px' }}>
+        {title}
+      </div>
+      <div style={{ display: 'grid', gap: 4 }}>
+        {odds.slice(0, 5).map((o) => {
+          const displayName = o.name;
+          const playerAccent = o.player?.accent || accent;
+          const pct = Math.max(1, Math.min(100, o.pct));
+          const changeColor = o.change > 0 ? C.green : o.change < 0 ? C.red : C.muted;
+          const changeSign = o.change > 0 ? '+' : '';
+          const href = o.slug ? `#${o.slug}` : null;
+          return (
+            <div
+              key={o.name}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '130px 1fr 42px 32px',
+                gap: 8,
+                alignItems: 'center',
+                padding: '6px 8px',
+                background: C.panelRow,
+                border: `1px solid ${C.lineSoft}`,
+                borderLeft: `2px solid ${playerAccent}`,
+                borderRadius: 3,
+                fontSize: 11,
+              }}
+            >
+              <div style={{ color: C.text, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {href ? (
+                  <a href={href} style={{ color: C.text, textDecoration: 'none' }}>{displayName}</a>
+                ) : displayName}
+                {o.player?.ccode && (
+                  <span style={{ marginLeft: 5, color: C.muted, fontSize: 9, letterSpacing: 0.4 }}>
+                    {o.player.ccode}
+                  </span>
+                )}
+              </div>
+              <div style={{ height: 7, background: C.panel2, borderRadius: 2, overflow: 'hidden' }}>
+                <div style={{
+                  width: `${pct}%`, height: '100%',
+                  background: playerAccent,
+                  transition: 'width 400ms var(--ease-standard, ease-out)',
+                }} />
+              </div>
+              <div style={{
+                textAlign: 'right',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 12, fontWeight: 700, color: C.text,
+              }}>
+                {o.pct}%
+              </div>
+              <div style={{
+                textAlign: 'right',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 9.5, fontWeight: 600, color: changeColor,
+              }}>
+                {o.change !== 0 ? `${changeSign}${o.change}` : '—'}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
@@ -796,6 +969,9 @@ export default function Tennis() {
 
           {/* Context strip — 4 dashboard stats */}
           <TennisContextStrip accentColor={accentColor} favPlayer={favPlayer} lang={lang} />
+
+          {/* Peluang juara — top 5 ATP + WTA champion odds for next slam */}
+          <TennisPeluangJuara slam={nextSlam()} accentColor={accentColor} lang={lang} />
 
           {/* Countdown to next slam + live ticker */}
           <div

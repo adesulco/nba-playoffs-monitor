@@ -22,8 +22,15 @@ function buildGameNarrative({ game, top, secondScorer, lang }) {
   const awayScore = parseInt(game.away?.score || 0);
   const homeScore = parseInt(game.home?.score || 0);
   const margin = Math.abs(awayScore - homeScore);
-  const winnerAbbr = game.away?.winner ? game.away?.abbr : game.home?.abbr;
-  const loserAbbr = game.away?.winner ? game.home?.abbr : game.away?.abbr;
+  // Derive winner from the scores directly — ESPN's `winner` flag is
+  // not reliably set on freshly-completed games, and when both flags
+  // come back false the old `game.away?.winner ? away : home` ternary
+  // silently defaulted to the home team, inverting the narrative
+  // ("BOS beat PHI 111-97" when the scoreboard shows PHI 111, BOS 97).
+  // Score comparison is truth: the team with the higher final score won.
+  const awayIsWinner = awayScore > homeScore;
+  const winnerAbbr = awayIsWinner ? game.away?.abbr : game.home?.abbr;
+  const loserAbbr = awayIsWinner ? game.home?.abbr : game.away?.abbr;
   const winScore = Math.max(awayScore, homeScore);
   const loseScore = Math.min(awayScore, homeScore);
   const topName = top?.short || top?.name || '';
@@ -162,8 +169,12 @@ function pickStatEdges(teamTotals, awayAbbr, homeAbbr, lang) {
  * overall top scorer).
  */
 function buildDeepDetails({ game, summary, topByTeamMap, statEdges, lang }) {
-  const winnerAbbr = game.away?.winner ? game.away?.abbr : game.home?.abbr;
-  const loserAbbr  = game.away?.winner ? game.home?.abbr : game.away?.abbr;
+  // Score-derived winner — same fix as buildGameNarrative. See note there.
+  const awayScore = parseInt(game.away?.score || 0);
+  const homeScore = parseInt(game.home?.score || 0);
+  const awayIsWinner = awayScore > homeScore;
+  const winnerAbbr = awayIsWinner ? game.away?.abbr : game.home?.abbr;
+  const loserAbbr  = awayIsWinner ? game.home?.abbr : game.away?.abbr;
   const out = [];
 
   // Losing team's star — gives both fanbases a reason to read.
@@ -347,8 +358,10 @@ export function useDailyRecap(dateIso, lang = 'id') {
     return games.map((g) => {
       const away = parseInt(g.away?.score || 0);
       const home = parseInt(g.home?.score || 0);
-      const winner = g.away?.winner ? g.away?.abbr : g.home?.abbr;
-      const loser  = g.away?.winner ? g.home?.abbr : g.away?.abbr;
+      // Score-derived winner (ESPN's winner flag isn't reliable — see buildGameNarrative).
+      const awayIsWinner = away > home;
+      const winner = awayIsWinner ? g.away?.abbr : g.home?.abbr;
+      const loser  = awayIsWinner ? g.home?.abbr : g.away?.abbr;
       const winScore = Math.max(away, home);
       const loseScore = Math.min(away, home);
       const top = topPerformers[g.id];
@@ -367,7 +380,8 @@ export function useDailyRecap(dateIso, lang = 'id') {
       const awayScore = parseInt(g.away?.score || 0);
       const homeScore = parseInt(g.home?.score || 0);
       const margin = Math.abs(awayScore - homeScore);
-      const wonByAway = g.away?.winner;
+      // Score-derived winner — same fix as buildGameNarrative.
+      const wonByAway = awayScore > homeScore;
       const winnerAbbr = wonByAway ? g.away?.abbr : g.home?.abbr;
       const loserAbbr = wonByAway ? g.home?.abbr : g.away?.abbr;
       const top = topPerformers[g.id];

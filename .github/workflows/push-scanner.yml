@@ -1,0 +1,67 @@
+# NBA close-game push scanner
+# ============================
+# Vercel Hobby plan limits scheduled crons to once/day, but close-game
+# alerts need ~5-minute resolution during game windows. This Action fills
+# the gap: on the cron schedule below, it curls our /api/cron/nba-close-
+# game-scan endpoint (Bearer-authed with CRON_SECRET).
+#
+# Schedule:
+#   */5 * * * *   → every 5 minutes, all day UTC.
+#     During NBA playoff windows (typically 00:00-04:00 UTC game tip-offs
+#     stretching to 07:00 UTC) this gives us ~12 scans per game. Outside
+#     playoff windows the handler bails early on the ESPN scoreboard
+#     check (no in-progress games), so the cost is ~1 round-trip of
+#     cheap JSON per tick.
+#
+# GitHub cap: 2,000 workflow-minutes/month on free tier. This job
+# finishes in ~5s per run → 288 runs/day × 5s × 30d = ~1.2h/mo.
+# Well inside budget.
+#
+# Secrets required (set in repo Settings → Secrets and variables → Actions):
+#   CRON_SECRET   — same value we put in Vercel prod env var.
+#
+# Manual trigger: workflow_dispatch lets you test from the Actions tab
+# without waiting for the schedule (great for first-deploy verification).
+
+name: NBA close-game push scanner
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  # If two ticks overlap (GH occasionally delays a cron), skip the new one
+  # so we don't double-post. push_log unique constraint would catch it
+  # server-side anyway, but this saves the round-trip.
+  group: nba-close-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Curl the scanner
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          set -eo pipefail
+          if [ -z "$CRON_SECRET" ]; then
+            echo "::error::CRON_SECRET not configured in repo secrets"
+            exit 1
+          fi
+          RESP=$(curl -sS -X POST \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            -H "Accept: application/json" \
+            -w '\nHTTP:%{http_code}\n' \
+            https://www.gibol.co/api/cron/nba-close-game-scan)
+          echo "$RESP"
+          # Fail the job on non-2xx so a real outage surfaces as a red
+          # badge in the Actions tab. Soft failures (no close games etc.)
+          # still return 200 with sent=0.
+          HTTP=$(echo "$RESP" | grep -oE 'HTTP:[0-9]{3}' | cut -d: -f2)
+          if [ "${HTTP:0:1}" != "2" ]; then
+            echo "::error::Scanner returned HTTP $HTTP"
+            exit 1
+          fi
