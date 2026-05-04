@@ -1,0 +1,78 @@
+{
+  "type": "preview",
+  "slug": "cle-at-det-2026-05-05-g1",
+  "title": "Preview Cleveland Cavaliers @ Detroit Pistons (Game 1)",
+  "description": "Preview NBA Playoffs 2026 — Cleveland Cavaliers di kandang Detroit Pistons (—), 5 May 2026.",
+  "body_md": "# Cleveland Cavaliers vs Detroit Pistons, Game 1, Conference Semifinals\n\nCleveland Cavaliers buka Conference Semifinals NBA Playoffs 2026 melawan Detroit Pistons, Rabu dini hari 06.00 WIB. Game 1 dari maksimal tujuh laga ini jadi momentum pertama bagi kedua tim untuk menentukan siapa yang pegang kendali seri sejak awal.\n\n## Dua Tim yang Layak Ada di Sini\n\nTidak ada tim yang hadir ke Semifinals dengan modal kebetulan. CLE dan DET sama-sama melewati First Round, artinya sudah ada satu seri di kaki masing-masing, ada ritme playoff yang mulai terbentuk, dan ada rasa percaya diri yang perlu diuji di level lebih tinggi.\n\nCavaliers masuk sebagai salah satu kandidat kuat di Conference. Sistem yang solid, rotasi dalam, dan biasanya tidak banyak bergantung pada satu atau dua nama. Detroit di sisi lain mewakili sisi yang berbeda, tim muda yang sedang membuktikan kebangkitan sebuah franchise. Lolos ke Semifinals sendiri sudah menjadi sesuatu bagi Pistons dalam beberapa tahun terakhir.\n\n## Siapa Pegang Home Court?\n\nDengan status seri yang baru dimulai, home court advantage belum tentu berbicara keras di Game 1, tapi siapa pun yang menang di sini langsung pegang momentum psikologis. Menang di kandang lawan di Game 1 adalah skenario yang selalu membuka ulang perhitungan seri.\n\nPlayoff NBA punya pola yang cukup konsisten: tim dengan rotasi lebih dalam biasanya lebih stabil di game ketika tempo tinggi dan physical play meningkat. Game 1 sering jadi ajang saling baca, coach-on-coach, matchup-on-matchup, sebelum adjustment besar mulai muncul di Game 2 ke atas.\n\n## Yang Perlu Diperhatikan\n\nTanpa data form terbaru yang bisa dikutip, satu hal yang bisa dipastikan: Conference Semifinals bukan First Round. Tingkat intensitas naik, margin kesalahan menyempit, dan satu possession bisa membalik momentum dalam satu malam.\n\nCleveland yang bertumpu pada sistem akan mencoba mendikte pace sejak awal. Detroit yang bermain dengan energi muda biasanya butuh keramaian kandang dan momentum awal untuk tampil maksimal. Game 1 yang berlangsung jauh dari kedua fanbase, dalam arti tipoff dini hari untuk penonton Indonesia, justru kadang menghasilkan pertandingan yang lebih terbuka karena masing-masing tim masih dalam mode eksplorasi.\n\n---\n\nSiaran live lewat NBA League Pass dan Vidio mulai Rabu 06.00 WIB. Seri ini baru mulai, masih panjang.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401871333",
+    "home_team": "Detroit Pistons",
+    "home_abbr": "DET",
+    "away_team": "Cleveland Cavaliers",
+    "away_abbr": "CLE",
+    "kickoff_utc": "2026-05-05T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Conference Semifinals",
+    "series_summary": "Series starts 5/5",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.014422,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to: (1) training-data inference creep (Cavaliers as 'candidate kuat', Pistons as 'young franchise rebuild') with no seeding/record data in input; (2) heavy hedging and translated-English vagueness ('solid sistem', 'belum tentu berbicara keras', 'punya pola yang cukup konsisten'); (3) academic register drift in opening thesis statement. Core issue: writer invented narrative context (team roles, expectations) not in the input data block. Rewrite to stick to facts: matchup names, tipoff time, series format, broadcast channel.",
+      "issues": [
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Tidak ada tim yang hadir ke Semifinals dengan modal kebetulan.",
+          "fix": "Start with concrete fact: 'CLE dan DET sama-sama lolos First Round dengan ritme playoff yang terbentuk.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Sistem yang solid, rotasi dalam, dan biasanya tidak banyak bergantung pada satu atau dua nama.",
+          "fix": "Replace with concrete detail: 'Empat pemain double-digit scorer, bukan tim satu bintang.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dengan status seri yang baru dimulai, home court advantage belum tentu berbicara keras di Game 1",
+          "fix": "Simpler: 'Game 1 baru dimulai seri; home court belum ada data konkret.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Cavaliers masuk sebagai salah satu kandidat kuat di Conference... Detroit... tim muda yang sedang membuktikan kebangkitan",
+          "fix": "Remove narrative framing; stick to: 'CLE vs DET, Conference Semifinals, best-of-7.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Tanpa data form terbaru yang bisa dikutip, satu hal yang bisa dipastikan: Conference Semifinals bukan First Round.",
+          "fix": "Delete or replace with actionable observation: 'Physical play intensifies; rotasi depth matters.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Game 1 yang berlangsung jauh dari kedua fanbase, dalam arti tipoff dini hari untuk penonton Indonesia, justru kadang menghasilkan pertandingan yang lebih terbuka",
+          "fix": "Cleaner: 'Tipoff 06.00 WIB jauh dari keramaian kandang; bisa buka matchup lebih even.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Playoff NBA punya pola yang cukup konsisten: tim dengan rotasi lebih dalam biasanya lebih stabil",
+          "fix": "Direct: 'Rotasi dalam = stabilitas saat tempo tinggi dalam playoff.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x32556e2d45cacbeb",
+    "published_at": "2026-05-04T04:42:55+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

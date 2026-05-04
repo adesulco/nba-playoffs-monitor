@@ -1,0 +1,72 @@
+{
+  "type": "preview",
+  "slug": "lal-at-okc-2026-05-06-g1",
+  "title": "Preview Los Angeles Lakers @ Oklahoma City Thunder (Game 1)",
+  "description": "Preview NBA Playoffs 2026 — Los Angeles Lakers di kandang Oklahoma City Thunder (—), 6 May 2026.",
+  "body_md": "# Thunder Jamu Lakers di Game 1 Conference Semifinals\n\nLos Angeles Lakers terbang ke Oklahoma City untuk Game 1 Conference Semifinals, Rabu pagi 07.30 WIB. Ini pertemuan pertama kedua tim di babak ini, seri masih 0-0, belum ada momentum, belum ada tekanan. Semua baru dimulai.\n\n## Konteks Seri\n\nConference Semifinals berarti kedua tim sudah selesaikan pekerjaan di First Round. OKC jadi tuan rumah Game 1 dan Game 2, artinya Thunder punya home court advantage di awal seri. Seberapa besar keuntungan itu tergantung seberapa solid OKC memanfaatkan kerumunan di Paycom Center.\n\nLakers datang sebagai tim yang sudah terbiasa dengan tekanan playoffs. Nama besar, fanbase besar, harapan besar. OKC di sisi lain membangun sesuatu yang berbeda, tim muda dengan tujuan yang jelas.\n\n## Matchup yang Dinanti\n\nTanpa data prior games di seri ini, yang bisa dibaca adalah konteks babaknya: Conference Semifinals bukan First Round. Tim yang lolos ke sini sudah melewati satu lawan sebelumnya, ritme sudah terbentuk, rotasi sudah diuji.\n\nUntuk Lakers, pertanyaannya sederhana: bisa mereka kendalikan tempo di kandang lawan? Road game di babak ini bukan hal kecil. OKC punya home court bukan kebetulan.\n\nUntuk Thunder, Game 1 adalah kesempatan langsung membangun keunggulan psikologis. Menang di rumah sendiri di game pembuka seri punya bobot tersendiri.\n\n## Yang Perlu Diperhatikan\n\nConference Semifinals biasanya soal siapa yang lebih cepat menyesuaikan diri. Tim yang datang dengan scouting lebih dalam di game pembuka sering ambil inisiatif. OKC dengan home court advantage punya sedikit keuntungan dalam hal itu, kerumunan Paycom Center bisa jadi faktor nyata, terutama di kuarter keempat ketika skor ketat.\n\nLakers harus kelola ini dengan kepala dingin. Road win di game pembuka adalah statement, tapi bukan keharusan. Seri masih panjang.\n\nSatu hal yang hampir pasti: pace dan intensity game ini akan lebih tinggi dari First Round. Kedua tim tahu apa yang dipertaruhkan.\n\n---\n\nGame 1 Conference Semifinals, OKC vs LAL tayang live di NBA League Pass dan Vidio, Rabu pagi 07.30 WIB.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401871326",
+    "home_team": "Oklahoma City Thunder",
+    "home_abbr": "OKC",
+    "away_team": "Los Angeles Lakers",
+    "away_abbr": "LAL",
+    "kickoff_utc": "2026-05-06T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Conference Semifinals",
+    "series_summary": "Series starts 5/5",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.03546,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: Two high-severity training_inference issues (home court assignment, stadium name not in input). Article speculates about playoff structure and OKC venue without grounding. Requires significant rewrite to stick to input facts only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "OKC jadi tuan rumah Game 1 dan Game 2, artinya Thunder punya home court advantage",
+          "fix": "Remove; use only facts from input (venue not specified; can't confirm home court)"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "kerumunan di Paycom Center, kerumunan Paycom Center bisa jadi faktor",
+          "fix": "Replace 'Paycom Center' with 'kandang OKC' or remove stadium reference entirely"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Yang Perlu Diperhatikan — Conference Semifinals biasanya soal siapa yang lebih cepat menyesuaikan diri",
+          "fix": "Delete header; lead with specific concern or reframe as concrete prediction"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tanpa data prior games di seri ini, yang bisa dibaca adalah konteks babaknya",
+          "fix": "Replace with 'artinya' or just delete sentence; acknowledge data gap more directly"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "home court advantage di awal seri, home court advantage punya sedikit keuntungan",
+          "fix": "Second instance: 'OKC punya sedikit keuntungan Paycom Center' or restructure"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Semua baru dimulai — seri masih 0-0, belum ada momentum, belum ada tekanan",
+          "fix": "Combine: 'Seri masih 0-0, tanpa momentum apapun — semua dimulai dari nol.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x264dc16fe4beebb5",
+    "published_at": "2026-05-04T04:42:24+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

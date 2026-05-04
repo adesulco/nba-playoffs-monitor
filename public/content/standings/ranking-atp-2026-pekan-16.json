@@ -3,7 +3,7 @@
   "slug": "ranking-atp-2026-pekan-16",
   "title": "Ranking ATP pekan 16 — Jannik Sinner di Puncak",
   "description": "Analisis ranking ATP 2026 pekan 16. Jannik Sinner (13,350 poin) memimpin tour.",
-  "body_md": "# Sinner Tahan Puncak, Rublev & Cobolli Melompat di Madrid Week\n\nJannik Sinner masih kuasai trono ATP dengan 13.350 poin, unggul 390 dari Carlos Alcaraz di peringkat kedua. Gap antara dua nomor satu masih terasa nyaman untuk Sinner, Alcaraz perlu performa konsisten beberapa minggu ke depan untuk memerhatkan posisi Italia itu. Mutua Madrid Open dimulai akhir pekan ini, dan turnamen Masters 1000 di tanah liat akan jadi test serius buat top 5.\n\nAlexander Zverev tetap jaga peringkat ketiga dengan jarak besar dari keduanya: 5.255 poin Sinner, artinya 8.095 poin memisahkan Zverev dari puncak. Novak Djokovic di posisi keempat (4.710) dan Felix Auger-Aliassime di lima (4.100) tidak bergerak, meski gap Djokovic ke posisi ketiga memprihatinkan, comeback veteran Serbia perlu menampilkan hasil turnamen besar untuk mengejar Zverev lagi. Ben Shelton pegang enam dengan 4.070 poin, hanya 30 poin di bawah Auger-Aliassime.\n\n**Perpindahan top 10**\n\nTaylor Fritz naik satu posisi ke tujuh, mendisplace Alex de Minaur yang turun ke delapan. Keduanya terpisah cuma 25 poin (Fritz 3.870, De Minaur 3.845), pasar untuk perubahan urutan minggu depan buka lebar. Lorenzo Musetti pertahankan sembilan (3.715) dan Daniil Medvedev stabil di sepuluh (3.560).\n\n**Big movers di luar top 10**\n\nAndrey Rublev lonjak tiga posisi ke 12 dengan 2.630 poin, sementara Flavio Cobolli juga naik tiga ke 13 (2.600). Dua momentum Italia, Cobolli sudah cetak pertandingan bagus di turnamen terakhir, bisa berlanjut di Madrid. Jiri Lehecka turun satu ke 14, tapi Casper Ruud drop keras dari 12 ke 15, kehilangan tiga posisi. Karen Khachanov juga merosot dua tempat ke 16 (2.220 poin).\n\n**Ekstrim lainnya**\n\nFrances Tiafoe masuk top 20 lagi dengan naik satu ke 19 (1.965 poin), mengimbangi penurunan Francisco Cerundolo dari 19 ke 20. Alexander Bublik pegang 11 (3.445) tanpa pergerakan, sedangkan Valentin Vacherot dan Tommy Paul sama-sama stabil di 17 dan 18.\n\nMadrid week dimulai 20 April, turnamen ini tradisional jadi pengguncang ranking besar karena defending points Casper Ruud tahun lalu dan hadiah poin besar di Masters level. Pantau posisi Sinner, Alcaraz, Zverev, dan Djokovic setelah empat hari pertandingan. Rublev dan Cobolli momentum, tapi defending poin mereka minggu ini akan jadi kunci apakah naikan bertahan atau turun lagi pekan depan.\n",
+  "body_md": "# ATP Top 20: Sinner Kuasai Puncak, Rublev Naik Signifikan\n\nJannik Sinner masih bertengger di puncak ranking ATP dengan 13.350 poin, unggul 390 dari Carlos Alcaraz yang tetap di posisi kedua. Jurang antara nomor satu dan tiga terasa cukup jauh, Alexander Zverev di peringkat ketiga hanya menandingi 5.255 poin, hampir setengah dari akumulasi Sinner. Lanskap top lima terasa stabil pekan ini, dengan deretan penuh nama-nama eliter yang sudah terbiasa di zona atas.\n\nKonsentrasi poin sangat terlihat di lima besar. Sinner dan Alcaraz menguasai 26.310 poin gabungan, sementara pemain P3 hingga P5 hanya menjilat remah dengan total 14.065 poin. Novak Djokovic tergantung di P4 dengan 4.710 poin, masih belum menunjukkan tanda-tanda ancaman signifikan ke deretan dua teratas. Felix Auger-Aliassime mempertahankan P5 dengan 4.100 poin, tapi selisihnya dari Ben Shelton di P6 cuma 30 poin, zona imbal rapih di sekitar 4.000 poin.\n\nPergerakan paling menarik datang dari deretan 11-16. Andrey Rublev naik tiga posisi ke P12 dengan 2.630 poin, diikuti Flavio Cobolli yang juga melompat tiga tingkat ke P13 (2.600 poin). Momentum kedua pemain Italia-plus-Rusia ini terlihat nyata. Sebaliknya, Casper Ruud turun keras tiga posisi menjadi P15 dengan 2.535 poin, sementara Karen Khachanov jatuh dua tempat ke P16. Jiri Lehecka merosot satu posisi dari P13 ke P14, padahal poin-nya hampir sama dengan Ruud, gap mereka hanya 5 poin.\n\nDi tengah-tengah klasemen, Taylor Fritz naik ke P7 (3.870 poin) dengan menukar tempat dengan Alex de Minaur yang kini P8 (3.845 poin), dua pemain dalam jarak napas satu sama lain. Duet Amerika ini, bersama Shelton dan Tommy Paul di P18, terus menggenggam sejumlah spot di zona top 20.\n\nMelangkah ke akhir top 20, Frances Tiafoe naik satu posisi ke P19 dengan 1.965 poin, menggusur Francisco Cerundolo ke P20. Momentum Tiafoe terasa menarik untuk diikuti minggu-minggu mendatang. Valentin Vacherot dan Tommy Paul mempertahankan posisi mereka masing-masing di P17 dan P18, menjadi pelengkap solid di zona pertengahan.\n\nMutua Madrid Open (20 April, 4 Mei) jadi turnamen berikutnya untuk top 20 adu ulang bentuk dan poin. Sinner dan Alcaraz akan menggunakan Madrid sebagai panggung mengukur kondisi musim tanah liat jelang Grand Slam yang lebih besar.\n",
   "frontmatter": {
     "league": "tennis",
     "sport": "tennis",
@@ -14,65 +14,65 @@
     "no_1_points": 13350,
     "active_tournament": "Mutua Madrid Open",
     "model": "claude-haiku-4-5-20251001",
-    "cost_usd": 0.006695,
+    "cost_usd": 0.002818,
     "voice_lint": {
       "verdict": "fail",
       "score": 62,
       "issue_count": 8,
-      "summary": "Article has solid structure and data accuracy but suffers from tense over-marking, academic-register drift, and one high-severity training-inference issue (Ruud defending title). Multiple sentences read like translated English. Soft rewrite of 3-4 key paragraphs needed.",
+      "summary": "Article has multiple translated-English phrases (tergantung, menjilat remah, imbal rapih) that break voice. Structural error conflates Australian de Minaur with 'duet Amerika'. Moderate tense/pronoun issues. Fails on voice authenticity.",
       "issues": [
         {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Jurang antara nomor satu dan tiga terasa cukup jauh",
+          "fix": "Ubah ke 'Selisih antara nomor satu dan tiga cukup besar' atau langsung: 'Zverev tertinggal 8.000 poin.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "pemain P3 hingga P5 hanya menjilat remah dengan total 14.065 poin",
+          "fix": "Ganti dengan 'pemain P3–P5 total cuma 14.065 poin' atau 'tertinggal jauh dengan total 14.065 poin.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "tergantung di P4 dengan 4.710 poin",
+          "fix": "Ubah ke 'Djokovic bertengger di P4 dengan 4.710 poin.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "zona imbal rapih di sekitar 4.000 poin",
+          "fix": "Ganti dengan 'jarak mulai rapat' atau 'lima besar mulai berdekatan.'"
+        },
+        {
           "type": "tense_overmarking",
-          "severity": "high",
-          "snippet": "Alcaraz perlu performa konsisten beberapa minggu ke depan untuk memerhatikan posisi Italia itu",
-          "fix": "Alcaraz butuh konsistensi minggu-minggu depan untuk menggeser Sinner dari puncak."
-        },
-        {
-          "type": "translated_english",
-          "severity": "high",
-          "snippet": "gap Djokovic ke posisi ketiga memprihatinkan, comeback veteran Serbia perlu menampilkan hasil turnamen besar",
-          "fix": "Gap ke Zverev gila-gilaan. Djokovic butuh menang besar-besaran untuk mengejar lagi."
-        },
-        {
-          "type": "academic_drift",
           "severity": "medium",
-          "snippet": "Keduanya terpisah cuma 25 poin (Fritz 3.870, De Minaur 3.845), pasar untuk perubahan urutan minggu depan buka lebar",
-          "fix": "Cuma 25 poin pisah Fritz dan De Minaur—urutan bisa berubah pekan depan."
-        },
-        {
-          "type": "soft_phrase_repeat",
-          "severity": "medium",
-          "snippet": "Dua momentum Italia, Cobolli sudah cetak pertandingan bagus di turnamen terakhir",
-          "fix": "Dua Italia trending up. Cobolli main bagus akhir-akhir ini, bisa terus di Madrid."
-        },
-        {
-          "type": "translated_english",
-          "severity": "medium",
-          "snippet": "Madrid week dimulai 20 April, turnamen ini tradisional jadi pengguncang ranking besar karena defending points Casper Ruud tahun lalu",
-          "fix": "Madrid mulai 20 April—Masters 1000 selalu guncang ranking. Ruud defend poin juara tahun lalu, yang bakal besar."
+          "snippet": "Momentum kedua pemain Italia-plus-Rusia ini terlihat nyata.",
+          "fix": "Pisah: 'Momentum Rublev dan Cobolli terlihat nyata.' Italicize atau jelaskan siapa dari mana kalau perlu."
         },
         {
           "type": "structural",
-          "severity": "low",
-          "snippet": "Alexander Bublik pegang 11 (3.445) tanpa pergerakan, sedangkan Valentin Vacherot dan Tommy Paul sama-sama stabil di 17 dan 18",
-          "fix": "Rename to 'Sisanya stabil' or integrate into previous section."
+          "severity": "medium",
+          "snippet": "Duet Amerika ini, bersama Shelton dan Tommy Paul di P18",
+          "fix": "Ubah ke 'Duet ini, bersama Shelton (P6) dan Tommy Paul (P18), terus kuasai spot top 20.'"
         },
         {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "defending points Casper Ruud tahun lalu",
-          "fix": "Remove 'defending points Casper Ruud tahun lalu' or verify from input data clarity."
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Grand Slam yang lebih besar",
+          "fix": "Ganti dengan 'jelang Grand Slam' atau 'sebelum turnamen Grand Slam.'"
         },
         {
           "type": "other",
           "severity": "medium",
-          "snippet": "unggul 390 dari Carlos Alcaraz",
-          "fix": "Sinner unggul 390 poin atas Alcaraz di peringkat kedua."
+          "snippet": "Valentin Vacherot dan Tommy Paul mempertahankan posisi mereka masing-masing",
+          "fix": "Ganti dengan 'Vacherot (P17) dan Paul (P18) stabil di posisi mereka' atau drop pronoun sepenuhnya."
         }
       ]
     },
-    "plagiarism_hash": "0xf6742f7864f356a0",
-    "published_at": "2026-05-04T04:31:24+00:00",
+    "plagiarism_hash": "0x7cf82768548fb70b",
+    "published_at": "2026-05-04T04:43:16+00:00",
     "version": 1,
     "manual_review": true
   },
