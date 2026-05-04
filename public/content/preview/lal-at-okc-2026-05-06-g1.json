@@ -3,7 +3,7 @@
   "slug": "lal-at-okc-2026-05-06-g1",
   "title": "Preview Los Angeles Lakers @ Oklahoma City Thunder (Game 1)",
   "description": "Preview NBA Playoffs 2026 — Los Angeles Lakers di kandang Oklahoma City Thunder (—), 6 May 2026.",
-  "body_md": "# Thunder Jamu Lakers di Game 1 Conference Semifinals\n\nLos Angeles Lakers terbang ke Oklahoma City untuk Game 1 Conference Semifinals, Rabu pagi 07.30 WIB. Ini pertemuan pertama kedua tim di babak ini, seri masih 0-0, belum ada momentum, belum ada tekanan. Semua baru dimulai.\n\n## Konteks Seri\n\nConference Semifinals berarti kedua tim sudah selesaikan pekerjaan di First Round. OKC jadi tuan rumah Game 1 dan Game 2, artinya Thunder punya home court advantage di awal seri. Seberapa besar keuntungan itu tergantung seberapa solid OKC memanfaatkan kerumunan di Paycom Center.\n\nLakers datang sebagai tim yang sudah terbiasa dengan tekanan playoffs. Nama besar, fanbase besar, harapan besar. OKC di sisi lain membangun sesuatu yang berbeda, tim muda dengan tujuan yang jelas.\n\n## Matchup yang Dinanti\n\nTanpa data prior games di seri ini, yang bisa dibaca adalah konteks babaknya: Conference Semifinals bukan First Round. Tim yang lolos ke sini sudah melewati satu lawan sebelumnya, ritme sudah terbentuk, rotasi sudah diuji.\n\nUntuk Lakers, pertanyaannya sederhana: bisa mereka kendalikan tempo di kandang lawan? Road game di babak ini bukan hal kecil. OKC punya home court bukan kebetulan.\n\nUntuk Thunder, Game 1 adalah kesempatan langsung membangun keunggulan psikologis. Menang di rumah sendiri di game pembuka seri punya bobot tersendiri.\n\n## Yang Perlu Diperhatikan\n\nConference Semifinals biasanya soal siapa yang lebih cepat menyesuaikan diri. Tim yang datang dengan scouting lebih dalam di game pembuka sering ambil inisiatif. OKC dengan home court advantage punya sedikit keuntungan dalam hal itu, kerumunan Paycom Center bisa jadi faktor nyata, terutama di kuarter keempat ketika skor ketat.\n\nLakers harus kelola ini dengan kepala dingin. Road win di game pembuka adalah statement, tapi bukan keharusan. Seri masih panjang.\n\nSatu hal yang hampir pasti: pace dan intensity game ini akan lebih tinggi dari First Round. Kedua tim tahu apa yang dipertaruhkan.\n\n---\n\nGame 1 Conference Semifinals, OKC vs LAL tayang live di NBA League Pass dan Vidio, Rabu pagi 07.30 WIB.\n",
+  "body_md": "# Lakers vs Thunder: Seri Conference Semifinals Dibuka Rabu Pagi\n\nLos Angeles Lakers bertandang ke kandang Oklahoma City Thunder untuk Game 1 Conference Semifinals, Rabu 6 Mei 2026 jam 07.30 WIB. Ini babak baru, seri baru, slate kosong, tidak ada yang unggul.\n\n## Konteks Seri\n\nConference Semifinals mempertemukan dua tim yang sudah melewati putaran pertama. Lakers datang sebagai tim tamu, OKC main di kandang sendiri untuk dua game pertama. Format standar 2-2-1-1-1 berarti siapa pun yang mencuri Game 1 atau Game 2 di kandang lawan punya leverage besar untuk sisa seri.\n\nData form musim reguler dan perjalanan First Round belum tersedia di input untuk preview ini, artikel akan diperbarui begitu data masuk sebelum tipoff.\n\n## Yang Dipertaruhkan\n\nConference Semifinals adalah batas antara tim yang *bagus* dan tim yang *serius* jadi kandidat Final. Dua franchise besar dengan sejarah berbeda: Lakers dengan legacy juara yang panjang, Thunder dengan roster muda yang dalam beberapa musim terakhir membangun sesuatu yang solid di Oklahoma.\n\nGame 1 selalu penting secara psikologis. Momentum awal seri, terutama di kandang lawan, bisa mengubah dinamika keseluruhan best-of-seven. Tim tamu yang mencuri Game 1 pulang dengan kepercayaan diri. tim tuan rumah yang kalah di Game 1 langsung menghadapi tekanan sebelum seri benar-benar dimulai.\n\n## Catatan\n\nKarena ini Game 1 dan belum ada history pertandingan dalam seri ini, breakdown taktis yang lebih dalam baru bisa ditulis setelah Game 1 selesai, formasi, pola serangan, siapa yang tampil dominan, di mana masing-masing tim kesulitan. Preview Game 2 akan jauh lebih kaya data.\n\nYang sudah pasti: ini matchup Conference Semifinals, artinya kedua tim sudah buktikan diri layak berada di tahap ini.\n\n## Siaran\n\nLakers vs Thunder Game 1 tayang live di NBA League Pass dan Vidio, Rabu 6 Mei 2026 mulai 07.30 WIB.\n",
   "frontmatter": {
     "league": "nba",
     "sport": "basketball",
@@ -18,53 +18,41 @@
     "series_summary": "Series starts 5/5",
     "game_number": 1,
     "model": "claude-sonnet-4-6",
-    "cost_usd": 0.03546,
+    "cost_usd": 0.036543,
     "voice_lint": {
-      "verdict": "fail",
-      "score": 62,
-      "issue_count": 6,
-      "summary": "Fail: Two high-severity training_inference issues (home court assignment, stadium name not in input). Article speculates about playoff structure and OKC venue without grounding. Requires significant rewrite to stick to input facts only.",
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Article passes voice rules overall. Honest preview acknowledging data gaps is appropriate for Game 1 of playoff series. Minor: remove asterisk emphasis, tighten 'dinamika keseluruhan', fix capitalization after period. Tone is conversational, registration correct for NBA English code-switching, no hard bans triggered.",
       "issues": [
         {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "OKC jadi tuan rumah Game 1 dan Game 2, artinya Thunder punya home court advantage",
-          "fix": "Remove; use only facts from input (venue not specified; can't confirm home court)"
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Conference Semifinals adalah batas antara tim yang *bagus* dan tim yang *serius*",
+          "fix": "Remove asterisks: 'antara tim bagus dan tim yang serius jadi kandidat Final.'"
         },
         {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "kerumunan di Paycom Center, kerumunan Paycom Center bisa jadi faktor",
-          "fix": "Replace 'Paycom Center' with 'kandang OKC' or remove stadium reference entirely"
-        },
-        {
-          "type": "academic_drift",
-          "severity": "medium",
-          "snippet": "Yang Perlu Diperhatikan — Conference Semifinals biasanya soal siapa yang lebih cepat menyesuaikan diri",
-          "fix": "Delete header; lead with specific concern or reframe as concrete prediction"
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Lakers datang sebagai tim tamu, OKC main di kandang sendiri untuk dua game pertama.",
+          "fix": "Tighten to: 'OKC main kandang di dua game pertama.'"
         },
         {
           "type": "translated_english",
           "severity": "medium",
-          "snippet": "Tanpa data prior games di seri ini, yang bisa dibaca adalah konteks babaknya",
-          "fix": "Replace with 'artinya' or just delete sentence; acknowledge data gap more directly"
-        },
-        {
-          "type": "soft_phrase_repeat",
-          "severity": "low",
-          "snippet": "home court advantage di awal seri, home court advantage punya sedikit keuntungan",
-          "fix": "Second instance: 'OKC punya sedikit keuntungan Paycom Center' or restructure"
+          "snippet": "Momentum awal seri, terutama di kandang lawan, bisa mengubah dinamika keseluruhan best-of-seven.",
+          "fix": "Rephrase: 'Momentum Game 1, apalagi di kandang lawan, bisa ubah seluruh seri.'"
         },
         {
           "type": "other",
           "severity": "low",
-          "snippet": "Semua baru dimulai — seri masih 0-0, belum ada momentum, belum ada tekanan",
-          "fix": "Combine: 'Seri masih 0-0, tanpa momentum apapun — semua dimulai dari nol.'"
+          "snippet": "Tim tamu yang mencuri Game 1 pulang dengan kepercayaan diri. tim tuan rumah yang kalah di Game 1 langsung menghadapi tekanan",
+          "fix": "Capitalize: 'Tim tuan rumah yang kalah...'"
         }
       ]
     },
-    "plagiarism_hash": "0x264dc16fe4beebb5",
-    "published_at": "2026-05-04T04:42:24+00:00",
+    "plagiarism_hash": "0xa65467ab745ec493",
+    "published_at": "2026-05-04T07:31:50+00:00",
     "version": 1,
     "manual_review": true
   },
