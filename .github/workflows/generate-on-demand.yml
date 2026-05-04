@@ -1,48 +1,25 @@
-name: Content Engine - On-demand Generation
+name: Content Engine On-demand Generation
 
-# Phase 2 ship #30B — companion to plan_generation in /editor.
-#
-# Triggered from the Gibol /editor "🚀 Run + auto-deploy" button.
-# /api/approve.js dispatches this workflow with a newline-separated
-# list of CLI commands (output of the plan_generation action). The
-# workflow runs each from packages/content-engine/, commits any
-# resulting JSON files in public/content/, and pushes — which
-# triggers Vercel's auto-deploy on push to main.
-#
-# Why this path (not generation in a Vercel function):
-#   • Anthropic Sonnet generation runs 30-60s per article. Vercel
-#     Hobby caps function execution at 10s, Pro at 60s. GH Actions
-#     runs 25 min, so a 10-article batch fits cleanly.
-#   • Python content-engine has heavy deps (anthropic, supabase-py,
-#     pyyaml, etc.) that bloat a Vercel deployment.
-#   • Articles already need to land in the repo as JSON files so
-#     prerender can pick them up at build time. Committing is the
-#     primary ship gesture either way.
-#
-# Secrets required (already configured for content-cron.yml):
-#   ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_ANON_KEY,
-#   SUPABASE_SERVICE_ROLE_KEY, API_FOOTBALL_KEY (optional)
-
-"on":
+on:
   workflow_dispatch:
     inputs:
       commands:
-        description: "Newline-separated CLI commands to run (output of plan_generation)"
+        description: 'Newline-separated CLI commands'
         required: true
         type: string
       label:
-        description: "Short human label for this batch (shown in commit message)"
+        description: 'Batch label'
         required: false
-        default: "on-demand"
+        default: 'on-demand'
         type: string
       requested_by:
-        description: "Editor email or name (for audit trail in commit message)"
+        description: 'Editor email'
         required: false
-        default: "editor"
+        default: 'editor'
         type: string
 
 permissions:
-  contents: write   # commit + push generated JSON files
+  contents: write
 
 concurrency:
   group: generate-on-demand
@@ -66,7 +43,7 @@ jobs:
           fetch-depth: 1
           persist-credentials: true
 
-      - name: Set up Python 3.13
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.13'
@@ -89,60 +66,24 @@ jobs:
         env:
           COMMANDS: ${{ github.event.inputs.commands }}
         run: |
-          # Each line in COMMANDS is one CLI invocation. We run them
-          # sequentially with continue-on-error semantics so a single
-          # bad lookup doesn't waste the rest of the batch. The
-          # summary at the end shows pass/fail counts.
           set +e
           PASS=0
           FAIL=0
-          FAILED_CMDS=""
           IFS=$'\n'
           for cmd in $COMMANDS; do
-            # Trim whitespace + skip empty lines and comments
             cmd_trimmed=$(echo "$cmd" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
-            if [ -z "$cmd_trimmed" ] || [[ "$cmd_trimmed" == \#* ]]; then
-              continue
-            fi
-            echo ""
-            echo "─────────────────────────────────────────────────"
-            echo "▶ $cmd_trimmed"
-            echo "─────────────────────────────────────────────────"
-            # Safety: only allow `python -m content_engine.*` commands.
-            # Block arbitrary shell so a maliciously-crafted plan can't
-            # exfil secrets or shell out.
-            if ! [[ "$cmd_trimmed" =~ ^python[[:space:]]+-m[[:space:]]+content_engine\. ]]; then
-              echo "✗ REJECTED: command must start with 'python -m content_engine.'"
+            if [ -z "$cmd_trimmed" ]; then continue; fi
+            if [[ ! "$cmd_trimmed" =~ ^python[[:space:]]+-m[[:space:]]+content_engine\. ]]; then
+              echo "REJECTED: $cmd_trimmed"
               FAIL=$((FAIL + 1))
-              FAILED_CMDS="$FAILED_CMDS\n  $cmd_trimmed"
               continue
             fi
+            echo ">>> $cmd_trimmed"
             eval "$cmd_trimmed"
-            rc=$?
-            if [ $rc -eq 0 ]; then
-              PASS=$((PASS + 1))
-              echo "✓ ok"
-            else
-              FAIL=$((FAIL + 1))
-              FAILED_CMDS="$FAILED_CMDS\n  $cmd_trimmed (exit=$rc)"
-              echo "✗ exit=$rc"
-            fi
+            if [ $? -eq 0 ]; then PASS=$((PASS + 1)); else FAIL=$((FAIL + 1)); fi
           done
-          echo ""
-          echo "═════════════════════════════════════════════════"
-          echo "Batch complete: $PASS passed, $FAIL failed"
-          echo "═════════════════════════════════════════════════"
           echo "pass=$PASS" >> "$GITHUB_OUTPUT"
           echo "fail=$FAIL" >> "$GITHUB_OUTPUT"
-          if [ -n "$FAILED_CMDS" ]; then
-            echo "Failed commands:"
-            printf '%b\n' "$FAILED_CMDS"
-            {
-              echo 'failed_cmds<<EOF'
-              printf '%b\n' "$FAILED_CMDS"
-              echo 'EOF'
-            } >> "$GITHUB_OUTPUT"
-          fi
 
       - name: Detect new content
         id: changes
@@ -151,11 +92,8 @@ jobs:
           if git diff --quiet --exit-code public/content/ 2>/dev/null && \
              [ -z "$(git ls-files --others --exclude-standard -- public/content/)" ]; then
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
-            echo "No new content files."
           else
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
-            echo "Files staged for commit:"
-            git status --short public/content/
           fi
 
       - name: Commit + push
@@ -164,30 +102,5 @@ jobs:
           git config user.name 'gibol-bot'
           git config user.email 'bot@gibol.co'
           git add public/content/
-          git commit -m "feat(content): on-demand batch — ${{ github.event.inputs.label }}
-
-Generated via /editor → 'Run + auto-deploy' (workflow: generate-on-demand).
-Requested by: ${{ github.event.inputs.requested_by }}
-Batch result: ${{ steps.run.outputs.pass }} passed, ${{ steps.run.outputs.fail }} failed.
-
-All articles land with manual_review:true. Approve via /editor before they go public.
-
-Co-Authored-By: gibol-bot <bot@gibol.co>"
+          git commit -m "feat(content): on-demand batch (${{ github.event.inputs.label }}, by ${{ github.event.inputs.requested_by }})"
           git push
-
-      - name: Summary
-        run: |
-          echo "Batch: ${{ github.event.inputs.label }}"
-          echo "Requested by: ${{ github.event.inputs.requested_by }}"
-          echo "Passed: ${{ steps.run.outputs.pass }}"
-          echo "Failed: ${{ steps.run.outputs.fail }}"
-          echo "Pushed: ${{ steps.changes.outputs.has_changes }}"
-          if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
-            echo "Vercel rebuild triggered by the push."
-            echo "Editor: https://www.gibol.co/editor (login required)"
-          fi
-          if [ "${{ steps.run.outputs.fail }}" -gt 0 ]; then
-            echo ""
-            echo "Some commands failed:"
-            echo "${{ steps.run.outputs.failed_cmds }}"
-          fi
