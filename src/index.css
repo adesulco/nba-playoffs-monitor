@@ -47,6 +47,15 @@
   --gibol-mono:         'JetBrains Mono', ui-monospace, monospace;
 }
 
+/* Wordmark cover color — Wordmark.jsx renders a cover rect over the
+   stock i-dot before painting the amber pulse on top. Default to the
+   active background so the rect blends invisibly into whatever surface
+   the wordmark sits on. Components rendering the wordmark on a
+   non-default surface (e.g. cream card, ink hero band) should override
+   this on the wrapping element. */
+:root, :root[data-theme="dark"] { --gibol-cover: var(--bg, #0A1628); }
+:root[data-theme="light"]       { --gibol-cover: var(--bg, #FFFFFF); }
+
 /* Tabular figures helper — apply wherever digits stack in a column */
 .gibol-tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
 

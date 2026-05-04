@@ -115,82 +115,126 @@ export function PulseMark({
 /**
  * The full wordmark "gibol" with the pulse-dot replacing the i-dot.
  *
- * Inter Tight 900, lowercase, optical tracking -50 (display) / -30 (≤32px).
- * The pulse is amber and animates by default in the running app
- * (set `animated={false}` for static contexts like share-card watermarks).
+ * SVG-based for pixel-perfect positioning of the pulse. The text uses
+ * `fill="currentColor"` so the wordmark inherits theme color, and the
+ * pulse always renders in live amber. Cover-rect over the stock i-dot
+ * matches the surface color via the `coverColor` prop (default
+ * "currentColor" inverse via CSS — see notes below).
  *
- * Color modes:
- *   - default: letters use `currentColor` → inherits from parent CSS
- *   - mode="cream": letters in ink #0F0E0C, designed for cream backgrounds
- *   - mode="ink":   letters in cream #F5F1EA, designed for ink backgrounds
+ * Sizing: pass `height` in px (= cap height target). The wordmark
+ * preserves a ~4:1 aspect ratio (gibol ≈ 4.0 × cap height in Inter
+ * Tight 900 at -50 tracking).
+ *
+ * Modes:
+ *   - mode="auto" (default): currentColor letters + transparent cover
+ *     (uses an `<rect>` matched to surfaceColor prop or
+ *     `var(--gibol-cover, transparent)` so the stock i-dot is hidden
+ *     by repainting it as background)
+ *   - mode="cream": letters in ink, cover in cream — for cream surfaces
+ *   - mode="ink":   letters in cream, cover in ink — for ink surfaces
  */
 export function Wordmark({
-  size = 24,           // cap height in px (~ font-size)
-  mode,                // 'cream' | 'ink' | undefined (use currentColor)
+  height = 24,
+  mode = 'auto',
+  surfaceColor,        // override the cover-rect fill (matches the bg)
   animated = true,
   className,
   style,
   title = 'gibol',
 }) {
-  const fontSize = size;
-  // Wordmark width approx 2.55× cap height for "gibol" at -50 tracking
-  const widthRatio = 2.45;
-  const inkColor =
+  // Source SVG geometry (from public/brand/gibol-wordmark-*.svg):
+  //   viewBox 0 0 880 220
+  //   text baseline y=180, font-size 180, fill = letter color
+  //   pulse center (224, 86), inner radius 14, ring radius 22
+  //   cover rect at (200, 62, 48×42) hides stock i-dot
+  // We just re-render those numbers but with theme-aware colors.
+  const VB_W = 880;
+  const VB_H = 220;
+  const width = (VB_W / VB_H) * height;
+
+  const letterColor =
     mode === 'cream' ? '#0F0E0C' :
     mode === 'ink'   ? '#F5F1EA' :
     'currentColor';
-
-  // Letter-spacing per brand spec: -50/1000 = -0.05em at display, -30/1000 at small
-  const tracking = size >= 32 ? -0.05 : -0.03;
-
-  // Pulse dot: ⅓ × cap height. Positioned over the dot of the "i" — empirically
-  // ~31% from the left edge of "gibol" in Inter Tight 900.
-  const pulseDiameter = fontSize / 3;
-  // i-dot vertical offset above baseline ≈ 0.85 × cap height
-  const pulseCenterX = fontSize * 0.78;   // ~31% across "gibol" width
-  const pulseCenterY = -fontSize * 0.85;
+  // Cover rect: must match the surface BEHIND the wordmark so the stock
+  // i-dot is hidden. In auto mode, fall back to a CSS var the parent
+  // can set; default `transparent` won't hide the stock i-dot but the
+  // pulse-dot is sized big enough to paint over it.
+  const coverFill =
+    surfaceColor ??
+    (mode === 'cream' ? '#F5F1EA' :
+     mode === 'ink'   ? '#0F0E0C' :
+     'var(--gibol-cover, transparent)');
 
   return (
-    <span
-      className={className}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        lineHeight: 1,
-        color: inkColor,
-        fontFamily: '"Inter Tight", system-ui, sans-serif',
-        fontWeight: 900,
-        fontSize,
-        letterSpacing: `${tracking}em`,
-        ...style,
-      }}
+    <svg
+      viewBox={`0 0 ${VB_W} ${VB_H}`}
+      width={width}
+      height={height}
       role="img"
       aria-label={title}
+      className={className}
+      style={{ display: 'block', flexShrink: 0, ...style }}
     >
-      <span style={{ position: 'relative', display: 'inline-block', whiteSpace: 'nowrap' }}>
+      <text
+        x="60"
+        y="180"
+        fontFamily='"Inter Tight", system-ui, sans-serif'
+        fontWeight="900"
+        fontSize="180"
+        letterSpacing="-10"
+        fill={letterColor}
+      >
         gibol
-        {/* Cover the stock i-dot then overlay the amber pulse */}
-        <span
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            left: pulseCenterX - pulseDiameter / 2,
-            top: pulseCenterY - pulseDiameter / 2,
-            width: pulseDiameter,
-            height: pulseDiameter,
-            // Background matches the surface so the stock i-dot disappears.
-            // Use currentColor's complement via a CSS var that ancestor sets,
-            // OR rely on the pulse-dot being slightly bigger so it just paints over.
-          }}
-        >
-          <PulseMark
-            size={pulseDiameter}
-            animated={animated}
-            ring={false}
-          />
-        </span>
-      </span>
-    </span>
+      </text>
+      {/* Cover the stock i-dot — repainted to match the surface */}
+      <rect x="200" y="62" width="48" height="42" fill={coverFill} />
+      {/* Live amber pulse — replaces the dot of the i */}
+      <circle
+        cx="224"
+        cy="86"
+        r="22"
+        fill="none"
+        stroke={AMBER}
+        strokeOpacity="0.4"
+        strokeWidth="1.5"
+      >
+        {animated && (
+          <>
+            <animate
+              attributeName="r"
+              values="22;30;22"
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="stroke-opacity"
+              values="0.5;0.05;0.5"
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+          </>
+        )}
+      </circle>
+      <circle cx="224" cy="86" r="14" fill={AMBER}>
+        {animated && (
+          <>
+            <animate
+              attributeName="r"
+              values="14;16;14"
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="1;0.7;1"
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+          </>
+        )}
+      </circle>
+    </svg>
   );
 }
 
@@ -209,6 +253,8 @@ export default function Logo({
   color,
   className,
   style,
+  surfaceColor,           // pass-through for the wordmark cover-rect
+  mode,                   // 'cream' | 'ink' | 'auto'
 }) {
   // Size matrix — wordmark cap heights for sm / md / lg.
   const sizing =
@@ -230,9 +276,15 @@ export default function Logo({
     );
   }
 
+  // The wordmark needs a cover-rect color that matches the SURFACE
+  // behind it (to hide the stock i-dot before the amber pulse paints
+  // over). On the dark default chrome that's --bg = #0A1628.
+  // Callers can override via surfaceColor for cards / cream sections.
   return (
     <Wordmark
-      size={fontSize}
+      height={Math.max(16, Math.round(fontSize * 1.4))}
+      mode={mode || 'auto'}
+      surfaceColor={surfaceColor}
       animated
       className={className}
       style={{ color: color || 'inherit', ...style }}
