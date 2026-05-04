@@ -5547,7 +5547,52 @@
 // (passive, daily cadence). The /editor queue stays fresh without
 // any morning-routine clicks; editor focuses on approve/reject.
 
-export const APP_VERSION = '0.59.2';
+// v0.59.3 — Surface generation failures in /editor.
+//
+// Before: when content-engine generated an article and a quality
+// gate (fact_check / voice_lint hard fail / plagiarism) refused to
+// publish, we exited silently. Editor saw "no draft appeared" with
+// no idea why. User reported this directly: requested 6 articles,
+// only 3 showed up in queue, the other 3 never explained.
+//
+// After: every blocked article writes a row to ce_generation_failures
+// with the command, agent, reason_type, summary, wasted cost, and
+// a GitHub Actions run link. /editor renders these in a new
+// FailuresPanel above the article queue:
+//   • Empty state: small green "No generation failures" pill
+//   • Active state: red banner with count + total $ wasted, table
+//     with WHEN / REASON / COMMAND / WASTED / SUMMARY / actions
+//   • Per-row actions: View raw log, jump to GitHub run, mark resolved
+//
+// Pieces:
+//   • supabase/migrations/0014_generation_failures.sql — applied via
+//     MCP (table name `ce_generation_failures` to avoid clash with
+//     existing `ce_article_rejections` which tracks editor manual
+//     rejections, not engine failures).
+//   • .github/workflows/{generate-on-demand,content-cron}.yml — both
+//     workflows now write failures to Supabase post-run via a Python
+//     parser that reads per-command logs, classifies the reason
+//     (regex match against ✗ + fact-check/voice-lint/plagiarism
+//     patterns), extracts agent + cost, inserts batched POST to REST.
+//     Best-effort: Supabase insert failure is non-blocking.
+//   • api/approve.js — two new actions: `list_failures` (returns
+//     unresolved rows for the panel) and `resolve_failure` (marks a
+//     row resolved with editor email + timestamp).
+//   • src/lib/editorAuth.js — `listFailures()` + `resolveFailure(id)`
+//     helpers.
+//   • src/pages/Editor.jsx — new FailuresPanel component above the
+//     article queue. Reason types color-coded:
+//       fact_check_fail → red    (most serious — factual error)
+//       voice_lint_fail → amber  (style/voice issue)
+//       plagiarism_fail → purple (similarity hit)
+//       safety_reject   → gray   (bad command shape, runner blocked)
+//
+// Pairs naturally with the prompt-success guidance: standings +
+// tennis-rankings + team-profile rarely fail; recap + preview can
+// hit fact-check on speculative phrasing. Editor now sees the
+// failure pattern explicitly instead of guessing.
+
+export const APP_VERSION = '0.59.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -212,7 +212,88 @@ jobs:
         if: steps.budget.outputs.ok == 'true'
         working-directory: packages/content-engine
         run: |
-          python -m content_engine.scripts.discover "${{ steps.mode.outputs.mode }}"
+          mkdir -p /tmp/cmd-logs
+          python -m content_engine.scripts.discover "${{ steps.mode.outputs.mode }}" 2>&1 | tee /tmp/cmd-logs/discover.log
+          # Preserve exit code through the pipe
+          exit ${PIPESTATUS[0]}
+
+      - name: Capture generation failures to Supabase
+        if: always() && steps.budget.outputs.ok == 'true'
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          MODE: ${{ steps.mode.outputs.mode }}
+        run: |
+          # Parse the discover log; surface every "✗" line + classify
+          # the reason. Inserts a row in ce_generation_failures per
+          # detected failure. Best-effort — never fails the workflow.
+          set +e
+          if [ ! -f /tmp/cmd-logs/discover.log ]; then echo "no log"; exit 0; fi
+          python3 <<'PYEOF'
+          import json, os, re, urllib.request
+
+          with open('/tmp/cmd-logs/discover.log') as f:
+              text = f.read()
+
+          # Each ✗ line is a failure event. Cluster by surrounding
+          # context (the agent= and game-id lines just above).
+          fail_lines = [(i, ln) for i, ln in enumerate(text.splitlines()) if '✗' in ln]
+          if not fail_lines:
+              print("no failures detected in discover log")
+              exit(0)
+
+          REASON_PATTERNS = [
+              (r'fact[_ -]?check.*failed', 'fact_check_fail'),
+              (r'voice[_ -]?lint.*hard', 'voice_lint_fail'),
+              (r'plagiarism.*fail|sim[_ -]?hash.*match', 'plagiarism_fail'),
+          ]
+          all_lines = text.splitlines()
+
+          rows = []
+          for i, ln in fail_lines:
+              context = '\n'.join(all_lines[max(0, i-15):i+2])
+              reason_type = 'unknown'
+              for pat, label in REASON_PATTERNS:
+                  if re.search(pat, context + ' ' + ln, re.IGNORECASE):
+                      reason_type = label
+                      break
+              # extract command from context (first python -m content_engine. line above)
+              cmd_match = re.search(r'(python -m content_engine\.[^\n]+)', context)
+              cmd = cmd_match.group(1) if cmd_match else f'discover:{os.environ.get("MODE", "?")}'
+              # extract agent + cost from context
+              agent_match = re.search(r'agent=([a-z0-9-]+)', context)
+              agent = agent_match.group(1) if agent_match else None
+              costs = re.findall(r'cost_usd=([0-9.]+)', context)
+              cost = sum(float(c) for c in costs[-3:]) if costs else 0.0  # last 3 to avoid double-counting older
+              rows.append({
+                  'command': cmd[:500],
+                  'agent': agent,
+                  'reason_type': reason_type,
+                  'reason_summary': ln.strip()[:500],
+                  'cost_usd': round(cost, 4),
+                  'github_run_id': os.environ.get('GITHUB_RUN_ID'),
+                  'github_run_url': f"https://github.com/adesulco/nba-playoffs-monitor/actions/runs/{os.environ.get('GITHUB_RUN_ID')}",
+                  'details': {
+                      'mode': os.environ.get('MODE'),
+                      'log_context': context[-3000:],
+                  },
+              })
+
+          url = os.environ['SUPABASE_URL'].rstrip('/') + '/rest/v1/ce_generation_failures'
+          try:
+              req = urllib.request.Request(
+                  url, data=json.dumps(rows).encode('utf-8'), method='POST',
+                  headers={
+                      'apikey': os.environ['SUPABASE_SERVICE_ROLE_KEY'],
+                      'authorization': 'Bearer ' + os.environ['SUPABASE_SERVICE_ROLE_KEY'],
+                      'content-type': 'application/json',
+                      'prefer': 'return=minimal',
+                  },
+              )
+              with urllib.request.urlopen(req, timeout=10) as r:
+                  print(f"logged {len(rows)} failure(s) (HTTP {r.status})")
+          except Exception as e:
+              print(f"WARN: failure-log insert failed: {e}")
+          PYEOF
 
       - name: Compute cost from new content
         id: cost

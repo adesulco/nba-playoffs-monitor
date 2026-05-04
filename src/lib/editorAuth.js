@@ -248,6 +248,42 @@ export async function planGeneration({ prompt }) {
 }
 
 /**
+ * List recent generation failures. v0.59.3 — Ship #30C.
+ * Returns rows from ce_generation_failures (articles the engine
+ * generated but a quality gate refused to publish).
+ */
+export async function listFailures({ limit = 30, only_unresolved = true } = {}) {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session?.access_token) throw new Error('not signed in');
+  const resp = await fetch('/api/approve', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      authorization: `Bearer ${session.access_token}`,
+    },
+    body: JSON.stringify({ action: 'list_failures', limit, only_unresolved }),
+  });
+  return resp.json().catch(() => ({ ok: false }));
+}
+
+/**
+ * Mark a generation failure as resolved. v0.59.3 — Ship #30C.
+ */
+export async function resolveFailure(failure_id) {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session?.access_token) throw new Error('not signed in');
+  const resp = await fetch('/api/approve', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      authorization: `Bearer ${session.access_token}`,
+    },
+    body: JSON.stringify({ action: 'resolve_failure', failure_id }),
+  });
+  return resp.json().catch(() => ({ ok: false }));
+}
+
+/**
  * Dispatch a generation plan to GitHub Actions. v0.59.1 — Ship #30B.
  * Takes the array of CLI commands from a planGeneration() response,
  * POSTs to /api/approve action=dispatch_generation, which calls the

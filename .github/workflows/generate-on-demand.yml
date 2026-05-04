@@ -66,24 +66,143 @@ jobs:
         env:
           COMMANDS: ${{ github.event.inputs.commands }}
         run: |
+          # v0.59.3 — capture per-command stdout to a log file so the
+          # post-run failure-detection step can parse rejection reasons
+          # and write them to ce_generation_failures.
           set +e
           PASS=0
           FAIL=0
+          mkdir -p /tmp/cmd-logs
           IFS=$'\n'
+          IDX=0
           for cmd in $COMMANDS; do
             cmd_trimmed=$(echo "$cmd" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
             if [ -z "$cmd_trimmed" ]; then continue; fi
+            IDX=$((IDX + 1))
+            LOG=/tmp/cmd-logs/cmd-$IDX.log
             if [[ ! "$cmd_trimmed" =~ ^python[[:space:]]+-m[[:space:]]+content_engine\. ]]; then
               echo "REJECTED: $cmd_trimmed"
               FAIL=$((FAIL + 1))
+              {
+                echo "$cmd_trimmed"
+                echo "---SAFETY-REJECT---"
+                echo "Command did not match safety regex"
+              } > "$LOG"
               continue
             fi
             echo ">>> $cmd_trimmed"
-            eval "$cmd_trimmed"
-            if [ $? -eq 0 ]; then PASS=$((PASS + 1)); else FAIL=$((FAIL + 1)); fi
+            echo "$cmd_trimmed" > "$LOG"
+            echo "---OUTPUT---" >> "$LOG"
+            eval "$cmd_trimmed" 2>&1 | tee -a "$LOG"
+            RC=${PIPESTATUS[0]}
+            echo "---EXIT-CODE---" >> "$LOG"
+            echo "$RC" >> "$LOG"
+            if [ "$RC" -eq 0 ]; then PASS=$((PASS + 1)); else FAIL=$((FAIL + 1)); fi
           done
           echo "pass=$PASS" >> "$GITHUB_OUTPUT"
           echo "fail=$FAIL" >> "$GITHUB_OUTPUT"
+
+      - name: Capture generation failures to Supabase
+        if: always()
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          REQUESTED_BY: ${{ github.event.inputs.requested_by }}
+        run: |
+          # Parse each per-command log; for any command that failed
+          # (exit != 0), classify the reason and insert a row in
+          # ce_generation_failures. Best-effort — script never fails
+          # the workflow.
+          set +e
+          if [ ! -d /tmp/cmd-logs ]; then echo "no logs"; exit 0; fi
+          python3 <<'PYEOF'
+          import json, os, re, urllib.request, glob
+
+          REASON_PATTERNS = [
+              (r'NBA fact-check failed', 'fact_check_fail'),
+              (r'fact[_ -]?check.*failed', 'fact_check_fail'),
+              (r'voice[_ -]?lint.*hard.?fail|voice[_ -]?lint.*verdict=fail.*hard', 'voice_lint_fail'),
+              (r'plagiarism.*fail|sim[_ -]?hash.*match', 'plagiarism_fail'),
+              (r'^---SAFETY-REJECT---', 'safety_reject'),
+          ]
+
+          AGENT_PATTERNS = [
+              (r'agent=([a-z0-9-]+)', 1),
+          ]
+
+          rows = []
+          for path in sorted(glob.glob('/tmp/cmd-logs/cmd-*.log')):
+              with open(path) as f:
+                  text = f.read()
+              # Format we wrote: line 0 = command; "---OUTPUT---"; output; "---EXIT-CODE---"; rc
+              lines = text.splitlines()
+              if not lines:
+                  continue
+              cmd = lines[0]
+              rc_match = re.search(r'---EXIT-CODE---\s*\n\s*(\-?\d+)', text)
+              rc = int(rc_match.group(1)) if rc_match else None
+              if rc == 0 or rc is None:
+                  # only log failures
+                  if '---SAFETY-REJECT---' not in text:
+                      continue
+              # classify
+              reason_type = 'unknown'
+              for pat, label in REASON_PATTERNS:
+                  if re.search(pat, text, re.IGNORECASE):
+                      reason_type = label
+                      break
+              # extract agent
+              agent = None
+              m = re.search(r'agent=([a-z0-9-]+)', text)
+              if m:
+                  agent = m.group(1)
+              # extract cost (sum of any anthropic.response cost_usd lines for this command)
+              costs = re.findall(r'cost_usd=([0-9.]+)', text)
+              cost = sum(float(c) for c in costs) if costs else 0.0
+              # 1-line summary (find ✗ line, else first error line)
+              summary = ''
+              for ln in lines:
+                  if '✗' in ln or 'FAILED' in ln.upper() or 'ERROR' in ln.upper():
+                      summary = ln.strip()[:300]
+                      break
+              if not summary and reason_type != 'unknown':
+                  summary = f'{reason_type} (no error line captured)'
+              rows.append({
+                  'command': cmd[:500],
+                  'agent': agent,
+                  'reason_type': reason_type,
+                  'reason_summary': summary[:500] if summary else None,
+                  'cost_usd': round(cost, 4),
+                  'github_run_id': os.environ.get('GITHUB_RUN_ID'),
+                  'github_run_url': f"https://github.com/adesulco/nba-playoffs-monitor/actions/runs/{os.environ.get('GITHUB_RUN_ID')}",
+                  'details': {
+                      'requested_by': os.environ.get('REQUESTED_BY'),
+                      'exit_code': rc,
+                      # cap details size
+                      'log_tail': '\n'.join(lines[-30:])[:5000],
+                  },
+              })
+
+          if not rows:
+              print("no failures to log")
+          else:
+              url = os.environ['SUPABASE_URL'].rstrip('/') + '/rest/v1/ce_generation_failures'
+              try:
+                  req = urllib.request.Request(
+                      url,
+                      data=json.dumps(rows).encode('utf-8'),
+                      method='POST',
+                      headers={
+                          'apikey': os.environ['SUPABASE_SERVICE_ROLE_KEY'],
+                          'authorization': 'Bearer ' + os.environ['SUPABASE_SERVICE_ROLE_KEY'],
+                          'content-type': 'application/json',
+                          'prefer': 'return=minimal',
+                      },
+                  )
+                  with urllib.request.urlopen(req, timeout=10) as r:
+                      print(f"logged {len(rows)} failure(s) to ce_generation_failures (HTTP {r.status})")
+              except Exception as e:
+                  print(f"WARN: failure-log insert failed: {e}")
+          PYEOF
 
       - name: Detect new content
         id: changes

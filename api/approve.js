@@ -254,6 +254,74 @@ export default async function handler(req, res) {
       }
     }
 
+    // v0.59.3 — Phase 2 ship #30C — action="list_failures".
+    // Returns recent rows from ce_generation_failures so the /editor
+    // "Failed" tab can render them. Editor-only; piggybacks on the
+    // same JWT validation as approve/edit.
+    if (body.action === 'list_failures') {
+      let admin;
+      try { admin = getSupabaseAdmin(); }
+      catch (err) {
+        return jsonResponse(res, 500, {
+          error: 'supabase admin not configured',
+          detail: String(err?.message || err),
+        });
+      }
+      const limit = Math.min(Math.max(Number(body.limit) || 30, 1), 200);
+      const onlyUnresolved = body.only_unresolved !== false;
+      let query = admin
+        .from('ce_generation_failures')
+        .select('id, attempted_at, command, agent, reason_type, reason_summary, cost_usd, github_run_url, details, resolved, resolved_at')
+        .order('attempted_at', { ascending: false })
+        .limit(limit);
+      if (onlyUnresolved) query = query.eq('resolved', false);
+      const { data, error } = await query;
+      if (error) {
+        return jsonResponse(res, 500, {
+          error: 'failed to query ce_generation_failures',
+          detail: String(error.message || error),
+        });
+      }
+      return jsonResponse(res, 200, {
+        ok: true,
+        action: 'list_failures',
+        count: (data || []).length,
+        failures: data || [],
+      });
+    }
+
+    // v0.59.3 — action="resolve_failure" — editor marks a generation
+    // failure as resolved (after they manually fixed or accepted it).
+    if (body.action === 'resolve_failure') {
+      let admin;
+      try { admin = getSupabaseAdmin(); }
+      catch (err) {
+        return jsonResponse(res, 500, {
+          error: 'supabase admin not configured',
+          detail: String(err?.message || err),
+        });
+      }
+      const { failure_id } = body;
+      if (!failure_id || typeof failure_id !== 'number') {
+        return jsonResponse(res, 400, { error: 'failure_id (number) required' });
+      }
+      const { error } = await admin
+        .from('ce_generation_failures')
+        .update({
+          resolved: true,
+          resolved_at: new Date().toISOString(),
+          resolved_by: user.email || 'editor',
+        })
+        .eq('id', failure_id);
+      if (error) {
+        return jsonResponse(res, 500, {
+          error: 'failed to mark resolved',
+          detail: String(error.message || error),
+        });
+      }
+      return jsonResponse(res, 200, { ok: true, action: 'resolve_failure', failure_id });
+    }
+
     // v0.59.1 — Phase 2 ship #30B — action="dispatch_generation".
     // Companion to plan_generation: takes the planner's output
     // (an array of CLI commands), POSTs to GitHub's workflow_dispatch

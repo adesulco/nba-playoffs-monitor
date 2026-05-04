@@ -11,8 +11,10 @@ import {
   fetchPublishLedger,
   fetchRejectionLedger,
   dispatchGeneration,
+  listFailures,
   planGeneration,
   rejectArticle,
+  resolveFailure,
   useEditorSession,
 } from '../lib/editorAuth.js';
 import { supabase } from '../lib/supabase.js';
@@ -772,6 +774,245 @@ function GeneratePanel({ open, onToggle }) {
 // ce_article_edits with lint_stale=true. The edited body shows on the
 // public article page immediately (SPA overlay); prerender picks it
 // up at next deploy for the static HTML.
+
+// v0.59.3 — Ship #30C — Generation failures panel.
+// Surfaces articles the content-engine generated but a quality gate
+// blocked. Pulls from ce_generation_failures via /api/approve
+// action=list_failures. Each row shows: command, agent, reason
+// (color-coded), wasted cost, action (Resolve / View log).
+const REASON_COLOR = {
+  fact_check_fail: '#EF4444',     // red — most serious (factual error)
+  voice_lint_fail: '#F59E0B',     // amber — voice/style issue
+  plagiarism_fail: '#A855F7',     // purple — similarity hit
+  safety_reject:   '#94A3B8',     // gray — bad command shape
+  unknown:         '#6B7280',     // gray-dim
+};
+const REASON_LABEL = {
+  fact_check_fail: 'FACT-CHECK',
+  voice_lint_fail: 'VOICE-LINT',
+  plagiarism_fail: 'PLAGIARISM',
+  safety_reject:   'SAFETY',
+  unknown:         'UNKNOWN',
+};
+
+function FailuresPanel() {
+  const [failures, setFailures] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [resolving, setResolving] = useState({});
+  const [showLog, setShowLog] = useState(null); // failure id whose log is expanded
+
+  const refresh = async () => {
+    setBusy(true);
+    try {
+      const r = await listFailures({ limit: 30, only_unresolved: true });
+      if (r?.ok) setFailures(r.failures);
+      else setFailures([]);
+    } catch {
+      setFailures([]);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  useEffect(() => {
+    refresh();
+  }, []);
+
+  const onResolve = async (id) => {
+    setResolving((s) => ({ ...s, [id]: true }));
+    try {
+      const r = await resolveFailure(id);
+      if (r?.ok) setFailures((f) => (f || []).filter((x) => x.id !== id));
+    } finally {
+      setResolving((s) => ({ ...s, [id]: false }));
+    }
+  };
+
+  const count = failures?.length ?? 0;
+  const totalWasted = (failures || []).reduce((s, f) => s + Number(f.cost_usd || 0), 0);
+
+  if (!open && count === 0) {
+    // Compact "all clear" pill — don't take up space when there's nothing
+    return (
+      <div style={{
+        display: 'inline-flex', alignItems: 'center', gap: 8,
+        padding: '6px 12px', fontSize: 11, color: C.dim,
+        border: `1px solid ${C.line}`, borderRadius: 6,
+        background: 'rgba(16,185,129,0.04)',
+      }}>
+        <span style={{ width: 6, height: 6, borderRadius: 50, background: '#10B981' }} />
+        No generation failures
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          style={{
+            marginLeft: 8, padding: '2px 8px', fontSize: 10,
+            background: 'transparent', border: `1px solid ${C.line}`,
+            borderRadius: 3, color: C.dim, cursor: 'pointer',
+          }}
+        >Show history</button>
+      </div>
+    );
+  }
+
+  return (
+    <section style={{
+      padding: 12,
+      background: count > 0 ? 'rgba(239,68,68,0.05)' : 'rgba(16,185,129,0.04)',
+      border: `1px solid ${count > 0 ? '#EF444455' : C.line}`,
+      borderRadius: 8,
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+        <h2 style={{
+          fontSize: 12, fontWeight: 800, margin: 0,
+          color: count > 0 ? '#EF4444' : '#10B981',
+          textTransform: 'uppercase', letterSpacing: 0.5,
+        }}>
+          {count > 0
+            ? `⚠ ${count} generation failure${count === 1 ? '' : 's'} · $${totalWasted.toFixed(4)} wasted`
+            : '✓ No active failures'}
+        </h2>
+        <div style={{ display: 'flex', gap: 6 }}>
+          <button
+            type="button"
+            onClick={refresh}
+            disabled={busy}
+            style={{
+              padding: '4px 10px', fontSize: 11,
+              background: 'transparent', border: `1px solid ${C.line}`,
+              borderRadius: 4, color: C.dim, cursor: busy ? 'wait' : 'pointer',
+            }}
+          >{busy ? 'Loading…' : 'Refresh'}</button>
+          {open && (
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              style={{
+                padding: '4px 10px', fontSize: 11,
+                background: 'transparent', border: `1px solid ${C.line}`,
+                borderRadius: 4, color: C.dim, cursor: 'pointer',
+              }}
+            >Hide</button>
+          )}
+        </div>
+      </div>
+
+      {count === 0 ? (
+        <p style={{ color: C.dim, fontSize: 11, margin: 0 }}>
+          Quality gates (fact-check, voice-lint, plagiarism) haven't blocked anything recently.
+        </p>
+      ) : (
+        <div style={{
+          background: 'rgba(0,0,0,0.4)',
+          border: `1px solid ${C.line}`,
+          borderRadius: 6,
+          maxHeight: 380, overflow: 'auto',
+        }}>
+          <table style={{ width: '100%', fontSize: 11, borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ borderBottom: `1px solid ${C.line}`, color: C.dim }}>
+                <th style={{ textAlign: 'left', padding: '6px 8px', fontWeight: 700 }}>WHEN</th>
+                <th style={{ textAlign: 'left', padding: '6px 8px', fontWeight: 700 }}>REASON</th>
+                <th style={{ textAlign: 'left', padding: '6px 8px', fontWeight: 700 }}>COMMAND</th>
+                <th style={{ textAlign: 'right', padding: '6px 8px', fontWeight: 700 }}>WASTED</th>
+                <th style={{ textAlign: 'left', padding: '6px 8px', fontWeight: 700 }}>SUMMARY</th>
+                <th style={{ textAlign: 'right', padding: '6px 8px', fontWeight: 700 }}></th>
+              </tr>
+            </thead>
+            <tbody>
+              {failures.map((f) => {
+                const color = REASON_COLOR[f.reason_type] || REASON_COLOR.unknown;
+                const label = REASON_LABEL[f.reason_type] || f.reason_type;
+                const when = f.attempted_at ? new Date(f.attempted_at).toLocaleString('id-ID', {
+                  day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit',
+                }) : '—';
+                const cmdShort = (f.command || '').replace(/^python -m content_engine\.cli /, '').slice(0, 60);
+                return (
+                  <React.Fragment key={f.id}>
+                    <tr style={{ borderBottom: `1px solid ${C.line}` }}>
+                      <td style={{ padding: '6px 8px', color: C.dim, whiteSpace: 'nowrap' }}>{when}</td>
+                      <td style={{ padding: '6px 8px' }}>
+                        <span style={{
+                          display: 'inline-block', padding: '2px 6px',
+                          fontSize: 9, fontWeight: 800, letterSpacing: 0.4,
+                          background: color + '22', color, border: `1px solid ${color}55`,
+                          borderRadius: 3,
+                        }}>{label}</span>
+                      </td>
+                      <td style={{ padding: '6px 8px', fontFamily: '"JetBrains Mono", monospace', fontSize: 10, color: C.text }}>
+                        {cmdShort}
+                      </td>
+                      <td style={{ padding: '6px 8px', textAlign: 'right', color: C.dim, fontVariantNumeric: 'tabular-nums' }}>
+                        ${Number(f.cost_usd || 0).toFixed(4)}
+                      </td>
+                      <td style={{ padding: '6px 8px', color: C.text }}>
+                        {f.reason_summary || '—'}
+                      </td>
+                      <td style={{ padding: '6px 8px', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        <button
+                          type="button"
+                          onClick={() => setShowLog(showLog === f.id ? null : f.id)}
+                          style={{
+                            padding: '3px 8px', fontSize: 10, marginRight: 4,
+                            background: 'transparent', border: `1px solid ${C.line}`,
+                            borderRadius: 3, color: C.dim, cursor: 'pointer',
+                          }}
+                        >{showLog === f.id ? 'Hide' : 'Log'}</button>
+                        {f.github_run_url && (
+                          <a
+                            href={f.github_run_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            style={{
+                              padding: '3px 8px', fontSize: 10, marginRight: 4,
+                              background: 'transparent', border: `1px solid ${C.line}`,
+                              borderRadius: 3, color: C.dim, textDecoration: 'none',
+                              display: 'inline-block',
+                            }}
+                          >GH</a>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => onResolve(f.id)}
+                          disabled={resolving[f.id]}
+                          style={{
+                            padding: '3px 8px', fontSize: 10,
+                            background: '#10B981', border: 'none',
+                            borderRadius: 3, color: '#000', fontWeight: 700,
+                            cursor: resolving[f.id] ? 'wait' : 'pointer',
+                            opacity: resolving[f.id] ? 0.6 : 1,
+                          }}
+                        >{resolving[f.id] ? '…' : '✓'}</button>
+                      </td>
+                    </tr>
+                    {showLog === f.id && f.details?.log_tail && (
+                      <tr>
+                        <td colSpan={6} style={{ padding: 0 }}>
+                          <pre style={{
+                            margin: 0, padding: 10,
+                            fontFamily: '"JetBrains Mono", monospace',
+                            fontSize: 10, lineHeight: 1.4,
+                            color: C.dim,
+                            background: '#000',
+                            borderTop: `1px solid ${C.line}`,
+                            whiteSpace: 'pre-wrap', wordBreak: 'break-all',
+                            maxHeight: 240, overflow: 'auto',
+                          }}>{f.details.log_tail || f.details.log_context || '(no log captured)'}</pre>
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function EditModal({ state, onChange, onSave, onClose }) {
   const [note, setNote] = useState('');
   if (!state) return null;
@@ -1502,6 +1743,15 @@ export default function Editor() {
           collapsed, full panel with NL input + plan output when open. */}
       <div style={{ marginBottom: 16 }}>
         <GeneratePanel open={generateOpen} onToggle={() => setGenerateOpen((v) => !v)} />
+      </div>
+
+      {/* v0.59.3 — Ship #30C — Generation failures panel. Surfaces
+          articles the content-engine generated but a quality gate
+          (fact-check, voice-lint hard fail, plagiarism) refused to
+          publish. Was invisible before; editor had no way to see
+          "we tried that game and it failed because X." */}
+      <div style={{ marginBottom: 16 }}>
+        <FailuresPanel />
       </div>
 
       {/* Per-sport stability dashboard (Ship #16) */}
