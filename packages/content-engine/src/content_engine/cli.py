@@ -869,19 +869,57 @@ def nba_recap_cmd(
 
             # Failed — if retries remaining, build hint and try again.
             if attempt < MAX_FACT_RETRIES:
+                # v0.59.7 — Include ALL correct stats from the input as
+                # the ground-truth ref, not just the wrong ones. Last
+                # ship's regen led to model fixing flagged errors but
+                # inventing new ones because it had to re-derive the
+                # other stats from prose.
                 hint_lines = [
-                    f"Previous attempt cited the following stats that DID NOT match the input box score:"
+                    "Previous attempt FAILED the fact-checker. Specific errors:",
+                    "",
                 ]
                 for iss in nba_fact_report.issues[:8]:
                     hint_lines.append(
-                        f'  - In: "{iss.snippet[:80]}{"..." if len(iss.snippet) > 80 else ""}" '
-                        f'you wrote "{iss.claim}" but the input data says "{iss.expected}". '
-                        f'({iss.type})'
+                        f'  ✗ You wrote "{iss.claim}" — input says "{iss.expected}" ({iss.type})'
                     )
+                # Append the ground-truth stat sheet so the writer can
+                # rebuild its citations from a single trusted source.
+                scorers_data = ctx.get("_scorers") or []
+                if isinstance(scorers_data, list) and scorers_data:
+                    hint_lines.append("")
+                    hint_lines.append("VERIFIED STAT SHEET — these are the ONLY stats you may cite:")
+                    home_score_v = ctx.get("home_score")
+                    away_score_v = ctx.get("away_score")
+                    home_abbr_v = ctx.get("home_abbr")
+                    away_abbr_v = ctx.get("away_abbr")
+                    if home_score_v is not None and away_score_v is not None:
+                        hint_lines.append(
+                            f"  FINAL: {away_abbr_v} {away_score_v} - {home_score_v} {home_abbr_v}"
+                        )
+                    for team_block in scorers_data:
+                        if not isinstance(team_block, dict):
+                            continue
+                        team_abbr_v = team_block.get("team_abbr") or "?"
+                        for entry in (team_block.get("scorers") or [])[:5]:
+                            if not isinstance(entry, dict):
+                                continue
+                            name_v = entry.get("name") or ""
+                            pts_v = entry.get("pts")
+                            reb_v = entry.get("reb")
+                            ast_v = entry.get("ast")
+                            if name_v and pts_v is not None:
+                                parts_v = [f"{pts_v} pts"]
+                                if reb_v is not None:
+                                    parts_v.append(f"{reb_v} reb")
+                                if ast_v is not None:
+                                    parts_v.append(f"{ast_v} ast")
+                                hint_lines.append(
+                                    f"  [{team_abbr_v}] {name_v}: " + ", ".join(parts_v)
+                                )
                 regen_hint = "\n".join(hint_lines)
                 typer.echo(
                     f"\n⟳ Fact-check failed on attempt {attempt + 1}/{MAX_FACT_RETRIES + 1} — "
-                    f"regenerating with hint targeting {len(nba_fact_report.issues)} issue(s).",
+                    f"regenerating with full ground-truth stat sheet (targeting {len(nba_fact_report.issues)} issue(s)).",
                     err=True,
                 )
                 continue

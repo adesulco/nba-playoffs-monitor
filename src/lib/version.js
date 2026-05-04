@@ -5711,7 +5711,26 @@
 // these fixes, the 1 false positive disappears entirely; the genuine
 // stat error rate should drop further with anchor-block prompting.
 
-export const APP_VERSION = '0.59.6';
+// v0.59.7 — Full ground-truth stat sheet on regenerate hint.
+//
+// v0.59.6 smoke test (game 401869418 ORL@DET) showed: retry fixed
+// the FLAGGED errors but introduced NEW ones (Duren 22→15 ✓ but
+// then claimed "Daniss Jenkins double-double" = wrong). Sonnet on
+// retry would correct flagged stats but re-derive other stats from
+// prose, hallucinating fresh.
+//
+// Fix: when building the regen_hint after a fact-check fail, append
+// the FULL verified stat sheet from ctx['_scorers'] — the same data
+// already in the NUMERIC ANCHORS block, but presented as a "VERIFIED
+// STAT SHEET — these are the ONLY stats you may cite". Single
+// ground-truth source the model can rebuild from instead of
+// re-deriving from prose between attempts.
+//
+// Expected: regen attempt 2 should fix flagged errors without
+// introducing new ones. Recap delivery rate should rise toward
+// 80-90%.
+
+export const APP_VERSION = '0.59.7';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
