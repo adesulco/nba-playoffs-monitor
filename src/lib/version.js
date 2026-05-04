@@ -5651,7 +5651,39 @@
 // behavior. Verdict trichotomy is additive (review = new label, not
 // a behavioral break). Prompt blocks are additive.
 
-export const APP_VERSION = '0.59.4';
+// v0.59.5 — Auto-regenerate-on-fact-check-fail + Stat Citation Discipline.
+//
+// Companion to v0.59.4. After v0.59.4 fixed voice-lint (62→82 on
+// smoke test), recap fact-check was the next gate: NBA recaps still
+// hard-failed silently because Sonnet hallucinated stat lines that
+// didn't match the input box score. Editor saw nothing in queue.
+//
+// Two changes:
+//
+//   1. nba-recap-system.md — added "STAT CITATION DISCIPLINE
+//      (auto-fail if violated)" section. Six rules: copy-paste
+//      numbers don't paraphrase, final score from SCORE AKHIR only,
+//      verify triple/double-double, run lengths only from KEY PLAYS,
+//      shooting % only from TEAM STATS, default to not-citing
+//      bench/+-/fast-break unless explicit. Plus self-check
+//      instruction.
+//
+//   2. agents/nba_recap.py + agents/recap.py — both write_X(ctx)
+//      functions accept an optional regen_hint kwarg. cli.py wraps
+//      NBA + football recap in a retry loop (max 1 retry); on
+//      fact-check fail, builds a hint listing claim/expected pairs
+//      from fact_report.issues and calls writer again. After all
+//      retries exhausted, exits with code 6 → workflow's failure-
+//      capture step writes ce_generation_failures row.
+//
+// Expected: fact-check pass rate 50-60% → 85-90% on recaps.
+// Per-article cost: ~$0.04 → ~$0.05 avg (~15% need retry adding
+// ~$0.04). Worst case bounded at $0.10 per article.
+//
+// F1 recap NOT changed this ship (same pattern would apply but
+// only 1 race per ~2 weeks; lower priority).
+
+export const APP_VERSION = '0.59.5';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

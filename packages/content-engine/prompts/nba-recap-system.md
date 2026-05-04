@@ -73,6 +73,28 @@ Take the post-game data block (final score, top scorers, team box-score stats, p
 
 If the data lacks something the recap would need, say so plainly: "Detail clutch moments tidak tersedia di sistem saat ini."
 
+## STAT CITATION DISCIPLINE (auto-fail if violated)
+
+**The NBA fact-checker (rule-based, hard publish gate) catches numeric mismatches against the input box score. If you cite a number not literally in input, the article is rejected and regeneration is triggered.**
+
+Before writing ANY number — points, rebounds, assists, percentages, scores, run lengths — apply this checklist:
+
+1. **Copy-paste, don't paraphrase numbers.** If TOP SCORERS says "Tatum: 27 pts, 7 reb, 5 ast", write "Tatum 27 poin, 7 rebound, 5 asis" — NOT "Tatum 30 poin" (rounded), NOT "Tatum near triple-double" (interpretive), NOT "Tatum 27 poin, 8 rebound" (typo).
+
+2. **Final score: from SCORE AKHIR only.** If SCORE AKHIR is "94-116", write "94-116" or "ORL 94, DET 116". NEVER round to "95-115", NEVER infer "blowout 25-poin" without checking the actual margin (here: 22).
+
+3. **Triple-double / double-double:** ONLY claim if the stat line literally has 10+ in three (triple) or two (double) categories. Tatum 27/7/5 is NOT a double-double. Verify before writing.
+
+4. **Run lengths ("9-0 run", "12-2 stretch"):** ONLY cite if KEY PLAYS block contains the exact run. If KEY PLAYS is empty or absent, do NOT invent run-length specifics. Use qualitative language ("momentum bergeser di Q3", "DET tutup pertandingan dengan stretch defensif") instead.
+
+5. **Shooting percentages:** ONLY from TEAM STATS. If TEAM STATS doesn't have FG%, do NOT cite "45% from field". If only partial stats are present, cite only those.
+
+6. **Bench scoring totals, +/-, fast-break points:** these are RARELY in input. Default to NOT citing them. Only mention if explicitly listed.
+
+**Self-check before submitting:** re-read your draft and mentally underline every digit. For each, ask: "is this exact number literally in the input?" If you can't verify, DELETE the sentence or rewrite it qualitatively.
+
+**If input data is sparse:** write a SHORTER recap (closer to 400 words) that's strictly accurate, not a 700-word recap padded with invented stats. Length is not the bar — accuracy is.
+
 ## Article structure (~500-700 words)
 
 1. **Lead (60-90 words)** — open with the result + ONE sharpest observation. Cite the score immediately. Include the playoff context: which game number, current series state. E.g. "Boston Celtics melibas Philadelphia 76ers 128-96 di Game 4 Round 1 Wilayah Timur. Jayson Tatum 30 poin, Payton Pritchard 32 poin off the bench, Boston unggul 3-1 dan tinggal sekali menang untuk maju ke semifinal."

@@ -487,39 +487,69 @@ def recap(
         ctx = await recap_context.build_context(fx)
 
         # 4. Run the recap agent (Sonnet 4.6 with cached system prompt)
-        result = await recap_agent.write_recap(ctx)
-        body_raw = result["body_md"]
+        # v0.59.5 — auto-regenerate-on-fact-check-fail loop. Same
+        # pattern as NBA recap. Up to 1 retry; passes the failing
+        # claims as a regen_hint so the writer knows exactly what
+        # to avoid.
+        MAX_FACT_RETRIES = 1
+        regen_hint: str | None = None
+        accumulated_writer_cost = 0.0
+        fact_report = None
+        result = None
+        body = ""
 
-        # 5. Deterministic polish
-        body = polish.polish(body_raw)
+        for attempt in range(MAX_FACT_RETRIES + 1):
+            result = await recap_agent.write_recap(ctx, regen_hint=regen_hint)
+            body_raw = result["body_md"]
+            accumulated_writer_cost += result["usage"].get("cost_usd", 0.0)
 
-        # 6. Banned-phrase hard gate
-        report = banned_phrase.check(body)
-        typer.echo(report.summary())
-        if not report.passed:
-            typer.echo("\n✗ Banned-phrase gate failed. Regenerate.", err=True)
-            typer.echo("\n--- DRAFT (FAILED GATE) ---\n")
-            typer.echo(body)
-            raise typer.Exit(3)
+            # 5. Deterministic polish
+            body = polish.polish(body_raw)
 
-        # 6b. Voice lint (soft gate — surface, don't block)
-        source_ctx = recap_agent.format_recap_user_message(ctx)
-        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
-        typer.echo(lint_report.summary_text())
+            # 6. Banned-phrase hard gate
+            report = banned_phrase.check(body)
+            typer.echo(report.summary())
+            if not report.passed:
+                typer.echo("\n✗ Banned-phrase gate failed. Regenerate.", err=True)
+                typer.echo("\n--- DRAFT (FAILED GATE) ---\n")
+                typer.echo(body)
+                raise typer.Exit(3)
 
-        # 6c. Fact validator HARD gate. Catches wrong final score,
-        # wrong goal-minute claims. Same module as preview pipeline,
-        # called with recap=True.
-        fact_report = fact_check.check(body, source_ctx, recap=True)
-        typer.echo(fact_report.summary())
-        if not fact_report.passed:
+            # 6b. Voice lint (soft gate — surface, don't block)
+            source_ctx = recap_agent.format_recap_user_message(ctx)
+            body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
+            typer.echo(lint_report.summary_text())
+
+            # 6c. Fact validator HARD gate.
+            fact_report = fact_check.check(body, source_ctx, recap=True)
+            typer.echo(fact_report.summary())
+            if fact_report.passed:
+                break  # Success
+
+            if attempt < MAX_FACT_RETRIES:
+                hint_lines = [
+                    "Previous attempt cited the following claims that DID NOT match input:"
+                ]
+                for iss in fact_report.issues[:8]:
+                    hint_lines.append(
+                        f'  - In: "{iss.snippet[:80]}{"..." if len(iss.snippet) > 80 else ""}" '
+                        f'you wrote "{iss.claim}" but input says "{iss.expected}". ({iss.type})'
+                    )
+                regen_hint = "\n".join(hint_lines)
+                typer.echo(
+                    f"\n⟳ Fact-check failed on attempt {attempt + 1}/{MAX_FACT_RETRIES + 1} — "
+                    f"regenerating with hint targeting {len(fact_report.issues)} issue(s).",
+                    err=True,
+                )
+                continue
+
+            # Out of retries
             typer.echo(
-                "\n✗ Fact validator failed. The recap asserts numerical "
-                "claims (final score, goal minutes) that don't match the "
-                "match data. Regenerate or correct manually.",
+                f"\n✗ Fact validator failed after {MAX_FACT_RETRIES + 1} attempts. "
+                "Final score / goal-minute claims don't match input.",
                 err=True,
             )
-            typer.echo("\n--- DRAFT (FAILED FACT GATE) ---\n")
+            typer.echo("\n--- FINAL DRAFT (FAILED FACT GATE) ---\n")
             typer.echo(body)
             raise typer.Exit(6)
 
@@ -548,11 +578,11 @@ def recap(
         # 7. Cost report
         usage = result["usage"]
         lint_usage = lint_report.usage
-        total_cost = usage["cost_usd"] + lint_usage.get("cost_usd", 0.0)
+        total_cost = accumulated_writer_cost + lint_usage.get("cost_usd", 0.0)
         typer.echo(
             f"\n✓ Generated {len(body)} chars. "
             f"Recap: in={usage['input_tokens']} (cache_read={usage['cache_read_input_tokens']}) "
-            f"out={usage['output_tokens']} ${usage['cost_usd']:.4f}. "
+            f"out={usage['output_tokens']} ${accumulated_writer_cost:.4f} (writer total across retries). "
             f"Voice-lint: ${lint_usage.get('cost_usd', 0.0):.4f}. "
             f"Total: ${total_cost:.4f}"
         )
@@ -795,41 +825,74 @@ def nba_recap_cmd(
             )
             raise typer.Exit(2)
 
-        # 2. Run the writer
-        result = await nba_recap_agent.write_nba_recap(ctx)
-        body_raw = result["body_md"]
+        # v0.59.5 — auto-regenerate-on-fact-check-fail loop. Up to one
+        # retry (= 2 writer calls max). On retry, we pass the failing
+        # fact-check issues as a hint so the writer knows exactly what
+        # to avoid. Most fact-check fails are stat-citation hallucinations
+        # that don't repeat once the writer is told.
+        MAX_FACT_RETRIES = 1
+        regen_hint: str | None = None
+        accumulated_writer_cost = 0.0
+        nba_fact_report = None
+        result = None
+        body = ""
 
-        # 3. Polish
-        body = polish.polish(body_raw)
+        for attempt in range(MAX_FACT_RETRIES + 1):
+            # 2. Run the writer
+            result = await nba_recap_agent.write_nba_recap(ctx, regen_hint=regen_hint)
+            body_raw = result["body_md"]
+            accumulated_writer_cost += result["usage"].get("cost_usd", 0.0)
 
-        # 4. Banned-phrase hard gate
-        report = banned_phrase.check(body)
-        typer.echo(report.summary())
-        if not report.passed:
-            typer.echo("\n✗ Banned-phrase gate failed. Regenerate.", err=True)
-            typer.echo("\n--- DRAFT (FAILED GATE) ---\n")
-            typer.echo(body)
-            raise typer.Exit(3)
+            # 3. Polish
+            body = polish.polish(body_raw)
 
-        # 5. Voice lint (soft)
-        source_ctx = nba_recap_agent.format_nba_recap_user_message(ctx)
-        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
-        typer.echo(lint_report.summary_text())
+            # 4. Banned-phrase hard gate
+            report = banned_phrase.check(body)
+            typer.echo(report.summary())
+            if not report.passed:
+                typer.echo("\n✗ Banned-phrase gate failed. Regenerate.", err=True)
+                typer.echo("\n--- DRAFT (FAILED GATE) ---\n")
+                typer.echo(body)
+                raise typer.Exit(3)
 
-        # 5b. NBA-specific fact-check HARD gate (Ship #17). Catches
-        # triple-double / double-double misuse + scorer-points
-        # mismatches + wrong final-score citations against the input
-        # box-score data. Same hard-gate semantics as the football
-        # fact validator.
-        nba_fact_report = nba_fact_check.check(body, ctx)
-        typer.echo(nba_fact_report.summary())
-        if not nba_fact_report.passed:
+            # 5. Voice lint (soft) — check_with_autofix swallows fail
+            # verdict by running Haiku fixer + relint internally.
+            source_ctx = nba_recap_agent.format_nba_recap_user_message(ctx)
+            body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
+            typer.echo(lint_report.summary_text())
+
+            # 5b. NBA fact-check HARD gate.
+            nba_fact_report = nba_fact_check.check(body, ctx)
+            typer.echo(nba_fact_report.summary())
+            if nba_fact_report.passed:
+                break  # Success — exit retry loop
+
+            # Failed — if retries remaining, build hint and try again.
+            if attempt < MAX_FACT_RETRIES:
+                hint_lines = [
+                    f"Previous attempt cited the following stats that DID NOT match the input box score:"
+                ]
+                for iss in nba_fact_report.issues[:8]:
+                    hint_lines.append(
+                        f'  - In: "{iss.snippet[:80]}{"..." if len(iss.snippet) > 80 else ""}" '
+                        f'you wrote "{iss.claim}" but the input data says "{iss.expected}". '
+                        f'({iss.type})'
+                    )
+                regen_hint = "\n".join(hint_lines)
+                typer.echo(
+                    f"\n⟳ Fact-check failed on attempt {attempt + 1}/{MAX_FACT_RETRIES + 1} — "
+                    f"regenerating with hint targeting {len(nba_fact_report.issues)} issue(s).",
+                    err=True,
+                )
+                continue
+
+            # Out of retries — block per CLAUDE.md rule #9.
             typer.echo(
-                "\n✗ NBA fact-check failed. Stat lines / scores cited in the article "
-                "don't match the input box score. Regenerate or correct manually.",
+                f"\n✗ NBA fact-check failed after {MAX_FACT_RETRIES + 1} attempts. "
+                "Stat lines / scores cited don't match the input box score.",
                 err=True,
             )
-            typer.echo("\n--- DRAFT (FAILED NBA FACT GATE) ---\n")
+            typer.echo("\n--- FINAL DRAFT (FAILED NBA FACT GATE) ---\n")
             typer.echo(body)
             raise typer.Exit(6)
 
@@ -855,14 +918,14 @@ def nba_recap_cmd(
             typer.echo("\n✗ Plagiarism gate failed.", err=True)
             raise typer.Exit(5)
 
-        # 7. Cost report
+        # 7. Cost report — accumulated_writer_cost spans potential retries
         usage = result["usage"]
         lint_usage = lint_report.usage
-        total_cost = usage["cost_usd"] + lint_usage.get("cost_usd", 0.0)
+        total_cost = accumulated_writer_cost + lint_usage.get("cost_usd", 0.0)
         typer.echo(
             f"\n✓ Generated {len(body)} chars. "
             f"NBA recap: in={usage['input_tokens']} (cache_read={usage['cache_read_input_tokens']}) "
-            f"out={usage['output_tokens']} ${usage['cost_usd']:.4f}. "
+            f"out={usage['output_tokens']} ${accumulated_writer_cost:.4f} (writer total across retries). "
             f"Voice-lint: ${lint_usage.get('cost_usd', 0.0):.4f}. "
             f"Total: ${total_cost:.4f}"
         )

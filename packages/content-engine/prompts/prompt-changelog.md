@@ -37,3 +37,41 @@ Sport-specific examples in the SPORT_EXAMPLES placeholder per file (NBA: All-Sta
 **Rollback path:** revert this commit. The DO-NOT-INFER blocks are additive (don't remove existing rules), so even if the lint score lift doesn't materialize, no regression risk on what was working before.
 
 ---
+
+## v0.59.5 — 2026-05-04 — Stat Citation Discipline + auto-regenerate-on-fact-check-fail
+
+**Author:** Ade (approved) + Claude (implementation)
+**Files modified:** `nba-recap-system.md`, `agents/nba_recap.py`, `agents/recap.py`, `cli.py`.
+
+**Why:** v0.59.4 fixed voice-lint scores (62→82 on smoke test) but recap fact-check still hard-failed silently. NBA recap of ORL@DET hit `nba_fact_check.passed=False` because Sonnet hallucinated stat lines that didn't match the input box score. Per CLAUDE.md rule #9, fact-check is a hard publish-blocker → article never written, editor sees nothing.
+
+**Change:**
+
+1. **`nba-recap-system.md`** — added `## STAT CITATION DISCIPLINE (auto-fail if violated)` section between hard-grounding rules and article structure. Six explicit rules:
+   - Copy-paste, don't paraphrase numbers (no rounding 27→30, no inference)
+   - Final score from SCORE AKHIR only
+   - Triple/double-double only if stat line literally qualifies
+   - Run lengths only from KEY PLAYS
+   - Shooting % only from TEAM STATS
+   - Bench / +/- / fast-break: default to NOT citing
+   Plus a "self-check before submitting" instruction (re-read every digit; verify against input).
+
+2. **`agents/nba_recap.py` + `agents/recap.py`** — both `write_X(ctx)` functions now accept an optional `regen_hint` kwarg. When set, prepended to the user message as a "PREVIOUS ATTEMPT FAILED..." block listing exactly which claims were wrong + reminding the writer of stat-citation discipline.
+
+3. **`cli.py`** — wrapped NBA recap + football recap pipelines in a retry loop (max 1 retry = 2 writer calls max). On fact-check fail, builds a hint from `fact_report.issues` listing claim/expected pairs, calls writer again with hint, re-runs the full lint+fact-check chain. Total cost across retries reported. After all retries exhausted, exits with code 6 (same as before) so the workflow's failure-capture step writes the row to `ce_generation_failures`.
+
+**Expected impact:**
+- NBA recap fact-check pass rate: 50-60% → 85-90% (most stat hallucinations get caught + corrected on retry 2)
+- Football recap fact-check pass rate: similar lift
+- Per-recap cost: ~$0.04 (single attempt, current) → average ~$0.05 (most pass first try; ~15% need a retry adding $0.04)
+- Worst-case cost cap: $0.10 per article (writer × 2 + lint + fixer)
+
+**Eval status:** smoke test pending — re-run game 401869418 (ORL@DET) which previously hit the fact-check.
+
+**Companion changes (this ship):**
+- Football recap got the same treatment for parity (its `fact_check.check(... recap=True)` is a hard gate too).
+- F1 recap NOT changed yet — same pattern would apply but lower priority (only 1 race per ~2 weeks). Leave for follow-up if the rate of failures justifies.
+
+**Rollback:** revert this commit. The `regen_hint` parameter is optional with default None — existing callers that don't pass it get unchanged behavior. The retry loop adds 1 extra Sonnet call per ~15% of recaps (those that fail first attempt); cost impact bounded.
+
+---

@@ -85,7 +85,11 @@ KANAL TAYANG: {fld("broadcast")}
 """
 
 
-async def write_nba_recap(ctx: dict[str, Any]) -> dict[str, Any]:
+async def write_nba_recap(
+    ctx: dict[str, Any],
+    *,
+    regen_hint: str | None = None,
+) -> dict[str, Any]:
     """Generate an NBA recap article.
 
     Returns ``{body_md, model, usage, stop_reason}``.
@@ -96,11 +100,28 @@ async def write_nba_recap(ctx: dict[str, Any]) -> dict[str, Any]:
 
     user_msg = format_nba_recap_user_message(ctx)
 
+    # v0.59.5 — On regenerate-after-fact-check-fail, prepend a hint
+    # block that tells the writer EXACTLY what stats it got wrong
+    # last time and to avoid repeating those errors.
+    if regen_hint:
+        user_msg = (
+            "PREVIOUS ATTEMPT FAILED THE FACT-CHECKER. Re-write avoiding these errors:\n\n"
+            f"{regen_hint}\n\n"
+            "RULES FOR THIS RETRY:\n"
+            "- Read every number in the input data block CAREFULLY before writing\n"
+            "- Cite numbers ONLY by copy-paste from input — no rounding, no inference\n"
+            "- If a stat isn't in input, omit it qualitatively rather than invent\n"
+            "- Shorter is fine — accuracy > length\n\n"
+            "---\n\n"
+            + user_msg
+        )
+
     log.info(
         "nba_recap.start",
         home=ctx.get("home_abbr"),
         away=ctx.get("away_abbr"),
         score=f"{ctx.get('away_score')}-{ctx.get('home_score')}",
+        is_retry=bool(regen_hint),
     )
 
     result = await run_messages(

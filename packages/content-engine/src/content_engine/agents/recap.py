@@ -94,7 +94,11 @@ KANAL TAYANG: {fld("broadcast")}
 """
 
 
-async def write_recap(ctx: dict[str, Any]) -> dict[str, Any]:
+async def write_recap(
+    ctx: dict[str, Any],
+    *,
+    regen_hint: str | None = None,
+) -> dict[str, Any]:
     """Generate a recap article for a finished match.
 
     Returns::
@@ -106,6 +110,11 @@ async def write_recap(ctx: dict[str, Any]) -> dict[str, Any]:
             "stop_reason": str,
         }
 
+    ``regen_hint`` (v0.59.5): when set, prepended to the user message
+    on a regenerate-after-fact-check-fail retry. Tells the writer
+    exactly which stats it got wrong last attempt so it doesn't
+    repeat them.
+
     Raises ``BudgetExceededError`` if the recap-writer agent's daily
     spend cap was hit (per ``settings.daily_token_budget_usd``).
     """
@@ -115,12 +124,26 @@ async def write_recap(ctx: dict[str, Any]) -> dict[str, Any]:
 
     user_msg = format_recap_user_message(ctx)
 
+    if regen_hint:
+        user_msg = (
+            "PREVIOUS ATTEMPT FAILED THE FACT-CHECKER. Re-write avoiding these errors:\n\n"
+            f"{regen_hint}\n\n"
+            "RULES FOR THIS RETRY:\n"
+            "- Read every number in the input data block CAREFULLY before writing\n"
+            "- Cite numbers ONLY by copy-paste from input — no rounding, no inference\n"
+            "- If a stat isn't in input, omit it qualitatively rather than invent\n"
+            "- Shorter is fine — accuracy > length\n\n"
+            "---\n\n"
+            + user_msg
+        )
+
     log.info(
         "recap.start",
         league=ctx.get("league_name"),
         home=ctx.get("home_team"),
         away=ctx.get("away_team"),
         score=f"{ctx.get('home_score')}-{ctx.get('away_score')}",
+        is_retry=bool(regen_hint),
     )
 
     result = await run_messages(
