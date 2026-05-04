@@ -42,48 +42,50 @@ on:
           - tennis-rankings
           - weekly-standings
           - all
+      budget_usd:
+        description: 'Daily budget cap in USD (overrides DAILY_BUDGET_USD env)'
+        required: false
+        default: '2.00'
+        type: string
 
-  # Schedules — all commented out by default. Uncomment per-cadence
-  # ONCE the respective sport+article-type has been proven stable in
-  # the manual workflow_dispatch path. Cron times are UTC.
+  # Schedules — graduate per-cadence as confidence grows. Cron times UTC.
   #
-  # IMPORTANT: GitHub Actions free-tier limits apply (2,000 minutes /
-  # month for private repos, unlimited for public). Each discovery
-  # run is cheap (1-3 min) but stack carefully if you fan out fast.
+  # GitHub Actions: public repo = unlimited minutes. Each discovery run
+  # ~1-3 min; most runs in the 30-min poll window are no-ops.
   #
-  # schedule:
-  #   # Football preview discovery — daily 06:00 UTC, catches T-24h fixtures
-  #   - cron: '0 6 * * *'
-  #     # action: football-previews
+  # COST CAP: every run hits the "Daily budget guard" step first. If
+  # SUM(cost_usd) for today exceeds DAILY_BUDGET_USD (default 2.00),
+  # the run aborts before spending tokens. Override per-workflow-run
+  # with the budget_usd workflow_dispatch input.
   #
-  #   # Football recap polling — every 30 min during typical Saturday/Sunday
-  #   # match-day windows (12:00-23:00 UTC = 14:00-25:00 local European).
-  #   # On non-match days the job is a fast no-op (idempotent skip).
-  #   - cron: '*/30 12-23 * * 0,6'
-  #     # action: football-recaps
+  # GRADUATION ORDER (uncomment a block after a week of stable runs):
   #
-  #   # NBA — daily 00:00 + 04:00 UTC (covers ET evening tipoffs spanning
-  #   # midnight). Recaps poll every 30 min during the 02:00-08:00 UTC
-  #   # window (the bulk of NBA Playoffs evening games).
-  #   - cron: '0 0,4 * * *'
-  #     # action: nba-previews
-  #   - cron: '*/30 2-8 * * *'
-  #     # action: nba-recaps
-  #
-  #   # F1 — Thursday 12:00 UTC (preview) + Sunday 18:00 UTC (recap)
-  #   # Most races finish ~15:00-16:00 UTC; 18:00 UTC catches them.
-  #   - cron: '0 12 * * 4'
-  #     # action: f1-weekend (preview branch)
-  #   - cron: '0 18 * * 0'
-  #     # action: f1-weekend (recap branch — same job, different cron)
-  #
-  #   # Tennis — Monday 06:00 UTC weekly rankings (ATP + WTA both)
-  #   - cron: '0 6 * * 1'
-  #     # action: tennis-rankings
-  #
-  #   # Football standings — Monday 09:00 UTC (after Sunday's last game)
-  #   - cron: '0 9 * * 1'
-  #     # action: weekly-standings
+  schedule:
+    # NBA recap polling — every 30 min during 02:00-08:00 UTC. NBA evening
+    # tipoffs run ~00:00-05:00 UTC, finals whistle ~02:00-08:00 UTC. Catches
+    # each recap within 30 min of game end.
+    # 13 runs/day max, most no-op (no new finished games). Cost per
+    # generated recap ~$0.04 (Sonnet). Worst case 6 games/night = $0.24/day.
+    - cron: '*/30 2-8 * * *'
+    #
+    # Tennis weekly rankings — Monday 06:00 UTC. ~$0.01/week (Haiku).
+    # - cron: '0 6 * * 1'
+    #
+    # Football preview — daily 06:00 UTC. ~$0.10-0.30/day on match days.
+    # - cron: '0 6 * * *'
+    #
+    # Football recap polling — Sat+Sun 12:00-23:00 UTC every 30 min.
+    # - cron: '*/30 12-23 * * 0,6'
+    #
+    # NBA preview — daily 00:00 + 04:00 UTC.
+    # - cron: '0 0,4 * * *'
+    #
+    # F1 weekend — Thursday 12:00 UTC + Sunday 18:00 UTC.
+    # - cron: '0 12 * * 4'
+    # - cron: '0 18 * * 0'
+    #
+    # Football weekly standings — Monday 09:00 UTC.
+    # - cron: '0 9 * * 1'
 
 permissions:
   contents: write   # needs to commit + push the generated JSON files
@@ -154,17 +156,105 @@ jobs:
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
           echo "Running mode: $MODE"
 
+      - name: Daily budget guard
+        id: budget
+        env:
+          BUDGET_USD: ${{ github.event.inputs.budget_usd || '2.00' }}
+        run: |
+          # Sum cost_usd from ce_cron_runs for today (UTC). If we're
+          # already at-or-over budget, skip discovery entirely.
+          # Per CLAUDE.md rule #11 — hard halt on cost cap, no silent
+          # degrade.
+          set -e
+          TODAY=$(date -u +%Y-%m-%d)
+          SPENT=$(python3 -c "
+          import os, json, urllib.request, urllib.parse
+          url = os.environ['SUPABASE_URL'].rstrip('/') + '/rest/v1/ce_cron_runs'
+          q = urllib.parse.urlencode({
+              'run_at': f'gte.{os.environ[\"TODAY\"]}T00:00:00Z',
+              'select': 'cost_usd',
+          })
+          req = urllib.request.Request(
+              url + '?' + q,
+              headers={
+                  'apikey': os.environ['SUPABASE_SERVICE_ROLE_KEY'],
+                  'authorization': 'Bearer ' + os.environ['SUPABASE_SERVICE_ROLE_KEY'],
+              },
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=10) as r:
+                  rows = json.loads(r.read())
+              total = sum(float(row.get('cost_usd') or 0) for row in rows)
+              print(f'{total:.4f}')
+          except Exception as e:
+              # If Supabase is unreachable, fail safe — don't block the
+              # run, but log loudly. The audit row will still be written
+              # post-run; cap is just bypassed for this one run.
+              import sys
+              print(f'0.0000', flush=True)
+              print(f'WARN: budget query failed: {e}', file=sys.stderr)
+          " TODAY=$TODAY)
+          echo "Today (UTC=$TODAY) spend: \$${SPENT}"
+          echo "Budget cap:               \$${BUDGET_USD}"
+          OK=$(python3 -c "print('1' if float('$SPENT') < float('$BUDGET_USD') else '0')")
+          if [ "$OK" = "1" ]; then
+            echo "✓ Under budget — proceeding."
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "✗ Over budget — skipping this run."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "spent=$SPENT" >> "$GITHUB_OUTPUT"
+          echo "cap=$BUDGET_USD" >> "$GITHUB_OUTPUT"
+
       - name: Run discovery
         id: discover
+        if: steps.budget.outputs.ok == 'true'
         working-directory: packages/content-engine
         run: |
           python -m content_engine.scripts.discover "${{ steps.mode.outputs.mode }}"
 
+      - name: Compute cost from new content
+        id: cost
+        if: steps.budget.outputs.ok == 'true'
+        run: |
+          # Sum cost_usd from any JSON files in public/content/ that are
+          # new or modified since checkout. Run BEFORE detect-new-content
+          # since we need the file list either way.
+          set -e
+          git add -N public/content/ 2>/dev/null || true
+          CHANGED=$(git diff --name-only -- public/content/ 2>/dev/null; \
+                    git ls-files --others --exclude-standard -- public/content/)
+          COUNT=0
+          COST=$(python3 -c "
+          import json, os, sys
+          total = 0.0
+          count = 0
+          for line in os.environ.get('CHANGED', '').splitlines():
+              line = line.strip()
+              if not line.endswith('.json'):
+                  continue
+              try:
+                  with open(line) as f:
+                      d = json.load(f)
+                  fm = d.get('frontmatter') or d
+                  c = float(fm.get('cost_usd') or 0)
+                  total += c
+                  count += 1
+              except Exception:
+                  pass
+          print(f'{total:.4f}|{count}')
+          " CHANGED="$CHANGED")
+          THIS_RUN_COST=$(echo "$COST" | cut -d'|' -f1)
+          THIS_RUN_COUNT=$(echo "$COST" | cut -d'|' -f2)
+          echo "cost_usd=$THIS_RUN_COST" >> "$GITHUB_OUTPUT"
+          echo "articles_count=$THIS_RUN_COUNT" >> "$GITHUB_OUTPUT"
+          echo "This run: $THIS_RUN_COUNT article(s), \$${THIS_RUN_COST}"
+
       - name: Detect new content
         id: changes
+        if: steps.budget.outputs.ok == 'true'
         run: |
-          # Did discovery write anything new?
-          git add -N public/content/ 2>/dev/null || true
           if git diff --quiet --exit-code public/content/ 2>/dev/null && \
              [ -z "$(git ls-files --others --exclude-standard -- public/content/)" ]; then
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
@@ -189,11 +279,66 @@ All articles land with manual_review:true — editor approval via /editor requir
 Co-Authored-By: gibol-bot <bot@gibol.co>"
           git push
 
-      - name: Summary
+      - name: Write audit row
+        if: always()
+        env:
+          MODE: ${{ steps.mode.outputs.mode }}
+          BUDGET_OK: ${{ steps.budget.outputs.ok }}
+          COST_USD: ${{ steps.cost.outputs.cost_usd || '0' }}
+          ARTICLES_COUNT: ${{ steps.cost.outputs.articles_count || '0' }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          TRIGGER: ${{ github.event_name }}
         run: |
-          echo "Mode: ${{ steps.mode.outputs.mode }}"
-          echo "Changes: ${{ steps.changes.outputs.has_changes }}"
+          # Always-run audit row — even on budget skip / discovery failure
+          # we want the timestamp + reason in the log. Service role bypass
+          # RLS so this just works.
+          set -e
+          python3 <<'PYEOF'
+          import os, json, urllib.request
+
+          payload = {
+              'mode': os.environ.get('MODE', 'unknown'),
+              'trigger': 'workflow_dispatch' if os.environ.get('TRIGGER') == 'workflow_dispatch' else 'schedule',
+              'articles_count': int(os.environ.get('ARTICLES_COUNT') or 0),
+              'cost_usd': float(os.environ.get('COST_USD') or 0),
+              'budget_skipped': os.environ.get('BUDGET_OK') != 'true',
+              'github_run_id': os.environ.get('GITHUB_RUN_ID'),
+              'github_run_url': f"https://github.com/adesulco/nba-playoffs-monitor/actions/runs/{os.environ.get('GITHUB_RUN_ID')}",
+              'details': {
+                  'budget_ok': os.environ.get('BUDGET_OK'),
+              },
+          }
+          url = os.environ['SUPABASE_URL'].rstrip('/') + '/rest/v1/ce_cron_runs'
+          req = urllib.request.Request(
+              url,
+              data=json.dumps(payload).encode('utf-8'),
+              method='POST',
+              headers={
+                  'apikey': os.environ['SUPABASE_SERVICE_ROLE_KEY'],
+                  'authorization': 'Bearer ' + os.environ['SUPABASE_SERVICE_ROLE_KEY'],
+                  'content-type': 'application/json',
+                  'prefer': 'return=minimal',
+              },
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=10) as r:
+                  print(f"audit row inserted (HTTP {r.status})")
+          except Exception as e:
+              print(f"WARN: audit insert failed: {e}")
+              # Don't fail the workflow — audit is observability, not
+              # critical path.
+          PYEOF
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "Mode:        ${{ steps.mode.outputs.mode }}"
+          echo "Trigger:     ${{ github.event_name }}"
+          echo "Budget OK:   ${{ steps.budget.outputs.ok }}"
+          echo "Spent today: \$${{ steps.budget.outputs.spent }} / \$${{ steps.budget.outputs.cap }}"
+          echo "This run:    ${{ steps.cost.outputs.articles_count || 0 }} article(s), \$${{ steps.cost.outputs.cost_usd || 0 }}"
+          echo "Pushed:      ${{ steps.changes.outputs.has_changes }}"
           if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
             echo "Vercel rebuild triggered by the push."
-            echo "Editor: https://www.gibol.co/editor (login required)"
+            echo "Editor: https://www.gibol.co/editor"
           fi

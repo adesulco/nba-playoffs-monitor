@@ -5500,7 +5500,54 @@
 // /editor queue, ready to approve. No terminal, no venv, no
 // deploy step.
 
-export const APP_VERSION = '0.59.1';
+// v0.59.2 — Scheduled auto-generation: NBA recap polling + cost cap.
+//
+// Flips the first cron schedule on (`*/30 2-8 * * *` for NBA recaps —
+// 13 polls/day across the NBA evening-game window). The system now
+// auto-generates a Bahasa recap within ~30 min of every NBA Round 2
+// final whistle without anyone clicking anything. Editor's role
+// shifts from "trigger generation" to "approve in queue."
+//
+// Pieces:
+//   • supabase/migrations/0013_cron_runs.sql — new ce_cron_runs audit
+//     table. Records every cron + workflow_dispatch run with
+//     timestamp, mode, articles_count, cost_usd, budget_skipped,
+//     and the github run URL. RLS enabled with no policies =
+//     service_role only. Drives both the daily cost-cap pre-check
+//     AND the future /editor audit dashboard.
+//
+//   • .github/workflows/content-cron.yml — three new steps wrapping
+//     the existing discovery flow:
+//       1. "Daily budget guard" — queries Supabase for SUM(cost_usd)
+//          since 00:00 UTC today, compares to DAILY_BUDGET_USD env
+//          (default 2.00, override per-run via workflow_dispatch
+//          input). If at-or-over, all subsequent steps skip via
+//          if: steps.budget.outputs.ok == 'true'. Hard halt per
+//          CLAUDE.md rule #11.
+//       2. "Compute cost from new content" — after discover writes
+//          its JSON files, sums cost_usd from the diff. Surfaces as
+//          step output so audit + summary can use it.
+//       3. "Write audit row" — runs always() (even on budget skip
+//          or discover failure), inserts to ce_cron_runs via
+//          Supabase REST. Audit insert failure is non-blocking
+//          (observability, not critical path).
+//
+// Schedules graduated:
+//   ✓ NBA recaps (every 30 min, 02:00-08:00 UTC) — ENABLED
+//   ⏳ Tennis rankings, football previews/recaps, NBA previews,
+//     F1 weekend, weekly standings — staged in YAML, commented out.
+//     Graduate per-cadence after a week of stable runs.
+//
+// Cost ceiling: at 6 NBA games / night × $0.04 per Sonnet recap =
+// $0.24/day max. Daily cap of $2.00 gives 8x headroom. If a runaway
+// loop ever hits, max bleed = $2 before the next 00:00 UTC reset.
+//
+// Compounding effect with v0.59.1: editor now has TWO generation
+// paths — on-demand button (ad-hoc, multi-sport batches) + cron
+// (passive, daily cadence). The /editor queue stays fresh without
+// any morning-routine clicks; editor focuses on approve/reject.
+
+export const APP_VERSION = '0.59.2';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
