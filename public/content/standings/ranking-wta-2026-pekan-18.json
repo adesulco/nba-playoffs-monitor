@@ -1,0 +1,80 @@
+{
+  "type": "standings",
+  "slug": "ranking-wta-2026-pekan-18",
+  "title": "Ranking WTA pekan 18 — Aryna Sabalenka di Puncak",
+  "description": "Analisis ranking WTA 2026 pekan 18. Aryna Sabalenka (10,110 poin) memimpin tour.",
+  "body_md": "# WTA Rankings: Sabalenka Dominan, Swiatek Naik ke Top 3\n\nAryna Sabalenka tetap menguasai puncak WTA dengan 10.110 poin, unggul 1.555 dari Elena Rybakina di peringkat dua. Jarak mereka berdua terhadap sisa top 10 cukup besar, gap antara Rybakina dan Iga Swiatek mencapai 1.607 poin. Swiatek naik satu posisi menjadi nomor tiga dengan 6.948 poin, menggantikan Coco Gauff yang turun ke empat dengan 6.749 poin.\n\nPergerakan di top 10 relatif stabil minggu ini. Jessica Pegula tetap di posisi lima (6.136 poin), Amanda Anisimova di enam (5.985 poin). Tapi ada tiga pemain menarik yang naik: Mirra Andreeva naik ke tujuh dari delapan (4.181 poin), Jasmine Paolini naik ke delapan dari sembilan (3.722 poin), dan Victoria Mboko naik ke sembilan dari sepuluh (3.531 poin). Sebaliknya, Elina Svitolina turun signifikan tiga posisi, dari tujuh ke sepuluh dengan 3.530 poin, tertinggal ketat dari Mboko.\n\nPergerakan paling dramatis ada di luar top 10. Marta Kostyuk melompat delapan posisi, dari 23 ke 15 dengan 2.507 poin, kenaikan yang menunjukkan momentum bagus untuk pemain Ukraina itu. Sebaliknya, beberapa pemain jatuh: Madison Keys turun dua posisi dari 17 ke 19 (1.946 poin), Naomi Osaka turun satu posisi dari 15 ke 16 (2.341 poin), Iva Jovic turun satu dari 16 ke 17 (2.235 poin), dan Diana Shnaider turun satu dari 19 ke 20 (1.946 poin).\n\nStabilitas di tengah-tengah top 20 mencerminkan kompetisi ketat. Karolina Muchova pertahankan 11, Belinda Bencic di 12, Linda Noskova di 13, dan Ekaterina Alexandrova di 14, semuanya tanpa pergeseran posisi. Clara Tauson tetap 18. Jarak poin di zona 11-20 cukup rapat, sehingga turnamen mendatang akan sangat menentukan.\n\nJiangxi Open akan berlangsung 1-11 Mei dan jadi kesempatan penting bagi pemain di luar top 5 untuk meraup poin. Dengan gap kecil di posisi 15 hingga 20, setiap turnamen Masters 1000 dan WTA 500 jadi pemicu naik-turun peringkat. Sabalenka dan Rybakina masih punya margin nyaman, tapi Swiatek dan Gauff saling kejar di zona tiga-empat, zona yang akan terus ramai minggu-minggu ke depan.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "year": 2026,
+    "iso_week": 18,
+    "no_1_name": "Aryna Sabalenka",
+    "no_1_points": 10110,
+    "active_tournament": "Jiangxi Open",
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.002648,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail due to rank-numbering errors across three consecutive players (Andreeva, Paolini, Mboko positions stated incorrectly) and translated-English structural drift. Ranking article must match input data exactly; these are mathematical errors, not voice issues. Rewrite paragraph 2 with correct ranks and sharper Bahasa.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Mirra Andreeva naik ke tujuh dari delapan",
+          "fix": "Andreeva naik satu ke posisi tujuh (dari delapan sebelumnya)"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jasmine Paolini naik ke delapan dari sembilan",
+          "fix": "Paolini naik satu ke posisi delapan (dari sembilan)"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Victoria Mboko naik ke sembilan dari sepuluh",
+          "fix": "Verify rank sequence: Andreeva 7, Paolini 8, Mboko 9, Svitolina 10"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pergerakan di top 10 relatif stabil minggu ini",
+          "fix": "Top 10 mostly stabil minggu ini / Top 10 jarang bergerak minggu ini"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Sebaliknya, beberapa pemain jatuh:",
+          "fix": "First use: delete or rephrase. Second: 'Sementara itu,' or 'Di zona 15–20,'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Jiangxi Open akan berlangsung 1-11 Mei dan jadi kesempatan penting",
+          "fix": "Stick to: tournament dates, status (final bracket?), impact on point gaps only"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Stabilitas di tengah-tengah top 20 mencerminkan kompetisi ketat",
+          "fix": "Tengah top 20 kaku: lima pemain tetap posisi; gap poin rapat."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "setiap turnamen Masters 1000 dan WTA 500 jadi pemicu",
+          "fix": "Stick to: setiap turnamen WTA 500 atau Grand Slam jadi pemicu"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7cfa6bea3c094649",
+    "published_at": "2026-05-04T05:59:26+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

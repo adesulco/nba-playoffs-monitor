@@ -1,0 +1,75 @@
+{
+  "type": "standings",
+  "slug": "epl-2025-26-pekan-36",
+  "title": "Klasemen Liga Inggris 2025-26 pekan 36",
+  "description": "Analisis klasemen Liga Inggris 2025-26 setelah pekan 36. Sisa 2 pertandingan.",
+  "body_md": "# Arsenal Terpaut dari Man City, Laga-Laga Akhir Dekati Final\n\nPekan 36 meninggalkan Arsenal di puncak dengan margin yang tegas. Si Merah memimpin Manchester City dengan 6 poin dengan tinggal dua laga, margin yang cukup besar di penghujung musim, tapi City masih punya jalur terbuka. Arsenal terakhir WWLLW, bentuk naik-turun, tapi cukup untuk jaga jarak. City WWWDD menunjukkan perawatan poin ketimbang dominasi: tiga menang, dua seri di lima laga terakhir. Semua keputusan akan dimainkan di 270 menit tersisa.\n\n## Tiga Besar: Arsenal Regang, City Kejar, United Keluar\n\nArsenal dengan 76 poin sudah menjauh jauh. Manchester City 70 poin butuh kemenangan maksimal, dua kemenangan penuh bisa bawa mereka ke 76, tapi cuma kalau Arsenal slip. Manchester United di posisi 3 dengan 64 poin, sudah 12 poin tertinggal. Form United solid: WWWLD, tiga menang dalam lima laga terakhir, tapi jadwal keras musim ini dan mereka juga tinggal dua laga. United tidak akan terkejar City lagi. pertarungan sekarang jelas dua suara: Arsenal vs City.\n\n## Liga Champions: Liverpool-Aston Villa Duet Ketat\n\nLiverpool dan Aston Villa sama-sama 58 poin di posisi 4 dan 5, bedanya cuma goal difference: Liverpool +12, Villa +4. Situasi ini tegang: lima poin aman dari Brighton di posisi 8 (50 poin), tapi jaminan tidur nyenyak belum datang. Liverpool LWWWL, terakhir kalah, tapi sebelumnya tiga menang. Villa LLWDW, form goyah, dua kalah di lima laga terakhir. Jarak ke zona Europa tinggal 5 poin dengan Bournemouth (52) dan Brentford (51). Everton (47) dan Sunderland (47) juga masih punya harapan, tapi makin jauh.\n\n## Pertarungan Tengah: Bornemouth Kokoh, Chelsea Alarm\n\nBournemouth di posisi 6 dengan 52 poin tampil stabil, WDWWD, dua puluhan tanpa dramatis. Brentford posisi 7, 51 poin, form terpaut: WLDDD, tiga seri terakhir tandanya tim menarik diri. Brighton di posisi 8 dengan 50 poin masih dalam jangkauan top 7, form LWDWW, masih berjuang. Perhatian besar pada Chelsea: posisi 9 dengan 48 poin tapi bentuk ngeri, LLLLL, lima kalah beruntun. Ancaman turun zona Europa atau lebih parah sudah nyata. Chelsea butuh kemenangan besar di dua laga sisa untuk selamat dari krisis musim ini.\n\n## Zona Rawan: Burnley dan Wolves Tersesat\n\nBurnley dan Wolves sudah hilang. Burnley di posisi 19 dengan 20 poin, tertinggal 16 poin dari West Ham di atas mereka, turun praktis sudah dipastikan. Form LLLLL, lima kalah lurus. Wolves posisi 20 dengan 18 poin, DLLLD, hanya satu seri dalam lima laga terakhir. West Ham posisi 18 dengan 36 poin punya 16 poin jarak keselamatan. Newcastle (45 poin) masih bisa turun kalau bentuk terus hancur, WLLLL, empat kalah dalam lima laga, tapi lebih aman ketimbang tiga bawah.\n\n## Dua Laga Terakhir\n\nArsenal-City akan menentukan juara besar. Liverpool-Aston Villa bakal bocorkan minimal satu tempat Champions berikutnya. Chelsea harus menang, atau musim mereka cacat total.\n",
+  "frontmatter": {
+    "league": "epl",
+    "gameweek": 36,
+    "matches_left": 2,
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.004664,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on typo (Bornemouth), high-severity tense redundancy, and training-data inference. Awkward English-to-Indonesian calques ('jalur terbuka', 'dua suara'). Rewrite second paragraph of intro and zona rawan section.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "United tidak akan terkejar City lagi. pertarungan sekarang jelas dua suara",
+          "fix": "Rephrase: 'Pertarungan juara kini tinggal Arsenal vs City.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Burnley dan Wolves sudah hilang. Burnley di posisi 19 dengan 20 poin, tertinggal 16 poin",
+          "fix": "Choose one: 'Burnley dan Wolves nyaris pasti turun. Burnley tertinggal 16 poin dari West Ham.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Bornemouth Kokoh, Chelsea Alarm",
+          "fix": "Change to 'Bournemouth Kokoh, Chelsea Alarm'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "jadwal keras musim ini dan mereka juga tinggal dua laga",
+          "fix": "Remove or rephrase: 'Manchester United tinggal dua laga untuk naik.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "margin yang cukup besar di penghujung musim, tapi City masih punya jalur terbuka",
+          "fix": "Use: 'City masih bisa kejar' or 'City punya kesempatan'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Arsenal terakhir WWLLW, bentuk naik-turun. City WWWDD menunjukkan perawatan poin",
+          "fix": "Vary: 'Arsenal WWLLW, naik-turun. City WWWDD, fokus jaga poin.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "pertarungan sekarang jelas dua suara: Arsenal vs City.",
+          "fix": "Capitalize: 'Pertarungan sekarang jelas dua suara: Arsenal vs City.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "jaminan tidur nyenyak belum datang",
+          "fix": "Option: 'tapi zona aman belum terjamin' — or keep as is"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa6f827be6081e474",
+    "published_at": "2026-05-04T05:59:50+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
