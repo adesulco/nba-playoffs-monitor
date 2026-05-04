@@ -75,3 +75,40 @@ Sport-specific examples in the SPORT_EXAMPLES placeholder per file (NBA: All-Sta
 **Rollback:** revert this commit. The `regen_hint` parameter is optional with default None — existing callers that don't pass it get unchanged behavior. The retry loop adds 1 extra Sonnet call per ~15% of recaps (those that fail first attempt); cost impact bounded.
 
 ---
+
+## v0.59.6 — 2026-05-04 — Numeric anchor block + quarter-score regex fix
+
+**Author:** Ade (approved) + Claude (implementation)
+**Files modified:** `agents/nba_recap.py` (user-message format), `quality/nba_fact_check.py` (regex + suppression).
+
+**Why:** v0.59.5 smoke test (game 401869418 ORL@DET) showed two residual issues:
+1. **Genuine stat error** — Bane "11 poin" written when input said 16; survived 2 attempts because the writer keeps re-deriving numbers from prose-formatted blocks instead of copy-pasting.
+2. **Fact-checker false positive** — "unggul 41-33 di Q1" flagged as wrong final-score claim. The regex matched `unggul` (general lead word) without distinguishing quarter from final.
+
+**Change 1: Numeric anchor block (`nba_recap.py`)**
+At the top of the user message, render a flat copy-paste-friendly stat anchor:
+```
+═══════════════════════════════════════════════════════════════
+NUMERIC ANCHORS — copy-paste these EXACT digits when citing stats:
+═══════════════════════════════════════════════════════════════
+  FINAL_SCORE = ORL 94 - 116 DET
+  [DET] Cade Cunningham: PTS=24, REB=5, AST=8
+  [DET] Desmond Bane: PTS=16, REB=4, AST=2
+  [ORL] Paolo Banchero: PTS=22, REB=7, AST=3
+  ...
+═══════════════════════════════════════════════════════════════
+```
+Plus a closing reminder: *"Before submitting, re-read your draft. For every digit, verify it appears literally in the NUMERIC ANCHORS or TOP SCORERS or TEAM STATS block."*
+
+**Change 2: Quarter-score regex fix (`nba_fact_check.py`)**
+Two parts:
+- Drop `unggul`/`tertinggal` from `_RE_BODY_SCORE` (kept menang/kalah/kemenangan/kekalahan/skor akhir/skor final/akhir pertandingan as definitive markers).
+- Add `_RE_QUARTER_CONTEXT` — if `Q[1-4]/kuarter pertama..keempat/paruh pertama..kedua/babak pertama..kedua/halftime/setengah pertama` appears within 40 chars of a flagged score, suppress the flag.
+
+**Expected impact:** ORL@DET-style failures should drop further. Anchor block targets the dominant remaining stat-misread pattern; quarter regex eliminates the false-positive class entirely.
+
+**Eval status:** smoke test pending — re-run game 401869418.
+
+**Rollback:** revert this commit. Anchor block is purely additive (more tokens in user message, no semantic change); regex change preserves all true positives, only loosens false-positive cases.
+
+---

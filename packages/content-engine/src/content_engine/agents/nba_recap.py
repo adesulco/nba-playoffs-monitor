@@ -61,7 +61,54 @@ def format_nba_recap_user_message(ctx: dict[str, Any]) -> str:
         if v is None or v == "":
             return default
         return str(v)
+
+    # v0.59.6 — Numeric anchor block at the very top. Lists every
+    # cite-able number from the input as a flat NUMBER → VALUE map,
+    # making it trivial for the writer to copy-paste exact digits.
+    # Sonnet's stat-misread errors (e.g. Bane "11 poin" when input said
+    # 16) usually come from re-deriving numbers from prose-formatted
+    # blocks. The flat anchor block reduces that.
+    anchor_lines: list[str] = []
+    away_abbr = fld("away_abbr")
+    home_abbr = fld("home_abbr")
+    away_score = fld("away_score")
+    home_score = fld("home_score")
+    anchor_lines.append(f"  FINAL_SCORE = {away_abbr} {away_score} - {home_score} {home_abbr}")
+
+    # Surface every player's stat line as a separate anchor row.
+    # _scorers shape: [{"team_abbr": "BOS", "scorers": [{"name", "pts", "reb", "ast"}, ...]}, ...]
+    scorers_data = ctx.get("_scorers") or []
+    if isinstance(scorers_data, list):
+        for team_block in scorers_data:
+            if not isinstance(team_block, dict):
+                continue
+            team_abbr_local = team_block.get("team_abbr") or "?"
+            for entry in (team_block.get("scorers") or [])[:5]:
+                if not isinstance(entry, dict):
+                    continue
+                name = entry.get("name") or ""
+                pts = entry.get("pts")
+                reb = entry.get("reb")
+                ast = entry.get("ast")
+                if name and pts is not None:
+                    parts = [f"PTS={pts}"]
+                    if reb is not None:
+                        parts.append(f"REB={reb}")
+                    if ast is not None:
+                        parts.append(f"AST={ast}")
+                    anchor_lines.append(
+                        f"  [{team_abbr_local}] {name}: " + ", ".join(parts)
+                    )
+
+    anchor_block = "\n".join(anchor_lines) if anchor_lines else "  (no anchor data — see TOP SCORERS below)"
+
     return f"""Tulis recap untuk pertandingan NBA berikut:
+
+═══════════════════════════════════════════════════════════════
+NUMERIC ANCHORS — copy-paste these EXACT digits when citing stats:
+═══════════════════════════════════════════════════════════════
+{anchor_block}
+═══════════════════════════════════════════════════════════════
 
 LIGA: {fld("league_name")}
 JADWAL: {fld("tipoff_local")}
@@ -82,6 +129,11 @@ KEY PLAYS (optional, may be empty):
 {fld("plays_block")}
 
 KANAL TAYANG: {fld("broadcast")}
+
+REMINDER: Before submitting, re-read your draft. For every digit you wrote,
+verify it appears LITERALLY in the NUMERIC ANCHORS or TOP SCORERS or
+TEAM STATS block above. If you can't verify a number, DELETE the sentence
+or rewrite it qualitatively. Length is not the bar — accuracy is.
 """
 
 

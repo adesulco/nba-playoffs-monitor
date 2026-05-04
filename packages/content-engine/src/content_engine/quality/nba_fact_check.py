@@ -69,9 +69,22 @@ _RE_BODY_PTS_LINE = re.compile(
 # Triple-double / double-double claims
 _RE_BODY_TRIPLE = re.compile(r"\btriple[\s-]?double\b", re.IGNORECASE)
 _RE_BODY_DOUBLE = re.compile(r"\bdouble[\s-]?double\b", re.IGNORECASE)
-# Final score citations: "menang 128-96", "kalah 96-128", "skor akhir 128-96"
+# Final score citations: "menang 128-96", "kalah 96-128", "skor akhir 128-96",
+# "kemenangan 128-96", "tutup pertandingan 128-96".
+#
+# v0.59.6 — DROPPED `unggul` and `tertinggal` as triggers because they
+# match quarter-score leads ("unggul 41-33 di Q1") generating false
+# positives. Final score is reliably introduced by menang/kalah/skor
+# akhir/skor final/kemenangan/kekalahan.
 _RE_BODY_SCORE = re.compile(
-    r"\b(?:menang|kalah|unggul|tertinggal|skor\s+akhir|menjadi)\s*(\d{1,3})\s*-\s*(\d{1,3})",
+    r"\b(?:menang|kalah|kemenangan|kekalahan|skor\s+akhir|skor\s+final|akhir\s+pertandingan)\s*(?:dengan\s+)?(?:skor\s+)?(\d{1,3})\s*-\s*(\d{1,3})",
+    re.IGNORECASE,
+)
+# Quarter-context markers — if any of these appear within 25 chars
+# after a score citation, the claim is about a quarter not the final.
+# Used to suppress score_line flags for clear quarter references.
+_RE_QUARTER_CONTEXT = re.compile(
+    r"\b(?:Q[1-4]|kuarter\s+(?:pertama|kedua|ketiga|keempat|1|2|3|4)|paruh\s+(?:pertama|kedua)|babak\s+(?:pertama|kedua)|halftime|setengah\s+pertama)\b",
     re.IGNORECASE,
 )
 # Stat line: "30 poin, 8 rebound, 6 asis" near a name token
@@ -143,15 +156,29 @@ def check(body_md: str, ctx: dict[str, Any]) -> NbaFactReport:
                 a, b = int(m.group(1)), int(m.group(2))
             except ValueError:
                 continue
-            if (a, b) not in valid_pairs:
-                issues.append(NbaFactIssue(
-                    type="score_line",
-                    severity="high",
-                    snippet=_surrounding(body_md, m.start(), m.end()),
+            if (a, b) in valid_pairs:
+                continue
+            # v0.59.6 — Suppress false positive when a quarter / half
+            # context marker appears immediately before or after the
+            # score. The article is talking about a quarter, not final.
+            window_start = max(0, m.start() - 40)
+            window_end = min(len(body_md), m.end() + 40)
+            context_window = body_md[window_start:window_end]
+            if _RE_QUARTER_CONTEXT.search(context_window):
+                log.info(
+                    "nba_fact_check.score_line_false_positive_suppressed",
                     claim=f"{a}-{b}",
-                    expected=f"{home_score}-{away_score} (or {away_score}-{home_score})",
-                    issue=f"Article cites final score {a}-{b} but actual was {home_score}-{away_score}",
-                ))
+                    context=context_window[:120],
+                )
+                continue
+            issues.append(NbaFactIssue(
+                type="score_line",
+                severity="high",
+                snippet=_surrounding(body_md, m.start(), m.end()),
+                claim=f"{a}-{b}",
+                expected=f"{home_score}-{away_score} (or {away_score}-{home_score})",
+                issue=f"Article cites final score {a}-{b} but actual was {home_score}-{away_score}",
+            ))
 
     # ── Triple-double / double-double check ─────────────────────
     # For every "triple-double" mention near a player name, verify

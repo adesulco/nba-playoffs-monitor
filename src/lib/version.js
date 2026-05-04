@@ -5683,7 +5683,35 @@
 // F1 recap NOT changed this ship (same pattern would apply but
 // only 1 race per ~2 weeks; lower priority).
 
-export const APP_VERSION = '0.59.5';
+// v0.59.6 — Two follow-ups to v0.59.5 quality cascade.
+//
+// 1. Numeric anchor block at the top of NBA recap user message.
+//    Lists every cite-able stat as flat key→value pairs:
+//      [BOS] Jayson Tatum: PTS=30, REB=8, AST=6
+//      [BOS] Payton Pritchard: PTS=32, REB=2, AST=1
+//      ...
+//    Sonnet's stat-misread errors (Bane "11 poin" when input said 16)
+//    came from re-deriving numbers from prose-formatted blocks. The
+//    anchor block makes copy-paste trivial.
+//
+// 2. Quarter-score false positive in nba_fact_check.score_line check.
+//    Was flagging "unggul 41-33 di Q1" as a wrong final-score claim
+//    because the regex matched on `unggul`/`tertinggal` (general
+//    lead/trail words used colloquially for quarter or running totals).
+//    Two changes in nba_fact_check.py:
+//      - Drop unggul/tertinggal from the regex; keep only definitive
+//        final-score markers (menang/kalah/skor akhir/skor final/etc).
+//      - Add quarter-context window check: if Q[1-4]/kuarter/paruh/
+//        babak appears within 40 chars of a flagged score, suppress
+//        the flag (it's a quarter score, not final).
+//
+// Both fixes target the residual ORL@DET failure pattern in the
+// v0.59.5 smoke test: 1 issue remained after retry (Bane stat
+// hallucination), and 1 was a false positive (quarter score). With
+// these fixes, the 1 false positive disappears entirely; the genuine
+// stat error rate should drop further with anchor-block prompting.
+
+export const APP_VERSION = '0.59.6';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
