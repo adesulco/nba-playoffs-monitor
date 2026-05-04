@@ -5742,7 +5742,48 @@
 // trigger a regen with a hint listing the matched phrases + common
 // alternatives. Same retry budget as fact-check (1 retry).
 
-export const APP_VERSION = '0.59.8';
+// v0.59.9 — Brand v1.0 Phase 1 — Pulse mark + wordmark visible.
+//
+// Phase 1 of the Pulse & Field rebrand (per Brand Guideline v1.0).
+// Asset injection only — does NOT flip the cream theme; existing
+// dark-navy chrome stays default. Phase 2 adds the cream theme
+// behind a feature flag.
+//
+// Shipped:
+//   - public/brand/{gibol-favicon,gibol-mark,gibol-wordmark-cream,
+//     gibol-wordmark-dark}.svg + tokens.css + README.md
+//   - SVG favicon now drives the browser tab icon (amber pulse on
+//     ink). PNG fallbacks (favicon-16/32/64, apple-touch-icon,
+//     icons/icon-{192,512,maskable-192,maskable-512}) regenerated
+//     from the 96×96 pulse mark via @resvg/resvg-js.
+//   - PWA manifest theme + background colors swapped to ink #0F0E0C
+//     (was navy #08111f). Matches the new brand tabs/splash.
+//   - HTML meta theme-color → #0F0E0C.
+//   - src/index.css gains a v1.0 brand additive block: --gibol-*
+//     tokens (paper/ink/orange/amber + 6-color dataviz + warm
+//     neutrals + Inter Tight/Newsreader/JetBrains Mono stacks +
+//     gibol-pulse keyframes + .gibol-tnum + .gibol-live-dot helper).
+//     Existing --bg / --ink / --amber / --live tokens UNTOUCHED.
+//   - src/components/Logo.jsx rewritten end-to-end. Old "target
+//     mark" glyph is gone; the standalone mark is now the amber
+//     pulse dot (with optional concentric ring at ≥33px). Logo
+//     renders the gibol wordmark (Inter Tight 900 lowercase,
+//     -50/-30 tracking) with the amber pulse replacing the dot of
+//     the "i" — the brand's signature gesture. New named exports
+//     <PulseMark> + <Wordmark> for clarity; legacy <Glyph> +
+//     default <Logo> kept as aliases so existing TopBar/HubAction
+//     callsites don't break. Trailing "." removed from wordmark
+//     (it was the OLD signature; .co is now demoted, not part of
+//     the standalone wordmark).
+//   - Google Fonts swap: Newsreader now requested with optical-size
+//     axis 6..72 per brand spec. Inter Tight + JetBrains Mono
+//     unchanged at 400-900 / 400-800 weights.
+//
+// Phase 2 (next, deferred): VITE_FLAG_BRAND env var that overlays
+// --gibol-* onto :root, flipping --bg from navy to cream. Will
+// roll out gated.
+
+export const APP_VERSION = '0.59.9';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

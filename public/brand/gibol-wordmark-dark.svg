@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 220" role="img" aria-label="gibol wordmark">
+  <rect width="880" height="220" fill="#0F0E0C"></rect>
+  <text x="60" y="180" font-family="Inter Tight, system-ui, sans-serif" font-weight="900" font-size="180" letter-spacing="-10" fill="#F5F1EA">gibol</text>
+  <rect x="200" y="62" width="48" height="42" fill="#0F0E0C"></rect>
+  <circle cx="224" cy="86" r="22" fill="none" stroke="#F59E0B" stroke-opacity="0.45" stroke-width="1.5"></circle>
+  <circle cx="224" cy="86" r="14" fill="#F59E0B"></circle>
+  <rect x="650" y="170" width="14" height="3" fill="#0F0E0C"></rect>
+</svg>

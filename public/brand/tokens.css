@@ -1,0 +1,45 @@
+/* gibol — brand tokens v1.0 */
+:root {
+  /* Primary — the brand signature */
+  --gibol-paper:        #F5F1EA;  /* cream surface */
+  --gibol-paper-2:      #EAE5DB;  /* card surface step-up */
+  --gibol-ink:          #0F0E0C;  /* warm ink (was #0A0A0A) */
+  --gibol-orange:       #9A3412;  /* refined; passes AA on cream */
+  --gibol-amber:        #F59E0B;  /* RESERVED — live signals only */
+
+  /* Neutrals — 6-step warm ramp */
+  --gibol-ink-2:        #3A3833;
+  --gibol-ink-3:        #7E7B72;
+  --gibol-ink-4:        #A8A49A;
+
+  /* Dataviz — fixed semantic roles */
+  --gibol-dv-home:      #9A3412;  /* home / featured */
+  --gibol-dv-away:      #1E40AF;  /* away / neutral */
+  --gibol-dv-win:       #0F766E;  /* win / positive Δ */
+  --gibol-dv-loss:      #B91C1C;  /* loss / negative Δ */
+  --gibol-dv-live:      #F59E0B;  /* live / now */
+  --gibol-dv-other:     #A8A49A;  /* other / pre-match */
+
+  /* Lines */
+  --gibol-line:         rgba(15, 14, 12, .12);
+  --gibol-line-soft:    rgba(15, 14, 12, .06);
+
+  /* Type stacks */
+  --gibol-display:      'Newsreader', Georgia, serif;
+  --gibol-sans:         'Inter Tight', system-ui, sans-serif;
+  --gibol-mono:         'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Tabular figures — apply to anything that holds digits in a column */
+.gibol-tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+
+/* Live-pulse keyframes — 1.2s ease-in-out */
+@keyframes gibol-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .55; transform: scale(1.35); }
+}
+.gibol-live-dot {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gibol-amber);
+  animation: gibol-pulse 1.2s ease-in-out infinite;
+}

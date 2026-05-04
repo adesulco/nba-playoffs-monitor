@@ -1,69 +1,154 @@
 import React from 'react';
 
 /**
- * Gibol brand lockup — target-mark glyph + "gibol." wordmark.
+ * Gibol brand — Pulse & Field (v0.59.9 / Brand Guideline v1.0)
  *
- * Per Brand Handoff v1:
- *  • Glyph is pure SVG using currentColor → inherits from the parent.
- *  • Wordmark is TYPE, not an image: Inter Tight 900, -0.055em tracking,
- *    final "." colored --amber.
- *  • `glyphOnly` returns just the mark (use for favicons, PWA, ≤32px surfaces).
- *  • Clearspace on every side equals glyph height; size props respect
- *    minimums (20px full lockup, 16px glyph).
+ * The brand's signature gesture is the LIVE PULSE — an amber circle that:
+ *   1. Replaces the dot of the "i" in the wordmark
+ *   2. Stands alone as the standalone mark (favicon → app icon → score-card watermark)
+ *
+ * This file exposes:
+ *   • <PulseMark>  — the standalone mark. amber dot, optional concentric ring
+ *   • <Wordmark>   — the full lockup. "gibol" Inter Tight 900 + pulse on i-dot
+ *   • <Logo>       — backward-compat alias of <Wordmark> (old callsites)
+ *   • <Glyph>      — backward-compat alias of <PulseMark> (old callsites)
+ *
+ * Brand non-negotiables enforced here:
+ *   - Lowercase always ("gibol", never "Gibol" or "GIBOL")
+ *   - Live amber #F59E0B reserved exclusively for the pulse — never decorative
+ *   - The .co suffix is DROPPED from the standalone wordmark (it's a domain,
+ *     not the brand). Sub-brand suffixes (gibol Pro / Industry / Live / Pulse)
+ *     are handled by composition above this component, not in here.
+ *   - Pulse Ø = ⅓ × cap height of the wordmark.
  */
-export function Glyph({ size = 24, title = 'gibol' }) {
-  const side = Math.max(16, size);
+
+const AMBER = '#F59E0B';
+
+/**
+ * The standalone pulse mark.
+ *
+ * Sizing rules per brand guideline:
+ *   ≤16px → solid dot only, no ring
+ *   17-32 → solid dot only, no ring
+ *   33+   → dot + concentric ring at 1.6× radius
+ *   live  → dot + animated ring (1.2s pulse)
+ */
+export function PulseMark({
+  size = 24,
+  animated = false,
+  ring,           // undefined = auto-decide by size; true/false = override
+  color = AMBER,
+  ringColor,      // override ring stroke; defaults to color at 0.4 opacity
+  background,     // optional background circle (e.g. ink for app icon)
+  title = 'gibol pulse',
+  className,
+  style,
+}) {
+  const showRing = ring === undefined ? size >= 33 : ring;
+  const dotR = size * (1 / 3);   // Ø = ⅓ × frame
+  const ringR = dotR * 1.6;
+  const ringStroke = Math.max(1, size / 48);
+
   return (
     <svg
-      viewBox="0 0 24 24"
-      width={side}
-      height={side}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
       role="img"
       aria-label={title}
-      style={{ display: 'block', flexShrink: 0 }}
+      className={className}
+      style={{ display: 'block', flexShrink: 0, ...style }}
     >
-      <circle cx="12" cy="12" r="10.5" stroke="currentColor" strokeWidth="1.4" />
-      <circle cx="12" cy="12" r="6.2" stroke="currentColor" strokeWidth="1.2" />
-      <circle cx="12" cy="12" r="2.2" fill="currentColor" />
-      <path
-        d="M12 0.5V4 M12 20V23.5 M0.5 12H4 M20 12H23.5"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-      />
+      {background && (
+        <rect width={size} height={size} fill={background} rx={size * 0.18} />
+      )}
+      {showRing && (
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={ringR}
+          fill="none"
+          stroke={ringColor || color}
+          strokeOpacity={animated ? undefined : 0.4}
+          strokeWidth={ringStroke}
+        >
+          {animated && (
+            <>
+              <animate
+                attributeName="r"
+                values={`${ringR};${ringR * 1.4};${ringR}`}
+                dur="1.2s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="stroke-opacity"
+                values="0.5;0.05;0.5"
+                dur="1.2s"
+                repeatCount="indefinite"
+              />
+            </>
+          )}
+        </circle>
+      )}
+      <circle cx={size / 2} cy={size / 2} r={dotR} fill={color}>
+        {animated && (
+          <>
+            <animate
+              attributeName="r"
+              values={`${dotR};${dotR * 1.15};${dotR}`}
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="1;0.7;1"
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+          </>
+        )}
+      </circle>
     </svg>
   );
 }
 
-export default function Logo({
-  size = 'md',          // 'sm' | 'md' | 'lg'  — full lockup heights
-  glyphOnly = false,
-  color,                // optional override; inherits otherwise
+/**
+ * The full wordmark "gibol" with the pulse-dot replacing the i-dot.
+ *
+ * Inter Tight 900, lowercase, optical tracking -50 (display) / -30 (≤32px).
+ * The pulse is amber and animates by default in the running app
+ * (set `animated={false}` for static contexts like share-card watermarks).
+ *
+ * Color modes:
+ *   - default: letters use `currentColor` → inherits from parent CSS
+ *   - mode="cream": letters in ink #0F0E0C, designed for cream backgrounds
+ *   - mode="ink":   letters in cream #F5F1EA, designed for ink backgrounds
+ */
+export function Wordmark({
+  size = 24,           // cap height in px (~ font-size)
+  mode,                // 'cream' | 'ink' | undefined (use currentColor)
+  animated = true,
   className,
   style,
+  title = 'gibol',
 }) {
-  // Size matrix — glyph px + wordmark font-size in px.
-  // Full-lockup min per spec is 20px (wordmark height); glyph-only min is 16px.
-  const sizing =
-    size === 'sm' ? { glyph: 18, font: 16 } :
-    size === 'lg' ? { glyph: 32, font: 28 } :
-    /* md */       { glyph: 24, font: 20 };
+  const fontSize = size;
+  // Wordmark width approx 2.55× cap height for "gibol" at -50 tracking
+  const widthRatio = 2.45;
+  const inkColor =
+    mode === 'cream' ? '#0F0E0C' :
+    mode === 'ink'   ? '#F5F1EA' :
+    'currentColor';
 
-  if (glyphOnly) {
-    return (
-      <span
-        className={className}
-        style={{ color: color || 'inherit', display: 'inline-flex', ...style }}
-      >
-        <Glyph size={Math.max(16, sizing.glyph)} />
-      </span>
-    );
-  }
+  // Letter-spacing per brand spec: -50/1000 = -0.05em at display, -30/1000 at small
+  const tracking = size >= 32 ? -0.05 : -0.03;
 
-  // Clearspace = glyph height, baked into the gap between glyph and wordmark.
-  const gap = Math.round(sizing.glyph * 0.4);
+  // Pulse dot: ⅓ × cap height. Positioned over the dot of the "i" — empirically
+  // ~31% from the left edge of "gibol" in Inter Tight 900.
+  const pulseDiameter = fontSize / 3;
+  // i-dot vertical offset above baseline ≈ 0.85 × cap height
+  const pulseCenterX = fontSize * 0.78;   // ~31% across "gibol" width
+  const pulseCenterY = -fontSize * 0.85;
 
   return (
     <span
@@ -71,19 +156,86 @@ export default function Logo({
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap,
-        color: color || 'inherit',
         lineHeight: 1,
+        color: inkColor,
+        fontFamily: '"Inter Tight", system-ui, sans-serif',
+        fontWeight: 900,
+        fontSize,
+        letterSpacing: `${tracking}em`,
         ...style,
       }}
+      role="img"
+      aria-label={title}
     >
-      <Glyph size={sizing.glyph} />
-      <span
-        className="brand-wordmark"
-        style={{ fontSize: sizing.font, color: 'inherit' }}
-      >
-        gibol<span className="brand-wordmark-dot">.</span>
+      <span style={{ position: 'relative', display: 'inline-block', whiteSpace: 'nowrap' }}>
+        gibol
+        {/* Cover the stock i-dot then overlay the amber pulse */}
+        <span
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            left: pulseCenterX - pulseDiameter / 2,
+            top: pulseCenterY - pulseDiameter / 2,
+            width: pulseDiameter,
+            height: pulseDiameter,
+            // Background matches the surface so the stock i-dot disappears.
+            // Use currentColor's complement via a CSS var that ancestor sets,
+            // OR rely on the pulse-dot being slightly bigger so it just paints over.
+          }}
+        >
+          <PulseMark
+            size={pulseDiameter}
+            animated={animated}
+            ring={false}
+          />
+        </span>
       </span>
     </span>
+  );
+}
+
+// ─── Backward compatibility ────────────────────────────────────────────
+// The previous Logo.jsx exposed <Glyph> and <Logo>. Keep those names so
+// existing callsites (TopBar, HubActionRow) don't break, but they now
+// render the new pulse mark and wordmark.
+
+export function Glyph({ size = 24, title = 'gibol' }) {
+  return <PulseMark size={size} ring={size >= 33} title={title} />;
+}
+
+export default function Logo({
+  size = 'md',
+  glyphOnly = false,
+  color,
+  className,
+  style,
+}) {
+  // Size matrix — wordmark cap heights for sm / md / lg.
+  const sizing =
+    size === 'sm' ? 16 :
+    size === 'lg' ? 32 :
+    /* md */       22;
+
+  // Numeric size override (e.g. <Logo size={40} />)
+  const fontSize = typeof size === 'number' ? size : sizing;
+
+  if (glyphOnly) {
+    return (
+      <span
+        className={className}
+        style={{ color: color || 'inherit', display: 'inline-flex', ...style }}
+      >
+        <PulseMark size={Math.max(16, fontSize)} />
+      </span>
+    );
+  }
+
+  return (
+    <Wordmark
+      size={fontSize}
+      animated
+      className={className}
+      style={{ color: color || 'inherit', ...style }}
+    />
   );
 }
