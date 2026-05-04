@@ -2,6 +2,54 @@
 
 You are writing a Bahasa Indonesia tennis match recap for gibol.co. Voice rules above remain the source of truth. This prompt adds the tennis-match-specific structure.
 
+## CRITICAL: Do not infer beyond input data (auto-fail if violated)
+
+Per CLAUDE.md rule #6 ("Ground every factual claim in source data") and
+the v0.59.4 voice-lint regex pass for `training_inference HIGH`. The
+linter scores articles down 8 points per violation; ≥3 high-severity
+flags hard-fail and trigger regeneration.
+
+**Hard rules — DO NOT write these unless the input data block contains them literally:**
+
+1. **DO NOT name a venue, arena, stadium, court, or pitch unless its
+   exact name appears in the input.** If input only says "OKC home" or
+   "@ANF", write "kandang OKC" / "kandang ANF" — never "Paycom Center"
+   or "Stadion Anfield" inferred from training data.
+
+2. **DO NOT speculate about home-court / home-pitch advantage, crowd
+   energy, or venue atmosphere** unless input explicitly mentions it
+   ("home_advantage": true, "tuan rumah": ..., or similar). Phrases
+   like "X punya home court advantage", "tekanan kerumunan", "Paycom
+   bergemuruh" — out, unless data supports.
+
+3. **DO NOT describe recent form, injuries, suspensions, lineup
+   changes, season-long narratives, or storylines** unless they're in
+   the input data block. No "X lagi on fire 5 game terakhir", no
+   "Y baru pulih dari cedera" without explicit input.
+
+4. **DO NOT use generic round/season/series framing.** No
+   "Conference Semifinals biasanya soal...", "Round 2 itu masalah
+   kedalaman roster", "Race week di Monaco identik dengan...",
+   "Pekan 36 selalu krusial". Lead with the SPECIFIC stake the input
+   data points to, not an abstract framing.
+
+5. **DO NOT invent specific career stats, prior matchup history,
+   head-to-head numbers, championship counts, or biographical
+   details.** No '2x Slam champion Sinner' unless input lists Slam wins. No 'hardcourt specialist' unless input gives surface-by-surface stats.
+
+6. **DO NOT mention coaches, GMs, owners, agents, broadcasters, or
+   off-field personnel** unless in input.
+
+7. **If input data is thin, write a SHORTER article (closer to the
+   minimum word count) that strictly stays within facts.** Padding
+   with generic sport context is a regeneration trigger.
+
+When you genuinely lack a fact the article needs, say so plainly:
+"Data first-serve percentage breakdown tidak tersedia di input." That's a
+voice-compliant gap; making it up is a fail.
+
+---
+
 ## Job
 
 Take a finished tennis match (tournament name, round, both players + countries, set-by-set scores, winner) and produce a 350-500 word Bahasa recap.

@@ -5592,7 +5592,66 @@
 // hit fact-check on speculative phrasing. Editor now sees the
 // failure pattern explicitly instead of guessing.
 
-export const APP_VERSION = '0.59.3';
+// v0.59.4 — Quality cascade overhaul. Fixes the "all articles fail
+// voice-lint" issue Ade reported.
+//
+// Diagnosis: across 170 articles, lint scored 62 mean / 62 median /
+// max 82 / 0 above 85. Dominant flag (24% of all 1,400+ issues):
+// training_inference HIGH severity — Sonnet writing arena names,
+// home-court speculation, generic round framing from training data
+// instead of input. Editor manually approving everything because the
+// quality bar was structurally unreachable.
+//
+// Four-piece fix shipped together (all touch protected files; all
+// approved by Ade explicitly):
+//
+//   1. WRITER PROMPT TIGHTENING (17 *-system.md files)
+//      Added "## CRITICAL: Do not infer beyond input data" block to
+//      every writer prompt. Seven hard rules: no venue names not in
+//      input, no home-court speculation, no recent-form claims, no
+//      generic round framing, no biographical details, no off-field
+//      personnel, write shorter when input is thin. Sport-specific
+//      examples per file. Logged in prompt-changelog.md per CLAUDE.md
+//      rule #7.
+//
+//   2. VERDICT RECALIBRATION (voice_lint.py)
+//      Was binary pass/fail with 85 threshold (= 0% of articles
+//      passed). Now trichotomy:
+//        pass   → score ≥85, OR (≥70 AND no high-severity)
+//        review → score 50-84 with high-severity, OR 60-69 clean
+//        fail   → score <50, OR ≥3 high-severity issues
+//      Phase 1 doctrine: editor IS the gate; lint is advisory unless
+//      score is catastrophically low. `passed` accessor returns True
+//      for both pass + review (legacy callsites unchanged).
+//
+//   3. HAIKU AUTO-FIXER (new voice_fixer.py + voice-fixer-system.md)
+//      When lint verdict=fail, runs a Haiku post-pass that deletes
+//      or rewrites the flagged spans WITHOUT inventing new facts.
+//      Cost ~$0.005/call. Most fail→review or fail→pass after one
+//      fixer pass. Lazy import to avoid circular dep with voice_lint.
+//
+//   4. AUTO-REGENERATE WRAPPER (new write_loop.py + check_with_autofix)
+//      Full cascade: writer → lint → (if fail) fixer → re-lint →
+//      (if still fail AND retries left) regenerate writer with
+//      previous-attempt hint. Max 1 regenerate retry. Per-article
+//      cost cap $0.30 via QUALITY_LOOP_MAX_USD env (default).
+//      `voice_lint.check_with_autofix()` is the simpler drop-in:
+//      same signature as `check()` but auto-runs the fixer when
+//      verdict=fail. All 17 CLI pipeline callsites swapped. Disable
+//      via QUALITY_AUTOFIX_ENABLED=0 env for debugging / eval runs.
+//
+// Expected outcome (to be measured post-deploy):
+//   - 70-80% reduction in training_inference HIGH flags
+//   - Median lint score 62 → ~78
+//   - Most articles land at `pass` or `review` (was 0% pass, 100% fail)
+//   - Editor's job shifts to spot-checking the high-severity flags on
+//     review-verdict articles, not "is this article even usable"
+//
+// Rollback: env QUALITY_AUTOFIX_ENABLED=0 reverts to plain lint
+// behavior. Verdict trichotomy is additive (review = new label, not
+// a behavioral break). Prompt blocks are additive.
+
+export const APP_VERSION = '0.59.4';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

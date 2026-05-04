@@ -60,11 +60,28 @@ class VoiceLintIssue:
 class VoiceLintReport:
     """Result of a voice-lint pass.
 
-    `passed` is True iff verdict == "pass". The CLI checks this before
-    writing JSON; orchestration uses it to drive regeneration.
+    Verdicts (v0.59.4 — recalibrated to reflect Phase 1 doctrine
+    that editor manual review IS the publish gate, not lint score):
+
+      pass    — score >= 85, OR (score >= 70 AND no high-severity).
+                Article is ready for editor approval with no edits.
+                In Phase 2, this is the auto-publish bar.
+
+      review  — score in [50, 84] with high-severity issue(s), OR
+                score in [60, 69] clean. Article is usable but the
+                editor should read the flagged spans before approve.
+                NOT a publish-blocker — articles still land in the
+                /editor queue.
+
+      fail    — score < 50, OR >=3 high-severity issues. The article
+                has too many real problems; orchestration should
+                regenerate. This IS a publish-blocker.
+
+    `passed` is True for pass + review (= "editor can use it"). The
+    legacy `is_publish_blocker` accessor returns True only for fail.
     """
 
-    verdict: str  # "pass" | "fail"
+    verdict: str  # "pass" | "review" | "fail"
     score: int  # 0-100
     issues: list[VoiceLintIssue] = field(default_factory=list)
     summary: str = ""
@@ -73,7 +90,15 @@ class VoiceLintReport:
 
     @property
     def passed(self) -> bool:
-        return self.verdict == "pass"
+        # v0.59.4 — pass + review both count as "editor can review";
+        # only `fail` is a hard publish-blocker. Phase 1 doctrine:
+        # editor IS the gate, lint is advisory unless score is
+        # catastrophically low.
+        return self.verdict in {"pass", "review"}
+
+    @property
+    def is_publish_blocker(self) -> bool:
+        return self.verdict == "fail"
 
     def summary_text(self) -> str:
         """Human-readable compact summary for the CLI."""
@@ -220,9 +245,10 @@ async def check(body_md: str, source_context: str | None = None) -> VoiceLintRep
 
     # Defensive parsing — every field has a fallback so a malformed
     # response surfaces as a fail (high severity), not a crash.
+    # v0.59.4 — accept "review" verdict from the linter prompt too;
+    # any other value falls back to fail.
     verdict_raw = (parsed.get("verdict") or "").lower().strip()
-    if verdict_raw not in {"pass", "fail"}:
-        # Unknown verdict — treat as fail (safer); log so we can tune.
+    if verdict_raw not in {"pass", "review", "fail"}:
         log.warning("voice_lint.unknown_verdict", verdict=parsed.get("verdict"), raw=raw[:200])
         verdict_raw = "fail"
 
@@ -263,21 +289,42 @@ async def check(body_md: str, source_context: str | None = None) -> VoiceLintRep
             fix=hit.fix,
         ))
 
-    # If the regex pass added high-severity hits AND Haiku passed,
-    # downgrade the verdict — score gets a penalty proportional to
-    # the number of high-severity regex hits.
-    high_count = sum(1 for h in regex_hits if h.severity == "high")
-    if high_count > 0 and verdict_raw == "pass":
-        # Each high-severity regex hit drops the score 8 points and
-        # if 2+, force verdict to fail.
-        score = max(0, score - 8 * high_count)
-        if high_count >= 2 or score < 70:
-            verdict_raw = "fail"
-            log.info(
-                "voice_lint.regex_overrode_pass",
-                high_severity_hits=high_count,
-                new_score=score,
-            )
+    # v0.59.4 — verdict recalibration with regex-pass override.
+    # Total high-severity count = Haiku-flagged + regex-flagged.
+    haiku_high = sum(1 for iss in issues if iss.severity == "high" and iss.type != "training_inference") + sum(
+        1 for iss in issues if iss.severity == "high" and iss.type == "training_inference" and iss.snippet[:60] in {h.snippet[:60] for h in regex_hits}
+    )
+    # Above counts dedupe with regex; simpler: count high-severity from final issues list AFTER dedupe.
+    # (issues already merges Haiku + non-dup regex)
+    high_count_total = sum(1 for iss in issues if iss.severity == "high")
+    regex_high_count = sum(1 for h in regex_hits if h.severity == "high")
+    if regex_high_count > 0:
+        # Each high-severity regex hit drops the score 8 points
+        # (preserves prior behavior for compatibility with score
+        # progression).
+        score = max(0, score - 8 * regex_high_count)
+        log.info(
+            "voice_lint.regex_score_penalty",
+            high_severity_regex_hits=regex_high_count,
+            new_score=score,
+        )
+
+    # Final verdict resolution — Phase 1 doctrine (editor IS the gate):
+    #   fail   — score < 50 OR >=3 high-severity issues
+    #   pass   — score >= 85, OR (score >= 70 AND no high-severity)
+    #   review — everything else (usable, editor please read)
+    if score < 50 or high_count_total >= 3:
+        verdict_raw = "fail"
+    elif score >= 85 or (score >= 70 and high_count_total == 0):
+        verdict_raw = "pass"
+    else:
+        verdict_raw = "review"
+    log.info(
+        "voice_lint.verdict_resolved",
+        verdict=verdict_raw,
+        score=score,
+        high_count=high_count_total,
+    )
 
     report = VoiceLintReport(
         verdict=verdict_raw,
@@ -298,3 +345,52 @@ async def check(body_md: str, source_context: str | None = None) -> VoiceLintRep
     )
 
     return report
+
+
+# v0.59.4 — Drop-in replacement for `check()` that adds the Haiku
+# auto-fixer pass when verdict == "fail". CLI pipelines just swap
+# `voice_lint.check(...)` → `voice_lint.check_with_autofix(...)` and
+# get autofix+relint for free, without re-architecting each pipeline.
+#
+# Returns ``(final_body, final_report)``:
+#   - final_body is the body_md after fixer (or original if no fix)
+#   - final_report is the post-fixer lint report
+#
+# Cost: lint call + (if fail) fixer call + (if fixed) re-lint call.
+# Worst case ~$0.011 vs $0.003 for plain check(). Best case (verdict
+# pass/review on first lint) identical to check().
+#
+# Disable via env QUALITY_AUTOFIX_ENABLED=0 to fall back to plain
+# lint behavior (e.g. for debugging or eval runs).
+async def check_with_autofix(
+    body_md: str,
+    source_context: str | None = None,
+) -> tuple[str, "VoiceLintReport"]:
+    import os as _os
+    if _os.environ.get("QUALITY_AUTOFIX_ENABLED", "1") == "0":
+        return body_md, await check(body_md, source_context=source_context)
+
+    initial = await check(body_md, source_context=source_context)
+    if initial.verdict != "fail":
+        return body_md, initial
+
+    # Fail verdict — run fixer and re-lint
+    from content_engine.quality import voice_fixer  # lazy import to avoid circular
+    cleaned, _fix_usage = await voice_fixer.fix(
+        body_md, initial, source_context=source_context
+    )
+    if cleaned == body_md:
+        # Fixer didn't change anything (no actionable issues)
+        return body_md, initial
+
+    # Re-lint the fixed version
+    relint = await check(cleaned, source_context=source_context)
+    log.info(
+        "voice_lint.autofix_outcome",
+        before_verdict=initial.verdict,
+        before_score=initial.score,
+        after_verdict=relint.verdict,
+        after_score=relint.score,
+        delta_score=relint.score - initial.score,
+    )
+    return cleaned, relint

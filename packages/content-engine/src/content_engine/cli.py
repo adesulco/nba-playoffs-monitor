@@ -278,7 +278,7 @@ def preview(
         # Pass the same user-message the writer agent saw so the
         # linter can ground-check fact claims against the input data.
         source_ctx = preview_agent.format_fixture_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         # 6c. Fact validator HARD gate. Rule-based numerical-claim
@@ -504,7 +504,7 @@ def recap(
 
         # 6b. Voice lint (soft gate — surface, don't block)
         source_ctx = recap_agent.format_recap_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         # 6c. Fact validator HARD gate. Catches wrong final score,
@@ -684,7 +684,7 @@ def standings(
 
         # 5. Voice lint (soft gate)
         source_ctx = standings_agent.format_standings_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         # 6. Plagiarism hard gate
@@ -813,7 +813,7 @@ def nba_recap_cmd(
 
         # 5. Voice lint (soft)
         source_ctx = nba_recap_agent.format_nba_recap_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         # 5b. NBA-specific fact-check HARD gate (Ship #17). Catches
@@ -969,7 +969,7 @@ def nba_preview_cmd(
             raise typer.Exit(3)
 
         source_ctx = nba_preview_agent.format_nba_preview_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         # Use current_game for upcoming preview slug
@@ -1102,7 +1102,7 @@ def f1_recap_cmd(
             raise typer.Exit(3)
 
         source_ctx = f1_recap_agent.format_f1_recap_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         # F1-specific fact-check HARD gate (Ship #17). Catches wrong
@@ -1236,7 +1236,7 @@ def f1_preview_cmd(
             raise typer.Exit(3)
 
         source_ctx = f1_preview_agent.format_f1_preview_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         article_slug = slug_mod.f1_race_slug(ctx["race_name"], season)
@@ -1368,7 +1368,7 @@ def tennis_rankings_cmd(
             raise typer.Exit(3)
 
         source_ctx = tennis_agent.format_tennis_rankings_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         # Slug uses ISO calendar week of the rankings update date so weekly
@@ -1505,7 +1505,7 @@ def tennis_recap_cmd(
             raise typer.Exit(3)
 
         source_ctx = tennis_match_agent.format_tennis_match_recap_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         # Slug — winner first per the engine's convention.
@@ -1645,7 +1645,7 @@ def nba_series_cmd(
             raise typer.Exit(3)
 
         source_ctx = nba_series_agent.format_nba_series_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         year = (ctx["_header"].get("tipoff_utc") or datetime.now()).year
@@ -1772,7 +1772,7 @@ def f1_championship_cmd(
             raise typer.Exit(3)
 
         source_ctx = f1_champ_agent.format_f1_championship_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         article_slug = slug_mod.f1_championship_slug(season, round_num)
@@ -1902,7 +1902,7 @@ def nba_team_profile_cmd(
             raise typer.Exit(3)
 
         source_ctx = nba_team_profile_agent.format_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         article_slug = slug_mod.nba_team_profile_slug(
@@ -2048,7 +2048,7 @@ def football_team_profile_cmd(
             raise typer.Exit(3)
 
         source_ctx = agent_mod.format_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         article_slug = slug_mod.football_team_profile_slug(ctx.get("team_name") or "", league)
@@ -2163,7 +2163,7 @@ def f1_driver_profile_cmd(
             raise typer.Exit(3)
 
         source_ctx = agent_mod.format_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         article_slug = slug_mod.f1_driver_profile_slug(ctx.get("driver_code") or "", ctx.get("driver_name") or "")
@@ -2271,7 +2271,7 @@ def tennis_player_profile_cmd(
             raise typer.Exit(3)
 
         source_ctx = agent_mod.format_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         article_slug = slug_mod.tennis_player_profile_slug(ctx.get("athlete_name") or "")
@@ -2383,7 +2383,7 @@ def h2h_cmd(
             raise typer.Exit(3)
 
         source_ctx = agent_mod.format_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         article_slug = slug_mod.h2h_slug(ctx.get("team_a_name") or "", ctx.get("team_b_name") or "", league)
@@ -2487,7 +2487,7 @@ def nba_player_profile_cmd(
             raise typer.Exit(3)
 
         source_ctx = agent_mod.format_user_message(ctx)
-        lint_report = await voice_lint.check(body, source_context=source_ctx)
+        body, lint_report = await voice_lint.check_with_autofix(body, source_context=source_ctx)
         typer.echo(lint_report.summary_text())
 
         article_slug = slug_mod.nba_player_profile_slug(ctx.get("athlete_name") or "")
