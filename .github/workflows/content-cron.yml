@@ -1,4 +1,4 @@
-name: Content Engine — Cron
+name: Content Engine - Cron
 
 # Phase 1 ship #14. Generates Bahasa articles on a schedule + commits the
 # JSON files back to the repo. Vercel auto-rebuilds from the commit.
