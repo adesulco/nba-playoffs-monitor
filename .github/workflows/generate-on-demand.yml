@@ -23,22 +23,22 @@ name: Content Engine - On-demand Generation
 #   ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_ANON_KEY,
 #   SUPABASE_SERVICE_ROLE_KEY, API_FOOTBALL_KEY (optional)
 
-on:
+"on":
   workflow_dispatch:
     inputs:
       commands:
-        description: 'Newline-separated CLI commands to run (output of plan_generation)'
+        description: "Newline-separated CLI commands to run (output of plan_generation)"
         required: true
         type: string
       label:
-        description: 'Short human label for this batch (shown in commit message)'
+        description: "Short human label for this batch (shown in commit message)"
         required: false
-        default: 'on-demand'
+        default: "on-demand"
         type: string
       requested_by:
-        description: 'Editor email or name (for audit trail in commit message)'
+        description: "Editor email or name (for audit trail in commit message)"
         required: false
-        default: 'editor'
+        default: "editor"
         type: string
 
 permissions:
