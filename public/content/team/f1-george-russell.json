@@ -1,0 +1,38 @@
+{
+  "type": "team",
+  "slug": "f1-george-russell",
+  "title": "Profil George Russell: Pembalap F1 Mercedes (2026)",
+  "description": "Profil pembalap F1 George Russell (Inggris) untuk tim Mercedes. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "# George Russell, Pembalap Mercedes yang Buka Musim 2026 dengan Solid\n\nGeorge Russell, kode FIA RUS (#63), pembalap Inggris kelahiran 15 Februari 1998. Per 28 April 2026, Russell memimpin barisan Mercedes di klasemen konstruktor dan menempati P2 klasemen pembalap 2026 dengan 63 poin dari 3 balapan musim ini, termasuk satu kemenangan.\n\n---\n\n## Identitas\n\nNama lengkap George William Russell, 28 tahun, kebangsaan Inggris. Nomor permanennya #63, kode FIA tiga huruf: RUS. Musim 2026 ini Russell membalap untuk Mercedes, salah satu nama terbesar di paddock Formula 1.\n\nNomor 63 sudah jadi identitas Russell di grid, bukan nomor yang dipilih karena prestise, tapi sudah melekat sejak awal kariernya naik ke F1. Di mobil Mercedes 2026, nomor itu kini dibawa seorang pembalap yang sedang membuktikan diri sebagai salah satu yang terkonsisten di grid.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, 63 poin, satu kemenangan. Russell membuka 2026 dengan cara yang sulit dibantah, konsisten masuk top 4 dari setiap round yang sudah dijalani.\n\nYang paling menonjol: Russell tidak punya hasil jelek sama sekali sampai titik ini. Finis P1, P2, P4, tiga balapan, tiga kali masuk poin besar. Bukan tipe pembalap yang naik turun dramatis. Musim ini dia tampil seperti pembalap yang sudah paham tugasnya: ambil poin maksimal di setiap kesempatan, jangan buang-buang apa yang ada.\n\nDengan 63 poin, Russell ada di P2 klasemen, bukan posisi yang bisa dianggap enteng, meski musim baru berjalan tiga round dari total yang jauh lebih panjang.\n\n---\n\n## Hasil Per Balapan\n\n**Round 1, Australian Grand Prix: P1 (25 poin)**\n\nRussell buka musim dengan race win di Australia. Finis P1, 25 poin penuh. Kemenangan pembuka musim selalu punya bobot tersendiri, menentukan tone, membangun confidence, dan langsung menempatkan nama di puncak klasemen sementara. Russell mengambil semuanya di Round 1.\n\n**Round 2, Chinese Grand Prix: P2 (18 poin)**\n\nDari Australia ke China, Russell turun satu posisi ke P2, tapi 18 poin tetap hasilnya. Tidak ada DNF, tidak ada accident, tidak ada drama. Podium kedua beruntun di awal musim adalah sinyal bahwa performa Round 1 bukan kebetulan.\n\n**Round 3, Japanese Grand Prix: P4 (12 poin)**\n\nJepang sedikit berbeda. P4 bukan podium, tapi 12 poin tetap masuk. Di Suzuka yang technical dan demanding, finis P4 tanpa masalah tetap hasil solid. Pertanyaan yang wajar: apakah ini tanda kompetitor mulai menemukan pace, atau memang weekend yang lebih sulit untuk Mercedes secara khusus? Data per 28 April 2026 belum menjelaskan lebih jauh.\n\nPola tiga balapan ini gamblang: Russell turun satu slot setiap round, P1, P2, P4. Tren yang perlu dicermati di round berikutnya.\n\n---\n\n## Posisi di Klasemen dan Outlook\n\nP2 klasemen, 63 poin. Russell ada di posisi sangat kompetitif di awal musim 2026.\n\nTiga balapan memang belum cukup untuk menarik kesimpulan besar, grid F1 panjang, variabel banyak, dan musim masih punya banyak round tersisa. Tapi yang bisa dibaca dari data per 28 April 2026 adalah ini: Russell tidak membuang poin, tidak punya weekend catastrophic, dan satu kemenangan sudah di tangan sejak Round 1.\n\nUntuk Mercedes, itu angka yang meyakinkan. Untuk Russell secara personal, itu fondasi yang bisa dibangun lebih jauh, selama konsistensi tiga round pertama ini bisa dipertahankan di sisa kalender 2026.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "russell",
+    "driver_name": "George Russell",
+    "driver_code": "RUS",
+    "driver_number": "63",
+    "nationality": "British",
+    "current_team": "Mercedes",
+    "current_team_id": "mercedes",
+    "championship_pos": "2",
+    "championship_points": "63",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021029,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 0,
+      "summary": "",
+      "issues": []
+    },
+    "plagiarism_hash": "0x7362a68b91a70282",
+    "published_at": "2026-04-28T11:57:07+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

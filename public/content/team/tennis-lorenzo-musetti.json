@@ -1,0 +1,91 @@
+{
+  "type": "team",
+  "slug": "tennis-lorenzo-musetti",
+  "title": "Profil Lorenzo Musetti (ATP) — Peringkat 9",
+  "description": "Profil petenis Lorenzo Musetti (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Lorenzo Musetti: Petenis Italia Peringkat 9 Dunia yang Konsisten di Top 10 ATP\n\nLorenzo Musetti, petenis Italia kelahiran 3 Maret 2002, saat ini berada di peringkat 9 ATP dengan 3.715 poin per 16 April 2026. Pemain tangan kanan asal Carrara, Italia ini baru berusia 24 tahun, dan sudah mengunci posisinya di jajaran 10 besar dunia.\n\n## Identitas\n\nLahir di Carrara, kota kecil di Toscana yang lebih dikenal sebagai pusat marmer dunia, Musetti memulai karier profesionalnya pada 2019 di usia 17 tahun. Petenis bertinggi 185 cm dengan berat 78 kg ini bermain dengan tangan kanan.\n\nUsianya masih 24 tahun, satu detail yang perlu digarisbawahi. Di ATP, banyak petenis baru benar-benar matang di usia pertengahan hingga akhir 20-an. Musetti sudah ada di top 10 sebelum mencapai titik itu. Debut profesional di 2019 berarti dia sudah mengumpulkan tujuh tahun pengalaman di sirkuit, cukup untuk menjelaskan kematangan permainan yang jarang dimiliki petenis seusianya.\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Musetti bertengger di peringkat 9 ATP dengan 3.715 poin. Posisinya identik dengan peringkat sebelumnya, stabil di P9, tanpa pergerakan naik maupun turun.\n\nStabilitas di top 10 itu bukan hal yang bisa dianggap remeh. Peringkat ATP bergerak dinamis setiap minggu. mempertahankan posisi di sepuluh besar berarti Musetti secara konsisten mengumpulkan poin yang cukup untuk menutup poin yang kadaluarsa dari turnamen tahun lalu. Artinya, tidak ada penurunan performa signifikan dalam periode terakhir, dia menjaga levelnya.\n\nDengan 3.715 poin, Musetti berada di zona yang kompetitif. Top 10 ATP adalah wilayah dengan persaingan paling ketat di tenis pria: selisih ratusan poin bisa berarti perbedaan dua hingga tiga peringkat. Posisinya di P9 menempatkan Musetti sebagai salah satu petenis yang secara otomatis mendapat akses langsung ke draw utama seluruh turnamen Masters 1000 dan Grand Slam.\n\n## Outlook\n\nPada usia 24 tahun dengan peringkat yang stabil di P9, Musetti ada di posisi yang banyak petenis impikan, tapi sulit dipertahankan. Top 10 bukan titik akhir. ini titik di mana tekanan untuk naik lebih tinggi dan ancaman dari petenis-petenis muda di bawah sama-sama nyata.\n\nYang bisa dibaca dari data: Musetti tidak sedang dalam tren turun. Posisinya stabil, poinnya terjaga. Untuk petenis yang baru masuk usia 24 tahun, itu sudah bicara banyak.\n\n*Profil ini mencerminkan data per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "3764",
+    "athlete_name": "Lorenzo Musetti",
+    "current_rank": 9,
+    "previous_rank": 9,
+    "points": 3715.0,
+    "trend": "-",
+    "birthplace": "Carrara, Italy",
+    "dob": "2002-03-03",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.016259,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails due to excessive tense-marking (sudah/sedang overuse), academic hedging tone, and translated-English structural patterns. Lowercase 'm' typo and awkward clause chaining throughout. Rewrite for Bahasa-native flow.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "sudah mengunci posisinya di jajaran 10 besar dunia",
+          "fix": "Remove 'sudah': 'mengunci posisinya di jajaran 10 besar dunia.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Musetti sudah ada di top 10 sebelum mencapai titik itu",
+          "fix": "Rephrase: 'Musetti masuk top 10 sebelum mencapai usia itu.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "dia sudah mengumpulkan tujuh tahun pengalaman di sirkuit",
+          "fix": "'dia punya tujuh tahun pengalaman di sirkuit' or 'tujuh tahun di sirkuit.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Stabilitas di top 10 itu bukan hal yang bisa dianggap remeh.",
+          "fix": "Direct: 'Stabil di top 10 itu tidak mudah.' or 'Pertahankan posisi itu tidak sepele.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "mempertahankan posisi di sepuluh besar berarti Musetti secara konsisten mengumpulkan poin yang cukup untuk menutup poin yang kadaluarsa dari turnamen tahun lalu",
+          "fix": "Capitalize 'Mempertahankan'. Break into two: 'Pertahankan posisi top 10 berarti poin konsisten masuk. Dia tutup poin kadaluarsa dari tahun lalu.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Artinya, tidak ada penurunan performa signifikan dalam periode terakhir, dia menjaga levelnya.",
+          "fix": "Break into: 'Tidak ada penurunan performa. Dia jaga level.' Or: 'Performa stabil; poin terjaga.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Top 10 bukan titik akhir. ini titik di mana tekanan untuk naik lebih tinggi",
+          "fix": "Capitalize 'Ini'. Rephrase: 'Top 10 bukan tujuan akhir — tekanan untuk naik ada, tapi ancaman dari bawah juga.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Yang bisa dibaca dari data: Musetti tidak sedang dalam tren turun.",
+          "fix": "'Dari data: Musetti tidak turun. Stabil, poin terjaga.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "jajaran 10 besar dunia.\n\n## Identitas\n\nLahir di Carrara, kota kecil di Toscana yang lebih dikenal sebagai pusat marmer dunia,",
+          "fix": "Cut city descriptor — input only has city name, not geography."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x58126f678eadc6a2",
+    "published_at": "2026-04-28T11:59:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

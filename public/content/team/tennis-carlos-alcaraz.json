@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "tennis-carlos-alcaraz",
+  "title": "Profil Carlos Alcaraz (ATP) — Peringkat 2",
+  "description": "Profil petenis Carlos Alcaraz (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Carlos Alcaraz: Petenis Muda Spanyol di Puncak Persaingan ATP\n\nCarlos Alcaraz, petenis Spanyol kelahiran 5 Mei 2003, saat ini bertengger di peringkat 2 ATP dengan 12.960 poin per 16 April 2026. Pemain tangan kanan asal El Palmar, Murcia ini baru berusia 22 tahun, namun sudah masuk jajaran dua petenis terbaik dunia.\n\n---\n\n## Identitas\n\nLahir di El Palmar, sebuah kota kecil di Murcia, Spanyol, Alcaraz menginjak usia 22 tahun pada 5 Mei mendatang. Dengan tinggi 183 cm dan berat 74 kg, posturnya proporsional untuk petenis baseline modern, cukup bertenaga untuk serve keras, cukup agile untuk permainan bertahan.\n\nYang membuat perjalanan Alcaraz berbeda adalah usianya saat masuk sirkuit profesional. Dia debut di ATP pada 2018, artinya ia mulai menjalani kehidupan tour profesional sejak usia 14-15 tahun. Lebih dari tujuh tahun kemudian, ia bukan lagi nama baru, ia salah satu nama terbesar di ATP.\n\n---\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Alcaraz berada di peringkat 2 ATP dengan 12.960 poin. Peringkat sebelumnya juga 2, artinya posisinya stabil, tidak naik tidak turun.\n\nPeringkat 2 dunia bukan pencapaian kecil. Di ATP, hanya satu petenis yang berdiri lebih tinggi. Dengan 12.960 poin, Alcaraz berada di zona yang sangat sempit, zona di mana selisih poin dengan peringkat 1 bisa tipis, atau bisa juga cukup jauh bergantung musim.\n\nYang perlu dicatat: stabilitas di peringkat 2 selama dua periode ranking berturut-turut menunjukkan konsistensi perolehan poin. Alcaraz tidak sedang dalam tren naik yang tajam, tapi juga tidak tergeser dari posisinya. Di level ini, mempertahankan peringkat sama sulitnya dengan mendapatkannya.\n\n---\n\n## Outlook\n\nBerada di peringkat 2 dunia pada usia 22 tahun menempatkan Alcaraz dalam posisi yang sulit disamai oleh mayoritas petenis ATP. Musim 2026 masih berjalan, dan sisa kalender ATP, dengan sejumlah Masters 1000 dan Grand Slam di depan, masih menyimpan banyak poin yang bisa diperebutkan.\n\nDengan basis poin di atas 12.000 dan posisi yang stabil, Alcaraz masuk ke fase krusial musim ini sebagai salah satu kandidat terkuat di setiap turnamen yang dia ikuti. Profil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "3782",
+    "athlete_name": "Carlos Alcaraz",
+    "current_rank": 2,
+    "previous_rank": 2,
+    "points": 12960.0,
+    "trend": "-",
+    "birthplace": "El Palmar, Murcia, Spain",
+    "dob": "2003-05-05",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.037624,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on academic register drift (\"Yang perlu dicatat\", formal hedging language) and structural repetition. Tense-marking and calqued English structures lower score further. Rewrite section 2 and 3 in more direct, conversational register.",
+      "issues": [
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Yang perlu dicatat: stabilitas di peringkat 2 selama dua periode ranking berturut-turut menunjukkan konsistensi perolehan poin.",
+          "fix": "Delete opening. Start: \"Stabilitas di peringkat 2 selama dua periode ranking menunjukkan konsistensi perolehan poin.\""
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dia debut di ATP pada 2018, artinya ia mulai menjalani kehidupan tour profesional sejak usia 14-15 tahun.",
+          "fix": "Rephrase: \"Dia debut di ATP pada 2018—tour profesional sejak usia 14–15 tahun.\""
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dengan basis poin di atas 12.000 dan posisi yang stabil, Alcaraz masuk ke fase krusial musim ini sebagai salah satu kandidat terkuat",
+          "fix": "Rephrase: \"Alcaraz punya basis poin kuat di atas 12.000—posisinya stabil untuk turnamen-turnamen besar musim ini.\""
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan tinggi 183 cm dan berat 74 kg, posturnya proporsional untuk petenis baseline modern, cukup bertenaga untuk serve keras",
+          "fix": "Rephrase: \"Postur ideal baseline moderni: tenaga untuk serve keras, kelincahan untuk bertahan di garis.\""
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Peringkat 2 dunia bukan pencapaian kecil... Dengan 12.960 poin, Alcaraz berada di zona yang sangat sempit",
+          "fix": "Delete hedging. State directly: \"Hanya satu petenis di atas Alcaraz di ranking ATP 2026.\""
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Per 16 April 2026, Alcaraz berada di peringkat 2 ATP dengan 12.960 poin. Peringkat sebelumnya juga 2, artinya posisinya stabil",
+          "fix": "Combine: \"Per 16 April 2026, Alcaraz tetap di peringkat 2 ATP dengan 12.960 poin—posisinya stabil.\""
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "dunia.\n\n---\n\n## Identitas\n\nLahir di El Palmar, sebuah kota kecil di Murcia, Spanyol, Alcaraz menginjak usia 22 tahun pada 5",
+          "fix": "Cut city descriptor — input only has city name, not geography."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf747ec6d9eedd602",
+    "published_at": "2026-04-28T11:56:46+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

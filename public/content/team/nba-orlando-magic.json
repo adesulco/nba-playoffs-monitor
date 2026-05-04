@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-orlando-magic",
+  "title": "Profil Orlando Magic: Eastern Conference (2025-26)",
+  "description": "Profil Orlando Magic — franchise NBA dari Orlando di division Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Orlando Magic: Dari Seed 8 ke Playoff, Generasi Muda Siap Buktikan Diri\n\nOrlando Magic berkandang di Kia Center, Orlando, dan tampil di Southeast Division Wilayah Timur. Per 28 April 2026, Magic menutup musim reguler 2025-26 dengan rekor 45-37, cukup untuk mengamankan seed 8 playoff Eastern Conference, sekaligus finis sebagai runner-up di Southeast Division.\n\n---\n\n## Identitas dan Posisi Liga\n\nDi bawah arahan head coach Jamahl Mosley, Orlando menutup musim reguler dengan posisi solid: finis ke-2 di Southeast Division dan masuk playoff sebagai seed 8 Eastern Conference. Posisi itu bukan hadiah, 45 kemenangan dari 82 laga menunjukkan konsistensi yang tidak datang kebetulan.\n\nSebagai seed 8, Magic akan menghadapi salah satu tim teratas Wilayah Timur di babak pertama playoff. Tekanan ada, tapi juga ada argumen bahwa justru posisi ini membebaskan mereka main lepas.\n\n---\n\n## Performa Musim Ini\n\nRekor 45-37 dengan win rate 54,9% menggambarkan tim yang kompetitif tapi belum dominan. Selisih poin tipis: Magic rata-rata cetak 115,7 PPG, sedangkan lawan rata-rata cetak 115,1 PPG. Diferensial +0,6 per laga artinya Orlando sering menang lewat margin kecil, tim yang tahu cara tutup laga, bukan tim yang menghancurkan lawan di kuarter pertama.\n\nYang menarik adalah split home versus road. Di kandang Kia Center, Magic tampil percaya diri dengan rekor 25-15 (62,5%). Keluar dari Orlando, angkanya turun jadi 19-22 (47,7%). Gap ini wajar untuk tim muda, tapi akan jadi ujian nyata di playoff, babak pertama belum tentu bermain di kandang sebagai seed 8.\n\nSelisih PPG yang tipis juga mengisyaratkan pertahanan yang cukup solid, bukan tim yang sekadar andalkan serangan. Musim-musim sebelumnya Orlando dikenal defensif. 2025-26 mereka mulai temukan keseimbangan dua sisi.\n\n---\n\n## Roster dan Pemain Kunci\n\n**Paolo Banchero (#5, F, 23 tahun, 3 tahun)** adalah wajah franchise ini. Lulusan Duke yang masuk NBA dengan ekspektasi besar, Banchero kini memasuki tahun ketiga, usia di mana forward modern biasanya mulai ambil alih laga secara konsisten. Sebagai pemain tertua di kelompok inti muda Magic, perannya sebagai pemimpin lapangan makin krusial memasuki playoff.\n\n**Desmond Bane (#3, G, 27 tahun, 5 tahun)** membawa pengalaman yang dibutuhkan roster ini. Lima tahun di NBA, sekarang jadi anchor backcourt Magic. Guard TCU ini dikenal sebagai shooter yang bisa juga defend, profil yang sangat dibutuhkan di playoff ketika pertahanan mengencang dan ruang tembak menyempit.\n\n**Wendell Carter Jr. (#34, C, 27 tahun, 7 tahun)** adalah center veteran paling berpengalaman di roster dengan tujuh musim. Lulusan Duke, sama seperti Banchero, Carter Jr. jadi anchor di paint, rebounding, screen setting, dan kehadiran fisik yang sering tidak kelihatan di stat sheet tapi terasa di dinamika tim.\n\nNama lain yang layak diperhatikan adalah **Jonathan Isaac (#1, F, 28 tahun, 8 tahun)**, veteran paling senior di roster dengan delapan musim. Perjalanan panjangnya lewat cedera serius membuat setiap menit yang dia mainkan punya bobot tersendiri. Ketika sehat, Isaac adalah salah satu defender paling disruptif di liga.\n\n---\n\n## Outlook\n\nSeed 8 di Eastern Conference artinya perjalanan playoff Orlando dimulai dari posisi paling bawah. Tidak ada ekspektasi berlebihan, justru itu yang menguntungkan. Tim muda dengan Banchero sebagai anchor, Bane sebagai shooter veteran, dan Carter Jr. sebagai stabilizer di paint punya modal cukup untuk tidak sekadar numpang lewat di babak pertama.\n\nSebelum playoff dimulai, Magic masih punya satu laga tersisa: menjamu Detroit Pistons pada 28 April 2026, malam ini, di Kia Center.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "19",
+    "team_name": "Orlando Magic",
+    "team_abbr": "ORL",
+    "team_location": "Orlando",
+    "conference": "Eastern Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023153,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail due to three training-inference failures: wrong date 'Per 28 April' vs input '3 Mei', wrong game opponent claim ('menjamu' vs input 'tandang'), and away record miscalculation (47.7% vs actual 48.7%). These are factual errors, not voice errors. Fix dates and math before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Magic menutup musim reguler 2025-26 dengan rekor 45-37",
+          "fix": "Change to 'Per 3 Mei 2026' throughout to match input data block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum playoff dimulai, Magic masih punya satu laga tersisa: menjamu Detroit Pistons pada 28 April 2026, malam ini",
+          "fix": "Use correct date from input: 'Magic tandang ke Detroit Pistons pada 3 Mei 2026'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Away Record: 19-22 (47,7%)",
+          "fix": "Correct to '19-20 (48,7%)'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang mana adalah anchor backcourt Magic",
+          "fix": "Split home vs road menunjukkan kesan perbedaan. atau just: Di kandang... Keluar dari Orlando..."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Banchero kini memasuki tahun ketiga... perannya... makin krusial memasuki playoff",
+          "fix": "Change second to: 'Perannya sebagai pemimpin lapangan makin krusial saat playoff tiba.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Perjalanan panjangnya lewat cedera serius membuat setiap menit yang dia mainkan punya bobot tersendiri",
+          "fix": "Change to: 'Setiap menit Isaac mainkan punya makna ekstra.' or just cut and restructure next sentence."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tidak ada ekspektasi berlebihan, justru itu yang menguntungkan.",
+          "fix": "Add concrete detail: 'Tidak ada ekspektasi berlebihan — itu keuntungan Mental sebelum layoff dimulai.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "solid, bukan tim yang sekadar andalkan serangan. Musim-musim sebelumnya Orlando dikenal defensif. 2025-26 mereka mulai temukan",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3ac2a87f74af77aa",
+    "published_at": "2026-04-28T10:46:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

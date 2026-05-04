@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-milwaukee-bucks",
+  "title": "Profil Milwaukee Bucks: Central, Eastern Conference (2025-26)",
+  "description": "Profil Milwaukee Bucks — franchise NBA dari Milwaukee di Central Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Milwaukee Bucks 2025-26: Musim Berat di Bayangan The Greek Freak\n\nMilwaukee Bucks adalah franchise NBA yang berkandang di Fiserv Forum, Milwaukee, dan bertanding di Central Division Wilayah Timur. Per 28 April 2026, Bucks menutup musim reguler 2025-26 dengan rekor 32-50, seed 11 di Eastern Conference, finis di urutan ketiga Central Division. Bukan musim yang ingin dikenang.\n\n---\n\n## Identitas dan Posisi Liga\n\nDi Central Division, Bucks finis di bawah dua rival divisi mereka musim ini. Seed 11 di Wilayah Timur menempatkan Milwaukee jauh dari playoff picture, bukan posisi yang sesuai dengan ekspektasi sebuah franchise yang punya pemain kaliber Giannis Antetokounmpo di roster.\n\nMusim 2025-26 menjadi catatan keras buat organisasi ini. Tidak ada nama head coach yang terdaftar secara resmi dalam data per April 2026, yang sendirinya sudah menceritakan banyak hal tentang kondisi di balik layar.\n\n---\n\n## Performa Musim Ini\n\nAngka 32-50 dengan win rate 39,0% cukup menjelaskan apa yang terjadi di Fiserv Forum musim ini. Yang lebih bicara adalah diferensial poin: Bucks rata-rata cetak 110,6 PPG tapi kebobolan 116,8 PPG, defisit 6,2 poin per laga sepanjang musim. Pertahanan yang bocor jadi masalah utama.\n\nHome court pun tidak banyak menolong. Di kandang, Bucks cuma 19-22, record di bawah .500. Di jalan kondisinya lebih parah: 13-28 dengan win rate 31,7%. Tidak ada sisi positif yang bisa ditutup-tutupi di sini. Serangan tidak cukup produktif, dan pertahanan terlalu mudah ditembus lawan.\n\nUntuk konteks: tim playoff Wilayah Timur musim ini rata-rata punya diferensial poin positif. Minus 6,2 menempatkan Bucks di ujung bawah spektrum efisiensi liga.\n\n---\n\n## Roster dan Pemain Kunci\n\n### Giannis Antetokounmpo (#34, F, 31 tahun, 12 tahun pengalaman)\n\nTidak ada cara lain memulai pembahasan roster Bucks selain dari Giannis. Dua belas musim di NBA, semuanya di Milwaukee, *The Greek Freak* tetap jadi identitas franchise ini. Di usia 31, Giannis masih dalam prime athletic window seorang big forward. Musim berat timnya tidak otomatis berarti Giannis tampil buruk secara individual, tapi beban yang dia tanggung di sebuah tim 32-50 jelas tidak ringan.\n\n### Bobby Portis (#9, F, 31 tahun, 10 tahun pengalaman)\n\nPortis adalah veteran lain dengan double-digit seasons di liga. Sepuluh tahun pengalaman, pernah jadi fan favorite di Fiserv Forum. Kehadirannya di roster memberikan kedalaman dan pengalaman yang dibutuhkan tim muda.\n\n### Kyle Kuzma (#18, F, 30 tahun, 8 tahun pengalaman)\n\nDelapan musim di NBA, background dari Utah, Kuzma masuk sebagai forward berpengalaman yang bisa berkontribusi di kedua sisi lapangan. Di roster yang campur antara veteran dan muda, Kuzma ada di tengah, cukup berpengalaman untuk jadi pemandu, cukup muda untuk masih punya nilai development.\n\n### Alex Antetokounmpo (#29, F, 24 tahun, rookie)\n\nNama keluarga yang sama, musim pertama di liga. Alex Antetokounmpo menjalani rookie season 2025-26 di tim yang sama dengan kakaknya Giannis, dan Thanasis (#43), yang sudah enam musim di Milwaukee. Tiga Antetokounmpo di satu roster adalah situasi unik yang mungkin tidak akan banyak terulang di sejarah NBA.\n\n---\n\n## Outlook\n\nMusim 2025-26 adalah musim yang harus dijadikan bahan evaluasi serius buat Milwaukee. Rekor 32-50, seed 11, pertahanan yang kebobolan hampir tujuh poin lebih banyak dari serangan per laga, ini bukan penurunan kecil, ini sinyal bahwa ada sesuatu yang perlu dibenahi secara struktural.\n\nPertanyaan paling besar menuju offseason: bagaimana franchise membangun ulang di sekitar Giannis, yang masih 31 dan masih di puncak kemampuan fisik, tanpa terus menghabiskan musim prime-nya di tim yang tidak kompetitif?\n\nProfil ini mencerminkan data Milwaukee Bucks per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "15",
+    "team_name": "Milwaukee Bucks",
+    "team_abbr": "MIL",
+    "team_location": "Milwaukee",
+    "conference": "Eastern Conference",
+    "division": "Central",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022642,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on training-data inference (head coach absence framed as organizational chaos, Bobby Portis 'fan favorite' status, Kuzma 'background from Utah'), translated-English phrasing ('no other way to begin'), and date inconsistency across sections. High-severity issues suggest regeneration needed with stricter grounding to input block facts only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Tidak ada nama head coach yang terdaftar secara resmi dalam data per April 2026",
+          "fix": "Omit the head coach paragraph entirely or state neutrally: 'Head coach data tidak tersedia per 3 Mei 2026.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Tidak ada cara lain memulai pembahasan roster Bucks selain dari Giannis",
+          "fix": "Giannis adalah start yang wajib: satu-satunya pemain bintang roster ini."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "pernah jadi fan favorite di Fiserv Forum",
+          "fix": "Remove 'pernah jadi fan favorite' — state only verifiable facts: 'veteran sepuluh musim di liga.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Delapan musim di NBA, background dari Utah, Kuzma masuk sebagai forward berpengalaman",
+          "fix": "Say 'dari Utah' only if confirmed as career path; otherwise just: 'forward delapan musim di NBA.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "sudah enam musim di Milwaukee",
+          "fix": "Thanasis enam musim di Milwaukee."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Pertanyaan paling besar menuju offseason: bagaimana franchise membangun ulang di sekitar Giannis",
+          "fix": "State directly: 'Offseason besar-besaran harus datang. Membangun ulang di sekitar Giannis 31 tahun, sebelum prime-nya hilang.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "per 28 April 2026... Per 28 April 2026, Bucks menutup... per April 2026",
+          "fix": "Standardize to input date: 'Per 3 Mei 2026' throughout. Check if season actually closed by that date."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Bukan musim yang ingin dikenang",
+          "fix": "Just state: 'Rekor 32-50 bukan target organisasi ini' — let numbers speak."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7207e61844ac96e0",
+    "published_at": "2026-04-28T10:33:57+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

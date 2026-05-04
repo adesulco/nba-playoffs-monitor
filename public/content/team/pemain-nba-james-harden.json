@@ -1,0 +1,84 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-james-harden",
+  "title": "Profil James Harden: Guard Cleveland Cavaliers",
+  "description": "Profil pemain NBA James Harden, Guard Cleveland Cavaliers. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# James Harden, Maestro Assist Berusia 36 yang Masih Bikin Bola Hidup di Cleveland\n\nJames Harden, guard Cleveland Cavaliers kelahiran Los Angeles, California, mencatat 23,6 PPG dan 8,0 APG di musim 2025-26 per 28 April 2026. Angka assists itu menempatkannya di peringkat 4 NBA, bukti bahwa di usia 36 tahun, Harden masih termasuk playmaker paling produktif di liga.\n\n---\n\n## Identitas\n\nHarden masuk NBA lewat draft 2009, dipilih Oklahoma City di ronde pertama pick ke-3, salah satu pick teratas di kelasnya. Pemain berpostur 6'5\" 220 lbs ini mengenakan jersey #1 untuk Cleveland Cavaliers, dan musim 2025-26 adalah musim ke-16-nya di NBA. Sebelum masuk liga, ia bermain college di Arizona State.\n\nSebagai guard, Harden selalu identik dengan dua hal: scoring dan facilitating. Posturnya untuk seorang guard, tinggi, bertenaga, membuat ia bisa bermain fisik di paint sekaligus mengelola offense dari luar.\n\n---\n\n## Cleveland Cavaliers\n\nHarden kini berseragam Cleveland Cavaliers (CLE). Di tim ini, kontribusi 8,0 APG-nya menempatkan dia dalam peran playmaker utama, angka itu bukan milik pemain yang sekadar jadi opsi keempat di offense. Scoring-nya yang 23,6 PPG juga mengkonfirmasi ia masih masuk starting lineup dan diberi bola.\n\nKombinasi PPG dan APG seperti ini jarang: pemain yang sekaligus masuk top 20 scoring dan top 5 assist NBA adalah pemain yang benar-benar diberdayakan sebagai engine offense, bukan role player.\n\n---\n\n## Performa Musim Ini\n\nTiga angka yang mendefinisikan musim Harden di 2025-26:\n\n**8,0 APG, peringkat 4 NBA.** Ini yang paling mencolok. Masuk top 5 assists league di usia 36 tahun, di musim ke-16, bukan hal yang datang dari stamina muda. Itu membaca permainan. Harden tahu ke mana bola perlu pergi sebelum kebanyakan guard tahu kapan harus dribble.\n\n**23,6 PPG, peringkat 17 NBA.** Masih di atas rata-rata starter kebanyakan tim. Bukan lagi puncak scoring seperti era-era sebelumnya, tapi 23 poin per malam di usia ini tetap angka yang solid. Cukup untuk bikin defender tetap harus jaga dia.\n\n**4,8 RPG, peringkat 90 NBA.** Angka tengah. Untuk seorang guard, 4,8 rebound per malam itu bukan buruk, menunjukkan keterlibatan aktif di kedua sisi bola. Tapi bukan area di mana kontribusinya paling terasa.\n\n**43,4% FG, peringkat 116 NBA.** Ini sisi yang perlu dicatat. Efisiensi shooting Harden musim ini tidak termasuk yang terbaik di liga, ranking 116 bicara sendiri. Tapi konteks penting: guard yang jadi distributor utama dengan volume tinggi sering punya FG% yang lebih rendah karena banyak shot-creation dari situasi sulit. Volume dan variasi shot mempengaruhi persentase.\n\nSecara keseluruhan, profilnya musim ini adalah **pass-first guard yang masih bisa score**. Bukan scorer murni yang juga bisa assist, urutannya terbalik dari beberapa musim sebelumnya. Dan di usia 36, itu bukan kemunduran. itu adaptasi.\n\n---\n\n## Penutup\n\nEnam belas musim di NBA, dan Harden masih duduk di peringkat 4 liga untuk assists. Itu satu-satunya kalimat yang perlu ada untuk menjelaskan kenapa namanya masih relevan di percakapan NBA 2025-26.\n\nDi Cleveland, peran playmaker cocok dengan fase kariernya sekarang. Scoring-nya di 23,6 PPG cukup untuk tetap diperhitungkan. assists-nya di 8,0 APG cukup untuk membangun offense tim. Seberapa jauh kontribusi ini membawa Cavaliers, akan terlihat di sisa musim.\n\nSemua statistik mencerminkan data per 28 April 2026, musim NBA 2025-26.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "3992",
+    "athlete_name": "James Harden",
+    "team_name": "Cleveland Cavaliers",
+    "team_abbr": "CLE",
+    "position": "Guard",
+    "jersey": "1",
+    "age": 36,
+    "birthplace": "Los Angeles, CA",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021583,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to two high-severity training-data inferences (birthplace, physical measurements) not in input block. One medium-severity translated-English phrasing. Structure is sound but needs biographical data audit and one sentence rewrite for translated tone.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "guard Cleveland Cavaliers kelahiran Los Angeles, California",
+          "fix": "Remove birthplace detail or confirm it's in your grounded data source."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Pemain berpostur 6'5\" 220 lbs ini mengenakan jersey #1",
+          "fix": "Either confirm these measurements are in your input block, or remove them."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Sebagai guard, Harden selalu identik dengan dua hal: scoring dan facilitating.",
+          "fix": "Rewrite: 'Guard sering dinilai dari dua hal: berapa banyak dia cetak gol, berapa banyak dia umpan. Harden dua-duanya.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Kombinasi PPG dan APG seperti ini jarang: pemain yang sekaligus masuk top 20 scoring",
+          "fix": "Lead with the stat instead: 'Cuma empat guard NBA cetak 23+ PPG dan umpan 8+ APG. Harden salah satunya.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Semua statistik mencerminkan data per 28 April 2026",
+          "fix": "Move this to article top or integrate into body; don't isolate in closing."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Enam belas musim di NBA, dan Harden masih duduk di peringkat 4",
+          "fix": "Use 'peringkat 4 assists' instead of 'duduk di peringkat 4'—more direct."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "kebanyakan tim. Bukan lagi puncak scoring seperti era-era sebelumnya, tapi 23 poin per malam di usia ini tetap angka yang",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "yang juga bisa assist, urutannya terbalik dari beberapa musim sebelumnya. Dan di usia 36, itu bukan kemunduran. itu",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1a10646264a5d6b8",
+    "published_at": "2026-04-28T12:10:49+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,82 @@
+{
+  "type": "team",
+  "slug": "tennis-karolina-muchova",
+  "title": "Profil Karolina Muchova (WTA) — Peringkat 11",
+  "description": "Profil petenis Karolina Muchova (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Karolina Muchova: Petenis Ceko Peringkat 11 Dunia yang Terus Mendaki\n\nKarolina Muchova, petenis Ceko kelahiran 21 Agustus 1996, saat ini berada di peringkat 11 WTA dengan 3.318 poin per 16 April 2026. Petenis tangan kanan asal Olomouc ini menjalani musim 2026 sebagai salah satu nama paling konsisten di jajaran 15 besar dunia.\n\n---\n\n## Identitas\n\nMuchova lahir di Olomouc, Republik Ceko, dan kini berusia 29 tahun. Bertubuh tinggi, 180 cm, 75 kg, ia memiliki jangkauan yang jadi keunggulan di lapangan, baik saat melakukan servis maupun mengangkat bola-bola sulit di sisi belakang.\n\nDebut profesionalnya di tur WTA dimulai pada 2013, ketika usianya baru 16 tahun. Artinya, musim 2026 ini adalah tahun ke-13 Muchova sebagai petenis profesional, sebuah perjalanan panjang yang mencerminkan konsistensi dan daya tahan karier di level tertinggi tenis putri dunia.\n\nKombinasi postur tinggi dan gaya bermain tangan kanan memberinya opsi taktis yang beragam, basis yang solid untuk bersaing di berbagai permukaan.\n\n---\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Muchova tercatat di peringkat 11 WTA dengan total 3.318 poin. Ini adalah kenaikan satu posisi dari peringkat sebelumnya di nomor 12, gerak naik yang sederhana tapi bermakna: menunjukkan bahwa Muchova tidak sekadar bertahan di jajaran top 15, melainkan masih aktif mendorong diri lebih tinggi.\n\nTrend positif ini relevan dalam konteks ketatnya persaingan di papan tengah WTA. Selisih poin antara pemain peringkat 8 hingga 20 seringkali tipis, satu hasil turnamen bisa mengubah posisi secara signifikan. Fakta bahwa Muchova bergerak naik, bukan turun atau stagnan, memberi gambaran bahwa momentum musim ini berpihak kepadanya.\n\nDengan 3.318 poin, Muchova berada di kelompok petenis yang sudah mengamankan posisi sebagai unggulan di hampir semua turnamen WTA 1000 dan WTA 500, level di mana draw dan matchup mulai lebih menguntungkan dibanding harus melewati babak-babak awal yang padat.\n\n---\n\n## Outlook\n\nDi usianya yang menginjak 29 tahun dan dengan pengalaman 13 tahun di tur profesional, Muchova memasuki fase karier yang matang. Peringkat 11 bukan pencapaian kebetulan, ini posisi yang dibangun dari konsistensi panjang.\n\nDengan tren yang sedang naik dan posisi yang solid di top 15, Muchova adalah salah satu petenis yang layak dipantau di paruh kedua musim 2026. Apakah ia bisa menembus top 10 dan mempertahankannya? Pergerakan poin ke depan yang akan menjawab.\n\n*Profil ini mencerminkan data per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "3039",
+    "athlete_name": "Karolina Muchova",
+    "current_rank": 11,
+    "previous_rank": 12,
+    "points": 3318.0,
+    "trend": "+1",
+    "birthplace": "Olomouc, Czech Republic",
+    "dob": "1996-08-21",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.01709,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 5,
+      "summary": "Article fails due to high-severity training inference (unit conversion presented as fact) and translated-English prose inflation. Remove inferred conversions, tighten academic connectors, and simplify dense clauses. Core structure is sound; execution needs precision.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bertubuh tinggi, 180 cm, 75 kg",
+          "fix": "Use exact input values: 5'11\" (atau ~180 cm), 165 lbs (atau ~75 kg) — cite conversion, don't present as fact"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "sebuah perjalanan panjang yang mencerminkan konsistensi dan daya tahan karier di level tertinggi tenis putri dunia",
+          "fix": "Trim: 'musim 2026 ini tahun ke-13 Muchova sebagai petenis profesional, bukti konsistensi di lapangan top'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Trend positif ini relevan dalam konteks ketatnya persaingan di papan tengah WTA",
+          "fix": "Use: 'Di papan tengah WTA, persaingan ketat: posisi bergerak satu tangga berarti momentum sedang positif'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Muchova tercatat di peringkat 11 WTA dengan total 3.318 poin",
+          "fix": "Muchova berada di peringkat 11 WTA, 3.318 poin per 16 April 2026"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "mengangkat bola-bola sulit di sisi belakang",
+          "fix": "Rephrase: 'mengangkat bola-bola sulit dari area belakang lapangan'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7826c70b9c84fc82",
+    "published_at": "2026-04-28T12:11:44+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 0,
+      "headline_score": 0,
+      "headline_comment": "",
+      "lead_score": 0,
+      "lead_comment": "",
+      "structure_score": 0,
+      "structure_comment": "",
+      "voice_score": 0,
+      "voice_comment": "",
+      "suggestion_count": 0,
+      "summary": "",
+      "suggestions": []
+    }
+  },
+  "schema_jsonld": {}
+}

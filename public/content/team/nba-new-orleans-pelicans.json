@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-new-orleans-pelicans",
+  "title": "Profil New Orleans Pelicans: Western Conference (2025-26)",
+  "description": "Profil New Orleans Pelicans — franchise NBA dari New Orleans di division Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# New Orleans Pelicans 2025-26: Musim Sulit, Masa Depan di Tangan Anak Muda\n\nPer 28 April 2026, New Orleans Pelicans menutup musim reguler 2025-26 dengan rekor 26-56, seed 11 di Western Conference, finis di posisi 3 Southwest Division. Bukan musim yang mudah. Tapi di balik angka-angka itu, ada cerita tentang transisi dan pembuktian generasi baru.\n\n---\n\n## Identitas dan Posisi di Liga\n\nPelicans berkandang di Smoothie King Center, New Orleans, dan main di Western Conference. Musim 2025-26 ditutup di posisi 3 Southwest Division, di bawah tekanan tiga tim yang lebih solid di divisi yang sama. Seed 11 di Barat adalah refleksi jujur dari di mana Pelicans berdiri sekarang: bukan tim playoff, tapi bukan juga tim tanpa arah.\n\nHead coach James Borrego memimpin skuad yang sedang dalam proses pembangunan ulang. Dengan win rate 31,7%, ini bukan musim kompetitif dalam arti konvensional, tapi bagi tim muda, musim seperti ini punya nilainya sendiri.\n\n---\n\n## Performa Musim Ini\n\nAngka berbicara cukup keras. Pelicans mencetak rata-rata 115,5 PPG musim ini, bukan rendah, tapi kebobolan 120,0 PPG. Diferensial -4,5 per laga adalah masalah di sisi pertahanan, bukan serangan.\n\nSplit home-away memperjelas gambarannya: 17-24 di kandang, 9-32 di luar kandang. Road record yang lemah menandakan tim ini belum punya konsistensi untuk bersaing di lingkungan yang tidak familiar. Di kandang mereka masih punya peluang, tapi begitu keluar dari New Orleans, hasilnya terlalu sering mengecewakan.\n\nTapi konteks tetap penting. Ini roster yang dipenuhi pemain muda dengan pengalaman terbatas. Proses belajar itu nyata, dan kadang ada di scoreboard malam itu.\n\n---\n\n## Roster dan Pemain Kunci\n\n### Dejounte Murray, G #5, 29 tahun, 9 tahun pengalaman\n\nMurray adalah pemain paling berpengalaman di lini belakang Pelicans. Dengan sembilan musim di NBA, termasuk tahun-tahun di San Antonio dan Atlanta, dia membawa leadership dan basketball IQ yang dibutuhkan tim semuda ini. Di usia 29, dia ada di prime-nya, dan di tengah roster yang banyak diisi pemain rookie atau sophomore, peran Murray sebagai anchor sangat krusial.\n\n### Trey Murphy III, F #25, 25 tahun, 4 tahun pengalaman\n\nEmpat musim di NBA, masih 25 tahun, Murphy III adalah salah satu piece yang kemungkinan besar masuk dalam kalkulasi jangka panjang Pelicans. Forward dengan profil two-way. sudah cukup berpengalaman tapi belum memasuki puncak karier. Musim-musim ke depan akan menentukan seberapa besar perannya.\n\n### Jeremiah Fears, G #0, 19 tahun, rookie\n\nYang paling menarik perhatian justru yang termuda. Fears baru berusia 19 tahun, rookie langsung dari Oklahoma. Di usia segitu, bermain reguler di NBA sudah merupakan pencapaian tersendiri. Apa yang dia pelajari musim ini akan membentuk kariernya.\n\nSelain tiga nama itu, ada beberapa profil menarik lain: Hunter Dickinson (C #4, 25 tahun, rookie dari Kansas) dan Yves Missi (C #21, 21 tahun, sophomore dari Baylor) memperkuat depth di posisi center. DeAndre Jordan (#6, 37 tahun, 17 tahun pengalaman) hadir sebagai veteran yang memberi perspektif berbeda di locker room.\n\n---\n\n## Outlook\n\nRekor 26-56 tidak mudah dirayakan. Tapi bagi Pelicans, musim 2025-26 kemungkinan bukan musim yang dirancang untuk menang sekarang, ini musim untuk melihat siapa yang layak dibangun ke depan.\n\nMurray sebagai veteran, Murphy III sebagai corner piece yang berkembang, Fears dan Missi sebagai pemain yang baru mulai, struktur itu punya logika. Apakah James Borrego bisa mengonversi menit-menit pengembangan ini menjadi kemenangan nyata musim depan, itu yang perlu ditunggu.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "3",
+    "team_name": "New Orleans Pelicans",
+    "team_abbr": "NO",
+    "team_location": "New Orleans",
+    "conference": "Western Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022162,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on soft-phrase overuse, academic register drift, and training-data inference (age claims, coach detail not in input). Date mismatch between input (3 Mei) and article (28 April). Rewrite needed before publish.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "high",
+          "snippet": "anak muda... generasi baru... pemain muda... roster yang banyak diisi pemain muda",
+          "fix": "Use 'roster transisi', 'tim rebuild', 'pemain rookie-sophomore' for variation."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Diferensial -4,5 per laga adalah masalah di sisi pertahanan, bukan serangan.",
+          "fix": "Break into two: 'Pertahanan bocor. Musim ini kebobolan 120 PPG per laga.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Forward dengan profil two-way. sudah cukup berpengalaman tapi belum memasuki puncak karier.",
+          "fix": "Forward two-way, sudah cukup berpengalaman tapi belum puncak karier."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Fears baru berusia 19 tahun, rookie langsung dari Oklahoma.",
+          "fix": "Remove 'baru berusia 19 tahun' unless confirmed in input; use only what's provided."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, New Orleans Pelicans menutup musim reguler 2025-26",
+          "fix": "Use '3 Mei 2026' to match input data block stated date."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "bukan musim yang mudah... bukan musim kompetitif dalam arti konvensional",
+          "fix": "Consolidate: '26-56 bukan rekor playoff. Tapi untuk rebuild, musim ini punya nilai.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Konteks tetap penting... Proses belajar itu nyata, dan kadang ada di scoreboard",
+          "fix": "Delete or merge into performance section; don't explain away bad record."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Apakah James Borrego bisa mengonversi... itu yang perlu ditunggu.",
+          "fix": "Keep focus on roster development; remove coach speculation if not in data."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7b79a619e42666ea",
+    "published_at": "2026-04-28T10:35:11+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

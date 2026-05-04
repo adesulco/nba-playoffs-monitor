@@ -1,0 +1,77 @@
+{
+  "type": "team",
+  "slug": "nba-philadelphia-76ers",
+  "title": "Profil Philadelphia 76ers: Atlantic, Eastern Conference (2025-26)",
+  "description": "Profil Philadelphia 76ers — franchise NBA dari Philadelphia di Atlantic Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Philadelphia 76ers: Profil Tim Musim 2025-26\n\nPhiladelphia 76ers berkandang di Philadelphia dan main di Atlantic Division, Wilayah Timur NBA. Per 28 April 2026, PHI menutup musim reguler 2025-26 dengan rekor 45-37, win rate 54,9%, seed 7 di playoff Wilayah Timur. Bukan posisi ideal, tapi cukup untuk tetap hidup di postseason.\n\n---\n\n## Identitas & Posisi di Liga\n\nPhiladelphia 76ers menempati posisi 4th di Atlantic Division musim ini, di bawah Boston Celtics, New York Knicks, dan Toronto Raptors. Di level conference, PHI masuk sebagai seed 7 Eastern Conference, artinya mereka harus melewati play-in sebelum bisa masuk bracket utama playoff.\n\nDibesut Nick Nurse, Sixers menjalani musim yang tidak pernah benar-benar lepas landas. Di atas kertas, roster mereka punya nama-nama besar. Di lapangan, konsistensi jadi masalah yang terus menghantui sepanjang 82 laga reguler.\n\n---\n\n## Performa Musim Ini\n\nRekor 45-37 menempatkan PHI tepat di tengah-tengah, terlalu bagus untuk dibilang gagal total, terlalu tanggung untuk dibilang serius bersaing di East.\n\nYang paling kentara dari statistik mereka: serangan dan pertahanan sama-sama biasa-biasa saja. PHI cetak rata-rata 115,9 PPG, tapi kebobolan 116,1 PPG. Point differential -0,2 itu mungkin angka yang paling jujur menggambarkan musim Sixers tahun ini, nyaris impas antara serangan dan pertahanan, dan hampir tidak ada margin untuk kesalahan.\n\nDi kandang, mereka mencatat 23-18. Di road, 22-19. Tidak ada celah signifikan antara performa kandang dan tandang, yang sebenarnya bisa dibaca dua arah: solid secara konsistensi, tapi juga tidak punya \"home-court advantage\" yang benar-benar menakutkan lawan.\n\nUntuk tim dengan ambisi tinggi yang sudah sering disebut sebagai kandidat juara dalam beberapa musim terakhir, seed 7 dan diferensial negatif tipis itu berbicara banyak.\n\n---\n\n## Roster & Pemain Kunci\n\n**Joel Embiid (#21, C, 32 tahun, 9 tahun pengalaman)** tetap jadi pusat gravitasi PHI. Sembilan musim di liga, veteran Kansas ini masih jadi alasan utama kenapa Philadelphia bisa kompetitif di level mana pun. Saat sehat dan dominan, Embiid mengubah cara tim lain mempersiapkan game plan. Masalahnya, kata \"saat sehat\" selalu hadir sebagai syarat.\n\n**Paul George (#8, F, 35 tahun, 15 tahun pengalaman)** adalah nama besar lain di roster ini. Veteran Fresno State yang sudah menjalani 15 musim di NBA, pengalaman itu seharusnya jadi modal, terutama untuk momen-momen kritis di playoff. Sebagai wing dua arah, George diharapkan bisa membagi beban dengan Embiid sekaligus membuka lapangan untuk pemain-pemain muda.\n\n**Tyrese Maxey (#0, G, 25 tahun, 5 tahun pengalaman)** adalah sosok yang paling mewakili arah jangka panjang franchise ini. Lima musim, Kentucky product, dan sudah mengkonsolidasikan dirinya sebagai guard utama. Di usia 25, Maxey berada tepat di titik di mana pemain mulai mencapai puncak. Bersama Embiid dan George, trio ini seharusnya, di atas kertas, cukup untuk berbicara lebih di playoff.\n\nDi sisi lain, menarik juga mencatat kehadiran **Kyle Lowry (#7, G, 40 tahun, 19 tahun pengalaman)**. Veteran Villanova yang sudah 19 musim di liga itu masih ada di roster, sebuah penanda betapa banyaknya lapisan pengalaman yang dimiliki PHI meski di posisi bench. Di sisi muda, **VJ Edgecombe (#77, G, 20 tahun, rookie)** dari Baylor dan **Johni Broome (#22, F, 23 tahun, rookie)** dari Auburn jadi bagian dari investasi jangka panjang Sixers.\n\n---\n\n## Outlook\n\nMalam ini, Sixers menghadapi laga tandang yang berat: **Philadelphia 76ers @ Boston Celtics, 28 April 2026 pukul 23.00 WIB**. Laga yang bisa jadi ujian terakhir sebelum postseason, atau sekadar penutup musim tergantung konteksnya.\n\nSebagai seed 7, Philadelphia hampir pasti harus melewati play-in. Apakah Embiid, George, dan Maxey cukup untuk melewati rintangan itu dan bertahan di bracket playoff? Jawabannya masih terbuka.\n\nYang jelas, profil tim ini mencerminkan kondisi per 28 April 2026, sebuah snapshot dari franchise yang menyimpan potensi besar, tapi belum berhasil mengkonversinya jadi sesuatu yang solid sepanjang 82 laga musim reguler.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "20",
+    "team_name": "Philadelphia 76ers",
+    "team_abbr": "PHI",
+    "team_location": "Philadelphia",
+    "conference": "Eastern Conference",
+    "division": "Atlantic",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.046963,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on training-inference date error (critical), translated-English phrasing (high), and weak closing rhetoric. Rewrite date, cut hedging, sharpen conclusion. Voice otherwise acceptable but AI patterns visible in repetition and formal connectors.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Philadelphia 76ers @ Boston Celtics, 28 April 2026 pukul 23.00 WIB",
+          "fix": "Use INPUT data exactly: 'Philadelphia 76ers @ Boston Celtics, 2 Mei 2026 pukul 23.30 WIB' or remove if uncertain."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dibesut Nick Nurse, Sixers menjalani musim yang tidak pernah benar-benar lepas landas.",
+          "fix": "Rephrase: 'Di bawah Nick Nurse, Sixers alami musim penuh hambatan.' or 'Sixers tidak pernah menemukan ritme sepanjang musim.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Point differential -0,2 itu mungkin angka yang paling jujur menggambarkan musim Sixers",
+          "fix": "'Selisih poin -0,2 itu cerita terbaik dari musim Sixers: nyaris impas.' Cut the hedge."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Joel Embiid (#21, C, 32 tahun, 9 tahun pengalaman) tetap jadi pusat gravitasi",
+          "fix": "Second sentence: 'veteran Kansas ini adalah alasan utama kenapa PHI bisa kompetitif.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Masalahnya, kata 'saat sehat' selalu hadir sebagai syarat.",
+          "fix": "'Masalahnya: Embiid perlu sehat untuk jadi ancaman. Itu selalu syarat.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "adalah sosok yang paling mewakili... adalah penanda betapa banyaknya",
+          "fix": "Vary: 'mewakili' (drop 'adalah'); 'penanda itu' instead of 'adalah penanda.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Sebagai seed 7, Philadelphia hampir pasti harus melewati play-in. Apakah Embiid, George, dan Maxey cukup?",
+          "fix": "Commit to assessment: 'Sixers punya satu jalan: Embiid sehat di playoff. Itu satu-satunya skenario mereka bisa jauh.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2c5dce43c82d0c2a",
+    "published_at": "2026-04-28T10:47:37+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

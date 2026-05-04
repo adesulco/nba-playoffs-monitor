@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "bos-at-phi-2026-04-26-g4",
+  "title": "Recap Boston Celtics 128-96 Philadelphia 76ers (Game 4)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Philadelphia 76ers (128-96) di —, 26 April 2026.",
+  "body_md": "# Pritchard 32, Tatum Triple-Double, Celtics Gebuk Sixers 128-96, Satu Langkah dari Babak Kedua\n\nBoston Celtics menang telak 128-96 atas Philadelphia 76ers di Game 4 Round 1 Wilayah Timur, Senin 27 April 2026. BOS kini unggul 3-1 dalam seri dan tinggal satu kemenangan untuk melaju ke Conference Semifinals. Payton Pritchard meledak dengan 32 poin off the bench, Jayson Tatum menyumbang triple-double 30 poin, kemenangan yang tidak pernah dekat.\n\n---\n\n## Pritchard dan Tatum Terlalu Berat untuk PHI\n\nDua pemain Boston memimpin malam ini dari dua peran berbeda, dan keduanya sama-sama menghancurkan.\n\nTatum bermain selama 35 menit sebagai starter dan mengakhiri laga dengan 30 poin, 7 rebound, 11 asis, triple-double yang menegaskan ia bukan hanya scorer di sini, tapi penggerak serangan BOS secara keseluruhan. Efisiensi tembakannya solid: 8-16 dari lapangan, 5-10 dari tiga poin.\n\nPritchard datang dari bench tapi langsung menguasai laga. 32 poin, 4 rebound, 5 asis, dengan 6-12 dari tiga poin, produktivitas yang kebanyakan starter pun tidak mampu menandingi malam ini. Jaylen Brown melengkapi trio dengan 20 poin dan 7 rebound, meski efisiensinya lebih terbatas di 6-15 dari lapangan.\n\nDi sisi Philadelphia, Joel Embiid adalah satu-satunya yang benar-benar berjuang. 26 poin, 10 rebound, 6 asis, angka-angka bagus di atas kertas, tapi tim di sekitarnya tidak mendukung. Tyrese Maxey menambahkan 22 poin dengan 4-7 dari tiga poin, cukup efisien secara individual. Masalahnya, dua nama terbaik PHI berhadapan dengan mesin kolektif Boston yang malam ini berjalan di level berbeda.\n\n---\n\n## Three-Point Gap yang Memutus Laga\n\nSatu statistik menjelaskan segalanya: Boston 24-53 dari tiga poin (45%), Philadelphia 9-30 (30%).\n\nBOS masuk 24 tembakan tiga poin. PHI hanya 9. Selisih 15 tembakan yang masuk dari luar garis itu setara dengan 45 poin, lebih dari setengah margin kemenangan. Ini bukan fluktuasi acak. Sepanjang seri ini, Celtics konsisten memaksimalkan ruang tembak dari perimeter, dan PHI belum punya jawaban.\n\nPerbedaan rebound juga mencolok: 51-30 untuk Boston. PHI memang lebih baik di fast-break points (14 vs 5) dan free throw percentage (88% vs 71%), tapi angka-angka itu tidak cukup menutup celah di kategori yang jauh lebih menentukan. Ketika tim kalah rebound separah itu, biasanya memang tidak ada path to win yang realistis.\n\n---\n\n## Momentum Terbalik Sejak Kuarter Pertama\n\nLaga sempat ketat di awal. Embiid membuka skor dengan running dunk, PHI sempat menyentuh keunggulan tipis. George mencetak tiga poin dari sudut untuk bawa PHI unggul 13-12 di Q1. Satu momen itu menjadi jawaban langsung dari Pritchard, step back three-pointer dari 27 kaki, 15-13 untuk BOS.\n\nMomentum tidak pernah kembali ke Philadelphia setelah itu. BOS membangun jarak kuarter demi kuarter, dan saat garbage time datang, selisih 32 poin sudah tidak bisa dikoreksi.\n\n---\n\n## Satu Laga Lagi\n\nBOS unggul 3-1. Game 5 dimainkan di kandang Celtics, TD Garden, closeout game di depan sendiri. Belum ada jadwal resmi yang masuk ke sistem, tapi secara format playoff, BOS punya dua kesempatan tersisa untuk tutup seri: satu di rumah, satu lagi di Philadelphia jika diperlukan.\n\nPHI butuh tiga kemenangan beruntun untuk balik. Dengan disparitas three-point shooting dan rebounding yang terlihat malam ini, skenario itu terasa berat.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401869406",
+    "home_team": "Philadelphia 76ers",
+    "home_abbr": "PHI",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 96,
+    "away_score": 128,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-04-26T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Round 1",
+    "series_summary": "BOS leads series 3-1",
+    "game_number": 4,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021303,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has strong fundamentals (specific stats, clean structure) but tense overmarking, translated-English patterns, and one training-inference overstep (Game 5 location) push it below pass threshold. Primary fixes: strip unnecessary past-tense markers, rephrase relative clauses, remove speculative venue details, tighten academic connectors.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Tatum bermain selama 35 menit sebagai starter dan mengakhiri laga dengan 30 poin",
+          "fix": "Tatum main 35 menit sebagai starter, tutup laga dengan 30 poin..."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "triple-double yang menegaskan ia bukan hanya scorer di sini, tapi penggerak serangan",
+          "fix": "Triple-double yang membuktikan Tatum bukan hanya scorer, tapi maestro serangan BOS."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "angka-angka bagus di atas kertas, tapi tim di sekitarnya tidak mendukung",
+          "fix": "Keep; no repeat violation. But 'di atas kertas' is slightly formal. Better: '26 poin solid, tapi skuad sekitarnya tidak imbang.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Masalahnya, dua nama terbaik PHI berhadapan dengan mesin kolektif Boston yang malam ini berjalan di level berbeda",
+          "fix": "Intinya, dua bintang PHI hadapi mesin kolektif BOS yang jauh lebih mulus malam ini."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu statistik menjelaskan segalanya: Boston 24-53 dari tiga poin",
+          "fix": "Delete opener. Start: 'Three-point shooting memutus seri: Boston 24-53 (45%), Philly 9-30 (30%).'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 5 dimainkan di kandang Celtics, TD Garden, closeout game di depan sendiri",
+          "fix": "Stick to series state: 'BOS lead 3-1, tinggal satu kemenangan untuk advance.' Delete TD Garden reference."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Belum ada jadwal resmi yang masuk ke sistem",
+          "fix": "Delete this sentence. Jump to: 'BOS punya kesempatan closeout di kandang; PHI butuh tiga menang beruntun.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Momentum tidak pernah kembali ke Philadelphia setelah itu",
+          "fix": "Concrete: 'BOS buka 20-poin lead di Q2 dan tidak pernah terkejar.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x639a65b3d42c5680",
+    "published_at": "2026-04-27T16:20:55+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

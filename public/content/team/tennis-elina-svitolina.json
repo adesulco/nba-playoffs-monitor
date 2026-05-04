@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "tennis-elina-svitolina",
+  "title": "Profil Elina Svitolina (WTA) — Peringkat 7",
+  "description": "Profil petenis Elina Svitolina (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Elina Svitolina: Petenis Ukraina yang Kukuh di Jajaran Elite WTA\n\nElina Svitolina, petenis Ukraina kelahiran 12 September 1994, saat ini menempati peringkat 7 WTA dengan 3.910 poin per 16 April 2026. Lahir di Odesa, Ukraine, pemain tangan kanan ini menjadi salah satu petenis top 10 dunia yang paling konsisten di sirkuit WTA musim ini.\n\n## Identitas\n\nSvitolina kini berusia 31 tahun, pengalaman panjang yang terbaca dari cara ia mengelola pertandingan. Tinggi 175 cm dengan berat 60 kg, posturnya ideal untuk permainan baseline yang menjadi andalannya di lapangan. Debut profesionalnya di sirkuit WTA dimulai pada 2008, artinya ia sudah menjalani hampir dua dekade di level tertinggi tenis putri dunia, sebuah ketahanan yang tidak dimiliki banyak petenis.\n\nSebagai petenis Ukraina, Svitolina membawa beban lebih dari sekadar raket ke setiap pertandingan. Tapi soal itu bukan urusan data ranking.\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Svitolina bertengger di peringkat 7 WTA dengan 3.910 poin. Posisi ini stabil, peringkat sebelumnya juga 7, artinya tidak ada pergerakan naik maupun turun. Bagi petenis top 10, stabilitas seperti ini bisa dibaca dua cara: konsistensi solid yang tidak tergoyahkan, atau stagnasi yang belum ketemu momentum untuk naik.\n\nDengan 3.910 poin di kantong, jarak ke peringkat 6 ke atas maupun tekanan dari peringkat 8 ke bawah perlu dicermati di pekan-pekan mendatang. Tapi sampai data ini ditulis, posisi Svitolina di elite WTA tidak tergoyahkan.\n\n## Outlook\n\nBerada di peringkat 7 dunia di usia 31 tahun bukan hal yang datang kebetulan. Svitolina masuk kategori petenis yang kariernya tidak sedang naik atau turun dramatis, ia sedang bertahan di zona yang sangat sulit dijangkau kebanyakan petenis profesional. Top 10 WTA adalah tempat di mana margin kesalahan hampir tidak ada.\n\nMusim 2026 masih berjalan. Dengan poin sebesar 3.910 dan posisi stabil, Svitolina punya fondasi kuat untuk mempertahankan, atau menembus lebih jauh, posisinya di paruh kedua kalender WTA.\n\n*Profil ini mencerminkan data per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "1797",
+    "athlete_name": "Elina Svitolina",
+    "current_rank": 7,
+    "previous_rank": 7,
+    "points": 3910.0,
+    "trend": "-",
+    "birthplace": "Odesa, Ukraine",
+    "dob": "1994-09-12",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.014752,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fails on academic drift (philosophy aside), training-data inference (baseline style), and multiple soft issues (hedging, repetition, filler). Rewrites § 2, 3, and outlook with concrete facts only. Current score too low for publish.",
+      "issues": [
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Sebagai petenis Ukraina, Svitolina membawa beban lebih dari sekadar raket ke setiap pertandingan. Tapi soal itu bukan urusan data ranking.",
+          "fix": "Delete. If nationality context matters, integrate into actual career narrative, not philosophical asides."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "ia sudah menjalani hampir dua dekade di level tertinggi tenis putri dunia",
+          "fix": "ia menjalani hampir dua dekade di level tertinggi tenis putri dunia"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Posisi ini stabil, peringkat sebelumnya juga 7, artinya tidak ada pergerakan naik maupun turun.",
+          "fix": "Stabil — peringkat sebelumnya juga 7. Tidak ada pergerakan naik atau turun."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Posisi ini stabil, peringkat sebelumnya juga 7... posisi Svitolina di elite WTA tidak tergoyahkan.",
+          "fix": "First mention: 'Stabil'. Later: 'posisi Svitolina di elite WTA solid' or rephrase entirely."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Bagi petenis top 10, stabilitas seperti ini bisa dibaca dua cara: konsistensi solid yang tidak tergoyahkan, atau stagnasi",
+          "fix": "Remove hedge. Assert: 'Stabilitas bisa jadi konsistensi solid, atau tanda Svitolina belum cari momentum.' Or just pick one."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Musim 2026 masih berjalan. Dengan poin sebesar 3.910 dan posisi stabil, Svitolina punya fondasi kuat untuk mempertahankan, atau menembus lebih jauh",
+          "fix": "Name a specific tournament, deadline, or rival threat. Give reason to care about 'mempertahankan'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "posturnya ideal untuk permainan baseline yang menjadi andalannya di lapangan",
+          "fix": "Remove style claims. Stick to: height, weight, age, ranking, points, career start date."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x728c2921dcadf7c0",
+    "published_at": "2026-04-28T12:09:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

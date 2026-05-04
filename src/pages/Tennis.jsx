@@ -1,14 +1,26 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
-import TopBar from '../components/TopBar.jsx';
-import TennisPlayerPicker from '../components/TennisPlayerPicker.jsx';
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
+// v0.53.1 — Phase C redesign: 3-up Newsroom Slice. Gated UI.v2.
+import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
+import { UI } from '../lib/flags.js';
+// v0.17.0 Phase 2 Sprint B — shared chrome row.
+import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+import HubPicker from '../components/v2/HubPicker.jsx';
+import { useQueryParamSync } from '../hooks/useQueryParamSync.js';
+// v0.18.0 — TennisPlayerPicker is now lazy-loaded via <HubPicker
+// kind="tennis" />, so the direct import is gone from this file.
 import {
   TENNIS_STARS_BY_SLUG,
   INDONESIAN_PLAYERS_BY_SLUG,
 } from '../lib/sports/tennis/constants.js';
 import SEO from '../components/SEO.jsx';
+import SEOContent from '../components/SEOContent.jsx';
+import CopyLinkButton from '../components/CopyLinkButton.jsx';
+import { readableOnDark } from '../lib/contrast.js';
 import ContactBar from '../components/ContactBar.jsx';
 import Chip from '../components/Chip.jsx';
 import TournamentCard from '../components/tennis/TournamentCard.jsx';
@@ -31,6 +43,10 @@ import {
 import adapter from '../lib/sports/tennis/adapter.js';
 
 const TENNIS_ACCENT = '#D4A13A';
+// v0.11.26 NEW-4 — Tennis sponsor brown is 2.34:1 on white, ~3.8:1 on
+// dark navy. readableOnDark mixes toward white for the dark-mode hub.
+// Decorative chrome (left-borders, accent bars) keeps the original.
+const TENNIS_ACCENT_TEXT = readableOnDark(TENNIS_ACCENT);
 
 // Tier color keys — used by the tournament toggle ribbon to give each
 // concurrent tournament a visual identity at a glance.
@@ -85,9 +101,23 @@ function ActiveTournamentsRibbon({ lang }) {
       borderLeft: `3px solid ${TENNIS_ACCENT}`,
       borderRadius: 3,
       padding: '12px 14px',
+      // v0.11.28 — viewport-fit: ribbon contains horizontally-scrollable
+      // tournament cards. minWidth:0 + overflow:hidden lets it shrink
+      // to grid track instead of pushing its parent past dashboard-wrap.
+      minWidth: 0,
+      overflow: 'hidden',
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10, gap: 8, flexWrap: 'wrap' }}>
-        <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600, margin: 0, color: C.text, letterSpacing: -0.2 }}>
+        {/* v0.11.12 — was 14px which rendered smaller than the h3
+            TournamentCard titles (16px) → broken heading hierarchy.
+            Bumped to 15px to match EPL/F1 panel-h2 baseline.
+            .tick-live applied when any tournament is currently in
+            progress so the amber signature device matches NBA + EPL
+            live headers. */}
+        <h2
+          className={`panel-title-mono${active.some((t) => t.status === 'live') ? ' tick-live' : ''}`}
+          style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, margin: 0, color: C.text, letterSpacing: -0.2 }}
+        >
           {lang === 'id' ? 'Turnamen aktif & minggu depan' : 'Active & upcoming tournaments'}
         </h2>
         <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
@@ -192,7 +222,7 @@ function TennisContextStrip({ accentColor, favPlayer, lang }) {
   );
 
   return (
-    <section style={{
+    <section className="stat-strip-2col" style={{
       background: C.panel,
       border: `1px solid ${C.line}`,
       borderLeft: `3px solid ${accentColor}`,
@@ -375,7 +405,7 @@ function TennisPeluangJuara({ slam, accentColor, lang }) {
         display: 'flex', justifyContent: 'space-between',
         alignItems: 'baseline', marginBottom: 10,
       }}>
-        <h2 style={{
+        <h2 className="panel-title-mono" style={{
           fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
           margin: 0, color: C.text, letterSpacing: -0.2,
         }}>
@@ -446,9 +476,17 @@ function TennisSlamColumn({ title, accent, odds, lang }) {
           return (
             <div
               key={o.name}
+              className="tennis-odds-row"
               style={{
                 display: 'grid',
-                gridTemplateColumns: '130px 1fr 42px 32px',
+                // v0.11.16 — mobile fix. Was minmax(84, 1.4fr) 1fr 40 30 which
+                // squeezed "Alexander Zverev"-length names to near-ellipsis
+                // at 375 px. Bumped name ratio to 2fr + floor to 110 px,
+                // bar column's floor raised to 48 px. The .tennis-odds-row
+                // class + media query at ≤480 hides the progress bar entirely
+                // so the name + pct + delta share the whole width without
+                // squeezing.
+                gridTemplateColumns: 'minmax(110px, 2fr) minmax(48px, 1fr) 40px 30px',
                 gap: 8,
                 alignItems: 'center',
                 padding: '6px 8px',
@@ -469,7 +507,7 @@ function TennisSlamColumn({ title, accent, odds, lang }) {
                   </span>
                 )}
               </div>
-              <div style={{ height: 7, background: C.panel2, borderRadius: 2, overflow: 'hidden' }}>
+              <div className="tennis-odds-bar" style={{ height: 7, background: C.panel2, borderRadius: 2, overflow: 'hidden' }}>
                 <div style={{
                   width: `${pct}%`, height: '100%',
                   background: playerAccent,
@@ -682,7 +720,7 @@ function RankingsBlock({ tour, ranks, loading, lang }) {
           style={{
             fontFamily: '"JetBrains Mono", monospace',
             fontSize: 9.5,
-            color: TENNIS_ACCENT,
+            color: TENNIS_ACCENT_TEXT,
             textDecoration: 'none',
             letterSpacing: 0.5,
             fontWeight: 700,
@@ -866,7 +904,9 @@ function TennisNewsList({ lang }) {
 // ─── Page shell ─────────────────────────────────────────────────────────────
 export default function Tennis() {
   const location = useLocation();
-  const { lang, selectedTennisPlayer, setSelectedTennisPlayer } = useApp();
+  const { lang, selectedTennisPlayer, setSelectedTennisPlayer, t } = useApp();
+  // v0.11.8 — URL ↔ player sync. ?player=alcaraz restores the pick.
+  useQueryParamSync('player', selectedTennisPlayer, setSelectedTennisPlayer);
   const meta = getHubMeta();
 
   const favPlayer = selectedTennisPlayer
@@ -885,6 +925,49 @@ export default function Tennis() {
     return map;
   }, []);
 
+  // v0.17.0 Phase 2 Sprint B — push <HubStatusStrip> into the V2TopBar
+  // subrow. Replaces both the previous picker-only subrow AND the
+  // inline 200px hero (eyebrow + 36px h1 + LIVE chip + CopyLinkButton).
+  // SEO h1 rides as `.sr-only` inside the strip.
+  useEffect(() => {
+    setTopbarSubrow(
+      <HubStatusStrip
+        srOnlyTitle={favPlayer
+          ? (lang === 'id'
+              ? `${favPlayer.name || favPlayer.displayName} · Tenis ${SEASON}`
+              : `${favPlayer.name || favPlayer.displayName} · Tennis ${SEASON}`)
+          : (lang === 'id' ? `Tenis ${SEASON}` : `Tennis ${SEASON}`)}
+        accent={favPlayer ? accentColor : undefined}
+        picker={
+          <HubPicker
+            kind="tennis"
+            selectedKey={selectedTennisPlayer}
+            onSelect={setSelectedTennisPlayer}
+            lang={lang}
+          />
+        }
+        live={
+          <span style={{ textTransform: 'uppercase' }}>
+            ATP · WTA TOUR · {t('season')} {SEASON}
+          </span>
+        }
+        actions={
+          <HubActionRow
+            url={favPlayer ? `/tennis?player=${selectedTennisPlayer}` : '/tennis'}
+            shareText={favPlayer
+              ? (lang === 'id'
+                  ? `${favPlayer.name || favPlayer.displayName} di hub Tenis ${SEASON} · gibol.co 🎾`
+                  : `${favPlayer.name || favPlayer.displayName} on the Tennis ${SEASON} hub · gibol.co 🎾`)
+              : (lang === 'id' ? `Tenis ${SEASON} di gibol.co — Grand Slam, Masters, Finals 🎾` : `Tennis ${SEASON} on gibol.co — Grand Slams, Masters, Finals 🎾`)}
+            accent={TENNIS_ACCENT}
+            analyticsEvent="tennis_share_hub"
+          />
+        }
+      />
+    );
+    return () => setTopbarSubrow(null);
+  }, [selectedTennisPlayer, setSelectedTennisPlayer, lang, favPlayer, accentColor, t]);
+
   return (
     <div
       style={{
@@ -894,96 +977,56 @@ export default function Tennis() {
         fontFamily: '"JetBrains Mono", monospace',
       }}
     >
+      {/* v0.11.23 GIB-018 — when a player is picked, lead the title (and
+          og:title) with that name so a deep-link share unfurls topical.
+          og:url + canonical also reflect the ?player= slug so the share
+          URL matches what the user is actually viewing on /tennis. */}
       <SEO
-        title={meta.title}
-        description={meta.description}
-        path={location.pathname}
+        title={favPlayer
+          ? (lang === 'id'
+              ? `${favPlayer.name || favPlayer.displayName} · Tenis ${SEASON} | gibol.co`
+              : `${favPlayer.name || favPlayer.displayName} · Tennis ${SEASON} | gibol.co`)
+          : meta.title}
+        description={favPlayer
+          ? (lang === 'id'
+              ? `Halaman ${favPlayer.name || favPlayer.displayName} di hub Tenis ${SEASON} — Grand Slam, Masters 1000, race ke ATP/WTA Finals. ${meta.description || ''}`
+              : `${favPlayer.name || favPlayer.displayName} view on the Tennis ${SEASON} hub — Grand Slams, Masters 1000s, the race to the ATP/WTA Finals. ${meta.description || ''}`)
+          : meta.description}
+        path={favPlayer ? `${location.pathname}?player=${selectedTennisPlayer}` : location.pathname}
+        image="https://www.gibol.co/og/hub-tennis.png"
         lang={lang}
         keywords={meta.keywords}
         jsonLd={meta.jsonLd}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={accentColor}>
-          <TennisPlayerPicker
-            selectedSlug={selectedTennisPlayer}
-            onSelect={setSelectedTennisPlayer}
-            lang={lang}
-          />
-        </TopBar>
+        {/* v0.17.0 Phase 2 Sprint B — visible 200px hero stripped.
+            Eyebrow + 36px h1 + LIVE chip + CopyLinkButton all moved
+            into <HubStatusStrip> in the V2TopBar subrow above. SEO h1
+            rides as `.sr-only`. The active-tournaments ribbon below
+            now sits ~140px closer to the top of the viewport. */}
 
-        {/* Hero */}
-        <div
-          style={{
-            padding: '20px 20px 14px',
-            background: `linear-gradient(135deg, ${accentColor}14 0%, transparent 70%)`,
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              gap: 12,
-              marginBottom: 6,
-            }}
-          >
-            <div
-              style={{
-                fontSize: 9,
-                letterSpacing: 1.5,
-                color: TENNIS_ACCENT,
-                fontWeight: 700,
-                paddingTop: 4,
-              }}
-            >
-              ATP · WTA TOUR · SEASON {SEASON}
-            </div>
-            <Chip variant="live" sportId="tennis" accent={TENNIS_ACCENT} label="LIVE" />
-          </div>
-          <div
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 36,
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: '-0.025em',
-              color: C.text,
-              marginBottom: 8,
-              textWrap: 'balance',
-            }}
-          >
-            {lang === 'id' ? `Tenis ${SEASON}` : `Tennis ${SEASON}`}
-          </div>
-          <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 720 }}>
-            {lang === 'id'
-              ? '4 Grand Slam · Masters 1000 · WTA 1000 · Year-End Finals. Jadwal WIB, undian live, peringkat ATP + WTA, dan sorotan petenis Indonesia — Aldila Sutjiadi, Priska Nugroho, Christopher Rungkat.'
-              : '4 Grand Slams · Masters 1000 · WTA 1000 · Year-End Finals. WIB schedule, live draws, ATP + WTA rankings, and Indonesian player spotlight — Aldila Sutjiadi, Priska Nugroho, Christopher Rungkat.'}
-          </div>
-        </div>
+        <div style={{ padding: '8px 24px 20px', display: 'grid', gap: 16, minWidth: 0 }}>
+          {/* v0.11.25 layout — Active tournaments ribbon (live + next-14-day
+              tournaments) is the Tennis hero, followed by the live
+              ticker. Context strip + champion odds demoted below. */}
 
-        <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 16 }}>
-          {/* Active tournaments ribbon — shows in-progress + upcoming-
-              in-14-days events so viewers can jump between concurrent
-              tours (e.g. ATP 500 + WTA 1000 + Masters in the same week). */}
+          {/* ── Row 1 — Active tournaments ribbon (the hero). ── */}
           <ActiveTournamentsRibbon lang={lang} />
 
-          {/* Context strip — 4 dashboard stats */}
+          {/* ── Row 2 — Live ticker (in-flight matches across active
+              tournaments). ── */}
+          <LiveTicker lang={lang} />
+
+          {/* ── Row 3 — Context strip: 4 dashboard stats. Demoted from
+              above the ribbon. ── */}
           <TennisContextStrip accentColor={accentColor} favPlayer={favPlayer} lang={lang} />
 
-          {/* Peluang juara — top 5 ATP + WTA champion odds for next slam */}
+          {/* ── Row 4 — Peluang juara, top 5 ATP + WTA. ── */}
           <TennisPeluangJuara slam={nextSlam()} accentColor={accentColor} lang={lang} />
 
-          {/* Countdown to next slam + live ticker */}
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(240px, 340px) 1fr',
-              gap: 14,
-            }}
-          >
-            <CountdownToSlam variant="full" />
-            <LiveTicker lang={lang} />
-          </div>
+          {/* ── Row 5 — Countdown to next Grand Slam (LiveTicker
+              already promoted to Row 2). ── */}
+          <CountdownToSlam variant="full" />
 
           {/* Tournaments grid, grouped by tier */}
           {TIER_ORDER.map((tier) => (
@@ -1014,6 +1057,20 @@ export default function Tennis() {
           <TennisKeyAccounts favPlayer={favPlayer} accentColor={accentColor} lang={lang} />
         </div>
 
+        {/* v0.53.1 — Phase C redesign: NewsroomSlice. UI.v2-gated. */}
+        {UI.v2 && (
+          <div style={{ padding: '0 16px 24px' }}>
+            <NewsroomSlice
+              sport="tennis"
+              newsroomLabel="TENNIS NEWSROOM"
+              moreHref="/tennis#newsroom"
+            />
+          </div>
+        )}
+
+        {/* v0.11.25 — Tennis SEO/FAQ block at the bottom (NBA pattern). */}
+        <SEOContent lang={lang} sport="tennis" />
+
         {/* Disclaimer */}
         <div
           style={{
@@ -1029,8 +1086,9 @@ export default function Tennis() {
             : 'Gibol is an independent Indonesian sports media site. Not affiliated with ATP, WTA, ITF, or any tournament. Ranking + live score data via ESPN. News via detikSport, CNN Indonesia, Antara, BBC Sport, Reuters, Tennis.com.'}
         </div>
 
-        {/* Footer */}
-        <div
+        {/* Footer — v0.11.20 GIB-014 wraps in <footer> landmark */}
+        <footer
+          role="contentinfo"
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -1051,7 +1109,7 @@ export default function Tennis() {
               {lang === 'id' ? 'semua dashboard' : 'all dashboards'}
             </a>
           </div>
-        </div>
+        </footer>
       </div>
     </div>
   );

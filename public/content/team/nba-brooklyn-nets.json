@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-brooklyn-nets",
+  "title": "Profil Brooklyn Nets: Atlantic, Eastern Conference (2025-26)",
+  "description": "Profil Brooklyn Nets — franchise NBA dari Brooklyn di Atlantic Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Profil Tim NBA: Brooklyn Nets, Musim 2025-26\n\nBrooklyn Nets adalah franchise NBA yang berkandang di Barclays Center, Brooklyn, dan main di Atlantic Division Wilayah Timur di bawah arahan head coach Jordi Fernandez. Per 28 April 2026, BKN menutup musim reguler 2025-26 dengan rekor 20-62, salah satu catatan terburuk di liga musim ini, dengan seed 13 di Eastern Conference.\n\n---\n\n## Identitas dan Posisi Liga\n\nDi Atlantic Division, Brooklyn finis di posisi paling bawah, peringkat 5 dari 5 tim, di belakang Boston Celtics, Toronto Raptors, Philadelphia 76ers, dan New York Knicks. Di level conference, seed 13 menempatkan mereka di zona bawah Eastern Conference, jauh dari garis playoff. Ini bukan musim yang dimaksudkan untuk bersaing, Jordi Fernandez, head coach asal Spanyol yang mengambil alih tongkat kepelatihan dalam situasi rebuild, sedang membangun fondasi sambil mengevaluasi roster yang didominasi pemain muda dan role player.\n\n---\n\n## Performa Musim Ini\n\nAngka-angkanya bicara terang: 20-62, win rate 24,4%, dan point differential negatif 10 poin per laga. BKN rata-rata mencetak 105,9 PPG, di antara yang terendah di liga, sementara kebobolan 115,9 PPG dari lawan. Selisih tersebut konsisten di home maupun away: 12-29 di Barclays Center dan 8-33 di kandang lawan.\n\nScoring output yang rendah mencerminkan ketiadaan pemain yang bisa menciptakan lemparan sendiri secara konsisten. Di sisi lain, pertahanan yang bocor menunjukkan betapa masih panjangnya jalan di sisi rotasi defensif. Tapi dalam konteks rebuild, statistik seperti ini tidak selalu bencana, justru ini tiket ke posisi tinggi di NBA Draft Lottery 2026, yang jadi salah satu aset terpenting BKN untuk musim depan.\n\n---\n\n## Roster dan Pemain Kunci\n\nDengan banyak wajah muda di roster, Brooklyn memiliki beberapa nama yang menarik untuk dicermati sepanjang musim ini.\n\n**Nic Claxton (#33, center, 27 tahun, 6 tahun pengalaman)** adalah pemain dengan pengalaman terlama di roster inti BKN. Claxton jadi anchor di paint, satu-satunya pemain dengan track record bertahan di level NBA yang cukup panjang untuk jadi patokan rotasi Fernandez.\n\n**Michael Porter Jr. (#17, forward, 27 tahun, 6 tahun pengalaman)** hadir sebagai salah satu veteran di skuad. Porter dikenal sebagai shooter dengan length yang mengancam, dan kehadirannya memberi referensi buat pemain-pemain muda di sekitarnya soal bagaimana bergerak di level NBA.\n\n**Egor Demin (#8, guard, 20 tahun, rookie)** dan **Ben Saraf (#77, guard, 20 tahun, rookie)** adalah dua nama yang mewakili orientasi BKN ke depan. Keduanya masuk roster di musim 2025-26 tanpa pengalaman NBA sebelumnya, proses pembelajaran yang mahal tapi perlu jika memang arahnya adalah rebuild jangka panjang. Di sisi yang sama, **Drake Powell (#4, guard, 20 tahun)** juga menjalani musim rookie-nya, memperkuat narasi bahwa Brooklyn sedang invest ke generasi berikutnya.\n\n**Terance Mann (#14, guard, 29 tahun, 6 tahun pengalaman)** dan **Day'Ron Sharpe (#20, center, 24 tahun, 4 tahun pengalaman)** melengkapi lapisan middle experience yang jadi jembatan antara para rookie dengan tuntutan permainan NBA sehari-hari.\n\n---\n\n## Outlook\n\nMusim 2025-26 bukan musim Brooklyn Nets untuk bersaing. Rekor 20-62 adalah konsekuensi dari pilihan sadar: memainkan pemain muda, membangun sistem, dan mengumpulkan draft capital. Jordi Fernandez mendapat beban yang tidak ringan, memimpin tim di fase paling sulit siklus NBA, di mana sabar adalah strategi, bukan kelemahan.\n\nYang menentukan apakah rebuild ini berhasil bukan catatan musim ini, tapi seberapa cepat roster muda seperti Demin, Powell, dan Saraf berkembang, dan seberapa baik BKN memanfaatkan posisi lottery draft yang sudah hampir pasti mereka dapatkan.\n\n*Profil ini mencerminkan data per 28 April 2026, akhir musim reguler NBA 2025-26.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "17",
+    "team_name": "Brooklyn Nets",
+    "team_abbr": "BKN",
+    "team_location": "Brooklyn",
+    "conference": "Eastern Conference",
+    "division": "Atlantic",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.02181,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail. Three high-severity training_inference violations (coach nationality/biography, player skill description not in data, stadium name). Article infers player profiles and coach backstory beyond the input data block. Rewrite to stick strictly to roster facts, record, and standings from input; remove biographical inference about Porter's shooting style and Fernandez's background.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jordi Fernandez, head coach asal Spanyol yang mengambil alih tongkat kepelatihan",
+          "fix": "Remove 'asal Spanyol yang mengambil alih tongkat kepelatihan'; just say 'head coach Jordi Fernandez'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Michael Porter Jr. (#17, forward, 27 tahun, 6 tahun pengalaman) hadir sebagai salah satu veteran di skuad. Porter dikenal sebagai shooter dengan length",
+          "fix": "Remove skill description. State only: 'Michael Porter Jr. (#17, forward, 27 tahun, 6 tahun pengalaman)' or cite actual stats if available."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Barclays Center, Brooklyn",
+          "fix": "Change to 'Brooklyn Nets' without stadium name, or cite it only if in input data."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Scoring output yang rendah mencerminkan ketiadaan pemain yang bisa menciptakan lemparan sendiri",
+          "fix": "Use: 'Scoring rendah karena kurangnya pemain yang bisa buat bucket sendiri' or simpler phrasing."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Nic Claxton (#33, center, 27 tahun, 6 tahun pengalaman) adalah pemain dengan pengalaman terlama",
+          "fix": "Change to: 'Nic Claxton (#33, center, 27 tahun, 6 pengalaman) jadi pemain dengan pengalaman terlama' or drop 'adalah'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Keduanya masuk roster di musim 2025-26 tanpa pengalaman NBA sebelumnya, proses pembelajaran yang mahal tapi perlu",
+          "fix": "Simplify: 'Keduanya rookie. Musim pertama di NBA, tapi ini bagian dari rebuild.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Di sisi yang sama, **Drake Powell (#4, guard, 20 tahun)** juga menjalani musim rookie-nya",
+          "fix": "Use: 'Drake Powell (#4, guard, 20 tahun) sama-sama rookie, memperkuat...' or just: 'Drake Powell (#4, guard, 20 tahun) juga rookie.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Per 28 April 2026, BKN menutup musim reguler 2025-26 dengan rekor 20-62",
+          "fix": "Correct to: 'Per 3 Mei 2026' or check actual data source."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0917ea8e041ea7e0",
+    "published_at": "2026-04-28T10:24:50+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

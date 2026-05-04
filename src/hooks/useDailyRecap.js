@@ -413,34 +413,71 @@ export function useDailyRecap(dateIso, lang = 'id') {
           : 'A lopsided win from the opening tip.';
       }
 
+      // v0.12.2 fix — top performer's team determines the framing.
+      // Bug seen 2026-04-25 on /recap: "T. Maxey drops 31 to lift BOS
+      // past PHI 108-100" — Maxey is a PHI player, scored 31 in PHI's
+      // LOSS to BOS. The headline-composer assumed `top` always played
+      // for the winner. Now we branch on `top.teamAbbr` and pick the
+      // right framing for win-side vs loss-side performances.
+      const topOnWinner = top && top.teamAbbr === winnerAbbr;
+      const topOnLoser = top && top.teamAbbr === loserAbbr;
+
       if (top && (top.pts || 0) >= 40) {
         score += 30; tag = `${top.pts} ${lang === 'id' ? 'POIN' : 'POINTS'}`;
-        headline = lang === 'id'
-          ? `${top.short || top.name} meledak ${top.pts} poin, ${winnerAbbr} menang ${winScore}-${loseScore}`
-          : `${top.short || top.name} erupts for ${top.pts}, ${winnerAbbr} beat ${loserAbbr} ${winScore}-${loseScore}`;
-        caption = lang === 'id'
-          ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — pertunjukan individu malam ini.`
-          : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — the night's marquee performance.`;
+        if (topOnWinner) {
+          headline = lang === 'id'
+            ? `${top.short || top.name} meledak ${top.pts} poin, ${winnerAbbr} menang ${winScore}-${loseScore}`
+            : `${top.short || top.name} erupts for ${top.pts}, ${winnerAbbr} beat ${loserAbbr} ${winScore}-${loseScore}`;
+          caption = lang === 'id'
+            ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — pertunjukan individu malam ini.`
+            : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — the night's marquee performance.`;
+        } else {
+          // Top scorer is on the LOSING team — frame as "in a loss"
+          headline = lang === 'id'
+            ? `${top.short || top.name} cetak ${top.pts} poin meski ${loserAbbr} kalah dari ${winnerAbbr} ${loseScore}-${winScore}`
+            : `${top.short || top.name} drops ${top.pts} in ${loserAbbr}'s loss to ${winnerAbbr} ${winScore}-${loseScore}`;
+          caption = lang === 'id'
+            ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — performa individual berkilau, hasil tetap kalah.`
+            : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — a marquee individual night that wasn't enough.`;
+        }
       } else if (top && (top.pts || 0) >= 30 && margin <= 8) {
         score += 20; tag = `${top.pts} ${lang === 'id' ? 'POIN' : 'POINTS'}`;
-        headline = lang === 'id'
-          ? `${top.short || top.name} ${top.pts} poin bawa ${winnerAbbr} menang ${winScore}-${loseScore}`
-          : `${top.short || top.name} drops ${top.pts} to lift ${winnerAbbr} past ${loserAbbr} ${winScore}-${loseScore}`;
-        caption = lang === 'id'
-          ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — clutch sampai detik akhir.`
-          : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — clutch down the stretch.`;
+        if (topOnWinner) {
+          headline = lang === 'id'
+            ? `${top.short || top.name} ${top.pts} poin bawa ${winnerAbbr} menang ${winScore}-${loseScore}`
+            : `${top.short || top.name} drops ${top.pts} to lift ${winnerAbbr} past ${loserAbbr} ${winScore}-${loseScore}`;
+          caption = lang === 'id'
+            ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — clutch sampai detik akhir.`
+            : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — clutch down the stretch.`;
+        } else {
+          headline = lang === 'id'
+            ? `${top.short || top.name} ${top.pts} poin, tapi ${loserAbbr} kalah tipis dari ${winnerAbbr} ${loseScore}-${winScore}`
+            : `${top.short || top.name} drops ${top.pts} but ${loserAbbr} fall to ${winnerAbbr} ${winScore}-${loseScore}`;
+          caption = lang === 'id'
+            ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — laga ketat, hasil tetap kalah.`
+            : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — kept it close but couldn't get over the line.`;
+        }
       }
 
       if (top) {
         const doubles = [top.pts >= 10, top.reb >= 10, top.ast >= 10].filter(Boolean).length;
         if (doubles >= 3) {
           score += 35; tag = 'TRIPLE-DOUBLE';
-          headline = lang === 'id'
-            ? `${top.short || top.name} cetak triple-double, ${winnerAbbr} menang ${winScore}-${loseScore}`
-            : `${top.short || top.name} records a triple-double as ${winnerAbbr} beat ${loserAbbr} ${winScore}-${loseScore}`;
-          caption = lang === 'id'
-            ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — catatan bersejarah playoff.`
-            : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — a playoff triple-double.`;
+          if (topOnWinner) {
+            headline = lang === 'id'
+              ? `${top.short || top.name} cetak triple-double, ${winnerAbbr} menang ${winScore}-${loseScore}`
+              : `${top.short || top.name} records a triple-double as ${winnerAbbr} beat ${loserAbbr} ${winScore}-${loseScore}`;
+            caption = lang === 'id'
+              ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — catatan bersejarah playoff.`
+              : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — a playoff triple-double.`;
+          } else {
+            headline = lang === 'id'
+              ? `${top.short || top.name} cetak triple-double meski ${loserAbbr} kalah dari ${winnerAbbr} ${loseScore}-${winScore}`
+              : `${top.short || top.name} records a triple-double in ${loserAbbr}'s loss to ${winnerAbbr} ${winScore}-${loseScore}`;
+            caption = lang === 'id'
+              ? `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — triple-double dalam laga yang kalah.`
+              : `${top.pts} PTS · ${top.reb} REB · ${top.ast} AST — a triple-double on the losing side.`;
+          }
         }
       }
 

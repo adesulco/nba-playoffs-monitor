@@ -1,0 +1,73 @@
+{
+  "type": "team",
+  "slug": "epl-liverpool",
+  "title": "Profil Liverpool: Premier League (2025-26)",
+  "description": "Profil Liverpool — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Liverpool FC: Penghuni Lama Empat Besar yang Masih Berjuang di Pengujung Musim\n\nLiverpool FC adalah klub asal Inggris yang berkompetisi di Liga Inggris (Premier League), berkandang di Anfield, Liverpool, dengan kapasitas 61.276 penonton. Per 28 April 2026, Liverpool menempati posisi 4 klasemen Liga Inggris 2025-26 dengan 58 poin dari 34 laga, selisih gol +13. Posisi itu cukup untuk mengamankan tiket Liga Champions musim depan, tapi tidak nyaman, tekanan dari bawah masih ada, dan sisa laga menentukan.\n\n---\n\n## Identitas Klub\n\nLiverpool berdiri pada 1892 dan sejak itu menjadi salah satu nama paling besar dalam sejarah sepak bola Inggris. Markas mereka, Anfield, adalah salah satu stadion paling ikonik di Premier League, kapasitas 61.276 kursi, dan reputasi sebagai tempat yang bisa mengubah jalannya pertandingan.\n\nSebagai klub yang sudah lebih dari satu abad menemani persepakbolaan Inggris, Liverpool hampir selalu jadi kontender serius di Liga Inggris. Musim 2025-26 bukan narasi dominasi, tapi narasi bertahan di jalur yang benar.\n\n---\n\n## Performa Musim 2025-26\n\n34 laga, 17 menang, 7 seri, 10 kalah. Angka itu jujur, Liverpool musim ini tidak konsisten.\n\nDari sisi serangan, rata-rata 1,7 gol per laga adalah angka yang cukup, bukan luar biasa. Total 57 gol cetak menempatkan mereka sebagai tim produktif, tapi 44 gol kebobolan (rata-rata 1,3 per laga) menunjukkan pertahanan yang bocor lebih dari yang diinginkan. Hanya 10 clean sheet dari 34 laga bicara sendiri, lebih dari sepertiga waktu, lawan selalu bisa membobol gawang mereka.\n\nRekor kandang relatif solid: 10 menang, 4 seri, 3 kalah. Anfield masih jadi benteng yang lumayan. Masalah utama ada di tandang: 7 menang, 3 seri, 7 kalah. Satu dari dua laga away berakhir dengan kekalahan, itulah yang bikin posisi Liverpool tidak lebih tinggi dari peringkat 4.\n\nForm terkini membaca WWLDLWWW, tiga menang beruntun setelah sempat tertatih di tengah, sinyal positif menjelang akhir musim. Liverpool seperti menemukan ritme di saat yang tepat.\n\nSatu catatan yang agak mengganggu: 4 laga tanpa mencetak gol dari 34 pertandingan. Untuk tim dengan ambisi top 4, produktivitas sesekali mati suri seperti ini yang membedakan tim juara dari tim pengikut.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 4 dengan 58 poin dari 34 laga. Status resmi: *Champions League, League phase* musim depan sudah di tangan.\n\nItu kabar baiknya. Liverpool sudah memastikan satu dari empat slot Liga Champions dari Liga Inggris, kompetisi paling bergengsi di level klub Eropa. Buat klub sebesar Liverpool, absen dari Liga Champions bukan sekadar kehilangan prestise, ada implikasi finansial dan daya tarik pemain di baliknya.\n\nTapi posisi 4 juga berarti Liverpool finis di belakang tiga klub lain yang performanya lebih konsisten sepanjang musim. Dengan selisih gol hanya +13 dari 34 laga, tidak ada ruang untuk narasi dominasi. Ini adalah musim yang diselamatkan, bukan musim yang dikuasai.\n\nBeberapa laga tersisa masih ada, dan dengan form WWLDLWWW, tren tiga menang beruntun di ujung, Liverpool setidaknya menutup musim dengan kepala tegak.\n\n---\n\n## Penutup\n\nLiverpool 2025-26 adalah cerita tentang cukup, bukan tentang luar biasa. Tiket Liga Champions sudah aman, Anfield masih jadi benteng yang dihormati lawan, dan form terkini memberi harapan bahwa level terbaik tim ini masih bisa muncul.\n\nYang perlu diperbaiki musim depan jelas: rekor tandang yang terlalu banyak kekalahan, dan pertahanan yang terlalu sering ditembus. Dua masalah itu yang memisahkan Liverpool dari posisi lebih tinggi di klasemen.\n\nData artikel ini mencerminkan posisi dan statistik per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "40",
+    "team_name": "Liverpool",
+    "team_country": "England",
+    "team_founded": 1892,
+    "venue_name": "Anfield",
+    "venue_city": "Liverpool",
+    "venue_capacity": 61276,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.044863,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article passes structure and data accuracy but fails voice discipline. Multiple academic-register hedging phrases ('yang mengganggu', 'itu kabar baiknya', 'yang perlu diperbaiki jelas') read like essay conclusions, not sport journalism. Tense overmarking in '(berdiri 1892)' context and 'Angka itu jujur' translated-English smell push below 70. Regenerate closing two paragraphs with sharper, more direct openers.",
+      "issues": [
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Satu catatan yang agak mengganggu: 4 laga tanpa mencetak gol",
+          "fix": "Just state it: '4 laga tanpa gol dari 34—untuk tim top-4 ambisi, itu masalah.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Sebagai klub yang sudah lebih dari satu abad menemani persepakbolaan Inggris",
+          "fix": "'Selama lebih dari satu abad, Liverpool menemani persepakbolaan Inggris.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka itu jujur, Liverpool musim ini tidak konsisten.",
+          "fix": "'Angka itu mengungkapkan satu hal: Liverpool tidak konsisten musim ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Yang perlu diperbaiki musim depan jelas: rekor tandang...pertahanan",
+          "fix": "Lead with specifics: 'Rekor tandang 7-3-7 dan 44 gol kebobolan—dua target musim depan.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Anfield masih jadi benteng...Anfield masih jadi benteng",
+          "fix": "Second use: 'Anfield tetap jadi markas yang dirasa lawan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Itu kabar baiknya. Liverpool sudah memastikan satu dari empat slot",
+          "fix": "Cut; go straight to 'Liverpool sudah memastikan satu dari empat slot Liga Champions.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xec4ef39988abcc96",
+    "published_at": "2026-04-28T10:51:42+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

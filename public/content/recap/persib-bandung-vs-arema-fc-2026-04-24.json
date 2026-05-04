@@ -1,0 +1,84 @@
+{
+  "type": "recap",
+  "slug": "persib-bandung-vs-arema-fc-2026-04-24",
+  "title": "Recap Persib Bandung 0-0 Arema FC",
+  "description": "Recap Bahasa Indonesia untuk Persib Bandung vs Arema FC (0-0) di Gelora Bandung Lautan Api Stadium, Bandung, 24 April 2026.",
+  "body_md": "# Persib vs Arema Berakhir Tanpa Gol di GBLA\n\nMaung Bandung gagal petik tiga poin di kandang sendiri. Persib Bandung ditahan imbang Arema FC 0-0 di Gelora Bandung Lautan Api, Kamis malam 24 April 2026, hasil yang kemungkinan besar lebih menyakitkan buat tuan rumah mengingat atmosfer GBLA dan dukungan penuh suporter Persib.\n\nSetelah 90-plus menit, papan skor tak bergerak. Satu clean sheet di dua sisi, tapi bukan jenis yang memuaskan siapa pun.\n\n---\n\n## Laga Tertutup, Nyaris Tanpa Drama\n\nPertandingan berjalan flat di babak pertama. Tidak ada events di 45 menit pertama dari data yang masuk, tidak ada kartu, tidak ada substitusi, artinya tidak ada yang cukup signifikan untuk mengubah jalannya laga di awal. Kedua tim tampaknya saling membaca, saling menjaga ruang, dan tidak ada yang berani buka diri lebih awal.\n\nBarulah di sejam pertandingan Arema mulai bergerak. Menit 62, Marcos Goncalves tarik Joel Vinicius dan masukkan Dalberto, sinyal bahwa Singo Edan butuh energi baru di lini depan. Tapi kehadiran Dalberto di lapangan langsung ternoda: lima menit setelah masuk, menit 67, dia langsung dapat kartu kuning. Debut di laga besar yang kurang sempurna.\n\nBojan Hodak respons di menit 72 dengan dobel pergantian, Uilliam keluar, B. Putra masuk. L. Guaycochea diganti A. Alis. Delapan menit kemudian T. Haye juga ditarik, digantikan S. Castel. Hodak terlihat berusaha cari kombinasi yang bisa jebol pertahanan rapat Arema, tapi gawang Lucas Frigeri tetap tak tersentuh.\n\nArema pun aktif berputar. Menit 76 H. Yama keluar, J. Hariono masuk. Menit 82 giliran Gabriel Silva digantikan S. Tuharea. Dua tim sama-sama habiskan setengah daftar bench mereka, tanda frustrasi bersama di paruh kedua.\n\n---\n\n## Injury Time Tanpa Keajaiban\n\nDua pergantian terakhir Persib baru masuk di menit 90+5, E. Reijnders keluar, Julio Cesar masuk. Berguinho diganti R. Darwis. Waktu sudah hampir habis, tapi Hodak tetap coba. Hasilnya nihil. Peluit akhir berbunyi dengan skor tetap 0-0.\n\nTotal pergantian di laga ini: Persib lima, Arema empat. Sembilan substitusi dari dua bench, gambaran betapa kedua pelatih tidak puas dengan apa yang mereka lihat di lapangan, dan betapa sulitnya kedua tim menemukan solusi.\n\n---\n\n## Satu Kartu, Satu Clean Sheet, Nol Konklusi\n\nCatatan paling konkret dari malam ini: satu kartu kuning untuk Dalberto, dua clean sheet, dan nol gol. Data statistik pertandingan, possession, shots, xG, belum tersedia di sistem, jadi analisis taktis lebih dalam harus tunggu data lengkap.\n\nYang bisa dibaca dari timeline: tidak ada pelanggaran keras, tidak ada VAR drama, tidak ada momen yang benar-benar membelah laga. Pertahanan kedua tim, F. Barba dan P. Matricardi di belakang Persib, Betinho dan J. Guevara di sisi Arema, tampaknya sama-sama solid sepanjang laga.\n\n---\n\n## Poin Dibagi, Dua Tim Jalan di Tempat\n\nSatu poin dari kandang untuk Persib bukan hasil yang diinginkan, apalagi di GBLA di mana dukungan suporter seharusnya jadi faktor. Arema pulang ke Malang dengan satu angka yang mungkin terasa cukup setelah bermain jauh, tapi Singo Edan pun pasti tahu mereka punya peluang yang tak dimanfaatkan.\n\nBagaimana dampaknya ke klasemen Liga 1 2025-26, pantau update di Gibol.\n\nSiaran laga ini tersedia di Vidio, Indosiar, dan MNCTV.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "fixture_id": "1403820",
+    "home_team": "Persib Bandung",
+    "away_team": "Arema FC",
+    "home_score": 0,
+    "away_score": 0,
+    "kickoff_utc": "2026-04-24T12:00:00+00:00",
+    "venue": "Gelora Bandung Lautan Api Stadium, Bandung",
+    "home_formation": null,
+    "home_coach": "Bojan Hodak",
+    "away_formation": null,
+    "away_coach": "Marcos Goncalves",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.044682,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: high-severity training_inference violations (player positions and tactical inferences made without formation data). Multiple soft structural issues (repeated negations, meta-commentary about missing stats). Voice is acceptable in places but breaches data discipline.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "F. Barba dan P. Matricardi di belakang Persib, Betinho dan J. Guevara di sisi Arema, tampaknya sama-sama solid",
+          "fix": "Remove positional analysis or rephrase as 'defensive line' without naming specific players as 'center-backs' or 'sides'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Marcos Goncalves tarik Joel Vinicius dan masukkan Dalberto, sinyal bahwa Singo Edan butuh energi baru di lini depan",
+          "fix": "Rewrite as 'Marcos Goncalves tarik Joel Vinicius, masukkan Dalberto di menit 62' without inferring position/role"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tidak ada events di 45 menit pertama dari data yang masuk, tidak ada kartu, tidak ada substitusi, artinya tidak ada yang cukup signifikan",
+          "fix": "Condense: 'Babak pertama datar: tanpa kartu, tanpa substitusi, tanpa momen nyata.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Catatan paling konkret dari malam ini: satu kartu kuning untuk Dalberto, dua clean sheet, dan nol gol.",
+          "fix": "Rewrite as 'Satu kartu kuning untuk Dalberto. Dua clean sheet. Nol gol.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Maung Bandung gagal petik tiga poin, tidak ada pelanggaran keras, tidak ada VAR drama, tidak ada momen yang benar-benar membelah laga",
+          "fix": "Vary structure: 'Maung Bandung gagal petik tiga poin. Laga tanpa pelanggaran keras, tanpa VAR drama, tanpa momen nyata.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Dalberto langsung dapat kartu kuning. Debut di laga besar yang kurang sempurna.",
+          "fix": "Tighten: 'Debut buruk: kartu kuning lima menit setelah masuk.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Data statistik pertandingan, possession, shots, xG, belum tersedia di sistem, jadi analisis taktis lebih dalam harus tunggu data lengkap.",
+          "fix": "Delete or rephrase: 'Analisis taktis lebih detail tunggu data possession dan shots resmi.' OR just omit."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Dua tim sama-sama habiskan setengah daftar bench mereka, tanda frustrasi bersama",
+          "fix": "'Sembilan substitusi: tanda kedua tim cari solusi' is tighter"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x72d0c7043547df08",
+    "published_at": "2026-04-27T13:42:02+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

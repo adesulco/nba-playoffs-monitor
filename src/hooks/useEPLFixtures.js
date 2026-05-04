@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react';
 import { CLUBS_BY_ESPN_ID } from '../lib/sports/epl/clubs.js';
+import { readCache, writeCache } from '../lib/swrCache.js';
+
+// v0.11.15 SWR key + TTL. Live fixtures tick every couple minutes —
+// 2 min ceiling matches NBA scoreboard cadence. Cache key includes
+// the date-window args so different consumers don't clobber.
+function cacheKey(daysBack, daysFwd) {
+  return `epl-fixtures-${daysBack}-${daysFwd}`;
+}
+const CACHE_TTL = 2 * 60 * 1000;
 
 /**
  * EPL 2025-26 fixtures + recent results via ESPN scoreboard endpoint.
@@ -42,9 +51,12 @@ function resolveSide(competitor) {
 }
 
 export function useEPLFixtures({ daysBack = 7, daysFwd = 7 } = {}) {
-  const [upcoming, setUpcoming] = useState([]);
-  const [recent, setRecent] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // v0.11.15 — SWR hydrate. The cache is window-scoped so Home's
+  // 7/7 call and the EPL dashboard's 7/7 call share the same entry.
+  const cached = readCache(cacheKey(daysBack, daysFwd), { ttlMs: CACHE_TTL });
+  const [upcoming, setUpcoming] = useState(cached?.upcoming ?? []);
+  const [recent, setRecent] = useState(cached?.recent ?? []);
+  const [loading, setLoading] = useState(!cached);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -97,6 +109,7 @@ export function useEPLFixtures({ daysBack = 7, daysFwd = 7 } = {}) {
         if (!cancelled) {
           setUpcoming(up);
           setRecent(rec);
+          writeCache(cacheKey(daysBack, daysFwd), { upcoming: up, recent: rec });
           setError(null);
         }
       } catch (e) {

@@ -1,0 +1,59 @@
+{
+  "type": "recap",
+  "slug": "fulham-vs-aston-villa-2026-04-25",
+  "title": "Recap Fulham 1-0 Aston Villa",
+  "description": "Recap Bahasa Indonesia untuk Fulham vs Aston Villa (1-0) di Craven Cottage, London, 25 April 2026.",
+  "body_md": "# Fulham Hempas Aston Villa 1-0 di Craven Cottage, Sessegnon Jadi Pahlawan\n\nFulham mengamankan tiga poin di Craven Cottage setelah menang 1-0 atas Aston Villa, Sabtu 25 April 2026. Gol tunggal Ryan Sessegnon di menit 43 jadi penentu, dan angka-angka di baliknya mendukung kemenangan tuan rumah: xG 1.18 vs 0.93, dengan Villa hanya mencatatkan satu shot on target sepanjang 90 menit.\n\n---\n\n## Jalannya Laga\n\nFulham membuka laga dalam tekanan. Villa menguasai bola sejak awal, 61% possession akhirnya jadi milik skuad Emery, dan lima corners berbanding dua menggambarkan betapa seringnya tamu memaksa tuan rumah bertahan di setengah lapangan sendiri.\n\nTapi serangan Villa mandek di catatan. Dari 10 total shots, hanya satu yang mengarah ke gawang. Leno praktis tidak banyak kerja keras yang sebenarnya.\n\nGol itu datang justru saat Villa mungkin merasa laga berjalan sesuai rencana. Menit 43, Sessegnon menyambut peluang dan menjebol gawang Martinez, satu-satunya gol yang dibutuhkan Fulham malam itu. Satu-satunya yang terjadi.\n\nBabak kedua hampir sepenuhnya didominasi oleh koridor bench. Menit 74, Emery melakukan empat pergantian sekaligus: McGinn, Buendia, Bogarde, dan Tielemans semua ditarik. Masuk Barkley, Bailey, Douglas Luiz, dan Sancho. Gebrakan besar yang seharusnya mengubah tekstur laga, tapi Villa tetap tidak mampu mengkonversi tekanan menjadi peluang nyata.\n\nFulham merespons dua menit berselang: Chukwueze dan Smith Rowe ditarik, Bobb dan King masuk di menit 76. Menit 81, Sessegnon sendiri digantikan Robinson, sang pahlawan sudah menyelesaikan tugasnya.\n\n---\n\n## Yang Dikatakan Angka\n\nStatistik laga ini menggambarkan paradoks yang menarik. Villa pegang bola lebih lama, lebih banyak passing (529 vs 337), akurasi operan lebih tinggi (86% vs 82%). Tapi semua itu tidak menghasilkan apa-apa di depan gawang.\n\nFulham justru lebih tajam. Enam dari 13 shot mengarah ke gawang, dengan xG 1.18, lebih tinggi dari Villa yang hanya 0.93. Six shots in the box untuk kedua tim, tapi kualitas penyelesaian Fulham jauh lebih baik. Martinez harus melakukan lima saves untuk menjaga agar kekalahan tidak lebih besar.\n\nSatu angka yang juga bicara: Fulham mencatat tujuh offside. Trap-nya berjalan, tapi artinya Fulham juga beberapa kali hampir menambah gol dan gagal karena timing.\n\n---\n\n## Momen Penentu\n\nLima puluh empat menit setelah pergantian massif Emery, Villa masih cuma punya satu shot on target di papan statistik. Satu. Itu yang paling menjelaskan laga ini.\n\nDelapan pergantian pemain kombinasi kedua tim, tapi tidak ada yang mengubah cerita yang sudah ditulis Sessegnon di menit 43. Penguasaan bola bisa menipu, dan Villa membayar mahal karena tidak bisa mengubah possession menjadi gol.\n\n---\n\n## Dampak ke Klasemen\n\nTiga poin penting buat Fulham yang masih dalam persaingan paruh papan Premier League. Villa pulang dari London dengan tangan kosong dan pekerjaan rumah besar di lini serang, lima saves Martinez menyelamatkan muka, tapi satu shot on target dari tamu adalah angka yang tidak bisa dibela oleh Emery.\n\nLaga ini bisa disaksikan ulang di Vidio dan beIN Sports.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379303",
+    "home_team": "Fulham",
+    "away_team": "Aston Villa",
+    "home_score": 1,
+    "away_score": 0,
+    "kickoff_utc": "2026-04-25T11:30:00+00:00",
+    "venue": "Craven Cottage, London",
+    "home_formation": "4-2-3-1",
+    "home_coach": "Marco Silva",
+    "away_formation": "4-2-3-1",
+    "away_coach": "Unai Emery",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019632,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong piece with natural Indonesian voice and solid stat integration. Minor tense redundancy and one calqued English idiom; both low-severity. Structural flow is confident and conversational without sloppiness.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Fulham mengamankan tiga poin di Craven Cottage setelah menang 1-0",
+          "fix": "Fulham amankan tiga poin 1-0 atas Aston Villa di Craven Cottage."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Penguasaan bola bisa menipu, dan Villa membayar mahal karena tidak bisa mengubah possession menjadi gol.",
+          "fix": "Villa bayar harga atas ketidakmampuan ubah possession jadi gol."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Satu-satunya gol yang dibutuhkan Fulham... Satu-satunya yang terjadi.",
+          "fix": "Sessegnon cetak satu-satunya gol malam itu di menit 43. Cukup untuk kemenangan."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Lago ini bisa disaksikan ulang di Vidio dan beIN Sports.",
+          "fix": "Laga ini bisa disaksikan ulang di Vidio dan beIN Sports."
+        }
+      ]
+    },
+    "published_at": "2026-04-27T09:01:01+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

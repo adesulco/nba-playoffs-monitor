@@ -1,12 +1,29 @@
 import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
-import ConstructorPicker from '../components/ConstructorPicker.jsx';
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
+// v0.53.1 — Phase C redesign: 3-up Newsroom Slice. Gated UI.v2.
+import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
+import { UI } from '../lib/flags.js';
+// v0.17.0 Phase 2 Sprint B — shared chrome row replacing the inline
+// 200px F1 hero. eyebrow / h1 / LIVE chip / CopyLinkButton all
+// collapsed into <HubStatusStrip> mounted via setTopbarSubrow.
+// v0.18.0 Phase 2 Sprint C — ConstructorPicker, Chip, and
+// CopyLinkButton imports removed: ConstructorPicker is now reached
+// via <HubPicker kind="f1-team" />, the LIVE chip moved to
+// <LiveStatusPill> globally, and CopyLinkButton was orphaned after
+// Sprint B's hero strip.
+import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+import HubPicker from '../components/v2/HubPicker.jsx';
+import { useQueryParamSync } from '../hooks/useQueryParamSync.js';
 import F1News from '../components/F1News.jsx';
-import Chip from '../components/Chip.jsx';
+import ShareButton from '../components/ShareButton.jsx';
+import SEOContent from '../components/SEOContent.jsx';
+import { readableOnDark } from '../lib/contrast.js';
+import { buildF1RaceShareText, buildF1RaceShareUrl } from '../lib/share.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { useF1Schedule } from '../hooks/useF1Schedule.js';
 import { useF1Standings } from '../hooks/useF1Standings.js';
@@ -15,6 +32,10 @@ import { useF1ChampionOdds } from '../hooks/useF1ChampionOdds.js';
 import { TEAMS_BY_ID, nextGP, formatGPDate, SEASON } from '../lib/sports/f1/constants.js';
 
 const F1_RED = '#E10600';
+// v0.11.26 NEW-4 — F1 brand red is borderline 3.5:1 on dark navy.
+// readableOnDark mixes toward white until 4.5:1. Use this everywhere
+// the brand color is rendered as foreground text.
+const F1_RED_TEXT = readableOnDark(F1_RED);
 
 const CHAMPIONSHIP_JSONLD = {
   '@context': 'https://schema.org',
@@ -46,8 +67,11 @@ function RoundStrip({ races, activeRound, onSelect, resultsByRound, lang }) {
   const todayISO = new Date().toISOString().slice(0, 10);
 
   return (
+    // v0.13.4 — id="calendar" for the MobileBottomNav F1 deep link.
     <div
+      id="calendar"
       ref={trackRef}
+      className="day-strip-scroll"
       style={{
         display: 'flex',
         overflowX: 'auto',
@@ -56,6 +80,10 @@ function RoundStrip({ races, activeRound, onSelect, resultsByRound, lang }) {
         borderLeft: `3px solid ${F1_RED}`,
         borderRadius: 3,
         WebkitOverflowScrolling: 'touch',
+        // v0.11.28 — RoundStrip contains 23 GP tabs, intrinsic width
+        // ~2400+ px. min-width: 0 lets it shrink to its grid track.
+        minWidth: 0,
+        scrollMarginTop: 60,
       }}
     >
       {races.map((gp) => {
@@ -99,7 +127,7 @@ function RoundStrip({ races, activeRound, onSelect, resultsByRound, lang }) {
             </div>
             <div style={{ fontSize: 8.5, marginTop: 4, letterSpacing: 0.4 }}>
               {isPast && winner ? (
-                <span style={{ color: F1_RED, fontWeight: 700 }}>● {winner.code || winner.name.split(' ').pop()}</span>
+                <span style={{ color: F1_RED_TEXT, fontWeight: 700 }}>● {winner.code || winner.name.split(' ').pop()}</span>
               ) : isPast ? (
                 <span style={{ color: C.muted }}>● {lang === 'id' ? 'selesai' : 'done'}</span>
               ) : (
@@ -143,8 +171,12 @@ function RoundDetail({ gp, result, lang }) {
       borderRadius: 3,
       padding: '16px 18px 14px',
     }}>
-      {/* Header: round, name, circuit, date/time */}
-      <div style={{
+      {/* v0.12.3 M-3 — Header collapses to single column on mobile.
+          Pre-fix: `auto 1fr auto` left only ~260 px for the round name
+          on a 390 viewport, forcing "Circuit / de / Monaco / Jun / 7 /
+          2026" to wrap one-word-per-line. Mobile now stacks: R-badge
+          row above, name + circuit below. */}
+      <div className="f1-round-header" style={{
         display: 'grid',
         gridTemplateColumns: 'auto 1fr auto',
         gap: 16,
@@ -153,9 +185,9 @@ function RoundDetail({ gp, result, lang }) {
         borderBottom: `1px solid ${C.lineSoft}`,
         marginBottom: 12,
       }}>
-        <div style={{
+        <div className="f1-round-badge" style={{
           fontFamily: 'var(--font-sans)',
-          fontSize: 48, color: F1_RED, letterSpacing: -0.5,
+          fontSize: 48, color: F1_RED_TEXT, letterSpacing: -0.5,
           padding: '0 12px 0 0',
           borderRight: `1px solid ${C.lineSoft}`,
           lineHeight: 1,
@@ -163,7 +195,7 @@ function RoundDetail({ gp, result, lang }) {
           R{String(gp.round).padStart(2, '0')}
         </div>
         <div style={{ minWidth: 0 }}>
-          <div style={{ fontSize: 9, letterSpacing: 1.5, color: F1_RED, fontWeight: 700, marginBottom: 4 }}>
+          <div style={{ fontSize: 9, letterSpacing: 1.5, color: F1_RED_TEXT, fontWeight: 700, marginBottom: 4 }}>
             {isPast
               ? (lang === 'id' ? 'HASIL BALAPAN' : 'RACE RESULT')
               : daysUntil <= 0
@@ -183,22 +215,40 @@ function RoundDetail({ gp, result, lang }) {
           </div>
           <div style={{ fontSize: 11, color: C.text, marginTop: 4, fontWeight: 500 }}>
             {formatGPDate(gp.dateISO, lang)} · {gp.wibTime} WIB
-            {!isPast && <> · <span style={{ color: F1_RED }}>{countdown}</span></>}
+            {!isPast && <> · <span style={{ color: F1_RED_TEXT }}>{countdown}</span></>}
           </div>
         </div>
         {gp.slug && (
-          <Link to={`/formula-1-2026/race/${gp.slug}`} style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 11, fontWeight: 700,
-            padding: '8px 14px',
-            background: F1_RED, color: '#fff',
-            borderRadius: 3,
-            textDecoration: 'none',
-            whiteSpace: 'nowrap',
-            letterSpacing: 0.3,
-          }}>
-            {lang === 'id' ? 'Detail →' : 'Details →'}
-          </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {/* Per-race share — becomes a FINAL recap post once result.podium
+                lands, otherwise shares the upcoming-race countdown. WhatsApp /
+                X / Threads / Copy channels; IG Story PNG deferred pending a
+                multi-sport generalisation of /api/recap. */}
+            <ShareButton
+              url={buildF1RaceShareUrl(gp)}
+              title={`${gp.name} 2026`}
+              text={buildF1RaceShareText(gp, result, lang)}
+              accent={F1_RED}
+              size="sm"
+              label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+              ariaLabel={lang === 'id'
+                ? `Bagikan ${gp.name} 2026`
+                : `Share ${gp.name} 2026`}
+              analyticsEvent="f1_race_share"
+            />
+            <Link to={`/formula-1-2026/race/${gp.slug}`} style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 11, fontWeight: 700,
+              padding: '8px 14px',
+              background: F1_RED, color: '#fff',
+              borderRadius: 3,
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              letterSpacing: 0.3,
+            }}>
+              {lang === 'id' ? 'Detail →' : 'Details →'}
+            </Link>
+          </div>
         )}
       </div>
 
@@ -314,7 +364,7 @@ function InfoBlock({ label, value, accent }) {
       <div style={{ fontSize: 8.5, letterSpacing: 1.5, color: C.muted, fontWeight: 700 }}>{label}</div>
       <div style={{
         fontSize: 12, marginTop: 4,
-        color: accent ? F1_RED : C.text, fontWeight: accent ? 700 : 500,
+        color: accent ? F1_RED_TEXT : C.text, fontWeight: accent ? 700 : 500,
         lineHeight: 1.25,
       }}>
         {value}
@@ -324,20 +374,27 @@ function InfoBlock({ label, value, accent }) {
 }
 
 // ─── Driver standings table ─────────────────────────────────────────────────
+// v0.13.4 — `id="standings"` lives on the wrapping <section> below
+// so the MobileBottomNav "Klasemen" deep link scrolls into view.
 function DriverStandings({ drivers, loading, error, lang, selectedConstructor }) {
   return (
-    <section style={{
+    <section id="standings" style={{
       background: C.panel,
       border: `1px solid ${C.line}`,
       borderLeft: `3px solid ${F1_RED}`,
       borderRadius: 3,
       padding: '14px 14px 8px',
+      scrollMarginTop: 60,
     }}>
-      <h2 style={{
+      <h2 className="panel-title-mono" style={{
         fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
         margin: '0 0 10px', color: C.text, letterSpacing: -0.2,
       }}>
-        {lang === 'id' ? 'Klasemen Pembalap' : 'Drivers Standings'}
+        {/* v0.11.12 — explicit space between title and season so textContent
+            flattens to "Drivers Standings 2026", not "Drivers Standings2026",
+            for screen readers + analytics heading extractors. Visual gap
+            comes from the span's marginLeft. */}
+        {lang === 'id' ? 'Klasemen Pembalap' : 'Drivers Standings'}{' '}
         <span style={{ marginLeft: 8, fontSize: 9, color: C.muted, letterSpacing: 1, fontWeight: 500 }}>
           {SEASON}
         </span>
@@ -434,7 +491,7 @@ function ConstructorStandings({ teams, loading, error, lang, selectedConstructor
       borderRadius: 3,
       padding: '14px 14px 8px',
     }}>
-      <h2 style={{
+      <h2 className="panel-title-mono" style={{
         fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
         margin: '0 0 10px', color: C.text, letterSpacing: -0.2,
       }}>
@@ -556,7 +613,7 @@ function F1ContextStrip({ drivers, teams, races, championOdds, lang }) {
         fontFamily: 'var(--font-mono)',
         fontSize: 9,
         letterSpacing: 1,
-        color: accent || C.muted,
+        color: accent ? readableOnDark(accent) : C.muted,
         fontWeight: 700,
         marginBottom: 4,
       }}>
@@ -590,7 +647,7 @@ function F1ContextStrip({ drivers, teams, races, championOdds, lang }) {
   );
 
   return (
-    <section style={{
+    <section className="stat-strip-2col" style={{
       background: C.panel,
       border: `1px solid ${C.line}`,
       borderLeft: `3px solid ${F1_RED}`,
@@ -605,7 +662,7 @@ function F1ContextStrip({ drivers, teams, races, championOdds, lang }) {
             <span style={{ width: 3, height: 16, background: F1_RED }} />
             {next.name.replace(' GP', '')}
             {countdown && (
-              <span style={{ color: F1_RED, fontFamily: 'var(--font-mono)', fontSize: 14 }}>
+              <span style={{ color: F1_RED_TEXT, fontFamily: 'var(--font-mono)', fontSize: 14 }}>
                 {countdown.replace(lang === 'id' ? ' hari lagi' : 'in ', '').replace(' days', 'd')}
               </span>
             )}
@@ -706,7 +763,7 @@ function F1PeluangJuara({ odds, lang }) {
         display: 'flex', justifyContent: 'space-between',
         alignItems: 'baseline', marginBottom: 10,
       }}>
-        <h2 style={{
+        <h2 className="panel-title-mono" style={{
           fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
           margin: 0, color: C.text, letterSpacing: -0.2,
         }}>
@@ -730,7 +787,8 @@ function F1PeluangJuara({ odds, lang }) {
               key={o.name}
               style={{
                 display: 'grid',
-                gridTemplateColumns: '180px 1fr 56px 42px',
+                // Mobile-friendly: see EPL.jsx title-odds grid note.
+                gridTemplateColumns: 'minmax(100px, 1.4fr) 1fr 48px 36px',
                 gap: 10,
                 alignItems: 'center',
                 padding: '7px 10px',
@@ -918,7 +976,9 @@ function Disclaimer({ lang }) {
 // ─── Page shell ─────────────────────────────────────────────────────────────
 export default function F1() {
   const location = useLocation();
-  const { lang, selectedConstructor, setSelectedConstructor } = useApp();
+  const { lang, selectedConstructor, setSelectedConstructor, t } = useApp();
+  // v0.11.8 — URL ↔ constructor sync. ?team=mclaren restores the pick.
+  useQueryParamSync('team', selectedConstructor, setSelectedConstructor);
   const { races, source } = useF1Schedule();
   const { drivers, teams, loading, error } = useF1Standings();
   const { resultsByRound } = useF1Results();
@@ -939,90 +999,103 @@ export default function F1() {
   );
   const activeResult = resultsByRound?.[activeRound] || null;
 
-  const title = lang === 'id'
+  // v0.17.0 Phase 2 Sprint B — push <HubStatusStrip> into the V2TopBar
+  // subrow. Replaces both the previous flex-end-aligned subrow (just
+  // a constructor picker) AND the inline 200px hero block below
+  // (eyebrow + 36px h1 + LIVE chip + CopyLinkButton). Picker now docks
+  // top-left of the strip per directive §4 ("Picker stays subrow,
+  // top-right today, moves to top-left for consistency with NBA / EPL
+  // / Tennis"). The SEO h1 rides as `.sr-only` inside the strip.
+  useEffect(() => {
+    setTopbarSubrow(
+      <HubStatusStrip
+        srOnlyTitle={pickedTeam
+          ? `${pickedTeam.name} · Formula 1 ${SEASON}`
+          : `Formula 1 ${SEASON}`}
+        accent={pickedTeam ? activeAccent : undefined}
+        picker={
+          <HubPicker
+            kind="f1-team"
+            selectedKey={selectedConstructor}
+            onSelect={setSelectedConstructor}
+          />
+        }
+        live={
+          <span style={{ textTransform: 'uppercase' }}>
+            FORMULA 1 · {t('season')} {SEASON}
+            {pickedTeam && (
+              <span style={{ marginLeft: 8, color: C.muted, fontWeight: 500 }}>
+                · <Link
+                    to={`/formula-1-2026/team/${pickedTeam.slug}`}
+                    style={{ color: readableOnDark(activeAccent), textDecoration: 'none', fontWeight: 700 }}
+                  >{pickedTeam.short}</Link>
+              </span>
+            )}
+          </span>
+        }
+        actions={
+          <HubActionRow
+            url={pickedTeam ? `/formula-1-2026?team=${pickedTeam.slug}` : '/formula-1-2026'}
+            shareText={pickedTeam
+              ? (lang === 'id' ? `${pickedTeam.name} · F1 ${SEASON} di gibol.co 🏎️` : `${pickedTeam.name} · F1 ${SEASON} on gibol.co 🏎️`)
+              : (lang === 'id' ? `Klasemen + kalender F1 ${SEASON} di gibol.co 🏎️` : `F1 ${SEASON} standings + calendar on gibol.co 🏎️`)}
+            accent={F1_RED}
+            analyticsEvent="f1_share_hub"
+          />
+        }
+      />
+    );
+    return () => setTopbarSubrow(null);
+  }, [selectedConstructor, setSelectedConstructor, pickedTeam, activeAccent, lang, t]);
+
+  const baseTitle = lang === 'id'
     ? 'Formula 1 2026 · Klasemen Pembalap, Jadwal 23 GP (WIB), Hasil Live | gibol.co'
     : 'Formula 1 2026 · Driver Standings, 23 GP Calendar (WIB), Live Results | gibol.co';
-  const description = lang === 'id'
+  // v0.11.23 GIB-018 — when a constructor is picked, lead the title (and
+  // og:title) with that team so a deep-link share unfurls topical, not
+  // generic. og:url + canonical also reflect the ?team= so the share URL
+  // and the rendered page match.
+  const title = pickedTeam
+    ? (lang === 'id'
+        ? `${pickedTeam.name} · Formula 1 ${SEASON} | gibol.co`
+        : `${pickedTeam.name} · Formula 1 ${SEASON} | gibol.co`)
+    : baseTitle;
+  const baseDescription = lang === 'id'
     ? `Dashboard live F1 ${SEASON} dalam Bahasa Indonesia — klasemen pembalap + konstruktor, kalender 23 Grand Prix dengan jam start WIB, hasil balapan terbaru, podium, dan tracking juara.`
     : `Live F1 ${SEASON} dashboard in Bahasa Indonesia — driver + constructor standings, 23-GP calendar with WIB start times, latest race results, podium, and championship tracking.`;
+  const description = pickedTeam
+    ? (lang === 'id'
+        ? `Halaman ${pickedTeam.name} di hub F1 ${SEASON} — klasemen pembalap + konstruktor, kalender 23 GP (WIB), hasil balapan, podium. ${baseDescription}`
+        : `${pickedTeam.name} view on the F1 ${SEASON} hub — driver + constructor standings, 23-GP calendar in WIB, race results, podium. ${baseDescription}`)
+    : baseDescription;
+  const seoPath = pickedTeam ? `${location.pathname}?team=${pickedTeam.slug}` : location.pathname;
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO
         title={title}
         description={description}
-        path={location.pathname}
+        path={seoPath}
+        image="https://www.gibol.co/og/hub-f1.png"
         lang={lang}
         keywords="formula 1 2026, f1 2026, klasemen f1, jadwal f1 2026, hasil grand prix, peluang juara f1, max verstappen, lando norris, lewis hamilton, charles leclerc, oscar piastri, f1 bahasa indonesia"
         jsonLd={CHAMPIONSHIP_JSONLD}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={activeAccent}>
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <ConstructorPicker
-              selectedConstructor={selectedConstructor}
-              onSelect={setSelectedConstructor}
-            />
-          </div>
-        </TopBar>
+        {/* v0.17.0 Phase 2 Sprint B — visible 200px hero stripped.
+            Eyebrow + 36px h1 + LIVE chip + CopyLinkButton all
+            collapsed into <HubStatusStrip> in the V2TopBar subrow.
+            SEO h1 rides as `.sr-only` inside the strip. The calendar
+            scroller below now sits ~140px closer to the top of the
+            viewport — three race rounds visible above the fold on
+            iPhone 14 instead of one. */}
 
-        {/* Step 6 hero — Space Grotesk 36/700/-0.025em, chip top-right, tint ≤8%.
-            Status moved out of title text into explicit <Chip> for screen readers
-            and visual parity with Home/ComingSoon/Recap heroes. */}
-        <div style={{
-          padding: '20px 20px 14px',
-          background: pickedTeam
-            ? `linear-gradient(135deg, ${activeAccent}14 0%, transparent 70%)`
-            : `linear-gradient(135deg, ${F1_RED}0d 0%, transparent 70%)`,
-          transition: 'background 0.3s',
-        }}>
-          <div style={{
-            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-            gap: 12, marginBottom: 6,
-          }}>
-            <div style={{ fontSize: 9, letterSpacing: 1.5, color: activeAccent, fontWeight: 700, paddingTop: 4 }}>
-              FORMULA 1 · SEASON {SEASON}
-              {pickedTeam && (
-                <span style={{ marginLeft: 10, color: C.muted, fontWeight: 500, letterSpacing: 0.8 }}>
-                  · {lang === 'id' ? 'TIM KAMU' : 'YOUR TEAM'}: <Link
-                    to={`/formula-1-2026/team/${pickedTeam.slug}`}
-                    style={{ color: activeAccent, textDecoration: 'none', fontWeight: 700 }}
-                  >{pickedTeam.short}</Link>
-                </span>
-              )}
-            </div>
-            <Chip variant="live" sportId="f1" accent={activeAccent} label="LIVE" />
-          </div>
-          <div style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
-            color: C.text, marginBottom: 8,
-            textWrap: 'balance',
-          }}>
-            Formula 1 2026
-          </div>
-          <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 700 }}>
-            {lang === 'id'
-              ? 'Klasemen pembalap + konstruktor, kalender 23 Grand Prix dalam WIB, dan hasil tiap race. Regulasi chassis + power unit baru, Audi & Cadillac gabung — musim paling seru dalam dekade.'
-              : 'Driver + constructor standings, 23-GP calendar in WIB, and per-race results. New chassis + power unit rules, Audi & Cadillac join — most compelling F1 season in a decade.'}
-          </div>
-        </div>
+        <div style={{ padding: '8px 24px 20px', display: 'grid', gap: 14, minWidth: 0 }}>
+          {/* v0.11.25 layout — Calendar (round-by-round scroller +
+              detail) is the F1 hero. Context strip + championship
+              odds slot below it. NBA pattern. */}
 
-        <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 14 }}>
-          {/* Context strip — next race, drivers + constructor leaders,
-              Polymarket champion favorite. Parallels NBA/EPL strip. */}
-          <F1ContextStrip
-            drivers={drivers}
-            teams={teams}
-            races={races}
-            championOdds={championOdds}
-            lang={lang}
-          />
-
-          {/* Peluang juara — top 6 Polymarket champion odds. Live, 60s poll. */}
-          <F1PeluangJuara odds={championOdds} lang={lang} />
-
-          {/* Round-by-round scroller + detail panel (NBA day-scroller pattern) */}
+          {/* ── Row 1 — Round-by-round calendar (the hero). ── */}
           <div style={{ display: 'grid', gap: 10 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
               <div style={{
@@ -1048,6 +1121,19 @@ export default function F1() {
             <RoundDetail gp={activeGP} result={activeResult} lang={lang} />
           </div>
 
+          {/* ── Row 2 — Context strip: next race, leaders, title
+              favorite. Demoted from above the calendar. ── */}
+          <F1ContextStrip
+            drivers={drivers}
+            teams={teams}
+            races={races}
+            championOdds={championOdds}
+            lang={lang}
+          />
+
+          {/* ── Row 3 — Peluang juara, top 6. ── */}
+          <F1PeluangJuara odds={championOdds} lang={lang} />
+
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -1067,11 +1153,25 @@ export default function F1() {
           />
         </div>
 
+        {/* v0.53.1 — Phase C redesign: NewsroomSlice. UI.v2-gated. */}
+        {UI.v2 && (
+          <div style={{ padding: '0 16px 24px' }}>
+            <NewsroomSlice
+              sport="f1"
+              newsroomLabel="FORMULA 1 NEWSROOM"
+              moreHref="/formula-1-2026#newsroom"
+            />
+          </div>
+        )}
+
+        {/* v0.11.25 — F1 SEO/FAQ block at the bottom. */}
+        <SEOContent lang={lang} sport="f1" />
+
         <Disclaimer lang={lang} />
 
-        <div style={{
+        <footer role="contentinfo" style={{
           display: 'flex', justifyContent: 'space-between',
-          padding: '12px 20px',
+          padding: '12px 24px',
           borderTop: `1px solid ${C.line}`,
           fontSize: 9.5, color: C.muted, letterSpacing: 0.3,
           alignItems: 'center', flexWrap: 'wrap', gap: 8,
@@ -1079,7 +1179,7 @@ export default function F1() {
           <div>gibol.co · F1 Indonesia</div>
           <ContactBar lang={lang} variant="inline" />
           <div>← <a href="/" style={{ color: C.dim, textDecoration: 'none' }}>{lang === 'id' ? 'semua dashboard' : 'all dashboards'}</a></div>
-        </div>
+        </footer>
       </div>
     </div>
   );

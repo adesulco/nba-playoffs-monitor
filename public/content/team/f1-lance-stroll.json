@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-lance-stroll",
+  "title": "Profil Lance Stroll: Pembalap F1 Aston Martin (2026)",
+  "description": "Profil pembalap F1 Lance Stroll (Kanada) untuk tim Aston Martin. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Lance Stroll: Awal Musim 2026 yang Berat untuk Pembalap Kanada\n\nLance Stroll, kode FIA STR dengan nomor permanen #18, pembalap Kanada kelahiran 29 Oktober 1998. Per 28 April 2026, Stroll membalap untuk Aston Martin di Formula 1 musim 2026 dan saat ini berada di P22 klasemen konstruktor, posisi paling bawah, dengan 0 poin dari 3 balapan yang sudah dijalani.\n\n---\n\n## Identitas\n\nStroll, 27 tahun, adalah salah satu nama paling dikenal di paddock F1, bukan semata karena prestasinya, tapi karena profil timnya. Nomor #18 dan kode STR sudah menjadi identitasnya selama beberapa musim terakhir di Aston Martin, tim yang dikepalai Lawrence Stroll, ayahnya sendiri.\n\nDi atas kertas, kombinasi Aston Martin dan nama Stroll seharusnya menghasilkan stabilitas. Di musim 2026, kenyataannya berbeda. Tiga balapan sudah dijalani, nol poin dikumpulkan, dan klasemen masih kosong. Musim yang dimulai sangat berat.\n\n---\n\n## Performa Musim Ini\n\nAngkanya tidak banyak tapi cukup untuk menggambarkan situasi: 0 poin dari 3 Grand Prix, dua kali Retired, satu kali finis tapi masuk kategori lapped, artinya tertinggal satu lap atau lebih dari para pemimpin balapan.\n\nDari tiga balapan yang ada, tidak ada satu pun yang bisa disebut solid. Australian Grand Prix memberikan hasil paling \"baik\", finis P17, tapi dengan status lapped. Dua sisanya, China dan Jepang, berakhir dengan Retired sebelum lomba usai.\n\nUntuk konteks: P22 di klasemen pembalap adalah posisi paling bawah dari semua pembalap yang sudah mengumpulkan hasil. Musim 2026, setidaknya sampai 28 April, belum memberikan apapun untuk Stroll.\n\n---\n\n## Hasil Per Balapan\n\n**Australian Grand Prix, P17 (Lapped)**\n\nPembuka musim yang mengecewakan. Stroll finis P17 tapi masuk kategori lapped, artinya ritme balapannya tidak cukup untuk bersaing satu lap penuh dengan grid terdepan. Bukan soal strategi pit stop atau insiden saja, kecepatan dasarnya memang jauh dari zona poin, yang dimulai dari P10.\n\n**Chinese Grand Prix, Retired**\n\nLebih buruk. Stroll tidak bisa menyelesaikan balapan di China. Status Retired tanpa penjelasan tambahan di data, tapi hasilnya jelas: nol poin, dan dua balapan berturut-turut tanpa hasil.\n\n**Japanese Grand Prix, P21, Retired**\n\nJepang jadi ujian ketiga dan hasilnya sama: Retired lagi. P21 dicatat sebagai posisi terakhir sebelum keluar dari balapan. Tiga dari tiga balapan musim ini tidak berakhir dengan poin, satu lapped, dua DNF.\n\nPolanya konsisten, tapi bukan konsistensi yang diinginkan: Stroll belum menemukan ritme yang membawanya ke zona kompetitif di satu pun balapan.\n\n---\n\n## Gambaran Klasemen\n\nDengan 0 poin dari 3 balapan dan dua DNF di kantong, posisi Stroll di sisa musim 2026 bergantung penuh pada perkembangan performa Aston Martin sebagai paket mobil-pembalap.\n\nKlasemen sekarang, P22, nol poin, bukan sekadar angka buruk, itu sinyal bahwa ada yang tidak berjalan sesuai rencana di awal musim ini, baik dari sisi keandalan maupun kecepatan. Sisa balapan musim 2026 akan jadi penentu apakah ini sekadar awal yang sial, atau cerminan dari masalah yang lebih dalam.\n\nData ini mencerminkan situasi per 28 April 2026, setelah tiga balapan pertama Formula 1 musim 2026 dijalani.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "stroll",
+    "driver_name": "Lance Stroll",
+    "driver_code": "STR",
+    "driver_number": "18",
+    "nationality": "Canadian",
+    "current_team": "Aston Martin",
+    "current_team_id": "aston_martin",
+    "championship_pos": "22",
+    "championship_points": "0",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.02028,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on two high-severity training-inference violations (birth date, father's name/role) that violate the spec hard rule. Also contains academic drift, tense marking, and one soft-phrase repeat. Remove inferred details and tighten hedging language.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "pembalap Kanada kelahiran 29 Oktober 1998",
+          "fix": "Remove birth date; use only 'Stroll, 27 tahun, pembalap Kanada'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "tim yang dikepalai Lawrence Stroll, ayahnya sendiri",
+          "fix": "Remove family reference; focus on team and performance only"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Stroll membalap untuk Aston Martin di Formula 1 musim 2026",
+          "fix": "Stroll balap untuk Aston Martin di F1 2026"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Di atas kertas, kombinasi Aston Martin dan nama Stroll seharusnya menghasilkan stabilitas",
+          "fix": "Aston Martin + Stroll seharusnya stabil. Musim 2026, beda cerita."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Musim yang dimulai sangat berat",
+          "fix": "Delete; the facts speak. Start next para fresh."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Untuk konteks: P22 di klasemen pembalap adalah posisi paling bawah dari semua pembalap yang sudah mengumpulkan hasil.",
+          "fix": "P22 = posisi bawah klasemen. Musim 2026 belum kasih apapun."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Musim 2026, setidaknya sampai 28 April, belum memberikan apapun untuk Stroll",
+          "fix": "Vary: 'masih nol poin' or just 'tanpa poin'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Bukan soal strategi pit stop atau insiden saja, kecepatan dasarnya memang jauh",
+          "fix": "Stick to facts: P17 lapped. Zone poin mulai P10. Jauh."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x8b79e5a955459328",
+    "published_at": "2026-04-28T12:19:10+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,81 @@
+{
+  "type": "team",
+  "slug": "f1-nico-hulkenberg",
+  "title": "Profil Nico Hülkenberg: Pembalap F1 Audi (2026)",
+  "description": "Profil pembalap F1 Nico Hülkenberg (Jerman) untuk tim Audi. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Nico Hülkenberg: Musim Berat di Tahun Bersejarah\n\nNico Hülkenberg, kode FIA HUL (#27), pembalap Jerman kelahiran 19 Agustus 1987. Per 28 April 2026, Hülkenberg membalap untuk Audi di Formula 1 musim 2026, dan tiga balapan pertama musimnya belum menghasilkan satu poin pun. Klasemen sementara: P17, poin nol, dari tiga round yang sudah dijalani.\n\n---\n\n## Identitas\n\nLahir 19 Agustus 1987, Hülkenberg kini 38 tahun, salah satu pembalap tertua di grid F1 2026. Pembalap Jerman ini turun dengan nomor permanen 27 dan kode FIA HUL, mengendarai mobil Audi yang memasuki F1 sebagai konstruktor baru musim ini.\n\nKombinasi ini menarik: veteran berpengalaman dipasangkan dengan tim yang masih membangun segalanya dari nol. Hülkenberg jelas dipilih karena pengalaman dan kemampuannya membaca pengembangan mobil, tapi tiga balapan pertama belum membuktikan formula itu bekerja.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, nol poin. Itu angka yang bicara sendiri.\n\nBukan hanya soal hasil yang tipis di batas poin, Hülkenberg belum sekalipun finis dalam 10 besar di musim ini. Dua finis di P11 (Chinese GP dan Japanese GP) berarti selalu satu posisi di luar zona poin. Di Chinese GP, finis P11 itu pun berstatus *lapped*, artinya mobil Audi tertinggal satu putaran dari pembalap terdepan.\n\nYang lebih berat: di Australian GP, Hülkenberg bahkan tidak start, *did not start* sebelum balapan dimulai. Tiga round, satu DNS, dua finis tanpa poin. Untuk Audi yang baru masuk F1, ini bukan awal yang diinginkan.\n\n---\n\n## Hasil Per Balapan\n\n### Round 1, Australian Grand Prix: Did Not Start\n\nHülkenberg tidak pernah ke lintasan di Melbourne. Status DNS di round pertama musim baru adalah pukulan awal yang keras, baik untuk pembalapnya maupun untuk Audi yang baru debut. Detail teknis tidak tersedia di data, tapi hasilnya jelas: nol putaran, nol poin, nol data balapan untuk dibawa pulang.\n\n### Round 2, Chinese Grand Prix: P11 (Lapped)\n\nFinis P11 terdengar tidak terlalu buruk, tapi status *lapped* menggarisbawahi jarak performa yang nyata antara Audi dan tim-tim di depan. Satu lap tertinggal di Shanghai berarti bukan hanya soal strategi atau satu kesalahan kecil. itu mencerminkan defisit kecepatan yang struktural.\n\n### Round 3, Japanese Grand Prix: P11 (Finished)\n\nSuzuka menghasilkan P11 lagi, kali ini finis normal, tidak *lapped*. Itu progress kecil yang bisa dibaca dua arah: Audi mulai menutup gap, atau medan Suzuka kebetulan cocok dengan karakteristik mobil mereka. Satu balapan tidak cukup untuk menyimpulkan mana yang benar.\n\nPola dari tiga balapan ini: Hülkenberg konsisten berada di area P11 ketika finis, tapi belum cukup untuk menembus top 10. Ambang itu terasa dekat, dan sekaligus jauh.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Hülkenberg dan Audi berada di P17 klasemen dengan nol poin dari tiga balapan. Untuk tim baru, itu belum tentu mengejutkan, masuk F1 sebagai konstruktor baru hampir selalu berarti musim belajar yang panjang. Pertanyaannya bukan apakah Audi akan memenangkan balapan musim ini, tapi kapan poin pertama itu datang.\n\nFinis P11 dua kali berturut-turut menunjukkan mobil Audi sudah bisa menyelesaikan balapan dan bersaing di area tengah bawah grid. Hülkenberg, dengan pengalaman bertahun-tahun di F1, ada di posisi yang tepat untuk mengekstrak maksimal dari paket yang ada. Tapi poin pertama itu perlu segera datang, untuk momentum tim, dan untuk posisi klasemennya yang saat ini menghuni buntut grid.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "hulkenberg",
+    "driver_name": "Nico Hülkenberg",
+    "driver_code": "HUL",
+    "driver_number": "27",
+    "nationality": "German",
+    "current_team": "Audi",
+    "current_team_id": "audi",
+    "championship_pos": "17",
+    "championship_points": "0",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022063,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to three major training-inference violations (Audi new constructor status, selection rationale, DNS speculation) and a critical date mismatch between input (3 Mei) and text (28 April). Remove speculative strategic analysis and sync dates.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Audi yang memasuki F1 sebagai konstruktor baru musim ini",
+          "fix": "Remove or rephrase to avoid claiming Audi is a new constructor without explicit input confirmation"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Hülkenberg jelas dipilih karena pengalaman dan kemampuannya membaca pengembangan mobil",
+          "fix": "Delete this analysis; stick to verifiable facts from the data block"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Detail teknis tidak tersedia di data, tapi hasilnya jelas: nol putaran, nol poin",
+          "fix": "State only what is known: 'Hülkenberg did not start Round 1' without inferring why"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua finis di P11 (Chinese GP dan Japanese GP) berarti selalu satu posisi di luar zona poin.",
+          "fix": "Simplify: 'P11 di kedua laga itu: satu posisi di luar zona poin.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "itu mencerminkan defisit kecepatan yang struktural",
+          "fix": "'Itu tanda mobil Audi masih jauh di bawah kompetitor.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Nico Hülkenberg, kode FIA HUL (#27), pembalap Jerman kelahiran 19 Agustus 1987. Per 28 April 2026, Hülkenberg membalap untuk Audi",
+          "fix": "Just: 'Hülkenberg membalap untuk Audi di F1 2026 per data 3 Mei 2026.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Per 28 April 2026... Per 28 April 2026... Per 28 April 2026",
+          "fix": "Align all date references to '3 Mei 2026' per input data block"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3bfdae2fb58d8828",
+    "published_at": "2026-04-28T12:16:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

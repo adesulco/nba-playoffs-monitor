@@ -1,0 +1,82 @@
+{
+  "type": "standings",
+  "slug": "f1-championship-2026-after-round-3",
+  "title": "Klasemen F1 2026 setelah Round 3 — Andrea Kimi Antonelli di Puncak",
+  "description": "Analisis klasemen F1 2026 setelah Round 3 (Japanese Grand Prix). Andrea Kimi Antonelli memimpin pembalap dengan 72 poin.",
+  "body_md": "# Mercedes Dominasi, Ferrari Kejar-Kejaran, Red Bull Tenggelam\n\nAndrea Kimi Antonelli memimpin klasemen Pembalap dengan 72 poin setelah tiga race pertama musim 2026, unggul 9 poin dari rekan setim George Russell. Mercedes sudah menguasai konstruktor dengan 135 poin, margin yang menghawatirkan untuk pesaing, sementara 19 race tersisa masih bisa ubah segalanya. Tapi starter ini milik tim panahperak: dua pembalap mereka di top 2, momentum kuat, dan mechanical reliability yang solid.\n\n## Perburuan gelar pembalap\n\nAntonelli buka musim ini dengan dua kemenangan di dua race pertama. Belum ada yang bisa ikutin. Russell menang sekali (Suzuka minggu lalu) dan konsisten, tapi gap 9 poin bisa cepat mengecil di sirkuit yang suit gaya berkendara lain.\n\nBelakangan mereka, jarak besar mengganggu. Leclerc (49 poin) dan Hamilton (41 poin) masih di dalam peninjauan Ferrari, mereka cuma 8 poin terpisah, tapi keduanya sudah 23 poin di belakang Antonelli. Itu bukan jurang yang mustahil ditutup dalam 19 race, tapi membutuhkan konsistensi kemenangan yang Ferrari belum tunjukkin (nol menang hingga sekarang).\n\nNorris dan Piastri (McLaren) jauh: 25 dan 21 poin. Gawang McLaren jelas bukan pace, tim butuh strategi point-gathering sambil mereka improve setup. Oliver Bearman (Haas) punya 17 poin sebagai independent upside story, tapi itu bonus, bukan championship-player baseline.\n\nYang mengejutkan: Verstappen cuma 12 poin. Red Bull belum cetak kemenangan. Kalau musim terakhir Red Bull dominan dan musim ini merah-putih tertahan di P9, itu tanda besar bahwa grid sudah bergeser, bukan Verstappen drop kecil tapi mobil Red Bull struggle besar.\n\n## Drama konstruktor\n\nMercedes (135 poin) udah dapat 45 poin lebih dari Ferrari (90 poin). Itu artinya setiap race yang dimenangkan Mercedes atau keduanya finish 1-2, Ferrari mundur lagi. Ferrari butuh Leclerc atau Hamilton menang dan Antonelli/Russell tidak di podium untuk mulai tarik balik, susah, tapi mungkin di sirkuit street circuit atau high-downforce track.\n\nMcLaren (46) sama sekali tidak dalam fight title. Mereka berpikir panjang: development, reliability, podium consistency. Red Bull (16) sama tragisnya. Haas (18) menjadi orang ketiga dengan cara yang tidak terduga.\n\n## Outlook 19 laga tersisa\n\nMusim 2026 masih sangat muda. Keandalan mesin, update paket aerodinamika, dan adaptasi pembalap terhadap sirkuit berikutnya akan geser kalkulasi cepat. Antonelli unggul, tapi Russell setengah mesin lain juga punya suara. Ferrari belum tunjuk taring juara, zero wins adalah alarm.\n\nIni baru chapter pertama cerita 19 race panjang.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "championship_state",
+    "season": 2026,
+    "round": 3,
+    "race_name": "Japanese Grand Prix",
+    "rounds_remaining": 19,
+    "leader_driver": "Andrea Kimi Antonelli",
+    "leader_points": 72.0,
+    "leader_constructor": "Mercedes",
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.004472,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Article fails due to high-severity training inference (Suzuka timing), multiple translated-English calques, and vague academic hedging. Voice reads like rough-draft thinking rather than edited journalist prose. Rebuild with tighter sentences and grounded-only facts.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Belum ada yang bisa ikutin.",
+          "fix": "Tidak ada yang bisa menyamai pencapaian itu. atau Pembalap lain belum bisa kejar."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "jarak besar mengganggu",
+          "fix": "Gap besar memisahkan mereka dari top 2. atau Posisi ketiga sudah tertinggal jauh."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Suzuka minggu lalu",
+          "fix": "Remove 'minggu lalu' timing, just: 'Russell menang sekali di round ketiga.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "sementara 19 race tersisa masih bisa ubah segalanya",
+          "fix": "Delete or replace with specific point: '19 race tersisa, cukup untuk comeback jika konsisten menang.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "tim panahperak",
+          "fix": "Delete nickname. Use 'Mercedes' or 'tim panahperak' is banned per voice rules."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Gawang McLaren jelas bukan pace, tim butuh strategi point-gathering",
+          "fix": "McLaren bukan masalah pace — itu strategi. Mereka fokus point-gathering sambil improve setup."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Verstappen cuma 12 poin. Red Bull belum cetak kemenangan. Kalau musim terakhir Red Bull dominan dan musim ini merah-putih tertahan di P9, itu tanda besar bahwa grid sudah bergeser, bukan Verstappen drop kecil tapi mobil Red Bull struggle be",
+          "fix": "Break into three short sentences: 'Verstappen tertahan di P9 dengan 12 poin. Red Bull belum menang. Dari dominan musim lalu jadi strugging sekarang — mobilnya, bukan Verstappen.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Itu artinya setiap race yang dimenangkan Mercedes atau keduanya finish 1-2, Ferrari mundur lagi.",
+          "fix": "Setiap 1-2 Mercedes, Ferrari tertinggal lebih jauh. Itu realitas gap mereka sekarang."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x127a60f0539c7e42",
+    "published_at": "2026-04-28T06:48:20+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

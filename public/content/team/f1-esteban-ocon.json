@@ -1,0 +1,81 @@
+{
+  "type": "team",
+  "slug": "f1-esteban-ocon",
+  "title": "Profil Esteban Ocon: Pembalap F1 Haas F1 Team (2026)",
+  "description": "Profil pembalap F1 Esteban Ocon (Prancis) untuk tim Haas F1 Team. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Esteban Ocon, Pembalap Prancis yang Memulai Babak Baru di Haas\n\nEsteban Ocon, kode FIA OCO (#31), pembalap Prancis kelahiran 17 September 1996. Per 28 April 2026, Ocon membela Haas F1 Team di musim 2026, dan memulai tahun ini dengan perjuangan keras. Dari tiga balapan yang sudah dijalani, Ocon mengoleksi 1 poin dan menempati P15 klasemen sementara. Bukan start impresif, tapi musim masih panjang.\n\n## Identitas\n\nOcon berusia 29 tahun, salah satu pembalap di usia matang karier F1 yang masih mencari lompatan performa. Kode FIA-nya OCO, nomor permanen #31. Pembalap berkebangsaan Prancis ini kini membalap untuk Haas F1 Team, tim Amerika yang dalam beberapa musim terakhir konsisten berjuang di papan tengah-bawah grid. Bergabung dengan Haas, Ocon memasuki lingkungan tim yang berbeda dari tempat-tempat sebelumnya, dan data tiga balapan awal musim mencerminkan adaptasi yang belum selesai.\n\n## Performa Musim Ini\n\nTiga balapan, satu poin. Itulah ringkasan musim 2026 Ocon per 28 April 2026.\n\nSatu-satunya poin datang di Japanese Grand Prix, finis P10, tepat di batas poin. Dua balapan sebelumnya, Australia dan China, Ocon finis dalam kondisi *lapped* alias diselip oleh pemimpin balapan. P11 di Australia, P14 di China.\n\nPola yang muncul: performa Haas belum cukup kompetitif untuk bersaing di zona poin secara konsisten. Ocon di Suzuka menunjukkan ada kecepatan yang bisa digali, P10 bukan kebetulan, tapi dua balapan sebelumnya mengonfirmasi bahwa paket mobil masih butuh banyak pekerjaan, atau kondisi balapan tertentu yang belum mendukung.\n\n## Hasil Per Balapan\n\nDi **Australian Grand Prix**, Ocon finis P11 dalam kondisi *lapped*. Satu posisi dari zona poin, tapi gap ke P10 cukup jauh dari sisi kompetitivitas paket Haas. Bukan hasil yang memalukan, tapi bukan sinyal bagus juga.\n\nDi **Chinese Grand Prix**, turun ke P14, masih *lapped*. Balapan lebih sulit dari Australia. Apakah strategi, kondisi track, atau murni pace mobil yang menjadi faktor, data tidak merinci, tapi hasilnya jelas: Haas kesulitan.\n\n**Japanese Grand Prix** jadi titik terang. Ocon finis P10 dengan status *Finished*, bukan *lapped*, dan meraih 1 poin pertama musim ini. Suzuka memberi Ocon ruang untuk menunjukkan bahwa kecepatan ada, dan ketika kondisi mendukung, Haas bisa menembus top 10. Ini yang perlu dijadikan baseline.\n\nSecara keseluruhan: dari tiga balapan, Ocon dua kali *lapped* dan sekali finis bersih. Tren positif ada di Jepang, tapi belum cukup untuk mengubah gambaran besar, Haas dan Ocon masih di luar zona poin yang konsisten.\n\n## Outlook\n\nPer 28 April 2026, Ocon menempati P15 klasemen dengan 1 poin dari 3 balapan. Posisi itu mencerminkan realita kompetitif Haas musim ini, tim yang belum mampu menempatkan mobilnya secara reguler di top 10.\n\nTapi Japanese GP bukan noise. Itu sinyal bahwa kombinasi Ocon-Haas punya potensi yang belum sepenuhnya terbuka. Musim masih jauh dari selesai, dan satu poin bisa dengan cepat jadi 10 jika Haas menemukan *setup* yang cocok di sirkuit-sirkuit berikutnya.\n\nYang jelas: tekanan ada di Ocon untuk membuktikan bahwa keputusan bergabung dengan Haas bukan langkah mundur. Suzuka memberi sedikit jawaban. Balapan-balapan berikutnya akan memberi lebih banyak.\n\n*Data artikel ini mencerminkan klasemen dan hasil per 28 April 2026, setelah 3 balapan musim Formula 1 2026.*\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "ocon",
+    "driver_name": "Esteban Ocon",
+    "driver_code": "OCO",
+    "driver_number": "31",
+    "nationality": "French",
+    "current_team": "Haas F1 Team",
+    "current_team_id": "haas",
+    "championship_pos": "15",
+    "championship_points": "1",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021213,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail due to two high-severity training-data inferences (Haas history, Ocon's previous teams) not in input block. Remove or ground these claims. Secondary issues: tense hedging, academic connectors, translated-English clichés. Rewrite Identitas and Outlook sections to stick to 2026 musim facts only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Pembalap berkebangsaan Prancis ini kini membalap untuk Haas F1 Team, tim Amerika yang dalam beberapa musim terakhir konsisten berjuang di papan tengah-bawah grid.",
+          "fix": "Remove 'dalam beberapa musim terakhir konsisten berjuang di papan tengah-bawah grid' — stick to current 2026 musim facts only."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bergabung dengan Haas, Ocon memasuki lingkungan tim yang berbeda dari tempat-tempat sebelumnya",
+          "fix": "Delete this sentence entirely. Stick to what we know: Ocon joined Haas for 2026."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "data tiga balapan awal musim mencerminkan adaptasi yang belum selesai",
+          "fix": "Say 'mencerminkan adaptasi yang masih berjalan' or just delete — the results speak."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Satu-satunya poin datang di Japanese Grand Prix, finis P10, tepat di batas poin.",
+          "fix": "Use 'P10 adalah cutoff poin' or 'P10 jadi poin terakhir' — more direct."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Apakah strategi, kondisi track, atau murni pace mobil yang menjadi faktor, data tidak merinci, tapi hasilnya jelas",
+          "fix": "Delete this sentence; jump straight to 'Haas kesulitan di China' without the speculation."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Secara keseluruhan: dari tiga balapan, Ocon dua kali *lapped* dan sekali finis bersih.",
+          "fix": "Start with 'Dari tiga balapan:' or just begin with the fact."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Japanese GP bukan noise. Itu sinyal bahwa kombinasi Ocon-Haas punya potensi yang belum sepenuhnya terbuka.",
+          "fix": "Rephrase: 'Suzuka membuktikan Ocon bisa finis di zona poin kalau mobil memungkinkan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1a7227eeb1a78818",
+    "published_at": "2026-04-28T12:14:47+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

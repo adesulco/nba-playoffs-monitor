@@ -1,0 +1,49 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-persija-jakarta",
+  "title": "Profil Persija Jakarta: Liga 1 (2025-26)",
+  "description": "Profil Persija Jakarta — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "Saya tidak bisa menulis profil ini.\n\nData yang masuk kosong sepenuhnya, 0 laga, 0 gol, dan Persija tidak ditemukan di klasemen. Ini bukan kondisi tim yang bisa diinterpretasi. ini kondisi data pipeline yang gagal.\n\n---\n\n**Yang salah di input ini:**\n\n- `Main: 0 (0M-0S-0K)`, tidak ada performa musim yang bisa dilaporkan\n- `Tim id=2439 tidak ditemukan di klasemen`, posisi klasemen tidak tersedia\n- Tanpa kedua blok ini, satu-satunya konten yang bisa ditulis adalah identitas klub (nama + stadion), terlalu tipis untuk artikel 600-800 kata yang berguna\n\nKalau saya tetap menulis, saya akan terpaksa mengarang fakta, trofi, era pelatih, rivalri, sejarah Liga 1, yang semuanya dilarang keras oleh grounding rules.\n\n---\n\n**Langkah yang disarankan:**\n\n1. Cek apakah `tim id=2439` benar untuk Persija di database Liga 1 musim 2025-26\n2. Pastikan data fetcher mengembalikan match records dan klasemen sebelum job ini dijalankan\n3. Rerun setelah data tersedia\n\nKalau data sudah benar, kirim ulang data block dan saya tulis profilnya.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "2439",
+    "team_name": "Persija Jakarta",
+    "team_country": "Indonesia",
+    "team_founded": null,
+    "venue_name": "Stadion Patriot",
+    "venue_city": "Bekasi",
+    "venue_capacity": 30000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.032973,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 2,
+      "summary": "Not a voice violation. This is a data pipeline failure. The writer correctly refused to fabricate facts. Regenerate only after valid input data is confirmed.",
+      "issues": [
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Saya tidak bisa menulis profil ini. Data yang masuk kosong sepenuhnya.",
+          "fix": "Verify team ID and fetch complete match records + standings before regenerating."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "tetap menulis, saya akan terpaksa mengarang fakta, trofi, era pelatih, rivalri, sejarah Liga 1, yang semuanya dilarang keras",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbaa2863c096704d8",
+    "published_at": "2026-04-28T16:10:55+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

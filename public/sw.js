@@ -12,7 +12,7 @@
  * Bump SW_VERSION to force a cache flush.
  */
 
-const SW_VERSION = "gibol-2026-04-18-v1";
+const SW_VERSION = "gibol-2026-05-04-v3";
 const SHELL_CACHE = `${SW_VERSION}-shell`;
 const RUNTIME_CACHE = `${SW_VERSION}-runtime`;
 const IMMUTABLE_CACHE = `${SW_VERSION}-immutable`;
@@ -76,6 +76,17 @@ self.addEventListener("fetch", (event) => {
   // Live score endpoints: network-first with short timeout
   if (url.pathname.startsWith("/api/scores") || url.pathname.startsWith("/api/live")) {
     event.respondWith(networkFirst(request, RUNTIME_CACHE, 3000));
+    return;
+  }
+
+  // v0.11.7 — Polymarket proxy ( /api/proxy/polymarket-* ) gets the
+  // same network-first-with-cache treatment so a patchy connection
+  // still paints championship odds from the last known snapshot
+  // instead of showing FALLBACK_CHAMPION. 24-hour fallback window is
+  // long enough to cover overnight connectivity hiccups but short
+  // enough that stale odds never outlive a reasonable trade window.
+  if (url.pathname.startsWith("/api/proxy/")) {
+    event.respondWith(networkFirst(request, RUNTIME_CACHE, 5000));
     return;
   }
 

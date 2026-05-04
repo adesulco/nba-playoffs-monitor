@@ -1,0 +1,59 @@
+{
+  "type": "recap",
+  "slug": "bournemouth-vs-leeds-2026-04-22",
+  "title": "Recap Bournemouth 2-2 Leeds",
+  "description": "Recap Bahasa Indonesia untuk Bournemouth vs Leeds (2-2) di Vitality Stadium, Bournemouth, 22 April 2026.",
+  "body_md": "Bournemouth gagal raih tiga poin di Vitality Stadium setelah imbang 2-2 lawan Leeds, Kamis dini hari 23 April 2026. Bukan karena kurang dominan, 60% possession, 17 shots, xG 1.65 vs 0.81, tapi satu gol bunuh diri, satu balasan injury time, dan satu gol Evanilson yang dibatalkan VAR di menit 90+2 menutup laga dengan cara paling menyakitkan.\n\n## Jalannya Pertandingan\n\nBabak pertama berjalan tanpa gol, tapi bukan tanpa cerita. Bournemouth menguasai bola dan masuk kotak lebih konsisten, 12 dari 17 shots-nya dari dalam kotak, tapi finalisasi belum ketemu. Dua kartu kuning mewarnai 45 menit pertama: Kroupi di menit 25 dan Jiménez di menit 41.\n\nLeeds langsung bergerak di awal babak kedua. Bogle ditarik, diganti Rodon sebelum turun minum, dan formasi Farke sedikit bergeser menambah ketebalan lini belakang.\n\nGol pertama akhirnya datang di menit 60. Kroupi yang kena kartu di babak pertama justru jadi pencetak gol pembuka, memanfaatkan umpan Senesi dari lini belakang. Satu-nol untuk tuan rumah.\n\nEmpat menit berselang, Leeds jawab dengan cara yang tidak direncanakan siapa pun: Hill mencetak gol ke gawangnya sendiri di menit 68. Imbang 1-1. Leeds masih di laga, Bournemouth kehilangan keunggulan yang susah payah mereka bangun.\n\nIraola merespons cepat, Kroupi dan Christie ditarik di menit 73, masuk Adams dan Adli. Pergantian ini langsung berdampak. Di menit 85, Rayan, yang baru masuk menggantikan Brooks di menit 67, cetak gol kedua Bournemouth. Assist dari Adams, yang baru enam menit di lapangan. Skor 2-1, Bournemouth kembali unggul dengan lima menit tersisa.\n\nLaga sepertinya sudah beres. Tapi Leeds tidak selesai. Longstaff, yang masuk menggantikan Aaronson di menit 84, cetak gol penyama di menit 90. Baru satu menit di lapangan, langsung mengubah skor jadi 2-2.\n\n## Drama VAR Menit 90+2\n\nKalau gol Longstaff di menit 90 sudah menyakitkan, Vitality Stadium mendapat pukulan lagi dua menit kemudian. Evanilson menjebol gawang Leeds di menit 90+2, yang seharusnya jadi gol kemenangan dramatis Bournemouth. VAR memeriksa. Gol dibatalkan.\n\nAlasan pembatalan tidak tersedia di data, tapi hasilnya jelas: Bournemouth kehilangan tiga poin di menit terakhir untuk kedua kalinya dalam satu laga. Evanilson sendiri berakhir dengan kartu kuning di menit 90+5, mungkin sebagai respons atas keputusan itu.\n\n## Angka Bicara\n\nStatistik hampir sepenuhnya milik Bournemouth. 60% possession, 473 umpan vs 315 milik Leeds, 12 corners vs 1. Shots on target 7 banding 3, xG 1.65 vs 0.81. Kiper Leeds, Darlow, tampil sibuk dengan lima save.\n\nLeeds hanya punya 40% possession dan satu corner sepanjang laga. Tapi mereka pulang dengan satu poin, berkat satu gol bunuh diri, satu striker pengganti yang baru semenit di lapangan, dan satu keputusan VAR.\n\n## Dampak Klasemen\n\nBournemouth tertahan di posisi yang seharusnya bisa mereka perbaiki. Poin yang lepas di injury time, ditambah gol valid yang dianulir, adalah skenario paling frustasi dalam sepak bola, lebih buruk dari kalah. Leeds, di sisi lain, mencuri satu poin dari kandang lawan yang jauh lebih dominan malam itu.\n\nLaga ini tayang live di Vidio dan beIN Sports.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379300",
+    "home_team": "Bournemouth",
+    "away_team": "Leeds",
+    "home_score": 2,
+    "away_score": 2,
+    "kickoff_utc": "2026-04-22T19:00:00+00:00",
+    "venue": "Vitality Stadium, Bournemouth",
+    "home_formation": "4-2-3-1",
+    "home_coach": "Andoni Iraola",
+    "away_formation": "3-4-2-1",
+    "away_coach": "Daniel Farke",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020165,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with good narrative flow and stat integration. One medium-severity issue (translated-English phrasing) and one data-integrity note (VAR reason). Voice is largely natural and conversational; passes linter with minor observations.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "menutup laga dengan cara paling menyakitkan",
+          "fix": "Use 'cara paling perih' or 'ending paling menyakitkan', or restructure: 'tiga poin hilang di ending yang perih'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Babak pertama berjalan tanpa gol, tapi bukan tanpa cerita.",
+          "fix": "Can stay; acknowledged as acceptable flavor once per article"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Alasan pembatalan tidak tersedia di data",
+          "fix": "Keep acknowledgment but tighten: 'Alasan pembatalan tidak terbaca, tapi hasilnya jelas:' — focus on impact, not speculation"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Iraola merespons cepat, Kroupi dan Christie ditarik di menit 73",
+          "fix": "Can stay; acceptable. No fix needed"
+        }
+      ]
+    },
+    "published_at": "2026-04-27T08:59:05+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

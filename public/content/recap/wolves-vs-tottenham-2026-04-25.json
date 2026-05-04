@@ -1,0 +1,47 @@
+{
+  "type": "recap",
+  "slug": "wolves-vs-tottenham-2026-04-25",
+  "title": "Recap Wolves 0-1 Tottenham",
+  "description": "Recap Bahasa Indonesia untuk Wolves vs Tottenham (0-1) di Molineux Stadium, Wolverhampton, 25 April 2026.",
+  "body_md": "# Palhinha Tutup Laga di Menit 82, Spurs Bawa Pulang Tiga Poin dari Molineux\n\nTottenham menang 1-0 atas Wolves di Molineux, Sabtu 25 April 2026. Bukan kemenangan meyakinkan, kedua tim masing-masing cuma punya 2 shots on target, tapi Spurs lebih klinis saat momen krusial datang di menit 82. Satu gol, satu kemenangan. Cukup.\n\n---\n\n## Satu Gol yang Menentukan\n\nSampai menit 80-an, laga berjalan tanpa gol. Wolves bertahan rapat dengan formasi 3-4-2-1, sementara Tottenham pegang bola tapi kesulitan membongkar blok pertahanan tuan rumah.\n\nPerubahan datang dari bangku cadangan. De Zerbi sudah pasang Richarlison menggantikan Solanke di menit 40, substitusi awal yang terasa tidak biasa, lalu Tel masuk menggantikan Kolo Muani di menit 46. Palhinha sendiri baru turun di menit 62, menggantikan Bissouma.\n\nKeputusan-keputusan itu berbuah hasil. Menit 82, Palhinha cetak gol kemenangan dari umpan Richarlison. Gelandang bertahan asal Portugal itu muncul di momen yang tepat, menyelesaikan peluang yang dibuat oleh pemain yang juga masuk dari bench. Dua pemain pengganti. satu gol yang menentukan segalanya.\n\nWolves mencoba merespons. Edwards memasukkan Hwang Hee-Chan di menit 85 dan Tchatchoua di menit 86. Delapan menit tersisa, tapi Kinsky di bawah mistar Spurs tidak perlu kerja keras. Laga tutup 1-0.\n\n---\n\n## Angka yang Bicara\n\nStats memperlihatkan gambar yang lebih berimbang dari sekadar scoreline 1-0.\n\nTottenham dominan dalam penguasaan bola, 59% vs 41%, dan lebih rapi dalam distribusi: 400 dari 467 passes akurat (86%) versus Wolves yang 76%. Tapi dari sisi ancaman nyata, kedua tim punya 11 total shots masing-masing. Shots on target pun sama: 2 banding 2.\n\nYang membedakan adalah expected goals. Spurs mencatat xG 1.05 vs 0.62 milik Wolves, artinya peluang berkualitas lebih sering datang dari sisi tamu, meski kedua tim sama-sama kesulitan menembus kotak penalti secara konsisten (6 shots in box masing-masing).\n\nKinsky dan J. Sa sama-sama tampil solid. Kiper Wolves bikin 1 save, Kinsky 2, angka minim yang mencerminkan betapa terbatasnya chances di kedua sisi selama 80 menit pertama.\n\nCatatan lain: Spurs jauh lebih banyak melanggar, 14 fouls dibanding 8 Wolves. Lima kartu kuning untuk tamu (Bentancur, Porro, Gallagher, Danso), tiga untuk tuan rumah (André, H. Bueno, J. Gomes). Temperamen di kedua bench jelas memanas seiring laga berjalan tanpa gol.\n\n---\n\n## Momen Penentu\n\nPalhinha di menit 82.\n\nBukan nama yang paling terkenal di skuad Spurs, dan bukan pemain yang diharapkan tampil sebagai pembeda ketika laga dimulai. Tapi De Zerbi memasukkannya di awal babak kedua, membiarkannya membangun ritme, dan Palhinha hadir tepat ketika Richarlison, pemain pengganti lain, melepas umpan yang tepat.\n\nGol dari dua pemain cadangan, di menit ke-82, dalam laga tanpa gol yang keras dan penuh kartu. Itu yang akhirnya memisahkan kedua tim.\n\n---\n\n## Apa Artinya\n\nSpurs ambil tiga poin di laga tandang yang tidak mudah. Wolves tetap tertekan di zona bawah klasemen tanpa tambahan poin dari Molineux.\n\nLaga ini tayang live di Vidio dan beIN Sports.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379308",
+    "home_team": "Wolves",
+    "away_team": "Tottenham",
+    "home_score": 0,
+    "away_score": 1,
+    "kickoff_utc": "2026-04-25T14:00:00+00:00",
+    "venue": "Molineux Stadium, Wolverhampton",
+    "home_formation": "3-4-2-1",
+    "home_coach": "Rob Edwards",
+    "away_formation": "4-2-3-1",
+    "away_coach": "Roberto De Zerbi",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0199,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 2,
+      "summary": "Strong article. Natural Bahasa register, good stat integration, no hard voice violations. One low-severity soft-phrase repetition and one typo. Voice is consistent and reads like Indonesian sport journalism.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Bukan kemenangan meyakinkan... Bukan nama yang paling terkenal",
+          "fix": "Rephrase second instance: 'Palhinha bukan pemain paling terkenal di skuad Spurs'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua pemain pengganti. satu gol yang menentukan segalanya.",
+          "fix": "Dua pemain pengganti, satu gol yang menentukan segalanya."
+        }
+      ]
+    },
+    "published_at": "2026-04-27T09:01:35+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

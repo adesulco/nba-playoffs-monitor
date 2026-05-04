@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "tennis-ekaterina-alexandrova",
+  "title": "Profil Ekaterina Alexandrova (WTA) — Peringkat 14",
+  "description": "Profil petenis Ekaterina Alexandrova (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Ekaterina Alexandrova: Petenis Rusia Peringkat 14 WTA yang Konsisten di Papan Atas\n\nEkaterina Alexandrova, petenis Rusia kelahiran 15 November 1994, saat ini menempati peringkat 14 WTA dengan 2.789 poin per 16 April 2026. Bertangan kanan dan lahir di Chelyabinsk, Rusia, Alexandrova masuk usia 31 tahun musim ini, fase karier di mana banyak petenis justru tampil dalam momen terbaik mereka. Kehadirannya di papan atas WTA bukan kejutan sesaat. ini adalah hasil konsistensi yang sudah dibangun cukup lama.\n\n## Identitas\n\nLahir di Chelyabinsk, kota industri di Ural, Rusia, Alexandrova memulai perjalanan profesionalnya sejak 2011, artinya, di usia 31 tahun ini, ia sudah menjalani lebih dari satu dekade di sirkuit WTA. Petenis tangan kanan ini memiliki postur 175 cm dengan berat 66 kg, proporsi yang umum untuk petenis baseline modern yang mengandalkan daya jangkau dan stabilitas di lapangan.\n\nPerjalanan 15 tahun di sirkuit profesional membentuk karakter main yang khas: tidak mudah panik, terbiasa dengan tekanan turnamen besar, dan punya pengalaman menghadapi berbagai kondisi lapangan. Ini bukan petenis muda yang sedang meledak, ini petenis matang yang tahu persis kapasitas dirinya.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Alexandrova berada di peringkat 14 WTA dengan 2.789 poin. Dibanding peringkat sebelumnya di posisi 13, ia turun satu peringkat, trend -1 yang mengindikasikan sedikit tekanan dari bawah, bukan kolaps.\n\nTurun satu posisi dari 13 ke 14 di papan WTA bukan angka yang perlu dilebih-lebihkan. Di zona atas WTA, pergerakan satu-dua peringkat bisa terjadi hanya karena rival di sekitar mengumpulkan poin di turnamen berbeda, bukan karena performa seseorang anjlok. Alexandrova tetap berada di bracket 11-20, zona yang dalam bahasa tenis berarti: seeded di hampir setiap Grand Slam dan Masters, draw yang lebih ringan di babak awal, dan relevansi di setiap turnamen besar sepanjang musim.\n\nDengan 2.789 poin, ia punya bantalan poin yang cukup untuk mempertahankan posisi top 20 selama tidak ada hasil buruk beruntun.\n\n## Outlook\n\nDi usia 31 tahun dengan peringkat 14 WTA, Alexandrova berada di posisi yang bisa dibilang nyaman sekaligus kompetitif. Peringkat 14 memberi akses ke semua turnamen level tertinggi, dari Grand Slam hingga WTA 1000, dengan status unggulan. Tantangannya: mempertahankan posisi ini membutuhkan konsistensi poin sepanjang tahun, bukan satu atau dua run panjang.\n\nTrend -1 yang tercatat per 16 April 2026 belum menunjukkan sinyal kekhawatiran. Alexandrova tetap jadi salah satu nama yang diperhitungkan di paruh atas draw turnamen WTA musim ini.\n\n*Profil ini mencerminkan data per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "3182",
+    "athlete_name": "Ekaterina Alexandrova",
+    "current_rank": 14,
+    "previous_rank": 13,
+    "points": 2789.0,
+    "trend": "-1",
+    "birthplace": "Chelyabinsk, Russia",
+    "dob": "1994-11-15",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.017567,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Multiple tense-marking overuse (sudah, already marked as soft error in voice rules but repeated here). Critical training-inference failures: Chelyabinsk geography and invented playing-style traits not in input. Translated-English sentence structure ('ini bukan... ini'). Score penalized by high-severity training inference and tense drift together.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "ini adalah hasil konsistensi yang sudah dibangun cukup lama",
+          "fix": "Ubah ke: 'ini hasil konsistensi yang dibangun cukup lama'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "ia sudah menjalani lebih dari satu dekade di sirkuit WTA",
+          "fix": "Ubah ke: 'ia menjalani lebih dari satu dekade di sirkuit WTA'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Ini bukan petenis muda yang sedang meledak, ini petenis matang yang tahu persis kapasitas dirinya.",
+          "fix": "Ubah ke: 'Bukan petenis muda yang sedang meledak. Petenis matang yang tahu kapasitas dirinya.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "trend -1 yang mengindikasikan sedikit tekanan dari bawah",
+          "fix": "Ubah ke: 'trend -1 yang berarti sedikit tekanan dari bawah' atau 'menunjukkan tekanan'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Lahir di Chelyabinsk, kota industri di Ural, Rusia, Alexandrova memulai perjalanan profesionalnya sejak 2011",
+          "fix": "Delete 'kota industri di Ural' — keep only: 'Lahir di Chelyabinsk, Rusia, Alexandrova profesional sejak 2011'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Perjalanan 15 tahun di sirkuit profesional membentuk karakter main yang khas: tidak mudah panik, terbiasa dengan tekanan turnamen besar",
+          "fix": "Delete entire sentence. Stick to: 'Debut profesional sejak 2011 berarti 15 tahun di sirkuit.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "artinya, di usia 31 tahun ini, ia sudah menjalani lebih dari satu dekade",
+          "fix": "Rephrase: 'Di usia 31 tahun, ia menjalani karier profesional sejak 2011 — lebih dari dekade.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Profil ini mencerminkan data per 16 April 2026.",
+          "fix": "Delete or replace with forward-looking sentence about outlook."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3c854d3b08f9d4c8",
+    "published_at": "2026-04-28T12:14:13+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -3,8 +3,9 @@ import React from 'react';
 import { useApp } from '../lib/AppContext.jsx';
 import { COLORS as C } from '../lib/constants.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+// v0.19.5 Phase 2 Sprint E — share rail.
+import HubActionRow from '../components/v2/HubActionRow.jsx';
 
 export default function About() {
   const { lang } = useApp();
@@ -21,17 +22,34 @@ export default function About() {
         lang={lang}
       />
       <div className="dashboard-wrap" style={{ maxWidth: 820, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? 'tentang kami' : 'about'} />
-        <main style={{ padding: '40px 8px' }}>
-          <h1 style={{
+        {/* v0.19.5 Phase 2 Sprint E — hero compressed from fixed
+            36px to .editorial-h1 token (24/28/32 mobile/tablet/
+            desktop) per directive §6 type table. Share rail added
+            below subhead via <HubActionRow> consuming the Sprint A
+            i18n keys (copyLink / share). */}
+        <section style={{ padding: '40px 8px' }}>
+          <div style={{ marginBottom: 6, fontSize: 11, color: C.dim, letterSpacing: 1.4, textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>
+            gibol.co · {lang === 'id' ? 'TENTANG KAMI' : 'ABOUT US'}
+          </div>
+          <h1 className="editorial-h1" style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
-            letterSpacing: '-0.025em', textWrap: 'balance',
+            margin: 0,
+            color: C.text,
+            textWrap: 'balance',
           }}>
             {lang === 'id' ? 'Tentang gibol.co' : 'About gibol.co'}
           </h1>
-          <div style={{ marginTop: 10, fontSize: 12, color: C.dim, letterSpacing: 2, textTransform: 'uppercase' }}>
-            {lang === 'id' ? 'Dashboard olahraga live · dari fan untuk fan' : 'Live sports dashboards · from fans for fans'}
+          <div style={{ marginTop: 8, fontSize: 14, color: C.dim, lineHeight: 1.55, maxWidth: 600 }}>
+            {lang === 'id' ? 'Dashboard olahraga live, dari fan untuk fan.' : 'Live sports dashboards, from fans for fans.'}
+          </div>
+          <div style={{ marginTop: 14 }}>
+            <HubActionRow
+              url="/about"
+              shareText={lang === 'id'
+                ? 'gibol.co — dashboard olahraga live Bahasa Indonesia'
+                : 'gibol.co — live sports dashboards in Bahasa Indonesia'}
+              analyticsEvent="about_share"
+            />
           </div>
 
           <div style={{ marginTop: 28, fontSize: 14, lineHeight: 1.75, color: C.text, maxWidth: 700 }}>
@@ -71,7 +89,7 @@ export default function About() {
               </>
             )}
           </div>
-        </main>
+        </section>
         <div style={{
           display: 'flex', justifyContent: 'space-between', padding: '14px 8px',
           borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted, letterSpacing: 0.3,

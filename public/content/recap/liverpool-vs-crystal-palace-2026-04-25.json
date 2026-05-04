@@ -1,0 +1,53 @@
+{
+  "type": "recap",
+  "slug": "liverpool-vs-crystal-palace-2026-04-25",
+  "title": "Recap Liverpool 3-1 Crystal Palace",
+  "description": "Recap Bahasa Indonesia untuk Liverpool vs Crystal Palace (3-1) di Anfield, Liverpool, 25 April 2026.",
+  "body_md": "Liverpool menang 3-1 atas Crystal Palace di Anfield, Sabtu malam 25 April 2026, tapi angka di balik skor bilang cerita yang berbeda. Palace ciptakan 14 shots, 7 on target, dengan expected goals 2.26 vs milik Liverpool yang hanya 1.15. Tuan rumah lebih efisien, bukan lebih dominan. Freddie Woodman berdiri di balik lima saves untuk menjaga clean sheet yang ujungnya pun tidak terjadi.\n\n---\n\nBabak pertama berjalan panas sebelum gol pertama lahir. Menit 19, Daniel Muñoz kena kartu kuning, indikasi Palace masuk dengan intensitas tinggi. Menit 24, situasi bertambah ramai: wasit beri Liverpool penalti, tapi VAR batalkan setelah review. Salah yang berdiri di titik putih pun kembali ke lapangan tanpa poin.\n\nPalace tampak nyaman dengan tekanan itu. Sampai menit 35, Mac Allister membongkar pertahanan mereka dengan satu umpan, Isak yang menerima, selesaikan dengan tenang. 1-0 Liverpool.\n\nLima menit berselang, gol kedua datang dari rute yang tidak biasa: Callum Jones naik dari belakang, umpan silang mendarat di kaki Robertson, dan bek asal Skotlandia itu selesaikan tanpa ampun. 2-0 sebelum turun minum. Henderson, yang sudah kena kartu kuning di menit 32, tidak bisa berbuat banyak untuk keduanya.\n\n---\n\nGlasner buat perubahan langsung di babak kedua, Mitchell ditarik di menit 46, diganti Sosa. Slot juga merespons: Salah keluar menit 59, masuk Frimpong. Di momen yang sama, Palace tukar Johnson dengan Pino. Pertandingan berganti wajah.\n\nPalace mulai tekan lebih intens. Dan menit 71, usaha itu berbuah hasil. Muñoz, bek kanan yang sudah dapat kartu kuning lebih dari sejam sebelumnya, naik dan cetak gol. 2-1. Anfield sempat bungkam sejenak.\n\nSlot langsung bereaksi: Isak keluar menit 79, Gravenberch masuk. Lalu menit 87, dua pergantian sekaligus, Robertson dan Callum Jones ditarik, diganti Kerkez dan Gomez. Liverpool ingin amankan laga.\n\n---\n\nGol yang benar-benar menutup kontes baru datang di menit 90. Florian Wirtz menerima umpan Mac Allister, assist kedua sang gelandang malam itu, dan eksekusinya bersih. 3-1. Szoboszlai kena kartu kuning di menit yang sama, tapi itu sudah tidak relevan.\n\n---\n\nMomen paling menentukan malam itu bukan salah satu dari tiga gol, tapi penalti yang dibatalkan VAR di menit 24. Kalau Salah berhasil eksekusi, Liverpool masuk babak kedua dengan modal tiga gol dan Palace mungkin tidak pernah punya momentum untuk balik. Satu keputusan VAR mengubah tekstur pertandingan. Palace punya ruang untuk bernafas, balik dengan 14 shots, dan sempat bikin laga tegang.\n\n---\n\nAngka shotnya timpang, 14 vs 9, dan xG Palace hampir dua kali lipat Liverpool (2.26 vs 1.15). Tapi papan skor tidak bohong. Liverpool ambil tiga poin, Palace pulang dengan tangan kosong meski statistik berpihak pada mereka lebih dari yang semestinya.\n\nTayang live di Vidio dan beIN Sports.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379304",
+    "home_team": "Liverpool",
+    "away_team": "Crystal Palace",
+    "home_score": 3,
+    "away_score": 1,
+    "kickoff_utc": "2026-04-25T14:00:00+00:00",
+    "venue": "Anfield, Liverpool",
+    "home_formation": "4-2-3-1",
+    "home_coach": "Arne Slot",
+    "away_formation": "3-4-2-1",
+    "away_coach": "Oliver Glasner",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021203,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with good pace and specificity. Pronoun discipline solid, code-switching natural, and VAR moment analysis (paragraph 5) is the exact insight this article needs. One soft tense marker and minor phrasing choices; no structural failures. Pass.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "bek asal Skotlandia itu selesaikan tanpa ampun",
+          "fix": "Robertson selesaikan dengan matang. 2-0 sebelum turun minum."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Henderson, yang sudah kena kartu kuning di menit 32, tidak bisa berbuat banyak",
+          "fix": "Henderson, yang kena kartu kuning di menit 32, tidak bisa berbuat banyak."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Anfield sempat bungkam sejenak",
+          "fix": "Liverpool sempat terguncang. 2-1."
+        }
+      ]
+    },
+    "published_at": "2026-04-27T08:30:16+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -43,7 +43,14 @@ export default function Chip({ variant = 'neutral', sportId, accent, label, styl
   const color = resolveSportColor({ theme, sportId, accent });
 
   if (variant === 'live') {
-    const bg = color || 'var(--live)';
+    // v0.11.20 GIB-bonus: LIVE is a universal signal — always use the
+    // --live token, ignore sportId. Previously `<Chip variant="live"
+    // sportId="tennis">` rendered white text on light-gold (#e6c47a),
+    // which axe-core measured at 1.67:1 (worst violation on site).
+    // Sport-branded accents live on the "soon"/"neutral" variants,
+    // not "live." Any consumer that wants a sport-tinted live chip can
+    // supply `accent` explicitly.
+    const bg = accent || 'var(--live)';
     return (
       <span style={{ ...BASE_STYLE, background: bg, color: '#fff', ...style }}>
         <span

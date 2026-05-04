@@ -1,0 +1,73 @@
+{
+  "type": "team",
+  "slug": "tennis-alexander-bublik",
+  "title": "Profil Alexander Bublik (ATP) — Peringkat 11",
+  "description": "Profil petenis Alexander Bublik (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Alexander Bublik, Petenis Rusia-Kazakhstan Peringkat 11 ATP\n\nAlexander Bublik, petenis kelahiran Gatchina, Rusia, 17 Juni 1997, saat ini menempati peringkat 11 ATP dengan 3.445 poin per 16 April 2026. Bertubuh jangkung dengan gaya bermain yang kerap tak terduga, Bublik adalah salah satu nama paling dikenal di jajaran top 15 dunia.\n\n---\n\n## Identitas\n\nLahir di Gatchina, Rusia, Bublik kini berusia 28 tahun. Ia bermain dengan tangan kanan, memiliki tinggi 6 kaki 5 inci (sekitar 196 cm) dan berat 180 lbs (sekitar 82 kg), postur yang menjadikannya salah satu petenis tertinggi di tur ATP. Debut profesionalnya tercatat di tahun 2016, artinya ia sudah menjalani hampir satu dekade di tur senior ketika profil ini ditulis.\n\n---\n\n## Peringkat Saat Ini\n\nPer data ranking 16 April 2026, Bublik berada di peringkat 11 ATP dengan 3.445 poin. Posisinya stabil, peringkat sebelumnya juga 11, tanpa pergerakan naik maupun turun. Stabilitas di posisi ini bukan hal sepele: zona top 15 ATP adalah salah satu yang paling kompetitif di dunia, dan mempertahankan posisi tanpa tergeser ke bawah sudah merupakan sinyal form yang solid.\n\nPoin 3.445 menempatkan Bublik di jarak yang cukup dari papan atas, gap antara dia dan top 5 masih signifikan, tetapi cukup jauh dari ancaman di bawahnya untuk tidak merasa tertekan jangka pendek. Konsistensi ini adalah modal penting memasuki paruh kedua musim 2026.\n\n---\n\n## Penutup\n\nData per 28 April 2026 menempatkan Bublik sebagai petenis mapan di jajaran elite dunia. Peringkat 11 ATP dengan posisi yang tidak bergerak menunjukkan seorang petenis yang tengah menjaga ritme, bukan sedang dalam tren pendakian tajam, tetapi juga tidak dalam tekanan. Di usia 28 tahun, Bublik berada di puncak usia emas untuk seorang petenis pria.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "2865",
+    "athlete_name": "Alexander Bublik",
+    "current_rank": 11,
+    "previous_rank": 11,
+    "points": 3445.0,
+    "trend": "-",
+    "birthplace": "Gatchina, Russia",
+    "dob": "1997-06-17",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.012793,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 6,
+      "summary": "Fail. High-severity training-data inference (Kazakhstan claim unsourced), tense overmarking, and date inconsistency. Tone drifts toward formal / translated English in sections. Rewrite closing paragraph and verify all biographical claims against input block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "petenis Rusia-Kazakhstan",
+          "fix": "Remove 'Kazakhstan' or source it from input. Call him petenis Rusia or petenis asal Gatchina."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Debut profesionalnya tercatat di tahun 2016, artinya ia sudah menjalani hampir satu dekade",
+          "fix": "Rephrase: 'Debut pro 2016, jadi sudah 10 tahun di tur senior saat profil ini ditulis.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Data per 28 April 2026 menempatkan Bublik sebagai petenis mapan",
+          "fix": "Use: 'Per 28 April 2026, Bublik mapan di jajaran elite dunia.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Stabilitas di posisi ini bukan hal sepele: zona top 15 ATP adalah salah satu yang paling kompetitif",
+          "fix": "Simpler: 'Stabil di 11 bukan mudah. Top 15 ATP sangat ketat.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Data ranking per: 2026-04-16 but closing says 28 April 2026",
+          "fix": "Use consistent date: 16 April 2026 throughout, or clarify the 28 April reference."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "gaya bermain yang kerap tak terduga",
+          "fix": "Use: 'gaya bermain unpredictable' or 'main keras dan tidak terduga.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x38028977e68f66c4",
+    "published_at": "2026-04-28T12:00:45+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

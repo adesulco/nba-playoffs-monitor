@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "tennis-novak-djokovic",
+  "title": "Profil Novak Djokovic (ATP) — Peringkat 4",
+  "description": "Profil petenis Novak Djokovic (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Novak Djokovic\n\nNovak Djokovic, petenis Serbia kelahiran 22 Mei 1987, saat ini berada di peringkat 4 ATP dengan 4.710 poin per 16 April 2026. Pemain tangan kanan asal Belgrade ini masih bercokol di jajaran elite dunia di usia 38 tahun, memasuki tahun ke-23 karier profesionalnya.\n\n## Identitas\n\nLahir di Belgrade, Serbia, Djokovic memulai karier profesional pada 2003 di usia 16 tahun. Kini 38 tahun, dia tampil dengan postur 188 cm dan berat 82 kg, fisik yang menjadi fondasi gaya bermainnya sebagai petenis baseline dengan kemampuan defend dan counter yang sulit ditandingi.\n\nTangan kanan, debut 2003: artinya Djokovic sudah lebih dari dua dekade di sirkuit ATP. Bahwa dia masih relevan di top 5 dunia di usia ini bukan pernyataan yang perlu dibesar-besarkan, angkanya bicara sendiri.\n\n## Peringkat Saat Ini\n\nPer data ranking 16 April 2026, Djokovic berada di peringkat 4 ATP dengan 4.710 poin. Dibanding peringkat sebelumnya, posisinya stabil, tidak naik, tidak turun.\n\nStabil di P4 bukan berarti stagnan. Bagi petenis yang mendekati usia 40, mempertahankan posisi di empat besar dunia adalah pencapaian tersendiri. Peringkat di atas dia tentu ada, tapi keberadaan Djokovic di blok teratas ranking ATP tetap menjadi faktor yang diperhitungkan siapapun yang masuk ke sisi yang sama di draw turnamen manapun.\n\nPoin 4.710 menempatkannya cukup jauh dari posisi challenger untuk menyodok ke P3 atau P2 dalam waktu dekat, tapi juga solid untuk tidak mudah tergeser ke luar top 5.\n\n## Outlook\n\nDi usia 38 tahun dengan posisi stabil di top 4 dunia, Djokovic masih menjadi salah satu nama paling berbahaya di sirkuit ATP. Tidak banyak petenis yang melampaui usia 35 dan tetap konsisten di empat besar, fakta bahwa Djokovic ada di sini per April 2026 adalah pernyataan tentang kondisi dan motivasinya saat ini.\n\nProfil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "296",
+    "athlete_name": "Novak Djokovic",
+    "current_rank": 4,
+    "previous_rank": 4,
+    "points": 4710.0,
+    "trend": "-",
+    "birthplace": "Belgrade, Serbia",
+    "dob": "1987-05-22",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.012775,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails voice check due to high-severity tense over-marking, academic drift, and English-translated phrasing patterns. Sections 2–4 especially read like formal press release. Rewrite for conversational register; cut hedge words and explanatory glosses.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Bahwa dia masih relevan di top 5 dunia di usia ini bukan pernyataan yang perlu dibesar-besarkan",
+          "fix": "Djokovic masih top 5 di usia 38—angkanya bicara sendiri."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Tangan kanan, debut 2003: artinya Djokovic sudah lebih dari dua dekade di sirkuit ATP.",
+          "fix": "Tangan kanan, debut 2003. Itu berarti 23 tahun di ATP."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Stabil di P4 bukan berarti stagnan. Bagi petenis yang mendekati usia 40, mempertahankan posisi di empat besar dunia adalah pencapaian tersendiri.",
+          "fix": "Stabil bukan stagnan. Untuk petenis 38 tahun di top 4, itu sudah pencapaian besar."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "keberadaan Djokovic di blok teratas ranking ATP tetap menjadi faktor yang diperhitungkan siapapun",
+          "fix": "Djokovic tetap ancaman untuk siapapun yang sekaligus lokasi di draw yang sama."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "fakta bahwa Djokovic ada di sini per April 2026 adalah pernyataan tentang kondisi dan motivasinya saat ini",
+          "fix": "Kehadiran Djokovic di top 4 per April 2026 bicara tentang kondisi dan motivasinya."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Poin 4.710 menempatkannya cukup jauh dari posisi challenger untuk menyodok ke P3 atau P2 dalam waktu dekat",
+          "fix": "Poin 4.710 cukup jauh dari P3 (perlu sekitar 500 poin lagi)."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Identitas\n\nLahir di Belgrade, Serbia, Djokovic memulai karier profesional pada 2003 di usia 16 tahun. Kini 38 tahun, dia tampil dengan postur",
+          "fix": "Remove debut-year claim unless input has it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x79676f2fb489de40",
+    "published_at": "2026-04-28T11:57:40+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

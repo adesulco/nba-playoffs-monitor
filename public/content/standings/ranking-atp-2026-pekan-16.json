@@ -1,0 +1,90 @@
+{
+  "type": "standings",
+  "slug": "ranking-atp-2026-pekan-16",
+  "title": "Ranking ATP pekan 16 — Jannik Sinner di Puncak",
+  "description": "Analisis ranking ATP 2026 pekan 16. Jannik Sinner (13,350 poin) memimpin tour.",
+  "body_md": "# Peringkat ATP: Sinner Perkuat Posisi, Fritz Naik ke Top 7\n\nJannik Sinner tetap kuasai puncak ATP dengan 13.350 poin, unggul 390 dari Carlos Alcaraz. Dua nomor satu ini akan mengukur tempo masing-masing di Mutua Madrid Open yang dimulai 20 April, turnamen clay yang selalu jadi barometer performa pemain top jelang Roland Garros.\n\nPuncak tetap stabil minggu ini. Sinner dan Alcaraz bertahan di posisi, sementara Alexander Zverev terus jaga P3 dengan 5.255 poin. Gap ke mereka besar: Novak Djokovic di P4 hanya 545 poin di atas kelompok berikutnya. Ini tanda kompetisi terbuka di bawah trio top, siapa saja bisa terobos top 5 dengan satu turnamen besar.\n\nTaylor Fritz bergerak ke atas, naik satu posisi jadi P7 dengan 3.870 poin, menggantikan tempat Alex de Minaur yang turun ke P8. Pergerakan kecil ini menceritakan race yang ketat untuk posisi kedua tier, Fritz dan De Minaur terpisah cuma 25 poin. Felix Auger-Aliassime (P5, 4.100) dan Ben Shelton (P6, 4.070) juga berjarak rapat, tinggal 30 poin. Siapa yang main solid di Madrid bisa geser ranking ini berkali-kali.\n\nGerakan terbesar datang dari Andrey Rublev dan Flavio Cobolli. Rublev naik tiga posisi jadi P12 dengan 2.630 poin, sementara Cobolli, pemain muda Italia, langsung masuk orbit ranking signifikan di P13 dengan 2.600 poin, juga dengan lompat +3. Keduanya mulai konsisten. Casper Ruud, sebaliknya, tergelincir tiga tempat dari P12 ke P15 dengan 2.535 poin, perlahan tapi pasti dia kehilangan momentum.\n\nJiri Lehecka turun satu ke P14, tapi tetap menempel erat. Karen Khachanov merosot dua posisi ke P16 (2.220), sementara Jiri Lehecka dan Ruud berkompetisi untuk zona P13-15 yang volatile ini. Satu hasil bagus bisa angkat siapa saja hingga 4-5 posisi.\n\nDi sisi bawah top 20, pergerakan minimal tapi konsisten. Tommy Paul (P18) dan Frances Tiafoe, yang naik satu ke P19, masih dalam jarak bisa terbang ke P10 besar dalam sebulan kalau musim bermain bagus. Francisco Cerundolo turun satu ke P20 (1.920).\n\nMadrid akan jadi turning point. Clay court selama dua minggu penuh ini bisa reshuffle ranking serius, terutama untuk pemain yang kuat di lapangan tanah merah. Sinner dan Alcaraz punya advantage di sini, tapi Zverev, Djokovic, dan Medvedev, yang tetap di P10 dengan 3.560, bisa mengacak semuanya. Siapa menang Grand Slam musim ini akan tentukan peringkat global sampai Wimbledon.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "year": 2026,
+    "iso_week": 16,
+    "no_1_name": "Jannik Sinner",
+    "no_1_points": 13350,
+    "active_tournament": "Mutua Madrid Open",
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.007062,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to multiple training-data inferences (Roland Garros context, clay-court advantages, Grand Slam impact) not present in input block, plus awkward English-translated phrasing and a Lehecka repetition error. Voice is conversational but inference creep is significant.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Mutua Madrid Open yang dimulai 20 April, turnamen clay yang selalu jadi barometer performa pemain top jelang Roland Garros",
+          "fix": "Remove 'jelang Roland Garros' or rephrase to: 'turnamen clay prestisius di kalender ATP'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sinner dan Alcaraz punya advantage di sini, tapi Zverev, Djokovic, dan Medvedev... bisa mengacak semuanya",
+          "fix": "Remove subjective prediction. Stick to: 'Sinner, Alcaraz, Zverev, dan Djokovic punya poin terbanyak untuk pertahanan ranking.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua nomor satu ini akan mengukur tempo masing-masing di Mutua Madrid Open",
+          "fix": "Rephrase: 'Kedua pemain terdepan akan bertanding di Madrid' or 'Sinner dan Alcaraz siap ukur kekuatan di Madrid.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Ini tanda kompetisi terbuka di bawah trio top, siapa saja bisa terobos top 5 dengan satu turnamen besar",
+          "fix": "Delete or merge: 'Djokovic P4 hanya 545 poin lebih dari kelompok berikutnya — top 5 sangat terbuka.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Pergerakan kecil ini menceritakan race yang ketat... Fritz dan De Minaur terpisah cuma 25 poin",
+          "fix": "Cut second sentence or: 'Fritz dan De Minaur terpisah 25 poin saja — jarak ini bisa geser dalam satu turnamen.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Jiri Lehecka turun satu ke P14, tapi tetap menempel erat. Karen Khachanov merosot dua posisi ke P16... sementara Jiri Lehecka dan Ruud berkompetisi",
+          "fix": "Restructure: 'Jiri Lehecka turun ke P14, Karen Khachanov ke P16. Ruud dan Lehecka berkompetisi untuk zona volatile P13-15.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Siapa yang main solid di Madrid bisa geser ranking ini berkali-kali",
+          "fix": "Minor: 'bisa naik beberapa posisi' or just 'bisa geser ranking' once."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Siapa menang Grand Slam musim ini akan tentukan peringkat global sampai Wimbledon",
+          "fix": "Remove future prediction. End with: 'Madrid akan jadi turning point untuk ranking mingguan berikutnya.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe9952f382ad25680",
+    "published_at": "2026-04-28T08:09:57+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 72,
+      "headline_score": 70,
+      "lead_score": 75,
+      "structure_score": 65,
+      "voice_score": 74,
+      "suggestion_count": 6,
+      "summary": "Solid standings piece with strong stat density and natural code-switching, but a duplicate Lehecka mention, an unsupported Grand Slam closer, and a major missed angle (Ruud as defending Madrid champion now sliding) need fixing before publish."
+    }
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-charles-leclerc",
+  "title": "Profil Charles Leclerc: Pembalap F1 Ferrari (2026)",
+  "description": "Profil pembalap F1 Charles Leclerc (Monako) untuk tim Ferrari. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Charles Leclerc: Konsisten di Top-4, tapi Belum Sentuh Victory Lane di 2026\n\nCharles Leclerc, kode FIA LEC (#16), pembalap Monegasque kelahiran 16 Oktober 1997. Per 28 April 2026, Leclerc menempati P3 klasemen Formula 1 2026 dengan 49 poin dari tiga balapan musim ini, belum satu pun kemenangan, tapi konsistensinya di top-4 jadi fondasi yang solid untuk perburuan gelar panjang ini.\n\n---\n\n## Identitas\n\nLeclerc adalah pembalap Monako berusia 28 tahun yang membela Ferrari di musim 2026. Ia dikenal dengan kode FIA LEC dan nomor permanen #16, detail yang sudah akrab bagi siapapun yang rutin mengikuti grid F1.\n\nMewakili Monako di kancah F1 bukan hal sederhana. Leclerc jadi salah satu sedikit pembalap yang benar-benar lahir dan besar di negara tempat salah satu Grand Prix paling bersejarah digelar. Tapi di luar identitas itu, yang paling relevan musim ini adalah bagaimana ia memposisikan diri di dalam tim Ferrari, sebagai pembalap utama yang dimintai hasil konkret, bukan sekadar konsistensi.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, dua P3, satu P4. Total 49 poin. Leclerc duduk di P3 klasemen sementara, ada di antara pesaing title tanpa satu pun kemenangan di kantong.\n\nAngka ini bisa dibaca dua cara. Yang positif: Leclerc tidak pernah finish di luar top-4. Setiap balapan ia masuk dalam hitungan, setiap akhir pekan Ferrari minimal dapat poin signifikan dari tangannya. Di awal musim, itu bukan pencapaian kecil, banyak pesaing sudah makan DNF atau hasil kacau.\n\nYang jadi tanda tanya: di tiga kesempatan itu, tidak ada satu pun yang berujung kemenangan. Poin terkumpul, tapi gap ke pemimpin klasemen terus terasa. Musim F1 panjang, 24 seri kalau tidak ada perubahan kalender, tapi semakin lama tanpa win, semakin besar tugas mengejar di paruh kedua.\n\n---\n\n## Hasil Per Balapan\n\n**Australian Grand Prix** jadi pembuka musim yang solid. Leclerc finish P3, mengumpulkan 15 poin. Podium di race pertama selalu jadi sinyal yang baik, Ferrari keluar dari gerbang dalam kondisi kompetitif.\n\n**Chinese Grand Prix** sedikit turun: P4, 12 poin. Selisih satu posisi, tapi selisih itu artinya podium terlewat. Di trek seperti Shanghai yang punya karakter overtaking cukup terbuka, P4 ke P3 harusnya bisa dikejar, tapi tidak terjadi. Apakah masalah strategi pit stop, pace, atau timing safety car, data tidak menjelaskan. Yang tercatat: Leclerc keluar dengan empat poin lebih sedikit dari dua race lain.\n\n**Japanese Grand Prix** kembali ke ritme: P3, 15 poin. Suzuka biasanya cocok untuk Ferrari secara historis dalam hal downforce dan karakter corner high-speed, tapi lagi, Leclerc tidak bisa lebih dari podium ketiga. Pola yang muncul: ada yang lebih cepat di depannya, dan gap itu belum terpecahkan.\n\nTiga race, tidak ada DNF, tidak ada drama besar. Tapi juga tidak ada momen \"Leclerc mengambil alih\" yang biasanya jadi tanda pembalap yang serius fight for the championship.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Leclerc di P3 klasemen dengan 49 poin, tertinggal dari P1 dan P2, tapi belum jauh dalam konteks musim yang baru berjalan tiga seri.\n\nYang dibutuhkan bukan cuma konsistensi. Kemenangan pertama musim ini akan mengubah narasi, dari \"Leclerc di sana, tapi belum menang\" menjadi \"Leclerc serius fight\". Ferrari perlu menemukan satu akhir pekan di mana semuanya berjalan sempurna: qualifying pole, strategi clean, pace race terjaga.\n\nSampai itu terjadi, Leclerc bertahan di posisi yang tidak nyaman: terlalu baik untuk diabaikan, tapi belum cukup tajam untuk disebut favorit juara. Data per 28 April 2026 bercerita tepat seperti itu.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "leclerc",
+    "driver_name": "Charles Leclerc",
+    "driver_code": "LEC",
+    "driver_number": "16",
+    "nationality": "Monegasque",
+    "current_team": "Ferrari",
+    "current_team_id": "ferrari",
+    "championship_pos": "3",
+    "championship_points": "49",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022124,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Critical data mismatches (point totals, date, race results). Multiple training-data inferences (birth date, Monaco biography, Ferrari-Suzuka history). Tighten to input facts only; recalculate and re-verify all numbers before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Charles Leclerc, kode FIA LEC (#16), pembalap Monegasque kelahiran 16 Oktober 1997.",
+          "fix": "Use only: 'Charles Leclerc, pembalap Monako berusia 28 tahun, membela Ferrari dengan kode FIA LEC (#16).'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Mewakili Monako di kancah F1 bukan hal sederhana. Leclerc jadi salah satu sedikit pembalap yang benar-benar lahir dan besar di negara tempat salah satu Grand Prix paling bersejarah digelar.",
+          "fix": "Delete this paragraph or rephrase to: 'Leclerc mewakili Monako di tim Ferrari.' Avoid biography beyond input data."
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Leclerc menempati P3 klasemen Formula 1 2026 dengan 49 poin dari tiga balapan musim ini",
+          "fix": "Correct to: 'Per 3 Mei 2026, Leclerc P3 klasemen dengan 55 poin dari tiga balapan musim ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Tiga balapan, dua P3, satu P4. Total 49 poin.",
+          "fix": "Recalculate: three races (P3, P4, P3) = 15+12+15 = 42 points. Update all instances."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka ini bisa dibaca dua cara. Yang positif: Leclerc tidak pernah finish di luar top-4.",
+          "fix": "Start: 'Leclerc P3 konsisten, tapi masalahnya jelas: nol kemenangan di tiga race.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Tiga balapan, tidak ada DNF, tidak ada drama besar. Tapi juga tidak ada momen...",
+          "fix": "Rephrase: 'Leclerc clean sheet tiga balapan: no DNF, no crashes. Tapi juga tanpa satu victory.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Suzuka biasanya cocok untuk Ferrari secara historis dalam hal downforce dan karakter corner high-speed, tapi lagi, Leclerc tidak bisa lebih dari podium ketiga.",
+          "fix": "Simplify: 'Suzuka biasanya cocok Ferrari: downforce tinggi, corners cepat. Tapi Leclerc tetap P3.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Suzuka biasanya cocok untuk Ferrari secara historis...",
+          "fix": "Remove 'secara historis'. State only: 'Leclerc P3 di Suzuka, 15 poin. Pola sama: konsisten top-3, belum menang.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x996ca59a90ad86c0",
+    "published_at": "2026-04-28T11:57:48+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

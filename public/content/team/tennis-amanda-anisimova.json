@@ -1,0 +1,91 @@
+{
+  "type": "team",
+  "slug": "tennis-amanda-anisimova",
+  "title": "Profil Amanda Anisimova (WTA) — Peringkat 6",
+  "description": "Profil petenis Amanda Anisimova (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Amanda Anisimova: Petenis Amerika di Papan Atas WTA\n\nAmanda Anisimova, petenis Amerika kelahiran 31 Agustus 2001, saat ini bertengger di peringkat 6 WTA dengan 5.995 poin per 16 April 2026. Pemain tangan kanan kelahiran Miami Beach ini menjalani musim 2026 sebagai salah satu petenis wanita paling konsisten di dunia, top 10 bukan sekadar singgah.\n\n## Identitas\n\nLahir di Miami Beach, Florida, Anisimova tumbuh sebagai petenis Amerika dengan postur yang menguntungkan: tinggi 5'11\" (sekitar 180 cm) dengan berat 150 lbs. Di usia 24 tahun, ia berada di fase puncak karier, cukup matang untuk pengalaman, cukup muda untuk konsistensi jangka panjang.\n\nAnisimova memulai karier profesional sejak 2016, artinya ia sudah menjalani satu dekade di sirkuit WTA. Debut di usia semuda itu, 14 tahun, menempatkannya dalam kategori petenis yang \"besar\" di bawah tekanan tur profesional sejak dini. Perjalanan satu dekade dari debut belia hingga peringkat 6 dunia bukan lompatan kecil.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Anisimova tercatat di peringkat 6 WTA dengan 5.995 poin, sama persis dengan posisi sebelumnya. Tidak ada perubahan peringkat: stabil di enam besar dunia.\n\nStabilitas ini punya dua pembacaan. Positifnya: Anisimova tidak kehilangan ground. Di tur WTA yang sangat kompetitif, bertahan di posisi yang sama minggu ke minggu berarti ia terus mengumpulkan poin cukup untuk menahan tekanan dari bawah. Negatifnya: belum ada dorongan ke atas, lima besar masih di depan.\n\nDengan 5.995 poin, ia berada di zona yang serius. Top 10 WTA bukan keberuntungan satu turnamen, itu produk performa konsisten sepanjang 52 minggu kalender tur.\n\n## Outlook\n\nPeringkat 6 dunia di usia 24 tahun, dengan satu dekade pengalaman tur di punggungnya, menempatkan Anisimova di posisi yang solid untuk musim 2026. Stabilitas peringkatnya mencerminkan satu hal: ia bukan petenis yang naik turun dramatis, melainkan membangun base poin yang kokoh.\n\nPertanyaannya bukan lagi apakah ia layak di papan atas, angka menjawab itu. Pertanyaannya adalah seberapa jauh ia bisa mendorong ke lima besar. Data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "3221",
+    "athlete_name": "Amanda Anisimova",
+    "current_rank": 6,
+    "previous_rank": 6,
+    "points": 5995.0,
+    "trend": "-",
+    "birthplace": "Miami Beach, FL, USA",
+    "dob": "2001-08-31",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.014715,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails on training-data inference (age at debut inferred, height conversion added) and translated-English phrasing. Tense overmarking and academic drift present. High severity age inference must be removed before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Anisimova memulai karier profesional sejak 2016, artinya ia sudah menjalani satu dekade di sirkuit WTA. Debut di usia semuda itu, 14 tahun",
+          "fix": "Remove age inference. State only: 'Anisimova memulai karier profesional sejak 2016.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Pemain tangan kanan kelahiran Miami Beach ini menjalani musim 2026 sebagai salah satu petenis wanita paling konsisten",
+          "fix": "Change to: 'Pemain tangan kanan kelahiran Miami Beach adalah salah satu petenis paling konsisten di top 10.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "top 10 bukan sekadar singgah",
+          "fix": "Delete or rephrase: 'posisi top 10 bukan kebetulan' atau cukup delete — sudah dibilang di paragraf berikutnya."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "sekitar 180 cm",
+          "fix": "Remove conversion. State only: '5\\'11\"' atau cukup 'tinggi 180 cm' tanpa konversi."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "menempatkannya dalam kategori petenis yang \"besar\" di bawah tekanan tur profesional sejak dini",
+          "fix": "Simplify: 'Debut muda berarti ia terekspos tekanan tur profesional sejak awal.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tidak ada perubahan peringkat: stabil di enam besar dunia.",
+          "fix": "Merge or delete one instance to tighten."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Data per 28 April 2026.",
+          "fix": "Change to: 'Data per 16 April 2026.' to match input."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "bawah tekanan tur profesional sejak dini. Perjalanan satu dekade dari debut belia hingga peringkat 6 dunia bukan lompatan kecil.\n\n##",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Outlook\n\nPeringkat 6 dunia di usia 24 tahun, dengan satu dekade pengalaman tur di punggungnya, menempatkan Anisimova di posisi yang solid",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd100c38aaebd2482",
+    "published_at": "2026-04-28T12:08:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

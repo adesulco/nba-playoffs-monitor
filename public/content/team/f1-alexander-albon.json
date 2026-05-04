@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-alexander-albon",
+  "title": "Profil Alexander Albon: Pembalap F1 Williams (2026)",
+  "description": "Profil pembalap F1 Alexander Albon (Thailand) untuk tim Williams. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Alexander Albon: Pembalap Thailand yang Berjuang Keras Bersama Williams di Musim 2026\n\nAlexander Albon, kode FIA ALB (#23), pembalap asal Thailand kelahiran 23 Maret 1996. Per 28 April 2026, Albon menjalani musim 2026 bersama Williams dan saat ini berada di P18 klasemen dengan 0 poin dari 3 balapan yang sudah dijalani.\n\n---\n\n## Identitas\n\nAlbon memegang kode FIA ALB dengan nomor permanen #23, dua detail yang sudah identik dengan namanya di paddock Formula 1. Usianya 30 tahun, lahir di London namun memilih membawa bendera Thailand di lintasan balap. Musim 2026 ini, Albon membalap untuk Williams, tim yang sudah menjadi rumahnya dalam beberapa musim terakhir.\n\nDi grid F1, Albon dikenal sebagai salah satu pembalap yang tangguh dalam memeras performa dari mobil yang tidak selalu kompetitif. Nomor #23 bukan sekadar identitas administratif, bagi fans Thailand khususnya, Albon adalah representasi yang nyata di olahraga yang didominasi pembalap Eropa.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, nol poin. Itulah potret musim 2026 Albon sampai 28 April 2026, dan angka-angka itu tidak sepenuhnya mencerminkan kompleksitas situasinya.\n\nHasil terbaik datang di Australian Grand Prix, babak pembuka musim, di mana Albon finis P12. Hasilnya di luar poin, posisi poin dimulai dari P10 ke atas, tapi setidaknya Albon menyelesaikan balapan meski satu lap tertinggal dari leader. Di konteks Williams dan posisi mereka di grid, P12 bukan hasil yang memalukan.\n\nMasalahnya, dua balapan setelahnya tidak berjalan baik sama sekali. Chinese Grand Prix berakhir sebelum dimulai, Albon tidak start. Japanese Grand Prix, satu-satunya balapan berikutnya yang ia jalani, berakhir di P20, lagi-lagi lapped. Tiga balapan, satu kali finis kompetitif, satu DNS, satu finis paling belakang.\n\n---\n\n## Hasil Per Balapan\n\nMembaca pola tiga balapan ini butuh konteks.\n\n**Australian Grand Prix, P12, Lapped.** Pembuka musim yang solid dalam ukuran relatif. Albon menyelesaikan balapan, finish di P12, dan meski tertinggal satu lap dari pemimpin balapan, hasilnya menunjukkan mobil setidaknya bisa finis. Ini baseline yang bisa dibangun.\n\n**Chinese Grand Prix, Did Not Start.** DNS adalah status paling merugikan dalam F1, bukan sekadar poin nol, tapi tidak ada data balapan sama sekali yang bisa dievaluasi. Input data tidak merinci alasan di balik keputusan tidak start ini, tapi dampaknya jelas: momentum terhenti sebelum mesin dinyalakan.\n\n**Japanese Grand Prix, P20, Lapped.** Finis di posisi paling belakang, lagi-lagi tertinggal dari leader. Suzuka adalah sirkuit yang menuntut aerodinamika dan downforce, area di mana mobil-mobil midfield bawah sering kesulitan. P20 mengkonfirmasi bahwa Williams masih belum menemukan kecepatan yang cukup untuk bersaing di tengah hingga atas grid.\n\nPola yang terbaca: satu balapan finis layak, satu balapan tidak mulai, satu balapan tertinggal jauh. Variasi yang tidak ideal.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Albon berada di P18 klasemen dengan 0 poin. Di depannya masih ada sisa musim panjang untuk berubah, tapi tiga balapan pertama ini menandai pekerjaan rumah yang besar, baik untuk Albon maupun untuk Williams sebagai tim.\n\nNol poin dari tiga balapan menempatkan Albon di bagian bawah klasemen, tapi konteks penting: performa pembalap selalu terikat dengan performa mobil. Di Williams, Albon tidak selalu memiliki kendaraan yang bisa membawanya ke zona poin secara konsisten.\n\nSatu hal yang bisa dipegang: P12 di Australia menunjukkan potensi finis. Tantangannya adalah membuat itu bisa direplikasi, bukan anomali.\n\nData ini per 28 April 2026. Klasemen dan hasil akan terus bergerak seiring balapan berikutnya.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "albon",
+    "driver_name": "Alexander Albon",
+    "driver_code": "ALB",
+    "driver_number": "23",
+    "nationality": "Thai",
+    "current_team": "Williams",
+    "current_team_id": "williams",
+    "championship_pos": "18",
+    "championship_points": "0",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022288,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Two high-severity training-data inference violations (London birthplace, Williams tenure history) auto-fail this article. Additionally, multiple instances of academic drift, tense over-marking, and translated-English phrasing undermine voice. Regenerate with stricter data-grounding.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "lahir di London namun memilih membawa bendera Thailand",
+          "fix": "Remove birthplace clause. Input only confirms Thai nationality and 1996 birth year."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "tim yang sudah menjadi rumahnya dalam beberapa musim terakhir",
+          "fix": "Remove 'dalam beberapa musim terakhir'. State only: 'Musim 2026 ini, Albon membalap untuk Williams.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Albon menjalani musim 2026 bersama Williams dan saat ini berada di P18",
+          "fix": "Remove 'saat ini'. Read: 'Albon menjalani musim 2026 bersama Williams di P18 klasemen.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "dua detail yang sudah identik dengan namanya di paddock",
+          "fix": "Rephrase: 'dua detail yang dikenal di paddock Formula 1.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Hasil terbaik datang di Australian Grand Prix, babak pembuka musim, di mana Albon finis P12.",
+          "fix": "Read: 'Australian Grand Prix, pembuka musim. Albon finis P12.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Hasilnya di luar poin, posisi poin dimulai dari P10 ke atas",
+          "fix": "Simplify: 'Hasilnya di luar poin (poin dimulai P10 ke atas).'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Input data tidak merinci alasan di balik keputusan tidak start ini, tapi dampaknya jelas",
+          "fix": "Remove. Let silence imply unknown cause. Read: 'DNS adalah status paling merugikan.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Pola yang terbaca: satu balapan finis layak, satu balapan tidak mulai, satu balapan tertinggal jauh.",
+          "fix": "Read: 'Tiga balapan: satu finis layak, satu DNS, satu tertinggal jauh.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1b6187ad60a38f1c",
+    "published_at": "2026-04-28T12:16:44+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,91 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-bali-united",
+  "title": "Profil Bali United: Liga 1 (2025-26)",
+  "description": "Profil Bali United — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Bali United: Profil Klub Super League Indonesia 2025-26\n\nBali United adalah klub sepak bola profesional asal Indonesia yang bertanding di Super League Indonesia (Liga 1). Kandang mereka adalah Stadion Kapten I Wayan Dipta di Gianyar, Bali, dengan kapasitas 25.312 penonton. Per 28 April 2026, Serdadu Tridatu, sebutan untuk Bali United, berada di peringkat 7 klasemen Liga 1 musim 2025-26 dengan 45 poin dari 30 laga, mencatat selisih gol +8.\n\n---\n\n## Identitas Klub\n\nBali United berdiri pada 1989 dan menjadi salah satu representasi sepak bola profesional dari kawasan Indonesia Tengah. Markas mereka, Stadion Kapten I Wayan Dipta di Gianyar, menampung lebih dari 25.000 penonton, salah satu stadion berkapasitas besar di luar Pulau Jawa.\n\nGianyar sebagai kota kandang memberikan identitas yang kuat. Bali bukan kota sepak bola terbesar di Indonesia, tapi Bali United berhasil membangun basis fanbase yang loyal dan dikenal dengan atmosfer kandang yang konsisten. Nama \"Serdadu Tridatu\" mencerminkan identitas Bali yang melekat pada klub ini, tridatu merujuk pada tiga warna sakral dalam tradisi Hindu Bali.\n\nSebagai klub dengan sejarah panjang sejak akhir 1980-an, Bali United sudah melalui berbagai era kompetisi sepak bola nasional Indonesia sebelum akhirnya menapaki Liga 1 sebagai salah satu kontestan tetap.\n\n---\n\n## Performa Musim 2025-26\n\nTiga puluh laga sudah dilakoni Bali United di Liga 1 2025-26 dengan catatan 12 menang, 9 seri, dan 9 kalah. Angka ini menempatkan mereka di zona tengah klasemen, cukup stabil, tapi belum cukup tajam untuk berbicara di papan atas.\n\nSisi ofensif mereka cukup produktif: 50 gol dari 30 laga, atau rata-rata 1,7 gol per laga. Tapi pertahanan jadi catatan. Kebobolan 42 gol dengan rata-rata 1,4 per laga menunjukkan lini belakang yang belum konsisten. Dari 30 laga, mereka hanya mencatat 11 clean sheet, artinya di 19 laga sisanya, gawang selalu bobol minimal sekali. Ada juga tujuh laga di mana Bali United gagal mencetak satu pun gol, angka yang cukup tinggi untuk tim dengan total 50 gol.\n\nMenarik justru ada di rekor kandang vs tandang. Di Gianyar, Bali United cuma menang 5 dari 15 laga kandang (5M-6S-4K), catatan yang mengecewakan untuk tim yang bermain di depan pendukung sendiri. Sementara di laga tandang, mereka justru lebih tajam: 7 menang dari 15 laga (7M-3S-5K). Pola ini tidak biasa dan jadi anomali yang menarik sepanjang musim.\n\nForm terbaru cukup menjanjikan. Dari delapan laga terakhir dengan pola DWLWLWWW, Bali United mengakhiri bulan April dengan tren positif, tiga kemenangan beruntun di penghujung sequence. Momentum ini penting menjelang sisa musim.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 7 dengan 45 poin dari 30 laga menempatkan Bali United di zona mid-table Liga 1 2025-26. Selisih gol +8 cukup sehat untuk posisi ini, tapi tidak cukup untuk mendorong mereka ke persaingan papan atas.\n\nTidak ada informasi status khusus, tidak ada ancaman degradasi, tapi juga belum ada posisi yang mengamankan tiket kompetisi tambahan. Ini adalah posisi yang nyaman tapi tidak nyaman sekaligus: aman dari bahaya bawah, tapi masih jauh dari target top 4 atau posisi yang biasanya diperebutkan klub ambisius sekelas Bali United.\n\nDengan 11 gol lebih banyak dari yang kebobolan, mereka seharusnya bisa lebih tinggi. Konsistensi, terutama di kandang, jadi faktor yang membedakan mereka dengan tim-tim yang kini bertengger di atas klasemen.\n\n---\n\n## Outlook Sisa Musim\n\nTiga kemenangan beruntun di ujung April jadi sinyal bahwa Bali United mulai menemukan ritme. Jika form WWWW bisa dijaga, peringkat 7 masih sangat mungkin bergerak naik sebelum musim ditutup.\n\nKuncinya ada di dua hal: konsistensi kandang yang selama ini justru jadi titik lemah, dan kemampuan bertahan yang harus lebih rapat supaya clean sheet tidak hanya berhenti di angka 11. Tim yang kebobolan rata-rata 1,4 gol per laga akan selalu kesulitan bersaing di posisi atas, seberapapun produktif lini serangnya.\n\nData ini mencerminkan kondisi Bali United per 28 April 2026 dengan sisa laga Liga 1 2025-26 masih tersisa.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "2448",
+    "team_name": "Bali United",
+    "team_country": "Indonesia",
+    "team_founded": 1989,
+    "venue_name": "Stadion Kapten I Wayan Dipta",
+    "venue_city": "Gianyar",
+    "venue_capacity": 25312,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.025407,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails on multiple grounds: factual date mismatch (28 April vs 3 Mei input), two significant training-data inferences (club founding narrative, nickname etymology), translated-English phrasing, and internal data consistency errors (WWWW misquote). Core profiling is competent but execution undermines credibility.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bali United berdiri pada 1989 dan menjadi salah satu representasi sepak bola profesional dari kawasan Indonesia Tengah.",
+          "fix": "Remove interpretive framing. State: 'Bali United berdiri 1989 dan sekarang bertanding di Liga 1.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Nama 'Serdadu Tridatu' mencerminkan identitas Bali yang melekat pada klub ini, tridatu merujuk pada tiga warna sakral dalam tradisi Hindu Bali.",
+          "fix": "Simplify: 'Serdadu Tridatu adalah sebutan lokal untuk Bali United.' Remove tridatu etymology."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Gianyar sebagai kota kandang memberikan identitas yang kuat. Bali bukan kota sepak bola terbesar di Indonesia, tapi Bali United berhasil membangun basis fanbase...",
+          "fix": "Rewrite: 'Bali United punya supporter setia di Gianyar meskipun bukan kota besar sepak bola Indonesia.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Per 28 April 2026... Per 28 April 2026, Serdadu Tridatu... Data ini mencerminkan kondisi Bali United per 28 April 2026",
+          "fix": "Change all dates to '3 Mei 2026' to match input data block."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Tiga puluh laga sudah dilakoni Bali United di Liga 1 2025-26 dengan catatan 12 menang, 9 seri, dan 9 kalah.",
+          "fix": "Rewrite: 'Bali United main 30 laga musim ini: 12 menang, 9 seri, 9 kalah.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Menarik justir ada di rekor kandang vs tandang... Pola ini tidak biasa dan jadi anomali yang menarik...",
+          "fix": "First 'Menarik' → 'Patut dicatat' or delete. Second → cut 'anomali' clause or be specific."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini adalah posisi yang nyaman tapi tidak nyaman sekaligus: aman dari bahaya bawah, tapi masih jauh dari target top 4...",
+          "fix": "Rewrite: 'Posisi aman dari degradasi, tapi jauh dari target top 4 yang mereka mau.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Jika form WWWW bisa dijaga, peringkat 7 masih sangat mungkin bergerak naik...",
+          "fix": "Change to: 'Jika tren positif tiga laga terakhir bisa dijaga...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "sejak akhir 1980-an, Bali United sudah melalui berbagai era kompetisi sepak bola nasional Indonesia sebelum akhirnya menapaki Liga 1",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1872e295a965c66a",
+    "published_at": "2026-04-28T12:10:05+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-houston-rockets",
+  "title": "Profil Houston Rockets: Western Conference (2025-26)",
+  "description": "Profil Houston Rockets — franchise NBA dari Houston di division Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Profil Tim NBA: Houston Rockets, Musim 2025-26\n\nHouston Rockets adalah franchise NBA yang berkandang di Houston dan berlaga di Southwest Division, Western Conference. Per 28 April 2026, Rockets menutup musim reguler 2025-26 dengan rekor 52-30, win rate 63,4% dan seed 5 di playoff Western Conference. Bukan tim yang paling sering disebut di perbincangan juara, tapi angka itu cukup kuat untuk menegaskan bahwa Houston bukan sekadar pelengkap playoff Barat.\n\n---\n\n## Identitas dan Posisi di Liga\n\nDi Southwest Division, Rockets menempati posisi 2nd, konsisten di papan atas divisi yang secara historis kompetitif. Seed 5 di Western Conference menempatkan mereka sebagai salah satu tim yang harus diperhitungkan di babak pertama playoff, meski jalur ke Final Conference tidak akan mudah.\n\nDi bawah komando head coach Ime Udoka, Houston membangun identitas yang jelas: tim dengan scoring cukup produktif sekaligus punya struktur pertahanan yang solid. Dua hal itu jarang datang bersamaan, dan itulah yang membuat rekor 52-30 menceritakan lebih dari sekadar deretan angka.\n\n---\n\n## Performa Musim 2025-26\n\nAngka-angkanya berbicara sendiri. Houston mencetak rata-rata 115,2 PPG musim ini sambil membatasi lawan di angka 110,0 PPG, point differential +5,2 yang menunjukkan tim ini tidak hanya bisa menyerang, tapi juga bisa menjaga gawang dengan disiplin.\n\nYang paling mencolok adalah performa kandang. Dengan rekor home 30-11 (73,2%), Rockets menjadikan Toyota Center sebagai salah satu markas paling sulit dibobol di West musim ini. Road record mereka 22-19, di atas 0.500, yang berarti Houston cukup kompetitif bahkan jauh dari kandang.\n\nKombinasi itu, scoring di atas 115, defensive rating yang ketat, dan dominasi kandang, menjelaskan kenapa Rockets bisa menutup musim reguler dengan 52 kemenangan dan layak dapat tempat di playoff Barat.\n\n---\n\n## Roster dan Pemain Kunci\n\n**Kevin Durant, F, #7, 37 tahun, 18 tahun pengalaman**\n\nDurant adalah nama yang tidak perlu banyak penjelasan. Sudah 18 musim di NBA, masuk Houston membawa dimensi yang tidak bisa digantikan oleh banyak pemain di liga ini. Di usia 37, pengalamannya adalah aset tersendiri, kemampuan membaca permainan, pengelolaan situasi crunch time, dan efisiensi scoring yang selalu jadi standar berbeda. Dia anchor ofensif utama Rockets musim ini.\n\n**Alperen Sengun, C, #28, 23 tahun, 4 tahun pengalaman**\n\nSengun adalah representasi masa depan Houston. Di usia 23 dengan empat musim pengalaman, center asal Turki ini sudah menunjukkan kemampuan yang jarang dimiliki big man muda: footwork di post, court vision untuk passing, dan skill finishing yang tidak bergantung pada ukuran semata. Kombinasinya dengan Durant menciptakan dua anchor berbeda, satu veteran, satu ascending.\n\n**Jabari Smith Jr., F, #10, 22 tahun, 3 tahun pengalaman**\n\nTiga musim, 22 tahun, Smith Jr. sudah cukup lama di liga untuk dipercaya sebagai bagian dari core, tapi masih punya ceiling yang belum sepenuhnya terbuka. Forward Auburn itu jadi salah satu pemain berkembang yang diperhatikan di roster Rockets, sosok yang relevan sekarang sekaligus investasi untuk jangka panjang.\n\nSelain ketiganya, roster Houston cukup dalam dengan veteran seperti Dorian Finney-Smith (9 tahun pengalaman), Steven Adams, dan Clint Capela yang memberi stabilitas di interior, serta wajah muda seperti Reed Sheppard (21 tahun, rookie) dan Tari Eason yang masih dalam tahap membuktikan diri.\n\n---\n\n## Outlook\n\nSeed 5 di Western Conference berarti Houston masuk playoff tanpa home court advantage di ronde pertama, lawan mereka kemungkinan besar seed 4 atau lebih tinggi. Tapi tim yang menang 30 laga kandang musim ini tidak akan mudah terguncang.\n\nLaga berikutnya: Houston Rockets tandang ke Los Angeles Lakers, 30 April 2026 mulai jam 09.00 WIB.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "10",
+    "team_name": "Houston Rockets",
+    "team_abbr": "HOU",
+    "team_location": "Houston",
+    "conference": "Western Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021431,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: critical date mismatches (28 April vs input 3 Mei; Lakers game 30 April vs 2 Mei input). These are training-inference hallucinations, not content glitches. Also tense overmarking and calqued English phrases reduce voice score. Requires factual correction + voice pass 2.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Rockets menutup musim reguler 2025-26 dengan rekor 52-30",
+          "fix": "Change to 'Per 3 Mei 2026' or remove date qualifier entirely."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Laga berikutnya: Houston Rockets tandang ke Los Angeles Lakers, 30 April 2026",
+          "fix": "Change to '2 Mei 2026 jam 09.30 WIB' (or correct time from kickoff)."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Sudah 18 musim di NBA, masuk Houston membawa dimensi",
+          "fix": "Rephrase: '18 musim di NBA, Durant masuk Houston dengan dimensi...'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Profil ini mencerminkan data per 28 April 2026.",
+          "fix": "Delete entirely or move date to byline/metadata."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "menjadikan Toyota Center sebagai salah satu markas paling sulit dibobol di West",
+          "fix": "Rephrase: 'Toyota Center jadi markas paling sulit dibobol di West musim ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua hal itu jarang datang bersamaan, dan itulah yang membuat rekor 52-30",
+          "fix": "Earlier in paragraph, explicitly name scoring + defense before saying 'dua hal itu jarang datang.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Di bawah komando head coach Ime Udoka, Houston membangun identitas",
+          "fix": "Change to 'Dengan Ime Udoka di kursi pelatih, Houston membangun identitas...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Profil ini mencerminkan data per 28 April 2026.",
+          "fix": "Align all dates to input: 'data per 3 Mei 2026' or remove date entirely."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0fd9c70ac4a5ace2",
+    "published_at": "2026-04-28T10:30:07+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "damm-vs-pellegrino-mutua-madrid-open-2026",
+  "title": "Recap Mutua Madrid Open — Martin Damm kalahkan Andrea Pellegrino",
+  "description": "Recap Mutua Madrid Open Qualifying 1st Round: Martin Damm mengalahkan Andrea Pellegrino 6-0 7-6.",
+  "body_md": "# Martin Damm Lolos Putaran Pertama Kualifikasi Madrid Open\n\nMartin Damm mengalahkan Andrea Pellegrino 6-0, 7-6 di putaran pertama kualifikasi Mutua Madrid Open, Senin 20 April 2026. Pemain Amerika Serikat ini lolos ke putaran kedua kualifikasi dengan kemenangan dua set langsung, meski set kedua harus diselesaikan lewat tiebreak.\n\n## Set Pertama: Dominasi Penuh\n\nSet pertama milik Damm sepenuhnya. Skor 6-0 bicara sendiri, Pellegrino nyaris tidak dapat celah. Pemain Italia ini tidak berhasil merebut satu game pun sepanjang set pembuka, sementara Damm bermain rapi dan efisien di atas clay Madrid. Dominasi yang sulit dibantah.\n\n## Set Kedua: Pellegrino Bangkit, Tapi Tidak Cukup\n\nSet kedua ceritanya berbeda. Pellegrino tampil jauh lebih baik dan berhasil memaksa kedudukan imbang hingga tiebreak. Tapi Damm tidak kehilangan kendali, ia menutup tiebreak dan set kedua 7-6, memastikan kemenangan straight-set tanpa memberi Pellegrino kesempatan kembali ke dalam pertandingan.\n\nTiebreak di set kedua jadi momen krusial. Pellegrino sudah membuktikan dirinya bisa bersaing ketika ritme permainannya terjaga, tapi Damm terbukti lebih tangguh di saat paling menentukan.\n\n## Selanjutnya\n\nDamm melaju ke putaran kedua kualifikasi Mutua Madrid Open. Satu kemenangan lagi dibutuhkan untuk masuk ke babak main draw turnamen Masters 1000 di Madrid.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "match_id": "176716",
+    "tournament_name": "Mutua Madrid Open",
+    "round": "Qualifying 1st Round",
+    "match_format": null,
+    "venue": null,
+    "kickoff_utc": "2026-04-20T08:05:00+00:00",
+    "winner_name": "Martin Damm",
+    "winner_country": "USA",
+    "loser_name": "Andrea Pellegrino",
+    "loser_country": "ITALY",
+    "set_scores_winner": [
+      6,
+      7
+    ],
+    "set_scores_loser": [
+      0,
+      6
+    ],
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.010881,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 5,
+      "summary": "Fails on training-data inference (Damm's nationality) and translated-English phrasing. Tense overmarking and structural repetition are secondary issues. Rewrite needed before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Pemain Amerika Serikat ini lolos ke putaran kedua",
+          "fix": "Remove nationality claim or verify against input data"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Skor 6-0 bicara sendiri, Pellegrino nyaris tidak dapat celah",
+          "fix": "Rewrite: 'Skor 6-0 nyata. Pellegrino tidak bisa mengancam.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Pellegrino sudah membuktikan dirinya bisa bersaing ketika ritme permainannya terjaga",
+          "fix": "Remove 'sudah': 'Pellegrino membuktikan dirinya bisa bersaing...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Damm bermain rapi dan efisien; Damm tidak kehilangan kendali; Damm terbukti lebih tangguh",
+          "fix": "Use 'dia' or restructure: 'tidak kehilangan kendali... terbukti tangguh...'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya / Damm melaju ke putaran kedua",
+          "fix": "Use subheading like 'Lanjut ke Babak Berikutnya' or fold into prose"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x8f14f664852d9f07",
+    "published_at": "2026-04-28T05:02:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

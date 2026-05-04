@@ -14,9 +14,11 @@
  */
 
 import { CALENDAR_2026, formatGPDate, SEASON, TEAMS_2026, TEAMS_BY_ID, DRIVERS_2026 } from './constants.js';
+import { breadcrumbSchema } from '../_schema.js';
 
 const SITE = 'https://www.gibol.co';
 const DEFAULT_OG = `${SITE}/og-image.png`;
+const HUB_OG = `${SITE}/og/hub-f1.png`;
 const routeBase = '/formula-1-2026';
 
 // Championship-level SportsEvent schema — emitted on the main dashboard page.
@@ -89,14 +91,21 @@ function teamSchema(team, driversForTeam) {
 }
 
 // Per-driver Person (athlete) — emitted on /formula-1-2026/driver/:slug.
+//
+// v0.13.0 — `identifier` is not a valid schema.org Person property
+// (it's defined on Thing but most validators flag it as a warning
+// when used to carry the FIA driver code). Drop it; the driver
+// `code` (e.g. "VER", "HAM") is already encoded in `name` and the
+// URL slug, which is enough for crawlers. If we ever want to expose
+// the FIA code as structured data, the right field is `additionalName`.
 function driverSchema(driver, team) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: driver.name,
+    additionalName: driver.code,
     jobTitle: 'Formula 1 Driver',
     url: `${SITE}${routeBase}/driver/${driver.slug}`,
-    identifier: driver.code,
     memberOf: team
       ? {
           '@type': 'SportsTeam',
@@ -113,22 +122,38 @@ function prerenderRoutes() {
   // Main dashboard — live now.
   out.push({
     path: routeBase,
-    title: 'Formula 1 2026 · Klasemen Pembalap, Jadwal 23 GP (WIB), Hasil Live | gibol.co',
-    description: `Dashboard live F1 ${SEASON} dalam Bahasa Indonesia — klasemen pembalap + konstruktor, kalender 23 Grand Prix dengan jam start WIB, hasil balapan terbaru, podium, dan tracking juara. Dari fan F1 Indonesia untuk fan F1 Indonesia.`,
+    // v0.13.0 trim — was 78 chars / 225 chars.
+    title: `F1 ${SEASON} — Klasemen, Jadwal 23 GP, Hasil Live | gibol.co`,
+    description: `Skor F1 ${SEASON} live: klasemen pembalap + konstruktor, kalender 23 GP dengan jam WIB, hasil balapan, podium, tracking juara. Bahasa Indonesia.`,
     keywords: 'formula 1 2026, f1 2026, klasemen f1, jadwal f1 2026, hasil grand prix, peluang juara f1, max verstappen, lando norris, lewis hamilton, charles leclerc, oscar piastri, kimi antonelli, f1 bahasa indonesia, WIB f1',
-    ogImage: DEFAULT_OG,
-    jsonLd: CHAMPIONSHIP_JSONLD,
+    ogImage: HUB_OG,
+    jsonLd: [
+      CHAMPIONSHIP_JSONLD,
+      breadcrumbSchema([
+        { name: 'gibol.co', url: '/' },
+        { name: 'Formula 1 2026', url: routeBase },
+      ]),
+    ],
   });
 
   // Per-GP race pages — 23 unique indexable URLs with per-race JSON-LD.
   for (const gp of CALENDAR_2026) {
     out.push({
       path: `${routeBase}/race/${gp.slug}`,
-      title: `${gp.name} 2026 · Jadwal WIB, Hasil, Klasemen Sementara (R${String(gp.round).padStart(2, '0')}) | gibol.co`,
-      description: `${gp.name} 2026 — Round ${gp.round} F1 di sirkuit ${gp.circuit}, ${gp.country}. Jadwal race hari Minggu ${formatGPDate(gp.dateISO, 'id')} pukul ${gp.wibTime} WIB${gp.sprint ? ' (weekend sprint)' : ''}. Klasemen sementara, prediksi juara, dan recap Bahasa pasca-balapan.`,
+      // v0.13.0 trim — was up to 95 chars / 280+ chars. Worst-case
+      // title now ≤60 (Australian Grand Prix = 21 + 38 = 59).
+      title: `${gp.name} 2026 — Jadwal WIB & Hasil F1 | gibol.co`,
+      description: `${gp.name} 2026 (Round ${gp.round}) di ${gp.circuit}, ${gp.country}. Jadwal Minggu ${formatGPDate(gp.dateISO, 'id')} ${gp.wibTime} WIB${gp.sprint ? ' · sprint' : ''}. Hasil + recap Bahasa.`,
       keywords: `${gp.name.toLowerCase()} 2026, ${gp.slug.replace(/-/g, ' ')} 2026, jadwal ${gp.name.toLowerCase()}, hasil ${gp.name.toLowerCase()} 2026, f1 round ${gp.round}, ${gp.circuit.toLowerCase()}, f1 ${gp.country.toLowerCase()}, WIB f1 ${gp.round}`,
       ogImage: DEFAULT_OG,
-      jsonLd: gpSchema(gp),
+      jsonLd: [
+        gpSchema(gp),
+        breadcrumbSchema([
+          { name: 'gibol.co', url: '/' },
+          { name: 'Formula 1 2026', url: routeBase },
+          { name: gp.name, url: `${routeBase}/race/${gp.slug}` },
+        ]),
+      ],
     });
   }
 
@@ -142,11 +167,20 @@ function prerenderRoutes() {
     const driverNames = driversForTeam.map((d) => d.name).join(' · ');
     out.push({
       path: `${routeBase}/team/${team.slug}`,
-      title: `${team.name} F1 2026 · Pembalap, Poin, Klasemen Konstruktor | gibol.co`,
-      description: `${team.name} di musim F1 2026 — line-up pembalap ${driverNames}, basis tim ${team.base}, power unit ${team.power}. Poin, klasemen konstruktor, hasil balapan dan peluang juara.`,
+      // v0.13.0 trim — was up to 73 chars (Red Bull Racing). Now ≤60.
+      title: `${team.name} F1 2026 — Pembalap & Poin | gibol.co`,
+      description: `${team.name} F1 2026 — line-up ${driverNames}, basis ${team.base}, power unit ${team.power}. Poin, klasemen konstruktor, hasil, peluang juara.`,
       keywords: `${team.name.toLowerCase()} f1 2026, ${team.short.toLowerCase()} 2026, ${team.slug.replace(/-/g, ' ')} f1, pembalap ${team.short.toLowerCase()}, klasemen konstruktor 2026, ${driversForTeam.map((d) => d.name.toLowerCase()).join(', ')}`,
-      ogImage: DEFAULT_OG,
-      jsonLd: teamSchema(team, driversForTeam),
+      // v0.13.0 Ship 4 — per-constructor OG card.
+      ogImage: `${SITE}/og/f1/team-${team.slug}.png`,
+      jsonLd: [
+        teamSchema(team, driversForTeam),
+        breadcrumbSchema([
+          { name: 'gibol.co', url: '/' },
+          { name: 'Formula 1 2026', url: routeBase },
+          { name: team.name, url: `${routeBase}/team/${team.slug}` },
+        ]),
+      ],
     });
   }
 
@@ -155,11 +189,21 @@ function prerenderRoutes() {
     const team = TEAMS_BY_ID[driver.teamId];
     out.push({
       path: `${routeBase}/driver/${driver.slug}`,
-      title: `${driver.name} F1 2026 · Poin, Podium, Stats Pembalap ${team ? team.short : ''} | gibol.co`,
-      description: `${driver.name} (#${driver.number}, ${driver.code}) membalap untuk ${team ? team.name : 'F1 2026'} di musim 2026. Poin klasemen, jumlah podium, jumlah menang, dan peluang juara pembalap.`,
+      // v0.13.0 trim — was up to 95 chars. Now ≤55 even for longest
+      // driver name (Andrea Kimi Antonelli = 21 + 36 = 57).
+      title: `${driver.name} F1 2026 — Poin & Podium | gibol.co`,
+      description: `${driver.name} (#${driver.number}, ${driver.code}) di ${team ? team.name : 'F1 2026'}. Poin klasemen, jumlah podium, menang, peluang juara pembalap.`,
       keywords: `${driver.name.toLowerCase()}, ${driver.slug}, ${driver.code.toLowerCase()} f1, f1 2026 ${driver.slug}, pembalap ${team ? team.short.toLowerCase() : 'f1'}, klasemen pembalap, podium ${driver.name.toLowerCase()}`,
-      ogImage: DEFAULT_OG,
-      jsonLd: driverSchema(driver, team),
+      // v0.13.0 Ship 4 — per-driver OG card.
+      ogImage: `${SITE}/og/f1/driver-${driver.slug}.png`,
+      jsonLd: [
+        driverSchema(driver, team),
+        breadcrumbSchema([
+          { name: 'gibol.co', url: '/' },
+          { name: 'Formula 1 2026', url: routeBase },
+          { name: driver.name, url: `${routeBase}/driver/${driver.slug}` },
+        ]),
+      ],
     });
   }
 

@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-oscar-piastri",
+  "title": "Profil Oscar Piastri: Pembalap F1 McLaren (2026)",
+  "description": "Profil pembalap F1 Oscar Piastri (Australia) untuk tim McLaren. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Oscar Piastri: Terlambat Panas, tapi Langsung Podium\n\nOscar Piastri, kode FIA PIA (#81), pembalap Australia kelahiran 6 April 2001. Per 28 April 2026, pembalap berusia 25 tahun ini baru memulai musim 2026 dengan McLaren dari Round 3, tapi debutnya di musim ini langsung berbuah podium P2 di Jepang. Dalam klasemen sementara, Piastri duduk di P6 dengan 21 poin dari satu balapan yang dijalani.\n\n---\n\n## Identitas\n\nOscar Piastri. Kode FIA: PIA. Nomor permanen: 81. Pembalap Australia yang lahir di Melbourne, 6 April 2001, sekarang 25 tahun.\n\nPiastri membalap untuk McLaren di musim 2026, salah satu tim yang tampil kompetitif di era regulasi baru ini. Kode PIA dan nomor 81 sudah jadi identitasnya di grid, dua hal yang akan sering muncul di timing sheet begitu musimnya mulai bergulir penuh.\n\n---\n\n## Performa Musim Ini\n\nMusim 2026 Piastri dimulai bukan dari Round 1, tapi dari Round 3. Dua balapan pertama, Australian GP dan Chinese GP, dilewatkan dengan status *did not start*. Artinya, dari tiga balapan yang sudah digelar musim ini, Piastri baru turun satu kali.\n\nDan dari satu kesempatan itu, dia langsung finis P2 di Japanese Grand Prix, mengumpulkan 18 poin sekaligus.\n\nAngka 21 poin di klasemen P6 mencerminkan realita itu: Piastri terlambat memulai, tapi ketika akhirnya turun, dia tidak buang-buang waktu.\n\n---\n\n## Hasil Per Balapan\n\n**Round 1, Australian Grand Prix:** *Did not start.* Piastri absen di kandang sendiri, Melbourne. Tidak ada keterangan tambahan di data soal alasannya, yang jelas, Round 1 terlewat.\n\n**Round 2, Chinese Grand Prix:** *Did not start.* Satu lagi absen. Piastri melewati dua dari tiga balapan pembuka musim tanpa poin, tanpa data balapan, tanpa pengalaman kompetitif bersama McLaren di musim regulasi baru ini.\n\n**Round 3, Japanese Grand Prix:** P2, 18 poin, *Finished.* Suzuka jadi titik balik. Di sirkuit yang terkenal tidak ramah untuk pembalap yang kurang jam terbang weekend-nya, Piastri langsung masuk podium. Finis P2 bukan hasil keberuntungan, Suzuka butuh pace murni dan konsistensi 53 lap lebih. Bahwa McLaren-nya kompetitif dan Piastri langsung click di balapan pertama musim ini adalah sinyal yang menarik untuk balapan-balapan selanjutnya.\n\nPola dari tiga round: absen, absen, podium. Kecil datanya, tapi bunyinya keras.\n\n---\n\n## Outlook\n\nTiga round sudah digelar, Piastri baru ikut satu. Ketertinggalan poin di awal musim ini nyata, pemimpin klasemen sudah punya jarak yang signifikan, tapi matematika musim masih sangat panjang.\n\nYang penting dicatat per 28 April 2026: Piastri sudah tunjukkan bahwa begitu turun, dia kompetitif. Podium di race pertama musim ini, di Suzuka, dengan paket McLaren yang jelas punya kecepatan, adalah modal yang tidak bisa diabaikan.\n\nPertanyaannya bukan soal apakah Piastri bisa bersaing di 2026, Japanese GP sudah menjawab itu. Pertanyaannya adalah berapa banyak poin yang sudah terbuang di dua round pertama, dan apakah cukup race tersisa untuk menutup gap ke papan atas klasemen.\n\n*Data profil ini mencerminkan hasil per 28 April 2026, setelah Round 3 musim F1 2026.*\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "piastri",
+    "driver_name": "Oscar Piastri",
+    "driver_code": "PIA",
+    "driver_number": "81",
+    "nationality": "Australian",
+    "current_team": "McLaren",
+    "current_team_id": "mclaren",
+    "championship_pos": "6",
+    "championship_points": "21",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020015,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on multiple training-inference violations (McLaren competitiveness, lap count, leader gap, Melbourne birthplace all added without input data) and a critical data error (poin count 21 vs 28). Remove all inferred narrative and factual claims not in input block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "pembalap Australia yang lahir di Melbourne, 6 April 2001",
+          "fix": "Remove 'di Melbourne' or verify against official FIA data before adding."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "salah satu tim yang tampil kompetitif di era regulasi baru ini",
+          "fix": "Remove opinion. State only: 'Piastri membalap untuk McLaren di musim 2026.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Suzuka jadi titik balik... Suzuka butuh pace murni dan konsistensi 53 lap lebih",
+          "fix": "Verify lap count. Remove 'titik balik' narrative judgment."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bahwa McLaren-nya kompetitif dan Piastri langsung click di balapan pertama",
+          "fix": "State only facts: he finished P2 at Suzuka. Let reader infer."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "pemimpin klasemen sudah punya jarak yang signifikan",
+          "fix": "Remove gap reference. Stick to Piastri's position only."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, pembalap berusia 25 tahun ini baru memulai musim 2026",
+          "fix": "Rephrase: 'Per 28 April 2026, Piastri baru turun di Round 3.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dalam klasemen sementara, Piastri duduk di P6 dengan 21 poin dari satu balapan",
+          "fix": "Correct to 28 poin to match input data."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dua balapan pertama... dilewatkan dengan status did not start... dari tiga balapan yang sudah digelar musim ini, Piastri baru turun satu kali. Dan dari satu kesempatan itu, dia langsung finis P2... mengumpulkan 18 poin sekaligus. Angka 21 p",
+          "fix": "Verify: input shows 28 poin total. Correct all mentions."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1e7067f3b9e1a2e6",
+    "published_at": "2026-04-28T11:59:40+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

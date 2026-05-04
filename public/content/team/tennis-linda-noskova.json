@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "tennis-linda-noskova",
+  "title": "Profil Linda Noskova (WTA) — Peringkat 13",
+  "description": "Profil petenis Linda Noskova (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Linda Noskova: Petenis Muda Czech yang Terus Mendaki Peringkat WTA\n\nLinda Noskova, petenis Czech kelahiran 17 November 2004, saat ini berada di peringkat 13 WTA dengan 2.849 poin per 16 April 2026. Pemain tangan kanan berusia 21 tahun ini lahir di Vsetin, Czech Republic, dan menjadi salah satu nama yang paling diperhitungkan di sirkuit WTA musim ini.\n\n## Identitas\n\nNoskova lahir di Vsetin, sebuah kota di wilayah Zlín, Czech Republic, pada 17 November 2004. Ia kini berusia 21 tahun. Dengan tinggi 178 cm dan berat 64 kg, postur Noskova tergolong ideal untuk petenis modern, cukup tinggi untuk menghasilkan servis yang menekan lawan, cukup atletis untuk bertahan di baseline.\n\nDebut profesionalnya di sirkuit WTA tercatat pada 2019, ketika usianya belum genap 15 tahun. Artinya, Noskova memulai perjalanan profesionalnya sangat muda, dan peringkat 13 dunia di usia 21 tahun mencerminkan laju perkembangan yang tidak biasa.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Noskova menempati peringkat 13 WTA dengan 2.849 poin. Ia naik satu posisi dari peringkat 14 di update sebelumnya, tren positif yang menunjukkan konsistensi di awal musim 2026.\n\nPeringkat 13 WTA bukan angka kecil. Di level ini, Noskova sudah masuk kelompok unggulan di hampir semua turnamen besar, termasuk Grand Slam dan Premier Mandatory events. Setiap kemenangan di turnamen besar berdampak signifikan terhadap poin, dan setiap kekalahan dini juga bisa menggerus posisinya dengan cepat.\n\nKenaikan satu peringkat mungkin terlihat kecil, tapi dalam ketatnya persaingan di papan atas WTA, bergerak ke atas, bukan stagnan, apalagi turun, adalah sinyal yang relevan. Noskova tidak sedang merosot. ia sedang menjaga momentum.\n\n## Outlook\n\nDi usia 21 tahun dengan peringkat 13 WTA, Noskova berada di posisi yang menarik: bukan lagi \"pemain muda berbakat yang perlu diperhatikan\", melainkan petenis papan atas yang sudah harus diperhitungkan lawan sejak babak pertama. Tren +1 di update terbaru mengonfirmasi bahwa musim 2026 berjalan ke arah yang benar.\n\nProfil ini mencerminkan data peringkat WTA per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "6970",
+    "athlete_name": "Linda Noskova",
+    "current_rank": 13,
+    "previous_rank": 14,
+    "points": 2849.0,
+    "trend": "+1",
+    "birthplace": "Vsetin, Czech Republic",
+    "dob": "2004-11-17",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.014905,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to two high-severity training-data inferences (geographic detail, age at debut) not grounded in input block. Academic drift and translated-English filler present. Rewrite to stick strictly to input data: name, birth date, current rank, points, trend, height/weight, handedness, debut year only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Vsetin, sebuah kota di wilayah Zlín, Czech Republic",
+          "fix": "Remove region qualifier; say 'Vsetin, Czech Republic' only"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Debut profesionalnya di sirkuit WTA tercatat pada 2019, ketika usianya belum genap 15 tahun",
+          "fix": "Remove age inference; say 'Debut profesionalnya pada 2019'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "cukup tinggi untuk menghasilkan servis yang menekan lawan, cukup atletis untuk bertahan di baseline",
+          "fix": "State posture only; remove gameplay inference"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Artinya, Noskova memulai perjalanan profesionalnya sangat muda",
+          "fix": "Delete sentence or merge into prior one"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Peringkat 13 WTA bukan angka kecil. Di level ini, Noskova sudah masuk kelompok unggulan",
+          "fix": "Start: 'Peringkat 13 berarti Noskova sudah masuk kelompok unggulan'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Peringkat 13 WTA bukan angka kecil...Kenaikan satu peringkat mungkin terlihat kecil",
+          "fix": "Vary: use 'bukan pencapaian biasa' or 'tidak signifikan' in second instance"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Profil ini mencerminkan data peringkat WTA per 16 April 2026",
+          "fix": "Delete or merge into final paragraph as contextual note"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf04de1e0d4c5b6e2",
+    "published_at": "2026-04-28T12:13:40+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

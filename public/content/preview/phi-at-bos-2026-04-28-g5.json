@@ -1,0 +1,78 @@
+{
+  "type": "preview",
+  "slug": "phi-at-bos-2026-04-28-g5",
+  "title": "Preview Philadelphia 76ers @ Boston Celtics (Game 5)",
+  "description": "Preview NBA Playoffs 2026 — Philadelphia 76ers di kandang Boston Celtics (—), 28 April 2026.",
+  "body_md": "# Closeout di Boston: Celtics Tinggal Selangkah Lagi, Sixers Harus Survive\n\nPhiladelphia 76ers terbang ke Boston untuk Game 5, Rabu dini hari 06.00 WIB, laga hidup-mati buat PHI, laga closeout buat BOS. Celtics unggul 3-1 dalam seri dan satu kemenangan lagi cukup untuk melangkah ke round berikutnya. Sixers? Kalah malam ini, musim selesai.\n\n## Seri Berjalan Satu Arah\n\nGame 1 langsung memberi sinyal siapa yang memegang kendali. BOS menghancurkan PHI 123-91 di rumah sendiri, selisih 32 poin yang tidak perlu banyak penjelasan. PHI sempat balik dengan mencuri Game 2, menang 111-97 di TD Garden. Seri terasa kompetitif sejenak.\n\nTapi sejak itu, Celtics menutup perdebatan.\n\nGame 3 di kandang PHI: BOS menang 108-100. Game 4, lebih brutal lagi, BOS menghajar 128-96, selisih 32 poin untuk kedua kalinya dalam satu seri. Dua kekalahan di kandang sendiri dengan margin sebesar itu bukan sekadar soal taktik. Itu soal gap yang lebih mendasar antara dua tim ini saat ini.\n\nBOS total di empat laga: +66 dalam poin selisih agregat. PHI hanya menang satu game, dan itu pun di kandang Boston.\n\n## Win-or-Go-Home, Semua Tekanan Ada di PHI\n\nFraming-nya sederhana: PHI harus menang empat kali berturut-turut untuk balik memenangkan seri ini, sebuah skenario yang secara historis hampir mustahil di NBA Playoffs. Untuk mulai, mereka harus menang dulu malam ini, di Boston, di hadapan home crowd Celtics yang sudah mencium closeout.\n\nBOS di posisi sebaliknya. Main di rumah, unggul seri, tampil dominan di tiga dari empat laga terakhir. Tidak ada tekanan yang berarti, mereka bahkan bisa main sedikit lebih lepas dari biasanya.\n\nYang perlu PHI lakukan bukan hanya menang. Mereka perlu menemukan cara menghentikan apa pun yang sudah berjalan dengan sangat baik di sisi Boston sejak Game 2, karena dua laga terakhir menunjukkan bahwa PHI belum punya jawabannya.\n\n## Pola yang Perlu Dibalik\n\nDua kekalahan PHI di kandang sendiri dengan selisih puluhan poin menunjukkan satu pola konsisten: begitu BOS membangun momentum di awal babak, PHI tidak punya firepower untuk come back. Gap di Game 1 dan Game 4 terbentuk dari run-run panjang yang tidak berhasil dijawab.\n\nDi Game 5, PHI butuh start yang solid. Tidak boleh kehabisan bensin di kuarter pertama lagi. Apakah itu bisa terjadi? Data seri ini tidak terlalu meyakinkan, tapi dalam format best-of-seven, satu malam bisa mengubah narasi.\n\nMasalahnya: malam ini bukan di kandang PHI.\n\n## Penutup\n\nCloseout game di TD Garden. BOS dengan seluruh momentum, PHI dengan punggung menempel ke tembok. Tayang live di NBA League Pass dan Vidio mulai 06.00 WIB.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401869408",
+    "home_team": "Boston Celtics",
+    "home_abbr": "BOS",
+    "away_team": "Philadelphia 76ers",
+    "away_abbr": "PHI",
+    "kickoff_utc": "2026-04-28T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Round 1",
+    "series_summary": "BOS leads series 3-1",
+    "game_number": 5,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039021,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "FAIL: Critical factual errors. Article describes Game 5 closeout scenario (BOS up 3-1) but input data shows Game 6 result where PHI won 109-100, making series 3-3 tied. Article's entire narrative frame is wrong. Requires full rewrite with correct game numbers and series state.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 5, Rabu dini hari 06.00 WIB",
+          "fix": "Change all 'Game 5' references to 'Game 6'. Series is 3-2 BOS, not 3-1."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 5, Rabu dini hari 06.00 WIB, laga hidup-mati buat PHI",
+          "fix": "Reframe: BOS leads 3-3 after Game 6. This is Game 7 finale, not closeout opportunity for BOS."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Celtics unggul 3-1 dalam seri",
+          "fix": "Correct to 3-2. PHI has won two of last two games."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "laga hidup-mati buat PHI, laga closeout buat BOS",
+          "fix": "Rephrase: 'PHI harus menang atau musim berakhir. BOS tinggal tunggu satu kemenangan.' or similar."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 1 langsung memberi sinyal... Game 2... Game 3... Game 4",
+          "fix": "Rewrite entire series recap to match input: Games 1-6 scores all listed. Acknowledge PHI won last two."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua kekalahan PHI di kandang sendiri dengan selisih puluhan poin menunjukkan satu pola konsisten",
+          "fix": "Rephrase to sharper: 'PHI kalah besar di kandang (108-100, 128-96). Mereka tidak bisa comeback begitu BOS ambil pecut.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Seri terasa kompetitif sejenak. Tapi sejak itu, Celtics menutup perdebatan.",
+          "fix": "Acknowledge: 'Tapi PHI balik ke kandang dan menggigit balik. Game 5 dan 6, Sixers tunjukkan kehidupan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x005fe39b1409e630",
+    "published_at": "2026-04-27T16:21:37+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

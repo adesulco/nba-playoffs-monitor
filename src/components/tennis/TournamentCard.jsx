@@ -64,11 +64,15 @@ export default function TournamentCard({ tournament, year = SEASON_YEAR }) {
 
       {/* Name */}
       <div style={{ marginTop: 2 }}>
-        <h3
+        {/* v0.11.12 — was h3 at 16px which rendered larger than the
+            parent Tennis active-tournaments h2. Demoted to h4 + 14px
+            so the hierarchy reads h1 (page) → h2 (ribbon) → h4 (card)
+            without inversion. Visuals stay compact. */}
+        <h4
           style={{
             margin: 0,
             fontFamily: 'var(--font-sans)',
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: 600,
             color: C.text,
             letterSpacing: -0.2,
@@ -76,7 +80,7 @@ export default function TournamentCard({ tournament, year = SEASON_YEAR }) {
           }}
         >
           {lang === 'id' ? t.nameId : t.name} {year}
-        </h3>
+        </h4>
         <div
           style={{
             fontSize: 11,

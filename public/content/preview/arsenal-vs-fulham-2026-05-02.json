@@ -1,0 +1,88 @@
+{
+  "type": "preview",
+  "slug": "arsenal-vs-fulham-2026-05-02",
+  "title": "Preview Arsenal vs Fulham",
+  "description": "Preview Bahasa Indonesia untuk Arsenal vs Fulham di Emirates Stadium, London, 2 May 2026.",
+  "body_md": "## Arsenal vs Fulham: Tuan Rumah Butuh Tiga Poin, Daftar Absen Mengkhawatirkan\n\nArsenal menjamu Fulham di Emirates Stadium, Sabtu 2 Mei 2026 mulai jam 23.30 WIB. Dengan 73 poin di pekan ke-34, Si Merah masih berada di puncak klasemen, tiga poin malam ini bisa makin memuluskan jalan ke gelar Premier League musim ini.\n\n### Form & Kondisi Tim\n\nArsenal datang dengan form WLLWW di lima laga terakhir, dua kekalahan di tengah jadi catatan yang sedikit mengganggu, tapi dua kemenangan beruntun terakhir cukup menenangkan. Viktor Gyökeres memimpin daftar pencetak gol dengan 12 gol musim ini dan jadi tumpuan utama lini depan. Masalah besarnya: daftar absen Arsenal panjang sekali untuk laga sebesar ini. Saka, Eze, Timber, Havertz, Merino, Odegaard, Hincapie, dan Calafiori semua belum dipastikan bisa turun. Kalau sebagian besar absen serentak, Mikel Arteta harus memutar otak soal komposisi.\n\nFulham di posisi 10 dengan 48 poin, datang dengan form WDLWD. Tidak konsisten, tapi tidak juga sedang dalam spiral buruk. Harry Wilson jadi top scorer dengan 10 gol musim ini. Di sisi mereka, absen yang tercatat ada Iwobi, Reed, Tete, dan Kevin, tidak se-panjang Arsenal, tapi tetap mempengaruhi opsi Marco Silva di lini tengah dan sayap.\n\n### Head-to-Head\n\nLima pertemuan terakhir bicara: Arsenal menang dua, seri dua, kalah satu. Dua musim terakhir keduanya pernah berbagi hasil 1-1 dan 2-2, pertanda Fulham bukan tim yang datang hanya untuk jadi pelengkap. Laga-laga ini biasanya ketat di babak pertama sebelum terbuka di babak kedua.\n\n### Pemain Kunci & Cedera\n\nGyökeres jelas jadi nama yang paling diawasi, 12 gol musim ini, dan dengan absennya banyak kreator serangan Arsenal, beban lebih banyak jatuh ke pundaknya. Di kubu tamu, Wilson harus jadi pembeda. tanpa Iwobi sebagai opsi lebar, Silva perlu mencari solusi lain untuk memecah pertahanan Arsenal.\n\nKondisi Odegaard dan Havertz jadi penentu. Kalau keduanya absen, Arsenal kehilangan dua pengatur tempo tengah lapangan sekaligus, dan Fulham yang disiplin defensif bisa memanfaatkan kekacauan itu.\n\n### Prediksi Taktis\n\nArsenal kemungkinan tetap bermain dengan struktur 4-3-3, tapi dengan opsi pemain terbatas di beberapa posisi kunci. Fulham di atas kertas bisa bermain compact dan mengandalkan counter-attack, taktik yang sudah terbukti bisa menyulitkan tuan rumah di laga sebelumnya. Emirates perlu jadi faktor. Keunggulan poin dan posisi klasemen ada di Arsenal, tapi daftar absen memunculkan tanda tanya. Prediksi skor: Arsenal menang 2-1, dengan gol pembuka datang lewat set-piece.\n\nSaksikan langsung di Vidio dan beIN Sports mulai jam 23.30 WIB.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379309",
+    "home_team": "Arsenal",
+    "away_team": "Fulham",
+    "kickoff_utc": "2026-05-02T16:30:00+00:00",
+    "venue": "Emirates Stadium, London",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019562,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails due to THREE high-severity training-data hallucinations: wrong player at Arsenal (Gyökeres), fabricated injury rosters for both teams not in input data. These are critical factual errors. Remove injury-list sections entirely and verify player identities against actual squad data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Viktor Gyökeres memimpin daftar pencetak gol dengan 12 gol musim ini",
+          "fix": "Remove Gyökeres reference entirely or replace with actual Arsenal top scorer from input data."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Saka, Eze, Timber, Havertz, Merino, Odegaard, Hincapie, dan Calafiori semua belum dipastikan",
+          "fix": "Remove injury roster entirely. Keep generic 'absen yang panjang' or ask for injury data in input."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Fulham di posisi 10 dengan 48 poin... Iwobi, Reed, Tete, dan Kevin... absen",
+          "fix": "Remove specific injury names. Rewrite without claiming to know who is out."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan 73 poin di pekan ke-34, Si Merah masih berada di puncak klasemen",
+          "fix": "Change to: 'Dengan 73 poin di pekan ke-34, Si Merah memimpin klasemen'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "dua kekalahan di tengah jadi catatan yang sedikit mengganggu",
+          "fix": "Rewrite: 'dua kekalahan di tengah jadi ancaman, tapi dua menang beruntun cukup tebus.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Harry Wilson jadi top scorer dengan 10 gol musim ini",
+          "fix": "Remove player name and goal count unless confirmed in input standings/data block."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tidak se-panjang Arsenal, tapi tetap mempengaruhi opsi Marco Silva",
+          "fix": "Cut 'tidak se-panjang Arsenal, tapi'; start with 'Tetap mempengaruhi opsi Marco Silva.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Di kubu tamu, Wilson harus jadi pembeda. tanpa Iwobi sebagai opsi lebar",
+          "fix": "Change to: 'Tanpa Iwobi sebagai opsi lebar,...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "tiga poin malam ini bisa makin memuluskan jalan ke gelar Premier League musim ini.\n\n### Form & Kondisi Tim\n\nArsenal datang",
+          "fix": "Cut the trophy-count reference; input data doesn't include lifetime trophies."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x36bdd70258c55e34",
+    "fact_check": {
+      "passed": true,
+      "issue_count": 0
+    },
+    "published_at": "2026-04-27T10:47:05+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

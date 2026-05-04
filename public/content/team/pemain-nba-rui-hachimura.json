@@ -1,0 +1,72 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-rui-hachimura",
+  "title": "Profil Rui Hachimura: Forward Los Angeles Lakers",
+  "description": "Profil pemain NBA Rui Hachimura, Forward Los Angeles Lakers. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Rui Hachimura: Forward Lakers yang Efisien dari Toyama\n\nRui Hachimura, forward Los Angeles Lakers asal Toyama, Jepang, mencatat 11,5 PPG musim 2025-26 per 28 April 2026. Pemain berpostur 6'8\" 230 lbs dengan jersey #28 ini bukan nama pertama yang disebut ketika bicara soal scoring LAL, tapi angka efisiensinya di FG% bicara cerita lain.\n\n---\n\n## Identitas\n\nLahir di Toyama, Jepang, 28 tahun lalu, Hachimura adalah salah satu pemain Jepang paling menonjol dalam sejarah NBA. Sebelum ke level pro, dia menghabiskan masa college di Gonzaga, salah satu program basketball terkuat Amerika, sebelum akhirnya masuk draft 2019, dipilih Washington Wizards di round 1 pick ke-9.\n\nMusim 2025-26 adalah tahun ke-6-nya di NBA. Pengalaman enam musim membentuk profil pemain yang sudah jauh dari label \"rookie harapan\", Hachimura sekarang pemain matang di roster LAL, dengan postur forward yang pas untuk peran two-way.\n\n---\n\n## Bersama Los Angeles Lakers\n\nHachimura sekarang berseragam Los Angeles Lakers, salah satu franchise paling ikonik di NBA. Sebagai forward di LAL, perannya ada di rotasi tim, bukan piece sentral, tapi bukan pula sekadar bench filler.\n\n11,5 PPG menempatkannya di kisaran role player produktif. Di roster Lakers yang punya beberapa opsi scoring, angka itu cukup untuk menunjukkan dia mendapat waktu bermain yang berarti dan dipakai sebagai salah satu opsi serangan.\n\n---\n\n## Performa Musim Ini\n\nAngka yang paling menarik dari musim Hachimura bukan PPG-nya, tapi FG%-nya.\n\n51,4% dari lapangan. Itu ranking ke-29 di seluruh NBA, per 28 April 2026.\n\nUntuk konteks: masuk top 30 efisiensi FG% di liga yang punya lebih dari 400 pemain aktif adalah angka serius. Ini bukan kebetulan. Hachimura bukan tipe pemain yang ambil banyak tembakan susah atau forced shots yang bikin persentase turun. Musim ini dia pilih spot dengan lebih baik, dan hasilnya masuk ke dalam satu dari sedikit pemain paling efisien di liga.\n\n11,5 PPG dengan efisiensi setinggi itu artinya scoring-nya bersih. Dia tidak butuh 15 tembakan untuk cetak 11 poin.\n\nRPG-nya 3,3 dan APG 0,8, keduanya mencerminkan profil forward yang fokus ke scoring dan positioning, bukan facilitator atau rebounder utama. Ranking RPG di posisi ke-158 dan APG ke-214 NBA menunjukkan area ini bukan prioritas perannya di LAL. Dia bukan diminta untuk playmake atau mendominasi glass, tugasnya lebih ke eksekusi di half-court offense dan jaga efisiensi.\n\nPerpaduan ini, forward 6'8\" dengan FG% top 30 liga, adalah tipe pemain yang tim playoff butuhkan: konsisten, tidak buang possession, bisa scoring ketika dapat look yang bagus.\n\n---\n\n## Outlook\n\nMasuk musim ke-6, Hachimura sudah melewati fase membuktikan diri sebagai pemain NBA. Pertanyaannya sekarang lebih soal peran, seberapa besar porsinya di rotasi Lakers, dan apakah efisiensi tinggi musim ini bisa dia pertahankan sampai akhir musim 2025-26.\n\n51,4% FG dengan 11,5 PPG per 28 April 2026 adalah baseline yang kuat. Kalau dia bisa jaga angka itu, Hachimura tetap jadi piece yang valuable di roster LAL, forward efisien yang tidak banyak noise tapi kasih output nyata tiap malam.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "4066648",
+    "athlete_name": "Rui Hachimura",
+    "team_name": "Los Angeles Lakers",
+    "team_abbr": "LAL",
+    "position": "Forward",
+    "jersey": "28",
+    "age": 28,
+    "birthplace": "Toyama, Japan",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019747,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Two high-severity training-inference violations (Gonzaga ranking, Japanese player prominence) undermine credibility. Medium-severity translated-English phrasing in mid-article. Article is factually grounded for stats but adds unsourced color. Requires regeneration to remove inference claims.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Lahir di Toyama, Jepang, 28 tahun lalu, Hachimura adalah salah satu pemain Jepang paling menonjol dalam sejarah NBA.",
+          "fix": "Remove subjective ranking. State: 'Lahir di Toyama, Jepang, Hachimura adalah pemain Jepang di NBA.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum ke level pro, dia menghabiskan masa college di Gonzaga, salah satu program basketball terkuat Amerika",
+          "fix": "State fact only: 'Hachimura bermain college basketball di Gonzaga sebelum NBA.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Masuk musim ke-6, Hachimura sudah melewati fase membuktikan diri sebagai pemain NBA.",
+          "fix": "Rewrite: 'Musim ke-6 Hachimura, dia bukan lagi pemain yang perlu buktikan diri.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Sebelum ke level pro, dia menghabiskan masa college di Gonzaga",
+          "fix": "Simpler: 'Hachimura main college basketball Gonzaga sebelum NBA.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pertanyaannya sekarang lebih soal peran, seberapa besar porsinya di rotasi Lakers, dan apakah efisiensi tinggi musim ini bisa dia pertahankan sampai akhir musim 2025-26.",
+          "fix": "Split: 'Pertanyaannya: berapa porsi rotasi Lakers? Bisa tahan efisiensi 51% sampai playoff?'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Ini bukan kebetulan. Hachimura bukan tipe pemain yang ambil banyak tembakan susah",
+          "fix": "Minor: 'Hachimura tidak coba tembakan susah yang bikin persentase turun.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x914ae9b805cbf708",
+    "published_at": "2026-04-28T12:06:13+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

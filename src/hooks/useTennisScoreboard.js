@@ -77,9 +77,25 @@ function normaliseEvents(json) {
   for (const ev of events) {
     const tournamentName = ev?.name || ev?.shortName || '';
     const tournamentId = ev?.id || null;
+    // v0.11.25 — ESPN's tennis scoreboard wraps matches inside
+    // `event.groupings[].competitions[]` (one grouping per category:
+    // men's singles, women's singles, men's doubles, women's doubles).
+    // The earlier normaliser only walked `event.competitions[]` (the
+    // shape ESPN uses for NBA / NFL / soccer) so tennis returned 0
+    // matches even when ESPN was reporting 100+. Walk both shapes so
+    // a future ESPN normalisation doesn't regress us either way.
+    const groupings = Array.isArray(ev?.groupings) ? ev.groupings : [];
+    for (const g of groupings) {
+      const groupingName = g?.grouping?.displayName || g?.grouping?.slug || g?.displayName || null;
+      const groupingSlug = g?.grouping?.slug || null;
+      const comps = Array.isArray(g?.competitions) ? g.competitions : [];
+      for (const c of comps) {
+        out.push(normaliseCompetition(c, { tournamentName, tournamentId, groupingName, groupingSlug }));
+      }
+    }
     const comps = Array.isArray(ev?.competitions) ? ev.competitions : [];
     for (const c of comps) {
-      out.push(normaliseCompetition(c, { tournamentName, tournamentId }));
+      out.push(normaliseCompetition(c, { tournamentName, tournamentId, groupingName: null, groupingSlug: null }));
     }
   }
   return out.filter(Boolean);
@@ -141,6 +157,10 @@ function normaliseCompetition(c, tournamentCtx) {
     startUTC: c?.date || null,
     tournamentName: tournamentCtx.tournamentName,
     tournamentId: tournamentCtx.tournamentId,
+    // v0.11.25 — carry grouping context so the LiveTicker can label
+    // a match as "Men's Singles · 3R" or "Women's Doubles · QF".
+    groupingName: tournamentCtx.groupingName || null,
+    groupingSlug: tournamentCtx.groupingSlug || null,
     round,
     surface: c?.venue?.fullName ? null : null, // ESPN doesn't expose surface per-match; derived in UI
     players,

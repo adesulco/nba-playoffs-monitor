@@ -1,0 +1,67 @@
+{
+  "type": "team",
+  "slug": "tennis-jiri-lehecka",
+  "title": "Profil Jiri Lehecka (ATP) — Peringkat 14",
+  "description": "Profil petenis Jiri Lehecka (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Jiri Lehecka: Petenis Muda Czechia di Papan Atas ATP\n\nJiri Lehecka, petenis Czechia kelahiran 8 November 2001, saat ini berada di peringkat 14 ATP dengan 2.540 poin per 16 April 2026. Pemain tangan kanan berusia 24 tahun ini lahir di Mlada Boleslav, Czechia, dan sudah memantapkan diri sebagai bagian dari generasi muda yang bersaing di level tertinggi tur dunia.\n\n## Identitas\n\nLehecka lahir 8 November 2001 di Mlada Boleslav, Czechia, kota industri sekitar 50 kilometer di utara Praha. Di usia 24 tahun, ia masuk kategori petenis muda yang sudah menembus elite ATP. Posturnya mendukung: tinggi 185 cm (6'1\") dengan berat 81 kg (179 lbs), proporsi yang lazim untuk petenis dengan gaya main berbasis servis dan baseline. Lehecka memulai karier profesionalnya pada 2020, artinya baru enam tahun di tur ketika namanya sudah parkir di top 15 dunia.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Lehecka tercatat di peringkat 14 ATP dengan 2.540 poin. Dibanding pekan sebelumnya, posisinya turun satu, dari peringkat 13 ke 14. Pergeseran satu slot ke bawah dalam konteks top 15 bukan indikasi krisis. fluktuasi satu-dua peringkat di zona ini normal, tergantung distribusi poin turnamen yang sedang berjalan atau kadaluarsa.\n\nYang lebih penting: Lehecka konsisten di rentang top 15 ATP. Bagi petenis yang debut profesional baru 2020, posisi ini menandai trajektori yang solid. Peringkat 14 menempatkannya dalam percakapan seeding di Masters 1000 dan Grand Slam, level di mana lawan pertama sudah bisa siapa saja dari top 30.\n\n## Outlook\n\nDengan peringkat 14 ATP dan akumulasi 2.540 poin, Lehecka berdiri di titik yang menarik dalam kariernya. Cukup tinggi untuk masuk unggulan di turnamen besar, tapi masih dalam jarak yang bisa dikejar ke top 10 jika konsistensi terjaga. Pada usia 24 tahun dengan enam tahun pengalaman tur, kurva perkembangannya masih terbuka. Data ini mencerminkan posisi Lehecka per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "3754",
+    "athlete_name": "Jiri Lehecka",
+    "current_rank": 14,
+    "previous_rank": 13,
+    "points": 2540.0,
+    "trend": "-1",
+    "birthplace": "Mlada Boleslav, Czechia",
+    "dob": "2001-11-08",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.013764,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Clean, grounded profile with solid structure and appropriate register. Two soft tense-overmarking instances (both 'sudah' could drop); one minor clarification needed on ranking timeline; one typo. Voice is natural and sport-appropriate throughout.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "sudah memantapkan diri sebagai bagian dari generasi muda",
+          "fix": "Change to: 'memantapkan diri sebagai bagian dari generasi muda'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "sudah menembus elite ATP",
+          "fix": "Change to: 'menembus elite ATP'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dibanding pekan sebelumnya, posisinya turun satu, dari peringkat 13 ke 14.",
+          "fix": "Clarify: 'Posisinya turun satu, dari peringkat 13 (seminggu sebelumnya)'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "fluktuasi satu-dua peringkat di zona ini normal",
+          "fix": "Capitalize: 'Fluktuasi'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "lahir 8 November 2001 di Mlada Boleslav, Czechia, kota industri sekitar 50 kilometer di utara Praha. Di usia 24 tahun, ia",
+          "fix": "Cut city descriptor — input only has city name, not geography."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3528ece294ad56a2",
+    "published_at": "2026-04-28T12:12:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

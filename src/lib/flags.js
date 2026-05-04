@@ -46,7 +46,7 @@ export const LIVE = {
   epl:        envFlag('VITE_FLAG_EPL', false),         // Phase 2
   tennis:     envFlag('VITE_FLAG_TENNIS', true),       // v0.5.0 ships live
   fifa_wc:    envFlag('VITE_FLAG_FIFA_WC', false),     // Phase 3
-  liga_1_id:  envFlag('VITE_FLAG_LIGA_1_ID', false),   // Phase 4
+  liga_1_id:  envFlag('VITE_FLAG_LIGA_1_ID', true),    // v0.13.0 ships live (Phase 1A)
 };
 
 // Convenience helper used by Home and adapters.
@@ -92,5 +92,25 @@ export function isUiV2() {
   return !!UI.v2;
 }
 
-export const FLAGS = { VISIBLE, LIVE, UI, isLive, isVisible, isUiV2 };
+// v0.57.0 — Phase E redesign: tri-state Home variant flag.
+//   VITE_FLAG_HOME=0 (default)  → src/pages/Home.jsx        — gateway
+//   VITE_FLAG_HOME=1            → src/pages/HomeV1.jsx      — personalized
+//   VITE_FLAG_HOME=2            → src/pages/HomeV2.jsx      — v4 redesign
+//
+// Env var read once at module load; integer-clamped 0..2; falls back
+// to 0 on any parse error. Independent from UI.v2 (the redesign-on
+// boolean for hubs + article shell + Newsroom Slice). When Phase E
+// is QA'd, ade flips this to 2 in Vercel env. Old Home + HomeV1
+// stay on disk as rollback paths.
+function envInt(name, fallback) {
+  const v = import.meta.env?.[name];
+  if (v === undefined || v === null || v === '') return fallback;
+  const n = parseInt(String(v), 10);
+  if (Number.isNaN(n)) return fallback;
+  return Math.max(0, Math.min(2, n));
+}
+
+export const homeVariant = envInt('VITE_FLAG_HOME', 0);
+
+export const FLAGS = { VISIBLE, LIVE, UI, homeVariant, isLive, isVisible, isUiV2 };
 export default FLAGS;

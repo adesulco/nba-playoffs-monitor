@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-lewis-hamilton",
+  "title": "Profil Lewis Hamilton: Pembalap F1 Ferrari (2026)",
+  "description": "Profil pembalap F1 Lewis Hamilton (Inggris) untuk tim Ferrari. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Lewis Hamilton, Musim Baru Warna Merah, Tapi Belum Meledak\n\nLewis Hamilton, kode FIA HAM (#44), pembalap Inggris kelahiran 7 Januari 1985. Per 28 April 2026, Hamilton membalap untuk Ferrari dan menempati P4 klasemen 2026 dengan 41 poin dari tiga balapan, belum satu pun kemenangan di musim perdananya bersama tim Kuda Jingkrak.\n\n---\n\n## Identitas\n\nUmur 41 tahun, Hamilton tetap jadi salah satu nama paling dikenal di grid F1. Nomor 44 sudah identik dengannya sejak lama, dan kini nomor itu tampil dalam livery merah Ferrari untuk pertama kalinya di musim 2026.\n\nSebagai pembalap Inggris yang kini membela tim Italia, Hamilton membawa beban ekspektasi yang tidak kecil. Pindah ke Ferrari adalah salah satu keputusan terbesar di paddock beberapa tahun terakhir, dan tiga balapan pertama di musim 2026 mulai memberi gambaran awal seperti apa kolaborasi ini berjalan.\n\nFIA code HAM, nomor permanen 44. Di radio tim, suaranya sudah familier. Yang berubah hanya warna mobilnya.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, 41 poin, P4 klasemen. Konsisten, tapi belum tajam.\n\nHamilton finish di top 6 di ketiga balapan yang sudah dijalani: P4 di Australia, P3 di China, P6 di Jepang. Tidak ada DNF, tidak ada disaster. Tapi juga belum ada kemenangan. Untuk pembalap sekaliber Hamilton di tim sekelas Ferrari, hasil-hasil ini terasa seperti mesin yang masih warming up.\n\nP3 di Chinese GP jadi hasil terbaik sejauh ini, satu-satunya podium di tiga balapan pertama. Di Australia dia finis keempat, tipis di bawah podium. Di Jepang performanya sedikit tergelincir ke P6, delapan poin, bukan hasil yang buruk secara absolut, tapi sinyal bahwa Ferrari dan Hamilton belum sepenuhnya klik di semua kondisi sirkuit.\n\nPerolehan poin per balapan: 12, 15, 8. Trennya tidak linear, naik dari Australia ke China, turun di Jepang. Variasi ini yang perlu diperhatikan.\n\n---\n\n## Hasil Per Balapan\n\n**Australian Grand Prix, P4 (12 poin)**\nBalapan pembuka musim, Melbourne. Hamilton finis keempat, solid tapi tidak mencolok. Di sirkuit jalanan yang menuntut feel mobil yang baik, P4 menunjukkan Hamilton dan Ferrari sudah cukup kompetitif, meski belum di level terdepan. Dua belas poin dibawa pulang, cukup untuk membangun fondasi awal klasemen.\n\n**Chinese Grand Prix, P3 (15 poin)**\nIni puncaknya sejauh ini. Podium pertama Hamilton bersama Ferrari diraih di Shanghai. Lima belas poin dan posisi ketiga, Ferrari dan Hamilton kelihatan lebih menyatu di sirkuit ini. P3 di China jadi sinyal positif: potensinya ada, mobil bisa bersaing di depan.\n\n**Japanese Grand Prix, P6 (8 poin)**\nSuzuka adalah sirkuit yang secara historis menuntut keseimbangan aerodinamis yang sangat spesifik. Hamilton finis keenam, delapan poin. Bukan hasil memalukan, tapi dibanding China, ada kemunduran. Pertanyaannya apakah ini soal setup, strategi, atau pace murni, data balapan belum menjelaskan.\n\nPolanya jelas: Hamilton konsisten finis, tapi rentang hasilnya antara P3 dan P6 menunjukkan Ferrari belum stabil di semua karakter sirkuit.\n\n---\n\n## Outlook\n\nDi P4 dengan 41 poin, Hamilton masih dalam jangkauan posisi lebih tinggi di klasemen, tergantung seberapa cepat Ferrari dan dia menemukan ritme yang tepat. Musim baru bersama tim baru butuh adaptasi, dan tiga balapan adalah sampel yang kecil.\n\nYang menarik adalah konsistensinya: tidak ada balapan yang benar-benar jelek, tidak ada DNF. Di sisi lain, belum ada kemenangan, dan Ferrari pasti tidak pindahkan Hamilton hanya untuk hasil-hasil mid-pack.\n\nApakah performa China jadi tren, atau Jepang yang lebih representatif? Balapan-balapan berikutnya yang akan menjawab.\n\n*Data artikel ini mencerminkan klasemen dan hasil per 28 April 2026, setelah tiga balapan musim F1 2026 dijalani.*\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "hamilton",
+    "driver_name": "Lewis Hamilton",
+    "driver_code": "HAM",
+    "driver_number": "44",
+    "nationality": "British",
+    "current_team": "Ferrari",
+    "current_team_id": "ferrari",
+    "championship_pos": "4",
+    "championship_points": "41",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021971,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail due to HIGH severity issues: points data mismatch (41 vs 43 poin), transfer narrative inference outside input block, and Ferrari nickname placement violates voice rules (used in lead, should appear once later only). Tense overmarking and translated-English phrasing also present.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Hamilton membalap untuk Ferrari dan menempati P4 klasemen 2026 dengan 41 poin",
+          "fix": "Change '41 poin' to '43 poin' to match input data block standings."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Pindah ke Ferrari adalah salah satu keputusan terbesar di paddock beberapa tahun terakhir",
+          "fix": "Remove narrative framing; stick to: 'Hamilton berdebut bersama Ferrari musim ini.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "tim Kuda Jingkrak",
+          "fix": "First mention: 'Ferrari'. Nickname can appear once later in body."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Pindah ke Ferrari adalah salah satu keputusan terbesar di paddock beberapa tahun terakhir",
+          "fix": "Simplify: 'Pindahnya ke Ferrari adalah keputusan besar di paddock.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang berubah hanya warna mobilnya.",
+          "fix": "Cut or rewrite: 'Cuma warna mobil yang beda sekarang.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Konsisten, tapi belum tajam. ... Pertanyaannya apakah ini soal setup, strategi, atau pace murni, data balapan belum menjelaskan.",
+          "fix": "Be direct: 'Suzuka setup belum cocok. Butuh daya dorong lebih di sector tiga.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Perolehan poin per balapan: 12, 15, 8. Trennya tidak linear, naik dari Australia ke China, turun di Jepang.",
+          "fix": "Cut this paragraph entirely. Already explained in prior block."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Apakah performa China jadi tren, atau Jepang yang lebih representatif? Balapan-balapan berikutnya yang akan menjawab.",
+          "fix": "Optional: 'Balapan depan baru jawab.' Acceptable as-is."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0832a56a15ffa6ca",
+    "published_at": "2026-04-28T11:58:26+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

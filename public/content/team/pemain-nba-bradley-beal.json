@@ -1,0 +1,102 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-bradley-beal",
+  "title": "Profil Bradley Beal: Guard LA Clippers",
+  "description": "Profil pemain NBA Bradley Beal, Guard LA Clippers. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Bradley Beal, Veteran Guard yang Memasuki Babak Baru Bersama LA Clippers\n\nBradley Beal, guard LA Clippers kelahiran Saint Louis, Missouri, mencatat 8,2 PPG di musim 2025-26 per 28 April 2026. Pemain berpostur 6'4\" 207 lbs dengan jersey #0 ini kini memasuki tahun ke-13 di NBA, satu dekade lebih perjalanan yang membawa namanya dari Washington hingga ke Los Angeles.\n\n---\n\n## Identitas\n\nBeal lahir di Saint Louis, MO, kini berusia 32 tahun. Sebelum masuk NBA, dia bermain college di Florida. Draft 2012, pick ketiga di ronde pertama, dipilih Washington Wizards. Debut NBA-nya langsung di tahun yang sama, dan sejak saat itu Beal tidak pernah absen dari peta guard NBA.\n\nSecara fisik, 6'4\" dengan berat 207 lbs menempatkan Beal di frame khas shooting guard, cukup panjang untuk berduel di perimeter, cukup atletis untuk menerobos ke ring. Jersey #0 yang kini dia kenakan di LAC jadi simbol chapter baru.\n\n---\n\n## Tim Saat Ini: LA Clippers\n\nMusim 2025-26, Beal berseragam LA Clippers. Perpindahan ini membawa Beal ke sisi lain Amerika, dari franchise East yang bertahun-tahun dia bela, kini bersama LAC di West.\n\nDi Clippers, Beal hadir sebagai veteran guard dengan pengalaman 13 musim. Perannya dalam rotasi tergambar dari angka menit dan kontribusi statistiknya musim ini, bukan lagi anchor scoring utama, tapi guard berpengalaman yang menambah kedalaman roster.\n\n---\n\n## Performa Musim Ini\n\nAngka Beal di musim 2025-26 mencerminkan peran yang berbeda dari era puncaknya. Delapan koma dua PPG, shooting 37,5% dari lapangan. Untuk konteks: FG% 37,5 adalah angka yang ketat, di bawah rata-rata liga untuk guard reguler. Ini bisa dibaca dua arah: volume tembakan yang menurun, atau efisiensi yang sedang berjuang.\n\nAPG 1,7 menunjukkan Beal tidak berperan sebagai playmaker utama di sistem Clippers. Dia bukan yang pertama memegang bola, bukan yang ditugaskan distribute offense. RPG 0,8 per pertandingan konsisten dengan peran guard yang tidak banyak menghabiskan waktu di area kotak, fokusnya ada di perimeter.\n\nYang perlu digarisbawahi: 13 musim di NBA bukan angka kecil. Beal bukan rookie yang sedang membangun statistik. Angka 8,2 PPG di musim ini bicara tentang pemain yang fungsinya dalam rotasi tim sudah berbeda dibanding tahun-tahun sebelumnya, bukan penurunan nilai, tapi pergeseran peran.\n\n---\n\n## Penutup\n\nPer 28 April 2026, Bradley Beal ada di titik karier yang menarik. Guard 32 tahun dari Saint Louis, pick 3 draft 2012, kini bermain sebagai bagian dari roster LA Clippers di musim ke-13-nya. Angka 8,2 PPG dengan FG% 37,5 menggambarkan pemain yang perannya sudah berevolusi jauh dari posisi sentral di offense.\n\nMusim masih berjalan. Beal, dengan latar belakang guard yang sudah melewati belasan musim NBA, tetap jadi elemen pengalaman di LAC, dan bagaimana Clippers memaksimalkan itu jadi cerita yang layak diikuti sampai akhir musim.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "6580",
+    "athlete_name": "Bradley Beal",
+    "team_name": "LA Clippers",
+    "team_abbr": "LAC",
+    "position": "Guard",
+    "jersey": "0",
+    "age": 32,
+    "birthplace": "Saint Louis, MO",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.018197,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 11,
+      "summary": "Article fails due to three high-severity training-data inferences (college, draft team, conference) that go beyond the input data block. Washington Wizards, Florida college, and Eastern Conference affiliation are not grounded in provided facts. Additionally, one translated-English clause and soft-phrase repetition lower voice score. Regenerate with strict adherence to input block only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum masuk NBA, dia bermain college di Florida.",
+          "fix": "Remove college reference or source it from input data."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Draft 2012, pick ketiga di ronde pertama, dipilih Washington Wizards.",
+          "fix": "Input only provides '2012: Rd 1, Pk 3 (WSH)' — don't name the franchise."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "dari franchise East yang bertahun-tahun dia bela, kini bersama LAC di West.",
+          "fix": "Describe move geographically (coast-to-coast) without conference inference."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Perannya dalam rotasi tergambar dari angka menit dan kontribusi statistiknya musim ini.",
+          "fix": "Use: 'Perannya jelas dari statistik musim ini' or just state the stats."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Beal lahir di Saint Louis, MO, kini berusia 32 tahun... Saint Louis, MO, kini bermain",
+          "fix": "In second mention, use only 'kini' or drop birthplace entirely; vary reference."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Yang perlu digarisbawahi: 13 musim di NBA bukan angka kecil.",
+          "fix": "Drop the phrase; just say: '13 musim di NBA bukan kecil.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Per 28 April 2026, Bradley Beal ada di titik karier yang menarik.",
+          "fix": "Use current date from input block (3 Mei 2026) consistently."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "bagaimana Clippers memaksimalkan itu jadi cerita yang layak diikuti",
+          "fix": "End with concrete fact: 'Clippers vs [next opponent]' or just close on current stats."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "jersey #0 ini kini memasuki tahun ke-13 di NBA, satu dekade lebih perjalanan yang membawa namanya dari Washington hingga ke Los",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Beal di musim 2025-26 mencerminkan peran yang berbeda dari era puncaknya. Delapan koma dua PPG, shooting 37,5% dari lapangan. Untuk",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "fungsinya dalam rotasi tim sudah berbeda dibanding tahun-tahun sebelumnya, bukan penurunan nilai, tapi pergeseran peran.\n\n---\n\n##",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x61424bccf0a56622",
+    "published_at": "2026-04-28T12:10:08+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

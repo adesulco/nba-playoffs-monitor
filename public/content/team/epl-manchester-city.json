@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "epl-manchester-city",
+  "title": "Profil Manchester City: Premier League (2025-26)",
+  "description": "Profil Manchester City — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Manchester City: Penguasa Manchester yang Masih Berjuang di Puncak\n\nManchester City adalah klub asal Inggris yang bermain di Liga Inggris (Premier League), berkandang di Etihad Stadium, Manchester, dengan kapasitas 55.097 penonton. Per 28 April 2026, City berada di peringkat 2 klasemen Liga Inggris 2025-26 dengan 70 poin dari 33 laga, catatan 21M-7S-5K, dan selisih gol +37. Slot Liga Champions musim depan sudah diamankan.\n\n---\n\n## Identitas Klub\n\nManchester City berdiri pada 1880 dan menjadi salah satu klub paling mapan di Inggris. Markas mereka, Etihad Stadium di Manchester, berkapasitas 55.097 penonton dan menjadi salah satu stadion terbesar di Premier League. Sebagai klub asal kota Manchester, City berbagi kota dengan Manchester United, menjadikan derby lokal mereka salah satu fixture paling dinantikan di kalender Liga Inggris.\n\nIdentitas City di era modern adalah sepak bola menyerang, penguasaan bola, dan konsistensi di level tertinggi Eropa. Musim 2025-26 menjadi ukuran seberapa jauh standar itu bisa dipertahankan.\n\n---\n\n## Performa Musim Ini\n\n33 laga, 21M-7S-5K. Angka itu solid, tapi bukan dominan seperti yang kadang diharapkan dari City.\n\nYang bicara paling keras adalah pertahanan. 29 gol kebobolan dari 33 laga, rata-rata 0,9 per laga, dengan 14 clean sheet. Lebih dari separuh pertandingan mereka berakhir tanpa kebobolan. Ini bukan keberuntungan, ini sistem.\n\nDi sisi serang, City cetak 66 gol, rata-rata 2,0 per laga. Produktif, tapi catatan 4 laga tanpa gol menunjukkan ada malam-malam di mana mesin serangan City macet. Konsistensi di depan gawang masih jadi PR.\n\nRekor kandang jauh lebih kuat dari tandang: 12M-3S-1K di Etihad berbanding 9M-4S-4K di luar rumah. Di kandang, City nyaris tak tersentuh. Di laga tandang, ada celah yang lebih sering muncul.\n\nForm terkini? WWWDDWWW. Enam menang dari delapan laga terakhir, diselingi dua seri. City sedang dalam momentum positif menjelang akhir musim, dengan pertahanan yang rapat dan serangan yang mulai menemukan ritme kembali.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 2 dengan 70 poin dari 33 laga. Slot Liga Champions sudah pasti, yang berarti City akan kembali bermain di panggung Eropa tertinggi musim depan di fase league.\n\nTapi 70 poin di posisi 2 juga mengandung cerita lain: ada tim di atas mereka. Di Premier League musim ini, City bukan tim nomor satu. Selisih poin dengan pemuncak klasemen belum cukup untuk dikejar dengan sisa laga yang ada, atau bahkan jika bisa, butuh skenario tertentu.\n\nUntuk klub dengan standar City, finis runner-up bukan kegagalan. Tapi juga bukan yang ditarget di awal musim.\n\n---\n\n## Outlook\n\nCity menutup musim ini dalam form terbaik. WWWDDWWW di 8 laga terakhir, clean sheet di 14 laga sepanjang musim, dan pertahanan yang rata-rata kebobolan kurang dari satu gol per laga. Fondasinya ada.\n\nSlot Liga Champions terjaga. Itu prioritas nyata di liga modern, dan City sudah memastikannya.\n\nSisa pertanyaannya: apakah cukup laga tersisa untuk membalik peringkat? Dan apakah form akhir musim ini jadi modal yang dibawa ke musim berikutnya?\n\nData ini mencerminkan posisi Manchester City per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "50",
+    "team_name": "Manchester City",
+    "team_country": "England",
+    "team_founded": 1880,
+    "venue_name": "Etihad Stadium",
+    "venue_city": "Manchester",
+    "venue_capacity": 55097,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020119,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to three high-severity training-data inferences (founding year 1880, Man United rivalry, playing style assumptions) and a date mismatch with input block. Rewrite sections 1-2 to stick to provided data only; fix date in closing.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Manchester City berdiri pada 1880 dan menjadi salah satu klub paling mapan di Inggris.",
+          "fix": "Remove founding year or source from explicit input data only."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebagai klub asal kota Manchester, City berbagi kota dengan Manchester United, menjadikan derby lokal mereka salah satu fixture paling dinantikan.",
+          "fix": "Stick to factual identity: 'Manchester City, berbasis di Manchester, berdiri sebagai klub lokal.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Identitas City di era modern adalah sepak bola menyerang, penguasaan bola, dan konsistensi di level tertinggi Eropa.",
+          "fix": "Cut or replace with specific claim: 'City fokus penguasaan bola; form musim ini menunjukkan itu.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Identitas City di era modern adalah sepak bola menyerang, penguasaan bola, dan konsistensi di level tertinggi Eropa.",
+          "fix": "Remove or cite only stats in input: possession %, shot count, formation — none provided here."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Yang bicara paling keras adalah pertahanan. 29 gol kebobolan dari 33 laga, rata-rata 0,9 per laga, dengan 14 clean sheet.",
+          "fix": "Direct: 'Pertahanan City: 29 gol kebobolan, 14 clean sheet. Solid.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini bukan keberuntungan, ini sistem.",
+          "fix": "Show through data, don't announce: '14 clean sheet dari 33 laga — pola pertahanan yang konsisten.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Konsistensi di depan gawang masih jadi PR.",
+          "fix": "Slightly tighter: '4 laga tanpa gol — celah di depan yang masih perlu ditutup.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Data ini mencerminkan posisi Manchester City per 28 April 2026.",
+          "fix": "Update closing date to match input: 'per 3 Mei 2026' or remove the date tag entirely."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x56ea43ad8d4f46a2",
+    "published_at": "2026-04-28T11:57:27+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

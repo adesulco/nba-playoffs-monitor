@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "tennis-naomi-osaka",
+  "title": "Profil Naomi Osaka (WTA) — Peringkat 15",
+  "description": "Profil petenis Naomi Osaka (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Naomi Osaka\n\nNaomi Osaka, petenis Jepang kelahiran 16 Oktober 1997 di Osaka, adalah salah satu nama paling dikenal di sirkuit WTA. Per 16 April 2026, Osaka menempati peringkat 15 dunia dengan 2.324 poin, posisi yang mencerminkan kembalinya ia ke jajaran papan atas tenis putri global.\n\n## Identitas\n\nLahir di Osaka, Jepang, 28 tahun lalu, Osaka bermain dengan tangan kanan. Posturnya di atas rata-rata untuk standar WTA, tinggi 180 cm (5'11\"), berat sekitar 69 kg, dan sejak debut profesionalnya pada 2012 di usia 14 tahun, ia terus berkembang menjadi petenis dengan serve dan return yang jadi andalan utama permainannya.\n\nPerjalanan Osaka di sirkuit WTA bukan tanpa lika-liku. Ia sempat menjalani hiatus dari kompetisi untuk menjaga kesehatan mental, sebelum kembali bertanding dan membangun ulang peringkatnya secara bertahap. Musim 2026 memperlihatkan Osaka yang lebih stabil, terlihat dari posisinya yang kini konsisten di top 15 WTA.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Osaka berada di peringkat 15 WTA dengan 2.324 poin. Peringkatnya tidak bergerak dari posisi sebelumnya, stabil di P15. Tidak ada naik, tidak ada turun.\n\nStabilitas ini bisa dibaca dua cara. Pertama, Osaka berhasil mempertahankan poin yang sudah ia kumpulkan, bukan hal mudah di WTA yang persaingannya ketat di kisaran top 10 hingga top 20. Kedua, untuk petenis yang sempat terdepak jauh dari radar ranking, posisi P15 dengan lebih dari 2.300 poin adalah fondasi solid untuk musim ini.\n\nDengan 2.324 poin, Osaka berada di zona yang cukup untuk menatap langsung top 10 WTA, jarak yang masih ada, tapi bukan tidak terjangkau sepanjang sisa musim 2026.\n\n## Outlook\n\nPeringkat 15 WTA bukan sekadar angka, bagi Osaka, ini penanda bahwa comeback-nya berjalan sesuai rencana. Stabil di P15 dengan lebih dari 2.300 poin, ia punya modal untuk bersaing di turnamen-turnamen besar sisa musim ini. Top 10 jelas jadi target logis berikutnya. Apakah Osaka bisa merebut poin tambahan untuk memangkas jarak itu, akan terlihat di bulan-bulan ke depan.\n\n*Profil ini berdasarkan data WTA per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "2789",
+    "athlete_name": "Naomi Osaka",
+    "current_rank": 15,
+    "previous_rank": 15,
+    "points": 2324.0,
+    "trend": "-",
+    "birthplace": "Osaka, Japan",
+    "dob": "1997-10-16",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.01444,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 7,
+      "summary": "Fail: Two high-severity training-inference issues (mental health hiatus, playing style) inject facts not in the input data block. Article also has translated-English feel and weak closing. Rewrite to stick only to identity/ranking/points; remove all Osaka biography beyond birth/debut/physicality.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ia sempat menjalani hiatus dari kompetisi untuk menjaga kesehatan mental, sebelum kembali bertanding",
+          "fix": "Remove this entire sentence. Stick to: birth, ranking, points, physicality, debut year — all from input."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "serve dan return yang jadi andalan utama permainannya",
+          "fix": "Delete. No play-style data provided. Stick to what's in the input block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Perjalanan Osaka di sirkuit WTA bukan tanpa lika-liku.",
+          "fix": "Say directly: 'Perjalanan Osaka penuh tantangan' or just start the next sentence."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Tidak ada naik, tidak ada turun.",
+          "fix": "Say: 'Peringkatnya stagnan di posisi ini' or 'Tidak bergerak dari P15'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Stabilitas ini bisa dibaca dua cara.",
+          "fix": "Tighten: 'Stabilitas itu punya dua sisi' or cut directly to the analysis."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Apakah Osaka bisa merebut poin tambahan untuk memangkas jarak itu, akan terlihat",
+          "fix": "Cut this closing line or replace with: 'Turnamen besar Mei–Juni akan menunjukkan apakah ia bisa naik.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "putri global.\n\n## Identitas\n\nLahir di Osaka, Jepang, 28 tahun lalu, Osaka bermain dengan tangan kanan. Posturnya di atas",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x63652ff38aede6c4",
+    "published_at": "2026-04-28T12:14:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

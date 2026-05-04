@@ -24,6 +24,15 @@ export default function ShareButton({
   analyticsEvent = 'share_click',
   size = 'md',
   label,
+  // v0.11.26 NEW-1 — contextual aria-label for screen readers. With
+  // 6 SHARE buttons on the EPL hub today (one per fixture), an empty
+  // aria-label means VoiceOver / TalkBack announces all six identically
+  // as "SHARE button". Pass a context-rich label like
+  //   ariaLabel={`Bagikan ${homeTeam} vs ${awayTeam}, ${kickoffWIB}`}
+  // and AT users hear which match they're sharing. Falls back to the
+  // visible label + page title when omitted, which is still better than
+  // a bare "SHARE" announcement.
+  ariaLabel,
   // v0.9.0 — optional dynamic IG Story PNG. When provided, the popover
   // shows an extra "Save to IG Story" item that downloads the 1080×1920
   // image directly. Expected shape:
@@ -109,17 +118,21 @@ export default function ShareButton({
     }
   }
 
-  // Download the IG Story PNG. On mobile (with Web Share Level 2), we try
-  // to share the file directly so the user can pick IG and tap through.
-  // Desktop falls back to a regular download — user saves, AirDrops to
-  // phone, posts from there. Either way the event tracks.
+  // v0.12.1 — three-layer IG-Story share fallback.
+  //   Layer 1 — Web Share Level 2 with file blob: Android Chrome happy
+  //             path. Native share sheet → IG → Story in 2 taps.
+  //   Layer 2 — Web Share with URL only: iOS Safari + Androids without
+  //             file-share. URL goes to IG; user pastes into Story.
+  //   Layer 3 — Desktop / no `navigator.share`: download PNG via blob
+  //             URL + copy share link to clipboard + toast.
+  // Each layer that fires emits `share_layer` telemetry so we can read
+  // conversion by tier in PostHog after a few NBA Playoff games.
   async function saveIGStory() {
     if (!igStory?.pngUrl) return;
     const absolutePng = /^https?:\/\//i.test(igStory.pngUrl)
       ? igStory.pngUrl
       : `${window.location.origin}${igStory.pngUrl}`;
     const filename = igStory.filename || (() => {
-      // Derive from /api/recap/{gameId}?... shape.
       try {
         const u = new URL(absolutePng, window.location.href);
         const gameId = u.pathname.split('/').pop() || 'recap';
@@ -132,23 +145,54 @@ export default function ShareButton({
     setOpen(false);
     trackEvent(analyticsEvent, { channel: 'ig_story', url: shareUrl });
 
-    try {
-      // Try Web Share Level 2 with file — the only path that gets the
-      // PNG straight into IG's sharesheet on iOS/Android.
-      const r = await fetch(absolutePng);
-      if (r.ok && typeof navigator !== 'undefined' && navigator.canShare) {
-        const blob = await r.blob();
-        const file = new File([blob], filename, { type: 'image/png' });
-        if (navigator.canShare({ files: [file] })) {
-          try {
-            await navigator.share({ files: [file], title: title || 'gibol.co' });
-            return;
-          } catch (e) {
-            if (e?.name === 'AbortError') return;
-            // fall through to download
+    // ── Layer 1: file share via Web Share Level 2 (Android Chrome) ──
+    if (typeof navigator !== 'undefined' && navigator.canShare) {
+      try {
+        const r = await fetch(absolutePng);
+        if (r.ok) {
+          const blob = await r.blob();
+          const file = new File([blob], filename, { type: 'image/png' });
+          if (navigator.canShare({ files: [file] })) {
+            try {
+              await navigator.share({
+                files: [file],
+                title: title || 'gibol.co',
+                text: text || title || '',
+              });
+              trackEvent('share_layer', { layer: 'file', source: analyticsEvent });
+              return;
+            } catch (e) {
+              if (e?.name === 'AbortError') return; // user cancelled native sheet
+              // fall through to layer 2
+            }
           }
         }
-        // Fallback: blob → anchor click, forces "Save As" / Camera Roll
+      } catch (e) {
+        // Network or fetch error — fall through to layer 2
+      }
+    }
+
+    // ── Layer 2: URL share via Web Share (iOS Safari + non-file Android) ──
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: title || 'gibol.co',
+          text: (text || title || '') + ' — buka link, post ke IG Story.',
+          url: shareUrl,
+        });
+        trackEvent('share_layer', { layer: 'url', source: analyticsEvent });
+        return;
+      } catch (e) {
+        if (e?.name === 'AbortError') return;
+        // fall through to layer 3
+      }
+    }
+
+    // ── Layer 3: download PNG + copy URL (desktop fallback) ──
+    try {
+      const r = await fetch(absolutePng);
+      if (r.ok) {
+        const blob = await r.blob();
         const blobUrl = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = blobUrl;
@@ -157,12 +201,17 @@ export default function ShareButton({
         a.click();
         a.remove();
         setTimeout(() => URL.revokeObjectURL(blobUrl), 4000);
+        // Best-effort copy the share URL too — gives the user both the
+        // PNG file AND the link in one motion.
+        try { await navigator.clipboard?.writeText(shareUrl); } catch {}
+        trackEvent('share_layer', { layer: 'download', source: analyticsEvent });
         return;
       }
     } catch (e) {
-      // Network fail — just open in a new tab so they can right-click save.
+      // Final fallback — open in new tab
     }
     window.open(absolutePng, '_blank', 'noopener,noreferrer');
+    trackEvent('share_layer', { layer: 'open_tab', source: analyticsEvent });
   }
 
   const padding = size === 'sm' ? '6px 10px' : '8px 14px';
@@ -175,6 +224,7 @@ export default function ShareButton({
         onClick={handleClick}
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-label={ariaLabel || (title ? `${label || 'Share'}: ${title}` : (label || 'Share'))}
         style={{
           display: 'inline-flex', alignItems: 'center', gap: 6,
           padding,
@@ -188,7 +238,7 @@ export default function ShareButton({
         }}
       >
         <span aria-hidden="true" style={{ fontSize: fontSize + 1 }}>⤴</span>
-        <span>{label || 'SHARE'}</span>
+        <span aria-hidden={!!ariaLabel}>{label || 'SHARE'}</span>
       </button>
 
       {open && (

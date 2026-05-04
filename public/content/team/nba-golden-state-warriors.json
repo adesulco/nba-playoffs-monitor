@@ -1,0 +1,147 @@
+{
+  "type": "team",
+  "slug": "nba-golden-state-warriors",
+  "title": "Profil Golden State Warriors: Northwest, Western Conference (2025-26)",
+  "description": "Profil Golden State Warriors — franchise NBA dari Golden State di Northwest Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Golden State Warriors: Franchise Legendaris yang Coba Bangkit di Musim 2025-26\n\nGolden State Warriors berkandang di Chase Center, San Francisco, dan main di Pacific Division Wilayah Barat. Per 28 April 2026, Warriors menutup musim reguler 2025-26 dengan rekor 37-45, seed 10 di Western Conference, finis di posisi 4 Pacific Division di bawah ekspektasi yang biasa mereka pikul sebagai salah satu nama terbesar liga.\n\n---\n\n## Posisi di Liga Musim Ini\n\nDi Pacific Division, Warriors finis keempat dengan win percentage 0.451, di bawah .500. Seed 10 di Western Conference menempatkan mereka di zona play-in, bukan langsung playoff. Untuk franchise yang dominan di dekade 2010-an, posisi ini bukan tempat yang nyaman.\n\nSteve Kerr masih di kursi pelatih kepala, sosok yang sudah mendampingi Warriors melewati era kejayaan mereka. Tantangannya musim ini berbeda: bukan mempertahankan gelar, tapi memastikan tim yang sedang transisi tetap relevan di conference paling ketat NBA.\n\n---\n\n## Performa Musim Reguler 2025-26\n\nRekor 37-45 bicara sendiri, tapi angka di baliknya lebih menarik untuk dibaca.\n\nWarriors mencetak rata-rata 114,6 PPG musim ini, bukan angka buruk. Masalahnya ada di ujung lain: mereka kebobolan 115,2 PPG, point differential negatif sepanjang musim. Tim yang menyerang cukup baik tapi pertahanannya lebih sering bocor dari yang diharapkan.\n\nPemisah yang paling jelas antara Warriors 2025-26 dan era-era kuat mereka dulu ada di rekor tandang: 15-26, win percentage 0.366. Di kandang Chase Center mereka masih kompetitif, 22-19, tapi begitu keluar kota, konsistensi itu hilang. Road games inilah yang menggerus peluang mereka menembus 8 besar tanpa harus lewat play-in.\n\n---\n\n## Roster: Generasi Lama dan Wajah Baru\n\nRoster Warriors musim ini campuran yang menarik antara nama-nama veteran berumur panjang dan pemain muda yang mencari tempat.\n\n**Stephen Curry (#30, G, 38 tahun, 16 musim)** masih jadi simbol identitas tim ini. Enam belas musim, Davidson, dan satu nama yang terlanjur identik dengan Warriors modern. Di usia 38, kuantitas menit yang bisa ia pikul jadi pertimbangan tersendiri, tapi selama ia di lapangan, Warriors punya pembuat ruang terbaik di liga.\n\n**Jimmy Butler III (#10, F, 36 tahun, 14 musim)** membawa pengalaman 14 musim ke Chase Center. Butler, lulusan Marquette, dikenal sebagai pemain yang angkanya naik di momen krusial, dua digit pengalaman playoff adalah sesuatu yang tidak mudah dicari. Kehadiran tipe pemain seperti ini di roster yang butuh stabilitas bukan kebetulan.\n\n**Draymond Green (#23, F, 36 tahun, 13 musim)** melengkapi trio veteran ini. Michigan State product yang sudah jadi tulang punggung Warriors sejak era championship pertama mereka. Di usia 36 dan 13 musim, Green lebih dari sekadar pemain, ia adalah sistem pertahanan itu sendiri ketika aktif dan terfokus.\n\nDi sisi muda, **Brandin Podziemski (#2, G, 23 tahun, 2 musim)** dari Santa Clara dan **Moses Moody (#4, G, 23 tahun, 4 musim)** dari Arkansas jadi bagian dari lapisan pengembangan yang Warriors butuhkan untuk siklus berikutnya. **LJ Cryer (#18, G, 24 tahun, rookie musim ini)** dari Houston juga masuk sebagai rookie, menambah energi segar di rotasi.\n\nKedalaman roster juga menarik: **Kristaps Porzingis (#7, C, 30 tahun, 10 musim)** membawa ancaman offensif dari posisi big man, sementara **Al Horford (#20, C, 39 tahun, 18 musim)**, veteran tertua di roster, tetap hadir di sisi big men dengan pengalaman yang hampir tidak ada habisnya di liga.\n\n---\n\n## Outlook\n\nWarriors menutup musim reguler 2025-26 di seed 10, artinya play-in tournament adalah pintu mereka menuju playoff, bukan jalur yang ideal, tapi masih terbuka. Point differential negatif dan rekor tandang yang lemah jadi dua PR terbesar yang harus dijawab Kerr dan timnya.\n\nDengan Curry, Butler, dan Draymond masih di roster, Warriors tidak pernah bisa sepenuhnya dianggap remeh. Tapi rekor 37-45 adalah pengingat bahwa reputasi tidak memenangkan game, eksekusi di lapangan yang menentukan.\n\nSemua data dalam profil ini mencerminkan kondisi Warriors per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "9",
+    "team_name": "Golden State Warriors",
+    "team_abbr": "GS",
+    "team_location": "Golden State",
+    "conference": "Western Conference",
+    "division": "Northwest",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023972,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 10,
+      "summary": "Article fails on multiple training-data inference issues (coach history, player reputation, statistical context not in input). Also contains date mismatch (input says 3 Mei, article says 28 April) and trailing academic-filler sentence. Roster descriptions rely too heavily on inferred career arcs rather than input data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Steve Kerr masih di kursi pelatih kepala, sosok yang sudah mendampingi Warriors melewati era kejayaan mereka",
+          "fix": "Remove 'sudah mendampingi Warriors melewati era kejayaan mereka' — stick to present-day role only."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Butler, lulusan Marquette, dikenal sebagai pemain yang angkanya naik di momen krusial, dua digit pengalaman playoff",
+          "fix": "Remove 'dikenal sebagai pemain yang angkanya naik di momen krusial'. State only: 'Butler, Marquette product, 14 musim experience.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Michigan State product yang sudah jadi tulang punggung Warriors sejak era championship pertama mereka",
+          "fix": "Remove 'sejak era championship pertama mereka'. Write: 'Draymond Green, 13 musim di Warriors, defensive anchor.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Warriors menutup musim reguler 2025-26 dengan rekor 37-45, seed 10 di Western Conference, finis di posisi 4 Pacific Division",
+          "fix": "Use one verb: 'Warriors tamat musim reguler 37-45, seed 10 Western Conference, posisi 4 Pacific Division.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Kristaps Porzingis (#7, C, 30 tahun, 10 musim) membawa ancaman offensif dari posisi big man",
+          "fix": "Write: 'Kristaps Porzingis (#7, C, 30 tahun, 10 musim)' without 'ancaman offensif' judgment."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Al Horford (#20, C, 39 tahun, 18 musim), veteran tertua di roster, tetap hadir di sisi big men dengan pengalaman yang hampir tidak ada habisnya",
+          "fix": "Simplify: 'Al Horford, 39 tahun, 18 musim, veteran tertua roster.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Semua data dalam profil ini mencerminkan kondisi Warriors per 28 April 2026.",
+          "fix": "Delete. Or: 'Snapshot ini per 3 Mei 2026.' (if you fix the date.)"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026... Per 28 April 2026... per 28 April 2026",
+          "fix": "Change all instances to '3 Mei 2026' to match input data block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "kepala, sosok yang sudah mendampingi Warriors melewati era kejayaan mereka. Tantangannya musim ini berbeda: bukan mempertahankan",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "yang paling jelas antara Warriors 2025-26 dan era-era kuat mereka dulu ada di rekor tandang: 15-26, win percentage 0.366. Di",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa1f6cf282c2cde94",
+    "published_at": "2026-04-28T10:29:08+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 62,
+      "headline_comment": "Headline body is decent but the page title says 'Northwest' division which is factually wrong — Warriors are Pacific; this needs immediate fix before publish.",
+      "lead_score": 75,
+      "lead_comment": "Lead delivers the news (37-45, seed 10, play-in) but buries the angle behind a venue mention; could open with the rekor and stakes more sharply.",
+      "structure_score": 82,
+      "structure_comment": "Logical flow from standing → performance → roster → outlook, but Roster section runs long and Outlook is thin given the narrative weight it should carry.",
+      "voice_score": 80,
+      "voice_comment": "Mostly natural sport-Bahasa register with good code-switching (PPG, point differential, play-in), though a few hedge-y phrases like 'menarik untuk dibaca' soften the edge.",
+      "suggestion_count": 6,
+      "summary": "Solid groundedness and mostly natural voice, but the title has a factual division error (Northwest vs Pacific) that must be fixed pre-publish, and the lead/outlook both hedge where they should hit harder.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Profil Golden State Warriors: Northwest, Western Conference (2025-26)",
+          "issue": "Page title labels Warriors as Northwest division — factually wrong, body correctly says Pacific.",
+          "fix": "Change title to 'Pacific, Western Conference' before publish."
+        },
+        {
+          "priority": "high",
+          "snippet": "Golden State Warriors berkandang di Chase Center, San Francisco, dan main di Pacific Division Wilayah Barat.",
+          "issue": "Lead opens with venue trivia instead of the news hook (37-45, seed 10, play-in zone for a former dynasty).",
+          "fix": "Open with: 'Warriors menutup musim reguler 2025-26 dengan 37-45, seed 10, masuk zona play-in — jauh dari standar yang biasa mereka pikul.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Rekor 37-45 bicara sendiri, tapi angka di baliknya lebih menarik untuk dibaca.",
+          "issue": "Filler transition that hedges instead of delivering; 'menarik untuk dibaca' is exactly the soft sport-blog tic to avoid.",
+          "fix": "Cut entirely or replace with: 'Angka di baliknya menjelaskan kenapa.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Stephen Curry (#30, G, 38 tahun, 16 musim) masih jadi simbol identitas tim ini.",
+          "issue": "Roster section reads as bio-card prose for six players in a row — repetitive structure (school + years + soft praise) loses momentum.",
+          "fix": "Tighten veteran trio into one combined paragraph and consolidate young players into 2-3 lines; let Curry get the standalone treatment."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Dengan Curry, Butler, dan Draymond masih di roster, Warriors tidak pernah bisa sepenuhnya dianggap remeh.",
+          "issue": "Outlook closes on a generic 'never count them out' line — for a 37-45 team in play-in zone, this hedges the actual story.",
+          "fix": "End with the concrete play-in stakes or a sharper take on whether this core has one more run in it."
+        },
+        {
+          "priority": "low",
+          "snippet": "Semua data dalam profil ini mencerminkan kondisi Warriors per 28 April 2026.",
+          "issue": "Boilerplate timestamp line at the end reads like a disclaimer, not editorial copy.",
+          "fix": "Move 'per 28 April 2026' into the lead and delete the closing line."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

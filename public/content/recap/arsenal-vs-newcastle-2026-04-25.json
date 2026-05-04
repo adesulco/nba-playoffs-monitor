@@ -1,0 +1,83 @@
+{
+  "type": "recap",
+  "slug": "arsenal-vs-newcastle-2026-04-25",
+  "title": "Recap Arsenal 1-0 Newcastle",
+  "description": "Recap Bahasa Indonesia untuk Arsenal vs Newcastle (1-0) di Emirates Stadium, London, 25 April 2026.",
+  "body_md": "Arsenal menang 1-0 atas Newcastle di Emirates, Sabtu malam, tapi angka expected goals bicara lain. xG Arsenal cuma 0.49 lawan 1.00 milik Newcastle. Satu gol awal Ezе jadi pembeda, sementara Newcastle konsumsi possession lebih banyak (55%) tanpa bisa mengubahnya jadi gol. Tiga poin curian.\n\n---\n\n## Jalannya Laga\n\nGol datang cepat. Menit 9, Eberechi Eze buka keunggulan Arsenal, umpan dari Kai Havertz, tembakan masuk bersih. Emirates langsung hidup. Tapi setelahnya, Arsenal tidak bisa mengembangkan permainan.\n\nYang jadi masalah: Havertz harus keluar di menit 34, lebih dari setengah jam sebelum turun minum. Tidak ada keterangan cedera di data, tapi substitusi semuda itu hampir selalu bukan pilihan. Gyökeres masuk menggantikannya. Babak pertama tutup 1-0.\n\nBabak kedua Newcastle tampil berbeda. Bukan dalam artian mereka dominan secara teknikal, possession 55% mereka memang lebih besar, tapi mereka lebih berani masuk ke kotak. Arteta bereaksi di menit 53: Eze ditarik, Martinelli masuk. Dua sayap berbeda karakternya, dan Arsenal ingin lebih dalam dan lebih cepat di sisi kiri.\n\nIntensitas meningkat, dan kartu-kartu mulai bermunculan. Burn kena kuning di menit 57 setelah foul keras. Pope, sang kiper, juga kena kuning di menit 74, langka, tapi terjadi. Di menit 75, Eddie Howe tarik Bruno Guimaraes, pemain paling kreatif Newcastle, dan masukkan Woltemade. Pergantian yang lebih ke fisik daripada kreativitas.\n\nArsenal juga bergerak: Saka dan Lewis-Skelly masuk di menit 81 untuk menambah energi sisi sayap. Menit 86, Declan Rice dapat kuning, yang berarti dia menjaga jarak di fase akhir. Elanga masuk buat Newcastle, tapi waktu tidak cukup.\n\n---\n\n## Apa Kata Statistik\n\nIni bukan kemenangan yang nyaman. Arsenal cetak gol dengan xG 0.49, artinya satu gol itu sendiri pun slightly above expectation berdasarkan kualitas peluang yang mereka ciptakan. Newcastle justru punya peluang lebih baik secara agregat (xG 1.00) tapi tidak bisa mengeksekusi.\n\nTotal shots Newcastle 13 vs Arsenal 11. Shots on target hampir imbang: 3 vs 4. Shots in box juga sama persis: 6 vs 6. David Raya lakukan 3 save untuk pertahankan clean sheet, Pope juga lakukan 3 save di sisi lain. Pertandingan yang jauh lebih ketat dari skor akhirnya.\n\nPossession Newcastle 55%, pass accuracy 85%, di atas Arsenal yang 81%. Tapi penguasaan bola tanpa konversi adalah statistik yang kosong. Arsenal efisien saat dibutuhkan. Newcastle tidak.\n\n---\n\n## Momen Penentu\n\nBukan gol menit 9 yang jadi cerita sebenarnya, itu cuma keberuntungan timing. Momen penentu laga ini adalah ketika Howe menarik Bruno Guimaraes di menit 75 saat Newcastle tengah berusaha cari penyama. Bruno adalah satu-satunya pemain Newcastle yang punya kemampuan buat buka lini belakang Arsenal yang terorganisir rapi. Begitu dia keluar, Newcastle kehilangan imajinasi di lini tengah. Woltemade yang masuk adalah solusi target man, tapi tanpa kreator, bola-bola panjang ke kotak Arsenal jadi sia-sia.\n\n---\n\n## Artinya Buat Kedua Tim\n\nArsenal naik ke urutan, atau pertahankan posisi, di zona atas klasemen dengan tiga poin penting di Emirates. Newcastle seharusnya pulang dengan minimal satu poin berdasarkan cara mereka main malam ini. Mereka tidak dapat itu.\n\nLaga ini tayang live di Vidio dan beIN Sports.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379299",
+    "home_team": "Arsenal",
+    "away_team": "Newcastle",
+    "home_score": 1,
+    "away_score": 0,
+    "kickoff_utc": "2026-04-25T16:30:00+00:00",
+    "venue": "Emirates Stadium, London",
+    "home_formation": "4-3-3",
+    "home_coach": "Mikel Arteta",
+    "away_formation": "4-1-4-1",
+    "away_coach": "Eddie Howe",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020516,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on two high-severity issues: training-data inference about Havertz substitution rationale (not in input), and English-to-Bahasa calque awkwardness. Tactical analysis beyond input facts. Rewrite required.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Tidak ada keterangan cedera di data, tapi substitusi semuda itu hampir selalu bukan pilihan.",
+          "fix": "Remove the inference. Stick to: 'Havertz keluar di menit 34, diganti Gyökeres.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Tidak ada keterangan cedera di data, tapi substitusi semuda itu hampir selalu bukan pilihan.",
+          "fix": "Delete this entire sentence. The substitution is noteworthy; explain what happened tactically instead."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Possession Newcastle 55%, pass accuracy 85%, di atas Arsenal yang 81%. Tapi penguasaan bola tanpa konversi adalah statistik yang kosong.",
+          "fix": "Rephrase: 'Possession Newcastle 55%, pass accuracy 85%, tapi tanpa gol semua itu sia-sia.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Arsenal cetak gol dengan xG 0.49, artinya satu gol itu sendiri pun slightly above expectation berdasarkan kualitas peluang yang mereka ciptakan.",
+          "fix": "Simplify: 'Gol Arsenal itu sendiri above xG expectation — rapi tapi agak beruntung.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Arsenal naik ke urutan, atau pertahankan posisi, di zona atas klasemen dengan tiga poin penting di Emirates.",
+          "fix": "Use actual data: 'Arsenal jaga posisi di zona atas dengan tiga poin penting.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Bruno adalah satu-satunya pemain Newcastle yang punya kemampuan buat buka lini belakang Arsenal yang terorganisir rapi.",
+          "fix": "Factual: 'Bruno keluar menit 75, saat Newcastle butuh kreasi. Setelahnya, skuad mereka kehilangan imajinasi.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "xG Arsenal cuma 0.49 lawan 1.00 milik Newcastle.",
+          "fix": "Rephrase: 'xG Arsenal 0.49 vs Newcastle 1.00 — Newcastle seharusnya cetak lebih banyak.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Momen penentu laga ini adalah ketika Howe menarik Bruno Guimaraes di menit 75...",
+          "fix": "Remove 'Momen penentu laga ini adalah ketika' and just start: 'Howe tarik Bruno Guimaraes di menit 75...'"
+        }
+      ]
+    },
+    "published_at": "2026-04-27T09:02:47+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

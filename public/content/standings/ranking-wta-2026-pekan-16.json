@@ -1,0 +1,74 @@
+{
+  "type": "standings",
+  "slug": "ranking-wta-2026-pekan-16",
+  "title": "Ranking WTA pekan 16 — Aryna Sabalenka di Puncak",
+  "description": "Analisis ranking WTA 2026 pekan 16. Aryna Sabalenka (10,895 poin) memimpin tour.",
+  "body_md": "# Ranking WTA: Sabalenka Kokoh, Andreeva Naik Percikan\n\nAryna Sabalenka tetap kuasai puncak WTA dengan 10.895 poin, unggul 2.395 dari Elena Rybakina. Jurang yang membentang memberi Sabalenka ruang bernafas di seberang Rybakina, sementara tier ketiga, Coco Gauff dan Iga Swiatek, berdesakan pada 7.279 dan 7.273 poin, hanya terpisah enam poin. Jessica Pegula melengkapi lima besar dengan 6.136 poin.\n\nMinggu ini Sabalenka masih setia di posisinya, begitu pula Rybakina, Gauff, dan Swiatek. Stasis di puncak adalah tanda peringkat matang, tidak ada pergantian dramatis, cuma konsolidasi. Amanda Anisimova tetap di P6 dengan 5.995 poin, sementara Elina Svitolina menjaga P7 (3.910), meski jurang nyata terbentang antara Anisimova dan tier berikutnya.\n\nGerakan nyata terjadi di papan bawah top 10. Mirra Andreeva naik satu posisi ke P8 dengan 3.746 poin, melampaui Jasmine Paolini (P9, 3.722). Jarak di antara keduanya hanya 24 poin, desakan ketat. Paolini turun ke P9 tapi posisinya belum goyah. gap ke Mboko di P10 masih 191 poin.\n\nDi posisi 10-14, pergeseran bertubi-tubi terjadi. Victoria Mboko tetap di P10 (3.531), tetapi Karolina Muchova melompat dari P12 ke P11 dengan 3.318 poin, mendahului Belinda Bencic yang turun ke P12 (3.090). Muchova naik percikan. jarak ke Bencic baru 228 poin. Linda Noskova juga naik satu ke P13 (2.849), menggeser Ekaterina Alexandrova ke P14 (2.789). Noskova dan Alexandrova hampir sentuh, jarak hanya 60 poin.\n\nLima belas sampai 20 relatif stabil. Naomi Osaka tetap di P15 (2.324), Madison Keys di P17 (2.161), Clara Tauson di P18 (2.040), Diana Shnaider di P19 (2.001). Lalu Liudmila Samsonova naik dari P21 ke P20 dengan 1.895 poin, peningkatan kecil tapi nyata di zona yang ramai.\n\nPola umum: tier atas, Sabalenka, Rybakina, Gauff, Swiatek, stabil dengan gap besar ke peringkat enam bawah. Tier kedua (Anisimova sampai Mboko) lebih dinamis, terutama 8-14, di mana perpindahan terjadi dalam jarak poin yang tipis. Pemain seperti Andreeva, Muchova, Noskova sedang naik gravitasi mereka. Paolini, Bencic, Alexandrova tidak jatuh tapi tidak mengembang.\n\nMutua Madrid Open 20 April sampai 4 Mei akan jadi panggung berikutnya untuk puncak WTA mengukur tempo. Sabalenka sudah memenangkan turnamen ini dua tahun lalu, data pertahanan poin akan beresonansi pada ranking pekan depan.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "year": 2026,
+    "iso_week": 16,
+    "no_1_name": "Aryna Sabalenka",
+    "no_1_points": 10895,
+    "active_tournament": "Mutua Madrid Open",
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.002609,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to one high-severity training-data inference (Sabalenka's 2024 win not in input) and one hard mistranslation (breathing room idiom). Additional academic drift and structural errors drop score below 70. Remove inferred tournament history, tighten idioms, cut thesis-restating filler.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Jurang yang membentang memberi Sabalenka ruang bernafas di seberang Rybakina",
+          "fix": "Sabalenka nyaman di posisinya, jauh dari Rybakina di P2."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sabalenka sudah memenangkan turnamen ini dua tahun lalu",
+          "fix": "Remove sentence. Stick to current ranking data only."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Stasis di puncak adalah tanda peringkat matang, tidak ada pergantian dramatis, cuma konsolidasi.",
+          "fix": "Cut this sentence. Let the data speak."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Muchova naik percikan. jarak ke Bencic baru 228 poin.",
+          "fix": "Muchova naik percikan, jarak ke Bencic hanya 228 poin."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "data pertahanan poin akan beresonansi pada ranking pekan depan",
+          "fix": "Pertahanan poin Sabalenka akan jadi faktor kunci di ranking minggu depan."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Pola umum: tier atas, Sabalenka, Rybakina, Gauff, Swiatek, stabil",
+          "fix": "Delete opening. Start directly: Sabalenka, Rybakina, Gauff, Swiatek stabil."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Tier kedua (Anisimova sampai Mboko) lebih dinamis",
+          "fix": "Posisi 6-10 lebih gerak-gerik dibanding puncak."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xfc524cb71a9d07ab",
+    "published_at": "2026-04-28T02:00:59+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

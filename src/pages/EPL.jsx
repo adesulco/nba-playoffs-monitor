@@ -1,26 +1,72 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
+import SEOContent from '../components/SEOContent.jsx';
+// v0.53.1 — Phase C redesign: 3-up Newsroom Slice. Gated UI.v2.
+import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
+import { UI } from '../lib/flags.js';
+import { readableOnDark } from '../lib/contrast.js';
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
+// v0.17.0 Phase 2 Sprint B — shared chrome row.
+import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+import HubPicker from '../components/v2/HubPicker.jsx';
 import ContactBar from '../components/ContactBar.jsx';
-import Chip from '../components/Chip.jsx';
 import ShareButton from '../components/ShareButton.jsx';
+import CopyLinkButton from '../components/CopyLinkButton.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
 import EPLDayScoreboard from '../components/EPLDayScoreboard.jsx';
-import EPLClubPicker from '../components/EPLClubPicker.jsx';
+// v0.18.0 — EPLClubPicker is now lazy-loaded via <HubPicker
+// kind="epl-club" />, so the direct import is gone from this file.
 import { useEPLNews } from '../hooks/useEPLNews.js';
 import { useApp } from '../lib/AppContext.jsx';
+import { useQueryParamSync } from '../hooks/useQueryParamSync.js';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
 import { useEPLScorers } from '../hooks/useEPLScorers.js';
 import { useEPLChampionOdds } from '../hooks/useEPLChampionOdds.js';
 import { useEPLMatchOdds } from '../hooks/useEPLMatchOdds.js';
+// v0.14.3 — shared Goals/Assists leaderboard panel powered by API-
+// Football. Replaces the bespoke <TopSkor> + ESPN useEPLScorers for
+// the hub-level leaderboard. useEPLScorers stays imported because
+// ContextStrip still consumes the legacy ESPN snapshot for the
+// "Golden Boot" headline cell — both can coexist.
+import LeaderboardPanel from '../components/LeaderboardPanel.jsx';
 import {
   SEASON, SEASON_START, SEASON_END, CLUBS, formatFixtureDate,
 } from '../lib/sports/epl/clubs.js';
 
 const EPL_PURPLE = '#37003C';
+
+// v0.14.3 — Map API-Football team names → CLUBS so <LeaderboardPanel>
+// rows tint with the right accent + link to the right per-club page.
+// API-Football uses long names ("Manchester United", "Wolverhampton
+// Wanderers"); CLUBS keys against ESPN's `name` field which is the
+// canonical brand form. Lowercase substring containment is robust to
+// both directions ("Man Utd" vs "Manchester United" etc.).
+const EPL_NAME_INDEX = (() => {
+  const idx = [];
+  for (const c of CLUBS) {
+    const tokens = [c.name, c.nameId, c.slug.replace(/-/g, ' ')]
+      .filter(Boolean)
+      .map((s) => String(s).toLowerCase());
+    idx.push({ club: c, tokens });
+  }
+  return idx;
+})();
+
+function resolveEPLClub(apiFootballTeamName) {
+  if (!apiFootballTeamName) return null;
+  const needle = String(apiFootballTeamName).toLowerCase();
+  for (const { club, tokens } of EPL_NAME_INDEX) {
+    if (tokens.includes(needle)) return club;
+  }
+  for (const { club, tokens } of EPL_NAME_INDEX) {
+    if (tokens.some((t) => needle.includes(t) || t.includes(needle))) return club;
+  }
+  return null;
+}
 
 // ─── Share helpers (EPL fixture share-text builders) ─────────────────────────
 // Bahasa-casual, emoji-inflected. Mirror of the NBA helpers in DayScoreboard
@@ -153,15 +199,17 @@ function Klasemen({ rows, loading, error, lang }) {
     : rows;
 
   return (
-    <section style={{
+    // v0.13.4 — id anchor for the MobileBottomNav's "Klasemen" deep link.
+    <section id="standings" style={{
       background: C.panel,
       border: `1px solid ${C.line}`,
       borderLeft: `3px solid ${EPL_PURPLE}`,
       borderRadius: 3,
       padding: '12px 14px 8px',
+      scrollMarginTop: 60,
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-        <h2 style={{
+        <h2 className="panel-title-mono" style={{
           fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600,
           margin: 0, color: C.text, letterSpacing: -0.2,
         }}>
@@ -325,7 +373,7 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
         fontFamily: 'var(--font-mono)',
         fontSize: 9,
         letterSpacing: 1,
-        color: accent || C.muted,
+        color: accent ? readableOnDark(accent) : C.muted,
         fontWeight: 700,
         marginBottom: 4,
       }}>
@@ -359,7 +407,7 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
   );
 
   return (
-    <section style={{
+    <section className="stat-strip-2col" style={{
       background: C.panel,
       border: `1px solid ${C.line}`,
       borderLeft: `3px solid ${EPL_PURPLE}`,
@@ -455,46 +503,6 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
   );
 }
 
-// ─── Per-match Polymarket odds chip ─────────────────────────────────────────
-// Compact 3-way display: [HOME % | DRAW % | AWAY %]. Renders `null` when
-// no market data is available for a fixture (most far-future matches) —
-// the parent row absorbs the empty slot gracefully.
-function MatchOddsChip({ odds, homeAccent, awayAccent, lang }) {
-  if (!odds) return null;
-  const cellStyle = (bg) => ({
-    padding: '3px 7px',
-    fontFamily: 'var(--font-mono)',
-    fontSize: 10, fontWeight: 700, color: C.text,
-    background: bg,
-    textAlign: 'center',
-    minWidth: 38,
-  });
-  return (
-    <div
-      aria-label={lang === 'id'
-        ? `Peluang pasar: Tuan rumah ${odds.home}%, Seri ${odds.draw}%, Tamu ${odds.away}%`
-        : `Market odds: Home ${odds.home}%, Draw ${odds.draw}%, Away ${odds.away}%`}
-      style={{
-        display: 'inline-flex',
-        border: `1px solid ${C.lineSoft}`,
-        borderRadius: 3,
-        overflow: 'hidden',
-        fontFamily: 'var(--font-mono)',
-      }}
-    >
-      <span style={{ ...cellStyle(`${homeAccent}22`), borderRight: `1px solid ${C.lineSoft}` }}>
-        {odds.home}%
-      </span>
-      <span style={{ ...cellStyle(C.panel2), borderRight: `1px solid ${C.lineSoft}`, color: C.dim }}>
-        {odds.draw}%
-      </span>
-      <span style={cellStyle(`${awayAccent}22`)}>
-        {odds.away}%
-      </span>
-    </div>
-  );
-}
-
 // ─── Peluang juara (Title odds) ─────────────────────────────────────────────
 // Live Polymarket 2025-26 champion odds. Polls every 60s.
 // Renders a compact top-5 bar — each row is a club accent, name, %, and
@@ -515,7 +523,7 @@ function PeluangJuara({ odds, loading, error, lang }) {
       padding: '14px 14px 10px',
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-        <h2 style={{
+        <h2 className="panel-title-mono" style={{
           fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
           margin: 0, color: C.text, letterSpacing: -0.2,
         }}>
@@ -541,7 +549,11 @@ function PeluangJuara({ odds, loading, error, lang }) {
               key={o.name}
               style={{
                 display: 'grid',
-                gridTemplateColumns: '160px 1fr 56px 42px',
+                // Mobile-friendly: name column is flexible-min 90px, bar is
+                // 1fr, % + delta trimmed slightly. Fits cleanly on 360px
+                // viewports where the old fixed 160px name column squeezed
+                // the accent bar to ~40px.
+                gridTemplateColumns: 'minmax(90px, 1.4fr) 1fr 48px 36px',
                 gap: 10,
                 alignItems: 'center',
                 padding: '7px 10px',
@@ -556,7 +568,7 @@ function PeluangJuara({ odds, loading, error, lang }) {
                 {slug ? (
                   <Link
                     to={`/premier-league-2025-26/club/${slug}`}
-                    style={{ color: C.text, textDecoration: 'none' }}
+                    style={{ color: C.text, textDecoration: 'none', display: 'inline-block', padding: '6px 0', minHeight: 24 }}
                   >
                     {displayName}
                   </Link>
@@ -597,188 +609,10 @@ function PeluangJuara({ odds, loading, error, lang }) {
   );
 }
 
-// ─── Live spotlight ──────────────────────────────────────────────────────────
-// Renders any currently-live matches prominently at the top. Empty if there
-// are none — the section disappears cleanly on off-days so the dashboard
-// doesn't carry dead chrome. Live matches read from upcoming[] where
-// statusState === 'in' (ESPN's in-progress state).
-function LiveSpotlight({ live, oddsByMatchId, lang }) {
-  if (!live || live.length === 0) return null;
-  return (
-    <section style={{
-      background: C.panel,
-      border: `1px solid ${C.line}`,
-      borderLeft: `3px solid ${C.red}`,
-      borderRadius: 3,
-      padding: '14px 14px 10px',
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-        <h2 style={{
-          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
-          margin: 0, color: C.text, letterSpacing: -0.2,
-          display: 'flex', alignItems: 'center', gap: 8,
-        }}>
-          <span className="live-dot" aria-hidden="true" />
-          {lang === 'id' ? 'Sedang main' : 'Live now'}
-        </h2>
-        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
-          {live.length} {lang === 'id' ? 'LAGA LIVE' : 'LIVE'}
-        </div>
-      </div>
-      <div style={{ display: 'grid', gap: 8 }}>
-        {live.map((m) => {
-          const odds = oddsByMatchId?.[m.id];
-          return (
-            <div key={m.id} style={{
-              padding: '10px 12px',
-              background: C.panelRow,
-              border: `1px solid ${C.lineSoft}`,
-              borderRadius: 3,
-              fontSize: 12,
-            }}>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 84px 1fr auto',
-                gap: 10, alignItems: 'center',
-              }}>
-                <div style={{ color: C.text, textAlign: 'right', fontWeight: 600 }}>
-                  <span style={{ display: 'inline-block', width: 3, height: 14, background: m.home.accent, verticalAlign: 'middle', marginRight: 6 }} />
-                  {m.home.slug ? (
-                    <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
-                      {m.home.name}
-                    </Link>
-                  ) : m.home.name}
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 18, fontWeight: 700, color: C.text, lineHeight: 1 }}>
-                    {m.home.score ?? '-'}–{m.away.score ?? '-'}
-                  </div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: C.red, letterSpacing: 0.5, marginTop: 3 }}>
-                    {m.statusDetail || (lang === 'id' ? 'LIVE' : 'LIVE')}
-                  </div>
-                </div>
-                <div style={{ color: C.text, fontWeight: 600 }}>
-                  {m.away.slug ? (
-                    <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
-                      {m.away.name}
-                    </Link>
-                  ) : m.away.name}
-                  <span style={{ display: 'inline-block', width: 3, height: 14, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
-                </div>
-                <ShareButton
-                  url={matchShareUrl(m)}
-                  title={`${m.home.name} vs ${m.away.name}`}
-                  text={buildLiveShareText(m, lang)}
-                  accent={EPL_PURPLE}
-                  size="sm"
-                  label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
-                  analyticsEvent="epl_share_live"
-                />
-              </div>
-              {odds && (
-                <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
-                  <span style={{ fontSize: 8.5, color: C.muted, letterSpacing: 1 }}>
-                    {lang === 'id' ? 'PASAR' : 'MARKET'}
-                  </span>
-                  <MatchOddsChip odds={odds} homeAccent={m.home.accent} awayAccent={m.away.accent} lang={lang} />
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-// ─── Jadwal ──────────────────────────────────────────────────────────────────
-function Jadwal({ upcoming, oddsByMatchId, loading, error, lang }) {
-  return (
-    <section style={{
-      background: C.panel,
-      border: `1px solid ${C.line}`,
-      borderLeft: `3px solid ${EPL_PURPLE}`,
-      borderRadius: 3,
-      padding: '14px 14px 8px',
-    }}>
-      <h2 style={{
-        fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
-        margin: '0 0 10px', color: C.text, letterSpacing: -0.2,
-      }}>
-        {lang === 'id' ? 'Jadwal minggu ini' : 'This Week\'s Fixtures'}
-      </h2>
-
-      {error && <div style={{ fontSize: 11, color: C.muted, padding: '8px 0' }}>{lang === 'id' ? 'Data ESPN lagi lambat.' : 'ESPN data slow.'}</div>}
-      {!error && loading && upcoming.length === 0 && <div style={{ fontSize: 11, color: C.dim, padding: '8px 0' }}>{lang === 'id' ? 'Memuat…' : 'Loading…'}</div>}
-      {!error && !loading && upcoming.length === 0 && (
-        <div style={{ fontSize: 11, color: C.dim, padding: '8px 0' }}>
-          {lang === 'id' ? 'Belum ada laga terjadwal 7 hari ke depan.' : 'No fixtures in the next 7 days.'}
-        </div>
-      )}
-
-      {upcoming.length > 0 && (
-        <div style={{ display: 'grid', gap: 6 }}>
-          {upcoming.slice(0, 10).map((m) => {
-            const odds = oddsByMatchId?.[m.id];
-            return (
-              <div key={m.id} style={{
-                padding: '8px 10px',
-                background: C.panelRow,
-                border: `1px solid ${C.lineSoft}`,
-                borderRadius: 3,
-                fontSize: 11.5,
-              }}>
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '110px 1fr auto 1fr auto',
-                  gap: 10, alignItems: 'center',
-                }}>
-                  <div style={{ fontSize: 10, color: C.dim, letterSpacing: 0.3 }}>
-                    {formatFixtureDate(m.kickoffUtc, lang)}
-                  </div>
-                  <div style={{ color: C.text, textAlign: 'right', fontWeight: 500 }}>
-                    <span style={{ display: 'inline-block', width: 3, height: 12, background: m.home.accent, verticalAlign: 'middle', marginRight: 6 }} />
-                    {m.home.slug ? (
-                      <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
-                        {m.home.name}
-                      </Link>
-                    ) : m.home.name}
-                  </div>
-                  <div style={{ color: C.muted, fontWeight: 700, letterSpacing: 0.5, fontSize: 10 }}>vs</div>
-                  <div style={{ color: C.text, fontWeight: 500 }}>
-                    {m.away.slug ? (
-                      <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: C.text, textDecoration: 'none' }}>
-                        {m.away.name}
-                      </Link>
-                    ) : m.away.name}
-                    <span style={{ display: 'inline-block', width: 3, height: 12, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
-                  </div>
-                  <ShareButton
-                    url={matchShareUrl(m)}
-                    title={`${m.home.name} vs ${m.away.name}`}
-                    text={buildUpcomingShareText(m, lang)}
-                    accent={EPL_PURPLE}
-                    size="sm"
-                    label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
-                    analyticsEvent="epl_share_upcoming"
-                  />
-                </div>
-                {odds && (
-                  <div style={{ marginTop: 6, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'flex-end' }}>
-                    <span style={{ fontSize: 8.5, color: C.muted, letterSpacing: 1 }}>
-                      {lang === 'id' ? 'PASAR' : 'MARKET'}
-                    </span>
-                    <MatchOddsChip odds={odds} homeAccent={m.home.accent} awayAccent={m.away.accent} lang={lang} />
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </section>
-  );
-}
+// (LiveSpotlight + Jadwal + MatchOddsChip removed in v0.12.7 — live games
+// now sort to the top of the active day inside EPLDayScoreboard, the
+// week's fixtures live there too, and per-match odds render via that
+// component's OddsChip helper.)
 
 // ─── Hasil terbaru ───────────────────────────────────────────────────────────
 function Hasil({ recent, loading, error, lang }) {
@@ -790,7 +624,7 @@ function Hasil({ recent, loading, error, lang }) {
       borderRadius: 3,
       padding: '14px 14px 8px',
     }}>
-      <h2 style={{
+      <h2 className="panel-title-mono" style={{
         fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
         margin: '0 0 10px', color: C.text, letterSpacing: -0.2,
       }}>
@@ -826,7 +660,7 @@ function Hasil({ recent, loading, error, lang }) {
                   textAlign: 'right', fontWeight: homeWon ? 700 : 500,
                 }}>
                   <span style={{ display: 'inline-block', width: 3, height: 12, background: m.home.accent, verticalAlign: 'middle', marginRight: 6 }} />
-                  {m.home.slug ? <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>{m.home.name}</Link> : m.home.name}
+                  {m.home.slug ? <Link to={`/premier-league-2025-26/club/${m.home.slug}`} style={{ color: 'inherit', textDecoration: 'none', display: 'inline-block', padding: '6px 0', minHeight: 24 }}>{m.home.name}</Link> : m.home.name}
                 </div>
                 <div style={{
                   fontFamily: 'var(--font-mono)', fontSize: 14, fontWeight: 700,
@@ -838,7 +672,7 @@ function Hasil({ recent, loading, error, lang }) {
                   color: awayWon ? C.text : C.dim,
                   fontWeight: awayWon ? 700 : 500,
                 }}>
-                  {m.away.slug ? <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>{m.away.name}</Link> : m.away.name}
+                  {m.away.slug ? <Link to={`/premier-league-2025-26/club/${m.away.slug}`} style={{ color: 'inherit', textDecoration: 'none', display: 'inline-block', padding: '6px 0', minHeight: 24 }}>{m.away.name}</Link> : m.away.name}
                   <span style={{ display: 'inline-block', width: 3, height: 12, background: m.away.accent, verticalAlign: 'middle', marginLeft: 6 }} />
                 </div>
                 <ShareButton
@@ -848,6 +682,9 @@ function Hasil({ recent, loading, error, lang }) {
                   accent={EPL_PURPLE}
                   size="sm"
                   label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+                  ariaLabel={lang === 'id'
+                    ? `Bagikan ${m.home.name} ${m.homeScore}–${m.awayScore} ${m.away.name}, hasil akhir`
+                    : `Share ${m.home.name} ${m.homeScore}–${m.awayScore} ${m.away.name}, full time`}
                   analyticsEvent="epl_share_final"
                 />
               </div>
@@ -862,15 +699,17 @@ function Hasil({ recent, loading, error, lang }) {
 // ─── Top skor ────────────────────────────────────────────────────────────────
 function TopSkor({ scorers, loading, error, lang }) {
   return (
-    <section style={{
+    // v0.13.4 — id anchor for the MobileBottomNav's "Top Skor" deep link.
+    <section id="top-scorer" style={{
       background: C.panel,
       border: `1px solid ${C.line}`,
       borderLeft: `3px solid ${EPL_PURPLE}`,
       borderRadius: 3,
       padding: '14px 14px 8px',
+      scrollMarginTop: 60,
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-        <h2 style={{
+        <h2 className="panel-title-mono" style={{
           fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
           margin: 0, color: C.text, letterSpacing: -0.2,
         }}>
@@ -900,7 +739,7 @@ function TopSkor({ scorers, loading, error, lang }) {
           <tbody>
             {scorers.map((p, i) => (
               <tr key={i} style={{ borderTop: `1px solid ${C.lineSoft}` }}>
-                <td style={{ padding: '6px 0', color: i === 0 ? EPL_PURPLE : C.dim, fontWeight: i === 0 ? 700 : 500 }}>
+                <td style={{ padding: '6px 0', color: i === 0 ? readableOnDark(EPL_PURPLE) : C.dim, fontWeight: i === 0 ? 700 : 500 }}>
                   {p.rank}
                 </td>
                 <td style={{ padding: '6px 0', color: C.text, fontWeight: 500 }}>
@@ -939,7 +778,7 @@ function ClubIndex({ lang }) {
       borderRadius: 3,
       padding: '14px 14px 12px',
     }}>
-      <h2 style={{
+      <h2 className="panel-title-mono" style={{
         fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
         margin: '0 0 10px', color: C.text, letterSpacing: -0.2,
       }}>
@@ -1001,7 +840,7 @@ function BeritaPanel({ items, favClubName, loading, error, lang }) {
       padding: '14px 14px 8px',
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-        <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, margin: 0, color: C.text, letterSpacing: -0.2 }}>
+        <h2 className="panel-title-mono" style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, margin: 0, color: C.text, letterSpacing: -0.2 }}>
           {lang === 'id' ? 'Berita' : 'News'}
         </h2>
         <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
@@ -1135,14 +974,19 @@ function AkunResmi({ favClub, lang }) {
             }}
           >
             <div>
-              <div style={{ fontWeight: r.accent ? 700 : 600, color: r.accent ? r.color : C.text, fontFamily: 'var(--font-mono)' }}>
+              {/* v0.11.26 NEW-4 — accent as foreground text must clear
+                  4.5:1 against the page bg. Aston Villa #37003C clocks
+                  at 1.02:1 raw; readableOnDark mixes toward white until
+                  it passes. Decorative-only chrome (the borderLeft
+                  bar, etc.) keeps the brand color. */}
+              <div style={{ fontWeight: r.accent ? 700 : 600, color: r.accent ? readableOnDark(r.color) : C.text, fontFamily: 'var(--font-mono)' }}>
                 @{r.handle}
               </div>
               <div style={{ fontSize: 10, color: C.muted, marginTop: 2, letterSpacing: 0.3 }}>
                 {r.label}
               </div>
             </div>
-            <div style={{ fontSize: 11, color: r.accent ? r.color : C.dim, letterSpacing: 0.5 }}>↗</div>
+            <div style={{ fontSize: 11, color: r.accent ? readableOnDark(r.color) : C.dim, letterSpacing: 0.5 }}>↗</div>
           </a>
         ))}
       </div>
@@ -1175,22 +1019,18 @@ export default function EPL() {
   const { scorers, loading: tLoading, error: tError } = useEPLScorers({ limit: 10 });
   const { odds: championOdds, loading: oLoading, error: oError } = useEPLChampionOdds();
   const { selectedEPLClub, setSelectedEPLClub } = useApp();
+  // v0.11.8 — URL ↔ picker sync so shared links like
+  // /premier-league-2025-26?club=arsenal restore the filtered view.
+  useQueryParamSync('club', selectedEPLClub, setSelectedEPLClub);
   const favClub = selectedEPLClub ? CLUBS.find((c) => c.slug === selectedEPLClub) : null;
   const accentColor = favClub?.accent || EPL_PURPLE;
   const { items: newsItems, loading: nLoading, error: nError } = useEPLNews(lang === 'id' ? 'id' : 'en');
 
-  // Split upcoming into currently-live (statusState === 'in') and scheduled.
-  // Live matches get a prominent spotlight at the top; Jadwal only shows
-  // unplayed fixtures to avoid duplicating a currently-live match in two places.
-  const { live, scheduled } = useMemo(() => {
-    const l = [];
-    const s = [];
-    for (const m of upcoming) {
-      if (m.statusState === 'in') l.push(m);
-      else s.push(m);
-    }
-    return { live: l, scheduled: s };
-  }, [upcoming]);
+  // v0.12.7 — live + scheduled now flow into EPLDayScoreboard as a
+  // single `upcoming` stream. The day-board sorts live games to the
+  // top of the active day's bucket so they get the same prominence
+  // the old standalone LiveSpotlight gave them, without the visual
+  // duplication when a live match also appears under TODAY.
 
   // Per-match Polymarket odds keyed by ESPN event id. Batched fetch —
   // one Polymarket request per 60s covers the full 14-day fixture window.
@@ -1202,92 +1042,119 @@ export default function EPL() {
     return { top, btm };
   }, [rows]);
 
-  const title = lang === 'id'
+  // v0.17.0 Phase 2 Sprint B — push <HubStatusStrip> into the V2TopBar
+  // subrow. EPL is "polish only" per the directive — keeps its
+  // existing inline hero (eyebrow + 36px h1 + LIVE chip) intact.
+  // The strip adds Copy + Share top-right that EPL never had before.
+  useEffect(() => {
+    setTopbarSubrow(
+      <HubStatusStrip
+        srOnlyTitle={favClub
+          ? (lang === 'id'
+              ? `${favClub.name} · Liga Inggris ${SEASON}`
+              : `${favClub.name} · Premier League ${SEASON}`)
+          : (lang === 'id' ? `Liga Inggris ${SEASON}` : `Premier League ${SEASON}`)}
+        accent={favClub ? favClub.accent : undefined}
+        picker={
+          <HubPicker
+            kind="epl-club"
+            selectedKey={selectedEPLClub}
+            onSelect={setSelectedEPLClub}
+            lang={lang}
+          />
+        }
+        live={
+          <span style={{ textTransform: 'uppercase' }}>
+            {lang === 'id' ? `LIGA INGGRIS · MUSIM ${SEASON}` : `PREMIER LEAGUE · ${SEASON}`}
+          </span>
+        }
+        actions={
+          <HubActionRow
+            url={favClub ? `/premier-league-2025-26?club=${favClub.slug}` : '/premier-league-2025-26'}
+            shareText={favClub
+              ? (lang === 'id' ? `${favClub.name} · Liga Inggris ${SEASON} di gibol.co ⚽` : `${favClub.name} · Premier League ${SEASON} on gibol.co ⚽`)
+              : (lang === 'id' ? `Klasemen + jadwal Liga Inggris ${SEASON} di gibol.co ⚽` : `Premier League ${SEASON} table + fixtures on gibol.co ⚽`)}
+            accent={EPL_PURPLE}
+            analyticsEvent="epl_share_hub"
+          />
+        }
+      />
+    );
+    return () => setTopbarSubrow(null);
+  }, [selectedEPLClub, setSelectedEPLClub, lang, favClub]);
+
+  const baseTitle = lang === 'id'
     ? `Liga Inggris ${SEASON} · Klasemen 20 Klub, Jadwal Match-day, Top Skor Golden Boot | gibol.co`
     : `Premier League ${SEASON} · 20-Club Table, Match-day Fixtures, Golden Boot Race | gibol.co`;
-  const description = lang === 'id'
+  // v0.11.23 GIB-018 — when a club is picked, lead the title (and og:title)
+  // with that club so a deep-link share — `/liga-inggris-2025-26?club=arsenal` —
+  // shows up as "Arsenal · Liga Inggris …" in WhatsApp / Twitter unfurls.
+  const title = favClub
+    ? (lang === 'id'
+        ? `${favClub.name} · Liga Inggris ${SEASON} | gibol.co`
+        : `${favClub.name} · Premier League ${SEASON} | gibol.co`)
+    : baseTitle;
+  const baseDescription = lang === 'id'
     ? `Dashboard live Liga Inggris ${SEASON} dalam Bahasa Indonesia — klasemen 20 klub dengan form 5 laga, jadwal pekan ini dengan waktu WIB, hasil terbaru, dan ras Golden Boot. Semua klub punya halaman sendiri.`
     : `Live Premier League ${SEASON} dashboard in Bahasa Indonesia — 20-club table with 5-match form, this week's fixtures in WIB, latest results, and the Golden Boot race. Every club has its own page.`;
+  const description = favClub
+    ? (lang === 'id'
+        ? `Halaman ${favClub.name} di hub Liga Inggris ${SEASON} — klasemen, form 5 laga, jadwal pekan ini (WIB), top skor, dan akun resmi. ${baseDescription}`
+        : `${favClub.name} view on the Premier League ${SEASON} hub — table, 5-match form, this week's fixtures in WIB, top scorers, and official accounts. ${baseDescription}`)
+    : baseDescription;
+  // og:url + canonical reflect the picker so the share-card URL matches what
+  // the user is actually looking at.
+  const seoPath = favClub ? `${location.pathname}?club=${favClub.slug}` : location.pathname;
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO
         title={title}
         description={description}
-        path={location.pathname}
+        path={seoPath}
+        image="https://www.gibol.co/og/hub-epl.png"
         lang={lang}
         keywords="liga inggris 2025-26, premier league 2025-26, klasemen liga inggris, top skor epl, skor liga inggris, jadwal liga inggris, arsenal liverpool manchester city chelsea, tottenham, newcastle, aston villa, epl bahasa indonesia"
         jsonLd={EPL_JSONLD}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={accentColor}>
-          <EPLClubPicker
-            selectedSlug={selectedEPLClub}
-            onSelect={setSelectedEPLClub}
-            lang={lang}
-          />
-        </TopBar>
+        {/* v0.17.0 Phase 2 Sprint B — the inline `<h1 className="sr-only">`
+            and the inline `<CopyLinkButton>` block that lived here have
+            been moved into <HubStatusStrip> in the V2TopBar subrow
+            (see the useEffect calling setTopbarSubrow(...) above). The
+            strip carries the SEO h1 via `srOnlyTitle` and the Copy +
+            Share via <HubActionRow> in the actions slot. Removing the
+            inline duplicates was a cleanup follow-up after the first
+            v0.17.0 deploy showed two "Salin link" buttons stacked. */}
 
-        {/* Step 6 hero — Space Grotesk 36/700/-0.025em, chip top-right, tint ≤8%. */}
-        <div style={{
-          padding: '20px 20px 14px',
-          background: `linear-gradient(135deg, ${accentColor}14 0%, transparent 70%)`,
-        }}>
-          <div style={{
-            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-            gap: 12, marginBottom: 6,
-          }}>
-            <div style={{ fontSize: 9, letterSpacing: 1.5, color: EPL_PURPLE, fontWeight: 700, paddingTop: 4 }}>
-              {lang === 'id' ? `LIGA INGGRIS · MUSIM ${SEASON}` : `PREMIER LEAGUE · SEASON ${SEASON}`}
-            </div>
-            <Chip variant="live" sportId="epl" accent={EPL_PURPLE} label="LIVE" />
-          </div>
-          <h1 style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
-            color: C.text, margin: 0, marginBottom: 8,
-            textWrap: 'balance',
-          }}>
-            {lang === 'id' ? `Liga Inggris ${SEASON}` : `Premier League ${SEASON}`}
-          </h1>
-          <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 700 }}>
-            {lang === 'id'
-              ? 'Klasemen 20 klub dengan form 5 laga, jadwal pekan ini dalam WIB, hasil terbaru, dan ras Golden Boot. 380 laga, Agu 2025 – Mei 2026. Setiap klub punya halaman sendiri.'
-              : '20-club table with 5-match form, this week\'s fixtures in WIB, latest results, and Golden Boot race. 380 matches, Aug 2025 – May 2026. Every club has its own page.'}
-          </div>
-          {leaders.top.length >= 3 && (
-            <div style={{ fontSize: 10.5, color: C.muted, marginTop: 10, letterSpacing: 0.3 }}>
-              {lang === 'id' ? 'Top-3 saat ini:' : 'Current top 3:'}{' '}
-              <span style={{ color: C.text, fontWeight: 600 }}>
-                {leaders.top.map((r, i) => `${i + 1}. ${r.clubName} (${r.points})`).join(' · ')}
-              </span>
-            </div>
-          )}
-        </div>
+        <div style={{ padding: '8px 24px 20px', display: 'grid', gap: 14, minWidth: 0 }}>
+          {/* v0.11.25 layout — scoreboard FIRST (hero), live spotlight
+              (when on-day), THEN the 4-cell context strip with Title
+              Favorite + Top-4 + Relegation + Golden Boot. Mirrors NBA
+              where DayScoreboard is the hero and the dense stat
+              strip sits as a secondary band below it. */}
 
-        <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 14 }}>
-          {/* ── Row 1 — Context strip (4 dashboard-level stats).
-              Mirrors NBA's context strip above the scoreboard. ── */}
-          <ContextStrip
-            standings={rows}
-            championOdds={championOdds}
-            scorers={scorers}
-            lang={lang}
-          />
-
-          {/* ── Row 2 — Live match spotlight (when any match is live).
-              Hidden off-days. ── */}
-          <LiveSpotlight live={live} oddsByMatchId={oddsByMatchId} lang={lang} />
-
-          {/* ── Row 3 — Day-swipe scoreboard. NBA pattern: scoreboard is
-              the hero. Jadwal + Hasil merged here under 7-day tabs with
-              per-match Polymarket odds on every card. ── */}
+          {/* ── Row 1 — Day-swipe scoreboard. The hero. v0.12.7 — live
+              games now flow through `upcoming` and sort to the top
+              of the active day's bucket inside EPLDayScoreboard;
+              standalone LiveSpotlight removed (was double-rendering
+              today's live games above + inside the day card). ── */}
           <EPLDayScoreboard
-            upcoming={scheduled}
+            upcoming={upcoming}
             recent={recent}
             oddsByMatchId={oddsByMatchId}
             loading={fLoading}
             error={fError}
+            lang={lang}
+          />
+
+          {/* ── Row 3 — Title Favorite + Top-4 + Relegation + Golden
+              Boot stat strip. Demoted from above the scoreboard so
+              the live data leads. ── */}
+          <ContextStrip
+            standings={rows}
+            championOdds={championOdds}
+            scorers={scorers}
             lang={lang}
           />
 
@@ -1301,7 +1168,21 @@ export default function EPL() {
           }}>
             <PeluangJuara odds={championOdds} loading={oLoading} error={oError} lang={lang} />
             <Klasemen rows={rows} loading={sLoading} error={sError} lang={lang} />
-            <TopSkor scorers={scorers} loading={tLoading} error={tError} lang={lang} />
+            {/* v0.14.3 — TopSkor swapped for the shared
+                <LeaderboardPanel> with Goals/Assists toggle. Pulls
+                fresh API-Football data instead of ESPN's lean
+                /leaders endpoint, and adds top-assists at zero
+                extra UI cost. Highlights the user's favorite club. */}
+            <div id="top-scorer" style={{ scrollMarginTop: 60 }}>
+              <LeaderboardPanel
+                league={39}
+                season={2025}
+                resolveClub={resolveEPLClub}
+                clubHrefBase="/premier-league-2025-26/club"
+                highlightSlug={favClub?.slug}
+                lang={lang}
+              />
+            </div>
           </div>
 
           {/* ── Row 5 — Berita + Akun resmi side-by-side. Matches NBA's
@@ -1329,11 +1210,29 @@ export default function EPL() {
         {/* Partner slot — live IBL Trading Cards pack from Fangir CDN. */}
         <FangirBanner />
 
+        {/* v0.53.1 — Phase C redesign: NewsroomSlice. Self-hides
+            on empty (no published EPL articles). UI.v2-gated. */}
+        {UI.v2 && (
+          <div style={{ padding: '0 16px 24px' }}>
+            <NewsroomSlice
+              sport="epl"
+              newsroomLabel="LIGA INGGRIS NEWSROOM"
+              moreHref="/premier-league-2025-26#newsroom"
+            />
+          </div>
+        )}
+
+        {/* v0.11.25 — SEO/FAQ block at the bottom (NBA pattern). The
+            EPL lede + 8 populated FAQs live here so the page hero can
+            stay scoreboard-first while crawlers + the curious still
+            find prose to read. Also emits FAQPage JSON-LD. */}
+        <SEOContent lang={lang} sport="epl" />
+
         <Disclaimer lang={lang} />
 
-        <div style={{
+        <footer role="contentinfo" style={{
           display: 'flex', justifyContent: 'space-between',
-          padding: '12px 20px',
+          padding: '12px 24px',
           borderTop: `1px solid ${C.line}`,
           fontSize: 9.5, color: C.muted, letterSpacing: 0.3,
           alignItems: 'center', flexWrap: 'wrap', gap: 8,
@@ -1341,7 +1240,7 @@ export default function EPL() {
           <div>gibol.co · Liga Inggris Indonesia</div>
           <ContactBar lang={lang} variant="inline" />
           <div>← <a href="/" style={{ color: C.dim, textDecoration: 'none' }}>{lang === 'id' ? 'semua dashboard' : 'all dashboards'}</a></div>
-        </div>
+        </footer>
       </div>
     </div>
   );

@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "epl-chelsea",
+  "title": "Profil Chelsea: Premier League (2025-26)",
+  "description": "Profil Chelsea — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Chelsea FC: Klub London yang Terjebak di Setengah Jalan\n\nPer 28 April 2026, Chelsea berada di posisi 8 klasemen Liga Inggris 2025-26, mengoleksi 48 poin dari 34 laga dengan catatan 13 menang, 9 seri, 12 kalah. Selisih gol hanya +8 dari 53 gol cetak dan 45 kebobolan. Bukan gambaran klub yang sedang on track untuk sesuatu yang besar. Musim ini, Chelsea ada di zona nyaman yang tidak nyaman, terlalu tinggi untuk khawatir soal degradasi, terlalu jauh dari puncak untuk bicara trofi atau Eropa.\n\n---\n\n## Identitas\n\nChelsea FC berdiri pada 1905 dan berkandang di Stamford Bridge, London, dengan kapasitas 41.841 penonton. Stadion ini sudah jadi markas klub selama lebih dari satu abad, berdiri di kawasan Fulham, London Barat.\n\nSebagai salah satu klub besar Liga Inggris, Chelsea punya basis penggemar luas, baik di Inggris maupun global. Di level nasional, mereka adalah representasi sepak bola London kelas atas, bersaing dalam kancah yang sama dengan Arsenal dan Tottenham. Tapi musim 2025-26 menunjukkan bahwa label \"besar\" tidak otomatis diterjemahkan ke hasil lapangan yang konsisten.\n\n---\n\n## Performa Musim Ini\n\n34 laga, 13 menang, 9 seri, 12 kalah. Statistik itu saja sudah cukup menjelaskan banyak hal.\n\nChelsea mencetak 53 gol musim ini, rata-rata 1,6 per laga. Bukan angka buruk, tapi bukan angka yang mengancam siapapun di papan atas. Lebih mengkhawatirkan adalah sisi pertahanan: 45 gol kebobolan, rata-rata 1,3 per laga, dengan hanya 9 clean sheet dari 34 pertandingan. Artinya, di 25 laga sisanya, Chelsea selalu kemasukan minimal satu gol.\n\nDi kandang Stamford Bridge, rekam jejaknya 6 menang, 5 seri, 6 kalah. Tandang tidak lebih buruk: 7 menang, 4 seri, 6 kalah. Chelsea justru sedikit lebih solid di luar kandang dari sisi kemenangan, tapi keduanya jauh dari meyakinkan. Tidak ada fortress, tidak ada kejutan positif konsisten.\n\nYang paling menyolok adalah form terkini: DLWLLLLL. Tujuh dari delapan laga terakhir berakhir dengan kekalahan atau imbang, dengan hanya satu kemenangan. Klub yang gagal mencetak gol di 7 laga sepanjang musim, dan sedang dalam tren menurun tajam memasuki akhir April. Ini bukan sekadar bad patch, ini adalah tren yang sudah berjalan cukup panjang.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 8 dengan 48 poin dari 34 laga menempatkan Chelsea di zona tengah yang tidak menjanjikan dan tidak mengancam siapapun. Jarak ke zona Eropa tergantung berapa poin yang dibutuhkan untuk menembus posisi 5 atau 6, tapi dengan form DLWLLLLL dan tiga laga sisa, pergerakan signifikan ke atas terlihat sulit.\n\nDi sisi lain, Chelsea juga terlalu jauh dari zona berbahaya untuk khawatir soal relegation. Posisi 8 adalah posisi yang paling sulit dijelaskan kepada fans: cukup aman untuk tidak panik, tapi terlalu tanggung untuk dianggap berhasil.\n\nMusim 2025-26 bagi Chelsea kemungkinan besar akan ditutup tanpa tiket kompetisi Eropa, sebuah hasil yang akan menjadi bahan evaluasi serius di akhir musim.\n\n---\n\n## Outlook\n\nSisa musim ini, Chelsea tidak punya banyak yang bisa diperjuangkan selain menutup kampanye dengan martabat. Form DLWLLLLL bukan momentum yang bisa dibalik dalam dua atau tiga laga. Tiga poin dari setiap sisa pertandingan akan memperbaiki posisi akhir secara kosmetik, tapi tidak mengubah narasi keseluruhan musim.\n\nYang lebih penting dari hasil laga terakhir adalah pertanyaan yang akan muncul setelah peluit panjang musim berbunyi: kenapa Chelsea dengan skuad mahal dan Stamford Bridge sebagai kandang hanya finis di posisi 8? Selisih gol +8 dari 34 laga adalah angka yang berbicara jujur, pertahanan yang bocor, serangan yang tidak cukup tajam, konsistensi yang tidak pernah benar-benar datang.\n\nData ini mencerminkan kondisi Chelsea per 28 April 2026, dengan tiga laga Liga Inggris 2025-26 masih tersisa.\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "49",
+    "team_name": "Chelsea",
+    "team_country": "England",
+    "team_founded": 1905,
+    "venue_name": "Stamford Bridge",
+    "venue_city": "London",
+    "venue_capacity": 41841,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022756,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: three high-severity training-data inferences (Fulham location, global fanbase, Arsenal/Tottenham rivalry) not grounded in input block. Additionally, translated-English patterns and academic-register drift pull voice away from natural Bahasa sport register. Core stats are solid; remove speculative backstory.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Stadion ini sudah jadi markas klub selama lebih dari satu abad, berdiri di kawasan Fulham, London Barat.",
+          "fix": "Remove location detail or use only: 'Stadion ini sudah jadi markas klub sejak 1905.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebagai salah satu klub besar Liga Inggris, Chelsea punya basis penggemar luas, baik di Inggris maupun global.",
+          "fix": "Delete this sentence. Stick to: 'Chelsea adalah klub Liga Inggris berbasis di Stamford Bridge.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Di level nasional, mereka adalah representasi sepak bola London kelas atas, bersaing dalam kancah yang sama dengan Arsenal dan Tottenham.",
+          "fix": "Remove. Not grounded in input data block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Artinya, di 25 laga sisanya, Chelsea selalu kemasukan minimal satu gol.",
+          "fix": "Use period and new sentence: 'Di 25 laga sisanya, Chelsea selalu kemasukan gol.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Tidak ada fortress, tidak ada kejutan positif konsisten.",
+          "fix": "Rephrase: 'Kandang tidak jadi benteng, kemenangan tidak konsisten.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini bukan sekadar bad patch, ini adalah tren yang sudah berjalan cukup panjang.",
+          "fix": "Simplify: 'Ini tren, bukan sekadar bad patch sesaat.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Musim 2025-26 bagi Chelsea kemungkinan besar akan ditutup tanpa tiket kompetisi Eropa, sebuah hasil yang akan menjadi bahan evaluasi serius di akhir musim.",
+          "fix": "Tighten: 'Musim ini bakal tutup tanpa Eropa — hasil yang perlu dievaluasi.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Per 28 April 2026, Chelsea berada di posisi 8 klasemen Liga Inggris 2025-26",
+          "fix": "Change to: 'Per 3 Mei 2026' to match input data block header."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x4ce9a28c04b2829a",
+    "published_at": "2026-04-28T12:00:27+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

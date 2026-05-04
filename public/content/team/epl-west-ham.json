@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "epl-west-ham",
+  "title": "Profil West Ham: Premier League (2025-26)",
+  "description": "Profil West Ham — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# West Ham United: Bertahan di Ujung Tanduk Musim 2025-26\n\nWest Ham United adalah klub asal London, Inggris, yang berkompetisi di Premier League musim 2025-26. Kandang mereka adalah London Stadium di timur London, salah satu stadion terbesar di liga dengan kapasitas 64.472 penonton. Per 28 April 2026, West Ham berada di peringkat 17 klasemen Liga Inggris dengan 36 poin dari 34 laga, zona yang sangat tipis dari relegation.\n\n---\n\n## Identitas Klub\n\nWest Ham United berdiri tahun 1895 dan sudah lebih dari satu abad menjadi bagian dari lanskap sepak bola Inggris. Klub ini pindah ke London Stadium, bekas venue Olimpiade 2012, pada 2016, meninggalkan markas lama mereka di Upton Park. London Stadium memberikan kapasitas besar, salah satu yang tertinggi di Premier League, tapi urusan kapasitas stadion tentu bukan yang paling dipikirkan The Hammers musim ini.\n\nIdentitas West Ham secara historis selalu lekat dengan akademi pemain dan sepak bola menyerang, tapi konteks musim 2025-26 jauh dari cerita itu, yang ada adalah perjuangan survival.\n\n---\n\n## Performa Musim 2025-26\n\nAngkanya bicara cukup keras: 34 laga, 9 menang, 9 seri, 16 kalah. Gol masuk 42, gol kebobolan 58, selisih -16.\n\nRata-rata per laga, West Ham cetak 1,2 gol, salah satu yang terendah di liga. Sisi pertahanan juga tidak lebih baik: rata-rata 1,7 gol kebobolan per laga menjelaskan kenapa selisih gol mereka minus belasan. Hanya 6 clean sheet dari 34 laga, dan ada 11 laga di mana West Ham sama sekali tidak mencetak gol.\n\nKombinasi ini, serangan yang kurang produktif dan pertahanan yang bocor, adalah resep sempurna untuk peringkat bawah.\n\nYang menarik adalah rekor kandang vs tandang: keduanya nyaris identik buruknya. Di London Stadium: 5 menang, 4 seri, 8 kalah. Di luar kandang: 4 menang, 5 seri, 8 kalah. Tidak ada \"benteng kandang\" yang bisa diandalkan, dan tidak ada ketenangan bermain tandang yang bisa menutup defisit itu.\n\nForm terkini DLWDWLWD menunjukkan pola yang tidak konsisten, tim yang sebentar hidup, sebentar kembali terjatuh. Tidak ada momentum panjang yang cukup untuk benar-benar lepas dari tekanan bawah klasemen.\n\n---\n\n## Posisi di Klasemen\n\n36 poin dari 34 laga menempatkan West Ham di peringkat 17, satu strip di atas zona merah relegation. Dengan empat laga tersisa di musim 2025-26, jarak antara bertahan dan terdegradasi sangat tipis.\n\nSetiap poin dari sini bukan sekadar poin biasa. Kalah dari tim yang bersaing di sekitar peringkat 17-20 langsung berubah jadi krisis. Menang bisa memberikan ruang napas. Seri belum tentu cukup.\n\nWest Ham tidak sendirian dalam tekanan ini, tapi dengan 16 kekalahan sudah di papan, beban pembuktian ada di pundak tim. Musim ini belum berakhir, tapi margin for error sudah nyaris habis.\n\n---\n\n## Outlook\n\nEmpat laga tersisa menentukan segalanya. Statistik musim ini tidak menjanjikan: West Ham adalah tim yang lebih sering kalah daripada menang, lebih sering kebobolan daripada mencetak gol. Form DLWDWLWD tidak memancarkan kepercayaan diri tim yang siap fight sampai akhir.\n\nTapi football tidak diselesaikan di atas kertas. Empat laga masih empat laga.\n\nYang jelas, West Ham butuh minimal tiga poin dari empat laga itu, dan berharap tim-tim di sekitar mereka tidak jauh lebih tajam. Situasi ini mencerminkan data per 28 April 2026. musim ini belum selesai, dan pekan-pekan terakhir Premier League jarang punya kepastian.\n\nLondon Stadium musim ini lebih sering sunyi dari yang diharapkan. Pertanyaannya sekarang: apakah cukup drama tersisa untuk membalik cerita?\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "48",
+    "team_name": "West Ham",
+    "team_country": "England",
+    "team_founded": 1895,
+    "venue_name": "London Stadium",
+    "venue_city": "London",
+    "venue_capacity": 64472,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021967,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: multiple factual errors (gol kebobolan, laga count, form string, date inconsistency) + two major training-data inferences (stadium history, club identity narrative) that violate the system prompt. Requires significant revision before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Klub ini pindah ke London Stadium, bekas venue Olimpiade 2012, pada 2016, meninggalkan markas lama mereka di Upton Park.",
+          "fix": "Remove historical stadium details. Keep only: 'West Ham bermain di London Stadium, London, kapasitas 64.472.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Identitas West Ham secara historis selalu lekat dengan akademi pemain dan sepak bola menyerang",
+          "fix": "Delete. Article should stick to current 2025-26 performance, not inferred historical identity."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik adalah rekor kandang vs tandang: keduanya nyaris identik buruknya.",
+          "fix": "Replace: 'Rekor kandang dan tandang nyaris identik buruknya: 5M-4S-8K vs 4M-5S-8K.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, West Ham berada di peringkat 17 klasemen Liga Inggris dengan 36 poin dari 34 laga",
+          "fix": "Align all dates and match counts to input: 'Per 3 Mei 2026, West Ham peringkat 17 dengan 36 poin dari 35 laga.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Gol masuk 42, gol kebobolan 58, selisih -16.",
+          "fix": "Correct to input data: '42 gol cetak, 61 kebobolan, selisih -19.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Hanya 6 clean sheet dari 34 laga, dan ada 11 laga di mana West Ham sama sekali tidak mencetak gol.",
+          "fix": "Use input: 'Hanya 6 clean sheet dari 35 laga. Ada 12 laga tanpa gol.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Form terkini DLWDWLWD menunjukkan pola yang tidak konsisten",
+          "fix": "Correct form to input and tighten: 'Form LWDLWDWL: tidak konsisten, naik-turun terus.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Situasi ini mencerminkan data per 28 April 2026. musim ini belum selesai",
+          "fix": "Delete/rewrite: 'Data terkini per 3 Mei. Musim belum selesai, tapi margin for error sudah habis.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1dcda3160145ae4e",
+    "published_at": "2026-04-28T12:16:12+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

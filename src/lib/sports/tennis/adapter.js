@@ -21,9 +21,11 @@ import {
   tournamentPath,
 } from './tournaments.js';
 import { SURFACE_LABEL, TIER_LABEL } from './glossary.js';
+import { breadcrumbSchema } from '../_schema.js';
 
 const SITE = 'https://www.gibol.co';
 const DEFAULT_OG = `${SITE}/og-image.png`;
+const HUB_OG = `${SITE}/og/hub-tennis.png`;
 const routeBase = '/tennis';
 
 // ─── JSON-LD schemas ─────────────────────────────────────────────────────────
@@ -101,12 +103,19 @@ function prerenderRoutes() {
   // 1. Hub.
   out.push({
     path: routeBase,
-    title: `Tenis ${SEASON} · Kalender ATP & WTA, Grand Slam, Peringkat Bahasa Indonesia | gibol.co`,
-    description: `Hub tenis ${SEASON} dalam Bahasa — 4 Grand Slam (Australian Open, Roland Garros, Wimbledon, US Open), Masters 1000, WTA 1000, Year-End Finals. Jadwal WIB, peringkat ATP + WTA, dan sorotan petenis Indonesia (Aldila Sutjiadi, Priska Madelyn Nugroho, Christopher Rungkat).`,
+    // v0.13.0 trim — was 87 chars / 280+ chars.
+    title: `Tenis ${SEASON} — Grand Slam, ATP, WTA, Peringkat | gibol.co`,
+    description: `Hub tenis ${SEASON} Bahasa — 4 Grand Slam, Masters 1000, WTA 1000, Year-End Finals. Jadwal WIB, peringkat ATP+WTA, sorotan petenis Indonesia.`,
     keywords:
       'tenis 2026, tennis 2026, atp tour 2026, wta tour 2026, grand slam 2026, australian open 2026, roland garros 2026, wimbledon 2026, us open 2026, masters 1000, wta 1000, peringkat atp, peringkat wta, aldila sutjiadi, priska nugroho, christopher rungkat, tenis bahasa indonesia, jadwal tenis WIB',
-    ogImage: DEFAULT_OG,
-    jsonLd: SEASON_JSONLD,
+    ogImage: HUB_OG,
+    jsonLd: [
+      SEASON_JSONLD,
+      breadcrumbSchema([
+        { name: 'gibol.co', url: '/' },
+        { name: `Tenis ${SEASON}`, url: routeBase },
+      ]),
+    ],
   });
 
   // 2. Rankings landings (ATP + WTA).
@@ -114,11 +123,19 @@ function prerenderRoutes() {
     const tourLabel = tour.toUpperCase();
     out.push({
       path: `${routeBase}/rankings/${tour}`,
-      title: `Peringkat ${tourLabel} ${SEASON} · Top 500 Petenis ${tour === 'atp' ? 'Putra' : 'Putri'} Live | gibol.co`,
-      description: `Peringkat ${tourLabel} ${SEASON} lengkap — poin, perubahan posisi pekanan, karier tertinggi, kewarganegaraan. Refresh setiap Senin sesuai update resmi ${tourLabel}. Termasuk petenis Indonesia di papan peringkat ganda.`,
+      // v0.13.0 trim — was up to 76 chars / 230+ chars.
+      title: `Peringkat ${tourLabel} ${SEASON} — Top 500 Live | gibol.co`,
+      description: `Peringkat ${tourLabel} ${SEASON} lengkap: poin, perubahan posisi pekanan, karier tertinggi. Refresh tiap Senin. Termasuk petenis Indonesia.`,
       keywords: `peringkat ${tour}, ranking ${tour}, klasemen ${tour} 2026, top ${tour} players, ${tour} rankings 2026, poin ${tour}, karier tertinggi, petenis ${tour === 'atp' ? 'putra' : 'putri'}, tenis bahasa indonesia`,
       ogImage: DEFAULT_OG,
-      jsonLd: rankingsSchema(tour),
+      jsonLd: [
+        rankingsSchema(tour),
+        breadcrumbSchema([
+          { name: 'gibol.co', url: '/' },
+          { name: `Tenis ${SEASON}`, url: routeBase },
+          { name: `Peringkat ${tourLabel}`, url: `${routeBase}/rankings/${tour}` },
+        ]),
+      ],
     });
   }
 
@@ -129,11 +146,22 @@ function prerenderRoutes() {
     const tourLabel = t.tours.map((x) => x.toUpperCase()).join(' + ');
     out.push({
       path: tournamentPath(t, SEASON_YEAR),
-      title: `${t.name} ${SEASON_YEAR} · Jadwal WIB, Undian, Hasil Live (${tier.en}) | gibol.co`,
-      description: `${t.name} ${SEASON_YEAR} — ${tier.id} di ${t.venue}, ${t.city}. Main draw ${t.startDate} sampai ${t.endDate}. Undian lengkap ${tourLabel}, jadwal pertandingan WIB, hasil live set-per-set, dan recap Bahasa per hari turnamen. Permukaan ${surface.id}.`,
+      // v0.13.0 trim — was up to 80 chars / 280+ chars. Worst-case
+      // is "Dubai Tennis Championships" (26 chars) which now lands
+      // at 59 with this shortened pattern.
+      title: `${t.name} ${SEASON_YEAR} — Jadwal & Hasil | gibol.co`,
+      description: `${t.name} ${SEASON_YEAR} (${tier.id}) di ${t.venue}, ${t.city} ${t.startDate}–${t.endDate}. Undian ${tourLabel}, hasil live set-per-set, permukaan ${surface.id}.`,
       keywords: `${t.name.toLowerCase()} ${SEASON_YEAR}, ${t.slug.replace(/-/g, ' ')} ${SEASON_YEAR}, jadwal ${t.name.toLowerCase()}, hasil ${t.name.toLowerCase()} ${SEASON_YEAR}, undian ${t.name.toLowerCase()}, ${tier.en.toLowerCase()}, ${t.city.toLowerCase()}, tenis ${surface.id.toLowerCase()}, ${t.tours.join(' ')} ${SEASON_YEAR}`,
-      ogImage: DEFAULT_OG,
-      jsonLd: tournamentSchema(t),
+      // v0.13.0 Ship 4 — per-tournament OG card.
+      ogImage: `${SITE}/og/tennis/${t.slug}.png`,
+      jsonLd: [
+        tournamentSchema(t),
+        breadcrumbSchema([
+          { name: 'gibol.co', url: '/' },
+          { name: `Tenis ${SEASON}`, url: routeBase },
+          { name: t.name, url: tournamentPath(t, SEASON_YEAR) },
+        ]),
+      ],
     });
   }
 

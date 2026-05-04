@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "tennis-andrey-rublev",
+  "title": "Profil Andrey Rublev (ATP) — Peringkat 12",
+  "description": "Profil petenis Andrey Rublev (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Andrey Rublev: Petenis Rusia Peringkat 12 ATP yang Sedang Menanjak\n\nAndrey Rublev, petenis Rusia kelahiran 20 Oktober 1997, saat ini menempati peringkat 12 ATP dengan 2.630 poin per 16 April 2026. Pemain tangan kanan berpostur tinggi ini lahir di Moskow dan kini berusia 28 tahun, berada di puncak usia produktif seorang petenis profesional.\n\n## Identitas\n\nRublev lahir di Moskow, Rusia, pada 20 Oktober 1997. Kini berusia 28 tahun, ia memiliki postur atletis dengan tinggi 188 cm dan berat 75 kg. Bermain dengan tangan kanan, Rublev memulai karier profesionalnya pada 2014, artinya ia sudah menjalani lebih dari satu dekade di sirkuit ATP. Perjalanan panjang itu membentuk petenis yang tidak mudah goyah, dengan pengalaman bermain di berbagai kondisi dan tekanan turnamen internasional.\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Rublev tercatat di peringkat 12 ATP dengan total 2.630 poin. Ini bukan posisi statis, ia naik tiga peringkat dari posisi sebelumnya di peringkat 15. Kenaikan tiga slot sekaligus dalam satu update ranking bukan hal kecil di papan atas ATP, di mana jarak antarpetenis sangat rapat dan setiap poin diperebutkan ketat.\n\nTrend positif ini menempatkan Rublev dalam trajektori yang perlu dicermati. Dari P15 ke P12 berarti ia berhasil melewati setidaknya tiga petenis di atasnya dalam perhitungan poin terkini. Di zona top 10 hingga 20 ATP, pergerakan semacam ini biasanya mencerminkan hasil solid di turnamen-turnamen terakhir.\n\nDengan 2.630 poin, Rublev masih perlu kerja keras untuk menembus top 10, namun posisi 12 sudah menempatkannya sebagai unggulan tetap di Masters 1000 dan Grand Slam, dengan akses langsung ke babak utama tanpa harus melewati babak kualifikasi.\n\n## Outlook\n\nRublev di peringkat 12 ATP adalah Rublev yang sedang dalam momentum naik. Tiga peringkat dalam sekali update adalah sinyal bahwa performa terakhirnya berbicara. Bagi petenis 28 tahun dengan pengalaman lebih dari sepuluh tahun di sirkuit profesional, konsistensi di zona ini bukan kebetulan.\n\nTantangan ke depan jelas: menembus top 10 butuh poin lebih banyak, dan setiap turnamen di kalender ATP menjadi kesempatan sekaligus ujian. Tapi trajektori saat ini, naik, bukan turun, adalah modal terbaik yang bisa dimiliki seorang petenis menjelang paruh kedua musim.\n\n*Profil ini mencerminkan data ranking ATP per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "2642",
+    "athlete_name": "Andrey Rublev",
+    "current_rank": 12,
+    "previous_rank": 15,
+    "points": 2630.0,
+    "trend": "+3",
+    "birthplace": "Moscow, Russia",
+    "dob": "1997-10-20",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.015525,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on academic register drift, tense overmarking, and translated-English feel throughout. Reads like a formal ATP press profile, not casual Indonesian sport journalism. Rephrase for conversational tone; cut hedging and abstract phrases. Rewrite required.",
+      "issues": [
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Trend positif ini menempatkan Rublev dalam trajektori yang perlu dicermati.",
+          "fix": "Rublev naik tiga peringkat — signal dia sedang perform bagus."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Bermain dengan tangan kanan, Rublev memulai karier profesionalnya pada 2014, artinya ia sudah menjalani lebih dari satu dekade",
+          "fix": "Rublev mulai karier 2014 — lebih dari satu dekade di ATP."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Perjalanan panjang itu membentuk petenis yang tidak mudah goyah, dengan pengalaman bermain di berbagai kondisi dan tekanan turnamen internasional.",
+          "fix": "Just say: Pengalaman 12 tahun bikin Rublev tahu cara handle tekanan."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dari P15 ke P12 berarti ia berhasil melewati setidaknya tiga petenis di atasnya dalam perhitungan poin terkini.",
+          "fix": "Naik tiga slot berarti dia sekarang kejar pemain top 10."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Di zona top 10 hingga 20 ATP, pergerakan semacam ini biasanya mencerminkan hasil solid di turnamen-turnamen terakhir.",
+          "fix": "Naik tiga slot = dia main bagus belakangan ini."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Rublev di peringkat 12 ATP adalah Rublev yang sedang dalam momentum naik.",
+          "fix": "Posisi 12 ATP = momentum naik Rublev."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tantangan ke depan jelas: menembus top 10 butuh poin lebih banyak, dan setiap turnamen di kalender ATP menjadi kesempatan sekaligus ujian.",
+          "fix": "Mau top 10, setiap turnamen penting — menang atau guguran poin."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Profil ini mencerminkan data ranking ATP per 16 April 2026.",
+          "fix": "Delete or rewrite: 'Data per 16 April 2026' (casual, at end of header or in byline)."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbd234deeecadf2a0",
+    "published_at": "2026-04-28T12:11:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

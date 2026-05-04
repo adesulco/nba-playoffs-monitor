@@ -1,0 +1,84 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-shai-gilgeous-alexander",
+  "title": "Profil Shai Gilgeous-Alexander: Guard Oklahoma City Thunder",
+  "description": "Profil pemain NBA Shai Gilgeous-Alexander, Guard Oklahoma City Thunder. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Shai Gilgeous-Alexander: Guard OKC yang Diam-Diam Jadi Salah Satu Skorer Terbaik NBA\n\nPer 28 April 2026, Shai Gilgeous-Alexander mencatat 31,1 PPG di musim 2025-26, peringkat 2 NBA dalam scoring. Guard Oklahoma City Thunder bernomor punggung #2 ini membuktikan bahwa pemain kelahiran Toronto bisa jadi ancaman nyata di liga paling kompetitif di dunia. Bukan kebisingan. Bukan drama. Cuma angka yang bicara sendiri.\n\n---\n\n## Siapa Shai Gilgeous-Alexander\n\nSGA, begitu dia biasa disebut, lahir di Toronto, Ontario, dan sekarang berusia 27 tahun. Posturnya bukan yang paling menakutkan di atas kertas: tinggi 6'6\", berat 195 lbs. Tapi di lapangan, kombinasi panjang tangan, footwork yang tenang, dan kemampuan membaca permainan membuat dia susah dijaga oleh siapapun.\n\nSebelum masuk NBA, SGA melewati satu musim di Kentucky, salah satu program college basketball paling bergengsi di Amerika. Dia masuk draft 2018, dipilih Charlotte Hornets di round 1 pick 11, sebelum akhirnya mendarat di Oklahoma City Thunder. Musim 2025-26 ini adalah tahun ketujuhnya di liga. Tujuh tahun yang dijalani dengan tenang, tapi konsisten menanjak.\n\n---\n\n## Oklahoma City Thunder dan Peran SGA\n\nDi OKC, SGA bukan sekadar starter. Dia adalah identitas tim. Oklahoma City Thunder membangun permainan mereka di sekeliling guard ini, dan angka musim ini menjelaskan kenapa.\n\n31,1 PPG dengan peringkat 2 liga bukan angka yang lahir dari sistem yang ramah, itu angka yang dicetak karena memang dia bisa cetak gol dengan cara apapun. Off the dribble, catch and shoot, free throw, mid-range. SGA tidak bergantung satu jalan.\n\n---\n\n## Performa Musim Ini: Angka yang Sulit Diabaikan\n\nMari langsung masuk ke data musim 2025-26, karena inilah bagian yang paling menarik.\n\n**31,1 PPG, peringkat 2 NBA.** Masuk top 2 scoring di seluruh liga berarti hanya ada satu pemain yang lebih produktif dalam mencetak poin musim ini. Itu bukan kebetulan. Itu adalah pola yang konsisten sepanjang musim. Buat seorang guard berusia 27 tahun di musim ketujuhnya, ini adalah puncak karier yang sedang terjadi sekarang.\n\n**55,3% FG, peringkat 12 NBA.** Ini yang membuat angka scoringnya lebih berkesan. Cetak banyak poin itu satu hal. cetak banyak poin dengan efisiensi di atas rata-rata adalah hal lain. 55,3% FG untuk seorang guard, bukan center, bukan power forward yang hidup di dalam paint, adalah angka yang tidak wajar. Peringkat 12 liga di kategori ini menunjukkan bahwa SGA tidak membuang-buang possession. Setiap shot yang dia ambil punya probabilitas tinggi untuk masuk.\n\n**6,6 APG, peringkat 14 NBA.** Ini yang mengubah narasi dari \"hanya scorer\" menjadi sesuatu yang lebih kompleks. Top 14 assist per game di seluruh NBA artinya SGA juga playmaker yang serius. Dia bisa membuat keputusan distribusi bola yang benar sambil tetap jadi ancaman scoring nomor satu di lapangan. Kombinasi ini, top 2 scoring, top 14 assist, FG% di atas 55%, adalah profil two-way guard yang jarang ada.\n\n**4,3 RPG.** Ini angka paling \"biasa\" di profilnya, dan memang konteksnya berbeda. Untuk seorang guard, 4,3 rebound per game adalah kontribusi yang solid, meski tidak dominan. SGA tidak perlu jadi rebounder terbaik di lapangan, ada pemain lain di OKC untuk itu.\n\n---\n\n## Guard Tujuh Tahun yang Sedang di Puncak\n\nMusim ketujuh di NBA sering jadi titik penentu, apakah seorang pemain sudah mencapai ceiling-nya, atau masih bisa tumbuh. Data musim 2025-26 menjawab pertanyaan itu dengan jelas untuk SGA.\n\nKelahiran Toronto, lulusan Kentucky, draft pick ke-11 yang dulu dipilih Charlotte sebelum akhirnya jadi pusat semesta Oklahoma City Thunder, perjalanannya tidak melalui spotlight besar sejak awal. Tapi di musim ini, dengan 31,1 PPG peringkat 2 liga dan efisiensi 55,3% FG, tidak ada lagi yang bisa meragukan posisinya di antara guard-guard terbaik NBA saat ini.\n\nAngka ini valid per 28 April 2026. Dan musim belum tentu selesai.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "4278073",
+    "athlete_name": "Shai Gilgeous-Alexander",
+    "team_name": "Oklahoma City Thunder",
+    "team_abbr": "OKC",
+    "position": "Guard",
+    "jersey": "2",
+    "age": 27,
+    "birthplace": "Toronto, ON",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023669,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on two high-severity training-data inferences (college + draft details not in input block) and one hard-banned phrase ('Mari langsung masuk'). Voice drift visible in repeated 'Ini yang' openers and soft-phrase overuse. Rewrite required.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Mari langsung masuk ke data musim 2025-26, karena inilah bagian yang paling menarik.",
+          "fix": "Delete the sentence entirely. Start directly: '31,1 PPG, peringkat 2 NBA.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum masuk NBA, SGA melewati satu musim di Kentucky, salah satu program college basketball paling bergengsi",
+          "fix": "Remove college section entirely or source it from reliable pre-article data."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dia masuk draft 2018, dipilih Charlotte Hornets di round 1 pick 11, sebelum akhirnya mendarat di Oklahoma City Thunder.",
+          "fix": "Keep only: 'Draft 2018: Rd 1, Pk 11' from input. Remove Charlotte/trade narrative."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Kombinasi panjang tangan, footwork yang tenang, dan kemampuan membaca permainan membuat dia susah dijaga",
+          "fix": "Replace with concrete stat or observable fact: 'Quick first step, efficient footwork.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Tapi di lapangan... Tapi di musim ini... Tapi ada yang lain.",
+          "fix": "Vary connectors: 'On court', 'Angka menunjukkan', 'Perlu dicatat' (wait, that's banned). Use short sentences."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "cetak banyak poin itu satu hal. cetak banyak poin dengan efisiensi adalah hal lain.",
+          "fix": "Capitalize: 'Cetak banyak poin dengan efisiensi...'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Ini yang membuat angka scoringnya lebih berkesan... Ini yang mengubah narasi... Ini angka paling biasa.",
+          "fix": "Vary paragraph openings: drop subject, use direct statement, vary syntax."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Musim ketujuh di NBA sering jadi titik penentu, apakah seorang pemain sudah mencapai ceiling-nya, atau masih bisa tumbuh.",
+          "fix": "No change required; low confidence flag only."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7fd0e3cb1501f688",
+    "published_at": "2026-04-28T12:12:07+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

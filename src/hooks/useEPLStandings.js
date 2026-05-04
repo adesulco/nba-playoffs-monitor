@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
 import { CLUBS_BY_ESPN_ID, CLUBS_BY_NAME } from '../lib/sports/epl/clubs.js';
+import { readCache, writeCache } from '../lib/swrCache.js';
+
+// v0.11.15 SWR key + TTL. Standings shift at most every ~90 min
+// during match-days, so 5 min is the right ceiling for cache re-serve.
+const CACHE_KEY = 'epl-standings';
+const CACHE_TTL = 5 * 60 * 1000;
 
 /**
  * EPL 2025-26 standings via ESPN's `apis/v2/sports` standings endpoint
@@ -56,8 +62,12 @@ function resolveClub(team) {
 }
 
 export function useEPLStandings() {
-  const [rows, setRows] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // v0.11.15 — hydrate synchronously from SWR cache so return visits
+  // paint the table on the first frame before the fetch round-trips.
+  const [rows, setRows] = useState(() =>
+    readCache(CACHE_KEY, { ttlMs: CACHE_TTL }) ?? [],
+  );
+  const [loading, setLoading] = useState(() => rows.length === 0);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -118,6 +128,7 @@ export function useEPLStandings() {
 
         if (!cancelled) {
           setRows(normalized);
+          writeCache(CACHE_KEY, normalized);
           setError(null);
         }
       } catch (e) {

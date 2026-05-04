@@ -1,0 +1,53 @@
+{
+  "type": "recap",
+  "slug": "brighton-vs-chelsea-2026-04-21",
+  "title": "Recap Brighton 3-0 Chelsea",
+  "description": "Recap Bahasa Indonesia untuk Brighton vs Chelsea (3-0) di Amex Stadium, Brighton, 21 April 2026.",
+  "body_md": "# Brighton Bungkam Chelsea 3-0, Welbeck Tutup Pesta di Menit Akhir\n\nBrighton menggilas Chelsea 3-0 di Amex Stadium, Rabu dini hari 22 April 2026. Hasil ini bukan kejutan jika melihat angkanya: xG 2.14 vs 0.37. Setiap gol Brighton punya alasan statistik yang kuat. Chelsea hampir tidak ada.\n\n---\n\n## Babak Pertama: Kadioglu Langsung Buka Menit Ketiga\n\nBrighton langsung gas. Belum tiga menit laga berjalan, Ferdi Kadioglu buka skor dari sisi kiri. Gol pembuka yang cepat itu membuat Chelsea harus mengejar dari awal, dan formasi 5-4-1 yang disiapkan Liam Rosenior memang bukan formasi untuk mengejar.\n\nSisa babak pertama berjalan tanpa gol tambahan, tapi Brighton jelas lebih nyaman. Possession 53-47% tidak menggambarkan betapa jauh perbedaan kualitas peluang kedua tim. Chelsea defensif, Brighton sabar membangun.\n\nMenjelang turun minum, Wesley Fofana dapat kartu kuning di menit 45+1. Rupanya itu jadi penampilan terakhirnya malam ini, Rosenior menariknya di awal babak kedua.\n\n---\n\n## Babak Kedua: Hinshelwood Dobel Keunggulan\n\nDua pergantian pemain terjadi tepat di awal babak kedua. Brighton mengeluarkan Mats Wieffer dan memasukkan Joel Veltman. Chelsea merespons dengan langsung mengganti Fofana, masuk Alejandro Garnacho.\n\nTapi perubahan itu tidak banyak membantu tamu.\n\nMenit 56, Jack Hinshelwood cetak gol kedua Brighton dari umpan Georginio Rutter. Dua gol, dua situasi yang Chelsea gagal antisipasi. Rutter sebagai assist creator di gol itu jadi bukti Brighton main sebagai unit, bukan sekadar mengandalkan satu nama.\n\nDua menit kemudian Yankuba Minteh dapat kartu kuning, tapi momentum Brighton tidak tergoyahkan.\n\nChelsea mencoba reaksi. Menit 72 dan 73, Rosenior masukkan Marc Guiu menggantikan Liam Delap dan Dario Essugo menggantikan Romeo Lavia, dua pergantian sekaligus tanda kepanikan. Hasilnya nihil. Tercatat hanya 6 total shots sepanjang malam, tiga di antaranya dari dalam kotak, dan kiper Brighton Bart Verbruggen hampir tidak punya kerja besar.\n\n---\n\n## Momen Penentu: Welbeck Tutup Laga di Menit 90\n\nBrighton melakukan tiga pergantian di rentang menit 77-83, Minteh keluar diganti De Cuyper, Mitoma keluar diganti Ayari, dan Rutter keluar diganti Danny Welbeck.\n\nTiga pergantian yang terakhir langsung berbuah hasil.\n\nMenit 90, Welbeck cetak gol ketiga Brighton dari umpan De Cuyper, pemain pengganti mengkreasi, pemain pengganti yang menyelesaikan. Gol 3-0 di menit akhir itu efektif menutup semua kemungkinan drama. Chelsea sudah tidak punya energi untuk kembali.\n\nWelbeck, yang masuk di menit 83, hanya butuh tujuh menit untuk ikut namanya di scoresheet. Pemain veteran yang masuk sebagai sub dan langsung memberi dampak, skenario yang Hurzeler pasti senang.\n\n---\n\n## Baca Angkanya\n\n15 shots Brighton vs 6 shots Chelsea. 9 shots on target Brighton vs data Chelsea tidak tersedia lengkap, tapi kiper Chelsea Robert Sanchez tercatat 4 saves, artinya Chelsea memang menghadapi ancaman nyata meski serangan Brighton tidak selalu berakhir gol.\n\nDi sisi lain, shots in box menggambarkan cerita paling jelas: Brighton 13, Chelsea 3. Chelsea hampir tidak masuk kotak. Formasi 5-4-1 berhasil meredam jalur kreasi, tapi Chelsea tidak punya solusi untuk membangun dari belakang secara efektif, 4 kali offside menunjukkan transisi yang tidak terkoordinasi.\n\nxG 0.37 untuk Chelsea adalah angka yang buruk. Itu bukan angka tim yang kalah tipis karena nasib, itu angka tim yang memang tidak seharusnya menang.\n\n---\n\n## Implikasi\n\nKemenangan ini mempertegas posisi Brighton di tabel atas. Chelsea, di bawah Rosenior, masih mencari konsistensi. Selisih xG hampir 1.8 bukan masalah taktik satu malam, itu pertanyaan yang lebih besar.\n\nSiaran laga ini tersedia di Vidio dan beIN Sports bagi yang belum menonton.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379301",
+    "home_team": "Brighton",
+    "away_team": "Chelsea",
+    "home_score": 3,
+    "away_score": 0,
+    "kickoff_utc": "2026-04-21T19:00:00+00:00",
+    "venue": "Amex Stadium, Brighton",
+    "home_formation": "4-2-3-1",
+    "home_coach": "Fabian Hurzeler",
+    "away_formation": "5-4-1",
+    "away_coach": "Liam Rosenior",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.047759,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong match recap with good statistical grounding and natural voice. One medium issue (calqued 'assist creator') and two low-severity soft improvements. Overall voice is conversational and Bahasa-appropriate.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Rutter sebagai assist creator di gol itu jadi bukti Brighton main sebagai unit",
+          "fix": "Use 'Rutter pembuat assist' or 'Rutter kreator gol kedua'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Hinshelwood cetak gol kedua Brighton dari umpan Georginio Rutter. Dua gol, dua situasi yang Chelsea gagal antisipasi.",
+          "fix": "Lead with failure: 'Chelsea gagal antisipasi lagi. Hinshelwood cetak gol kedua dari umpan Rutter.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Kemenangan ini mempertegas posisi Brighton di tabel atas.",
+          "fix": "Lead with Brighton's standing or next fixture instead of meta-analysis."
+        }
+      ]
+    },
+    "published_at": "2026-04-27T08:58:30+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

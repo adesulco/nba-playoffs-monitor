@@ -5,7 +5,34 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/api/proxy/:path*", "destination": "/api/proxy?path=:path*" },
-    { "source": "/((?!api/).*)", "destination": "/" }
+    { "source": "/api/epl-news", "destination": "/api/news?sport=epl" },
+    { "source": "/api/f1-news", "destination": "/api/news?sport=f1" },
+    { "source": "/api/tennis-news", "destination": "/api/news?sport=tennis" },
+    { "source": "/api/pickem/create", "destination": "/api/pickem?_action=create" },
+    { "source": "/api/pickem/create-league", "destination": "/api/pickem?_action=create-league" },
+    { "source": "/api/pickem/join-league", "destination": "/api/pickem?_action=join-league" },
+    { "source": "/api/pickem/pick", "destination": "/api/pickem?_action=pick" },
+    { "source": "/api/pickem/score", "destination": "/api/pickem?_action=score" },
+    { "source": "/login", "destination": "/index.html" },
+    { "source": "/auth/callback", "destination": "/index.html" },
+    { "source": "/onboarding/teams", "destination": "/index.html" },
+    { "source": "/settings/teams", "destination": "/index.html" },
+    { "source": "/recap", "destination": "/index.html" },
+    { "source": "/recap/:date", "destination": "/index.html" },
+    { "source": "/bracket", "destination": "/index.html" },
+    { "source": "/bracket/:path*", "destination": "/index.html" },
+    { "source": "/league/:path*", "destination": "/index.html" },
+    { "source": "/leaderboard", "destination": "/index.html" },
+    { "source": "/leaderboard/:leagueId", "destination": "/index.html" },
+    { "source": "/nba", "destination": "/index.html" },
+    { "source": "/nba-playoff-2026/game/:gameId", "destination": "/index.html" },
+    { "source": "/editor", "destination": "/index.html" }
+  ],
+  "redirects": [
+    { "source": "/liga-1-2026", "destination": "/super-league-2025-26", "permanent": true },
+    { "source": "/liga-1-2026/:path*", "destination": "/super-league-2025-26/:path*", "permanent": true },
+    { "source": "/nba-playoffs-2026", "destination": "/nba-playoff-2026", "permanent": true },
+    { "source": "/nba-playoffs-2026/:path*", "destination": "/nba-playoff-2026/:path*", "permanent": true }
   ],
   "headers": [
     {

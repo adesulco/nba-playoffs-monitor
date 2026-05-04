@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "tennis-ben-shelton",
+  "title": "Profil Ben Shelton (ATP) — Peringkat 6",
+  "description": "Profil petenis Ben Shelton (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Ben Shelton\n\nBen Shelton, petenis Amerika Serikat kelahiran 9 Oktober 2002, saat ini bertengger di peringkat 6 ATP dengan 4.070 poin per 16 April 2026. Lahir di Atlanta, Georgia, pemain kidal berpostur jangkung ini menjalani musim 2026 sebagai salah satu petenis muda paling berbahaya di sirkuit ATP.\n\n## Identitas\n\nShelton kini berusia 23 tahun, muda untuk ukuran petenis yang sudah menembus top 10 dunia. Tinggi 6'4\" (193 cm) dengan berat 195 lbs (88 kg), posturnya memberi keunggulan fisik yang signifikan di lapangan, terutama pada serve. Satu detail yang membedakannya dari mayoritas petenis elite: Shelton bermain dengan tangan kiri, kombinasi yang relatif langka di level tertinggi ATP.\n\nDebut profesionalnya terjadi pada 2022, artinya dalam waktu kurang dari empat tahun, dia sudah memantapkan posisi di jajaran enam terbaik dunia.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Shelton berada di peringkat 6 ATP dengan 4.070 poin. Posisinya stabil dibanding peringkat sebelumnya yang juga berada di angka yang sama, tidak naik, tidak turun.\n\nStabilitas di posisi ini bukan sesuatu yang bisa dianggap enteng. Top 10 ATP adalah lingkungan yang kompetitif dan dinamis. bertahan di sana, apalagi di kisaran P6, menandakan konsistensi yang solid sepanjang periode tersebut. Shelton tidak sedang dalam tren melonjak, tapi juga tidak menunjukkan tanda-tanda tekanan dari bawah yang mengkhawatirkan.\n\nDengan 4.070 poin, gap antara Shelton dan petenis-petenis di bawahnya di peringkat 7-15 kemungkinan cukup berarti untuk menjaga posisinya dalam waktu dekat, meski angka pasti perbandingan tidak tersedia dari data ini.\n\n## Outlook\n\nDi usia 23 tahun dan sudah mapan di peringkat 6 dunia, Shelton berada di posisi yang jarang dimiliki petenis seusianya. Kombinasi postur atletis, serve kidal yang mengancam, dan akumulasi poin yang stabil menempatkannya sebagai salah satu figur sentral ATP dalam beberapa musim ke depan.\n\nPeringkatnya yang konsisten di level ini, bukan sedang dalam periode naik cepat dari luar top 20, tapi sudah settle di top 10, menunjukkan bahwa Shelton bukan lagi petenis yang sedang \"muncul\". Dia sudah ada di sana. Pertanyaannya sekarang adalah seberapa jauh dia bisa mendorong ke atas.\n\n*Profil ini mencerminkan data ATP per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "9250",
+    "athlete_name": "Ben Shelton",
+    "current_rank": 6,
+    "previous_rank": 6,
+    "points": 4070.0,
+    "trend": "-",
+    "birthplace": "Atlanta, GA, USA",
+    "dob": "2002-10-09",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.015082,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article contains high-severity tense overmarking, ungrounded training-inference (comparing Shelton to P7–P15 with no data), academic register drift, and translated-English phrasing. Outlook section speculates beyond input data. Needs substantial revision.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Shelton kini berusia 23 tahun, muda untuk ukuran petenis yang sudah menembus top 10",
+          "fix": "Shelton kini berusia 23 tahun, muda untuk ukuran petenis menembus top 10"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Debut profesionalnya terjadi pada 2022, artinya dalam waktu kurang dari empat tahun, dia sudah memantapkan",
+          "fix": "...dia memantapkan posisi di jajaran enam terbaik dunia."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Stabilitas di posisi ini bukan sesuatu yang bisa dianggap enteng.",
+          "fix": "Bertahan di P6 bukan hal mudah."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Top 10 ATP adalah lingkungan yang kompetitif dan dinamis. bertahan di sana",
+          "fix": "...Top 10 ATP sangat kompetitif. Bertahan di sana memerlukan konsistensi solid."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dengan 4.070 poin, gap antara Shelton dan petenis-petenis di bawahnya...kemungkinan cukup berarti untuk menjaga",
+          "fix": "Remove this paragraph — no comparative data provided."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dengan 4.070 poin, gap antara Shelton dan petenis-petenis di bawahnya di peringkat 7-15 kemungkinan cukup berarti",
+          "fix": "Delete speculation about other players' points. Stick to Shelton's data only."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Posisinya stabil dibanding peringkat sebelumnya yang juga berada di angka yang sama, tidak naik, tidak turun.",
+          "fix": "Per 16 April 2026, Shelton stabil di peringkat 6 dengan 4.070 poin — sama dengan sebelumnya."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pertanyaannya sekarang adalah seberapa jauh dia bisa mendorong ke atas.",
+          "fix": "Seberapa jauh Shelton bisa naik dari sini?"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x5043e5e2a4bd9e80",
+    "published_at": "2026-04-28T11:58:36+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

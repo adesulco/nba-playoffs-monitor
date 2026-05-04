@@ -1,0 +1,61 @@
+{
+  "type": "team",
+  "slug": "tennis-iga-swiatek",
+  "title": "Profil Iga Swiatek (WTA) — Peringkat 4",
+  "description": "Profil petenis Iga Swiatek (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Iga Swiatek: Petenis Polandia yang Masih Jadi Kekuatan di WTA\n\nIga Swiatek, petenis Polandia kelahiran 31 Mei 2001, saat ini berada di peringkat 4 WTA dengan 7.273 poin per 16 April 2026. Pemain tangan kanan ini lahir di Warsaw, Polandia, dan di usia 24 tahun masih masuk jajaran empat besar dunia, posisi yang tidak banyak petenis bisa pertahankan di usia semuda ini.\n\n## Identitas\n\nLahir di Warsaw, 31 Mei 2001, Swiatek kini berusia 24 tahun. Bertubuh tinggi dengan postur 5 kaki 9 inci dan berat 152 pound, ia punya build yang lazim di antara petenis baseline elite WTA, cukup tinggi untuk serve yang mengancam, cukup atletis untuk rally panjang di tanah liat. Swiatek memulai karier profesionalnya pada 2016, artinya sudah satu dekade ia menjalani sirkuit WTA. Bermain dengan tangan kanan, gaya permainannya dikenal berbasis dari baseline dengan topspin berat di forehand.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Swiatek berada di peringkat 4 WTA dengan koleksi 7.273 poin. Peringkat ini stagnan dibanding periode sebelumnya, tidak naik, tidak turun. Peringkat 4 bukan sekadar angka: di WTA 2026, masuk empat besar berarti bersaing langsung untuk seeding teratas di Grand Slam dan Masters 1000. Stabilitas di posisi ini justru sinyal kuat, artinya poin yang dikumpulkan Swiatek konsisten, tidak ada titik rontok besar dalam kalender belakangan ini.\n\nDengan 7.273 poin, jarak ke peringkat 3 atau peringkat 1 bergantung pada selisih poin yang tidak bisa diprediksi dari data ini saja. Yang bisa dibaca: posisi Swiatek solid, bukan sekadar numpang lewat di empat besar.\n\n## Outlook\n\nDi usia 24 tahun dengan debut profesional sejak 2016, Swiatek bukan lagi petenis muda yang sedang mencari identitas, ia sudah menemukan tempatnya di puncak WTA. Peringkat 4 yang stabil per April 2026 mencerminkan konsistensi yang jadi fondasi kariernya. Pertanyaannya bukan lagi apakah Swiatek bisa kompetitif, melainkan seberapa jauh ia bisa mendorong kembali ke puncak ranking dalam sisa musim ini.\n\nProfil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "3730",
+    "athlete_name": "Iga Swiatek",
+    "current_rank": 4,
+    "previous_rank": 4,
+    "points": 7273.0,
+    "trend": "-",
+    "birthplace": "Warsaw, Poland",
+    "dob": "2001-05-31",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.014648,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 78,
+      "issue_count": 4,
+      "summary": "Solid profile with clean voice overall. Tense markers slightly over-marked, academic register intrudes in two places, one clause-chain feels translated. No hard bans hit. Structure and fact-grounding are correct.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "sudah satu dekade ia menjalani sirkuit WTA",
+          "fix": "Rephrase: 'satu dekade menjalani sirkuit WTA' or 'sejak 2016, ia di sirkuit WTA'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Peringkat ini stagnan dibanding periode sebelumnya, tidak naik, tidak turun.",
+          "fix": "Simplify: 'Peringkat Swiatek stabil di posisi 4.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Di usia 24 tahun dengan debut profesional sejak 2016, Swiatek bukan lagi petenis muda",
+          "fix": "Restructure: 'Swiatek debut 2016 — sudah sepuluh tahun di sirkuit. Di usia 24, ia bukan prospek lagi.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Peringkat 4 bukan sekadar angka: di WTA 2026, masuk empat besar berarti bersaing langsung",
+          "fix": "Lead with the point: 'Peringkat 4 WTA artinya bersaing langsung untuk seeding teratas Grand Slam.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf0a967fd94cf9200",
+    "published_at": "2026-04-28T12:07:47+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

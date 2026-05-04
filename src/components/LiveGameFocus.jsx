@@ -4,6 +4,13 @@ import { TEAM_META, COLORS as C } from '../lib/constants.js';
 import PlayerHead from './PlayerHead.jsx';
 import WatchStar from './WatchStar.jsx';
 import { useApp } from '../lib/AppContext.jsx';
+// v0.13.10 — replace bespoke FocusShareBtn with the unified
+// ShareButton so live-game shares get IG-Story support + the
+// share_layer telemetry already wired in ShareButton's three-
+// layer fallback. Without this, mobile users couldn't post a
+// live moment to IG Story directly from the LIVE FOCUS chip.
+import ShareButton from './ShareButton.jsx';
+import { buildPerGameOgUrl } from '../lib/share.js';
 
 // ---- share helpers (mirrors DayScoreboard ShareBtn, scoped to the focused game) ----
 function buildFocusShareText(s, lang) {
@@ -28,91 +35,12 @@ function buildFocusShareText(s, lang) {
   return '';
 }
 
-function FocusShareBtn({ summary, lang, accent }) {
-  const [copied, setCopied] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const isLive = summary?.statusState === 'in';
-  const isFinal = summary?.statusState === 'post';
-  if (!summary || (!isLive && !isFinal)) return null;
-
-  const text = buildFocusShareText(summary, lang);
-  const eventId = summary.eventId || summary.id;
-  const url = eventId
-    ? `https://www.gibol.co/nba-playoff-2026?game=${eventId}`
-    : 'https://www.gibol.co/nba-playoff-2026';
-  const encT = encodeURIComponent(text);
-  const encU = encodeURIComponent(url);
-  const waLink = `https://api.whatsapp.com/send?text=${encT}%20${encU}`;
-  const xLink  = `https://twitter.com/intent/tweet?text=${encT}&url=${encU}`;
-  const thLink = `https://www.threads.net/intent/post?text=${encT}%20${encU}`;
-
-  async function onShare(e) {
-    e.stopPropagation();
-    if (typeof navigator !== 'undefined' && navigator.share) {
-      try { await navigator.share({ title: 'gibol.co', text, url }); return; }
-      catch (_) { /* cancelled — fall through */ }
-    }
-    setMenuOpen((v) => !v);
-  }
-  async function copyLink(e) {
-    e.stopPropagation();
-    try {
-      await navigator.clipboard?.writeText(`${text} ${url}`);
-      setCopied(true);
-      setMenuOpen(false);
-      setTimeout(() => setCopied(false), 1500);
-    } catch (_) {}
-  }
-
-  const chip = {
-    display: 'inline-flex', alignItems: 'center', gap: 4,
-    padding: '3px 8px',
-    fontSize: 10, letterSpacing: 0.5, fontWeight: 600,
-    borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit',
-    whiteSpace: 'nowrap', textDecoration: 'none',
-  };
-  const label = copied ? (lang === 'id' ? '✓ Tersalin' : '✓ Copied') : (lang === 'id' ? 'Bagikan' : 'Share');
-
-  return (
-    <span style={{ position: 'relative', display: 'inline-flex', marginRight: 6 }}>
-      <button
-        type="button"
-        onClick={onShare}
-        title={text}
-        style={{
-          ...chip,
-          background: copied ? C.green : 'transparent',
-          border: `1px solid ${copied ? C.green : accent || C.lineSoft}`,
-          color: copied ? '#fff' : accent || C.dim,
-        }}
-      >
-        ↗ {label}
-      </button>
-      {menuOpen && (
-        <div
-          onClick={(e) => e.stopPropagation()}
-          style={{
-            position: 'absolute', top: 'calc(100% + 4px)', right: 0, zIndex: 20,
-            display: 'flex', gap: 4, padding: 4,
-            background: C.panel, border: `1px solid ${C.line}`, borderRadius: 4,
-            boxShadow: '0 4px 12px rgba(0,0,0,0.35)',
-          }}
-        >
-          <a href={waLink} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
-             style={{ ...chip, background: '#25D366', color: '#fff', border: 'none' }}>WA</a>
-          <a href={xLink} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
-             style={{ ...chip, background: '#000', color: '#fff', border: 'none' }}>X</a>
-          <a href={thLink} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}
-             style={{ ...chip, background: '#101010', color: '#fff', border: `1px solid #333` }}>Threads</a>
-          <button type="button" onClick={copyLink}
-                  style={{ ...chip, background: C.panelRow, color: C.text, border: `1px solid ${C.line}` }}>
-            {lang === 'id' ? 'Salin' : 'Copy'}
-          </button>
-        </div>
-      )}
-    </span>
-  );
-}
+// v0.13.10 — bespoke FocusShareBtn removed. The header now uses
+// the unified <ShareButton> with `igStory={...}` so live-focus
+// shares get the IG-Story PNG download path, file-share via Web
+// Share L2, and the share_layer telemetry already shipped with
+// ShareButton's three-layer fallback. buildFocusShareText is kept
+// — still used to compose the share text passed to ShareButton.
 
 /**
  * Derive the most recent scoring run from the play list.
@@ -689,7 +617,12 @@ function LeadTracker({ plays, awayAbbr, homeAbbr, awayColor, homeColor, lang }) 
 export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onClose, summary, winProb, lastUpdate, watchlist, h2h }) {
   const { lang } = useApp();
   const tickerRef = useRef(null);
-  const [rightTab, setRightTab] = useState('winprob'); // 'winprob' | 'plays' | 'stats' | 'shots' | 'comparison' | 'leads'
+  // v0.12.8 — body is now a 2-col layout: Box Score is always on the
+  // LEFT (always-on view of the players), Win Prob chart anchors the
+  // RIGHT column above a tab strip that swaps Play-by-Play (default),
+  // Shot Chart, Team Stats, Lead Tracker. So the tab state only needs
+  // to track the four right-column-tabbed views.
+  const [rightTab, setRightTab] = useState('plays'); // 'plays' | 'shots' | 'comparison' | 'leads'
 
   // Resolve team meta from abbr
   const findByAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === abbr);
@@ -743,12 +676,27 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
             </span>
           )}
         </div>
-        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <FocusShareBtn
-            summary={summary ? { ...summary, eventId } : null}
-            lang={lang}
-            accent={isLive ? C.green : accent}
-          />
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          {summary && (isLive || isFinal) && (
+            <ShareButton
+              url={eventId
+                ? `https://www.gibol.co/nba-playoff-2026/game/${encodeURIComponent(eventId)}`
+                : 'https://www.gibol.co/nba-playoff-2026'}
+              title="gibol.co"
+              text={buildFocusShareText({ ...summary, eventId }, lang)}
+              accent={isLive ? C.green : accent}
+              size="sm"
+              label={lang === 'id' ? 'Bagikan' : 'Share'}
+              ariaLabel={lang === 'id'
+                ? `Bagikan ${summary.awayAbbr} vs ${summary.homeAbbr}, ${isLive ? 'live' : 'final'}`
+                : `Share ${summary.awayAbbr} vs ${summary.homeAbbr}, ${isLive ? 'live' : 'final'}`}
+              analyticsEvent="nba_focus_share"
+              igStory={eventId ? {
+                pngUrl: buildPerGameOgUrl(eventId, 'story'),
+                filename: `gibol-${summary.awayAbbr}-${summary.homeAbbr}.png`,
+              } : undefined}
+            />
+          )}
           <button
             onClick={onClose}
             style={{ background: 'transparent', border: `1px solid ${C.lineSoft}`, color: C.dim, fontSize: 10, padding: '3px 8px', borderRadius: 3, cursor: 'pointer', fontFamily: 'inherit', letterSpacing: 0.5 }}
@@ -789,144 +737,210 @@ export default function LiveGameFocus({ eventId, favTeam, accent, injuries, onCl
         </div>
       )}
 
-      {/* Body: tabbed viz (win prob, plays, box, shots, comparison, leads) */}
-      <div className="focus-body" style={{ display: 'flex', flexDirection: 'column', minHeight: 240 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 14px 0', borderBottom: `1px solid ${C.lineSoft}` }}>
-          <div style={{ display: 'flex', gap: 0, overflowX: 'auto' }}>
-            {[
-              { key: 'winprob',    id: lang === 'id' ? 'Prob. Menang' : 'Win Prob' },
-              { key: 'plays',      id: lang === 'id' ? 'Play-by-play' : 'Play-by-play' },
-              { key: 'stats',      id: lang === 'id' ? 'Box Score'    : 'Box Score' },
-              { key: 'shots',      id: lang === 'id' ? 'Shot Chart'   : 'Shot Chart' },
-              { key: 'comparison', id: lang === 'id' ? 'Statistik Tim': 'Team Stats' },
-              { key: 'leads',      id: lang === 'id' ? 'Selisih Skor' : 'Lead Tracker' },
-            ].map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setRightTab(tab.key)}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  borderBottom: rightTab === tab.key ? `2px solid ${accent}` : '2px solid transparent',
-                  color: rightTab === tab.key ? C.text : C.dim,
-                  fontFamily: 'inherit',
-                  fontSize: 9.5, letterSpacing: 1, fontWeight: 600,
-                  padding: '6px 10px 8px',
-                  cursor: 'pointer',
-                  textTransform: 'uppercase',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {tab.id}
-              </button>
-            ))}
+      {/* v0.12.8 — Body restructured into a 2-col layout per Ade's
+          ask. Pre-fix: a single tab strip at top + one tab visible at
+          a time, so users had to flip between Box Score and Play-by-
+          Play to follow a live game. Now: Box Score is always
+          visible on the LEFT (the most content-heavy view), Win
+          Prob chart anchors the RIGHT (small, glanceable), and a
+          tab strip below the chart swaps Play-by-Play (default),
+          Shot Chart, Team Stats, Lead Tracker. Below 720 px the
+          grid collapses to a single column (Box Score → Win Prob →
+          tabs) so mobile scrolls top-down naturally.
+       */}
+      <div
+        className="focus-body focus-body-2col"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)',
+          minHeight: 240,
+          borderTop: `1px solid ${C.lineSoft}`,
+        }}
+      >
+        {/* ── LEFT: Box Score (always visible) ────────────────────── */}
+        <div
+          className="focus-col-left"
+          style={{
+            borderRight: `1px solid ${C.lineSoft}`,
+            display: 'flex',
+            flexDirection: 'column',
+            minWidth: 0,
+          }}
+        >
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '6px 14px',
+            fontSize: 9.5,
+            letterSpacing: 1,
+            color: C.dim,
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            borderBottom: `1px solid ${C.lineSoft}`,
+          }}>
+            <span>{lang === 'id' ? 'Box Score' : 'Box Score'}</span>
+            <span style={{ color: C.muted }}>
+              {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s` : '—'}
+            </span>
           </div>
-          <span style={{ fontSize: 9.5, color: C.muted, whiteSpace: 'nowrap', paddingLeft: 10 }}>
-            {lastUpdate ? `${Math.round((Date.now() - lastUpdate) / 1000)}s` : '—'}
-          </span>
-        </div>
-
-          {rightTab === 'winprob' && (
-            <div style={{ padding: '10px 14px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, letterSpacing: 1, color: C.dim, marginBottom: 6 }}>
-                <span>{lang === 'id' ? 'PROBABILITAS MENANG' : 'WIN PROBABILITY'}</span>
-                <span style={{ color: C.muted }}>{lang === 'id' ? 'ESPN · update tiap play' : 'ESPN · updates every play'}</span>
-              </div>
-              <WinProbChart points={winProb} awayAbbr={summary?.awayAbbr || 'AWAY'} homeAbbr={summary?.homeAbbr || 'HOME'} awayColor={awayMeta.color} homeColor={homeMeta.color} />
-            </div>
-          )}
-
-          {rightTab === 'stats' && summary?.boxscore?.length > 0 && (
-            <div style={{ maxHeight: 360, overflowY: 'auto' }}>
+          {summary?.boxscore?.length > 0 ? (
+            <div style={{ maxHeight: 480, overflowY: 'auto' }}>
               {summary.boxscore.map((t) => (
-                <BoxScoreTable key={t.abbr} team={t} color={t.abbr === summary.awayAbbr ? awayMeta.color : homeMeta.color} watchlist={watchlist} />
+                <BoxScoreTable
+                  key={t.abbr}
+                  team={t}
+                  color={t.abbr === summary.awayAbbr ? awayMeta.color : homeMeta.color}
+                  watchlist={watchlist}
+                />
               ))}
             </div>
-          )}
-          {rightTab === 'stats' && (!summary?.boxscore?.length) && (
+          ) : (
             <div style={{ padding: 20, fontSize: 10.5, color: C.dim, textAlign: 'center' }}>
               {lang === 'id' ? 'Box score muncul saat tip-off.' : 'Box score opens at tip-off.'}
             </div>
           )}
+        </div>
 
-          {rightTab === 'shots' && summary && (
-            <ShotChart
-              plays={summary.plays || []}
-              awayId={summary.awayId}
-              homeId={summary.homeId}
-              awayAbbr={summary.awayAbbr}
-              homeAbbr={summary.homeAbbr}
+        {/* ── RIGHT: Win Prob (always) + tabbed viz below ─────────── */}
+        <div
+          className="focus-col-right"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            minWidth: 0,
+          }}
+        >
+          {/* Win Prob chart — always pinned at the top of the right col */}
+          <div style={{ padding: '10px 14px', borderBottom: `1px solid ${C.lineSoft}` }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9.5, letterSpacing: 1, color: C.dim, marginBottom: 6 }}>
+              <span>{lang === 'id' ? 'PROBABILITAS MENANG' : 'WIN PROBABILITY'}</span>
+              <span style={{ color: C.muted }}>
+                {lang === 'id' ? 'ESPN · tiap play' : 'ESPN · per play'}
+              </span>
+            </div>
+            <WinProbChart
+              points={winProb}
+              awayAbbr={summary?.awayAbbr || 'AWAY'}
+              homeAbbr={summary?.homeAbbr || 'HOME'}
               awayColor={awayMeta.color}
               homeColor={homeMeta.color}
             />
-          )}
+          </div>
 
-          {rightTab === 'comparison' && (
-            <TeamComparison
-              teamTotals={summary?.teamTotals}
-              awayAbbr={summary?.awayAbbr}
-              homeAbbr={summary?.homeAbbr}
-              awayColor={awayMeta.color}
-              homeColor={homeMeta.color}
-              lang={lang}
-            />
-          )}
-
-          {rightTab === 'leads' && (
-            <LeadTracker
-              plays={summary?.plays || []}
-              awayAbbr={summary?.awayAbbr}
-              homeAbbr={summary?.homeAbbr}
-              awayColor={awayMeta.color}
-              homeColor={homeMeta.color}
-              lang={lang}
-            />
-          )}
-
-          {rightTab === 'plays' && (
-          <div ref={tickerRef} style={{ maxHeight: 360, overflowY: 'auto', padding: '0 14px 10px' }}>
-            {plays.length === 0 && (
-              <div style={{ fontSize: 10.5, color: C.dim, padding: 20, textAlign: 'center' }}>
-                {eventId ? (lang === 'id' ? 'Belum ada play — cek lagi saat tip-off.' : 'No plays yet — check back at tip-off.') : (lang === 'id' ? 'Pilih pertandingan di atas.' : 'Pick a match above.')}
-              </div>
-            )}
-            {plays.map((p) => {
-              const isScoring = p.scoringPlay;
-              const isMajor = p.scoreValue === 3 || p.scoreValue === 2;
-              // Determine scoring team by matching ESPN team id to home/away
-              const scoringTeamAbbr = p.teamId === summary?.homeId ? summary?.homeAbbr : p.teamId === summary?.awayId ? summary?.awayAbbr : null;
-              const scoringColor = p.teamId === summary?.homeId ? homeMeta.color : p.teamId === summary?.awayId ? awayMeta.color : '#888';
-              return (
-                <div
-                  key={p.id}
+          {/* Tab strip — 4 right-column views (Box Score + Win Prob
+              are always-on so they're not in this list). */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 8px', borderBottom: `1px solid ${C.lineSoft}` }}>
+            <div style={{ display: 'flex', gap: 0, overflowX: 'auto' }}>
+              {[
+                { key: 'plays',      id: lang === 'id' ? 'Play-by-play' : 'Play-by-play' },
+                { key: 'shots',      id: lang === 'id' ? 'Shot Chart'   : 'Shot Chart' },
+                { key: 'comparison', id: lang === 'id' ? 'Statistik Tim': 'Team Stats' },
+                { key: 'leads',      id: lang === 'id' ? 'Selisih Skor' : 'Lead Tracker' },
+              ].map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setRightTab(tab.key)}
                   style={{
-                    display: 'grid',
-                    gridTemplateColumns: '44px 1fr auto',
-                    gap: 8,
-                    padding: '5px 0',
-                    borderBottom: `1px solid ${C.lineSoft}`,
-                    fontSize: 10.5,
-                    borderLeft: isScoring ? `2px solid ${scoringColor}` : '2px solid transparent',
-                    paddingLeft: 8,
-                    background: isScoring && isMajor ? `${scoringColor}12` : 'transparent',
+                    background: 'transparent',
+                    border: 'none',
+                    borderBottom: rightTab === tab.key ? `2px solid ${accent}` : '2px solid transparent',
+                    color: rightTab === tab.key ? C.text : C.dim,
+                    fontFamily: 'inherit',
+                    fontSize: 9.5, letterSpacing: 1, fontWeight: 600,
+                    padding: '6px 10px 8px',
+                    cursor: 'pointer',
+                    textTransform: 'uppercase',
+                    whiteSpace: 'nowrap',
                   }}
                 >
-                  <div style={{ color: C.muted, fontSize: 9.5, letterSpacing: 0.3 }}>
-                    {p.period ? `Q${p.period}` : '—'}<br />
-                    <span style={{ color: C.dim }}>{p.clock || ''}</span>
-                  </div>
-                  <div style={{ color: isScoring ? C.text : C.dim, lineHeight: 1.3 }}>
-                    {scoringTeamAbbr && <span style={{ color: scoringColor, fontWeight: 600, marginRight: 4 }}>{scoringTeamAbbr}</span>}
-                    {p.text}
-                  </div>
-                  <div style={{ fontSize: 9.5, color: C.muted, fontFamily: 'var(--font-sans)', minWidth: 48, textAlign: 'right' }}>
-                    {p.awayScore !== undefined && p.homeScore !== undefined ? `${p.awayScore}-${p.homeScore}` : ''}
-                  </div>
-                </div>
-              );
-            })}
+                  {tab.id}
+                </button>
+              ))}
+            </div>
           </div>
-          )}
+
+          {/* Tab content */}
+          <div style={{ flex: 1, minHeight: 0 }}>
+            {rightTab === 'plays' && (
+              <div ref={tickerRef} style={{ maxHeight: 320, overflowY: 'auto', padding: '0 14px 10px' }}>
+                {plays.length === 0 && (
+                  <div style={{ fontSize: 10.5, color: C.dim, padding: 20, textAlign: 'center' }}>
+                    {eventId ? (lang === 'id' ? 'Belum ada play — cek lagi saat tip-off.' : 'No plays yet — check back at tip-off.') : (lang === 'id' ? 'Pilih pertandingan di atas.' : 'Pick a match above.')}
+                  </div>
+                )}
+                {plays.map((p) => {
+                  const isScoring = p.scoringPlay;
+                  const isMajor = p.scoreValue === 3 || p.scoreValue === 2;
+                  const scoringTeamAbbr = p.teamId === summary?.homeId ? summary?.homeAbbr : p.teamId === summary?.awayId ? summary?.awayAbbr : null;
+                  const scoringColor = p.teamId === summary?.homeId ? homeMeta.color : p.teamId === summary?.awayId ? awayMeta.color : '#888';
+                  return (
+                    <div
+                      key={p.id}
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: '44px 1fr auto',
+                        gap: 8,
+                        padding: '5px 0',
+                        borderBottom: `1px solid ${C.lineSoft}`,
+                        fontSize: 10.5,
+                        borderLeft: isScoring ? `2px solid ${scoringColor}` : '2px solid transparent',
+                        paddingLeft: 8,
+                        background: isScoring && isMajor ? `${scoringColor}12` : 'transparent',
+                      }}
+                    >
+                      <div style={{ color: C.muted, fontSize: 9.5, letterSpacing: 0.3 }}>
+                        {p.period ? `Q${p.period}` : '—'}<br />
+                        <span style={{ color: C.dim }}>{p.clock || ''}</span>
+                      </div>
+                      <div style={{ color: isScoring ? C.text : C.dim, lineHeight: 1.3 }}>
+                        {scoringTeamAbbr && <span style={{ color: scoringColor, fontWeight: 600, marginRight: 4 }}>{scoringTeamAbbr}</span>}
+                        {p.text}
+                      </div>
+                      <div style={{ fontSize: 9.5, color: C.muted, fontFamily: 'var(--font-sans)', minWidth: 48, textAlign: 'right' }}>
+                        {p.awayScore !== undefined && p.homeScore !== undefined ? `${p.awayScore}-${p.homeScore}` : ''}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {rightTab === 'shots' && summary && (
+              <ShotChart
+                plays={summary.plays || []}
+                awayId={summary.awayId}
+                homeId={summary.homeId}
+                awayAbbr={summary.awayAbbr}
+                homeAbbr={summary.homeAbbr}
+                awayColor={awayMeta.color}
+                homeColor={homeMeta.color}
+              />
+            )}
+
+            {rightTab === 'comparison' && (
+              <TeamComparison
+                teamTotals={summary?.teamTotals}
+                awayAbbr={summary?.awayAbbr}
+                homeAbbr={summary?.homeAbbr}
+                awayColor={awayMeta.color}
+                homeColor={homeMeta.color}
+                lang={lang}
+              />
+            )}
+
+            {rightTab === 'leads' && (
+              <LeadTracker
+                plays={summary?.plays || []}
+                awayAbbr={summary?.awayAbbr}
+                homeAbbr={summary?.homeAbbr}
+                awayColor={awayMeta.color}
+                homeColor={homeMeta.color}
+                lang={lang}
+              />
+            )}
+          </div>
+        </div>
       </div>
 
       {/* Quarter-by-quarter line score, always visible when available */}

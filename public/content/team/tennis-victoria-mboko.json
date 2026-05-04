@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "tennis-victoria-mboko",
+  "title": "Profil Victoria Mboko (WTA) — Peringkat 10",
+  "description": "Profil petenis Victoria Mboko (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Victoria Mboko: Petenis 19 Tahun yang Sudah Menembus Top 10 WTA\n\nVictoria Mboko, petenis kelahiran Charlotte, North Carolina, 26 Agustus 2006, saat ini bertengger di peringkat 10 WTA dengan 3.531 poin per 16 April 2026. Di usia 19 tahun, pemain tangan kanan ini sudah berdiri di antara sepuluh petenis terbaik dunia, sebuah posisi yang tidak banyak bisa diklaim di usia semuda itu.\n\n## Identitas\n\nMboko lahir di Charlotte, North Carolina, Amerika Serikat, dan kini berusia 19 tahun. Dengan tinggi 5'9\" atau sekitar 175 cm, posturnya memberi keuntungan tersendiri di lapangan, jangkauan yang lebar, serve yang bisa diandalkan, dan dominasi dari baseline.\n\nDebut profesionalnya terjadi pada 2021, ketika Mboko baru berusia 14 tahun. Artinya, ia sudah lima tahun menjalani sirkuit profesional sebelum merayakan ulang tahun ke-20. Perjalanan dari debut remaja ke top 10 dunia dalam rentang itu bukan hal yang lazim di WTA, kebanyakan petenis butuh waktu jauh lebih panjang untuk sampai di titik yang sama.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Mboko berada di peringkat 10 WTA dengan 3.531 poin. Dibanding pekan sebelumnya, posisinya tidak bergerak, stabil di nomor 10.\n\nStabil di angka ini bukan berarti stagnan. Mempertahankan posisi top 10 WTA dari pekan ke pekan berarti poin yang masuk cukup untuk mengimbangi poin yang gugur dari turnamen tahun lalu. Di sirkuit WTA yang kompetitif, sekadar bertahan di angka 10 sudah butuh konsistensi nyata.\n\nYang perlu digarisbawahi: ini bukan fluktuasi sesaat. Mboko ada di top 10 WTA, dan data terakhir menunjukkan ia bisa menahan tekanan dari petenis-petenis yang mengincarnya dari bawah.\n\n## Outlook\n\nDengan 3.531 poin dan posisi stabil di peringkat 10, Mboko masuk dalam kelompok kecil petenis yang bisa maju langsung ke babak utama Grand Slam dan Masters tanpa harus melewati kualifikasi. Di usianya yang baru 19 tahun, ia masih punya waktu sangat panjang di depan.\n\nPertanyaan yang relevan ke depan bukan lagi apakah Mboko bisa tembus top 10, itu sudah terjadi. Pertanyaannya adalah seberapa jauh ia bisa bergerak dari sini. Data per 28 April 2026 ini adalah potret dari petenis muda yang sedang dalam perjalanan ke atas, bukan petenis yang sedang bertahan di sisa karier.\n\n---\n\n*Profil ini disusun berdasarkan data ranking WTA per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "11219",
+    "athlete_name": "Victoria Mboko",
+    "current_rank": 10,
+    "previous_rank": 10,
+    "points": 3531.0,
+    "trend": "-",
+    "birthplace": "Charlotte, NC",
+    "dob": "2006-08-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.015708,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Article fails on high-severity tense overmarking, unsourced tactical claims (training_inference from height/birthplace), and inconsistent data dates (input: 16 April, closing: 28 April). Excessive academic padding throughout. Rewrite needed.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "sudah berdiri di antara sepuluh petenis terbaik dunia",
+          "fix": "Change to: 'berdiri di antara sepuluh petenis terbaik dunia'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "sudah lima tahun menjalani sirkuit profesional sebelum merayakan ulang tahun ke-20",
+          "fix": "Rephrase: 'sudah lima tahun di sirkuit profesional, belum mencapai usia 20'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Yang perlu digarisbawahi: ini bukan fluktuasi sesaat. Mboko ada di top 10 WTA, dan data terakhir menunjukkan ia bisa menahan tekanan",
+          "fix": "Cut 'yang perlu digarisbawahi:' — just state: 'Posisinya stabil, bukan fluktuasi sesaat.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "jangkauan yang lebar, serve yang bisa diandalkan, dan dominasi dari baseline",
+          "fix": "Remove or replace with: 'Tinggi badannya memberi keuntungan di lapangan.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Perjalanan dari debut remaja ke top 10 dunia dalam rentang itu bukan hal yang lazim",
+          "fix": "Rephrase: 'Naik ke top 10 WTA dalam lima tahun debut? Jarang terjadi.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Data per 28 April 2026 ini adalah potret dari petenis muda yang sedang dalam perjalanan ke atas",
+          "fix": "Cut this sentence entirely. Footer already timestamps the data."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Dengan tinggi 5'9\" atau sekitar 175 cm, posturnya memberi keuntungan tersendiri di lapangan",
+          "fix": "Simpler: 'Tinggi 5'9\" (175 cm) memberinya jangkauan di lapangan.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "cukup untuk mengimbangi poin yang gugur dari turnamen tahun lalu. Di sirkuit WTA yang kompetitif, sekadar bertahan di angka",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x5287a7efc5b990d0",
+    "published_at": "2026-04-28T12:11:12+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

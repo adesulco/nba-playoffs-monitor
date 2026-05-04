@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-psm-makassar",
+  "title": "Profil PSM Makassar: Liga 1 (2025-26)",
+  "description": "Profil PSM Makassar — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# PSM Makassar: Profil Klub Liga 1 Indonesia 2025-26\n\nPSM Makassar adalah klub sepak bola asal Makassar, Indonesia, yang berkompetisi di Super League Indonesia (Liga 1). Kandang mereka adalah Stadion Gelora B.J. Habibie di Lompoe, berkapasitas 20.000 penonton. Per 28 April 2026, PSM menempati peringkat 13 klasemen Liga 1 musim 2025-26 dengan 31 poin dari 30 laga, selisih gol -5. Musim ini berjalan jauh dari ekspektasi, dan angka-angka di atas kertas mengonfirmasi itu.\n\n---\n\n## Identitas Klub\n\nPSM Makassar berdiri pada 1915, menjadikan mereka salah satu klub tertua di Indonesia. Markas mereka di Stadion Gelora B.J. Habibie, Lompoe, menampung hingga 20.000 penonton, basis suporter yang dikenal fanatik dan vokal dalam mendukung Juku Eja, sebutan populer untuk PSM.\n\nSebagai representasi sepak bola dari kawasan timur Indonesia, PSM kerap membawa beban ekspektasi besar setiap musim. Namun musim 2025-26 belum mencerminkan identitas itu.\n\n---\n\n## Performa Musim Ini\n\nDalam 30 laga Liga 1 2025-26, PSM mencatat 7 menang, 10 seri, dan 13 kalah, sebuah catatan yang menempatkan mereka lebih sering menderita kekalahan daripada meraih kemenangan. Total 36 gol tercipta, sementara 41 gol bersarang di gawang sendiri. Rata-rata per laga: hanya 1,2 gol cetak, dengan 1,4 gol kebobolan.\n\nYang lebih mengkhawatirkan adalah konsistensi serangan. PSM gagal mencetak gol di 9 laga dari 30, hampir sepertiga musim dihabiskan tanpa gol. Buat tim yang ingin keluar dari zona bawah, itu terlalu sering.\n\nClean sheet hanya tercatat 5 kali, menandakan pertahanan yang belum cukup solid. Baik di kandang maupun tandang, masalahnya serupa: kebobolan lebih sering dari yang semestinya diterima tim papan tengah.\n\nCatatan kandang sendiri berbunyi 3M-6S-6K, artinya Stadion Gelora B.J. Habibie belum jadi benteng yang benar-benar menyulitkan tamu. Di kandang, kekalahan sebanyak enam kali adalah angka yang sulit diabaikan. Sementara di laga tandang, catatan 4M-4S-7K setidaknya menunjukkan PSM sesekali mampu mencuri poin di luar kandang, meski kekalahan tandang tetap mendominasi.\n\nForm terakhir berbunyi LLDDWLWL, tidak ada tren positif yang konsisten. Dua kemenangan berselang-seling dengan kekalahan dan seri memberi gambaran tim yang belum menemukan ritme stabil.\n\n---\n\n## Posisi di Klasemen\n\nPer 28 April 2026, PSM Makassar berada di peringkat 13 Liga 1 musim 2025-26 dengan 31 poin dari 30 laga. Selisih gol -5 memperlihatkan bahwa secara keseluruhan musim ini, tim lawan mencetak lebih banyak gol ke gawang PSM daripada sebaliknya.\n\nPeringkat 13 menempatkan PSM di zona tengah-bawah klasemen. Jarak dari zona merah klasemen perlu dipantau, setiap poin di sisa musim jadi krusial. Dengan 31 poin dari 30 laga, rata-rata kurang dari satu poin per laga, PSM belum berada di posisi yang nyaman untuk sekadar bersantai menyelesaikan musim.\n\n---\n\n## Outlook\n\nSisa musim 2025-26 jadi ujian sebenarnya. PSM perlu segera membenahi dua hal yang paling mencolok dari data: kebobolan yang terlalu mudah dan kebuntuan serangan di hampir sepertiga laga. Lima clean sheet dari 30 laga dan sembilan laga tanpa gol adalah dua angka yang harus berubah jika PSM ingin mengakhiri musim dengan kepala tegak.\n\nForm LLDDWLWL tidak memberi momentum, tapi dua kemenangan di empat laga terakhir setidaknya menunjukkan bahwa kemampuan untuk menang masih ada. Pertanyaannya adalah apakah itu bisa dipertahankan secara konsisten sebelum musim benar-benar tutup buku.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "2441",
+    "team_name": "PSM Makassar",
+    "team_country": "Indonesia",
+    "team_founded": 1915,
+    "venue_name": "Stadion Gelora B.J. Habibie",
+    "venue_city": "Lompoe",
+    "venue_capacity": 20000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022239,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail: critical rank-number error (says 13, data says 14). Multiple instances of academic drift, hedging, and soft-phrase repetition. Form section reads over-explained. Fix rank contradiction first, then tighten explanation-heavy passages.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, PSM menempati peringkat 13 klasemen Liga 1",
+          "fix": "Change 'peringkat 13' to 'peringkat 14' throughout article (appears 3x)."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Sebagai representasi sepak bola dari kawasan timur Indonesia, PSM kerap membawa beban ekspektasi besar setiap musim.",
+          "fix": "Simplify: 'PSM mewakili timur Indonesia, jadi ekspektasi selalu tinggi. Musim ini semua itu porak-poranda.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Sementara di laga tandang, catatan 4M-4S-7K setidaknya menunjukkan PSM sesekali mampu mencuri poin di luar kandang, meski kekalahan tandang tetap mendominasi.",
+          "fix": "Direct: 'Tandang 4M-4S-7K: setidaknya PSM tahu cara menang di luar kandang, tapi kekalahan tandang tetap banyak.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Dua kemenangan berselang-seling dengan kekalahan dan seri memberi gambaran tim yang belum menemukan ritme stabil.",
+          "fix": "Just show the form string. Delete the explanation sentence or replace with one fact."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dengan 31 poin dari 30 laga, rata-rata kurang dari satu poin per laga, PSM belum berada di posisi yang nyaman untuk sekadar bersantai menyelesaikan musim.",
+          "fix": "Cut redundancy. Rephrase: 'PSM belum aman dari zona bahaya.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Form terakhir berbunyi LLDDWLWL, tidak ada tren positif yang konsisten.",
+          "fix": "Replace 'berbunyi' with simpler structure: 'Form 8 laga: LLDDWLWL, tanpa tren positif.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Catatan kandang sendiri berbunyi 3M-6S-6K, artinya Stadion Gelora B.J. Habibie belum jadi benteng yang benar-benar menyulitkan tamu.",
+          "fix": "Just state fact: '3M-6S-6K kandang: enam kekalahan di rumah, hasil yang sulit dimaafkan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1e5a21ac10e944e2",
+    "published_at": "2026-04-28T12:14:49+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

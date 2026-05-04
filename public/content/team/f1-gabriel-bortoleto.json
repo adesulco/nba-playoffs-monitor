@@ -1,0 +1,81 @@
+{
+  "type": "team",
+  "slug": "f1-gabriel-bortoleto",
+  "title": "Profil Gabriel Bortoleto: Pembalap F1 Audi (2026)",
+  "description": "Profil pembalap F1 Gabriel Bortoleto (Brasil) untuk tim Audi. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Gabriel Bortoleto: Rookie Brasil di Tengah Proyek Besar Audi\n\nGabriel Bortoleto. Kode FIA BOR, nomor permanen #5. Pembalap Brasil kelahiran 14 Oktober 2004, baru 21 tahun. Per 28 April 2026, Bortoleto menjalani debut musim penuh F1 bersama Audi dan duduk di P13 klasemen dengan 2 poin dari 3 balapan yang sudah dijalani.\n\n---\n\n## Identitas\n\nLahir 14 Oktober 2004, Bortoleto menjadi salah satu pembalap termuda di grid 2026. Pembalap Brasil ini membawa kode FIA BOR dan nomor permanen #5 ke setiap balapan, dua detail kecil yang menandai awal karier F1 resminya.\n\nTim yang menjadi rumahnya adalah Audi, pabrikan Jerman yang baru masuk sebagai entitas mandiri di F1. Posisi itu menempatkan Bortoleto di tengah proyek jangka panjang yang sedang membangun segalanya dari awal, mobil, infrastruktur, identitas. Bukan posisi paling nyaman untuk seorang rookie, tapi bukan tanpa peluang juga.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, 2 poin. Angka kecil, tapi konteksnya penting untuk dibaca dengan benar.\n\nDari tiga round yang sudah dijalani, Bortoleto berhasil meraih poin sekali, finis P9 di Australian Grand Prix, satu-satunya momen di mana dia melihat bendera kotak-kotak dalam posisi zona poin. Dua poin itu tercipta meski finis sebagai *lapped car*, artinya mobil Bortoleto sudah satu lap tertinggal dari pemimpin balapan. Tetap finis, tetap poin, untuk tim baru, itu bukan hasil yang bisa dibuang begitu saja.\n\nRound berikutnya di Chinese Grand Prix berakhir sebelum balapan dimulai. *Did not start*, tanpa keterangan lebih lanjut di data. Bortoleto tidak keluar ke sirkuit, tidak ada poin, tidak ada data performa untuk dianalisis.\n\nJapanese Grand Prix jadi balapan ketiga. Bortoleto finis P13, keluar dari zona poin, tapi mobil sampai garis finis, *finished*. Dibanding DNS di China, itu kemajuan yang terukur.\n\n---\n\n## Hasil Per Balapan: Pola Awal yang Belum Stabil\n\nTiga balapan, tiga hasil yang berbeda karakter: P9, DNS, P13.\n\nMusim yang baru tiga round memang terlalu pendek untuk menarik kesimpulan besar. Tapi polanya sudah memberi gambaran awal. Di Australia, Bortoleto menunjukkan bahwa dia bisa membawa mobil ke dalam poin, bahkan dari posisi tertinggal satu lap dari leader. Itu butuh manajemen ban, manajemen balapan, dan kepala dingin sepanjang race jarak penuh. Bukan hal yang otomatis untuk pembalap 21 tahun di debut F1-nya.\n\nDi China, semuanya berhenti sebelum mulai. DNS mengosongkan weekend itu sepenuhnya dari sisi data pembalap. Sulit mengevaluasi sesuatu yang tidak pernah terjadi.\n\nJepang menempatkan Bortoleto di P13, *finis*, tapi luar zona poin. Dibanding Australia, ada penurunan posisi akhir. Tapi dibanding DNS di China, dia minimal menyelesaikan balapan. Untuk tim yang masih membangun reliabilitas, *finished* punya nilai tersendiri.\n\nBelum ada pola dominan, belum ada tren meyakinkan. Tiga balapan adalah sampel yang terlalu kecil. Yang bisa dicatat: satu finis di poin, satu DNS, satu finis di luar poin. Fluktuatif, tapi belum bisa disebut mengkhawatirkan.\n\n---\n\n## Outlook\n\nDengan 2 poin dan posisi P13 di klasemen per 28 April 2026, Bortoleto ada di tengah grid, bukan di belakang, belum di depan.\n\nAngka itu mencerminkan realita tim dan pembalapnya sekaligus. Audi sedang dalam proses membangun kompetitivitas jangka panjang. Bortoleto sedang dalam proses belajar F1. Dua proses itu berjalan paralel, dan hasilnya belum bisa diukur hanya dari tiga balapan.\n\nYang menarik untuk diikuti: apakah mobil Audi bisa konsisten membawa Bortoleto ke dalam poin, dan seberapa cepat pembalap 21 tahun ini bisa membaca weekend balapan secara penuh, dari qualifying, strategi pit stop, sampai manajemen balapan di kondisi yang tidak ideal. Musim 2026 masih panjang, dan profil ini akan berubah seiring setiap round berikutnya.\n\n*Data berdasarkan klasemen F1 2026 per 28 April 2026, setelah 3 balapan.*\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "bortoleto",
+    "driver_name": "Gabriel Bortoleto",
+    "driver_code": "BOR",
+    "driver_number": "5",
+    "nationality": "Brazilian",
+    "current_team": "Audi",
+    "current_team_id": "audi",
+    "championship_pos": "13",
+    "championship_points": "2",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023511,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on training-data inference (Audi entry narrative, 'termuda' claim, team comfort speculation) and contains translated-English softening. Rewrites needed on team framing and tense hedging. Also: date mismatch between input (3 Mei) and article (28 April).",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Lahir 14 Oktober 2004, Bortoleto menjadi salah satu pembalap termuda di grid 2026.",
+          "fix": "Remove 'salah satu' or replace with grounded fact: 'Bortoleto, 21 tahun, adalah rookie di grid 2026.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "pabrikan Jerman yang baru masuk sebagai entitas mandiri di F1",
+          "fix": "Replace with grounded fact: 'Audi, tim F1 Bortoleto musim 2026.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bukan posisi paling nyaman untuk seorang rookie, tapi bukan tanpa peluang juga.",
+          "fix": "Remove; stick to observable facts from data block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan 2 poin dan posisi P13 di klasemen per 28 April 2026, Bortoleto ada di tengah grid, bukan di belakang, belum di depan.",
+          "fix": "Rephrase: 'Bortoleto P13 per 28 April, posisi netral dalam early season.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Yang bisa dicatat: satu finis di poin, satu DNS, satu finis di luar poin.",
+          "fix": "Change to: 'Catatan tiga balapan: satu finis di poin, satu DNS, satu finis di luar poin.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Sulit mengevaluasi sesuatu yang tidak pernah terjadi.",
+          "fix": "Delete or replace: 'DNS di China meninggalkan celah dalam data performance-nya.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Per 28 April 2026, Bortoleto menjalani debut musim penuh F1 bersama Audi",
+          "fix": "Change to 'Per 3 Mei 2026' to match input DATA PER line, or clarify date source."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1a7087adf5e38e88",
+    "published_at": "2026-04-28T12:13:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

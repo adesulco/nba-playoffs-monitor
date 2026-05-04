@@ -1,14 +1,30 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
+import Breadcrumbs from '../components/Breadcrumbs.jsx';
+import ProfileLink from '../components/ProfileLink.jsx';
+import PeerNav from '../components/PeerNav.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+// v0.20.0 Phase 2 Sprint F — Shell A leaf chrome. Replaces the
+// inline 200px hero with <HubStatusStrip> mounted in V2TopBar
+// subrow + .sr-only h1. Picker label reads the club name; a 3px
+// left-edge stripe carries the club accent into chrome instead
+// of a full-bleed wash. Strict no-data-touch sprint per directive
+// §0.5: hooks (useEPLTeam / useEPLStandings / useEPLTeamRoster /
+// useEPLClubSquad), SEO meta, route shape unchanged.
+import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { useEPLTeam } from '../hooks/useEPLTeam.js';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLTeamRoster } from '../hooks/useEPLTeamRoster.js';
-import { CLUBS_BY_SLUG, formatFixtureDate } from '../lib/sports/epl/clubs.js';
+// v0.14.4 — full squad list (position, age, height, jersey number)
+// via API-Football. Replaces the lean ESPN roster on the per-club
+// page so users see every player, not just first-team starters.
+import { useEPLClubSquad } from '../hooks/useEPLClubSquad.js';
+import { CLUBS, CLUBS_BY_SLUG, SEASON, formatFixtureDate } from '../lib/sports/epl/clubs.js';
 
 // ─── Key Accounts (X/Twitter) ───────────────────────────────────────────────
 // Mirrors the NBA "KEY ACCOUNTS" pattern on NBADashboard: club handle +
@@ -89,12 +105,69 @@ export default function EPLClub() {
     topAssisters: rosterTopAssisters,
     injured: rosterInjured,
   } = useEPLTeamRoster(club.espnId);
+  // v0.14.4 — full registered squad via API-Football.
+  const { players: squad, loading: squadLoading, error: squadError } = useEPLClubSquad(club.slug);
 
   // Current-season standing row for the club (if standings have loaded)
   const standing = useMemo(
     () => standings.find((r) => r.teamId === club.espnId) || null,
     [standings, club.espnId]
   );
+
+  // v0.20.0 Phase 2 Sprint F — push the leaf chrome row into the
+  // V2TopBar subrow. Replaces the inline 200px hero (eyebrow +
+  // 36px h1 + venue meta + back-link button) that used to sit at
+  // the top of the page body. Picker label = club name; club
+  // accent rides the strip's 3px left stripe.
+  useEffect(() => {
+    setTopbarSubrow(
+      <HubStatusStrip
+        srOnlyTitle={lang === 'id'
+          ? `${club.name} · Liga Inggris ${SEASON} — klasemen, jadwal, hasil`
+          : `${club.name} · Premier League ${SEASON} — standing, fixtures, results`}
+        accent={club.accent}
+        picker={(
+          <Link
+            to="/premier-league-2025-26"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '6px 12px',
+              background: `${club.accent}14`,
+              color: 'var(--ink)',
+              border: `1px solid ${club.accent}66`,
+              borderRadius: 6,
+              fontSize: 12, fontWeight: 700, letterSpacing: -0.1,
+              textDecoration: 'none',
+              fontFamily: 'inherit',
+            }}
+          >
+            <span style={{ width: 3, height: 14, background: club.accent }} />
+            {club.name}
+            <span style={{ color: 'var(--ink-3)', fontSize: 10, marginLeft: 2 }}>▾</span>
+          </Link>
+        )}
+        live={(
+          <span style={{ textTransform: 'uppercase' }}>
+            {lang === 'id' ? `LIGA INGGRIS · MUSIM ${SEASON}` : `PREMIER LEAGUE · ${SEASON}`}
+            <span style={{ marginLeft: 8, color: 'var(--ink-4)' }}>
+              · {club.stadium} · {club.city}
+            </span>
+          </span>
+        )}
+        actions={(
+          <HubActionRow
+            url={`/premier-league-2025-26/club/${club.slug}`}
+            shareText={lang === 'id'
+              ? `${club.name} · Liga Inggris ${SEASON} di gibol.co ⚽`
+              : `${club.name} · Premier League ${SEASON} on gibol.co ⚽`}
+            accent={club.accent}
+            analyticsEvent="epl_club_share"
+          />
+        )}
+      />
+    );
+    return () => setTopbarSubrow(null);
+  }, [club, lang]);
 
   // Derive form from completed fixtures if standing.form is empty.
   const form = useMemo(() => {
@@ -188,55 +261,27 @@ export default function EPLClub() {
       />
 
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={club.accent} />
 
-        {/* ─── Hero ─────────────────────────────────────────────────────────── */}
-        <div style={{
-          padding: '28px 20px 22px',
-          background: `linear-gradient(135deg, ${club.accent}14 0%, ${C.bg} 85%)`,
-          borderBottom: `1px solid ${C.line}`,
-        }}>
-          <div style={{
-            fontSize: 9, letterSpacing: 1.5, color: club.accent,
-            fontWeight: 700, marginBottom: 4,
-          }}>
-            LIGA INGGRIS 2025-26 · {lang === 'id' ? 'KLUB' : 'CLUB'}
-          </div>
-          <h1 style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
-            marginBottom: 8, letterSpacing: '-0.025em', color: C.text,
-            textWrap: 'balance',
-          }}>
-            {club.name}
-          </h1>
-          <div style={{
-            fontSize: 11, color: C.dim, display: 'flex',
-            flexWrap: 'wrap', gap: '4px 12px',
-          }}>
-            <span>{lang === 'id' ? 'Kandang' : 'Home'}: {club.stadium}</span>
-            <span>·</span>
-            <span>{club.city}</span>
-            <span>·</span>
-            <span>{lang === 'id' ? 'Didirikan' : 'Founded'}: {club.founded}</span>
-          </div>
-
-          <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-            <Link
-              to="/premier-league-2025-26"
-              style={{
-                fontSize: 11, fontWeight: 600, letterSpacing: 0.3,
-                padding: '8px 14px',
-                background: 'transparent',
-                color: C.dim,
-                border: `1px solid ${C.lineSoft}`,
-                borderRadius: 3, textDecoration: 'none',
-              }}
-            >
-              ← {lang === 'id' ? 'Dashboard Liga Inggris' : 'EPL dashboard'}
-            </Link>
+        {/* v0.13.0 — visual breadcrumbs above the hero. */}
+        <div style={{ padding: '0 20px' }}>
+          <Breadcrumbs
+            items={[
+              { name: lang === 'id' ? `Liga Inggris ${SEASON}` : `Premier League ${SEASON}`, to: '/premier-league-2025-26' },
+              { name: club.name },
+            ]}
+          />
+          {/* v0.46.0 — Phase 2 ship #27. Cross-link to evergreen profile. */}
+          <div style={{ marginTop: 8, marginBottom: 4 }}>
+            <ProfileLink sport="epl" entitySlug={club.slug} teamFullName={club.name} />
           </div>
         </div>
+
+        {/* v0.20.0 Phase 2 Sprint F — visible 200px hero stripped.
+            Eyebrow + 36px h1 + venue meta + back-link button all
+            collapsed into <HubStatusStrip> in the V2TopBar subrow
+            above. SEO h1 rides as `.sr-only` inside the strip via
+            srOnlyTitle prop. Standing card below now sits ~140px
+            closer to the top of the viewport. */}
 
         <div style={{ padding: '16px 20px 20px', display: 'grid', gap: 14 }}>
           {/* ─── Klasemen + form ───────────────────────────────────────────── */}
@@ -737,6 +782,31 @@ export default function EPLClub() {
               {club.bio}
             </p>
           </section>
+
+          {/* v0.14.4 — Squad section. Lists every registered player
+              from API-Football grouped by position. Tinted with the
+              club accent so it reads as part of the club brand. */}
+          <SquadSection
+            players={squad}
+            loading={squadLoading}
+            error={squadError}
+            accent={club.accent}
+            lang={lang}
+          />
+
+          {/* v0.13.0 — full 19-club peer nav. PageRank flow + UX. */}
+          <PeerNav
+            title={lang === 'id' ? 'Klub Liga Inggris lain' : 'Other Premier League clubs'}
+            currentSlug={club.slug}
+            items={CLUBS.map((c) => ({
+              slug: c.slug,
+              name: c.nameId || c.name,
+              short: (c.name || '').slice(0, 3).toUpperCase(),
+              color: c.accent,
+              href: `/premier-league-2025-26/club/${c.slug}`,
+            }))}
+            maxItems={20}
+          />
         </div>
 
         {/* ─── Disclaimer ─────────────────────────────────────────────────── */}
@@ -763,6 +833,146 @@ export default function EPLClub() {
           <div>← <a href="/premier-league-2025-26" style={{ color: C.dim, textDecoration: 'none' }}>{lang === 'id' ? 'dashboard Liga Inggris' : 'EPL dashboard'}</a></div>
         </div>
       </div>
+    </div>
+  );
+}
+
+// v0.14.4 — Full registered squad via API-Football. Grouped by
+// position (GK / DEF / MID / ATT) so the user can scan goalkeepers
+// vs defenders at a glance. Each player row: jersey number, name,
+// age, height. Tinted with the club accent.
+function SquadSection({ players, loading, error, accent, lang }) {
+  if (error === 'unauthorized') return null;  // silent if API key not set
+  if (loading && (!players || players.length === 0)) {
+    return (
+      <section style={{ marginTop: 18, padding: '14px 0' }}>
+        <SquadHeader accent={accent} lang={lang} />
+        <div style={{ fontSize: 11, color: C.dim }}>
+          {lang === 'id' ? 'Memuat skuad…' : 'Loading squad…'}
+        </div>
+      </section>
+    );
+  }
+  if (error || !players || players.length === 0) return null;
+
+  const groups = {
+    Goalkeeper: [],
+    Defender: [],
+    Midfielder: [],
+    Attacker: [],
+    Other: [],
+  };
+  for (const p of players) {
+    if (groups[p.position]) groups[p.position].push(p);
+    else groups.Other.push(p);
+  }
+  const labelById = {
+    Goalkeeper: lang === 'id' ? 'Kiper' : 'Goalkeeper',
+    Defender:   lang === 'id' ? 'Bek'    : 'Defender',
+    Midfielder: lang === 'id' ? 'Gelandang' : 'Midfielder',
+    Attacker:   lang === 'id' ? 'Penyerang' : 'Attacker',
+    Other:      lang === 'id' ? 'Lainnya'   : 'Other',
+  };
+
+  return (
+    <section style={{ marginTop: 18, padding: '14px 0' }}>
+      <SquadHeader accent={accent} lang={lang} count={players.length} />
+      <div style={{ display: 'grid', gap: 14, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+        {Object.keys(groups).map((pos) => {
+          const list = groups[pos];
+          if (list.length === 0) return null;
+          return (
+            <div key={pos} style={{
+              border: `1px solid ${C.lineSoft}`,
+              borderLeft: `3px solid ${accent}`,
+              borderRadius: 4,
+              padding: '10px 12px',
+              background: C.panelSoft,
+            }}>
+              <div style={{
+                fontSize: 9.5, letterSpacing: 1.2, color: C.dim,
+                fontWeight: 700, textTransform: 'uppercase',
+                marginBottom: 6, fontFamily: 'var(--font-mono)',
+              }}>
+                {labelById[pos]} <span style={{ color: C.muted, fontWeight: 400 }}>· {list.length}</span>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 3 }}>
+                {list.map((p) => (
+                  <li
+                    key={p.id || p.name}
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '24px 1fr 36px',
+                      gap: 6,
+                      alignItems: 'baseline',
+                      fontSize: 11,
+                    }}
+                  >
+                    <span style={{
+                      fontFamily: 'var(--font-mono)',
+                      color: C.dim,
+                      fontWeight: 700,
+                      textAlign: 'right',
+                    }}>
+                      {p.number ?? '·'}
+                    </span>
+                    <span style={{ color: C.text }}>{p.name}</span>
+                    <span style={{
+                      fontFamily: 'var(--font-mono)',
+                      color: C.muted,
+                      fontSize: 10,
+                      textAlign: 'right',
+                    }}>
+                      {p.age ?? ''}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+      <div style={{
+        marginTop: 8,
+        fontSize: 9,
+        color: C.muted,
+        letterSpacing: 0.4,
+      }}>
+        {lang === 'id' ? 'Sumber: API-Football · update tiap jam' : 'Source: API-Football · refreshes hourly'}
+      </div>
+    </section>
+  );
+}
+
+function SquadHeader({ accent, lang, count }) {
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'baseline',
+      marginBottom: 10,
+      borderBottom: `1px solid ${C.lineSoft}`,
+      paddingBottom: 6,
+    }}>
+      <h2 style={{
+        margin: 0,
+        fontFamily: 'var(--font-sans)',
+        fontSize: 14, fontWeight: 700, letterSpacing: -0.2,
+        color: C.text,
+      }}>
+        {lang === 'id' ? 'Skuad' : 'Squad'}
+      </h2>
+      {count > 0 && (
+        <span style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 9.5,
+          color: accent,
+          fontWeight: 700,
+          letterSpacing: 0.6,
+        }}>
+          {count} {lang === 'id' ? 'PEMAIN' : 'PLAYERS'}
+        </span>
+      )}
     </div>
   );
 }

@@ -1,0 +1,89 @@
+{
+  "type": "team",
+  "slug": "nba-memphis-grizzlies",
+  "title": "Profil Memphis Grizzlies: Western Conference (2025-26)",
+  "description": "Profil Memphis Grizzlies — franchise NBA dari Memphis di division Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Memphis Grizzlies 2025-26: Musim Berat, Tapi Ada Tanda-Tanda Kehidupan\n\nMemphis Grizzlies berkandang di Memphis dan main di Western Conference sebagai bagian dari Southwest Division. Per 28 April 2026, Grizzlies menutup musim reguler 2025-26 dengan rekor 25-57, win rate 0.305, seed 13 di Western Conference. Bukan musim yang mudah dibaca dengan optimisme dangkal, tapi ada beberapa hal yang perlu dicatat sebelum menutup buku musim ini.\n\n---\n\n## Identitas dan Posisi Liga\n\nMemphis Grizzlies finish di posisi 5th Southwest Division, Western Conference, dengan rekor keseluruhan 25-57. Di bawah arahan head coach Tuomas Iisalo, nama yang relatif baru di bench NBA, Grizzlies menjalani musim reguler 2025-26 sebagai salah satu tim dengan win total terendah di conference mereka musim ini.\n\nSeed 13 di Western Conference berarti Grizzlies absen dari playoff. Sebagai tim yang pernah jadi salah satu kekuatan Barat beberapa musim lalu, posisi ini jelas bukan tempat yang nyaman. Tapi konteks penting: ini musim yang lebih banyak bicara soal rekonstruksi roster dan identitas tim baru daripada soal kejar-kejaran kursi playoff.\n\n---\n\n## Performa Musim Ini\n\nAngka-angkanya bicara terus terang. Grizzlies cetak rata-rata 114,7 PPG musim ini, tapi kebobolan 120,7 PPG, point differential negatif hampir minus 6 per laga. Artinya, masalah utama bukan di ujung serangan, tapi di sisi pertahanan yang terlalu mudah dieksploitasi.\n\nSplit home-away juga tidak banyak memberikan keuntungan. Di kandang, Grizzlies cuma menang 13 dari 40 laga (0.325). Di laga away, angkanya lebih berat lagi: 11-29 (0.275). Perbedaan antara dua angka itu tidak terlalu besar, yang justru menunjukkan konsistensi, sayangnya, konsistensi dalam performa yang belum cukup kompetitif.\n\nTapi ada satu cara lain baca musim ini: 25 kemenangan dengan roster yang banyak wajah baru dan beberapa rookie plus sophomore masih menemukan ritme NBA adalah angka yang tidak sepenuhnya tanpa makna. Developmental season punya standar keberhasilan yang berbeda.\n\n---\n\n## Roster: Campuran Veteran dan Gelombang Muda\n\nTiga nama layak disorot dari roster Grizzlies musim ini.\n\n**Ja Morant** (#12, G, 26 tahun, 6 tahun pengalaman) tetap jadi wajah utama franchise. Drafted dari Murray State, Morant adalah satu-satunya pemain di roster ini yang namanya langsung identik dengan Memphis Grizzlies era modern. Di musim yang berat sekalipun, kehadirannya di backcourt memberi identitas tim yang sulit digantikan orang lain.\n\n**Santi Aldama** (#7, F, 25 tahun, 4 tahun pengalaman) adalah salah satu piece paling versatile di roster. Forward dari Loyola Maryland ini sudah cukup lama di sistem Memphis untuk mengerti cara main Grizzlies, dan cukup muda untuk masih berkembang lebih jauh.\n\n**Zach Edey** (#14, C, 24 tahun, 1 tahun pengalaman) menarik diikuti. Center dari Purdue ini masih di tahun pertama karirnya di NBA, tapi ukuran dan footprint-nya di paint adalah sesuatu yang bisa Grizzlies bangun di atas. Rookie dengan upside besar untuk posisi sebesar itu tidak datang setiap tahun.\n\nDi luar tiga nama itu, roster Grizzlies musim ini juga punya banyak wajah dengan nol tahun pengalaman NBA: Adama Bal, Walter Clayton Jr., Cedric Coward, Jahmai Mashack, Toby Okani, gelombang pemain muda yang musim ini jadi ajang tumbuh. Di sisi lain, kehadiran veteran seperti Kentavious Caldwell-Pope (33 tahun, 12 tahun pengalaman) dan Taj Gibson (40 tahun, 16 tahun pengalaman) memberi locker room campuran perspektif yang sehat.\n\n---\n\n## Outlook\n\nMusim 2025-26 akan diingat sebagai tahun transisi bagi Memphis Grizzlies. Rekor 25-57 tidak ada yang mau rayakan, tapi narasi yang lebih akurat adalah ini: tim sedang dalam proses menemukan bentuknya kembali, dengan kepercayaan pada Ja Morant sebagai jangkar dan sekelompok pemain muda yang mulai mengisi celah.\n\nSeed 13 Western Conference dan posisi 5th Southwest Division adalah titik berangkat, bukan titik akhir, yang akan menentukan ke mana arah front office dan staf pelatih musim depan.\n\n*Profil ini mencerminkan data per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "29",
+    "team_name": "Memphis Grizzlies",
+    "team_abbr": "MEM",
+    "team_location": "Memphis",
+    "conference": "Western Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024425,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Fail: Two high-severity training-inference issues (Morant draft history, Aldama tenure) that should not appear in article. Moderate issues with tense consistency, stat formatting, and academic register creep. Rewrite required.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Drafted dari Murray State, Morant adalah satu-satunya pemain di roster ini yang namanya langsung identik dengan Memphis Grizzlies era modern.",
+          "fix": "Remove 'Drafted dari Murray State' clause. Keep only: 'Morant adalah wajah utama franchise, pillar di backcourt.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Forward dari Loyola Maryland ini sudah cukup lama di sistem Memphis untuk mengerti cara main Grizzlies, dan cukup muda untuk masih berkembang lebih jauh.",
+          "fix": "Simplify: 'Santi Aldama (#7, F, 25 tahun) adalah piece versatile di roster dengan 4 tahun pengalaman.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Center dari Purdue ini masih di tahun pertama karirnya di NBA, tapi ukuran dan footprint-nya di paint adalah sesuatu yang bisa Grizzlies bangun di atas.",
+          "fix": "Rewrite: 'Center dari Purdue ini masih rookie, tapi ukuran dan dominasi paint-nya bisa jadi fondasi.' (or just 'jadi asset jangka panjang')"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "ada beberapa hal yang perlu dicatat sebelum menutup buku musim ini.",
+          "fix": "Delete sentence. Let the next section speak: 'Tapi konteks penting: ini musim rekonstruksi, bukan kejar playoff.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Grizzlies menutup musim reguler 2025-26 dengan rekor 25-57, win rate 0.305, seed 13 di Western Conference.",
+          "fix": "Change opening: 'Memphis Grizzlies menyelesaikan musim 2025-26 dengan rekor 25-57 (seed 13, Western Conference).'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Angka-angkanya bicara terus terang. Grizzlies cetak rata-rata 114,7 PPG musim ini, tapi kebobolan 120,7 PPG",
+          "fix": "Use period for decimals consistently: '114.7 PPG' and '0.305 win rate' OR convert all to comma. (Recommend period for sports stats — clearer.)"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Di musim yang berat sekalipun, kehadirannya di backcourt memberi identitas tim yang sulit digantikan orang lain.",
+          "fix": "Tighten: 'Di musim berat ini, Morant tetap jadi identitas backcourt yang tak tergantikan.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Bukan musim yang mudah dibaca dengan optimisme dangkal, tapi ada beberapa hal yang perlu dicatat sebelum menutup buku musim ini.",
+          "fix": "Cleaner: 'Musim berat untuk Grizzlies — 25-57, seed 13. Tapi ada hal yang perlu dilihat lagi sebelum tutup buku.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "tim yang pernah jadi salah satu kekuatan Barat beberapa musim lalu, posisi ini jelas bukan tempat yang nyaman. Tapi konteks",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x735ec6bba41def60",
+    "published_at": "2026-04-28T10:32:45+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

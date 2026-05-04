@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { useApp } from '../lib/AppContext.jsx';
 import { COLORS as C } from '../lib/constants.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+// v0.19.5 Phase 2 Sprint E — share rail.
+import HubActionRow from '../components/v2/HubActionRow.jsx';
 
 // 20 NBA/playoff terms defined in Bahasa Indonesia for long-tail SEO.
 // Each entry ranks independently for queries like "apa itu shot chart",
@@ -48,20 +49,40 @@ export default function Glossary() {
         keywords="apa itu peluang juara, arti bracket nba, apa itu shot chart, arti play-in nba, glosarium nba, istilah nba indonesia"
       />
       <div className="dashboard-wrap" style={{ maxWidth: 900, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? 'glosarium istilah NBA' : 'NBA glossary'} />
-        <main style={{ padding: '32px 8px' }}>
-          <h1 style={{
+        {/* v0.19.5 Phase 2 Sprint E — hero compressed to .editorial-h1
+            (24/28/32 mobile/tablet/desktop) per directive §6 type
+            table. Eyebrow added per directive §4 ("NBA · POSTSEASON
+            2026 · GLOSSARY"). Share rail via <HubActionRow>. */}
+        <section style={{ padding: '32px 8px' }}>
+          <div style={{
+            marginBottom: 6, fontSize: 11, color: C.dim,
+            letterSpacing: 1.4, textTransform: 'uppercase',
+            fontFamily: 'var(--font-mono)',
+          }}>
+            NBA · POSTSEASON 2026 · {lang === 'id' ? 'GLOSARIUM' : 'GLOSSARY'}
+          </div>
+          <h1 className="editorial-h1" style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0,
-            letterSpacing: '-0.025em', textWrap: 'balance',
+            margin: 0,
+            color: C.text,
+            textWrap: 'balance',
           }}>
             {lang === 'id' ? 'Glosarium NBA Playoff' : 'NBA Playoff Glossary'}
           </h1>
-          <p style={{ marginTop: 12, fontSize: 13, color: C.dim, lineHeight: 1.6, maxWidth: 680 }}>
+          <p style={{ marginTop: 8, fontSize: 14, color: C.dim, lineHeight: 1.55, maxWidth: 680 }}>
             {lang === 'id'
               ? '20 istilah penting di NBA Playoff 2026 — dijelaskan dalam Bahasa Indonesia. Dari peluang juara sampai triple-double, semuanya di sini.'
               : '20 key terms from the 2026 NBA Playoffs — explained simply. From title odds to triple-doubles, all in one place.'}
           </p>
+          <div style={{ marginTop: 14 }}>
+            <HubActionRow
+              url="/glossary"
+              shareText={lang === 'id'
+                ? 'Glosarium istilah NBA Playoff Bahasa Indonesia · gibol.co'
+                : 'NBA Playoff glossary in Bahasa Indonesia · gibol.co'}
+              analyticsEvent="glossary_share"
+            />
+          </div>
 
           <div style={{ marginTop: 32, display: 'grid', gap: 14 }}>
             {ENTRIES.map((e, i) => (
@@ -117,7 +138,7 @@ export default function Glossary() {
               inDefinedTermSet: 'https://www.gibol.co/glossary',
             })),
           })}</script>
-        </main>
+        </section>
         <div style={{
           display: 'flex', justifyContent: 'space-between', padding: '14px 8px',
           borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted, letterSpacing: 0.3,

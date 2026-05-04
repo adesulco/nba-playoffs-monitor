@@ -1,0 +1,136 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-bam-adebayo",
+  "title": "Profil Bam Adebayo: Center Miami Heat",
+  "description": "Profil pemain NBA Bam Adebayo, Center Miami Heat. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Bam Adebayo: Jantung Miami Heat yang Tak Tergantikan\n\nBam Adebayo, center Miami Heat yang lahir di Newark, New Jersey, per 28 April 2026 mencatat rata-rata 20,1 PPG, 10,0 RPG, dan 3,2 APG di musim 2025-26. Pemain berpostur 6'9\" 260 lbs dengan jersey #13 ini bukan sekadar big man biasa, angka-angkanya bicara tentang center yang bisa score, rebound, dan playmaking sekaligus.\n\n---\n\n## Identitas\n\nAdebayo lahir di Newark, NJ, dan sekarang menginjak usia 28 tahun. Sebelum masuk NBA, dia satu musim di Kentucky, salah satu program college basket paling bergengsi di Amerika, sebelum draft 2017 membawanya ke Miami Heat di round 1 pick 14.\n\nIni adalah musim ke-8 Adebayo di NBA, semuanya bersama MIA. Postur 6'9\" 260 lbs menempatkannya di kategori center murni: cukup tinggi untuk contest di paint, cukup berisi untuk battle dengan power forward fisik. Nomor #13 sudah melekat ke identitas Heat dalam hampir satu dekade.\n\n---\n\n## Peran di Miami Heat\n\nAdebayo adalah anchor MIA di kedua ujung lapangan. Di tim yang filosofinya bertumpu pada defense, switching, dan system yang disiplin, kehadiran center yang mobile dan high-IQ seperti Adebayo bukan bonus, itu prasyarat.\n\nDi musim ini, dia adalah satu-satunya pemain yang posisinya jelas sebagai center starter MIA. Peran itu datang dengan ekspektasi besar: score ketika dibutuhkan, jaga possession lewat rebounding, dan fasilitasi offense meski bukan point guard.\n\n---\n\n## Performa Musim Ini\n\nBaca statistiknya, dan ada cerita yang lebih kompleks dari sekadar angka mentah.\n\n**20,1 PPG** menempatkan Adebayo di ranking 30 NBA musim ini. Di posisi center, angka itu solid, ini bukan center yang menunggu lob atau putback saja. Tapi konteks rankingnya perlu dicatat: top 30 scoring di seluruh liga berarti bersaing dengan guard dan wing, bukan hanya sesama big man.\n\n**10,0 RPG** adalah nomor yang lebih mencolok secara kontekstual. Ranking 8 NBA. Double figures in rebounding setiap malam, konsisten. Angka ini menempatkan Adebayo di elite rebounder league, satu tier dengan center yang memang dikenal sebagai raja papan. Di tim yang mengandalkan defense dan transition, rebounding sebagus ini bernilai lebih dari sekadar stat.\n\n**3,2 APG** ranking 80 NBA, bukan playmaker by design, tapi 3 assist per malam dari posisi center itu bukan trivial. Angka ini bicara tentang kemampuan Adebayo sebagai passing big: bisa kick out dari post, bisa read cutter, bisa inisiasi dari elbow. Center yang mendekati angka ini biasanya jadi fulcrum offense tim, bukan sekadar finisher.\n\nSatu-satunya angka yang perlu jujur dibahas: **44,2% FG**, ranking 107 league. Bukan angka buruk secara absolut, tapi untuk center yang sebagian besar shotnya datang dari close range dan mid-range, persentase ini ada di bawah rata-rata big man efisien. Ini PR yang jelas untuk sisa musim.\n\nGabungkan semuanya: 20-10-3 per malam dari seorang center 28 tahun yang sekarang di season ke-8. Itu profil pemain franchise, bukan role player.\n\n---\n\n## Outlook\n\nPer data 28 April 2026, Adebayo sedang dalam musim yang menegaskan statusnya sebagai salah satu center two-way terbaik di NBA. Double-double hampir setiap malam, scoring di atas 20, dan assist yang membuktikan dia bisa lebih dari sekadar roll man.\n\nFG% di bawah 45% jadi satu-satunya tanda tanya konkret musim ini. Kalau angka itu naik, profil Adebayo sebagai center elite makin sulit dibantah.\n\nYang jelas, setelah delapan musim, Adebayo masih jadi alasan paling kuat untuk menaruh harapan ke Miami Heat.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "4066261",
+    "athlete_name": "Bam Adebayo",
+    "team_name": "Miami Heat",
+    "team_abbr": "MIA",
+    "position": "Center",
+    "jersey": "13",
+    "age": 28,
+    "birthplace": "Newark, NJ",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020273,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Article fails on training-data inference (Miami philosophy, college detail) and translated-English feel. Soft phrase repetition and academic drift present. Core stats-to-narrative translation is strong, but sourcing discipline and register consistency need tightening.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum masuk NBA, dia satu musim di Kentucky, salah satu program college basket paling bergengsi di Amerika",
+          "fix": "Remove college detail or keep only if sourced directly from input"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "filosofinya bertumpu pada defense, switching, dan system yang disiplin",
+          "fix": "Remove tactical philosophy claims or source from actual input data"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Baca statistiknya, dan ada cerita yang lebih kompleks dari sekadar angka mentah.",
+          "fix": "Rephrase: 'Angka mentahnya sederhana, konteksnya kompleks.' atau hapus pembukaan ini"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Nomor #13 sudah melekat ke identitas Heat dalam hampir satu dekade.",
+          "fix": "Change to: 'Nomor #13 melekat ke identitas Heat hampir satu dekade.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "bukan sekadar big man biasa... bukan sekadar center yang menunggu lob... bukan sekadar stat",
+          "fix": "Vary construction: use 'lebih dari', 'bukan hanya', or restructure one instance"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "perlu dicatat: top 30 scoring di seluruh liga berarti bersaing",
+          "fix": "Delete phrase; lead with fact: 'Top 30 scoring di seluruh liga—berarti bersaing...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Di tim yang mengandalkan defense dan transition, rebounding sebagus ini bernilai lebih",
+          "fix": "Remove system context or stick to observable stats only"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Gabungkan semuanya: 20-10-3 per malam dari seorang center",
+          "fix": "Consider: 'Ringkasnya: 20-10-3...' or restructure entirely"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xc5efeb8bd4eac6b8",
+    "published_at": "2026-04-28T12:07:22+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 62,
+      "headline_comment": "Headline H1 di body ('Jantung Miami Heat yang Tak Tergantikan') jauh lebih kuat daripada title generik 'Profil Bam Adebayo: Center Miami Heat' — ganti title ke versi H1.",
+      "lead_score": 80,
+      "lead_comment": "Lead langsung kasih stat-line dan angle 'bukan big man biasa' — solid, tapi sedikit padat dengan angka di satu napas.",
+      "structure_score": 82,
+      "structure_comment": "Alur Identitas → Peran → Performa → Outlook bersih dan logis; section Performa adalah core artikel dan porsinya sudah tepat.",
+      "voice_score": 76,
+      "voice_comment": "Code-switching NBA terasa natural, tapi ada beberapa frasa yang reads written-by-committee ('angka-angkanya bicara tentang', 'cerita yang lebih kompleks dari sekadar angka mentah').",
+      "suggestion_count": 6,
+      "summary": "Strong analytical team profile with clean structure and good stat contextualization; main fixes are a generic title (the H1 is much better), one AI-tell transition, and a soft closing line. Editor pass should be quick.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Profil Bam Adebayo: Center Miami Heat",
+          "issue": "Title terlalu generik dan tidak earn the click — H1 di body jauh lebih kuat.",
+          "fix": "Ganti title ke 'Bam Adebayo: Jantung Miami Heat yang Tak Tergantikan' atau varian dengan angle 20-10-3."
+        },
+        {
+          "priority": "high",
+          "snippet": "Baca statistiknya, dan ada cerita yang lebih kompleks dari sekadar angka mentah.",
+          "issue": "Transisi generik khas AI — meta-komentar tentang 'cerita di balik angka' tanpa nilai informasi.",
+          "fix": "Hapus kalimat ini, langsung masuk ke breakdown 20,1 PPG."
+        },
+        {
+          "priority": "medium",
+          "snippet": "angka-angkanya bicara tentang center yang bisa score, rebound, dan playmaking sekaligus.",
+          "issue": "Personifikasi 'angka bicara' adalah hedge phrasing AI; juga 'playmaking' tidak paralel dengan verb 'score, rebound'.",
+          "fix": "Ganti: 'Profilnya jelas: center yang bisa score, rebound, dan jadi playmaker sekaligus.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Yang jelas, setelah delapan musim, Adebayo masih jadi alasan paling kuat untuk menaruh harapan ke Miami Heat.",
+          "issue": "Closing line drift ke fan-page register ('alasan paling kuat untuk menaruh harapan') — tidak sespesifik sisa artikel.",
+          "fix": "Tutup dengan stake konkret, misal: 'Setelah delapan musim, MIA masih dibangun di sekitar #13 — dan musim ini menunjukkan kenapa.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Di musim ini, dia adalah satu-satunya pemain yang posisinya jelas sebagai center starter MIA.",
+          "issue": "Klaim 'satu-satunya center starter' tidak ada di input data block — risiko inferensi training-data.",
+          "fix": "Reframe ke yang didukung data: 'Sebagai starter center MIA musim ini, peran itu datang dengan ekspektasi besar.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Double figures in rebounding setiap malam, konsisten.",
+          "issue": "Code-switch 'Double figures in rebounding' agak janggal — frasa English utuh di tengah kalimat Indonesia tanpa kebutuhan.",
+          "fix": "'Double-digit rebound hampir setiap malam' atau 'Konsisten double figures di rebounding.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

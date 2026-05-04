@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "tennis-jannik-sinner",
+  "title": "Profil Jannik Sinner (ATP) — Peringkat 1",
+  "description": "Profil petenis Jannik Sinner (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Jannik Sinner: Nomor Satu Dunia yang Belum Tergoyahkan\n\nJannik Sinner, petenis Italia kelahiran 16 Agustus 2001, memuncaki peringkat ATP dengan 13.350 poin per 16 April 2026. Pemain tangan kanan asal San Candido, Italia, ini menjalani musim 2026 dari posisi yang sama seperti periode sebelumnya, puncak klasemen dunia.\n\n---\n\n## Identitas\n\nLahir di San Candido, sebuah kota kecil di kawasan pegunungan Alto Adige, Italia, Sinner kini berusia 24 tahun. Dengan postur 6'3\" dan bobot 170 lbs, ia termasuk petenis dengan build yang panjang, khas pemain baseline modern yang mengandalkan groundstroke agresif dari jarak jauh.\n\nSinner memulai karier profesionalnya pada 2018, saat usianya baru menginjak 16 tahun. Enam tahun kemudian, ia berdiri di posisi tertinggi tennis pria dunia.\n\n---\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Sinner berada di peringkat 1 ATP dengan 13.350 poin, posisi yang identik dengan periode sebelumnya. Tidak naik, tidak turun. Stabil di puncak.\n\nKonsistensi di posisi nomor satu bukan hal sepele di ATP. Peringkat bergerak setiap minggu tergantung hasil turnamen dan poin yang expire. Fakta bahwa Sinner mempertahankan P1 tanpa pergeseran menunjukkan ia mengumpulkan poin secara konsisten, cukup untuk menjaga jarak dari penggejar di bawahnya.\n\nAngka 13.350 poin juga bukan angka kecil. Selisih antara P1 dan P2 di ATP sering kali menentukan siapa yang pulang dari turnamen besar dengan keuntungan nyata di klasemen.\n\n---\n\n## Outlook\n\nPada 24 tahun, Sinner memimpin klasemen ATP dalam usia yang terbilang muda untuk ukuran dominasi di level ini. Selama peringkatnya mencerminkan stabilitas seperti data 16 April 2026, ia tetap jadi tolok ukur utama di circuit pria musim ini. Artikel ini mencerminkan data ranking per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "3623",
+    "athlete_name": "Jannik Sinner",
+    "current_rank": 1,
+    "previous_rank": 1,
+    "points": 13350.0,
+    "trend": "-",
+    "birthplace": "San Candido, Italy",
+    "dob": "2001-08-16",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.035175,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 7,
+      "summary": "Fail due to three high-severity training-data inferences (geographic detail, playing style, age at debut) and factual date error. Remove all inferred details not in input block; rewrite academic-drift thesis statements as direct facts.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Lahir di San Candido, sebuah kota kecil di kawasan pegunungan Alto Adige, Italia",
+          "fix": "Remove 'kawasan pegunungan Alto Adige'; keep only 'San Candido, Italia' as stated in input."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "ia termasuk petenis dengan build yang panjang, khas pemain baseline modern yang mengandalkan groundstroke agresif",
+          "fix": "Remove stylistic assumption. Stick to: 'Dengan postur 6'3\" dan bobot 170 lbs, ia memiliki build yang panjang.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sinner memulai karier profesionalnya pada 2018, saat usianya baru menginjak 16 tahun.",
+          "fix": "Write: 'Sinner memulai karier profesionalnya pada 2018.' Stop there; don't infer age at debut."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tidak naik, tidak turun. Stabil di puncak.",
+          "fix": "Rework: 'Posisinya tetap, stabil di puncak.' atau 'Peringkatnya tidak bergeser.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Konsistensi di posisi nomor satu bukan hal sepele di ATP. Peringkat bergerak setiap minggu tergantung hasil turnamen",
+          "fix": "Cut opening sentence; start: 'Peringkat ATP bergerak setiap minggu tergantung hasil turnamen dan poin yang expire.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Fakta bahwa Sinner mempertahankan P1 tanpa pergeseran menunjukkan ia mengumpulkan poin secara konsisten",
+          "fix": "Rework: 'Sinner mengumpulkan poin konsisten cukup untuk jaga jarak dari penggejar.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Artikel ini mencerminkan data ranking per 28 April 2026.",
+          "fix": "Delete this sentence or correct to '16 April 2026'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe086276356fcb220",
+    "published_at": "2026-04-28T10:50:36+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

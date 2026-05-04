@@ -1,0 +1,7 @@
+{
+  "_comment": "Static homepage front-page sentence read by HomeV2.jsx. v0.57.0 ships this as a static file editable without redeploy. v0.57.1 will swap to a Supabase row written by a 5-min cron + edge function (per docs/redesign-v4-handover.md §4 Phase E infrastructure). Until then, edit this file by hand and redeploy. Bahasa-first per CLAUDE.md voice rules. Keep to one paragraph, plain language, ≤22 words.",
+  "_updated_at": "2026-05-03T11:00:00+07:00",
+  "_editor": "Tim editorial Gibol",
+  "text": "NBA Playoff 2026 udah masuk Round 2, Liga Inggris tinggal dua pekan, dan Sinner masih di top ATP — gibol nemenin lo nonton semuanya dalam Bahasa.",
+  "attribution": null
+}

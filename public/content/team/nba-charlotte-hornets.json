@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-charlotte-hornets",
+  "title": "Profil Charlotte Hornets: Eastern Conference (2025-26)",
+  "description": "Profil Charlotte Hornets — franchise NBA dari Charlotte di division Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Charlotte Hornets: Profil Tim NBA Musim 2025-26\n\nCharlotte Hornets berkandang di Charlotte, North Carolina, dan tampil di Southeast Division Wilayah Timur NBA. Per 28 April 2026, Hornets menutup musim reguler 2025-26 dengan rekor 44-38, win percentage 0.537, seed 9 di Eastern Conference playoff picture. Bukan musim yang sempurna, tapi cukup untuk membuktikan bahwa tim ini sudah bukan lagi pelengkap klasemen.\n\n---\n\n## Identitas dan Posisi Liga\n\nCharlotte Hornets mengakhiri musim reguler 2025-26 di peringkat 3 Southeast Division Wilayah Timur, di bawah asuhan head coach Charles Lee. Seed 9 di Eastern Conference menempatkan mereka tepat di zona play-in, posisi yang tidak nyaman tapi tidak mustahil. Artinya musim ini bukan soal membangun untuk masa depan saja. ada sesuatu yang benar-benar bisa dikejar.\n\nDi antara 15 tim Eastern Conference, finish di seed 9 menunjukkan bahwa Hornets sudah berhasil keluar dari basement klasemen. Rekor 44-38 adalah bukti konkret bahwa rotatsi skuad muda ini mulai menemukan ritme di bawah kepemimpinan Lee.\n\n---\n\n## Performa Musim Ini\n\nAngkanya berbicara cukup jelas. Charlotte mencatat rata-rata 116,0 PPG, serangan yang hidup dan cenderung up-tempo. Di sisi pertahanan, mereka hanya membiarkan 111,2 PPG, menghasilkan point differential positif +4,8 per laga. Untuk tim yang sering disebut tim muda tanpa identitas pertahanan yang solid, angka ini cukup mengejutkan.\n\nYang lebih menarik: road record mereka justru lebih baik dari home record. Away 23-18 (0.561) berbanding home 21-20 (0.512), anomali yang tidak umum. Artinya Charlotte tidak bergantung pada atmosfer kandang untuk tampil baik. Mereka punya konsistensi yang biasanya cuma dimiliki tim yang sudah matang.\n\nTotal 44 menang dalam 82 laga adalah baseline yang sehat. Ini bukan tim yang kebetulan menang karena jadwal mudah, ini tim yang belajar bersaing.\n\n---\n\n## Roster dan Pemain Kunci\n\nTiga nama yang paling mencerminkan karakter tim ini musim 2025-26:\n\n**LaMelo Ball** (#1, G, 24 tahun, 5 tahun pengalaman) tetap jadi jantung operasional Hornets. Playmaker dengan court vision di atas rata-rata, LaMelo adalah alasan utama kenapa Charlotte bisa bermain dengan pace setinggi ini. Lima tahun di NBA, usianya baru 24, kombinasi pengalaman dan prime window yang jarang ada di satu paket.\n\n**Miles Bridges** (#0, F, 28 tahun, 6 tahun pengalaman) mengisi peran sebagai anchor forward. Jebolan Michigan State ini sudah enam tahun berseragam Hornets dan menjadi salah satu pemain dengan pengalaman terpanjang di roster. Di usia 28, Bridges ada di prime window-nya, cukup matang untuk jadi pemimpin, cukup atletis untuk berdampak di kedua ujung lapangan.\n\n**Brandon Miller** (#24, F, 23 tahun, 2 tahun pengalaman) adalah nama yang perlu diperhatikan. Hanya dua tahun di liga, tapi sudah mendapat peran signifikan di rotasi Lee. Jebolan Alabama ini punya pola permainan yang cocok di sistem Charlotte, wing yang bisa berkontribusi dari perimeter maupun drive ke ring.\n\nDi luar tiga nama itu, kedalaman roster Charlotte cukup solid. **Pat Connaughton** (#21, G, 33 tahun) adalah veteran 10 tahun yang memberikan stabilitas dari bench. Empat rookie, Sion James, Ryan Kalkbrenner, Kon Knueppel, dan Liam McNeeley, menambah energi muda sekaligus memberi Lee opsi untuk bereksperimen tanpa mempertaruhkan inti rotasi.\n\n---\n\n## Outlook\n\nMusim 2025-26 Charlotte Hornets ditutup dengan catatan yang paling menjanjikan dalam beberapa tahun terakhir: 44-38, seed 9, point differential positif, road record lebih baik dari home record. Ini bukan kebetulan.\n\nTim ini masih muda di beberapa posisi kunci, tapi kombinasi LaMelo Ball di usia 24, Miles Bridges di prime window, dan generasi rookie yang mulai matang membentuk fondasi yang bisa berkembang. Charles Lee mewarisi situasi yang pelan-pelan membaik, dan musim ini membuktikan bahwa proyeksi itu bukan sekadar harapan.\n\nPosisi seed 9 berarti play-in masih jadi batas yang harus dilampaui. Tapi untuk franchise yang pernah terlalu lama di papan bawah, ini adalah awal yang worth building on.\n\n*Profil ini mencerminkan data per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "30",
+    "team_name": "Charlotte Hornets",
+    "team_abbr": "CHA",
+    "team_location": "Charlotte",
+    "conference": "Eastern Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023071,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Multiple high-severity training-data inferences (player ages, college details, career narratives, play-style claims) not present in input block. Writer fabricated biographical and tactical details. Also minor date mismatch (28 Apr vs 3 May input). Restructure to use only input-provided facts: names, positions, college (listed), record, splits.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "LaMelo Ball (#1, G, 24 tahun, 5 tahun pengalaman)",
+          "fix": "Remove age/experience details or mark as approximate if essential to narrative"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Miles Bridges... Jebolan Michigan State ini sudah enam tahun berseragam Hornets",
+          "fix": "Stick to input: Michigan State college is listed, but 'enam tahun berseragam' is inference"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Brandon Miller... Jebolan Alabama ini punya pola permainan yang cocok di sistem Charlotte",
+          "fix": "Remove tactical assessment; cite only verifiable roster role"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Tiga nama yang paling mencerminkan karakter tim ini musim 2025-26:",
+          "fix": "Just say 'Charlotte's core three:' or restructure as plain fact"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Artinya Charlotte tidak bergantung pada atmosfer kandang untuk tampil baik.",
+          "fix": "Merge into previous sentence: 'Mereka punya konsistensi tanpa perlu kandang'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Ini bukan tim yang kebetulan menang karena jadwal mudah, ini tim yang belajar bersaing.",
+          "fix": "Restructure: 'Mereka menang konsisten, bukan karena jadwal mudah — tim yang benar-benar bersaing.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Per 28 April 2026, Hornets menutup musim reguler 2025-26",
+          "fix": "Use 3 Mei 2026 to match input data block header"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Playmaker dengan court vision di atas rata-rata... kombinasi pengalaman dan prime window",
+          "fix": "Remove descriptive assessment; cite only role and objective stats if available"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0a5e4eb90cad9e98",
+    "published_at": "2026-04-28T10:25:26+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

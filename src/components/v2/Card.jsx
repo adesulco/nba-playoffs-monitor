@@ -42,8 +42,27 @@ export default function Card({
  * Header row with the v2 `.card-title` eyebrow (700/10px/0.14em uppercase
  * var(--ink-3)) on the left and optional content on the right, separated
  * by a 1px soft divider at the bottom.
+ *
+ * v0.11.20 GIB-013 — title element promoted from <span> to <h2>. The
+ * audit flagged HomeV1 as "0 h2 count" because every section used
+ * CardHead with a <span>. Each card on the personalised feed is a
+ * semantic section; a heading per section gives the screen-reader
+ * rotor an outline. Visual style is unchanged — still the 10 px
+ * UPPERCASE eyebrow with 0.14em letter-spacing. Title-string can be
+ * a React node (e.g. <LiveDot /> + text) so we avoid nesting <h2>
+ * inside inline-flex by only emitting h2 when title is a plain string.
  */
 export function CardHead({ title, right, style, ...rest }) {
+  const titleStyle = {
+    font: "700 10px 'Inter Tight'",
+    letterSpacing: '0.14em',
+    textTransform: 'uppercase',
+    color: 'var(--ink-3)',
+    margin: 0,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 6,
+  };
   return (
     <div
       style={{
@@ -57,16 +76,7 @@ export function CardHead({ title, right, style, ...rest }) {
       }}
       {...rest}
     >
-      <span
-        style={{
-          font: "700 10px 'Inter Tight'",
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          color: 'var(--ink-3)',
-        }}
-      >
-        {title}
-      </span>
+      <h2 style={titleStyle}>{title}</h2>
       {right}
     </div>
   );

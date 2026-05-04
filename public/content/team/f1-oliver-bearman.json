@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-oliver-bearman",
+  "title": "Profil Oliver Bearman: Pembalap F1 Haas F1 Team (2026)",
+  "description": "Profil pembalap F1 Oliver Bearman (Inggris) untuk tim Haas F1 Team. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Oliver Bearman: Rookie Haas yang Bikin Kejutan di Awal 2026\n\nOliver Bearman, kode FIA BEA (#87), pembalap Inggris kelahiran 8 Mei 2005. Per 28 April 2026, Bearman membalap untuk Haas F1 Team dan menempati P7 klasemen sementara Formula 1 2026 dengan 17 poin dari tiga balapan. Usia 20 tahun, tapi angka itu belum mencerminkan betapa cepatnya dia menggebrak musim.\n\n---\n\n## Identitas\n\nNama lengkap Oliver Bearman, kode FIA BEA, nomor permanen #87, dua detail yang bakal akrab di layar timing sepanjang musim ini. Lahir 8 Mei 2005, Bearman baru genap 20 tahun sebulan ke depan, menjadikannya salah satu pembalap termuda di grid 2026. Kebangsaan Inggris, bermarkas bersama Haas F1 Team, tim Amerika yang sudah lama cari identitas kompetitif.\n\nYang menarik dari Bearman: dia bukan nama yang datang tanpa ekspektasi. Nomor #87 dipilih, bukan sekadar dikasih. Dan di Haas, dia bukan pelengkap, dia diposisikan sebagai bagian dari proyek jangka panjang. Sejauh ini, tiga balapan pertama musim 2026 sudah mulai menjawab mengapa.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, 17 poin, posisi P7 klasemen. Bukan angka yang terdengar bombastis, tapi baca lebih dalam, dan gambarnya berbeda.\n\nDari dua balapan yang diselesaikan Bearman, hasilnya konsisten di zona poin besar: P7 di Australia (6 poin), P5 di China (10 poin). P5 di Grand Prix China khususnya bukan hasil keberuntungan belaka, itu finis di tengah tim-tim dengan resource jauh lebih besar. Haas memang bukan tim papan atas, dan poin itu terasa lebih berat beratnya.\n\nSatu-satunya noda di tiga balapan pertama: retired di Jepang tanpa poin. Tapi dua dari tiga balapan berhasil diselesaikan dengan hasil solid, dan itu sudah cukup untuk menempatkan Bearman di P7 klasemen sementara, di atas sejumlah nama yang mobilnya lebih cepat di atas kertas.\n\n---\n\n## Hasil Per Balapan\n\n**Australian Grand Prix, P7, 6 poin**\nBalapan pembuka musim, dan Bearman langsung masuk poin. P7 dengan status *lapped*, artinya dia kena selisih satu lap dari pemimpin balapan. Wajar untuk tim sekelas Haas di circuit sepanjang Albert Park. Yang penting: balapan selesai, poin masuk, kepercayaan diri terbentuk.\n\n**Chinese Grand Prix, P5, 10 poin**\nIni yang bikin mata terbuka. P5 di Shanghai adalah hasil terbaik Bearman musim ini, sekaligus lompatan besar dari P7 Australia. Balapan diselesaikan dengan *finished* bersih. Apakah ada faktor safety car, strategi pit stop, atau genuine pace yang jadi kunci? Data tidak merinci, tapi angka 10 poin berbicara sendiri. Dalam tiga balapan pertama karier penuh di F1 2026, ini jadi high point yang susah diabaikan.\n\n**Japanese Grand Prix, P22, 0 poin**\nJepang jadi pengingat bahwa F1 tidak pernah mulus. *Retired* di Suzuka, finis di P22 tanpa poin. Apa penyebabnya tidak tercatat di data, mechanical issue, incident, atau faktor lain. Yang pasti, momentum dari China tidak berlanjut. Bearman harus bounce back.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Bearman di P7 klasemen dengan 17 poin dari tiga balapan, dua balapan produktif, satu retirement. Di usia 20 tahun bersama Haas, ekspektasi awalnya mungkin \"survive dan belajar\". Tapi P5 di China sudah melampaui skenario itu.\n\nPertanyaannya sekarang: apakah Jepang itu outlier, atau pertanda bahwa musimnya akan fluktuatif? Haas bukan tim yang bisa menutupi kesalahan dengan pace, setiap poin harus diperjuangkan keras. Bearman paham itu. Dan sejauh ini, dua dari tiga balapan membuktikan dia sudah siap untuk pertarungan itu.\n\nMusim masih panjang. Tapi tiga balapan pertama sudah cukup untuk menempatkan BEA #87 sebagai nama yang perlu dicatat.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "bearman",
+    "driver_name": "Oliver Bearman",
+    "driver_code": "BEA",
+    "driver_number": "87",
+    "nationality": "British",
+    "current_team": "Haas F1 Team",
+    "current_team_id": "haas",
+    "championship_pos": "7",
+    "championship_points": "17",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.02299,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on three high-severity training-data inferences (Bearman's number choice, Haas long-term role, team competitive tier) and a date mismatch (says 28 April, input says 3 Mei). Multiple translated-English phrases reduce voice naturalness. Rewrite required.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Nomor #87 dipilih, bukan sekadar dikasih.",
+          "fix": "Remove speculation about number choice; stick to: 'Bearman membalap dengan nomor #87'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "diposisikan sebagai bagian dari proyek jangka panjang",
+          "fix": "Remove; replace with factual: 'Haas merekrutnya untuk musim 2026'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Haas memang bukan tim papan atas",
+          "fix": "Remove competitive ranking claim; describe only what data shows: results vs. others this season."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik dari Bearman: dia bukan nama yang datang tanpa ekspektasi.",
+          "fix": "Rephrase: 'Bearman bukan nama yang dianggap remeh' or 'dia bawa ekspektasi besar'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "baca lebih dalam, dan gambarnya berbeda",
+          "fix": "More direct: 'Angka-angka itu punya cerita lebih kompleks'."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Bearman di P7 klasemen",
+          "fix": "Change to 'Per 3 Mei 2026' to match input block."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tiga balapan pertama sudah cukup untuk menempatkan",
+          "fix": "Vary: 'awal musim', 'tiga race pembuka', 'start tahun ini'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Bukan angka yang terdengar bombastis, tapi baca lebih dalam",
+          "fix": "Tighten: 'P7 dengan 17 poin terlihat sederhana, padahal...'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x122267a9d1a5aebf",
+    "published_at": "2026-04-28T12:00:21+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

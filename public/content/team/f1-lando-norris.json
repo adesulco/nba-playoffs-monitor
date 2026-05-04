@@ -1,0 +1,81 @@
+{
+  "type": "team",
+  "slug": "f1-lando-norris",
+  "title": "Profil Lando Norris: Pembalap F1 McLaren (2026)",
+  "description": "Profil pembalap F1 Lando Norris (Inggris) untuk tim McLaren. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Lando Norris: Musim Muda yang Sudah Dihantam Masalah\n\nLando Norris, kode FIA NOR (#1), pembalap Inggris kelahiran 13 November 1999. Per 28 April 2026, Norris membalap untuk McLaren dan duduk di P5 klasemen sementara F1 2026 dengan 25 poin dari tiga round yang sudah dijalani, tanpa satu pun kemenangan musim ini.\n\n---\n\n## Identitas\n\nNorris berumur 26 tahun musim ini, salah satu pembalap muda di grid yang sudah punya jam terbang tinggi di level F1. Nomor permanen #1 jadi identitas balapannya di kode FIA, dan di McLaren dia jadi andalan utama tim papaya orange asal Woking itu.\n\nKebangsaannya Inggris, pembalap Britania di tim Britania, kombinasi yang selalu punya daya tarik tersendiri buat fans F1 di Inggris maupun Indonesia. Tapi identitas di atas kertas tidak ada artinya kalau musimnya berjalan seperti ini.\n\n---\n\n## Performa Musim Ini\n\nTiga round, 25 poin, nol kemenangan. Angka-angka itu belum bicara banyak soal potensi Norris, tapi musim 2026 sudah menawarkan turbulens lebih awal dari yang diharapkan.\n\nYang menonjol langsung dari data: Norris absen di Chinese Grand Prix. Status-nya *did not start* di Round 2, artinya dia bahkan tidak sempat start balapan, bukan sekadar DNF di tengah jalan. Kehilangan 0 poin di satu round buat pembalap yang bersaing di papan atas adalah pukulan besar, dan China adalah salah satu dari tiga balapan yang sudah dijalani musim ini. Satu dari tiga hilang begitu saja.\n\nDi dua balapan yang berhasil dia finish, Australian GP dan Japanese GP, Norris konsisten di P5. Dua kali P5, identik, tidak ada variasi. Konsisten, tapi konsisten di luar podium.\n\n---\n\n## Hasil Per Balapan\n\n**Round 1, Australian Grand Prix:** P5, 10 poin. Start musim yang solid tapi bukan yang diharapkan buat pembalap dengan ambisi juara. P5 di Melbourne bisa jadi batu loncatan, atau bisa jadi sinyal bahwa McLaren belum sepenuhnya siap bersaing di P1 dan P2.\n\n**Round 2, Chinese Grand Prix:** Did not start, 0 poin. Ini yang bikin klasemen Norris terpukul. Apapun alasan di balik DNS-nya, data tidak menjelaskan lebih jauh, hasilnya sama: nol poin dari satu kesempatan penuh.\n\n**Round 3, Japanese Grand Prix:** P5 lagi, 10 poin lagi. Suzuka adalah sirkuit yang demanding secara teknis, dan finis P5 di sana bukan hasil yang memalukan. Tapi polanya terulang persis, dan tanpa kemenangan, ritme P5-DNS-P5 membuat Norris kesulitan mengejar pembalap-pembalap di atasnya.\n\nDua finish, dua P5. Konsistensi itu setidaknya menunjukkan bahwa ketika mobil bisa start dan finish, Norris tahu apa yang harus dilakukan. Masalahnya ada di gap antara P5 dan podium, dan satu round yang hilang sepenuhnya.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Norris berada di P5 klasemen dengan 25 poin dari tiga round. Jarak ke posisi-posisi di atasnya sudah terasa di awal musim, terutama karena DNS di China memotong momentum sebelum sempat terbentuk.\n\nMusim masih panjang. Tiga round adalah sample kecil, dan McLaren secara historis sering menemukan ritme setelah beberapa race pertama berlalu. Tapi untuk Norris, mengejar poin yang hilang di China sambil harus tetap konsisten di setiap round ke depan adalah tantangan ganda yang tidak bisa diabaikan.\n\nApakah kemenangan pertama musim ini ada di depan? Data per 28 April 2026 belum menjawab itu. Yang jelas: dua finish identik di P5 menunjukkan stabilitas, tapi stabilitas di P5 bukan target seorang Norris musim ini.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "norris",
+    "driver_name": "Lando Norris",
+    "driver_code": "NOR",
+    "driver_number": "1",
+    "nationality": "British",
+    "current_team": "McLaren",
+    "current_team_id": "mclaren",
+    "championship_pos": "5",
+    "championship_points": "25",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021596,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to factual errors: wrong point total (25 vs 33) and invented earlier date (28 April vs 3 Mei input). Also contains training-inference about career length and translated-English phrasing. Data integrity breach is critical for profile content.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Norris membalap untuk McLaren dan duduk di P5 klasemen sementara F1 2026 dengan 25 poin",
+          "fix": "Use input data exactly: P5, 33 poin, per 3 Mei 2026 atau lebih aman 'per tiga round terakhir'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Norris berumur 26 tahun musim ini, salah satu pembalap muda di grid yang sudah punya jam terbang tinggi di level F1.",
+          "fix": "Stick to: 'Norris berumur 26 tahun' or describe only what input provides (age, team, code)."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Konsistensi itu setidaknya menunjukkan bahwa ketika mobil bisa start dan finish, Norris tahu apa yang harus dilakukan.",
+          "fix": "Rephrase: 'Di dua balapan yang selesai, Norris tunjukkan dia tahu yang perlu dilakukan.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Masalahnya ada di gap antara P5 dan podium, dan satu round yang hilang sepenuhnya.",
+          "fix": "Rephrase: 'Masalahnya: jarak P5 ke podium besar, dan satu round hilang jadi beban.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Dua finish, dua P5. Konsistensi itu setidaknya... tanpa kemenangan, ritme P5-DNS-P5 membuat Norris kesulitan mengejar",
+          "fix": "Para 4: delete 'Konsistensi itu setidaknya'. Replace: 'Dua P5 berturut-turut menunjukkan stabilitas, tapi...'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Norris berada di P5 klasemen dengan 25 poin dari tiga round.",
+          "fix": "Use consistent, correct data throughout: 3 Mei 2026, 33 poin, three rounds completed."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "di McLaren dia jadi andalan utama tim papaya orange asal Woking itu",
+          "fix": "Just: 'di McLaren dia jadi andalan utama tim asal Woking.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x9b51a22862a783aa",
+    "published_at": "2026-04-28T11:59:06+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

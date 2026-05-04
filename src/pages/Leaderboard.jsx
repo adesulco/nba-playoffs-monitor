@@ -4,7 +4,6 @@ import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { supabase } from '../lib/supabase.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 
 /**
  * /leaderboard — global Indonesia leaderboard for the 2026 playoffs.
@@ -47,9 +46,8 @@ export default function GlobalLeaderboard() {
         lang={lang}
       />
       <div className="dashboard-wrap" style={{ maxWidth: 820, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? "pick'em · leaderboard" : "pick'em · leaderboard"} />
 
-        <main style={{ padding: '28px 8px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <section style={{ padding: '28px 8px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           <header style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <p style={{
               margin: 0, fontSize: 11, color: C.dim,
@@ -145,7 +143,7 @@ export default function GlobalLeaderboard() {
               </tbody>
             </table>
           </div>
-        </main>
+        </section>
       </div>
     </div>
   );

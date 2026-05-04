@@ -1,0 +1,66 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-damian-lillard",
+  "title": "Profil Damian Lillard: Guard Portland Trail Blazers",
+  "description": "Profil pemain NBA Damian Lillard, Guard Portland Trail Blazers. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Damian Lillard, Kembali ke Rumah, Masih Berbahaya\n\nDamian Lillard, guard Portland Trail Blazers kelahiran Oakland, California, mencatat 24,9 PPG di musim 2025-26 per 28 April 2026, peringkat 10 NBA dalam scoring. Di usia 35 tahun, pemain 6'2\" 200 lbs dengan jersey #0 ini membuktikan bahwa karir panjang belum tentu berarti penurunan.\n\n---\n\n## Identitas\n\nLahir di Oakland, CA, Lillard bukan produk program elite. Ia datang dari Weber State, bukan Kentucky, bukan Duke, sebelum akhirnya dipilih Portland di Rd 1, Pick 6 Draft 2012. Pilihan keenam yang ternyata jadi salah satu guard paling konsisten sepanjang era modern NBA.\n\nMusim 2025-26 adalah tahun ke-13 Lillard di NBA. Pada usia di mana banyak guard sudah masuk fase veteran cadangan, postur 6'2\" 200 lbs-nya masih menopang beban starter penuh. Jersey #0 di Portland bukan sekadar angka, bagi fanbase Rip City, nomor itu punya berat sejarah tersendiri.\n\n---\n\n## Kembali ke Portland\n\nLillard kini memakai seragam Portland Trail Blazers. Bagi banyak penggemar NBA, ini narasi yang mudah dibaca: pemain ikonik, tim ikonik, reuni yang terasa lengkap. Tapi di lapangan, yang lebih relevan adalah perannya, dan statistik musim ini bicara jelas.\n\nDengan 24,9 PPG dan 7,1 APG, Lillard bukan sekadar scorer di POR. Angka assist itu menempatkannya di peringkat 10 NBA, sejajar dengan point guard-point guard top league. Ini bukan peran pinggiran. Ini pemain yang jadi engine offensive sekaligus distributor utama.\n\n---\n\n## Performa Musim Ini\n\n24,9 PPG, peringkat 10 liga. Di NBA 2025-26, masuk top 10 scoring berarti Lillard secara konsisten jadi ancaman di setiap possession. Bukan tipe scorer yang hidup dari volume atau catch-and-shoot semata, guard dengan 7,1 APG harus bisa baca permainan, buka celah untuk orang lain, dan tetap jadi ancaman individual dalam satu paket.\n\n7,1 APG di peringkat 10 liga adalah angka yang menarik justru karena dikombinasikan dengan PPG-nya. Banyak high-scorer yang APG-nya turun karena fokus ke individual output. Lillard tidak, dua angka itu jalan beriringan, yang mengindikasikan peran dual-threat sebagai scorer sekaligus playmaker.\n\n4,7 RPG dari posisi guard, peringkat 85 liga, bukan angka yang dirancang untuk impress. Ini wajar untuk guard 6'2\". Tapi fakta bahwa angkanya solid menunjukkan Lillard tidak absen dari contest dan putaran rebound. ia kontribusi sesuai porsi posisinya.\n\nFG% di angka 44,8%, peringkat 90 liga, adalah catatan yang perlu dibaca dengan konteks. Guard dengan volume shooting tinggi dan shot selection yang mencakup pull-up three-pointer dari jarak absurd hampir selalu punya FG% yang lebih rendah dari forward atau big man. 44,8% dengan beban 24,9 PPG bukan angka yang perlu dikhawatirkan. ini konsekuensi dari tipe scorer yang ia pilih jadi.\n\nKombinasi keempat stat ini menggambarkan guard yang bermain dengan beban penuh, bukan role player, bukan sixth man, bukan veteran yang dimanjakan menit-menit mudah.\n\n---\n\n## Outlook\n\nDi usia 35, memasuki musim ke-13, Damian Lillard masih beroperasi di level yang sama dengan guard-guard terbaik liga. Top 10 scoring, top 10 assist, dua kategori itu cukup untuk menempatkannya dalam percakapan tentang point guard terbaik aktif di NBA saat ini.\n\nPortland mendapat versi Lillard yang sudah selesai dengan proses panjang di luar Rip City. Yang tersisa adalah pemain dengan pengalaman 13 musim, skill set yang belum tumpul, dan jersey #0 yang kembali ke tempat asalnya.\n\nData per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "6606",
+    "athlete_name": "Damian Lillard",
+    "team_name": "Portland Trail Blazers",
+    "team_abbr": "POR",
+    "position": "Guard",
+    "jersey": "0",
+    "age": 35,
+    "birthplace": "Oakland, CA",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020651,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Strong article with natural Bahasa Indonesia sport voice. Minor academic drift in one clause and one soft-discouraged phrase. Data accuracy confirmed against input block. Passes voice and content standards.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "jersey #0 di Portland bukan sekadar angka, bagi fanbase Rip City, nomor itu punya berat sejarah tersendiri",
+          "fix": "Ganti 'punya berat sejarah' dengan 'punya makna khusus' atau 'punya cerita sendiri'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Kombinasi keempat stat ini menggambarkan guard yang bermain dengan beban penuh",
+          "fix": "Simplify: 'Keempat stat itu jelas: Lillard bermain dengan beban penuh'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Lillard tidak, dua angka itu jalan beriringan",
+          "fix": "Alternative: 'kedua angka itu keduanya tinggi' or restructure"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Bagi banyak penggemar NBA, ini narasi yang mudah dibaca",
+          "fix": "Optional: 'Bagi NBA fans, cerita ini mudah dibaca:' (but current is acceptable)"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "ternyata jadi salah satu guard paling konsisten sepanjang era modern NBA.\n\nMusim 2025-26 adalah tahun ke-13 Lillard di NBA. Pada",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x550304827c21d2b8",
+    "published_at": "2026-04-28T12:09:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

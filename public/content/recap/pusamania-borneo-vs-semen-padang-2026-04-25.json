@@ -1,0 +1,60 @@
+{
+  "type": "recap",
+  "slug": "pusamania-borneo-vs-semen-padang-2026-04-25",
+  "title": "Recap Pusamania Borneo 3-0 Semen Padang",
+  "description": "Recap Bahasa Indonesia untuk Pusamania Borneo vs Semen Padang (3-0) di Stadion Batakan, Balikpapan, 25 April 2026.",
+  "body_md": "# Pusamania Borneo Hancurkan Semen Padang 3-0, Batakan Meriah\n\nPusamania Borneo menutup laga kandang dengan sempurna, menang 3-0 atas Semen Padang di Stadion Batakan, Sabtu malam 25 April 2026. Tiga gol bersih tanpa balas, dua kartu kuning untuk tamu, dan stadion Balikpapan yang riuh sampai peluit akhir. Malam yang nyaris sempurna untuk skuad Fabio Lefundes.\n\n---\n\n## Gol demi Gol\n\nBorneo langsung ambil kendali sejak menit awal. K. Teguh buka skor di menit ke-9, gol pembuka yang langsung kasih tekanan ke Semen Padang sebelum laga benar-benar panas.\n\nTim tamu coba merespons, tapi situasi mereka makin sulit. A. Gufron kena kartu kuning menit ke-28, disusul A. Meneses di menit ke-35. Dua pemain Semen Padang berjalan di atas tali sebelum babak pertama selesai, dan tekanan psikologis itu terbaca di lapangan.\n\nKaio Nunes manfaatkan situasi itu menit ke-39. Assist dari Caxambu, Nunes selesaikan dengan tenang. Dua-nol untuk Borneo sebelum turun minum, dan Semen Padang sudah tertinggal jauh sebelum Eduardo Almeida sempat berpikir tentang halftime adjustment.\n\nBabak kedua lebih banyak pergantian daripada gol. Almeida langsung pasang Botan untuk Nakagawa di menit ke-46, lalu Setiawan gantikan Diarra di menit ke-61. Lefundes juga bergulir, Zikrak masuk untuk Enero di menit ke-64, Anez gantikan Nunes di menit ke-65. Lima sub dalam 25 menit pertama babak kedua. laga yang secara skor sudah selesai, tapi kedua pelatih tetap aktif mengelola skuad.\n\nMenit ke-73, Semen Padang kena kartu kuning lagi, Giraldo kena tegur wasit, di menit yang sama Froese ditarik untuk Maicon Souza. Empat kartu kuning total untuk tim tamu. Itu cerita tersendiri.\n\nGol penutup datang menit ke-90 dari K. Obieta, menarik, karena Obieta sendiri sudah kena kartu kuning di menit ke-78. Dia bertahan di lapangan dan justru cetak gol injury time yang mempertegas selisih. Skor akhir: 3-0.\n\n---\n\n## Catatan Taktis\n\nData statistik tidak tersedia di sistem untuk laga ini, jadi tidak bisa sebut angka possession atau shots secara pasti.\n\nYang terbaca dari timeline: Borneo main efisien. Tiga gol dari tiga situasi berbeda, gol awal yang ciptakan ketenangan, gol kombinasi Caxambu-Nunes yang lebih terstruktur, dan gol injury time Obieta yang menutup laga. Tidak ada yang keliatan keberuntungan murni.\n\nSemen Padang, sebaliknya, tampil dengan empat kartu kuning dan tidak satu pun ancaman nyata di timeline. Nakagawa ditarik di awal babak kedua, sinyal bahwa Almeida tidak puas dengan output sektor itu. Pergantian-pergantian tamu terasa reaktif, bukan proaktif.\n\nFormasi kedua tim tidak tersedia di data, tapi pola substitusi Borneo, Zikrak, Anez, Sihran, Michiels, Cleylton semua masuk di babak kedua, membaca seperti rotasi tim yang sudah merasa aman dengan keunggulan, bukan tim yang panik mencari gol.\n\n---\n\n## Momen Penentu\n\nGol Kaio Nunes di menit ke-39.\n\nKalau Borneo cuma unggul 1-0 sampai turun minum, babak kedua masih terbuka. Tapi gol itu, assist Caxambu, finish Nunes, tiga menit sebelum turun minum, tutup pintu harapan Semen Padang lebih awal. Almeida turun minum sudah harus mengejar dua gol, bukan satu. Dengan empat pemain di ancaman kartu merah, itu bukan posisi yang nyaman.\n\n---\n\n## Apa Artinya\n\nTiga poin penuh untuk Borneo di kandang sendiri. Kemenangan bersih tanpa kebobolan, dengan rotasi yang terjaga di babak kedua, kondisi yang baik jelang jadwal berikutnya. Semen Padang pulang dengan empat kartu kuning dan tanpa gol. ada pekerjaan rumah untuk Almeida soal disiplin dan finishing.\n\nSiaran laga tadi tersedia via Vidio, Indosiar, dan MNCTV.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "fixture_id": "1403821",
+    "home_team": "Pusamania Borneo",
+    "away_team": "Semen Padang",
+    "home_score": 3,
+    "away_score": 0,
+    "kickoff_utc": "2026-04-25T12:00:00+00:00",
+    "venue": "Stadion Batakan, Balikpapan",
+    "home_formation": null,
+    "home_coach": "Fabio Lefundes",
+    "away_formation": null,
+    "away_coach": "Eduardo Almeida",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.046402,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with natural Bahasa tone and good structure. Minor calqued idiom and one typo/fragment; otherwise adheres to voice rules well. Passes threshold.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "berjalan di atas tali sebelum babak pertama selesai",
+          "fix": "Use 'terancam kartu merah' or 'dalam kondisi sulit' instead"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Lima sub dalam 25 menit pertama babak kedua. laga yang secara skor sudah selesai",
+          "fix": "Merge: 'Lima sub dalam 25 menit pertama babak kedua. Laga secara skor sudah selesai...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Itu cerita tersendiri. / Apa Artinya",
+          "fix": "Consolidate or vary the transition phrasing"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Data statistik tidak tersedia di sistem untuk laga ini",
+          "fix": "Use 'menyebut angka possession' or 'melihat statistik possession' instead"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf095f3ae44e380f4",
+    "published_at": "2026-04-27T13:13:31+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

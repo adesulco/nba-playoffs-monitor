@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-psbs-biak-numfor",
+  "title": "Profil PSBS Biak Numfor: Liga 1 (2025-26)",
+  "description": "Profil PSBS Biak Numfor — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# PSBS Biak Numfor: Profil Klub Super League Indonesia 2025-26\n\nPSBS Biak Numfor adalah klub sepak bola asal Biak Numfor, Papua, yang berkompetisi di Super League Indonesia (Liga 1) musim 2025-26. Per 28 April 2026, PSBS menempati posisi juru kunci klasemen, peringkat 18 dengan 18 poin dari 29 laga, selisih gol -38. Angka-angka itu bercerita sendiri: musim ini berat, dan waktu untuk membalikkan keadaan hampir habis.\n\n---\n\n## Identitas Klub\n\nPSBS Biak Numfor berdiri pada 1968 dan menjadi salah satu klub tertua dari wilayah Papua yang pernah tampil di kompetisi kasta tertinggi sepak bola Indonesia. Kandang mereka adalah Stadion Cendrawasih di Biak Numfor dengan kapasitas sekitar 15.000 penonton, stadion yang namanya diambil dari burung endemik Papua, simbol identitas kuat klub ini dengan daerahnya.\n\nTampil di Liga 1 bukan pencapaian kecil untuk klub dari wilayah timur Indonesia. PSBS membawa representasi Papua ke panggung nasional, sesuatu yang punya makna lebih dari sekadar angka di klasemen. Tapi musim 2025-26 menguji batas itu lebih keras dari yang mungkin dibayangkan.\n\n---\n\n## Performa Musim Ini\n\nDari 29 laga yang sudah dijalani, PSBS mencatat catatan 4 menang, 6 seri, dan 19 kalah. Gol yang dicetak 29, yang kebobolan 67, rata-rata kebobolan 2,3 gol per laga, sementara rata-rata mencetak hanya 1,0 gol per laga. Selisih gol -38 adalah salah satu yang paling dalam di seluruh klasemen.\n\nYang juga mengkhawatirkan: PSBS gagal mencetak gol di 11 dari 29 laga. Hampir 38% pertandingan berakhir tanpa gol sama sekali dari tim ini. Clean sheet pun baru tiga kali terjadi sepanjang musim, artinya di 26 laga sisanya, gawang selalu kebobolan minimal satu kali.\n\nSituasi di kandang dan tandang sama-sama berat. Di Stadion Cendrawasih, PSBS meraih 3 menang, 3 seri, dan 8 kalah dari 14 laga kandang. Di luar kandang, lebih parah lagi: 1 menang, 3 seri, 11 kalah dari 15 laga tandang. Kandang yang seharusnya jadi benteng nyatanya belum cukup memberikan keuntungan nyata.\n\nForm terbaru mempertegas kesulitan ini. Delapan laga terakhir: satu seri dan tujuh kekalahan beruntun. Tak ada tanda-tanda kebangkitan yang bisa jadi pegangan.\n\n---\n\n## Posisi di Klasemen\n\n18 poin dari 29 laga menempatkan PSBS di posisi paling bawah klasemen Super League Indonesia 2025-26. Dengan status **relegation** yang sudah tercatat, ancaman degradasi bukan lagi skenario terburuk, itu sudah jadi gambaran paling realistis yang tersisa.\n\nMatematika masih membuka celah kecil: sisa laga masih ada, dan poin masih bisa dikejar. Tapi dengan defisit yang sudah sebesar ini, tujuh kekalahan beruntun di form terbaru, dan selisih gol -38 yang butuh pemulihan luar biasa, jalan keluar dari zona merah butuh sesuatu yang jauh di luar tren yang ada.\n\n---\n\n## Outlook\n\nSisa musim 2025-26 adalah soal seberapa banyak yang bisa diselamatkan, bukan lagi soal meraih prestasi. Bagi PSBS, tiga poin di setiap laga tersisa adalah wajib, tapi itu belum cukup tanpa kombinasi hasil dari tim-tim di atas mereka.\n\nYang tidak boleh hilang di tengah angka-angka berat ini adalah konteks: PSBS Biak Numfor berdiri sejak 1968, datang dari Papua, dan berjuang di level tertinggi sepak bola Indonesia. Degradasi, jika memang terjadi, bukan akhir dari perjalanan klub ini, tapi pekerjaan rumah yang harus diselesaikan dari bawah.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "4232",
+    "team_name": "PSBS Biak Numfor",
+    "team_country": "Indonesia",
+    "team_founded": 1968,
+    "venue_name": "Stadion Cendrawasih",
+    "venue_city": "Biak Numfor",
+    "venue_capacity": 15000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021217,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to multiple critical factual mismatches with input data (laga count, gol, selisih, kandang/tandang split) plus unjustified training-data inferences about symbolism and regional narrative. Rewrite required with input facts locked in.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "burung endemik Papua, simbol identitas kuat klub ini",
+          "fix": "Remove symbolic interpretation; stick to: 'Stadion Cendrawasih di Biak Numfor, kapasitas 15.000'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "PSBS membawa representasi Papua ke panggung nasional, sesuatu yang punya makna lebih",
+          "fix": "Delete paragraph; focus on club facts only"
+        },
+        {
+          "type": "factual_mismatch",
+          "severity": "high",
+          "snippet": "Dari 29 laga yang sudah dijalani, PSBS mencatat catatan 4 menang, 6 seri, dan 19 kalah",
+          "fix": "Use input data exactly: 31 laga, 4M-6S-21K"
+        },
+        {
+          "type": "factual_mismatch",
+          "severity": "high",
+          "snippet": "Gol yang dicetak 29, yang kebobolan 67, selisih gol -38",
+          "fix": "Use input: 29 gol cetak, 78 kebobolan, selisih -49. Fix date to 3 Mei"
+        },
+        {
+          "type": "factual_mismatch",
+          "severity": "high",
+          "snippet": "PSBS gagal mencetak gol di 11 dari 29 laga. Hampir 38%",
+          "fix": "Change to: 'PSBS gagal mencetak gol di 13 dari 31 laga'"
+        },
+        {
+          "type": "factual_mismatch",
+          "severity": "high",
+          "snippet": "Di Stadion Cendrawasih, PSBS meraih 3 menang, 3 seri, dan 8 kalah dari 14 laga kandang",
+          "fix": "Use input: '3 menang, 3 seri, dan 9 kalah dari 15 laga kandang'"
+        },
+        {
+          "type": "factual_mismatch",
+          "severity": "high",
+          "snippet": "Di luar kandang, lebih parah lagi: 1 menang, 3 seri, 11 kalah dari 15 laga tandang",
+          "fix": "Use input: '1 menang, 3 seri, dan 12 kalah dari 16 laga tandang'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Degradasi, jika memang terjadi, bukan akhir dari perjalanan klub ini, tapi pekerjaan rumah",
+          "fix": "Remove; stick to factual status: PSBS sudah dalam zona degradasi per klasemen 3 Mei"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x03d224adc465acca",
+    "published_at": "2026-04-28T12:17:52+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

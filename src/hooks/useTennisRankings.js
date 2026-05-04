@@ -1,4 +1,11 @@
 import { useEffect, useState } from 'react';
+import { readCache, writeCache } from '../lib/swrCache.js';
+
+// v0.11.15 SWR. Tennis rankings update Mondays per ATP/WTA schedule —
+// 6h cache aligns with the existing refresh interval so return visits
+// paint the table immediately instead of waiting on ESPN's proxy.
+function cacheKey(tour) { return `tennis-rankings-${tour}`; }
+const CACHE_TTL = 6 * 60 * 60 * 1000;
 
 /**
  * ATP + WTA singles rankings via ESPN's undocumented rankings endpoint.
@@ -14,10 +21,11 @@ import { useEffect, useState } from 'react';
  * schedule — a 6h TTL is conservative and keeps upstream load minimal.
  */
 export function useTennisRankings(tour = 'atp') {
-  const [singles, setSingles] = useState([]);
-  const [doubles, setDoubles] = useState([]);
-  const [updatedAt, setUpdatedAt] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const cached = readCache(cacheKey(tour), { ttlMs: CACHE_TTL });
+  const [singles, setSingles] = useState(cached?.singles ?? []);
+  const [doubles, setDoubles] = useState(cached?.doubles ?? []);
+  const [updatedAt, setUpdatedAt] = useState(cached?.updatedAt ?? null);
+  const [loading, setLoading] = useState(!cached);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -38,9 +46,15 @@ export function useTennisRankings(tour = 'atp') {
         const singlesRanks = normaliseRanks(singlesList?.ranks);
         const doublesRanks = normaliseRanks(doublesList?.ranks);
         if (!cancelled) {
+          const nextUpdatedAt = singlesList?.lastUpdated || null;
           setSingles(singlesRanks);
           setDoubles(doublesRanks);
-          setUpdatedAt(singlesList?.lastUpdated || null);
+          setUpdatedAt(nextUpdatedAt);
+          writeCache(cacheKey(tour), {
+            singles: singlesRanks,
+            doubles: doublesRanks,
+            updatedAt: nextUpdatedAt,
+          });
           setError(null);
         }
       } catch (e) {

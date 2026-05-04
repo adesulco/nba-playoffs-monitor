@@ -1,0 +1,24 @@
+dist
+node_modules
+.env
+.env.local
+.env.*.local
+.DS_Store
+*.log
+
+# v0.22.0 — Python content engine. Lives in this repo as a sibling package
+# (per docs/content-engine-response.md § 1) but does NOT deploy to Vercel.
+# It runs locally + via Cloudflare Workers / GitHub Actions per spec § 10.
+#
+# Vercel Build Inference scans the upload tree for pyproject.toml / *.py
+# and tries to build a Python project — even when framework is set to
+# "vite" in vercel.json. So we exclude the Python tree aggressively here:
+# directory + every conceivable Python marker file. Belt-and-suspenders.
+packages
+packages/
+packages/**
+**/pyproject.toml
+**/setup.py
+**/requirements*.txt
+**/*.py
+spec-content-agent.md

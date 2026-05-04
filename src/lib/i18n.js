@@ -29,7 +29,11 @@ export const LOCALES = {
     yourTeam: '★ YOUR TEAM',
     following: '● FOLLOWING',
     swipeHint: 'SWIPE ← →',
-    noGamesDay: 'No games',
+    // v0.11.5 editorial pass — empty/off-day states get voice instead of
+    // system-default copy. Matches the audit's "8 editorial empty-state
+    // strings" remediation + Persona C (Pak Haryanto) benefits from a
+    // concrete description rather than "No games."
+    noGamesDay: 'No games today — grab coffee',
     offDay: 'OFF DAY',
 
     // Context strip
@@ -46,8 +50,8 @@ export const LOCALES = {
     winProbability: 'WIN PROBABILITY',
     playByPlay: 'Play-by-play',
     boxScore: 'Box Score',
-    statsOpen: 'Box score opens at tip-off.',
-    noPlaysYet: 'No plays yet — check back at tip-off.',
+    statsOpen: 'Box score opens at tip-off — one more minute.',
+    noPlaysYet: 'Still warming up — tip-off, then we move.',
     streamOpens: 'Win probability stream opens at tip-off',
     pickMatchAbove: 'Pick a match above.',
     tapToFollow: 'Tap any game above to follow live — win probability, play-by-play, and live score.',
@@ -155,15 +159,44 @@ export const LOCALES = {
     shareCardOG: 'OG',
     shareCardStory: 'Story',
     shareCardSquare: 'Square',
-    // States
-    stateEmptyLive: 'No live games right now',
-    stateEmptyCheckBack: 'Check back at',
-    stateErrorFeed: 'Feed disconnected',
-    stateRetry: 'Retry now',
+    // States — editorial voice (v0.11.5)
+    stateEmptyLive: 'Nothing live right now — still early',
+    stateEmptyCheckBack: 'Come back at',
+    stateErrorFeed: 'Feed lost a beat — reconnecting',
+    stateRetry: 'Try again',
     // Theme popover labels
     themeAuto: 'AUTO',
     themeDark: 'DARK',
     themeLight: 'LIGHT',
+    // V2TopBar nav labels (v0.11.21 GIB-007). NBA + F1 stay untranslated
+    // as brand acronyms; only generic-name items translate.
+    //
+    // v0.15.1 — split single "Football" into two: Liga 1 (Indonesia,
+    // priority surface per Gibol mission) and Liga Inggris (EPL).
+    // navFootball kept as a deprecated alias so any straggler reference
+    // doesn't break — it now maps to the EPL label.
+    //
+    // v0.15.2 — restore navTennis + navWorldCup. The v0.15.1 edit
+    // accidentally removed them along with the old block; TopBar still
+    // references both keys via `labelKey`, so without these the BI
+    // toggle was falling through to the EN label fallback for Bahasa
+    // users on Tennis + Piala Dunia. Pure regression repair.
+    navHome: 'Home',
+    navLiga1: 'Liga 1',
+    navEPL: 'Premier League',
+    navFootball: 'Premier League',
+    navTennis: 'Tennis',
+    navWorldCup: 'World Cup',
+    // v0.16.0 (Phase 2 Sprint A) — A11y + share-button keys.
+    // skipToContent powers the .skip-link in App.jsx (was a hardcoded
+    // bilingual concat). copyLink + share are picked up by Phase 2's
+    // <HubActionRow> + ShareButton when those land in Sprint B.
+    skipToContent: 'Skip to content',
+    copyLink: 'Copy link',
+    share: 'Share',
+    // Season label (v0.11.21 GIB-010) — previously hardcoded "SEASON"
+    // on F1 + Tennis hubs regardless of language.
+    season: 'SEASON',
   },
 
   id: {
@@ -195,8 +228,9 @@ export const LOCALES = {
     yourTeam: '★ TIM KAMU',
     following: '● DIIKUTI',
     swipeHint: 'GESER ← →',
-    noGamesDay: 'Belum ada laga',
-    offDay: 'OFF DAY',
+    // v0.11.5 editorial pass — casual Bahasa, "gila bola" register.
+    noGamesDay: 'Hari ini kosong — ngopi dulu',
+    offDay: 'LIBUR DULU',
 
     // Context strip
     titleFavorite: 'FAVORIT JUARA',
@@ -212,8 +246,8 @@ export const LOCALES = {
     winProbability: 'PELUANG MENANG',
     playByPlay: 'Play-by-play',
     boxScore: 'Statistik',
-    statsOpen: 'Statistik terbuka saat tip-off.',
-    noPlaysYet: 'Belum ada permainan — cek lagi saat tip-off.',
+    statsOpen: 'Box score kebuka pas tip-off — sabar sebentar.',
+    noPlaysYet: 'Lagi pemanasan — tip-off dulu, baru jalan.',
     streamOpens: 'Peluang menang mulai tampil saat tip-off',
     pickMatchAbove: 'Pilih laga di atas.',
     tapToFollow: 'Klik laga di atas untuk mengikuti live — peluang menang, play-by-play, dan skor langsung.',
@@ -321,15 +355,33 @@ export const LOCALES = {
     shareCardOG: 'OG',
     shareCardStory: 'Story',
     shareCardSquare: 'Square',
-    // States — casual register
-    stateEmptyLive: 'Belum ada laga live',
+    // States — casual register (v0.11.5 editorial)
+    stateEmptyLive: 'Belum ada yang main — masih sepi',
     stateEmptyCheckBack: 'Cek lagi jam',
-    stateErrorFeed: 'Feed terputus',
+    stateErrorFeed: 'Feed putus sebentar — lagi connect ulang',
     stateRetry: 'Coba lagi',
     // Theme popover labels (keep uppercase mono across both langs)
     themeAuto: 'AUTO',
     themeDark: 'DARK',
     themeLight: 'LIGHT',
+    // V2TopBar nav (v0.11.21 GIB-007). BI casual register.
+    // v0.15.1 — split "Football" → "Liga 1" + "Liga Inggris" so
+    // Indonesia is the first football surface in the header.
+    // v0.15.2 — restore navTennis + navWorldCup (regression — see EN
+    // section). BI casual: "Tenis" not "Tennis", "Piala Dunia" not
+    // "World Cup".
+    navHome: 'Beranda',
+    navLiga1: 'Liga 1',
+    navEPL: 'Liga Inggris',
+    navFootball: 'Liga Inggris',
+    navTennis: 'Tenis',
+    navWorldCup: 'Piala Dunia',
+    // v0.16.0 (Phase 2 Sprint A) — A11y + share-button keys, BI casual.
+    skipToContent: 'Langsung ke konten',
+    copyLink: 'Salin link',
+    share: 'Bagikan',
+    // Season label (v0.11.21 GIB-010).
+    season: 'MUSIM',
   },
 };
 

@@ -1,0 +1,77 @@
+{
+  "type": "recap",
+  "slug": "sunderland-vs-nottingham-forest-2026-04-24",
+  "title": "Recap Sunderland 0-5 Nottingham Forest",
+  "description": "Recap Bahasa Indonesia untuk Sunderland vs Nottingham Forest (0-5) di Stadium of Light, Sunderland, 24 April 2026.",
+  "body_md": "Sunderland dihajar Nottingham Forest 0-5 di kandang sendiri, Sabtu dini hari 25 April 2026. Stadium of Light menjadi saksi bisu salah satu malam paling menyakitkan untuk anak asuh Regis Le Bris musim ini, empat gol kebobolan dalam 37 menit pertama babak pertama, sebelum Anderson menambahkan yang kelima di injury time.\n\n---\n\n## Menit Ke-17 Sampai Ke-37: Babak Pertama yang Sudah Mati\n\nForest buka keunggulan lebih awal dari yang direncanakan, bukan dari kaki penyerang mereka, tapi dari kesalahan sendiri. T. Hume mengantarkan bola ke gawangnya di menit 17, own goal yang langsung memukul mental tuan rumah.\n\nSunderland belum sempat bangkit ketika Wood menggandakan keunggulan di menit 31. Gibbs-White yang menjadi kreator, umpannya terarah sempurna ke Wood yang tinggal menyelesaikan. Tiga menit berselang, giliran Gibbs-White sendiri yang ikut mencetak gol, kali ini Igor Jesus yang mengumpan, dan hasilnya 0-3 sebelum laga benar-benar panas.\n\nYang paling menyakitkan mungkin gol keempat di menit 37. Igor Jesus mencetak sendiri tanpa assist, gol yang mengonfirmasi babak pertama sudah selesai sebagai kontestasi. Empat gol dalam 20 menit. 0-4 sebelum turun minum.\n\n---\n\n## Babak Kedua: Gol Dianulir, Forest Tahan Ritme\n\nLe Bris mencoba menyelamatkan muka dengan mengganti Rigg dengan Mandava di pergantian babak. Forest juga memutar skuad, Sangare keluar, Dominguez masuk.\n\nDi menit 63, Sunderland sempat punya jawaban. Ballard mencetak gol yang disambut sebagian Stadium of Light, tapi VAR mengintervensi dan gol dianulir. Tidak ada penjelasan lebih lanjut dari data, tapi dianulirnya gol itu menutup harapan terakhir yang tersisa.\n\nKartu kuning berhamburan di babak kedua: Diarra, Dominguez, Anderson, Igor Jesus dari Forest. Xhaka dari Sunderland. Lima kartu kuning untuk Forest dalam satu laga adalah sinyal bahwa mereka main dengan tempo tinggi sambil sesekali kasar.\n\nAwoniyi masuk menggantikan Wood di menit 88. Dua menit kemudian, dia langsung jadi kreator, umpannya diselesaikan Anderson untuk gol kelima Forest di menit 90. Penutup yang kejam untuk tuan rumah.\n\n---\n\n## Angka yang Cerita Berbeda, Tapi Tidak Untuk Skor\n\nSatu ironi besar malam ini ada di statistik. Sunderland menguasai bola 61% berbanding 39%, melepas 14 shot berbanding 10, mencatat akurasi umpan 82% berbanding 73% milik Forest. Tapi xG? Sunderland cuma 0.70, Forest 1.10.\n\nArtinya: Forest tidak perlu menguasai bola untuk menang. Skuad Vitor Pereira main compact dalam 4-4-2, menunggu momen, lalu menghukum setiap kesalahan dengan efisiensi tinggi. Counter-attack dan transisi cepat jadi senjata utama, enam corner didapat Forest versus tiga milik tuan rumah.\n\nSunderland dengan 61% possession pada akhirnya cuma menghasilkan 4 shot on target dan xG kurang dari satu. Bola banyak, tapi tidak berbahaya. Itu masalah struktural yang Le Bris perlu jawab.\n\n---\n\n## Momen Paling Menentukan: Tiga Gol dalam Enam Menit\n\nBukan gol pertama yang membunuh laga ini. Yang membunuhnya adalah rentetan Wood (31'), Gibbs-White (34'), dan Igor Jesus (37') dalam enam menit. Tiga gol dalam satu rentetan pendek di depan tuan rumah yang belum sempat bereaksi. Setelah menit 37, tidak ada yang percaya Sunderland bisa kembali, secara mental maupun xG.\n\nGibbs-White jadi pemain paling berpengaruh di lapangan: satu gol, satu assist, dan peran sebagai penghubung antara lini tengah dan lini depan Forest.\n\n---\n\nKekalahan 0-5 ini akan sulit dilupakan Sunderland. Tiga poin untuk Forest semakin memperkuat posisi mereka di papan atas. Sunderland harus segera konsolidasi sebelum laga berikutnya. Tayangan ulang tersedia di Vidio dan beIN Sports.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379306",
+    "home_team": "Sunderland",
+    "away_team": "Nottingham Forest",
+    "home_score": 0,
+    "away_score": 5,
+    "kickoff_utc": "2026-04-24T19:00:00+00:00",
+    "venue": "Stadium of Light, Sunderland",
+    "home_formation": "4-2-3-1",
+    "home_coach": "Regis Le Bris",
+    "away_formation": "4-4-2",
+    "away_coach": "Vitor Pereira",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023046,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on training-data inference (tactical claims unprompted by input), one high-severity meta-commentary break, and tautological phrasing. Core voice is mostly sound but lacks tightness. Rewrite sections 2–3 and cut inference claims.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "anak asuh Regis Le Bris musim ini",
+          "fix": "Use 'skuad Le Bris' or 'timnya Le Bris' instead."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "belum sempat bangkit ketika Wood menggandakan",
+          "fix": "Vary: 'Wood langsung ganda keunggulan di menit 31' or restructure."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Tidak ada penjelasan lebih lanjut dari data, tapi dianulirnya gol itu menutup harapan terakhir yang tersisa.",
+          "fix": "Remove the 'dari data' clause. Say: 'Gol dianulir. Itu menutup satu-satunya harapan Sunderland.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Artinya: Forest tidak perlu menguasai bola untuk menang.",
+          "fix": "Start with the insight directly: 'Forest tidak perlu 61% possession untuk menang.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Skuad Vitor Pereira main compact dalam 4-4-2, menunggu momen, lalu menghukum setiap kesalahan dengan efisiensi tinggi.",
+          "fix": "Stick to what you can see: 'Forest manage 39% possession tapi cetak 5 gol. Efisiensi vs dominasi.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Empat gol dalam 20 menit. 0-4 sebelum turun minum.",
+          "fix": "Can stay; it works here. No change needed."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Satu ironi besar malam ini ada di statistik.",
+          "fix": "Say: 'Statistik malam ini penuh ironi.'"
+        }
+      ]
+    },
+    "published_at": "2026-04-27T09:00:26+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

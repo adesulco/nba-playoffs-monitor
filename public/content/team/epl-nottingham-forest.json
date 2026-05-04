@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "epl-nottingham-forest",
+  "title": "Profil Nottingham Forest: Premier League (2025-26)",
+  "description": "Profil Nottingham Forest — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Nottingham Forest: Bertahan di Liga Inggris Musim Demi Musim\n\nNottingham Forest adalah klub asal Nottingham, Inggris, yang bermain di Liga Inggris (Premier League) musim 2025-26. Kandang mereka di The City Ground, Nottingham, berkapasitas 30.576 penonton. Per 28 April 2026, Forest berada di peringkat 16 klasemen Liga Inggris dengan 39 poin dari 34 laga, selisih gol -4. Posisi itu menempatkan mereka tepat di zona aman, tapi hanya tipis dari ancaman degradasi.\n\n---\n\n## Identitas Klub\n\nNottingham Forest berdiri pada 1865, menjadikan mereka salah satu klub tertua yang masih aktif di dunia. Markas mereka, The City Ground, berdiri di tepi Sungai Trent di kota Nottingham, Nottinghamshire, dengan kapasitas 30.576 kursi.\n\nForest adalah anggota Liga Inggris, kompetisi tertinggi sepak bola Inggris, dan musim 2025-26 ini jadi pembuktian bahwa mereka layak bertahan di level tersebut. Bukan dengan permainan yang memukau, bukan dengan trofi, tapi dengan keuletan untuk terus mengumpulkan poin di tengah konsistensi yang naik-turun sepanjang musim.\n\n---\n\n## Performa Musim Ini\n\n34 laga, 10 menang, 9 seri, 15 kalah. Catatan itu bukan yang mengundang tepuk tangan, tapi Forest masih berdiri di peringkat 16.\n\nDari sisi serangan, rata-rata 1,2 gol per laga mencerminkan lini depan yang tidak subur. Lebih mengkhawatirkan: Forest gagal mencetak gol di 14 dari 34 laga, hampir separuh pertandingan berakhir tanpa Forest membobol gawang lawan. Kebobolan rata-rata 1,3 gol per laga, dengan total 45 gol bersarang di gawang mereka musim ini.\n\nSatu-satunya angka yang cukup menjanjikan adalah clean sheet, 9 laga tanpa kebobolan. Itu menunjukkan ada soliditas defensif yang bisa diandalkan di hari-hari terbaik mereka, walau tidak cukup konsisten untuk mengangkat posisi mereka lebih jauh di tabel.\n\nSoal kandang dan tandang, Forest justru lebih produktif di laga tandang: 6 menang dari 17 laga di luar The City Ground. Sementara di kandang sendiri, Forest justru lebih banyak kalah (7K) dibanding menang (4M). Anomali yang tidak biasa, dan yang mungkin menjadi PR terbesar untuk musim depan.\n\nForm terkini menunjukkan ada perbaikan: LLDDWDWW dari delapan laga terakhir. Setelah dua kekalahan beruntun, Forest berhasil menutup pekan-pekan terakhir April dengan dua kemenangan. Momentum kecil, tapi penting di akhir musim yang menegangkan seperti ini.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 16, 39 poin. Per 28 April 2026, posisi itu masih di zona aman, tapi tidak dengan jarak yang nyaman.\n\nDi Liga Inggris, tiga tim terbawah klasemen akhir musim akan terdegradasi ke Championship. Forest saat ini berada persis di atas zona merah. Empat laga tersisa menjadi sangat krusial, setiap poin yang jatuh bisa mengubah segalanya, terutama jika klub-klub di bawah mereka mulai mengumpulkan poin.\n\nSelisih gol -4 memang tidak terlalu buruk dibanding tim-tim yang berjuang lebih keras di papan bawah, tapi angka itu juga tidak memberi ruang bagi Forest untuk bermain aman. Di atas kertas, 39 poin seharusnya cukup untuk selamat, tapi di Liga Inggris musim ini, tidak ada yang benar-benar aman sampai wasit meniup peluit akhir di laga terakhir.\n\n---\n\n## Outlook\n\nForest menutup April dengan sedikit momentum, dua kemenangan beruntun di penghujung bulan setidaknya memberikan kepercayaan diri sebelum empat laga pamungkas musim 2025-26. Dengan 39 poin dan posisi 16, target Forest sederhana tapi berat: pertahankan apa yang sudah ada.\n\nProduktivitas serangan yang rendah dan performa kandang yang di bawah ekspektasi jadi catatan penting ke depan. Tapi untuk saat ini, fokusnya satu, amankan status Liga Inggris musim depan.\n\n*Profil ini mencerminkan data per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "65",
+    "team_name": "Nottingham Forest",
+    "team_country": "England",
+    "team_founded": 1865,
+    "venue_name": "The City Ground",
+    "venue_city": "Nottingham, Nottinghamshire",
+    "venue_capacity": 30576,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022199,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on two high-severity training-inference violations (founding year, river geography) not in input data, plus academic-register drift in identity section and data mismatch on date. Rewrite needed before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Nottingham Forest berdiri pada 1865, menjadikan mereka salah satu klub tertua yang masih aktif di dunia.",
+          "fix": "Remove founding year and 'oldest club' claim, or source it explicitly."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "The City Ground, berdiri di tepi Sungai Trent di kota Nottingham, Nottinghamshire",
+          "fix": "Keep only: 'The City Ground di Nottingham, Nottinghamshire (kapasitas 30.576)'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "menjadikan mereka salah satu klub tertua yang masih aktif di dunia. Markas mereka, The City Ground, berdiri",
+          "fix": "Simplify: 'Nottingham Forest markas di The City Ground (kapasitas 30.576). Mereka di peringkat 16, 39 poin.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Forest adalah anggota Liga Inggris, kompetisi tertinggi sepak bola Inggris, dan musim 2025-26 ini jadi pembuktian",
+          "fix": "Rewrite: 'Forest bermain di Premier League. Musim 2025-26 jadi pembuktian...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Catatan itu bukan yang mengundang tepuk tangan... Anomali yang tidak biasa... Momentum kecil",
+          "fix": "Cut hedges; cite specific numbers instead: 'Forest menang 6 dari 17 tandang, tapi hanya 4 dari 17 kandang.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, posisi itu masih di zona aman... Per 28 April 2026, Forest berada di peringkat 16",
+          "fix": "Update to '3 Mei 2026' throughout (or explain if 28 April is intentional lag date)."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Di atas kertas, 39 poin seharusnya cukup untuk selamat, tapi di Liga Inggris musim ini, tidak ada yang benar-benar aman",
+          "fix": "Remove or replace with fact: 'Empat laga sisa jadi krusial; 1-2 poin lebih bisa ubah posisi.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x50d66318cd82c6e2",
+    "published_at": "2026-04-28T12:15:33+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,137 @@
+{
+  "type": "team",
+  "slug": "tennis-flavio-cobolli",
+  "title": "Profil Flavio Cobolli (ATP) — Peringkat 13",
+  "description": "Profil petenis Flavio Cobolli (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Flavio Cobolli: Petenis Italia Muda yang Terus Mendaki Peringkat ATP\n\nFlavio Cobolli, petenis Italia kelahiran 6 Mei 2002, saat ini bertengger di peringkat 13 ATP dengan 2.600 poin per 16 April 2026. Pemain tangan kanan asal Florence ini baru berusia 23 tahun, salah satu petenis termuda di jajaran top 20 dunia, dan sedang dalam tren naik yang konsisten memasuki paruh pertama musim 2026.\n\n## Identitas\n\nLahir di Florence, Italia, pada 6 Mei 2002, Cobolli kini berusia 23 tahun. Memulai karier profesional di usia 18 tahun pada 2020, ia termasuk generasi petenis muda Italia yang tumbuh di era keemasan tenis negerinya. Dengan tinggi 183 cm (6 kaki) dan berat 74 kg (163 lbs), Cobolli punya postur yang proporsional untuk petenis baseline bertangan kanan, cukup tinggi untuk serve yang efektif, cukup ringan untuk pergerakan cepat di lapangan.\n\nDebutnya di tur profesional ATP pada 2020, di tengah pandemi, menjadikan perjalanan awalnya lebih berat dari kebanyakan. Bahwa ia kini sudah berada di top 15 dunia hanya enam tahun setelah debut menunjukkan laju perkembangan yang solid.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Cobolli berada di peringkat 13 ATP dengan 2.600 poin. Naik tiga peringkat dari posisi sebelumnya di nomor 16, tren positif yang mencerminkan performa yang tidak sedang stagnan.\n\nMasuk ke jajaran top 15 ATP bukan pencapaian kecil. Di level ini, Cobolli bersaing di zona yang sama dengan petenis-petenis elit yang rutin menembus babak akhir Masters 1000 dan Grand Slam. Poin 2.600 menempatkannya di ceruk yang kompetitif, cukup jauh dari top 10 untuk tidak dianggap kandidat juara turnamen besar secara konsisten, tapi cukup dekat untuk menjadi lawan yang tidak diinginkan siapapun di babak awal.\n\nTren +3 peringkat menunjukkan momentum yang nyata, bukan sekadar fluktuasi mingguan. Untuk petenis berusia 23 tahun yang baru enam tahun berkarier profesional, posisi ini dan arah geraknya adalah sinyal yang jelas: Cobolli sedang dalam jalur yang tepat.\n\n## Outlook\n\nDi usia 23 tahun dengan peringkat 13 dunia dan tren naik, Cobolli adalah salah satu nama yang layak diikuti di sisa musim 2026. Posisinya di top 15 ATP memberi akses langsung ke semua turnamen besar, dan dengan poin yang masih bisa bertumbuh, tekanan untuk mempertahankan sekaligus memperbaiki peringkat akan jadi ujian konsistensi yang sesungguhnya. Profil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "7602",
+    "athlete_name": "Flavio Cobolli",
+    "current_rank": 13,
+    "previous_rank": 16,
+    "points": 2600.0,
+    "trend": "+3",
+    "birthplace": "Florence, Italy",
+    "dob": "2002-05-06",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.016208,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Article fails on two high-severity training-data inference issues (Italian tennis era, pandemic career impact) plus one high-severity translated-English structure problem. Academic hedging and soft-phrase repetition weaken voice. Remove speculative claims, simplify opening inversion, delete meta-closing line.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Memulai karier profesional di usia 18 tahun pada 2020, ia termasuk generasi petenis muda Italia yang tumbuh di era keemasan tenis negerinya.",
+          "fix": "Delete or rephrase to observable fact only: 'Debut 2020 di tengah pandemi.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Debutnya di tur profesional ATP pada 2020, di tengah pandemi, menjadikan perjalanan awalnya lebih berat dari kebanyakan.",
+          "fix": "Simple fact: 'Debut profesional 2020.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Bahwa ia kini sudah berada di top 15 dunia hanya enam tahun setelah debut menunjukkan laju perkembangan yang solid.",
+          "fix": "Rephrase: 'Enam tahun debut ke top 15 — laju perkembangan solid.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Naik tiga peringkat dari posisi sebelumnya di nomor 16, tren positif yang mencerminkan performa yang tidak sedang stagnan.",
+          "fix": "'Naik tiga peringkat ke nomor 13, momentum nyata.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "cukup jauh dari top 10 untuk tidak dianggap kandidat juara turnamen besar secara konsisten, tapi cukup dekat untuk menjadi lawan yang tidak diinginkan",
+          "fix": "Stick to observable: 'Peringkat 13 memberi akses ke semua Masters 1000 dan Grand Slam.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "cukup tinggi, cukup ringan, cukup jauh, cukup dekat",
+          "fix": "Vary: remove two instances, rephrase others as 'proporsional', 'kompetitif'."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Profil ini mencerminkan data per 16 April 2026.",
+          "fix": "Delete or end with outlook on next tournament/milestone."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dengan tinggi 183 cm (6 kaki) dan berat 74 kg (163 lbs)",
+          "fix": "Choose one system: '183 cm, 74 kg' or '6\\' 0\", 163 lbs' — not both."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x715625f188a4d620",
+    "published_at": "2026-04-28T12:11:46+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 68,
+      "headline_score": 55,
+      "headline_comment": "Headline H1 di body lebih kuat dari title field — 'Petenis Italia Muda yang Terus Mendaki Peringkat ATP' generik tapi oke; title field 'Profil Flavio Cobolli (ATP) — Peringkat 13' pakai em-dash yang dilarang voice rules.",
+      "lead_score": 62,
+      "lead_comment": "Lead padat data tapi tanggal tidak konsisten dengan input (28 April 2026 vs artikel tulis 16 April 2026), dan angle 'tren naik konsisten' agak datar untuk pembuka.",
+      "structure_score": 60,
+      "structure_comment": "Tiga seksi (Identitas, Peringkat, Outlook) terasa template-y dan repetitif — usia 23 tahun dan 'enam tahun karier' disebut tiga kali; bagian Identitas penuh detail tinggi/berat yang tidak ada di input data.",
+      "voice_score": 72,
+      "voice_comment": "Voice generally clean, tapi ada drift formal ('bertengger di peringkat', 'menempatkannya di ceruk yang kompetitif') dan beberapa kalimat panjang berliku khas AI-translated.",
+      "suggestion_count": 6,
+      "summary": "Article has three groundedness violations (height/weight, debut year, pandemic context) that must be cut, plus a date inconsistency with the input (16 April vs 28 April 2026). Voice is mostly clean but structure feels stretched-thin for the limited input data — recommend tightening to 300-400 words and removing all fabricated biographical details.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Dengan tinggi 183 cm (6 kaki) dan berat 74 kg (163 lbs), Cobolli punya postur yang proporsional",
+          "issue": "Tinggi dan berat tidak ada di input data — ini fabrikasi/training-data inference yang melanggar groundedness.",
+          "fix": "Hapus seluruh kalimat tinggi/berat. Ganti dengan info yang tersedia atau potong saja."
+        },
+        {
+          "priority": "high",
+          "snippet": "Memulai karier profesional di usia 18 tahun pada 2020... Debutnya di tur profesional ATP pada 2020, di tengah pandemi",
+          "issue": "Tahun debut 2020 dan konteks pandemi tidak ada di input data — fabricated detail.",
+          "fix": "Hapus referensi tahun debut dan pandemi. Stick to what input provides: DOB, rank, points, trend, birthplace."
+        },
+        {
+          "priority": "high",
+          "snippet": "per 16 April 2026",
+          "issue": "Inkonsistensi tanggal — input as_of_id adalah 28 April 2026, artikel pakai 16 April 2026 di tiga tempat termasuk closing.",
+          "fix": "Ganti semua '16 April 2026' menjadi '28 April 2026' agar match dengan input data."
+        },
+        {
+          "priority": "medium",
+          "snippet": "salah satu petenis termuda di jajaran top 20 dunia",
+          "issue": "Klaim 'salah satu termuda di top 20' tidak didukung input data — comparative claim tanpa basis.",
+          "fix": "Ganti jadi deskriptif tanpa klaim komparatif: 'di usia 23 tahun, sudah masuk top 15 ATP.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Tiga seksi: Identitas, Peringkat Saat Ini, Outlook",
+          "issue": "Struktur terlalu template-y untuk profil tipis input data — 600+ kata stretch dari 6 data points bikin repetitif.",
+          "fix": "Pertimbangkan format lebih ringkas (300-400 kata), atau gabungkan Identitas + Peringkat jadi satu narasi mengalir."
+        },
+        {
+          "priority": "low",
+          "snippet": "bertengger di peringkat 13 ATP",
+          "issue": "'Bertengger' agak formal/klise sport-writing Indonesia.",
+          "fix": "Ganti 'ada di peringkat 13' atau 'menempati peringkat 13'."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

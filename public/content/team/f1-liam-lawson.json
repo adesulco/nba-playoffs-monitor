@@ -1,0 +1,93 @@
+{
+  "type": "team",
+  "slug": "f1-liam-lawson",
+  "title": "Profil Liam Lawson: Pembalap F1 RB F1 Team (2026)",
+  "description": "Profil pembalap F1 Liam Lawson (New Zealander) untuk tim RB F1 Team. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Liam Lawson: Pembalap Muda Selandia Baru yang Mulai Curi Poin di 2026\n\nLiam Lawson, kode FIA LAW (#30), pembalap Selandia Baru kelahiran 11 Februari 2002. Per 28 April 2026, Lawson menempati P10 klasemen sementara F1 2026 dengan 10 poin dari 3 balapan pertama musim ini, tanpa kemenangan, tapi menunjukkan tren yang menarik untuk diperhatikan.\n\n---\n\n## Identitas\n\nLawson masih 24 tahun dan sudah menjalani musim penuh bersama RB F1 Team di 2026. Kode FIA-nya LAW, nomor permanen #30, detail yang sudah mulai familiar di paddock musim ini. Sebagai pembalap berkebangsaan Selandia Baru, Lawson membawa identitas yang cukup langka di grid F1 era modern.\n\nDi RB F1 Team, tim satelit Red Bull Racing, Lawson mendapat kesempatan membuktikan diri di paket mobil mid-field yang kompetitif. Tiga balapan sudah dijalani, dan dari sana sudah ada gambaran awal tentang kapasitasnya.\n\n---\n\n## Performa Musim Ini\n\nDengan 10 poin dari 3 balapan, Lawson ada di P10 klasemen sementara per 28 April 2026. Angka itu tidak spektakuler, tapi konteksnya penting: tiga balapan awal musim sering jadi penentu apakah seorang pembalap bisa menyesuaikan diri dengan regulasi baru atau butuh waktu lebih lama.\n\nYang menonjol adalah lintasan performa Lawson, bukan angkanya saja. Dari Australian GP yang berat ke Chinese GP dengan P7, lalu Japanese GP di P9, ada pola yang cukup jelas: Lawson tidak stagnan. Setelah kesulitan di round pertama, dia pungut poin di dua balapan berturut-turut.\n\nTanpa kemenangan, posisi P10 klasemen memang bukan headline. Tapi di grid yang padat di bagian tengah, konsistensi meraih poin adalah fondasi, dan itulah yang sedang dibangun Lawson di awal 2026.\n\n---\n\n## Hasil Per Balapan\n\n**Australian Grand Prix, P13, 0 poin (Lapped)**\n\nRound pembuka selalu sulit. Lawson finis P13 dan masuk kategori *lapped*, artinya tertinggal minimal satu lap dari leader. Bukan hasil yang diinginkan untuk memulai musim, tapi bukan anomali juga untuk tim mid-field di sirkuit jalanan Melbourne yang sering kacau di lap-lap awal.\n\n**Chinese Grand Prix, P7, 6 poin (Finished)**\n\nPembalikan yang signifikan. P7 di Shanghai berarti Lawson masuk poin dengan margin yang layak, dan 6 poin sekaligus membuka akun poinnya di 2026. Ini hasil terbaik Lawson di tiga balapan pertama musim, dan menunjukkan bahwa dia bisa perform ketika mobil dan kondisi memungkinkan.\n\n**Japanese Grand Prix, P9, 2 poin (Finished)**\n\nSatu posisi turun dari China, tapi tetap dalam zona poin. P9 di Suzuka bukan hasil yang mengecewakan, sirkuit ini teknikal dan favourable buat tim-tim besar, jadi RB F1 Team menjaga posisi di top 10 sudah merupakan pekerjaan yang solid.\n\nPola tiga balapan pertama: jatuh di Australia, bangkit di China, jaga momentum di Jepang. Dua DNF atau hasil buruk beruntun tidak ada di tabel, itu sendiri sudah bicara sesuatu.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Lawson ada di posisi yang reasonable untuk pembalap muda di tim mid-field. Sepuluh poin dari tiga balapan, dengan 0 poin di round pertama, artinya sebagian besar poinnya datang dari dua balapan terakhir. Kalau tren itu terjaga, akumulasi poin bisa lebih konsisten seiring musim berjalan.\n\nPersaingan di klasemen tengah F1 2026 ketat, dan P10 bisa naik atau turun beberapa posisi dengan mudah setelah satu race weekend. Yang perlu dijaga Lawson adalah tidak kembali ke skenario Australian GP, finish lapped adalah langkah mundur yang mahal di musim yang panjang.\n\nTiga balapan sudah lewat. Musim masih panjang. Data per 28 April 2026 ini hanya snapshot awal dari cerita yang belum selesai.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "lawson",
+    "driver_name": "Liam Lawson",
+    "driver_code": "LAW",
+    "driver_number": "30",
+    "nationality": "New Zealander",
+    "current_team": "RB F1 Team",
+    "current_team_id": "rb",
+    "championship_pos": "10",
+    "championship_points": "10",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.045153,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails on two training-data inferences (age interpretation, 'langka era modern' speculation) and date inconsistency (says 28 April vs input 3 May). Academic register creep and padding phrases ('konteksnya penting', 'itu sendiri sudah bicara') drag the voice. Rewrite with tighter facts, drop meta-commentary.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Lawson masih 24 tahun dan sudah menjalani musim penuh bersama RB F1 Team di 2026",
+          "fix": "State facts directly: 'Lawson lahir 11 Februari 2002, bermain untuk RB F1 Team musim ini.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebagai pembalap berkebangsaan Selandia Baru, Lawson membawa identitas yang cukup langka di grid F1 era modern",
+          "fix": "Remove or rephrase: 'Lawson adalah pembalap Selandia Baru, pembalap pertama dari Selandia Baru di...?' (if true in data)."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dengan 10 poin dari 3 balapan, Lawson ada di P10 klasemen sementara per 28 April 2026. Angka itu tidak spektakuler, tapi konteksnya penting: tiga balapan awal musim sering jadi penentu apakah seorang pembalap bisa menyesuaikan diri dengan r",
+          "fix": "Show, don't explain: '10 poin dari 3 balapan. Cukup untuk P10, tapi awal musim selalu kritis.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menonjol adalah lintasan performa Lawson, bukan angkanya saja",
+          "fix": "'Yang menonjol: tren Lawson, bukan angka jenak.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Setelah kesulitan di round pertama, dia pungut poin di dua balapan berturut-turut. Tanpa kemenangan, posisi P10 klasemen memang bukan headline. Tapi di grid yang padat di bagian tengah, konsistensi meraih poin adalah fondasi, dan itulah yan",
+          "fix": "Just say 'kumpul poin' or use specific context ('poin di zona top 10')."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pola tiga balapan pertama: jatuh di Australia, bangkit di China, jaga momentum di Jepang",
+          "fix": "'Australia P13, China P7, Jepang P9. Dua laga poin setelah kesulitan di Melbourne.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Lawson ada di posisi yang reasonable untuk pembalap muda di tim mid-field",
+          "fix": "Use input date consistently: 'Per 3 Mei 2026' throughout."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Dua DNF atau hasil buruk beruntun tidak ada di tabel, itu sendiri sudah bicara sesuatu",
+          "fix": "'Tidak ada DNF di tiga balapan ini — itu poin plus untuk stabilitas.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Lawson membawa identitas yang cukup langka di grid F1 era modern.\n\nDi RB F1 Team, tim satelit Red Bull Racing, Lawson",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1b90276f35bdaa8e",
+    "published_at": "2026-04-28T12:11:40+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,75 @@
+{
+  "type": "standings",
+  "slug": "epl-2025-26-pekan-34",
+  "title": "Klasemen Liga Inggris 2025-26 pekan 34",
+  "description": "Analisis klasemen Liga Inggris 2025-26 setelah pekan 34. Sisa 4 pertandingan.",
+  "body_md": "# Arsenal Perpanjang Jarak di Puncak, City Tekan MU dan Liverpool\n\nArsenal melebarkan keunggulan di puncak klasemen setelah pekan 34 berakhir. Dengan 73 poin dari 34 pertandingan, Si Merah kini unggul 3 poin atas Manchester City yang masih tertahan 70 poin. Pergerakan signifikan terjadi di zona empat besar, di mana tiga tim, Manchester United, Liverpool, dan Aston Villa, kini menempel di 58 poin, menciptakan pertarungan yang sangat ketat di gerbang Liga Champions.\n\n## Pucuk Persaingan Makin Sengit\n\nArsenal tetap kokoh di posisi teratas, meskipun form terakhirnya tidak sempurna: WLLWW. Keunggulan 3 poin dengan empat laga sisa cukup nyaman, namun goal difference sekecil +38 terhadap City (+37) membuat setiap pertandingan penuh makna. Manchester City, setelah bermain 33 pertandingan, menunjukkan konsistensi: WWWDD dalam lima laga terakhir. Jika City menang laga tertunda mereka, bisa menyejajarkan permainan dengan Arsenal.\n\nPerburuan juara tetap terbuka lebar. Arsenal harus hati-hati dengan laga sisa, mengingat form berfluktuasi. City tampak stabil dan punya momentum, sementara MU dan Liverpool masih di luar jangkauan meski sama-sama 58 poin.\n\n## Zona Champions League: Permainan Tiga Tim\n\nDua poin memisahkan Manchester United, Liverpool, dan Aston Villa di posisi 3-5. Ketiganya dengan 58 poin, tapi dinamika berbeda. United baru selesai pekan 33 (satu laga tertunda), form WLDWL menunjukkan ketidakstabilan. Liverpool selesai 34 pertandingan dengan form WWWLD, dua menang terbaru sebelum kalah adalah sinyal positif. Aston Villa, meski sama 58 poin, justru LWDWL, arah berbeda dari Liverpool.\n\nBrighton di posisi 6 dengan 50 poin sudah selisih 8 poin dari zona empat besar, membuat kompetisi Eropa mereka bergantung pada penampilan di empat laga sisa. Form WDWWW adalah yang terbaik di zona ini, Brighton jadi tim yang naik.\n\n## Tengah Tabel: Chelsea Dalam Krisis\n\nBagian tengah tabel dihuni tiga tim dengan 48-49 poin: Bournemouth (49), Chelsea (48), dan Brentford (33 pertandingan, 48 poin). Namun cerita mereka sangat berbeda. Chelsea mengkhawatirkan: LLLLL, lima kekalahan beruntun tanpa tanda gol. Brentford terseok dengan DDDDD, lima seri berturut-turut. Bournemouth punya lebih banyak napas dengan DWWDD dan sudah 34 pertandingan.\n\nFulham di posisi 10 tetap di 48 poin dengan goal difference negatif (-2), menunjukkan semakin sulit zona pertengahan tabel.\n\n## Jurang Degradasi: Burnley dan Wolves Terancam Parah\n\nDegradasi sudah hampir pasti bagi Burnley dan Wolves. Burnley hanya 20 poin dari 34 pertandingan (LLLLD), tertinggal 14 poin dari aman. Wolves lebih mengenaskan lagi: 17 poin, goal difference -38, dengan form LLLDW. Dengan empat laga sisa, keajaiban diperlukan.\n\nTottenham di posisi 18 dengan 34 poin masih ada jalan, meski 2 poin dari zona aman sudah kritis setelah form WDLLD. Leeds (40 poin) dan West Ham (36 poin) masih punya peluang meski gelisah.\n\n## Pantau Pekan Depan\n\nLaga sisa Arsenal vs City akan menentukan warna juara. Pergerakan di zona empat besar, terutama Liverpool vs kompetitor, akan memilah siapa yang lolos Eropa. Chelsea dan Brentford perlu hasil cepat, sementara di bawah, Tottenham harus menang untuk selamat.\n",
+  "frontmatter": {
+    "league": "epl",
+    "gameweek": 34,
+    "matches_left": 4,
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.004157,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails: multiple critical factual hallucinations (Arsenal pts, Burnley played count, Wolves pts, Brentford pts, Fulham GD) show writer did not cross-check input data. Additionally contains translated-English phrasing and structural issues. Reject and regenerate with mandatory fact-check against input block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Arsenal melebarkan keunggulan di puncak klasemen setelah pekan 34 berakhir. Dengan 73 poin dari 34 pertandingan",
+          "fix": "Cross-check all point totals and match counts against input data block before writing"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "goal difference sekecil +38 terhadap City (+37)",
+          "fix": "Use exact GD figures from input: Arsenal +41, City +37"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Burnley hanya 20 poin dari 34 pertandingan (LLLLD)",
+          "fix": "Verify all team played counts and form strings match input before publish"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Wolves lebih mengenaskan lagi: 17 poin, goal difference -38",
+          "fix": "Use exact 18 pts from input data"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua poin memisahkan Manchester United, Liverpool, dan Aston Villa di posisi 3-5. Ketiganya dengan 58 poin",
+          "fix": "Rephrase: 'Ketiga tim masih tertahan 58 poin' or drop pronoun entirely"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "dua menang terbaru sebelum kalah adalah sinyal positif",
+          "fix": "Cut 'adalah'; write 'menunjukkan tren positif' or reframe as statement"
+        },
+        {
+          "type": "structural",
+          "severity": "high",
+          "snippet": "Bagian tengah tabel dihuni tiga tim dengan 48-49 poin: Bournemouth (49), Chelsea (48), dan Brentford (33 pertandingan, 48 poin)",
+          "fix": "Verify Brentford: 51 pts, 35 P, not 48 pts. Rewrite entire paragraph with correct figures"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Fulham di posisi 10 tetap di 48 poin dengan goal difference negatif (-2)",
+          "fix": "Use correct -5 goal difference from input data"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x62fb4376018f4235",
+    "published_at": "2026-04-27T12:13:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

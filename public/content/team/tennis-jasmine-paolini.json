@@ -1,0 +1,55 @@
+{
+  "type": "team",
+  "slug": "tennis-jasmine-paolini",
+  "title": "Profil Jasmine Paolini (WTA) — Peringkat 9",
+  "description": "Profil petenis Jasmine Paolini (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Jasmine Paolini: Petenis Italia di Papan Atas WTA\n\nJasmine Paolini, petenis Italia kelahiran 4 Januari 1996, saat ini berada di peringkat 9 WTA dengan 3.722 poin per 16 April 2026. Pemain tangan kanan asal Castelnuovo di Garfagnana, Italia, ini mengawali karier profesional di usia remaja dan kini memantapkan diri sebagai salah satu nama tetap di jajaran elite WTA.\n\n---\n\n## Identitas\n\nLahir di Castelnuovo di Garfagnana, Italia, pada 4 Januari 1996, Paolini kini menginjak usia 30 tahun. Petenis bertangan kanan ini memiliki postur 5'4\" (sekitar 163 cm) dengan berat 117 lbs (sekitar 53 kg), postur yang relatif kompak untuk standar WTA, tapi bukan penghalang bagi mobilitas dan agresivitas di lapangan.\n\nPaolini memulai karier profesionalnya pada 2011, saat usianya masih 15 tahun. Perjalanan dari debut junior ke jajaran top 10 dunia mencerminkan konsistensi jangka panjang yang jarang mudah dicapai di sirkuit WTA.\n\n---\n\n## Peringkat Saat Ini\n\nPer data ranking 16 April 2026, Paolini tercatat di peringkat 9 WTA dengan 3.722 poin. Dibanding periode sebelumnya, posisinya turun satu peringkat, dari P8 ke P9.\n\nPenurunan satu slot tidak berarti performa merosot tajam. Pergerakan di kisaran top 10 WTA sering kali dipengaruhi poin yang expired atau hasil petenis lain di turnamen bersamaan, bukan semata-mata cerminan form permainan. Dengan 3.722 poin, Paolini tetap berada di zona elite, jarak yang tidak tipis dari petenis-petenis yang mengejar dari peringkat 11 ke bawah.\n\nKeberadaan Paolini di top 10 WTA per April 2026 menunjukkan konsistensi yang solid melewati berbagai sirkuit musim ini.\n\n---\n\n## Outlook\n\nDi usia 30 tahun, Paolini berada di fase karier di mana pengalaman dan konsistensi jadi modal utama. Peringkat 9 WTA bukan pencapaian kebetulan, ini adalah posisi yang harus dipertahankan setiap pekan di sirkuit yang tidak memberi ruang bagi hasil fluktuatif.\n\nTrend minus satu peringkat per April 2026 belum menjadi sinyal alarm. Yang lebih relevan: Paolini masih di papan atas, bersaing di level yang sama dengan petenis-petenis terbaik dunia. Musim belum selesai, dan poin terus bergerak.\n\n*Profil ini mencerminkan data per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "2615",
+    "athlete_name": "Jasmine Paolini",
+    "current_rank": 9,
+    "previous_rank": 8,
+    "points": 3722.0,
+    "trend": "-1",
+    "birthplace": "Castelnuovo di Garfagnana, Italy",
+    "dob": "1996-01-04",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.014573,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid profile. Data grounded and accurate. Three minor issues: one soft academic hedge, one faintly translated phrasing, one generic section opener. Voice is mostly natural; no hard violations.",
+      "issues": [
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Penurunan satu slot tidak berarti performa merosot tajam.",
+          "fix": "Start directly: 'Satu slot turun bukan sinyal alarm. Pergerakan di top 10 sering...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Pergerakan di kisaran top 10 WTA sering kali dipengaruhi poin yang expired atau hasil petenis lain...",
+          "fix": "Tighten: 'Gerak top 10 jarang murni soal form. Poin yang kadaluarsa atau hasil petenis lain juga main peran.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Di usia 30 tahun, Paolini berada di fase karier di mana pengalaman dan konsistensi jadi modal utama.",
+          "fix": "Start with fact: 'Paolini di top 10 sejak berapa tahun terakhir?' or 'Posisi 9 WTA di usia 30 adalah pencapaian lambat-matang.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7804a33fd449b5e0",
+    "published_at": "2026-04-28T12:10:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

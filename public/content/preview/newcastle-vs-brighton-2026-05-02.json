@@ -1,0 +1,70 @@
+{
+  "type": "preview",
+  "slug": "newcastle-vs-brighton-2026-05-02",
+  "title": "Preview Newcastle vs Brighton",
+  "description": "Preview Bahasa Indonesia untuk Newcastle vs Brighton di St. James' Park, Newcastle, 2 May 2026.",
+  "body_md": "Newcastle menjamu Brighton di St. James' Park, Sabtu 2 Mei 2026 jam 21.00 WIB. Buat Newcastle, ini bukan lagi soal Eropa, 42 poin di peringkat 14 artinya fokusnya murni menjauh dari zona bawah. Brighton di posisi 6 dengan 50 poin justru masih punya kepentingan besar: slot Conference League atau lebih baik masih bisa digapai tergantung hasil tim-tim di atas mereka.\n\n## Form & Kondisi Tim\n\nNewcastle lagi dalam periode paling suram musim ini. Empat kekalahan beruntun sebelum satu kemenangan di laga terakhir, tapi yang lebih menyakitkan adalah deretan absen yang panjang. Bruno Guimarães (muscle injury) tidak akan turun, padahal dia top scorer Newcastle dengan 9 gol. Gordon absen karena hip injury, Livramento dan Krafth juga tidak fit, ditambah Schar yang bermasalah di pergelangan kaki. Joelinton pun absen karena akumulasi kartu kuning. Hampir seluruh pemain kunci Eddie Howe tidak tersedia sekaligus.\n\nBrighton datang dalam momentum terbaik. Empat dari lima laga terakhir berakhir dengan kemenangan, hanya diselingi satu hasil imbang. Danny Welbeck masih jadi mesin gol dengan 13 gol musim ini, angka yang tidak kecil untuk striker berusia 35 tahun. Dari sisi Brighton juga ada beberapa absen: Webster dan Tzimas cedera lutut, March muscle injury, Milner dan Gomez tidak fit, plus Dunk terkena akumulasi kuning. Cukup banyak, tapi tidak separah kondisi Newcastle.\n\n## Head-to-Head\n\nLima pertemuan terakhir berbicara jelas: Newcastle hanya meraih dua hasil imbang dan kalah tiga kali. Dua kekalahan 1-2 dan satu kekalahan 0-1 menunjukkan bahwa Brighton konsisten mampu mendikte laga, bahkan di St. James' Park sekalipun.\n\n## Pemain Kunci & Absen\n\nAbsennya Bruno Guimarães adalah masalah terbesar Newcastle. Dia bukan hanya top scorer, dia juga motor build-up dan pressing dari lini tengah. Tanpa dia, Newcastle kehilangan kualitas di dua fase sekaligus. Dari Brighton, semua mata tertuju ke Welbeck. Dengan kondisi center-back Newcastle yang tidak ideal karena Schar absen, ruang untuk striker berpengalaman seperti Welbeck sangat terbuka.\n\n## Prediksi Taktis\n\nBrighton kemungkinan akan tampil dengan possession-based play khas Fabian Hürzeler, memanfaatkan high press untuk memaksa kesalahan dari lini tengah Newcastle yang tidak lengkap. Newcastle tanpa Bruno dan Joelinton akan kesulitan memenangkan duel di tengah lapangan, ini area yang Brighton bisa eksploitasi sejak menit awal. Newcastle mungkin akan bertahan dalam blok rendah dan mengandalkan counter-attack, tapi kekuatan serangan mereka jelas berkurang tanpa Gordon dan Livramento di sayap. Brighton difavoritkan menang tipis. Prediksi skor: Newcastle 0-2 Brighton.\n\nLaga ini tayang live di Vidio dan beIN Sports mulai jam 21.00 WIB.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379317",
+    "home_team": "Newcastle",
+    "away_team": "Brighton",
+    "kickoff_utc": "2026-05-02T14:00:00+00:00",
+    "venue": "St. James' Park, Newcastle",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.016576,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Two high-severity training-data inferences (coach names Eddie Howe and Fabian Hürzeler not in input block). One medium academic-drift filler. Otherwise solid voice, but manager name inference fails grounding check.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Eddie Howe tidak tersedia sekaligus",
+          "fix": "Remove manager name or source it from confirmed input"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Fabian Hürzeler, memanfaatkan high press untuk memaksa kesalahan",
+          "fix": "Remove manager name; describe Brighton's style without attribution"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan kondisi center-back Newcastle yang tidak ideal karena Schar absen, ruang untuk striker",
+          "fix": "Schar absen, ruang untuk Welbeck terbuka lebar di depan gawang Newcastle"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Lima pertemuan terakhir berbicara jelas: Newcastle hanya meraih dua hasil imbang",
+          "fix": "Just start: 'Dalam lima pertemuan terakhir, Newcastle hanya imbang dua kali dan kalah tiga'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Absennya Bruno Guimarães adalah masalah terbesar Newcastle",
+          "fix": "Absennya Bruno masalah terbesar Newcastle"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Prediksi skor: Newcastle 0-2 Brighton",
+          "fix": "Add qualifier: 'Brighton difavoritkan; skor bisa 0-2 atau 1-2'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x86be74ace275fc34",
+    "fact_check": {
+      "passed": true,
+      "issue_count": 0
+    },
+    "published_at": "2026-04-27T11:01:42+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

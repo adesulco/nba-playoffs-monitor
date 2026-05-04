@@ -1,0 +1,82 @@
+{
+  "type": "standings",
+  "slug": "nba-series-round-1-bos-vs-phi-2026",
+  "title": "Round 1: BOS leads series 3-1",
+  "description": "State of Round 1 antara Boston Celtics dan Philadelphia 76ers. Series score: BOS leads series 3-1.",
+  "body_md": "# Boston Celtics Unggul 3-1, Tinggal Satu Menang Closeout atas Philadelphia\n\nBoston Celtics unggul 3-1 atas Philadelphia 76ers di Round 1 East setelah menggulung 76ers 128-96 di Game 4, Minggu malam. Celtics tinggal satu kemenangan untuk menutup seri dan melaju ke Conference Semifinals. Game 5 akan digelar di Boston, Rabu 29 April jam 06.00 WIB, dan bisa jadi hari terakhir untuk 76ers musim ini.\n\n## Bagaimana seri bergeser\n\nGame 1 di Boston menjadi statement. Celtics langsung dominan, menang 123-91, perbedaan 32 poin yang membuktikan kelas mereka di kandang. Momentum tersebut berlanjut ke Game 2 dengan kemenangan 97-111... sebelum Philadelphia membalas. Game 3 di Philadelphia menjadi satu-satunya kemenangan 76ers: 100-108, pertandingan ketat di mana PHI mempertahankan home court dan menahan cedera.\n\nTapi Boston tidak membiarkan 76ers naik semangat. Game 4 adalah pemukul. Celtics datang ke Philadelphia dan menggila, menang 128-96, blowout lagi, dengan margin 32 poin sama dengan Game 1. Itu seri berkembang dari \"kompetitif mungkin\" menjadi \"Celtics sedang lolos.\"\n\n## Di mana seri berada sekarang\n\nCeltics butuh satu kemenangan lagi untuk closeout. Philadelphia butuh tiga. Game 5 di Boston adalah must-win untuk 76ers, kalau kalah, sudah musim. Kalau menang, seri balik 3-2 ke Philadelphia dengan Game 6. Dalam skenario best-case 76ers, mereka paksa Game 7 di Boston setelah win-or-go-home di Game 6.\n\nTapi statistik scoreline bicara jelas: Celtics sudah menang tiga kali dengan margin rata-rata jauh (32, 10, 32 poin). Satu-satunya kemenangan Philadelphia margin tipis (8 poin). Itu bukan seri balanced, itu seri yang sudah mulai berakhir.\n\n## Apa selanjutnya\n\nGame 5 akan disiarkan langsung di Vidio dan beIN Sports. Tayang Rabu, 29 April 2026 jam 06.00 WIB dari Boston. Untuk Philadelphia, ini adalah eliminasi. Untuk Boston, ini adalah formality, kecuali mereka melakukan collapse besar-besaran. Celtics dalam jarak dekat untuk Conference Semifinals.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "series_state",
+    "round": "Round 1",
+    "series_summary": "BOS leads series 3-1",
+    "home_team": "Philadelphia 76ers",
+    "home_abbr": "PHI",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "games_played": 4,
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.005475,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on high-severity tense overmarking and English calques ('menjadi statement', 'pemukul'). Score reversal ambiguity in Game 2 also problematic. Voice drifts toward formality in places ('adalah') and overmarks tense with 'sudah'. Regenerate with tighter phrasing and more consistent casual register.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Celtics tinggal satu kemenangan untuk menutup seri dan melaju ke Conference Semifinals.",
+          "fix": "Celtics tinggal satu kemenangan tutup seri, lolos ke Conference Semifinals."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Game 1 di Boston menjadi statement.",
+          "fix": "Game 1 di Boston jadi pembuka yg brutal untuk Celtics. or Game 1 langsung nyata: Celtics dominan."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Momentum tersebut berlanjut ke Game 2 dengan kemenangan 97-111... sebelum Philadelphia membalas.",
+          "fix": "Celtics menang 111-97 di Game 2, tapi 76ers balas di Game 3."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Game 4 adalah pemukul. Celtics datang ke Philadelphia dan menggila, menang 128-96, blowout lagi",
+          "fix": "Game 4 jadi pukulan K.O. Celtics datang ke Philadelphia dan menang besar 128-96."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Kalau kalah, sudah musim.",
+          "fix": "Kalah, musim berakhir. or Kalau kalah, itu sudah musim saja."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Game 4 adalah pemukul. Celtics datang ke Philadelphia dan menggila",
+          "fix": "Vary structure: Game 4 jadi pukulan. Game 1 sudah nyata dominasi mereka."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tapi statistik scoreline bicara jelas: Celtics sudah menang tiga kali dengan margin rata-rata jauh",
+          "fix": "Skor bicara jelas: Celtics menang tiga kali dengan margin rata-rata besar (32, 10, 32 poin)."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "ini adalah eliminasi. Untuk Boston, ini adalah formality",
+          "fix": "Untuk Philadelphia, ini must-win atau musim berakhir. Untuk Boston, sudah formality saja."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x271e6bab5d1ae258",
+    "published_at": "2026-04-28T06:47:55+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

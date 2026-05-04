@@ -1,0 +1,81 @@
+{
+  "type": "team",
+  "slug": "f1-valtteri-bottas",
+  "title": "Profil Valtteri Bottas: Pembalap F1 Cadillac F1 Team (2026)",
+  "description": "Profil pembalap F1 Valtteri Bottas (Finlandia) untuk tim Cadillac F1 Team. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "# Valtteri Bottas, Profil Pembalap F1 2026\n\nValtteri Bottas, kode FIA BOT (#77), pembalap Finlandia kelahiran 28 Agustus 1989. Per 28 April 2026, Bottas membalap untuk Cadillac F1 Team di musim 2026, satu langkah baru dalam karier panjangnya di Formula 1. Tiga balapan pertama musim ini berjalan berat: Bottas belum meraih satu poin pun, duduk di P19 klasemen konstruktor bersama timnya. Ini bukan awal yang diinginkan, tapi konteks timnya penting untuk dipahami.\n\n## Identitas\n\nValtteri Bottas, 36 tahun, salah satu pembalap paling berpengalaman di grid 2026. Nomor permanen #77 sudah melekat padanya selama lebih dari satu dekade. Kebangsaan Finlandia, tradisi panjang negara itu melahirkan pembalap F1 kelas dunia, dan Bottas jelas bukan nama baru di sirkuit manapun.\n\nYang berbeda di 2026: Cadillac F1 Team. Ini bukan tim midfield mapan. Cadillac adalah pendatang baru di grid, tim Amerika dengan ambisi besar tapi resources yang masih dalam tahap membangun. Bottas membawa pengalaman dan data berharga ke kokpit ini, tapi trade-off-nya jelas: performa mobil belum di level yang bisa bersaing untuk poin reguler.\n\n## Performa Musim Ini\n\nTiga balapan, nol poin, P19 klasemen. Angkanya keras, tapi bacanya perlu nuansa.\n\nAustralian Grand Prix jadi debut Bottas bersama Cadillac di 2026, dan berakhir dengan retired. Pensiun di balapan pertama selalu bukan sinyal bagus, tapi untuk tim baru, mechanical issue di awal musim bukan kejutan. Chinese GP sedikit lebih baik: Bottas finis P13, meski dengan status *lapped*, satu atau lebih lap tertinggal dari pemimpin balapan. Japanese GP kembali ke P19, lagi-lagi lapped.\n\nPolanya konsisten, sayangnya bukan dalam arti yang positif: Cadillac belum punya pace untuk berada di radar poin. Bottas sendiri tampak memaksimalkan apa yang ada, finis di Chinese GP menunjukkan mobil bisa bertahan sampai chequered flag, tapi gap ke zona poin (P10) masih terlalu jauh untuk dijembatani dengan setup saat ini.\n\n## Hasil Per Balapan\n\n**Round 1, Australian Grand Prix:** Retired. Debut musim Bottas bersama Cadillac tidak sampai finish. Tidak ada detail tambahan di data soal lap berapa atau penyebab teknis, tapi retired di round pembuka mempersulit momentum awal tim.\n\n**Round 2, Chinese Grand Prix:** P13, lapped. Ini hasil terbaik Bottas sejauh ini di 2026. Finis berarti mobil reliable di race distance, catatan positif untuk tim yang masih membangun. P13 di grid penuh 20 pembalap berarti ada tujuh nama di belakang Bottas, tapi statusnya lapped menunjukkan betapa besarnya gap pace ke tim-tim atas.\n\n**Round 3, Japanese Grand Prix:** P19, lapped. Suzuka adalah sirkuit yang menuntut aerodinamika dan downforce tinggi, area yang biasanya jadi kelemahan tim-tim baru. Bottas kembali ke P19, satu tempat di atas juru kunci. Finis, tapi jauh tertinggal.\n\nDari tiga balapan: satu DNF, dua finis tapi lapped. Konsistensi belum ada. Poin belum kelihatan.\n\n## Outlook\n\nBottas di 2026 adalah cerita dua hal sekaligus: pembalap berpengalaman yang mencoba membangun sesuatu dari nol bersama tim yang juga sedang dari nol. Cadillac butuh data, butuh lap, butuh balapan, dan Bottas adalah tipe pembalap yang bisa memberikan feedback teknis berkualitas meski hasilnya belum kelihatan di papan klasemen.\n\nDalam tiga balapan pertama musim 2026, Bottas duduk di P19 dengan 0 poin. Angka ini hampir pasti akan bergerak seiring musim berjalan dan Cadillac menemukan ritme pengembangannya. Pertanyaannya bukan apakah Bottas bisa membalap di level tinggi, rekam jejaknya menjawab itu. Pertanyaannya adalah seberapa cepat Cadillac bisa memberinya mobil yang kompetitif.\n\nPer data 28 April 2026, jawabannya belum ada.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "bottas",
+    "driver_name": "Valtteri Bottas",
+    "driver_code": "BOT",
+    "driver_number": "77",
+    "nationality": "Finnish",
+    "current_team": "Cadillac F1 Team",
+    "current_team_id": "cadillac",
+    "championship_pos": "19",
+    "championship_points": "0",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.02193,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on data error (wrong date), academic drift in structure, and soft filler overuse. Voice is mostly acceptable but redundant sentence padding and translated-English pacing weaken the read. Regenerate with corrected date (3 Mei, not 28 April), tighten filler sentences, and tighten rhetorical questions in Outlook section.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Bottas membalap untuk Cadillac F1 Team di musim 2026",
+          "fix": "Change all '28 April 2026' references to '3 Mei 2026' to match input data block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Ini bukan awal yang diinginkan, tapi konteks timnya penting untuk dipahami.",
+          "fix": "Delete sentence. Let the next section speak for itself."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Yang berbeda di 2026: Cadillac F1 Team. Ini bukan tim midfield mapan.",
+          "fix": "Rephrase: 'Di 2026, Bottas pindah ke Cadillac F1 Team, pendatang baru di grid...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Polanya konsisten, sayangnya bukan dalam arti yang positif: Cadillac belum punya pace",
+          "fix": "Tighten: 'Cadillac belum punya pace untuk zona poin. Bottas memaksimalkan apa yang ada, tapi gap tetap jauh.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Tidak ada detail tambahan di data soal lap berapa atau penyebab teknis, tapi retired di round pembuka",
+          "fix": "Delete. Just say: 'Round pembuka, Bottas retired. Data tidak rinci penyebabnya, tapi DNF di awal musim penambah tantangan.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pertanyaannya bukan apakah Bottas bisa membalap di level tinggi, rekam jejaknya menjawab itu.",
+          "fix": "Tighten: 'Bottas sudah terbukti bisa membalap di level tertinggi. Pertanyaannya seberapa cepat Cadillac memberinya mobil kompetitif.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Suzuka adalah sirkuit yang menuntut aerodinamika dan downforce tinggi, area yang biasanya jadi kelemahan",
+          "fix": "Remove. Just: 'Suzuka butuh downforce tinggi. Hasil P19 menunjukkan mobil belum ada pace di sirkuit menuntut ini.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0079a6a3a5b1b46c",
+    "published_at": "2026-04-28T12:17:22+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

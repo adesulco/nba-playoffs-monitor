@@ -1,16 +1,19 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import Card from '../components/Card.jsx';
+import LiveHero from '../components/LiveHero.jsx';
+import MilikmuStrip from '../components/MilikmuStrip.jsx';
 import PushOptInButton from '../components/PushOptInButton.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
 import { VISIBLE } from '../lib/flags.js';
 import { usePlayoffData } from '../hooks/usePlayoffData.js';
 import { useEPLChampionOdds } from '../hooks/useEPLChampionOdds.js';
+import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
+import { useTennisScoreboard } from '../hooks/useTennisScoreboard.js';
 
 // Multi-sport build plan §1 — five-card layout. NBA is the featured live
 // dashboard; F1, EPL, FIFA WC, Liga 1 (Super League Indonesia) are coming-soon
@@ -103,11 +106,26 @@ const DASHBOARDS = [
     cta: 'Coming Soon',
     ctaId: 'Segera Hadir',
   },
-  // v0.5.1 — Super League Indonesia (BRI Liga 1) temporarily removed from Home
-  // to keep the grid a clean 4-wide secondary row (f1 · epl · tennis · fifa_wc)
-  // under the NBA hero. The /liga-1-2026 route stays live via App.jsx so any
-  // previously-shared link still works. Restore this entry when Liga 1 ships
-  // live (Phase 2 target).
+  // v0.13.0 — Super League Indonesia (BRI Liga 1) restored to Home as LIVE.
+  // Phase 1A: hub at /super-league-2025-26 + 18 per-club SEO pages, ESPN
+  // soccer/idn.1 data. Defers Golden Boot, Persija-Persib derby SEO page,
+  // and Polymarket odds (no IDN markets) to v0.13.x.
+  {
+    id: 'liga_1_id',
+    href: '/super-league-2025-26',
+    status: 'live',
+    tag: 'LIVE',
+    title: 'Indonesian Super League 2025-26',
+    titleId: 'Super League Indonesia 2025-26',
+    league: 'SUPER LEAGUE · AGU 2025 – MEI 2026',
+    blurb: '18-club table, weekly fixtures in WIB, latest results, Persija-Persib derby tracker. Bahasa-first.',
+    blurbId: 'Klasemen 18 klub, jadwal pekan ini WIB, hasil terbaru, derby Persija-Persib. Bahasa Indonesia.',
+    accent: '#E2231A',
+    launchDate: null,
+    icon: 'id',
+    cta: 'Enter →',
+    ctaId: 'Masuk →',
+  },
 ];
 
 export default function Home() {
@@ -119,6 +137,18 @@ export default function Home() {
   // same hooks the per-sport dashboards use — no new API calls.
   const { games, champion } = usePlayoffData(30000);
   const { odds: eplChampionOdds } = useEPLChampionOdds();
+  // v0.11.13 — pull EPL fixtures too so LiveHero can fall back to a
+  // live EPL match when NBA is idle. 14-day window (7 back / 7 fwd)
+  // is already what the EPL dashboard uses; same cache entry on the
+  // proxy. Minimal perf cost on Home for the fallback.
+  const { upcoming: eplFixtures } = useEPLFixtures();
+  // v0.11.18 — pull both tennis tours so LiveHero can surface a live
+  // match when NBA + EPL are idle. ATP + WTA = 2 fetches but they
+  // share a proxy cache window and the hook polls 15s live / 5min
+  // idle, so page-weight impact on Home is small.
+  const { matches: atpMatches } = useTennisScoreboard('atp');
+  const { matches: wtaMatches } = useTennisScoreboard('wta');
+  const tennisMatches = useMemo(() => [...(atpMatches || []), ...(wtaMatches || [])], [atpMatches, wtaMatches]);
 
   const liveTeaserById = useMemo(() => {
     const map = {};
@@ -153,26 +183,57 @@ export default function Home() {
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO
-        title="gibol.co — gila bola · skor live NBA, F1, Liga Inggris, Tenis, Piala Dunia 2026"
-        description="Dashboard live untuk NBA Playoffs 2026, Formula 1, Liga Inggris, Tenis ATP + WTA, Piala Dunia FIFA 2026, dan Super League Indonesia (Liga 1). Skor live, peluang juara Polymarket, klasemen, bracket, peringkat, dan statistik — semua dalam Bahasa Indonesia."
+        title={lang === 'id'
+          ? 'gibol.co — gila bola · skor live NBA, F1, Liga Inggris, Tenis, Piala Dunia 2026'
+          : 'gibol.co — gila bola · live scores NBA, F1, Premier League, Tennis, FIFA World Cup 2026'}
+        description={lang === 'id'
+          ? 'Dashboard live untuk NBA Playoffs 2026, Formula 1, Liga Inggris, Tenis ATP + WTA, Piala Dunia FIFA 2026, dan Super League Indonesia (Liga 1). Skor live, peluang juara Polymarket, klasemen, bracket, peringkat, dan statistik — semua dalam Bahasa Indonesia.'
+          : 'Live dashboards for NBA Playoffs 2026, Formula 1, Premier League, ATP + WTA Tennis, FIFA World Cup 2026, and BRI Liga 1 Indonesia. Live scores, Polymarket title odds, standings, bracket, rankings, and stats — Bahasa-first.'}
         path="/"
         lang={lang}
         keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 bahasa indonesia, liga inggris, premier league, epl, tenis 2026, atp tour 2026, wta tour 2026, grand slam 2026, roland garros 2026, wimbledon 2026, peringkat atp, peringkat wta, FIFA world cup 2026, piala dunia 2026, liga 1 indonesia, bri liga 1"
       />
       <div className="dashboard-wrap">
-        {/* TopBar carries the brand. No separate hero — saves ~80px so all
-            5 dashboards fit above the fold on ≥1024px. */}
-        <TopBar
-          subtitle={lang === 'id' ? 'gila bola · dashboard live olahraga' : 'gila bola · live sports dashboards'}
-        />
+        {/* V2TopBar is rendered globally in App.jsx now so the masthead
+            persists across route changes (no re-mount seam). */}
+
+        {/* A11y — page has a single <h1> for screen-reader rotor. Visually
+            hidden on desktop (the SportNav + dashboard cards already carry
+            the brand beat) but announced to assistive tech. On narrow
+            mobile viewports where the copy helps orient, it lifts into
+            view via the sr-only override. */}
+        <h1 className="sr-only">
+          {lang === 'id'
+            ? 'gibol.co — dashboard olahraga live dalam Bahasa Indonesia'
+            : 'gibol.co — live sports dashboards in Bahasa Indonesia'}
+        </h1>
+
+        {/* v0.11.11 Sprint 5 — hero live game (NBA priority, EPL
+            fallback as of v0.11.13). Renders only when some sport has
+            a live event; silent otherwise. Oversized (72–120 px
+            responsive) tabular score pulls the eye the moment a user
+            lands. Audit §05 stretch spec: "the single most-followed
+            live match is promoted to hero — a 120px score with team
+            sigils." */}
+        <LiveHero games={games} eplFixtures={eplFixtures} tennisMatches={tennisMatches} />
+
+        {/* v0.11.8 Sprint 3 — cross-sport "Milikmu" strip. Renders null
+            when user has zero pins so first-time visitors see the
+            gateway grid unchanged; otherwise promotes their pinned
+            NBA team / EPL club / F1 constructor / Tennis player into
+            a direct-link row above the grid. Audit §04 Persona A
+            retention gap + Persona B power-user persistence ask. */}
+        <MilikmuStrip />
 
         {/* Dashboard grid — NBA featured spans full width; 4 secondaries share
-            the row below on desktop (2×2 on narrower screens, 1-col mobile). */}
-        <div className="home-dashboard-grid" style={{
+            the row below on desktop (2×2 on narrower screens, 1-col mobile).
+            Padding uses .dashboard-hero so it aligns with the sport
+            dashboard heroes (EPL/F1/Tennis) — prevents the 4–8px shift
+            when users flick Home ↔ sport. */}
+        <div className="home-dashboard-grid dashboard-hero" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
           gap: 10,
-          padding: '16px 20px 20px',
         }}>
           {featured && (
             <div style={{ gridColumn: '1 / -1', minWidth: 0 }}>
@@ -219,8 +280,8 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Footer — compact, with inline contact link */}
-        <div style={{
+        {/* Footer — v0.11.20 GIB-014 <footer role="contentinfo"> */}
+        <footer role="contentinfo" style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           padding: '10px 20px', flexWrap: 'wrap', gap: 8,
           borderTop: `1px solid ${C.line}`,
@@ -246,7 +307,7 @@ export default function Home() {
             </span>
             ESPN · Polymarket · OpenF1 · football-data.org · FIFA.com
           </div>
-        </div>
+        </footer>
       </div>
     </div>
   );

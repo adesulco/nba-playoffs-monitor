@@ -5,7 +5,6 @@ import { useApp } from '../lib/AppContext.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { supabase } from '../lib/supabase.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 
 /**
  * /leaderboard/:leagueId — per-league leaderboard for a private league.
@@ -81,9 +80,8 @@ function LeagueLeaderboardInner() {
         lang={lang}
       />
       <div className="dashboard-wrap" style={{ maxWidth: 820, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink backTo="/bracket" title="gibol.co" subtitle={lang === 'id' ? "pick'em · liga" : "pick'em · league"} />
 
-        <main style={{ padding: '28px 8px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <section style={{ padding: '28px 8px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           {fetching ? (
             <p style={{ fontSize: 13, color: C.dim }}>Loading…</p>
           ) : notFound ? (
@@ -165,7 +163,7 @@ function LeagueLeaderboardInner() {
               >{lang === 'id' ? '← Kembali ke bracket kamu' : '← Back to your brackets'}</Link>
             </>
           )}
-        </main>
+        </section>
       </div>
     </div>
   );

@@ -1,14 +1,17 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import SportIcon from '../components/SportIcon.jsx';
-import Chip from '../components/Chip.jsx';
+// v0.18.0 Phase 2 Sprint C — `Chip variant="soon"` migrated to the
+// new <LiveStatusPill variant="coming-soon" />. Same shape and
+// motion; coming-soon is now the canonical name (matches the
+// directive's 5-variant taxonomy).
+import LiveStatusPill from '../components/v2/LiveStatusPill.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 
-export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, icon, features, featuresId, seoKeywords, jsonLd, children }) {
+export default function ComingSoon({ league, title, titleId, blurb, blurbId, accent, launchDate, icon, features, featuresId, seoKeywords, seoImage, jsonLd, children, sportId }) {
   const location = useLocation();
   const { lang } = useApp();
 
@@ -22,18 +25,18 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
         title={`${displayTitle} · gibol.co — segera hadir`}
         description={displayBlurb}
         path={location.pathname}
+        image={seoImage}
         lang={lang}
         keywords={seoKeywords}
         jsonLd={jsonLd}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={accent} />
 
         {/* Step 6 hero — left-aligned, 36/700/-0.025em, chip top-right,
-            tint dropped from ${accent}20 (~12.5%) → ${accent}14 (~8%). */}
-        <div style={{
-          padding: '36px 24px 32px',
-          borderBottom: `1px solid ${C.line}`,
+            tint dropped from ${accent}20 (~12.5%) → ${accent}14 (~8%).
+            v0.11.8 — padding aligned to shared .dashboard-hero class
+            (was 36/24/32; now 24/24/20 matches sport dashboards). */}
+        <div className="dashboard-hero dashboard-hero--bordered" style={{
           background: `linear-gradient(180deg, ${accent}14 0%, ${C.bg} 100%)`,
         }}>
           <div style={{
@@ -43,17 +46,26 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
             <div style={{ lineHeight: 1 }}>
               {icon && <SportIcon id={icon} size={64} />}
             </div>
-            <Chip variant="soon" sportId={icon} accent={accent} label="COMING SOON" />
+            <LiveStatusPill variant="coming-soon" accent={accent} label="COMING SOON" />
           </div>
-          <div style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
-            color: C.text, marginBottom: 8,
-            textWrap: 'balance',
-            maxWidth: 720,
-          }}>
+          {/* v0.11.20 GIB-003 — promoted <div> to <h1> so every
+              ComingSoon page (FIFA World Cup, Liga 1, IBL) has a
+              heading for the screen-reader rotor. Visuals unchanged. */}
+          {/* v0.19.5 Phase 2 Sprint E — h1 uses .editorial-h1 token
+              (24/28/32 mobile/tablet/desktop) per directive §6,
+              replacing the fixed 36px that overshot mobile fold. */}
+          <h1
+            className="editorial-h1"
+            style={{
+              fontFamily: 'var(--font-sans)',
+              color: C.text,
+              margin: '0 0 8px 0',
+              textWrap: 'balance',
+              maxWidth: 720,
+            }}
+          >
             {displayTitle}
-          </div>
+          </h1>
           <div style={{
             fontSize: 11, color: C.dim, letterSpacing: 1, marginBottom: 16,
           }}>
@@ -85,9 +97,12 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
           </div>
         </div>
 
-        {/* Features preview */}
+        {/* Features preview — v0.19.5 Phase 2 Sprint E: switched
+            from auto-fit (variable column count) to .coming-soon-grid
+            class which honors the directive's explicit breakpoint
+            matrix (2-col mobile / 3-col 541-900 / 5-col ≥901). */}
         {displayFeatures && displayFeatures.length > 0 && (
-          <div style={{ padding: '28px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
+          <div className="coming-soon-grid" style={{ padding: '28px 24px' }}>
             {displayFeatures.map((f, i) => (
               <div key={i} style={{
                 padding: '16px',
@@ -113,7 +128,7 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
           </div>
         )}
 
-        <div style={{
+        <footer role="contentinfo" style={{
           display: 'flex', justifyContent: 'space-between',
           padding: '14px 24px',
           borderTop: `1px solid ${C.line}`,
@@ -123,7 +138,7 @@ export default function ComingSoon({ league, title, titleId, blurb, blurbId, acc
           <div>gibol.co · part of the family</div>
           <ContactBar lang={lang} variant="inline" />
           <div>← <a href="/" style={{ color: C.dim, textDecoration: 'none' }}>back to all dashboards</a></div>
-        </div>
+        </footer>
       </div>
     </div>
   );

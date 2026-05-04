@@ -1,0 +1,78 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-devin-vassell",
+  "title": "Profil Devin Vassell: Guard San Antonio Spurs",
+  "description": "Profil pemain NBA Devin Vassell, Guard San Antonio Spurs. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Devin Vassell, Guard San Antonio Spurs yang Tumbuh Jadi Andalan\n\nDevin Vassell, guard San Antonio Spurs kelahiran Suwanee, Georgia, mencatat 13,9 PPG di musim 2025-26 per 28 April 2026, ranking ke-68 NBA dalam scoring. Pemain berpostur 6'5\" 200 lbs dengan jersey #24 ini kini memasuki musim kelima di liga, dan angka-angkanya bicara tentang pemain yang sudah bukan lagi pelengkap rotasi.\n\n## Identitas\n\nLahir di Suwanee, GA, Vassell membawa fisik tipikal guard modern NBA: tinggi 6'5\", cukup panjang untuk defend multiple positions, cukup agile untuk operate di luar. Sebelum masuk liga, dia menempuh jalur college di Florida State, salah satu program yang dikenal rutin produce pemain dengan defensive IQ solid.\n\nDraft 2020, Vassell diambil San Antonio Spurs di round pertama, pick ke-11. Debut NBA-nya tahun yang sama, artinya musim 2025-26 adalah musim kelimanya bersama satu organisasi yang sama. Di era NBA penuh perpindahan pemain, loyalitas macam ini tidak lazim untuk seorang guard di usia 25 tahun.\n\n## San Antonio Spurs\n\nSpurs, singkatan SA, adalah tim dengan sejarah panjang di Western Conference, dan dalam beberapa musim terakhir sedang dalam fase rebuilding yang cukup serius. Di tengah proses itu, Vassell bertahan dan berkembang sebagai salah satu pemain inti skuad.\n\nPerannya di SA bukan sekadar pengisi kuota. Dengan 13,9 PPG dan ranking ke-68 liga, Vassell masuk kategori scorer yang legitimate, bukan superstar, tapi jelas bukan bench warmer. Di tim yang sedang membangun identitas baru, pemain seperti dia punya nilai lebih: experienced, dari day one draft Spurs, dan konsisten.\n\n## Performa Musim 2025-26\n\nAngka Vassell musim ini membentuk profil pemain yang lebih lengkap dari sekadar scorer.\n\n**13,9 PPG, ranking ke-68 NBA.** Ini bukan angka yang mengejutkan siapapun yang ikuti perkembangannya, tapi angka yang solid untuk guard musim kelima. Masuk top 70 scorer liga adalah threshold yang memisahkan pemain biasa dari pemain yang bisa diandalkan sebagai opsi serangan.\n\n**4,0 RPG, ranking tied-118th.** Untuk seorang guard, empat rebound per game itu bukan angka yang diabaikan begitu saja. Ini menandakan Vassell aktif di area yang tidak selalu jadi tugas utama seorang guard, positioning, effort, dan willingness to crash the board. Kontribusi kecil yang menambah dimensi.\n\n**2,5 APG, ranking ke-103.** Bukan playmaker, tapi bukan pure scorer yang tidak bisa pass juga. 2,5 APG menunjukkan bahwa Vassell bisa facilitate, sebuah skill yang makin penting untuk two-way guard modern yang diharapkan bisa operate sebagai secondary ball handler.\n\n**43,7% FG, ranking ke-111.** Ini angka yang perlu diperhatikan. Di bawah rata-rata untuk skala liga, tapi konteksnya penting: Vassell ambil cukup tembakan untuk punya shooting percentage yang relevan. Efisiensi ini kemungkinan cerminan dari shot diet yang varied, beberapa off the dribble, beberapa spot-up, campuran jarak yang tidak selalu optimal.\n\nSecara keseluruhan, statistik musim ini menggambarkan Vassell sebagai **two-way guard yang serba bisa tanpa jadi elite di satu kategori.** Scoring-nya real, kontribusi reboundnya melampaui ekspektasi posisi, dan kemampuan playmake-nya cukup untuk tidak jadi beban di half-court offense.\n\n## Ke Depan\n\nDi usia 25 tahun dengan pengalaman lima musim, Vassell berada di titik yang secara teori krusial bagi setiap pemain NBA: terlalu muda untuk disebut veteran, terlalu berpengalaman untuk masih disebut \"pemain muda yang potensial.\" Musim 2025-26, dengan 13,9 PPG dan kontribusi di tiga kategori utama, adalah pernyataan bahwa dia sudah melewati fase itu.\n\nApakah Spurs akan berkembang bersamanya atau jalur kariernya akan berubah, itu pertanyaan yang belum bisa dijawab data ini. Yang bisa dijawab: per 28 April 2026, Devin Vassell adalah guard yang bekerja keras untuk tim yang sedang membangun sesuatu, dan angka-angkanya tidak bohong.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "4395630",
+    "athlete_name": "Devin Vassell",
+    "team_name": "San Antonio Spurs",
+    "team_abbr": "SA",
+    "position": "Guard",
+    "jersey": "24",
+    "age": 25,
+    "birthplace": "Suwanee, GA",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021986,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on training-inference violations: invents Vassell's defensive IQ, Florida State's program reputation, and Spurs' rebuilding narrative—none in input data. Also tense overmarking and translated-English phrasing in several paragraphs. Rewrite to stay in input-data bounds.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Lahir di Suwanee, GA, Vassell membawa fisik tipikal guard modern NBA: tinggi 6'5\", cukup panjang untuk defend multiple positions, cukup agile untuk operate di luar.",
+          "fix": "Remove defensive/agility inference. Stick to: 'Tinggi 6'5\", 200 lbs dengan fisik untuk play guard modern.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum masuk liga, dia menempuh jalur college di Florida State, salah satu program yang dikenal rutin produce pemain dengan defensive IQ solid.",
+          "fix": "Remove reputation claim. Write: 'Dia college di Florida State sebelum draft.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Debut NBA-nya tahun yang sama, artinya musim 2025-26 adalah musim kelimanya bersama satu organisasi yang sama.",
+          "fix": "Write: 'artinya musim 2025-26 musim kelimanya bersama satu organisasi.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di era NBA penuh perpindahan pemain, loyalitas macam ini tidak lazim untuk seorang guard di usia 25 tahun.",
+          "fix": "Rephrase: 'Jarang ada guard muda di liga yang setia satu klub begini.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka Vassell musim ini membentuk profil pemain yang lebih lengkap dari sekadar scorer.",
+          "fix": "Delete or simplify: 'Statistik musim ini cerita lebih dari cuma pencetak poin.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Masuk top 70 scorer liga adalah threshold yang memisahkan pemain biasa dari pemain yang bisa diandalkan sebagai opsi serangan.",
+          "fix": "Simplify: 'Top 70 scorers = legit option, bukan role player biasa.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Spurs, singkatan SA, adalah tim dengan sejarah panjang di Western Conference, dan dalam beberapa musim terakhir sedang dalam fase rebuilding yang cukup serius.",
+          "fix": "Remove editorial commentary on rebuilding. Stick to: 'Spurs adalah timnya di Western Conference.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xc94bcaba10a9b400",
+    "published_at": "2026-04-28T12:11:25+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

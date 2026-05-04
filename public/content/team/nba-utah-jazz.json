@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-utah-jazz",
+  "title": "Profil Utah Jazz: Western Conference (2025-26)",
+  "description": "Profil Utah Jazz — franchise NBA dari Utah di division Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Utah Jazz 2025-26: Musim Berat, Fondasi Jangka Panjang\n\nUtah Jazz adalah franchise NBA yang berkandang di Utah dan bermain di Northwest Division, Western Conference. Per 28 April 2026, Jazz menutup musim reguler 2025-26 dengan rekor 22-60, win percentage 0.268, seed 15 di Western Conference. Satu dari musim paling berat dalam sejarah franchise ini, tapi juga musim yang paling jujur soal di mana posisi tim sekarang dan ke mana arahnya.\n\n## Identitas dan Posisi di Liga\n\nDi Northwest Division, Jazz finis di posisi 5, jauh di bawah Oklahoma City dan Denver yang mendominasi divisi musim ini. Western Conference sendiri sudah kompetitif sampai ke level seed 8, jadi rekor 22-60 menempatkan Utah di kelompok tim paling bawah secara keseluruhan. Head coach Will Hardy tetap memegang kendali tim, tugasnya bukan mengejar playoff musim ini tapi membangun kultur dan pola main yang bisa dipakai jangka panjang.\n\nDi atas kertas, posisi klasemen Jazz di 2025-26 bukan bencana, ini bagian dari proses rebuild yang memang butuh waktu. Pertanyaannya bukan apakah musim ini berhasil, tapi apakah fondasi yang dibangun Hardy dan manajemen cukup solid untuk musim-musim ke depan.\n\n## Performa Musim Ini\n\nAngkanya bicara jelas: Jazz cetak rata-rata 117,6 PPG tapi kemasukan 126,0 PPG per laga, defisit 8,4 poin per malam. Itu bukan sekadar kurang beruntung di laga-laga ketat. itu pola yang konsisten sepanjang 82 laga.\n\nRekor home 14-27 menunjukkan Jazz pun tidak dominan di depan pendukung sendiri. Road record 8-33 lebih buruk lagi, di kandang lawan, Jazz nyaris tidak kompetitif. Dari 60 kekalahan di musim ini, sebagian besar bukan laga yang kalah tipis di injury time. ini tim yang masih belajar cara menang di level NBA.\n\nSatu hal yang bisa dibaca positif dari data ini: Jazz tetap score. 117,6 PPG bukan angka tim yang mati secara ofensif. Ada talenta di roster yang bisa generate poin, masalahnya di sisi pertahanan, yang masih jauh dari level kompetitif.\n\n## Roster dan Pemain Kunci\n\n**Lauri Markkanen** (#23, forward, 28 tahun, 8 musim) tetap jadi anchor utama roster Jazz. Dengan pengalaman delapan tahun di NBA dan usia yang masih produktif, Markkanen adalah salah satu pemain paling matang di tim dan referensi bagi pemain-pemain muda soal standar profesional.\n\n**Jaren Jackson Jr.** (#20, forward, 26 tahun, 7 musim) membawa kedalaman pengalaman kedua di roster. Tujuh musim di liga, dan di usianya sekarang, JJJ seharusnya masuk fase prime, posisinya di Jazz musim ini sekaligus jadi indikator arah roster ke depan.\n\n**Walker Kessler** (#24, center, 24 tahun, 3 musim) adalah salah satu nama yang paling menarik dipantau. Tiga musim sudah cukup untuk menunjukkan apakah seorang big man punya tools untuk jadi anchor bertahan, Kessler, di usianya yang masih 24, ada di persimpangan penting.\n\nDi sisi lain roster, Jazz punya gelombang rookie dan sophomore yang jadi bagian inti project rebuild ini: **Ace Bailey** (19 tahun, 0 musim, dari Rutgers), **Isaiah Collier** (21 tahun, 1 musim), dan **Keyonte George** (22 tahun, 2 musim) adalah nama-nama yang musim-musim ke depan akan menentukan apakah rebuild ini berhasil atau tidak. Masih terlalu dini untuk membuat klaim besar, tapi kehadiran mereka di roster menjelaskan kenapa musim 22-60 ini bukan akhir dari cerita.\n\n## Penutup\n\nRekor 22-60, seed 15 Western Conference, defisit scoring hampir sembilan poin per laga, Utah Jazz 2025-26 bukan tim yang sedang bersaing untuk sesuatu di musim ini. Tapi baca rosternya: campuran veteran berpengalaman seperti Markkanen dan JJJ dengan sekelompok pemain 19-22 tahun yang masih di awal karier NBA mereka. Itu bukan kecelakaan, itu pilihan.\n\nWill Hardy mendampingi proses yang butuh kesabaran dari semua pihak: pemain, manajemen, dan pendukung. Snapshot ini mencerminkan data per 28 April 2026. Musim 2025-26 sudah tutup buku. Pertanyaan sesungguhnya baru akan terjawab dua atau tiga musim dari sekarang.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "26",
+    "team_name": "Utah Jazz",
+    "team_abbr": "UTAH",
+    "team_location": "Utah",
+    "conference": "Western Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023406,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has critical date hallucination (28 April vs. 3 Mei), multiple capitalization errors (lowercase sentence starts), and one unverified roster claim (Kevin Love). Voice is mostly solid Bahasa but has training-inference risk on player roles. Rewrite required.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Jazz menutup musim reguler 2025-26 dengan rekor 22-60",
+          "fix": "Change to 'Per 3 Mei 2026' to match input data block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kevin Love (#42, forward, 37 tahun, 17 musim, dari UCLA)",
+          "fix": "Remove Kevin Love reference entirely or verify against actual 2025-26 Jazz roster."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di atas kertas, posisi klasemen Jazz di 2025-26 bukan bencana, ini bagian dari proses",
+          "fix": "Rewrite: 'Posisi klasemen Jazz 2025-26 bukan bencana, ini bagian dari proses rebuild.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Jazz cetak rata-rata 117,6 PPG tapi kemasukan 126,0 PPG per laga",
+          "fix": "Change to: 'Jazz cetak rata-rata 117,6 PPG tapi kebobolan 126,0 PPG per laga.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Itu bukan sekadar kurang beruntung. itu pola yang konsisten sepanjang 82 laga.",
+          "fix": "Capitalize: 'Ini pola yang konsisten sepanjang 82 laga.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dari 60 kekalahan di musim ini, sebagian besar bukan laga yang kalah tipis. ini tim yang masih belajar",
+          "fix": "Capitalize: 'Ini tim yang masih belajar cara menang di level NBA.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Satu hal yang bisa dibaca positif dari data ini: Jazz tetap score.",
+          "fix": "Rewrite: 'Satu hal positif dari data: Jazz tetap score di 117,6 PPG.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Lauri Markkanen (#23, forward, 28 tahun, 8 musim) tetap jadi anchor utama",
+          "fix": "Soften: 'Lauri Markkanen adalah pemain paling berpengalaman di roster dengan 8 musim NBA.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1c27efb804a28d8e",
+    "published_at": "2026-04-28T10:52:25+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

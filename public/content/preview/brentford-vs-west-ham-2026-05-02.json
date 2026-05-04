@@ -1,0 +1,76 @@
+{
+  "type": "preview",
+  "slug": "brentford-vs-west-ham-2026-05-02",
+  "title": "Preview Brentford vs West Ham",
+  "description": "Preview Bahasa Indonesia untuk Brentford vs West Ham di Brentford Community Stadium, London, 2 May 2026.",
+  "body_md": "Brentford menjamu West Ham di Brentford Community Stadium, Sabtu 2 Mei 2026 mulai jam 21.00 WIB. Dua tim London, tapi situasi yang beda jauh, Brentford nyaman di posisi 9, West Ham terancam degradasi di peringkat 17. Tiga poin malam ini bobotnya tidak sama untuk kedua kubu.\n\n## Form & Statistik\n\nLima laga terakhir Brentford berakhir imbang semua, DDDDD. Bukan tren yang bagus, tapi 48 poin dari 33 laga cukup untuk bikin mereka aman jauh dari batas bawah. Thiago jadi andalan utama di lini depan dengan 21 gol musim ini, angka yang solid untuk tim sekelas Brentford. Masalahnya, Thomas Frank kehilangan banyak pilihan untuk laga ini. Hickey, Milambo, Carvalho, Dasilva, Henderson, Furo, Henry, dan Janelt semua absen karena cedera. Skuad tipis, rotasi terbatas.\n\nWest Ham datang dengan form yang tidak konsisten: WDWLD. Dua menang, dua imbang, satu kalah dalam lima laga terakhir, cukup untuk bikin harapan bertahan, tapi 36 poin dari 33 laga tetap posisi berbahaya. Data top scorer musim ini tidak tersedia, yang artinya tidak ada satu nama pun yang benar-benar bisa diandalkan sebagai pencetak gol utama secara konsisten. Kiper cadangan pun bermasalah, Fabianski absen karena cedera punggung.\n\n## Head-to-Head\n\nDari lima pertemuan terakhir, Brentford unggul 2M-2S-1K. Pertemuan terakhir berakhir 2-2, sebelumnya Brentford menang 2-0 dan 1-0. Satu kekalahan telak 2-4 juga ada di catatan. Laga antara kedua tim cenderung terbuka, gol hampir selalu ada.\n\n## Pemain Kunci & Absensi\n\nThiago adalah nama yang paling perlu dipantau, 21 gol musim ini bukan kebetulan. Kalau dia tajam malam ini, West Ham punya masalah besar. Di sisi West Ham, tekanan lebih ke seluruh tim dibanding satu individu karena tidak ada satu striker dominan yang tercatat. Absensi panjang di kubu Brentford (delapan pemain) membuka celang buat West Ham, bench Brentford tidak sekuat biasanya.\n\n## Taktis & Prediksi\n\nBrentford kemungkinan tetap main direct dan agresif meski dengan skuad terbatas. West Ham dalam posisi butuh poin, jadi mereka tidak bisa datang untuk curi satu angka saja, setidaknya secara retorika. Tapi tim yang terancam degradasi seringkali justru bermain compact dan ngotot, tunggu kesalahan lawan.\n\nArea kunci: sayap kanan Brentford bisa jadi masalah kalau West Ham tidak rapi dalam transisi. Di sisi lain, lini tengah West Ham perlu kerja keras untuk meredam serangan yang dimotori Thiago.\n\nBrentford unggul on paper dan main di kandang. Tapi form imbang terus dan krisis cedera bikin laga ini lebih terbuka dari yang kelihatan. Prediksi skor: **Brentford 2-1 West Ham**.\n\n---\n\nTayang live di Vidio dan beIN Sports mulai jam 21.00 WIB.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379312",
+    "home_team": "Brentford",
+    "away_team": "West Ham",
+    "kickoff_utc": "2026-05-02T14:00:00+00:00",
+    "venue": "Brentford Community Stadium, London",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.017893,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail due to three high-severity training-data inferences (named injury details, eight player names, meta-commentary on missing data). Remove specificity not in input data block. Additionally, non-standard abbreviations (M/S/K) need clarity.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Hickey, Milambo, Carvalho, Dasilva, Henderson, Furo, Henry, dan Janelt semua absen",
+          "fix": "Remove specific player names or replace with generic: 'Thomas Frank menghadapi krisis cedera dengan delapan pemain di luar aksi.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Fabianski absen karena cedera punggung",
+          "fix": "Remove injury detail: 'Kiper cadangan Fabianski absen cedera.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Data top scorer musim ini tidak tersedia, yang artinya tidak ada satu nama pun yang benar-benar bisa diandalkan",
+          "fix": "Delete entire sentence. Move to: 'West Ham datang dengan form WDWLD dan 36 poin—posisi berbahaya.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Brentford unggul on paper dan main di kandang. Tapi form imbang terus dan krisis cedera bikin laga ini lebih terbuka dari yang kelihatan.",
+          "fix": "Rephrase: 'Brentford unggul di atas kertas kalau tinjau skuad, tapi imbang terus dan cedera bikin laga terbuka.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Brentford unggul 2M-2S-1K. Pertemuan terakhir berakhir 2-2, sebelumnya Brentford menang 2-0 dan 1-0.",
+          "fix": "Write out: 'Brentford unggul 2 menang-2 seri-1 kalah dari lima pertemuan terakhir.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Satu kekalahan telak 2-4 juga ada di catatan.",
+          "fix": "Simplify: 'Brentford juga pernah kalah 2-4 di catatan head-to-head.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Thiago adalah nama yang paling perlu dipantau, 21 gol musim ini bukan kebetulan.",
+          "fix": "Tighten: 'Thiago jadi sorotan utama: 21 gol musim ini.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xaa51a2996443dc76",
+    "fact_check": {
+      "passed": true,
+      "issue_count": 0
+    },
+    "published_at": "2026-04-27T10:58:55+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

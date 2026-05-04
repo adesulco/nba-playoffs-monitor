@@ -1,0 +1,97 @@
+{
+  "type": "team",
+  "slug": "tennis-aryna-sabalenka",
+  "title": "Profil Aryna Sabalenka (WTA) — Peringkat 1",
+  "description": "Profil petenis Aryna Sabalenka (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Aryna Sabalenka: Petenis Nomor Satu Dunia yang Mendominasi WTA 2026\n\nAryna Sabalenka, petenis Belarus kelahiran 5 Mei 1998, saat ini bertakhta di peringkat 1 WTA dengan 10.895 poin per 16 April 2026. Pemain tangan kanan asal Minsk ini memasuki usia 28 tahun bulan depan dalam posisi yang tidak bisa lebih baik, puncak tenis putri dunia.\n\n## Identitas\n\nLahir di Minsk, Belarus, pada 5 Mei 1998, Sabalenka kini berusia 27 tahun. Posturnya menonjol di lapangan: tinggi 183 cm (6'0\") dengan berat 80 kg, fisik yang memberi keunggulan nyata di baseliner dengan serve keras dan groundstroke bertekanan tinggi.\n\nSabalenka mulai terjun ke sirkuit profesional pada 2012, artinya sudah lebih dari satu dekade ia mengasah permainan di level tertinggi WTA. Perjalanan panjang dari debut remaja ke puncak peringkat dunia bukan hal yang terjadi dalam semalam.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Sabalenka mengunci posisi nomor 1 WTA dengan 10.895 poin. Peringkat sebelumnya? Juga nomor 1. Stabil di puncak, bukan tren naik sesaat, melainkan dominasi yang berlanjut.\n\nPosisi stabil di peringkat teratas WTA bukan sesuatu yang mudah dipertahankan. Sistem poin WTA berjalan sepanjang tahun dengan rolling 52 minggu, artinya setiap minggu ada poin yang jatuh tempo dan harus diganti dengan performa baru. Sabalenka tetap di angka hampir 11.000 poin, angka yang mencerminkan konsistensi lintas turnamen, bukan fluktuasi satu atau dua event besar saja.\n\nSelisih antara petenis nomor satu dengan nomor dua di WTA sering kali menjadi indikator seberapa dominan pemain tersebut. Dengan poin mendekati 11.000, Sabalenka menjaga jarak yang cukup untuk tidak mudah digeser dalam jangka pendek, kecuali ada kolaps besar dalam performa atau absen panjang.\n\n## Penutup\n\nAryna Sabalenka menutup April 2026 tepat di tempat yang sudah ia tinggali: puncak WTA. Peringkat 1 dengan poin stabil dan tren yang tidak bergerak ke mana-mana kecuali bertahan, itulah potret petenis Belarus ini per data 16 April 2026.\n\nBagi penggemar tenis putri, nama Sabalenka bukan sekadar angka di papan peringkat. Di usia 27 tahun dengan lebih dari satu dekade pengalaman profesional, ia berada di fase puncak karier. Selama poin bertahan dan konsistensi terjaga, posisi nomor satu WTA masih jadi miliknya untuk diperdebatkan.\n\n*Data peringkat dalam artikel ini merujuk pada update WTA per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "3038",
+    "athlete_name": "Aryna Sabalenka",
+    "current_rank": 1,
+    "previous_rank": 1,
+    "points": 10895.0,
+    "trend": "-",
+    "birthplace": "Minsk, Belarus",
+    "dob": "1998-05-05",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.016349,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 10,
+      "summary": "Article fails on translated-English phrasing ('tidak terjadi dalam semalam'), soft academic drift (unnecessary WTA system explanation), and weak structural choices (opening paragraphs with thesis, closing with platitude). Age inconsistency in lead vs. body also needs fixing. Voice skews toward textbook-explanation register rather than sport-journalist profile.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Perjalanan panjang dari debut remaja ke puncak peringkat dunia bukan hal yang terjadi dalam semalam.",
+          "fix": "Rephrase: 'Naik dari debut remaja ke nomor satu WTA butuh waktu panjang.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "artinya setiap minggu ada poin yang jatuh tempo dan harus diganti dengan performa baru",
+          "fix": "Cut or simplify: 'Poin WTA rolling 52 minggu — perlu konsistensi setiap turnamen.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Sabalenka mulai terjun ke sirkuit profesional pada 2012, artinya sudah lebih dari satu dekade",
+          "fix": "Rephrase: 'Debut 2012 — lebih dari satu dekade di level tertinggi.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Stabil di puncak, bukan tren naik sesaat, melainkan dominasi yang berlanjut.",
+          "fix": "Tighten: 'Stabil di puncak — bukan tren sesaat, dominasi nyata.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Bagi penggemar tenis putri, nama Sabalenka bukan sekadar angka di papan peringkat.",
+          "fix": "Replace with concrete forward-looking statement or context about her competition."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "memasuki usia 28 tahun bulan depan",
+          "fix": "Lead should say 'berusia 27' (per input date 3 Mei, not yet birthday). Move 'turns 28 soon' if relevant."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "itulah potret petenis Belarus ini per data 16 April 2026",
+          "fix": "Use 'status', 'posisi', or just: 'Sabalenka bertahan di nomor 1 WTA, per 16 April 2026.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Posisi stabil di peringkat teratas WTA bukan sesuatu yang mudah dipertahankan.",
+          "fix": "Cut or start with a fact: 'Sabalenka tetap di 10.895 poin — stabil, tidak bergeser.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "profesional pada 2012, artinya sudah lebih dari satu dekade ia mengasah permainan di level tertinggi WTA. Perjalanan panjang dari",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "papan peringkat. Di usia 27 tahun dengan lebih dari satu dekade pengalaman profesional, ia berada di fase puncak karier. Selama poin bertahan dan",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x73a2b7eafc9542e0",
+    "published_at": "2026-04-28T12:06:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

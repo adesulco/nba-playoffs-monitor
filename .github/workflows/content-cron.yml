@@ -1,0 +1,199 @@
+name: Content Engine — Cron
+
+# Phase 1 ship #14. Generates Bahasa articles on a schedule + commits the
+# JSON files back to the repo. Vercel auto-rebuilds from the commit.
+#
+# Articles land with `manual_review: true` per Phase 1 doctrine — they're
+# committed as drafts. Editor still approves via /editor before they go
+# public.
+#
+# Triggers: all schedule blocks are commented OUT initially. Enable
+# per-cadence by uncommenting + pushing. Every job is also runnable
+# via workflow_dispatch from the GitHub Actions UI for manual back-fill
+# or smoke-testing.
+#
+# Secrets required (set in GitHub repo Settings → Secrets):
+#   ANTHROPIC_API_KEY        Anthropic key (sk-ant-api03-...)
+#   SUPABASE_URL             https://egzacjfbmgbcwhtvqixc.supabase.co
+#   SUPABASE_ANON_KEY        Supabase anon JWT
+#   SUPABASE_SERVICE_ROLE_KEY  Supabase service-role JWT (for /api/approve)
+#   API_FOOTBALL_KEY         API-Football pro key (optional in Phase 0/1
+#                            since the engine routes through the Vercel
+#                            proxy when this is empty)
+#
+# The runner installs the content-engine package from packages/content-engine/
+# then runs `python -m content_engine.scripts.discover <mode>`. Output JSON
+# is committed back via git in the same workflow.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Discovery mode to run'
+        required: true
+        default: 'tennis-rankings'
+        type: choice
+        options:
+          - football-previews
+          - football-recaps
+          - nba-previews
+          - nba-recaps
+          - f1-weekend
+          - tennis-rankings
+          - weekly-standings
+          - all
+
+  # Schedules — all commented out by default. Uncomment per-cadence
+  # ONCE the respective sport+article-type has been proven stable in
+  # the manual workflow_dispatch path. Cron times are UTC.
+  #
+  # IMPORTANT: GitHub Actions free-tier limits apply (2,000 minutes /
+  # month for private repos, unlimited for public). Each discovery
+  # run is cheap (1-3 min) but stack carefully if you fan out fast.
+  #
+  # schedule:
+  #   # Football preview discovery — daily 06:00 UTC, catches T-24h fixtures
+  #   - cron: '0 6 * * *'
+  #     # action: football-previews
+  #
+  #   # Football recap polling — every 30 min during typical Saturday/Sunday
+  #   # match-day windows (12:00-23:00 UTC = 14:00-25:00 local European).
+  #   # On non-match days the job is a fast no-op (idempotent skip).
+  #   - cron: '*/30 12-23 * * 0,6'
+  #     # action: football-recaps
+  #
+  #   # NBA — daily 00:00 + 04:00 UTC (covers ET evening tipoffs spanning
+  #   # midnight). Recaps poll every 30 min during the 02:00-08:00 UTC
+  #   # window (the bulk of NBA Playoffs evening games).
+  #   - cron: '0 0,4 * * *'
+  #     # action: nba-previews
+  #   - cron: '*/30 2-8 * * *'
+  #     # action: nba-recaps
+  #
+  #   # F1 — Thursday 12:00 UTC (preview) + Sunday 18:00 UTC (recap)
+  #   # Most races finish ~15:00-16:00 UTC; 18:00 UTC catches them.
+  #   - cron: '0 12 * * 4'
+  #     # action: f1-weekend (preview branch)
+  #   - cron: '0 18 * * 0'
+  #     # action: f1-weekend (recap branch — same job, different cron)
+  #
+  #   # Tennis — Monday 06:00 UTC weekly rankings (ATP + WTA both)
+  #   - cron: '0 6 * * 1'
+  #     # action: tennis-rankings
+  #
+  #   # Football standings — Monday 09:00 UTC (after Sunday's last game)
+  #   - cron: '0 9 * * 1'
+  #     # action: weekly-standings
+
+permissions:
+  contents: write   # needs to commit + push the generated JSON files
+
+concurrency:
+  group: content-cron-${{ github.event.inputs.mode || github.event.schedule }}
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          # Need full history so the commit-and-push step at the end
+          # has somewhere to push to.
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('packages/content-engine/pyproject.toml') }}
+
+      - name: Install content-engine
+        working-directory: packages/content-engine
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Determine mode
+        id: mode
+        run: |
+          if [ -n "${{ github.event.inputs.mode }}" ]; then
+            MODE="${{ github.event.inputs.mode }}"
+          elif [ "${{ github.event.schedule }}" = "0 6 * * *" ]; then
+            MODE="football-previews"
+          elif [ "${{ github.event.schedule }}" = "*/30 12-23 * * 0,6" ]; then
+            MODE="football-recaps"
+          elif [ "${{ github.event.schedule }}" = "0 0,4 * * *" ]; then
+            MODE="nba-previews"
+          elif [ "${{ github.event.schedule }}" = "*/30 2-8 * * *" ]; then
+            MODE="nba-recaps"
+          elif [ "${{ github.event.schedule }}" = "0 12 * * 4" ] || [ "${{ github.event.schedule }}" = "0 18 * * 0" ]; then
+            MODE="f1-weekend"
+          elif [ "${{ github.event.schedule }}" = "0 6 * * 1" ]; then
+            MODE="tennis-rankings"
+          elif [ "${{ github.event.schedule }}" = "0 9 * * 1" ]; then
+            MODE="weekly-standings"
+          else
+            MODE="tennis-rankings"
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "Running mode: $MODE"
+
+      - name: Run discovery
+        id: discover
+        working-directory: packages/content-engine
+        run: |
+          python -m content_engine.scripts.discover "${{ steps.mode.outputs.mode }}"
+
+      - name: Detect new content
+        id: changes
+        run: |
+          # Did discovery write anything new?
+          git add -N public/content/ 2>/dev/null || true
+          if git diff --quiet --exit-code public/content/ 2>/dev/null && \
+             [ -z "$(git ls-files --others --exclude-standard -- public/content/)" ]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "No new content — exiting."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+            echo "Changes detected:"
+            git status --short public/content/
+          fi
+
+      - name: Commit + push
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name 'gibol-bot'
+          git config user.email 'bot@gibol.co'
+          git add public/content/
+          git commit -m "feat(content): cron generated ${{ steps.mode.outputs.mode }} articles
+
+Generated automatically by content-engine cron workflow.
+All articles land with manual_review:true — editor approval via /editor required before public.
+
+Co-Authored-By: gibol-bot <bot@gibol.co>"
+          git push
+
+      - name: Summary
+        run: |
+          echo "Mode: ${{ steps.mode.outputs.mode }}"
+          echo "Changes: ${{ steps.changes.outputs.has_changes }}"
+          if [ "${{ steps.changes.outputs.has_changes }}" = "true" ]; then
+            echo "Vercel rebuild triggered by the push."
+            echo "Editor: https://www.gibol.co/editor (login required)"
+          fi

@@ -51,6 +51,7 @@ export default function LiveMatchCard({ match }) {
 
   return (
     <article
+      className="tennis-live-match"
       style={{
         display: 'grid',
         gridTemplateColumns: 'auto 1fr auto',
@@ -142,8 +143,12 @@ export default function LiveMatchCard({ match }) {
         })}
       </div>
 
-      {/* Tournament tag column */}
+      {/* Tournament tag column — v0.12.3 M-8: hidden below 540px via
+          .tennis-live-tournament so the player + score get full width
+          on a 390 viewport. Pre-fix the 30-px column truncated the
+          tournament name to "Mu...". */}
       <div
+        className="tennis-live-tournament"
         style={{
           fontSize: 9.5,
           color: C.muted,

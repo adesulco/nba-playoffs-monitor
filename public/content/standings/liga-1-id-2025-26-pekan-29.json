@@ -1,0 +1,75 @@
+{
+  "type": "standings",
+  "slug": "liga-1-id-2025-26-pekan-29",
+  "title": "Klasemen Super League Indonesia 2025-26 pekan 29",
+  "description": "Analisis klasemen Super League Indonesia 2025-26 setelah pekan 29. Sisa 5 pertandingan.",
+  "body_md": "# Pusamania dan Persib Sengit Rebut Puncak, Lima Laga Sisa\n\nPusamania Borneo memimpin Liga Super Indonesia dengan 66 poin, menyamai Persib Bandung yang menempel di posisi 2, perbedaan hanya goal difference (+33 vs +32). Dengan lima pekan tersisa, rencana juara masih terbuka lebar. Persib baru tanding 29 kali sementara Pusamania sudah 29 juga, jadi tidak ada keunggulan pertandingan terdulu.\n\n## Puncak: Duopoli Ketat\n\nPusamania dan Persib sama-sama pada 66 poin tapi form berbeda. Pusamania punya momentum: WWWWD (tiga menang beruntun), sedang Persib malah DDWWD, dua seri di belakang, kurang panas. Selisih gol Pusamania (+33) satu angka lebih baik dari Persib (+32), jadi tuan rumah Borneo punya keunggulan tipis pada pertandingan head-to-head nanti.\n\nPersija ada di posisi 3 dengan 60 poin, tertinggal 6 poin dari leader. Sudah main 30 kali (satu pertandingan lebih banyak), jadi peluang juara semakin menipis, harus menang terus dan berharap Pusamania atau Persib terpeleset. Form Persija tidak tersedia di data, tapi posisinya menunjukkan mereka belum bisa mendekat.\n\n## Zona Top 4: Bhayangkara Tertinggal\n\nBhayangkara FC di posisi 4 dengan 47 poin, gap ke Persija adalah 13 poin dengan lima laga tersisa. Artinya, Bhayangkara masih bisa tersingkir dari top 4 jika tidak konsisten. Form mereka LWLWW (tiga kali menang tapi juga kalah), ragu-ragu.\n\nMalut United (46 pts, pos 5) dan Bali United (45 pts, pos 6) merampok posisi jebolan Champions League tinggal 1-2 poin saja. Malut sedang krisis: LLLDD (tiga kalah beruntun, dua seri). Bali lebih sehat dengan WWWLW tapi poin sama-sama tipis. Persebaya Surabaya (45 pts, pos 7) juga masih dalam jangkauan, posisi 4-7 dalam jarak 2 poin saja, sangat terbuka.\n\n## Perburuan Eropa: Saling Menodong\n\nDewa United (44 pts, pos 8) dan Persita (41 pts, pos 9) masih berpeluang naik ke zona Eropa jika tim di atas terpeleset. Dewa punya form WDWWD (stabil), Persita LLLLW (habis krisis, baru menang satu kali). Arema FC (39 pts, pos 10) dan PSIM Yogyakarta (39 pts, pos 11) sama-sama tertinggal tapi tidak mustahil kejar dengan lima pekan jika serius.\n\n## Zona Merah: Padang dan PSBS Terperangah\n\nTiga tim terbawah jauh tertinggal degradasi. PSBS Biak Numfor (18 pts) berada di lembah dengan LLLLL, lima kekalahan beruntun tanpa tanda-tanda perbaikan. Semen Padang (20 pts) hanya menang satu dari lima laga terakhir. Persepam Madura Utd (26 pts, pos 16) masih ada harapan tapi harus cepat naik.\n\nGap ke zona aman (pos 15 ke atas) adalah 2 poin untuk Persepam, 8 poin untuk Padang, 10 poin untuk PSBS. Dengan lima laga sisa, PSBS praktis sudah terima nasib. Padang butuh mukjizat. Persepam punya kesempatan jika menang tiga empat dari lima sisa.\n\n---\n\n**Fokus Pekan 30:** Pertandingan Pusamania vs Persib bisa jadi penentu nasib juara. Di luar itu, pantau apakah Malut bisa keluar dari spiral kalah dan Bali bisa jaga posisi top 4.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "gameweek": 29,
+    "matches_left": 5,
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.0062,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Artikel gagal karena multiple high-severity training-inference errors: angka poin, posisi klasemen, form strings, dan jumlah pertandingan yang dimainkan semua salah atau tidak sesuai input data. Editor harus cross-check setiap claim numerik terhadap input standings block sebelum publikasi.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Pusamania Borneo memimpin Liga Super Indonesia dengan 66 poin, menyamai Persib Bandung yang menempel di posisi 2, perbedaan hanya goal difference (+33 vs +32).",
+          "fix": "Use exact input: 'Pusamania dan Persib sama-sama 69 poin, goal difference +34 keduanya.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Pusamania punya momentum: WWWWD (tiga menang beruntun), sedang Persib malah DDWWD",
+          "fix": "Use input: 'Pusamania sedang panas lima menang beruntun (WWWWW), Persib lebih tergoyah (WDDWW).'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Persija ada di posisi 3 dengan 60 poin, tertinggal 6 poin dari leader. Sudah main 30 kali (satu pertandingan lebih banyak)",
+          "fix": "Use input: 'Persija 62 poin dari 30 laga, tertinggal 7 dari Pusamania/Persib.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bhayangkara FC di posisi 4 dengan 47 poin... Form mereka LWLWW",
+          "fix": "Reorder: Malut pos 4 (52 pts, WWLLL), Persebaya pos 5 (51 pts), Bhayangkara pos 6 (47 pts, LLWLW)."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Malut United (46 pts, pos 5) dan Bali United (45 pts, pos 6)",
+          "fix": "Rebuild section with correct positions and points from input standings table."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan lima pekan tersisa, rencana juara masih terbuka lebar.",
+          "fix": "Use 'Gelar juara masih terbuka' or 'Siapa juara belum pasti.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Form Persija tidak tersedia di data, tapi posisinya menunjukkan mereka belum bisa mendekat.",
+          "fix": "Include Persija form from input: 'Form Persija WDWWL (tiga menang, dua laga tanpa kemenangan).'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "PSBS Biak Numfor (18 pts) berada di lembah dengan LLLLL, lima kekalahan beruntun tanpa tanda-tanda perbaikan.",
+          "fix": "Use 'PSBS terjepit di lembah' or 'PSBS sudah di dasar klasemen.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x06f8a2e9048d8e7c",
+    "published_at": "2026-04-27T13:11:27+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

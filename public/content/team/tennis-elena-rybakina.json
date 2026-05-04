@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "tennis-elena-rybakina",
+  "title": "Profil Elena Rybakina (WTA) — Peringkat 2",
+  "description": "Profil petenis Elena Rybakina (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Elena Rybakina\n\nElena Rybakina, petenis kelahiran Moscow, Rusia, 17 Juni 1999, saat ini bertengger di peringkat 2 WTA dengan 8.500 poin per 16 April 2026. Pemain tangan kanan ini menjadi salah satu nama paling konsisten di sirkuit WTA musim ini, mempertahankan posisinya di jajaran dua besar dunia.\n\n## Identitas\n\nLahir di Moscow pada 17 Juni 1999, Rybakina kini berusia 26 tahun. Ia memiliki postur yang menonjol di atas lapangan, tinggi 183 cm dengan berat 72 kg, ukuran yang memberinya keunggulan fisik, khususnya dalam permainan serve. Rybakina memulai karier profesionalnya sejak 2014, artinya ia sudah menjalani lebih dari satu dekade di tur profesional sebelum mencapai posisi elite seperti sekarang. Perjalanan panjang itu membentuk profil petenis yang matang secara taktis dan mental, bukan fenomena semalam.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Rybakina mengoleksi 8.500 poin WTA dan bertahan di peringkat 2 dunia, sama persis dengan posisinya sepekan sebelumnya. Tidak ada pergerakan naik maupun turun: peringkatnya stabil di posisi runner-up sirkuit WTA.\n\nStabilitas itu sendiri sudah berbicara banyak. Di level ini, mempertahankan posisi bukan perkara mudah, tekanan dari bawah konstan, dan satu turnamen buruk bisa menggeser ratusan poin. Fakta bahwa Rybakina tidak bergerak dari P2 menunjukkan konsistensi pengumpulan poin yang solid, meski data input tidak merinci turnamen spesifik yang menjadi sumbernya.\n\nSelisih antara peringkat 1 dan peringkat 2 WTA sering kali tipis secara angka, namun signifikan secara simbolis. Rybakina berada persis di posisi yang paling dekat dengan puncak tanpa duduk di atasnya, posisi yang menuntut ia terus perform di setiap turnamen besar.\n\n## Outlook\n\nDengan 8.500 poin dan posisi stabil di peringkat 2 WTA, Rybakina memasuki sisa musim 2026 sebagai salah satu kandidat terkuat di setiap turnamen besar yang ia ikuti. Petenis berpostur tinggi dengan serve sebagai senjata utama ini sudah membuktikan dirinya bukan tamu di jajaran elite, ia penghuninya. Seberapa jauh ia bisa mendorong ke posisi teratas bergantung pada pergerakan poin ke depan, yang akan terus diperbarui setiap pekan di sirkuit WTA. Profil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "3126",
+    "athlete_name": "Elena Rybakina",
+    "current_rank": 2,
+    "previous_rank": 2,
+    "points": 8500.0,
+    "trend": "-",
+    "birthplace": "Moscow, Russia",
+    "dob": "1999-06-17",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.015195,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Article fails on academic register drift (thesis paragraphs, formal analysis tone) and calqued English idioms. Meta-commentary about data gaps breaks fourth wall. Tense over-marking and weak closing also present. Rewrite needed to match voice rules — this reads like formal sports analysis essay, not Gibol casual-informed journalist register.",
+      "issues": [
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Stabilitas itu sendiri sudah berbicara banyak. Di level ini, mempertahankan posisi bukan perkara mudah...",
+          "fix": "Cut 'Stabilitas itu sendiri sudah berbicara banyak.' Start: 'Di level ini, hold posisi 2 susah—tekanan dari bawah konstan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Fakta bahwa Rybakina tidak bergerak dari P2 menunjukkan konsistensi pengumpulan poin yang solid, meski data input tidak merinci turnamen spesifik...",
+          "fix": "Delete entire sentence. If stabilitas needs explanation, say: 'Bertahan di P2 berarti konsistensi solid—tidak gampang di tingkat ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Perjalanan panjang itu membentuk profil petenis yang matang secara taktis dan mental, bukan fenomena semalam.",
+          "fix": "Rewrite: 'Perjalanan 12 tahun itu bentuk petenis matang—bukan tiba-tiba juara.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Rybakina memulai karier profesionalnya sejak 2014, artinya ia sudah menjalani lebih dari satu dekade...",
+          "fix": "Cut 'sudah': '...ia menjalani lebih dari satu dekade di tur profesional.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selisih antara peringkat 1 dan peringkat 2 WTA sering kali tipis secara angka, namun signifikan secara simbolis.",
+          "fix": "Sharpen: 'Jarak P1-P2 tipis angka, besar makna. Rybakina persis di pinggir puncak.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Profil ini mencerminkan data per 16 April 2026.",
+          "fix": "Delete. Replace with forward-look or specific Rybakina detail if needed."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Pemain tangan kanan ini menjadi salah satu nama paling konsisten di sirkuit WTA musim ini...",
+          "fix": "Rephrase: 'Pemain tangan kanan ini stabil di P2 WTA per April 2026' (fact only)."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "sejak 2014, artinya ia sudah menjalani lebih dari satu dekade di tur profesional sebelum mencapai posisi elite seperti",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x5ff0816c9ccd4680",
+    "published_at": "2026-04-28T12:06:44+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -79,11 +79,15 @@ export default function F1News({ limit = 12 }) {
         display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
         marginBottom: 10,
       }}>
-        <h2 style={{
+        <h2 className="panel-title-mono" style={{
           fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
           margin: 0, color: C.text, letterSpacing: -0.2,
         }}>
-          {lang === 'id' ? 'Berita F1' : 'F1 News'}
+          {/* v0.11.13 — explicit JSX space so textContent flattens as
+              "F1 News LIVE · BAHASA + ENG" not "F1 NewsLIVE · BAHASA + ENG"
+              for screen readers + heading extractors. Visual gap comes
+              from the span's marginLeft. */}
+          {lang === 'id' ? 'Berita F1' : 'F1 News'}{' '}
           <span style={{ marginLeft: 8, fontSize: 9, color: C.muted, letterSpacing: 1, fontWeight: 500 }}>
             {lang === 'id' ? 'LIVE · BAHASA + ENG' : 'LIVE · BAHASA + ENG'}
           </span>

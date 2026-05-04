@@ -1,5 +1,13 @@
 import { useEffect, useState } from 'react';
 import { SEASON, TEAMS_BY_ID, DRIVERS_BY_CODE } from '../lib/sports/f1/constants.js';
+import { readCache, writeCache } from '../lib/swrCache.js';
+
+// v0.11.15 SWR. F1 standings only move after a race weekend, so the
+// 15-min TTL is conservative — the underlying fetch still refreshes
+// every 5 min per the interval, but a return visit within 15 min
+// paints instantly from the last known table.
+const CACHE_KEY = `f1-standings-${SEASON}`;
+const CACHE_TTL = 15 * 60 * 1000;
 
 /**
  * F1 2026 driver + constructor standings via Jolpica-F1 through our edge proxy.
@@ -16,10 +24,11 @@ import { SEASON, TEAMS_BY_ID, DRIVERS_BY_CODE } from '../lib/sports/f1/constants
  * 5 min is a good balance between freshness and their rate limit.
  */
 export function useF1Standings() {
-  const [drivers, setDrivers] = useState([]);
-  const [teams, setTeams] = useState([]);
-  const [round, setRound] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const cached = readCache(CACHE_KEY, { ttlMs: CACHE_TTL });
+  const [drivers, setDrivers] = useState(cached?.drivers ?? []);
+  const [teams, setTeams] = useState(cached?.teams ?? []);
+  const [round, setRound] = useState(cached?.round ?? null);
+  const [loading, setLoading] = useState(!cached);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -70,9 +79,15 @@ export function useF1Standings() {
         });
 
         if (!cancelled) {
+          const nextRound = dList?.round ? Number(dList.round) : null;
           setDrivers(normalizedDrivers);
           setTeams(normalizedTeams);
-          setRound(dList?.round ? Number(dList.round) : null);
+          setRound(nextRound);
+          writeCache(CACHE_KEY, {
+            drivers: normalizedDrivers,
+            teams: normalizedTeams,
+            round: nextRound,
+          });
           setError(null);
         }
       } catch (e) {

@@ -1,11 +1,17 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLocation, useParams, Link, Navigate } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
+import Breadcrumbs from '../components/Breadcrumbs.jsx';
 import ContactBar from '../components/ContactBar.jsx';
-import Chip from '../components/Chip.jsx';
+// v0.18.0 Phase 2 Sprint C — `<Chip variant="live">` migrated to
+// <LiveStatusPill variant="live" /> (the canonical status pill).
+import LiveStatusPill from '../components/v2/LiveStatusPill.jsx';
+// v0.20.0 Phase 2 Sprint F — Shell A leaf chrome.
+import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 import RankingsTable from '../components/tennis/RankingsTable.jsx';
 import { useTennisRankings } from '../hooks/useTennisRankings.js';
 import { SEASON, TOURS, TOUR_LABEL } from '../lib/sports/tennis/constants.js';
@@ -170,6 +176,59 @@ export default function TennisRankings() {
     [ranks]
   );
 
+  // v0.20.0 Phase 2 Sprint F — push leaf chrome into V2TopBar
+  // subrow. Picker label = ATP / WTA tour pill (consolidates the
+  // visible TourSwitcher's two pills into a single picker chip
+  // for chrome consistency; the inline TourSwitcher stays in the
+  // page body for now since it has its own focus styling). Tennis
+  // accent on 3px left stripe.
+  useEffect(() => {
+    setTopbarSubrow(
+      <HubStatusStrip
+        srOnlyTitle={lang === 'id'
+          ? `Peringkat ${tourLabel} ${SEASON} — top 500 petenis dengan poin dan tren`
+          : `${tourLabel} Rankings ${SEASON} — top 500 players with points + trend`}
+        accent={TENNIS_ACCENT}
+        picker={(
+          <Link
+            to="/tennis"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '6px 12px',
+              background: `${TENNIS_ACCENT}14`,
+              color: 'var(--ink)',
+              border: `1px solid ${TENNIS_ACCENT}66`,
+              borderRadius: 6,
+              fontSize: 12, fontWeight: 700, letterSpacing: -0.1,
+              textDecoration: 'none',
+              fontFamily: 'inherit',
+            }}
+          >
+            <span style={{ width: 3, height: 14, background: TENNIS_ACCENT }} />
+            {tourLabel} {lang === 'id' ? 'Peringkat' : 'Rankings'}
+            <span style={{ color: 'var(--ink-3)', fontSize: 10, marginLeft: 2 }}>▾</span>
+          </Link>
+        )}
+        live={(
+          <span style={{ textTransform: 'uppercase' }}>
+            {tourLabel} TOUR · {lang === 'id' ? 'MUSIM' : 'SEASON'} {SEASON}
+          </span>
+        )}
+        actions={(
+          <HubActionRow
+            url={`/tennis/rankings/${tour}`}
+            shareText={lang === 'id'
+              ? `Peringkat ${tourLabel} ${SEASON} di gibol.co 🎾`
+              : `${tourLabel} Rankings ${SEASON} on gibol.co 🎾`}
+            accent={TENNIS_ACCENT}
+            analyticsEvent="tennis_rankings_share"
+          />
+        )}
+      />
+    );
+    return () => setTopbarSubrow(null);
+  }, [tour, tourLabel, lang]);
+
   return (
     <div
       style={{
@@ -188,62 +247,25 @@ export default function TennisRankings() {
         jsonLd={meta.jsonLd}
       />
       <div className="dashboard-wrap">
-        <TopBar
-          showBackLink
-          backTo="/tennis"
-          backLabel={lang === 'id' ? '← HUB TENIS' : '← TENNIS HUB'}
-          accent={TENNIS_ACCENT}
-        />
 
-        {/* Hero */}
-        <div
-          style={{
-            padding: '20px 20px 14px',
-            background: `linear-gradient(135deg, ${TENNIS_ACCENT}14 0%, transparent 70%)`,
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              gap: 12,
-              marginBottom: 6,
-              flexWrap: 'wrap',
-            }}
-          >
-            <div
-              style={{
-                fontSize: 9,
-                letterSpacing: 1.5,
-                color: TENNIS_ACCENT,
-                fontWeight: 700,
-                paddingTop: 4,
-              }}
-            >
-              {tourLabel} TOUR · SEASON {SEASON}
-            </div>
-            <Chip variant="live" sportId="tennis" accent={TENNIS_ACCENT} label="LIVE" />
-          </div>
-          <div
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 36,
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: '-0.025em',
-              color: C.text,
-              marginBottom: 8,
-              textWrap: 'balance',
-            }}
-          >
-            {lang === 'id' ? `Peringkat ${tourLabel} ${SEASON}` : `${tourLabel} Rankings ${SEASON}`}
-          </div>
-          <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 720, marginBottom: 12 }}>
-            {lang === 'id'
-              ? `Top 500 petenis ${tourLabel} dengan poin, perubahan posisi pekanan, dan tren. Refresh setiap Senin sesuai update resmi ${tourLabel}.`
-              : `Top 500 ${tourLabel} players with points, weekly position changes, and trend. Refreshed every Monday per the official ${tourLabel} update.`}
-          </div>
+        {/* v0.13.0 — visual breadcrumbs above the hero. */}
+        <div style={{ padding: '0 20px' }}>
+          <Breadcrumbs
+            items={[
+              { name: lang === 'id' ? 'Tenis 2026' : 'Tennis 2026', to: '/tennis' },
+              { name: `${lang === 'id' ? 'Peringkat' : 'Rankings'} ${tourLabel}` },
+            ]}
+          />
+        </div>
+
+        {/* v0.20.0 Phase 2 Sprint F — visible 200px hero stripped.
+            Eyebrow + 36px h1 + LIVE chip + tour-label subhead all
+            collapsed into <HubStatusStrip>. SEO h1 rides as
+            `.sr-only`. The interactive <TourSwitcher> (ATP / WTA
+            toggle) stays in the page body — it has its own focus
+            styling + click affordance and is best placed near the
+            rankings table it controls. */}
+        <div style={{ padding: '12px 20px 14px' }}>
           <TourSwitcher tour={tour} lang={lang} />
         </div>
 

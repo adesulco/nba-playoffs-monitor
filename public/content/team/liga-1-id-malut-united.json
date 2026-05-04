@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-malut-united",
+  "title": "Profil Malut United: Liga 1 (2025-26)",
+  "description": "Profil Malut United — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Malut United: Klub Ambon yang Berjuang Masuk Lima Besar Liga 1\n\nMalut United adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia (Liga 1) musim 2025-26. Per 28 April 2026, mereka menempati posisi 5 klasemen dengan 46 poin dari 29 laga, catatan 13 menang, 7 seri, 9 kalah, selisih gol +13. Cukup solid untuk papan atas, meski form terakhir mengirimkan sinyal peringatan yang tidak bisa diabaikan.\n\n---\n\n## Identitas Klub\n\nMalut United adalah representasi sepak bola dari Maluku Utara, salah satu provinsi di kawasan timur Indonesia. Kehadiran mereka di Liga 1 menjadi penanda penting bagi perkembangan sepak bola di luar Jawa dan Bali, dua pulau yang selama ini mendominasi peta persepakbolaan nasional.\n\nDi Liga 1 musim 2025-26, Malut United bersaing dengan klub-klub besar yang sudah punya sejarah panjang di kasta tertinggi. Posisi 5 yang mereka pegang saat ini bukan sekadar angka, ini cerminan bahwa klub dari timur Indonesia bisa bersaing serius di level elite.\n\n---\n\n## Performa Musim 2025-26\n\nDalam 29 laga Liga 1 2025-26, Malut United mencatat 13 menang, 7 seri, dan 9 kalah. Total 54 gol tercipta, 41 kebobolan, rata-rata 1,9 gol per laga di sisi ofensif, 1,4 gol kebobolan di sisi defensif.\n\nAngka-angka itu berbicara tentang tim yang menyerang tapi belum sepenuhnya disiplin di belakang. Rata-rata hampir dua gol per laga menunjukkan serangan yang aktif dan berani. Tapi 41 kebobolan dari 29 laga, lebih dari satu per pertandingan, mengindikasikan pertahanan yang masih bisa dieksploitasi lawan.\n\nTujuh clean sheet dari 29 laga adalah angka moderat. Artinya kurang dari seperempat pertandingan diakhiri tanpa kebobolan. Untuk tim yang ingin konsisten di papan atas, angka itu perlu naik.\n\nSisi menariknya: performa kandang dan tandang Malut United tergolong seimbang. Di kandang mereka mencatat 7 menang, 3 seri, 5 kalah. Di tandang, justru sedikit lebih baik secara rasio: 6 menang, 4 seri, 4 kalah. Tim yang tidak bergantung sepenuhnya pada atmosfer kandang biasanya punya mentalitas lebih stabil, dan ini bisa jadi keunggulan tersembunyi Malut United.\n\nYang jadi concern adalah empat laga tanpa mencetak gol. Empat kali mereka turun ke lapangan dan tidak menembus gawang lawan sama sekali. Dalam persaingan ketat papan atas, laga-laga mati seperti itu bisa sangat mahal.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 5 dengan 46 poin menempatkan Malut United di zona yang bisa disebut \"nyaman tapi belum aman.\" Mereka di papan atas, jauh dari ancaman degradasi, tapi cukup dekat dengan persaingan di atas mereka.\n\nSelisih gol +13 adalah cerminan tim yang lebih sering menang dengan margin wajar ketimbang kalah telak, karakteristik tim yang kompetitif meski belum konsisten.\n\nData klasemen per 28 April 2026 tidak mencantumkan status spesifik, tidak ada konfirmasi slot kompetisi Asia atau ancaman lain. Yang jelas, posisi 5 di fase akhir musim berarti persaingan untuk naik ke posisi lebih tinggi masih terbuka, tapi butuh performa lebih tajam dari yang ditunjukkan dalam beberapa pekan terakhir.\n\n---\n\n## Outlook\n\nForm delapan laga terakhir Malut United membaca DLWDDLLL, empat kekalahan di tiga laga terakhir adalah penurunan signifikan. Momentum yang terbangun di awal musim sedang tergerus, persis di fase krusial ketika poin paling berharga.\n\nDengan beberapa laga tersisa, Malut United berada di persimpangan: apakah mereka akan merespons tekanan dan menutup musim dengan kuat, atau melanjutkan slide yang bisa menggeser mereka dari posisi 5?\n\nSatu yang pasti, keberadaan Malut United di papan atas Liga 1 2025-26 sudah jadi cerita tersendiri bagi sepak bola Indonesia timur. Tinggal soal bagaimana mereka menutup musim ini.\n\n*Data berdasarkan klasemen dan statistik Liga 1 2025-26 per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "22409",
+    "team_name": "Malut United",
+    "team_country": "Indonesia",
+    "team_founded": null,
+    "venue_name": "",
+    "venue_city": "",
+    "venue_capacity": null,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023667,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "FAIL: Article contains critical data contradictions on every major stat (laga count, poin, menang/seri/kalah, gol, kandang/tandang breakdown). Misread input form sequence. Geographic claim (Ambon) unverified. Requires complete data rewrite against input block before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Malut United adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia",
+          "fix": "Remove 'Ambon' from headline; use only 'Maluku Utara' per input data"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, mereka menempati posisi 5 klasemen dengan 46 poin dari 29 laga, catatan 13 menang, 7 seri, 9 kalah",
+          "fix": "Update to: posisi 4, 52 poin, 31 laga, 15 menang, 7 seri, 9 kalah"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dalam 29 laga Liga 1 2025-26, Malut United mencatat 13 menang, 7 seri, dan 9 kalah. Total 54 gol tercipta, 41 kebobolan",
+          "fix": "Replace all performance stats with input data: 31 laga, 15 menang, 7 seri, 9 kalah, 66 gol cetak, 43 kebobolan"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Tujuh clean sheet dari 29 laga adalah angka moderat",
+          "fix": "Use input data: 8 clean sheets dari 31 laga"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Di kandang mereka mencatat 7 menang, 3 seri, 5 kalah. Di tandang, justru sedikit lebih baik secara rasio: 6 menang, 4 seri, 4 kalah",
+          "fix": "Kandang: 8M-3S-5K; Tandang: 7M-4S-4K (article has them reversed)"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "empat laga tanpa mencetak gol",
+          "fix": "Mention once, add context about which opponents or competition phase if available"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Peringkat 5 dengan 46 poin menempatkan Malut United di zona yang bisa disebut 'nyaman tapi belum aman'",
+          "fix": "Show risk concretely: 'Empat poin di atas zona degradasi, tapi hanya tiga poin di bawah tiga besar'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Form delapan laga terakhir Malut United membaca DLWDDLLL, empat kekalahan di tiga laga terakhir adalah penurunan signifikan",
+          "fix": "Use input form sequence: WDDLLLWW; recalculate recent form narrative accordingly"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbaf843cd9c67febc",
+    "published_at": "2026-04-28T12:08:45+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

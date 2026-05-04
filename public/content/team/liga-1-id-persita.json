@@ -1,0 +1,155 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-persita",
+  "title": "Profil Persita: Liga 1 (2025-26)",
+  "description": "Profil Persita — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Persita: Profil Klub Liga 1 Indonesia 2025-26\n\nPersita adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia (Liga 1). Per 28 April 2026, mereka menempati posisi 9 klasemen Liga 1 musim 2025-26 dengan 41 poin dari 29 laga, catatan 12 menang, 5 seri, dan 12 kalah, serta selisih gol +7. Klub ini menggunakan Stadion Utama Gelora Bung Karno, Jakarta, sebagai kandang, salah satu stadion terbesar di Asia Tenggara dengan kapasitas 88.083 penonton.\n\n---\n\n## Identitas Klub\n\nPersita berdiri pada 1953, menjadikannya salah satu klub dengan sejarah panjang di sepak bola Indonesia. Nama lengkapnya Persita Tangerang, merujuk pada kota asal klub di Tangerang, Banten. Musim 2025-26 ini mereka memakai GBK sebagai venue kandang, sebuah pilihan yang menempatkan Persita di panggung besar ibu kota meski basis historis klub ada di Tangerang.\n\nBerdiri lebih dari tujuh dekade lalu, Persita sudah melewati berbagai era sepak bola nasional, dari era Galatama, Liga Indonesia, hingga format kompetisi modern Liga 1. Eksistensi panjang itu jadi bagian dari identitas klub yang dikenal di kalangan penggemar sepak bola Indonesia.\n\n---\n\n## Performa Musim 2025-26\n\nAngka-angka Persita musim ini menggambarkan tim yang compang-camping, cukup tajam di depan, tapi tidak konsisten cukup lama untuk bersaing di papan atas.\n\nDari 29 laga, Persita cetak 35 gol dan kebobolan 28, rata-rata 1,2 gol per laga di sisi serang, 1,0 gol kebobolan per laga di lini belakang. Selisih gol +7 itu sebenarnya angka yang wajar untuk posisi 9, tapi ada satu catatan yang merusak gambaran itu: Persita gagal mencetak gol di 13 laga dari 29 yang sudah dijalani. Hampir separuh pertandingan berakhir tanpa kontribusi dari lini serang.\n\nClean sheet 7 kali menunjukkan pertahanan bisa bekerja, tapi kombinasi \"sering gagal cetak gol\" dan \"sering kebobolan di laga lainnya\" mencerminkan tim yang tidak punya ritme permainan yang stabil.\n\nYang paling mengkhawatirkan adalah form terkini: LLWWLLLL. Dua kemenangan di tengah tren itu sempat memberi harapan, tapi empat kekalahan beruntun setelahnya jadi sinyal bahwa momentum tidak bertahan. Persita masuk April dalam kondisi berat.\n\nRekor kandang (8M-2S-5K) masih lebih baik dari tandang (4M-3S-7K), wajar untuk mayoritas tim Liga 1. Tapi lima kekalahan di GBK tetap jadi angka yang tidak ideal untuk tim yang harusnya diuntungkan atmosfer kandang.\n\n---\n\n## Posisi di Klasemen\n\nPosisi 9 dengan 41 poin dari 29 laga menempatkan Persita tepat di tengah-tengah klasemen Liga 1 musim ini, tidak terancam di bawah, tapi juga tidak punya amunisi cukup untuk mengejar papan atas.\n\nDengan rekam jejak 12 menang, 5 seri, dan 12 kalah, Persita bermain sangat seimbang dalam artian yang kurang menggembirakan: kemenangan dan kekalahan sama banyak, seri yang minim. Itu mencerminkan tim yang naik-turun tanpa pola yang jelas, bisa menang besar, tapi bisa juga tiba-tiba terpeleset.\n\nPer 28 April 2026, Persita tidak tercantum dalam persaingan papan atas maupun zona berbahaya. Zona aman, tapi tanpa target konkret yang menggairahkan untuk sisa musim.\n\n---\n\n## Outlook\n\nEmpat kekalahan beruntun di akhir data ini adalah pesan yang cukup jelas. Persita punya cukup poin untuk tidak panik soal posisi klasemen, tapi form LLWWLLLL bukan sesuatu yang bisa diabaikan begitu saja memasuki laga-laga penutup musim.\n\nSisa musim 2025-26 kemungkinan akan dihabiskan untuk mempertahankan posisi 9 dan menutup season dengan sedikit lebih martabat dibanding tren form terakhir yang menunjukkan. Tidak ada tekanan degradasi, tidak ada kejaran zona Eropa, murni soal menutup musim dengan kepala tegak dan membangun fondasi untuk musim berikutnya.\n\nData di artikel ini mencerminkan kondisi Persita per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "4244",
+    "team_name": "Persita",
+    "team_country": "Indonesia",
+    "team_founded": 1953,
+    "venue_name": "Stadion Utama Gelora Bung Karno",
+    "venue_city": "Jakarta",
+    "venue_capacity": 88083,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023666,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 11,
+      "summary": "Fail. Critical: training-inference about club full name / origin not in input; data date and stats mismatch input block (28 April vs 3 Mei; 29 laga vs 30; 41 poin vs 44; clean sheets 7 vs 8). Multiple instances of translated-English register ('compang-camping', 'cukup tajam', over-qualified hedging). Regenerate with correct stats and tighter, more natural Bahasa voice.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Nama lengkapnya Persita Tangerang, merujuk pada kota asal klub di Tangerang, Banten.",
+          "fix": "Remove full name and location details; stick to 'Persita' as given in input."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Angka-angka Persita musim ini menggambarkan tim yang compang-camping, cukup tajam di depan, tapi tidak konsisten cukup lama untuk bersaing di papan atas.",
+          "fix": "Rephrase naturally: 'Performa Persita musim ini naik-turun: lini serang produktif tapi pertahanan remang.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dua kemenangan di tengah tren itu sempat memberi harapan, tapi empat kekalahan beruntun setelahnya jadi sinyal bahwa momentum tidak bertahan.",
+          "fix": "Simplify: 'Dua kemenangan memberi harapan sebentar. Empat kekalahan beruntun menunjukkan momentum hilang.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Posisi 9 dengan 41 poin dari 29 laga menempatkan Persita tepat di tengah-tengah klasemen Liga 1 musim ini, tidak terancam di bawah, tapi juga tidak punya amunisi cukup untuk mengejar papan atas.",
+          "fix": "Direct: 'Posisi 9 aman dari zona bahaya, jauh dari kejaran top 4.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Persita tidak tercantum dalam persaingan papan atas maupun zona berbahaya. Zona aman, tapi tanpa target konkret yang menggairahkan untuk sisa musim.",
+          "fix": "Update all stats to match input: 30 laga, 44 poin, +8 selisih gol, clean sheet 8 (not 7)."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Clean sheet 7 kali menunjukkan pertahanan bisa bekerja, tapi kombinasi 'sering gagal cetak gol' dan 'sering kebobolan di laga lainnya' mencerminkan tim yang tidak punya ritme permainan yang stabil.",
+          "fix": "'Tujuh clean sheet bagus, tapi 13 laga tanpa gol membuat tim tak bisa momentum konsisten.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Eksistensi panjang itu jadi bagian dari identitas klub yang dikenal di kalangan penggemar sepak bola Indonesia.",
+          "fix": "'Sejarah panjang itu membuat Persita dikenal di kalangan penggemar Indonesia.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Empat kekalahan beruntun di akhir data ini adalah pesan yang cukup jelas.",
+          "fix": "'Empat kekalahan beruntun jelas: Persita lagi krisis form.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "historis klub ada di Tangerang.\n\nBerdiri lebih dari tujuh dekade lalu, Persita sudah melewati berbagai era sepak bola nasional,",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "dari tujuh dekade lalu, Persita sudah melewati berbagai era sepak bola nasional, dari era Galatama, Liga Indonesia, hingga format",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "sudah melewati berbagai era sepak bola nasional, dari era Galatama, Liga Indonesia, hingga format kompetisi modern Liga 1.",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2a69e791106906e2",
+    "published_at": "2026-04-28T12:11:40+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 62,
+      "headline_comment": "Headline duplikasi antara title eksternal 'Profil Persita: Liga 1 (2025-26)' dan H1 internal 'Persita: Profil Klub Liga 1 Indonesia 2025-26' — generik, tanpa angle, tidak ada hook untuk pembaca.",
+      "lead_score": 80,
+      "lead_comment": "Lead solid dengan fakta padat (posisi, poin, rekor, venue), tapi terlalu tertimbun statistik di kalimat kedua dan kapasitas GBK adalah filler yang tidak terkait performa.",
+      "structure_score": 82,
+      "structure_comment": "Empat section flow logis (Identitas → Performa → Klasemen → Outlook), tapi ada overlap signifikan antara 'Performa' dan 'Posisi di Klasemen' — keduanya membahas inkonsistensi 12-5-12.",
+      "voice_score": 76,
+      "voice_comment": "Mostly natural Bahasa sport-writing, tapi ada beberapa frasa awkward ('compang-camping' untuk tim, 'tidak konsisten cukup lama', 'sedikit lebih martabat') dan satu kalimat tergantung di Outlook.",
+      "suggestion_count": 6,
+      "summary": "Solid analytical piece with strong stat-driven insights (13 laga tanpa gol, LLWWLLLL form), but lead is generic, has one broken sentence in Outlook, and contains an ungrounded stadium capacity claim that violates input-data discipline. Editor pass should fix the broken sentence, tighten the lead with the actual angle, and remove the 88.083 figure.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "tren form terakhir yang menunjukkan. Tidak ada tekanan degradasi",
+          "issue": "Kalimat tergantung — 'yang menunjukkan' tidak selesai, grammar broken.",
+          "fix": "Ganti jadi: 'menutup season lebih bermartabat dibanding tren form terakhir. Tidak ada tekanan degradasi...'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Persita adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia (Liga 1).",
+          "issue": "Lead opener generik dan redundan — pembaca Indonesia sudah tahu Persita klub Liga 1; 'Super League Indonesia' juga inkonsisten dengan input data yang menyebut 'Liga 1'.",
+          "fix": "Buka langsung dengan angle: 'Persita duduk di posisi 9 klasemen Liga 1 dengan 41 poin per 28 April 2026, tapi empat kekalahan beruntun bikin akhir musim terasa berat.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "tim yang compang-camping, cukup tajam di depan, tapi tidak konsisten cukup lama",
+          "issue": "'Compang-camping' tidak lazim untuk deskripsi performa tim (lebih sering untuk barang/kondisi fisik); 'tidak konsisten cukup lama' awkward.",
+          "fix": "Ganti: 'tim yang naik-turun — cukup tajam di depan, tapi inkonsisten sepanjang musim.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Persita gagal mencetak gol di 13 laga dari 29 yang sudah dijalani.",
+          "issue": "Insight terkuat di artikel (45% laga tanpa gol) tapi tidak diangkat ke posisi prominen — tertimbun di tengah paragraf.",
+          "fix": "Naikkan ke pembuka section Performa atau jadikan kalimat berdiri sendiri untuk emphasis."
+        },
+        {
+          "priority": "medium",
+          "snippet": "basis historis klub ada di Tangerang",
+          "issue": "Perpindahan venue dari Tangerang ke GBK Jakarta adalah cerita menarik tapi cuma disinggung satu kalimat — missed opportunity untuk angle identitas.",
+          "fix": "Eksplor satu paragraf: kenapa pindah ke GBK, apa dampaknya untuk basis suporter Tangerang, atau hapus saja kalau tidak bisa dikembangkan."
+        },
+        {
+          "priority": "low",
+          "snippet": "Klub ini menggunakan Stadion Utama Gelora Bung Karno, Jakarta, sebagai kandang, salah satu stadion terbesar di Asia Tenggara dengan kapasitas 88.083 penonton.",
+          "issue": "Kapasitas 88.083 tidak ada di input data — ini training-data inference yang melanggar groundedness.",
+          "fix": "Hapus klaim kapasitas atau ganti dengan fakta yang ada di input: 'Stadion Utama Gelora Bung Karno, Jakarta.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

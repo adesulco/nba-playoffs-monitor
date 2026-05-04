@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "epl-wolves",
+  "title": "Profil Wolves: Premier League (2025-26)",
+  "description": "Profil Wolves — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Wolves: Musim Paling Kelam di Era Modern\n\nWolverhampton Wanderers adalah klub asal Inggris yang tampil di Premier League, berkandang di Molineux Stadium, Wolverhampton, West Midlands. Per 28 April 2026, Wolves berada di posisi 20 Liga Inggris 2025-26, juru kunci, dengan 17 poin dari 34 laga dan selisih gol -38. Artinya: degradasi ke Championship sudah hampir pasti, dan musim ini akan menjadi salah satu yang paling menyakitkan dalam sejarah modern klub.\n\n## Identitas Klub\n\nWolves berdiri pada 1877, salah satu klub tertua di sepak bola Inggris. Kandang mereka, Molineux Stadium, berdiri di Wolverhampton, West Midlands, dengan kapasitas 34.624 penonton. Artinya lebih dari satu abad ada, Molineux sudah menyaksikan banyak fase naik-turun: era kejayaan, perjuangan di divisi bawah, kebangkitan kembali. Per musim 2025-26, sayangnya Molineux menyaksikan salah satu fase terberat.\n\nSebagai klub Premier League, Wolves bukan pendatang baru di level tertinggi sepak bola Inggris. Tapi musim ini membuktikan bahwa sejarah panjang tidak otomatis melindungi sebuah klub dari krisis.\n\n## Performa Musim Ini\n\nAngkanya membicarakan dirinya sendiri, dan tidak ada satu pun yang nyaman untuk dibaca.\n\n34 laga, 3 menang, 8 seri, 23 kalah. Wolves hanya cetak 24 gol sepanjang musim, rata-rata 0,7 gol per laga. Sebaliknya, mereka kebobolan 62 gol, rata-rata 1,8 per laga. Selisih gol -38 bukan sekadar statistik buruk. itu mencerminkan tim yang hampir tidak pernah kompetitif di dua sisi lapangan secara bersamaan.\n\nYang paling mengkhawatirkan: dari 34 laga, Wolves gagal mencetak gol di 18 di antaranya. Lebih dari setengah musim mereka dijalani tanpa gol. Clean sheet hanya 4 kali. Artinya hampir tidak ada laga di mana Wolves bisa menjaga gawang bersih sekaligus mencetak gol, dua hal minimal yang dibutuhkan untuk bersaing di Premier League.\n\nRekor kandang pun tidak menawarkan pelarian: 3 menang, 3 seri, 11 kalah di Molineux sendiri. Tandang bahkan lebih suram, tidak satu pun kemenangan dari 17 laga, hanya 5 seri dan 12 kekalahan.\n\nForm delapan laga terakhir, DLWWDLLL, sempat menyulut sedikit harapan ketika ada dua kemenangan beruntun, sebelum kembali ambruk dengan tiga kekalahan terakhir. Momentum tidak pernah benar-benar datang.\n\n## Posisi di Klasemen\n\n17 poin dari 34 laga. Di posisi 20, Wolves adalah juru kunci Liga Inggris 2025-26.\n\nStatus relegasi ke Championship sudah sangat dekat, secara matematis masih mungkin selamat, tapi secara realitas hampir tidak ada tim yang keluar dari zona ini dengan tiga laga tersisa ketika jarak poin ke posisi aman sudah terlampau jauh. Satu pun kemenangan tandang sepanjang musim adalah indikator paling keras betapa kecil ruang gerak Wolves ketika bermain di luar Wolverhampton.\n\nDegradasi ke Championship berarti Wolves harus membangun ulang dari divisi kedua Liga Inggris, dengan anggaran yang kemungkinan besar akan terpangkas, ditambah tekanan untuk segera kembali ke Premier League sebelum kesenjangan semakin lebar.\n\n## Ke Depan\n\nMusim 2025-26 sudah hampir selesai, dan skenario terbaiknya adalah Wolves menyelesaikan sisa tiga laga dengan kehormatan yang terjaga. Tapi yang lebih penting adalah apa yang terjadi setelah peluit panjang laga terakhir: evaluasi menyeluruh, keputusan sulit soal skuad dan staf, dan rencana konkret untuk bersaing di Championship musim depan.\n\nDegradasi bukan kiamat. Banyak klub Premier League yang pernah turun dan kembali lebih kuat. Tapi itu butuh kejelasan, kesabaran, dan keputusan yang benar, bukan reaksi panik. Fans yang sudah bertahan sepanjang musim berat ini layak mendapat jawaban yang jelas dari manajemen klub.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "39",
+    "team_name": "Wolves",
+    "team_country": "England",
+    "team_founded": 1877,
+    "venue_name": "Molineux Stadium",
+    "venue_city": "Wolverhampton, West Midlands",
+    "venue_capacity": 34624,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023262,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Multiple hard stat contradictions between article and input data (date off, 24→25 gol, 34→35 laga, seri counts wrong twice). Also academic drift and translated-English patterns. Regenerate with input data facts locked.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Wolves berada di posisi 20... dengan 17 poin dari 34 laga",
+          "fix": "Update to: Per 3 Mei 2026, Wolves berada di posisi 20 dengan 18 poin dari 35 laga."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Wolves hanya cetak 24 gol sepanjang musim... mereka kebobolan 62 gol",
+          "fix": "Correct to 25 gol cetak, 63 kebobolan. Revise: rata-rata 0.71 cetak, 1.8 kebobolan."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "dari 34 laga... 3 menang, 8 seri, 23 kalah",
+          "fix": "Update to 35 laga total, 3 menang, 9 seri, 23 kalah."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Rekor kandang pun tidak menawarkan pelarian: 3 menang, 3 seri, 11 kalah",
+          "fix": "Correct kandang record: 3 menang, 4 seri, 11 kalah di Molineux."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Artinya: degradasi ke Championship sudah hampir pasti... akan menjadi salah satu yang paling menyakitkan",
+          "fix": "Simplify: Degradasi ke Championship sudah hampir pasti. Musim ini jadi yang terburuk dalam era modern."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Artinya lebih dari satu abad ada, Molineux sudah menyaksikan banyak fase naik-turun",
+          "fix": "Rewrite: Molineux, stadion berusia lebih dari satu abad, sudah lihat naik-turun banyak. Musim ini salah satunya."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Artinya hampir tidak ada laga... Artinya hampir tidak pernah kompetitif",
+          "fix": "Vary: cut one 'Artinya', use period or rephrase: Yang lebih mengkhawatirkan..."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "# Wolves: Musim Paling Kelam di Era Modern\n\nWolverhampton Wanderers adalah klub asal Inggris yang tampil di Premier",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0ddcc390141c6ca2",
+    "published_at": "2026-04-28T12:18:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,59 @@
+{
+  "type": "team",
+  "slug": "nba-chicago-bulls",
+  "title": "Profil Chicago Bulls: Central, Eastern Conference (2025-26)",
+  "description": "Profil Chicago Bulls — franchise NBA dari Chicago di Central Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Chicago Bulls 2025-26: Musim Berat di Central Division\n\nChicago Bulls berkandang di United Center, Chicago, dan main di Central Division Wilayah Timur. Per 28 April 2026, Bulls menutup musim reguler 2025-26 dengan rekor 31-51, win rate 37,8%, seed 12 di Eastern Conference. Ini bukan musim yang mudah buat franchise ikonik dari Illinois. Tapi angka di balik rekor itu menceritakan sesuatu yang lebih dari sekadar kalah-menang.\n\n---\n\n## Posisi di Liga\n\nDi Central Division, Bulls finis di peringkat 4, di bawah rival-rival divisional mereka di musim ini. Di skala Eastern Conference, seed 12 berarti playoff bukan destinasi musim ini. Bulls masuk kategori tim yang sedang dalam proses, roster muda, rotasi sedang dicoba, identitas permainan masih dibentuk.\n\nTanpa nama head coach di catatan resmi musim ini, sulit mengikat narasi ke satu figur pelatih. Yang jelas: tim ini sedang dijalankan dengan orientasi ke depan, bukan mengejar hasil jangka pendek.\n\n---\n\n## Performa Musim Ini\n\nAngka paling bicara dari musim Bulls 2025-26 ada di point differential: rata-rata cetak 116,3 PPG, tapi kebobolan 121,5 PPG. Minus 5,2 per laga, itu bukan selisih kecil. Artinya hampir setiap malam Bulls butuh sedikit keberuntungan atau penampilan luar biasa untuk menang, karena secara rata-rata mereka kalah di sisi pertahanan.\n\nRekor kandang 18-23 dan away 13-28 konsisten, ini bukan tim yang lemah di satu sisi lalu kuat di sisi lain. Kelemahannya merata. Di United Center pun, tamu lebih sering pulang dengan poin.\n\nYang menarik: 116,3 PPG bukan angka yang jelek secara absolut. Bulls bisa bikin bola masuk. Masalahnya ada di ujung lain, 121,5 PPG yang diizinkan menunjukkan bahwa pertahanan jadi pekerjaan rumah terbesar musim ini.\n\n---\n\n## Roster: Campuran Pengalaman dan Potensi Muda\n\nDengan 31-51, wajar kalau Bulls punya roster yang sedang dalam transisi. Lihat campurannya:\n\n**Matas Buzelis** (F, #14, 21 tahun, 1 tahun pengalaman) dan **Rob Dillingham** (G, #7, 21 tahun, 1 tahun pengalaman) mewakili lapisan paling muda di rotasi utama. Dua rookie-to-sophomore yang musim ini jadi bagian dari kalkulasi jangka panjang Bulls. Usia 21 dengan satu musim di NBA adalah titik di mana banyak hal masih bisa berubah.\n\nLebih muda lagi: **Noa Essengue** (F, #24, 19 tahun, 0 tahun pengalaman), satu dari beberapa nama di roster yang belum punya angka pengalaman. Di usia 19, musim ini kemungkinan besar soal adaptasi dan observasi.\n\nDi sisi yang lebih berpengalaman, **Collin Sexton** (G, #2, 27 tahun, 7 tahun pengalaman) jadi salah satu veteran di backcourt. Tujuh musim NBA buat Sexton berarti dia sudah melewati banyak situasi, termasuk yang tidak ideal seperti musim ini. **Josh Giddey** (G, #3, 23 tahun, 4 tahun pengalaman) menambah dimensi berbeda: guard dengan visi permainan dan ukuran yang tidak umum untuk posisinya.\n\nDi lini depan, **Zach Collins** (F, #12, 28 tahun, 8 tahun pengalaman, Gonzaga) dan **Nick Richards** (C, #13, 28 tahun, 5 tahun pengalaman, Kentucky) jadi tulang punggung berpengalaman di frontcourt. Delapan musim Collins adalah pengalaman terlama di roster yang terdaftar.\n\n---\n\n## Outlook\n\nMusim reguler 2025-26 sudah selesai buat Bulls, 31-51, seed 12, tanpa playoff. Tapi konteks penting: ini roster yang secara usia dan pengalaman masih sangat muda di banyak posisi kunci. Buzelis, Dillingham, Essengue belum di puncak kurva perkembangan mereka.\n\nDi Central Division yang kompetitif, finis keempat dengan rekor minus seperti ini jelas bukan target. Tapi kalau arc-nya memang sedang dibangun dari bawah, musim 2025-26 adalah data point, bukan kesimpulan.\n\nSemua data di artikel ini mencerminkan kondisi per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "4",
+    "team_name": "Chicago Bulls",
+    "team_abbr": "CHI",
+    "team_location": "Chicago",
+    "conference": "Eastern Conference",
+    "division": "Central",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022346,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong article with solid structure and data grounding. One high-severity training inference about head coach narration; minor tense and stylistic softness elsewhere. Otherwise voice is clean, code-switching natural, no banned phrases or pronoun violations.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Tanpa nama head coach di catatan resmi musim ini, sulit mengikat narasi ke satu figur pelatih.",
+          "fix": "Delete sentence or reframe: 'Bulls menjalankan musim ini tanpa satu figur kepemimpinan tunggal.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dua rookie-to-sophomore yang musim ini jadi bagian dari kalkulasi jangka panjang Bulls.",
+          "fix": "Rephrase: 'Dua rookie-to-sophomore dalam kalkulasi jangka panjang Bulls musim ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tapi angka di balik rekor itu menceritakan sesuatu yang lebih dari sekadar kalah-menang.",
+          "fix": "Tighten: 'Tapi angka di balik rekor itu jelas: defensi adalah masalah.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Dengan 31-51, wajar kalau Bulls punya roster yang sedang dalam transisi. Lihat campurannya:",
+          "fix": "Soften: 'Campuran pengalaman dan potensi muda ini menunjukkan transisi roster yang jelas.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x39d7e6b20c8cafe8",
+    "published_at": "2026-04-28T10:26:00+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-minnesota-timberwolves",
+  "title": "Profil Minnesota Timberwolves: Western Conference (2025-26)",
+  "description": "Profil Minnesota Timberwolves — franchise NBA dari Minnesota di division Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Minnesota Timberwolves: Serigala Barat yang Lapar Tiket Playoff\n\nPer 28 April 2026, Minnesota Timberwolves menutup musim reguler 2025-26 dengan rekor 49-33, menempatkan mereka di seed 6 Western Conference dan posisi ketiga di Northwest Division. Bukan tim terbaik di Barat, tapi cukup berbahaya untuk bikin tim lain tidak mau ketemu mereka di babak pertama playoff.\n\n## Identitas dan Posisi Liga\n\nTimberwolves berkandang di Minnesota dan masuk di Western Conference, Northwest Division. Di bawah komando head coach Chris Finch, musim ini mereka kelola dengan rekor 49-33, win rate 59,8 persen. Seed 6 menempatkan mereka tetap dalam jalur playoff, meski tidak di posisi yang memilih lawan. Di Northwest Division sendiri, mereka finis ketiga, di bawah dua tim yang lebih konsisten sepanjang musim reguler.\n\nKonteks ini penting: Timberwolves bukan tim yang menjalani musim buruk. 49 kemenangan di Western Conference itu bukan angka kecil. Masalahnya, kompetisi di Barat musim ini kejam.\n\n## Performa Musim Ini\n\nBaca angkanya: 118,0 PPG di offense, 114,6 PPG yang mereka izinkan di defense. Point differential +3,4 per laga, cukup untuk konsisten finis di atas .500 tapi belum masuk tier elite seperti tim-tim seed atas.\n\nYang menarik adalah split home vs road mereka. Di kandang, Timberwolves sangat nyaman: 26-15 (63,4%). Di luar Minnesota, mereka tetap kompetitif, 23-18 (56,1%). Tidak ada jurang besar antara dua angka ini, tanda tim yang punya karakter dan tidak hanya mengandalkan atmosfer kandang. Tim yang road record-nya solid biasanya lebih siap mental saat babak knockout mulai.\n\nScoring 118,0 PPG membuat mereka salah satu serangan lebih produktif di Barat. Sisi pertahanannya, 114,6 yang mereka berikan, tidak istimewa, tapi tidak bocor. Cukup untuk menang kalau offense mereka hidup.\n\n## Roster dan Pemain Kunci\n\nDari roster yang ada, tiga nama paling menarik untuk dicermati:\n\n**Anthony Edwards (#5, G, 24 tahun, 5 musim)** adalah jantung tim ini. Alumni Georgia yang masuk liga masih sangat muda dan sekarang sudah di musim kelima. Di usia 24, Edwards ada di prime years seorang guard, kombinasi atletisme, scoring instinct, dan pengalaman yang mulai matang. Lima tahun di Timberwolves sudah memberinya cukup konteks untuk memimpin.\n\n**Rudy Gobert (#27, C, 33 tahun, 12 musim)** mengamankan sisi rim. Gobert adalah salah satu center paling berpengalaman yang aktif bermain saat ini, 12 musim di liga. Di usia 33, kontribusinya mungkin sudah bergeser dari era puncaknya, tapi anchor di paint dan komunikasi defensif adalah sesuatu yang tidak bisa dibeli dari rookie.\n\n**Mike Conley (#10, G, 38 tahun, 18 musim)** adalah angka yang paling mencolok di roster. Delapan belas musim, alumni Ohio State, sekarang 38 tahun. Floor general dengan jam terbang hampir tidak ada habisnya. Peran Conley di tim ini kemungkinan bukan volume scorer, tapi decision-making dan ketenangan saat laga tight, sesuatu yang sangat mahal harganya di playoff.\n\nTiga profil yang berbeda: Edwards sebagai engine offense yang muda dan bertenaga, Gobert sebagai tembok di bawah ring, dan Conley sebagai jangkar pengalaman di backcourt. Kombinasi ini adalah blueprint yang banyak tim coba tiru.\n\n## Outlook\n\nLaga berikutnya untuk Timberwolves adalah tandang ke Denver Nuggets, 28 April 2026 jam 02.30 WIB. Matchup yang tidak mudah, tapi gambaran bagus soal level kompetisi yang harus mereka hadapi di Barat.\n\nSeed 6 menempatkan Minnesota di posisi yang harus prove something. Mereka tidak bisa memilih lawan dan tidak ada keuntungan kandang yang dijamin panjang. Tapi dengan 49 kemenangan, roster yang punya campuran pengalaman dan energi muda, serta Finch di bench, Timberwolves bukan tim yang siapapun ingin abaikan.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "16",
+    "team_name": "Minnesota Timberwolves",
+    "team_abbr": "MIN",
+    "team_location": "Minnesota",
+    "conference": "Western Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021477,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "FAIL: Critical training-inference error (wrong next opponent + wrong McDaniels age/experience). Structural redundancy in player bios and tense overmarking throughout. Fix inference facts before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Laga berikutnya untuk Timberwolves adalah tandang ke Denver Nuggets, 28 April 2026 jam 02.30 WIB.",
+          "fix": "Replace with: 'Laga berikutnya untuk Timberwolves adalah tandang ke San Antonio Spurs, 5 Mei 2026 jam 01.30 WIB.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jaden McDaniels (#3, F, 25 tahun, 5 musim)",
+          "fix": "Check roster data: McDaniels is 22 tahun, 2 musim. Do not add player depth without input facts."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Baca angkanya: 118,0 PPG di offense, 114,6 PPG yang mereka izinkan di defense. Point differential +3,4 per laga, cukup untuk konsisten finis di atas .500 tapi belum masuk tier elite seperti tim-tim seed atas.",
+          "fix": "Rephrase: 'Diferensial +3,4 poin per laga, cukup konsisten tapi belum tier elite.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dari roster yang ada, tiga nama paling menarik untuk dicermati: Anthony Edwards (#5, G, 24 tahun, 5 musim) adalah jantung tim ini.",
+          "fix": "Weave into narrative: 'Anthony Edwards, guard 24 tahun, jantung tim ini. Rudy Gobert, center 33 tahun, jangkar rim.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Alumni Georgia yang masuk liga masih sangat muda dan sekarang sudah di musim kelima. Di usia 24, Edwards ada di prime years seorang guard.",
+          "fix": "Compress: 'Edwards (Georgia, season 5) baru 24 tahun; prime years seorang guard.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "anchor di paint dan komunikasi defensif adalah sesuatu yang tidak bisa dibeli dari rookie.",
+          "fix": "Simplify: 'Jangkar di paint dan komunikasi defensif — aset yang rookie tidak bisa gantiin.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Profil ini mencerminkan data per 28 April 2026.",
+          "fix": "Cut this line or replace with forward-looking: 'Playoff dimulai minggu depan.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Matchup yang tidak mudah, tapi gambaran bagus soal level kompetisi yang harus mereka hadapi di Barat.",
+          "fix": "Be specific: 'Lawan kaliber Denver test seberapa jauh Timberwolves bisa jangkau di playoff.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf942c6892d2de618",
+    "published_at": "2026-04-28T10:34:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

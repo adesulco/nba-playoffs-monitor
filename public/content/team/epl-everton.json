@@ -1,0 +1,73 @@
+{
+  "type": "team",
+  "slug": "epl-everton",
+  "title": "Profil Everton: Premier League (2025-26)",
+  "description": "Profil Everton — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Everton: Profil Klub Premier League 2025-26\n\nEverton adalah klub sepak bola asal Liverpool, Inggris, yang bermain di Premier League musim 2025-26. Per 28 April 2026, The Toffees bertengger di posisi 11 klasemen Liga Inggris dengan 47 poin dari 34 laga, catatan 13 menang, 8 seri, dan 13 kalah. Selisih gol tepat nol: 41 gol cetak, 41 kebobolan. Bukan angka yang mengesankan, tapi cukup untuk berada nyaman di papan tengah jauh dari zona merah.\n\n---\n\n## Identitas Klub\n\nEverton berdiri pada 1878, menjadikannya salah satu klub tertua di Inggris. Markas mereka kini adalah Hill Dickinson Stadium di Liverpool, Merseyside, stadion berkapasitas 52.888 penonton. Kandang baru ini menandai babak baru bagi klub yang selama lebih dari 130 tahun berbasis di Goodison Park sebelum akhirnya pindah.\n\nEverton adalah satu dari sedikit klub yang belum pernah terdegradasi dari divisi teratas Liga Inggris sejak 1954, meski dalam beberapa musim terakhir, status itu dipertahankan dengan susah payah. Musim 2025-26 tidak sesuram periode kelam itu, tapi juga belum bisa disebut kebangkitan.\n\n---\n\n## Performa Musim Ini\n\n34 laga, 13 menang, 8 seri, 13 kalah. Angka menang dan kalah yang simetris ini mencerminkan karakter Everton musim ini: tim yang cukup berbahaya untuk menang, tapi cukup rapuh untuk kalah dengan frekuensi yang sama.\n\nRata-rata 1,2 gol per laga di kedua sisi menjelaskan kenapa mereka mentok di papan tengah. Tidak ada produktivitas tajam di depan, tidak ada pertahanan solid di belakang. 11 clean sheet dari 34 laga sebenarnya bukan angka buruk, lebih dari sepertiga laga tanpa kebobolan, tapi itu diimbangi dengan 9 laga tanpa gol sama sekali. Artinya, hampir satu dari empat pertandingan Everton berakhir tanpa gol di ujung serangan mereka.\n\nPerforma kandang justru mengejutkan secara negatif: 6 menang, 4 seri, 7 kalah di Hill Dickinson Stadium. Tandang sedikit lebih baik, 7 menang, 4 seri, 6 kalah. Fakta bahwa Everton lebih produktif di luar kandang adalah anomali yang menarik, dan bukan dalam artian positif buat mereka yang berharap atmosfer stadion baru jadi keuntungan.\n\nForm terkini LWWLWDLL membaca seperti grafik EKG yang tidak stabil. Dua kemenangan beruntun di tengah urutan itu sempat memunculkan harapan, tapi dua kekalahan di akhir menghapusnya kembali. Konsistensi adalah masalah Everton musim ini, dan form terakhir merangkumnya dengan tepat.\n\n---\n\n## Posisi di Klasemen\n\nPosisi 11 dengan 47 poin dari 34 laga menempatkan Everton tepat di tengah-tengah Premier League, tidak cukup tinggi untuk bicara Eropa, tidak cukup rendah untuk khawatir soal degradasi. Dengan selisih gol nol besar, mereka adalah definisi tim papan tengah yang sesungguhnya: tidak mengalahkan siapa pun yang seharusnya tidak mereka kalahkan, tidak dikalahkan oleh siapa pun yang seharusnya tidak mengalahkan mereka.\n\nEmpat laga tersisa masih bisa menggeser posisi mereka beberapa slot ke atas atau ke bawah, tapi secara realistis, kisaran posisi 9 sampai 13 adalah proyeksi akhir musim yang masuk akal. Tidak ada status khusus, tidak ada tiket Eropa, tidak ada ancaman relegation, yang membebani sisa laga mereka.\n\n---\n\n## Outlook\n\nEverton menutup musim 2025-26 sebagai tim yang tidak mengecewakan, tapi juga tidak memukau. 47 poin dari 34 laga, selisih gol nol, form fluktuatif, semuanya menunjuk ke arah yang sama: stabilitas tanpa arah yang jelas.\n\nEmpat laga tersisa tidak punya beban besar. Tapi justru di situlah pertanyaannya: apakah musim tanpa tekanan ini cukup untuk klub seukuran Everton, dengan stadion baru berkapasitas lebih dari 52.000 penonton?\n\nData di atas mencerminkan kondisi Everton per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "45",
+    "team_name": "Everton",
+    "team_country": "England",
+    "team_founded": 1878,
+    "venue_name": "Hill Dickinson Stadium",
+    "venue_city": "Liverpool, Merseyside",
+    "venue_capacity": 52888,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022789,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: Two high-severity training-data inferences (Goodison Park history, 1954 degradation claim) unsupported by input data. These are factual claims that exceed the provided brief and risk accuracy issues. Two medium-severity translated-English phrasings reduce fluency. Remove inference claims and tighten language to pass.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kandang baru ini menandai babak baru bagi klub yang selama lebih dari 130 tahun berbasis di Goodison Park sebelum akhirnya pindah.",
+          "fix": "Remove Goodison Park reference entirely or restrict to: 'Markas mereka adalah Hill Dickinson Stadium di Liverpool, Merseyside, stadion berkapasitas 52.888.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Everton adalah satu dari sedikit klub yang belum pernah terdegradasi dari divisi teratas Liga Inggris sejak 1954",
+          "fix": "Delete this sentence entirely. Stick to provided input data only."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Artinya, hampir satu dari empat pertandingan Everton berakhir tanpa gol di ujung serangan mereka.",
+          "fix": "Simplify: 'Hampir satu dari empat laga Everton tanpa gol.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Fakta bahwa Everton lebih produktif di luar kandang adalah anomali yang menarik, dan bukan dalam artian positif",
+          "fix": "'...dan bukan berita baik untuk mereka yang berharap stadion baru jadi keuntungan.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Form terkini LWWLWDLL membaca seperti grafik EKG yang tidak stabil.",
+          "fix": "Optional: 'Form terkini LWWLWDLL naik-turun: dua menang, satu kalah, dua seri, dua kalah lagi.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Posisi 11 dengan 47 poin dari 34 laga menempatkan Everton tepat di tengah-tengah Premier League",
+          "fix": "Vary: 'Posisi 11 dengan 47 poin menempatkan Everton solidly mid-table,' or just 'di papan tengah.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1868064586ad068a",
+    "published_at": "2026-04-28T12:12:25+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

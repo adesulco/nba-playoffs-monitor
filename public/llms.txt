@@ -74,6 +74,15 @@ gibol.co is a real-time sports companion aggregating Polymarket prediction odds,
 - Polymarket CLOB WebSocket (live price ticks for top contenders)
 - ESPN Scoreboard + Summary + Probabilities + Team Schedule + Injuries (all undocumented public endpoints)
 
+## User accounts and personalization
+
+- Magic-link sign-in via Supabase: enter email at [/login](https://www.gibol.co/login), receive a one-tap link, no password needed
+- First-login flow at [/onboarding/teams](https://www.gibol.co/onboarding/teams): pick up to 8 favorite teams across NBA / Liga Inggris / F1 / Tenis (multi-sport in one picker)
+- Edit favorites anytime at [/settings/teams](https://www.gibol.co/settings/teams) — same chip grid as the onboarding picker
+- Logged-in users see their saved teams surface across the home (FOLLOWING card) and rise to the top of the LIVE NOW card with a ★ tag when their team is currently playing
+- Pickem bracket lives at [/bracket](https://www.gibol.co/bracket) — pick the full NBA 2026 playoff bracket, lock at first tip-off, score against friends in private leagues
+- Favorites + bracket data live in Postgres (Supabase project egzacjfbmgbcwhtvqixc Mumbai), not localStorage — so picks persist across devices
+
 ## Brand
 
 - Tagline: "Gila bola · live sports dashboards"

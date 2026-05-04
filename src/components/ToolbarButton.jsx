@@ -32,7 +32,9 @@ const BASE_STYLE = {
   minWidth: 28,
   padding: 0,
   background: 'transparent',
-  border: '1px solid var(--border-subtle)',
+  // v0.11.5 a11y — WCAG 1.4.11. Was var(--border-subtle) at ~2.1:1.
+  // --border-interactive ≥ 3:1 in both themes (see src/index.css).
+  border: '1px solid var(--border-interactive)',
   borderRadius: 'var(--r-pill)',
   color: 'var(--fg-secondary)',
   cursor: 'pointer',
@@ -84,7 +86,7 @@ export default function ToolbarButton({
       }}
       onMouseLeave={(e) => {
         if (active) return;
-        e.currentTarget.style.borderColor = 'var(--border-subtle)';
+        e.currentTarget.style.borderColor = 'var(--border-interactive)';
         e.currentTarget.style.color = 'var(--fg-secondary)';
       }}
     >

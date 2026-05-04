@@ -1,0 +1,91 @@
+{
+  "type": "team",
+  "slug": "tennis-taylor-fritz",
+  "title": "Profil Taylor Fritz (ATP) — Peringkat 7",
+  "description": "Profil petenis Taylor Fritz (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Taylor Fritz, Petenis Amerika di Jajaran Elite Dunia\n\nTaylor Fritz, petenis Amerika kelahiran 28 Oktober 1997, saat ini menempati peringkat 7 ATP dengan 3.870 poin per 16 April 2026. Pemain tangan kanan asal Rancho Santa Fe, California ini masuk jajaran 10 besar dunia sebagai salah satu representasi terkuat tenis Amerika Serikat di era modern.\n\n---\n\n## Identitas\n\nFritz lahir di Rancho Santa Fe, sebuah kota di California, Amerika Serikat. Per 28 April 2026, usianya 28 tahun, masih dalam jendela prime seorang petenis profesional. Posturnya jadi salah satu aset fisik paling menonjol di tour: tinggi 6'5\" (sekitar 196 cm) dengan berat 190 lbs (sekitar 86 kg), Fritz masuk kategori petenis bertubuh besar yang langka di papan atas ATP.\n\nDebut profesionalnya tercatat pada 2015, artinya Fritz sudah menjalani lebih dari satu dekade di sirkuit profesional. Perjalanan panjang itu menempatkannya sekarang sebagai salah satu petenis Amerika paling konsisten di generasinya, petenis tangan kanan dengan postur atletis yang cocok untuk permainan serve-and-baseline yang kuat.\n\n---\n\n## Peringkat Saat Ini\n\nFritz tercatat di peringkat 7 ATP dengan 3.870 poin berdasarkan data ranking per 16 April 2026. Ini naik satu posisi dari peringkat sebelumnya di angka 8, pergerakan kecil tapi signifikan karena mempertahankan posisi di 10 besar ATP bukan perkara mudah di kepadatan jadwal musim 2026.\n\nTrend positif ini menempatkan Fritz dalam posisi yang solid menjelang paruh kedua musim. Dengan 3.870 poin, gap ke peringkat di atasnya masih ada, tapi keberadaan di top 10 memberi Fritz akses ke seeding premium di turnamen Masters 1000 dan Grand Slam, keuntungan struktural yang tidak bisa diremehkan.\n\nDibanding nama-nama Amerika lain di ATP, Fritz konsisten jadi yang tertinggi. Posisi P7 dunia bukan pencapaian kebetulan, ini hasil akumulasi poin yang dijaga musim demi musim di berbagai permukaan, dari hard court hingga tanah liat.\n\n---\n\n## Outlook\n\nDi peringkat 7 dunia, Fritz bukan underdog lagi. Setiap turnamen yang dia masuki, dia hadir sebagai unggulan, dan itu membawa beban ekspektasi tersendiri. Tapi pergerakan naik dari P8 ke P7 menunjukkan Fritz tidak sekadar bertahan di zona nyaman. dia masih bergerak ke atas.\n\nSelama posturnya sehat dan poin terus terjaga, Fritz punya fondasi kuat untuk tetap relevan di papan atas ATP sepanjang sisa 2026. Profil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "2946",
+    "athlete_name": "Taylor Fritz",
+    "current_rank": 7,
+    "previous_rank": 8,
+    "points": 3870.0,
+    "trend": "+1",
+    "birthplace": "Rancho Santa Fe, CA, USA",
+    "dob": "1997-10-28",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.015642,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails due to two high-severity training-inference violations: inferring playing style from body type alone, and making comparative claims about rarity not in input data. Multiple tense and translation artifacts compound the issue. Rewrite required to ground all claims in the provided ranking/bio data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Posturnya jadi salah satu aset fisik paling menonjol di tour: tinggi 6'5\" (sekitar 196 cm) dengan berat 190 lbs (sekitar 86 kg), Fritz masuk kategori petenis bertubuh besar yang langka di papan atas ATP.",
+          "fix": "Remove the comparative assertion. Stick to: 'Tinggi 6'5\" (196 cm) dan berat 190 lbs (86 kg).'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "petenis tangan kanan dengan postur atletis yang cocok untuk permainan serve-and-baseline yang kuat.",
+          "fix": "Remove. Replace with factual observation only: 'Petenis tangan kanan, tinggi 6'5\" dengan build atletis.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Perjalanan panjang itu menempatkannya sekarang sebagai salah satu petenis Amerika paling konsisten di generasinya",
+          "fix": "Simplify: 'Debut 2015 berarti 11 tahun di tour. Peringkat 7 world sekarang menunjukkan konsistensi Fritz.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Fritz tercatat di peringkat 7 ATP dengan 3.870 poin berdasarkan data ranking per 16 April 2026. Ini naik satu posisi dari peringkat sebelumnya di angka 8",
+          "fix": "'Fritz peringkat 7 ATP, 3.870 poin per 16 April 2026. Naik satu dari P8 sebelumnya.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "keuntungan struktural yang tidak bisa diremehkan.",
+          "fix": "'keuntungan yang nyata di turnamen besar.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dibanding nama-nama Amerika lain di ATP, Fritz konsisten jadi yang tertinggi.",
+          "fix": "'Antara petenis Amerika di ATP, Fritz ranking tertinggi sekarang.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "tapi keberadaan di top 10 memberi Fritz akses ke seeding premium di turnamen Masters 1000 dan Grand Slam",
+          "fix": "State as general fact only: 'Top 10 memberi seeding utama di turnamen besar.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Di peringkat 7 dunia, Fritz bukan underdog lagi. Setiap turnamen yang dia masuki, dia hadir sebagai unggulan",
+          "fix": "'Di P7 dunia, Fritz bukan lagi underdog. Dia hadir sebagai unggulan di setiap turnamen.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "salah satu representasi terkuat tenis Amerika Serikat di era modern.\n\n---\n\n## Identitas\n\nFritz lahir di Rancho Santa Fe,",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xfd85cfa71ca4be40",
+    "published_at": "2026-04-28T11:59:06+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

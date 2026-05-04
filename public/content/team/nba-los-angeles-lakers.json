@@ -1,0 +1,95 @@
+{
+  "type": "team",
+  "slug": "nba-los-angeles-lakers",
+  "title": "Profil Los Angeles Lakers: Northwest, Western Conference (2025-26)",
+  "description": "Profil Los Angeles Lakers — franchise NBA dari Los Angeles di Northwest Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Los Angeles Lakers: Raksasa Barat yang Belum Selesai\n\nLos Angeles Lakers adalah salah satu nama paling ikonik dalam sejarah NBA, dan musim 2025-26 ini, mereka membuktikan masih relevan. Berkandang di Crypto.com Arena, Los Angeles, dan bersaing di Pacific Division Wilayah Barat, LAL menutup musim reguler 2025-26 dengan rekor 53-29 (0.646), cukup untuk seed 4 di Western Conference playoff. Data ini per 28 April 2026.\n\n---\n\n## Identitas dan Posisi di Liga\n\nLakers bermain di Pacific Division, Western Conference, dan musim ini finis sebagai pemimpin divisi, 1st in Pacific Division. Di tengah persaingan Barat yang ketat, seed 4 di conference adalah capaian solid. JJ Redick, pelatih kepala yang masih terhitung muda di kursi pelatih, bertanggung jawab atas tim yang punya kedalaman roster lengkap dari veteran berpengalaman sampai wajah-wajah baru yang masih berkembang.\n\nPosisi seed 4 menempatkan LAL di jalur playoff, bukan sebagai unggulan teratas, tapi cukup untuk menghindari play-in dan langsung masuk bracket utama. Di Barat, tidak ada seed yang aman, tapi Lakers tidak datang sebagai tim yang sekadar numpang hadir.\n\n---\n\n## Performa Musim Ini\n\nAngka 53-29 punya cerita di baliknya. LAL mencatat rata-rata 116,3 PPG, serangan yang bisa berjalan. Di sisi pertahanan, mereka mengizinkan 114,6 PPG, artinya point differential musim ini tipis di angka +1,7. Bukan tim yang membunuh lawan dengan margin besar, tapi tim yang menang lebih sering daripada kalah.\n\nYang menarik adalah konsistensinya antara kandang dan tandang. Di rumah, Lakers menang 28 dari 41 laga (0.683). Di jalan, 25 dari 41 (0.610). Tidak banyak tim NBA yang win rate tandang-nya se-solid itu. Artinya LAL bukan tim yang hanya nyaman di depan home crowd, mereka bisa bermain di lingkungan mana pun.\n\n116,3 PPG juga bukan angka yang didapat dari satu atau dua pemain. Untuk bisa konsisten di angka itu selama 82 laga, distribusi serangan harus berjalan, dan roster Lakers musim ini punya kapasitas untuk itu.\n\n---\n\n## Roster: Generasi Berlapis\n\nDari 18 pemain di roster, tiga nama layak jadi sorotan utama berdasarkan kombinasi posisi, usia, dan pengalaman.\n\n**Luka Doncic (#77, Guard, 27 tahun, 7 tahun pengalaman)** adalah pusat gravitasi serangan Lakers. Guard asal Slovenia yang sudah membuktikan diri sebagai salah satu playmaker terbaik di liga, kehadirannya di Los Angeles memberi LAL dimensi ball-handling dan kreasi yang berbeda dari musim-musim sebelumnya.\n\n**LeBron James (#23, Forward, 41 tahun, 22 tahun pengalaman)** masih ada. Dua puluh dua tahun di liga, dan LeBron masih masuk roster musim reguler penuh. Usianya bukan lagi misteri, 41 tahun di olahraga sekeras NBA. Tapi kehadirannya, baik sebagai pemain maupun sebagai pengaruh di locker room, tetap nyata. Kombinasi Luka-LeBron di satu tim adalah salah satu pasangan yang paling banyak dibicarakan musim ini.\n\n**Marcus Smart (#36, Guard, 32 tahun, 11 tahun pengalaman)** adalah lapisan ketiga yang krusial. Veteran Oklahoma State yang sudah melewati satu dekade lebih di NBA, tipe pemain yang tidak selalu muncul di highlight reel tapi tim-tim playoff tahu nilainya. Perimeter defense, IQ, dan pengalaman di momen besar adalah kontribusinya.\n\nDi luar tiga nama ini, ada kedalaman yang menarik: Austin Reaves (#15, 4 tahun pengalaman) yang sudah membangun fanbase sendiri, Deandre Ayton (#5, center berpengalaman 7 tahun dari Arizona), sampai Bronny James (#9, 21 tahun, rookie year) yang menorehkan sejarah sebagai pemain pertama yang main satu tim bareng ayahnya di NBA.\n\n---\n\n## Outlook\n\nLakers menutup musim reguler 2025-26 sebagai seed 4 Barat, posisi yang menempatkan mereka di bracket playoff tanpa jeda play-in. Laga berikutnya adalah Houston Rockets vs Los Angeles Lakers pada 30 April 2026 pukul 02.00 WIB.\n\nUntuk tim dengan mix Luka Doncic, LeBron James, dan kedalaman roster yang terbilang lengkap, pertanyaannya bukan sekadar apakah Lakers bisa menang di playoff, tapi seberapa jauh mereka bisa pergi. Seed 4 di Barat bukan undian mudah. Tapi Lakers bukan tim yang datang hanya untuk hadir.\n\n*Profil ini mencerminkan data per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "13",
+    "team_name": "Los Angeles Lakers",
+    "team_abbr": "LAL",
+    "team_location": "Los Angeles",
+    "conference": "Western Conference",
+    "division": "Northwest",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024271,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 10,
+      "summary": "Fail. High-severity training-data hallucinations: Doncic's nationality inferred (not in input), and next playoff opponent is fabricated (should be OKC Thunder 6 Mei, not Rockets 30 April). Multiple soft academic-drift sentences and evaluative praise not grounded in input. Date inconsistency (28 April vs. input 3 Mei). Regenerate with strict input-only constraint.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Luka Doncic (#77, Guard, 27 tahun, 7 tahun pengalaman)... Guard asal Slovenia",
+          "fix": "Remove 'asal Slovenia'; describe role/impact only: 'Guard yang sudah membuktikan diri sebagai salah satu playmaker terbaik di liga'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Laga berikutnya adalah Houston Rockets vs Los Angeles Lakers pada 30 April 2026",
+          "fix": "Use input data: 'Los Angeles Lakers bertandang ke Oklahoma City Thunder, 6 Mei 2026 pukul 07.30 WIB.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "LAL mencatat rata-rata 116,3 PPG, serangan yang bisa berjalan.",
+          "fix": "'LAL rata-rata cetak 116,3 PPG, serangan yang konsisten.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dari 18 pemain di roster, tiga nama layak jadi sorotan utama berdasarkan kombinasi posisi, usia, dan pengalaman.",
+          "fix": "Just start: 'Tiga pemain: Doncic, LeBron, Smart.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Guard asal Slovenia yang sudah membuktikan diri sebagai salah satu playmaker terbaik di liga",
+          "fix": "Stick to input role: 'Pemain yang bisa handle ball dan buat passing' or leave evaluative framing to coach/analyst quote."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kombinasi Luka-LeBron di satu tim adalah salah satu pasangan yang paling banyak dibicarakan musim ini.",
+          "fix": "Remove; or: 'Pasangan Doncic-LeBron jadi sorotan di musim pertama bersama.' (concrete, not vague-evaluative)"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Data ini per 28 April 2026. ... *Profil ini mencerminkan data per 28 April 2026.*",
+          "fix": "Use input date consistently: 'Data ini per 3 Mei 2026.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Artinya point differential musim ini tipis di angka +1,7.",
+          "fix": "Tighten: 'Point differential musim ini +1,7 — tipis tapi konsisten menang.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "krusial. Veteran Oklahoma State yang sudah melewati satu dekade lebih di NBA, tipe pemain yang tidak selalu muncul di highlight",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "dimensi ball-handling dan kreasi yang berbeda dari musim-musim sebelumnya.\n\n**LeBron James (#23, Forward, 41 tahun, 22 tahun",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x32bee728040fee28",
+    "published_at": "2026-04-28T10:32:05+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

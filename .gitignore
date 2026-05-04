@@ -15,3 +15,19 @@ dist-ssr
 vite.config.js.timestamp-*
 nba-playoffs-monitor-committed.tar.gz
 dist*
+
+# Python content-engine venv + caches (v0.59.1 sync)
+packages/content-engine/.venv/
+packages/content-engine/.env
+packages/content-engine/.env.local
+**/__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Generated cost / eval reports — keep local, regenerate on demand
+packages/content-engine/eval/results/
+packages/content-engine/.cost-tracker.json

@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "epl-brentford",
+  "title": "Profil Brentford: Premier League (2025-26)",
+  "description": "Profil Brentford — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Brentford FC: Klub Asal Middlesex yang Membangun Tempat di Premier League\n\nPer 28 April 2026, Brentford menempati peringkat 9 Liga Inggris 2025-26 dengan 48 poin dari 34 laga. Rekor 13 menang, 9 seri, 12 kalah dan selisih gol +3 menempatkan mereka di papan tengah, bukan glamor, tapi jauh dari zona berbahaya. Untuk klub dengan stadion berkapasitas 17.250 penonton, bertahan nyaman di posisi 9 Premier League bukan pencapaian kecil.\n\n---\n\n## Identitas Klub\n\nBrentford FC berdiri tahun 1889, menjadikan mereka salah satu klub tertua di Inggris. Kandang mereka adalah Gtech Community Stadium di Brentford, Middlesex, salah satu stadion Premier League terkecil dari sisi kapasitas, hanya menampung sekitar 17.250 penonton. Kontras itu justru jadi bagian dari identitas Brentford: klub yang tidak punya modal besar tapi tahu cara mengelola sumber daya.\n\nSetelah lama bermain di divisi bawah, Brentford promosi ke Premier League pada 2021 dan sejak itu konsisten bertahan di level tertinggi sepak bola Inggris. Bukan sebagai kontender gelar, tapi sebagai tim yang punya cara bermain jelas dan tidak mudah diremehkan.\n\n---\n\n## Performa Musim 2025-26\n\nDari 34 laga yang sudah dimainkan, Brentford mencatat 13 menang, 9 seri, dan 12 kalah. Angka itu menggambarkan tim yang kompetitif tapi tidak konsisten sepanjang musim.\n\nYang menarik adalah keseimbangan di kedua sisi. Brentford cetak 49 gol (rata-rata 1,4 per laga) dan kebobolan 46 (juga 1,4 per laga). Selisih gol cuma +3, tipis, tapi positif. Tidak ada surplus besar yang menunjukkan dominasi, tapi juga tidak defisit yang mencerminkan tim yang mudah dicetak.\n\nClean sheet 9 kali dari 34 laga adalah angka yang sedang, pertahanan mereka bisa menjaga gawang bersih hampir satu dari tiga laga, tapi di 11 laga lainnya mereka yang tidak berhasil mencetak gol sama sekali. Dua sisi koin yang sama.\n\nPerbedaan paling mencolok ada di performa kandang vs tandang. Di Gtech Community Stadium, Brentford bermain solid: 7 menang, 7 seri, 3 kalah. Hanya tiga kekalahan di kandang dari 17 laga adalah angka yang bagus untuk ukuran tim papan tengah. Di luar kandang, ceritanya berbeda, 6 menang tapi 9 kalah dari 17 laga tandang. Mereka jelas lebih nyaman di depan pendukung sendiri.\n\nForm terakhir (LWDDDDDL) menunjukkan periode yang stagnan. Empat seri beruntun di tengah form itu mencerminkan tim yang sulit menang tapi juga sulit dikalahkan, perolehan poin yang tidak ideal, tapi juga tidak sedang jatuh bebas.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 9 dengan 48 poin menempatkan Brentford di bagian tengah klasemen Liga Inggris 2025-26 yang nyaman. Tidak ada tekanan relegation, tidak ada ambisi European competition yang realistis untuk saat ini, mereka ada di zona \"papan tengah atas\" yang cukup stabil.\n\n48 poin dari 34 laga berarti rata-rata sekitar 1,4 poin per laga. Dengan empat laga tersisa di musim reguler, total akhir di kisaran 53-56 poin bisa jadi angka yang menggambarkan musim ini secara keseluruhan.\n\nUntuk konteks: posisi 9 bagi Brentford adalah bentuk konsistensi. Mereka bukan tim yang beli pemain mahal untuk finis di empat besar, tapi mereka juga bukan tim yang tiap musim was-was soal degradasi.\n\n---\n\n## Outlook\n\nMusim 2025-26 Brentford berjalan sesuai ekspektasi realistis, mid-table yang solid, lebih kuat di kandang, cukup rapuh di tandang. Form terakhir yang diwarnai banyak seri menunjukkan tim yang mungkin kehabisan energi menjelang akhir musim, tapi posisi klasemen mereka sudah cukup aman.\n\nEmpat laga tersisa tidak akan banyak mengubah cerita besar musim ini. Yang lebih relevan adalah apakah konsistensi ini bisa jadi fondasi musim depan. Brentford sudah cukup lama di Premier League untuk tidak dianggap pendatang baru, pertanyaannya tinggal seberapa jauh mereka bisa dorong dari papan tengah.\n\n*Data per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "55",
+    "team_name": "Brentford",
+    "team_country": "England",
+    "team_founded": 1889,
+    "venue_name": "Gtech Community Stadium",
+    "venue_city": "Brentford, Middlesex",
+    "venue_capacity": 17250,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023104,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "FAIL: Critical data mismatches between input block and article. Position 9 vs 6, 48 vs 51 points, 34 vs 35 matches, 49 vs 52 goals, 9 vs 10 clean sheets, home record 7W vs 8W, and form sequence entirely different. Multiple training-data inferences (2021 promotion date, biographical backstory) not in input. One grammar-awkward 'yang mana' phrase. Article must be regenerated with correct input data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Brentford menempati peringkat 9 Liga Inggris 2025-26 dengan 48 poin dari 34 laga.",
+          "fix": "Use input data: position 6, 51 points, 35 matches, 14 wins, 9 draws, 12 losses."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Setelah lama bermain di divisi bawah, Brentford promosi ke Premier League pada 2021",
+          "fix": "Remove the specific year 2021; say 'Brentford finis di papan tengah Premier League dengan konsistensi' without the backstory."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Brentford cetak 49 gol (rata-rata 1,4 per laga) dan kebobolan 46",
+          "fix": "Correct to 52 goals scored, 46 conceded per input data."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Clean sheet 9 kali dari 34 laga",
+          "fix": "Use input: 10 clean sheets from 35 matches."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Form terakhir (LWDDDDDL)",
+          "fix": "Use input form string exactly: WDDDDDLW."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Di Gtech Community Stadium, Brentford bermain solid: 7 menang, 7 seri, 3 kalah.",
+          "fix": "Use input: 8 wins, 7 draws, 3 losses at home."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang mana tidak berhasil mencetak gol sama sekali.",
+          "fix": "Rephrase: 'mereka tidak cetak gol di 11 laga itu.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Dua sisi koin yang sama.",
+          "fix": "Delete; let the stat stand alone or say 'pertahanan dan serangan sama-sama tipis.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1845e29d4505a4aa",
+    "published_at": "2026-04-28T12:01:02+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

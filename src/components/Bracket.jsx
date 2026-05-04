@@ -1,24 +1,53 @@
 import React, { useMemo } from 'react';
 import { TEAM_META, BRACKET_R1, PLAYIN_POOL, COLORS } from '../lib/constants.js';
+import { useIsMobile } from '../hooks/useMediaQuery.js';
 
-// Given today's (and recent days') ESPN games, figure out which play-in team
-// is actually sitting at each conference's 8-seed. Rule: whichever team from
-// the play-in pool is currently matched up against the 1-seed in a R1 game
-// is the advanced team. Falls back to null if we can't tell yet.
-function resolvePlayInWinner(games, oneSeedAbbr, poolNames) {
-  if (!Array.isArray(games) || games.length === 0) return null;
+// Given live ESPN games AND historical seriesMap, figure out which play-in
+// team is actually sitting at each conference's 8-seed. Rule: whichever team
+// from the play-in pool has been matched up against the 1-seed in any R1
+// game (today's scoreboard or any historical playoff date) is the advanced
+// team. Falls back to null if we can't tell yet.
+//
+// v0.49.0 hotfix — earlier version only inspected today's `games` array.
+// Once R1 progresses past G1 (we're typically at G3-G5 by the time most
+// users open the dashboard), today's scoreboard rarely contains the
+// specific 1-seed-vs-play-in matchup, so resolution failed and the
+// bracket showed "Play-In TBD" indefinitely. Adding seriesMap (which
+// spans the full playoff window via /scoreboard?dates=YYYYMMDD per
+// useSeriesState) keeps resolution stable across the whole round.
+function resolvePlayInWinner(games, seriesMap, oneSeedAbbr, poolNames) {
   const poolAbbrs = new Set(poolNames.map((n) => TEAM_META[n]?.abbr).filter(Boolean));
-  for (const g of games) {
-    const a = g.away?.abbr;
-    const h = g.home?.abbr;
-    if (!a || !h) continue;
-    const pair = [a, h];
-    if (!pair.includes(oneSeedAbbr)) continue;
-    const other = pair.find((x) => x !== oneSeedAbbr);
-    if (poolAbbrs.has(other)) {
-      return poolNames.find((n) => TEAM_META[n]?.abbr === other) || null;
+
+  // First try: today's live games (fastest signal — shows the matchup
+  // before any series result has been logged).
+  if (Array.isArray(games)) {
+    for (const g of games) {
+      const a = g.away?.abbr;
+      const h = g.home?.abbr;
+      if (!a || !h) continue;
+      const pair = [a, h];
+      if (!pair.includes(oneSeedAbbr)) continue;
+      const other = pair.find((x) => x !== oneSeedAbbr);
+      if (poolAbbrs.has(other)) {
+        return poolNames.find((n) => TEAM_META[n]?.abbr === other) || null;
+      }
     }
   }
+
+  // Second try: historical series — useSeriesState keys are sorted
+  // "ABBR1|ABBR2". Any pair containing the 1-seed AND a pool team
+  // tells us the play-in winner advanced.
+  if (seriesMap && typeof seriesMap === 'object') {
+    for (const key of Object.keys(seriesMap)) {
+      const [a, b] = key.split('|');
+      if (a !== oneSeedAbbr && b !== oneSeedAbbr) continue;
+      const other = a === oneSeedAbbr ? b : a;
+      if (poolAbbrs.has(other)) {
+        return poolNames.find((n) => TEAM_META[n]?.abbr === other) || null;
+      }
+    }
+  }
+
   return null;
 }
 
@@ -137,12 +166,16 @@ function Series({ series, oddsMap, seriesMap, playInWinner }) {
 
 export default function Bracket({ championOdds, seriesMap, games }) {
   const oddsMap = Object.fromEntries((championOdds || []).map((o) => [o.name, o.pct]));
+  const isMobile = useIsMobile();
 
-  // Auto-resolve the two 8-seeds from live ESPN matchups, once R1 starts.
+  // Auto-resolve the two 8-seeds. v0.49.0 hotfix — also inspects
+  // seriesMap so resolution stays correct after Round 1 G1 (when
+  // today's scoreboard no longer carries the specific 1-seed-vs-
+  // play-in matchup).
   const playInWinners = useMemo(() => ({
-    east: resolvePlayInWinner(games, 'DET', PLAYIN_POOL.east),
-    west: resolvePlayInWinner(games, 'OKC', PLAYIN_POOL.west),
-  }), [games]);
+    east: resolvePlayInWinner(games, seriesMap, 'DET', PLAYIN_POOL.east),
+    west: resolvePlayInWinner(games, seriesMap, 'OKC', PLAYIN_POOL.west),
+  }), [games, seriesMap]);
 
   const ConfHeader = ({ label }) => (
     <div
@@ -159,6 +192,94 @@ export default function Bracket({ championOdds, seriesMap, games }) {
     </div>
   );
 
+  // v0.13.5 Sprint 2 Theme C, Ship D — mobile bracket carousel.
+  //
+  // Pre-fix: 8 series stacked vertically = ~520 px tall in the
+  // col-1 sidebar. After Ship C's mobile reflow, bracket is pushed
+  // below the live ticker and odds, but it still consumes 520 px
+  // of vertical scroll for what is, on mobile, lookup-only content.
+  //
+  // Now: ≤720 px renders 8 series as a horizontal scroll-snap
+  // carousel (one card per snap point, swipe between). Conference
+  // is shown as a tag on each card. Total height drops from ~520 px
+  // to ~140 px. Desktop behaviour is unchanged.
+  if (isMobile) {
+    const cards = [
+      ...BRACKET_R1.east.map((s, i) => ({
+        s, key: `e-${i}`, conf: 'EAST',
+        playInWinner: s.seeds.includes(8) ? playInWinners.east : null,
+      })),
+      ...BRACKET_R1.west.map((s, i) => ({
+        s, key: `w-${i}`, conf: 'WEST',
+        playInWinner: s.seeds.includes(8) ? playInWinners.west : null,
+      })),
+    ];
+    return (
+      <div style={{ padding: '10px 0 4px' }}>
+        <div
+          className="day-strip-scroll"
+          style={{
+            display: 'flex',
+            gap: 8,
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            WebkitOverflowScrolling: 'touch',
+            padding: '0 12px 8px',
+            scrollPadding: '0 12px',
+          }}
+        >
+          {cards.map(({ s, key, conf, playInWinner }) => (
+            <div
+              key={key}
+              style={{
+                flex: '0 0 calc(100vw - 56px)',
+                maxWidth: 360,
+                scrollSnapAlign: 'start',
+                background: COLORS.panel,
+                border: `1px solid ${COLORS.lineSoft}`,
+                borderRadius: 4,
+                padding: '8px 10px',
+                position: 'relative',
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 8.5,
+                  letterSpacing: 1.2,
+                  color: COLORS.muted,
+                  marginBottom: 6,
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 700,
+                }}
+              >
+                {conf}
+              </div>
+              <Series
+                series={s}
+                oddsMap={oddsMap}
+                seriesMap={seriesMap}
+                playInWinner={playInWinner}
+              />
+            </div>
+          ))}
+        </div>
+        <div
+          style={{
+            marginTop: 6,
+            fontSize: 9,
+            color: COLORS.muted,
+            textAlign: 'center',
+            letterSpacing: 0.5,
+            padding: '0 12px',
+          }}
+        >
+          Geser ← → · Highlighted = title favorite (Polymarket)
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop: original vertical stack.
   return (
     <div style={{ padding: '10px 12px' }}>
       <ConfHeader label="EASTERN CONFERENCE" />

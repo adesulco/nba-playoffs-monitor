@@ -6,6 +6,8 @@ import {
   INDONESIAN_PLAYERS,
   INDONESIAN_PLAYERS_BY_SLUG,
 } from '../lib/sports/tennis/constants.js';
+import { useIsMobile } from '../hooks/useMediaQuery.js';
+import PickerSheet from './PickerSheet.jsx';
 
 /**
  * Tennis PlayerPicker — parallels NBA TeamPicker / EPL ClubPicker /
@@ -29,6 +31,7 @@ function resolvePlayer(slug) {
 export default function TennisPlayerPicker({ selectedSlug, onSelect, lang }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     function handleClick(e) {
@@ -103,6 +106,7 @@ export default function TennisPlayerPicker({ selectedSlug, onSelect, lang }) {
             >
               {player.ccode || player.countryCode}
             </span>
+            {/* v0.11.21 GIB-009 textContent whitespace */}{' '}
             <span style={{ flex: 1, textAlign: 'left' }}>{shortInButton}</span>
             <span style={{ fontSize: 9, opacity: 0.7 }}>▼</span>
           </>
@@ -115,29 +119,29 @@ export default function TennisPlayerPicker({ selectedSlug, onSelect, lang }) {
         )}
       </button>
 
-      {open && (
-        <div
-          role="listbox"
-          aria-label={lang === 'id' ? 'Pemain tenis' : 'Tennis players'}
-          style={{
-            position: 'absolute',
-            top: 'calc(100% + 4px)',
-            left: 0,
-            width: 300,
-            background: C.panel,
-            border: `1px solid ${C.line}`,
-            borderRadius: 4,
-            zIndex: 100,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-            maxHeight: 440,
-            overflowY: 'auto',
-          }}
-        >
+      {/* v0.13.8 — bottom-sheet on mobile via shared <PickerSheet>. */}
+      <PickerSheet
+        isMobile={isMobile}
+        open={open}
+        onClose={() => setOpen(false)}
+        ariaLabel={lang === 'id' ? 'Pemain tenis' : 'Tennis players'}
+        desktopWidth={300}
+      >
           {selectedSlug && (
             <div
+              role="button"
+              tabIndex={0}
+              aria-label={clearLabel}
               onClick={() => {
                 onSelect(null);
                 setOpen(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelect(null);
+                  setOpen(false);
+                }
               }}
               style={{
                 padding: '8px 12px',
@@ -156,8 +160,7 @@ export default function TennisPlayerPicker({ selectedSlug, onSelect, lang }) {
           <Group title={lang === 'id' ? 'ATP · PUTRA' : 'ATP · MEN'} players={atpStars} selectedSlug={selectedSlug} onSelect={(s) => { onSelect(s); setOpen(false); }} />
           <Group title={lang === 'id' ? 'WTA · PUTRI' : 'WTA · WOMEN'} players={wtaStars} selectedSlug={selectedSlug} onSelect={(s) => { onSelect(s); setOpen(false); }} />
           <Group title={lang === 'id' ? 'PEMAIN INDONESIA' : 'INDONESIAN PLAYERS'} players={idnStars} selectedSlug={selectedSlug} onSelect={(s) => { onSelect(s); setOpen(false); }} />
-        </div>
-      )}
+      </PickerSheet>
     </div>
   );
 }
@@ -183,7 +186,16 @@ function Group({ title, players, selectedSlug, onSelect }) {
         return (
           <div
             key={p.slug}
+            role="option"
+            aria-selected={isSel}
+            tabIndex={0}
             onClick={() => onSelect(p.slug)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onSelect(p.slug);
+              }
+            }}
             style={{
               padding: '7px 12px',
               fontSize: 11,

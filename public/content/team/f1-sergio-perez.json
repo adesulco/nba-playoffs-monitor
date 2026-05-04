@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-sergio-perez",
+  "title": "Profil Sergio Pérez: Pembalap F1 Cadillac F1 Team (2026)",
+  "description": "Profil pembalap F1 Sergio Pérez (Meksiko) untuk tim Cadillac F1 Team. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "# Sergio Pérez: Veteran Meksiko di Tim Baru, Start Musim yang Berat\n\nSergio Pérez, kode FIA PER (#11), pembalap Meksiko kelahiran 26 Januari 1990. Per 28 April 2026, Checo, sapaan akrabnya, membalap untuk Cadillac F1 Team dan menempati P20 klasemen sementara 2026 dengan 0 poin dari 3 balapan perdana musim ini.\n\n## Identitas\n\nPérez kini berusia 36 tahun, salah satu pembalap paling senior di grid F1 2026. Nomor permanen #11 dan kode FIA PER sudah lama jadi identitas Checo di sirkuit, mudah dikenali, terutama oleh fanbase Meksiko yang selalu hadir dalam jumlah besar di setiap Grand Prix. Musim 2026, Pérez bergabung dengan Cadillac F1 Team, tim Amerika yang menjadi salah satu entri baru di grid. Sebuah langkah yang jelas berbeda dari lingkungan tim papan atas yang sebelumnya ia tinggalkan.\n\n## Performa Musim Ini\n\nTiga balapan, nol poin. Angka itu bicara keras.\n\nDari tiga round yang sudah dijalani, Pérez belum sekalipun finish dalam zona poin, top 10 yang jadi ambang minimal. Lebih dari itu, dua dari tiga balapan ia selesaikan dalam status *lapped*, artinya tertinggal minimal satu lap penuh dari pemimpin balapan. Ini bukan sekadar masalah pace pribadi. ini gambaran tentang di mana Cadillac berdiri relatif terhadap tim-tim mapan di grid.\n\nPosisi P20 di klasemen adalah posisi paling buncit yang tersedia, tidak ada satu poin pun untuk ditunjukkan ke tiga seri pembuka ini.\n\n## Hasil Per Balapan\n\nDi Australian Grand Prix, Pérez finish P16 dengan status *lapped*. Chinese Grand Prix sedikit lebih baik di atas kertas, P15, tapi tetap *lapped*, tertinggal dari pemimpin. Japanese Grand Prix di Suzuka menghasilkan P17, kali ini dengan status *finished* tanpa keterangan *lapped*, tapi tetap jauh dari zona poin.\n\nPolanya konsisten, sayangnya dalam arah yang salah: belum ada tanda-tanda breakthrough ke Q2 atau finish kompetitif yang bisa jadi sinyal perbaikan. Tiga balapan, tiga kali di luar top 14, dua kali *lapped*. Cadillac dan Pérez sama-sama masih berjuang menemukan ritme di musim perdana tim ini.\n\nYang perlu dicatat: *lapped* di F1 modern bukan semata soal pembalap, ini bisa berarti mobil yang pace-nya memang belum kompetitif di field. Seberapa besar porsi keterbatasan ada di sisi mesin, aero, atau setup, tidak bisa disimpulkan dari data yang ada. Tapi hasilnya jelas: Cadillac belum bisa fight di zona tengah sekalipun.\n\n## Outlook\n\nTiga seri pertama memberi gambaran yang sulit untuk Pérez dan Cadillac. Dengan 0 poin di klasemen konstruktor, setidaknya dari kontribusi Pérez, tekanan untuk membukukan poin pertama musim ini makin nyata setiap seri berlalu.\n\nPérez punya pengalaman luas di F1, dan itu jadi modal penting untuk pengembangan tim baru seperti Cadillac. Tapi pengalaman tidak otomatis mengkonversi jadi poin kalau pace mobil belum di sana. Apakah empat dan lima balapan ke depan akan memperlihatkan kurva perbaikan, atau tren tiga seri pertama berlanjut, itulah pertanyaan yang paling relevan untuk dipantau.\n\nSemua data mencerminkan posisi per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "perez",
+    "driver_name": "Sergio Pérez",
+    "driver_code": "PER",
+    "driver_number": "11",
+    "nationality": "Mexican",
+    "current_team": "Cadillac F1 Team",
+    "current_team_id": "cadillac",
+    "championship_pos": "20",
+    "championship_points": "0",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.018643,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has solid structure and mostly natural voice, but fails on timestamp inconsistency (28 April vs 3 Mei), training-data inference (Checo nickname), and two AI-translated-English phrases (angka itu bicara keras, dalam arah yang salah). Tense overmarking and academic drift minor but present. Needs revision before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Checo, sapaan akrabnya, membalap untuk Cadillac F1 Team",
+          "fix": "Remove nickname or verify it's explicitly in the input data"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Angka itu bicara keras.",
+          "fix": "Rephrase: 'Nol poin dari tiga balapan. Cukup jelas.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Yang perlu dicatat: lapped di F1 modern bukan semata soal pembalap",
+          "fix": "Delete phrase, start: 'Lapped di F1 modern bukan semata soal pembalap, ini...'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Checo... Per 28 April 2026 (end of Outlook)",
+          "fix": "Use consistent date (3 Mei per input header); remove redundant dateline at end"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Polanya konsisten, sayangnya dalam arah yang salah",
+          "fix": "Rephrase: 'Polanya konsisten—sayangnya semua negatif'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Pérez belum sekalipun finish dalam zona poin... Pérez finish P16",
+          "fix": "Use 'Si Checo', 'pembalap Meksiko', or restructure second/third mention"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Yang sudah dijalani: 3 balapan... tiga round yang sudah dijalani",
+          "fix": "Prose version: 'Dari tiga round di musim ini, Pérez belum...'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "ini gambaran tentang di mana Cadillac berdiri",
+          "fix": "Capitalize: 'Ini gambaran...' and remove second 'ini' later in same para"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x32fb27e92467724a",
+    "published_at": "2026-04-28T12:17:58+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

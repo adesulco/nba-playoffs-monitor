@@ -1,11 +1,17 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLocation, useParams, Link, Navigate } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
+import Breadcrumbs from '../components/Breadcrumbs.jsx';
 import ContactBar from '../components/ContactBar.jsx';
-import Chip from '../components/Chip.jsx';
+// v0.18.0 Phase 2 Sprint C — `<Chip variant="live">` migrated to
+// <LiveStatusPill variant="live" /> (the canonical status pill).
+import LiveStatusPill from '../components/v2/LiveStatusPill.jsx';
+// v0.20.0 Phase 2 Sprint F — Shell A leaf chrome.
+import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 import LiveMatchCard from '../components/tennis/LiveMatchCard.jsx';
 import CountdownToSlam from '../components/tennis/CountdownToSlam.jsx';
 import TierChip from '../components/tennis/TierChip.jsx';
@@ -327,6 +333,61 @@ export default function TennisTournament() {
       ? { label: lang === 'id' ? 'SELESAI' : 'COMPLETED', color: C.muted }
       : { label: lang === 'id' ? 'MENDATANG' : 'UPCOMING', color: accent };
 
+  const tournamentDisplay = lang === 'id' ? tournament.nameId : tournament.name;
+
+  // v0.20.0 Phase 2 Sprint F — push leaf chrome into V2TopBar
+  // subrow. Picker label = tournament name + dates + city
+  // (per directive §4: "Tournament name + dates + city = picker
+  // label"). LIVE/SELESAI/MENDATANG phase pill rides the actions
+  // edge alongside Copy + Share.
+  useEffect(() => {
+    setTopbarSubrow(
+      <HubStatusStrip
+        srOnlyTitle={`${tournamentDisplay} ${year} — ${tournament.venue}, ${tournament.city}`}
+        accent={accent}
+        picker={(
+          <Link
+            to="/tennis"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '6px 12px',
+              background: `${accent}14`,
+              color: 'var(--ink)',
+              border: `1px solid ${accent}66`,
+              borderRadius: 6,
+              fontSize: 12, fontWeight: 700, letterSpacing: -0.1,
+              textDecoration: 'none',
+              fontFamily: 'inherit',
+            }}
+          >
+            <span style={{ width: 3, height: 14, background: accent }} />
+            {tournamentDisplay} {year}
+            <span style={{ color: 'var(--ink-3)', fontSize: 10, marginLeft: 2 }}>▾</span>
+          </Link>
+        )}
+        live={(
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+            <span style={{ textTransform: 'uppercase' }}>
+              {tournament.tours.map((x) => x.toUpperCase()).join(' · ')} · {tournament.city.toUpperCase()}
+            </span>
+            <LiveStatusPill variant={phase === 'live' ? 'live' : phase === 'completed' ? 'final' : 'coming-soon'} accent={phaseChip.color} label={phaseChip.label} />
+          </span>
+        )}
+        actions={(
+          <HubActionRow
+            url={location.pathname}
+            shareText={lang === 'id'
+              ? `${tournamentDisplay} ${year} di gibol.co 🎾`
+              : `${tournamentDisplay} ${year} on gibol.co 🎾`}
+            accent={accent}
+            analyticsEvent="tennis_tournament_share"
+          />
+        )}
+      />
+    );
+    return () => setTopbarSubrow(null);
+  }, [tournamentDisplay, tournament, year, accent, phase, phaseChip.label, phaseChip.color, location.pathname, lang]);
+
   return (
     <div
       style={{
@@ -345,62 +406,22 @@ export default function TennisTournament() {
         jsonLd={meta.jsonLd}
       />
       <div className="dashboard-wrap">
-        <TopBar
-          showBackLink
-          backTo="/tennis"
-          backLabel={lang === 'id' ? '← SEMUA TURNAMEN' : '← ALL TOURNAMENTS'}
-          accent={accent}
-        />
 
-        {/* Hero */}
-        <div
-          style={{
-            padding: '20px 20px 14px',
-            background: `linear-gradient(135deg, ${accent}14 0%, transparent 70%)`,
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              gap: 12,
-              marginBottom: 6,
-            }}
-          >
-            <div
-              style={{
-                fontSize: 9,
-                letterSpacing: 1.5,
-                color: accent,
-                fontWeight: 700,
-                paddingTop: 4,
-              }}
-            >
-              {tournament.tours.map((x) => x.toUpperCase()).join(' · ')} · {tournament.city.toUpperCase()}
-            </div>
-            <Chip variant="live" sportId="tennis" accent={phaseChip.color} label={phaseChip.label} />
-          </div>
-          <div
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 36,
-              fontWeight: 700,
-              lineHeight: 1.05,
-              letterSpacing: '-0.025em',
-              color: C.text,
-              marginBottom: 8,
-              textWrap: 'balance',
-            }}
-          >
-            {lang === 'id' ? tournament.nameId : tournament.name} {year}
-          </div>
-          <div style={{ fontSize: 11, color: C.dim, lineHeight: 1.5, maxWidth: 720 }}>
-            {lang === 'id'
-              ? `${formatTennisDateRange(tournament.startDate, tournament.endDate, 'id')} · ${tournament.venue}, ${tournament.city}. Undian, jadwal WIB, dan hasil live set-per-set untuk tur ${tournament.tours.map((x) => x.toUpperCase()).join(' + ')}.`
-              : `${formatTennisDateRange(tournament.startDate, tournament.endDate, 'en')} · ${tournament.venue}, ${tournament.city}. Draw, WIB schedule, and live set-by-set results for ${tournament.tours.map((x) => x.toUpperCase()).join(' + ')}.`}
-          </div>
+        {/* v0.13.0 — visual breadcrumbs above the hero. */}
+        <div style={{ padding: '0 20px' }}>
+          <Breadcrumbs
+            items={[
+              { name: lang === 'id' ? 'Tenis 2026' : 'Tennis 2026', to: '/tennis' },
+              { name: tournament.name },
+            ]}
+          />
         </div>
+
+        {/* v0.20.0 Phase 2 Sprint F — visible 200px hero stripped.
+            Eyebrow + 36px h1 + venue/dates subhead + LIVE/COMPLETED/
+            UPCOMING phase pill all collapsed into <HubStatusStrip>.
+            Body branches on phase (UpcomingBody / LiveBody /
+            CompletedBody) sit closer to the top of the viewport. */}
 
         {/* Body branches on phase */}
         <div style={{ padding: '8px 20px 20px', display: 'grid', gap: 16 }}>

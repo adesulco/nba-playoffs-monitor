@@ -1,0 +1,77 @@
+{
+  "type": "team",
+  "slug": "nba-toronto-raptors",
+  "title": "Profil Toronto Raptors: Atlantic, Eastern Conference (2025-26)",
+  "description": "Profil Toronto Raptors — franchise NBA dari Toronto di Atlantic Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Profil Tim NBA: Toronto Raptors, Musim 2025-26\n\nToronto Raptors adalah franchise NBA yang berkandang di Toronto, Kanada, dan bermain di Atlantic Division Eastern Conference. Per 28 April 2026, TOR menutup musim reguler 2025-26 dengan rekor 46-36, win rate 0,561, dan finis sebagai seed 5 di playoff Wilayah Timur. Bukan musim yang sempurna, tapi cukup untuk membuktikan bahwa Toronto serius kompetitif lagi.\n\n---\n\n## Identitas dan Posisi Liga\n\nDi Atlantic Division, Toronto finis di posisi ketiga, di bawah dua rival yang lebih kuat musim ini. Tapi seed 5 di Eastern Conference adalah pencapaian nyata: itu artinya Toronto melewati banyak tim lain di konferensi paling kompetitif NBA. Head coach Darko Rajakovic memimpin skuad ini ke playoff, sesuatu yang tidak selalu bisa dianggap remeh untuk tim muda dengan transisi roster yang belum selesai sepenuhnya.\n\nProfil TOR musim ini adalah tim yang tumbuh, bukan tim finished product, bukan tim rebuild juga. Mereka berada di tengah: cukup bagus untuk playoff, tapi belum cukup untuk diunggulkan jauh di postseason.\n\n---\n\n## Performa Musim Reguler\n\nRekor 46-36 dengan scoring rata-rata 114,6 PPG dan defensive allowance 111,8 PPG menghasilkan point differential positif +2,8. Bukan dominan, tapi konsisten, dan konsistensi itulah yang membawa Toronto ke seed 5.\n\nYang menarik adalah performa away mereka: 22-19 di laga tandang. Di NBA, tim dengan road record positif biasanya punya identitas permainan yang solid, bukan hanya mengandalkan keuntungan kandang. Toronto membuktikan mereka bisa menang di mana saja, meski tidak selalu meyakinkan.\n\nHome record 24-17 sedikit lebih baik, seperti yang wajar. Tapi margin antara home dan away tidak terlalu jauh, itu tanda tim yang punya karakter, bukan tim yang bergantung pada suporter kandang untuk tampil.\n\n---\n\n## Roster dan Pemain Kunci\n\n### Scottie Barnes, F, #4, 24 tahun, 4 musim\n\nBarnes adalah inti dari semua rencana Toronto ke depan. Di usia 24 dengan empat musim pengalaman, dia sudah melewati fase rookie dan sophomore, sekarang dia ada di titik di mana ekspektasi meningkat. Posisi forward dengan mobilitas tinggi, Barnes adalah tipe pemain yang bisa dipakai Rajakovic di berbagai konteks taktis, baik sebagai ball-handler, defender, maupun playmaker.\n\n### Brandon Ingram, F, #3, 28 tahun, 9 musim\n\nVeterannya. Ingram membawa sembilan musim pengalaman ke roster ini, perspektif yang tidak bisa dibeli di draft. Di usia 28, dia ada di prime window-nya sebagai forward. Kehadirannya penting bukan hanya di lapangan, tapi sebagai referensi bagi pemain-pemain lebih muda di skuad.\n\n### Jakob Poeltl, C, #19, 30 tahun, 9 musim\n\nPoeltl dan Ingram adalah dua veteran dengan tenure paling panjang di roster ini, sama-sama sembilan musim. Center berusia 30 tahun ini memberi Toronto anchor di paint, tipe center yang tidak selalu muncul di box score tapi kehadirannya terasa ketika tidak ada.\n\nDi luar ketiganya, ada RJ Barrett (#9, 25 tahun, 6 musim dari Duke) yang sudah jadi bagian penting dari identitas Toronto beberapa musim terakhir, plus Immanuel Quickley (#5, 26 tahun, 5 musim) sebagai guard dengan pengalaman solid.\n\nSisi mudanya juga menarik: Gradey Dick (22 tahun, 2 musim), Jamison Battle (24 tahun, 1 musim), Jonathan Mogbo (24 tahun, 1 musim), dan Collin Murray-Boyles yang baru 20 tahun dan rookie musim ini. Ini roster dengan kedalaman usia yang sehat.\n\n---\n\n## Outlook\n\nDengan seed 5, Toronto akan masuk playoff Eastern Conference sebagai tim yang tidak diunggulkan, tapi juga bukan tim yang datang tanpa modal. Skuad Rajakovic punya campuran veteran dan pemain muda yang sedang berkembang, rekor tandang yang positif, dan point differential yang cukup untuk tidak sekadar numpang lewat di postseason.\n\nLaga berikutnya: Toronto Raptors tandang ke Cleveland Cavaliers, Rabu 29 April 2026 pukul 23.30 WIB.\n\nSemua data dalam profil ini mencerminkan kondisi per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "28",
+    "team_name": "Toronto Raptors",
+    "team_abbr": "TOR",
+    "team_location": "Toronto",
+    "conference": "Eastern Conference",
+    "division": "Atlantic",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022197,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail due to two high-severity date hallucinations (28 April vs. 3 Mei; 29 April vs. 3 Mei for next game). Additional medium issues: tense stiffness, calqued phrasing, vague academic language. Content otherwise solid but dates are grounded facts that matter for credibility.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, TOR menutup musim reguler 2025-26 dengan rekor 46-36",
+          "fix": "Change to 'Per 3 Mei 2026' to match the grounded input data block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Laga berikutnya: Toronto Raptors tandang ke Cleveland Cavaliers, Rabu 29 April 2026 pukul 23.30 WIB.",
+          "fix": "Change to 'Sabtu 3 Mei 2026 pukul 06.30 WIB' or remove if uncertain of conversion."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Barnes adalah inti dari semua rencana Toronto ke depan.",
+          "fix": "Cut 'adalah' or rephrase: 'Barnes, inti rencana Toronto ke depan.' or 'Semua rencana Toronto ke depan bergantung pada Barnes.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di usia 24 dengan empat musim pengalaman, dia sudah melewati fase rookie dan sophomore",
+          "fix": "Simplify: 'Di usia 24, empat musim pengalaman, Barnes sudah lebih dari rookie dan sophomore.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Performa away mereka: 22-19 di laga tandang... biasanya punya identitas permainan yang solid",
+          "fix": "Replace with concrete observation: '...bukan hanya mengandalkan kandang. Tim yang 22-19 tandang biasanya punya system yang solid.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Kehadirannya penting bukan hanya di lapangan, tapi sebagai referensi bagi pemain-pemain lebih muda",
+          "fix": "Vary: 'Ingram membawa sembilan musim ke roster, perspektif yang tidak bisa dibeli di draft.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Semua data dalam profil ini mencerminkan kondisi per 28 April 2026.",
+          "fix": "Update date to 3 Mei 2026 or cut entirely if no new info."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3bc6e6bf140ca42e",
+    "published_at": "2026-04-28T10:51:10+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

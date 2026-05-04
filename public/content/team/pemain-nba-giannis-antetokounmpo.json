@@ -1,0 +1,84 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-giannis-antetokounmpo",
+  "title": "Profil Giannis Antetokounmpo: Forward Milwaukee Bucks",
+  "description": "Profil pemain NBA Giannis Antetokounmpo, Forward Milwaukee Bucks. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Giannis Antetokounmpo: Raksasa Athens yang Masih Mendominasi di Milwaukee\n\nGiannis Antetokounmpo, forward Milwaukee Bucks kelahiran Athens, Yunani, masih menjadi kekuatan yang sulit dibendung di musim 2025-26. Per 28 April 2026, pemain berpostur 6'11\" 243 lbs dengan jersey #34 ini mencatat 27,6 PPG, 9,8 RPG, dan 5,4 APG per pertandingan, angka yang bicara sendiri tentang seberapa dominan dia musim ini.\n\n---\n\n## Identitas\n\nLahir di Athens, Giannis masuk NBA lewat draft 2013, round 1, pick 15 oleh Milwaukee Bucks. Sekarang di musim ke-12-nya, dia tumbuh dari prospect tak dikenal menjadi salah satu forward paling lengkap di liga. Tinggi 6'11\" dengan berat 243 lbs, posturnya bukan tipikal forward biasa, lebih mirip center yang bisa handle bola, drive ke ring, dan distribute ke rekan setim.\n\nDua belas musim di liga bukan angka kecil. Artinya Giannis sudah melewati fase membuktikan diri, fase dominasi, dan sekarang masuk fase di mana setiap musim adalah konfirmasi bahwa dia belum selesai.\n\n---\n\n## Bersama Milwaukee Bucks\n\nGiannis dan Milwaukee Bucks hampir tidak bisa dipisahkan. Sejak masuk sebagai teenager draft pick 2013, dia tidak pernah meninggalkan Wisconsin. Di musim 2025-26, dia tetap jadi fondasi MIL, pemain yang di atas kertas bisa menentukan arah musim timnya sendirian.\n\nPeran Giannis di Bucks bukan sekadar scorer. Dengan 5,4 APG musim ini, dia juga playmaker, forward yang bisa jadi hub distribusi serangan. Di sistem yang memaksimalkan kemampuan drive dan finish-nya, angka itu masuk akal. Lawan tidak bisa fokus hanya satu ancaman kalau Giannis bisa melakukan tiga hal sekaligus: score, rebound, dan assist.\n\n---\n\n## Performa Musim Ini\n\nTiga angka yang mendefinisikan musim Giannis di 2025-26: 27,6 PPG, 9,8 RPG, 5,4 APG.\n\nMulai dari scoring. 27,6 PPG bukan output seorang pemain yang sedang menua dengan graceful, itu angka seorang forward yang masih dalam mode ofensif penuh. Dia masih minta bola di paint, masih drive ke ring, masih jadi option pertama ketika Bucks butuh dua angka dalam situasi kritis.\n\nYang lebih menarik adalah FG%-nya: 62,4%, ranking 6 di NBA. Di liga yang penuh shooting guard dan forward yang hidup dari mid-range dan three-pointer dengan persentase 40-an persen, Giannis cetak lebih dari 27 poin per laga dengan efisiensi 62 persen dari lapangan. Itu bukan kebetulan, itu hasil dari shot selection yang disiplin dan kemampuan finish di ring yang sulit ditemukan di pemain seukurannya.\n\n9,8 RPG melengkapi gambar itu. Hampir double-digit rebound dari posisi forward, setiap malam. Kombinasi 27,6 PPG dan 9,8 RPG sudah cukup untuk menempatkan Giannis dalam percakapan forward paling produktif musim ini. Tambahkan 5,4 APG, dan kita bicara tentang pemain yang menjalankan tiga fungsi berbeda dalam satu rotasi.\n\nDi usia 31 tahun dan musim ke-12, banyak forward di liga mulai mengorbankan satu dimensi permainan untuk menjaga yang lain. Giannis, setidaknya lewat angka musim ini, belum melakukan kompromi itu.\n\n---\n\n## Outlook\n\nDua belas musim, 6'11\", 243 lbs, dan masih posting 27,6/9,8/5,4 dengan 62,4% shooting. Giannis Antetokounmpo di usia 31 bukan pemain yang sedang coast, dia masih bekerja dengan volume dan efisiensi tinggi bersamaan.\n\nPertanyaan yang relevan bukan lagi apakah dia bisa mendominasi. Data per 28 April 2026 menjawab itu. Pertanyaannya adalah seberapa jauh MIL bisa ikut terbawa selama Giannis masih bermain seperti ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "3032977",
+    "athlete_name": "Giannis Antetokounmpo",
+    "team_name": "Milwaukee Bucks",
+    "team_abbr": "MIL",
+    "position": "Forward",
+    "jersey": "34",
+    "age": 31,
+    "birthplace": "Athens, Greece",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021314,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on data timestamp mismatch (critical), unsupported player movement claim (high inference risk), and tense/academic register drift. Strong stats writing but strays into interpretation not grounded in input data block. Regenerate with corrected date and remove historical claims.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, pemain berpostur 6'11\" 243 lbs dengan jersey #34 ini mencatat 27,6 PPG...",
+          "fix": "Change 'Per 28 April 2026' to 'Per 3 Mei 2026' per input data block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sejak masuk sebagai teenager draft pick 2013, dia tidak pernah meninggalkan Wisconsin.",
+          "fix": "Remove or soften: 'Sejak 2013 dengan Milwaukee, Giannis tetap menjadi inti tim itu.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dua belas musim di liga bukan angka kecil. Artinya Giannis sudah melewati fase membuktikan diri...",
+          "fix": "Change to 'Giannis melewati fase membuktikan diri, fase dominasi, dan sekarang...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan 5,4 APG musim ini, dia juga playmaker, forward yang bisa jadi hub distribusi serangan.",
+          "fix": "Rephrase: 'Dengan 5,4 APG, dia bukan sekadar pencetak poin tapi juga playmaker utama.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Mulai dari scoring. 27,6 PPG bukan output seorang pemain yang sedang menua dengan graceful...",
+          "fix": "Change to 'Scoring pertama: 27,6 PPG, angka seorang forward yang masih dalam mode ofensif penuh.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Kombinasi 27,6 PPG dan 9,8 RPG sudah cukup untuk menempatkan Giannis dalam percakapan...",
+          "fix": "Change to 'Kombinasi 27,6 PPG dan 9,8 RPG menempatkan Giannis dalam percakapan forward terbaik.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Dua belas musim, 6'11\", 243 lbs, dan masih posting 27,6/9,8/5,4 dengan 62,4% shooting.",
+          "fix": "Change 'posting' to 'catat': 'Dua belas musim, 6\\'11\", masih catat 27,6/9,8/5,4...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "Itu bukan kebetulan, itu hasil dari shot selection yang disiplin dan kemampuan finish...",
+          "fix": "Rephrase factually: 'Statistik menunjukkan shooting efficiency tinggi dari dalam paint.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6f2bcf986d75a6f0",
+    "published_at": "2026-04-28T12:08:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

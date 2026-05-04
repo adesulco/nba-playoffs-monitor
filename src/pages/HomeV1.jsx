@@ -1,13 +1,16 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
 import { usePlayoffData } from '../hooks/usePlayoffData.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
+import { useTennisScoreboard } from '../hooks/useTennisScoreboard.js';
+import { useUserBracketSummary } from '../hooks/useUserBracketSummary.js';
+import { useFavoriteTeams } from '../hooks/useFavoriteTeams.js';
+import { trackEvent } from '../lib/analytics.js';
 import { TEAM_META } from '../lib/constants.js';
-import { TEAMS_BY_ID as F1_TEAMS_BY_ID } from '../lib/sports/f1/constants.js';
-import V2TopBar from '../components/v2/TopBar.jsx';
+import { TEAMS_BY_ID as F1_TEAMS_BY_ID, nextGP } from '../lib/sports/f1/constants.js';
 import {
   Board,
   Card,
@@ -20,6 +23,7 @@ import {
   V2Button,
   EmptyState,
 } from '../components/v2/index.js';
+import PickemHomeHero from '../components/PickemHomeHero.jsx';
 
 /**
  * v2 HomeV1 — Personalized feed (default v2 home per Part 2 §0).
@@ -179,13 +183,28 @@ function HeroGameCard({ game }) {
 
 // Normalize a live match (NBA or EPL or other) into a single shape
 // the LiveGridCard can render against.
+//
+// v0.12.9 — each row also carries `sportKey` (lowercase: 'nba' / 'epl'
+// / 'f1' / 'tennis' — matches useFavoriteTeams's `sport` field) and
+// `favIds` (array of strings to match against favorite ids). The grid
+// then sorts rows whose favIds intersect the user's saved favorites
+// to the top with a ★ tag.
 function normalizeNbaLive(g) {
+  const homeFull = TEAM_META[g.home?.abbr]?.name || g.home?.abbr || '—';
+  const awayFull = TEAM_META[g.away?.abbr]?.name || g.away?.abbr || '—';
+  // NBA favorite `id` is the full team name (see OnboardingTeams nbaTeams),
+  // and TEAM_META is keyed by full name with .abbr inside. So we look up
+  // by abbr → full to match. Also include the abbr just in case future
+  // pickers use it.
+  const homeNameKey = Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === g.home?.abbr);
+  const awayNameKey = Object.keys(TEAM_META).find((n) => TEAM_META[n].abbr === g.away?.abbr);
   return {
     key: `nba-${g.id}`,
     sport: 'NBA',
+    sportKey: 'nba',
     sportLabel: 'NBA',
-    homeName: TEAM_META[g.home?.abbr]?.name || g.home?.abbr || '—',
-    awayName: TEAM_META[g.away?.abbr]?.name || g.away?.abbr || '—',
+    homeName: homeFull,
+    awayName: awayFull,
     homeShort: g.home?.abbr || '—',
     awayShort: g.away?.abbr || '—',
     homeColor: teamColor(g.home?.abbr, '#0E2240'),
@@ -194,6 +213,7 @@ function normalizeNbaLive(g) {
     awayScore: g.away?.score,
     status: g.status,
     href: `/nba-playoff-2026?game=${g.id}`,
+    favIds: [homeNameKey, awayNameKey].filter(Boolean),
   };
 }
 
@@ -201,6 +221,7 @@ function normalizeEplLive(m) {
   return {
     key: `epl-${m.id}`,
     sport: 'Football',
+    sportKey: 'epl',
     sportLabel: 'EPL',
     homeName: m.home?.name || m.home?.shortName || '—',
     awayName: m.away?.name || m.away?.shortName || '—',
@@ -212,10 +233,53 @@ function normalizeEplLive(m) {
     awayScore: m.away?.score ?? '-',
     status: m.statusDetail || 'LIVE',
     href: `/premier-league-2025-26`,
+    // EPL favorite `id` is the club slug (see CLUBS / OnboardingTeams).
+    favIds: [m.home?.slug, m.away?.slug].filter(Boolean),
   };
 }
 
-function LiveGridCard({ nbaGames, eplUpcoming, lang }) {
+function normalizeTennisLive(m) {
+  // ESPN tennis groupings shape per useTennisScoreboard normaliser.
+  const p1 = m.players?.[0] || {};
+  const p2 = m.players?.[1] || {};
+  // Build score line "6-4 3-2" from the sets array
+  const setsLine = (m.sets || [])
+    .map((s) => `${s.p1 ?? '-'}-${s.p2 ?? '-'}`)
+    .join(' ');
+  return {
+    key: `tennis-${m.id}`,
+    sport: 'Tennis',
+    sportKey: 'tennis',
+    sportLabel: 'TENNIS',
+    homeName: p1.shortName || p1.name || '—',
+    awayName: p2.shortName || p2.name || '—',
+    homeShort: (p1.countryCode || p1.country || '—').slice(0, 3).toUpperCase(),
+    awayShort: (p2.countryCode || p2.country || '—').slice(0, 3).toUpperCase(),
+    homeColor: '#D4A13A',
+    awayColor: '#D4A13A',
+    homeScore: setsLine.split(' ')[0] || '-',
+    awayScore: setsLine.split(' ').slice(1).join(' ') || '-',
+    status: m.round || 'LIVE',
+    href: '/tennis',
+    // Tennis favorite `id` is the player slug (see TENNIS_STARS).
+    favIds: [p1.slug, p2.slug].filter(Boolean),
+  };
+}
+
+function LiveGridCard({ nbaGames, eplUpcoming, tennisLive, lang }) {
+  // v0.12.9 — read favorites so we can sort matching live games to
+  // the top of the grid with a ★ tag. The hook is anon-safe (returns
+  // status: 'anon', favorites: []) so this works for logged-out
+  // visitors without breaking — they just see the default order.
+  const { favorites: savedFavs } = useFavoriteTeams();
+  const favIdsBySport = useMemo(() => {
+    const m = { nba: new Set(), epl: new Set(), f1: new Set(), tennis: new Set() };
+    for (const f of savedFavs || []) {
+      if (m[f.sport]) m[f.sport].add(f.id);
+    }
+    return m;
+  }, [savedFavs]);
+
   const live = useMemo(() => {
     const rows = [];
     // NBA live
@@ -226,40 +290,124 @@ function LiveGridCard({ nbaGames, eplUpcoming, lang }) {
     for (const m of eplUpcoming || []) {
       if (m.statusState === 'in') rows.push(normalizeEplLive(m));
     }
+    // v0.12.4 — Tennis live ATP + WTA matches, max 3 to keep grid balanced
+    for (const m of (tennisLive || []).slice(0, 3)) {
+      rows.push(normalizeTennisLive(m));
+    }
+    // v0.12.9 — tag and sort favorites to the top. A row is `isFav`
+    // when ANY of its favIds intersects the favorites set for that
+    // sport. Stable sort (preserves the underlying NBA→EPL→Tennis
+    // order within each tier) by relying on JS's TimSort.
+    const tagged = rows.map((r) => {
+      const set = favIdsBySport[r.sportKey];
+      const isFav = !!set && (r.favIds || []).some((id) => set.has(id));
+      return { ...r, isFav };
+    });
+    tagged.sort((a, b) => Number(b.isFav) - Number(a.isFav));
+    return tagged.slice(0, 6);
+  }, [nbaGames, eplUpcoming, tennisLive, favIdsBySport]);
+
+  // v0.12.9 — fire one telemetry event per render if the grid is
+  // showing at least one favorite-prioritized row, so we can measure
+  // how often the favorites loop actually pays off (i.e. user has
+  // favs AND a fav game is currently live).
+  const favCount = live.filter((r) => r.isFav).length;
+  useEffect(() => {
+    if (favCount > 0) {
+      trackEvent('live_grid_fav_prioritized', {
+        fav_rows: favCount,
+        total_rows: live.length,
+      });
+    }
+    // intentionally only on row-set change, not on every render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [live.map((r) => r.key).join('|'), favCount]);
+
+  // v0.12.4 — when no live games, surface NEXT UP across sports as a
+  // fallback so anon visitors don't land on an empty home. Card title
+  // flips from "Live now" to "Coming up" with the same 2-col grid.
+  const upcoming = useMemo(() => {
+    if (live.length > 0) return [];
+    const rows = [];
+    // NBA upcoming — pick the next pre-status game from the playoff data
+    const nbaNext = (nbaGames || []).find((g) => g.statusState === 'pre');
+    if (nbaNext) {
+      rows.push({
+        ...normalizeNbaLive(nbaNext),
+        status: nbaNext.status || (lang === 'id' ? 'JADWAL' : 'UPCOMING'),
+      });
+    }
+    // EPL upcoming — first non-live fixture
+    const eplNext = (eplUpcoming || []).find((m) => m.statusState !== 'in');
+    if (eplNext) rows.push({ ...normalizeEplLive(eplNext), status: eplNext.statusDetail || (lang === 'id' ? 'JADWAL' : 'UPCOMING') });
+    // F1 next GP
+    try {
+      const next = nextGP(new Date());
+      if (next) {
+        rows.push({
+          key: `f1-next`,
+          sport: 'F1',
+          sportLabel: 'F1',
+          homeName: next.name,
+          awayName: next.country,
+          homeShort: 'F1',
+          awayShort: '',
+          homeColor: '#E10600',
+          awayColor: '#E10600',
+          homeScore: next.dateISO?.slice(5) || '',
+          awayScore: '',
+          status: next.wibTime ? `${next.wibTime} WIB` : (lang === 'id' ? 'BERIKUTNYA' : 'NEXT'),
+          href: '/formula-1-2026',
+        });
+      }
+    } catch (_) { /* no next race */ }
     return rows.slice(0, 6);
-  }, [nbaGames, eplUpcoming]);
+  }, [live, nbaGames, eplUpcoming, lang]);
+
+  const showLive = live.length > 0;
+  const items = showLive ? live : upcoming;
+  const headerTitle = showLive
+    ? `${lang === 'id' ? 'Live sekarang' : 'Live now'} · ${live.length}`
+    : (lang === 'id' ? 'Mendatang' : 'Coming up');
 
   return (
     <Card>
       <CardHead
-        title={`${(lang === 'id' ? 'Live sekarang' : 'Live now')} · ${live.length}`}
+        title={headerTitle}
         right={
           <span
             className="mono"
             style={{ fontSize: 9, color: 'var(--ink-3)', letterSpacing: '0.1em' }}
           >
-            NBA · EPL
+            NBA · EPL · F1 · TENNIS
           </span>
         }
       />
-      {live.length === 0 ? (
+      {items.length === 0 ? (
         <div style={{ padding: 20 }}>
           <EmptyState
             icon="Bookmark"
-            title={lang === 'id' ? 'Belum ada laga live' : 'No live matches right now'}
-            hint={lang === 'id' ? 'Cek jadwal di bawah.' : 'Check fixtures below.'}
+            title={lang === 'id' ? 'Cek jadwal di bawah' : 'Check fixtures below'}
+            hint={lang === 'id' ? 'Skor live muncul saat laga mulai.' : 'Live scores appear when matches start.'}
           />
         </div>
       ) : (
+        // v0.11.23 GIB-021 + GIB-012 — bump cell padding 10 → 14 so each
+        // live card is ≥ 96 px tall (= 14 + 11 chip + 8 + 22 row + 6 + 22
+        // row + 14). WCAG 2.5.5 enhanced says ≥ 44 px target; we land
+        // comfortably above. RowLive itself is bumped from 12 → 13 px
+        // text + 18 → 20 px crest for the same audit.
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-          {live.map((m, i) => {
-            const isLastRow = i >= live.length - 2 - (live.length % 2);
+          {items.map((m, i) => {
+            const isLastRow = i >= items.length - 2 - (items.length % 2);
             return (
               <Link
                 key={m.key}
                 to={m.href}
                 style={{
-                  padding: 10,
+                  padding: 14,
+                  minHeight: 96,
+                  display: 'block',
                   borderBottom: isLastRow ? 0 : '1px solid var(--line-soft)',
                   borderRight: i % 2 === 0 ? '1px solid var(--line-soft)' : 0,
                   textDecoration: 'none',
@@ -267,15 +415,46 @@ function LiveGridCard({ nbaGames, eplUpcoming, lang }) {
                   cursor: 'pointer',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                     <Icon name={m.sport} size={11} color="var(--ink-3)" />
-                    <span className="mono" style={{ fontSize: 9, color: 'var(--ink-3)' }}>{m.sportLabel}</span>
-                    <Pill variant="live" size="sm">
-                      <LiveDot />
-                      {m.status}
-                    </Pill>
+                    <span className="mono" style={{ fontSize: 10, color: 'var(--ink-3)' }}>{m.sportLabel}</span>
+                    {/* v0.12.4 — live games keep the red Pill, upcoming
+                        games show a quieter mono status chip so users
+                        can tell live vs scheduled at a glance. */}
+                    {showLive ? (
+                      <Pill variant="live" size="sm">
+                        <LiveDot />
+                        {m.status}
+                      </Pill>
+                    ) : (
+                      <span className="mono" style={{
+                        fontSize: 9,
+                        letterSpacing: 0.5,
+                        color: 'var(--ink-3)',
+                        padding: '2px 6px',
+                        border: '1px solid var(--line-soft)',
+                        borderRadius: 3,
+                      }}>{m.status}</span>
+                    )}
                   </span>
+                  {/* v0.12.9 — ★ FAVORIT tag for rows that matched a
+                      saved favorite. Closes the loop: pick a team in
+                      onboarding → see it surface here when it plays. */}
+                  {m.isFav && (
+                    <span
+                      className="mono"
+                      style={{
+                        fontSize: 9,
+                        letterSpacing: 0.5,
+                        color: 'var(--amber)',
+                        fontWeight: 700,
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      ★ {lang === 'id' ? 'FAVORIT' : 'FAV'}
+                    </span>
+                  )}
                 </div>
                 <RowLive abbr={m.homeShort} name={m.homeName} color={m.homeColor} score={m.homeScore} />
                 <RowLive abbr={m.awayShort} name={m.awayName} color={m.awayColor} score={m.awayScore} />
@@ -289,13 +468,17 @@ function LiveGridCard({ nbaGames, eplUpcoming, lang }) {
 }
 
 function RowLive({ abbr, name, color, score }) {
+  // v0.11.23 GIB-021 — readability bump. Crest 16 → 20, name 12 → 13,
+  // score 13 → 14 so the row is legible without leaning in on a
+  // 14-inch laptop. Vertical rhythm (marginTop 3 → 5) keeps the
+  // home/away pair distinct without ballooning the card.
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 3 }}>
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
-        <Crest short={abbr} color={color} size={16} />
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 5 }}>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
+        <Crest short={abbr} color={color} size={20} />
         <span
           style={{
-            font: '600 12px "Inter Tight"',
+            font: '600 13px "Inter Tight"',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
@@ -304,7 +487,7 @@ function RowLive({ abbr, name, color, score }) {
           {name}
         </span>
       </span>
-      <span className="tab mono" style={{ fontWeight: 800, fontSize: 13 }}>
+      <span className="tab mono" style={{ fontWeight: 800, fontSize: 14 }}>
         {score ?? '—'}
       </span>
     </div>
@@ -331,15 +514,42 @@ function slugifyTeamName(name) {
   return (name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-function FollowingCard({ lang, selectedConstructor }) {
-  // Pulls real user-selected favorites from localStorage + AppContext.
-  //   - NBA: localStorage['gibol:favTeam'] is written by NBADashboard's
-  //     TeamPicker. Value is the full team name (e.g. "Boston Celtics").
-  //   - F1:  AppContext.selectedConstructor is the constructor id
-  //     (e.g. 'mclaren'). Resolved via F1_TEAMS_BY_ID.
-  //   - EPL: no picker yet; show a hand-picked editorial default pair
-  //     (current title-race leaders) until we wire a club picker.
+function FollowingCard({ lang, selectedConstructor, isAnon }) {
+  // v0.12.5 — logged-in users now see their saved favorite teams from
+  // profiles.favorite_teams (set via /onboarding/teams). Falls back to
+  // the localStorage + seed-list path for users who skipped onboarding.
+  // Anon users see seed list labeled "Trending teams" with a sign-in
+  // nudge in the footer.
+  const { favorites: savedFavs, status: favsStatus } = useFavoriteTeams();
   const items = useMemo(() => {
+    // v0.12.5 — when the user has saved favorites, render those
+    // exclusively (no fallback to seed teams). Each saved fav links
+    // to the appropriate per-sport page.
+    if (favsStatus === 'ready' && savedFavs && savedFavs.length > 0) {
+      return savedFavs.slice(0, 6).map((f) => {
+        let path;
+        let s;
+        if (f.sport === 'nba') {
+          path = `/nba-playoff-2026/${slugifyTeamName(f.id)}`;
+          s = `NBA · ${f.short || ''}`;
+        } else if (f.sport === 'epl') {
+          path = `/premier-league-2025-26/club/${f.id}`;
+          s = `EPL · ${f.short || ''}`;
+        } else if (f.sport === 'f1') {
+          path = `/formula-1-2026/team/${f.id}`;
+          s = `F1 · ${f.short || ''}`;
+        } else if (f.sport === 'tennis') {
+          path = `/tennis?player=${f.id}`;
+          s = `TENIS · ${f.short || ''}`;
+        } else {
+          path = '/';
+          s = (f.sport || '').toUpperCase();
+        }
+        const t = (f.name || f.short || f.id || '').split(' ').slice(-2).join(' ');
+        return { t, c: f.color || '#3B82F6', s, path };
+      });
+    }
+
     const out = [];
 
     // NBA favorite from TeamPicker
@@ -380,12 +590,23 @@ function FollowingCard({ lang, selectedConstructor }) {
       if (!out.find((x) => x.path === s.path)) out.push(s);
     }
     return out.slice(0, 4);
-  }, [selectedConstructor]);
+  }, [selectedConstructor, savedFavs, favsStatus]);
+
+  // v0.12.5 — for logged-in users with no saved favs, the FollowingCard
+  // now nudges toward the onboarding picker instead of showing seed
+  // teams as if they were favorites. Anon users still see seed +
+  // sign-in nudge.
+  const showOnboardNudge = !isAnon && favsStatus === 'ready' && (!savedFavs || savedFavs.length === 0);
+
+  // v0.12.4 — anon vs logged-in label differentiation
+  const cardTitle = isAnon
+    ? (lang === 'id' ? 'Tim Trending' : 'Trending teams')
+    : (lang === 'id' ? 'Diikuti' : 'Following');
 
   return (
     <Card>
       <CardHead
-        title={lang === 'id' ? 'Diikuti' : 'Following'}
+        title={cardTitle}
         right={
           <span className="mono" style={{ fontSize: 10, color: 'var(--ink-3)' }}>
             {items.length}
@@ -400,21 +621,92 @@ function FollowingCard({ lang, selectedConstructor }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
-              padding: '7px 10px',
+              gap: 10,
+              // v0.11.23 GIB-012 — was '7px 10px' giving ~32 px tall rows
+              // (under WCAG 2.5.5 44 px target). Bump padding + crest +
+              // text so each row clears 48 px and the team name reads at
+              // a glance.
+              padding: '10px 10px',
+              minHeight: 48,
               borderRadius: 6,
               textDecoration: 'none',
               color: 'inherit',
             }}
           >
-            <Crest short={f.t.slice(0, 3).toUpperCase()} color={f.c} size={18} />
+            <Crest short={f.t.slice(0, 3).toUpperCase()} color={f.c} size={22} />
             <div style={{ minWidth: 0, flex: 1 }}>
-              <div style={{ font: '600 11.5px "Inter Tight"', color: 'var(--ink)' }}>{f.t}</div>
-              <div className="mono" style={{ fontSize: 9, color: 'var(--ink-3)' }}>{f.s}</div>
+              <div style={{ font: '600 13px "Inter Tight"', color: 'var(--ink)' }}>{f.t}</div>
+              <div className="mono" style={{ fontSize: 10, color: 'var(--ink-3)', marginTop: 1 }}>{f.s}</div>
             </div>
           </Link>
         ))}
       </div>
+      {/* v0.12.4 — anon footer nudge to sign in + save favs. Logged-in
+          users with no favs yet see a different nudge to pick teams. */}
+      {isAnon && (
+        <Link
+          to="/login?next=/onboarding/teams"
+          style={{
+            display: 'block',
+            padding: '10px 12px',
+            margin: 4,
+            borderTop: '1px solid var(--line-soft)',
+            fontSize: 11,
+            color: 'var(--amber)',
+            textDecoration: 'none',
+            fontFamily: 'var(--font-mono)',
+            letterSpacing: 0.3,
+            fontWeight: 600,
+          }}
+        >
+          {lang === 'id' ? '★ Masuk untuk simpan tim favorit →' : '★ Sign in to save favorites →'}
+        </Link>
+      )}
+      {/* v0.12.5 — logged-in users who skipped onboarding see a nudge
+          to pick teams. Once they save favs, this disappears and the
+          card renders their saved selections (logic above). */}
+      {showOnboardNudge && (
+        <Link
+          to="/onboarding/teams"
+          style={{
+            display: 'block',
+            padding: '10px 12px',
+            margin: 4,
+            borderTop: '1px solid var(--line-soft)',
+            fontSize: 11,
+            color: 'var(--blue)',
+            textDecoration: 'none',
+            fontFamily: 'var(--font-mono)',
+            letterSpacing: 0.3,
+            fontWeight: 600,
+          }}
+        >
+          {lang === 'id' ? '★ Pilih tim favoritmu →' : '★ Pick your favorite teams →'}
+        </Link>
+      )}
+      {/* v0.12.9 — closed-loop edit affordance. Logged-in users with
+          saved favs get a quiet "Edit favorit →" routing to the new
+          /settings/teams page so they can prune / add picks without
+          re-running the first-run /onboarding/teams flow. */}
+      {!isAnon && favsStatus === 'ready' && savedFavs && savedFavs.length > 0 && (
+        <Link
+          to="/settings/teams"
+          style={{
+            display: 'block',
+            padding: '8px 12px',
+            margin: 4,
+            borderTop: '1px solid var(--line-soft)',
+            fontSize: 10,
+            color: 'var(--ink-3)',
+            textDecoration: 'none',
+            fontFamily: 'var(--font-mono)',
+            letterSpacing: 0.3,
+            fontWeight: 600,
+          }}
+        >
+          {lang === 'id' ? 'Edit favorit →' : 'Edit favorites →'}
+        </Link>
+      )}
     </Card>
   );
 }
@@ -438,9 +730,12 @@ function UpcomingCard({ fixtures, lang }) {
   return (
     <Card>
       <CardHead title={lang === 'id' ? 'Jadwal' : 'Fixtures'} />
-      <div style={{ padding: 10, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      {/* v0.11.23 GIB-021 + GIB-012 — fixture rows were ~14.5 px tall,
+          well under WCAG 2.5.5. Bump to minHeight 44 + 12 px text so a
+          finger / cursor lands cleanly without misclicks. */}
+      <div style={{ padding: 6, display: 'flex', flexDirection: 'column' }}>
         {rows.length === 0 ? (
-          <span style={{ fontSize: 11, color: 'var(--ink-3)' }}>
+          <span style={{ fontSize: 12, color: 'var(--ink-3)', padding: 10 }}>
             {lang === 'id' ? 'Belum ada jadwal.' : 'No fixtures yet.'}
           </span>
         ) : (
@@ -452,14 +747,17 @@ function UpcomingCard({ fixtures, lang }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                fontSize: 11,
+                minHeight: 44,
+                padding: '8px 8px',
+                borderRadius: 6,
+                fontSize: 12,
                 textDecoration: 'none',
                 color: 'inherit',
-                gap: 8,
+                gap: 10,
               }}
             >
-              <span className="mono" style={{ color: 'var(--ink-3)' }}>{r.w}</span>
-              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.t}</span>
+              <span className="mono" style={{ color: 'var(--ink-3)', minWidth: 28 }}>{r.w}</span>
+              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', font: '600 12px "Inter Tight"', color: 'var(--ink)' }}>{r.t}</span>
               <span className="tab mono" style={{ color: 'var(--ink-3)' }}>{r.s}</span>
             </Link>
           ))
@@ -513,37 +811,95 @@ export default function HomeV1() {
   const { lang, selectedConstructor } = useApp();
   const { games } = usePlayoffData(30000);
   const { upcoming: eplUpcoming } = useEPLFixtures();
+  // v0.12.4 — Tennis live for cross-sport LiveGridCard. Pull both
+  // tours and merge live-status matches; useTennisScoreboard caches
+  // 5-minute idle so this is cheap on Home.
+  const { matches: atpMatches } = useTennisScoreboard('atp');
+  const { matches: wtaMatches } = useTennisScoreboard('wta');
+  const tennisLive = useMemo(() => {
+    const all = [...(atpMatches || []), ...(wtaMatches || [])];
+    return all.filter((m) => m.status === 'live');
+  }, [atpMatches, wtaMatches]);
+
+  // v0.12.4 — read auth state to differentiate Following card label
+  // and footer nudge. Anon users see "Trending teams" + sign-in
+  // prompt; logged-in users see "Following" with their saved favs.
+  const summary = useUserBracketSummary();
+  const isAnon = summary.status === 'anon';
 
   const hero = useMemo(() => pickHeroGame(games || []), [games]);
 
   return (
     <Board>
       <SEO
-        title="gibol.co — gila bola · live scores NBA · Premier League · F1 · Tennis · World Cup 2026"
-        description="Live multi-sport hub in Bahasa Indonesia. NBA Playoffs 2026, Premier League 2025-26, Formula 1, Tennis ATP + WTA, FIFA World Cup 2026."
+        title={lang === 'id'
+          ? 'gibol.co — gila bola · skor live NBA · Liga Inggris · F1 · Tenis · Piala Dunia 2026'
+          : 'gibol.co — gila bola · live scores NBA · Premier League · F1 · Tennis · World Cup 2026'}
+        description={lang === 'id'
+          ? 'Hub multi-olahraga Bahasa Indonesia. NBA Playoffs 2026, Liga Inggris 2025-26, Formula 1, Tenis ATP + WTA, Piala Dunia FIFA 2026.'
+          : 'Live multi-sport hub in Bahasa Indonesia. NBA Playoffs 2026, Premier League 2025-26, Formula 1, Tennis ATP + WTA, FIFA World Cup 2026.'}
         path="/"
         lang={lang}
       />
-      <V2TopBar />
+      {/* A11y — single <h1> per page for screen-reader rotor. */}
+      <h1 className="sr-only">
+        {lang === 'id'
+          ? 'gibol.co — dashboard olahraga live dalam Bahasa Indonesia'
+          : 'gibol.co — live sports dashboards in Bahasa Indonesia'}
+      </h1>
 
-      <div style={{ padding: 14, display: 'grid', gridTemplateColumns: '200px 1fr 260px', gap: 12 }}>
+      {/* v0.12.2 Theme B — Pick'em Home hero ABOVE the sport grid. Branches
+          on auth state (anon → CTA, logged-in → bracket standing + league
+          rank). Renders nothing during loading state to avoid first-paint
+          skeleton noise for the typical anon user. */}
+      <PickemHomeHero />
+
+      {/* v0.12.3 M-1 — `.homev1-grid` collapses 200/1fr/260 → single
+          column below the laptop breakpoint (1024px). Inline padding
+          / gap kept for desktop but the responsive collapse now lives
+          in src/index.css. */}
+      {/* v0.19.5 Phase 2 Sprint E — direct children of .homev1-grid
+          gain `homev1-card--*` classNames so the mobile reorder
+          rules in src/index.css can target them by role. The
+          asides + section preserve their desktop column layout;
+          on ≤540px viewports they switch to display:contents so
+          every card becomes a direct flex item of the grid and
+          the order:* declarations re-stack them per directive §4
+          (Live → Trending → Pulse → FansReact → Fangir, with
+          HeroGame + Upcoming demoted below). */}
+      <div className="homev1-grid">
         {/* Left rail */}
         <aside style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <FollowingCard lang={lang} selectedConstructor={selectedConstructor} />
-          <UpcomingCard fixtures={eplUpcoming} lang={lang} />
+          <div className="homev1-card--trending">
+            <FollowingCard lang={lang} selectedConstructor={selectedConstructor} isAnon={isAnon} />
+          </div>
+          <div className="homev1-card--upcoming">
+            <UpcomingCard fixtures={eplUpcoming} lang={lang} />
+          </div>
         </aside>
 
         {/* Center */}
-        <main style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
-          {hero && <HeroGameCard game={hero} />}
-          <LiveGridCard nbaGames={games} eplUpcoming={eplUpcoming} lang={lang} />
-        </main>
+        <section style={{ display: 'flex', flexDirection: 'column', gap: 12, minWidth: 0 }}>
+          {hero && (
+            <div className="homev1-card--hero">
+              <HeroGameCard game={hero} />
+            </div>
+          )}
+          <div className="homev1-card--livegrid">
+            <LiveGridCard nbaGames={games} eplUpcoming={eplUpcoming} tennisLive={tennisLive} lang={lang} />
+          </div>
+        </section>
 
         {/* Right rail */}
         <aside style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <LivePulseCard lang={lang} />
-          <FansReactingCard lang={lang} />
+          <div className="homev1-card--livepulse">
+            <LivePulseCard lang={lang} />
+          </div>
+          <div className="homev1-card--fansreact">
+            <FansReactingCard lang={lang} />
+          </div>
           <a
+            className="homev1-card--fangir"
             href={FANGIR_BANNER_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -573,8 +929,12 @@ export default function HomeV1() {
         </aside>
       </div>
 
-      {/* Footer */}
+      {/* Footer — v0.11.20 GIB-014. Explicit role so axe/rotor pick
+          it up as contentinfo landmark even when nested inside an
+          outer <main>. Implicit footer semantics only fire when the
+          element is a direct child of <body>. */}
       <footer
+        role="contentinfo"
         style={{
           display: 'flex',
           justifyContent: 'space-between',

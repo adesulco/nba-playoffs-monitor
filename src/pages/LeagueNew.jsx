@@ -4,7 +4,6 @@ import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 
 /**
  * /league/new — create a private league with a name. Backend generates the
@@ -60,9 +59,8 @@ function NewLeagueInner() {
         lang={lang}
       />
       <div className="dashboard-wrap" style={{ maxWidth: 520, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink backTo="/bracket" title="gibol.co" subtitle={lang === 'id' ? "pick'em · liga baru" : "pick'em · new league"} />
 
-        <main style={{ padding: '40px 8px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <section style={{ padding: '40px 8px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           <header style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 6 }}>
             <p style={{
               margin: 0, fontSize: 11, color: C.dim,
@@ -124,7 +122,7 @@ function NewLeagueInner() {
               ? (lang === 'id' ? 'Membuat…' : 'Creating…')
               : (lang === 'id' ? 'Buat liga' : 'Create league')}</button>
           </form>
-        </main>
+        </section>
       </div>
     </div>
   );

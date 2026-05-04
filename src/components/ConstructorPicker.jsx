@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { TEAMS_2026, TEAMS_BY_ID, DRIVERS_BY_TEAM } from '../lib/sports/f1/constants.js';
 import { COLORS as C } from '../lib/constants.js';
+import { useIsMobile } from '../hooks/useMediaQuery.js';
+import PickerSheet from './PickerSheet.jsx';
 
 /**
  * ConstructorPicker — v0.2.5. F1 parallel to NBA TeamPicker.
@@ -19,6 +21,7 @@ import { COLORS as C } from '../lib/constants.js';
 export default function ConstructorPicker({ selectedConstructor, onSelect }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     function handleClick(e) {
@@ -71,6 +74,7 @@ export default function ConstructorPicker({ selectedConstructor, onSelect }) {
             }}>
               {meta.short.toUpperCase().slice(0, 3)}
             </span>
+            {/* v0.11.21 GIB-009 textContent whitespace */}{' '}
             <span style={{ flex: 1, textAlign: 'left', fontWeight: 600 }}>{meta.short}</span>
             <span style={{ fontSize: 9, opacity: 0.7 }}>▼</span>
           </>
@@ -83,29 +87,28 @@ export default function ConstructorPicker({ selectedConstructor, onSelect }) {
         )}
       </button>
 
-      {open && (
-        <div
-          role="listbox"
-          aria-label="Daftar konstruktor F1 2026"
-          style={{
-            position: 'absolute',
-            top: 'calc(100% + 4px)',
-            right: 0,
-            width: 280,
-            background: C.panel,
-            border: `1px solid ${C.line}`,
-            borderRadius: 4,
-            zIndex: 100,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-            maxHeight: 460,
-            overflowY: 'auto',
-          }}
-        >
+      {/* v0.13.8 — bottom-sheet on mobile via shared <PickerSheet>. */}
+      <PickerSheet
+        isMobile={isMobile}
+        open={open}
+        onClose={() => setOpen(false)}
+        ariaLabel="Daftar konstruktor F1 2026"
+      >
           {selectedConstructor && (
             <div
+              role="button"
+              tabIndex={0}
+              aria-label="Hapus pilihan konstruktor"
               onClick={() => {
                 onSelect(null);
                 setOpen(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelect(null);
+                  setOpen(false);
+                }
               }}
               style={{
                 padding: '8px 12px',
@@ -134,9 +137,19 @@ export default function ConstructorPicker({ selectedConstructor, onSelect }) {
             return (
               <div
                 key={team.id}
+                role="option"
+                aria-selected={isSel}
+                tabIndex={0}
                 onClick={() => {
                   onSelect(team.id);
                   setOpen(false);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onSelect(team.id);
+                    setOpen(false);
+                  }
                 }}
                 style={{
                   padding: '8px 12px',
@@ -192,8 +205,7 @@ export default function ConstructorPicker({ selectedConstructor, onSelect }) {
               </div>
             );
           })}
-        </div>
-      )}
+      </PickerSheet>
     </div>
   );
 }

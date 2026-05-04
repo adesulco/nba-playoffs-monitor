@@ -1,0 +1,59 @@
+{
+  "type": "team",
+  "slug": "nba-portland-trail-blazers",
+  "title": "Profil Portland Trail Blazers: Western Conference (2025-26)",
+  "description": "Profil Portland Trail Blazers — franchise NBA dari Portland di division Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Portland Trail Blazers 2025-26: Antara Playoff dan Rebuild yang Belum Selesai\n\nPortland Trail Blazers berkandang di Portland dan main di Northwest Division Wilayah Barat. Per 28 April 2026, POR menutup musim reguler 2025-26 dengan rekor 42-40, seed 7 di Western Conference, finis keempat di Northwest Division di bawah asuhan pelatih Chauncey Billups.\n\n---\n\n## Identitas dan Posisi di Liga\n\nDi Northwest Division yang padat, Portland finis keempat dengan rekor 42-40. Seed 7 di Western Conference menempatkan mereka di zona play-in, bukan papan atas, bukan juga tim yang bisa diabaikan. Billups, mantan point guard yang meraih ring bersama Detroit Pistons, kini memimpin roster yang campurannya cukup unik: veteran belasan tahun berdampingan dengan pemain 22 tahun dengan nol tahun pengalaman NBA.\n\nTim ini bukan contender, belum. Tapi 42 kemenangan dalam musim penuh adalah argumen bahwa proses rebuild POR tidak berjalan di tempat.\n\n---\n\n## Performa Musim Ini\n\nAngkanya bercerita tentang tim yang masih mencari keseimbangan. Portland rata-rata mencetak 115,5 PPG, sedikit di atas rata-rata liga, tapi kebobolan 115,8 PPG. Selisih poin -0,3 per laga: hampir impas, tapi condong ke negatif.\n\nSisi paling mencolok adalah split home vs away. Di kandang Moda Center, POR bermain 24-17 (0.585), solid. Di jalan, mereka jatuh ke 18-23 (0.439). Gap hampir 15 poin persentase antara home dan road menunjukkan tim yang masih bergantung pada keuntungan kandang untuk menutup ketidakkonsistenan pertahanan. Di playoff, itu tidak bisa jadi sandaran.\n\nRekor 42-40 sendiri layak diapresiasi di konteks Western Conference 2025-26, tapi margin tipis itu juga jujur tentang di mana POR berada: zona aman, belum zona berbahaya.\n\n---\n\n## Roster: Campuran Generasi\n\n**Damian Lillard (#0, G, 35 tahun, 13 tahun pengalaman)** tetap jadi nama paling dikenal di roster ini. Produk Weber State yang menghabiskan lebih dari satu dekade di Portland adalah simbol franchise, sekaligus tanda tanya terbesar soal arah tim ke depan.\n\n**Jrue Holiday (#5, G, 35 tahun, 16 tahun pengalaman)** menambah pengalaman di backcourt. Dengan 16 musim di NBA dan trek rekam sebagai pemain two-way, Holiday adalah salah satu veteran yang kehadirannya berbicara di luar statistik.\n\nDi sisi lain spektrum: **Scoot Henderson (#00, G, 22 tahun, 2 tahun pengalaman)** dan **Donovan Clingan (#23, C, 22 tahun, rookie dari UConn)** mewakili taruhan jangka panjang Portland. Henderson masuk sebagai salah satu pick tertinggi dalam draft-nya. Clingan membawa profil center muda yang langka di liga. **Shaedon Sharpe (#17, G, 22 tahun, 3 tahun)** juga termasuk dalam kelompok muda yang sedang dikembangkan.\n\n**Deni Avdija (#8, F, 25 tahun, 5 tahun)** dan **Jerami Grant (#9, F, 32 tahun, 11 tahun)** mengisi posisi wing dengan karakter berbeda, Avdija lebih muda dan versatile, Grant veteran yang tahu cara bertahan di situasi kritis.\n\nRoster ini lebar usianya: dari Hansen yang 20 tahun dengan nol pengalaman, sampai Holiday di 35 tahun dengan 16 musim. Itu bisa jadi kekuatan kalau chemistry-nya ketemu, atau sumber ketidakkonsistenan kalau tidak.\n\n---\n\n## Outlook\n\nPortland bermain satu laga tersisa musim reguler, tandang ke San Antonio Spurs, Rabu 29 April 2026 pukul 08.30 WIB. Setelahnya, perhatian langsung beralih ke play-in Western Conference.\n\nSeed 7 berarti POR harus melalui play-in sebelum masuk bracket utama playoff. Skenario terbaik adalah menang dua kali, skenario terburuk adalah tereliminasi sebelum playoff dimulai. Untuk tim yang main impas sepanjang musim, play-in adalah momen paling jujur dari 82 laga terakhir.\n\nYang menarik dari Portland bukan hasil musim ini saja, tapi pertanyaan yang mengiringinya: seberapa jauh inti muda mereka bisa tumbuh, dan seberapa lama skema transisi ini masih bisa dijalankan Billups dengan material yang ada.\n\nRekor 42-40 per 28 April 2026 adalah snapshot tim di persimpangan, cukup baik untuk stay alive, belum cukup untuk bicara lebih.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "22",
+    "team_name": "Portland Trail Blazers",
+    "team_abbr": "POR",
+    "team_location": "Portland",
+    "conference": "Western Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023348,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid article with strong voice discipline. Two training-inference issues (coach history, stadium name) are minor in context of an NBA profile where coach/venue are background context. Tense marking clean, no banned phrases, pronoun discipline solid. Pass with minor flag for data verification.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Billups, mantan point guard yang meraih ring bersama Detroit Pistons",
+          "fix": "Remove Pistons detail or confirm it's in input data; safer: 'Billups, mantan point guard'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Moda Center",
+          "fix": "Verify stadium name in input or use generic 'home court'; safest: 'di kandang'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Yang menarik dari Portland bukan hasil musim ini saja",
+          "fix": "'Portland menarik bukan karena hasil musim ini saja' or restructure"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "ini. Produk Weber State yang menghabiskan lebih dari satu dekade di Portland adalah simbol franchise, sekaligus tanda tanya terbesar",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x25daae866cae6fea",
+    "published_at": "2026-04-28T10:49:01+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

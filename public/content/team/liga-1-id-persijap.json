@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-persijap",
+  "title": "Profil Persijap: Liga 1 (2025-26)",
+  "description": "Profil Persijap — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Persijap Jepara: Bertahan di Tengah Badai\n\nPersijap Jepara adalah klub sepak bola asal Indonesia yang berlaga di Super League Indonesia (Liga 1) musim 2025-26. Kandang mereka di Stadion Gelora Bumi Kartini, Jepara, kapasitas 20.000 penonton. Per 28 April 2026, Persijap menempati peringkat 14 klasemen Liga 1 dengan 31 poin dari 29 laga, selisih gol -14, hasil 8 menang, 7 seri, 14 kalah sepanjang musim.\n\n---\n\n## Identitas Klub\n\nPersijap berdiri pada 1954, menjadikannya salah satu klub senior di lanskap sepak bola Indonesia. Markas mereka, Stadion Gelora Bumi Kartini di Jepara, Jawa Tengah, menampung hingga 20.000 penonton dan jadi benteng penting setiap musim kompetisi berlangsung.\n\nSebagai wakil Kota Jepara, dikenal luas sebagai kota ukir, Persijap membawa identitas daerah yang kuat ke atas lapangan. Kehadiran mereka di Liga 1 musim 2025-26 adalah bagian dari perjalanan panjang klub yang sudah lebih dari tujuh dekade ikut membentuk wajah sepak bola nasional.\n\n---\n\n## Performa Musim Ini\n\nMusim 2025-26 berat untuk Persijap. Dari 29 laga, mereka mencatat 8 menang, 7 seri, 14 kalah, lebih banyak kekalahan daripada kemenangan dan hasil imbang digabung. Rata-rata cetak gol 1,0 per laga, kebobolan 1,4. Selisih gol -14 menggambarkan pertahanan yang bocor dan lini depan yang belum konsisten.\n\nYang paling mencolok: Persijap gagal mencetak gol di 11 dari 29 laga. Hampir 40% pertandingan mereka tutup tanpa gol. Itu angka yang serius, bukan sekadar masalah form, tapi ada soal kekentalan serangan yang perlu dijawab.\n\nClean sheet 8 kali memberi sedikit cerita lain. Artinya, pertahanan Persijap mampu tampil solid ketika kondisi mendukung, tapi konsistensinya belum merata.\n\nSplit kandang-tandang makin mempertegas polanya. Di Gelora Bumi Kartini, mereka mencatat 6 menang, 3 seri, 6 kalah, cukup berimbang. Di luar Jepara, catatan melorot tajam: 2 menang, 4 seri, 8 kalah. Dari 14 laga tandang, hanya 2 yang berakhir kemenangan. Persijap nyaman di rumah sendiri, tapi jadi tim berbeda begitu main di kandang lawan.\n\nForm terkini memberi warna berbeda. Dari delapan laga terakhir, catatan Persijap adalah WDDDDWWW, tiga kemenangan beruntun menutup periode ini. Setelah empat laga tanpa menang di tengah, mereka bangkit dan finish kuat. Momentum ini yang jadi modal paling nyata jelang sisa musim.\n\n---\n\n## Posisi di Klasemen\n\nPer 28 April 2026, Persijap ada di posisi 14 Liga 1 musim 2025-26 dengan 31 poin dari 29 laga. Tidak ada status promosi atau European berth yang dikejar, fokus satu-satunya adalah bertahan di divisi teratas sepak bola Indonesia.\n\nDengan selisih gol -14 dan rasio kemenangan yang berada di sisi bawah klasemen, Persijap masih dalam zona yang membutuhkan kewaspadaan. Tiga kemenangan beruntun terakhir membantu menaikkan poin, tapi jarak ke zona berbahaya di bawah mereka perlu terus dipantau sampai musim resmi ditutup.\n\nPosisi 14 bukan posisi nyaman, tapi juga bukan tanpa peluang. Selama Persijap bisa jaga ritme positif yang baru mereka bangun, poin masih bisa ditambah.\n\n---\n\n## Outlook\n\nTiga kemenangan beruntun di akhir periode terakhir adalah sinyal paling menggembirakan dari musim yang sejauh ini lebih banyak diisi perjuangan daripada selebrasi. Persijap tahu posisi mereka: 31 poin, peringkat 14, dengan sisa laga yang masih bisa menentukan banyak hal.\n\nKunci musim ini bukan lagi soal target tinggi, ini soal stabilitas. Lini depan harus lebih tajam. 11 laga tanpa gol terlalu banyak untuk tim yang ingin aman. Pertahanan punya modalnya, terbukti dari 8 clean sheet, tapi konsistensinya harus merata, terutama saat main tandang.\n\nGelora Bumi Kartini tetap jadi benteng. Dan form WDDDDWWW menunjukkan bahwa Persijap bisa bangkit dari tekanan. Profil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "11132",
+    "team_name": "Persijap",
+    "team_country": "Indonesia",
+    "team_founded": 1954,
+    "venue_name": "Stadion Gelora Bumi Kartini",
+    "venue_city": "Jepara",
+    "venue_capacity": 20000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024222,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to critical data mismatches (laga count, form string, gol kebobolan), plus training-data inference (founding year, city cultural identity). Voice is mostly sound but needs fact correction before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Persijap berdiri pada 1954, menjadikannya salah satu klub senior di lanskap sepak bola Indonesia.",
+          "fix": "Remove founding year claim or verify against authoritative source before publication."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebagai wakil Kota Jepara, dikenal luas sebagai kota ukir, Persijap membawa identitas daerah yang kuat",
+          "fix": "Remove cultural characterization of Jepara or source it independently."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Kandang mereka di Stadion Gelora Bumi Kartini, Jepara, menampung hingga 20.000 penonton dan jadi benteng penting setiap musim kompetisi berlangsung.",
+          "fix": "Shorten to: '...jadi benteng penting setiap musim kompetisi.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Persijap menempati peringkat 14 klasemen Liga 1 dengan 31 poin dari 29 laga...Per 28 April 2026, Persijap ada di posisi 14",
+          "fix": "Correct to 30 laga, adjust selisih gol to -15 (per input block)."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dari 14 laga tandang, hanya 2 yang berakhir kemenangan. Persijap nyaman di rumah sendiri, tapi jadi tim berbeda begitu main di kandang lawan.",
+          "fix": "Rephrase: 'Persijap dominan kandang; tandang berubah total.' or 'Di Jepara beda cerita; tandang masalah.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Form terkini memberi warna berbeda. Dari delapan laga terakhir, catatan Persijap adalah WDDDDWWW",
+          "fix": "Correct to DDDDWWWL per input block; reframe narrative (2 recent wins, not 3 straight)."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Persijap gagal mencetak gol di 11 dari 29 laga...Yang paling mencolok: Persijap gagal mencetak gol di 11 dari 29 laga.",
+          "fix": "First mention in opening; second mention should cite only once with emphasis: 'Hampir 40% pertandingan—11 dari 29—tanpa gol.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "dari perjalanan panjang klub yang sudah lebih dari tujuh dekade ikut membentuk wajah sepak bola nasional.\n\n---\n\n## Performa Musim",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x79f2279d11e7d498",
+    "published_at": "2026-04-28T12:15:28+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

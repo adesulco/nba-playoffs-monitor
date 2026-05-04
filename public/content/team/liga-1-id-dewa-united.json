@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-dewa-united",
+  "title": "Profil Dewa United: Liga 1 (2025-26)",
+  "description": "Profil Dewa United — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Dewa United: Klub Ambisius yang Masih Mencari Konsistensi di Liga 1 2025-26\n\nDewa United adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia (Liga 1). Per 28 April 2026, mereka menempati peringkat 8 klasemen Liga 1 2025-26 dengan 44 poin dari 29 laga, hasil dari 13 kemenangan, 5 seri, dan 11 kekalahan, selisih gol +2.\n\n---\n\n## Identitas Klub\n\nDewa United adalah salah satu klub Liga 1 Indonesia yang dalam beberapa musim terakhir terus membangun identitas sebagai tim kompetitif di level tertinggi sepak bola nasional. Berbasis di Indonesia, klub ini menjadi bagian dari persaingan ketat Super League yang menampung tim-tim terbaik dari seluruh penjuru negeri.\n\nTidak banyak klub Liga 1 yang bisa disebut sudah punya sejarah panjang, Dewa United termasuk yang relatif baru dalam peta kekuatan nasional. Tapi soal ambisi, mereka jelas tidak kekurangan. Musim 2025-26 menjadi cermin dari perjalanan itu: cukup kuat untuk bersaing di papan tengah, tapi belum cukup konsisten untuk menyentuh jajaran atas.\n\n---\n\n## Performa Musim Ini\n\n29 laga, 13 menang, 5 seri, 11 kalah. Angka itu menempatkan Dewa United persis di zona abu-abu, terlalu baik untuk disebut tim bawah, terlalu tidak stabil untuk bicara papan atas.\n\nSisi ofensif mereka sebenarnya lumayan. Rata-rata 1,3 gol per laga dari 37 gol total musim ini bukan angka yang buruk untuk standar Liga 1. Tapi ada satu stat yang membocorkan masalah struktural: **9 laga tanpa mencetak gol** dari 29 penampilan. Hampir sepertiga musim, mereka pulang tanpa gol. Itu bukan fluktuasi, itu pola.\n\nDi sisi pertahanan, rata-rata 1,2 gol kebobolan per laga dan 7 clean sheet dari 29 laga menunjukkan lini belakang yang belum bisa dibilang kokoh. Selisih gol hanya +2, tipis sekali untuk tim yang ingin duduk nyaman di papan tengah.\n\nYang menarik adalah split kandang-tandang. Di kandang, Dewa United punya rekor 7M-2S-5K, masih lebih banyak kalah dari yang seharusnya untuk tim tuan rumah. Di tandang, 6M-3S-6K, yang sebenarnya cukup respektabel. Mereka justru sering tampil lebih bernyali saat main di luar.\n\nForm delapan laga terakhir berbunyi WWLDWWDW, dua kali beruntun menang, sempat patah oleh kalah dan seri, tapi langsung balik lagi dengan tiga hasil positif sebelum seri di laga paling anyar. Trennya menggembirakan, meski pola \"naik-jatuh-naik\" ini sudah terlalu sering muncul sepanjang musim untuk dibilang sudah selesai.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 8 dengan 44 poin dari 29 laga menempatkan Dewa United di jantung papan tengah Liga 1 2025-26. Tidak ada ancaman serius ke zona degradasi, tapi juga tidak ada tiket ke kompetisi Asia yang terbuka di depan mata.\n\nPosisi ini jujur mencerminkan musim mereka: cukup konsisten untuk tetap relevan, belum cukup tajam untuk ambil bagian dalam perebutan posisi atas. Dengan selisih gol hanya +2 dari 29 laga, mereka bergantung pada kemenangan tipis, satu perubahan momentum bisa menggeser posisi ke atas atau ke bawah dengan cepat.\n\nDi Liga 1 yang ketat, papan tengah bukan tempat yang nyaman untuk berlama-lama. Tim yang tidak bergerak ke atas biasanya tergerus ke bawah, bukan bertahan di tempat sama.\n\n---\n\n## Outlook\n\nDewa United menutup paruh musim ini dengan momentum yang lebih positif dibanding beberapa bulan sebelumnya, form WWLDWWDW adalah sinyal bahwa kapasitas ada, kepercayaan diri sedang tumbuh. Masalahnya, 9 laga tanpa gol sepanjang musim terlalu banyak untuk tim yang punya ambisi lebih dari sekadar bertahan di Liga 1.\n\nPeringkat 8 per 28 April 2026 bukan kegagalan, tapi juga bukan tujuan. Musim ini masih belum selesai, dan bagi Dewa United, beberapa laga tersisa adalah kesempatan untuk membuktikan bahwa tren positif terakhir bukan hanya fluktuasi musiman.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "17902",
+    "team_name": "Dewa United",
+    "team_country": "Indonesia",
+    "team_founded": null,
+    "venue_name": "",
+    "venue_city": "",
+    "venue_capacity": null,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0237,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Critical failure: Article statistics contradict input data block systematically (laga 29→30, poin 44→47, peringkat 8→7, clean sheet 7→8, kandang record 7M→8M, form transcribed wrong). Additional date mismatch (28 April vs 3 Mei). Must regenerate with corrected stats before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "peringkat 8 klasemen Liga 1 2025-26 dengan 44 poin dari 29 laga, hasil dari 13 kemenangan, 5 seri, dan 11 kekalahan, selisih gol +2",
+          "fix": "Correct to match input: 30 laga, 14 menang, 5 seri, 11 kalah, 47 poin, posisi 7, selisih gol +3."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "37 gol total musim ini",
+          "fix": "Change to 38 gol total musim ini."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "7 clean sheet dari 29 laga",
+          "fix": "Change to 8 clean sheet dari 30 laga."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Di kandang, Dewa United punya rekor 7M-2S-5K",
+          "fix": "Correct kandang record to 8M-2S-5K."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Form delapan laga terakhir berbunyi WWLDWWDW",
+          "fix": "Change form string to WLDWWDWW: menang-kalah-seri-menang-menang-seri-menang-menang."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tidak banyak klub Liga 1 yang bisa disebut sudah punya sejarah panjang, Dewa United termasuk yang relatif baru dalam peta kekuatan nasional.",
+          "fix": "Simplify: 'Dewa United relatif baru di Liga 1. Tapi ambisi mereka jelas.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "terlalu baik untuk disebut tim bawah, terlalu tidak stabil untuk bicara papan atas",
+          "fix": "Vary: 'terlalu baik jadi tim bawah, tapi tak stabil untuk papan atas.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, mereka menempati peringkat 8... Peringkat 8 per 28 April 2026 bukan kegagalan...",
+          "fix": "Update all date references from 28 April to 3 Mei 2026 to match input data block."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x212962dc0d61c432",
+    "published_at": "2026-04-28T12:10:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

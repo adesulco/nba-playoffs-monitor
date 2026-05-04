@@ -4,7 +4,6 @@ import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { supabase } from '../lib/supabase.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 
 /**
  * /login — magic-link email entry. Supabase delivers the email; on click the
@@ -64,9 +63,8 @@ export default function Login() {
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO title={t.title} description={t.desc} path={location.pathname} lang={lang} />
       <div className="dashboard-wrap" style={{ maxWidth: 520, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? 'pick\'em · masuk' : "pick'em · sign in"} />
 
-        <main style={{ padding: '36px 8px', display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <section style={{ padding: '36px 8px', display: 'flex', flexDirection: 'column', gap: 24 }}>
           <header style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 8 }}>
             <div style={{
               margin: '0 auto',
@@ -145,7 +143,7 @@ export default function Login() {
               <p style={{ margin: 0, fontSize: 11, color: C.muted, textAlign: 'center' }}>{t.terms}</p>
             </form>
           )}
-        </main>
+        </section>
       </div>
     </div>
   );

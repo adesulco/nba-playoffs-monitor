@@ -1,0 +1,64 @@
+{
+  "type": "preview",
+  "slug": "wolves-vs-sunderland-2026-05-02",
+  "title": "Preview Wolves vs Sunderland",
+  "description": "Preview Bahasa Indonesia untuk Wolves vs Sunderland di Molineux Stadium, Wolverhampton, 2 May 2026.",
+  "body_md": "Wolves menjamu Sunderland di Molineux, Sabtu 2 Mei 2026 jam 21.00 WIB. Di atas kertas ini laga biasa, tapi buat Wolves, tiga poin di sini bisa jadi perbedaan antara bertahan di Premier League atau tidak. Posisi 20 dengan 17 poin setelah 34 laga: zona degradasi, nyaris tanpa ruang kesalahan.\n\n## Form & Kondisi\n\nWolves datang dengan modal yang memprihatinkan. LLLDW di lima laga terakhir, satu-satunya kemenangan jadi satu-satunya sandaran tipis harapan. Lebih parah lagi, daftar absen mereka panjang: Gonzalez, Chiwome, dan Krejci absen karena cedera, Doherty tidak aktif, Johnstone masih diragukan setelah knock, ditambah Mosquera yang harus absen karena akumulasi kartu kuning. Skuad O'Neil, atau siapapun yang kini menangani, praktis bekerja dengan pilihan terbatas.\n\nSunderland tidak jauh lebih meyakinkan: LLWWL di lima laga, dua kemenangan di tengah tapi ditutup kalah di laga terakhir. Dengan 46 poin di posisi 12, mereka sudah aman jauh dari degradasi dan tidak lagi mengejar sesuatu yang krusial. Tim tamu ini datang ke Molineux tanpa beban, tapi juga tanpa urgensi. Sisi positifnya, deretan absen mereka juga panjang: Alese, Traore, Ballard, Bi, Angulo, Mundle, Moore, hampir delapan nama keluar dari kalkulasi.\n\n## Head-to-Head\n\nLima pertemuan terakhir bicara satu cerita konsisten: Wolves tidak pernah nyaman lawan Sunderland. Dari sudut pandang Wolves, cuma satu menang, dua seri, dua kalah, dengan agregat gol 2-8. Dua kekalahan itu pun telak: 0-2 dan 0-3. Satu-satunya kemenangan datang 2-1. Bukan rekam jejak yang memberi kepercayaan diri.\n\n## Pemain Kunci & Kondisi Tim\n\nDengan Mosquera absen karena kartu dan beberapa opsi lini tengah terganggu cedera, Wolves kemungkinan besar kehilangan kedalaman di sektor yang harusnya jadi mesin pressing mereka. Sunderland juga kehilangan banyak opsi, Mundle di sisi kanan dan Angulo di lini depan termasuk yang paling terasa, tapi dengan posisi klasemen yang jauh lebih nyaman, rotasi mereka tidak sepainful tuan rumah.\n\n## Taktis & Prediksi\n\nWolves hampir pasti akan main pragmatis: low block, jaga clean sheet dulu, cari gol dari set-piece atau counter. Sunderland kemungkinan lebih rileks dalam possession, tidak terlalu agresif, tapi bukan berarti mudah ditembus. Kombinasi antara Wolves yang kekurangan pemain dan Sunderland yang tidak punya beban menjadikan laga ini sulit diprediksi arahnya, tapi bukan berarti menarik. Kedua tim bisa saling menahan di angka 1-0 atau bahkan seri tanpa gol, seperti dua dari lima pertemuan terakhir yang berakhir 0-0. Wolves butuh menang. Sunderland cukup tidak kalah. Prediksi: **0-0** atau **1-1**.\n\nSaksikan live di Vidio dan beIN Sports mulai jam 21.00 WIB.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379318",
+    "home_team": "Wolves",
+    "away_team": "Sunderland",
+    "kickoff_utc": "2026-05-02T14:00:00+00:00",
+    "venue": "Molineux Stadium, Wolverhampton",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.018122,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Three high-severity training-inference violations: manager name O'Neil and ~15 player names (injuries, card status) inferred without input data grounding. Rewrite to remove specific player/coach names and generalize injury/absence info. One translation-smell issue in tactical paragraph. Overall structure and voice solid; fix inference creep and pass.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "O'Neil, atau siapapun yang kini menangani",
+          "fix": "Remove manager reference or say 'pelatih Wolves' without naming"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Gonzalez, Chiwome, Krejci absen cedera, Doherty tidak aktif, Johnstone masih diragukan, Mosquera akumulasi kartu",
+          "fix": "Remove specific injury list; say 'Wolves sedang hadapi absen berlapis' or generalize without names"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Alese, Traore, Ballard, Bi, Angulo, Mundle, Moore",
+          "fix": "Remove specific names; generalize: 'Sunderland juga minus beberapa pemain'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kombinasi antara Wolves yang kekurangan pemain dan Sunderland yang tidak punya beban menjadikan laga ini sulit diprediksi",
+          "fix": "Restructure: 'Wolves kekurangan pemain, Sunderland tanpa beban. Hasil sulit diprediksi.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Dua kekalahan itu pun telak: 0-2 dan 0-3",
+          "fix": "Optional: remove 'pun' — 'Dua kekalahan itu telak: 0-2 dan 0-3'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x5072438e41bddf34",
+    "fact_check": {
+      "passed": true,
+      "issue_count": 0
+    },
+    "published_at": "2026-04-27T11:02:20+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

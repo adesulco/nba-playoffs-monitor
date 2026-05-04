@@ -1,0 +1,89 @@
+{
+  "type": "team",
+  "slug": "nba-cleveland-cavaliers",
+  "title": "Profil Cleveland Cavaliers: Central, Eastern Conference (2025-26)",
+  "description": "Profil Cleveland Cavaliers — franchise NBA dari Cleveland di Central Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Cleveland Cavaliers: Mesin Efisien dari Ohio yang Siap Berbicara di Playoff Timur\n\nPer 28 April 2026, Cleveland Cavaliers menutup musim reguler 2025-26 dengan rekor 52-30, seed 4 di Eastern Conference. Kandang mereka di Cleveland, dan di Central Division mereka finis di peringkat dua. Bukan tim paling seksi di liga, tapi angka tidak bohong: Cavaliers adalah salah satu tim paling konsisten di Wilayah Timur musim ini.\n\n---\n\n## Identitas dan Posisi di Liga\n\nCleveland Cavaliers berkompetisi di Central Division, Eastern Conference. Musim reguler 2025-26 mereka tutup sebagai seed 4 Wilayah Timur dengan rekor 52-30, finis di bawah Milwaukee Bucks dan di atas Miami Heat di klasemen konferensi. Di division, mereka finis kedua.\n\nDi bawah kendali head coach Kenny Atkinson, Cavaliers membangun identitas yang jelas: bukan tim superstar tunggal, tapi sistem kolektif yang sulit dibaca. Atkinson dikenal meracik rotasi yang disiplin, dan musim ini hasilnya terlihat di konsistensi rekor mereka, termasuk di laga-laga tandang yang biasanya jadi ujian nyata karakter sebuah tim.\n\n---\n\n## Performa Musim Ini\n\n52-30 bukan kebetulan. Cavaliers cetak rata-rata 119,5 PPG musim ini, sementara pertahanan mereka izinkan 115,4 PPG, menghasilkan diferensial +4,1 per laga. Serangan mereka cukup eksplosif, tapi yang bikin rekor ini solid adalah pertahanan yang cukup ketat untuk membatasi damage.\n\nDi kandang, Cavaliers bermain 27-14. Di jalan, 25-16. Selisih yang sangat tipis, dan itu penting. Tim yang cuma bagus di kandang mudah dibaca lawan di playoff. Cavaliers bukan tipe itu. Road record 25-16 menunjukkan adaptasi yang sehat, tim yang tidak terlalu bergantung pada energi tribun sendiri untuk tampil.\n\nDengan seed 4, mereka masuk bracket playoff Wilayah Timur tanpa beban posisi favorit. Tapi juga bukan underdog yang bisa diremehkan.\n\n---\n\n## Roster dan Pemain Kunci\n\n**Donovan Mitchell (#45, G, 29 tahun, 8 tahun pengalaman)** adalah jangkar utama. Guard lulusan Louisville ini sudah melewati delapan musim di liga, cukup untuk membedakan antara pemain yang \"bisa bagus\" dan pemain yang \"bagus saat tekanan datang\". Di usia 29, Mitchell ada di prime window-nya sebagai scorer dan playmaker.\n\n**Evan Mobley (#4, C/F, 24 tahun, 4 tahun pengalaman)** adalah anchor pertahanan. Lulusan USC ini masih muda tapi sudah empat tahun di sistem Cavaliers. Big man dengan footwork modern, bisa defend di perimeter dan tetap protect rim. Di playoff, peran Mobley biasanya makin besar saat spacing lawan lebih ketat.\n\n**James Harden (#1, G, 36 tahun, 16 tahun pengalaman)** membawa dimensi berbeda. Veteran lulusan Arizona State ini tidak lagi jadi focal point seperti era primanya, tapi 16 tahun pengalaman playoff tidak hilang begitu saja. Sebagai secondary playmaker dan shot creator, Harden bisa jadi kartu menarik Atkinson di babak-babak selanjutnya.\n\nSelain ketiganya, Jarrett Allen (#31, C, 28 tahun) dan Dennis Schroder (#8, G, 32 tahun, 12 tahun pengalaman) jadi bagian dari core rotation yang punya kedalaman cukup untuk merotasi beban menit di babak yang panjang.\n\n---\n\n## Outlook\n\nCavaliers bukan tim yang datang ke playoff untuk sekedar tampil. 52 kemenangan, road record solid, dan diferensial +4,1 adalah fondasi yang layak. Seed 4 memberi mereka jalur playoff yang realistis untuk melangkah jauh, tergantung bracket dan form di waktu yang tepat.\n\nSebelum playoff dimulai, Cavaliers masih punya satu laga tersisa: menjamu Toronto Raptors pada 29 April 2026. Laga penutup musim reguler yang bisa jadi latihan ritme terakhir sebelum intensitas berubah.\n\nSemua data artikel ini mencerminkan kondisi per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "5",
+    "team_name": "Cleveland Cavaliers",
+    "team_abbr": "CLE",
+    "team_location": "Cleveland",
+    "conference": "Eastern Conference",
+    "division": "Central",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021367,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Fail due to date mismatch (April 29 vs May 3) and academic-register closing. Training-inference flags (colleges) are actually in input data so less critical, but verify source before republish. Tighten closing paragraph and reframe college references as rooted in input, not inference.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Donovan Mitchell (#45, G, 29 tahun, 8 tahun pengalaman)...Guard lulusan Louisville",
+          "fix": "Remove college reference or verify it's in the input data block provided to the writer agent."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Evan Mobley (#4, C/F, 24 tahun, 4 tahun pengalaman)...Lulusan USC",
+          "fix": "Verify USC is in input before publishing; if not, remove college reference."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "James Harden (#1, G, 36 tahun, 16 tahun pengalaman)...lulusan Arizona State",
+          "fix": "Colleges are in input roster notes but framed as player background; flag as minor since source is input, not hallucination."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "laga tersisa: menjamu Toronto Raptors pada 29 April 2026",
+          "fix": "Correct to 'pada 3 Mei 2026' or '2026-05-03 jam 23.30 WIB'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Semua data artikel ini mencerminkan kondisi per 28 April 2026.",
+          "fix": "Delete or reframe as: 'Demi catatan: semua angka per 28 April 2026.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di bawah kendali head coach Kenny Atkinson, Cavaliers membangun identitas",
+          "fix": "Rewrite: 'Dengan Kenny Atkinson sebagai head coach, Cavaliers membangun...'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Donovan Mitchell (#45, G, 29 tahun, 8 tahun pengalaman)...prime window-nya",
+          "fix": "Use 'window prime' atau rephrase: 'masih di puncak performa (prime years)' atau just 'musim-musim terbaik'."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Dengan seed 4, mereka masuk bracket playoff Wilayah Timur tanpa beban posisi favorit.",
+          "fix": "Minor; acceptable for NBA profile. Keep as-is unless overall flow feedback suggests tightening."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Arizona State ini tidak lagi jadi focal point seperti era primanya, tapi 16 tahun pengalaman playoff tidak hilang begitu",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x59b786abcc8d4660",
+    "published_at": "2026-04-28T10:26:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

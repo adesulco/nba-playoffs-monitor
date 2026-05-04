@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-max-verstappen",
+  "title": "Profil Max Verstappen: Pembalap F1 Red Bull (2026)",
+  "description": "Profil pembalap F1 Max Verstappen (Belanda) untuk tim Red Bull. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Max Verstappen, 28 April 2026: Juara Dunia yang Sedang Berjuang\n\nMax Verstappen. Kode FIA VER, nomor permanen #3, pembalap Belanda kelahiran 30 September 1997. Per 28 April 2026, Verstappen masih membalap untuk Red Bull, tapi musim ini bukan cerita dominasi. Klasemen 2026 menempatkannya di P9 dengan 12 poin dari tiga balapan. Nol kemenangan sejauh ini.\n\n---\n\n## Identitas\n\nVerstappen, 28 tahun, adalah salah satu nama terbesar di grid saat ini. Kode FIA-nya VER, dengan nomor permanen #3 yang dipakai di setiap sirkuit. Kebangsaan Belanda, atau dalam bahasa balapan, bendera oranye yang sudah sangat akrab di podium dalam beberapa musim terakhir.\n\nTim saat ini: Red Bull Racing. Paket lengkap nama besar plus tim besar, tapi data per 28 April 2026 menunjukkan bahwa musim ini belum berjalan seperti yang diharapkan keduanya.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, 12 poin, P9 di klasemen. Angka-angka itu bicara sendiri.\n\nVerstappen belum sekali pun menyentuh podium di 2026. Satu-satunya balapan yang ia selesaikan dengan layak adalah Australian Grand Prix, finis P6, mengumpulkan 8 poin. Itu hasil terbaiknya musim ini, dan juga satu-satunya balapan ia finis di top 10 dengan margin poin yang berarti.\n\nDari tiga balapan, hanya dua yang diselesaikan. Satu retired. Konsistensi yang selama ini jadi kekuatan Verstappen belum muncul di 2026.\n\n---\n\n## Hasil Per Balapan\n\n**Round 1, Australian Grand Prix: P6 (8 poin, Finished)**\n\nBukan start impresif, tapi masih acceptable. P6 di Australia memberi Red Bull sinyal bahwa setidaknya mobil bisa finis dan poin bisa diambil. Delapan poin dari satu balapan terasa solid, tapi ternyata ini jadi puncak Verstappen di musim ini sejauh ini.\n\n**Round 2, Chinese Grand Prix: Retired (0 poin)**\n\nInilah yang mematahkan ritme. Verstappen tidak finis di China, retired sebelum race selesai. Data tidak menyebut detail penyebab, tapi dampaknya jelas: nol poin, klasemen mulai melorot. Race yang buruk di track yang biasanya bisa ia navigasi.\n\n**Round 3, Japanese Grand Prix: P8 (4 poin, Finished)**\n\nJepang memberi sedikit pemulihan. Finis P8, kembali ke zona poin, tapi jauh dari zona podium. Di Suzuka, sirkuit yang secara historis bisa sangat teknikal dan menuntut pace konsisten dari mobil, P8 bukan hasil yang bisa dilihat sebagai tanda kebangkitan besar.\n\nPola tiga balapan ini: fluktuatif, jauh dari dominan. Satu hasil lumayan, satu DNF, satu recovery kecil. Bukan karakter yang biasa dikaitkan dengan nama Verstappen.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Verstappen duduk di P9 klasemen dengan 12 poin, 8 di antaranya dari satu balapan saja. Dari tiga round yang sudah dijalani, ia hanya dua kali finis dan belum sekali pun berdiri di podium.\n\nPertanyaannya bukan soal kemampuan pembalap. Pertanyaannya adalah soal paket, Red Bull dan VER perlu menemukan akar masalah sebelum musim makin jauh berlalu. Tiga balapan sudah cukup untuk melihat bahwa 2026 tidak berjalan sesuai script.\n\nSisa musim masih panjang. Tapi jarak yang harus ditutup di klasemen, dan mental yang harus dibangun ulang setelah DNF China, adalah pekerjaan nyata yang menanti.\n\n*Data artikel ini mencerminkan posisi klasemen dan hasil per 28 April 2026, setelah Japanese Grand Prix (Round 3).*\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "max_verstappen",
+    "driver_name": "Max Verstappen",
+    "driver_code": "VER",
+    "driver_number": "3",
+    "nationality": "Dutch",
+    "current_team": "Red Bull",
+    "current_team_id": "red_bull",
+    "championship_pos": "9",
+    "championship_points": "12",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.043536,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Article fails on data integrity (wrong point total, date mismatch) and training-data inference (championship history, past podium records, circuit trivia not in input block). Multiple high-severity issues block publication.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Juara Dunia yang Sedang Berjuang",
+          "fix": "Remove 'Juara Dunia' from headline or restrict to verifiable current-season data only."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "bendera oranye yang sudah sangat akrab di podium dalam beberapa musim terakhir",
+          "fix": "Delete this phrase. Stick to 2026 data only: 'Kebangsaan Belanda' or 'pembalap Belanda'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Konsistensi yang selama ini jadi kekuatan Verstappen",
+          "fix": "Rephrase: 'Konsistensi yang diharapkan dari pembalap nomor 3' or just delete the editorial implication."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Di Suzuka, sirkuit yang secara historis bisa sangat teknikal",
+          "fix": "Delete 'secara historis'. Just say 'Suzuka yang teknikal' if needed, or remove entirely."
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "12 poin dari tiga balapan... 8 poin dari Australian Grand Prix",
+          "fix": "Correct all point totals to match input: 16 poin klasemen (8+0+4), not 12."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka-angka itu bicara sendiri.",
+          "fix": "Delete or replace with specific claim: 'Itu jatuh jauh dari ekspektasi Red Bull dan Verstappen.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "satu-satunya balapan yang ia selesaikan dengan layak adalah Australian Grand Prix",
+          "fix": "Rephrase: 'Satu-satunya hasil acceptable adalah Australian Grand Prix, finis P6.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Per 28 April 2026... per 28 April 2026",
+          "fix": "Align all dates to 3 Mei 2026 (post-Round 3, not pre-Round 3)."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x10e2e6ab37ff0faa",
+    "published_at": "2026-04-28T10:49:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

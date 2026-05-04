@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "tennis-casper-ruud",
+  "title": "Profil Casper Ruud (ATP) — Peringkat 15",
+  "description": "Profil petenis Casper Ruud (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Casper Ruud: Petenis Norwegia di Papan Atas ATP\n\nCasper Ruud, petenis asal Oslo, Norwegia kelahiran 22 Desember 1998, saat ini berada di peringkat 15 ATP dengan 2.535 poin per 16 April 2026. Pemain tangan kanan berusia 27 tahun ini konsisten menghuni zona elite ATP sejak beberapa tahun terakhir, salah satu nama paling stabil di tur pria dunia.\n\n## Identitas\n\nLahir di Oslo, Norwegia, Ruud memulai karier profesionalnya pada 2015 saat masih berusia 16 tahun. Di tur, ia tampil dengan tinggi 183 cm dan bobot 81 kg, postur yang cukup proporsional untuk petenis baseline modern. Tangan kanan menjadi tumpuan permainannya, dengan gaya bermain yang identik dengan konsistensi dari belakang lapangan.\n\nUsianya kini 27 tahun, fase di mana banyak petenis mulai mencapai atau mempertahankan puncak performa. Ruud bukan pengecualian: lebih dari satu dekade mengasah permainan sejak debut 2015 membentuk fondasi solid yang terlihat dari posisinya yang terus bertahan di papan atas ATP.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Ruud tercatat di peringkat 15 ATP dengan total 2.535 poin. Ini merupakan penurunan tiga peringkat dari posisi sebelumnya di peringkat 12, trend negatif yang menunjukkan sedikit tekanan dari petenis-petenis di bawahnya.\n\nPenurunan tiga slot memang bukan alarm besar, tapi sinyal bahwa persaingan di zona peringkat 10-20 ATP sangat ketat. Selisih poin antar petenis di segmen ini tipis. satu turnamen bisa menggerakkan beberapa posisi sekaligus ke atas maupun ke bawah. Ruud masih di angka 2.535 poin, cukup untuk mempertahankan status sebagai salah satu petenis papan atas, meski tekanan untuk kembali ke posisi 12 atau lebih tinggi tetap ada.\n\n## Outlook\n\nPeringkat 15 ATP dengan tren menurun tiga posisi menempatkan Ruud dalam posisi yang perlu direspons. Ia masih nyaman di zona seeded untuk mayoritas turnamen Masters 1000 dan Grand Slam, tapi jarak ke top 10 mulai sedikit melebar. Profil ini mencerminkan data per 16 April 2026, pergerakan berikutnya akan sangat bergantung pada performa di turnamen-turnamen tanah liat yang mulai memadati kalender menjelang pertengahan musim.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "2989",
+    "athlete_name": "Casper Ruud",
+    "current_rank": 15,
+    "previous_rank": 12,
+    "points": 2535.0,
+    "trend": "-3",
+    "birthplace": "Oslo, Norway",
+    "dob": "1998-12-22",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.014379,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on high-severity training inference (age in 2015 inferred, not input data) plus multiple medium issues: tense overmarking, academic register drift, and translated-English stiffness. The 'satu turnamen' typo is a copyedit miss. Recommend regenerate with tighter grip on what's input data vs. inference.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Lahir di Oslo, Norwegia, Ruud memulai karier profesionalnya pada 2015 saat masih berusia 16 tahun.",
+          "fix": "Remove 'saat masih berusia 16 tahun'; just state 'Ruud memulai karier profesionalnya pada 2015.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Usianya kini 27 tahun, fase di mana banyak petenis mulai mencapai atau mempertahankan puncak performa.",
+          "fix": "Change to: 'Usia 27 tahun, fase di mana banyak petenis mulai mencapai puncak performa.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "lebih dari satu dekade mengasah permainan sejak debut 2015 membentuk fondasi solid",
+          "fix": "Rewrite: 'Ruud asah permainannya 11 tahun sejak debut 2015; fondasi solid terlihat dari posisinya di papan atas.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini merupakan penurunan tiga peringkat dari posisi sebelumnya di peringkat 12",
+          "fix": "Change to: 'Posisinya turun tiga peringkat dari sebelumnya di angka 12.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Selisih poin antar petenis di segmen ini tipis. satu turnamen bisa menggerakkan",
+          "fix": "Capitalize: 'Satu turnamen bisa menggerakkan beberapa posisi.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Peringkat 15 ATP dengan tren menurun tiga posisi menempatkan Ruud dalam posisi yang perlu direspons.",
+          "fix": "Rewrite: 'Peringkat 15 dengan tren -3 memberi tekanan pada Ruud untuk kembali naik.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Profil ini mencerminkan data per 16 April 2026, pergerakan berikutnya akan sangat bergantung pada performa",
+          "fix": "Cut this sentence. End with concrete outlook on clay season performance."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x5614cdfbfee5d6e0",
+    "published_at": "2026-04-28T12:13:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

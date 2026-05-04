@@ -1,0 +1,89 @@
+{
+  "type": "team",
+  "slug": "nba-indiana-pacers",
+  "title": "Profil Indiana Pacers: Central, Eastern Conference (2025-26)",
+  "description": "Profil Indiana Pacers — franchise NBA dari Indiana di Central Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Indiana Pacers 2025-26: Musim Penuh Turbulensi di Central Division\n\nIndiana Pacers berkandang di Indiana dan bermain di Central Division, Eastern Conference. Per 28 April 2026, Pacers menutup musim reguler 2025-26 dengan rekor 19-63, win rate 23,2% dan seed 14 di Wilayah Timur. Salah satu musim paling berat dalam siklus ini bagi franchise IND.\n\n---\n\n## Identitas & Posisi Liga\n\nPacers berada di posisi 5th dalam Central Division, di bawah tim-tim seperti Cleveland, Milwaukee, Chicago, dan Detroit di klasemen internal divisi. Di level conference, seed 14 menempatkan mereka jauh dari zona playoff, salah satu posisi terbawah di Wilayah Timur musim ini.\n\nRick Carlisle melatih tim ini, nama yang tak asing di landscape pelatih NBA. Dengan roster yang didominasi pemain muda dan beberapa veteran, Carlisle menghadapi tantangan berbeda dari musim-musim sebelumnya: membangun tim, bukan mengejar juara.\n\n---\n\n## Performa Musim Ini\n\nAngka bicara lebih jelas dari narasi apapun. Pacers mencetak rata-rata 112,4 PPG musim ini, bukan angka yang jelek untuk sisi serangan. Masalahnya ada di pertahanan: mereka kemasukan rata-rata 120,4 PPG, point differential -8,0 per laga yang menjelaskan akumulasi 63 kekalahan.\n\nPola home-road juga konsisten buruk, tapi road lebih parah. Home record mereka 11-30 (win rate 26,8%), bahkan kandang sendiri tidak jadi benteng. Road record lebih dalam lagi: 8-33 (19,5%). Tidak ada shelter di manapun musim ini.\n\nDi sisi positifnya, data ini berguna justru buat tim sendiri: musim seperti ini biasanya jadi bahan bakar untuk draft pick tinggi dan evaluasi roster menyeluruh.\n\n---\n\n## Roster & Pemain Kunci\n\nDengan 19 nama di roster (setidaknya), Pacers musim ini campuran menarik antara pemain muda yang sedang dalam proses, satu franchise player, dan satu veteran berpengalaman.\n\n**Tyrese Haliburton (#0, G, 26 tahun, 5 tahun pengalaman)** adalah pusat dari semua ini. Point guard lulusan Iowa State ini sudah lima tahun di liga, cukup lama untuk jadi anchor, tapi masih dalam prime window. Di musim yang berat sekalipun, Haliburton tetap jadi tolok ukur tempo dan distribusi bola tim ini.\n\n**Pascal Siakam (#43, F, 32 tahun, 9 tahun pengalaman)** adalah veteran paling senior di unit utama. Forward lulusan New Mexico State dengan pengalaman sembilan musim membawa dimensi yang tidak dimiliki roster muda, tahu cara bermain playoff, tahu cara survive musim panjang. Di musim 19-63, kontribusi Siakam mungkin lebih ke soal leadership daripada sekadar statistik.\n\n**T.J. McConnell (#9, G, 34 tahun, 10 tahun pengalaman)** adalah yang paling senior di seluruh roster. Guard lulusan Arizona dengan satu dekade di liga, di atas kertas, satu dari sedikit suara yang bisa bicara soal standar profesional di locker room muda Pacers.\n\nDi sisi muda, **Andrew Nembhard (#2, G, 26 tahun, 3 tahun)** dan **Aaron Nesmith (#23, G, 26 tahun, 5 tahun)** sudah cukup berpengalaman untuk mulai ambil tanggung jawab lebih. Sementara **Johnny Furphy (#12, G, 21 tahun)** dan **Kam Jones (#7, G, 24 tahun, rookie)** mewakili generasi paling baru yang sedang menyerap sebanyak mungkin dari musim pertama mereka.\n\n---\n\n## Outlook\n\nMusim 2025-26 adalah musim yang akan lama diingat Pacers, bukan dengan rasa bangga, tapi sebagai titik referensi. Rekor 19-63 dengan seed 14 di Eastern Conference menempatkan mereka di posisi yang secara historis berkorelasi kuat dengan draft pick tinggi dan agenda rebuild serius.\n\nSatu yang tidak berubah: Haliburton masih di sini, masih muda, masih jadi fondasi yang valid untuk dibangun di atasnya. Siakam dan McConnell memberikan lapisan pengalaman yang dibutuhkan tim muda untuk belajar cara berlatih dan bersikap seperti profesional.\n\nBagaimana manajemen dan Rick Carlisle memaknai musim ini ke depan, itulah pertanyaan yang relevan. Data per 28 April 2026 ini adalah snapshot dari titik terendah. Yang menarik adalah ke mana grafik bergerak setelahnya.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "11",
+    "team_name": "Indiana Pacers",
+    "team_abbr": "IND",
+    "team_location": "Indiana",
+    "conference": "Eastern Conference",
+    "division": "Central",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022483,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails on two high-severity training-data inference issues (Carlisle narrative, rebuild framing not in input) and soft academic drift. Score drops below pass threshold. Regenerate with strict adherence to input data block; remove speculative commentary about prior seasons or management strategy.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Rick Carlisle melatih tim ini, nama yang tak asing di landscape pelatih NBA.",
+          "fix": "State fact only: 'Rick Carlisle melatih Pacers musim ini.' Remove the editorial judgment."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dengan roster yang didominasi pemain muda dan beberapa veteran, Carlisle menghadapi tantangan berbeda dari musim-musim sebelumnya: membangun tim, bukan mengejar juara.",
+          "fix": "Remove. Stick to roster composition from input: 'Roster ini campuran muda dan veteran.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka bicara lebih jelas dari narasi apapun.",
+          "fix": "Use 'Statistik jelas.' or just proceed directly to the stats without this connector."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Di sisi positifnya, data ini berguna justru buat tim sendiri: musim seperti ini biasanya jadi bahan bakar untuk draft pick tinggi dan evaluasi roster menyeluruh.",
+          "fix": "Delete or reframe: 'Draft pick tinggi menanti. Evaluasi roster jadi prioritas.' Keep it factual."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Di musim yang berat sekalipun, Haliburton tetap jadi tolok ukur tempo dan distribusi bola tim ini.",
+          "fix": "Simplify: 'Haliburton tetap jadi tolok ukur tempo dan distribusi tim.' Remove 'sekalipun'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dengan 19 nama di roster (setidaknya), Pacers musim ini campuran menarik antara pemain muda...",
+          "fix": "Say: 'Roster 19 pemain musim ini: campuran muda dan berpengalaman.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Point guard lulusan Iowa State ini sudah lima tahun di liga, cukup lama untuk jadi anchor...",
+          "fix": "Vary: first 'Iowa State (5 tahun)', then 'New Mexico State product' or just 'senior forward Pascal Siakam'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "di seluruh roster. Guard lulusan Arizona dengan satu dekade di liga, di atas kertas, satu dari sedikit suara yang bisa bicara",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "veteran, Carlisle menghadapi tantangan berbeda dari musim-musim sebelumnya: membangun tim, bukan mengejar juara.\n\n---\n\n## Performa",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3d2ca63b2c09f602",
+    "published_at": "2026-04-28T10:30:42+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

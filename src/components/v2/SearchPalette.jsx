@@ -2,6 +2,9 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../lib/AppContext.jsx';
 import { Icon, Crest } from './index.js';
+import { CLUBS } from '../../lib/sports/epl/clubs.js';
+import { TEAMS_2026 as F1_TEAMS, DRIVERS_2026 } from '../../lib/sports/f1/constants.js';
+import { TENNIS_STARS_BY_SLUG } from '../../lib/sports/tennis/constants.js';
 
 /**
  * Search ⌘K palette — C3 spec (Part 4.1).
@@ -27,19 +30,37 @@ import { Icon, Crest } from './index.js';
  * across live matches ships in a later phase.
  */
 
-const TRENDING = [
-  { kind: 'LEAGUE', title: 'NBA Playoffs 2026',       sub: 'Bracket · Round 1',        meta: 'LIVE',        path: '/nba-playoff-2026',                iconSport: 'NBA' },
-  { kind: 'LEAGUE', title: 'Premier League 2025-26',  sub: '20 clubs · Matchweek 34',  meta: 'LIVE',        path: '/premier-league-2025-26',          iconSport: 'Football' },
-  { kind: 'LEAGUE', title: 'Formula 1 2026',          sub: '23 GP calendar',           meta: 'LIVE',        path: '/formula-1-2026',                  iconSport: 'F1' },
-  { kind: 'LEAGUE', title: 'Tennis 2026',             sub: 'ATP · WTA',                meta: 'LIVE',        path: '/tennis',                          iconSport: 'Tennis' },
-  { kind: 'LEAGUE', title: 'FIFA World Cup 2026',     sub: 'Jun 11 – Jul 19',          meta: 'SOON',        path: '/fifa-world-cup-2026',             iconSport: 'WorldCup' },
-  { kind: 'PAGE',   title: 'Catatan Playoff',         sub: 'Daily recap',              meta: 'FEATURE',     path: '/recap' },
-  { kind: 'PAGE',   title: 'Glossary',                sub: 'Istilah basket + bola',    meta: 'FEATURE',     path: '/glossary' },
-];
+// v0.11.26 NEW (audit) — Trending list localized for BI / EN. The
+// LEAGUE titles stay as their canonical brand names ("NBA Playoffs",
+// "Premier League"); the `sub` lines and the LIVE/SOON/FEATURE chips
+// translate. Tennis 2026 stays "Tennis" in EN and "Tenis" in BI per the
+// existing nav vocab.
+const TRENDING_BY_LANG = {
+  en: [
+    { kind: 'LEAGUE', title: 'NBA Playoffs 2026',       sub: 'Bracket · Round 1',        meta: 'LIVE',        path: '/nba-playoff-2026',                iconSport: 'NBA' },
+    { kind: 'LEAGUE', title: 'Premier League 2025-26',  sub: '20 clubs · Matchweek 34',  meta: 'LIVE',        path: '/premier-league-2025-26',          iconSport: 'Football' },
+    { kind: 'LEAGUE', title: 'Formula 1 2026',          sub: '23 GP calendar',           meta: 'LIVE',        path: '/formula-1-2026',                  iconSport: 'F1' },
+    { kind: 'LEAGUE', title: 'Tennis 2026',             sub: 'ATP · WTA',                meta: 'LIVE',        path: '/tennis',                          iconSport: 'Tennis' },
+    { kind: 'LEAGUE', title: 'FIFA World Cup 2026',     sub: 'Jun 11 – Jul 19',          meta: 'SOON',        path: '/fifa-world-cup-2026',             iconSport: 'WorldCup' },
+    { kind: 'PAGE',   title: 'Playoff Recap',           sub: 'Daily recap',              meta: 'FEATURE',     path: '/recap' },
+    { kind: 'PAGE',   title: 'Glossary',                sub: 'Basketball + football terms', meta: 'FEATURE',  path: '/glossary' },
+  ],
+  id: [
+    { kind: 'LEAGUE', title: 'NBA Playoffs 2026',       sub: 'Bracket · Ronde 1',        meta: 'LIVE',        path: '/nba-playoff-2026',                iconSport: 'NBA' },
+    { kind: 'LEAGUE', title: 'Liga Inggris 2025-26',    sub: '20 klub · Pekan ke-34',    meta: 'LIVE',        path: '/premier-league-2025-26',          iconSport: 'Football' },
+    { kind: 'LEAGUE', title: 'Formula 1 2026',          sub: 'Kalender 23 GP',           meta: 'LIVE',        path: '/formula-1-2026',                  iconSport: 'F1' },
+    { kind: 'LEAGUE', title: 'Tenis 2026',              sub: 'ATP · WTA',                meta: 'LIVE',        path: '/tennis',                          iconSport: 'Tennis' },
+    { kind: 'LEAGUE', title: 'Piala Dunia FIFA 2026',   sub: '11 Jun – 19 Jul',          meta: 'SOON',        path: '/fifa-world-cup-2026',             iconSport: 'WorldCup' },
+    { kind: 'PAGE',   title: 'Catatan Playoff',         sub: 'Recap harian',             meta: 'FEATURE',     path: '/recap' },
+    { kind: 'PAGE',   title: 'Glosarium',               sub: 'Istilah basket + bola',    meta: 'FEATURE',     path: '/glossary' },
+  ],
+};
 
 function buildCatalogue() {
-  // Imported lazily so the palette chunk stays independent and doesn't
-  // inflate the top-level bundle.
+  // v0.11.22 GIB-006 — catalogue expanded from NBA-only to all four
+  // sport hubs (NBA + EPL + F1 + Tennis). Phase 3 spec promised
+  // "20 EPL clubs, top F1 drivers + constructors, top tennis
+  // tournaments, NBA teams" — we were shipping NBA only. Now full.
   const list = [];
 
   // NBA teams — every abbr maps to a per-team SEO page
@@ -69,6 +90,58 @@ function buildCatalogue() {
       path: `/nba-playoff-2026/${slug}`,
     });
   }
+
+  // EPL clubs — pulled from the canonical clubs.js so the list stays
+  // in sync with the sport-specific dashboards. Per-club SEO page is
+  // /premier-league-2025-26/club/{slug}.
+  for (const c of CLUBS) {
+    list.push({
+      kind: 'TEAM',
+      title: c.name,
+      sub: 'Premier League',
+      short: c.polyAbbr ? c.polyAbbr.toUpperCase() : c.name.slice(0, 3).toUpperCase(),
+      color: c.accent,
+      path: `/premier-league-2025-26/club/${c.slug}`,
+    });
+  }
+
+  // F1 constructors + drivers — both kinds promote into Player / Team
+  // result groups. Driver path uses the per-driver SEO page.
+  for (const t of F1_TEAMS) {
+    list.push({
+      kind: 'TEAM',
+      title: t.name,
+      sub: 'Formula 1 · Constructor',
+      short: (t.short || t.name).slice(0, 3).toUpperCase(),
+      color: t.accent,
+      path: `/formula-1-2026/team/${t.slug}`,
+    });
+  }
+  for (const d of DRIVERS_2026) {
+    list.push({
+      kind: 'PLAYER',
+      title: d.name,
+      sub: 'F1 · Driver',
+      short: d.code,
+      color: undefined,
+      path: `/formula-1-2026/driver/${d.slug}`,
+    });
+  }
+
+  // Tennis stars — links land on /tennis with player param so the
+  // hub's picker reflects on arrival (per v0.11.8 useQueryParamSync).
+  for (const slug of Object.keys(TENNIS_STARS_BY_SLUG)) {
+    const p = TENNIS_STARS_BY_SLUG[slug];
+    list.push({
+      kind: 'PLAYER',
+      title: p.name,
+      sub: `${p.tour?.toUpperCase() || 'Tennis'}${p.ccode ? ` · ${p.ccode}` : ''}`,
+      short: p.ccode || (p.short || '').slice(0, 3).toUpperCase(),
+      color: p.accent,
+      path: `/tennis?player=${slug}`,
+    });
+  }
+
   return list;
 }
 
@@ -83,18 +156,61 @@ function classifyRow(row) {
   return <Icon name="Bookmark" size={14} color="var(--ink-3)" />;
 }
 
-function filterRows(rows, q) {
+// v0.11.26 NEW-7 — score-based ranking. Audit found "VER" returned 27
+// noisy substring matches (Denver Nuggets, Everton, Liverpool,
+// Wolverhampton, all 22 F1 drivers) with Verstappen lurking mid-list.
+// Now: exact short-code match → 1.0, title-prefix → 0.7, token-prefix
+// → 0.5, substring → 0.25. Stable-sort, slice top 8 by default.
+function scoreRow(r, needle) {
+  const title = (r.title || '').toLowerCase();
+  const sub = (r.sub || '').toLowerCase();
+  const short = (r.short || '').toLowerCase();
+  // 1.0 — exact short-code match (e.g. "VER" → Verstappen, "LAL" → Lakers)
+  if (short && short === needle) return 1.0;
+  // 0.85 — short-code prefix (handles 2-letter typing toward a 3-letter code)
+  if (short && short.startsWith(needle)) return 0.85;
+  // 0.7 — title starts with the query (e.g. "Liver" → Liverpool first)
+  if (title.startsWith(needle)) return 0.7;
+  // 0.5 — any token in the title starts with the query
+  //       (e.g. "Cup" matches "World Cup", "FIFA Cup" but not "buyback")
+  const tokens = title.split(/\s+/);
+  for (const tok of tokens) {
+    if (tok.startsWith(needle)) return 0.5;
+  }
+  // 0.4 — title contains the query as a substring (broad)
+  if (title.includes(needle)) return 0.4;
+  // 0.3 — sub line starts with the query
+  if (sub.startsWith(needle)) return 0.3;
+  // 0.25 — sub line contains the query
+  if (sub.includes(needle)) return 0.25;
+  return 0;
+}
+
+function filterRows(rows, q, lang = 'en') {
   if (!q) return [];
   const needle = q.trim().toLowerCase();
   if (needle.length === 0) return [];
-  return rows.filter((r) => {
-    return (r.title || '').toLowerCase().includes(needle) ||
-           (r.sub || '').toLowerCase().includes(needle);
-  });
+  // Filter + score in one pass; preserve original order as tie-breaker.
+  const scored = [];
+  for (let i = 0; i < rows.length; i++) {
+    const r = rows[i];
+    const s = scoreRow(r, needle);
+    if (s > 0) scored.push({ r, s, i });
+  }
+  // Stable sort by score desc, then original index asc.
+  scored.sort((a, b) => (b.s - a.s) || (a.i - b.i));
+  return scored.map((x) => x.r);
 }
 
 function groupByKind(rows) {
-  const order = ['TEAM', 'MATCH', 'PLAYER', 'LEAGUE', 'PAGE'];
+  // v0.11.26 NEW-7 — preserve the score-ranked order from filterRows().
+  // Previously a fixed kind-priority array (TEAM > PLAYER > LEAGUE >
+  // PAGE) collapsed every search result into kind buckets in that
+  // order, so a high-scored PLAYER (Verstappen, 1.0 from exact short-
+  // code match on "VER") was buried below low-scored TEAM substring
+  // hits (Denver / Everton / Liverpool / Wolverhampton at 0.4 each).
+  // Now the input order — which is the score-ranked order — is
+  // preserved; groups appear in the order their best member appeared.
   const labels = {
     TEAM: 'Teams',
     MATCH: 'Matches',
@@ -102,13 +218,16 @@ function groupByKind(rows) {
     LEAGUE: 'Leagues',
     PAGE: 'Pages',
   };
+  const groupOrder = []; // first-seen order of kinds
   const buckets = {};
   for (const r of rows) {
-    (buckets[r.kind] = buckets[r.kind] || []).push(r);
+    if (!buckets[r.kind]) {
+      buckets[r.kind] = [];
+      groupOrder.push(r.kind);
+    }
+    buckets[r.kind].push(r);
   }
-  return order
-    .filter((k) => buckets[k]?.length)
-    .map((k) => ({ kind: k, label: labels[k], rows: buckets[k] }));
+  return groupOrder.map((k) => ({ kind: k, label: labels[k] || k, rows: buckets[k] }));
 }
 
 export default function SearchPalette({ onClose }) {
@@ -118,11 +237,17 @@ export default function SearchPalette({ onClose }) {
   const [q, setQ] = useState('');
   const [activeIdx, setActiveIdx] = useState(0);
 
-  const catalogue = useMemo(() => [...TRENDING, ...buildCatalogue()], []);
+  // v0.11.26 — TRENDING + buildCatalogue depend on lang for the
+  // localized strings introduced by the audit. Re-memo on lang flip.
+  const trending = useMemo(() => TRENDING_BY_LANG[lang] || TRENDING_BY_LANG.en, [lang]);
+  const catalogue = useMemo(() => [...trending, ...buildCatalogue()], [trending]);
   const results = useMemo(() => {
-    const base = q ? filterRows(catalogue, q) : TRENDING;
-    return base.slice(0, 30);
-  }, [catalogue, q]);
+    // v0.11.26 NEW-7 — when there is an active query, slice 8 (audit's
+    // recommended cap to avoid choice paralysis on noisy matches like
+    // "VER"). Trending list keeps the full 7-row default.
+    const base = q ? filterRows(catalogue, q, lang) : trending;
+    return base.slice(0, q ? 8 : 30);
+  }, [catalogue, q, trending, lang]);
   const groups = useMemo(() => (q ? groupByKind(results) : [{ kind: 'TRENDING', label: lang === 'id' ? 'Sedang populer' : 'Trending now', rows: results }]), [q, results, lang]);
 
   // Flatten for keyboard index
@@ -272,6 +397,28 @@ export default function SearchPalette({ onClose }) {
 
         {/* Results */}
         <div style={{ flex: 1, overflowY: 'auto' }}>
+          {/* v0.11.22 GIB-022 — empty-state hint banner. Shown above
+              Trending when the query box is empty so users see "what
+              can I search for?" at a glance. The audit's Diandra
+              persona never gets to "LAL" because the modal opened
+              looked sparse. This row makes the affordance explicit. */}
+          {!q && (
+            <div
+              style={{
+                padding: '10px 16px',
+                borderBottom: '1px solid var(--line-soft)',
+                fontSize: 11,
+                color: 'var(--ink-3)',
+                lineHeight: 1.5,
+              }}
+            >
+              <span style={{ fontWeight: 600, color: 'var(--ink-2)' }}>
+                {lang === 'id' ? 'Coba: ' : 'Try: '}
+              </span>
+              <span>Lakers · OKC · Arsenal · Verstappen · Alcaraz · Sinner</span>
+            </div>
+          )}
+
           {flatRows.length === 0 && q && (
             <div
               style={{

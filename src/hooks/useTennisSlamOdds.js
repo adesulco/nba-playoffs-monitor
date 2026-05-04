@@ -1,6 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import { fetchPolymarketEventOdds } from '../lib/api.js';
 import { TENNIS_STARS_BY_SLUG } from '../lib/sports/tennis/constants.js';
+import { readCache, writeCache } from '../lib/swrCache.js';
+
+// v0.11.15 SWR. Slam odds move on real events (draws, live matches);
+// 15 min is a good floor for "stale but still tells a story."
+function cacheKey(slug) { return `tennis-slam-odds-${slug}`; }
+const CACHE_TTL = 15 * 60 * 1000;
 
 /**
  * Grand Slam winner odds — live from Polymarket Gamma API.
@@ -50,10 +56,13 @@ function validateName(name) {
 }
 
 export function useTennisSlamOdds(slamSlug, { refreshMs = 60000 } = {}) {
-  const [odds, setOdds] = useState([]);
-  const [volume, setVolume] = useState(0);
-  const [volume24h, setVolume24h] = useState(0);
-  const [loading, setLoading] = useState(true);
+  // v0.11.15 — SWR hydrate keyed by slam slug so /tennis with
+  // ?player=alcaraz and the global hub share the same snapshot.
+  const cached = slamSlug ? readCache(cacheKey(slamSlug), { ttlMs: CACHE_TTL }) : null;
+  const [odds, setOdds] = useState(cached?.odds ?? []);
+  const [volume, setVolume] = useState(cached?.volume ?? 0);
+  const [volume24h, setVolume24h] = useState(cached?.volume24h ?? 0);
+  const [loading, setLoading] = useState(!cached);
   const [error, setError] = useState(null);
   const prevPctRef = useRef({});
 
@@ -81,6 +90,11 @@ export function useTennisSlamOdds(slamSlug, { refreshMs = 60000 } = {}) {
         setOdds(enriched);
         setVolume(res.volume);
         setVolume24h(res.volume24h);
+        writeCache(cacheKey(slamSlug), {
+          odds: enriched,
+          volume: res.volume,
+          volume24h: res.volume24h,
+        });
         setError(null);
       } catch (e) {
         if (!cancelled) setError(String(e?.message || e));

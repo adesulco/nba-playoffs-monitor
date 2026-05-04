@@ -1,0 +1,78 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-jaylen-brown",
+  "title": "Profil Jaylen Brown: Guard Boston Celtics",
+  "description": "Profil pemain NBA Jaylen Brown, Guard Boston Celtics. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Jaylen Brown: Guard Boston Celtics yang Masuk Top 5 Scoring NBA Musim Ini\n\nJaylen Brown, guard Boston Celtics kelahiran Marietta, Georgia, sedang menjalani musim 2025-26 yang solid. Per 28 April 2026, Brown mencatat 28,7 PPG, peringkat 4 NBA dalam scoring. Pemain berpostur 6'6\" dan 223 lbs ini memakai jersey #7 untuk BOS, sudah sembilan musim di liga sejak debut 2016.\n\n---\n\n## Identitas\n\nBrown lahir di Marietta, Georgia, dan kini berusia 29 tahun. Secara fisik, dia tipikal wing modern NBA: 6'6\", 223 lbs, cukup besar untuk menahan power forward kecil, cukup lincah untuk match-up lawan guard. Posisinya resmi tercatat sebagai Guard, tapi angka di lapangan bicara lebih luas dari itu.\n\nSebelum masuk NBA, Brown bermain di University of California. Dia masuk draft 2016, dipilih Boston Celtics di ronde pertama, pick ke-3 secara keseluruhan. Untuk konteks: pick 3 bukan sekadar lottery, itu pilihan top-3 dari seluruh draft. Brown sudah memikul ekspektasi tinggi sejak sebelum satu pun laga NBA dia mainkan.\n\nMusim 2025-26 adalah musim ke-9-nya di liga. Pengalaman sembilan tahun di NBA artinya dia melewati fase rookie, fase breakout, fase membuktikan diri. Sekarang Brown ada di usia puncak sebagai pemain.\n\n---\n\n## Boston Celtics\n\nBrown bermain untuk Boston Celtics, salah satu franchise paling ikonik di NBA. Di BOS, dia bukan pemain pinggiran, angka 28,7 PPG bicara sendiri. Tidak ada starter biasa yang cetak hampir 29 poin per malam. Itu angka primary scorer, pemain yang bolanya datang di saat tim butuh angka.\n\nPosisinya sebagai Guard di Celtics memberinya ruang untuk bergerak, on-ball, off-ball, drive ke ring, atau pull-up jumper dari mid-range. Postur 6'6\" jadi keuntungan di sisi itu: kebanyakan guard tidak bisa menutupnya satu lawan satu, kebanyakan forward terlalu lambat untuk mengikuti gerakannya.\n\n---\n\n## Performa Musim Ini\n\nIni bagian yang menarik dari profil Brown musim 2025-26.\n\n**28,7 PPG, ranking 4 NBA.** Masuk top 5 scoring di liga bukan hal kecil. Artinya dari ratusan pemain yang aktif musim ini, cuma tiga orang yang cetak lebih banyak poin per malam dibanding Brown. Itu menempatkannya di kelompok elite scorer, bukan hanya \"bagus untuk standardnya\", tapi bagus secara absolut dibanding siapapun di liga.\n\nYang lebih menarik: **6,9 RPG dan 5,1 APG.** Angka ini yang mengubah narasi dari \"scorer prolific\" menjadi sesuatu yang lebih kompleks. Hampir 7 rebound per malam dari seorang Guard adalah angka yang menonjol, liga-wide rank-nya di 31st untuk RPG, tapi konteksnya penting: mayoritas pemain dengan RPG lebih tinggi bermain sebagai big man atau forward bertubuh lebih besar. Brown melakukan ini dari posisi Guard.\n\nLima assist per malam (5,1 APG, rank 34th liga) juga bukan angka pure scorer. Scorer yang tidak bisa playmake biasanya ada di kisaran dua atau tiga assist. Lima assist masuk wilayah wing yang bisa baca permainan dan distribusi bola, two-way contributor yang tidak menghilang saat dia tidak memegang bola.\n\nFG% 47,7% (rank 62nd) adalah angka tengah yang wajar untuk high-volume scorer. Guard yang cetak 28,7 PPG sudah pasti shoot banyak, menjaga efisiensi di hampir 48% dengan volume sebesar itu adalah trade-off yang bisa diterima.\n\nSecara keseluruhan, profil statistik Brown musim ini adalah kombinasi yang tidak terlalu sering terlihat: top-5 scorer liga yang juga rebound dan assist di atas rata-rata untuk posisinya. Bukan small forward klasik, bukan point guard klasik, sesuatu di antaranya yang lebih sulit dimatikan.\n\n---\n\n## Outlook\n\nSembilan musim di NBA, usia 29 tahun, dan musim terbaik secara scoring ada di depan mata, atau setidaknya sedang berlangsung. Brown per 28 April 2026 ada di titik di mana pengalaman dan fisik masih berjalan beriringan. Draft pick ke-3 dari 2016 yang dipilih Boston sudah lama melewati fase pembuktian.\n\nAngka musim ini berbicara untuk dirinya sendiri: 28,7 poin, hampir 7 rebound, lebih dari 5 assist. Brown bukan hanya pemain penting untuk Celtics, dia sedang bermain seperti salah satu pemain terbaik di liga musim ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "3917376",
+    "athlete_name": "Jaylen Brown",
+    "team_name": "Boston Celtics",
+    "team_abbr": "BOS",
+    "position": "Guard",
+    "jersey": "7",
+    "age": 29,
+    "birthplace": "Marietta, GA",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.046019,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fails due to three high-severity training-inference violations (age, college full name, draft context details not in input block). Additionally, multiple instances of filler signposting and narrative framing that should be cut. Article reads slightly over-explained for a stat-heavy profile.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Brown lahir di Marietta, Georgia, dan kini berusia 29 tahun.",
+          "fix": "Remove age/birthplace or source from input data verification."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum masuk NBA, Brown bermain di University of California.",
+          "fix": "Use only 'California' as provided; don't expand to 'University of California'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "dipilih Boston Celtics di ronde pertama, pick ke-3 secara keseluruhan.",
+          "fix": "Input says 'Rd 1, Pk 3' — cite only what's explicitly in input, no context about draft significance."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Posisi Guard di Celtics memberinya ruang untuk bergerak, on-ball, off-ball, drive ke ring",
+          "fix": "Rephrase: 'Sebagai Guard, Brown bisa gerak on-ball, off-ball, drive, atau pull-up dari mid-range.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Ini bagian yang menarik dari profil Brown musim 2025-26.",
+          "fix": "Delete the sentence entirely; jump straight to '28,7 PPG, ranking 4 NBA.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Artinya dari ratusan pemain yang aktif musim ini, cuma tiga orang yang cetak lebih banyak poin",
+          "fix": "Replace with: 'Hanya tiga pemain cetak lebih banyak poin per malam.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Angka ini yang mengubah narasi dari 'scorer prolific' menjadi sesuatu yang lebih kompleks.",
+          "fix": "Delete framing; lead with: 'Rebound dan assist Brown menunjukkan dia bukan pure scorer.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3f568f091d0de6ba",
+    "published_at": "2026-04-28T12:02:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

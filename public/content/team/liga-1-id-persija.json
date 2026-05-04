@@ -1,0 +1,131 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-persija",
+  "title": "Profil Persija: Liga 1 (2025-26)",
+  "description": "Profil Persija — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Persija Jakarta: Macan Kemayoran di Jalur Tiga Besar Liga 1\n\nPersija Jakarta adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia (Liga 1). Kandang mereka Stadion Patriot di Bekasi berkapasitas 30.000 penonton. Per 28 April 2026, Persija menempati peringkat 3 klasemen Liga 1 2025-26 dengan 62 poin dari 30 laga, mencatat rekor 19 menang, 5 seri, 6 kalah, dan selisih gol +30.\n\n---\n\n## Identitas Klub\n\nPersija Jakarta, singkatan dari Persatuan Sepak Bola Indonesia Jakarta, adalah salah satu klub tertua di Indonesia, berdiri sejak 1928. Basis massa mereka, The Jakmania, dikenal sebagai salah satu kelompok suporter terbesar dan paling vokal di Indonesia.\n\nMusim 2025-26 Persija bermarkas di Stadion Patriot, Bekasi, dengan kapasitas 30.000 penonton. Menggunakan stadion di luar batas administratif Jakarta bukan hal baru bagi Macan Kemayoran, keterbatasan infrastruktur stadion di ibu kota memang sudah lama jadi tantangan tersendiri.\n\n---\n\n## Performa Musim Ini\n\n30 laga, 19 menang, 5 seri, 6 kalah. Angka itu menempatkan Persija sebagai salah satu tim paling konsisten di Liga 1 musim ini, meski bukan yang terbaik.\n\nYang paling menonjol dari data Persija musim ini adalah efisiensi di kedua sisi lapangan. Rata-rata 1,9 gol per laga menunjukkan serangan yang produktif dan tidak bergantung pada satu momen keberuntungan. Di sisi pertahanan, kebobolan rata-rata 0,9 gol per laga, artinya Persija lebih sering tutup laga dengan gawang lebih bersih ketimbang kebobolan. 12 clean sheet dari 30 laga mengonfirmasi itu.\n\nSatu catatan menarik: Persija hanya gagal mencetak gol di 4 laga sepanjang musim. Masalah bukan di kreasi peluang.\n\nForm delapan laga terakhir WDDLWWDW menggambarkan tim yang stabil tapi belum sempurna. Dua seri beruntun di tengah run itu mungkin yang membuat jarak ke posisi dua sulit dipangkas lebih jauh.\n\nRekam jejak kandang dan tandang memberi gambaran yang lebih jelas soal karakter tim ini. Di Stadion Patriot, Persija hampir tak tersentuh: 10 menang, 4 seri, 1 kalah. Namun di laga tandang, peta berubah, 9 menang tapi 5 kekalahan. Lima kekalahan tandang itu, dibanding satu kekalahan kandang, menunjukkan di mana Persija masih punya ruang untuk tumbuh.\n\n---\n\n## Posisi di Klasemen\n\n62 poin dari 30 laga menempatkan Persija di peringkat 3 Liga 1 2025-26. Selisih gol +30 menunjukkan tim yang bermain untuk menang, bukan sekadar aman.\n\nPosisi tiga besar di Liga 1 secara historis membawa konsekuensi berbeda tergantung format kompetisi musim berjalan, apakah ada playoff, slot AFC, atau format lain yang berlaku. Data per 28 April 2026 tidak mencantumkan status khusus untuk posisi ketiga, artinya perlombaan di bagian atas klasemen kemungkinan masih berjalan.\n\nYang jelas, 62 poin dari 30 laga bukan angka pertengahan tabel. Persija ada di percakapan papan atas, bukan sekadar meramaikan.\n\n---\n\n## Outlook\n\nDengan form WDDLWWDW dan keunggulan pertahanan yang konsisten, Persija menutup bulan April 2026 sebagai kontender serius. Kekuatan kandang mereka di Stadion Patriot, hampir tak terkalahkan, jadi fondasi yang solid. Tantangan sesungguhnya ada di tandang, di mana lima kekalahan musim ini terjadi.\n\nSisa musim akan menentukan seberapa jauh 62 poin ini bisa membawa Macan Kemayoran. Selisih gol +30 memberi sinyal bahwa kalau konsistensi tandang bisa diperbaiki, Persija punya kualitas untuk lebih dari sekadar finis tiga besar.\n\n*Data dalam artikel ini mencerminkan posisi dan statistik Persija Jakarta per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "10134",
+    "team_name": "Persija",
+    "team_country": "Indonesia",
+    "team_founded": null,
+    "venue_name": "Stadion Patriot",
+    "venue_city": "Bekasi",
+    "venue_capacity": 30000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022659,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on three training-data inference violations (founding year, supporter group, stadium history not in input block) and weak analytical claims. Rewrite to stick strictly to input data and sharpen vague hedging throughout.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Persija Jakarta, singkatan dari Persatuan Sepak Bola Indonesia Jakarta, adalah salah satu klub tertua di Indonesia, berdiri sejak 1928.",
+          "fix": "Remove founding history. Start with: 'Persija Jakarta berkompetisi di Liga 1 musim 2025-26.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Basis massa mereka, The Jakmania, dikenal sebagai salah satu kelompok suporter terbesar dan paling vokal di Indonesia.",
+          "fix": "Remove. Not grounded in input block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Menggunakan stadion di luar batas administratif Jakarta bukan hal baru bagi Macan Kemayoran, keterbatasan infrastruktur stadion di ibu kota memang sudah lama jadi tantangan tersendiri.",
+          "fix": "Remove historical context. Stick to: 'Persija bermain di Stadion Patriot, Bekasi.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "30 laga, 19 menang, 5 seri, 6 kalah. Angka itu menempatkan Persija sebagai salah satu tim paling konsisten",
+          "fix": "Be specific: compare win% to other top-3 clubs or cite actual consistency metric."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang paling menonjol dari data Persija musim ini adalah efisiensi di kedua sisi lapangan.",
+          "fix": "Start with claim: 'Efisiensi kedua sisi lapangan jadi kunci.' Drop 'yang paling menonjol.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Data per 28 April 2026 tidak mencantumkan status khusus untuk posisi ketiga, artinya perlombaan di bagian atas klasemen kemungkinan masih berjalan.",
+          "fix": "Delete entire sentence. Just state: '62 poin menempatkan Persija di papan atas Liga 1.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Sisa musim akan menentukan seberapa jauh 62 poin ini bisa membawa Macan Kemayoran.",
+          "fix": "Cut. Replace with specific: 'Enam laga sisa bisa ubah proyeksi Persija.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7efaaba241a3ce8a",
+    "published_at": "2026-04-28T12:06:56+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 72,
+      "headline_comment": "Headline solid dan punya angle, tapi 'Profil Persija: Liga 1 (2025-26)' di slot title tag kontras dengan H1 yang lebih kuat — pastikan H1 ('Macan Kemayoran di Jalur Tiga Besar') yang dipakai.",
+      "lead_score": 75,
+      "lead_comment": "Lead padat fakta dan posisi klasemen jelas, tapi pembukaan 'adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia' terasa Wikipedia-style dan tidak menjual angle tiga besar.",
+      "structure_score": 82,
+      "structure_comment": "Empat section seimbang dan flow logis dari identitas → performa → klasemen → outlook; section 'Posisi di Klasemen' sedikit tipis dibanding 'Performa Musim Ini'.",
+      "voice_score": 80,
+      "voice_comment": "Voice umumnya natural Indonesian sport-writing, code-switching wajar (clean sheet, form), tapi ada beberapa kalimat yang terasa essay-style ('Masalah bukan di kreasi peluang.') dan satu paragraf hedge soal format kompetisi.",
+      "suggestion_count": 6,
+      "summary": "Solid B+ team profile with clean structure and mostly natural voice, but the lead opens too encyclopedically and one paragraph hedges visibly about competition format. Quick editor pass on lead + redundancy + that hedging paragraph gets this to ship-ready.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Posisi tiga besar di Liga 1 secara historis membawa konsekuensi berbeda tergantung format kompetisi musim berjalan, apakah ada playoff, slot AFC",
+          "issue": "Paragraf ini hedging eksplisit tentang ketidaktahuan format kompetisi — pembaca Liga 1 tahu formatnya, ini reads sebagai AI yang ragu.",
+          "fix": "Hapus seluruh paragraf itu dan ganti dengan kalimat konkret soal jarak poin ke peringkat 1 dan 2, atau soal sisa laga."
+        },
+        {
+          "priority": "high",
+          "snippet": "Persija Jakarta adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia (Liga 1).",
+          "issue": "Kalimat pembuka generic Wikipedia-style, tidak ada angle, dan 'Super League Indonesia (Liga 1)' redundant dengan input data 'Liga 1'.",
+          "fix": "Buka langsung dengan stakes: 'Persija Jakarta menutup April 2026 di peringkat 3 Liga 1 dengan 62 poin — jarak ke puncak masih dalam jangkauan.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Kandang mereka Stadion Patriot di Bekasi berkapasitas 30.000 penonton.",
+          "issue": "Fakta kapasitas 30.000 muncul di lead dan diulang persis di section 'Identitas Klub' — redundan.",
+          "fix": "Sebut kapasitas hanya sekali, di section Identitas Klub, dan di lead cukup 'bermarkas di Stadion Patriot, Bekasi'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Yang jelas, 62 poin dari 30 laga bukan angka pertengahan tabel. Persija ada di percakapan papan atas, bukan sekadar meramaikan.",
+          "issue": "Section 'Posisi di Klasemen' tidak tambah info baru — angka 62 poin sudah disebut di lead dan section sebelumnya, tanpa pembanding ke peringkat 1, 2, atau 4.",
+          "fix": "Tambah konteks pembanding poin/jarak ke tim di sekitarnya, atau gabung section ini ke 'Performa Musim Ini' kalau data klasemen kompetitor tidak tersedia."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Dengan form WDDLWWDW dan keunggulan pertahanan yang konsisten, Persija menutup bulan April 2026",
+          "issue": "Notasi WDDLWWDW di body copy outlook reads sebagai data dump, bukan prosa — pembaca harus decode ulang.",
+          "fix": "Ganti jadi kalimat natural: 'Dengan empat menang dan dua seri di delapan laga terakhir...'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Masalah bukan di kreasi peluang.",
+          "issue": "Kalimat punchy yang bagus secara voice, tapi tidak ada follow-up — pembaca menanti 'lalu masalahnya di mana?' yang tidak pernah dijawab.",
+          "fix": "Tambah satu kalimat lanjutan, mis. 'Yang perlu dijaga justru konsistensi konversi di laga tandang.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

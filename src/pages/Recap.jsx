@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDailyRecap } from '../hooks/useDailyRecap.js';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
 import PlayerHead from '../components/PlayerHead.jsx';
 import ContactBar from '../components/ContactBar.jsx';
@@ -12,7 +11,8 @@ import Chip from '../components/Chip.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import { trackEvent } from '../lib/analytics.js';
 import ShareButton from '../components/ShareButton.jsx';
-import { buildNBAFinalShareText, buildNBAGameShareUrl, buildNBARecapPngUrl } from '../lib/share.js';
+import CopyLinkButton from '../components/CopyLinkButton.jsx';
+import { buildNBAFinalShareText, buildNBAGameShareUrl, buildNBARecapPngUrl, buildPerGameOgUrl, buildPerGameDeepLink } from '../lib/share.js';
 
 const byAbbr = (abbr) => Object.keys(TEAM_META).find((n) => TEAM_META[n]?.abbr === abbr);
 
@@ -206,21 +206,13 @@ function GameRecapCard({ game, summary, topPerformer, topByTeamMap, statEdges, d
     ? `${game.away?.abbr || ''} vs ${game.home?.abbr || ''} · Recap gibol.co`
     : `${game.away?.abbr || ''} vs ${game.home?.abbr || ''} · gibol.co recap`;
 
-  // v0.9.0 — dynamic IG Story PNG backed by /api/recap/[gameId]?v=story.
-  // TEAM_META is keyed by full team name; the share helper expects abbr-
-  // keyed { color } so we build a compact lookup inline. awayMeta/homeMeta
-  // above already pair with abbrs; plus the top scorer's team colour if it
-  // differs (rare — top is usually on one of the two playing teams but we
-  // hedge for completeness). Only the three possibly-referenced abbrs go
-  // in so we don't pay for a 30-team map on every render.
-  const abbrMeta = {};
-  if (game.away?.abbr) abbrMeta[game.away.abbr] = awayMeta;
-  if (game.home?.abbr) abbrMeta[game.home.abbr] = homeMeta;
-  const igStoryPngUrl = buildNBARecapPngUrl(game, topPerformer, abbrMeta, {
-    variant: 'story',
-    dateIso,
-    lang,
-  });
+  // v0.12.1 — switched to the new minimal-input helper. The endpoint
+  // (api/recap/[gameId].js, v0.12.0) fetches fresh ESPN data so we no
+  // longer need to URL-encode winner/loser/scores/top scorer. Legacy
+  // `buildNBARecapPngUrl` stays exported for any other caller.
+  const igStoryPngUrl = buildPerGameOgUrl(game.id, 'story');
+  const perGameOgUrl = buildPerGameOgUrl(game.id, 'og');
+  const perGameDeepLink = buildPerGameDeepLink(game.id, { sport: 'nba' });
   const accent = C.amber;
 
   const awayTop = topByTeamMap?.[game.away?.abbr];
@@ -288,17 +280,35 @@ function GameRecapCard({ game, summary, topPerformer, topByTeamMap, statEdges, d
               {(statEdges || []).map((e, i) => <StatEdgePill key={i} edge={e} lang={lang} />)}
             </div>
             {shareText && (
-              <ShareButton
-                url={shareUrl}
-                title={shareTitle}
-                text={shareText}
-                accent={winnerColor}
-                size="sm"
-                label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
-                analyticsEvent="recap_game_share"
-                igStory={igStoryPngUrl ? { pngUrl: igStoryPngUrl } : undefined}
-                dropDirection="up"
-              />
+              <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
+                {/* v0.11.23 GIB-024 — dedicated one-tap copy alongside the
+                    full Share popover. Most fans WhatsApp the URL — this
+                    saves them a popover open. */}
+                <CopyLinkButton
+                  url={perGameDeepLink || shareUrl}
+                  lang={lang}
+                  accent={winnerColor}
+                  size="sm"
+                  source="recap"
+                />
+                {/* v0.12.1 — share URL points at the new per-game canonical
+                    /nba-playoff-2026/game/:gameId (Theme J seedling). The
+                    daily /recap/:date URL is preserved as fallback. */}
+                <ShareButton
+                  url={perGameDeepLink || shareUrl}
+                  title={shareTitle}
+                  text={shareText}
+                  accent={winnerColor}
+                  size="sm"
+                  label={lang === 'id' ? 'BAGIKAN' : 'SHARE'}
+                  ariaLabel={lang === 'id'
+                    ? `Bagikan recap: ${shareTitle}`
+                    : `Share recap: ${shareTitle}`}
+                  analyticsEvent="recap_game_share"
+                  igStory={igStoryPngUrl ? { pngUrl: igStoryPngUrl } : undefined}
+                  dropDirection="up"
+                />
+              </div>
             )}
           </div>
         )}
@@ -562,16 +572,9 @@ export default function Recap() {
         jsonLd={newsArticleJsonLd}
       />
       <div className="dashboard-wrap">
-        <TopBar
-          showBackLink
-          title="gibol.co"
-          subtitle={lang === 'id' ? 'catatan playoff · recap harian' : 'playoff journal · daily recap'}
-        />
 
-        {/* Date masthead */}
-        <div style={{
-          padding: '22px 24px',
-          borderBottom: `1px solid ${C.line}`,
+        {/* Date masthead — v0.11.8 padding via shared .dashboard-hero class. */}
+        <div className="dashboard-hero dashboard-hero--bordered" style={{
           background: C.heroBg,
         }}>
           <div style={{ fontSize: 10, letterSpacing: 2, color: C.dim, fontWeight: 600, marginBottom: 6 }}>
@@ -728,8 +731,8 @@ export default function Recap() {
           />
         </div>
 
-        {/* Footer */}
-        <div style={{
+        {/* Footer — v0.11.20 GIB-014 <footer role="contentinfo"> */}
+        <footer role="contentinfo" style={{
           display: 'flex', justifyContent: 'space-between',
           padding: '14px 24px',
           borderTop: `1px solid ${C.line}`,
@@ -739,7 +742,7 @@ export default function Recap() {
           <div>gibol.co · {lang === 'id' ? 'catatan playoff harian' : 'daily playoff recap'}</div>
           <ContactBar lang={lang} variant="inline" />
           <div>ESPN · Polymarket</div>
-        </div>
+        </footer>
       </div>
     </div>
   );

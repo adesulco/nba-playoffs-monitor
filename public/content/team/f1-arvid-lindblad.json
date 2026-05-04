@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-arvid-lindblad",
+  "title": "Profil Arvid Lindblad: Pembalap F1 RB F1 Team (2026)",
+  "description": "Profil pembalap F1 Arvid Lindblad (Inggris) untuk tim RB F1 Team. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "# Arvid Lindblad: Rookie Termuda di Grid, Sedang Cari Ritme\n\nArvid Lindblad, kode FIA LIN (#41), pembalap Inggris kelahiran 8 Agustus 2007. Per 28 April 2026, Lindblad membalap untuk RB F1 Team di musim 2026, dan dengan usia 18 tahun, ia masuk sebagai salah satu rookie paling muda di grid saat ini. Setelah tiga balapan, Lindblad duduk di P11 klasemen dengan 4 poin.\n\n---\n\n## Identitas\n\nLahir 2007, Lindblad baru genap 18 tahun ketika musim 2026 bergulir. Kebangsaan Inggris, membalap dengan nomor permanen #41 dan kode FIA LIN. Tim saat ini adalah RB F1 Team, tim satelit Red Bull yang secara historis jadi batu loncatan pembalap muda menuju grid utama F1.\n\nSebagai pembalap dengan usia segitu di F1, ekspektasi publik terbagi dua: ada yang sabar menunggu kurva belajar, ada yang langsung bandingkan dengan rookie-rookie sebelumnya. Yang pasti, Lindblad belum punya ruang untuk santai.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, empat poin. Angka itu sederhana, tapi konteksnya penting dibaca dengan benar.\n\nSatu-satunya poin datang dari balapan pembuka di Australia, P8, finish di lapped position. Itu bukan hasil buruk untuk debut di sirkuit jalan raya yang penuh variabel. Empat poin di Grand Prix pertama, langsung masuk zona poin, cukup untuk membangun kepercayaan diri awal.\n\nTapi dua balapan berikutnya belum menunjukkan kelanjutan yang sama. China P12, Jepang P14, keduanya finis tanpa poin, keduanya lapped. Trennya berjalan ke arah yang salah kalau dilihat dari urutan kronologis: 8, 12, 14.\n\nEmpat poin dari tiga balapan menempatkan Lindblad di P11 klasemen konstruktor, bersaing di zona yang padat dengan pembalap lain yang juga sedang membangun momentum awal musim.\n\n---\n\n## Hasil Per Balapan\n\n**Australian Grand Prix, P8 (4 poin, Lapped)**\n\nDebut yang solid. P8 di Australia bukan hasil yang bisa diremehkan, apalagi untuk pembalap 18 tahun di balapan pertama kariernya di F1. Status lapped menunjukkan gap ke frontrunner masih ada, tapi finis di poin sudah jadi modal psikologis penting.\n\n**Chinese Grand Prix, P12 (0 poin, Lapped)**\n\nLangkah mundur. Dari P8 ke P12, tanpa poin, masih lapped. China adalah sirkuit dengan karakter berbeda dari Australia, lebih teknikal, penguasaan downforce dan strategi pit stop lebih krusial. Lindblad belum bisa mengulangi performa debutnya.\n\n**Japanese Grand Prix, P14 (0 poin, Finished)**\n\nSuzuka menjadi balapan tersulit dari tiga yang sudah dijalani. P14, tanpa poin. Status \"Finished\", bukan lapped seperti dua sebelumnya, tapi posisinya turun lagi. Suzuka dikenal sebagai sirkuit yang menuntut presisi tinggi dan kepercayaan penuh pada mobil, dua hal yang biasanya butuh lebih dari tiga race weekend untuk benar-benar dikuasai.\n\nPola tiga balapan pertama Lindblad membentuk kurva yang turun: debut oke, lalu dua balapan pencarian ritme. Bukan gambaran yang mengkhawatirkan untuk rookie, tapi juga bukan sinyal bahwa semuanya sudah klik.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Lindblad berada di P11 klasemen dengan 4 poin dari 3 balapan. Jarak ke zona poin konsisten masih terasa, tapi tiga balapan terlalu sedikit untuk menyimpulkan apapun soal potensi jangka panjang.\n\nYang menarik untuk diikuti: apakah performa Australia adalah baseline realistis yang bisa diulang, atau itu anomali debut yang sulit direplikasi? Dua balapan berikutnya akan mulai menjawab itu.\n\nUntuk pembalap 18 tahun di grid F1 penuh, kurva belajar memang tidak linear. Lindblad punya sisa musim yang panjang untuk membuktikan bahwa P8 di Australia bukan titik tertinggi yang datang terlalu cepat.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "arvid_lindblad",
+    "driver_name": "Arvid Lindblad",
+    "driver_code": "LIN",
+    "driver_number": "41",
+    "nationality": "British",
+    "current_team": "RB F1 Team",
+    "current_team_id": "rb",
+    "championship_pos": "11",
+    "championship_points": "4",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021853,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Fail: Critical date inference error (28 April vs. 3 Mei per input block). Multiple academic drift issues, overuse of hedging, and translated-English sentence structures throughout. Rewrite needed before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Lindblad membalap untuk RB F1 Team di musim 2026",
+          "fix": "Change all '28 April' references to '3 Mei 2026' per input data block."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "ekspektasi publik terbagi dua: ada yang sabar menunggu kurva belajar, ada yang langsung bandingkan",
+          "fix": "Simplify: 'Ada yang sabar tunggu kurva belajar, ada langsung bandingkan dengan rookie sebelumnya.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka itu sederhana, tapi konteksnya penting dibaca dengan benar.",
+          "fix": "Delete or rephrase: 'Tapi angka itu perlu konteks.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Tiga balapan, empat poin. Angka itu sederhana, tapi konteksnya penting dibaca dengan benar. Satu-satunya poin datang dari balapan pembuka di Australia",
+          "fix": "Merge directly: 'Tiga balapan, empat poin — semuanya dari Australia. China P12, Jepang P14, keduanya tanpa poin.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "keduanya finis tanpa poin, keduanya lapped",
+          "fix": "Change second 'keduanya' to 'sama-sama lapped' or restructure."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Pola tiga balapan pertama Lindblad membentuk kurva yang turun: debut oke, lalu dua balapan pencarian ritme. Bukan gambaran yang mengkhawatirkan untuk rookie, tapi juga bukan sinyal bahwa semuanya sudah klik.",
+          "fix": "Simplify to facts: 'Debut oke (P8), lalu turun ke P12 dan P14. Masih early, tapi trendnya keliru.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Jarak ke zona poin konsisten masih terasa, tapi tiga balapan terlalu sedikit untuk menyimpulkan apapun",
+          "fix": "Reframe: 'Tiga balapan terlalu sedikit. Pola baru akan jelas setelah Kanada.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Untuk pembalap 18 tahun di grid F1 penuh, kurva belajar memang tidak linear.",
+          "fix": "Delete qualifier, start: 'Kurva belajar rookie tidak linear.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x123167ea03a5c6b8",
+    "published_at": "2026-04-28T12:12:17+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

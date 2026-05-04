@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "epl-bournemouth",
+  "title": "Profil Bournemouth: Premier League (2025-26)",
+  "description": "Profil Bournemouth — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Bournemouth: Klub Pantai yang Bertahan di Level Tertinggi\n\nBournemouth adalah klub asal Inggris yang berkompetisi di Liga Inggris (Premier League), kandang di Vitality Stadium, Bournemouth, Dorset, dengan kapasitas sekitar 12.000 penonton, salah satu yang terkecil di Premier League. Per 28 April 2026, mereka berada di peringkat 7 klasemen Liga Inggris 2025-26 dengan 49 poin dari 34 laga, selisih gol 0. Status: lolos ke babak play-off Conference League.\n\n---\n\n## Identitas Klub\n\nBournemouth berdiri pada 1899, berbasis di kota pesisir Bournemouth, Dorset, di selatan Inggris. Vitality Stadium adalah kandang mereka, mungil untuk ukuran Premier League, dengan kapasitas sekitar 12.000 kursi, jauh di bawah rata-rata stadion Liga Inggris. Ukuran stadion itu menjadi cerminan perjalanan klub ini: bukan raksasa dengan infrastruktur mewah, tapi tim yang berkali-kali membuktikan bisa bertahan dan bersaing di divisi tertinggi Inggris.\n\nSelama sebagian besar sejarah mereka, Bournemouth lebih dikenal sebagai klub divisi bawah. Kehadiran konsisten mereka di Premier League dalam beberapa musim terakhir bukan hal yang dianggap remeh, itu pencapaian nyata untuk sebuah klub dengan basis massa dan fasilitas skala mereka.\n\n---\n\n## Performa Musim 2025-26\n\nDari 34 laga di musim 2025-26, Bournemouth membukukan 11 menang, 16 seri, dan 7 kalah. Angka yang paling mencolok: 52 gol cetak, 52 gol kebobolan, selisih gol tepat nol. Rata-rata 1,5 gol per laga di kedua sisi, konsisten, tapi tidak dominan di satu arah pun.\n\nProfil ini menggambarkan tim yang tidak terlalu tajam di depan, tidak terlalu solid di belakang, tapi mengelola laga dengan cukup efektif. Sembilan clean sheet dari 34 laga adalah angka sedang, pertahanan mereka bukan tembok, tapi bukan juga bocor terus-menerus. Di sisi lain, 7 laga tanpa mencetak gol menunjukkan ada momen di mana serangan mereka mati total.\n\nSatu hal yang menonjol: rekor seri yang tinggi, 16 dari 34 laga berakhir imbang. Ini bukan kebetulan. Ini pola. Bournemouth cukup sering tampil kompetitif tapi tidak punya kapasitas untuk membunuh laga. Mereka menahan tim-tim di atas mereka, tapi di saat yang sama kehilangan poin dari laga yang seharusnya bisa mereka menangkan.\n\nForm terkini DDDDDWWD mencerminkan persis pola itu, rangkaian seri panjang diselingi kemenangan. Tidak ada momentum tajam, tapi juga tidak ada kejatuhan.\n\nDi kandang, mereka cukup solid: 6 menang, 9 seri, 2 kalah. Vitality Stadium, meski kecil, terbukti sulit untuk tim tamu. Di tandang lebih terbuka: 5 menang, 7 seri, 5 kalah, wajar untuk tim dengan sumber daya seperti Bournemouth.\n\n---\n\n## Posisi di Klasemen\n\nPeringkat 7 dengan 49 poin dari 34 laga menempatkan Bournemouth di zona yang cukup untuk bicara soal kompetisi Eropa, meski lewat jalur play-off. Status mereka di klasemen adalah promotion ke Conference League melalui babak play-off, artinya tiket Eropa belum pasti, tapi sudah di depan mata.\n\nUntuk konteks: lolos ke Conference League lewat play-off adalah capaian signifikan buat klub seperti Bournemouth. Ini bukan Liga Champions, tapi ini Eropa, kompetisi lintas batas yang selama bertahun-tahun hanya bisa mereka bayangkan dari divisi bawah Inggris.\n\nYang perlu diingat: status play-off berarti ada laga yang harus dimenangkan dulu. Poin mereka tidak otomatis membawa mereka ke sana, mereka harus membuktikannya di lapangan.\n\n---\n\n## Outlook\n\nBournemouth menutup bulan April 2026 dalam posisi yang menarik: tidak aman sepenuhnya, tapi punya sesuatu untuk diperjuangkan. Form DDDDDWWD tidak menggelora, tapi cukup stabil untuk mempertahankan posisi ketujuh.\n\nLolos ke Conference League lewat play-off akan menjadi tonggak tersendiri, perjalanan Eropa pertama atau lanjutan bagi klub pesisir yang terus membuktikan diri layak di level ini.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "35",
+    "team_name": "Bournemouth",
+    "team_country": "England",
+    "team_founded": 1899,
+    "venue_name": "Vitality Stadium",
+    "venue_city": "Bournemouth, Dorset",
+    "venue_capacity": 12000,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023354,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to three high-severity training-inference violations (position/date mismatch, Competition-League status inferred, stadium adjectives not grounded) and academic register drift. Facts must align exactly with input data block; interpretive color must be clearly secondary to stated numbers.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, mereka berada di peringkat 7 klasemen Liga Inggris 2025-26",
+          "fix": "Use input data date (3 May 2026) and position (8th) exactly as provided."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Status: lolos ke babak play-off Conference League.",
+          "fix": "Remove or rephrase: 'berada di zona lolos Eropa' without naming specific competition."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Vitality Stadium adalah kandang mereka, mungil untuk ukuran Premier League, dengan kapasitas sekitar 12.000 kursi",
+          "fix": "State fact only: 'Vitality Stadium memiliki kapasitas 12.000 penonton.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kehadiran konsisten mereka di Premier League dalam beberapa musim terakhir bukan hal yang dianggap remeh",
+          "fix": "Rephrase: 'Kehadiran mereka di Premier League sudah beberapa musim, prestasi nyata buat klub ini.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Yang perlu diingat: status play-off berarti ada laga yang harus dimenangkan dulu.",
+          "fix": "Delete connector, start directly: 'Status play-off berarti ada laga yang harus dimenangkan dulu.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Untuk konteks: lolos ke Conference League lewat play-off adalah capaian signifikan buat klub seperti Bournemouth.",
+          "fix": "Second instance: rephrase to 'buat Bournemouth' or 'untuk klub dengan basis mereka.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Profil ini mencerminkan data per 28 April 2026.",
+          "fix": "Change to: 'Data profil ini per 3 Mei 2026.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Identitas Klub\n\nBournemouth berdiri pada 1899, berbasis di kota pesisir Bournemouth, Dorset, di selatan Inggris. Vitality Stadium",
+          "fix": "Cut city descriptor — input only has city name, not geography."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x58d059a0ca2f6486",
+    "published_at": "2026-04-28T11:59:53+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

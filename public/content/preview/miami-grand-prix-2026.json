@@ -1,0 +1,88 @@
+{
+  "type": "preview",
+  "slug": "miami-grand-prix-2026",
+  "title": "Preview Miami Grand Prix 2026 — Round 4",
+  "description": "Preview F1 2026 Miami Grand Prix di Miami International Autodrome, USA. Andrea Kimi Antonelli pimpin klasemen.",
+  "body_md": "# Miami Grand Prix, Round 4: Antonelli Kejar Tiga Kemenangan Beruntun\n\nRound 4 Miami Grand Prix berlangsung Senin 4 Mei 2026 dini hari jam 03.00 WIB di Miami International Autodrome. Andrea Kimi Antonelli datang dengan momentum terbaik di grid, dua kemenangan beruntun, 72 poin, dan Mercedes yang semakin nyaman di puncak klasemen Konstruktor. Miami jadi ujian: bisakah rookie Mercedes itu tutup flyaway opener dengan tiga dari tiga?\n\n## Situasi Klasemen\n\nMercedes menguasai musim 2026 sejauh ini. Antonelli memimpin dengan 72 poin, Russell mengikuti di P2 dengan 63, gap 9 poin sesama rekan setim. Tiga kemenangan Mercedes dari tiga race pertama bicara sendiri.\n\nFerrari di P3 dan P4 klasemen pembalap lewat Leclerc (49 poin) dan Hamilton (41 poin), tapi keduanya belum sekali pun naik podium teratas musim ini. Di Jepang, Leclerc finis P3, hasil terbaik Ferrari sejauh ini, tapi masih 23 poin di bawah Antonelli. Di Konstruktor, Ferrari P2 dengan 90 poin, tertinggal 45 dari Mercedes.\n\nMcLaren punya dua pembalap di top 6, Norris P5 (25 poin) dan Piastri P6 (21 poin). Piastri naik podium di Jepang (P2), sinyal McLaren mulai menemukan pace. Di Konstruktor mereka P3 dengan 46 poin, tapi jarak ke Ferrari masih jauh.\n\nYang paling mengejutkan: Verstappen ada di P9 klasemen dengan 12 poin. Red Bull sejajar Alpine di P5/P6 Konstruktor, sama-sama 16 poin. Untuk tim yang memenangkan Konstruktor empat tahun beruntun, ini bukan posisi yang nyaman.\n\n## Yang Jadi Cerita\n\nDua narasi besar masuk Miami.\n\nPertama, Antonelli. Pembalap 19 tahun itu menang di dua race pertama sebelum Russell merebut satu kemenangan, lalu Antonelli menang lagi di Jepang. Tiga kemenangan dari empat race akan menjadi pernyataan musim yang sulit dibantah. Tekanan ada di sana, tapi form-nya jelas mendukung.\n\nKedua, Verstappen dan Red Bull. Dua belas poin dari tiga race bukan cerminan tim juara dunia. Red Bull belum menang musim ini, dan Verstappen finis di luar top 8 di Jepang (berdasarkan data hasil Jepang, namanya tidak muncul di top 5). Miami jadi momen penting, apakah mereka mulai bangkit, atau gap ke Mercedes semakin sulit dikejar.\n\n## Yang Perlu Diperhatikan\n\n**Verstappen vs ekspektasi.** Dua belas poin di P9 bukan posisi Red Bull biasa. Weekend ini ukuran seberapa serius masalah mereka.\n\n**Duel internal Mercedes.** Antonelli unggul 9 poin atas Russell. Dalam tim yang sama, ketegangan klasemen bisa mulai terasa, terutama kalau race berakhir dengan keduanya berdekatan di grid.\n\n**Ferrari cari kemenangan pertama.** Leclerc dan Hamilton kompetitif tapi belum menang. Miami bisa jadi kesempatan, tapi selama Mercedes tetap dalam form ini, peluang itu sempit.\n\n---\n\nRace start Senin 4 Mei 2026 jam 03.00 WIB. Ini race terakhir leg flyaway pembuka sebelum kalender kembali ke Eropa, dan Antonelli punya kesempatan tutup paruh pertama awal musim dengan dominasi penuh.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "season": 2026,
+    "round": 4,
+    "race_name": "Miami Grand Prix",
+    "circuit": "Miami International Autodrome",
+    "country": "USA",
+    "kickoff_utc": "2026-05-03T20:00:00+00:00",
+    "championship_leader": "Andrea Kimi Antonelli",
+    "leader_points": 72.0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039871,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Fail: Multiple critical factual errors in driver/constructor points (Antonelli 72→75, Russell 63→68, Leclerc 49→55, Hamilton 41→43, Norris 25→33, Piastri 21→28, Ferrari 90→98, McLaren 46→61, Verstappen/Red Bull points wrong). These are hard data violations, not voice issues. Regenerate with input data block re-checked before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Antonelli memimpin dengan 72 poin, Russell mengikuti di P2 dengan 63",
+          "fix": "Correct to: Antonelli memimpin dengan 75 poin, Russell 68 poin."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Leclerc (49 poin) dan Hamilton (41 poin)",
+          "fix": "Correct to: Leclerc (55 poin) dan Hamilton (43 poin)."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Norris P5 (25 poin) dan Piastri P6 (21 poin)",
+          "fix": "Correct to: Norris P5 (33 poin) dan Piastri P6 (28 poin)."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ferrari P2 dengan 90 poin, tertinggal 45 dari Mercedes",
+          "fix": "Correct to: Ferrari P2 dengan 98 poin, tertinggal 45 dari Mercedes."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "McLaren punya dua pembalap di top 6...Di Konstruktor mereka P3 dengan 46 poin",
+          "fix": "Correct to: Di Konstruktor mereka P3 dengan 61 poin."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Verstappen ada di P9 klasemen dengan 12 poin. Red Bull...sama-sama 16 poin",
+          "fix": "Correct to: Verstappen P9 dengan 16 poin. Red Bull sejajar Alpine P5/P6 Konstruktor, masing-masing 14 dan 17 poin."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tiga kemenangan Mercedes dari tiga race pertama bicara sendiri.",
+          "fix": "Rewrite: Tiga kemenangan Mercedes dari tiga race pertama cukup jelas."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Verstappen finis di luar top 8 di Jepang (berdasarkan data hasil Jepang, namanya tidak muncul di top 5)",
+          "fix": "Delete the parenthetical. Just note: Red Bull belum menang musim ini, Verstappen turun performance."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Red Bull. Dua belas poin dari tiga race bukan cerminan tim juara dunia. Red Bull belum menang musim ini, dan Verstappen finis di",
+          "fix": "Remove the world-championship reference unless input data lists trophies/titles."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7ee36fee34bb5eca",
+    "published_at": "2026-04-27T16:51:51+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

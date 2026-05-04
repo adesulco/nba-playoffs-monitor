@@ -1,0 +1,135 @@
+{
+  "type": "team",
+  "slug": "nba-washington-wizards",
+  "title": "Profil Washington Wizards: Eastern Conference (2025-26)",
+  "description": "Profil Washington Wizards — franchise NBA dari Washington di division Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Washington Wizards: Musim yang Berat, tapi Fondasi Muda Mulai Terbentuk\n\nWashington Wizards adalah franchise NBA yang berkandang di Washington D.C. dan bersaing di Southeast Division, Eastern Conference. Per 28 April 2026, Wizards menutup musim reguler 2025-26 dengan rekor 17-65, catatan yang menempatkan mereka di seed 15 Eastern Conference dan posisi kelima di Southeast Division. Musim berat, tidak ada yang diperdebatkan. Tapi di balik angka itu, ada roster muda yang sedang mencari bentuk di bawah arahan pelatih kepala Brian Keefe.\n\n---\n\n## Identitas dan Posisi di Liga\n\nWizards musim ini adalah tim yang sedang dalam proses, kata halus untuk situasi yang memang sulit. Seed 15 dari 15 tim di Eastern Conference, finis di bawah semua rival divisi. Brian Keefe mengambil tantangan melatih roster dengan campuran unik: satu veteran berumur 13 tahun karir, beberapa pemain dengan pengalaman dua hingga empat tahun, dan sekelompok rookie atau sophomore yang baru memulai.\n\nKonteks itu penting sebelum membaca angka-angkanya.\n\n---\n\n## Performa Musim Ini\n\n17-65. Win rate 20,7%. Point differential minus 12 per laga, Wizards rata-rata cetak 112,9 PPG tapi kebobolan 124,9 PPG. Angka defensive yang mengkhawatirkan. hampir tidak ada malam di mana pertahanan mereka cukup solid untuk menutup celah.\n\nHome record mereka sedikit lebih baik, 11-30 di kandang dibanding 6-35 di road. Tapi \"sedikit lebih baik\" di sini sifatnya relatif. 11 kemenangan di kandang sepanjang musim penuh bukan sesuatu yang bisa diklaim sebagai keunggulan nyata.\n\nYang menarik untuk dicermati justru bukan soal menang-kalah musim ini. Wizards bermain dengan roster yang rata-rata usianya sangat muda. Beberapa pemain kunci mereka baru masuk tahun pertama atau kedua karir NBA. Development pace musim ini kemungkinan lebih relevan dibanding catatan akhir klasemen.\n\n---\n\n## Roster dan Nama-nama yang Diperhatikan\n\n**Bilal Coulibaly** (#0, F/G, 21 tahun, 2 tahun pengalaman) adalah salah satu nama paling menarik di roster ini. Masuk ke tahun kedua, usianya masih sangat muda dan posisinya sebagai wing memberi fleksibilitas di skema apapun yang Keefe rancang ke depan.\n\n**Alex Sarr** (#20, C, 21 tahun, 1 tahun pengalaman) adalah center muda yang jadi bagian dari core rebuild. Usianya sejajar Coulibaly. keduanya membentuk pasangan muda yang secara teori bisa jadi anchor tim beberapa tahun ke depan.\n\n**D'Angelo Russell** (#5, G, 30 tahun, 10 tahun pengalaman) berdiri di ujung spektrum yang berbeda. Decade karir NBA, veteran di ruang ganti. Di roster semuda ini, kehadiran Russell punya nilai lebih dari sekadar kontribusi di lapangan, ada aspek mentoring yang sulit dikuantifikasi.\n\nDi sisi lain ada nama-nama seperti **Tre Johnson** (#12, G, 19 tahun, rookie dari Texas) dan **Will Riley** (#27, G, 20 tahun, rookie dari Illinois) yang belum punya pengalaman NBA sebelum musim ini. Mereka merepresentasikan lapisan paling awal dari proses pembangunan tim.\n\n**Anthony Davis** (#23, F, 33 tahun, 13 tahun pengalaman) juga ada di roster, veteran yang paling senior dari sisi pengalaman dan usia, memberi keseimbangan terhadap kerumunan pemain muda di sekitarnya.\n\n---\n\n## Outlook\n\nMusim 2025-26 selesai dengan catatan yang tidak akan ada di highlight reel. Tapi narasi Wizards lebih panjang dari satu musim. Keefe melatih tim yang memang tidak didesain untuk menang sekarang, ini roster yang sedang dikalibrasi untuk beberapa musim ke depan.\n\nCoulibaly, Sarr, Johnson, Riley, George, nama-nama ini masih di awal kurva perkembangan mereka. Seberapa cepat mereka tumbuh di lingkungan yang kompetitif akan menentukan seperti apa Wizards di 2027 atau 2028, bukan 2026.\n\nSeed 15 di Eastern Conference musim ini. Langkah selanjutnya adalah membuktikan bahwa angka itu adalah titik terendah, bukan kebiasaan.\n\n*Data berdasarkan musim reguler NBA 2025-26, per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "27",
+    "team_name": "Washington Wizards",
+    "team_abbr": "WSH",
+    "team_location": "Washington",
+    "conference": "Eastern Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022885,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: One critical training-inference error (Anthony Davis), one high-severity translated English smell, and multiple secondary issues (tense, academic drift, structural) drag the score below 70. The core narrative about rebuilding is sound, but execution has quality gaps.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Anthony Davis (#23, F, 33 tahun, 13 tahun pengalaman) juga ada di roster",
+          "fix": "Remove this sentence. Check input roster for actual #23 player identity."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Konteks itu penting sebelum membaca angka-angkanya.",
+          "fix": "Delete or rephrase: 'Konteks ini penting sebelum lihat angkanya.' or just cut the sentence."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Wizards menutup musim reguler 2025-26 dengan rekor 17-65, catatan yang menempatkan mereka",
+          "fix": "Rewrite: 'Wizards tutup musim reguler dengan rekor 17-65, menempatkan mereka di seed 15.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Di sisi lain ada nama-nama seperti ... Yang menarik untuk dicermati justru...",
+          "fix": "Break into separate sentences: 'Di sisi lain: Tre Johnson... Menarik justir bukan soal menang-kalah.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Ada aspek mentoring yang sulit dikuantifikasi.",
+          "fix": "Simpler: 'Ada mentoring value yang nggak bisa dilihat dari box score.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "hampir tidak ada malam di mana pertahanan mereka cukup solid",
+          "fix": "Capitalize 'Hampir'. Consider: 'Malam-malam Wizards, defensif jarang solid cukup tutup celah.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Seed 15 dari 15 tim di Eastern Conference, finis di bawah semua rival divisi.",
+          "fix": "Add light verb: 'Wizards seed 15 dari 15 tim, finis di bawah semua rival divisi.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "Tre Johnson (#12, G, 19 tahun, rookie dari Texas) dan Will Riley (#27, G, 20 tahun, rookie dari Illinois)",
+          "fix": "OK as-is. This passes — colleges + rookie status are in input data."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0b4bce182c2c973a",
+    "published_at": "2026-04-28T10:53:37+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 62,
+      "headline_comment": "Headline tidak konsisten — judul dokumen 'Profil Washington Wizards: Eastern Conference (2025-26)' generic dan SEO-style, tapi H1 di body 'Musim yang Berat, tapi Fondasi Muda Mulai Terbentuk' justru lebih kuat dan harusnya jadi headline utama.",
+      "lead_score": 75,
+      "lead_comment": "Lead solid dengan konteks geografis + rekor + angle rebuild, tapi paragraf pembuka terlalu padat menjelaskan basics franchise yang pembaca NBA Indonesia sudah tahu.",
+      "structure_score": 80,
+      "structure_comment": "Alur Identitas → Performa → Roster → Outlook logis dan tertata, tapi section 'Identitas dan Posisi di Liga' tumpang tindih dengan lead dan bisa dilebur.",
+      "voice_score": 82,
+      "voice_comment": "Voice casual-informed sesuai target, code-switching natural (point differential, road record, anchor, core rebuild), tense markers terkendali — tapi ada beberapa kalimat yang sedikit lecturing.",
+      "suggestion_count": 6,
+      "summary": "Solid rebuild-narrative profile with clean voice and good use of input data, but undermined by a generic headline, an unverified 'George' name in the outlook, and an Anthony Davis mention that's either huge news buried or a hallucination. Editor should verify roster names against input and rewrite the headline before publish.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Coulibaly, Sarr, Johnson, Riley, George, nama-nama ini masih di awal kurva perkembangan mereka.",
+          "issue": "Nama 'George' muncul di outlook tanpa pernah diperkenalkan di section roster — pembaca akan bingung siapa George.",
+          "fix": "Hapus 'George' atau tambahkan satu kalimat pengenalan di section roster jika memang ada di input data."
+        },
+        {
+          "priority": "high",
+          "snippet": "Profil Washington Wizards: Eastern Conference (2025-26)",
+          "issue": "Headline utama generic dan tidak earn the click — kalah jauh dari H1 internal artikel.",
+          "fix": "Ganti judul ke versi seperti 'Washington Wizards 2025-26: 17-65, tapi Coulibaly dan Sarr Punya Cerita Lain' agar ada angle + nama."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Wizards musim ini adalah tim yang sedang dalam proses, kata halus untuk situasi yang memang sulit.",
+          "issue": "Kalimat ini cerdas tapi langsung diikuti pengulangan info klasemen yang sudah ada di lead.",
+          "fix": "Lebur section 'Identitas' ke dalam lead, atau ganti isinya dengan konteks divisi/rival yang belum disebut."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Angka defensive yang mengkhawatirkan. hampir tidak ada malam di mana pertahanan mereka cukup solid",
+          "issue": "Typo kapitalisasi setelah titik ('hampir' harusnya 'Hampir') dan klaim 'hampir tidak ada malam' tidak didukung data input.",
+          "fix": "Perbaiki kapitalisasi dan ganti klaim ke fakta yang ada: 'kebobolan 124,9 PPG itu salah satu yang terburuk di liga' (jika data mendukung) atau cukup 'celah pertahanan yang konsisten sepanjang musim'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Anthony Davis (#23, F, 33 tahun, 13 tahun pengalaman) juga ada di roster",
+          "issue": "Anthony Davis di roster Wizards adalah klaim besar yang butuh verifikasi — kalau benar, ini headline-worthy news, bukan paragraf penutup section roster.",
+          "fix": "Verifikasi via fact-check; kalau benar, naikkan ke posisi yang lebih prominent dan jelaskan bagaimana dia sampai di Wizards. Kalau ragu, hapus."
+        },
+        {
+          "priority": "low",
+          "snippet": "Seed 15 di Eastern Conference musim ini. Langkah selanjutnya adalah membuktikan bahwa angka itu adalah titik terendah, bukan kebiasaan.",
+          "issue": "Closing kuat tapi 'seed 15' sudah disebut 3x di artikel — repetition.",
+          "fix": "Ganti pembuka closing ke 'Catatan musim ini selesai' atau langsung ke kalimat kedua tanpa restate seed."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

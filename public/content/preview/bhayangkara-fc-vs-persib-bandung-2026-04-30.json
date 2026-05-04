@@ -1,0 +1,58 @@
+{
+  "type": "preview",
+  "slug": "bhayangkara-fc-vs-persib-bandung-2026-04-30",
+  "title": "Preview Bhayangkara FC vs Persib Bandung",
+  "description": "Preview Bahasa Indonesia untuk Bhayangkara FC vs Persib Bandung di Sumpah Pemuda, Bandar Lampung, 30 April 2026.",
+  "body_md": "# Bhayangkara FC vs Persib Bandung: Maung Bandung Incar Poin untuk Kokohkan Posisi\n\nBhayangkara FC menjamu Persib Bandung di Stadion Sumpah Pemuda, Bandar Lampung, Kamis 30 April 2026 pukul 19.00 WIB. Tuan rumah butuh tiga poin untuk menjaga relevansi di papan atas, sementara Persib datang dengan selisih 19 poin dan posisi lebih aman di urutan kedua klasemen.\n\n## Form Kedua Tim\n\nBhayangkara FC menutup lima laga terakhir dengan catatan dua menang, satu seri, dua kalah, cukup fluktuatif untuk tim yang ingin masuk persaingan atas. Dua kemenangan terakhir memberi momentum, tapi konsistensi jelas masih jadi PR. Data pencetak gol terbanyak belum tersedia, yang sedikit menyulitkan pembacaan ancaman sebenarnya dari lini depan Bhayangkara.\n\nPersib datang dengan form DDWWD, dua seri di dua laga terakhir setelah sempat merangkai dua kemenangan. Bukan form paling meyakinkan, tapi dengan 66 poin dari 29 laga, Maung Bandung jelas bukan tim yang sedang dalam krisis. L. Guaycochea memimpin chart gol tim dengan tiga gol musim ini.\n\n## Head-to-Head\n\nLima pertemuan terakhir bicara keras: Bhayangkara hanya meraih dua seri tanpa satu pun kemenangan, dengan tiga kekalahan sisanya. Skor-skor pertemuan itu, 0-2, 0-0, 1-2, 1-2, 2-2, menunjukkan Persib konsisten jadi tim yang lebih tajam di laga ini, bahkan saat tampil tandang.\n\n## Pemain Kunci & Cedera\n\nTidak ada update cedera resmi dari kedua kubu jelang laga ini. Dari sisi Persib, Guaycochea jadi nama yang perlu diawasi, meski tiga gol bukan angka besar, dia tetap opsi paling konkret di lini serang Maung Bandung berdasarkan data yang ada. Bhayangkara perlu menemukan kreator di lini tengah yang bisa memberi ancaman nyata ke pertahanan tamu.\n\n## Prediksi Taktis\n\nDi atas kertas, Persib unggul: form lebih solid secara keseluruhan, rekam jejak H2H berpihak ke mereka, dan tekanan klasemen hampir tidak ada. Bhayangkara yang bermain di kandang sendiri kemungkinan akan coba menekan dari awal, tapi pertahanan Persib yang terbukti susah ditembus di laga ini jadi ujian sebenarnya. Laga berakhir seri atau kemenangan tipis Persib tidak akan mengejutkan, prediksi 1-1 atau 0-1 untuk Maung Bandung.\n\nTayang live di Vidio, Indosiar, dan MNCTV mulai pukul 19.00 WIB.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "fixture_id": "1403831",
+    "home_team": "Bhayangkara FC",
+    "away_team": "Persib Bandung",
+    "kickoff_utc": "2026-04-30T12:00:00+00:00",
+    "venue": "Sumpah Pemuda, Bandar Lampung",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039826,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Article is solid Liga 1 voice with good tactical structure. Main concern: player name inference (Guaycochea) contradicts stated lack of top-scorer data. Remove or verify. Minor calque (di atas kertas) and soft-phrase repetition are low-severity.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "L. Guaycochea memimpin chart gol tim dengan tiga gol musim ini.",
+          "fix": "Remove player name or verify it exists in Liga 1 2026 roster data."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Data pencetak gol terbanyak belum tersedia, yang sedikit menyulitkan pembacaan ancaman sebenarnya",
+          "fix": "Either commit to no player names, or source the scorer data before writing."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Di atas kertas, Persib unggul: form lebih solid secara keseluruhan, rekam jejak H2H berpihak ke mereka",
+          "fix": "Rewrite: 'Persib unggul: form lebih solid, H2H berpihak mereka' or drop the framing."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "prediksi 1-1 atau 0-1 untuk Maung Bandung",
+          "fix": "Second use: just 'Persib' or 'tim tamu'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x30b5675846670698",
+    "fact_check": {
+      "passed": true,
+      "issue_count": 0
+    },
+    "published_at": "2026-04-27T13:14:29+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

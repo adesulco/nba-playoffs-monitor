@@ -1,0 +1,99 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gibol-content-engine"
+version = "0.0.0.dev0"
+description = "Bahasa-first sports content generation pipeline for Gibol"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Gibol", email = "bot@gibol.co" }]
+license = { text = "Proprietary" }
+
+dependencies = [
+  # Anthropic SDK — Sonnet 4.6, Haiku 4.5, Opus 4.7. Always with caching.
+  "anthropic>=0.50.0",
+
+  # Postgres + pgvector
+  "asyncpg>=0.29.0",
+  "psycopg[binary,pool]>=3.2.0",
+  "pgvector>=0.3.0",
+
+  # OpenAI for embeddings (text-embedding-3-small, $0.02/1M tokens)
+  "openai>=1.50.0",
+
+  # HTTP for ingestion (API-Football, ESPN, jolpica)
+  "httpx>=0.28.0",
+
+  # Markdown / MDX-ish rendering for the body
+  "markdown-it-py>=3.0",
+
+  # Schema.org JSON-LD validation
+  "jsonschema>=4.20",
+
+  # SimHash for dedup + plagiarism check (per response doc § 6)
+  "simhash>=2.1.2",
+
+  # Timezone handling — Asia/Jakarta everywhere
+  "pendulum>=3.0",
+
+  # Config + .env loading
+  "pydantic>=2.7",
+  "pydantic-settings>=2.4",
+  "python-dotenv>=1.0",
+
+  # Observability
+  "structlog>=24.1",
+  "sentry-sdk>=2.0",
+
+  # CLI — typer is the modern click wrapper, used by content_engine.cli.
+  # Was missing from the initial scaffold; re-add so fresh `pip install -e`
+  # gets it without a separate `pip install typer` step.
+  "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.6.0",
+  "black>=24.0",
+  "mypy>=1.10",
+  "pytest>=8.0",
+  "pytest-asyncio>=0.23",
+  "pytest-cov>=5.0",
+  "pytest-httpx>=0.30",
+]
+
+[project.scripts]
+content-engine = "content_engine.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/content_engine"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# E,F = pyflakes/pycodestyle; I = import sort; B = bugbear; UP = pyupgrade;
+# RUF = ruff-specific; SIM = simplify; PT = pytest style; TID = tidy imports.
+select = ["E", "F", "I", "B", "UP", "RUF", "SIM", "PT", "TID"]
+ignore = ["E501"]  # line length handled by black
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_ignores = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "--strict-markers --strict-config -v"

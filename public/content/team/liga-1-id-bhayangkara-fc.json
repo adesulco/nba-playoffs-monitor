@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-bhayangkara-fc",
+  "title": "Profil Bhayangkara FC: Liga 1 (2025-26)",
+  "description": "Profil Bhayangkara FC — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Bhayangkara FC: Profil Klub Liga 1 Indonesia 2025-26\n\nBhayangkara FC adalah klub sepak bola Indonesia yang berkompetisi di Super League Indonesia (Liga 1). Kandang mereka di Stadion Wibawa Mukti, Cikarang, berkapasitas 28.778 penonton. Per 28 April 2026, Bhayangkara duduk di posisi 4 klasemen Liga 1 2025-26 dengan 47 poin dari 29 laga, catatan 14 menang, lima seri, dan 10 kalah, dengan selisih gol +5.\n\n---\n\n## Identitas Klub\n\nBhayangkara FC berdiri pada 2016 dan berbasis di Cikarang, Jawa Barat. Usia klubnya memang relatif muda untuk ukuran sepak bola Indonesia, tapi perjalanan mereka di Liga 1 sudah menempatkan mereka sebagai tim yang konsisten bersaing di papan tengah hingga papan atas klasemen.\n\nStadion Wibawa Mukti jadi basis operasi mereka. Kapasitas hampir 29.000 kursi memberi keuntungan nyata saat bermain di kandang, dan musim 2025-26 menunjukkan betapa pentingnya faktor itu bagi Bhayangkara.\n\n---\n\n## Performa Musim 2025-26\n\nDari 29 laga yang sudah dimainkan, Bhayangkara mencatat 14 menang, lima seri, dan 10 kekalahan. Bukan catatan yang bersih, tapi cukup untuk mempertahankan posisi empat besar.\n\nYang menarik adalah perbedaan tajam antara penampilan kandang dan tandang. Di Wibawa Mukti, mereka solid: 9 menang, tiga seri, dua kalah. Itu bukan kebetulan, tim yang sulit dikalahkan di kandang sendiri biasanya punya identitas permainan yang jelas di hadapan suporternya. Di luar Cikarang, ceritanya berbeda: hanya lima menang dari 15 laga tandang, delapan di antaranya berakhir dengan kekalahan. Performa tandang yang lemah ini jadi satu titik rapuh yang nyata.\n\nSisi gol: 39 gol tercipta versus 34 kebobolan, rata-rata 1,3 gol per laga cetak dan 1,2 kebobolan. Selisih +5 tergolong tipis untuk sebuah tim top 4. Artinya Bhayangkara bukan tim yang menang besar, mereka cenderung menang tipis dan kadang kebobolan lebih dari yang seharusnya.\n\nClean sheet delapan kali dari 29 laga juga memberikan gambaran: pertahanan mereka bukan yang paling ketat di liga. Enam laga tanpa gol dari sisi serangan menunjukkan ada momen konsistensi yang masih perlu diperbaiki, hampir satu dari lima laga, mereka gagal mencetak satu gol pun.\n\nForm terkini WWWWWLWL cukup menarik dibaca. Lima kemenangan beruntun sebelumnya adalah sinyal yang kuat, tapi dua laga terakhir (L lalu W, L di ujungnya) mengindikasikan momentum yang sedang berfluktuasi masuk ke fase krusial musim.\n\n---\n\n## Posisi di Klasemen\n\nEmpat besar di Liga 1 bukan posisi yang bisa dianggap enteng. Per 28 April 2026, Bhayangkara di posisi empat dengan 47 poin, masih tersisa beberapa laga untuk dimainkan di musim 2025-26.\n\nPosisi ini menempatkan mereka di zona yang kompetitif dan masih terbuka ke dua arah: peluang naik ke tiga besar masih ada jika hasil konsisten, tapi ancaman dari tim-tim di bawah yang mepet di poin juga tidak bisa diabaikan. Dengan delapan laga tandang yang berakhir kalah musim ini, setiap pertandingan sisa yang dimainkan di luar Cikarang akan jadi ujian nyata bagi konsistensi mereka.\n\nSelisih gol +5 juga perlu dicatat, untuk tim posisi empat, angka ini tergolong kecil. Jika poin akhir musim nanti berdekatan dengan tim lain, selisih gol bisa jadi faktor penentu yang kritis.\n\n---\n\n## Outlook\n\nBhayangkara FC menutup bulan April 2026 dalam kondisi yang cukup positif meski tidak tanpa kekhawatiran. Form lima kemenangan beruntun sebelumnya membuktikan mereka punya kapasitas untuk konsisten, tapi dua hasil terakhir mengingatkan bahwa musim belum selesai.\n\nKeunggulan kandang tetap jadi modal utama. Tugas mereka jelas: jaga posisi empat besar, perbaiki produktivitas di laga tandang, dan pastikan selisih gol tidak jadi bumerang di pengujung musim.\n\nData artikel ini mencerminkan posisi dan statistik Bhayangkara FC per 28 April 2026 dalam kompetisi Liga 1 2025-26.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "2443",
+    "team_name": "Bhayangkara FC",
+    "team_country": "Indonesia",
+    "team_founded": 2016,
+    "venue_name": "Stadion Wibawa Mukti",
+    "venue_city": "Cikarang",
+    "venue_capacity": 28778,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023825,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "FAIL. Multiple critical factual errors: article invents wrong laga count (29 vs 30), wrong goal tallies (39/34 vs 41/38), wrong goal differential (+5 vs +3), wrong form string. These contradict input data directly and undermine credibility. Also soft academic drift and one stiff translation-smell phrase.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Bhayangkara duduk di posisi 4 klasemen Liga 1 2025-26 dengan 47 poin dari 29 laga, catatan 14 menang, lima seri, dan 10 kalah, dengan selisih gol +5.",
+          "fix": "Match input exactly: 30 laga, 47 poin, 14M-5S-11K, selisih +3."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dari 29 laga yang sudah dimainkan, Bhayangkara mencatat 14 menang, lima seri, dan 10 kekalahan.",
+          "fix": "Change to: Dari 30 laga yang sudah dimainkan, Bhayangkara mencatat 14 menang, lima seri, dan 11 kekalahan."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sisi gol: 39 gol tercipta versus 34 kebobolan, rata-rata 1,3 gol per laga cetak dan 1,2 kebobolan. Selisih +5.",
+          "fix": "Change to: 41 gol tercipta versus 38 kebobolan, rata-rata 1.4 gol cetak, 1.3 kebobolan. Selisih +3."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Itu bukan kebetulan, tim yang sulit dikalahkan di kandang sendiri biasanya punya identitas permainan yang jelas di hadapan suporternya. Di luar Cikarang, ceritanya berbeda: hanya lima menang dari 15 laga tandang, delapan di antaranya berakh",
+          "fix": "Fix total laga first; tandang math becomes 5M-2S-8K from 15 laga (correct per input)."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik adalah perbedaan tajam antara penampilan kandang dan tandang.",
+          "fix": "Rephrase: Perbedaan kandang-tandang Bhayangkara sangat mencolok, dan itu kunci posisi mereka sekarang."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Form terkini WWWWWLWL cukup menarik dibaca.",
+          "fix": "Change to: Form terkini WWWWLWLL menunjukkan momentum yang tersendat sebelum garis finish."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Selisih gol +5 juga perlu dicatat, untuk tim posisi empat, angka ini tergolong kecil.",
+          "fix": "Change to: Selisih gol +3 sangat tipis untuk tim posisi empat—jika poin akhir berdekatan, ini bisa jadi pembeda."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Data artikel ini mencerminkan posisi dan statistik Bhayangkara FC per 28 April 2026 dalam kompetisi Liga 1 2025-26.",
+          "fix": "Delete entirely. Article already delivers the facts; no need to say 'this data reflects...'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x69f267b951679cd8",
+    "published_at": "2026-04-28T12:08:05+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

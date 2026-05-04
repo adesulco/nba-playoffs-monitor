@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-franco-colapinto",
+  "title": "Profil Franco Colapinto: Pembalap F1 Alpine F1 Team (2026)",
+  "description": "Profil pembalap F1 Franco Colapinto (Argentina) untuk tim Alpine F1 Team. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Franco Colapinto: Rookie Argentina yang Masih Cari Ritme di Alpine\n\nFranco Colapinto, kode FIA COL (#43), pembalap Argentina kelahiran 27 Mei 2003. Per 28 April 2026, Colapinto menempati P16 klasemen F1 2026 bersama Alpine F1 Team, 1 poin dari 3 balapan musim ini. Awal musim yang berat, tapi bukan tanpa kilatan.\n\n---\n\n## Identitas\n\nUmur 22 tahun, Colapinto membawa bendera Argentina ke grid F1 2026. Kode FIA-nya COL, nomor permanen #43, dua detail yang sudah mulai familiar bagi penggemar F1 Amerika Selatan yang menantikan pembalap dari negara mereka kembali ke grid papan atas.\n\nSaat ini Colapinto berada di Alpine F1 Team, tim Prancis yang juga sedang dalam proses rebuilding musim ini. Kombinasi pembalap muda dan tim yang sedang mencari bentuk terbaik adalah konteks penting untuk membaca hasil-hasilnya sejauh ini.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, 1 poin. Di atas kertas, angka itu terlihat tipis. Tapi ada nuansa di baliknya.\n\nColapinto belum sekalipun finish tanpa status *lapped* kecuali di Jepang, artinya pace gap ke ujung depan masih terasa nyata. Namun di Chinese GP, dia berhasil finis P10 dan mengamankan satu-satunya poin musim ini. Itu bukan kebetulan, P10 butuh konsistensi sepanjang race, bukan sekadar keberuntungan.\n\nDari tiga data point yang ada, polanya adalah pembalap yang masih mencari ritme: belum menemukan setting yang stabil race per race, tapi sudah membuktikan kapasitas finis di zona poin ketika semuanya klik.\n\n---\n\n## Hasil Per Balapan\n\n**Australian Grand Prix, P14**\n\nDebut musim yang tidak mudah. Colapinto finis P14 dengan status *lapped*, tertinggal dari para pemimpin balapan. Untuk balapan pembuka di Melbourne yang terkenal kompetitif dan penuh insiden, finis sendiri sudah berarti sesuatu, tapi jelas bukan hasil yang diinginkan.\n\n**Chinese Grand Prix, P10**\n\nIni momen terbaik Colapinto sejauh ini di 2026. Finis P10, satu poin masuk ke klasemen. Meski statusnya masih *lapped*, gap ke depan tidak separah Australia. Ada progress yang terlihat, pace lebih solid, decision-making di dalam balapan lebih tenang. Satu poin yang mungkin jadi fondasi kepercayaan diri untuk sisa musim.\n\n**Japanese Grand Prix, P16**\n\nJepang justru jadi langkah mundur. P16, tapi kali ini berstatus *Finished*, bukan *lapped*. Interpretasinya bisa dua arah: secara gap mungkin lebih dekat ke pemimpin dibanding angka posisi yang kelihatan, tapi finis di luar poin tetap menyakitkan setelah momentum positif China.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Colapinto berada di P16 klasemen dengan 1 poin dari 3 balapan. Angka yang jujur mencerminkan di mana Alpine dan dirinya berada sekarang, bukan kandidat poin reguler, tapi bukan juga pembalap yang invisible di grid.\n\nTiga balapan adalah sampel yang masih sangat kecil untuk menyimpulkan banyak hal. Yang sudah terlihat: Colapinto bisa finis di zona poin ketika semuanya bekerja (China), tapi konsistensi race-to-race masih jadi PR besar.\n\nMusim 2026 masih panjang. Untuk pembalap 22 tahun yang masih akumulasi *race craft* di level tertinggi ini, setiap balapan adalah data, dan data yang paling penting belum tentu ada di kolom poin.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "colapinto",
+    "driver_name": "Franco Colapinto",
+    "driver_code": "COL",
+    "driver_number": "43",
+    "nationality": "Argentine",
+    "current_team": "Alpine F1 Team",
+    "current_team_id": "alpine",
+    "championship_pos": "16",
+    "championship_points": "1",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019323,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has training_inference error (birth date + FIA code phrasing), multiple tense/translation awkwardness issues, and soft repetition. Fails on high-severity inference claim. Rewrite Outlook section and tighten negation/hedging language.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Franco Colapinto, kode FIA COL (#43), pembalap Argentina kelahiran 27 Mei 2003.",
+          "fix": "Remove 'kode FIA' phrase; just say 'Franco Colapinto, pembalap Argentina berusia 22 tahun, membawa nomor #43.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Colapinto belum sekalipun finish tanpa status lapped kecuali di Jepang",
+          "fix": "'Colapinto selalu finis lapped, kecuali di Jepang.' Much cleaner."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Itu bukan kebetulan, P10 butuh konsistensi sepanjang race",
+          "fix": "Break into two sentences: 'Itu bukan kebetulan. P10 butuh konsistensi sepanjang race.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dari tiga data point yang ada, polanya adalah pembalap yang masih mencari ritme",
+          "fix": "'Pola yang terlihat: pembalap muda yang masih hunting ritme.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Interpretasinya bisa dua arah: secara gap mungkin lebih dekat ke pemimpin dibanding angka posisi yang kelihatan",
+          "fix": "'Gap ke pemimpin lebih dekat daripada urutan posisi menunjukkan.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Colapinto menempati P16... Per 28 April 2026, Colapinto berada di P16",
+          "fix": "Remove timestamp from Outlook; it's already in lede."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Australian Grand Prix, P14",
+          "fix": "Confirm round 1 = P14, round 2 = P10, round 3 = P16 and state explicitly once in Outline section."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "bukan kebetulan... bukan hasil yang diinginkan... bukan juga pembalap yang invisible",
+          "fix": "Vary: 'Itu bukan kebetulan', 'Result yang di bawah ekspektasi', 'Colapinto bukan invisible.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x5b7782f801a0ce38",
+    "published_at": "2026-04-28T12:15:23+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

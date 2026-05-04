@@ -5,7 +5,6 @@ import { useApp } from '../lib/AppContext.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { supabase } from '../lib/supabase.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 import BracketEditor from '../components/pickem/BracketEditor.jsx';
 import WhatsAppShare from '../components/pickem/WhatsAppShare.jsx';
 
@@ -90,9 +89,8 @@ function BracketEditInner() {
         lang={lang}
       />
       <div className="dashboard-wrap" style={{ maxWidth: 980, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink backTo="/bracket" title="gibol.co" subtitle={lang === 'id' ? "pick'em · bracket" : "pick'em · bracket"} />
 
-        <main style={{ padding: '28px 8px', display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <section style={{ padding: '28px 8px', display: 'flex', flexDirection: 'column', gap: 20 }}>
           {fetching ? (
             <p style={{ fontSize: 13, color: C.dim }}>Loading…</p>
           ) : notFound ? (
@@ -153,7 +151,7 @@ function BracketEditInner() {
               />
             </>
           )}
-        </main>
+        </section>
       </div>
     </div>
   );

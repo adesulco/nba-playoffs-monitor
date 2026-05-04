@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-semen-padang",
+  "title": "Profil Semen Padang: Liga 1 (2025-26)",
+  "description": "Profil Semen Padang — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Semen Padang: Profil Klub Liga 1 Indonesia 2025-26\n\nSemen Padang adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia (Liga 1). Kandang mereka adalah Stadion GOR Haji Agus Salim di Padang dengan kapasitas 28.000 penonton. Per 28 April 2026, Semen Padang berada di posisi 17 klasemen Liga 1 musim 2025-26 dengan 20 poin dari 29 laga dan selisih gol -28. Dengan status relegation yang mengancam, sisa musim ini menentukan nasib mereka di kasta tertinggi sepak bola Indonesia.\n\n---\n\n## Identitas Klub\n\nSemen Padang berdiri pada 1980 dan menjadi salah satu klub tertua yang masih aktif di kompetisi sepak bola Indonesia. Markas mereka, Stadion GOR Haji Agus Salim, sudah lama jadi rumah bagi suporter setia yang mengisi tribun berkapasitas 28.000 tempat duduk itu. Sebagai klub dari Sumatera Barat, Semen Padang membawa identitas daerah yang kuat setiap kali turun ke lapangan, baik kandang maupun tandang. Musim 2025-26 di Liga 1 Indonesia seharusnya jadi panggung untuk membuktikan kapasitas mereka di level tertinggi. Realitanya jauh dari ekspektasi itu.\n\n---\n\n## Performa Musim Ini\n\nDari 29 laga yang sudah dilakoni di Liga 1 2025-26, catatan Semen Padang berat dibaca: 5 menang, 5 seri, 19 kalah. Hanya 22 gol tercipta sepanjang musim, sementara gawang kebobolan 50 kali. Rata-rata per laga, mereka hanya mencetak 0,8 gol sambil kemasukan 1,7 gol.\n\nYang paling mencolok adalah kebuntuan di depan gawang lawan: dalam 14 dari 29 laga, Semen Padang sama sekali gagal mencetak gol. Hampir separuh musim mereka habiskan tanpa gol. Clean sheet 6 kali menunjukkan ada momen di mana pertahanan tampil solid, tapi konsistensi jelas menjadi masalah utama.\n\nPerforma kandang pun tak bisa jadi sandaran. Di Stadion GOR Haji Agus Salim, Semen Padang meraih 3 menang, 3 seri, dan 8 kalah. Tandang lebih parah: 2 menang, 2 seri, 11 kalah. Tidak ada sisi lapangan yang benar-benar aman bagi mereka musim ini.\n\nForm terbaru makin mengkhawatirkan. Dari delapan laga terakhir, catatan mereka DLDWLLLL: satu seri, satu kalah, satu seri lagi, satu menang, lalu empat kekalahan beruntun. Momentum positif dari kemenangan itu langsung terkubur oleh rangkaian hasil buruk yang menyusul.\n\n---\n\n## Posisi di Klasemen\n\nDengan 20 poin dari 29 laga, Semen Padang menempati peringkat 17 klasemen Liga 1 2025-26 per 28 April 2026. Status mereka secara resmi adalah degradasi.\n\nSelisih gol -28 adalah angka yang berbicara lebih keras dari sekedar posisi. Kebobolan 50 gol di 29 laga berarti rata-rata hampir dua gol per laga masuk ke gawang sendiri. Perbaikan satu atau dua komponen tidak akan cukup kalau akar masalahnya sistemik di kedua sisi lapangan.\n\nDi zona degradasi, setiap poin menjadi mahal. Dengan sisa laga yang terus berkurang, ruang untuk manuver semakin sempit. Untuk keluar dari zona merah, Semen Padang butuh hasil yang konsisten di laga-laga sisa musim ini, termasuk mengatasi problem mencetak gol yang sudah berlangsung hampir sepanjang musim.\n\n---\n\n## Outlook\n\nSituasi Semen Padang di Liga 1 2025-26 kritis. Posisi 17 dengan status relegation dan hanya 20 poin dari 29 laga membuat setiap pertandingan ke depan jadi final kecil. Form empat kekalahan beruntun di penghujung April 2026 bukan sinyal yang positif, tapi musim belum selesai.\n\nTantangan paling mendesak ada dua: menghentikan kebobolan yang terlalu mudah terjadi, dan menemukan cara untuk mencetak gol di sisi lain lapangan. Dua masalah itu harus dipecahkan bersamaan, bukan bergantian. Kalau salah satu saja yang diperbaiki, hasilnya paling jauh adalah seri lebih banyak, bukan kemenangan yang benar-benar dibutuhkan.\n\nData ini mencerminkan kondisi per 28 April 2026. Sisa musim yang menentukan masih di depan.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "2456",
+    "team_name": "Semen Padang",
+    "team_country": "Indonesia",
+    "team_founded": 1980,
+    "venue_name": "Stadion GOR Haji Agus Salim",
+    "venue_city": "Padang",
+    "venue_capacity": 28000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023372,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on multiple critical data mismatches: laga count (29 vs 30), kalah count (19 vs 20), kebobolan (50 vs 51), clean sheet contexts, kandang record (8 vs 9 kalah), date (28 Apr vs 3 Mei). Also contains training-data inference (1980 founding, Sumatera Barat identity) not in input. Form string sequence unclear. Regenerate with correct data alignment.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Semen Padang berdiri pada 1980 dan menjadi salah satu klub tertua yang masih aktif",
+          "fix": "Remove founding year or note it comes from external source, not input data"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebagai klub dari Sumatera Barat, Semen Padang membawa identitas daerah",
+          "fix": "Remove regional identity claim or source it explicitly"
+        },
+        {
+          "type": "data_mismatch",
+          "severity": "high",
+          "snippet": "Dari 29 laga yang sudah dilakoni...5 menang, 5 seri, 19 kalah",
+          "fix": "Use 30 laga, 20 kalah per input data block"
+        },
+        {
+          "type": "data_mismatch",
+          "severity": "high",
+          "snippet": "22 gol tercipta sepanjang musim, sementara gawang kebobolan 50 kali",
+          "fix": "Change to: 22 gol cetak, 51 kebobolan; selisih -29"
+        },
+        {
+          "type": "data_mismatch",
+          "severity": "high",
+          "snippet": "dalam 14 dari 29 laga, Semen Padang sama sekali gagal mencetak gol",
+          "fix": "Change to: dalam 15 dari 30 laga"
+        },
+        {
+          "type": "data_mismatch",
+          "severity": "high",
+          "snippet": "Di Stadion GOR Haji Agus Salim, Semen Padang meraih 3 menang, 3 seri, dan 8 kalah",
+          "fix": "Change to: 3 menang, 3 seri, dan 9 kalah di kandang"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dari delapan laga terakhir, catatan mereka DLDWLLLL: satu seri, satu kalah, satu seri lagi, satu menang, lalu empat kekalahan beruntun.",
+          "fix": "Verify form string matches sequence or recount from input data (LDWLLLLL = 7 chars)"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Semen Padang berada di posisi 17 klasemen Liga 1 musim 2025-26 dengan 20 poin dari 29 laga",
+          "fix": "Change all references from '28 April 2026' to '3 Mei 2026' to match input data header"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x09ffe69c5d69a8ca",
+    "published_at": "2026-04-28T12:17:18+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

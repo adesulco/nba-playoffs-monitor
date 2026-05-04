@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "tennis-alexander-zverev",
+  "title": "Profil Alexander Zverev (ATP) — Peringkat 3",
+  "description": "Profil petenis Alexander Zverev (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Alexander Zverev: Petenis Jerman di Tiga Besar ATP dengan 5.255 Poin\n\nAlexander Zverev, petenis Jerman kelahiran 20 April 1997, saat ini menempati peringkat 3 ATP dengan 5.255 poin per 16 April 2026. Pemain tangan kanan ini lahir di Hamburg, Jerman, dan di usia 29 tahun masih jadi salah satu nama paling konsisten di papan atas tur dunia.\n\n## Identitas\n\nLahir 20 April 1997 di Hamburg, Zverev kini berusia 29 tahun. Dengan tinggi 198 cm (6'6\") dan berat 90 kg (198 lbs), posturnya termasuk besar untuk standar petenis profesional, keunggulan fisik yang sering jadi senjata di lapangan, terutama pada serve dan jangkauan di net.\n\nZverev memulai karier profesional pada 2013, berarti sudah lebih dari satu dekade ia menjalani kehidupan sebagai petenis tur. Perjalanan panjang itu membentuk pengalaman yang solid, dan posisinya saat ini di tiga besar ATP mencerminkan konsistensi jangka panjang yang tidak mudah dipertahankan di level tertinggi.\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Zverev berada di peringkat 3 ATP dengan 5.255 poin. Peringkat ini stagnan dibanding posisi sebelumnya, sama-sama di angka 3, yang berarti trennya stabil tanpa pergerakan naik maupun turun.\n\nStabilitas di posisi tiga besar bukan hal sepele. ATP itu kompetitif dan ranking bisa bergerak tiap minggu. bertahan di posisi yang sama berarti Zverev berhasil menjaga akumulasi poin tanpa kehilangan ground ke pesaing di bawahnya. Dengan 5.255 poin, gap antara dia dan posisi di atasnya maupun di bawahnya akan menentukan seberapa besar ruang geraknya dalam beberapa turnamen ke depan.\n\nAngka poin ini juga menempatkan Zverev jauh di atas rata-rata petenis tur, hanya segelintir nama yang bisa mengumpulkan lebih dari 5.000 poin ATP dalam satu siklus ranking.\n\n## Outlook\n\nDi usia 29 tahun dengan lebih dari satu dekade pengalaman tur, Zverev berada di fase kematangan karier. Peringkat 3 ATP mencerminkan petenis yang tidak hanya bisa masuk ke putaran-putaran akhir, tapi secara konsisten jadi unggulan di hampir semua turnamen yang ia ikuti.\n\nTren stabil di posisi tiga besar menunjukkan fondasi yang kokoh. Tantangan ke depan buat Zverev adalah mempertahankan, atau meningkatkan, akumulasi poin di sisa musim 2026. Profil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "2375",
+    "athlete_name": "Alexander Zverev",
+    "current_rank": 3,
+    "previous_rank": 3,
+    "points": 5255.0,
+    "trend": "-",
+    "birthplace": "Hamburg, Germany",
+    "dob": "1997-04-20",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.016053,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article reads formal and introductory (fits profile brief) but has tense over-marking, translated-English clunkiness, and filler academic drift. Sentence fragment and structural error at midpoint. Pass with edits.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "berarti sudah lebih dari satu dekade ia menjalani kehidupan",
+          "fix": "Rephrase: 'berarti lebih dari satu dekade ia menjalani kehidupan' or 'lebih dari 10 tahun ia jadi petenis tur'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dengan tinggi 198 cm (6'6\") dan berat 90 kg (198 lbs), posturnya termasuk besar",
+          "fix": "Either: 'Tinggi 198 cm, berat 90 kg...' (metric only) or embed inches/lbs only once in parentheses."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Perjalanan panjang itu membentuk pengalaman yang solid",
+          "fix": "Delete or replace with specific career fact (Grand Slam runs, final records, etc.)."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "posisinya saat ini di tiga besar ATP mencerminkan konsistensi",
+          "fix": "First instance: 'posisinya saat ini di tiga besar ATP adalah bukti konsistensi' or just 'menunjukkan'."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "ATP itu kompetitif dan ranking bisa bergerak tiap minggu. bertahan di posisi",
+          "fix": "Either: 'tiap minggu. Bertahan...' (capital B) OR: 'tiap minggu; bertahan di posisi' (semicolon)—but semicolons are banned, so use period + capital B."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "gap antara dia dan posisi di atasnya maupun di bawahnya akan menentukan",
+          "fix": "Tighten: 'jarak ke peringkat atas dan bawah' or 'margin ke nomor 2 dan 4'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Angka poin ini juga menempatkan Zverev jauh di atas rata-rata petenis tur",
+          "fix": "Cut this sentence or replace with top-10 count comparison if data available."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Outlook\n\nDi usia 29 tahun dengan lebih dari satu dekade pengalaman tur, Zverev berada di fase kematangan karier. Peringkat 3 ATP",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xb563a12ac2c18440",
+    "published_at": "2026-04-28T11:57:17+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

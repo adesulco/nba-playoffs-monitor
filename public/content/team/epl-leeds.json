@@ -1,0 +1,91 @@
+{
+  "type": "team",
+  "slug": "epl-leeds",
+  "title": "Profil Leeds: Premier League (2025-26)",
+  "description": "Profil Leeds — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Leeds United: Bertahan di Premier League dengan Perjuangan Keras\n\nLeeds United adalah klub asal Inggris yang berkompetisi di Liga Inggris (Premier League) musim 2025-26. Berkandang di Elland Road, Leeds, West Yorkshire dengan kapasitas 40.204 penonton, Leeds saat ini berada di posisi 15 klasemen Liga Inggris per 28 April 2026, 40 poin dari 34 laga dimainkan, dengan selisih gol -7. Posisi itu cukup untuk bertahan, tapi tidak cukup untuk nyaman.\n\n---\n\n## Identitas Klub\n\nLeeds United berdiri pada 1919 dan sejak itu menjadi salah satu nama paling dikenal di sepak bola Inggris. Markas mereka, Elland Road di Leeds, West Yorkshire, adalah stadion berkapasitas 40.204 penonton, salah satu kandang paling vokal di Inggris, terkenal dengan atmosfer suporter yang tidak pernah setengah-setengah.\n\nSelama puluhan tahun, Leeds adalah kekuatan yang diperhitungkan di liga domestik Inggris. Tapi perjalanan mereka di dekade-dekade terakhir adalah roller-coaster: naik-turun antara Premier League dan divisi bawah, antara harapan besar dan kekecewaan yang sama besarnya. Musim 2025-26 adalah lanjutan dari perjuangan itu, kali ini, perjuangan untuk sekadar bertahan di level tertinggi sepak bola Inggris.\n\n---\n\n## Performa Musim Ini\n\nDari 34 laga yang sudah dimainkan di musim 2025-26, Leeds mencatatkan 9 kemenangan, 13 seri, dan 12 kekalahan. Angka itu bicara sendiri: Leeds belum menemukan konsistensi sepanjang musim.\n\nSerangan mereka rata-rata mencetak 1,3 gol per laga, 44 gol total. Cukup untuk sesekali memenangkan pertandingan, tapi tidak cukup untuk jadi ancaman nyata. Yang lebih mengkhawatirkan adalah sisi pertahanan: 51 gol kebobolan dengan rata-rata 1,5 per laga. Tujuh clean sheet dari 34 laga menunjukkan lini belakang yang masih bocor terlalu sering.\n\nSatu angka yang paling menggambarkan masalah Leeds musim ini: 11 laga tanpa mencetak gol satu pun. Hampir sepertiga dari seluruh pertandingan berakhir tanpa kontribusi dari lini depan, pola yang konsisten menghambat peluang meraih poin lebih banyak.\n\nPerforma kandang dan tandang juga kontras. Di Elland Road, Leeds mencatat 7 kemenangan, 5 seri, dan 5 kekalahan, angka yang masih bisa diterima, cukup tunjukkan dukungan suporter masih jadi faktor. Di laga tandang, gambaran yang berbeda: hanya 2 kemenangan, 8 seri, 7 kekalahan. Leeds kesulitan ketika harus main jauh dari West Yorkshire.\n\nForm enam laga terakhir (DLLDDWWD, dibaca dari yang paling lama) menunjukkan tren yang sedikit membaik di ujung, dua kemenangan terakhir memberi sedikit modal psikologis untuk sisa musim.\n\n---\n\n## Posisi di Klasemen\n\nPer 28 April 2026, Leeds berada di posisi 15 Liga Inggris dengan 40 poin dari 34 laga. Selisih gol -7 mencerminkan tim yang lebih banyak kebobolan daripada mencetak gol sepanjang musim.\n\nPosisi 15 adalah zona aman, setidaknya untuk saat ini. Tapi dengan empat laga tersisa dan jarak ke zona degradasi yang bisa mengecil sewaktu-waktu, tidak ada yang bisa dianggap selesai. Empat puluh poin biasanya cukup untuk bertahan di Premier League, tapi \"biasanya\" bukan jaminan, apalagi dengan form yang naik-turun seperti yang Leeds tunjukkan musim ini.\n\nPoin dari hasil seri adalah yang paling mencolok dari catatan musim Leeds: 13 seri dari 34 laga. Itu bukan cuma angka, itu pola. Leeds terlalu sering menyelesaikan laga tanpa pemenang, mengumpulkan satu poin ketika tiga poin seharusnya bisa diraih, atau menyelamatkan satu poin ketika kekalahan sudah di depan mata. Kombinasi keduanya yang bikin posisi mereka tidak pernah jauh dari tekanan.\n\n---\n\n## Outlook\n\nLeeds United menutup bulan April 2026 dengan posisi yang bisa bertahan tapi tidak bisa tenang. Dua kemenangan beruntun di form terakhir memberi momentum yang dibutuhkan menjelang laga-laga sisa musim, tapi konsistensi adalah kata yang belum benar-benar bisa disematkan ke tim ini sepanjang 2025-26.\n\nTujuh clean sheet, 13 seri, 11 laga tanpa gol, itulah Leeds musim ini. Tim yang sulit dikalahkan di satu sisi, tapi juga sulit menang di sisi yang lain. Untuk sebuah klub dengan stadion sebesar Elland Road dan basis suporter seloyal itu, target paling realistis sekarang hanya satu: pastikan Premier League kembali di musim depan.\n\n*Profil ini mencerminkan data per 28 April 2026, musim Liga Inggris 2025-26.*\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "63",
+    "team_name": "Leeds",
+    "team_country": "England",
+    "team_founded": 1919,
+    "venue_name": "Elland Road",
+    "venue_city": "Leeds, West Yorkshire",
+    "venue_capacity": 40204,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.025444,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Fail: multiple critical data mismatches vs. input block (laga count, points, goal difference, home/away records, form sequence), plus training-data inference creep (stadium atmosphere, historical roller-coaster narrative). Numbers drift across every section. Correct data accuracy first, then remove speculative history.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "salah satu kandang paling vokal di Inggris, terkenal dengan atmosfer suporter yang tidak pernah setengah-setengah",
+          "fix": "Remove subjective 'vokal' + 'terkenal' phrasing; stick to facts: kapasitas 40.204, kandang Elland Road"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Selama puluhan tahun, Leeds adalah kekuatan yang diperhitungkan di liga domestik Inggris. Tapi perjalanan mereka di dekade-dekade terakhir adalah roller-coaster: naik-turun antara Premier League dan divisi bawah",
+          "fix": "Delete this paragraph entirely; input data covers 2025-26 only, not club history"
+        },
+        {
+          "type": "data_mismatch",
+          "severity": "high",
+          "snippet": "Per 34 laga yang sudah dimainkan... 9 kemenangan, 13 seri, dan 12 kekalahan... 44 gol total... 51 gol kebobolan",
+          "fix": "Correct to: 35 laga, 10 menang-13 seri-12 kalah, 47 gol cetak / 52 kebobolan"
+        },
+        {
+          "type": "data_mismatch",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Leeds berada di posisi 15 Liga Inggris dengan 40 poin dari 34 laga. Selisih gol -7",
+          "fix": "Update to: 3 Mei 2026, posisi 15, 43 poin, 35 laga, selisih gol -5"
+        },
+        {
+          "type": "data_mismatch",
+          "severity": "high",
+          "snippet": "Performa kandang dan tandang juga kontras. Di Elland Road, Leeds mencatat 7 kemenangan, 5 seri, dan 5 kekalahan... Di laga tandang... hanya 2 kemenangan, 8 seri, 7 kekalahan",
+          "fix": "Home record: 8 menang, 5 seri, 5 kalah (not 7 menang)"
+        },
+        {
+          "type": "data_mismatch",
+          "severity": "medium",
+          "snippet": "Form enam laga terakhir (DLLDDWWD, dibaca dari yang paling lama)",
+          "fix": "Form enam laga terakhir: WDWDL (reverse last 6 of LLDDWWDW), read recency as written"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka itu bicara sendiri: Leeds belum menemukan konsistensi sepanjang musim.",
+          "fix": "Replace with: 'Rekor menunjukkan inkonsistensi sepanjang musim' or just cut sentence"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dua kemenangan beruntun di form terakhir memberi momentum yang dibutuhkan menjelang laga-laga sisa musim, tapi konsistensi adalah kata yang belum benar-benar bisa disematkan",
+          "fix": "Recalculate from correct form sequence; check actual last two results"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "di liga domestik Inggris. Tapi perjalanan mereka di dekade-dekade terakhir adalah roller-coaster: naik-turun antara Premier League dan",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1d6e70818207e60a",
+    "published_at": "2026-04-28T12:14:57+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

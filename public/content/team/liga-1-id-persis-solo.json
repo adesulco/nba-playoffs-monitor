@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-persis-solo",
+  "title": "Profil Persis Solo: Liga 1 (2025-26)",
+  "description": "Profil Persis Solo — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Profil Persis Solo: Bertahan di Liga Teratas dengan Segala Cara\n\nPersis Solo adalah klub sepak bola asal Indonesia yang berkompetisi di Super League Indonesia (Liga 1), kandang di Stadion Manahan, Surakarta, berkapasitas 35.000 penonton. Per 28 April 2026, Persis menempati posisi 15 klasemen Liga 1 2025-26 dengan 27 poin dari 30 laga, catatan yang menempatkan mereka di zona rawan, jauh dari aman di penghujung musim.\n\n---\n\n## Identitas Klub\n\nPersis Solo berdiri di Surakarta, Jawa Tengah, dan menjadi salah satu nama lama di sepak bola Indonesia. Markas mereka, Stadion Manahan, adalah salah satu venue paling ikonik di tanah air, kapasitas 35.000 penonton, renovasi modern, dan fasilitas yang layak untuk standar Liga 1. Kandang di Surakarta seharusnya jadi benteng. Musim ini, angka menunjukkan cerita berbeda.\n\nDi Liga 1 2025-26, Persis tampil sebagai tim yang berjuang konsisten. Bukan krisis akut dalam satu fase, tapi ketidakstabilan yang merembet sepanjang musim, dan angkanya bicara keras.\n\n---\n\n## Performa Musim Ini\n\nTiga puluh laga dijalani, 6 menang, 9 seri, 15 kalah. Itu rangkuman musim Persis Solo di Liga 1 2025-26 per 28 April 2026.\n\nSerangan jadi masalah pertama. Rata-rata 1,1 gol per laga adalah angka rendah untuk tim yang ingin survive di Liga 1. Lebih mencolok lagi: 11 dari 30 laga berakhir tanpa gol sama sekali. Hampir sepertiga pertandingan, Persis tidak mampu merobek gawang lawan.\n\nPertahanan jadi masalah kedua. Lima puluh tiga gol kebobolan dari 30 laga, atau rata-rata 1,8 per pertandingan. Clean sheet cuma 4 kali. Itu angka yang menjelaskan kenapa selisih gol mereka sudah minus 20, defisit yang berat.\n\nForm terbaru (WDWDWLWL) agak lebih berimbang: ada kemenangan, ada seri, ada kekalahan. Sekilas terlihat stabil, tapi pola W-D silih berganti tanpa kemenangan beruntun menunjukkan tim yang belum punya identitas bermain yang solid. Satu hasil bagus belum tentu diikuti hasil bagus berikutnya.\n\nYang sedikit mengkhawatirkan adalah catatan kandang. Di Stadion Manahan, yang semestinya jadi keuntungan, Persis hanya mencatat 4 menang, 4 seri, dan 7 kalah. Itu berarti mereka lebih sering kalah di depan pendukung sendiri daripada menang. Di tandang, hasilnya juga tidak jauh berbeda: 2 menang, 5 seri, 8 kalah.\n\n---\n\n## Posisi di Klasemen\n\nDua puluh tujuh poin dari 30 laga menempatkan Persis di peringkat 15 Liga 1 2025-26, tepat di zona yang membutuhkan kewaspadaan penuh.\n\nDalam format kompetisi Liga 1 Indonesia, posisi bawah klasemen selalu membawa risiko degradasi. Dengan masih ada beberapa laga tersisa dan jarak tipis antara tim-tim di papan bawah, setiap poin menjadi krusial. Selisih gol minus 20 tidak memberi ruang untuk bersantai, kalau ada tim lain dengan poin yang sama atau mendekati, Persis bisa tergeser ke posisi lebih berbahaya hanya karena urusan selisih gol.\n\nRentang 27 poin dari 6 kemenangan dan 9 hasil seri menunjukkan Persis cukup solid menghindari kekalahan di beberapa laga, tapi tidak cukup tajam mengubul seri menjadi kemenangan. Banyak poin terbuang di laga-laga yang mestinya bisa diselesaikan dengan tiga angka.\n\n---\n\n## Outlook\n\nSisa musim ini bukan tentang mimpi. Ini tentang selamat.\n\nPersis Solo masih berada di posisi yang bisa diamankan, tapi tidak ada margin untuk kesalahan. Dengan form yang naik-turun dan produktivitas serangan yang belum konsisten, setiap laga ke depan punya bobot yang sama besarnya. Stadion Manahan perlu kembali jadi benteng, karena catatan kandang musim ini jelas belum memaksimalkan keuntungan bermain di depan pendukung sendiri.\n\nProfil ini mencerminkan kondisi Persis Solo per 28 April 2026. Peringkat, poin, dan semua angka performa di atas bisa berubah seiring sisa laga berjalan.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "4243",
+    "team_name": "Persis Solo",
+    "team_country": "Indonesia",
+    "team_founded": null,
+    "venue_name": "Stadion Manahan",
+    "venue_city": "Surakarta",
+    "venue_capacity": 35000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023029,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "FAIL: Critical data errors (wrong match count, wrong position, wrong defensive stats, wrong goal differential) compound across article. Two training-data inferences (stadium renovation, club heritage) not grounded in input. Fix math first; regenerate after.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Stadion Manahan adalah salah satu venue paling ikonik di tanah air, kapasitas 35.000 penonton, renovasi modern, dan fasilitas yang layak",
+          "fix": "Remove 'renovasi modern, dan fasilitas yang layak' — stick to name, capacity, location from input"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Persis Solo berdiri di Surakarta, Jawa Tengah, dan menjadi salah satu nama lama di sepak bola Indonesia",
+          "fix": "Remove history claim. Just: 'Persis Solo berbasis di Surakarta, Jawa Tengah.'"
+        },
+        {
+          "type": "structural",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Persis menempati posisi 15 klasemen Liga 1 2025-26 dengan 27 poin dari 30 laga",
+          "fix": "Correct to: 31 laga, 27 poin, posisi 16, per 3 Mei 2026"
+        },
+        {
+          "type": "structural",
+          "severity": "high",
+          "snippet": "Tiga puluh laga dijalani, 6 menang, 9 seri, 15 kalah",
+          "fix": "Correct to 16 kalah. Recalculate all derived stats (points, selisih gol)."
+        },
+        {
+          "type": "structural",
+          "severity": "high",
+          "snippet": "Lima puluh tiga gol kebobolan dari 30 laga, atau rata-rata 1,8 per pertandingan",
+          "fix": "Correct to: 58 gol kebobolan dari 31 laga, rata-rata 1,9 per pertandingan"
+        },
+        {
+          "type": "structural",
+          "severity": "high",
+          "snippet": "Selisih gol minus 20, defisit yang berat",
+          "fix": "Correct all instances to -23 (35 cetak, 58 kebobolan = -23)"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Form terbaru (WDWDWLWL) agak lebih berimbang: ada kemenangan, ada seri, ada kekalahan",
+          "fix": "Simplify: 'Form (WDWDWLWL) berombang-ambing — menang dan kalah berpadu tanpa pola jelas.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "form yang naik-turun dan produktivitas serangan yang belum konsisten, setiap laga ke depan punya bobot",
+          "fix": "Consolidate: 'Form naik-turun membuat setiap laga krusial menjelang usai musim.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xc9da63c91261ccea",
+    "published_at": "2026-04-28T12:16:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

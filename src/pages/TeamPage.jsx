@@ -1,13 +1,22 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { TEAM_META, TEAM_BY_SLUG, COLORS as C, teamSlug } from '../lib/constants.js';
+import ProfileLink from '../components/ProfileLink.jsx';
+// v0.20.0 Phase 2 Sprint F — Shell A leaf chrome. The full-bleed
+// team-color wash + 220px abbr watermark + 36px h1 + record/streak/
+// odds row gone from page body; collapsed into <HubStatusStrip>
+// with team accent on the 3px left stripe.
+import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { useTeamSchedule, computeStreak } from '../hooks/useTeamSchedule.js';
 import { useTeamLeaders } from '../hooks/useTeamLeaders.js';
 import { useInjuries } from '../hooks/useInjuries.js';
 import { usePlayoffData } from '../hooks/usePlayoffData.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
+import Breadcrumbs from '../components/Breadcrumbs.jsx';
+import PeerNav from '../components/PeerNav.jsx';
 import TitlePath from '../components/TitlePath.jsx';
 import PlayerHead from '../components/PlayerHead.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
@@ -151,6 +160,89 @@ export default function TeamPage() {
   const panel = { background: C.panel, border: `1px solid ${C.line}`, borderRadius: 4, padding: 16, marginBottom: 12 };
   const sectionH = { fontSize: 10, letterSpacing: 1.5, color: C.dim, fontWeight: 600, marginBottom: 10 };
 
+  // v0.20.0 Phase 2 Sprint F — push leaf chrome into the V2TopBar
+  // subrow. Picker label = team abbr tile (the abbr watermark
+  // becomes a 32px chip — the directive's "branded moment" pattern,
+  // mirroring the F1Driver # number tile prescription). Live slot
+  // carries record + streak + odds inline. HubActionRow handles
+  // the share affordance.
+  useEffect(() => {
+    setTopbarSubrow(
+      <HubStatusStrip
+        srOnlyTitle={lang === 'id'
+          ? `${teamName} · NBA Playoff 2026 — bracket, peluang juara, jadwal, hasil live`
+          : `${teamName} · NBA Playoffs 2026 — bracket, title odds, schedule, live results`}
+        accent={accent}
+        picker={(
+          <Link
+            to="/nba-playoff-2026"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '4px 10px 4px 4px',
+              background: `${accent}22`,
+              color: 'var(--ink)',
+              border: `1px solid ${accent}66`,
+              borderRadius: 6,
+              fontSize: 12, fontWeight: 700, letterSpacing: -0.1,
+              textDecoration: 'none',
+              fontFamily: 'inherit',
+            }}
+          >
+            <span
+              style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                width: 28, height: 28,
+                background: accent, color: '#fff',
+                fontFamily: 'var(--font-sans)', fontWeight: 900,
+                fontSize: 11, letterSpacing: -0.5,
+                borderRadius: 4,
+              }}
+            >
+              {meta.abbr}
+            </span>
+            {teamName}
+            <span style={{ color: 'var(--ink-3)', fontSize: 10, marginLeft: 2 }}>▾</span>
+          </Link>
+        )}
+        live={(
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+            <span style={{ textTransform: 'uppercase' }}>
+              NBA · {confLabel.toUpperCase()} · {seedLabel.toUpperCase()}
+            </span>
+            <span style={{ color: 'var(--ink)', fontWeight: 700 }}>{record.str}</span>
+            {streak && (
+              <span
+                style={{
+                  padding: '2px 7px',
+                  background: streak.startsWith('W') ? 'rgba(34,197,94,0.18)' : 'rgba(239,68,68,0.18)',
+                  border: `1px solid ${streak.startsWith('W') ? '#22c55e' : '#ef4444'}`,
+                  borderRadius: 3, fontSize: 10, fontWeight: 600, letterSpacing: 0.4,
+                  color: streak.startsWith('W') ? '#22c55e' : '#ef4444',
+                }}
+              >{streak}</span>
+            )}
+            {myOdds && (
+              <span style={{ color: 'var(--ink-3)' }}>
+                · {lang === 'id' ? 'Peluang' : 'Odds'} <strong style={{ color: 'var(--ink)' }}>{myOdds.pct}%</strong>
+              </span>
+            )}
+          </span>
+        )}
+        actions={(
+          <HubActionRow
+            url={`/nba-playoff-2026/${slug}`}
+            shareText={lang === 'id'
+              ? `${teamName} · NBA Playoff 2026 — bracket + peluang juara di gibol.co 🏀`
+              : `${teamName} · NBA Playoffs 2026 — bracket + title odds on gibol.co 🏀`}
+            accent={accent}
+            analyticsEvent="nba_team_share"
+          />
+        )}
+      />
+    );
+    return () => setTopbarSubrow(null);
+  }, [teamName, accent, meta, confLabel, seedLabel, record, streak, myOdds, lang, slug]);
+
   return (
     <div style={wrap}>
       <SEO
@@ -163,67 +255,32 @@ export default function TeamPage() {
       />
 
       <div className="dashboard-wrap" style={{ maxWidth: 980, margin: '0 auto' }}>
-        <TopBar
-          showBackLink
-          backTo="/nba-playoff-2026"
-          backLabel={lang === 'id' ? '← SEMUA TIM PLAYOFF' : '← ALL PLAYOFF TEAMS'}
-          title="gibol.co"
-          subtitle={`${teamName.toUpperCase()} · NBA PLAYOFF 2026`}
-        />
 
-        {/* ─── Team Hero ────────────────────────────────────────── */}
-        <div style={{
-          padding: '36px 24px',
-          background: `linear-gradient(135deg, ${accent} 0%, ${withAlpha(accent, 0.4)} 100%)`,
-          borderBottom: `1px solid ${C.line}`,
-          position: 'relative',
-          overflow: 'hidden',
-        }}>
-          {/* Giant abbr watermark */}
-          <div style={{
-            position: 'absolute', right: -20, bottom: -40,
-            fontSize: 220, fontWeight: 900, lineHeight: 1,
-            color: 'rgba(255,255,255,0.07)',
-            fontFamily: 'var(--font-sans)',
-            letterSpacing: -4, pointerEvents: 'none',
-          }}>{meta.abbr}</div>
-
-          <div style={{ position: 'relative', zIndex: 2 }}>
-            <div style={{ fontSize: 10, letterSpacing: 2, color: 'rgba(255,255,255,0.7)', marginBottom: 8 }}>
-              NBA · {confLabel.toUpperCase()} · {seedLabel.toUpperCase()}
-            </div>
-            <h1 style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 36, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.025em',
-              color: '#fff', margin: 0, marginBottom: 8, textWrap: 'balance',
-            }}>{teamName}</h1>
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center', fontSize: 13, color: 'rgba(255,255,255,0.9)' }}>
-              <div style={{ fontSize: 28, fontWeight: 700, color: '#fff' }}>{record.str}</div>
-              {streak && (
-                <div style={{
-                  padding: '4px 10px',
-                  background: streak.startsWith('W') ? 'rgba(34,197,94,0.25)' : 'rgba(239,68,68,0.25)',
-                  border: `1px solid ${streak.startsWith('W') ? '#22c55e' : '#ef4444'}`,
-                  borderRadius: 3, fontSize: 11, fontWeight: 600, letterSpacing: 0.5,
-                }}>{streak}</div>
-              )}
-              {myOdds && (
-                <div style={{
-                  padding: '6px 12px',
-                  background: 'rgba(0,0,0,0.35)',
-                  border: '1px solid rgba(255,255,255,0.25)',
-                  borderRadius: 3, fontSize: 11,
-                }}>
-                  <span style={{ color: 'rgba(255,255,255,0.7)' }}>{lang === 'id' ? 'Peluang Juara' : 'Title Odds'} </span>
-                  <strong style={{ color: '#fff', fontSize: 14 }}>{myOdds.pct}%</strong>
-                </div>
-              )}
-              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.85)' }}>
-                ★ {meta.star}
-              </div>
-            </div>
+        {/* v0.13.0 — visual breadcrumbs sit above the hero so users +
+            crawlers see the hub-to-leaf path at the top. Mirrors the
+            BreadcrumbList JSON-LD already in the prerendered HTML. */}
+        <div style={{ padding: '0 24px' }}>
+          <Breadcrumbs
+            items={[
+              { name: lang === 'id' ? 'NBA Playoff 2026' : 'NBA Playoffs 2026', to: '/nba-playoff-2026' },
+              { name: teamName },
+            ]}
+          />
+          {/* v0.46.0 — Phase 2 ship #27. Cross-link to the evergreen
+              profile article. Hidden if profile slug can't be
+              computed; redirects-home if not yet approved. */}
+          <div style={{ marginTop: 8, marginBottom: 4 }}>
+            <ProfileLink sport="nba" teamFullName={teamName} />
           </div>
         </div>
+
+        {/* v0.20.0 Phase 2 Sprint F — full-bleed team-color wash hero
+            stripped. Big abbr watermark → 28px chip inside the
+            HubStatusStrip picker. h1 + record + streak + title-odds
+            row collapsed into the strip's live slot. SEO h1 rides
+            as `.sr-only` via srOnlyTitle. Star quote (★ meta.star)
+            is now a body-grid card below — no longer visible in
+            the hero, but preserved in the page narrative. */}
 
         {/* ─── Body ─────────────────────────────────────────────── */}
         <div style={{ padding: '20px 16px' }}>
@@ -492,18 +549,31 @@ export default function TeamPage() {
                 <Link to="/recap" style={{ padding: '5px 10px', background: C.panelRow, borderRadius: 3, color: C.text, textDecoration: 'none', border: `1px solid ${C.line}` }}>
                   📖 {lang === 'id' ? 'Catatan Playoff Harian' : 'Daily Playoff Recap'}
                 </Link>
-                {Object.keys(TEAM_META)
-                  .filter((n) => TEAM_META[n].conf === meta.conf && n !== teamName)
-                  .slice(0, 4)
-                  .map((n) => (
-                    <Link key={n} to={`/nba-playoff-2026/${teamSlug(n)}`} style={{
-                      padding: '5px 10px', background: C.panelRow, borderRadius: 3, color: C.text,
-                      textDecoration: 'none', border: `1px solid ${TEAM_META[n].color}`,
-                      fontSize: 10.5,
-                    }}>
-                      {TEAM_META[n].abbr} · {n.split(' ').pop()}
-                    </Link>
-                  ))}
+              </div>
+
+              {/* v0.13.0 — full conference-peer nav. Was a 4-team
+                  shortlist mixed with the SEE ALSO links above. The
+                  full peer list across the same conference (15
+                  teams) distributes more PageRank to siblings + lets
+                  the user jump directly to a rival's page in one
+                  click. */}
+              <div style={{ marginTop: 14 }}>
+                <PeerNav
+                  title={lang === 'id'
+                    ? `Tim Konferensi ${meta.conf === 'E' ? 'Timur' : 'Barat'} lain`
+                    : `Other ${meta.conf === 'E' ? 'East' : 'West'} teams`}
+                  currentSlug={slug}
+                  items={Object.keys(TEAM_META)
+                    .filter((n) => TEAM_META[n].conf === meta.conf)
+                    .map((n) => ({
+                      slug: teamSlug(n),
+                      name: n.split(' ').slice(-1)[0],
+                      short: TEAM_META[n].abbr,
+                      color: TEAM_META[n].color,
+                      href: `/nba-playoff-2026/${teamSlug(n)}`,
+                    }))}
+                  maxItems={15}
+                />
               </div>
             </div>
           </div>

@@ -1,0 +1,81 @@
+{
+  "type": "team",
+  "slug": "f1-carlos-sainz",
+  "title": "Profil Carlos Sainz: Pembalap F1 Williams (2026)",
+  "description": "Profil pembalap F1 Carlos Sainz (Spanyol) untuk tim Williams. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Carlos Sainz di 2026: Musim Berat bersama Williams\n\nCarlos Sainz, kode FIA SAI dengan nomor permanen #55, pembalap Spanyol kelahiran 1 September 1994. Per 28 April 2026, Sainz membalap untuk Williams dan menempati P14 klasemen 2026 dengan 2 poin dari 3 balapan musim ini, tanpa satu pun kemenangan.\n\n---\n\n## Identitas\n\nSainz, 31 tahun, adalah salah satu nama paling dikenal di grid F1 saat ini. Di Williams, ia membawa nomor #55 yang sudah jadi identitasnya sejak lama, kode FIA SAI tercetak di setiap sisi mobilnya setiap race weekend.\n\nWilliams adalah tim bersejarah, tapi realita saat ini beda cerita dengan masa kejayaan mereka. Sainz masuk ke dalam situasi yang tidak mudah: harapan besar, sumber daya yang lebih terbatas dibanding tim papan atas, dan tekanan untuk membuktikan bahwa pilihan karier ini tidak salah arah.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, 2 poin. Angka itu bicara sendiri.\n\nSatu-satunya poin datang dari Chinese Grand Prix, di mana Sainz finis P9, cukup untuk membawa pulang 2 poin ke Williams. Sebelum dan sesudahnya: P15 di Australia, P15 di Jepang. Keduanya berakhir *lapped* atau sekadar finis tanpa poin.\n\nDi klasemen konstruktor, Williams bergantung sepenuhnya pada poin yang Sainz raih di China itu. Dua dari dua balapan lainnya tidak memberikan return apa pun.\n\nDengan hanya 3 balapan yang sudah dijalani, masih terlalu dini untuk bicara musim ini sudah selesai. Tapi angka awal tidak berpihak.\n\n---\n\n## Hasil Per Balapan: Membaca Polanya\n\n**Australian Grand Prix, P15, 0 poin, Lapped**\n\nPembuka musim yang langsung berat. P15 dan tertinggal satu lap dari pemimpin balapan adalah cerminan gap antara Williams dan bagian atas grid. Bukan performa driver yang buruk secara individual, tapi realita posisi tim di pecking order.\n\n**Chinese Grand Prix, P9, 2 poin, Lapped**\n\nIni titik terbaik sejauh ini. P9 dengan 2 poin adalah hasil paling kompetitif yang bisa Sainz ekstrak dari paket yang ia punya. Meski masih tertinggal satu lap, ia berhasil mengambil yang tersedia. Konsistensi dalam kondisi berbeda, strategi yang jalan, atau keberuntungan field? Apapun kombinasinya, hasilnya nyata.\n\n**Japanese Grand Prix, P15, 0 poin, Finished**\n\nKembali ke P15. Status \"Finished\", bukan *Lapped* seperti Australia, tapi tanpa poin. Suzuka adalah sirkuit yang sangat menuntut dari sisi aerodinamika dan setup. Di sana, gap performa antar tim terasa lebih jelas.\n\nPolanya: Williams kompetitif di level midfield hanya dalam kondisi spesifik. China menjadi outlier positif, Australia dan Jepang menjadi baseline yang lebih jujur tentang posisi tim saat ini.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Sainz duduk di P14 klasemen pembalap dengan 2 poin, tertinggal jauh dari zona poin reguler, apalagi papan atas.\n\nYang jadi pertanyaan bukan apakah Sainz cukup cepat. Catatan kariernya menjawab itu. Pertanyaannya adalah apakah Williams bisa memberikan paket yang cukup kompetitif untuk membiarkan Sainz bekerja di zona poin secara konsisten sepanjang musim.\n\nTiga balapan adalah sampel kecil. Tapi dari tiga itu, satu race yang masuk poin dan dua yang tidak, itu gambaran awal yang perlu dibalik kalau Sainz ingin musim 2026 punya cerita berbeda di penghujung tahun.\n\nSemua angka di profil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "sainz",
+    "driver_name": "Carlos Sainz",
+    "driver_code": "SAI",
+    "driver_number": "55",
+    "nationality": "Spanish",
+    "current_team": "Williams",
+    "current_team_id": "williams",
+    "championship_pos": "14",
+    "championship_points": "2",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020205,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to three high-severity training-inference issues (Sainz's reputation, #55 history, Williams's past glory) that go beyond input data. Also contains one date inconsistency (28 April vs. 3 Mei). Remove all career/historical speculation and focus strictly on 2026 results in input block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sainz, 31 tahun, adalah salah satu nama paling dikenal di grid F1 saat ini",
+          "fix": "Remove or replace with factual claim from input (e.g., 'Sainz bergabung Williams di 2026')"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Di Williams, ia membawa nomor #55 yang sudah jadi identitasnya sejak lama",
+          "fix": "Replace with: 'Di Williams, Sainz menggunakan nomor #55'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Williams adalah tim bersejarah, tapi realita saat ini beda cerita dengan masa kejayaan mereka",
+          "fix": "Delete or focus on current 2026 reality only"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Sainz masuk ke dalam situasi yang tidak mudah: harapan besar, sumber daya yang lebih terbatas",
+          "fix": "Stick to facts: 'Sainz di Williams musim ini menghadapi tantangan performa'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Catatan kariernya menjawab itu",
+          "fix": "Rephrase as conditional: 'Jika catatan karier mencerminkan pace...'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Sainz membalap untuk Williams dan menempati P14 klasemen 2026",
+          "fix": "Use input date consistently: 'Per 3 Mei 2026' throughout"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Suzuka adalah sirkuit yang sangat menuntut dari sisi aerodinamika dan setup",
+          "fix": "Just state the fact: 'Di Jepang, Sainz finis P15 tanpa poin'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x00f347f9b2f3868a",
+    "published_at": "2026-04-28T12:14:12+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

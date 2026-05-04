@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-oklahoma-city-thunder",
+  "title": "Profil Oklahoma City Thunder: Western Conference (2025-26)",
+  "description": "Profil Oklahoma City Thunder — franchise NBA dari Oklahoma City di division Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Oklahoma City Thunder: Mesin Muda yang Terbaik di Barat\n\nPer 28 April 2026, Oklahoma City Thunder menutup musim reguler 2025-26 dengan rekor 64-18, win percentage 0.780, seed 1 di Western Conference, dan posisi teratas Northwest Division. Ini bukan kebetulan. Di bawah asuhan Mark Daigneault, OKC membangun sesuatu yang jarang: tim terbaik di kompetisi paling ketat di dunia basket, dengan rata-rata usia roster yang belum cukup untuk menyewa mobil.\n\n## Identitas dan Posisi Liga\n\nOklahoma City Thunder berkandang di Paycom Center, Oklahoma City, dan main di Northwest Division Wilayah Barat. Musim reguler 2025-26 ditutup sebagai tim dengan rekor terbaik di seluruh NBA, 64 menang, 18 kalah. Seed 1 di Western Conference, OKC finis di atas semua kompetitor di divisi maupun conference-nya. Mark Daigneault, kepala pelatih yang sudah membangun budaya tim ini dari dalam, memimpin roster yang secara konsisten tampil di atas ekspektasi sejak awal musim.\n\n## Performa Musim Ini\n\nAngka-angkanya berbicara sendiri. OKC mencetak rata-rata 119,0 PPG musim ini dengan pertahanan yang hanya memberi lawan 107,9 PPG, point differential +11,1 per laga. Di kandang, mereka hampir tak tersentuh: 34-7 (0.829). Di luar Paycom Center pun OKC tidak terlipat, road record 30-10 (0.750) adalah salah satu yang terbaik di liga.\n\nKombinasi serangan produktif dan pertahanan solid mencerminkan tim yang dibangun dengan identitas jelas. Bukan tim yang menang karena satu pemain panas, tapi karena sistemnya berjalan di dua sisi lapangan secara bersamaan. Differential +11,1 bukan sekadar statistik. itu margin yang menunjukkan OKC jarang main ketat karena memang jarang disamakan.\n\n## Roster dan Pemain Kunci\n\n**Shai Gilgeous-Alexander** (#2, Guard, 27 tahun, 7 tahun di NBA) adalah jantung dari semua ini. SGA, panggilan yang sudah familiar di seluruh fanbase basket global, bermain dengan efisiensi dan kontrol pace yang langka. Tujuh tahun di liga, tapi baru 27 tahun: kombinasi pengalaman dan prime fisik yang ideal untuk kepemimpinan di playoff.\n\n**Chet Holmgren** (#7, Center, 23 tahun, 2 tahun di NBA) mewakili alasan kenapa OKC dilihat berbeda dari tim muda kebanyakan. Tinggi, mobile, bisa protect rim dan ikut join offense, tipe big modern yang cocok untuk pace sistem Daigneault. Dua tahun pengalaman, tapi kualitasnya sudah jauh melampaui angka itu.\n\n**Isaiah Hartenstein** (#55, Center, 27 tahun, 7 tahun di NBA) melengkapi frontcourt OKC dengan veteran presence. Tujuh tahun di liga memberi kontribusi yang berbeda dari duo muda di sekitarnya, pengalaman membaca situasi, terutama di late-game dan playoff matchups.\n\nDi lini backcourt, **Alex Caruso** (#9, Guard, 32 tahun, 8 tahun di NBA) adalah nama yang dikenal penonton NBA bukan karena statistik tapi karena impact, defensive instinct dan competitive character yang mengangkat level tim secara keseluruhan. **Luguentz Dort** (#5, Guard, 27 tahun, 6 tahun pengalaman) menambahkan satu lagi guard dengan reputasi pertahanan keras dan kemampuan offense yang terus berkembang.\n\nRoster ini juga menyimpan banyak pemain muda dengan pengalaman nol hingga satu tahun, Brooks Barnhizer, Payton Sandfort, Thomas Sorber (20 tahun), Nikola Topic (20 tahun). Pipeline ini yang membuat OKC bukan hanya kuat musim ini, tapi punya alasan optimis jangka panjang.\n\n## Outlook\n\nDengan seed 1 di Western Conference, OKC masuk playoff 2025-26 sebagai tim dengan record terbaik di liga dan keunggulan home court di setiap seri yang mereka mainkan. Sebelum playoff dimulai, OKC masih punya satu laga tersisa: tandang ke Phoenix Suns, 28 April 2026.\n\nMusim reguler sudah membuktikan apa yang bisa dilakukan tim ini. Pertanyaan yang tersisa adalah klasik: apakah mesin ini bisa bekerja sama baiknya di bawah tekanan tujuh game series? Dengan SGA, Holmgren, dan sistem Daigneault yang sudah terbukti di 82 laga, OKC punya argumen yang kuat.\n\n*Profil ini mencerminkan data per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "25",
+    "team_name": "Oklahoma City Thunder",
+    "team_abbr": "OKC",
+    "team_location": "Oklahoma City",
+    "conference": "Western Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.02271,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to multiple high-severity training-data inferences (stadium name, jersey numbers, Phoenix Suns matchup) not grounded in input data block. Also contains translated-English phrasing and one academic-drift moment. Requires factual audit before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Paycom Center, Oklahoma City, dan main di Northwest Division",
+          "fix": "Remove stadium reference or use only 'kandang di Oklahoma City'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Shai Gilgeous-Alexander (#2, Guard, 27 tahun, 7 tahun di NBA)",
+          "fix": "Use only: Shai Gilgeous-Alexander, Guard, 27y, 7y exp per input data"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Chet Holmgren (#7, Center, 23 tahun, 2 tahun di NBA)",
+          "fix": "Remove jersey number or cross-check against actual input roster"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "tandang ke Phoenix Suns, 28 April 2026",
+          "fix": "Remove this sentence entirely; use only: 'Los Angeles Lakers at Oklahoma City Thunder on 2026-05-06'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini bukan kebetulan. Di bawah asuhan Mark Daigneault, OKC membangun sesuatu",
+          "fix": "Rephrase: 'Bukan kebetulan. Mark Daigneault membangun sesuatu yang jarang di NBA:'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Differential +11,1 bukan sekadar statistik. itu margin yang menunjukkan",
+          "fix": "Delete second sentence or merge: 'Differential +11,1 itu margin yang jarang dilihat.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "SGA, panggilan yang sudah familiar di seluruh fanbase basket global",
+          "fix": "Simpler: 'SGA, nama yang dikenal fanbase basket global'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Musim reguler sudah membuktikan apa yang bisa dilakukan tim ini.",
+          "fix": "Change to: 'Musim reguler membuktikan apa yang bisa dilakukan tim ini.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xb694c70b0488a5b8",
+    "published_at": "2026-04-28T10:36:20+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

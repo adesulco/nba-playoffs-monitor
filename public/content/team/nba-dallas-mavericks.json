@@ -1,0 +1,83 @@
+{
+  "type": "team",
+  "slug": "nba-dallas-mavericks",
+  "title": "Profil Dallas Mavericks: Western Conference (2025-26)",
+  "description": "Profil Dallas Mavericks — franchise NBA dari Dallas di division Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Dallas Mavericks 2025-26: Musim Transisi Panjang di Kota Lone Star\n\nDallas Mavericks adalah franchise NBA yang berkandang di Dallas, Texas, dan bermain di Southwest Division Wilayah Barat. Per 28 April 2026, DAL menutup musim reguler 2025-26 dengan rekor 26-56, win rate 31,7% dan seed 12 di Western Conference playoff picture. Musim ini bukan cerita tentang kemenangan. Ini cerita tentang membangun dari bawah.\n\n---\n\n## Posisi di Liga\n\nDi Southwest Division, Mavericks finis di urutan ketiga, di bawah tim-tim yang lebih solid di division yang tetap kompetitif musim ini. Seed 12 di Wilayah Barat mengonfirmasi posisi mereka: jauh dari playoff, tapi cukup aktif di rotasi untuk mengumpulkan jam bermain buat pemain muda.\n\nHead coach Jason Kidd tetap di kursi pelatih. Di atas kertas, tugas Kidd musim ini bukan lagi soal merakit kontensi, melainkan soal mengelola roster campuran veteran dan rookie sambil menjaga kohesi tim.\n\n---\n\n## Membaca Rekor Musim Ini\n\n26-56 adalah angka yang bicara jujur. Point differential negatif menjelaskan segalanya: DAL rata-rata mencetak 114,1 PPG tapi kebobolan 119,6 PPG, minus 5,5 per laga, salah satu yang terburuk di liga musim ini.\n\nYang menarik adalah split home-away-nya. Di kandang American Airlines Center, Dallas mencatat 16-25, masih di bawah 0,500, tapi jauh lebih layak dibanding performa tandang mereka yang cuma 10-30. Road record 0,250 itu bukan anomali. itu cerminan roster yang belum cukup dalam untuk menghadapi tekanan laga jauh secara konsisten.\n\nSisi ofensif bukan masalah utama. 114,1 PPG masih ada di kisaran rata-rata liga. Masalahnya ada di pertahanan, 119,6 PPG yang diizinkan menandakan bahwa Dallas terlalu sering main catch-up di paruh kedua laga.\n\n---\n\n## Roster: Perpaduan Generasi\n\nRoster Dallas musim ini adalah campuran menarik antara veteran berpengalaman dan pemain yang baru mulai.\n\n**Kyrie Irving** (#11, Guard, 34 tahun, 14 tahun pengalaman) tetap jadi nama terbesar di roster. Empat belas musim di NBA, pernah merasakan berbagai situasi, dari kontensi championship hingga rebuild. Musim ini Kyrie bermain dalam konteks yang berbeda. kepemimpinannya di locker room mungkin lebih berharga dari output statistiknya.\n\n**Cooper Flagg** (#32, Forward, 19 tahun, rookie) adalah nama yang paling sering disebut dalam pembicaraan masa depan franchise. Jebolan Duke ini masuk sebagai rookie dan langsung mendapat menit bermain di level NBA, tepat seperti yang diharapkan dari proses rebuild. Di usia 19, dia adalah investasi jangka panjang Dallas.\n\n**Khris Middleton** (#20, Forward, 34 tahun, 13 tahun pengalaman) melengkapi trio veteran di roster. Bersama Irving dan Dwight Powell (#7, 11 tahun pengalaman), Middleton mewakili lapisan veteran yang memberi konteks dan stabilitas buat pemain muda seperti Flagg, Max Christie (#00, 23 tahun), dan Moussa Cisse (#30, rookie).\n\nDereck Lively II (#2, Center, 22 tahun) masuk tahun kedua, profil big man muda yang cocok untuk tumbuh seiring dengan Flagg di frontcourt.\n\n---\n\n## Konteks dan Penutup\n\nSeed 12 Wilayah Barat, rekor 26-56, point differential minus. Angka-angka ini bukan hukuman, ini potret tim yang sedang dalam proses. Musim 2025-26 Dallas Mavericks lebih masuk akal dibaca sebagai investasi ketimbang kegagalan.\n\nRebuild yang serius butuh dua hal: pemain muda yang menjanjikan dan veteran yang bisa mengajari mereka cara bermain di level ini. Dallas punya keduanya. Flagg di satu sisi, Irving dan Middleton di sisi lain.\n\nSeberapa cepat gap itu tertutup bergantung pada musim-musim berikutnya, sesuatu yang data per 28 April 2026 ini belum bisa jawab.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "6",
+    "team_name": "Dallas Mavericks",
+    "team_abbr": "DAL",
+    "team_location": "Dallas",
+    "conference": "Western Conference",
+    "division": "",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021577,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: High-severity training inference (Middleton and Powell career details not grounded in input data). Date discrepancy and minor grammatical/academic register drift. Rewrite required with roster verification.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Khris Middleton (#20, Forward, 34 tahun, 13 tahun pengalaman)",
+          "fix": "Remove Middleton reference or verify presence in actual current roster"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dwight Powell (#7, 11 tahun pengalaman), Middleton mewakili lapisan veteran",
+          "fix": "Use only confirmed data: age and jersey number; cut 'pengalaman' detail"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang mana berkandang di... Wilayah Barat",
+          "fix": "Start: 'Dallas Mavericks bermain di Southwest Division, Wilayah Barat'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Yang menarik adalah split home-away-nya",
+          "fix": "Start directly: 'Split home-away jelas terlihat: 16-25 kandang, 10-30 tandang'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "itu cerminan roster yang belum cukup dalam untuk menghadapi tekanan",
+          "fix": "Capitalize: 'Itu cerminan roster...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "roster Dallas musim ini adalah campuran menarik... roster ini adalah campuran",
+          "fix": "Rephrase second: 'Roster Dallas musim ini menggabungkan veteran dan rookie'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Kyrie Irving tetap jadi nama terbesar... pernah merasakan berbagai situasi",
+          "fix": "Cut 'pernah': 'merasakan berbagai situasi, dari kontensi hingga rebuild'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Per 28 April 2026 vs Data per: 3 Mei 2026 input block",
+          "fix": "Align dates; use 3 Mei 2026 per input block"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x733c861058a7aca8",
+    "published_at": "2026-04-28T10:27:12+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

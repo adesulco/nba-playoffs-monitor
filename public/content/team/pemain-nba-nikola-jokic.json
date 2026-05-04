@@ -1,0 +1,84 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-nikola-jokic",
+  "title": "Profil Nikola Jokic: Center Denver Nuggets",
+  "description": "Profil pemain NBA Nikola Jokic, Center Denver Nuggets. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Nikola Jokic: Center Denver Nuggets yang Cetak Triple-Double Hampir Tiap Malam\n\nNikola Jokic, center Denver Nuggets kelahiran Sombor, Serbia, bukan pemain yang paling atletis di NBA. Tapi per 28 April 2026, tidak ada pemain di liga yang lebih dominan secara statistik: 27,7 PPG, 12,9 RPG peringkat 1 NBA, dan 10,7 APG peringkat 1 NBA. Pemain berpostur 6'11\" 284 lbs dengan jersey #15 ini bukan hanya center terbaik musim ini, dia argumen terkuat untuk pemain paling lengkap di liga.\n\n---\n\n## Identitas\n\nJokic lahir di Sombor, Serbia, kini 31 tahun. Masuk NBA lewat jalur yang tidak lazim: di-draft Denver Nuggets di ronde 2, pick ke-41 dari Draft 2014, salah satu pick paling undervalued dalam sejarah draft modern. Debut NBA-nya 2015, dan musim 2025-26 ini adalah tahun ke-10-nya di liga.\n\nFisiknya tidak pernah terlihat seperti NBA center konvensional. Berat 284 lbs, tinggi 6'11\", tapi gerakannya bukan gerakan big man kebanyakan. Dia tidak hidup di paint karena kecepatan atau atletisisme. Dia hidup di sana karena membaca permainan lebih cepat dari semua orang lain di lantai.\n\n---\n\n## Denver Nuggets\n\nJokic adalah Denver Nuggets. Bukan dalam arti kiasan, dalam arti literal, seluruh sistem ofensif dan defensif DEN dibangun di sekitar apa yang bisa dia lakukan. Center nomor 15 ini telah ada di organisasi sejak debut 2015, melewati era rebuild sampai organisasi membangun tim di sekelilingnya.\n\nPer 28 April 2026, statistiknya tidak meninggalkan banyak ruang untuk argumen lain: dia scorer utama, rebounder utama, dan playmaker utama DEN dalam satu paket. Di liga yang semakin didominasi guard dan wing yang handle bola, Jokic membuktikan seorang center tetap bisa jadi fulcrum dari seluruh serangan tim.\n\n---\n\n## Performa Musim Ini\n\nIni yang membuat angka Jokic musim ini susah dicerna secara logika.\n\n**27,7 PPG**, peringkat 8 NBA. Scorer elite. Untuk kebanyakan pemain, ini sudah cukup untuk jadi headline. Tapi bagi Jokic, ini bukan yang paling mengesankan dari musimnya.\n\n**12,9 RPG, peringkat 1 NBA.** Rebounder terbaik di liga. Sebagai center berpostur besar, ini mungkin yang paling tidak mengejutkan. Tapi volume ini, dikombinasikan dengan dua statistik lainnya, adalah yang membuatnya berbeda.\n\n**10,7 APG, peringkat 1 NBA.** Di sini angkanya benar-benar aneh. Seorang center sebagai assist leader liga bukan sekedar outlier, ini belum pernah terjadi secara konsisten sepanjang sejarah NBA modern. 10,7 APG adalah milik point guard, bukan big man 284 lbs. Jokic melakukannya sambil juga jadi top rebounder dan top-10 scorer.\n\n**56,9% FG, peringkat 10 NBA.** Efisiensi shooting-nya juga masuk top 10 liga, yang berarti volume scoring-nya bukan hasil dari usage yang wasteful.\n\nGabungkan keempat angka itu: satu pemain, peringkat top 10 scoring, peringkat 1 rebounding, peringkat 1 assists, peringkat 10 field goal percentage. Triple-double bukan lagi momen kejutan untuk Jokic, itu ekspektasi dasarnya tiap malam.\n\nDalam bahasa basket, apa yang Jokic lakukan disebut playmaking center atau pass-first big, tapi label itu tidak cukup menggambarkan situasinya. Dia bukan center yang bisa pass. Dia seorang playmaker yang kebetulan berdiri di posisi center, dengan fisik yang memungkinkan dia juga menguasai paint di kedua sisi lapangan.\n\n---\n\n## Penutup\n\nDi musim ke-10-nya, Jokic tidak menunjukkan tanda-tanda perlambatan. Angkanya per 28 April 2026, 27,7 PPG, 12,9 RPG (1st), 10,7 APG (1st), 56,9% FG (10th), adalah salah satu statistical season paling menyeluruh yang pernah ada di NBA. Pemain yang masuk liga sebagai pick ke-41 kini menjadi standar referensi ketika bicara soal apa artinya menjadi pemain basketball yang lengkap.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "3112335",
+    "athlete_name": "Nikola Jokic",
+    "team_name": "Denver Nuggets",
+    "team_abbr": "DEN",
+    "position": "Center",
+    "jersey": "15",
+    "age": 31,
+    "birthplace": "Sombor, Serbia",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022246,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "FAIL: Three critical training-inference violations (historical NBA claims, franchise history, speculative play-style analysis not grounded in input data) plus a repeated date error (article says 28 April, input says 3 Mei 2026). Rewrites must eliminate speculative scouting commentary and stick to facts from the data block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "per 28 April 2026, tidak ada pemain di liga yang lebih dominan",
+          "fix": "Change 'per 28 April 2026' to 'per 3 Mei 2026' (the actual data date from input block)"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Fisiknya tidak pernah terlihat seperti NBA center konvensional. Berat 284 lbs, tinggi 6'11\", tapi gerakannya bukan gerakan big man kebanyakan.",
+          "fix": "Stick to facts from input: height, weight, stats. Remove interpretive movement analysis."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "melewati era rebuild sampai organisasi membangun tim di sekelilingnya",
+          "fix": "Remove 'melewati era rebuild sampai organisasi membangun tim di sekelilingnya'. Keep only: 'Jokic telah ada di organisasi sejak debut 2015.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Seorang center sebagai assist leader liga bukan sekedar outlier, ini belum pernah terjadi secara konsisten sepanjang sejarah NBA modern.",
+          "fix": "Remove historical comparison. State fact only: 'Jokic adalah assist leader NBA musim ini dengan 10,7 APG.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Dia tidak hidup di paint karena kecepatan atau atletisisme.",
+          "fix": "Remove subjective tactical assessment. Stick to: 'Jokic adalah Denver Nuggets, dengan sistem tim dibangun di sekitar kemampuannya.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Di liga yang semakin didominasi guard dan wing yang handle bola, Jokic membuktikan seorang center tetap bisa jadi fulcrum dari seluruh serangan tim.",
+          "fix": "Remove league-trend assertion. Keep: 'Jokic adalah scorer, rebounder, dan playmaker utama Denver Nuggets.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "per 28 April 2026, statistiknya tidak meninggalkan banyak ruang untuk argumen lain",
+          "fix": "Global find-replace: '28 April 2026' → '3 Mei 2026' throughout article"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Ini yang membuat angka Jokic musim ini susah dicerna secara logika.",
+          "fix": "Rephrase: 'Ini yang membuat statistik Jokic musim ini luar biasa.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd993a30e0cb4d29a",
+    "published_at": "2026-04-28T12:06:48+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

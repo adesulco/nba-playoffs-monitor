@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "tennis-daniil-medvedev",
+  "title": "Profil Daniil Medvedev (ATP) — Peringkat 10",
+  "description": "Profil petenis Daniil Medvedev (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Daniil Medvedev: Petenis Rusia di Papan Atas ATP\n\nDaniil Medvedev, petenis Rusia kelahiran 11 Februari 1996, saat ini menempati peringkat 10 ATP dengan 3.560 poin per 16 April 2026. Pemain tangan kanan ini lahir di Moskow dan sudah lebih dari satu dekade menjadi salah satu nama paling konsisten di sirkuit ATP.\n\n## Identitas\n\nMedvedev lahir di Moskow, Rusia, dan kini berusia 30 tahun. Dengan tinggi 198 cm dan berat 82 kg, posturnya termasuk yang paling menonjol di lapangan, jangkauan panjang yang jadi senjata efektif di baseline maupun saat serve. Medvedev memulai karier profesional pada 2014, artinya ia sudah melewati lebih dari sepuluh tahun kompetisi di level tertinggi tennis dunia. Perjalanan panjang itu membentuknya jadi petenis yang matang secara teknis maupun mental.\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Medvedev berada di peringkat 10 ATP dengan 3.560 poin. Posisi ini stagnan dibanding peringkat sebelumnya, tidak naik, tidak turun. Stabilitas di angka 10 bukan prestasi kecil. Bertahan di top 10 ATP berarti bersaing setiap minggu melawan pemain terbaik dunia, dan Medvedev menjaga posisinya tanpa gejolak.\n\nPoin 3.560 menempatkan dia di zona yang kompetitif, cukup untuk konsisten masuk seeded di setiap turnamen besar, dari Masters 1000 hingga Grand Slam. Tren stabil ini mengindikasikan Medvedev menjaga ritme poin dengan baik: setiap poin yang expire terganti oleh hasil baru di turnamen berikutnya.\n\n## Penutup\n\nDi usia 30 tahun, Medvedev bukan lagi pendatang baru yang membuktikan diri, ia adalah bagian dari hierarki tetap ATP. Peringkat 10 dengan tren stabil mencerminkan petenis yang tahu persis cara mengelola kalender turnamen dan mempertahankan levelnya di antara persaingan ketat papan atas. Data ini berlaku per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "2383",
+    "athlete_name": "Daniil Medvedev",
+    "current_rank": 10,
+    "previous_rank": 10,
+    "points": 3560.0,
+    "trend": "-",
+    "birthplace": "Moscow, Russia",
+    "dob": "1996-02-11",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.012897,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 58,
+      "issue_count": 7,
+      "summary": "Article fails due to multiple tense-marking errors (high severity), academic drift, and translated-English constructions that make it feel like AI-generated sports writing rather than natural Bahasa. Closing is filler. Regenerate with stricter voice discipline.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "sudah lebih dari satu dekade menjadi salah satu nama paling konsisten",
+          "fix": "Ubah menjadi: 'lebih dari satu dekade jadi nama konsisten di sirkuit ATP'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "sudah melewati lebih dari sepuluh tahun kompetisi di level tertinggi",
+          "fix": "Ubah menjadi: 'lebih dari sepuluh tahun kompetisi di level tertinggi'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "membentuknya jadi petenis yang matang secara teknis maupun mental",
+          "fix": "Delete or replace with concrete: 'membuat serve dan baseline game-nya semakin tajam'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Stabilitas di angka 10 bukan prestasi kecil. Bertahan di top 10 ATP berarti bersaing setiap minggu",
+          "fix": "Ubah menjadi: 'Top 10 ATP = bersaing mingguan melawan top players'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tren stabil ini mengindikasikan Medvedev menjaga ritme poin dengan baik: setiap poin yang expire terganti",
+          "fix": "Ubah menjadi: 'Stabil karena poin lama terganti hasil turnamen baru setiap pekan'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Di usia 30 tahun, Medvedev bukan lagi pendatang baru yang membuktikan diri, ia adalah bagian",
+          "fix": "Cut or replace with next tournament/specific next challenge for Medvedev"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "jangkauan panjang yang jadi senjata efektif di baseline maupun saat serve",
+          "fix": "Ubah menjadi: 'reach panjang memberi advantage di baseline dan serve'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x135049fa8c8dea82",
+    "published_at": "2026-04-28T12:00:21+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

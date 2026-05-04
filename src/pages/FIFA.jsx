@@ -167,6 +167,7 @@ const FIFA_JSONLD = {
 export default function FIFA() {
   return (
     <ComingSoon
+      sportId="fifa_wc"
       league="FIFA WORLD CUP 2026 · USA · MEXICO · CANADA"
       title="World Cup 2026 Dashboard"
       titleId="Dashboard Piala Dunia 2026"
@@ -178,6 +179,7 @@ export default function FIFA() {
       features={features}
       featuresId={featuresId}
       seoKeywords="fifa world cup 2026, piala dunia 2026, jadwal piala dunia 2026, skor piala dunia, grup piala dunia 2026, kickoff piala dunia 11 juni 2026, USA Mexico Canada world cup, FIFA 2026, world cup indonesia"
+      seoImage="https://www.gibol.co/og/hub-fifa-wc.png"
       jsonLd={FIFA_JSONLD}
     >
       <FIFAPreviewBlock />

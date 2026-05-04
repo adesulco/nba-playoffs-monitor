@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { COLORS as C } from '../lib/constants.js';
 import { CLUBS, CLUBS_BY_SLUG } from '../lib/sports/epl/clubs.js';
+import { useIsMobile } from '../hooks/useMediaQuery.js';
+import PickerSheet from './PickerSheet.jsx';
 
 /**
  * EPL ClubPicker — parallel to NBA TeamPicker.
@@ -26,6 +28,7 @@ function abbrFromName(name) {
 export default function EPLClubPicker({ selectedSlug, onSelect, lang }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     function handleClick(e) {
@@ -85,6 +88,12 @@ export default function EPLClubPicker({ selectedSlug, onSelect, lang }) {
             >
               {abbrFromName(club.name)}
             </span>
+            {/* v0.11.21 GIB-009 — explicit whitespace so textContent
+                reads "LIV Liverpool" (or "LIV · Liverpool" if we
+                wanted a bullet). Axe + heading extractors previously
+                saw "LIVLiverpool" because the sibling spans had no
+                whitespace node between them (visual gap was from
+                the parent flex's gap:8). */}{' '}
             <span style={{ flex: 1, textAlign: 'left' }}>
               {club.name.split(' ').slice(0, 2).join(' ')}
             </span>
@@ -99,29 +108,29 @@ export default function EPLClubPicker({ selectedSlug, onSelect, lang }) {
         )}
       </button>
 
-      {open && (
-        <div
-          role="listbox"
-          aria-label={lang === 'id' ? 'Daftar klub Liga Inggris' : 'Premier League clubs'}
-          style={{
-            position: 'absolute',
-            top: 'calc(100% + 4px)',
-            left: 0,
-            width: 300,
-            background: C.panel,
-            border: `1px solid ${C.line}`,
-            borderRadius: 4,
-            zIndex: 100,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-            maxHeight: 420,
-            overflowY: 'auto',
-          }}
-        >
+      {/* v0.13.8 — bottom-sheet on mobile via shared <PickerSheet>. */}
+      <PickerSheet
+        isMobile={isMobile}
+        open={open}
+        onClose={() => setOpen(false)}
+        ariaLabel={lang === 'id' ? 'Daftar klub Liga Inggris' : 'Premier League clubs'}
+        desktopWidth={300}
+      >
           {selectedSlug && (
             <div
+              role="button"
+              tabIndex={0}
+              aria-label={clearLabel}
               onClick={() => {
                 onSelect(null);
                 setOpen(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelect(null);
+                  setOpen(false);
+                }
               }}
               style={{
                 padding: '8px 12px',
@@ -155,9 +164,19 @@ export default function EPLClubPicker({ selectedSlug, onSelect, lang }) {
             return (
               <div
                 key={c.slug}
+                role="option"
+                aria-selected={isSel}
+                tabIndex={0}
                 onClick={() => {
                   onSelect(c.slug);
                   setOpen(false);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onSelect(c.slug);
+                    setOpen(false);
+                  }
                 }}
                 style={{
                   padding: '7px 12px',
@@ -208,8 +227,7 @@ export default function EPLClubPicker({ selectedSlug, onSelect, lang }) {
               </div>
             );
           })}
-        </div>
-      )}
+      </PickerSheet>
     </div>
   );
 }

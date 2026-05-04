@@ -14,9 +14,11 @@
  */
 
 import { CLUBS, SEASON, SEASON_START, SEASON_END } from './clubs.js';
+import { breadcrumbSchema } from '../_schema.js';
 
 const SITE = 'https://www.gibol.co';
 const DEFAULT_OG = `${SITE}/og-image.png`;
+const HUB_OG = `${SITE}/og/hub-epl.png`;
 const routeBase = '/premier-league-2025-26';
 
 // League-level SportsEvent schema — emitted on the main dashboard page.
@@ -63,22 +65,39 @@ function prerenderRoutes() {
   // Main dashboard.
   out.push({
     path: routeBase,
-    title: 'Liga Inggris 2025-26 · Klasemen 20 Klub, Jadwal, Top Skor (Live) | gibol.co',
-    description: `Dashboard live Liga Inggris (Premier League) musim ${SEASON} dalam Bahasa Indonesia — klasemen 20 klub dengan form guide, jadwal pekan ini (WIB), hasil terbaru, dan top skor Golden Boot. Dari fan sepakbola Indonesia untuk fan sepakbola Indonesia.`,
+    // v0.13.0 trim — was 76 chars / 244 chars.
+    title: `Liga Inggris ${SEASON} — Klasemen & Top Skor | gibol.co`,
+    description: `Skor Liga Inggris ${SEASON} live: klasemen 20 klub dengan form, jadwal pekan ini (WIB), hasil terbaru, top skor Golden Boot. Bahasa Indonesia.`,
     keywords: 'liga inggris, premier league, epl 2025-26, klasemen liga inggris, top skor epl, skor liga inggris, jadwal liga inggris, golden boot, arsenal liverpool manchester city chelsea tottenham, epl bahasa indonesia',
-    ogImage: DEFAULT_OG,
-    jsonLd: LEAGUE_JSONLD,
+    ogImage: HUB_OG,
+    jsonLd: [
+      LEAGUE_JSONLD,
+      breadcrumbSchema([
+        { name: 'gibol.co', url: '/' },
+        { name: 'Liga Inggris 2025-26', url: routeBase },
+      ]),
+    ],
   });
 
   // Per-club pages — 20 indexable URLs.
   for (const club of CLUBS) {
     out.push({
       path: `${routeBase}/club/${club.slug}`,
-      title: `${club.name} Liga Inggris 2025-26 · Klasemen, Jadwal, Hasil | gibol.co`,
-      description: `${club.name} di Premier League ${SEASON} — klasemen sementara, form 5 laga terakhir, jadwal pekan ini, hasil laga terbaru, dan top skor klub. Kandang di ${club.stadium}, ${club.city}. Dashboard Bahasa Indonesia.`,
+      // v0.13.0 trim — was up to 88 chars (Wolverhampton/Manchester
+      // City). Tighter title fits even longest club names ≤60.
+      title: `${club.name} · Liga Inggris ${SEASON} | gibol.co`,
+      description: `${club.name} Liga Inggris ${SEASON}: klasemen, form 5 laga, jadwal pekan ini, hasil terbaru, top skor klub. Kandang ${club.stadium}, ${club.city}.`,
       keywords: `${club.name.toLowerCase()}, ${club.nameId.toLowerCase()}, ${club.slug} 2025-26, liga inggris ${club.slug}, klasemen ${club.name.toLowerCase()}, jadwal ${club.name.toLowerCase()}, hasil ${club.name.toLowerCase()}, ${club.stadium.toLowerCase()}, ${club.city.toLowerCase()}, epl 2025-26`,
-      ogImage: DEFAULT_OG,
-      jsonLd: clubSchema(club),
+      // v0.13.0 Ship 4 — per-club OG card.
+      ogImage: `${SITE}/og/epl/${club.slug}.png`,
+      jsonLd: [
+        clubSchema(club),
+        breadcrumbSchema([
+          { name: 'gibol.co', url: '/' },
+          { name: 'Liga Inggris 2025-26', url: routeBase },
+          { name: club.name, url: `${routeBase}/club/${club.slug}` },
+        ]),
+      ],
     });
   }
 

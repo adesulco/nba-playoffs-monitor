@@ -1,0 +1,89 @@
+{
+  "type": "team",
+  "slug": "nba-phoenix-suns",
+  "title": "Profil Phoenix Suns: Northwest, Western Conference (2025-26)",
+  "description": "Profil Phoenix Suns — franchise NBA dari Phoenix di Northwest Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Phoenix Suns 2025-26: Seed 8 di Barat, Tapi Tiket Playoff Sudah di Tangan\n\nPhoenix Suns berkandang di Footprint Center, Phoenix, dan bermain di Pacific Division, Western Conference. Per 28 April 2026, Suns menutup musim reguler 2025-26 dengan rekor 45-37, cukup untuk menempatkan mereka di seed 8 playoff Wilayah Barat. Bukan finish yang glamor, tapi di Western Conference yang brutal musim ini, 45 kemenangan tetap punya harga.\n\n---\n\n## Identitas dan Posisi di Liga\n\nSuns menempati posisi 2nd di Pacific Division musim ini, di bawah tekanan kompetisi Western Conference yang tidak memberi ruang untuk tim setengah jadi. Seed 8 artinya Suns masuk playoff lewat jalur paling terjal, kemungkinan besar menghadapi salah satu seed atas sejak babak pertama.\n\nDi kursi pelatih, Jordan Ott memimpin skuad ini melewati 82 laga musim reguler. Posisi seed 8 adalah hasil nyata dari kerja satu musim penuh, bukan keberuntungan draw, bukan bye round.\n\n---\n\n## Performa Musim Ini\n\nRekor 45-37 dengan win rate 54,9% menggambarkan tim yang kompetitif tapi belum konsisten di level elite. Suns mencetak rata-rata 112,6 PPG sementara kebobolan 111,1 PPG, selisih tipis +1,5 poin per laga yang menjelaskan mengapa mereka bisa menang banyak, tapi juga rawan kalah.\n\nYang menarik dari split home vs road: Suns jelas lebih nyaman di kandang. Home record 25-16 (61,0%) menunjukkan Footprint Center masih jadi benteng yang bisa diandalkan. Tapi road record 20-21, tepat di angka 48,8%, adalah tembok yang perlu dirobohkan kalau mereka serius di playoff, di mana game away tidak bisa dihindari.\n\nBeda sekitar dua kemenangan antara skenario \"seed 6 yang nyaman\" dan \"seed 8 yang panas\" kemungkinan besar lahir dari perjalanan tandang yang inconsistent ini.\n\n---\n\n## Roster: Siapa yang Menentukan?\n\nDengan 14+ pemain terdaftar musim ini, ada beberapa nama yang layak disorot dari data yang ada.\n\n**Devin Booker** (#1, Guard, 29 tahun, 10 tahun pengalaman) tetap jadi anchor skuad ini. Satu dekade di NBA, produk Kentucky, Booker adalah nama yang paling identik dengan Suns era modern. Pengalaman 10 tahun memberi ketenangan yang tidak bisa dibeli, terutama di situasi clutch.\n\n**Jalen Green** (#4, Guard, 24 tahun, 4 tahun pengalaman) adalah tambahan yang menarik dalam puzzle PHX. Usianya masih muda relatif terhadap pengalamannya, dan kehadiran guard eksplosif di sebelah Booker memberi Suns opsi scoring yang lebih dari satu arah.\n\n**Grayson Allen** (#8, Guard, 30 tahun, 7 tahun pengalaman) membawa depth di backcourt dengan pengalaman solid. Produk Duke yang sudah kenyang sistem NBA, tipe pemain yang tahu perannya dan jalankan tanpa ribut.\n\nDi posisi forward, **Dillon Brooks** (#3, 30 tahun, 8 tahun pengalaman) dan **Ryan Dunn** (#0, 23 tahun, 1 tahun) memberi Suns campuran veteran dan pemain muda yang masih berkembang. Brooks dikenal sebagai defender keras yang tidak segan konfrontasi, tipe yang bisa jadi faktor penting di playoff.\n\n---\n\n## Outlook: Laga Penentuan di Depan Mata\n\nMalam ini, 28 April 2026, Suns menjamu Oklahoma City Thunder di Footprint Center, laga yang bisa jadi tugas terakhir musim reguler atau memiliki implikasi playoff tersendiri. Menghadapi OKC di kandang berarti Suns punya keuntungan crowd. Home record 25-16 menunjukkan mereka bisa menggunakan itu.\n\nSebagai seed 8, perjalanan Suns di playoff tidak akan mudah. Tapi 45 kemenangan, Booker di pucuk komando, dan sistem Jordan Ott yang berhasil menjaga tim tetap relevan sepanjang musim panjang, itu modal yang cukup untuk tidak dianggap remeh.\n\n*Data dalam artikel ini mencerminkan kondisi per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "21",
+    "team_name": "Phoenix Suns",
+    "team_abbr": "PHX",
+    "team_location": "Phoenix",
+    "conference": "Western Conference",
+    "division": "Northwest",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022236,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails on training inference (college data, playing style claims) and translated-English structures. Remove college/career details not in input data; tighten opening paragraphs. Multiple soft issues bring score to 62.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Yang menarik dari split home vs road: Suns jelas lebih nyaman",
+          "fix": "Start with 'Split home-away menunjukkan pola jelas:' or 'Di kandang vs tandang, bedanya signifikan:'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Bukan finish yang glamor, tapi di Western Conference yang brutal musim ini",
+          "fix": "Clarify: 'Bukan finish glamor, tapi di Western Conference brutal tahun ini' if still ongoing"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "produk Kentucky... pengalaman 10 tahun... Pengalaman 10 tahun",
+          "fix": "Remove college/career-year claims. Keep only: name, number, position, age from input roster."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Brooks dikenal sebagai defender keras yang tidak segan konfrontasi",
+          "fix": "Remove style claims. Stick to: 'Dillon Brooks (#3, 30 tahun) brings veteran forward depth.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dengan 14+ pemain terdaftar musim ini, ada beberapa nama yang layak disorot",
+          "fix": "Start direct: 'Booker, Green, Allen di backcourt; Brooks, Dunn di forward—ini tulang punggung Suns.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "modal yang cukup untuk tidak dianggap remeh",
+          "fix": "'45 kemenangan dan Booker di pucuk komando sudah cukup untuk ancam playoff bracket.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Malam ini, 28 April 2026, Suns menjamu Oklahoma City Thunder",
+          "fix": "Use 'Pada 28 April 2026' or clarify article timestamp separately."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pengalaman 10 tahun memberi ketenangan yang tidak bisa dibeli, terutama di situasi clutch",
+          "fix": "'Pengalaman 10 tahun artinya Booker tahu permainan' or 'sudah prove diri di momen-momen berat.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "10 tahun pengalaman) tetap jadi anchor skuad ini. Satu dekade di NBA, produk Kentucky, Booker adalah nama yang paling identik",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa181c31aac3564b2",
+    "published_at": "2026-04-28T10:48:18+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

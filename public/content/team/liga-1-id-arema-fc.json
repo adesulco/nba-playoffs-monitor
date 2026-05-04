@@ -1,0 +1,137 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-arema-fc",
+  "title": "Profil Arema FC: Liga 1 (2025-26)",
+  "description": "Profil Arema FC — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Arema FC: Profil Klub Liga 1 Indonesia Musim 2025-26\n\nArema FC adalah klub sepak bola asal Indonesia yang bermain di Super League Indonesia (Liga 1). Kandang mereka di Stadion Kanjuruhan, Kepanjen, dengan kapasitas 44.912 penonton. Per 28 April 2026, Singo Edan berada di posisi 10 klasemen Liga 1 musim 2025-26 dengan 39 poin dari 29 laga, rekor 10 menang, 9 seri, 10 kalah, selisih gol +3. Posisi yang mencerminkan satu kata: tengah-tengah.\n\n---\n\n## Identitas Klub\n\nArema FC berdiri tahun 1987 dan berbasis di Malang, Jawa Timur. Markas resmi mereka adalah Stadion Kanjuruhan di Kepanjen, yang menampung hampir 45.000 penonton, salah satu stadion terbesar di Liga 1 Indonesia.\n\nNama \"Singo Edan\" sudah melekat dengan kultur suporter yang kuat di Malang. Identitas ini bukan sekadar label, ini bagian dari cara Arema membaca dirinya sendiri di kancah sepak bola Indonesia. Klub yang sudah hampir empat dekade berdiri, dengan basis komunitas yang tumbuh di sekitar Malang Raya.\n\nMusim 2025-26 berjalan di Liga 1 format Super League, kompetisi utama sepak bola profesional Indonesia. Arema masuk sebagai peserta penuh, dan data di bawah mencerminkan posisi mereka per 28 April 2026.\n\n---\n\n## Performa Musim 2025-26\n\n29 laga, 10 menang, 9 seri, 10 kalah. Angka-angka ini menjelaskan kenapa Arema ada di posisi 10, bukan karena buruk, tapi karena belum cukup konsisten.\n\nRata-rata 1,4 gol per laga di sisi serangan masuk kategori sedang. Bukan klub yang menggerojok gawang lawan, tapi setidaknya produktif. Total 40 gol cetak musim ini. Masalahnya, pertahanan hampir sama bocornya, 37 gol kebobolan, rata-rata 1,3 per laga. Selisih gol +3 terasa tipis untuk 29 laga.\n\nClean sheet 7 kali dari 29 laga, artinya di lebih dari 75% pertandingan, Arema kebobolan minimal satu gol. Di sisi lain, ada 5 laga di mana mereka sama sekali gagal mencetak gol. Ini dua masalah yang saling menghimpit: pertahanan yang belum solid, serangan yang kadang mati.\n\nYang cukup menarik adalah perbedaan rekor kandang vs tandang. Di kandang Kanjuruhan, Arema justru lebih sering kalah, 6 menang, 2 seri, 6 kalah. Stadion dengan kapasitas hampir 45.000 seharusnya jadi keuntungan, tapi angka kandang musim ini tidak mendukung narasi itu. Sebaliknya, tandang justru lebih stabil: 4 menang, 7 seri, 4 kalah, lebih banyak poin dipetik dengan cara tidak kalah di luar Kepanjen.\n\n---\n\n## Posisi di Klasemen\n\nPosisi 10 dari total peserta Liga 1 2025-26 dengan 39 poin menempatkan Arema di zona nyaman, bukan zona merah, bukan juga zona panas di atas. Mid-table yang bisa dibaca dua cara: aman dari tekanan degradasi, tapi juga jauh dari persaingan papan atas.\n\nDengan selisih gol +3, Arema tidak punya modal besar jika perlu mengandalkan head-to-head atau selisih gol untuk merangkak naik atau sekadar menjaga jarak dari tim-tim di bawah. Poin per laga sekitar 1,34, angka yang tidak menggerakkan klasemen ke atas maupun bawah secara dramatis.\n\nData per 28 April 2026 ini menggambarkan klub yang ada di trajectory datar.\n\n---\n\n## Outlook\n\nForm enam laga terakhir Arema membaca DLLLDWWD, dua menang dan dua seri di akhir, tapi sebelumnya tiga kekalahan beruntun. Akhir yang sedikit membaik setelah periode sulit, tapi belum cukup untuk bicara momentum.\n\nSisa musim 2025-26 kemungkinan tidak akan banyak mengubah posisi Arema secara signifikan dari zona tengah. Target realistisnya adalah menutup musim di posisi yang layak, menjaga selisih gol tetap positif, dan membangun catatan yang lebih konsisten untuk musim berikutnya.\n\nKanjuruhan punya kapasitas yang besar. Musim ini, tugas Arema adalah mengisi stadion itu dengan performa yang sepadan, sesuatu yang, per 28 April 2026, masih jadi pekerjaan rumah.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "2438",
+    "team_name": "Arema FC",
+    "team_country": "Indonesia",
+    "team_founded": 1987,
+    "venue_name": "Stadion Kanjuruhan",
+    "venue_city": "Kepanjen",
+    "venue_capacity": 44912,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023362,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to multiple material factual errors (laga count 29 vs 30, selisih gol +3 vs -1, kebobolan 37 vs 41, home record math wrong, clean sheets). These are not voice issues but data integrity failures that block publication. Additionally, tone drifts toward academic hedging and translated English in places.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Singo Edan berada di posisi 10 klasemen Liga 1 musim 2025-26 dengan 39 poin dari 29 laga, rekor 10 menang, 9 seri, 10 kalah, selisih gol +3.",
+          "fix": "Match input data exactly: 30 laga, selisih -1, 40 cetak/41 kebobolan. Remove invented numbers."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Total 40 gol cetak musim ini. Masalahnya, pertahanan hampir sama bocornya, 37 gol kebobolan",
+          "fix": "Change to: '41 gol kebobolan, rata-rata 1.4 per laga.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Clean sheet 7 kali dari 29 laga, artinya di lebih dari 75% pertandingan, Arema kebobolan minimal satu gol. Di sisi lain, ada 5 laga di mana mereka sama sekali gagal mencetak gol.",
+          "fix": "Change to: '6 laga di mana mereka gagal mencetak gol' and recalculate percentages with 30 laga base."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Di kandang Kanjuruhan, Arema justru lebih sering kalah, 6 menang, 2 seri, 6 kalah. Sebaliknya, tandang justru lebih stabil: 4 menang, 7 seri, 4 kalah",
+          "fix": "Kandang: '6 menang, 2 seri, 7 kalah' — dan update interpretation since kandang record is actually worse than article claims."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Masalahnya, pertahanan hampir sama bocornya, 37 gol kebobolan, rata-rata 1,3 per laga.",
+          "fix": "Change to: 'pertahanan hampir sama produktifnya dalam hal kebobolan' or just 'pertahanan bocor dengan 41 gol.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Sesuatu yang, per 28 April 2026, masih jadi pekerjaan rumah.",
+          "fix": "Change to: 'Sesuatu yang, per 28 April 2026, masih menjadi tugas berat di musim ini.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Poin per laga sekitar 1,34, angka yang tidak menggerakkan klasemen ke atas maupun bawah secara dramatis.",
+          "fix": "Change to: 'Poin per laga sekitar 1,34 — cukup untuk menghindari degradasi, tapi tidak untuk naik.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "kancah sepak bola Indonesia. Klub yang sudah hampir empat dekade berdiri, dengan basis komunitas yang tumbuh di sekitar Malang",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0bdb62b5c00b0eaa",
+    "published_at": "2026-04-28T12:12:41+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 62,
+      "headline_comment": "Generic and SEO-template — 'Profil Klub Liga 1' headline doesn't earn a click; nothing about the actual story (mid-table struggle, kandang anomaly).",
+      "lead_score": 72,
+      "lead_comment": "Functional and data-rich, but the closing 'tengah-tengah' lands soft; the real angle (kandang lebih sering kalah dari tandang) deserves to be teased here.",
+      "structure_score": 80,
+      "structure_comment": "Clean four-section flow, but 'Performa' and 'Posisi di Klasemen' overlap on the +3 selisih gol point and dilute each section.",
+      "voice_score": 85,
+      "voice_comment": "Casual-but-informed register holds well; code-switching (mid-table, clean sheet, trajectory) feels natural and pronoun discipline is clean.",
+      "suggestion_count": 6,
+      "summary": "Solid mid-tier piece with strong data discipline and clean voice, but the headline and lead bury the article's best insight (home record worse than away). One factual inconsistency (six laga vs 8-char form string) needs a quick editor fix before publish.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Arema FC: Profil Klub Liga 1 Indonesia Musim 2025-26",
+          "issue": "Headline is pure SEO template and buries the actual editorial angle of the piece.",
+          "fix": "Lead with the anomaly or the verdict, e.g. 'Arema FC Musim 2025-26: Kandang Justru Jadi Beban' or 'Arema Terjebak di Tengah Klasemen Liga 1'."
+        },
+        {
+          "priority": "high",
+          "snippet": "Stadion dengan kapasitas hampir 45.000 seharusnya jadi keuntungan, tapi angka kandang musim ini tidak mendukung narasi itu.",
+          "issue": "Strongest insight in the article (kandang worse than tandang) is buried in paragraph 4 of section 2 — should be the spine of the lead and outlook.",
+          "fix": "Move this contrast up to the lead and echo it in Outlook so the article has a single sharp throughline."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Selisih gol +3 terasa tipis untuk 29 laga... Dengan selisih gol +3, Arema tidak punya modal besar",
+          "issue": "+3 selisih gol point is made twice across two sections with similar framing — redundant.",
+          "fix": "Keep the analytical version in 'Performa' and cut the repeat in 'Posisi di Klasemen', or replace with a comparison to teams immediately above/below."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Identitas ini bukan sekadar label, ini bagian dari cara Arema membaca dirinya sendiri di kancah sepak bola Indonesia.",
+          "issue": "Generic filler sentence with no concrete information — reads written-by-committee.",
+          "fix": "Either cut entirely or replace with a specific Aremania/Malang Raya detail that the data supports."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Musim ini, tugas Arema adalah mengisi stadion itu dengan performa yang sepadan",
+          "issue": "Closing line drifts toward sportswriting cliché ('mengisi stadion dengan performa yang sepadan') and softens the strong data-driven tone.",
+          "fix": "Close with a concrete number — sisa laga, jarak ke posisi 8, atau target poin realistis untuk finish di paruh atas."
+        },
+        {
+          "priority": "low",
+          "snippet": "Form enam laga terakhir Arema membaca DLLLDWWD",
+          "issue": "DLLLDWWD is 8 characters but text says 'enam laga' — internal inconsistency the reader will catch.",
+          "fix": "Either fix to six-letter form string or change copy to 'delapan laga terakhir'."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

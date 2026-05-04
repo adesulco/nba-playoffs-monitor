@@ -1,0 +1,55 @@
+{
+  "type": "team",
+  "slug": "epl-manchester-united",
+  "title": "Profil Manchester United: Premier League (2025-26)",
+  "description": "Profil Manchester United — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Manchester United: Kembali ke Liga Champions dari Old Trafford\n\nPer 28 April 2026, Manchester United berada di posisi 3 Liga Inggris musim 2025-26 dengan 61 poin dari 34 laga, selisih gol +14. Rekor 17 menang, 10 seri, 7 kalah sudah cukup untuk mengamankan tiket Champions League musim depan, pencapaian yang jadi tolok ukur minimum bagi klub sebesar United.\n\n---\n\n## Identitas Klub\n\nManchester United berdiri tahun 1878 dan berbasis di Manchester, Inggris. Kandang mereka, Old Trafford, adalah salah satu stadion ikonik di Eropa dengan kapasitas 76.212 penonton, salah satu yang terbesar di Liga Inggris.\n\nKlub ini berkompetisi di Premier League, divisi teratas sepak bola Inggris. Nama lengkap: Manchester United FC. Setelah pengenalan pertama, cukup disebut \"United\" atau \"Manchester United\", dua opsi yang sama-sama lazim di media olahraga Indonesia.\n\n---\n\n## Performa Musim Ini\n\nDari 34 laga, United mencatat 17 menang, 10 seri, 7 kalah. Gol 60, kebobolan 46, artinya rata-rata 1,8 gol cetak dan 1,4 kebobolan per laga. Bukan tim yang mendominasi, tapi cukup produktif.\n\nYang paling mencolok adalah performa kandang versus tandang. Di Old Trafford, United solid: 11 menang, 3 seri, 3 kalah. Tuan rumah yang susah dikalahkan. Di luar kandang, ceritanya berbeda, 6 menang, 7 seri, 4 kalah. Lebih banyak negosiasi poin daripada mengejar tiga poin penuh.\n\nClean sheet hanya 6 dari 34 laga. Angka ini rendah untuk tim yang duduk di posisi 3, pertahanan United konsisten bocor, dan kebobolan 46 gol dalam 34 laga mencerminkan itu. Tiga laga tanpa mencetak gol juga muncul di sepanjang musim, sinyal bahwa lini serang tidak selalu menyala.\n\nForm terkini: WWLWDLWW. Pola naik-turun yang khas musim ini, tapi United tutup April dalam tren positif, dua kemenangan terakhir beruntun adalah modal bagus menuju laga sisa.\n\n---\n\n## Posisi di Klasemen\n\nPosisi 3 dengan 61 poin mengamankan slot Champions League musim depan, status resmi \"Promotion - Champions League (League phase)\" sudah terkonfirmasi per data 28 April 2026.\n\nDi Liga Inggris, empat besar otomatis lolos ke Liga Champions. United sudah ada di zona itu dengan empat laga tersisa musim ini. Artinya target minimum musim ini sudah tercapai, tinggal soal apakah United bisa naik ke posisi 2 atau tetap di 3, yang dari sisi tiket Eropa hasilnya sama saja.\n\nSelisih gol +14 menempatkan United di angka moderat untuk tim posisi 3. Tidak dominan seperti yang diharapkan dari skuad berkaliber Old Trafford, tapi cukup fungsional untuk bersaing di papan atas.\n\n---\n\n## Outlook\n\nUnited menutup bulan April 2026 dalam kondisi yang relatif stabil. Tiket Liga Champions sudah di tangan, kandang Old Trafford masih jadi benteng yang sulit ditembus, dan form dua laga terakhir menunjukkan momentum positif.\n\nSisa pertanyaan musim ini: apakah 61 poin cukup untuk finish di atas rival langsung di posisi 2, dan apakah performa kandang yang konsisten bisa menutupi inkonsistensi tandang yang masih jadi pekerjaan rumah.\n\nPertahanan yang kebobolan 46 gol dan hanya 6 clean sheet akan jadi evaluasi serius di akhir musim. Tapi untuk ukuran target utama, kembali ke panggung Champions League, Manchester United sudah menyelesaikan tugasnya.\n\n*Profil ini mencerminkan data per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "33",
+    "team_name": "Manchester United",
+    "team_country": "England",
+    "team_founded": 1878,
+    "venue_name": "Old Trafford",
+    "venue_city": "Manchester",
+    "venue_capacity": 76212,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019981,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong profile with grounded data discipline and natural Indonesian voice. Three minor style issues: one repeated phrase, one slightly formal register slip, one unnecessary sentence. No hard bans, no tense violations, no pronoun drift. Passes cleanly.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "salah satu stadion ikonik di Eropa dengan kapasitas 76.212 penonton, salah satu yang terbesar",
+          "fix": "Consolidate: 'Old Trafford, stadion ikonik Eropa dengan kapasitas 76.212, termasuk terbesar di Liga Inggris'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Angka ini rendah untuk tim yang duduk di posisi 3, pertahanan United konsisten bocor, dan kebobolan 46 gol",
+          "fix": "Use 'pertahanan United remuk' or 'United susah tahan' — more natural pace"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Klub ini berkompetisi di Premier League, divisi teratas sepak bola Inggris. Nama lengkap: Manchester United FC.",
+          "fix": "Delete 'Nama lengkap: Manchester United FC.' or fold into earlier mention; it adds no value"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x5ef7e01c9f058406",
+    "published_at": "2026-04-28T11:57:58+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

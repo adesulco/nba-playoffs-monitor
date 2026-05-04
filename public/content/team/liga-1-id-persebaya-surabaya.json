@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-persebaya-surabaya",
+  "title": "Profil Persebaya Surabaya: Liga 1 (2025-26)",
+  "description": "Profil Persebaya Surabaya — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Persebaya Surabaya: Bajul Ijo di Titik Kritis Musim 2025-26\n\nPersebaya Surabaya adalah klub sepak bola Indonesia yang berkandang di Stadion Gelora Bung Tomo, Surabaya, dengan kapasitas 55.000 penonton. Per 28 April 2026, Persebaya menempati posisi 6 Super League Indonesia 2025-26 dengan 45 poin dari 29 laga, hasil dari 12 kemenangan, 9 seri, dan 8 kekalahan, selisih gol +6. Posisi papan tengah-atas yang kompetitif, tapi belum aman dari persaingan di bawah maupun di atas.\n\n---\n\n## Identitas Klub\n\nPersebaya Surabaya berdiri pada 1927, menjadikannya salah satu klub tertua di Indonesia. Markas mereka, Stadion Gelora Bung Tomo, adalah salah satu stadion terbesar di negeri ini dengan kapasitas 55.000 penonton, kandang yang, ketika penuh, jadi salah satu atmosfer paling intimidatif di Liga 1. Klub ini identik dengan basis suporter Bonek, yang dikenal sebagai salah satu kelompok suporter paling loyal dan vokal dalam sepak bola Indonesia. Di Liga 1, nama Persebaya selalu disebut dalam percakapan soal klub-klub bersejarah tanah air.\n\n---\n\n## Performa Musim Ini\n\nDari 29 laga di Super League Indonesia 2025-26, Persebaya mencatat 12 menang, 9 seri, 8 kalah. Angka yang terbaca: tim cukup solid untuk tidak tenggelam di papan bawah, tapi belum konsisten cukup untuk benar-benar bersaing di papan atas.\n\nSerangan Persebaya menghasilkan rata-rata 1,4 gol per laga, 41 gol total. Bukan angka tajam, tapi cukup produktif. Masalahnya ada di pertahanan: 35 gol kebobolan, rata-rata 1,2 per laga. Selisih gol +6 terlihat positif, tapi tipis untuk tim yang sudah main 29 laga. Sembilan clean sheet musim ini menunjukkan pertahanan bisa tampil rapat, hanya belum konsisten.\n\nYang paling berbicara adalah form terakhir: LWDLWLLW. Dibaca dari kiri ke kanan, Persebaya menang di laga terakhir, tapi tiga laga sebelumnya mencatat dua kekalahan dan satu seri. Pola ini berulang sepanjang musim: giliran naik, lalu turun, lalu naik lagi. Tim yang sulit ditebak.\n\nCatatan kandang dan tandang hampir berimbang. Di Gelora Bung Tomo: 7 menang, 4 seri, 4 kalah. Di luar kandang: 5 menang, 5 seri, 4 kalah. Rekor tandang yang relatif solid, 5 kemenangan tandang bukan angka yang bisa diabaikan di Liga 1.\n\n---\n\n## Posisi di Klasemen\n\nPosisi 6 dengan 45 poin dari 29 laga menempatkan Persebaya di zona papan tengah-atas Super League Indonesia 2025-26. Bukan wilayah berbahaya, tapi juga bukan posisi yang bisa dirayakan, terutama dengan form yang inkonsisten beberapa laga terakhir.\n\nDengan sisa laga yang masih ada, 45 poin memberi ruang. Persebaya tidak sedang berjuang dari lubang, dan tekanan degradasi tampaknya bukan kekhawatiran utama musim ini. Tantangannya justru di arah sebaliknya: apakah ada peluang naik lebih tinggi, atau musim ini memang akan diselesaikan di kisaran posisi 5-7?\n\nInkonsistensi musim inilah yang jadi tema sentral Persebaya 2025-26. Tim ini punya kapasitas untuk menang, terbukti dari 12 kemenangan dan rekor tandang yang layak. Tapi dua kekalahan beruntun yang muncul di tengah form terbaru menunjukkan bahwa Persebaya belum bisa menjaga momentum cukup lama.\n\n---\n\n## Outlook\n\nSisa musim 2025-26 jadi momen penting bagi Persebaya untuk menentukan narasi akhir. Form LWDLWLLW, yang ditutup dengan kemenangan di laga terakhir, bisa jadi sinyal kebangkitan, atau sekadar jeda sebelum ketidakkonsistenan berikutnya.\n\nDengan 9 clean sheet dan rekor tandang 5 menang dari 14 laga, modal ada. Pertanyaannya apakah Persebaya bisa menutup musim dengan urutan W yang lebih panjang dibanding L. Untuk Bonek dan seluruh suporter yang memadati Gelora Bung Tomo, jawaban atas pertanyaan itu masih terbuka.\n\n*Data berdasarkan klasemen dan statistik per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "2446",
+    "team_name": "Persebaya Surabaya",
+    "team_country": "Indonesia",
+    "team_founded": 1927,
+    "venue_name": "Stadion Gelora Bung Tomo",
+    "venue_city": "Surabaya",
+    "venue_capacity": 55000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023106,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail. Critical data corruption: article contradicts input block on every major stat (matches played, points, goals, clean sheets, H2H splits, form string). Position, selisih gol all wrong. Appears writer hallucinated or used stale data. Also minor academic drift and hedging language. Regenerate with input block locked in.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Persebaya menempati posisi 6 Super League Indonesia 2025-26 dengan 45 poin dari 29 laga, hasil dari 12 kemenangan, 9 seri, dan 8 kekalahan, selisih gol +6.",
+          "fix": "Use input block exactly: 31 laga, 14M-9S-8K, 51 poin, posisi 5, selisih gol +14."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Serangan Persebaya menghasilkan rata-rata 1,4 gol per laga, 41 gol total.",
+          "fix": "Replace with: Persebaya cetak 49 gol musim ini, rata-rata 1.6 per laga."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "35 gol kebobolan, rata-rata 1,2 per laga. Selisih gol +6 terlihat positif, tapi tipis.",
+          "fix": "Replace with: 35 gol kebobolan (rata-rata 1.1 per laga), selisih gol +14."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "form terakhir: LWDLWLLW. Dibaca dari kiri ke kanan, Persebaya menang di laga terakhir",
+          "fix": "Use input form DLWLLWWW: most recent laga (far right) is W, before that W, W, then L, L, L, W, D."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Sembilan clean sheet musim ini menunjukkan pertahanan bisa tampil rapat",
+          "fix": "Replace with: Sebelas clean sheet musim ini menunjukkan pertahanan bisa tampil rapat."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Di Gelora Bung Tomo: 7 menang, 4 seri, 4 kalah. Di luar kandang: 5 menang, 5 seri, 4 kalah.",
+          "fix": "Kandang: 8 menang, 4 seri, 4 kalah. Tandang: 6 menang, 5 seri, 4 kalah."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Posisi 6 dengan 45 poin dari 29 laga menempatkan Persebaya di zona papan tengah-atas",
+          "fix": "Drop filler: Posisi 6 (salah; harus posisi 5), 45 poin dari 29 laga (salah; 51 poin dari 31 laga)."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dengan sisa laga yang masih ada, 45 poin memberi ruang.",
+          "fix": "Either cite remaining match count or drop hedging. Be direct about playoff/top-4 math, or don't speculate."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x19feae9bc9cb44ba",
+    "published_at": "2026-04-28T12:09:20+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

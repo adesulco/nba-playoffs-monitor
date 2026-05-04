@@ -1,0 +1,73 @@
+{
+  "type": "team",
+  "slug": "tennis-felix-auger-aliassime",
+  "title": "Profil Felix Auger-Aliassime (ATP) — Peringkat 5",
+  "description": "Profil petenis Felix Auger-Aliassime (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Felix Auger-Aliassime: Petenis Kanada yang Mengakar di Elit ATP\n\nFelix Auger-Aliassime, petenis Kanada kelahiran 8 Agustus 2000, saat ini berada di peringkat 5 ATP dengan 4.100 poin per 16 April 2026. Pemain tangan kanan yang lahir di Montreal ini menjalani musim 2026 sebagai salah satu petenis terbaik di dunia, bertahan di zona top 5 ATP.\n\n---\n\n## Identitas\n\nFelix Auger-Aliassime lahir di Montreal, Kanada, pada 8 Agustus 2000, dan kini berusia 25 tahun. Posturnya jadi salah satu keunggulan fisik di tour: tinggi 6 kaki 4 inci dengan berat 194 lbs, proporsi yang ideal untuk petenis baseline modern dengan serve sebagai senjata utama.\n\nFAA, panggilan yang lazim dipakai di kalangan penggemar tenis, memulai karier profesionalnya pada 2017, saat usianya baru 16 tahun. Debut sedini itu menempatkannya dalam kategori petenis yang memang dipersiapkan sejak muda untuk level tertinggi ATP.\n\n---\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Auger-Aliassime tercatat di peringkat 5 ATP dengan 4.100 poin. Dibanding pekan sebelumnya, posisinya tidak bergerak, peringkat sebelumnya juga 5, artinya FAA stabil di posisi tersebut.\n\nStabilitas di peringkat 5 bukan hal kecil. Zona top 5 ATP adalah wilayah yang paling ketat dan paling sering bergejolak sepanjang musim, karena selisih poin antar petenis di sana kerap tipis. Bahwa FAA bisa bertahan tanpa pergerakan turun menunjukkan konsistensi poin yang solid, bukan sekadar hasil satu turnamen bagus.\n\nDengan 4.100 poin, posisi Auger-Aliassime di papan ATP menempatkannya sebagai salah satu kandidat tetap untuk putaran akhir turnamen-turnamen besar, termasuk potensi masuk ATP Finals yang menjadi puncak kalender akhir musim.\n\n---\n\n## Outlook\n\nPeringkat 5 dengan tren stabil menceritakan satu hal dengan jelas: Auger-Aliassime bukan lagi petenis muda yang \"berpotensi\", dia sudah established di lapisan teratas ATP. Di usia 25 tahun dengan pengalaman profesional hampir satu dekade, FAA berada di fase karier di mana konsistensi adalah tolok ukur utama, dan angka 4.100 poin per April 2026 mencerminkan tepat itu.\n\n*Data peringkat dalam profil ini berdasarkan update ATP per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "3209",
+    "athlete_name": "Felix Auger-Aliassime",
+    "current_rank": 5,
+    "previous_rank": 5,
+    "points": 4100.0,
+    "trend": "-",
+    "birthplace": "Montreal, Canada",
+    "dob": "2000-08-08",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.014413,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article fails due to two high-severity training-inference claims (FAA nickname, serve strength) unsupported by input data. Academic tone drift and translated-English phrasing lower voice score. Factual content is sound; rewrite for voice consistency and remove inferences.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "FAA, panggilan yang lazim dipakai di kalangan penggemar tenis",
+          "fix": "Remove nickname assertion or rephrase to 'sering disebut FAA' without claiming it's standard usage."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "serve sebagai senjata utama",
+          "fix": "Remove playing-style claim. Stick to measurable facts from input block only."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Stabilitas di peringkat 5 bukan hal kecil. Zona top 5 ATP adalah wilayah yang paling ketat",
+          "fix": "Start with a fact: 'FAA stabil di 5 sejak April tanpa gerak ranking. Top 5 itu zona tipis—10 poin sering jadi beda podium dan keluar.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Bahwa FAA bisa bertahan tanpa pergerakan turun menunjukkan konsistensi poin yang solid",
+          "fix": "Rephrase: 'FAA bertahan tanpa jatuh—itu konsistensi poin yang solid.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "memulai karier profesionalnya pada 2017, saat usianya baru 16 tahun",
+          "fix": "Change to 'saat usianya masih 16 tahun' or verify exact age at debut."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Peringkat 5 dengan tren stabil menceritakan satu hal dengan jelas: Auger-Aliassime bukan lagi petenis muda",
+          "fix": "Cut framing: 'Peringkat 5 stabil. Auger-Aliassime sudah established—bukan petenis muda lagi.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7840ed6c24ccd680",
+    "published_at": "2026-04-28T11:58:07+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

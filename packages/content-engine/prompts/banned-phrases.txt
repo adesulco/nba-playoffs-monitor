@@ -1,0 +1,36 @@
+# Gibol Voice Linter — Banned Phrases
+# Format: one phrase per line. Lines starting with # are comments.
+# Voice linter regex-matches case-insensitive against article body.
+# Match = auto-reject + regenerate.
+# See voice-rules.md § 2 for rationale on each entry.
+
+# === HARD BANS — Phrases ===
+mari kita
+sebagai kesimpulan
+tak ayal
+patut dinantikan
+patut dicatat bahwa
+yang mana
+para pecinta sepak bola
+para penggemar
+tentu saja
+tak lupa juga
+dalam pertandingan ini
+pertandingan yang sangat
+tim kebanggaan
+berbagai macam
+adalah merupakan
+tak luput dari sorotan
+
+# === HARD BANS — Punctuation (handled separately by linter) ===
+# em-dash —
+# semicolon ;
+
+# === SOFT DISCOURAGED — Allowed max 1x per article ===
+# (linter counts occurrences; >1 flags for regeneration)
+# anak asuh
+# penampilan apik
+# skuad mentereng
+# perform impresif
+# memetik kemenangan
+# menutup laga dengan

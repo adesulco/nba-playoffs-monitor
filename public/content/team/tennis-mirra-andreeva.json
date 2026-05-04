@@ -1,0 +1,137 @@
+{
+  "type": "team",
+  "slug": "tennis-mirra-andreeva",
+  "title": "Profil Mirra Andreeva (WTA) — Peringkat 8",
+  "description": "Profil petenis Mirra Andreeva (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Mirra Andreeva: Petenis Remaja Rusia yang Sudah Tembus 8 Besar Dunia\n\nMirra Andreeva, petenis Rusia kelahiran 29 April 2007 di Krasnoyarsk, Siberia, saat ini menempati peringkat 8 WTA dengan 3.746 poin per 16 April 2026. Pemain tangan kanan setinggi 5'9\" ini baru berusia 18 tahun, dan sudah masuk jajaran delapan petenis terbaik dunia.\n\n## Identitas\n\nLahir di Krasnoyarsk, Siberia, Andreeva memulai karier profesionalnya pada 2022, saat usianya belum genap 15 tahun. Dengan tinggi 5'9\", posturnya memberi keunggulan di lapangan, jangkauan lebar dan serve yang sulit dibaca. Tangan kanan, permainan dari baseline.\n\nYang membuat Andreeva luar biasa bukan hanya peringkatnya, tapi kapan dia mencapainya. Debut pro di 2022, dan empat tahun kemudian sudah mengumpulkan 3.746 poin WTA di usia yang oleh banyak petenis masih dihabiskan untuk sirkuit junior. Domisilinya di Siberia, bukan pusat tenis dunia seperti Madrid atau Monaco, menambah lapisan tersendiri dalam narasi perjalanannya, meski soal detail latihan dan tim pelatihnya, data yang ada tidak menyebutkan.\n\n## Peringkat Saat Ini\n\nPer 16 April 2026, Andreeva naik satu peringkat dari posisi 9 ke posisi 8 WTA. Dengan 3.746 poin di tangan, dia berada di zona elite, delapan besar adalah wilayah yang hanya dihuni petenis dengan konsistensi tinggi di level turnamen tertinggi.\n\nTrend positif ini bukan kebetulan. Naik dari 9 ke 8 berarti Andreeva tidak hanya mempertahankan poin musim lalu, tapi menambahnya, sesuatu yang semakin sulit dilakukan ketika nama sudah dikenal dan lawan datang dengan persiapan lebih matang. Di peringkat ini, setiap angka naik butuh usaha berlipat.\n\nUntuk konteks: peringkat 8 WTA artinya Andreeva masuk seeding otomatis di Grand Slam dan Masters 1000. Dia bukan lagi wild card muda yang bikin kejutan, dia sekarang petenis yang diwaspadai dari babak pertama.\n\n## Outlook\n\nAndreeva baru ulang tahun ke-18 besok, 29 April 2026. Petenis yang genap 18 tahun sambil bertengger di peringkat 8 dunia bukan pemandangan yang sering terlihat di WTA. Poin sebesar 3.746 mencerminkan performa yang konsisten, bukan satu turnamen bagus yang meledak lalu hilang.\n\nDengan fondasi peringkat sekuat ini di usia semuda ini, lintasan ke depan berbicara sendiri. Data per 16 April 2026 ini merekam momen seorang petenis yang sedang dalam proses mendefinisikan ulang batas usia di puncak tenis wanita dunia.\n\n---\n\n*Profil berdasarkan data WTA per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "9820",
+    "athlete_name": "Mirra Andreeva",
+    "current_rank": 8,
+    "previous_rank": 9,
+    "points": 3746.0,
+    "trend": "+1",
+    "birthplace": "Krasnoyarsk, Siberia",
+    "dob": "2007-04-29",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.016825,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail. High-severity training inference (serve style, Siberia narrative), age/date math errors, and calqued English phrasing. Lede claims she's 18 but input data + calendar math shows she's 19 as of 3 May 2026. Needs substantial factual and voice cleanup.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dengan tinggi 5'9\", posturnya memberi keunggulan di lapangan, jangkauan lebar dan serve yang sulit dibaca.",
+          "fix": "Remove serve/style commentary. Stick to height fact only."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Domisilinya di Siberia, bukan pusat tenis dunia seperti Madrid atau Monaco, menambah lapisan tersendiri dalam narasi perjalanannya",
+          "fix": "Delete this paragraph or rephrase to: 'Lahir di Siberia, jauh dari pusat tenis Eropa.' Stop there."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Andreeva baru ulang tahun ke-18 besok, 29 April 2026. Petenis yang genap 18 tahun sambil bertengger di peringkat 8 dunia bukan pemandangan yang sering terlihat",
+          "fix": "Change to: 'Andreeva baru genap 18 tahun, 29 April 2026. Petenis 18 tahun di peringkat 8 dunia jarang terlihat.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang membuat Andreeva luar biasa bukan hanya peringkatnya, tapi kapan dia mencapainya.",
+          "fix": "Rephrase: 'Keistimewaan Andreeva bukan ranking-nya, tapi usia saat mencapainya.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Debut pro di 2022, dan empat tahun kemudian sudah mengumpulkan 3.746 poin",
+          "fix": "Say 'debut 2022 saat 14 tahun' or remove the age detail. Don't say 'empat tahun kemudian' from 2022 to 2026; just say 'dalam empat tahun.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Data per 16 April 2026 ini merekam momen seorang petenis yang sedang dalam proses mendefinisikan ulang batas usia",
+          "fix": "Cut to: 'Per 16 April 2026, Andreeva sedang mendefinisikan ulang batas usia di puncak tenis wanita.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "baru berusia 18 tahun [in lede], tapi kemudian 'Andreeva baru ulang tahun ke-18 besok' — age shift mid-article",
+          "fix": "Correct lede: 'berusia 19 tahun' (born April 2007, now May 2026). Remove the 'ulang tahun besok' confusion in Section 3."
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "9 ke 8 berarti Andreeva tidak hanya mempertahankan poin musim lalu, tapi menambahnya, sesuatu yang semakin sulit dilakukan",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd06667c394e7de20",
+    "published_at": "2026-04-28T12:09:38+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 68,
+      "headline_comment": "Functional and accurate but generic — 'Sudah Tembus 8 Besar Dunia' is the kind of headline a hundred WTA profiles share; nothing about Andreeva's specific story (Siberia, almost-18, four years from debut) earns the click.",
+      "lead_score": 72,
+      "lead_comment": "Packs the facts efficiently but reads like a stat-sheet read-aloud; the angle (18-year-old from Siberia in WTA top 8) is buried under datapoints instead of leading them.",
+      "structure_score": 70,
+      "structure_comment": "Three sections is fine for a profile, but 'Outlook' largely re-states what 'Peringkat Saat Ini' already said about consistency and youth — the article loops rather than advances.",
+      "voice_score": 82,
+      "voice_comment": "Generally clean Bahasa sport register with good pronoun discipline and minimal tense over-marking, but a few hedge/filler constructions ('lintasan ke depan berbicara sendiri', 'menambah lapisan tersendiri dalam narasi perjalanannya') drift toward sportswriting cliché.",
+      "suggestion_count": 6,
+      "summary": "Solid, clean profile that hits voice rules well but buries its strongest angle (turns 18 tomorrow, already top 8) and contains a date inconsistency plus two unsourced bio details. Editor should fix the date, cut height/handedness, and consider restructuring the lead around the birthday hook before publish.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Mirra Andreeva, petenis Rusia kelahiran 29 April 2007 di Krasnoyarsk, Siberia, saat ini menempati peringkat 8 WTA dengan 3.746 poin",
+          "issue": "Lead front-loads biodata before the actual news hook — that she turns 18 tomorrow while sitting in WTA top 8.",
+          "fix": "Open with the angle: 'Mirra Andreeva genap 18 tahun besok. Posisinya saat itu: peringkat 8 WTA.' Then pivot to the bio."
+        },
+        {
+          "priority": "high",
+          "snippet": "Data per 16 April 2026 ini merekam momen seorang petenis yang sedang dalam proses mendefinisikan ulang batas usia di puncak tenis wanita dunia.",
+          "issue": "Closing line is vague editorial puffery — 'mendefinisikan ulang batas usia' is exactly the kind of grand abstract claim the input data doesn't support.",
+          "fix": "End on a concrete forward-looking fact tied to data: 'Besok dia 18 tahun, dengan 3.746 poin di tangan. Roland Garros mulai bulan depan.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "per 16 April 2026",
+          "issue": "Date inconsistency — input data says as_of 28 April 2026, but article repeatedly cites 16 April 2026 (including the footer).",
+          "fix": "Replace all '16 April 2026' references with '28 April 2026' to match the input data block."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Trend positif ini bukan kebetulan. Naik dari 9 ke 8 berarti Andreeva tidak hanya mempertahankan poin musim lalu, tapi menambahnya",
+          "issue": "Speculative inference not supported by input data — we only know current rank, previous rank, and points; we don't know whether points were maintained or added vs last season.",
+          "fix": "Stick to what the data shows: 'Naik satu peringkat pekan ini, dari 9 ke 8.' Cut the season-long interpretation."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Pemain tangan kanan setinggi 5'9\"",
+          "issue": "Height (5'9\") and handedness (tangan kanan) are not in the input data block — these look like training-data inferences the voice rules explicitly warn against.",
+          "fix": "Remove height and handedness references entirely, or move to a clearly-flagged caveat. The profile holds without them."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Andreeva baru ulang tahun ke-18 besok, 29 April 2026. Petenis yang genap 18 tahun sambil bertengger di peringkat 8 dunia",
+          "issue": "This is the strongest hook in the entire piece and it's buried in section three — the whole article should be built around it.",
+          "fix": "Promote the birthday angle to the lead and headline; restructure 'Outlook' to talk about what comes next (clay season, Grand Slam seeding) rather than re-stating the achievement."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

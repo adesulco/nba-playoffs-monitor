@@ -5,7 +5,6 @@ import { useApp } from '../lib/AppContext.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { supabase } from '../lib/supabase.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 
 /**
  * /bracket — lists the signed-in user's brackets + private-league memberships.
@@ -74,9 +73,8 @@ function BracketsIndexInner() {
         lang={lang}
       />
       <div className="dashboard-wrap" style={{ maxWidth: 820, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink title="gibol.co" subtitle={lang === 'id' ? "pick'em · bracket kamu" : "pick'em · your brackets"} />
 
-        <main style={{ padding: '32px 8px', display: 'flex', flexDirection: 'column', gap: 28 }}>
+        <section style={{ padding: '32px 8px', display: 'flex', flexDirection: 'column', gap: 28 }}>
           <header style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
             <div>
               <div style={{ fontSize: 11, color: C.dim, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 4 }}>
@@ -245,7 +243,7 @@ function BracketsIndexInner() {
               {lang === 'id' ? 'Buat liga privat' : 'New private league'}
             </Link>
           </section>
-        </main>
+        </section>
       </div>
     </div>
   );

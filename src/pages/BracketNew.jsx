@@ -4,7 +4,6 @@ import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 
 /**
  * /bracket/new — creates a fresh bracket for the active season via
@@ -64,8 +63,7 @@ function NewBracketInner() {
         lang={lang}
       />
       <div className="dashboard-wrap" style={{ maxWidth: 520, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink backTo="/bracket" title="gibol.co" subtitle={lang === 'id' ? "pick'em · bracket baru" : "pick'em · new bracket"} />
-        <main style={{ padding: '48px 8px', textAlign: 'center' }}>
+        <section style={{ padding: '48px 8px', textAlign: 'center' }}>
           {busy ? (
             <p style={{ fontSize: 13, color: C.dim }}>
               {lang === 'id' ? 'Membuat bracket…' : 'Creating bracket…'}
@@ -98,7 +96,7 @@ function NewBracketInner() {
               >{lang === 'id' ? 'Coba lagi' : 'Try again'}</button>
             </div>
           )}
-        </main>
+        </section>
       </div>
     </div>
   );

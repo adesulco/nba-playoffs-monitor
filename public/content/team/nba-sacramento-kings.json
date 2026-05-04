@@ -1,0 +1,77 @@
+{
+  "type": "team",
+  "slug": "nba-sacramento-kings",
+  "title": "Profil Sacramento Kings: Northwest, Western Conference (2025-26)",
+  "description": "Profil Sacramento Kings — franchise NBA dari Sacramento di Northwest Western Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Sacramento Kings 2025-26: Musim Kelam di Tepi Pasifik\n\nSacramento Kings menutup musim reguler 2025-26 dengan rekor 22-60, salah satu catatan terburuk di Western Conference musim ini. Berkandang di Sacramento dan main di Pacific Division Wilayah Barat, Kings mengakhiri kompetisi di seed 14 dengan win percentage 0.268. Data ini mencerminkan kondisi per 28 April 2026.\n\n---\n\n## Identitas & Posisi di Liga\n\nKings menempati urutan kelima di Pacific Division, divisi yang didominasi oleh franchise-franchise besar California dan Pacific Northwest. Di bawah komando Doug Christie yang memegang kendali sebagai head coach, SAC tidak berhasil keluar dari zona bawah klasemen Western Conference musim ini.\n\nRekor 22-60 menempatkan Kings jauh dari radar playoff, bahkan dalam persaingan play-in sekalipun. Seed 14 di wilayah barat berbicara sendiri: ini bukan sekadar tim yang meleset dari target, tapi franchise yang sedang dalam proses panjang.\n\n---\n\n## Performa Musim Ini\n\nAngka-angka musim ini cukup menyesakkan. Kings rata-rata cetak 111,0 PPG tapi kemasukan 121,0 PPG, point differential -10,0 per laga, salah satu yang paling minus di seluruh liga.\n\nHome record 15-26 sudah cukup buruk, tapi away record 7-34 adalah masalah yang jauh lebih besar. Kurang dari satu dari lima laga tandang berakhir dengan kemenangan. Artinya lawan tahu: kalau Sacramento datang ke arena mereka, itu malam yang relatif aman.\n\nDua angka itu, serangan 111,0 dan pertahanan bocor di 121,0, menjelaskan hampir semua yang perlu dijelaskan soal musim ini. Kings tidak punya persoalan dengan mencetak poin saja. mereka punya persoalan menghentikan tim lain melakukan hal yang sama, lebih banyak, setiap malam.\n\n---\n\n## Roster: Campuran Veteran dan Muka Baru\n\nSatu hal menarik dari Kings musim ini adalah komposisi rosternya yang tidak terasa seperti tim rebuilding murni, ada sejumlah nama veteran berpengalaman yang berbaur dengan wajah-wajah muda.\n\n**DeMar DeRozan** (#10) adalah nama paling senior di roster. Guard 36 tahun dengan 16 musim pengalaman NBA ini membawa kepemimpinan dari sekolah lama USC. Di usia ini, perannya mungkin sudah bergeser dari primary scorer menjadi stabilisator, tapi kehadirannya tetap berarti buat pemain muda yang butuh teladan di locker room.\n\n**Zach LaVine** (#8) adalah profil berbeda: guard 31 tahun lulusan UCLA dengan 11 musim di liga. Di atas kertas, LaVine masih di usia produktif, old enough untuk matang, young enough untuk masih jadi anchor. Bagaimana perannya berkembang di Sacramento musim depan akan jadi salah satu cerita yang layak diikuti.\n\n**Keegan Murray** (#13) mewakili sisi lain spektrum. Forward 25 tahun asal Iowa ini baru menyelesaikan musim ketiga di NBA. Di antara pemain muda Kings, Murray adalah nama yang paling sering disebut sebagai bagian dari masa depan franchise, tiga musim awal sudah menunjukkan gambaran pemain yang tahu tugasnya di lapangan.\n\nSelain ketiganya, roster Kings juga dihuni nama-nama seperti Malik Monk (#0, 8y), De'Andre Hunter (#15, 6y), dan beberapa wajah muda dengan nol sampai satu musim pengalaman, termasuk Dylan Cardwell dan Nique Clifford yang baru memulai perjalanan mereka di level ini.\n\n---\n\n## Penutup\n\nMusim 2025-26 adalah musim yang berat buat Kings dan pendukungnya di Sacramento. Rekor 22-60, seed 14 di Western Conference, dan point differential minus dua digit adalah gambaran yang jujur tentang di mana franchise ini berdiri sekarang.\n\nYang menarik justru ada di luar angka: Doug Christie sebagai head coach, campuran veteran seperti DeRozan dan LaVine dengan pemain muda seperti Murray, dan bagaimana Kings akan mengelola offseason setelah musim yang panjang ini. Draft lottery jadi perhatian berikutnya, rekor 22-60 memberi peluang serius untuk pilihan tinggi.\n\nSemua data dalam profil ini mencerminkan kondisi per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "23",
+    "team_name": "Sacramento Kings",
+    "team_abbr": "SAC",
+    "team_location": "Sacramento",
+    "conference": "Western Conference",
+    "division": "Northwest",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022063,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail: critical date mismatch (28 April vs 3 Mei 2026) + three high-severity training-inference issues (DeRozan/LaVine age-experience details inferred beyond input data). One capitalization error. Fix these before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Data ini mencerminkan kondisi per 28 April 2026... Data dalam profil ini mencerminkan kondisi per 28 April 2026.",
+          "fix": "Change both instances to '3 Mei 2026' to match input data block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "DeMar DeRozan (#10) adalah nama paling senior... Guard 36 tahun dengan 16 musim pengalaman NBA",
+          "fix": "Remove age and experience details. Stick to: 'DeMar DeRozan adalah veteran di roster Kings.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Zach LaVine (#8) adalah profil berbeda: guard 31 tahun lulusan UCLA dengan 11 musim di liga.",
+          "fix": "Remove age/experience. Write: 'Zach LaVine adalah salah satu nama dengan pengalaman di skuad Kings.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Keegan Murray adalah nama yang paling sering disebut sebagai bagian dari masa depan franchise, tiga musim awal sudah menunjukkan gambaran.",
+          "fix": "Simplify: 'Keegan Murray, forward 25 tahun, dilihat sebagai bagian dari rencana jangka panjang Kings.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu hal menarik dari Kings musim ini adalah komposisi rosternya yang tidak terasa seperti tim rebuilding murni",
+          "fix": "Cut the thesis. Start directly: 'Roster Kings bukan tim rebuilding pure-play. Ada veteran berpengalaman bercampur pemain muda.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "kehadiran tetap berarti buat pemain muda... Bagaimana perannya berkembang... akan jadi salah satu cerita yang layak diikuti",
+          "fix": "Rephrase second instance: 'akan penting diamati musim depan.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "mereka punya persoalan menghentikan tim lain melakukan hal yang sama, lebih banyak, setiap malam.",
+          "fix": "Capitalize: 'Mereka punya persoalan...'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3977ee8b082b77ac",
+    "published_at": "2026-04-28T10:49:44+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

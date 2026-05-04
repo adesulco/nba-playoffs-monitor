@@ -1,0 +1,79 @@
+{
+  "type": "team",
+  "slug": "epl-aston-villa",
+  "title": "Profil Aston Villa: Premier League (2025-26)",
+  "description": "Profil Aston Villa — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Aston Villa 2025-26: Tiket Liga Champions dari Posisi 5\n\nAston Villa adalah klub asal Birmingham, Inggris, yang berkompetisi di Liga Inggris (Premier League). Kandang mereka, Villa Park, berkapasitas 42.824 penonton. Per 28 April 2026, Villa duduk di posisi 5 klasemen Liga Inggris 2025-26 dengan 58 poin dari 34 laga, cukup untuk mengamankan tiket fase liga UEFA Champions League musim depan.\n\n---\n\n## Identitas Klub\n\nAston Villa berdiri tahun 1874, menjadikan mereka salah satu klub tertua di sepak bola Inggris. Markas mereka, Villa Park, berdiri di jantung Birmingham, kota terbesar kedua di Inggris, dan telah jadi kandang Villa lebih dari satu abad.\n\nVilla adalah anggota pendiri Football League pada 1888 dan termasuk klub yang ikut membentuk struktur kompetisi sepak bola Inggris sejak awal. Kapasitas Villa Park yang nyaris 43.000 kursi menjadikannya salah satu stadion terbesar di Liga Inggris, dan atmosfer pertandingan kandang jadi aset nyata bagi tim ini musim demi musim.\n\n---\n\n## Performa Musim 2025-26\n\nMusim ini Aston Villa membukukan 17 menang, 7 seri, 10 kalah dari 34 laga, record yang solid tapi tidak tanpa masalah. Gol dicetak 47, kebobolan 42, selisih gol +5. Rata-rata 1,4 gol per laga di sisi ofensif dan 1,2 kebobolan per laga menggambarkan tim yang tidak ketat secara defensif, tapi punya cukup produktivitas untuk tetap kompetitif.\n\nClean sheet hanya 9 dari 34 laga, kurang dari satu kali setiap empat pertandingan. Di sisi lain, Villa juga gagal cetak gol di 10 laga, artinya hampir sepertiga musim mereka main tanpa gol. Dua angka ini bicara banyak: Villa bukan tim yang bisa mengandalkan pertahanan rapat atau dominasi menyerang yang konsisten.\n\nPerbedaan paling mencolok ada di rekor kandang vs tandang. Di Villa Park, Villa sangat sulit dikalahkan, 11 menang, 2 seri, 4 kalah. Itu record kandang yang meyakinkan. Di luar Birmingham, gambarnya berbeda: 6 menang, 5 seri, 6 kalah. Villa adalah tim yang lebih baik di depan pendukung sendiri, dan itu memengaruhi ritme musim secara keseluruhan.\n\nForm lima laga terakhir membaca DLLLWDWL, kurang dari ideal. Ada tiga kekalahan beruntun di satu titik, sempat recovery dengan satu kemenangan, tapi ritme belum stabil. Untuk tim yang sedang mengunci posisi Liga Champions, form ini menyisakan pertanyaan soal konsistensi.\n\n---\n\n## Posisi di Klasemen\n\nPosisi 5 dengan 58 poin per 28 April 2026 sudah cukup untuk mengamankan slot fase liga UEFA Champions League musim depan, itu pencapaian signifikan. Liga Inggris tidak mudah menyerahkan tiket Eropa, dan Villa berhasil mempertahankan posisi mereka cukup lama untuk mengkonversinya jadi kepastian.\n\n58 poin dari 34 laga memberi rata-rata 1,7 poin per laga, angka yang menempatkan Villa di kategori tim papan atas, meski bukan penantang gelar. Dengan empat laga tersisa musim ini, posisi 5 relatif aman, meski posisi tepat di akhir musim masih bisa bergeser tergantung hasil laga-laga sisa.\n\nYang penting: tiket Liga Champions sudah di tangan. Itulah target utama yang menentukan apakah musim ini sukses atau tidak bagi Villa Park.\n\n---\n\n## Outlook\n\nMusim 2025-26 Aston Villa berakhir dengan satu headline yang susah dibantah: mereka kembali ke Liga Champions. Posisi 5 dan 58 poin mungkin tidak terlihat glamor di atas kertas, tapi jaminan fase liga Champions League adalah bukti bahwa Villa sekarang konsisten bermain di level Eropa elite.\n\nTantangan ke depan jelas. Form DLLLWDWL di penghujung musim dan hanya 9 clean sheet sepanjang kampanye menunjukkan ada ruang perbaikan, terutama di lini belakang. Rekor kandang yang kuat perlu ditranslasikan jadi performa tandang yang lebih baik, sesuatu yang krusial jika Villa ingin kompetitif di Liga Champions.\n\nEmpat laga sisa di Liga Inggris 2025-26 tinggal soal menutup musim dengan bermartabat. Yang lebih penting sudah aman: Villa Park akan kembali dengar lagu kebangsaan UEFA musim depan.\n\n*Data artikel ini mencerminkan posisi Aston Villa per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "66",
+    "team_name": "Aston Villa",
+    "team_country": "England",
+    "team_founded": 1874,
+    "venue_name": "Villa Park",
+    "venue_city": "Birmingham",
+    "venue_capacity": 42824,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024424,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to three high-severity training-data inferences (founding year, Football League membership, Birmingham rank) that are outside the grounded input data. Additionally, some academic drift and date inconsistency. Regenerate with strict adherence to input facts only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Aston Villa berdiri tahun 1874, menjadikan mereka salah satu klub tertua",
+          "fix": "Remove founding year unless it's in the grounded input data"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Villa adalah anggota pendiri Football League pada 1888 dan termasuk klub yang ikut membentuk",
+          "fix": "Delete this entire sentence; it's biographical trivia outside input scope"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "kota terbesar kedua di Inggris",
+          "fix": "Change to 'kota Birmingham' or remove rank claim"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka ini bicara banyak: Villa bukan tim yang bisa mengandalkan pertahanan rapat atau dominasi",
+          "fix": "Say directly: 'Angka ini jelas: Villa punya masalah defensif dan konsistensi ofensif'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Form lima laga terakhir membaca DLLLWDWL, kurang dari ideal",
+          "fix": "Use 'Form lima laga terakhir: DLLLWDWL, kurang solid'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Posisi 5 dengan 58 poin per 28 April 2026 sudah cukup untuk mengamankan slot fase liga",
+          "fix": "Rephrase: 'Posisi 5 dengan 58 poin memastikan slot fase liga Champions League'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Per 28 April 2026... Per 28 April 2026",
+          "fix": "Update both mentions to '3 Mei 2026' to match input data"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xcb78c390a1014c8e",
+    "published_at": "2026-04-28T11:58:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

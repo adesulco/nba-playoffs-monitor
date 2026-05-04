@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "liga-1-id-persik-kediri",
+  "title": "Profil Persik Kediri: Liga 1 (2025-26)",
+  "description": "Profil Persik Kediri — klub sepak bola dari Indonesia di Liga 1. Snapshot data per 28 April 2026.",
+  "body_md": "# Profil Persik Kediri, Super League Indonesia 2025-26\n\nPersik Kediri adalah klub sepak bola Indonesia yang bermain di Super League Indonesia (Liga 1). Berbasis di Kota Kediri, Jawa Timur, dengan kandang di Stadion Brawijaya berkapasitas 20.000 penonton. Per 28 April 2026, Persik menempati posisi 12 klasemen Liga 1 2025-26 dengan 33 poin dari 29 laga, catatan 9 menang, 6 seri, 14 kalah, dan selisih gol -15 yang mencerminkan musim yang berat di lini belakang.\n\n---\n\n## Identitas Klub\n\nPersik Kediri berdiri pada 1950, menjadikannya salah satu klub tertua di Indonesia dengan lebih dari tujuh dekade sejarah sepak bola di Kediri. Markas mereka, Stadion Brawijaya, berkapasitas 20.000 penonton dan menjadi benteng penting bagi klub, terutama karena catatan kandang Persik jauh lebih solid dibanding performa tandang mereka musim ini.\n\nNama \"Persik\" merupakan singkatan dari Persatuan Sepak Bola Indonesia Kediri, identitas yang telah melekat erat dengan kota ini selama puluhan tahun. Di tengah persaingan Liga 1 yang semakin ketat di musim 2025-26, Persik berjuang mempertahankan tempat mereka di papan tengah klasemen.\n\n---\n\n## Performa Musim Ini\n\nMusim 2025-26 berjalan berat untuk Persik. Dari 29 laga yang sudah dilakoni, catatan 9M-6S-14K menempatkan mereka di zona tengah bawah klasemen. Angka yang paling mencolok ada di lini belakang: 50 gol kebobolan dalam 29 laga, rata-rata 1,7 per laga, menunjukkan pertahanan yang belum menemukan konsistensi sepanjang musim.\n\nDi sisi serang, produktivitas juga terbatas, 35 gol dari 29 laga, rata-rata 1,2 per laga. Enam laga tanpa gol sama sekali jadi catatan yang perlu diperhatikan. Clean sheet hanya tiga kali sepanjang musim, angka yang mengindikasikan sulitnya Persik menjaga keunggulan atau bertahan dari tekanan lawan.\n\nKontras paling tajam musim ini ada di perbedaan performa kandang vs tandang. Di Stadion Brawijaya, Persik tampil cukup kompetitif: 7 menang, 5 seri, 2 kalah, catatan kandang yang sebenarnya respektabel untuk ukuran tim papan tengah. Masalahnya muncul begitu Persik bermain tandang: hanya 2 menang dari 15 laga, dengan 12 kekalahan. Dari 29 laga yang sudah dimainkan, lebih dari separuh kekalahan datang saat bermain jauh dari Kediri.\n\nForm terkini membaca LLWLDLWL, tidak konsisten. Ada tanda-tanda kebangkitan sesekali, tapi belum ada momentum yang benar-benar terjaga lebih dari dua laga beruntun.\n\n---\n\n## Posisi di Klasemen\n\nPer 28 April 2026, Persik Kediri berada di peringkat 12 klasemen Super League Indonesia 2025-26 dengan 33 poin. Selisih gol -15 adalah salah satu yang terburuk di separuh atas klasemen, dan secara keseluruhan angka ini mencerminkan tim yang lebih sering diserang daripada menyerang.\n\nPosisi 12 secara teknis masih di zona aman, tapi dengan sisa musim yang ada dan performa tandang yang sangat lemah, ada tekanan nyata untuk tidak tergelincir lebih jauh. Setiap laga yang tersisa menjadi krusial, terutama karena catatan tandang yang compang-camping membuat poin di Stadion Brawijaya harus dimaksimalkan.\n\n---\n\n## Outlook\n\nSisa musim ini menjadi ujian karakter bagi Persik Kediri. Basis kandang mereka cukup kuat untuk jadi modal, tapi sepanjang musim 2025-26, ketergantungan pada Stadion Brawijaya terlalu besar. Pertahanan yang kebobolan rata-rata hampir dua gol per laga adalah pekerjaan rumah paling mendesak.\n\nPosisi 12 masih aman, tapi jarak dengan zona berbahaya tidak terlalu nyaman untuk bersantai. Form LLWLDLWL mencerminkan tim yang belum stabil, yang bisa menang tapi belum bisa menang beruntun.\n\nData dalam profil ini mencerminkan catatan Persik Kediri per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "4241",
+    "team_name": "Persik Kediri",
+    "team_country": "Indonesia",
+    "team_founded": 1950,
+    "venue_name": "Stadion Brawijaya",
+    "venue_city": "Kediri",
+    "venue_capacity": 20000,
+    "competition": "Liga 1",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022141,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to critical data mismatches: match count (29 vs 30), loss total (14 vs 15), goals conceded (50 vs 51), home record (2 vs 3 losses), form sequence incorrect, and date error (28 Apr vs 3 May per input). These are not voice issues but factual errors that undermine credibility. Regenerate with correct data block values.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Persik menempati posisi 12 klasemen Liga 1 2025-26 dengan 33 poin dari 29 laga, catatan 9 menang, 6 seri, 14 kalah",
+          "fix": "Correct to 30 laga, 15 kalah to match input data block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "50 gol kebobolan dalam 29 laga",
+          "fix": "Correct to 51 gol kebobolan dalam 30 laga."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dari 29 laga yang sudah dilakoni, catatan 9M-6S-14K",
+          "fix": "Use 30 laga, 15 kalah consistently throughout."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Di Stadion Brawijaya, Persik tampil cukup kompetitif: 7 menang, 5 seri, 2 kalah",
+          "fix": "Correct to 7 menang, 5 seri, 3 kalah di kandang."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Form terkini membaca LLWLDLWL",
+          "fix": "Use exact form string from input: LWLDLWLL."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dari 29 laga yang sudah dilakoni, catatan 9M-6S-14K menempatkan mereka di zona tengah bawah klasemen.",
+          "fix": "Rephrase: 'Dari 30 laga, catatan 9M-6S-15K menempatkan Persik di papan tengah bawah.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Per 28 April 2026, Persik Kediri berada di peringkat 12 klasemen Super League Indonesia 2025-26 dengan 33 poin.",
+          "fix": "Change all date references from 28 April to 3 Mei 2026."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "satu klub tertua di Indonesia dengan lebih dari tujuh dekade sejarah sepak bola di Kediri. Markas mereka, Stadion Brawijaya,",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2579a68d19a7046e",
+    "published_at": "2026-04-28T12:14:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

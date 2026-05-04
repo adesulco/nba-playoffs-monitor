@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
+import { useIsMobile } from '../hooks/useMediaQuery.js';
+import PickerSheet from './PickerSheet.jsx';
 
 export default function TeamPicker({ selectedTeam, onSelect }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     function handleClick(e) {
@@ -57,6 +60,8 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
             <span style={{ fontWeight: 700, fontSize: 9.5, background: 'rgba(0,0,0,0.25)', padding: '2px 5px', borderRadius: 2 }}>
               {meta.abbr}
             </span>
+            {/* v0.11.21 GIB-009 — explicit whitespace so textContent
+                reads "LAL Lakers" not "LALLakers" for SR + analytics. */}{' '}
             <span style={{ flex: 1, textAlign: 'left' }}>{selectedTeam.split(' ').slice(-1)[0]}</span>
             <span style={{ fontSize: 9, opacity: 0.7 }}>▼</span>
           </>
@@ -69,29 +74,31 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
         )}
       </button>
 
-      {open && (
-        <div
-          role="listbox"
-          aria-label="Daftar tim NBA"
-          style={{
-            position: 'absolute',
-            top: 'calc(100% + 4px)',
-            left: 0,
-            width: 280,
-            background: C.panel,
-            border: `1px solid ${C.line}`,
-            borderRadius: 4,
-            zIndex: 100,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-            maxHeight: 420,
-            overflowY: 'auto',
-          }}
-        >
+      {/* v0.13.8 — refactored to use the shared <PickerSheet>
+          shell. Same bottom-sheet UX on mobile, same popover on
+          desktop, but the layout primitive lives in one place so
+          all 5 sport pickers stay in sync. */}
+      <PickerSheet
+        isMobile={isMobile}
+        open={open}
+        onClose={() => setOpen(false)}
+        ariaLabel="Daftar tim NBA"
+      >
           {selectedTeam && (
             <div
+              role="button"
+              tabIndex={0}
+              aria-label="Clear team selection"
               onClick={() => {
                 onSelect(null);
                 setOpen(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelect(null);
+                  setOpen(false);
+                }
               }}
               style={{
                 padding: '8px 12px',
@@ -128,9 +135,19 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
                 return (
                   <div
                     key={name}
+                    role="option"
+                    aria-selected={isSel}
+                    tabIndex={0}
                     onClick={() => {
                       onSelect(name);
                       setOpen(false);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onSelect(name);
+                        setOpen(false);
+                      }
                     }}
                     style={{
                       padding: '7px 12px',
@@ -179,8 +196,7 @@ export default function TeamPicker({ selectedTeam, onSelect }) {
               })}
             </div>
           ))}
-        </div>
-      )}
+      </PickerSheet>
     </div>
   );
 }

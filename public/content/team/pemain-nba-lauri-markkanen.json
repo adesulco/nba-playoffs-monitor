@@ -1,0 +1,90 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-lauri-markkanen",
+  "title": "Profil Lauri Markkanen: Forward Utah Jazz",
+  "description": "Profil pemain NBA Lauri Markkanen, Forward Utah Jazz. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Lauri Markkanen, \"The Finnish Flash\" dari Salt Lake City\n\nLauri Markkanen, forward Utah Jazz asal Jyvaskyla, Finlandia, mencatat 26,7 PPG di musim 2025-26, angka yang menempatkannya sebagai salah satu scorer paling konsisten di posisinya per 28 April 2026. Pemain berpostur 7'1\" dengan bobot 240 lbs dan jersey #23 ini sudah membuktikan bahwa center-height bukan prasyarat untuk jadi wing scorer di NBA modern.\n\n---\n\n## Identitas\n\nLahir di Jyvaskyla, Finlandia, Markkanen kini berusia 28 tahun dan memasuki musim kedelapan di NBA. Tinggi 7'1\" dengan berat 240 lbs, fisik yang di kebanyakan era NBA langsung dicap sebagai big man. Tapi Markkanen tidak bermain seperti itu.\n\nSebelum masuk NBA, dia melewati satu musim di University of Arizona, cukup untuk meyakinkan Minnesota Timberwolves memilihnya sebagai pick ke-7 di draft 2017. Debut profesionalnya terjadi di musim yang sama. Delapan musim kemudian, dia masih sangat relevan.\n\n---\n\n## Utah Jazz\n\nMarkkanen memakai jersey #23 untuk Utah Jazz, franchise yang dalam beberapa musim terakhir memasuki fase rebuild. Di situasi seperti ini, scoring leader seperti Markkanen punya peran ganda: memimpin angka di papan sekaligus jadi tolak ukur perkembangan tim muda di sekitarnya.\n\n26,7 PPG bukan output pemain yang sekadar \"ngisi menit\" di tim transisi. Itu angka scorer utama yang diandalkan malam demi malam, terlepas dari standing timnya di klasemen.\n\n---\n\n## Performa Musim Ini\n\nTiga angka yang paling bicara dari musim 2025-26 Markkanen: 26,7 PPG, 6,9 RPG, 2,1 APG. Baca bersamaan, ini bukan profil pure scorer yang hidup dari isolation, ini forward yang rebounding-nya konsisten dan cukup bisa playmake untuk tidak jadi \"dead end\" di possession.\n\n6,9 RPG dari seorang forward yang cara mainnya lebih condong ke perimeter adalah detail menarik. Markkanen tidak harus jadi anchor di paint, tapi angka rebound itu menunjukkan dia tidak menghilang di sisi defensive glass.\n\nFG% di 47,7%, ranking 61 di NBA, adalah angka yang perlu dibaca dalam konteks. Untuk pemain dengan volume scoring setinggi ini, efisiensi hampir 48% bukan angka yang perlu dipertanyakan. Banyak high-usage scorer yang operating jauh di bawah itu.\n\nYang membuat Markkanen unik di antara big men: dia bermain dengan mobilitas dan shooting range yang biasanya jadi domain guard atau wing. Postur 7'1\" dengan kemampuan attack closeout dan shoot over defender, kombinasi ini yang bikin dia susah dimatikan secara konsisten. Defender yang lebih kecil tidak bisa contest shotnya. Defender yang lebih besar sering terlambat keluar karena tidak expect range-nya.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Markkanen sedang dalam form seorang franchise player yang sudah melewati masa pembuktian awal. Musim kedelapan di liga, delapan tahun setelah Utah Jazz mendapatkannya lewat trade, dia jadi nama yang paling identik dengan fase ini dalam sejarah franchise.\n\n26,7 PPG dengan efisiensi layak dan kontribusi rebound solid menggambarkan pemain yang sudah menemukan gamenya. Finlandia punya wakil di NBA yang tidak sekadar mengisi roster, dia salah satu scorer paling produktif liga musim ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "4066336",
+    "athlete_name": "Lauri Markkanen",
+    "team_name": "Utah Jazz",
+    "team_abbr": "UTAH",
+    "position": "Forward",
+    "jersey": "23",
+    "age": 28,
+    "birthplace": "Jyvaskyla, Finland",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.018491,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails due to three high-severity training-data inferences (University of Arizona, Minnesota draft context, trade to Utah) not grounded in input block. Additionally, tense overmarking and weak closing soften the voice. Rewrite to strip unconfirmed biographical details and tighten prose.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum masuk NBA, dia melewati satu musim di University of Arizona",
+          "fix": "Remove college reference or source from input data."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Minnesota Timberwolves memilihnya sebagai pick ke-7 di draft 2017",
+          "fix": "State 'dipilih pick ke-7 draft 2017' without naming the team, or verify trade chain in input."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "delapan tahun setelah Utah Jazz mendapatkannya lewat trade",
+          "fix": "Remove 'lewat trade' or source from input data."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Markkanen kini berusia 28 tahun dan memasuki musim kedelapan di NBA",
+          "fix": "Drop 'kini' and 'memasuki'; use 'Markkanen, 28 tahun, musim kedelapan di NBA.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Debut profesionalnya terjadi di musim yang sama",
+          "fix": "Replace with 'Debut NBA-nya musim 2017.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Delapan musim kemudian, dia masih sangat relevan",
+          "fix": "Rephrase: 'Delapan musim kemudian, dia masih anchor scoring Jazz.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Markkanen memakai jersey #23 untuk Utah Jazz",
+          "fix": "Optional tightening: 'Markkanen #23 di Utah Jazz.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Finlandia punya wakil di NBA yang tidak sekadar mengisi roster",
+          "fix": "End with specific forward-looking stat or next milestone, e.g. 'Markkanen perlu 4 lagi untuk 7,000 total career PPG.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Tinggi 7'1\" dengan berat 240 lbs, fisik yang di kebanyakan era NBA langsung dicap sebagai big man. Tapi Markkanen tidak bermain",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd75ba49b34aec6ba",
+    "published_at": "2026-04-28T12:08:20+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

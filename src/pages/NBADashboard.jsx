@@ -1,12 +1,23 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { usePlayoffData } from '../hooks/usePlayoffData.js';
 import { usePolymarketWS } from '../hooks/usePolymarketWS.js';
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
+import { readableOnDark } from '../lib/contrast.js';
 import Sparkline from '../components/Sparkline.jsx';
 import Bracket from '../components/Bracket.jsx';
 import DayScoreboard from '../components/DayScoreboard.jsx';
-import TeamPicker from '../components/TeamPicker.jsx';
+// v0.18.0 — TeamPicker is now lazy-loaded via <HubPicker
+// kind="nba-team" />, so the direct import is gone from this file.
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
+// v0.17.0 Phase 2 Sprint B — shared Copy + Share row.
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+// v0.53.0 — Phase C redesign: 3-up Newsroom Slice at hub bottom.
+// Gated behind UI.v2 flag; self-hides on empty (no published articles).
+import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
+import { UI } from '../lib/flags.js';
+import HubPicker from '../components/v2/HubPicker.jsx';
+import KpiStrip from '../components/v2/KpiStrip.jsx';
 import LiveGameFocus from '../components/LiveGameFocus.jsx';
 import { useSeriesState } from '../hooks/useSeriesState.js';
 import { useInjuries } from '../hooks/useInjuries.js';
@@ -22,13 +33,21 @@ import { useWatchlistAlerts } from '../hooks/useWatchlistAlerts.js';
 import { useTeamSchedule, computeStreak, computeH2H } from '../hooks/useTeamSchedule.js';
 import { useGameDetails } from '../hooks/useGameDetails.js';
 import { useLiveWinProbs } from '../hooks/useLiveWinProbs.js';
+import { useInView } from '../hooks/useInView.js';
+import { SkeletonLine } from '../components/v2/states.jsx';
+// v0.13.11 Sprint 2 Theme C, Ship I — defer below-fold .main-grid
+// columns on mobile so 11 Sparkline SVGs + the featured-series
+// panel + bracket + key-accounts feed don't render until scrolled
+// into view. Above-fold (live ticker, after Ship C reorder) is
+// still eager. Desktop is unaffected (cols are side-by-side).
+import LazyOnMobile from '../components/LazyOnMobile.jsx';
+import ScoreAnnouncer from '../components/ScoreAnnouncer.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import FangirBanner from '../components/FangirBanner.jsx';
 import ClutchLeaderboard from '../components/ClutchLeaderboard.jsx';
 import SEO from '../components/SEO.jsx';
 import SEOContent from '../components/SEOContent.jsx';
 import ContactBar from '../components/ContactBar.jsx';
-import ToolbarButton from '../components/ToolbarButton.jsx';
 import { localizeGameStatus, formatKickoff, getUserTzLabel } from '../lib/timezone.js';
 import { VERSION_LABEL } from '../lib/version.js';
 
@@ -172,7 +191,7 @@ function GameCard({ g, favTeam, isActive, onClick, injuries, streaks, lang }) {
 }
 
 export default function NBADashboard() {
-  const { theme, toggleTheme, lang, toggleLang, t } = useApp();
+  const { lang, t } = useApp();
   const { champion, mvp, games, gamesByDay, sparklines, lastUpdate, status, errors } = usePlayoffData(30000);
   const [now, setNow] = useState(new Date());
   const [favTeam, setFavTeam] = useState(() => {
@@ -183,6 +202,12 @@ export default function NBADashboard() {
   // Theme: selected team's color overrides amber accents
   const accent = favMeta ? favMeta.color : C.amber;
   const accentBright = favMeta ? brighten(favMeta.color, 0.55) : C.amberBright;
+  // v0.11.26 NEW-4 — Hornets purple #1d1160 reads at 1.03:1 raw against
+  // the page navy. accentText is the brand color brightened just enough
+  // to clear 4.5:1 — use this for any FOREGROUND TEXT (mono labels,
+  // links, "your team" markers). Decorative bars + hover shadows still
+  // use raw `accent`.
+  const accentText = favMeta ? readableOnDark(favMeta.color) : C.amber;
 
   function setFav(name) {
     setFavTeam(name);
@@ -224,19 +249,57 @@ export default function NBADashboard() {
 
   // Series standings for bracket watermark
   const { seriesMap } = useSeriesState('2026-04-18', '2026-05-03');
-  // Injury report
-  const { byTeam: injuriesByTeam } = useInjuries();
-  // Team player leaders (for the selected team — falls back to top title-favorite if no pick)
-  const topChampName = champion?.odds?.[0]?.name;
-  const leaderTeamAbbr = favMeta?.abbr || (topChampName ? TEAM_META[topChampName]?.abbr : null);
-  const { leaders: teamLeaders } = useTeamLeaders(leaderTeamAbbr);
 
   // Watchlist + live alerts
   const watchlist = useWatchlist();
   // Lift LiveGameFocus summary up so the watchlist alerts can read it
   const focusEventId = activeMatchId && !String(activeMatchId).startsWith('sched-') ? activeMatchId : null;
+
+  // v0.11.6 Sprint 2 — defer heavy ESPN fetches until they're actually
+  // needed. Injuries only feed <LiveGameFocus> which renders when a
+  // user clicks a game; Leaders panel sits below the fold. Gating both
+  // drops first-paint from ~14 parallel ESPN calls to ~6.
+  const { byTeam: injuriesByTeam } = useInjuries({ enabled: !!focusEventId });
+
+  // Team player leaders (for the selected team — falls back to top title-favorite if no pick)
+  const topChampName = champion?.odds?.[0]?.name;
+  const leaderTeamAbbr = favMeta?.abbr || (topChampName ? TEAM_META[topChampName]?.abbr : null);
+  const { ref: leadersRef, inView: leadersInView } = useInView({ rootMargin: '400px' });
+  const { leaders: teamLeaders } = useTeamLeaders(leaderTeamAbbr, { enabled: leadersInView });
   const { summary: focusSummary, winProb: focusWinProb, lastUpdate: focusLastUpdate } = useGameDetails(focusEventId);
   const { toasts: alertToasts, dismissToast } = useWatchlistAlerts(watchlist.list, focusSummary, focusEventId);
+
+  // v0.11.20 GIB-015 — screen-reader announcements for significant
+  // events. Filter: only status transitions pre→in (tip-off) and
+  // in→post (final) get announced. Per-poll score ticks don't — that
+  // path is aria-live spam. Tracks previous status per game ID via
+  // ref so duplicate polls of the same status don't fire.
+  const prevStatusRef = useRef({});
+  const [announceMessage, setAnnounceMessage] = useState('');
+  useEffect(() => {
+    if (!games || games.length === 0) return;
+    for (const g of games) {
+      const id = g.id;
+      if (!id) continue;
+      const was = prevStatusRef.current[id];
+      const now = g.statusState;
+      if (was && was !== now) {
+        // Status changed — announce if significant.
+        if (now === 'in') {
+          const msg = lang === 'id'
+            ? `Live: ${g.away?.abbr} di ${g.home?.abbr}, tip-off.`
+            : `Live: ${g.away?.abbr} at ${g.home?.abbr}, tip-off.`;
+          setAnnounceMessage(msg);
+        } else if (now === 'post' && g.home?.score != null && g.away?.score != null) {
+          const msg = lang === 'id'
+            ? `Selesai: ${g.home.abbr} ${g.home.score}, ${g.away.abbr} ${g.away.score}.`
+            : `Final: ${g.home.abbr} ${g.home.score}, ${g.away.abbr} ${g.away.score}.`;
+          setAnnounceMessage(msg);
+        }
+      }
+      prevStatusRef.current[id] = now;
+    }
+  }, [games, lang]);
 
   function requestNotifications() {
     if (typeof Notification === 'undefined') return;
@@ -294,6 +357,60 @@ export default function NBADashboard() {
   const topChamp = liveOdds[0] || { name: 'Oklahoma City Thunder', pct: 44 };
   const fmtVol = (v) => (v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : `$${(v / 1e3).toFixed(0)}K`);
 
+  // Push the NBA sub-row (TeamPicker + Catatan Playoff deep-link + live
+  // status / time / refresh strip) into the global V2 TopBar. The masthead
+  // is rendered once at the App root; this effect only tells it what to
+  // show under the nav while NBA is active.
+  useEffect(() => {
+    setTopbarSubrow(
+      <div
+        style={{
+          display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap',
+          fontSize: 10.5, color: C.dim,
+        }}
+      >
+        <HubPicker kind="nba-team" selectedKey={favTeam} onSelect={setFav} />
+        <Link
+          to="/recap"
+          style={{
+            fontSize: 9.5, color: accentText, textDecoration: 'none', letterSpacing: 0.5,
+            padding: '4px 8px', border: `1px solid ${accent}`, borderRadius: 3,
+            transition: 'all 0.15s', fontWeight: 600,
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = `${accent}20`; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+        >
+          {lang === 'id' ? '📖 CATATAN PLAYOFF' : '📖 PLAYOFF NOTES'}
+        </Link>
+        <span style={{ marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <span className="live-dot" style={{ background: statusColor }} /> {t(statusLabel.toLowerCase()) || statusLabel}
+          </span>
+          <span style={{ color: accentBright, fontWeight: 600, fontSize: 13, fontFamily: 'var(--font-sans)' }}>
+            {new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { hour: '2-digit', minute: '2-digit', hour12: lang !== 'id' }).format(now)} {getUserTzLabel()}
+          </span>
+          <span>{new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(now)}</span>
+          <span style={{ fontSize: 10 }}>
+            {lastUpdate ? `refresh ${Math.round((now - lastUpdate) / 1000)}s ago` : 'connecting...'}
+          </span>
+          {/* v0.17.0 Phase 2 Sprint B — Copy + Share on the NBA hub.
+              NBA is the reference shell, polish only — additive,
+              docked at the end of the existing subrow's right cluster. */}
+          <HubActionRow
+            url="/nba-playoff-2026"
+            shareText={lang === 'id'
+              ? 'Skor live NBA Playoffs 2026 di gibol.co 🏀'
+              : 'NBA Playoffs 2026 live scores on gibol.co 🏀'}
+            accent={accent}
+            analyticsEvent="nba_share_hub"
+            compact
+          />
+        </span>
+      </div>
+    );
+    return () => setTopbarSubrow(null);
+  }, [favTeam, lang, t, accent, accentBright, now, lastUpdate, statusColor, statusLabel]);
+
   const panelBox = { borderBottom: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' };
   const panelHeader = {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
@@ -305,9 +422,14 @@ export default function NBADashboard() {
   return (
     <div style={{ background: C.bg, minHeight: '100vh', overflowX: 'auto', fontFamily: '"JetBrains Mono", monospace', color: C.text, fontSize: 11.5, lineHeight: 1.4 }}>
       <SEO
-        title="Skor NBA Playoff 2026 Live · Bracket, Peluang Juara, Play-by-Play | gibol.co"
-        description="Dashboard live NBA Playoff 2026: skor real-time, bracket Ronde 1, peluang juara Polymarket (OKC 44%), win probability, play-by-play, shot chart, statistik pemain, laporan cedera, dan watchlist. Update setiap 10–30 detik."
+        title={lang === 'id'
+          ? 'Skor NBA Playoff 2026 Live · Bracket, Peluang Juara, Play-by-Play | gibol.co'
+          : 'NBA Playoffs 2026 Live Scores · Bracket, Title Odds, Play-by-Play | gibol.co'}
+        description={lang === 'id'
+          ? 'Dashboard live NBA Playoff 2026: skor real-time, bracket Ronde 1, peluang juara Polymarket (OKC 44%), win probability, play-by-play, shot chart, statistik pemain, laporan cedera, dan watchlist. Update setiap 10–30 detik.'
+          : 'NBA Playoffs 2026 live dashboard: real-time scores, Round 1 bracket, Polymarket title odds (OKC 44%), win probability, play-by-play, shot chart, player stats, injury report, and watchlist. Refreshes every 10–30 seconds.'}
         path="/nba-playoff-2026"
+        image="https://www.gibol.co/og/hub-nba.png"
         lang={lang}
         keywords={`skor nba, skor basket, skor playoff nba, skor nba live, skor nba hari ini, peluang juara nba 2026, bracket nba playoff 2026, jadwal nba playoff, ${favMeta ? `skor ${favMeta.abbr.toLowerCase()}, skor ${favTeam}` : 'skor lakers, skor celtics, skor okc, skor thunder, skor pistons'}, live nba indonesia`}
         jsonLd={{
@@ -331,71 +453,33 @@ export default function NBADashboard() {
       <AlertToasts toasts={alertToasts} dismissToast={dismissToast} />
       <div className="dashboard-wrap">
 
-        {/* ================== TOP BAR ================== */}
-        <div className="topbar" style={{ display: 'grid', gridTemplateColumns: 'auto auto 1fr auto', gap: 18, alignItems: 'center', padding: '12px 16px', borderBottom: `1px solid ${C.line}`, background: C.topbarBg }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <img
-              src="/favicon-64.png"
-              alt="gibol.co"
-              width={26}
-              height={26}
-              style={{ display: 'block', borderRadius: 4, flexShrink: 0 }}
-            />
-            <div>
-              <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14 }}>Monitoring the Playoffs</div>
-              <div style={{ fontSize: 10.5, color: C.dim, letterSpacing: 0.5 }}>NBA <strong style={{ color: accent }}>•</strong> {t('tagline')} <strong style={{ color: accent }}>•</strong> {t('liveLabel')}</div>
-            </div>
-            <Link
-              to="/"
-              style={{
-                fontSize: 9.5, color: C.dim, textDecoration: 'none', letterSpacing: 0.5,
-                padding: '4px 8px', border: `1px solid ${C.lineSoft}`, borderRadius: 3,
-                marginLeft: 8, transition: 'all 0.15s',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = accent; e.currentTarget.style.borderColor = accent; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = C.dim; e.currentTarget.style.borderColor = C.lineSoft; }}
-            >
-              ← gibol.co
-            </Link>
-            <Link
-              to="/recap"
-              style={{
-                fontSize: 9.5, color: accent, textDecoration: 'none', letterSpacing: 0.5,
-                padding: '4px 8px', border: `1px solid ${accent}`, borderRadius: 3,
-                marginLeft: 6, transition: 'all 0.15s', fontWeight: 600,
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = `${accent}20`; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
-            >
-              {lang === 'id' ? '📖 CATATAN PLAYOFF' : '📖 PLAYOFF NOTES'}
-            </Link>
-          </div>
-          <TeamPicker selectedTeam={favTeam} onSelect={setFav} />
-          <div className="topbar-meta" style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', fontSize: 10.5, color: C.dim, alignItems: 'center' }}>
-            <ToolbarButton
-              onClick={toggleLang}
-              label={lang === 'en' ? 'EN' : 'ID'}
-              title={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
-              ariaLabel={lang === 'en' ? 'Beralih ke Bahasa Indonesia' : 'Switch to English'}
-              accent={C.amber}
-            />
-            <ToolbarButton
-              onClick={toggleTheme}
-              icon={theme === 'dark' ? '☀' : '☾'}
-              title={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-              ariaLabel={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-              accent={C.amber}
-            />
-            <span style={{ display: 'inline-flex', alignItems: 'center' }}><span className="live-dot" style={{ background: statusColor }} /> {t(statusLabel.toLowerCase()) || statusLabel}</span>
-            <span style={{ color: accentBright, fontWeight: 600, fontSize: 13, fontFamily: 'var(--font-sans)' }}>
-              {new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { hour: '2-digit', minute: '2-digit', hour12: lang !== 'id' }).format(now)} {getUserTzLabel()}
-            </span>
-            <span>{new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(now)}</span>
-          </div>
-          <div style={{ fontSize: 10, color: C.dim, textAlign: 'right' }}>
-            {lastUpdate ? `refresh ${Math.round((now - lastUpdate) / 1000)}s ago` : 'connecting...'}
-          </div>
-        </div>
+        {/* V2TopBar is rendered globally in App.jsx — see
+            src/lib/topbarSubrow.js for the sub-row push pattern. The
+            TeamPicker + Catatan Playoff + live status strip below is
+            mounted into the global masthead via the useEffect further
+            up in this component. */}
+
+        {/* A11y — single <h1> per page for screen-reader rotor + SEO. */}
+        <h1 className="sr-only">
+          {lang === 'id'
+            ? 'Skor Live NBA Playoff 2026 — Bracket, Peluang Juara, Play-by-Play'
+            : 'NBA Playoffs 2026 Live Scores — Bracket, Title Odds, Play-by-Play'}
+        </h1>
+
+        {/* v0.11.20 GIB-015 — AT announcement region. Parent-driven
+            (see useEffect above) so only tip-offs and finals fire. */}
+        <ScoreAnnouncer message={announceMessage} />
+
+        {/* v0.11.18 — NBA content-lead gutter. EPL/F1/Tennis use
+            .dashboard-hero which gives them 24px top padding; NBA runs
+            dense with its own chrome so we don't apply the full hero
+            class (would break YesterdayRecap's internal padding).
+            Instead, a simple 16px top gutter so NBA's first row
+            doesn't sit flush under the V2TopBar subrow — matches the
+            breathing room of the other sports while preserving the
+            density NBA is built around. Collapses to 12px on mobile
+            via the dashboard-hero responsive rule already shipped. */}
+        <div style={{ paddingTop: 16 }} aria-hidden="false" />
 
         {/* ================== YESTERDAY RECAP (collapsible) ================== */}
         <YesterdayRecap favTeam={favTeam} t={t} />
@@ -434,26 +518,55 @@ export default function NBADashboard() {
           h2h={awaySchedule && homeSchedule ? computeH2H([...(awaySchedule || []), ...(homeSchedule || [])], awayAbbr, homeAbbr, 3) : []}
         />
 
-        {/* ================== CONTEXT STRIP (odds demoted) ================== */}
-        <div className="stat-strip" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderBottom: `1px solid ${C.line}`, background: C.panelSoft }}>
-          {[
-            { label: t('titleFavorite'), value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`, sub: topChamp.name.split(' ').slice(-1)[0] },
-            { label: t('round1Tips'), value: 'APR 18', sub: `${games.length || 2} ${t('gamesFriday')}` },
-            { label: t('finalsTipoff'), value: 'JUN 3', sub: 'ABC · Best-of-7' },
-            { label: t('nextTip'), value: games[0]?.date ? formatKickoff(games[0].date, lang) : (localizeGameStatus(games[0]?.status, games[0]?.date, games[0]?.statusState, lang) || `6:30 ${getUserTzLabel()}`), sub: games[0] ? `${games[0].away.abbr} @ ${games[0].home.abbr}` : 'ORL @ CHA' },
-          ].map((s, i) => (
-            <div key={i} style={{ padding: '8px 14px', borderRight: i < 3 ? `1px solid ${C.lineSoft}` : 'none', display: 'flex', flexDirection: 'column', gap: 1 }}>
-              <div style={{ fontSize: 9, color: C.dim, letterSpacing: 0.8, textTransform: 'uppercase' }}>{s.label}</div>
-              <div style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600, color: accentBright, letterSpacing: -0.2 }}>{s.value}</div>
-              <div style={{ fontSize: 9.5, color: C.dim }}>{s.sub}</div>
-            </div>
-          ))}
-        </div>
+        {/* ================== CONTEXT STRIP (odds demoted) ==================
+            v0.19.0 Phase 2 Sprint D — migrated from inline 4-cell grid
+            to shared <KpiStrip>. Identical visual output (4 cells with
+            eyebrow/value/sub stack, --line-soft right-dividers, value
+            in the team-aware accentBright color via valueAccent prop). */}
+        <KpiStrip
+          ariaLabel={lang === 'id' ? 'Stats kunci playoff' : 'Playoff key stats'}
+          cells={[
+            {
+              eyebrow: t('titleFavorite'),
+              value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`,
+              sub: topChamp.name.split(' ').slice(-1)[0],
+              valueAccent: accentBright,
+            },
+            {
+              eyebrow: t('round1Tips'),
+              value: 'APR 18',
+              sub: `${games.length || 2} ${t('gamesFriday')}`,
+              valueAccent: accentBright,
+            },
+            {
+              eyebrow: t('finalsTipoff'),
+              value: 'JUN 3',
+              sub: 'ABC · Best-of-7',
+              valueAccent: accentBright,
+            },
+            {
+              eyebrow: t('nextTip'),
+              value: games[0]?.date
+                ? formatKickoff(games[0].date, lang)
+                : (localizeGameStatus(games[0]?.status, games[0]?.date, games[0]?.statusState, lang) || `6:30 ${getUserTzLabel()}`),
+              sub: games[0]
+                ? `${games[0].away.abbr} @ ${games[0].home.abbr}`
+                : 'ORL @ CHA',
+              valueAccent: accentBright,
+            },
+          ]}
+        />
 
         {/* ================== MAIN GRID ================== */}
         <div className="main-grid" style={{ display: 'grid', gridTemplateColumns: '240px 340px 340px 1fr', minHeight: 720 }}>
 
-          {/* COL 1: Bracket + Key Accounts */}
+          {/* COL 1: Bracket + Key Accounts. v0.13.11 — wrapped in
+              <LazyOnMobile> so on phones the Bracket SVG (8 series
+              cards on mobile per Ship D) and the 4-row key-accounts
+              feed don't render until scrolled near. Reserves 480 px
+              of layout space so reorder/scroll-anchoring stays
+              stable. */}
+          <LazyOnMobile minHeight={480} ariaLabel={lang === 'id' ? 'Memuat bracket' : 'Loading bracket'}>
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
             <div style={panelBox}>
               <div style={panelHeader}>
@@ -468,7 +581,7 @@ export default function NBADashboard() {
             <div style={{ ...panelBox, flex: 1 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 12px', borderBottom: `1px solid ${C.lineSoft}`, background: C.panelSoft, fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 }}>
                 <span>⚡ {favMeta ? `${favMeta.abbr} FEED` : 'KEY ACCOUNTS'}</span>
-                <span style={{ color: accent, letterSpacing: 0.5, fontSize: 9.5, fontWeight: 500 }}>
+                <span style={{ color: accentText, letterSpacing: 0.5, fontSize: 9.5, fontWeight: 500 }}>
                   {favMeta ? `#${favMeta.abbr}${favTeam.split(' ').slice(-1)[0]}` : '#NBAPLAYOFFS'}
                 </span>
               </div>
@@ -492,7 +605,7 @@ export default function NBADashboard() {
                   style={{ display: 'block', padding: '8px 12px', borderBottom: `1px solid ${C.lineSoft}`, fontSize: 10.5, textDecoration: 'none', color: 'inherit' }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: C.text, display: 'flex', gap: 6, alignItems: 'center' }}>{a.handle} <span style={{ color: accent }}>✓</span></span>
+                    <span style={{ color: C.text, display: 'flex', gap: 6, alignItems: 'center' }}>{a.handle} <span style={{ color: accentText }}>✓</span></span>
                     <span style={{ color: C.dim, fontSize: 9.5 }}>{a.age} ↗</span>
                   </div>
                   <div style={{ color: C.dim, marginTop: 3, lineHeight: 1.35 }}>{a.text}</div>
@@ -500,8 +613,12 @@ export default function NBADashboard() {
               ))}
             </div>
           </div>
+          </LazyOnMobile>
 
-          {/* COL 2: Title Odds with sparklines + WS ticker */}
+          {/* COL 2: Title Odds with sparklines + WS ticker. v0.13.11
+              — lazy on mobile. 11 odds rows × Sparkline SVG is the
+              heaviest below-fold render in the whole page. */}
+          <LazyOnMobile minHeight={520} ariaLabel={lang === 'id' ? 'Memuat peluang juara' : 'Loading title odds'}>
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
             <div style={panelBox}>
               <div style={panelHeader}>
@@ -562,8 +679,11 @@ export default function NBADashboard() {
             {/* Clutch leaderboard — aggregates across all completed playoff games */}
             <ClutchLeaderboard watchlist={watchlist} accent={accent} lang={lang} />
           </div>
+          </LazyOnMobile>
 
-          {/* COL 3: Title Path + Watchlist + Team Player Stats */}
+          {/* COL 3: Title Path + Watchlist + Team Player Stats.
+              v0.13.11 — lazy on mobile. */}
+          <LazyOnMobile minHeight={400} ariaLabel={lang === 'id' ? 'Memuat watchlist & stats' : 'Loading watchlist & stats'}>
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
             {favMeta && <TitlePath favTeam={favTeam} championOdds={liveOdds} t={t} />}
 
@@ -574,7 +694,7 @@ export default function NBADashboard() {
               t={t}
             />
 
-            <div style={panelBox}>
+            <div ref={leadersRef} style={panelBox}>
               <div style={panelHeader}>
                 <div style={panelTitle}>
                   {leaderTeamAbbr ? `${leaderTeamAbbr} · PLAYER STATS` : 'PLAYER STATS'}
@@ -589,13 +709,34 @@ export default function NBADashboard() {
               </div>
               <div>
                 {teamLeaders.length === 0 && (
-                  <div style={{ padding: 20, fontSize: 10.5, color: C.dim, textAlign: 'center', lineHeight: 1.5 }}>
-                    {leaderTeamAbbr ? (
-                      <>Loading {leaderTeamAbbr} leaders…<br /><span style={{ fontSize: 9.5 }}>ESPN · updates every 15 min</span></>
-                    ) : (
-                      <>Pick a team in the top bar to see their player stats.</>
-                    )}
-                  </div>
+                  leaderTeamAbbr && leadersInView ? (
+                    // v0.11.6 — Skeleton placeholder while the 5-line leader
+                    // table streams in (~800ms). Replaces the old text-only
+                    // "Loading LAL leaders…" so the perceived layout is stable
+                    // from the moment the panel scrolls into view.
+                    <div style={{ padding: '14px 14px 16px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                          <SkeletonLine w={26} h={26} style={{ borderRadius: '50%' }} />
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
+                            <SkeletonLine w="40%" h={9} />
+                            <SkeletonLine w="24%" h={8} />
+                          </div>
+                          <SkeletonLine w={36} h={14} />
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div style={{ padding: 20, fontSize: 10.5, color: C.dim, textAlign: 'center', lineHeight: 1.5 }}>
+                      {leaderTeamAbbr ? (
+                        // Not-yet-in-view state: show waiting hint instead of
+                        // the spinner-style "loading" copy.
+                        <>{leaderTeamAbbr} leaders on-deck · scroll to load</>
+                      ) : (
+                        <>Pick a team in the top bar to see their player stats.</>
+                      )}
+                    </div>
+                  )
                 )}
                 {teamLeaders.slice(0, 5).map((cat) => {
                   const top = cat.athletes?.[0];
@@ -662,10 +803,14 @@ export default function NBADashboard() {
               </div>
             )}
           </div>
+          </LazyOnMobile>
 
           {/* COL 4: Stories + Status
               Play-In box removed 2026-04-20 — dates 2026-04-17/18 hardcoded, stale two days after Round 1 began.
-              If Play-In returns (next season), reintroduce as a date-gated block, not hardcoded. */}
+              If Play-In returns (next season), reintroduce as a date-gated block, not hardcoded.
+              v0.13.11 — col 4 is FIRST visually on mobile (Ship C
+              CSS reorder), so it stays eager. Only cols 1/2/3 are
+              <LazyOnMobile>-wrapped. */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={panelBox}>
               <div style={panelHeader}>
@@ -698,7 +843,7 @@ export default function NBADashboard() {
                   </div>
                   <div style={{ fontSize: 10.5, lineHeight: 1.35 }}>
                     <div>{s.title}</div>
-                    <div style={{ color: C.dim, fontSize: 9.5, marginTop: 3 }}><span style={{ color: accent }}>{s.src}</span> · {s.age} <span style={{ color: C.muted }}>↗</span></div>
+                    <div style={{ color: C.dim, fontSize: 9.5, marginTop: 3 }}><span style={{ color: accentText }}>{s.src}</span> · {s.age} <span style={{ color: C.muted }}>↗</span></div>
                   </div>
                 </a>
               ))}
@@ -729,7 +874,7 @@ export default function NBADashboard() {
                 'NBA Finals tip off June 3 on ABC',
               ].map((text, i) => (
                 <span key={i} style={{ display: 'inline-block', padding: '0 28px', fontSize: 11, color: C.text }}>
-                  <span style={{ color: accent, marginRight: 6 }}>●</span>{text}
+                  <span style={{ color: accentText, marginRight: 6 }}>●</span>{text}
                 </span>
               ))}
             </div>
@@ -739,10 +884,24 @@ export default function NBADashboard() {
         {/* ================== FANGIR PARTNER BANNER ================== */}
         <FangirBanner />
 
+        {/* v0.53.0 — Phase C redesign: 3-up Newsroom Slice. Sport-
+            filtered to NBA published articles. Self-hides if empty.
+            Gated behind UI.v2 flag — old hub renders unchanged when
+            flag is off. */}
+        {UI.v2 && (
+          <div style={{ padding: '0 16px 24px' }}>
+            <NewsroomSlice
+              sport="nba"
+              newsroomLabel="NBA NEWSROOM"
+              moreHref="/nba-playoff-2026#newsroom"
+            />
+          </div>
+        )}
+
         {/* ================== SEO CONTENT (crawlable Bahasa + EN prose + FAQ) ================== */}
         <SEOContent lang={lang} />
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 14px', borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted, alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+        <footer role="contentinfo" style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 14px', borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted, alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
           <div>Polymarket Gamma + CLOB WS · ESPN Scoreboard · 30s poll + live ticks</div>
           <ContactBar lang={lang} variant="inline" />
           <div style={{ color: C.dim, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
@@ -762,7 +921,7 @@ export default function NBADashboard() {
             </span>
             ESPN · Polymarket · Built by Claude
           </div>
-        </div>
+        </footer>
       </div>
     </div>
   );

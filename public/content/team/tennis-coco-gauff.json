@@ -1,0 +1,91 @@
+{
+  "type": "team",
+  "slug": "tennis-coco-gauff",
+  "title": "Profil Coco Gauff (WTA) — Peringkat 3",
+  "description": "Profil petenis Coco Gauff (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Coco Gauff: Petenis Amerika di Puncak Persaingan WTA\n\nCoco Gauff, petenis Amerika Serikat kelahiran 13 Maret 2004, menempati peringkat 3 WTA dengan 7.279 poin per 16 April 2026. Pemain tangan kanan asal Delray Beach, Florida ini menjadi salah satu nama paling konsisten di papan atas tenis putri dunia, dan usianya baru 22 tahun.\n\n---\n\n## Identitas\n\nNama lengkapnya Cori Gauff, tapi dunia tenis mengenalnya sebagai Coco. Lahir di Delray Beach, Florida, 13 Maret 2004, Gauff menjalani debut profesional pada 2018, artinya ia sudah mengarungi sirkuit WTA selama delapan tahun sebelum genap berusia 22 tahun saat ini.\n\nSecara fisik, Gauff memiliki postur yang ideal untuk tenis modern: tinggi 175 cm (5'9\") dengan berat 55 kg (121 lbs). Bermain dengan tangan kanan, gaya bermainnya bertumpu pada baseline yang agresif, serve yang kuat, dan return yang konsisten, tipikal petenis Amerika era kini yang dibesarkan di lapangan keras.\n\nDebutnya di usia muda bukan sekadar statistik. Gauff adalah produk generasi yang tumbuh di era Serena Williams, masuk sirkuit profesional sebelum SMA selesai, dan membuktikan bahwa karier panjang bisa dibangun tanpa mengorbankan usia muda.\n\n---\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Gauff bertahan di peringkat 3 WTA dengan 7.279 poin. Peringkatnya tidak bergerak dari posisi sebelumnya, stabil di P3, bukan naik, bukan turun.\n\nStabilitas di posisi tiga bukan hal kecil. Dalam sirkuit WTA yang kompetitif, bertahan di top 3 berarti konsistensi di level tertinggi selama periode panjang. Poin 7.279 mencerminkan akumulasi hasil solid lintas turnamen, bukan lonjakan satu event, tapi kinerja yang terjaga.\n\nStabil bisa dibaca dua arah: belum ada dorongan besar untuk naik ke P2 atau P1, tapi juga tidak ada kejatuhan yang mengancam posisinya. Untuk petenis 22 tahun, itu membaca lebih positif daripada negatif.\n\n---\n\n## Outlook\n\nDi usia 22 tahun dengan delapan tahun karier profesional dan peringkat 3 WTA, Coco Gauff berada di titik di mana banyak petenis baru mulai menemukan puncak permainan mereka. Data per 16 April 2026 menunjukkan sosok yang belum kemana-mana, stabil, terjaga, dan masih punya ruang untuk naik.\n\nProfil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "3626",
+    "athlete_name": "Coco Gauff",
+    "current_rank": 3,
+    "previous_rank": 3,
+    "points": 7279.0,
+    "trend": "-",
+    "birthplace": "Delray Beach, Fl. USA",
+    "dob": "2004-03-13",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.015423,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Fail: Multiple high-severity training inferences (full name, playing style, Serena Williams context, pre-professional biography) not grounded in input data block. Article invents narrative unsupported by provided facts. Rewrite to stick only to identity, ranking, age, debut year from input.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Nama lengkapnya Cori Gauff, tapi dunia tenis mengenalnya sebagai Coco.",
+          "fix": "Remove full name clause. Start: 'Coco — nama panggilan di dunia tenis — lahir 13 Maret 2004.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "gaya bermainnya bertumpu pada baseline yang agresif, serve yang kuat, dan return yang konsisten",
+          "fix": "Remove style analysis. Stick to: height, weight, right-handed, debut year."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Gauff adalah produk generasi yang tumbuh di era Serena Williams, masuk sirkuit profesional sebelum SMA selesai",
+          "fix": "Delete entire paragraph. Not grounded in input data."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "artinya ia sudah mengarungi sirkuit WTA selama delapan tahun",
+          "fix": "Change to: 'berarti ia mengarungi sirkuit WTA delapan tahun.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Debutnya di usia muda bukan sekadar statistik.",
+          "fix": "Delete. Doesn't anchor to input data or clear statement."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Stabil bisa dibaca dua arah: belum ada dorongan besar untuk naik ke P2 atau P1",
+          "fix": "State fact only: 'Gauff stabil di P3. Ranking sama dengan 16 April.' Remove 'dorongan' language."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Untuk petenis 22 tahun, itu membaca lebih positif daripada negatif.",
+          "fix": "Tighten: 'P3 di usia 22 adalah solid — hanya dua pemain di atasnya.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Data per 16 April 2026 menunjukkan sosok yang belum kemana-mana, stabil, terjaga, dan masih punya ruang untuk naik.",
+          "fix": "Simplify: 'Per 16 April 2026: P3, 7.279 poin, usia 22, delapan tahun karier. Posisi solid.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "kuat, dan return yang konsisten, tipikal petenis Amerika era kini yang dibesarkan di lapangan keras.\n\nDebutnya di usia muda bukan",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf1e5676a5427b4c0",
+    "published_at": "2026-04-28T12:07:17+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

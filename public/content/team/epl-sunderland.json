@@ -1,0 +1,91 @@
+{
+  "type": "team",
+  "slug": "epl-sunderland",
+  "title": "Profil Sunderland: Premier League (2025-26)",
+  "description": "Profil Sunderland — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Sunderland FC: Klub Bersejarah yang Berjuang di Papan Tengah Liga Inggris\n\nSunderland FC adalah klub sepak bola asal Inggris yang berkompetisi di Liga Inggris (Premier League) musim 2025-26. Kandang mereka adalah Stadium of Light di kota Sunderland, dengan kapasitas sekitar 49.000 penonton. Per 28 April 2026, Sunderland menempati posisi 12 klasemen Premier League dengan 46 poin dari 34 laga, catatan 12 menang, 10 seri, dan 12 kalah, serta selisih gol -9. Posisi tengah tabel yang menggambarkan musim yang tidak mudah, tapi juga jauh dari zona berbahaya.\n\n---\n\n## Identitas Klub\n\nSunderland berdiri pada 1879, menjadikan mereka salah satu klub paling tua di sepak bola Inggris. Berbasis di kota Sunderland, timur laut Inggris, mereka telah memainkan laga kandang di Stadium of Light sejak akhir 1990-an. Stadion berkapasitas 49.000 kursi ini adalah salah satu yang terbesar di luar London dan Manchester, mencerminkan basis suporter Sunderland yang secara historis besar dan loyal.\n\nKehadiran kembali di Premier League, liga tertinggi Inggris, adalah pencapaian tersendiri bagi klub yang pernah terdegradasi jauh ke bawah hierarki sepak bola Inggris beberapa tahun lalu. Musim 2025-26 adalah bagian dari perjalanan panjang membangun ulang identitas mereka di level teratas.\n\n---\n\n## Performa Musim Ini\n\nDari 34 laga yang sudah dimainkan, Sunderland mencatat 12 menang, 10 seri, dan 12 kalah, satu definisi klasik tim papan tengah yang tidak konsisten. Rata-rata 1,1 gol per laga dan kebobolan 1,3 per laga menjelaskan kenapa mereka tidak bisa naik lebih tinggi: produktivitas serangan yang terbatas dan pertahanan yang belum cukup solid untuk bersaing di zona atas.\n\nSatu angka yang cukup menarik: 10 clean sheet dari 34 laga. Itu bukan angka buruk, artinya pertahanan Sunderland mampu menutup gawang di hampir sepertiga pertandingan. Masalahnya ada di ujung lain: 12 laga tanpa mencetak satu pun gol. Ketika pertahanan bekerja keras tapi serangan mati, hasilnya seri atau kalah tipis, pola yang pasti berulang kali muncul musim ini.\n\nPerforma kandang dan tandang menunjukkan pola berbeda. Di Stadium of Light, mereka meraih 8 kemenangan, 5 seri, dan 4 kekalahan, cukup kompetitif. Tapi di laga tandang, angkanya terbalik: hanya 4 menang, 5 seri, dan 8 kalah. Sunderland jauh lebih sulit dikalahkan di kandang sendiri, dan itu membuat Stadium of Light jadi modal penting untuk sisa musim.\n\nForm terakhir, LDWLWWLL, tidak memberi gambaran yang terlalu meyakinkan. Dua kekalahan beruntun di laga paling baru mengindikasikan ada momentum yang sedang hilang menjelang akhir musim.\n\n---\n\n## Posisi di Klasemen\n\nPosisi 12 dengan 46 poin menempatkan Sunderland tepat di jantung papan tengah Premier League musim 2025-26. Dengan selisih gol -9, mereka bukan tim yang mendominasi lawan, tapi juga bukan tim yang mudah dikalahkan secara konsisten.\n\nDengan empat laga tersisa di musim reguler (jika musim berlangsung 38 laga), Sunderland secara matematis sudah aman dari releasi. Jarak ke zona bawah cukup untuk bernapas. Di sisi atas, peluang merangsek ke posisi yang membuka akses ke kompetisi Eropa sudah tidak realistis secara matematis dari data yang ada.\n\nTarget paling logis sekarang adalah menutup musim dengan posisi terbaik yang bisa dicapai di papan tengah, sambil membangun fondasi untuk kampanye berikutnya.\n\n---\n\n## Outlook\n\nMusim 2025-26 bagi Sunderland adalah musim konsolidasi. Bertahan di Premier League sambil mencatat 46 poin di pertengahan akhir musim, untuk klub yang pernah memulai ulang dari bawah, adalah progres nyata, bukan kegagalan.\n\nDua kekalahan terakhir di form LDWLWWLL sedikit merusak momentum, tapi ancaman degradasi sudah tidak relevan. Sisa laga adalah kesempatan memperbaiki statistik serangan yang kurang tajam dan menutup musim dengan dignitas. Stadium of Light yang besar butuh diisi optimisme, dan fondasi untuk musim depan mulai diletakkan dari sekarang.\n\n*Data per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "746",
+    "team_name": "Sunderland",
+    "team_country": "England",
+    "team_founded": 1879,
+    "venue_name": "Stadium of Light",
+    "venue_city": "Sunderland",
+    "venue_capacity": 49000,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023602,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Fail: critical data mismatches (laga/poin counts), training-inference claims about stadium history and degradation not in input block, form sequence error, and academic hedging throughout. Article requires factual correction before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kehadiran kembali di Premier League, liga tertinggi Inggris, adalah pencapaian tersendiri bagi klub yang pernah terdegradasi jauh ke bawah hierarki sepak bola Inggris beberapa tahun lalu.",
+          "fix": "Remove sentence or rephrase to only what's in data: 'Sunderland kembali bersaing di Premier League musim ini.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Berbasis di kota Sunderland, timur laut Inggris, mereka telah memainkan laga kandang di Stadium of Light sejak akhir 1990-an.",
+          "fix": "Remove 'sejak akhir 1990-an' or verify from grounded source before keeping."
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Sunderland menempati posisi 12 klasemen Premier League dengan 46 poin dari 34 laga, catatan 12 menang, 10 seri, dan 12 kalah",
+          "fix": "Use correct input numbers: 35 laga, 47 poin. Verify throughout article for consistency."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Form terakhir, LDWLWWLL, tidak memberi gambaran yang terlalu meyakinkan.",
+          "fix": "Use exact form from input: DWLWWLLD."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Satu angka yang cukup menarik: 10 clean sheet dari 34 laga. Itu bukan angka buruk, artinya pertahanan Sunderland mampu menutup gawang di hampir sepertiga pertandingan.",
+          "fix": "Rewrite: 'Sunderland catat 10 clean sheet — pertahanan solid di sepertiga laga.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Ketika pertahanan bekerja keras tapi serangan mati, hasilnya seri atau kalah tipis, pola yang pasti berulang kali muncul musim ini.",
+          "fix": "Cut to fact: 'Inilah kenapa 12 laga tanpa gol: serangan lemah, pertahanan solid tapi sia-sia.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dengan empat laga tersisa di musim reguler (jika musim berlangsung 38 laga), Sunderland secara matematis sudah aman dari releasi.",
+          "fix": "Simplify: 'Tiga laga sisa. Sunderland sudah aman dari degradasi.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Musim 2025-26 bagi Sunderland adalah musim konsolidasi. Bertahan di Premier League sambil mencatat 46 poin di pertengahan akhir musim, untuk klub yang pernah memulai ulang dari bawah, adalah progres nyata, bukan kegagalan.",
+          "fix": "Cut moralizing: 'Sunderland aman, 46 poin. Musim depan dimulai dari sini.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "jauh ke bawah hierarki sepak bola Inggris beberapa tahun lalu. Musim 2025-26 adalah bagian dari perjalanan panjang",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7a51e399450b8480",
+    "published_at": "2026-04-28T12:13:02+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

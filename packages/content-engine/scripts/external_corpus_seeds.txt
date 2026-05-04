@@ -1,0 +1,40 @@
+# External plagiarism corpus seed URLs (Phase 2 ship #23).
+#
+# One URL per line. Lines starting with # are comments. Run via:
+#   .venv/bin/python scripts/build_external_corpus.py
+#
+# Seed strategy: include Wikipedia articles for every team / player / event
+# that gibol.co also writes about. CC-licensed, no robots.txt concerns,
+# safe to fingerprint. The plagiarism gate then rejects any AI-generated
+# article whose 7-gram SimHash falls within 3 bits of a Wikipedia entry.
+#
+# Add Bola.com / SkorID / Bolasport / SLAM Indonesia URLs over time —
+# but do it in small curated batches with the courtesy delay built into
+# the scraper. Never bulk-scrape.
+
+# ── NBA teams (Wikipedia) ────────────────────────────────────────────────
+https://en.wikipedia.org/wiki/Boston_Celtics
+https://en.wikipedia.org/wiki/Los_Angeles_Lakers
+https://en.wikipedia.org/wiki/Golden_State_Warriors
+https://en.wikipedia.org/wiki/Philadelphia_76ers
+https://en.wikipedia.org/wiki/Denver_Nuggets
+
+# ── EPL clubs (Wikipedia) ────────────────────────────────────────────────
+https://en.wikipedia.org/wiki/Liverpool_F.C.
+https://en.wikipedia.org/wiki/Manchester_United_F.C.
+https://en.wikipedia.org/wiki/Arsenal_F.C.
+https://en.wikipedia.org/wiki/Chelsea_F.C.
+https://en.wikipedia.org/wiki/Manchester_City_F.C.
+
+# ── F1 drivers (Wikipedia) ───────────────────────────────────────────────
+https://en.wikipedia.org/wiki/Max_Verstappen
+https://en.wikipedia.org/wiki/Lewis_Hamilton
+https://en.wikipedia.org/wiki/Charles_Leclerc
+
+# ── Tennis players (Wikipedia) ───────────────────────────────────────────
+https://en.wikipedia.org/wiki/Jannik_Sinner
+https://en.wikipedia.org/wiki/Carlos_Alcaraz
+
+# ── Liga 1 Indonesia (Wikipedia ID) ──────────────────────────────────────
+https://id.wikipedia.org/wiki/Persija_Jakarta
+https://id.wikipedia.org/wiki/Persib_Bandung

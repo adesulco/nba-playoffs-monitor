@@ -1,0 +1,49 @@
+{
+  "type": "team",
+  "slug": "tennis-jessica-pegula",
+  "title": "Profil Jessica Pegula (WTA) — Peringkat 5",
+  "description": "Profil petenis Jessica Pegula (WTA). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Jessica Pegula: Pilar Konsisten WTA dari Buffalo\n\nJessica Pegula, petenis Amerika Serikat kelahiran 24 Februari 1994, saat ini bertengger di peringkat 5 WTA dengan 6.136 poin per 16 April 2026. Pemain tangan kanan asal Buffalo, New York ini masuk jajaran lima besar dunia sebagai salah satu nama paling konsisten di sirkuit WTA musim ini.\n\n## Identitas\n\nLahir di Buffalo, New York, 32 tahun lalu, Pegula memulai perjalanan profesionalnya sejak 2009, artinya sudah lebih dari satu dekade ia mengasah permainan di level tour. Posturnya solid: tinggi 170 cm, berat sekitar 70 kg, dengan gaya bermain tangan kanan yang bertumpu pada baseline. Kombinasi fisik dan pengalaman panjang itu menjadikan Pegula lawan yang tidak mudah dihadapi di lapangan manapun.\n\n## Peringkat Saat Ini\n\nPer data 16 April 2026, Pegula berada di peringkat 5 WTA dengan total 6.136 poin. Peringkatnya stabil, tidak bergerak dari posisi sebelumnya. Bukan naik, bukan turun.\n\nStabilitas di angka lima bukan sesuatu yang bisa dianggap enteng. Di WTA, gap antara posisi 5 dan 10 bisa sangat tipis, dan mempertahankan posisi berarti Pegula terus mengumpulkan poin secara konsisten tanpa lompatan besar ke atas atau penurunan signifikan ke bawah. Ini adalah tanda petenis yang sedang dalam ritme stabil, bukan sedang naik daun, tapi juga tidak sedang jatuh.\n\nDengan 6.136 poin di tangan, Pegula memiliki cushion yang cukup untuk bersaing di papan atas musim ini.\n\n## Outlook\n\nDi peringkat 5 dunia, Pegula sudah berada di wilayah di mana setiap turnamen besar menjadi pertaruhan poin serius. Stabilitasnya musim ini mencerminkan petenis yang tahu cara mengelola kalender dan menjaga performa. Selama ia konsisten di angka ini, Pegula tetap jadi salah satu nama yang harus diperhitungkan di sirkuit WTA 2026.\n\n*Profil ini mencerminkan data per 16 April 2026.*\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "wta",
+    "article_subtype": "player_profile",
+    "athlete_id": "2113",
+    "athlete_name": "Jessica Pegula",
+    "current_rank": 5,
+    "previous_rank": 5,
+    "points": 6136.0,
+    "trend": "-",
+    "birthplace": "Buffalo, NY, USA",
+    "dob": "1994-02-24",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.012392,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 2,
+      "summary": "",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "profesionalnya sejak 2009, artinya sudah lebih dari satu dekade ia mengasah permainan di level tour. Posturnya solid: tinggi 170 cm,",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "musim ini.\n\n## Identitas\n\nLahir di Buffalo, New York, 32 tahun lalu, Pegula memulai perjalanan profesionalnya sejak 2009,",
+          "fix": "Avoid 'musim lalu' framing — profile is evergreen and shouldn't reference seasons not in input."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd9012a28a8cda6a0",
+    "published_at": "2026-04-28T12:08:08+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

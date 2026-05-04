@@ -1,0 +1,81 @@
+{
+  "type": "team",
+  "slug": "f1-fernando-alonso",
+  "title": "Profil Fernando Alonso: Pembalap F1 Aston Martin (2026)",
+  "description": "Profil pembalap F1 Fernando Alonso (Spanyol) untuk tim Aston Martin. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Fernando Alonso, Legenda Spanyol yang Sedang Berjuang di Aston Martin\n\nFernando Alonso, kode FIA ALO (#14), pembalap Spanyol kelahiran 29 Juli 1981. Per 28 April 2026, Alonso membalap untuk Aston Martin dan menempati P21 klasemen 2026, posisi terakhir, dengan 0 poin dari 3 balapan yang sudah dijalani musim ini.\n\n---\n\n## Identitas\n\nAlonso kini berusia 44 tahun, menjadikannya salah satu pembalap tertua di grid F1 2026. Tampil dengan kode FIA ALO dan nomor permanen #14, dia mewakili Spanyol di bawah bendera Aston Martin, tim asal Inggris yang berbasis di Silverstone.\n\nDi atas kertas, nama Alonso tidak butuh pengantar panjang. Tapi di atas lintasan musim ini, angka-angkanya bicara sendiri, dan belum berpihak ke dia.\n\n---\n\n## Performa Musim Ini\n\nTiga balapan, nol poin. Itulah gambaran awal musim 2026 Alonso bersama Aston Martin.\n\nBukan sekadar minimnya poin, ketiga penampilannya berakhir jauh dari zona angka. Di Australian Grand Prix, dia retired dari posisi 18. Di Chinese Grand Prix, sekali lagi retired, kali ini dari P17. Di Japanese Grand Prix, Alonso finis tapi tercatat *lapped*, ketinggalan satu lap dari pemimpin balapan, di posisi 18.\n\nDari tiga balapan, tidak satu pun yang memberikan petunjuk bahwa Aston Martin mampu bersaing di papan tengah, apalagi papan atas. Dua DNF (did not finish) dan satu hasil lapped di tiga seri pertama adalah sinyal yang sulit diabaikan.\n\n---\n\n## Hasil Per Balapan\n\nMembaca HASIL block Alonso musim ini, polanya jelas: Aston Martin sedang dalam periode sangat sulit.\n\n**Australian Grand Prix (Round 1):** Alonso retire dari P18. Posisi sebelum pensiun sudah di luar poin, artinya bahkan jika mobilnya bertahan sampai garis finis, hasilnya kemungkinan besar tetap nihil.\n\n**Chinese Grand Prix (Round 2):** Retired lagi dari P17. Dua balapan beruntun tanpa finis adalah pola yang mengkhawatirkan, baik dari sisi keandalan mesin maupun performa keseluruhan paket.\n\n**Japanese Grand Prix (Round 3):** Kali ini Alonso finis, tapi statusnya *lapped* di P18. Di Suzuka, salah satu sirkuit paling teknikal di kalender F1, tertinggal satu lap dari pemimpin balapan menggambarkan betapa lebarnya gap antara Aston Martin dengan tim-tim kompetitif saat ini.\n\nTiga balapan, dua DNF, satu hasil lapped. Belum ada tanda-tanda titik balik.\n\n---\n\n## Outlook\n\nPer 28 April 2026, Alonso berada di P21 klasemen dengan 0 poin, posisi paling bawah di grid. Aston Martin belum menunjukkan performa yang cukup untuk bersaing bahkan di zona poin, apalagi di posisi-posisi atas.\n\nMusim masih panjang. Tapi dengan hanya tiga balapan yang tersisa dari kemungkinan evaluasi awal, tekanan untuk segera mendapat hasil pertama musim ini, setidaknya satu finis di dalam 10 besar, semakin nyata.\n\nProfil ini mencerminkan data per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "alonso",
+    "driver_name": "Fernando Alonso",
+    "driver_code": "ALO",
+    "driver_number": "14",
+    "nationality": "Spanish",
+    "current_team": "Aston Martin",
+    "current_team_id": "aston_martin",
+    "championship_pos": "21",
+    "championship_points": "0",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.018285,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to three high-severity training-data inferences (Silverstone location, birth-date extraction, Suzuka technical assessment) not in input block. Additionally, one tense-overmarking issue and two translated-English phrasings. Rewrite §Identitas and §Outlook; remove external interpretations.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "tim asal Inggris yang berbasis di Silverstone",
+          "fix": "Remove location detail or source from input data"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "pembalap Spanyol kelahiran 29 Juli 1981",
+          "fix": "Use only: 'pembalap Spanyol berusia 44 tahun' or cite input format exactly"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "salah satu sirkuit paling teknikal di kalender F1",
+          "fix": "Remove characterization; state only: 'di Suzuka, tertinggal satu lap'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dua DNF (did not finish) dan satu hasil lapped di tiga seri pertama adalah sinyal",
+          "fix": "Dua DNF dan satu hasil lapped jelas: Aston Martin sedang krisis."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dari tiga balapan, tidak satu pun yang memberikan petunjuk bahwa Aston Martin mampu bersaing",
+          "fix": "Tiga balapan, belum ada bukti Aston Martin mampu bersaing di papan tengah."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Di atas kertas, nama Alonso tidak butuh pengantar panjang.",
+          "fix": "Delete or replace with specific career context grounded in input."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Musim masih panjang. Tapi dengan hanya tiga balapan yang tersisa dari kemungkinan evaluasi awal",
+          "fix": "Musim masih panjang. Tapi finis pertama dalam poin jadi semakin urgent."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x27d9ee396425d26a",
+    "published_at": "2026-04-28T12:18:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

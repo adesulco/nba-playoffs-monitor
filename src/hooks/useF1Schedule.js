@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
 import { CALENDAR_2026, SEASON } from '../lib/sports/f1/constants.js';
+import { readCache, writeCache } from '../lib/swrCache.js';
+
+// v0.11.15 SWR. Calendar changes at most once/twice a season so a
+// 24-hour cache is safe; the underlying hourly re-fetch still picks
+// up real edits quickly. Return visits within 24 h paint instantly.
+const CACHE_KEY = `f1-schedule-${SEASON}`;
+const CACHE_TTL = 24 * 60 * 60 * 1000;
 
 /**
  * F1 season schedule, via Jolpica-F1 (Ergast successor) through our edge proxy.
@@ -13,9 +20,12 @@ import { CALENDAR_2026, SEASON } from '../lib/sports/f1/constants.js';
  * Refresh cadence: hourly. Calendar changes once or twice a season at most.
  */
 export function useF1Schedule() {
-  const [races, setRaces] = useState(CALENDAR_2026);
-  const [source, setSource] = useState('fallback');
-  const [loading, setLoading] = useState(true);
+  // v0.11.15 — SWR hydrate. Cache entry stores { races, source }.
+  // Falls through to the local CALENDAR_2026 snapshot if no cache.
+  const cached = readCache(CACHE_KEY, { ttlMs: CACHE_TTL });
+  const [races, setRaces] = useState(cached?.races ?? CALENDAR_2026);
+  const [source, setSource] = useState(cached?.source ?? 'fallback');
+  const [loading, setLoading] = useState(!cached);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -57,6 +67,7 @@ export function useF1Schedule() {
         if (!cancelled) {
           setRaces(merged);
           setSource('jolpica');
+          writeCache(CACHE_KEY, { races: merged, source: 'jolpica' });
           setError(null);
         }
       } catch (e) {

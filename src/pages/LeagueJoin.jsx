@@ -5,7 +5,6 @@ import { useApp } from '../lib/AppContext.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { supabase } from '../lib/supabase.js';
 import SEO from '../components/SEO.jsx';
-import TopBar from '../components/TopBar.jsx';
 
 /**
  * /league/:id/join?code=XYZ — WhatsApp-friendly invite landing.
@@ -82,8 +81,7 @@ function JoinLeagueInner() {
         lang={lang}
       />
       <div className="dashboard-wrap" style={{ maxWidth: 520, margin: '0 auto', padding: '0 20px 40px' }}>
-        <TopBar showBackLink backTo="/bracket" title="gibol.co" subtitle={lang === 'id' ? "pick'em · gabung liga" : "pick'em · join league"} />
-        <main style={{ padding: '48px 8px', textAlign: 'center' }}>
+        <section style={{ padding: '48px 8px', textAlign: 'center' }}>
           {phase === 'checking' || phase === 'joining' ? (
             <p style={{ fontSize: 13, color: C.dim }}>
               {lang === 'id' ? 'Sebentar, sedang gabungin…' : 'Joining…'}
@@ -124,7 +122,7 @@ function JoinLeagueInner() {
               )}
             </div>
           )}
-        </main>
+        </section>
       </div>
     </div>
   );

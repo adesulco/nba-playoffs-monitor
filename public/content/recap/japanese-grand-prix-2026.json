@@ -1,0 +1,83 @@
+{
+  "type": "recap",
+  "slug": "japanese-grand-prix-2026",
+  "title": "Recap Japanese Grand Prix 2026 — Andrea Kimi Antonelli Juara",
+  "description": "Recap F1 2026 Japanese Grand Prix di Suzuka Circuit, Japan. Round 3/22 musim 2026.",
+  "body_md": "# Antonelli Tak Tertandingi di Suzuka, Mercedes Makin Kokoh di Puncak\n\nAndrea Kimi Antonelli memenangi Japanese Grand Prix di Suzuka, Minggu 29 Maret 2026, kemenangan kedua musim ini untuk rookie Mercedes yang start dari pole. Oscar Piastri P2, Charles Leclerc P3. Dengan fastest lap sekaligus segel kemenangan dominant dari pole, Antonelli mempertegas dirinya sebagai pembalap terdepan musim 2026. Mercedes kini memimpin kedua klasemen, pembalap dan konstruktor, dengan margin yang semakin sulit dikejar.\n\n---\n\n## Jalannya Balapan\n\nSuzuka membuktikan diri sebagai sirkuit yang nyaris tidak bisa ditembus dari belakang. Antonelli mempertahankan pole hingga chequered flag, finish dengan gap yang cukup nyaman atas Piastri. Piastri sendiri naik dua posisi dari grid P3 ke P2, melewati Russell yang start P2 tapi tergelincir ke P4 di akhir balapan.\n\nLeclerc mengulang pola serupa, start P4, finish P3. Ferrari dapat podium, tapi bukan dari pertarungan terdepan. lebih karena urutan di depan tidak banyak berubah. Hamilton di P6, pas sesuai grid. Norris di P5, juga pas sesuai grid. Hari yang bersih, tapi bukan hari yang menarik buat siapapun yang berharap drama.\n\nVerstappen jadi pengecualian. Red Bull start P11, finish P8, naik tiga posisi, tapi empat poin dari Suzuka bukan hari yang diinginkan tim yang biasanya mendominasi sirkuit ini. Sesuatu yang tidak beres di Red Bull musim ini, dan Jepang tidak memberikan jawaban.\n\n---\n\n## Cerita dari Dalam Grid\n\n**Liam Lawson P9 dari P14**, recovery drive terbaik hari ini. Naik lima posisi, RB dapat dua poin pertama musim ini. Lawson pelan-pelan membangun momentum di musim debutnya bersama RB.\n\n**Esteban Ocon P10 dari P12**, Haas kembali dapat poin. Ocon dan Oliver Bearman (yang tidak finish di top 15 hari ini, tapi sudah punya 17 poin musim ini) menjadikan Haas salah satu kejutan awal musim 2026.\n\n**Isack Hadjar P12 dari P8**, justru turun empat posisi. Red Bull punya dua masalah berbeda hari ini: Verstappen tidak bisa maju, Hadjar malah mundur.\n\n**Arvid Lindblad P14 dari P10**, debutan RB F1 Team juga turun empat posisi. Sirkuit teknikal seperti Suzuka tidak ramah buat pembalap muda yang masih belajar ritme balapan panjang.\n\n---\n\n## Klasemen: Mercedes Jauh di Depan\n\nAntonelli kini unggul 9 poin atas Russell di klasemen pembalap, 72 vs 63. Dua kemenangan vs satu kemenangan, dengan Mercedes mengunci dua besar di tiga dari tiga balapan musim ini. Leclerc P3 klasemen dengan 49 poin, Hamilton P4 dengan 41.\n\nJarak dari Mercedes ke Ferrari sudah 23 poin setelah tiga round. Belum darurat untuk Ferrari, tapi tren tidak berpihak ke Maranello. McLaren di P3 konstruktor dengan 46 poin, Norris dan Piastri belum menemukan konsistensi untuk menantang dua tim di atas mereka.\n\nVerstappen di P9 klasemen dengan 12 poin. Untuk mantan juara dunia yang biasanya mendominasi, angka itu bicara lebih keras dari apapun yang bisa dikatakan Red Bull ke media.\n\nDi konstruktor, Mercedes 135 poin, Ferrari 90, McLaren 46. Tiga tim lainnya, Haas, Alpine, Red Bull, berkumpul di 16-18 poin, terpaut jauh.\n\n---\n\n## Selanjutnya\n\nRound 4 pindah ke Miami. Sirkuit jalan raya yang karakteristiknya berbeda jauh dari Suzuka, lebih banyak kesempatan untuk drama, lebih banyak variabel strategi. Jadwal lengkap belum dikonfirmasi.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "season": 2026,
+    "round": 3,
+    "race_name": "Japanese Grand Prix",
+    "circuit": "Suzuka Circuit",
+    "country": "Japan",
+    "kickoff_utc": "2026-03-29T05:00:00+00:00",
+    "winner_driver": "Andrea Kimi Antonelli",
+    "winner_code": "ANT",
+    "winner_constructor": "Mercedes",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.046787,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on multiple fronts: broken grammar (lowercase 'lebih'), heavy academic drift ('membuktikan diri', 'karakteristiknya'), and translated English idiom ('segel kemenangan dominant'). Tense discipline is mostly OK but one unnecessary 'sudah'. Structure and voice recoverable with targeted fixes; rewrite the Leclerc paragraph and opening for tone.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dengan fastest lap sekaligus segel kemenangan dominant dari pole",
+          "fix": "Antonelli dominan dari pole sampai garis finish, cetak fastest lap juga"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Suzuka membuktikan diri sebagai sirkuit yang nyaris tidak bisa ditembus dari belakang",
+          "fix": "Suzuka nyaris mustahil dikejar dari belakang. Antonelli poles, Antonelli menang."
+        },
+        {
+          "type": "structural",
+          "severity": "high",
+          "snippet": "Ferrari dapat podium, tapi bukan dari pertarungan terdepan. lebih karena urutan di depan tidak banyak berubah.",
+          "fix": "Ferrari dapat podium, tapi dari gap di depan yang tetap. Urutan di atas tidak banyak geser."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "start P4, finish P3. Ferrari dapat podium... start P2 tapi tergelincir ke P4... Norris di P5, juga pas sesuai grid",
+          "fix": "Vary phrasing: 'Leclerc P3 sesuai posisi quali', then 'Norris nggak geser dari P5'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Hari yang bersih, tapi bukan hari yang menarik buat siapapun yang berharap drama",
+          "fix": "Balapan jalan mulus, tapi boring. Siapa yang ngarap drama, pulang kecewa."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Haas kembali dapat poin. Ocon dan Oliver Bearman (yang tidak finish di top 15 hari ini, tapi sudah punya 17 poin musim ini)",
+          "fix": "tapi udah punya 17 poin musim ini → punya 17 poin musim ini"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selanjutnya Round 4 pindah ke Miami. Sirkuit jalan raya yang karakteristiknya berbeda jauh dari Suzuka",
+          "fix": "Judul bagian tanpa 'Selanjutnya'. 'Miami sirkuit jalan raya lain dari Suzuka'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Untuk mantan juara dunia yang biasanya mendominasi, angka itu bicara lebih keras dari apapun",
+          "fix": "Consider: 'Untuk mantan juara, 12 poin di R3 adalah alarm bell'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x02ac04e91de3fe5c",
+    "published_at": "2026-04-27T16:51:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -16,11 +16,20 @@
   --line-soft:  #1A2A44;
   --line:       #223552;
 
-  /* ---- Brand ink scale (foreground) ---- */
+  /* ---- Brand ink scale (foreground) ----
+     v0.11.19 GIB-001 a11y: --ink-3 + --ink-4 lifted to clear WCAG 1.4.3
+     AA (4.5:1) on --bg-3 #16273F. Old values failed 123 axe-core nodes
+     across the site (metadata rows, table footers, refresh-age labels,
+     small-text badges). Deltas:
+       --ink-3: #7388A5 → #9FB4CC (2.7:1 → 4.6:1 on --bg, 5.4:1 on --bg-3)
+       --ink-4: #4A5D7A → #6C85A8 (1.8:1 → 4.6:1 on --bg)
+     The 15% luminance lift preserves the "quiet foreground" hierarchy
+     of the v2 brand handoff while passing the WCAG floor. Both tokens
+     kept the same hue family so visual identity doesn't drift. */
   --ink:   #E6EEF9;
   --ink-2: #B6C4D8;
-  --ink-3: #7388A5;
-  --ink-4: #4A5D7A;
+  --ink-3: #9FB4CC;
+  --ink-4: #6C85A8;
 
   /* ---- Brand accents ---- */
   --blue:    #3B82F6;
@@ -28,10 +37,15 @@
   --amber:   #F59E0B;
   --amber-2: #FBBF24;
 
-  /* ---- Semantic signals ---- */
-  --live: #EF4444;
+  /* ---- Semantic signals ----
+     v0.11.20 GIB-bonus: bumped --live / --down from #EF4444 (4.43:1
+     on --bg-2, just-under AA) to #F25757 (5.24:1 on --bg-2, clears
+     AA). Tiny hue shift preserves the red-500 Tailwind-esque red while
+     axe-core stops flagging live chips + "down" deltas. --up stays
+     as-is (already passes at ~5.9:1 on --bg-2). */
+  --live: #F25757;
   --up:   #10B981;
-  --down: #EF4444;
+  --down: #F25757;
   --warn: #F59E0B; /* same hex as brand amber per spec */
 
   /* ---- Radius & type ---- */
@@ -105,6 +119,13 @@
   --border-subtle:  var(--line-1);
   --border-default: var(--line-2);
   --border-strong:  var(--line-3);
+  /* v0.11.5 a11y — interactive surfaces (toolbar chips, search pill,
+     inactive toggle chips) need WCAG 1.4.11 non-text contrast ≥ 3:1.
+     --border-subtle at ~6% alpha fails (2.1:1). This token is the
+     explicit "interactive-surface border" — bright enough to signal
+     tappability to sighted + low-vision users both. Dark = #5F7390
+     (~3.7:1 on --bg #0A1628); light override further down. */
+  --border-interactive: #5F7390;
   --accent-default: var(--blue); /* per spec: interactive primary = blue */
   --signal-live:    var(--live);
 
@@ -150,7 +171,50 @@
   --dur-base:  240ms;
   --dur-long:  400ms;
 
+  /* v0.51.0 — Phase A redesign tokens (per docs/redesign-v4-handover.md §4 Phase A).
+   * Additive: keeps every existing alias, just fills the v4 design-bundle gaps.
+   * `--ink-5` is the deepest dim; `--line-loud` is the prominent rule (vs the
+   * existing `--line-soft`); the `*-soft` family pairs each accent with a
+   * tinted background pill; `--paper` is the editorial reading surface used
+   * by the Phase B article shell. */
+  --ink-5: #4A5D7A;          /* deepest dim ink — used on .meta on bg-2 surfaces */
+  --line-loud: #2E4368;      /* loud rule — used in editorial section dividers */
+  --blue-soft: rgba(59,130,246,0.16);   /* blue accent pill bg */
+  --amber-soft: rgba(245,158,11,0.16);  /* amber/AI byline pill bg */
+  --live-soft: rgba(242,87,87,0.18);    /* live indicator pill bg */
+  --paper: var(--bg);        /* alias of bg, override under [data-theme="light"] */
+
   color-scheme: dark;
+}
+
+/* v0.16.0 Phase 2 Sprint A — theme-aware --sport-* on dark.
+ *
+ * The combined :root block above defines --sport-* with the SATURATED
+ * brand hexes (#E10600 F1, #C9082A NBA, #C1272D Liga 1, etc.). Those
+ * values are correct for full-bleed surfaces (TeamPage wash, race
+ * banner, hero gradient) but fail WCAG AA contrast when used as
+ * chip / icon / dot fills on the dark `--bg-2` (#0F1E36) — the four
+ * red-family sports especially read as visual noise next to the
+ * `--live` red (#F25757).
+ *
+ * Mirror the SPORT_COLOR_DARK lightened values from sportColor.js
+ * here, scoped to [data-theme="dark"] so they only apply when the
+ * theme is explicitly dark. Components that consume var(--sport-*)
+ * directly for chips now get an AA-passing hex automatically; the
+ * resolveSportColor() helper in sportColor.js continues to work
+ * unchanged for components that prefer the imperative path.
+ *
+ * Hex source of truth: src/lib/sportColor.js#SPORT_COLOR_DARK. The
+ * comment in that file requires this CSS block to stay in sync —
+ * adding a sport means updating both files.
+ */
+:root[data-theme="dark"] {
+  --sport-f1:     #FF8A8A;
+  --sport-pl:     #D7B5F5;
+  --sport-nba:    #FF8795;
+  --sport-wc:     #A0C2EA;
+  --sport-id:     #FF9EA0;
+  --sport-tennis: #E6C47A;
 }
 
 :root[data-theme="light"] {
@@ -161,23 +225,30 @@
   --line:       #E3DCCF;
   --line-soft:  #EDE7DB;
 
-  /* ---- Brand ink scale ---- */
+  /* ---- Brand ink scale ----
+     v0.11.19 GIB-001 a11y: --ink-4 darkened from #9A9A9A (2.9:1 on cream
+     — fails 4.5:1 AA for body text) to #6E6E6E (5.0:1, passes). Parallel
+     fix to the dark-theme lift. --ink / --ink-2 / --ink-3 already passed. */
   --ink:   #0A0A0A;
   --ink-2: #333333;
   --ink-3: #5C5C5C;
-  --ink-4: #9A9A9A;
+  --ink-4: #6E6E6E;
 
-  /* ---- Brand accents — darker for AA on paper ---- */
+  /* ---- Brand accents — darker for AA on paper ----
+     v0.11.4 a11y pass: --amber darkened from #C2410C (3.5:1 on
+     cream, fails WCAG 1.4.3 AA) to #9A3412 (4.8:1, passes).
+     Primary-CTA orange on --bg #F5F1EA now clears the 4.5:1 bar
+     for body text and 3:1 for UI components. --warn follows. */
   --blue:    #1E40AF;
   --blue-2:  #2563EB;
-  --amber:   #C2410C;
-  --amber-2: #EA580C;
+  --amber:   #9A3412;
+  --amber-2: #C2410C;
 
   /* ---- Signals ---- */
   --live: #B91C1C;
   --up:   #0E8F6A;
   --down: #B91C1C;
-  --warn: #C2410C;
+  --warn: #9A3412;
 
   /* Legacy aliases */
   --panel:        var(--bg-2);
@@ -200,6 +271,11 @@
   --line-1: rgba(17,26,46,.08);
   --line-2: rgba(17,26,46,.14);
   --line-3: rgba(17,26,46,.22);
+
+  /* v0.11.5 a11y — see dark-theme equivalent above. On cream paper
+     #F5F1EA, interactive borders need ≥ 3:1. #7A7060 hits ~3.9:1 —
+     audit's #9A8B75 suggestion tested at 2.8:1 so it's nudged darker. */
+  --border-interactive: #7A7060;
 
   --fg-1: var(--ink);
   --fg-2: var(--ink-2);
@@ -225,7 +301,25 @@
   --e-2: 0 1px 0 rgba(0,0,0,.03) inset, 0 6px 20px rgba(0,0,0,.10);
   --e-3: 0 1px 0 rgba(0,0,0,.04) inset, 0 20px 60px rgba(0,0,0,.14);
 
+  /* v0.51.0 — Phase A redesign tokens (light/paper override).
+   * `--paper` is the editorial reading surface; on light theme it's the
+   * cream paper itself, on dark it falls through to `--bg`. */
+  --ink-5: #8C8071;          /* deepest dim ink on cream — passes 3:1 */
+  --line-loud: #C9BFA8;      /* loud rule on cream */
+  --blue-soft: rgba(30,64,175,0.10);
+  --amber-soft: rgba(154,52,18,0.12);
+  --live-soft: rgba(185,28,28,0.12);
+  --paper: #F5F1EA;          /* explicit cream paper for article shells */
+
   color-scheme: light;
+}
+
+html {
+  /* Reserve space for the vertical scrollbar at all times so the viewport
+     width doesn't change between short pages (no scrollbar) and long ones
+     (scrollbar visible). Without this, flicking from Home → NBA/F1/etc.
+     causes a ~15px horizontal jolt as the scrollbar appears. */
+  scrollbar-gutter: stable;
 }
 
 html, body, #root {
@@ -282,11 +376,27 @@ html, body, #root {
 * { box-sizing: border-box; }
 
 /* ============ Accessibility ============ */
-/* F19: visible focus ring for keyboard users (not stolen by click). */
+/* F19 / v0.11.19 GIB-004 — visible focus ring for keyboard users.
+   `*:focus` is stripped so mouse-click rings don't linger. The
+   `:focus-visible` pseudo-class catches keyboard/AT focus, which
+   gets a 2px amber ring. Selector was `*:focus-visible` — the
+   live-audit caught elements with inline outline resets overriding.
+   !important forces the ring on every focusable surface. Blue ring
+   (var(--blue)) is brighter than amber on dark bg — using it gives
+   axe-core a more reliable win on 3:1 non-text contrast (GIB-004 was
+   also failing 2.4.7 Focus Visible). Amber stays as the brand accent
+   for non-interactive decorations. */
 *:focus { outline: none; }
-*:focus-visible {
-  outline: 2px solid var(--amber);
-  outline-offset: 2px;
+*:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[role="button"]:focus-visible,
+[role="option"]:focus-visible,
+[role="link"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--blue, #3B82F6) !important;
+  outline-offset: 2px !important;
   border-radius: 3px;
 }
 
@@ -325,6 +435,242 @@ html, body, #root {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* v0.19.5 Phase 2 Sprint E — viewport-targeted display utilities.
+   Used on the Derby page to render the side-picker chips in two
+   different parents (inside the Hero on desktop; below the H2H
+   strip on mobile) without JavaScript media-query polling. CSS
+   handles the swap; both nodes are in the DOM but only one is
+   visible at a time. Breakpoint matches the directive's mobile
+   baseline (≤540 = mobile, ≥541 = tablet+). */
+.show-mobile-only { display: none !important; }
+.show-desktop-only { display: initial !important; }
+@media (max-width: 540px) {
+  .show-mobile-only { display: initial !important; }
+  .show-desktop-only { display: none !important; }
+}
+
+/* v0.19.5 — Derby page h1 hits the locked Display token (32/48/56)
+   per the type system in docs/phase-2-ux-directive.md §6. Replaces
+   the previous clamp(28px, 6vw, 48px) which underdelivered on
+   tablet (~38px) and ceiling-capped before desktop (48px instead
+   of 56). */
+.derby-h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+@media (min-width: 541px) {
+  .derby-h1 { font-size: 48px; }
+}
+@media (min-width: 1024px) {
+  .derby-h1 { font-size: 56px; }
+}
+
+/* v0.19.5 — Editorial page h1 hits the locked H1 hero token (Shell
+   B: 24/28/32) per type system §6. Used by About + Glossary + any
+   other editorial-shell page. Compresses from a fixed 36px down
+   to 24 on mobile, freeing ~12px of fold space + matching the
+   directive's mobile-first design contract. */
+.editorial-h1 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+@media (min-width: 541px) {
+  .editorial-h1 { font-size: 28px; }
+}
+@media (min-width: 1024px) {
+  .editorial-h1 { font-size: 32px; }
+}
+
+/* v0.19.5 — ComingSoon 6-feature grid breakpoint matrix per
+   directive §4 ("6 feature cards become 2-col grid below 540,
+   3-col 540–900, 5-col ≥900"). Replaces the auto-fit grid that
+   did not honor the explicit column counts. */
+.coming-soon-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 541px) {
+  .coming-soon-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 901px) {
+  .coming-soon-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* Tennis title-odds row — v0.11.16 mobile fix. On very narrow
+   viewports (≤480 px) the progress-bar column gets in the way of
+   name readability. Drop it; let name + pct + delta share the row.
+   Desktop keeps the 4-column layout. */
+@media (max-width: 480px) {
+  .tennis-odds-row {
+    grid-template-columns: 1fr 44px 28px !important;
+    gap: 6px !important;
+  }
+  .tennis-odds-bar { display: none !important; }
+}
+
+/* Search onboarding tooltip — v0.11.14 Sprint 6.
+   Two variants, one DOM. Desktop shows the top-right tooltip
+   pointing at the ⌘K search pill; mobile shows the bottom-center
+   tooltip above the BottomNav's search icon. 720 px is the same
+   breakpoint BottomNav uses to swap in. */
+@keyframes tooltip-pop {
+  0%   { opacity: 0; transform: scale(.96) translateY(4px); }
+  60%  { opacity: 1; transform: scale(1.02) translateY(0); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.search-tooltip--mobile { display: none; }
+@media (max-width: 720px) {
+  .search-tooltip--desktop { display: none; }
+  .search-tooltip--mobile  { display: block; }
+}
+
+/* Unified panel title — v0.11.12, wired in v0.11.17. NBA's dashboard
+   has used 10 px UPPERCASE JetBrains Mono labels since v0.1;
+   EPL/F1/Tennis shipped with 15 px Inter Tight Title Case. The mix
+   made the four dashboards feel like four products stapled together.
+   This class standardises h2 panel headings on all non-NBA sport
+   pages to the Bloomberg-terminal voice — 12 px UPPERCASE mono,
+   letter-spacing 1.5. NBA's inline panelTitle style at 10 px stays
+   unchanged (already Bloomberg). The 2 px size delta is deliberate:
+   15 → 10 felt cramped, 15 → 12 preserves readability while adopting
+   the voice. `!important` is used because the consumer h2s set
+   font-family / font-size / font-weight / letter-spacing inline via
+   React style={{}} — inline wins over class unless forced. */
+.panel-title-mono {
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+}
+
+/* LiveHero — v0.11.11 Sprint 5. Hero score numerals are responsive
+   tabular Inter Tight 900, stepping from 72px mobile → 96px tablet
+   → 120px desktop per audit §05 stretch spec. Kept on the hero only
+   (bar the .live-hero-score selector) so the rest of the dashboard
+   retains its existing scale. */
+.live-hero-score { font-size: 72px; }
+@media (min-width: 720px) { .live-hero-score { font-size: 96px; } }
+@media (min-width: 1100px) { .live-hero-score { font-size: 120px; } }
+.live-hero:hover {
+  /* Pull-forward on hover so it reads as the one clickable hero, not
+     a static banner. Matches the .home-card-live lift from v0.6.x. */
+  transform: translateY(-1px);
+  transition: transform var(--dur-base, 160ms) var(--ease-standard, ease);
+}
+/* Signature amber tick device — a 24×2 amber underline used under
+   LIVE-section headers (NBA scoreboard, EPL live spotlight, any
+   future live widget). Applied as a className on the header text
+   or as a `::after` utility on containers. */
+.tick-live {
+  position: relative;
+  padding-bottom: 8px;
+}
+.tick-live::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--amber);
+}
+
+/* Score-change flash — v0.11.10 Sprint 4 week-2. Brief attention-
+   grab when a live game's score updates. Applied as a one-shot class
+   from the GameCard effect (600ms, auto-clears). Uses an amber wash
+   + 1.15 scale peak at 120ms then settles. Honours the global
+   prefers-reduced-motion block further up — opacity-only fade
+   replaces the scale under reduced motion. */
+@keyframes score-flash {
+  0%   { transform: scale(1);     text-shadow: 0 0 0 rgba(245,158,11,0); color: inherit; }
+  20%  { transform: scale(1.15);  text-shadow: 0 0 16px rgba(245,158,11,.55); color: var(--amber-2, #FBBF24); }
+  100% { transform: scale(1);     text-shadow: 0 0 0 rgba(245,158,11,0); color: inherit; }
+}
+.score-flash {
+  display: inline-block;
+  animation: score-flash 600ms ease-out;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .score-flash { animation: none; color: var(--amber-2, #FBBF24); }
+}
+
+/* Mobile bottom-nav — v0.11.9 Sprint 4.
+   Thumb-reachable 3-item persistent bar. Hidden on ≥721 px so the
+   V2TopBar's primary nav carries desktop. On mobile we reserve 60 px
+   of page-bottom padding so the last content row never hides behind
+   the fixed nav; the safe-area-inset adds a bit extra on iOS home-
+   indicator devices. Component itself renders only when mounted —
+   App.jsx can render it unconditionally; this rule hides it on
+   desktop + gives the body its reserved gutter. */
+.mobile-bottom-nav { display: flex; }
+@media (min-width: 721px) {
+  .mobile-bottom-nav { display: none !important; }
+}
+@media (max-width: 720px) {
+  body { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0)); }
+}
+
+/* Page framing utilities — v0.11.8. The top-level content block on
+   every page lives just below the persistent V2TopBar (+ optional
+   sub-row) and was using inconsistent per-page padding: Home 16/20/20,
+   EPL/F1/Tennis hero 20/20/14, ComingSoon 36/24/32, Recap 22/24. The
+   result: pages shifted 8–20 px as users flicked between Home and a
+   sport, breaking the "same masthead everywhere" spell. Two shared
+   tokens fix it:
+     .dashboard-hero — first content block (hero / grid / date-masthead).
+                       Padding 24/24/20. Optional border-bottom var.
+     .dashboard-section — any subsequent full-width content block.
+                          Padding 20/24 so horizontal rhythm matches.
+   Mobile: both collapse to 16 px side padding via the same media
+   query that handles .topbar (see dashboard-wrap rule at 1280px). */
+.dashboard-hero {
+  padding: 24px 24px 20px;
+}
+.dashboard-hero--bordered {
+  border-bottom: 1px solid var(--line);
+}
+.dashboard-section {
+  padding: 20px 24px;
+}
+@media (max-width: 720px) {
+  .dashboard-hero { padding: 20px 16px 16px; }
+  .dashboard-section { padding: 16px; }
+}
+
+/* Skip-to-content link — WCAG 2.4.1. Visually hidden until focused, then
+   slides down over the masthead. Always the first focusable element in
+   the tab order so keyboard/screen-reader users can bypass the nav. */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 12px;
+  z-index: 9999;
+  padding: 10px 16px;
+  background: var(--bg);
+  color: var(--ink);
+  border: 2px solid var(--amber);
+  border-radius: 6px;
+  font: 600 13px 'Inter Tight', sans-serif;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 12px;
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
 }
 
 /* Legacy `pulse` keyframe retired in step 5 — `.live-dot` now uses the
@@ -369,10 +715,68 @@ html, body, #root {
   margin: 0 auto;
   border: 1px solid var(--line);
   background: var(--bg);
+  /* v0.11.28 — viewport-fit safety net. Sport hubs render
+     horizontally-scrollable strips (EPL day-tabs × 14, F1 calendar × 23,
+     Tennis tournaments × N) inside grid/flex containers. Without
+     `min-width: 0` on the wrap, the strips' intrinsic flex sizes
+     pushed the wrap wider than 1280 on wide viewports — the audit
+     screenshot at 1920+ showed odds chips + chevrons clipped off the
+     right. `overflow-x: clip` belts the suspenders: any rogue child
+     that escapes its own min-width chain gets clipped at the wrap
+     edge instead of triggering body scroll. */
+  min-width: 0;
+  overflow-x: clip;
 }
 
-/* Mobile: stack into a single scrollable column */
-@media (max-width: 1280px) {
+/* Same safety net on the global <main> landmark — last line of defense
+   if a future page surface forgets to set min-width on its grid track. */
+main#main {
+  overflow-x: clip;
+}
+
+/* v0.13.5 Sprint 2 Theme C, Ship C — mobile-first NBA grid reflow.
+ *
+ * Was: a single 1280px breakpoint that flattened the 4-col grid to
+ * 1fr for everything below — including 800–1280px laptops where
+ * the 4-col layout could still fit (cols are 240+340+340+1fr =
+ * 920+1fr min). That meant tablet and small-laptop users got the
+ * same stacked 1-col layout as a 375px phone.
+ *
+ * Now three tiers:
+ *   - ≥1280 px       : full 4-col desktop layout (unchanged).
+ *   - 720–1279 px    : 2-col layout. Bracket + Key Accounts (col 1)
+ *                      stays as a left rail; cols 2/3 fold into the
+ *                      right rail; col 4 (live ticker) wraps to a
+ *                      full-width band underneath.
+ *   - ≤720 px        : single-column stack with priority reorder
+ *                      so the live ticker (col 4) and live odds
+ *                      (col 2) sit ABOVE the bracket sidebar (col 1).
+ *                      Live content first, sidebar last.
+ *
+ * The reorder uses CSS `order` on grid children. NBADashboard.jsx
+ * already renders cols in DOM order 1→4; CSS just shuffles their
+ * visual order on phones without touching the JSX render tree.
+ */
+
+/* Tier 1 — laptops + small desktops 720–1279px: 2-col layout */
+@media (min-width: 721px) and (max-width: 1279px) {
+  .dashboard-wrap {
+    width: 100%;
+  }
+  .main-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* Col 4 (the live ticker / 4th child) spans both columns at
+     this width so it doesn't get squeezed. */
+  .main-grid > div:nth-child(4) {
+    grid-column: 1 / -1 !important;
+    border-right: none !important;
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* Tier 2 — phones ≤720px: 1-col stack with priority reorder */
+@media (max-width: 720px) {
   .dashboard-wrap {
     width: 100%;
     border: none;
@@ -384,6 +788,17 @@ html, body, #root {
     border-right: none !important;
     border-bottom: 1px solid var(--line);
   }
+  /* Reorder: live ticker first, then odds, then bracket sidebar,
+     then key-accounts feed. Live-relevant content surfaces above
+     the bracket sidebar (which is a desktop-rail pattern). */
+  .main-grid > div:nth-child(1) { order: 3; } /* Bracket + KeyAccounts */
+  .main-grid > div:nth-child(2) { order: 2; } /* Title odds */
+  .main-grid > div:nth-child(3) { order: 4; } /* Featured Series / etc. */
+  .main-grid > div:nth-child(4) { order: 1; } /* Live ticker (top) */
+}
+
+/* Stat-strip + secondary grids — independent of main-grid tiers */
+@media (max-width: 1280px) {
   .stat-strip {
     grid-template-columns: repeat(2, 1fr) !important;
   }
@@ -393,6 +808,33 @@ html, body, #root {
   .stat-strip > div:nth-child(-n+2) {
     border-bottom: 1px solid var(--line);
   }
+}
+
+/* v0.13.6 Sprint 2 Theme C, Ship E — stat-strip 4→2 collapse below
+   720 px. Title Favorite + Next Tip are the two cells that change
+   match-day; Round 1 Tips and Finals Tipoff are static reference
+   dates that don't earn their above-fold space on a phone. Hide
+   them; let the remaining two cells split 50/50. */
+@media (max-width: 720px) {
+  .stat-strip {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .stat-strip > div:nth-child(2),
+  .stat-strip > div:nth-child(3) {
+    display: none !important;
+  }
+  .stat-strip > div:nth-child(1) {
+    border-right: 1px solid var(--line) !important;
+    border-bottom: none !important;
+  }
+  .stat-strip > div:nth-child(4) {
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+}
+
+/* Hold the rest of the legacy ≤1280 block under its original cap. */
+@media (max-width: 1280px) {
   .game-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
@@ -480,6 +922,259 @@ html, body, #root {
   }
 }
 
+/* ============ v2 TopBar responsive ============ */
+/* Hide the scrollbar on the nav row (Chromium/WebKit) — scrolling still
+   works via swipe/wheel, it just doesn't render the bar. */
+.v2-topbar-nav::-webkit-scrollbar { display: none; }
+
+/* v0.11.25 — TopBar content alignment with dashboard-wrap.
+   Background + border-bottom on `.v2-topbar` stay edge-to-edge, but the
+   row + subrow content is constrained to the same 1280 px column the
+   page body uses (.dashboard-wrap). Without this, on a 1920+ viewport
+   the gibol logo sits ~18 px from the viewport edge while body content
+   sits ~340 px in — the page felt visually broken even though both
+   layers were "correct" in isolation. Padding 24 px matches
+   .dashboard-hero so the logo, picker dropdown, and content gutter
+   share an exact left edge. */
+.v2-topbar-row,
+.v2-topbar-subrow {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.v2-topbar-row {
+  padding: 10px 24px !important;
+}
+.v2-topbar-subrow {
+  padding: 8px 24px !important;
+}
+
+/* Tablet: narrow the search pill so the nav has more room. */
+@media (max-width: 900px) {
+  .v2-topbar-search {
+    width: 140px !important;
+  }
+  .v2-topbar-search-kbd {
+    display: none !important;
+  }
+}
+
+/* Mobile: collapse search to icon-only, tighten padding, scroll nav. */
+@media (max-width: 720px) {
+  .v2-topbar-row {
+    padding: 8px 12px !important;
+    gap: 8px !important;
+  }
+  .v2-topbar-subrow {
+    padding: 8px 12px !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .v2-topbar-search {
+    width: auto !important;
+    padding: 6px !important;
+  }
+  .v2-topbar-search-label,
+  .v2-topbar-search-kbd {
+    display: none !important;
+  }
+  .v2-topbar-actions {
+    gap: 4px !important;
+  }
+}
+
+/* Very small phones: hide the decorative avatar dot to save space. */
+@media (max-width: 420px) {
+  .v2-topbar-avatar {
+    display: none !important;
+  }
+}
+
+/* ─── v0.12.3 mobile audit fixes (M-1 through M-10) ──────────────────
+   Single CSS block that covers the cross-cutting mobile patches identified
+   in docs/12-mobile-audit-2026-04-25. Component-specific JSX updates pair
+   with these classes to land the full set of fixes. */
+
+/* M-1 — HomeV1 3-rail grid never collapsed: 200px + 1fr + 260px stayed
+   even on 390 viewports. Now stacks single-column below the laptop
+   breakpoint. .homev1-grid is set on the inner content container in
+   HomeV1.jsx (replaces the inline gridTemplateColumns). */
+.homev1-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr 260px;
+  gap: 12px;
+  padding: 14px;
+}
+@media (max-width: 1023px) {
+  .homev1-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* v0.19.5 Phase 2 Sprint E — HomeV1 mobile reorder per directive
+   §4 ("Reorder grid via order: so Live Now grid is row 1, Pick'em
+   CTA collapses to a 64 px banner on row 2, Trending Teams row 3,
+   Live Pulse row 4, Fans Reacting row 5, Fangir Shop row 6").
+   Implementation: make every card inside .homev1-grid a direct
+   flex child via display:contents on the aside/section parents,
+   then assign explicit order:* per card. Desktop layout (3-col
+   200/1fr/260) is preserved by the @media gate — these rules only
+   fire ≤540px. */
+@media (max-width: 540px) {
+  .homev1-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .homev1-grid > aside,
+  .homev1-grid > section {
+    display: contents;
+  }
+  /* Card order on mobile (matches directive's prescribed sequence). */
+  .homev1-card--livegrid   { order: 1; }
+  .homev1-card--trending   { order: 2; } /* "Following" → "Trending teams" naming alias */
+  .homev1-card--livepulse  { order: 3; }
+  .homev1-card--fansreact  { order: 4; }
+  .homev1-card--fangir     { order: 5; }
+  /* Hero game card + Upcoming get demoted below the directive's six rows. */
+  .homev1-card--hero       { order: 6; }
+  .homev1-card--upcoming   { order: 7; }
+}
+
+/* M-2 — TopBar nav scrolls horizontally inside `.v2-topbar-nav` but
+   gives no visual affordance, so first-time mobile users land seeing
+   only logo + search + EN with no nav links. Add a right-edge fade
+   mask that tells the eye "more content this way." Falls back to a
+   tiny "→" indicator on browsers without mask-image support. */
+.v2-topbar-nav {
+  position: relative;
+}
+@media (max-width: 720px) {
+  .v2-topbar-nav {
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+            mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+  }
+}
+
+/* M-5 — Day-strip fade-mask. Applied to .day-strip-scroll on the
+   EPL day-tabs, NBA DayScoreboard tabs, F1 RoundStrip. Same pattern
+   as the topbar nav: mask the right edge so the user sees overflow. */
+.day-strip-scroll {
+  position: relative;
+}
+@media (max-width: 1023px) {
+  .day-strip-scroll {
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 32px), transparent 100%);
+            mask-image: linear-gradient(to right, black calc(100% - 32px), transparent 100%);
+  }
+}
+
+/* M-6 — Sub-row picker left-align on mobile. Sport hubs render their
+   picker (EPL Club, F1 Constructor, Tennis Player) in the topbar
+   sub-row. Pre-fix it was justify-content: center which left ~160px
+   of dead space on mobile and felt unbalanced. Now left-align below
+   720 + grow to fill width. */
+@media (max-width: 720px) {
+  .v2-topbar-subrow {
+    justify-content: flex-start !important;
+  }
+  .v2-topbar-subrow > * {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+}
+
+/* M-9 — 4-cell stat strips collapsed to 1 column too aggressively at
+   mobile. Reduce the minmax from 180px to 160px so we get 2 columns
+   at 390 viewport (160+160+gap = 332, fits) — halves the vertical
+   real estate of the dashboard's stat band. Applies to any element
+   with .stat-strip-2col, opt-in via JSX className. */
+.stat-strip-2col {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important;
+}
+
+/* M-10 — Pick'em Home hero CTA wraps to 3 lines at 390 with the
+   default 22px headline. Drop to 18 below 480 so it breathes in 2
+   lines. Targets the h2 inside the AnonCTA section. */
+@media (max-width: 480px) {
+  .pickem-anon-headline {
+    font-size: 18px !important;
+    line-height: 1.25 !important;
+  }
+}
+
+/* M-3 — F1 Round-Detail header `auto 1fr auto` squeezed the name
+   column to 260 px at 390 viewport, forcing single-word-per-line
+   wrapping. Mobile now stacks: 48-px R-badge gets a top row of
+   its own, name + circuit + date sit below at full width. The
+   border-right separator becomes a border-bottom for the same
+   visual weight. */
+@media (max-width: 720px) {
+  .f1-round-header {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .f1-round-badge {
+    border-right: none !important;
+    border-bottom: 1px solid var(--line-soft) !important;
+    padding: 0 0 8px 0 !important;
+    font-size: 36px !important;
+  }
+}
+
+/* M-7 — Copy link button + Share buttons sit alone in a left-flex
+   under the h1 on hubs. On mobile, group them with consistent
+   spacing so the row doesn't look orphaned. .hub-action-row is
+   set on the action-row container in EPL/F1/Tennis hub heroes. */
+.hub-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+@media (max-width: 480px) {
+  .hub-action-row > * {
+    flex: 1 1 auto;
+  }
+}
+
+/* M-8 — Tennis live match card columns squeezed the tournament-name
+   column to 30 px on mobile, leaving "Mu..." cut. Drop the
+   tournament column entirely below 540 — the tournament name moves
+   to a small mono label under the player name (rendered via JSX
+   conditional sibling). The cards re-layout to 3 columns:
+   players (2fr) + sets (1fr) + status (40px). */
+@media (max-width: 540px) {
+  .tennis-live-match {
+    grid-template-columns: minmax(110px, 2fr) minmax(48px, 1fr) 40px !important;
+  }
+  .tennis-live-tournament {
+    display: none !important;
+  }
+}
+
+/* M-4 — EPL match cards on a 390 viewport gave only ~110 px to home/
+   away team names ("Sunderla" + "Nottingha") and clipped the SHARE
+   button off-screen. Below 540 we drop the 4-column grid and stack
+   into TWO ROWS:
+     row 1: home vs score vs away (3 columns)
+     row 2: odds chip + share + chevron in a horizontal scroll/flex
+   .epl-match-card and .epl-match-row-2 carry the responsive
+   classes. */
+@media (max-width: 540px) {
+  .epl-match-card-grid {
+    /* v0.12.7 follow-up — was 72px score column, too tight for the
+       new 26px score. 96px gives "10 – 12" room without forcing the
+       team names to wrap further. */
+    grid-template-columns: 1fr 96px 1fr !important;
+    grid-template-rows: auto auto !important;
+    row-gap: 10px !important;
+  }
+  .epl-match-card-actions {
+    grid-column: 1 / -1 !important;
+    justify-content: flex-end !important;
+  }
+}
+
 /* Card hover lift — step 5. Matches Button's hover curve
    (translateY(-1px) + var(--e-1) over var(--dur-base) var(--ease-standard))
    so the card + inline CTA lift as one gesture. Transition properties
@@ -491,4 +1186,115 @@ html, body, #root {
 .home-card-soon:hover {
   transform: translateY(-1px);
   opacity: 0.95;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ * v0.51.0 — Phase A redesign utility classes (per docs/redesign-v4-handover.md §4 Phase A).
+ *
+ * SCOPED UNDER `.v2` so the editorial type system never leaks into legacy
+ * components. Existing pages render identically. Article shells (Phase B)
+ * + new components (AiByline, EditorialFootnote) opt in by adding the
+ * `.v2` class somewhere up the tree.
+ *
+ *   .v2 .serif      Newsreader serif body voice
+ *   .v2 .disp       large display heading (h1 in article shell)
+ *   .v2 .deck       standfirst / deck under headline
+ *   .v2 .kicker     uppercase mono eyebrow over kicker rules
+ *   .v2 .card-title small mono eyebrow on card heads
+ *
+ * Why scoped: legacy COLORS-constant pages have their own h1/h2/p
+ * styles. We don't want a global font-family swap to bleed into
+ * NBADashboard or HomeV1. `.v2` opt-in is the cleanest seam.
+ * ────────────────────────────────────────────────────────────────────── */
+.v2 .serif {
+  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+}
+.v2 .disp {
+  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+.v2 .deck {
+  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.v2 .kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.v2 .card-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* AI byline pill — referenced from src/components/v2/AiByline.jsx.
+ * v4-spec amber tone with mono cap-letters; the dot + "↗" hint is
+ * baked into the JSX. Hover only when clickable (cursor:pointer). */
+.v2 .ai-byline {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--amber-soft);
+  color: var(--amber);
+  font: 700 9px 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em;
+}
+.v2 .ai-byline .dot-ai {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+ * v0.52.0 — Phase B redesign: editorial article body styles.
+ * Scoped under `.v2 .editorial-body` (the article shell wraps body
+ * in `<article>` inside `<main className="v2">`). Drop cap is the
+ * marquee styling — large Newsreader glyph floated left on the
+ * first paragraph. Mobile-first: drop cap stays at ~64px on 480px
+ * viewport (per redesign doc §4 mobile overrides — the glyph fits).
+ * ────────────────────────────────────────────────────────────────────── */
+.v2 .editorial-body .editorial-dropcap::first-letter {
+  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(54px, 9vw, 78px);
+  line-height: 0.85;
+  float: left;
+  margin: 4px 10px 0 0;
+  color: var(--ink);
+}
+
+/* Tighter spacing between body paragraphs in the editorial shell. */
+.v2 .editorial-body .editorial-p {
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Body H2 sections in the editorial shell — Newsreader serif so
+ * the body rhythm matches the headline. */
+.v2 .editorial-body .v2-h2 {
+  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+}
+
+/* Mobile breakpoint: tighten the article shell padding + clamp
+ * hero band height further on tiny viewports. */
+@media (max-width: 480px) {
+  .v2 .editorial-body .editorial-dropcap::first-letter {
+    font-size: 56px;
+    margin: 2px 8px 0 0;
+  }
 }

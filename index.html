@@ -75,45 +75,31 @@
     }
     </script>
 
-    <!-- JSON-LD: SportsEvent for NBA Playoffs 2026 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SportsEvent",
-      "name": "2026 NBA Playoffs",
-      "description": "The 2025–26 NBA Postseason. Round 1 begins April 18, 2026. NBA Finals tip-off June 3, 2026 on ABC.",
-      "startDate": "2026-04-17",
-      "endDate": "2026-06-20",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "sport": "Basketball",
-      "location": {
-        "@type": "Place",
-        "name": "United States"
-      },
-      "organizer": {
-        "@type": "SportsOrganization",
-        "name": "National Basketball Association",
-        "url": "https://www.nba.com"
-      },
-      "url": "https://www.gibol.co/nba-playoff-2026"
-    }
-    </script>
+    <!-- v0.13.0 — NBA SportsEvent JSON-LD removed from index.html.
+         Prior to v0.13.0 it landed on EVERY page (incl. F1/EPL/Tennis
+         routes) which is misleading to crawlers. Per-route SportsEvent
+         schemas are now emitted by each sport's adapter via prerender;
+         the home page has its own WebSite/Organization (above) which
+         is correct site-wide signal. -->
 
-    <!-- Font loading strategy (Brand v1):
+    <!-- Font loading strategy (Brand v2 — Phase A redesign):
          • Preconnect to both fonts.googleapis.com and fonts.gstatic.com
          • Fetch the main CSS stylesheet normally (non-blocking via media="print" → swap to "all" on load)
          • font-display: swap ships inline in Google's CSS, so the system fallback renders immediately
-         • Inter Tight 400–900 powers body + display; JetBrains Mono 400–700 powers every numeric UI. -->
+         • Inter Tight 400–900 powers body + display; JetBrains Mono 400–700 powers every numeric UI.
+         • Newsreader 400–800 powers editorial display + serif kicker (article shells, pull quotes, drop caps).
+           Added v0.51.0 Phase A — see docs/redesign-v4-handover.md §4 Phase A. Subset to Latin only;
+           weight 700 is the workhorse; lighter weights load lazily via display=swap. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:wght@400;500;600;700;800&display=swap"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:wght@400;500;600;700;800&display=swap" />
     </noscript>
 
     <!-- Google Analytics 4 (hardcoded in HTML so crawlers / GSC verification find it) -->

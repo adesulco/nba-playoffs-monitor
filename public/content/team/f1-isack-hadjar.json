@@ -1,0 +1,87 @@
+{
+  "type": "team",
+  "slug": "f1-isack-hadjar",
+  "title": "Profil Isack Hadjar: Pembalap F1 Red Bull (2026)",
+  "description": "Profil pembalap F1 Isack Hadjar (Prancis) untuk tim Red Bull. Klasemen, hasil, dan data per 28 April 2026.",
+  "body_md": "## Isack Hadjar: Rookie Red Bull yang Membangun Pondasi\n\nIsack Hadjar, kode FIA HAD (#6), pembalap Prancis kelahiran 28 September 2004. Per 28 April 2026, Hadjar menjalani musim rookie-nya bersama Red Bull Racing dan menempati P12 klasemen F1 2026 dengan 4 poin dari tiga balapan. Awal yang berat, tapi belum selesai.\n\n---\n\n## Identitas\n\nHadjar baru berusia 21 tahun, menjadikannya salah satu pembalap termuda di grid 2026. Pembalap berkebangsaan Prancis ini menggunakan kode FIA HAD dengan nomor permanen #6, nomor yang kini mulai dikenal di pit lane. Tim yang menaunginya bukan sembarangan: Red Bull Racing, salah satu konstruktor paling kompetitif di grid.\n\nDebut di tim sekelas Red Bull membawa tekanan tersendiri. Ekspektasi tinggi datang bukan dari media saja, tapi dari internal tim yang terbiasa melihat pembalap mereka bersaing di papan atas klasemen. Tiga balapan pertama Hadjar menjadi ujian awal seberapa cepat dia bisa adaptasi.\n\n---\n\n## Performa Musim Ini\n\nEmpat poin dari tiga balapan. Angka kecil di atas kertas, tapi konteksnya penting: satu retired, satu finish di P8, satu di P12. Bukan pola yang konsisten, tapi ada satu momen yang menunjukkan potensi nyata.\n\nHasilnya juga belum menyentuh kemenangan. Dari tiga balapan yang sudah dijalani, Hadjar masih mencari ritme, dan itu wajar untuk seorang rookie di tim top. Yang menjadi pertanyaan bukan apakah dia mampu, tapi seberapa cepat kurva belajarnya menanjak.\n\nPosisi P12 klasemen sementara menempatkan Hadjar di zona tengah. Bukan zona nyaman, tapi bukan zona panik, masih terlalu dini di musim 2026.\n\n---\n\n## Hasil Per Balapan\n\n**Australian Grand Prix, Retired**\n\nDebut yang pahit. Hadjar tidak berhasil finis di Melbourne, mengakhiri balapan pertamanya tanpa poin. Retired di race pertama adalah skenario yang tidak diinginkan pembalap manapun, apalagi rookie yang ingin membuktikan diri. Tekanan langsung datang dari awal.\n\n**Chinese Grand Prix, P8, 4 poin**\n\nTitik balik kecil yang signifikan. Setelah retired di Australia, Hadjar bangkit dengan finis P8 di Shanghai, cukup untuk mengangkut 4 poin pertamanya ke papan klasemen. P8 bukan podium, tapi buat rookie yang habis DNF di debut, ini sinyal penting: dia bisa finis, dia bisa membaca balapan, dan dia bisa mengeksekusi strategi sampai checkered flag.\n\n**Japanese Grand Prix, P12, tanpa poin**\n\nSuzuka memberikan pelajaran berbeda. Hadjar finis P12, tidak retired, tapi juga tidak dalam posisi poin. Tiga balapan, tiga hasil berbeda: DNF, P8, P12. Polanya belum stabil, tapi variasinya menggambarkan pembalap yang masih mencari konsistensi, bukan pembalap yang sudah stuck di satu level.\n\n---\n\n## Outlook\n\nTiga balapan tidak cukup untuk menghakimi siapapun, apalagi rookie di tim top. Hadjar punya modal penting: satu finis di dalam poin yang membuktikan dia bisa deliver. Yang dibutuhkan sekarang adalah konsistensi, finis-finis bersih di zona poin tanpa drama retired.\n\nKlasemen P12 dengan 4 poin per 28 April 2026 adalah potret awal musim yang masih sangat terbuka. Red Bull tidak akan terburu-buru menghukum rookie di bulan April. Tapi jendela untuk membangun kepercayaan tim tidak tak terbatas.\n\nSuzuka dan Shanghai sudah memberi dua data point yang berguna. Melbourne memberi satu peringatan. Balapan-balapan berikutnya akan mulai menceritakan versi yang lebih jelas tentang siapa Isack Hadjar di F1 2026.\n",
+  "frontmatter": {
+    "league": "f1",
+    "sport": "motorsport",
+    "article_subtype": "driver_profile",
+    "driver_id": "hadjar",
+    "driver_name": "Isack Hadjar",
+    "driver_code": "HAD",
+    "driver_number": "6",
+    "nationality": "French",
+    "current_team": "Red Bull",
+    "current_team_id": "red_bull",
+    "championship_pos": "12",
+    "championship_points": "4",
+    "season": 2026,
+    "season_label": "2026",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020263,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: High-severity factual errors (wrong date '28 April' vs input '3 Mei'; birth date inference). Multiple medium issues (tense, phrasing, translated English). Rewrite required for date fix and training-inference removal.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "pembalap Prancis kelahiran 28 September 2004",
+          "fix": "Use 'pembalap Prancis berusia 21 tahun' or remove specific date entirely."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Hadjar menjalani musim rookie-nya bersama Red Bull Racing",
+          "fix": "Change to 'Per 3 Mei 2026' to match input data block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "nomor yang kini mulai dikenal di pit lane",
+          "fix": "Use 'nomor yang mulai dikenal' or 'nomor #6 jadi familiar' without forced location marker."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Tiga balapan pertama Hadjar menjadi ujian awal seberapa cepat dia bisa adaptasi.",
+          "fix": "Restructure: 'Tiga balapan pertama menunjukkan seberapa cepat adaptasinya' or 'akan menunjukkan kecepatan adaptasinya'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menjadi pertanyaan bukan apakah dia mampu, tapi seberapa cepat kurva belajarnya menanjak.",
+          "fix": "Use 'seberapa cepat dia belajar' or 'seberapa stabil progressnya' — drop the metaphor."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Retired di race pertama adalah skenario yang tidak diinginkan pembalap manapun",
+          "fix": "Shorten: 'Retired di debut bukan mulai yang diinginkan siapapun.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "sinyal penting: dia bisa finis, dia bisa membaca balapan, dia bisa mengeksekusi",
+          "fix": "Vary: 'sinyal penting: finis, baca balapan dengan baik, eksekusi strategi sempurna.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Tiga balapan tidak cukup untuk menghakimi siapapun, apalagi rookie di tim top.",
+          "fix": "Start Outlook with new information: 'Konsistensi jadi kunci sekarang.' Delete the repetition."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1a72a5e835e7ae8c",
+    "published_at": "2026-04-28T12:12:53+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

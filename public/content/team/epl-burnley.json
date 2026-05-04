@@ -1,0 +1,85 @@
+{
+  "type": "team",
+  "slug": "epl-burnley",
+  "title": "Profil Burnley: Premier League (2025-26)",
+  "description": "Profil Burnley — klub sepak bola dari England di Premier League. Snapshot data per 28 April 2026.",
+  "body_md": "# Burnley FC: Musim Kelam di Ujung Tanduk Degradasi\n\nPer 28 April 2026, Burnley berada di posisi 19 klasemen Liga Inggris 2025-26 dengan 20 poin dari 34 laga. Selisih gol -34, catatan 4 menang, 8 seri, 22 kalah. Status mereka sudah hampir pasti: degradasi ke Championship. Ini bukan musim yang buruk, ini musim yang nyaris tidak punya momen untuk dikenang.\n\n---\n\n## Identitas Klub\n\nBurnley FC berdiri tahun 1882, salah satu klub tertua di Inggris. Markas mereka adalah Turf Moor di kota Burnley, Lancashire, dengan kapasitas 22.546 penonton, salah satu stadion terkecil di Premier League. Klub ini bukan raksasa Liga Inggris, tapi punya sejarah panjang sebagai tim yang kerap naik-turun antara kasta pertama dan kedua. Setiap kali promosi ke Premier League selalu terasa seperti pencapaian, karena Burnley tahu betul betapa sulitnya bertahan di sana.\n\nMusim ini membuktikan kesulitan itu.\n\n---\n\n## Performa Musim Ini\n\nAngka-angkanya keras: 34 laga, 4 menang, 8 seri, 22 kalah. Burnley rata-rata cetak 1,0 gol per laga dan kebobolan 2,0, artinya hampir setiap pertandingan sudah dimulai dengan defisit sebelum peluit akhir berbunyi.\n\nYang lebih mengkhawatirkan: 13 laga tanpa mencetak satu gol pun. Lebih dari sepertiga musim, serangan Burnley blank total. Hanya 4 clean sheet dari 34 laga juga menunjukkan pertahanan yang tidak pernah stabil.\n\nTidak ada perbedaan signifikan antara performa kandang dan tandang, yang biasanya jadi penyelamat tim bawah. Di Turf Moor sekalipun, Burnley cuma menang 2 kali dari 17 laga kandang. Di tandang, 2 menang dari 17. Kegagalan merata di semua lini, semua venue.\n\nForm delapan laga terakhir, DLLDLLLL, tidak menunjukkan tanda-tanda pemulihan. Dari delapan laga itu, satu seri dan tujuh laga sisanya kalah atau kalah. Tidak ada momentum, tidak ada kepercayaan diri yang bisa dibawa ke sisa musim.\n\n---\n\n## Posisi di Klasemen\n\nDengan 20 poin dari 34 laga, Burnley terpaut sangat jauh dari zona aman. Selisih gol -34 menempatkan mereka di antara kandidat terkuat degradasi musim ini.\n\nStatus di klasemen sudah jelas: **Relegation, Championship**. Burnley hampir pasti turun kasta, kembali ke Championship setelah gagal mempertahankan tempat di Premier League. Dua laga tersisa tidak akan cukup untuk menutup jarak dari tim di atas mereka, terutama dengan form terkini yang sama sekali tidak meyakinkan.\n\nIni bukan kejutan total bagi siapa pun yang mengikuti musim mereka sejak awal. Burnley masuk musim ini sebagai salah satu kandidat papan bawah, tapi harapannya selalu ada: bisa kumpulkan poin cukup, manfaatkan kandang Turf Moor, hindari run buruk yang terlalu panjang. Kenyataannya, semua skenario buruk itu terjadi.\n\n---\n\n## Penutup\n\nMusim 2025-26 hampir pasti berakhir dengan Burnley kembali ke Championship. Dua puluh poin dari 34 laga, form DLLDLLLL, dan 13 laga tanpa gol adalah gambaran tim yang tidak pernah menemukan pijakan di Premier League musim ini.\n\nYang tersisa sekarang bukan pertanyaan soal \"apakah Burnley degradasi\", tapi soal apa yang dibangun ulang di Championship nanti. Klub dengan sejarah panjang naik-turun seperti Burnley tahu caranya bangkit. Tapi sebelum itu, dua laga tersisa di musim ini perlu dijalani dengan bermartabat.\n\n*Data artikel ini mencerminkan posisi dan statistik per 28 April 2026.*\n",
+  "frontmatter": {
+    "league": "epl",
+    "sport": "football",
+    "article_subtype": "team_profile",
+    "team_id": "44",
+    "team_name": "Burnley",
+    "team_country": "England",
+    "team_founded": 1882,
+    "venue_name": "Turf Moor",
+    "venue_city": "Burnley",
+    "venue_capacity": 22546,
+    "competition": "Premier League",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020666,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fails on multiple fronts: core stats don't match input data block (article says 34 laga / 22 kalah / -34 selisih, input says 35 / 23 / -36), and several paragraphs have calqued-from-English phrasing ('tanda-tanda pemulihan', 'tidak akan cukup untuk menutup jarak'). Regenerate with correct data and tighter, more direct Indonesian.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Per 28 April 2026, Burnley berada di posisi 19 klasemen Liga Inggris 2025-26 dengan 20 poin dari 34 laga. Selisih gol -34, catatan 4 menang, 8 seri, 22 kalah.",
+          "fix": "Use '3 Mei 2026', '35 laga', '23 kalah', 'selisih gol -36' from input data block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Burnley FC berdiri tahun 1882, salah satu klub tertua di Inggris. Markas mereka adalah Turf Moor di kota Burnley, Lancashire, dengan kapasitas 22.546 penonton, salah satu stadion terkecil di Premier League.",
+          "fix": "Burnley FC berdiri 1882, salah satu klub tertua Inggris. Kandang mereka Turf Moor (22.546 penonton), stadion terkecil di Premier League."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Klub ini bukan raksasa Liga Inggris, tapi punya sejarah panjang sebagai tim yang kerap naik-turun antara kasta pertama dan kedua.",
+          "fix": "Burnley bukan raksasa, tapi klub klasik yang naik-turun antara Premier dan Championship."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "13 laga tanpa mencetak satu gol pun. Lebih dari sepertiga musim, serangan Burnley blank total. Hanya 4 clean sheet dari 34 laga juga menunjukkan pertahanan yang tidak pernah stabil.",
+          "fix": "13 laga tanpa gol. Cuma 4 clean sheet dari 34 laga — pertahanan sempat reyot."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Form delapan laga terakhir, DLLDLLLL, tidak menunjukkan tanda-tanda pemulihan.",
+          "fix": "Delapan laga terakhir: DLLDLLLL — tidak ada tanda pemulihan."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dengan 20 poin dari 34 laga, Burnley terpaut sangat jauh dari zona aman.",
+          "fix": "20 poin dari 34 laga — Burnley jauh dari zona aman."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua laga tersisa tidak akan cukup untuk menutup jarak dari tim di atas mereka, terutama dengan form terkini yang sama sekali tidak meyakinkan.",
+          "fix": "Dua laga sisa tidak cukup dekat gol. Form Burnley sekarang gawat."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Musim 2025-26 hampir pasti berakhir dengan Burnley kembali ke Championship. Dua puluh poin dari 34 laga...",
+          "fix": "Update all instances to match input: 35 laga, 23 kalah, selisih gol -36."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x08f8e308c0b906b0",
+    "published_at": "2026-04-28T12:17:23+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

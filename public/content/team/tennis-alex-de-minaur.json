@@ -1,0 +1,67 @@
+{
+  "type": "team",
+  "slug": "tennis-alex-de-minaur",
+  "title": "Profil Alex de Minaur (ATP) — Peringkat 8",
+  "description": "Profil petenis Alex de Minaur (ATP). Snapshot peringkat dan bio per 28 April 2026.",
+  "body_md": "# Alex de Minaur: Petenis Australia di Jajaran Top 10 ATP\n\nAlex de Minaur, petenis Australia kelahiran 17 Februari 1999, saat ini bertengger di peringkat 8 ATP dengan 3.845 poin per 16 April 2026. Pemain tangan kanan asal Sydney ini masuk jajaran elite top 10 dunia dan jadi salah satu wakil terkuat Australia di sirkuit ATP modern.\n\n## Identitas\n\nLahir di Sydney, 17 Februari 1999, De Minaur kini berusia 27 tahun. Tinggi 183 cm dengan berat 69 kg, posturnya tidak masuk kategori petenis bertubuh besar, tapi mobilitas dan kecepatan jadi senjata utamanya di lapangan. De Minaur memulai karier profesional sejak 2015, artinya sudah lebih dari satu dekade ia berkompetisi di sirkuit ATP. Perjalanan panjang itu kini membawanya ke posisi yang konsisten di papan atas dunia.\n\n## Peringkat Saat Ini\n\nPer data ranking 16 April 2026, De Minaur berada di peringkat 8 ATP dengan koleksi 3.845 poin. Dibanding pekan sebelumnya ia turun satu posisi dari peringkat 7, pergerakan kecil yang wajar di zona top 10, di mana selisih poin antar pemain bisa sangat rapat dan satu hasil turnamen langsung menggeser posisi.\n\nBerada di top 10 ATP bukan pencapaian yang bisa diraih sembarangan. Di zona ini, De Minaur bersaing dengan nama-nama terbaik di generasinya. Trend minus satu pekan ini tidak perlu dibaca sebagai sinyal kemunduran, fluktuasi di rentang ini normal, terutama di tengah jadwal turnamen yang padat.\n\n## Outlook\n\nDengan posisi stabil di top 10 dan modal lebih dari satu dekade pengalaman profesional, De Minaur masuk ke paruh kedua musim 2026 sebagai salah satu petenis paling konsisten di sirkuit ATP. Poin 3.845 mencerminkan musim yang solid. Performa ke depan akan menentukan apakah ia bisa mendaki kembali ke peringkat 7 atau lebih tinggi. Profil ini mencerminkan data per 16 April 2026.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "article_subtype": "player_profile",
+    "athlete_id": "2651",
+    "athlete_name": "Alex de Minaur",
+    "current_rank": 8,
+    "previous_rank": 7,
+    "points": 3845.0,
+    "trend": "-1",
+    "birthplace": "Sydney, Australia",
+    "dob": "1999-02-17",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.012258,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 78,
+      "issue_count": 5,
+      "summary": "Solid profile, mostly grounded in input data. Tense marking slightly over-done in one sentence; one phrase feels translated. No hard violations; low-severity fixes only.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "sudah lebih dari satu dekade ia berkompetisi",
+          "fix": "Change to: 'lebih dari satu dekade ia berkompetisi' or 'sudah 11 tahun berkompetisi'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Trend minus satu pekan ini tidak perlu dibaca sebagai sinyal kemunduran",
+          "fix": "Simplify: 'Turun satu posisi bukan sinyal kemunduran' or 'Fluktuasi normal di top 10.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "fluktuasi di rentang ini normal, terutama di tengah jadwal",
+          "fix": "Rephrase: 'dengan turnamen tiap minggu' or just delete (already said 'fluktuasi normal')."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Performa ke depan akan menentukan apakah ia bisa mendaki kembali",
+          "fix": "Change to: 'apakah ia bisa kembali ke peringkat 7' or 'naik peringkat.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "posisi stabil di top 10 dan modal lebih dari satu dekade pengalaman profesional, De Minaur masuk ke paruh kedua musim 2026 sebagai salah",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6331eaa3f8ad9664",
+    "published_at": "2026-04-28T11:59:28+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

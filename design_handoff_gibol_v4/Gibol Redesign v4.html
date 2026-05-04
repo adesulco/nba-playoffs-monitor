@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Gibol v4 — NBA end-to-end</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#0A1628; color:#E6EEF9; font-family:'Inter Tight',sans-serif; }
+  html[data-theme="light"] body { background:#F5F1EA; color:#0A0A0A; }
+  * { box-sizing:border-box; }
+  #root { width:100vw; height:100vh; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="v3/design-canvas.jsx"></script>
+<script type="text/babel" src="v3/primitives.jsx"></script>
+<script type="text/babel" src="v3/shell.jsx"></script>
+<script type="text/babel" src="v4/tweaks-panel.jsx"></script>
+<script type="text/babel" src="v4/extras.jsx"></script>
+<script type="text/babel" src="v4/home.jsx"></script>
+<script type="text/babel" src="v4/nba.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+function Intro() {
+  return (
+    <V3Board padding={28} scroll={true}>
+      <div style={{ maxWidth:780, margin:'0 auto' }}>
+        <V4Kicker>GIBOL · V4 · 03 MAY 2026 · NBA END-TO-END</V4Kicker>
+        <h1 className="serif" style={{ font:'700 38px/1.05 "Newsreader", Georgia, serif', letterSpacing:'-.022em', marginTop:8 }}>
+          Direction B — built out, in one sport.
+        </h1>
+        <div className="deck" style={{ marginTop:12, fontSize:14, lineHeight:1.55 }}>
+          v4 commits to the Evolution direction and walks the full reader journey for NBA: home → sport dashboard → game center → article. Imagery is now committed (per-sport SVG illustrations + photo-feel hero treatment with grain + spotlight). The four tweaks you asked for are wired up — toggle Tweaks in the toolbar to try them.
+        </div>
+
+        <hr className="loud"/>
+        <V3Rule label="WHAT'S IN V4"/>
+        <ol style={{ fontSize:13, color:'var(--ink-2)', lineHeight:1.7, paddingLeft:20 }}>
+          <li><b>Home (Evolution)</b> — front-page sentence, live console left, newsroom right, reading-list module, real imagery.</li>
+          <li><b>NBA dashboard</b> — landscape hero with Game Center entry, bracket preview, standings, NBA newsroom slice.</li>
+          <li><b>Game Center</b> — live deep dive: hero score, by-quarter, top performers, AI live summary, win-prob spark, play feed, series tracker.</li>
+          <li><b>Article reading</b> — full-bleed hero with caption, drop cap, pull quote, inline data card, and a transparent "How this was written" footnote.</li>
+        </ol>
+
+        <hr className="loud"/>
+        <V3Rule label="TWEAKS PANEL"/>
+        <div style={{ fontSize:13, color:'var(--ink-2)', lineHeight:1.6 }}>
+          Toggle <b>Tweaks</b> in the top toolbar to expose:
+          <ul style={{ marginTop:6, paddingLeft:18 }}>
+            <li><b>Bilingual EN ↔ BI</b> — switches all chrome strings (Bahasa Indonesia for the Asia/Jakarta audience).</li>
+            <li><b>Density</b> — Comfy / Compact. Compact tightens font size and card padding.</li>
+            <li><b>Sport accent</b> — Quiet / Balanced / Loud. Adjusts how visible the sport-color routing chips are.</li>
+            <li><b>Theme</b> — Dark / Light. Light mode uses the warm paper palette from v2.</li>
+          </ul>
+        </div>
+
+        <hr className="loud"/>
+        <V3Rule label="AI DISCLOSURE MODEL"/>
+        <div style={{ fontSize:13, color:'var(--ink-2)', lineHeight:1.6 }}>
+          The recommendation is a layered approach:
+          <ol style={{ marginTop:6, paddingLeft:18 }}>
+            <li>Subtle pill on every AI-touched headline (the amber "AI · HUMAN EDITED" chip).</li>
+            <li>Live AI cards on the dashboard get a stronger label + sources line + "How is this written?" link.</li>
+            <li>Every article ends with a transparent "How this was written" footnote — even purely human ones — disclosing reporting + sources + AI usage. Builds editorial trust without scolding the reader.</li>
+          </ol>
+        </div>
+      </div>
+    </V3Board>
+  );
+}
+
+function App() {
+  const tweakState = useV4Tweaks();
+  const [tweaks] = tweakState;
+
+  return (
+    <>
+      <V4TweakSync tweaks={tweaks}/>
+      <DesignCanvas title="Gibol — v4 · NBA end-to-end" subtitle="Evolution direction, fully built · open Tweaks for bilingual / density / accent / theme">
+        <DCSection id="intro" title="00 · What's in v4">
+          <DCArtboard id="intro" label="Read first" width={900} height={900}><Intro/></DCArtboard>
+        </DCSection>
+        <DCSection id="journey" title="01 · The NBA reader journey">
+          <DCArtboard id="home"   label="Home — Evolution direction" width={1280} height={1480}><V4Home/></DCArtboard>
+          <DCArtboard id="dash"   label="NBA dashboard" width={1280} height={1500}><V4DashNBA/></DCArtboard>
+          <DCArtboard id="game"   label="Game Center · DEN-BOS Game 3" width={1280} height={1480}><V4GameCenter/></DCArtboard>
+          <DCArtboard id="article" label="Article — Game 3 recap" width={1280} height={1900}><V4Article/></DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Reader">
+          <TweakRadio
+            label="Language"
+            value={tweaks.lang}
+            onChange={v => tweakState[1]('lang', v)}
+            options={[
+              { value:'en', label:'English' },
+              { value:'bi', label:'Bahasa Indonesia' },
+            ]}
+          />
+          <TweakRadio
+            label="Density"
+            value={tweaks.density}
+            onChange={v => tweakState[1]('density', v)}
+            options={[
+              { value:'comfy', label:'Comfy' },
+              { value:'compact', label:'Compact' },
+            ]}
+          />
+        </TweakSection>
+        <TweakSection title="Visual system">
+          <TweakRadio
+            label="Sport accent"
+            value={tweaks.accent}
+            onChange={v => tweakState[1]('accent', v)}
+            options={[
+              { value:'quiet', label:'Quiet' },
+              { value:'balanced', label:'Balanced' },
+              { value:'loud', label:'Loud' },
+            ]}
+          />
+          <TweakRadio
+            label="Theme"
+            value={tweaks.theme}
+            onChange={v => tweakState[1]('theme', v)}
+            options={[
+              { value:'dark', label:'Dark' },
+              { value:'light', label:'Light (paper)' },
+            ]}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

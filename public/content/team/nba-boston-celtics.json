@@ -1,0 +1,141 @@
+{
+  "type": "team",
+  "slug": "nba-boston-celtics",
+  "title": "Profil Boston Celtics: Atlantic, Eastern Conference (2025-26)",
+  "description": "Profil Boston Celtics — franchise NBA dari Boston di Atlantic Eastern Conference. Snapshot data per 28 April 2026.",
+  "body_md": "# Boston Celtics 2025-26: Seed 2 Timur, Juara Atlantic, dan Mesin Skor yang Belum Berhenti\n\nBoston Celtics berkandang di Boston dan bermain di Atlantic Division, Eastern Conference. Per 28 April 2026, BOS menutup musim reguler 2025-26 dengan rekor 56-26 (win rate 68,3%), finish sebagai seed 2 di Wilayah Timur dan juara Atlantic Division. Ini bukan musim coba-coba, ini musim sebuah tim yang sudah tahu cara menang.\n\n---\n\n## Identitas dan Posisi di Liga\n\nBoston Celtics adalah tim dengan sejarah panjang di NBA, dan musim 2025-26 ini mereka kembali menegaskan posisi sebagai salah satu kekuatan utama Eastern Conference. Di bawah kendali head coach Joe Mazzulla, BOS finis 1st di Atlantic Division, mengungguli tim-tim lain di divisi yang sama musim ini.\n\nSebagai seed 2 di Wilayah Timur, Celtics berada di posisi playoff yang nyaman, cukup tinggi untuk menghindari bracket tersulit di babak awal, tapi tetap dalam jalur menuju conference finals jika form bertahan. Mazzulla, yang sudah memimpin Boston selama beberapa musim terakhir, membangun tim yang identitasnya jelas: skoring efisien, pertahanan solid, dan roster dalam yang bisa diandalkan.\n\n---\n\n## Performa Musim Reguler 2025-26\n\nRekor 56-26 berbicara sendiri, tapi angka di baliknya yang menjelaskan kenapa Boston layak berada di posisi ini.\n\nBOS rata-rata mencetak 114,9 PPG musim ini, sementara hanya kebobolan 107,2 PPG, point differential +7,7 per laga. Di NBA, angka di atas +5 sudah menandai tim yang serius di playoff. Boston jauh melampaui threshold itu.\n\nPerforma kandang BOS sangat kuat: 30-11 di TD Garden, win rate 73,2%. Tapi yang lebih mengesankan adalah performa away-nya, 26-15 di kandang lawan, win rate 63,4%. Banyak tim kontender Eastern Conference yang bisa menang di rumah sendiri. Boston juga bisa menang di mana saja. Selisih antara road record dan home record yang relatif tipis ini menunjukkan konsistensi yang bukan kebetulan.\n\nDua hal yang bisa dibaca dari statistik ini: serangan Boston efisien dan terstruktur, sementara pertahanan mereka cukup ketat untuk mengunci laga-laga tipis. Kombinasi ini yang membuat mereka susah dihadapi di dua sisi bola.\n\n---\n\n## Roster dan Pemain Kunci\n\nCeltics musim ini membawa skuad dengan campuran veteran berpengalaman dan pemain yang sudah masuk prime window mereka.\n\n**Jayson Tatum** (#0, F, 28 tahun, 8 musim) adalah anchor utama Boston. Delapan musim di NBA dan masih 28 tahun, Tatum ada di fase terbaik karier seorang forward modern. Dia yang pertama kali disebutkan saat bicara soal Boston Celtics di era ini, dan bukan tanpa alasan.\n\n**Jaylen Brown** (#7, G, 29 tahun, 9 musim) melengkapi kombinasi utama BOS. Sembilan musim pengalaman, perpaduan scoring dan pertahanan di wing yang sulit ditemukan di banyak tim lain. Brown dan Tatum sudah main bersama cukup lama untuk punya chemistry yang tidak perlu dibangun ulang setiap musim.\n\n**Nikola Vucevic** (#4, C, 35 tahun, 14 musim) adalah tambahan dimensi berbeda di post. Dengan 14 tahun pengalaman NBA, Vucevic membawa stabilitas di dalam. Di usia 35, dia mungkin bukan starter muda, tapi kedalaman pengalaman itu punya nilai tersendiri di playoff.\n\nDi luar tiga nama itu, Boston juga punya depth yang layak disebut. **Payton Pritchard** (#11, G, 28 tahun, 5 musim) sudah terbukti sebagai pemain bench yang bisa diandalkan. **Sam Hauser** (#30, F, 28 tahun, 4 musim) menambah opsi dari perimeter. Dan ada **Hugo Gonzalez** (#28, G, 20 tahun, rookie) serta **Max Shulga** (#44, G, 23 tahun, rookie) sebagai nama muda yang sedang dalam proses berkembang.\n\n---\n\n## Outlook\n\nMusim reguler sudah selesai dengan catatan solid: 56-26, seed 2 Eastern Conference, juara Atlantic Division. Semua itu adalah fondasi, bukan tujuan akhir.\n\nMalam ini, 28 April 2026 jam 23.00 WIB, Boston menjamu Philadelphia 76ers dalam laga penutup atau lanjutan jadwal. Apapun status laga ini, fokus BOS yang sesungguhnya sudah ke playoff, di mana form kandang yang kuat dan point differential positif harus dikonversi jadi hasil nyata.\n\nData profil ini mencerminkan kondisi per 28 April 2026.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "team_profile",
+    "team_id": "2",
+    "team_name": "Boston Celtics",
+    "team_abbr": "BOS",
+    "team_location": "Boston",
+    "conference": "Eastern Conference",
+    "division": "Atlantic",
+    "season_label": "2025-26",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.048328,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 9,
+      "summary": "Article fails on training-inference creep (coach tenure, Vucevic role), date misalignment between article text and input block, and awkward English-to-Indonesian calques ('bracket tersulit', 'chemistry'). Academic transition tone and redundant tense marking also detract. Regenerate with stricter data grounding and date alignment.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Mazzulla, yang sudah memimpin Boston selama beberapa musim terakhir",
+          "fix": "Remove 'selama beberapa musim terakhir'; just say 'Under head coach Joe Mazzulla'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Celtics berada di posisi playoff yang nyaman, cukup tinggi untuk menghindari bracket tersulit",
+          "fix": "Simplify: 'Seed 2 berarti Celtics hindari top-1 seed di babak pertama playoff'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua hal yang bisa dibaca dari statistik ini: serangan Boston efisien dan terstruktur",
+          "fix": "Cut the transition; start directly: 'Serangan Boston efisien dan terstruktur'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Tatum ada di fase terbaik karier seorang forward modern",
+          "fix": "Change to 'Tatum fase terbaik karier seorang forward modern' or just 'Tatum prime-nya'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Brown dan Tatum sudah main bersama cukup lama untuk punya chemistry",
+          "fix": "Use 'saling paham' or 'terkoordinasi baik'; or keep 'chemistry' but only if established in prior articles"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Malam ini, 28 April 2026 jam 23.00 WIB, Boston menjamu Philadelphia 76ers dalam laga penutup atau lanjutan jadwal",
+          "fix": "Align dates: either update all references to May 3, or clarify the data snapshot date matches the source"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Apapun status laga ini, fokus BOS yang sesungguhnya sudah ke playoff",
+          "fix": "Change to 'fokus BOS sudah ke playoff' — simpler and clearer"
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "Nikola Vucevic (#4, C, 35 tahun, 14 musim) adalah tambahan dimensi berbeda di post",
+          "fix": "State only what's in input: position, age, seasons; avoid role inference unless clearly grounded"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "pertama kali disebutkan saat bicara soal Boston Celtics di era ini, dan bukan tanpa alasan.\n\n**Jaylen Brown** (#7, G, 29",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2f95ce9434a0a048",
+    "published_at": "2026-04-28T09:06:28+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 80,
+      "headline_comment": "Headline jelas dan punya hook ('mesin skor yang belum berhenti'), tapi 'Seed 2 Timur, Juara Atlantic' agak padat — bisa lebih ringkas.",
+      "lead_score": 82,
+      "lead_comment": "Lead solid dengan fakta utama + kalimat penutup berkarakter; pembukaan 'berkandang di Boston' agak redundan karena nama tim sudah menjelaskan.",
+      "structure_score": 75,
+      "structure_comment": "Alur logis (identitas → performa → roster → outlook) tapi seksi roster terlalu panjang relatif ke analisis taktis, dan outlook terasa tipis dibanding bagian statistik.",
+      "voice_score": 78,
+      "voice_comment": "Voice umumnya natural dengan code-switching pas, tapi beberapa kalimat masih bernuansa generik ('roster dalam yang bisa diandalkan', 'identitasnya jelas').",
+      "suggestion_count": 6,
+      "summary": "Solid team profile with strong statistical framing and natural voice, but suffers from a bloated roster section, some generic filler in identity passages, and an outlook section that hedges on the Philly game's context. Editor should tighten roster paragraphs and clarify the closing-game framing before publish.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Boston Celtics adalah tim dengan sejarah panjang di NBA, dan musim 2025-26 ini mereka kembali menegaskan posisi sebagai salah satu kekuatan utama",
+          "issue": "Kalimat pembuka seksi 'Identitas' generik dan filler — 'sejarah panjang' tidak menambah info untuk pembaca NBA Indonesia.",
+          "fix": "Buka langsung dengan fakta konkret: 'Di bawah Joe Mazzulla, Boston finis sebagai juara Atlantic untuk kesekian kalinya di era Tatum-Brown.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Apapun status laga ini, fokus BOS yang sesungguhnya sudah ke playoff",
+          "issue": "Frasa 'laga penutup atau lanjutan jadwal' menunjukkan ketidakpastian penulis tentang konteks laga — seharusnya jelas dari data, bukan dihindari.",
+          "fix": "Cek apakah laga vs Philly adalah game 82 musim reguler atau game 1 playoff, lalu sebut eksplisit. Ketidakjelasan ini melemahkan outlook."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Mazzulla, yang sudah memimpin Boston selama beberapa musim terakhir, membangun tim yang identitasnya jelas: skoring efisien, pertahanan solid",
+          "issue": "Klaim 'skoring efisien, pertahanan solid' diulang lagi di seksi performa — redundansi antara dua section pertama.",
+          "fix": "Pindahkan klaim identitas-tim ke seksi performa di mana ada angka pendukung; di seksi pembuka cukup posisi liga + divisi."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Dia yang pertama kali disebutkan saat bicara soal Boston Celtics di era ini, dan bukan tanpa alasan",
+          "issue": "Tell-don't-show — kalimat klaim tanpa data pendukung (Tatum's PPG, role offensif, dll tidak ada di input?).",
+          "fix": "Jika data per-pemain tidak tersedia, hapus saja kalimat ini; jangan hedge dengan 'bukan tanpa alasan' tanpa menyebutkan alasannya."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Hugo Gonzalez (#28, G, 20 tahun, rookie) serta Max Shulga (#44, G, 23 tahun, rookie) sebagai nama muda yang sedang dalam proses berkembang",
+          "issue": "Dua rookie disebut tanpa konteks — kalau tidak ada angle, ini hanya filler roster yang membengkakkan seksi.",
+          "fix": "Hapus atau gabung jadi satu kalimat: 'Boston juga punya dua rookie, Gonzalez dan Shulga, sebagai investasi jangka panjang.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Ini bukan musim coba-coba, ini musim sebuah tim yang sudah tahu cara menang",
+          "issue": "Kalimat penutup lead bagus secara nada, tapi 'sebuah tim' kaku — 'tim' saja sudah cukup di Bahasa.",
+          "fix": "Ubah jadi: 'Ini bukan musim coba-coba — ini musim tim yang sudah tahu cara menang.' (catatan: em-dash dilarang, gunakan koma atau titik)."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

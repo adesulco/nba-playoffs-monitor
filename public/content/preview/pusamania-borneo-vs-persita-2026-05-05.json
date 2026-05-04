@@ -1,0 +1,82 @@
+{
+  "type": "preview",
+  "slug": "pusamania-borneo-vs-persita-2026-05-05",
+  "title": "Preview Pusamania Borneo vs Persita",
+  "description": "Preview Bahasa Indonesia untuk Pusamania Borneo vs Persita di Stadion Batakan, Balikpapan, 5 May 2026.",
+  "body_md": "# Pusamania Borneo vs Persita: Puncak Klasemen Dipertaruhkan di Batakan\n\nPusamania Borneo menjamu Persita di Stadion Batakan, Balikpapan, Selasa 5 Mei 2026 pukul 19.00 WIB. Tuan rumah datang dari posisi puncak klasemen Super League Indonesia 2025-26 dengan 66 poin dari 29 laga, Persita ada di posisi sembilan dengan 41 poin, selisih 25 angka.\n\n## Form Kedua Tim\n\nBorneo nyaris sempurna dalam lima laga terakhir: empat menang, satu seri. Konsistensi itu yang menempatkan mereka sendirian di puncak. Seri satu-satunya di rangkaian WWWWD tidak merusak gambaran besar, ini tim yang sulit dikalahkan di kandang sendiri.\n\nPersita datang dengan modal sangat terbatas. Empat kekalahan beruntun sebelum akhirnya menang satu laga, form LLLLW yang lebih menggambarkan tim yang sedang mencari ritme daripada tim yang siap mengambil poin dari pemimpin klasemen. Gap 25 poin di tabel bicara sendiri.\n\n## Head-to-Head\n\nLima pertemuan terakhir berpihak jelas ke Borneo: tiga menang, satu seri, satu kalah, dengan agregat gol 5-3. Satu-satunya kekalahan Borneo di data ini lewat skor 0-2, di luar itu, skuad Batakan lebih sering mengontrol laga. Pertemuan terakhir berakhir 2-1 untuk Borneo.\n\n## Pemain Kunci & Cedera\n\nTidak ada update cedera resmi dari kedua kubu, artinya kedua pelatih kemungkinan bisa menurunkan skuad terbaik. Data pencetak gol terbanyak musim ini belum tersedia, tapi dalam konteks ini yang lebih relevan diperhatikan adalah siapa yang menjadi kreator serangan Borneo di kandang, dan apakah Persita punya cukup daya untuk menekan.\n\n## Taktis & Prediksi\n\nBorneo di posisi puncak klasemen hampir pasti tidak akan mengubah pendekatan, main untuk menang, lindungi keunggulan di tabel. Persita dengan form empat kekalahan beruntun sebelum menang satu laga kemungkinan datang dengan pendekatan pragmatis: jaga kekompakan lini belakang, cari peluang dari counter atau set-piece.\n\nTapi Stadion Batakan bukan tempat yang nyaman buat tim tamu yang sedang dalam krisis kepercayaan diri. H2H mendukung tuan rumah, momentum mendukung tuan rumah, dan posisi tabel mendukung tuan rumah. Borneo menang 2-0.\n\nTayang live di Vidio, Indosiar, dan MNCTV mulai pukul 19.00 WIB.\n",
+  "frontmatter": {
+    "league": "liga-1-id",
+    "fixture_id": "1403839",
+    "home_team": "Pusamania Borneo",
+    "away_team": "Persita",
+    "kickoff_utc": "2026-05-05T12:00:00+00:00",
+    "venue": "Stadion Batakan, Balikpapan",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040413,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on high-severity training inference (admitted missing data + specific scorecast) and calqued English phrasing. Tense and structural issues are secondary but compound the weakness. Rewrite the Taktis section and remove the 2-0 prediction.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Data pencetak gol terbanyak musim ini belum tersedia",
+          "fix": "Delete the sentence or replace with concrete observation from available data"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Gap 25 poin di tabel bicara sendiri",
+          "fix": "Ubah ke: 'Perbedaan 25 poin di tabel jelas menunjukkan gap kualitas'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Borneo menang 2-0",
+          "fix": "Reframe as: 'Borneo diunggulkan menang' or 'Favoritisme jelas ke Borneo'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "yang menempatkan mereka sendirian di puncak",
+          "fix": "Simplify: 'Konsistensi itu buat Borneo sendirian di puncak'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "form LLLLW yang lebih menggambarkan tim",
+          "fix": "Use 'mencerminkan' or 'menunjukkan' second time"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Satu-satunya kekalahan Borneo di data ini lewat skor 0-2",
+          "fix": "Ubah ke: 'Satu-satunya kekalahan lewat skor 0-2'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Tidak ada update cedera resmi dari kedua kubu, artinya kedua pelatih kemungkinan bisa menurunkan",
+          "fix": "Delete the hedge: 'Tidak ada update cedera — kedua pelatih bisa menurunkan skuad terbaik'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "H2H mendukung tuan rumah, momentum mendukung tuan rumah, dan posisi tabel mendukung",
+          "fix": "Condense: 'H2H, momentum, dan posisi tabel semua mendukung Borneo'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x24f687de9e638e60",
+    "fact_check": {
+      "passed": true,
+      "issue_count": 0
+    },
+    "published_at": "2026-04-27T13:39:42+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

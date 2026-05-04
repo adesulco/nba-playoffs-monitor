@@ -1,0 +1,84 @@
+{
+  "type": "team",
+  "slug": "pemain-nba-jalen-brunson",
+  "title": "Profil Jalen Brunson: Guard New York Knicks",
+  "description": "Profil pemain NBA Jalen Brunson, Guard New York Knicks. Statistik per pertandingan dan bio per 28 April 2026.",
+  "body_md": "# Jalen Brunson: Motor New York Knicks yang Bekerja di Luar Ekspektasi\n\nJalen Brunson, guard New York Knicks kelahiran New Brunswick, New Jersey, mencatat 26,0 PPG di musim 2025-26 per 28 April 2026, peringkat 10 NBA dalam scoring. Pemain berpostur 6'2\" 190 lbs dengan jersey #11 ini jadi bukti bahwa ukuran bukan satu-satunya ukuran.\n\n---\n\n## Identitas\n\nBrunson lahir 29 tahun lalu di New Brunswick, New Jersey. Bukan kota yang identik dengan hoops royalty, tapi Brunson tumbuh jadi salah satu guard paling konsisten di liga sekarang. Secara fisik, 6'2\" bukan dimensi ideal untuk guard utama di NBA era modern yang makin tinggi dan panjang. Tapi Brunson sudah buktikan selama tujuh musim bahwa keunggulan dia bukan soal panjang lengan.\n\nSebelum ke NBA, Brunson bersekolah di Villanova, kampus yang punya reputasi kuat mencetak guard IQ tinggi. Debut NBA-nya terjadi di 2018, hasil draft ronde kedua pick 33 oleh Dallas Mavericks. Pick 33 di ronde dua, bukan ronde satu. Bukan lotto pick. Ini konteks yang perlu selalu diingat kalau mau baca karier Brunson dengan fair.\n\n---\n\n## New York Knicks\n\nSekarang Brunson main di New York Knicks, salah satu franchise paling ikonik di NBA. Madison Square Garden sebagai kandang, sorotan media yang tidak ada habisnya, fanbase yang demanding. Buat Brunson, ini bukan tempat untuk pemain yang tidak siap.\n\nDan angka musim ini bicara sendiri: 26,0 PPG, peringkat 10 NBA dalam scoring, ada di satu lapisan dengan scorer-scorer elite liga. Untuk guard dengan postur segitu, main di pasar New York, dengan ekspektasi sekelas itu, angka ini bukan kebetulan.\n\n---\n\n## Performa Musim Ini\n\nTiga angka yang perlu dibaca bersama-sama: 26,0 PPG, 6,8 APG, 3,3 RPG.\n\nPPG 26,0 tempatkan Brunson di deretan top 10 scorer NBA. Ini bukan angka second option atau co-star, ini adalah angka primary scorer, pemain yang tim bergantung ke dia untuk ciptakan shot, baik untuk diri sendiri maupun orang lain.\n\nAPG 6,8 per pertandingan memperkuat gambar itu. Peringkat 11 NBA dalam assists, satu tangga di bawah scoring rank-nya. Brunson bukan cuma scorer yang pegang bola dan tembak. Dia playmaker. Dia baca defense, temukan teman, dan tetap bisa finish sendiri kalau ruang terbuka. Kombinasi 26,0 PPG dan 6,8 APG di satu pemain itu langka, kebanyakan scorer di level ini sacrificed assists-nya untuk volume shooting.\n\nFG% 46,7% wajar untuk guard high-volume. Efisiensi 77th di liga memang bukan top-tier, tapi konteks penting: guard yang handle creation duty sepenuhnya akan selalu hadapi tekanan lebih dari spot-up shooter. Angka di atas 46% di posisi itu masih acceptable.\n\nRPG 3,3 (peringkat 155) tidak mengejutkan. Brunson bukan rebounding guard, dia minta orang lain kerjakan itu. Tugasnya beda: kendalikan tempo, cetak poin, distribusi. Dan semua itu sedang dia kerjakan.\n\n---\n\n## Penutup\n\nTujuh musim di NBA, masuk draft ronde dua, sekarang duduk di top 10 scorer liga. Brunson membangun semuanya dari bawah, musim per musim. Di 29 tahun, musim 2025-26 ini jadi salah satu musim terbaiknya secara statistik, 26,0 PPG dan 6,8 APG per 28 April 2026 adalah argumen kuat bahwa guard 6'2\" dari New Brunswick itu masih punya banyak yang ingin dibuktikan.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "article_subtype": "player_profile",
+    "athlete_id": "3934672",
+    "athlete_name": "Jalen Brunson",
+    "team_name": "New York Knicks",
+    "team_abbr": "NY",
+    "position": "Guard",
+    "jersey": "11",
+    "age": 29,
+    "birthplace": "New Brunswick, NJ",
+    "as_of_id": "28 April 2026",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019436,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: three high-severity training-data inferences (Villanova reputation, Dallas as drafting team, age calculation). Remove inferred college/draft details not in input block. Reduce clichéd English-translated filler ('angka bicara sendiri', 'perlu diingat bahwa').",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Brunson lahir 29 tahun lalu di New Brunswick, New Jersey.",
+          "fix": "Remove age calculation. State: 'Brunson, pemain berusia 29 tahun, lahir di New Brunswick, New Jersey.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sebelum ke NBA, Brunson bersekolah di Villanova, kampus yang punya reputasi kuat mencetak guard IQ tinggi.",
+          "fix": "State fact only: 'Brunson bersekolah di Villanova sebelum debut NBA 2018.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Debut NBA-nya terjadi di 2018, hasil draft ronde kedua pick 33 oleh Dallas Mavericks.",
+          "fix": "State only: 'Debut NBA-nya 2018, hasil draft ronde kedua pick 33.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini konteks yang perlu selalu diingat kalau mau baca karier Brunson dengan fair.",
+          "fix": "Delete sentence. Let the fact of 'pick 33' speak for itself in context."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dan angka musim ini bicara sendiri: 26,0 PPG, peringkat 10 NBA dalam scoring, ada di satu lapisan dengan scorer-scorer elite liga.",
+          "fix": "'26,0 PPG menempatkan Brunson top 10 scorer NBA.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Brunson bukan cuma scorer yang pegang bola dan tembak. Dia playmaker. Dia baca defense, temukan teman, dan tetap bisa finish sendiri kalau ruang terbuka.",
+          "fix": "Rephrase: 'Brunson playmaker. Dia baca defense, temukan passing lane, terus finish sendiri kalau ruang terbuka.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tujuh musim di NBA, masuk draft ronde dua, sekarang duduk di top 10 scorer liga.",
+          "fix": "Start with forward-looking statement: 'Di 29 tahun, Brunson masih di prime. Musim 2025-26 ini...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "fisik, 6'2\" bukan dimensi ideal untuk guard utama di NBA era modern yang makin tinggi dan panjang. Tapi Brunson sudah buktikan",
+          "fix": "Remove era/dynasty framing unless input establishes it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf7428bb97525d428",
+    "published_at": "2026-04-28T12:12:39+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

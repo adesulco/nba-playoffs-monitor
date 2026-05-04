@@ -1,0 +1,33 @@
+{
+  "type": "preview",
+  "slug": "chelsea-vs-nottingham-forest-2026-05-04",
+  "title": "Preview Chelsea vs Nottingham Forest",
+  "description": "Preview Bahasa Indonesia untuk Chelsea vs Nottingham Forest di Stamford Bridge, London, 4 May 2026.",
+  "body_md": "Chelsea vs Nottingham Forest, Stamford Bridge, Senin 4 Mei 2026 jam 21.00 WIB. Tanpa tekanan perebutan gelar atau zona degradasi, laga ini lebih soal gengsi dan momentum di sisa musim, tapi kondisi kedua tim saat ini menarik untuk dicermati.\n\n## Form Kedua Tim\n\nChelsea sedang dalam periode terburuk musim ini: lima kekalahan beruntun, tanpa satu pun poin di lima laga terakhir. Dengan 48 poin di posisi 8, peluang finis di papan atas sudah tipis. Masalah terbesar datang dari daftar absen yang panjang. João Pedro, top scorer Chelsea dengan 14 gol, dipastikan absen karena cedera otot. Cole Palmer juga tidak turun akibat masalah hamstring, sementara Reece James, Levi Colwill, Joao Gittens, dan Enzo Fernandez semuanya tidak tersedia. Mudryk terkena skorsing. Itu bukan daftar absen biasa, itu hampir seluruh kreativitas skuad Chelsea hilang sekaligus.\n\nNottingham Forest datang dalam kondisi berlawanan: WWDWD di lima laga terakhir, satu poin memang hilang di tengah, tapi trennya jelas menanjak. Posisi 16 dengan 39 poin masih cukup nyaman dari zona degradasi. Morgan Gibbs-White jadi motor utama dengan 13 gol musim ini. Forest juga punya daftar absen yang tidak pendek, Cunha, Murillo, Hudson-Odoi, Awoniyi, dan beberapa nama lain absen, tapi forma kolektif tim tampak tidak terpengaruh.\n\n## Head-to-Head\n\nDari lima pertemuan terakhir, Chelsea unggul dengan tiga menang, satu seri, satu kalah. Kemenangan 3-0 dan 3-2 mencerminkan laga yang cenderung terbuka dan produktif secara gol. Tapi itu Chelsea dengan Palmer, Pedro, dan lineup penuh. Chelsea yang sekarang kondisinya berbeda.\n\n## Pemain Kunci & Absen\n\nTanpa Palmer dan Pedro, Chelsea bergantung pada siapa yang tersisa di lini serang. Beban kreatif kemungkinan jatuh ke pemain yang lebih junior atau kurang teruji di level Premier League secara konsisten. Di sisi Forest, Gibbs-White jadi ancaman utama, 13 gol musim ini dan form sedang bagus adalah kombinasi berbahaya untuk tuan rumah yang pertahanannya tanpa Colwill dan James.\n\n## Prediksi Taktis\n\nForest kemungkinan bermain compact, memanfaatkan counter-attack, strategi yang sudah terbukti efektif musim ini. Chelsea, bermain di kandang tapi dalam krisis form dan cedera, akan kesulitan menciptakan ancaman tanpa pemain-pemain kunci di lini depan. Gibbs-White dan rekan-rekannya punya ruang untuk dieksploitasi di transisi. Forest jadi tim yang lebih diunggulkan malam ini, meski sejarah head-to-head berpihak ke Chelsea. Prediksi: 0-1 untuk Forest.\n\nTayang live di Vidio dan beIN Sports mulai 21.00 WIB.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379313",
+    "home_team": "Chelsea",
+    "away_team": "Nottingham Forest",
+    "kickoff_utc": "2026-05-04T14:00:00+00:00",
+    "venue": "Stamford Bridge, London",
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.015768,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 0,
+      "summary": "",
+      "issues": []
+    },
+    "plagiarism_hash": "0x84f1269cd44686c2",
+    "fact_check": {
+      "passed": true,
+      "issue_count": 0
+    },
+    "published_at": "2026-04-27T10:59:24+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,13 +1,18 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
-import TopBar from '../components/TopBar.jsx';
 import SEO from '../components/SEO.jsx';
+import Breadcrumbs from '../components/Breadcrumbs.jsx';
+import PeerNav from '../components/PeerNav.jsx';
 import ContactBar from '../components/ContactBar.jsx';
+// v0.20.0 Phase 2 Sprint F — Shell A leaf chrome.
+import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
+import HubActionRow from '../components/v2/HubActionRow.jsx';
+import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 import { useApp } from '../lib/AppContext.jsx';
 import { useF1Standings } from '../hooks/useF1Standings.js';
 import { useF1Results } from '../hooks/useF1Results.js';
-import { TEAMS_BY_SLUG, DRIVERS_BY_TEAM } from '../lib/sports/f1/constants.js';
+import { TEAMS_2026, TEAMS_BY_SLUG, DRIVERS_BY_TEAM } from '../lib/sports/f1/constants.js';
 
 /**
  * F1 per-constructor page — v0.2.5.
@@ -66,6 +71,73 @@ export default function F1Team() {
 
   const isSelected = selectedConstructor === team.id;
 
+  // v0.20.0 Phase 2 Sprint F — push leaf chrome into V2TopBar
+  // subrow. Picker label = team name + short prefix tile in team
+  // accent ("MCL · McLaren ▾"). Strip's 3px left stripe carries
+  // the constructor accent.
+  useEffect(() => {
+    setTopbarSubrow(
+      <HubStatusStrip
+        srOnlyTitle={`${team.name} · Formula 1 2026 — drivers, results, constructor standing`}
+        accent={team.accent}
+        picker={(
+          <Link
+            to="/formula-1-2026"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '4px 10px 4px 4px',
+              background: `${team.accent}22`,
+              color: 'var(--ink)',
+              border: `1px solid ${team.accent}66`,
+              borderRadius: 6,
+              fontSize: 12, fontWeight: 700, letterSpacing: -0.1,
+              textDecoration: 'none',
+              fontFamily: 'inherit',
+            }}
+          >
+            <span
+              style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                minWidth: 36, height: 28, padding: '0 6px',
+                background: team.accent, color: '#fff',
+                fontFamily: 'var(--font-mono)', fontWeight: 700,
+                fontSize: 10, letterSpacing: 0.4,
+                borderRadius: 4,
+              }}
+            >
+              {team.short.toUpperCase().slice(0, 4)}
+            </span>
+            {team.name}
+            <span style={{ color: 'var(--ink-3)', fontSize: 10, marginLeft: 2 }}>▾</span>
+          </Link>
+        )}
+        live={(
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', textTransform: 'uppercase' }}>
+            FORMULA 1 · 2026 · {lang === 'id' ? 'KONSTRUKTOR' : 'CONSTRUCTOR'}
+            {teamStanding && (
+              <span style={{ color: 'var(--ink-3)' }}>
+                · P{teamStanding.position}
+                {' '}
+                <span style={{ color: 'var(--ink)', fontWeight: 700 }}>{teamStanding.points} pt</span>
+              </span>
+            )}
+          </span>
+        )}
+        actions={(
+          <HubActionRow
+            url={`/formula-1-2026/team/${team.slug}`}
+            shareText={lang === 'id'
+              ? `${team.name} · F1 2026 di gibol.co 🏎️`
+              : `${team.name} · F1 2026 on gibol.co 🏎️`}
+            accent={team.accent}
+            analyticsEvent="f1_team_share"
+          />
+        )}
+      />
+    );
+    return () => setTopbarSubrow(null);
+  }, [team, teamStanding, lang]);
+
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
       <SEO
@@ -77,31 +149,33 @@ export default function F1Team() {
         jsonLd={schema}
       />
       <div className="dashboard-wrap">
-        <TopBar showBackLink accent={team.accent} />
 
-        {/* Team hero — tinted with constructor accent */}
+        {/* v0.13.0 — visual breadcrumbs above the hero. */}
+        <div style={{ padding: '0 20px' }}>
+          <Breadcrumbs
+            items={[
+              { name: 'Formula 1 2026', to: '/formula-1-2026' },
+              { name: team.name },
+            ]}
+          />
+        </div>
+
+        {/* v0.20.0 Phase 2 Sprint F — visible 200px hero stripped.
+            Eyebrow + 36px h1 + base/power/founded meta + Follow
+            button collapsed into <HubStatusStrip>. Base/power/founded
+            line preserved as a small body sub-meta below — useful
+            for SEO + still scannable. */}
         <div style={{
-          padding: '28px 20px 22px',
-          background: `linear-gradient(135deg, ${team.accent}14 0%, ${C.bg} 85%)`,
-          borderBottom: `1px solid ${C.line}`,
+          padding: '12px 20px 0', fontSize: 11, color: C.dim,
+          display: 'flex', flexWrap: 'wrap', gap: '4px 12px',
         }}>
-          <div style={{ fontSize: 9, letterSpacing: 1.5, color: team.accent, fontWeight: 700, marginBottom: 4 }}>
-            F1 2026 · {lang === 'id' ? 'KONSTRUKTOR' : 'CONSTRUCTOR'}
-          </div>
-          <h1 style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 36, fontWeight: 700, lineHeight: 1.05, margin: 0, marginBottom: 8,
-            letterSpacing: '-0.025em', color: C.text, textWrap: 'balance',
-          }}>
-            {team.name}
-          </h1>
-          <div style={{ fontSize: 11, color: C.dim, display: 'flex', flexWrap: 'wrap', gap: '4px 12px' }}>
-            <span>{lang === 'id' ? 'Basis' : 'Base'}: {team.base}</span>
-            <span>·</span>
-            <span>{lang === 'id' ? 'Power unit' : 'Power'}: {team.power}</span>
-            <span>·</span>
-            <span>{lang === 'id' ? 'Didirikan' : 'Founded'}: {team.founded}</span>
-          </div>
+          <span>{lang === 'id' ? 'Basis' : 'Base'}: {team.base}</span>
+          <span>·</span>
+          <span>{lang === 'id' ? 'Power unit' : 'Power'}: {team.power}</span>
+          <span>·</span>
+          <span>{lang === 'id' ? 'Didirikan' : 'Founded'}: {team.founded}</span>
+        </div>
+        <div style={{ padding: '0 20px' }}>
 
           <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             <button
@@ -262,6 +336,20 @@ export default function F1Team() {
               </div>
             </section>
           )}
+
+          {/* v0.13.0 — peer constructor nav. 11 cards on the grid. */}
+          <PeerNav
+            title={lang === 'id' ? 'Konstruktor F1 lain' : 'Other F1 constructors'}
+            currentSlug={team.slug}
+            items={TEAMS_2026.map((t) => ({
+              slug: t.slug,
+              name: t.name,
+              short: t.short,
+              color: t.accent,
+              href: `/formula-1-2026/team/${t.slug}`,
+            }))}
+            maxItems={11}
+          />
         </div>
 
         <div style={{

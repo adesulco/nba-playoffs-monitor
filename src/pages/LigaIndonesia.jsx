@@ -107,6 +107,7 @@ const LIGA1_JSONLD = {
 export default function LigaIndonesia() {
   return (
     <ComingSoon
+      sportId="liga_1_id"
       league="BRI LIGA 1 · SUPER LEAGUE INDONESIA 2025–26"
       title="Super League Indonesia Live Dashboard"
       titleId="Dashboard Live Liga 1 Indonesia"
@@ -118,6 +119,7 @@ export default function LigaIndonesia() {
       features={features}
       featuresId={featuresId}
       seoKeywords="liga 1 indonesia, super league indonesia, bri liga 1, klasemen liga 1, jadwal liga 1, top skor liga 1, persija persib, el clasico indonesia, liga 1 2025-26, sepakbola indonesia"
+      seoImage="https://www.gibol.co/og/hub-liga1.png"
       jsonLd={LIGA1_JSONLD}
     >
       <LigaPreviewBlock />

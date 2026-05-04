@@ -1,0 +1,99 @@
+{
+  "type": "recap",
+  "slug": "west-ham-vs-everton-2026-04-25",
+  "title": "Recap West Ham 2-1 Everton",
+  "description": "Recap Bahasa Indonesia untuk West Ham vs Everton (2-1) di London Stadium, London, 25 April 2026.",
+  "body_md": "# West Ham Curi Tiga Poin Dramatis dari Everton, Wilson Jadi Pahlawan di Menit 90\n\nWest Ham menang 2-1 atas Everton di London Stadium, Sabtu malam 25 April 2026, tapi caranya yang bikin terasa lebih besar. Tomas Soucek buka keunggulan di babak kedua, Everton sempat samakan skor di menit 88, lalu Callum Wilson yang baru masuk dari bench cetak gol pemenang di menit 90. Dua menit, dua gol, hasilnya terbalik lagi.\n\n## Jalannya Laga\n\nBabak pertama sepi dari gol, tapi bukan dari drama. O'Brien kena kuning di menit 38, sinyal awal Everton kesulitan menjaga disiplin sepanjang malam. West Ham dan Everton sama-sama tidak menemukan ritme terbaik sebelum turun minum.\n\nBabak kedua beda cerita. Enam menit setelah restart, Soucek buka skor. Umpan Jarrod Bowen presisi, Soucek selesaikan dengan bersih, 1-0 West Ham, menit 51. Gol yang seharusnya cukup untuk mengunci tiga poin.\n\nEverton tidak menyerah. Garner kena kuning di menit 63, dua sub masuk bersamaan di menit 65: George gantikan McNeil, Iroegbunam masuk untuk O'Brien yang sudah hidup di atas angin kuning. West Ham merespons dengan rotasi sendiri, Potts dan Wilson masuk menit 79 dan 81.\n\nLaga terasa aman untuk tuan rumah. Sampai menit 88.\n\n## Momen Penentu\n\nDewsbury-Hall samakan skor di menit 88, umpan dari Tarkowski, bek yang juga punya kuning di kantong sejak menit 47. Gol yang terasa mencuri. Everton sejajar 1-1, London Stadium mendadak senyap.\n\nTapi dua menit kemudian, Callum Wilson, *substitute*, baru main sekitar sembilan menit, meneruskan umpan Bowen jadi gol. 2-1 West Ham, menit 90. Bowen mengemas dua assist malam itu sebelum diganti di menit 90+5. Akhir laga menjadi panas: empat kartu kuning dibagikan di injury time, dua untuk masing-masing tim.\n\n## Baca Angkanya\n\nStatistik justru berpihak ke Everton di atas kertas. Possession 56% vs 44%, total passes lebih banyak (477 vs 374), xG lebih tinggi, 1.45 berbanding 1.17. Total shots pun hampir seimbang: 11 vs 10, shots on target sama-sama tiga.\n\nWest Ham bermain dengan *low block* dan bertumpu pada transisi, sembilan dari sepuluh shot masuk dari dalam kotak, efisiensinya yang tinggi. Everton lebih banyak sentuh bola tapi tidak lebih berbahaya secara nyata. Satu save kiper di masing-masing kubu bilang banyak: laga ini bukan soal siapa lebih dominan, tapi siapa lebih dingin di momen krusial.\n\nDan Wilson lebih dingin.\n\n## Artinya di Klasemen\n\nTiga poin penting untuk West Ham di papan tengah, kemenangan yang datang dari bangku cadangan di detik-detik akhir, tapi tetap tiga poin. Everton pulang dengan tangan kosong meski sempat menyamakan skor, kehilangan peluang angka yang bisa berarti banyak di sisa musim.\n\nLaga ini tayang live di Vidio dan beIN Sports.\n",
+  "frontmatter": {
+    "league": "epl",
+    "fixture_id": "1379307",
+    "home_team": "West Ham",
+    "away_team": "Everton",
+    "home_score": 2,
+    "away_score": 1,
+    "kickoff_utc": "2026-04-25T14:00:00+00:00",
+    "venue": "London Stadium, London",
+    "home_formation": "4-4-1-1",
+    "home_coach": "Nuno Espirito Santo",
+    "away_formation": null,
+    "away_coach": null,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.017627,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with natural voice, good use of stats, solid narrative flow. Minor calquing in one phrase and soft repetition; neither breaks the piece. Voice is consistently Bahasa Indonesia, not translated English.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "hidup di atas angin kuning",
+          "fix": "Use 'sudah dapat satu kartu kuning' or just 'sudah dapat kuning'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Gol yang seharusnya cukup... Gol yang terasa mencuri.",
+          "fix": "Rephrase second: 'Seharusnya aman untuk West Ham. Hingga menit 88.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "West Ham dan Everton sama-sama tidak menemukan ritme terbaik",
+          "fix": "Just: 'Keduanya terseok-seok di babak pertama.'"
+        }
+      ]
+    },
+    "published_at": "2026-04-27T09:02:06+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "ship",
+      "overall_score": 86,
+      "headline_score": 84,
+      "headline_comment": "Strong angle — names the hero, the moment, and the drama; slightly long but earns it.",
+      "lead_score": 88,
+      "lead_comment": "Tight, specific, and well-paced; 'Dua menit, dua gol, hasilnya terbalik lagi' is a clean closer that pulls the reader in.",
+      "structure_score": 85,
+      "structure_comment": "Logical flow from narrative to numbers to standings, but 'Artinya di Klasemen' is generic without actual table positions or points context from input.",
+      "voice_score": 88,
+      "voice_comment": "Reads like a sharp Indonesian sport journalist — natural code-switching, restrained tense markers, no AI tells.",
+      "suggestion_count": 5,
+      "summary": "Strong recap with sharp narrative pacing and clean voice; main concerns are an unverifiable Tarkowski booking detail and a generic standings section that should either be tightened or trimmed.",
+      "suggestions": [
+        {
+          "priority": "medium",
+          "snippet": "Tiga poin penting untuk West Ham di papan tengah, kemenangan yang datang dari bangku cadangan",
+          "issue": "Standings section is vague — no actual position, points total, or gap to rivals because input data didn't provide it.",
+          "fix": "Either cut this section entirely or tighten to one sentence about the late-winner narrative since standings context is absent."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Dewsbury-Hall samakan skor di menit 88, umpan dari Tarkowski, bek yang juga punya kuning di kantong sejak menit 47",
+          "issue": "Tarkowski's yellow card at minute 47 was not in the input data block provided here — possible fabrication or unverifiable detail.",
+          "fix": "Verify against full match data; if not in source, remove the parenthetical about Tarkowski's earlier booking."
+        },
+        {
+          "priority": "low",
+          "snippet": "sembilan dari sepuluh shot masuk dari dalam kotak, efisiensinya yang tinggi",
+          "issue": "Phrase 'efisiensinya yang tinggi' is grammatically awkward as a tail clause.",
+          "fix": "Rephrase to 'sembilan dari sepuluh shot dari dalam kotak — efisien.' or similar tighter cut."
+        },
+        {
+          "priority": "low",
+          "snippet": "O'Brien yang sudah hidup di atas angin kuning",
+          "issue": "'Hidup di atas angin kuning' is a forced idiom — not standard Indonesian sport phrasing and reads invented.",
+          "fix": "Replace with 'O'Brien yang sudah dapat kuning' or 'O'Brien yang main di ujung tanduk sejak menit 38.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Laga ini tayang live di Vidio dan beIN Sports.",
+          "issue": "Broadcast info as the closing line is odd for a recap (already played) — convention is for previews.",
+          "fix": "Either cut the line or replace with a forward-looking closer about West Ham's next fixture or what the result means narratively."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
