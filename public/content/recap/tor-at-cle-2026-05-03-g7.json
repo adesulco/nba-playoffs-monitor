@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "tor-at-cle-2026-05-03-g7",
+  "title": "Recap Toronto Raptors 102-114 Cleveland Cavaliers (Game 7)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs Cleveland Cavaliers (102-114) di —, 3 May 2026.",
+  "body_md": "# Cleveland Cavaliers Tutup Seri 4-3, Singkirkan Toronto Raptors di Game 7\n\nCleveland Cavaliers lolos ke Round 2 Playoffs NBA 2026 setelah menang 114-102 atas Toronto Raptors di Game 7. Jarrett Allen tampil luar biasa dengan 22 poin dan 19 rebound, sementara Donovan Mitchell menyumbang 22 poin, cukup untuk menutup seri yang berjalan ketat 4-3 dan mengakhiri musim Raptors.\n\n---\n\n## Penampilan Terbaik\n\nDi kubu CLE, Jarrett Allen dan Donovan Mitchell sama-sama cetak 22 poin. Allen yang lebih menonjol: 19 rebound dalam 33 menit adalah angka yang mendominasi paint, dan shooting-nya efisien, 7 dari 11 field goal, tanpa satu pun three-pointer. Mitchell butuh 20 tembakan untuk poinnya (9-20 FG, 2-9 from three), tapi di Game 7, poin tetap poin.\n\nJames Harden menambah 18 poin, 6 rebound, 3 asis, kontribusi yang diam-diam penting. Evan Mobley cetak 13 poin, 7 rebound, 4 asis dengan efisiensi terbaik malam itu: 5-7 FG. Sam Merrill off the bench menyumbang 13 poin dengan 3-7 from three.\n\nDari sisi TOR, Scottie Barnes tampil all-out di laga terakhir musim ini: 24 poin, 9 rebound, 6 asis dengan shooting yang efisien (8-14 FG). RJ Barrett cetak 23 poin, tapi butuh 25 tembakan, 9-25 FG, termasuk 1-6 from three. Jamal Shead bermain playmaker dengan 14 poin dan 7 asis, sementara Ja'Kobe Walter menyumbang 13 poin dengan 3-7 from three. Barnes dan Barrett sudah beri yang terbaik. problemnya ada di tempat lain.\n\n---\n\n## Apa yang Bicara di Box Score\n\nSatu statistik yang menjelaskan hampir segalanya: rebound 60-33 untuk CLE. Allen bertanggung jawab atas hampir sepertiga itu sendirian. TOR kalah papan secara telak, dan di Game 7, itu berarti CLE dapat lebih banyak second-chance opportunities sepanjang malam.\n\nDari three-point line, menariknya justru datar: CLE masuk 11-39 (28%), TOR 8-28 (29%), keduanya tidak tajam dari luar. FG% nyaris sama, 45% vs 44%. Yang membuat perbedaan adalah free throw: CLE ke garis 37 kali (27-37, 73%), TOR hanya 26 kali (18-26, 69%). Margin 12 poin CLE sebagian besar dibangun dari sana.\n\nTOR sebenarnya menang di poin dalam paint (50 vs 42) dan jumlah steal (10 vs 8). Tapi turnover 14 berbanding 17 di laga sedekat ini cukup merata, kedua tim sama-sama tidak menjaga bola dengan baik. Bedanya, CLE punya Allen di paint dan mengontrol setiap missed shot.\n\n---\n\n## Seri yang Sudah Habis\n\nGame 7 selalu tentang siapa yang bisa menahan tekanan. TOR punya kuarter-kuarter kompetitif, KEY PLAYS mencatat skor 49-51 setelah Mobley masuk lewat two-pointer di Q3, menunjukkan Raptors masih di dalam permainan separuh jalan. Tapi CLE menutup dengan cukup untuk menang 12 poin.\n\nUntuk TOR, ini akhir musim yang menyakitkan. Barnes di usia mudanya tampil sebagai pemain terbaik malam itu secara efisiensi, dan Raptors bertahan sampai Game 7, bukan hal yang remeh. Tapi Allen terlalu besar untuk dijaga, dan CLE lebih dingin saat paling dibutuhkan.\n\n---\n\n## Selanjutnya\n\nCLE melaju ke Round 2. Lawan dan jadwal ditentukan sesuai hasil bracket Wilayah Timur. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401869384",
+    "home_team": "Cleveland Cavaliers",
+    "home_abbr": "CLE",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 114,
+    "away_score": 102,
+    "winner_abbr": "CLE",
+    "kickoff_utc": "2026-05-03T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Round 1",
+    "series_summary": "CLE wins series 4-3",
+    "game_number": 7,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021439,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has solid structure and stats-grounding, but 3x soft-phrase overuse, 1x training-data inference (age), and multiple translated-English awkwardness markers (KEY PLAYS, menariknya justru datar, adalah angka yang mendominasi) pull voice down to 62. High-severity inference issue with 'usia mudanya' requires correction.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "KEY PLAYS mencatat skor 49-51 setelah Mobley masuk lewat two-pointer",
+          "fix": "Rephrase as 'Q3, skor 49-51, Mobley cetak two-pointer — Raptors masih dalam jangkauan'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "tampil luar biasa... tampil all-out... tampil sebagai pemain terbaik",
+          "fix": "Vary: 'luar biasa' → 'dominan', 'all-out' → 'habis-habisan', 'tampil sebagai' → 'jadi'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Allen yang lebih menonjol: 19 rebound dalam 33 menit adalah angka yang mendominasi",
+          "fix": "Simplify to 'Allen jadi pembeda: 19 rebound, angka dominan paint'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu statistik yang menjelaskan hampir segalanya: rebound 60-33 untuk CLE.",
+          "fix": "Start with fact: 'Rebound 60-33 untuk CLE. Itu keseluruhan cerita laga ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "menariknya justru datar: CLE masuk 11-39 (28%), TOR 8-28 (29%)",
+          "fix": "Use 'Tapi dari tiga angka, keduanya datar: CLE 11-39 (28%), TOR 8-28 (29%)'"
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "low",
+          "snippet": "Tapi Allen terlalu besar untuk dijaga, dan CLE lebih dingin saat paling dibutuhkan.",
+          "fix": "'Allen terlalu dominan untuk dijaga' → 'Allen main terlalu besar' or 'Gavin mana yang bisa nahan Allen'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Barnes di usia mudanya tampil sebagai pemain terbaik malam itu secara efisiensi",
+          "fix": "Remove age reference: 'Barnes tampil paling efisien malam itu: 8-14 FG, 24 poin'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "problemnya ada di tempat lain.",
+          "fix": "Merge into prior sentence: 'RJ Barrett cetak 23 poin, tapi ineffisien (9-25 FG), dan itu jadi masalah TOR malam ini.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd2de23ea3490c538",
+    "published_at": "2026-05-04T08:17:11+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
