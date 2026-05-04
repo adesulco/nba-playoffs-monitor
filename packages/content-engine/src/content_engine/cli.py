@@ -830,6 +830,9 @@ def nba_recap_cmd(
         # fact-check issues as a hint so the writer knows exactly what
         # to avoid. Most fact-check fails are stat-citation hallucinations
         # that don't repeat once the writer is told.
+        # v0.59.8 — also retry on banned-phrase fail (writer occasionally
+        # uses a soft Bahasa cliché like "dalam pertandingan ini" — single
+        # phrase, easy to rewrite, doesn't deserve a hard CLI exit).
         MAX_FACT_RETRIES = 1
         regen_hint: str | None = None
         accumulated_writer_cost = 0.0
@@ -846,11 +849,30 @@ def nba_recap_cmd(
             # 3. Polish
             body = polish.polish(body_raw)
 
-            # 4. Banned-phrase hard gate
+            # 4. Banned-phrase hard gate (now retryable)
             report = banned_phrase.check(body)
             typer.echo(report.summary())
             if not report.passed:
-                typer.echo("\n✗ Banned-phrase gate failed. Regenerate.", err=True)
+                if attempt < MAX_FACT_RETRIES:
+                    matched = ", ".join(report.matched_phrases() if hasattr(report, "matched_phrases") else [])
+                    if not matched:
+                        # Fall back to parsing the summary for matched phrases
+                        import re as _re
+                        matched_list = _re.findall(r"'([^']+)'", report.summary())
+                        matched = ", ".join(matched_list[:5])
+                    regen_hint = (
+                        "Previous attempt used BANNED PHRASES: "
+                        f"{matched}. Re-write WITHOUT these phrases. "
+                        "Common alternatives: 'pertandingan ini'/'laga ini' instead of 'dalam pertandingan ini'; "
+                        "drop 'sebagai kesimpulan' entirely; replace 'tentu saja' with nothing."
+                    )
+                    typer.echo(
+                        f"\n⟳ Banned-phrase failed on attempt {attempt + 1}/{MAX_FACT_RETRIES + 1} — "
+                        f"regenerating without: {matched}",
+                        err=True,
+                    )
+                    continue
+                typer.echo(f"\n✗ Banned-phrase gate failed after {MAX_FACT_RETRIES + 1} attempts.", err=True)
                 typer.echo("\n--- DRAFT (FAILED GATE) ---\n")
                 typer.echo(body)
                 raise typer.Exit(3)

@@ -5730,7 +5730,19 @@
 // introducing new ones. Recap delivery rate should rise toward
 // 80-90%.
 
-export const APP_VERSION = '0.59.7';
+// v0.59.8 — Banned-phrase failure now retryable on NBA recap.
+//
+// v0.59.7 smoke retest hit a different failure mode: banned-phrase
+// gate caught "dalam pertandingan ini" (a soft Bahasa wordy filler)
+// on the FIRST attempt, before fact-check ran. Existing CLI raised
+// Exit(3) with no retry. Soft phrasing slips like this are exactly
+// the kind of thing a single retry should fix.
+//
+// Fix: in the NBA recap retry loop, banned-phrase failures now
+// trigger a regen with a hint listing the matched phrases + common
+// alternatives. Same retry budget as fact-check (1 retry).
+
+export const APP_VERSION = '0.59.8';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
