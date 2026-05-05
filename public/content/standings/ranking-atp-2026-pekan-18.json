@@ -1,0 +1,80 @@
+{
+  "type": "standings",
+  "slug": "ranking-atp-2026-pekan-18",
+  "title": "Ranking ATP pekan 18 — Jannik Sinner di Puncak",
+  "description": "Analisis ranking ATP 2026 pekan 18. Jannik Sinner (14,350 poin) memimpin tour.",
+  "body_md": "## ATP Rankings: Sinner Kokoh, Gelombang di Sepuluh Besar\n\nJannik Sinner tetap menguasai puncak ATP dengan 14.350 poin, unggul 1.390 dari Carlos Alcaraz. Jumlah yang solid namun belum dominan, perburuan di puncak tetap terbuka menjelang Internazionali BNL d'Italia yang dimulai 4 Mei.\n\nTiga besar stabil. Alexander Zverev di peringkat ketiga dengan 5.805 poin, jauh tertinggal dari dua pemimpin. Djokovic di posisi empat (4.700 poin) dan Auger-Aliassime kelima (4.050 poin) menunjukkan struktur ranking yang jelas: Sinner-Alcaraz sebagai duet teratas, lalu tebing curam ke kelompok ketiga.\n\nGelombang mulai terasa di peringkat 9-16. Daniil Medvedev naik satu posisi ke nomor sembilan dengan 3.460 poin, menggeser Lorenzo Musetti yang turun ke sepuluh (3.415 poin). Dua pemain Italia itu tetap dekat, hanya 45 poin memisahkan. Flavio Cobolli melonjak dua posisi ke dua belas, sementara Jiri Lehecka naik satu ke tiga belas. Rublev turun dua posisi (sekarang dua belas) meski masih di zona top 15.\n\nPergerakan paling dramatis datang dari Arthur Fils. Pemain Prancis itu terbang delapan posisi dari dua puluh lima ke tujuh belas dengan 2.130 poin, momentum yang tidak bisa diabaikan menjelang Roma. Cameron Norrie juga menunjukkan tren naik, memanjat empat posisi ke sembilan belas (1.918 poin), sementara Valentin Vacherot dan Karen Khachanov masing-masing naik satu dan dua posisi di zona 15-16.\n\nStruktur bawah top 20 menunjukkan persaingan ketat untuk defending points. Tommy Paul bertahan di delapan belas, Luciano Darderi naik dua ke dua puluh. Alexander Bublik tetap di sebelas. Ranking ini adalah snapshot sebelum Internazionali, Roma akan menguji siapa yang bisa consolidate momentum dan siapa yang akan tergelincir.\n\nSinner menjelang turnamen kedua Masters 1000 musim ini sebagai top seed, dengan Alcaraz mengikuti. Medvedev's climb dan Fils's surge menunjukkan bahwa zona peringkat 5-20 terus bergolak, tipikal ATP circuit awal Mei ketika clayground season mulai memisahkan spesialis dari generalist.\n",
+  "frontmatter": {
+    "league": "tennis",
+    "sport": "tennis",
+    "tour": "atp",
+    "year": 2026,
+    "iso_week": 18,
+    "no_1_name": "Jannik Sinner",
+    "no_1_points": 14350,
+    "active_tournament": "Internazionali BNL d'Italia",
+    "model": "claude-haiku-4-5-20251001",
+    "cost_usd": 0.004473,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: two high-severity training-inference claims (seeding status, clay specialization) unsupported by input. Also contains multiple factual errors vs. input data (Rublev movement, Cobolli movement) and translated-English phrasing. Requires significant revision.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sinner menjelang turnamen kedua Masters 1000 musim ini sebagai top seed",
+          "fix": "Remove seeding claim; stick to ranking facts only"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "clayground season mulai memisahkan spesialis dari generalist",
+          "fix": "Delete speculation about clay specialization"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua pemain Italia itu tetap dekat, hanya 45 poin memisahkan",
+          "fix": "Rephrase: 'hanya 45 poin membedakan keduanya' or 'beda 45 poin'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pemain Prancis itu terbang delapan posisi dari dua puluh lima ke tujuh belas",
+          "fix": "Rephrase: 'Fils melompat 8 peringkat (dari 25 jadi 17)'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Ranking ini adalah snapshot sebelum Internazionali, Roma akan menguji siapa yang bisa consolidate momentum",
+          "fix": "Use period: '...Internazionali. Roma akan menguji...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "menunjukkan struktur ranking yang jelas...menunjukkan tren naik...menunjukkan bahwa zona",
+          "fix": "Vary: 'mengungkap', 'tampak', 'terbukti', or restructure sentences"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Rublev turun dua posisi (sekarang dua belas)",
+          "fix": "Verify against input: Rublev PREV=12, rank now=14 (dropped 2, not moved to 12)"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Cobolli melonjak dua posisi ke dua belas",
+          "fix": "Correct: 'Cobolli naik satu posisi ke dua belas'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x15b6ade83eb646e1",
+    "published_at": "2026-05-05T13:05:08+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

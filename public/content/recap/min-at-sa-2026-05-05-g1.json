@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "min-at-sa-2026-05-05-g1",
+  "title": "Recap Minnesota Timberwolves 104-102 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs San Antonio Spurs (104-102) di —, 5 May 2026.",
+  "body_md": "# Wolves Bertahan dari Comeback Spurs, Unggul 1-0 di Seri\n\nMinnesota Timberwolves lolos dari ancaman serius San Antonio Spurs dan menang 104-102 di Game 2 Conference Semifinals, Selasa pagi WIB. Julius Randle double-double 21 poin dan 10 rebound jadi fondasi kemenangan, tapi drama sesungguhnya terjadi di empat menit terakhir ketika Spurs nyaris membalikkan segalanya. MIN unggul 1-0 di seri.\n\n---\n\n## Performa Pemain Kunci\n\n**Julius Randle** jadi tulang punggung Minnesota dengan 21 poin dan 10 rebound, double-double solid meski shooting-nya berat, 8-20 dari lapangan. Beban ofensif terbagi merata: **Jaden McDaniels** dan **Terrence Shannon Jr.** masing-masing menyumbang 16 poin. McDaniels efisien, 7-14 FG. Shannon Jr. lebih berjuang, 5-13, tapi tetap produktif di momen krusial, layup-nya di Q4 dengan asis Conley yang memperlebar jarak ke 90-86 jadi salah satu play penting malam itu. **Mike Conley** off-the-ball tapi tidak invisible: 12 poin, 6 asis, 4-8 dari field termasuk 4-7 dari tiga angka.\n\n**Anthony Edwards** bermain 25 menit dari bench, cetak 18 poin dengan efisiensi bagus, 8-13 FG dan 2-3 dari three-point line.\n\nDi kubu Spurs, **Dylan Harper** tampil paling tajam dengan 18 poin off the bench, 7-13 FG. **Julian Champagnie** dan **Stephon Castle** masing-masing 17 poin, Champagnie dengan 7 rebound, Castle dengan 5 asis dan shooting three-point efisien 3-5. **Victor Wembanyama** dominan di rebound, 15, tapi shooting-nya malam ini tidak mengikuti: 5-17 dari lapangan dan 0-8 dari tiga angka.\n\n---\n\n## Membaca Angka\n\nSecara keseluruhan dua tim cukup berimbang, FG% MIN 46% vs SA 45%, rebounds nyaris identik 46-47. Perbedaan nyata ada di tiga angka: MIN 38% (10-26) vs SA 28% (10-36). Spurs lebih banyak mencoba dari tiga angka tapi kalah efisiensi, dan itu membebani serangan mereka.\n\nSpurs mendominasi fast-break points 27-10 dan blocks 14-5, artinya secara transisi dan pertahanan di ring, Spurs sebenarnya lebih tajam. Tapi MIN lebih hemat di turnover (13 vs 14) dan free throw attempt Spurs yang lebih banyak tidak banyak membantu karena mereka tutup malam dengan FT% 78% vs MIN yang 57%. MIN jelek di garis foul jadi isu serius di game berikutnya.\n\n---\n\n## Momen Penentu di Q4\n\nEmpat menit terakhir jadi milik siapa saja.\n\nSaat MIN seperti sudah nyaman di 90-86, Spurs mulai merangsek. Champagnie cetak dua basket berturut-turut, 101-96 di 1:34, kemudian 102-98 di 1:07. Spurs sudah dalam jangkauan.\n\nLalu Wembanyama tutup ancaman itu dengan driving dunk di 43.6 detik untuk 104-100. Harper balas dengan running dunk di 30.9 detik, 104-102, tapi waktu sudah tidak cukup untuk Spurs.\n\nDua poin terakhir itu membuktikan betapa tipisnya margin. MIN hanya menang dua poin, padahal sempat punya bantalan lebih besar di pertengahan Q4.\n\n---\n\n## Ke Depan\n\nSeries kembali ke San Antonio untuk Game 3. Spurs muda yang sudah menunjukkan karakter comeback di game ini tidak akan menyerah mudah. Tapi dua kekalahan beruntun berarti tekanan sekarang ada di pundak mereka.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401871152",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 102,
+    "away_score": 104,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-05-05T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Conference Semifinals",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023146,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: Critical training-data inference (De'Aaron Fox not in input data), tense over-marking, and chronological narrative error in Q4 recap make this unreliable. Requires regeneration.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "De'Aaron Fox makes running layup (score 99-94)... Wembanyama makes driving dunk (De'Aaron Fox assists)",
+          "fix": "Remove all De'Aaron Fox references. Verify all player names against input TOP SCORERS list before writing."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Saat MIN seperti sudah nyaman di 90-86, Spurs mulai merangsek.",
+          "fix": "Rewrite: 'Saat MIN unggul 90-86, Spurs mulai merangsek.' or 'Ketika MIN 90-86, Spurs comeback.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Spurs muda yang sudah menunjukkan karakter comeback di game ini",
+          "fix": "Change to: 'Spurs muda yang menunjukkan karakter comeback di game ini'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Randle double-double 21 poin dan 10 rebound jadi fondasi kemenangan... Julius Randle jadi tulang punggung",
+          "fix": "Second instance: 'Julius Randle adalah inti pertahanan Minnesota...' or restructure."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Lalu Wembanyama tutup ancaman itu dengan driving dunk di 43.6 detik untuk 104-100.",
+          "fix": "Reorder: Wembanyama at 43.6s, then Harper at 30.9s — narrative should flow forward in time."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Series kembali ke San Antonio untuk Game 3. Spurs muda yang sudah menunjukkan... tidak akan menyerah mudah.",
+          "fix": "End with fact: broadcast time, series format, or historical H2H detail instead of prediction."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe7d96db275516494",
+    "published_at": "2026-05-05T13:04:49+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

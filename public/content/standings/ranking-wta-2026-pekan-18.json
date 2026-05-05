@@ -3,7 +3,7 @@
   "slug": "ranking-wta-2026-pekan-18",
   "title": "Ranking WTA pekan 18 — Aryna Sabalenka di Puncak",
   "description": "Analisis ranking WTA 2026 pekan 18. Aryna Sabalenka (10,110 poin) memimpin tour.",
-  "body_md": "# WTA Rankings: Sabalenka Dominan, Swiatek Naik ke Top 3\n\nAryna Sabalenka tetap menguasai puncak WTA dengan 10.110 poin, unggul 1.555 dari Elena Rybakina di peringkat dua. Jarak mereka berdua terhadap sisa top 10 cukup besar, gap antara Rybakina dan Iga Swiatek mencapai 1.607 poin. Swiatek naik satu posisi menjadi nomor tiga dengan 6.948 poin, menggantikan Coco Gauff yang turun ke empat dengan 6.749 poin.\n\nPergerakan di top 10 relatif stabil minggu ini. Jessica Pegula tetap di posisi lima (6.136 poin), Amanda Anisimova di enam (5.985 poin). Tapi ada tiga pemain menarik yang naik: Mirra Andreeva naik ke tujuh dari delapan (4.181 poin), Jasmine Paolini naik ke delapan dari sembilan (3.722 poin), dan Victoria Mboko naik ke sembilan dari sepuluh (3.531 poin). Sebaliknya, Elina Svitolina turun signifikan tiga posisi, dari tujuh ke sepuluh dengan 3.530 poin, tertinggal ketat dari Mboko.\n\nPergerakan paling dramatis ada di luar top 10. Marta Kostyuk melompat delapan posisi, dari 23 ke 15 dengan 2.507 poin, kenaikan yang menunjukkan momentum bagus untuk pemain Ukraina itu. Sebaliknya, beberapa pemain jatuh: Madison Keys turun dua posisi dari 17 ke 19 (1.946 poin), Naomi Osaka turun satu posisi dari 15 ke 16 (2.341 poin), Iva Jovic turun satu dari 16 ke 17 (2.235 poin), dan Diana Shnaider turun satu dari 19 ke 20 (1.946 poin).\n\nStabilitas di tengah-tengah top 20 mencerminkan kompetisi ketat. Karolina Muchova pertahankan 11, Belinda Bencic di 12, Linda Noskova di 13, dan Ekaterina Alexandrova di 14, semuanya tanpa pergeseran posisi. Clara Tauson tetap 18. Jarak poin di zona 11-20 cukup rapat, sehingga turnamen mendatang akan sangat menentukan.\n\nJiangxi Open akan berlangsung 1-11 Mei dan jadi kesempatan penting bagi pemain di luar top 5 untuk meraup poin. Dengan gap kecil di posisi 15 hingga 20, setiap turnamen Masters 1000 dan WTA 500 jadi pemicu naik-turun peringkat. Sabalenka dan Rybakina masih punya margin nyaman, tapi Swiatek dan Gauff saling kejar di zona tiga-empat, zona yang akan terus ramai minggu-minggu ke depan.\n",
+  "body_md": "# WTA Ranking Update: Sabalenka Dominasi, Kostyuk Melompat Spektakuler\n\nAryna Sabalenka tetap kuasai puncak WTA dengan 10.110 poin, unggul 1.555 dari Elena Rybakina yang bertahan di posisi dua. Jarak antarkeduanya cukup besar, memberi Sabalenka buffer nyata untuk pekan-pekan mendatang. Sementara itu, pergolakan signifikan terjadi di tier bawah top 10, dengan pergerakan posisi yang mengubah landscape kompetisi.\n\n**Top 5 stabil dengan pergeseran minor**\n\nIga Swiatek naik satu posisi ke peringkat tiga dengan 6.948 poin, menggeser Coco Gauff ke nomor empat. Gauff tetap solid di 6.749 poin, selisih antara ketiganya hanya 199 poin, menunjukkan kompetisi ketat di tier elite. Jessica Pegula mempertahankan posisi lima dengan 6.136 poin, dan Amanda Anisimova konstan di enam dengan 5.985 poin. Kelima pemain ini membentuk hierarki atas yang stabil minggu ini.\n\n**Pemain muda terus naik**\n\nTiga pemain muda membobol top 10. Mirra Andreeva naik ke posisi tujuh dari delapan dengan 4.181 poin. Jasmine Paolini ikut naik ke delapan dari posisi sembilan, meraup 3.722 poin. Victoria Mboko menerobos ke posisi sembilan dari sepuluh dengan 3.531 poin, pembacaan posisinya sama persis dengan Svitolina di nomor 10 (3.530 poin), membuktikan ketat sekali margin di zona ini.\n\nMomentum Andreeva, Paolini, dan Mboko menandai shifting generasi di WTA. Ketiga pemain ini mulai menandingi veteran established tier.\n\n**Svitolina jatuh, Kostyuk melesat**\n\nElina Svitolina turun drastis dari posisi tujuh ke sepuluh dengan kerugian tiga peringkat, 3.530 poin. Penurunan ini membuka peluang bagi pemain-pemain lain merenggut posisi aman top 10.\n\nSebaliknya, Marta Kostyuk mencatatkan lompatan spektakuler: naik delapan posisi dari 23 ke 15 dengan 2.507 poin. Kemajuan itu merupakan salah satu pergerakan terbesar minggu ini dan menunjukkan momentum kuat Kostyuk di lapangan.\n\n**Sisa top 20**\n\nKarolina Muchova dan Belinda Bencic tetap di posisi 11 dan 12. Naomi Osaka turun satu ke 16, diikuti Iva Jovic yang juga mundur satu ke 17. Madison Keys dan Diana Shnaider sama-sama duduk di akhir top 20, Keys di 19 setelah turun dua, Shnaider di 20 setelah turun satu, keduanya dengan poin identik 1.946.\n\nJiangxi Open berlangsung hingga 11 Mei dan akan jadi ajang pertama bagi pemain-pemain untuk mulai mengubah kalkulasi poin pekan depan.\n",
   "frontmatter": {
     "league": "tennis",
     "sport": "tennis",
@@ -14,65 +14,41 @@
     "no_1_points": 10110,
     "active_tournament": "Jiangxi Open",
     "model": "claude-haiku-4-5-20251001",
-    "cost_usd": 0.002648,
+    "cost_usd": 0.002178,
     "voice_lint": {
-      "verdict": "fail",
-      "score": 62,
-      "issue_count": 8,
-      "summary": "Fail due to rank-numbering errors across three consecutive players (Andreeva, Paolini, Mboko positions stated incorrectly) and translated-English structural drift. Ranking article must match input data exactly; these are mathematical errors, not voice issues. Rewrite paragraph 2 with correct ranks and sharper Bahasa.",
+      "verdict": "pass",
+      "score": 78,
+      "issue_count": 4,
+      "summary": "Solid ranking update with accurate facts and natural Indonesian voice. Minor soft-phrase abstraction and one English-calqued phrase; both low-impact. Data integrity clean—no training-inference leakage. Passes.",
       "issues": [
         {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "Mirra Andreeva naik ke tujuh dari delapan",
-          "fix": "Andreeva naik satu ke posisi tujuh (dari delapan sebelumnya)"
-        },
-        {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "Jasmine Paolini naik ke delapan dari sembilan",
-          "fix": "Paolini naik satu ke posisi delapan (dari sembilan)"
-        },
-        {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "Victoria Mboko naik ke sembilan dari sepuluh",
-          "fix": "Verify rank sequence: Andreeva 7, Paolini 8, Mboko 9, Svitolina 10"
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Momentum Andreeva, Paolini, dan Mboko menandai shifting generasi di WTA.",
+          "fix": "Delete or replace with concrete: 'Ketiga pemain gabungan peraih 11.434 poin—sudah lampaui beberapa top-10 veteran.'"
         },
         {
           "type": "translated_english",
           "severity": "medium",
-          "snippet": "Pergerakan di top 10 relatif stabil minggu ini",
-          "fix": "Top 10 mostly stabil minggu ini / Top 10 jarang bergerak minggu ini"
-        },
-        {
-          "type": "translated_english",
-          "severity": "medium",
-          "snippet": "Sebaliknya, beberapa pemain jatuh:",
-          "fix": "First use: delete or rephrase. Second: 'Sementara itu,' or 'Di zona 15–20,'"
-        },
-        {
-          "type": "other",
-          "severity": "medium",
-          "snippet": "Jiangxi Open akan berlangsung 1-11 Mei dan jadi kesempatan penting",
-          "fix": "Stick to: tournament dates, status (final bracket?), impact on point gaps only"
-        },
-        {
-          "type": "translated_english",
-          "severity": "low",
-          "snippet": "Stabilitas di tengah-tengah top 20 mencerminkan kompetisi ketat",
-          "fix": "Tengah top 20 kaku: lima pemain tetap posisi; gap poin rapat."
+          "snippet": "Ketiga pemain ini mulai menandingi veteran established tier.",
+          "fix": "Rephrase: 'Ketiga pemain ini mulai menandingi veteran yang sudah mapan.'"
         },
         {
           "type": "other",
           "severity": "low",
-          "snippet": "setiap turnamen Masters 1000 dan WTA 500 jadi pemicu",
-          "fix": "Stick to: setiap turnamen WTA 500 atau Grand Slam jadi pemicu"
+          "snippet": "Penurunan ini membuka peluang bagi pemain-pemain lain merenggut posisi aman top 10.",
+          "fix": "Minor: 'Penurunan Svitolina membuka peluang pemain lain meraih top 10.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "pembacaan posisinya sama persis dengan Svitolina di nomor 10 (3.530 poin), membuktikan ketat sekali margin",
+          "fix": "Restructure: 'posisinya sama dengan Svitolina (nomor 10, 3.530 poin)—margin ketat.'"
         }
       ]
     },
-    "plagiarism_hash": "0x7cfa6bea3c094649",
-    "published_at": "2026-05-04T05:59:26+00:00",
+    "plagiarism_hash": "0x6e9aef321ecb5740",
+    "published_at": "2026-05-05T13:05:25+00:00",
     "version": 1,
     "manual_review": true
   },
