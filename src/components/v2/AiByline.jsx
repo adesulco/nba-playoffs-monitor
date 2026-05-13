@@ -57,8 +57,10 @@ export default function AiByline({
       gap: 6,
       padding: '4px 10px',
       borderRadius: 4,
-      background: 'var(--amber-soft)',
-      color: 'var(--amber)',
+      // v0.60.1 — ink-backed per brand contrast rule (amber on cream
+      // fails WCAG AA; amber on ink gets AAA 9.2:1).
+      background: 'var(--gibol-ink, #0F0E0C)',
+      color: 'var(--gibol-amber, #F59E0B)',
       border: '1px solid rgba(245,158,11,0.32)',
       fontFamily: 'var(--font-mono)',
       fontWeight: 700,

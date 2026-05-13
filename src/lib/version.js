@@ -5811,7 +5811,45 @@
 // pages, then promote to production. Rollback is `unset VITE_FLAG_BRAND`
 // + redeploy, or per-user via localStorage clear.
 
-export const APP_VERSION = '0.60.0';
+// v0.60.1 — Phase 3 Tier 1 brand polish.
+//
+// Four foundational fixes that make the cream theme look correct:
+//
+// 1. ScoreTile canonical component (§09)
+//    New shared component at src/components/v2/ScoreTile.jsx. Single
+//    surface for every match score: MatchStrip cards, future
+//    LiveConsole + NewsroomSlice + Game Center. Four states (pre /
+//    in / post / na). Tabular figures via .gibol-tnum. Live indicator
+//    uses the ink-backed amber pill per brand §05.1. Refresh footer
+//    "REFRESHED HH:MM WIB" per §05.1 mandate. MatchStrip.jsx refactored
+//    to use it; the inline MatchCard + ScoreCell + SPORT_DOT/LABEL
+//    maps moved out.
+//
+// 2. AI · HUMAN EDITED badge contrast fix
+//    .v2 .ai-byline CSS class + AiByline variant="bar" inline styles
+//    switched from amber-on-amber-tint (FAIL on cream) to ink-backed
+//    amber chip (AAA 9.2:1 on both themes). The chip is now self-
+//    contained and reads correctly on cream and ink.
+//
+// 3. Card surface separation on cream
+//    [data-brand="cream"] --bg-2 bumped from #EAE5DB to #FFFFFF per
+//    brand mock §06. Old step-up cream read identical to --bg at
+//    card size, killing visual hierarchy. White cards + the existing
+//    --line-soft border give crisp separation. --bg-3 takes the old
+//    #EAE5DB as secondary step (hover / raised).
+//
+// 4. LiveBand amber refresh + dark --live semantic split
+//    LiveBand's left LIVE indicator now wraps in an ink-backed amber
+//    pill (always ink bg, regardless of theme) per §05.1. Dark theme
+//    --live token flipped from #F25757 (red) to #F59E0B (amber) per
+//    brand v1.0 (live IS the brand amber); --down kept at #F25757 for
+//    losses / negative deltas. The two semantic roles were collapsed
+//    onto the same red before this ship — separated now.
+//
+// Verified live with ?brand=cream and ?brand=default — both render
+// brand-correct.
+
+export const APP_VERSION = '0.60.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

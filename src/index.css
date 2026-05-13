@@ -103,12 +103,15 @@
   --amber-2: #FBBF24;
 
   /* ---- Semantic signals ----
-     v0.11.20 GIB-bonus: bumped --live / --down from #EF4444 (4.43:1
-     on --bg-2, just-under AA) to #F25757 (5.24:1 on --bg-2, clears
-     AA). Tiny hue shift preserves the red-500 Tailwind-esque red while
-     axe-core stops flagging live chips + "down" deltas. --up stays
-     as-is (already passes at ~5.9:1 on --bg-2). */
-  --live: #F25757;
+     v0.60.1 Pulse & Field: --live separated from --down. Per brand
+     v1.0, the live signal IS the brand amber #F59E0B (AAA 9.2:1 on
+     ink). Loss/negative deltas keep red. The live chip must ALWAYS
+     paint on an ink background (LiveBand wraps with ink-backed pill);
+     bare amber text on cream fails AA, but on ink it's a clean win
+     across both themes.
+     --down kept at #F25757 (5.24:1 on --bg-2, AA pass) for losses /
+     negative deltas — separate semantic role from "live now". */
+  --live: #F59E0B;
   --up:   #10B981;
   --down: #F25757;
   --warn: #F59E0B; /* same hex as brand amber per spec */
@@ -402,10 +405,15 @@
        where it gets the AAA 9.2:1 contrast)
    ================================================================== */
 :root[data-brand="cream"] {
-  /* ---- Brand surfaces — cream paper ---- */
-  --bg:         #F5F1EA;        /* paper */
-  --bg-2:       #EAE5DB;        /* paper step-up (cards) */
-  --bg-3:       #FAF7F2;        /* paper highlight (hover, raised) */
+  /* ---- Brand surfaces — cream paper ----
+     v0.60.1: bumped --bg-2 from #EAE5DB → #FFFFFF for card separation.
+     Per brand mocks §06, cards on cream are pure white with a hairline
+     border. Original step-up cream (#EAE5DB) reads identical to --bg
+     at card size, killing separation. White cards + the existing
+     --line-soft border give crisp visual hierarchy on cream. */
+  --bg:         #F5F1EA;        /* paper surface */
+  --bg-2:       #FFFFFF;        /* card surface — pure white per §06 */
+  --bg-3:       #EAE5DB;        /* secondary step (hover, raised) */
   --line:       rgba(15, 14, 12, .12);
   --line-soft:  rgba(15, 14, 12, .06);
 
@@ -1420,24 +1428,27 @@ main#main {
 }
 
 /* AI byline pill — referenced from src/components/v2/AiByline.jsx.
- * v4-spec amber tone with mono cap-letters; the dot + "↗" hint is
- * baked into the JSX. Hover only when clickable (cursor:pointer). */
+ * v0.60.1: ink-backed per brand contrast rule. Live amber on cream
+ * fails WCAG AA (2.0:1) but amber on ink is AAA (9.2:1). Same chip
+ * design works on either theme because the background is always ink.
+ * The dot stays live amber. */
 .v2 .ai-byline {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   padding: 2px 7px;
   border-radius: 4px;
-  background: var(--amber-soft);
-  color: var(--amber);
+  background: var(--gibol-ink, #0F0E0C);
+  color: var(--gibol-amber, #F59E0B);
   font: 700 9px 'JetBrains Mono', monospace;
   letter-spacing: 0.12em;
+  border: 1px solid rgba(245, 158, 11, 0.28);
 }
 .v2 .ai-byline .dot-ai {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--amber);
+  background: var(--gibol-amber, #F59E0B);
   flex-shrink: 0;
 }
 

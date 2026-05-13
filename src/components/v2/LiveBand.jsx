@@ -75,26 +75,41 @@ export default function LiveBand({
         whiteSpace: 'nowrap',
       }}
     >
+      {/* v0.60.1 — Live indicator as a self-contained ink-backed chip
+          per brand contrast rule (live amber FAILS AA on cream as bare
+          text; on ink it gets AAA 9.2:1). Same chip works on both
+          themes because the background is always ink. */}
       <span
         style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: 6,
+          gap: 5,
           marginRight: 14,
           flexShrink: 0,
+          padding: '2px 7px',
+          borderRadius: 3,
+          background: 'var(--gibol-ink, #0F0E0C)',
+          border: '1px solid rgba(245, 158, 11, 0.32)',
         }}
       >
         <span
           aria-hidden="true"
           style={{
-            width: 6,
-            height: 6,
+            width: 5,
+            height: 5,
             borderRadius: 50,
-            background: 'var(--live)',
+            background: 'var(--gibol-amber, #F59E0B)',
             animation: 'live-band-pulse 1.4s ease-in-out infinite',
           }}
         />
-        <span style={{ color: 'var(--live)', fontWeight: 800, letterSpacing: '0.12em' }}>
+        <span
+          style={{
+            color: 'var(--gibol-amber, #F59E0B)',
+            fontWeight: 800,
+            letterSpacing: '0.18em',
+            fontSize: 10,
+          }}
+        >
           LIVE
         </span>
       </span>
