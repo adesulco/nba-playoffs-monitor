@@ -112,5 +112,20 @@ function envInt(name, fallback) {
 
 export const homeVariant = envInt('VITE_FLAG_HOME', 0);
 
-export const FLAGS = { VISIBLE, LIVE, UI, homeVariant, isLive, isVisible, isUiV2 };
+// v0.60.0 — Phase 2 Pulse & Field rebrand. Cream-theme flag:
+//   VITE_FLAG_BRAND=0 (default)  → existing dark navy chrome unchanged
+//   VITE_FLAG_BRAND=1            → cream-on-ink theme applied via the
+//                                  [data-brand="cream"] attribute on
+//                                  <html>. AppContext sets the attr
+//                                  at boot; user can opt-out via the
+//                                  TopBar theme toggle.
+// Independent from homeVariant + UI.v2 — brand flips chrome (colors,
+// type, lines); v2 flips layout/IA. Any combination is valid.
+export const brandVariant = envInt('VITE_FLAG_BRAND', 0);
+
+export const FLAGS = {
+  VISIBLE, LIVE, UI,
+  homeVariant, brandVariant,
+  isLive, isVisible, isUiV2,
+};
 export default FLAGS;

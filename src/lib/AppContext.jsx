@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { createTranslator } from './i18n.js';
 import { trackEvent } from './analytics.js';
+import { brandVariant } from './flags.js';
 
 const THEME_STORAGE_KEY = 'gibol:theme';
 const LANG_STORAGE_KEY = 'gibol:lang';
 const ACCENT_STORAGE_KEY = 'gibol:accent';
+const BRAND_STORAGE_KEY = 'gibol:brand';
 const F1_CONSTRUCTOR_KEY = 'gibol:f1:constructor';
 const EPL_CLUB_KEY = 'gibol:epl:club';
 const TENNIS_PLAYER_KEY = 'gibol:tennis:player';
@@ -41,6 +43,38 @@ export function AppProvider({ children }) {
     document.documentElement.setAttribute('data-theme', effectiveTheme);
     try { localStorage.setItem(THEME_STORAGE_KEY, theme); } catch {}
   }, [theme, effectiveTheme]);
+
+  // v0.60.0 — Phase 2 Pulse & Field. Resolve final brand value:
+  //   1. localStorage 'gibol:brand' = explicit user opt-in/out
+  //   2. URL ?brand=cream OR ?brand=default = override per session
+  //   3. VITE_FLAG_BRAND env var = global default per deploy
+  // Writes [data-brand] to <html>. CSS in index.css selects on this.
+  const [brand, setBrandState] = useState(() => {
+    try {
+      const url = new URL(window.location.href);
+      const qp = url.searchParams.get('brand');
+      if (qp === 'cream' || qp === 'default') return qp;
+      const saved = localStorage.getItem(BRAND_STORAGE_KEY);
+      if (saved === 'cream' || saved === 'default') return saved;
+    } catch {}
+    return brandVariant === 1 ? 'cream' : 'default';
+  });
+
+  useEffect(() => {
+    if (brand === 'default') {
+      document.documentElement.removeAttribute('data-brand');
+    } else {
+      document.documentElement.setAttribute('data-brand', brand);
+    }
+    try { localStorage.setItem(BRAND_STORAGE_KEY, brand); } catch {}
+  }, [brand]);
+
+  const setBrand = (next) => {
+    if (next === 'cream' || next === 'default') {
+      setBrandState(next);
+      trackEvent?.('brand_changed', { brand: next });
+    }
+  };
 
   // When theme is 'auto', live-update as the OS flips.
   useEffect(() => {
@@ -215,6 +249,11 @@ export function AppProvider({ children }) {
       trackEvent('tennis_player_select', { to: slug || 'clear' });
       setSelectedTennisPlayer(slug);
     },
+    // v0.60.0 — Phase 2 Pulse & Field rebrand. 'cream' applies the
+    // [data-brand="cream"] attribute on <html>, swapping the chrome
+    // to cream-on-ink. 'default' = the existing dark navy chrome.
+    brand,
+    setBrand,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -379,6 +379,121 @@
   color-scheme: light;
 }
 
+/* ==================================================================
+   v0.60.0 — Phase 2 Pulse & Field cream brand theme
+   -------------------------------------------------------------------
+   Applied via [data-brand="cream"] on <html>. AppContext sets the
+   attribute at boot based on the user's localStorage preference, the
+   ?brand= URL override, or VITE_FLAG_BRAND env var.
+
+   This block OVERRIDES the existing dark/light themes when active —
+   higher cascade priority due to later position + matching specificity.
+   The 'default' brand state (attr absent) leaves the existing chrome
+   untouched.
+
+   Key brand non-negotiables enforced here:
+     - Cream surface is the primary; ink is for emphasis only
+     - Warm ink #0F0E0C (not pure black) per brand v1.0
+     - --amber decorative usage remaps to BRAND ORANGE #9A3412 (passes
+       AA on cream at 5.6:1; live amber #F59E0B FAILS AA on cream at
+       2.0:1 per the brand spec contrast table)
+     - --live stays at live amber #F59E0B because it's only used on
+       ink-backed chips (e.g. "LIVE · 67'" pill on ink #0F0E0C bg
+       where it gets the AAA 9.2:1 contrast)
+   ================================================================== */
+:root[data-brand="cream"] {
+  /* ---- Brand surfaces — cream paper ---- */
+  --bg:         #F5F1EA;        /* paper */
+  --bg-2:       #EAE5DB;        /* paper step-up (cards) */
+  --bg-3:       #FAF7F2;        /* paper highlight (hover, raised) */
+  --line:       rgba(15, 14, 12, .12);
+  --line-soft:  rgba(15, 14, 12, .06);
+
+  /* ---- Brand ink scale — warm 6-step ramp ---- */
+  --ink:   #0F0E0C;             /* warm ink (was #0A0A0A) */
+  --ink-2: #3A3833;
+  --ink-3: #7E7B72;
+  --ink-4: #A8A49A;
+
+  /* ---- Brand accents ----
+     --amber on cream is DECORATIVE usage (kicker labels, primary CTAs,
+     section rules). Remapped to brand orange #9A3412 because the
+     reserved live amber #F59E0B fails WCAG AA on cream (2.0:1).
+     Components that want the TRUE live amber for a chip should use
+     --live, which lives on ink chips per brand spec. */
+  --blue:    #1E40AF;           /* dataviz away/neutral */
+  --blue-2:  #2563EB;
+  --amber:   #9A3412;           /* DECORATIVE accent — brand orange */
+  --amber-2: #C2410C;
+
+  /* ---- Signals ---- */
+  --live: #F59E0B;              /* live amber — ONLY on ink chips */
+  --up:   #0F766E;              /* win / positive Δ */
+  --down: #B91C1C;              /* loss / negative Δ */
+  --warn: #9A3412;
+
+  /* Legacy aliases re-resolve through the new tokens */
+  --panel:        var(--bg-2);
+  --panel2:       var(--bg-3);
+  --panel-soft:   var(--bg-3);
+  --panel-row:    var(--bg-2);
+  --text:         var(--ink);
+  --dim:          var(--ink-2);
+  --muted:        var(--ink-3);
+  --amber-bright: var(--amber-2);
+  --green:        var(--up);
+  --red:          var(--down);
+  --hover:        #ECE4CE;
+  --topbar-bg:    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  --hero-bg:      linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+
+  /* Lines on cream are darker rgba — old dark-theme rgba(255,...) is
+     invisible on cream, fix here. */
+  --line-1: rgba(15,14,12,.06);
+  --line-2: rgba(15,14,12,.12);
+  --line-3: rgba(15,14,12,.18);
+
+  /* Surface roles + foreground roles */
+  --ink-0: var(--bg);
+  --ink-1: var(--bg);
+  --fg-1: var(--ink);
+  --fg-2: var(--ink-2);
+  --fg-3: var(--ink-3);
+  --accent:      var(--amber);
+  --accent-soft: var(--amber-2);
+  --soon:        var(--ink-4);
+  --success:     var(--up);
+  --danger:      var(--down);
+
+  /* Semantic roles */
+  --bg-page:        var(--bg);
+  --bg-surface:     var(--bg);
+  --bg-raised:      var(--bg-2);
+  --bg-elevated:    var(--bg-3);
+  --fg-primary:     var(--ink);
+  --fg-secondary:   var(--ink-2);
+  --fg-tertiary:    var(--ink-3);
+  --border-subtle:  var(--line-1);
+  --border-default: var(--line-2);
+  --border-strong:  var(--line-3);
+  --border-interactive: #7E7B72;       /* ink-3 — 3.6:1 on cream */
+  --accent-default: var(--amber);      /* primary CTA = brand orange */
+  --signal-live:    var(--live);
+
+  /* v4 redesign tokens (set on the existing light theme — preserve here) */
+  --ink-5: #8C8071;
+  --line-loud: #C9BFA8;
+  --blue-soft: rgba(30,64,175,0.10);
+  --amber-soft: rgba(154,52,18,0.12);
+  --live-soft: rgba(245,158,11,0.16);   /* amber-tinted for live chips */
+  --paper: #F5F1EA;
+
+  /* Wordmark cover-rect tracks the active surface */
+  --gibol-cover: #F5F1EA;
+
+  color-scheme: light;
+}
+
 html {
   /* Reserve space for the vertical scrollbar at all times so the viewport
      width doesn't change between short pages (no scrollbar) and long ones

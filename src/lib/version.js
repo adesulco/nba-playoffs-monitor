@@ -5783,7 +5783,35 @@
 // --gibol-* onto :root, flipping --bg from navy to cream. Will
 // roll out gated.
 
-export const APP_VERSION = '0.59.9';
+// v0.60.0 — Phase 2 Pulse & Field rebrand — cream theme behind a flag.
+//
+// Adds [data-brand="cream"] CSS that overlays the new cream/ink/orange
+// palette onto the existing token system. NOT enabled by default;
+// activated by:
+//   1. VITE_FLAG_BRAND=1 env var (global default per deploy), OR
+//   2. ?brand=cream URL param (per-session override for testing), OR
+//   3. localStorage 'gibol:brand' = 'cream' (per-user persistent opt-in)
+//
+// Pieces:
+//   - src/lib/flags.js — new `brandVariant` int flag (0=default, 1=cream)
+//   - src/lib/AppContext.jsx — reads URL/localStorage/env in that
+//     precedence order; writes [data-brand] to <html>; exposes
+//     `brand` + `setBrand` on useApp() for future TopBar toggle
+//   - src/index.css — :root[data-brand="cream"] block remaps every
+//     surface/ink/accent/signal token. Higher cascade priority than
+//     the existing dark/light blocks. Brand non-negotiables:
+//       • cream surface primary (--bg #F5F1EA)
+//       • warm ink #0F0E0C
+//       • --amber DECORATIVE = brand orange #9A3412 (AA on cream)
+//       • --live = live amber #F59E0B (used only on ink chips per
+//         brand contrast table where it gets AAA 9.2:1)
+//
+// Risk model: zero impact when VITE_FLAG_BRAND=0 (the production
+// default). Flip env to 1 in Vercel Preview env first, watch a few
+// pages, then promote to production. Rollback is `unset VITE_FLAG_BRAND`
+// + redeploy, or per-user via localStorage clear.
+
+export const APP_VERSION = '0.60.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
