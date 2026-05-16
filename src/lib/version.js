@@ -5889,7 +5889,21 @@
 // level, not in this repo).
 // Audit ref: audits/2026-05-15-state-and-proposals.md item D.
 
-export const APP_VERSION = '0.60.4';
+// v0.60.5 — OpenF1 health probe fix (red since v0.2.0).
+// /api/health/data-sources reported `openf1: 404` for ~3 months.
+// Root cause: probe URL was meetings?year=YYYY&limit=1 — OpenF1 does
+// not support `limit` as a query param and rejects the entire query
+// with HTTP 404 + body {"detail":"No results found."}. Same URL
+// without `&limit=1` returns 200 with the full year's calendar
+// (~20 KB), confirming the API itself is healthy.
+// Fix: probe a stable historical meeting key (Abu Dhabi GP 2024,
+// meeting_key=1252). Returns 200 + ~800 bytes, year-independent,
+// deterministic. The audit's race-weekend-conditional approach
+// would be cleaner long-term but requires schedule-awareness in
+// the health endpoint; punting on that for the next-week list.
+// Audit ref: audits/2026-05-15-state-and-proposals.md items #3 + F.
+
+export const APP_VERSION = '0.60.5';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -12,7 +12,13 @@
 const CHECKS = [
   { name: 'espn-nba', url: 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard' },
   { name: 'polymarket-gamma', url: 'https://gamma-api.polymarket.com/events?slug=2026-nba-champion' },
-  { name: 'openf1', url: 'https://api.openf1.org/v1/meetings?year=2026&limit=1' },
+  // v0.60.5 — `&limit=1` is not a valid OpenF1 filter; the API treats
+  // unrecognised query params as zero-match filters and returns 404
+  // with body `{"detail":"No results found."}`. Reported red since
+  // v0.2.0 in audits/2026-05-15-state-and-proposals.md item #3.
+  // Probe a stable historical meeting (Abu Dhabi GP 2024,
+  // meeting_key=1252) — year-independent, deterministic, ~800 bytes.
+  { name: 'openf1', url: 'https://api.openf1.org/v1/meetings?meeting_key=1252' },
   { name: 'jolpica-f1', url: 'https://api.jolpi.ca/ergast/f1/current.json' },
   { name: 'espn-soccer-eng1', url: 'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard' },
   { name: 'football-data-eng', url: 'https://api.football-data.org/v4/competitions/PL' },
