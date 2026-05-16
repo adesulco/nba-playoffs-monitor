@@ -1240,6 +1240,13 @@ main#main {
   .v2-topbar-nav {
     -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
             mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+    /* v0.60.2 — pad the scroll container so the rightmost nav item
+       (currently "World Cup [SOON]") sits past the 24 px fade zone.
+       Without this, scrolling all the way right still left the last
+       label clipped by the mask, reading "World Cu…" on 360–390 px
+       viewports. The 28 px gutter (24 mask + 4 breathing room) lets
+       the fade do its "more this way" job on empty space, not text. */
+    padding-right: 28px;
   }
 }
 

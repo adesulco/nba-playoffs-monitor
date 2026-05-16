@@ -195,17 +195,30 @@ export default function NewsroomSlice({
         // for the home page (mixes sports, biases to current match
         // window). Falls back to legacy per-sport "newest approved"
         // behavior on hub pages where contextual=false.
+        //
+        // v0.60.3 — freshness cutoff on the fallback path. The
+        // original fallback dumped "any approved, newest first"
+        // when contextual returned 0, which let 11–17-day-old
+        // articles sit on the home in dead-content windows. Cap
+        // the fallback at 14 days; if nothing fresh exists, return
+        // empty so the slice collapses (parent renders null on
+        // articles.length === 0). Audit ref:
+        // audits/2026-05-15-state-and-proposals.md item B1.
         if (contextual) {
           const feed = buildContextualFeed(data.articles || [], limit);
-          // If contextual yields nothing (no recent matches), fall
-          // back to "any approved" so the slice doesn't render empty.
-          const fallback = feed.length === 0
-            ? (data.articles || [])
-                .filter((a) => a.approved === true || a.manual_review === false)
-                .sort((a, b) => (b.published_at || '').localeCompare(a.published_at || ''))
-                .slice(0, limit)
-            : feed;
-          setArticles(fallback);
+          let resolved = feed;
+          if (feed.length === 0) {
+            const cutoffMs = Date.now() - 14 * 24 * 3600 * 1000;
+            resolved = (data.articles || [])
+              .filter((a) => a.approved === true || a.manual_review === false)
+              .filter((a) => {
+                const ts = a.published_at ? new Date(a.published_at).getTime() : 0;
+                return ts >= cutoffMs;
+              })
+              .sort((a, b) => (b.published_at || '').localeCompare(a.published_at || ''))
+              .slice(0, limit);
+          }
+          setArticles(resolved);
           return;
         }
 

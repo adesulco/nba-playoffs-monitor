@@ -406,11 +406,16 @@ export default function HomeV2() {
               this-week standings ranked by recency. Falls back to
               "any approved" if nothing recent. Mixes sports — the
               home page shouldn't pin to one league. */}
+          {/* v0.60.3 — moreHref="/news" pointed at a route that
+              does not exist (no /news in App.jsx), so the
+              "Lihat semua →" link 404'd. Drop until a real news
+              archive ships. Slice still hides itself when there
+              are no fresh-enough articles (NewsroomSlice 14-day
+              cutoff per same ship). */}
           <NewsroomSlice
             contextual={true}
             limit={4}
             newsroomLabel="GIBOL NEWSROOM"
-            moreHref="/news"
           />
 
           {/* Popular tags */}

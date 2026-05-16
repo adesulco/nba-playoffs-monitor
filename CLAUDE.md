@@ -22,7 +22,7 @@ The two are sibling — generated content is written to `public/content/` as JSO
 
 ### Web app
 - **Frontend:** Vite + React 18 SPA. CSS-in-JS using the project's `COLORS` constant from `src/lib/constants.js`. CSS classes for media-query breakpoints in `src/index.css`. **Not Next.js** — anything assuming Next.js routing / MDX / ISR needs adaptation.
-- **Deploy:** Vercel project `nba-playoffs-monitor` in team `adesulcos-projects`. Production domain `www.gibol.co`. Apex 308-redirects to www. Direct deploys via `npx vercel --prod --yes` (no git remote).
+- **Deploy:** Vercel project `nba-playoffs-monitor` in team `adesulcos-projects`. Production domain `www.gibol.co`. Apex 308-redirects to www. GitHub remote wired (`origin https://github.com/adesulco/nba-playoffs-monitor.git`); Vercel auto-deploys on push to `main` and the `gibol-ship` script polls the deploy. Manual override: `npx vercel --prod --yes` from the repo root.
 - **Functions:** Vercel Serverless under `api/`. Node runtime. **11 / 12 functions used** (Vercel Hobby limit). One slot remaining; next addition triggers consolidation.
 - **Backend:** Supabase project `egzacjfbmgbcwhtvqixc` (Mumbai / ap-south-1). Postgres 17. Migrations live at `supabase/migrations/`. Apply via SQL editor (no Management API token in this env).
 - **Data feeds:** ESPN (NBA + EPL + Liga 1), API-Football Pro $19/mo (EPL stats + Liga 1 + WC), Polymarket (NBA odds), jolpica-f1 + OpenF1 (F1), tennis sources via `tennis-news`. Anthropic API for the content engine. OpenAI embeddings (Phase 1+).
@@ -67,8 +67,8 @@ Locked decisions from `docs/content-engine-response.md` § 2:
 
 | If you need to… | Read |
 |---|---|
-| Understand the web app architecture | `docs/01-architecture.md` |
-| Current web app status (live ship, what's open) | `docs/00-current-state.md` (and `src/lib/version.js` ship notes) |
+| Understand the web app architecture | `../docs/01-architecture.md` (lives at the umbrella project level, not in this repo) |
+| Current web app status (live ship, what's open) | `src/lib/version.js` ship notes (authoritative) and `../docs/00-current-state.md` |
 | Phase 2 UX history (Sprints A–F) | `docs/phase-2-ux-directive.md` (revised) + `docs/phase-2-ux-response.md` |
 | Content engine architecture | `spec-content-agent.md` (author's spec) → THEN `docs/content-engine-response.md` (our amendments) |
 | Bahasa voice rules (non-negotiable) | `packages/content-engine/prompts/voice-rules.md` |

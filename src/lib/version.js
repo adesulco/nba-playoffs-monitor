@@ -5849,7 +5849,47 @@
 // Verified live with ?brand=cream and ?brand=default — both render
 // brand-correct.
 
-export const APP_VERSION = '0.60.1';
+// v0.60.2 — Mobile TopBar truncation fix.
+// Defect: on 360–390 px viewports the rightmost nav item (currently
+// "World Cup [SOON]") rendered as "World Cu…" — even at end-of-scroll.
+// Source: M-2 right-edge fade mask in src/index.css (.v2-topbar-nav
+// @ ≤720 px) applies a 24 px transparent gradient to the container's
+// painted box; with no right padding, the last 24 px of the last
+// label always sat inside the fade zone.
+// Fix: add `padding-right: 28px` to .v2-topbar-nav inside the same
+// ≤720 px block. The mask now fades empty gutter, not text. The
+// "more this way" affordance is preserved when overflow is present.
+// Audit ref: audits/2026-05-15-state-and-proposals.md item #1.
+
+// v0.60.3 — Newsroom 14-day freshness cutoff + dead "Lihat semua" link.
+// Defect 1: home page surfaced 11–17-day-old AI · HUMAN EDITED cards
+// in mid-NBA-Round-2 windows. NewsroomSlice contextual scoring already
+// enforces recency (recap ≤48 h, preview ≤24 h, standings ≤7 d, team
+// ≤14 d), but the contextual fallback dumped "any approved, newest
+// first" with no recency cutoff when the scored feed returned 0.
+// Fix: filter the fallback to articles published within the last
+// 14 days. If still empty, return [] — the slice's existing empty
+// guard hides it cleanly.
+// Defect 2: HomeV2 passed moreHref="/news" to the slice. There is
+// no /news route in App.jsx, so "Lihat semua →" 404'd. Removed the
+// prop until a real archive route exists.
+// Audit ref: audits/2026-05-15-state-and-proposals.md item B1.
+
+// v0.60.4 — CLAUDE.md truth-up (docs only, no runtime behavior change).
+// Outer ../CLAUDE.md fixes: corrected the "no git remote" deploy
+// claim (origin IS wired); refreshed the month-stale "What's already
+// live (as of 2026-04-19)" snapshot to v0.60.1 reality (six sport
+// hubs, Brand v1.0 cream, Newsroom slice, 216-URL sitemap); replaced
+// the ~30-entry aspirational skill list (none of which existed in any
+// installed plugin as of 2026-05-15) with the verified inventory of
+// installed Anthropic + product-management + operations skills.
+// Inner ./CLAUDE.md fixes: same git-remote correction; doc-path
+// references to docs/01-architecture.md / docs/00-current-state.md
+// re-pointed to ../docs/... (those files live at the umbrella project
+// level, not in this repo).
+// Audit ref: audits/2026-05-15-state-and-proposals.md item D.
+
+export const APP_VERSION = '0.60.4';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
