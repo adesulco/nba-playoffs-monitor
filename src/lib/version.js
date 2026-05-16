@@ -5916,7 +5916,38 @@
 // green.
 // Audit ref: audits/2026-05-15-state-and-proposals.md item #4.
 
-export const APP_VERSION = '0.60.6';
+// v0.60.7 — EPL GOLDEN BOOT KPI fix.
+// EPL hub's GOLDEN BOOT KPI rendered "—" with source "ESPN" because
+// useEPLScorers hit /api/proxy/espn-common/soccer/eng.1/leaders, which
+// resolves to site.web.api.espn.com/apis/common/v3/sports/.../leaders —
+// ESPN decommissioned that endpoint across the soccer league space (now
+// returns 404 for every variant probed: site/v2, common/v3, web/v3).
+// The replacement upstream lives at sports.core.api.espn.com under the
+// /v2/sports/{sport}/leagues/{league}/seasons/{startYear}/types/1/leaders
+// path, which Gibol already proxies as `espn-core`.
+//
+// Two structural shifts in the new endpoint:
+//   1. Athletes + teams are HATEOAS $ref URLs, not inlined objects.
+//      The hook now follows the top-N athlete refs in parallel through
+//      the proxy to get displayName/shortName/position. Team accent
+//      keeps coming from CLUBS_BY_ESPN_ID — id is parsed out of the
+//      team $ref path so we don't need a second team fetch.
+//   2. The goals category is named `goalsLeaders` first, then `goals`
+//      under the same shape. Hook accepts both.
+//
+// Cost: 1 leaders + N=limit athlete fetches per refresh (5 min poll).
+// Proxy edge-cache (espn-core: 20 s default) absorbs concurrent users.
+//
+// Public hook return shape unchanged (rank/goals/name/shortName/headshot/
+// position/team{id,slug,name,shortName,accent}), so EPL.jsx and the
+// ContextStrip GOLDEN BOOT cell don't change.
+//
+// Also updated the doc comment in EPL.jsx's header (line 123) so future
+// readers see the right proxy path.
+//
+// Audit ref: audits/2026-05-15-state-and-proposals.md items #5 + G.
+
+export const APP_VERSION = '0.60.7';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

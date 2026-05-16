@@ -120,7 +120,8 @@ function matchShareUrl(m) {
  * Data:
  *   - ESPN soccer/eng.1 standings (proxied via espn-v2)
  *   - ESPN soccer/eng.1 scoreboard (proxied via espn)
- *   - ESPN soccer/eng.1 leaders (proxied via espn-common)
+ *   - ESPN soccer/eng.1 leaders (proxied via espn-core; v0.60.7 — old
+ *     espn-common/v3 endpoint was decommissioned by ESPN)
  *
  * Design grammar follows F1.jsx — same panel frame, same type scale, same
  * borderLeft accent, same table styling. Differs only in sport accent (PL
