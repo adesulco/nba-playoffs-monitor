@@ -21,16 +21,18 @@ const CHECKS = [
   { name: 'openf1', url: 'https://api.openf1.org/v1/meetings?meeting_key=1252' },
   { name: 'jolpica-f1', url: 'https://api.jolpi.ca/ergast/f1/current.json' },
   { name: 'espn-soccer-eng1', url: 'https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/scoreboard' },
-  { name: 'football-data-eng', url: 'https://api.football-data.org/v4/competitions/PL' },
+  // v0.60.6 — football-data-eng probe dropped. Audit ref item #4:
+  // free football-data tier doesn't serve EPL data, no hook in src/
+  // calls it through the proxy (verified via grep), and the FOOTBALL_DATA_TOKEN
+  // env was either expired or removed (probe was 403 since v0.59.x). The
+  // `football-data` provider config in api/proxy.js is left in place
+  // (dead but harmless) in case a future paid-tier use case revives it.
 ];
 
 async function pingOne(check) {
   const t0 = Date.now();
   try {
     const headers = { accept: 'application/json' };
-    if (check.name === 'football-data-eng' && process.env.FOOTBALL_DATA_TOKEN) {
-      headers['X-Auth-Token'] = process.env.FOOTBALL_DATA_TOKEN;
-    }
     const res = await fetch(check.url, { headers });
     return {
       ok: res.ok,

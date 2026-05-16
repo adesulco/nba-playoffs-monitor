@@ -5903,7 +5903,20 @@
 // the health endpoint; punting on that for the next-week list.
 // Audit ref: audits/2026-05-15-state-and-proposals.md items #3 + F.
 
-export const APP_VERSION = '0.60.5';
+// v0.60.6 — Drop the football-data-eng health probe.
+// /api/health/data-sources still reported `ok: false` after the OpenF1
+// fix because football-data-eng was 403 (token expired or removed in
+// Vercel env). Verified via grep: the football-data provider has zero
+// callers in src/ — the free tier doesn't serve EPL data anyway, and
+// the project uses API-Football for EPL/Liga 1 (per inner CLAUDE.md).
+// Dropping the probe + its conditional FOOTBALL_DATA_TOKEN header
+// injection. Left the proxy provider config in api/proxy.js intact
+// (dead but harmless) in case a paid-tier use case ever revives it.
+// Health endpoint should now return ok: true with all six providers
+// green.
+// Audit ref: audits/2026-05-15-state-and-proposals.md item #4.
+
+export const APP_VERSION = '0.60.6';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
