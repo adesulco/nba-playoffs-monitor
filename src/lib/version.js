@@ -6050,7 +6050,26 @@
 //
 // Audit ref: QA Test/gibol-co-prelaunch-audit.md (full register at §3).
 
-export const APP_VERSION = '0.61.0';
+// v0.61.1 — F-005 hotfix: prerender + sitemap also emit hreflang loop.
+//
+// Post-deploy verification of v0.61.0 caught that the hreflang + og:locale:alternate
+// removal only landed in the React-rendered (Helmet) version — scrapers
+// without JS still saw the loop. The prerender.mjs script bakes its OWN
+// metaBlock at build time (which is what crawlers see at the static HTML
+// layer), and that block emitted the same three id/en/x-default
+// alternates + og:locale:alternate=en_US.
+//
+// scripts/prerender.mjs cleanups:
+//   - metaBlock (lines 594–613): hreflang trio + og:locale:alternate removed.
+//   - sitemapUrls (lines 793–803): xhtml:link hreflang trio removed; sitemap
+//     entries are now loc + lastmod + changefreq + priority only.
+//
+// After this ship the prod HTML head and sitemap.xml both ship a single
+// id-ID locale signal with no hreflang loop.
+//
+// Audit ref: QA Test/gibol-co-prelaunch-audit.md F-005 (re-close).
+
+export const APP_VERSION = '0.61.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -591,13 +591,15 @@ function renderHtml(template, route) {
     );
   }
 
-  // Inject canonical + hreflang + OG + Twitter (right before </head>)
+  // Inject canonical + OG + Twitter (right before </head>).
+  // v0.61.0 — hreflang block + og:locale:alternate removed (audit F-005).
+  // Site is Bahasa-only; no /en/ URL subtree exists, so emitting id/en/
+  // x-default alternates all pointing at the same canonical was a
+  // self-loop Google Search Console flags as invalid. og:locale="id_ID"
+  // alone correctly signals the language.
   const metaBlock = `
     <!-- Prerendered per-route meta (F01 fix — scrapers without JS see this) -->
     <link rel="canonical" href="${canonical}" />
-    <link rel="alternate" hreflang="id" href="${canonical}" />
-    <link rel="alternate" hreflang="en" href="${canonical}" />
-    <link rel="alternate" hreflang="x-default" href="${canonical}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="gibol.co" />
     <meta property="og:title" content="${escapeAttr(route.title)}" />
@@ -605,7 +607,6 @@ function renderHtml(template, route) {
     <meta property="og:url" content="${canonical}" />
     <meta property="og:image" content="${ogImage}" />
     <meta property="og:locale" content="id_ID" />
-    <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeAttr(route.title)}" />
     <meta name="twitter:description" content="${escapeAttr(route.description)}" />
@@ -791,14 +792,18 @@ const today = new Date().toISOString().slice(0, 10);
 const indexable = unique.filter((r) => !r._draft);
 const sitemapUrls = indexable.map((r) => {
   const loc = `${SITE}${r.path === '/' ? '/' : r.path}`;
+  // v0.61.0 — xhtml:link hreflang block removed (audit F-005). Same
+  // reasoning as the HTML metaBlock above: site is Bahasa-only, the
+  // alternates were a self-loop. Sitemap now emits just loc + lastmod
+  // + changefreq + priority. Removing the xhtml:link entries also lets
+  // us drop the xmlns:xhtml="http://www.w3.org/1999/xhtml" attribute
+  // from the urlset root if we want to tighten further (left in place
+  // for now since other ships may want it back).
   return `  <url>
     <loc>${loc}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${sitemapChangefreqFor(r)}</changefreq>
     <priority>${sitemapPriorityFor(r)}</priority>
-    <xhtml:link rel="alternate" hreflang="id" href="${loc}" />
-    <xhtml:link rel="alternate" hreflang="en" href="${loc}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${loc}" />
   </url>`;
 }).join('\n');
 
