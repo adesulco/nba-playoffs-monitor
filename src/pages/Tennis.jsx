@@ -5,7 +5,7 @@ import { useApp } from '../lib/AppContext.jsx';
 import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 // v0.53.1 — Phase C redesign: 3-up Newsroom Slice. Gated UI.v2.
 import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
-import { UI } from '../lib/flags.js';
+import { UI, polymarketEnabled } from '../lib/flags.js';
 // v0.17.0 Phase 2 Sprint B — shared chrome row.
 import HubStatusStrip from '../components/v2/HubStatusStrip.jsx';
 import HubActionRow from '../components/v2/HubActionRow.jsx';
@@ -381,6 +381,8 @@ const SLAM_POLYMARKET_SLUGS = {
 };
 
 function TennisPeluangJuara({ slam, accentColor, lang }) {
+  // v0.61.2 — audit F-002 kill-switch (see flags.js polymarketEnabled).
+  if (!polymarketEnabled) return null;
   // Lookup the polymarket slugs for the current upcoming slam. If none
   // exists (the slam identifier isn't mapped yet), render nothing so the
   // section disappears cleanly instead of flashing a broken panel.

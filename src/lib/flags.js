@@ -112,6 +112,23 @@ function envInt(name, fallback) {
 
 export const homeVariant = envInt('VITE_FLAG_HOME', 0);
 
+// v0.61.2 — Polymarket panel kill-switch (audit F-002, interim).
+//   VITE_FLAG_POLYMARKET=1 (default)  → all Polymarket-branded panels render
+//   VITE_FLAG_POLYMARKET=0            → every panel with prominent "POLYMARKET"
+//                                       branding (NBA title odds, EPL title
+//                                       odds, F1 championship odds, Tennis
+//                                       slam odds) renders null
+//
+// Lets us pull the panels off prod in 1 hour via a Vercel env var change
+// if Kominfo issues a takedown notice over UU ITE 27(2) / KUHP 303
+// exposure, without a code deploy. Audit OR-3 mitigation. Underlying
+// /api/proxy/polymarket-* fetches continue (server-side, not user-visible
+// to a regulator scanning the rendered page).
+//
+// Full removal vs interim hide is decision-gated on an Indonesian
+// counsel-of-record memo (audit F-002 Blocker).
+export const polymarketEnabled = envFlag('VITE_FLAG_POLYMARKET', true);
+
 // v0.60.0 — Phase 2 Pulse & Field rebrand. Cream-theme flag:
 //   VITE_FLAG_BRAND=0 (default)  → existing dark navy chrome unchanged
 //   VITE_FLAG_BRAND=1            → cream-on-ink theme applied via the
@@ -125,7 +142,7 @@ export const brandVariant = envInt('VITE_FLAG_BRAND', 0);
 
 export const FLAGS = {
   VISIBLE, LIVE, UI,
-  homeVariant, brandVariant,
+  homeVariant, brandVariant, polymarketEnabled,
   isLive, isVisible, isUiV2,
 };
 export default FLAGS;

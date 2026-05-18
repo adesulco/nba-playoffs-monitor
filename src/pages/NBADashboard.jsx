@@ -15,7 +15,7 @@ import HubActionRow from '../components/v2/HubActionRow.jsx';
 // v0.53.0 — Phase C redesign: 3-up Newsroom Slice at hub bottom.
 // Gated behind UI.v2 flag; self-hides on empty (no published articles).
 import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
-import { UI } from '../lib/flags.js';
+import { UI, polymarketEnabled } from '../lib/flags.js';
 import HubPicker from '../components/v2/HubPicker.jsx';
 import KpiStrip from '../components/v2/KpiStrip.jsx';
 import LiveGameFocus from '../components/LiveGameFocus.jsx';
@@ -622,6 +622,15 @@ export default function NBADashboard() {
               heaviest below-fold render in the whole page. */}
           <LazyOnMobile minHeight={520} ariaLabel={lang === 'id' ? 'Memuat peluang juara' : 'Loading title odds'}>
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
+            {/* v0.61.2 — audit F-002 kill-switch. The TITLE ODDS panel is
+                the most prominently Polymarket-branded surface in the app
+                (panel header reads "POLYMARKET · LIVE"). Wrapping in the
+                polymarketEnabled flag lets ops drop the entire panel via
+                Vercel env var (VITE_FLAG_POLYMARKET=0) inside an hour on
+                a Kominfo notice, without a code deploy. The adjacent
+                Featured Series + Clutch Leaderboard sections are
+                in-house data — not gated. */}
+            {polymarketEnabled && (
             <div style={panelBox}>
               <div style={panelHeader}>
                 <div style={panelTitle}>{t('titleOdds')}</div>
@@ -661,6 +670,7 @@ export default function NBADashboard() {
                 })}
               </div>
             </div>
+            )}
 
             <div style={panelBox}>
               <div style={panelHeader}>

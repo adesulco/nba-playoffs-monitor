@@ -6,7 +6,7 @@ import ContactBar from '../components/ContactBar.jsx';
 import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 // v0.53.1 — Phase C redesign: 3-up Newsroom Slice. Gated UI.v2.
 import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
-import { UI } from '../lib/flags.js';
+import { UI, polymarketEnabled } from '../lib/flags.js';
 // v0.17.0 Phase 2 Sprint B — shared chrome row replacing the inline
 // 200px F1 hero. eyebrow / h1 / LIVE chip / CopyLinkButton all
 // collapsed into <HubStatusStrip> mounted via setTopbarSubrow.
@@ -750,6 +750,8 @@ function F1ContextStrip({ drivers, teams, races, championOdds, lang }) {
 // accent-tinted horizontal bars, % value, and delta vs last poll. Hidden
 // entirely when the hook returns nothing (market gone / proxy down).
 function F1PeluangJuara({ odds, lang }) {
+  // v0.61.2 — audit F-002 kill-switch (see flags.js polymarketEnabled).
+  if (!polymarketEnabled) return null;
   if (!odds || odds.length === 0) return null;
   return (
     <section style={{

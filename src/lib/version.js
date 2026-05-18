@@ -6069,7 +6069,49 @@
 //
 // Audit ref: QA Test/gibol-co-prelaunch-audit.md F-005 (re-close).
 
-export const APP_VERSION = '0.61.1';
+// v0.61.2 — Polymarket panel kill-switch (audit F-002 interim mitigation).
+//
+// The audit's F-002 Blocker (Polymarket prediction-market odds exposure
+// to Indonesian audience under KUHP 303 / UU ITE 27(2)) needs an
+// Indonesian counsel memo before it can fully close. Per audit OR-3
+// the interim mitigation is a feature flag so ops can drop the panels
+// inside an hour via Vercel env var if Kominfo sends a takedown notice,
+// without a code deploy.
+//
+// Added:
+//   - src/lib/flags.js — `polymarketEnabled` flag, env VITE_FLAG_POLYMARKET
+//     (default true). Exported as both named export and on the FLAGS
+//     default object.
+//   - src/pages/EPL.jsx — PeluangJuara guards early-return null when off
+//   - src/pages/F1.jsx — F1PeluangJuara guards early-return null when off
+//   - src/pages/Tennis.jsx — TennisPeluangJuara guards early-return null
+//   - src/pages/NBADashboard.jsx — TITLE ODDS panel (the most prominent
+//     "POLYMARKET · LIVE"-branded surface) wrapped at the call site with
+//     {polymarketEnabled && (...)}; the adjacent Featured Series + Clutch
+//     Leaderboard sections (in-house data, not Polymarket-derived) remain
+//     unaffected.
+//
+// Coverage: gates the 4 main panels with prominent POLYMARKET branding
+// (NBA title, EPL title, F1 championship, Tennis slam). Smaller inline
+// odds chips on EPL/SuperLeague day-strip match cards are NOT gated —
+// those carry no Polymarket branding and have a separate defensibility
+// posture as "model-derived" odds. If full removal is required, extend
+// the gate to the chip hooks (useEPLMatchOdds, etc.) as a follow-up.
+//
+// Underlying /api/proxy/polymarket-* fetches continue server-side when
+// the flag is off — those aren't user-visible (proxy URL is gibol.co),
+// so they don't change the regulatory exposure surface. If counsel
+// wants the fetches stopped too, gate at the hook layer.
+//
+// To pull live in prod:
+//   1. Vercel dashboard → adesulcos-projects/nba-playoffs-monitor → env vars
+//   2. Set VITE_FLAG_POLYMARKET=0 in Production scope
+//   3. Trigger redeploy (or push any commit to main)
+//   4. All four panels render null on next build (~60 s)
+//
+// Audit ref: QA Test/gibol-co-prelaunch-audit.md F-002 + OR-3.
+
+export const APP_VERSION = '0.61.2';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

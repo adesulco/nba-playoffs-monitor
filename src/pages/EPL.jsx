@@ -5,7 +5,7 @@ import SEO from '../components/SEO.jsx';
 import SEOContent from '../components/SEOContent.jsx';
 // v0.53.1 — Phase C redesign: 3-up Newsroom Slice. Gated UI.v2.
 import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
-import { UI } from '../lib/flags.js';
+import { UI, polymarketEnabled } from '../lib/flags.js';
 import { readableOnDark } from '../lib/contrast.js';
 import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 // v0.17.0 Phase 2 Sprint B — shared chrome row.
@@ -510,6 +510,11 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
 // change delta vs last poll. Renders nothing when the hook returns empty
 // (e.g. Polymarket market doesn't exist for this season yet).
 function PeluangJuara({ odds, loading, error, lang }) {
+  // v0.61.2 — audit F-002 kill-switch. Env-var override
+  // VITE_FLAG_POLYMARKET=0 makes the entire panel render null without
+  // a code deploy. Lets ops pull the panel inside an hour on a Kominfo
+  // takedown notice.
+  if (!polymarketEnabled) return null;
   // Hide the whole section if there's nothing meaningful to show.
   // Loading with no prior data → hide. Error → hide (the rest of the
   // dashboard shouldn't fail because Polymarket flinched).
