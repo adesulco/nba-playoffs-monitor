@@ -1168,7 +1168,7 @@ export default function EPLDayScoreboard({ upcoming, recent, oddsByMatchId, load
                   ? (lang === 'id' ? '—' : '—')
                   : hasLive
                     ? `● ${dayMatches.length}`
-                    : `${dayMatches.length} ${lang === 'id' ? 'laga' : 'games'}`}
+                    : `${dayMatches.length} ${lang === 'id' ? 'laga' : (dayMatches.length === 1 ? 'game' : 'games')}`}
               </div>
             </button>
           );

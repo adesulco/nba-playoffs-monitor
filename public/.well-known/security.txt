@@ -1,0 +1,5 @@
+Contact: mailto:security@gibol.co
+Expires: 2027-05-18T00:00:00Z
+Preferred-Languages: id, en
+Canonical: https://www.gibol.co/.well-known/security.txt
+Policy: https://www.gibol.co/about

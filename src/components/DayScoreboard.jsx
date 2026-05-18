@@ -504,7 +504,14 @@ export default function DayScoreboard({
             {t('scoresSchedule')}
           </span>
           <span style={{ fontSize: 9.5, color: C.dim }}>
-            {activeCount > 0 ? `${activeCount} ${t('games')}` : t('offDay')}
+            {/* v0.61.0 — pluralization fix (audit F-010). Bahasa `laga`
+                takes no plural form, English needs game/games. The shared
+                t('games') key returns 'LAGA' which works for ID but reads
+                as "1 games" under EN. Inline ternary here keeps the
+                i18n catalogue stable. */}
+            {activeCount > 0
+              ? `${activeCount} ${lang === 'id' ? 'laga' : (activeCount === 1 ? 'game' : 'games')}`
+              : t('offDay')}
           </span>
         </div>
         <div style={{ fontSize: 9.5, color: C.dim, letterSpacing: 0.5 }}>

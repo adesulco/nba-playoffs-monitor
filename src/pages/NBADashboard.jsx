@@ -391,7 +391,9 @@ export default function NBADashboard() {
           </span>
           <span>{new Intl.DateTimeFormat(lang === 'id' ? 'id-ID' : 'en-US', { weekday: 'short', month: 'short', day: 'numeric' }).format(now)}</span>
           <span style={{ fontSize: 10 }}>
-            {lastUpdate ? `refresh ${Math.round((now - lastUpdate) / 1000)}s ago` : 'connecting...'}
+            {/* v0.61.0 — verb-tense fix (audit F-010). "refresh 4s ago"
+                reads as broken English; "updated" is the right tense. */}
+            {lastUpdate ? `updated ${Math.round((now - lastUpdate) / 1000)}s ago` : 'connecting...'}
           </span>
           {/* v0.17.0 Phase 2 Sprint B — Copy + Share on the NBA hub.
               NBA is the reference shell, polish only — additive,
@@ -625,7 +627,11 @@ export default function NBADashboard() {
                 <div style={panelTitle}>{t('titleOdds')}</div>
                 <div style={panelMeta}>
                   {errors.champion ? <span style={{ color: C.red }}>● CACHED</span> : <span style={{ color: C.green }}>● POLYMARKET</span>}
-                  {wsStatus === 'live' && <span style={{ color: C.green, marginLeft: 6 }}>· WS TICK</span>}
+                  {/* v0.61.0 — audit F-011: "WS TICK" was internal slang
+                      for "WebSocket tick" (live feed alive). No on-page
+                      glossary, no tooltip. Replaced with universally-clear
+                      "LIVE" which works in both languages. */}
+                  {wsStatus === 'live' && <span style={{ color: C.green, marginLeft: 6 }}>· LIVE</span>}
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '22px 1fr 70px 52px 36px', gap: 4, padding: '5px 12px', fontSize: 9, color: C.dim, letterSpacing: 1, borderBottom: `1px solid ${C.lineSoft}`, background: C.panelSoft }}>

@@ -73,9 +73,14 @@ export default function SEO({
       {keywords && <meta name="keywords" content={keywords} />}
 
       <link rel="canonical" href={canonical} />
-      <link rel="alternate" hrefLang="id" href={canonical} />
-      <link rel="alternate" hrefLang="en" href={canonical} />
-      <link rel="alternate" hrefLang="x-default" href={canonical} />
+      {/* v0.61.0 — hreflang block removed (audit F-005).
+          Site ships Bahasa only; no `/en/` URL subtree exists.
+          Previously emitted three alternates (`id`, `en`, `x-default`)
+          all pointing to the same canonical URL — Google Search Console
+          flags that as an invalid self-loop and may drop the EN variant
+          from index entirely. Per Search Central: a single-language site
+          should omit hreflang. og:locale="id_ID" still signals the
+          language correctly. */}
       {/* v0.12.10 — noindex for the NotFound surface (and any future
           surface that should not be crawlable). Google honors this
           via JS-rendered crawl; we additionally rely on the Vercel
@@ -90,7 +95,7 @@ export default function SEO({
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={image} />
       <meta property="og:locale" content="id_ID" />
-      <meta property="og:locale:alternate" content="en_US" />
+      {/* v0.61.0 — `og:locale:alternate` removed (audit F-005). No EN URL. */}
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />

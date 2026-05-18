@@ -11,7 +11,9 @@
       name="description"
       content="Skor NBA playoff 2026 live, peluang juara Polymarket, bracket Ronde 1, win probability, play-by-play, shot chart, dan statistik pemain — dashboard gila bola untuk pecinta bola basket Indonesia."
     />
-    <meta name="keywords" content="skor nba, skor basket, skor playoff nba, skor nba live, peluang juara nba 2026, bracket nba playoff, jadwal nba playoff, gibol, gila bola, formula 1 2026, f1 2026, jadwal f1, liga inggris, premier league 2025-26, klasemen liga inggris, piala dunia 2026, FIFA world cup 2026, liga 1 indonesia, bri liga 1, persija persib, el clasico indonesia" />
+    <!-- v0.61.0 — `meta name="keywords"` removed (audit F-019). Google
+         has not used the keywords meta since 2009; presence signaled an
+         SEO maturity gap with no compensating benefit. -->
     <meta name="author" content="gibol.co" />
 
     <!-- Favicons — v0.59.9 / Brand v1.0 Pulse mark.
@@ -38,7 +40,9 @@
     <!-- OG image default (same for all pages; Helmet overrides if needed) -->
     <meta property="og:image" content="https://www.gibol.co/og-image.png" />
     <meta property="og:locale" content="id_ID" />
-    <meta property="og:locale:alternate" content="en_US" />
+    <!-- v0.61.0 — `og:locale:alternate` removed (audit F-005). Site
+         ships Bahasa only; no `/en/` URL subtree exists, so signalling
+         an English locale alternate was misleading to crawlers. -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://www.gibol.co/og-image.png" />
 
@@ -65,7 +69,12 @@
     }
     </script>
 
-    <!-- JSON-LD: WebSite with SearchAction -->
+    <!-- JSON-LD: WebSite with SearchAction.
+         v0.61.0 — audit F-013: consolidated the duplicate WebSite/Organization
+         pairs (prerender.mjs's HOME_WEBSITE + HOME_ORG were emitting a second
+         set on the home route). Both schema types now live ONLY here; prerender
+         emits BreadcrumbList for / but no longer re-emits WebSite/Organization.
+         inLanguage tightened to `id-ID` only since the site is Bahasa-only. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -73,8 +82,13 @@
       "name": "gibol.co",
       "alternateName": "gila bola",
       "url": "https://www.gibol.co",
-      "inLanguage": ["id-ID", "en-US"],
-      "description": "Dashboard live untuk NBA Playoffs 2026 · Formula 1 2026 · Liga Inggris 2025-26 · FIFA World Cup 2026 · BRI Liga 1 Indonesia"
+      "inLanguage": "id-ID",
+      "description": "Dashboard live untuk NBA Playoffs 2026 · Formula 1 2026 · Liga Inggris 2025-26 · FIFA World Cup 2026 · BRI Liga 1 Indonesia",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.gibol.co/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
 

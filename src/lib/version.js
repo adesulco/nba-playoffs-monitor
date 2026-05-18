@@ -5947,7 +5947,110 @@
 //
 // Audit ref: audits/2026-05-15-state-and-proposals.md items #5 + G.
 
-export const APP_VERSION = '0.60.7';
+// v0.61.0 — Pre-launch audit pass 1 (10 fixes bundled).
+//
+// Closes the XS/S code-only items from the senior independent pre-launch
+// audit at QA Test/gibol-co-prelaunch-audit.md (18 May 2026, verdict
+// RED — No Go). Does NOT touch the two Blockers (F-001 consent + privacy,
+// F-002 Polymarket legal opinion) — those are decision-gated. Does NOT
+// touch the deferred L items (F-004 performance refactor, F-006 i18n
+// dashboard sweep) — those need focused sprints. Expected scorecard lift:
+// Security 4 → 7+/10, SEO 5 → 7/10, Content/i18n 4 → 5/10.
+//
+// Items closed:
+//
+// F-003 — Security headers (S). vercel.json now ships X-Content-Type-Options:
+//   nosniff, X-Frame-Options: DENY, Referrer-Policy:
+//   strict-origin-when-cross-origin, and Permissions-Policy denying camera,
+//   microphone, geolocation, payment, interest-cohort, browsing-topics on
+//   every route. Also overrode Vercel's default wildcard
+//   Access-Control-Allow-Origin on the HTML response with an explicit
+//   https://www.gibol.co (F-021). The full Content-Security-Policy is
+//   deliberately DEFERRED to v0.61.1 — a wrong CSP silently blocks scripts
+//   on prod, so it needs Preview-staged rollout with the GA4 / PostHog /
+//   Sentry / OneSignal / Vercel origins enumerated.
+//
+// F-005 — hreflang loop (XS). SEO.jsx previously emitted three alternates
+//   (id, en, x-default) all pointing at the same canonical URL — Google
+//   Search Console flags that as an invalid self-loop and may drop the
+//   EN variant entirely. Removed all three; site is Bahasa-only so
+//   Search Central guidance is to omit hreflang. Also dropped
+//   og:locale:alternate=en_US from index.html for the same reason.
+//
+// F-013 — Duplicate Organization + WebSite schema blocks (XS). prerender.mjs
+//   was emitting HOME_WEBSITE + HOME_ORG for the / route on top of the
+//   hardcoded blocks in index.html — Google's Rich Results test flags
+//   that cardinality warning. Consolidated to a single pair (kept the
+//   index.html blocks since they carry foundingLocation + address) and
+//   migrated the SearchAction from HOME_WEBSITE into index.html's WebSite
+//   so we don't lose Google's sitelinks search box. Also tightened
+//   inLanguage to "id-ID" only.
+//
+// F-019 — meta keywords (XS). Removed the 230-character stuffed keywords
+//   meta from index.html. Google has not used the keywords meta since
+//   2009; presence signals an SEO maturity gap with no compensating
+//   benefit.
+//
+// F-020 — security.txt (XS). Published public/.well-known/security.txt per
+//   RFC 9116 with Contact: security@gibol.co, Expires 2027-05-18,
+//   Preferred-Languages id, en.
+//
+// F-021 — wide-open ACAO on HTML (XS). See F-003 — overridden to the
+//   production origin in vercel.json.
+//
+// F-022 — /wp-admin → 404 (XS, COSMETIC). DEFERRED. Vercel returns 403 for
+//   these paths by default on an SPA-fallback project; the cleanest
+//   override would require an API middleware which felt disproportionate
+//   for a cosmetic severity. Documented for follow-up.
+//
+// F-008c — `<html lang>` sync on locale change (XS). ALREADY CLOSED in
+//   the live code (src/lib/AppContext.jsx line 113 — useEffect with
+//   [lang] dep sets document.documentElement.lang on every change).
+//   The audit captured a stale state from a pre-fix harness snapshot.
+//   Verified, no action needed.
+//
+// F-010 — pluralization + verb-tense (XS). Three call sites under EN
+//   locale showed "1 games" instead of "1 game" — DayScoreboard,
+//   EPLDayScoreboard, ClutchLeaderboard. Bahasa "laga" has no plural
+//   form so the shared i18n key 'games' returned 'LAGA' which was
+//   correct for ID but wrong for EN. Inline ternaries at each call site
+//   keep the i18n catalogue stable. Also fixed "refresh 4s ago" →
+//   "updated 4s ago" on the NBA hub refresh indicator (the verb tense
+//   was the audit's literal flag).
+//
+// F-011 — "WS TICK" label (XS). The Polymarket title-odds panel showed
+//   "POLYMARKET · WS TICK" as a live-feed indicator. "WS TICK" was
+//   internal slang for "WebSocket tick" with no on-page glossary or
+//   tooltip — Indonesian fans, even sophisticated ones, would not parse
+//   it. Replaced with universally-clear "LIVE" (works in both languages).
+//   The audit's larger F-002 concern about the POLYMARKET brand
+//   prominence itself remains decision-gated.
+//
+// Items NOT in this ship (next batches):
+//   - F-001 Cookie consent + Kebijakan Privasi + Syarat & Ketentuan +
+//     CMP gating for GA4/PostHog/Sentry/OneSignal/Vercel Analytics.
+//     BLOCKER. Needs Bahasa policy text + CMP choice.
+//   - F-002 Polymarket regulatory exposure (KUHP 303 / UU ITE 27(2)).
+//     BLOCKER. Needs Indonesian counsel opinion. Interim: ship a
+//     feature flag so the panel can be hidden via env var on Kominfo
+//     notice without a redeploy.
+//   - F-004 Performance refactor (788 KB landing bundle, duplicate
+//     SWR/StrictMode fetches, edge cache on ESPN/Polymarket). L,
+//     1-2 weeks, deferred to a perf sprint.
+//   - F-006 i18n sweep — translate dashboard editorial card labels
+//     (HEADLINE/REVENGE/RESURGENCE/DEBUT/TITLE FAVORITE/FEATURED SERIES
+//     and the editorial copy underneath). M, 1 week.
+//   - F-007 Sentry consent gating (pairs with F-001 CMP).
+//   - F-008a/b/e — accessibility sweep (keyboard scroll for card strips,
+//     brand mark vs avatar affordance, theme toggle state announcement).
+//   - F-012 footer entity info (PT/NIB, address) — needs business info.
+//   - F-015 OneSignal — keep with proper opt-in or remove the SDK?
+//     Decision-gated.
+//   - CSP — see F-003 above; staged in v0.61.1.
+//
+// Audit ref: QA Test/gibol-co-prelaunch-audit.md (full register at §3).
+
+export const APP_VERSION = '0.61.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

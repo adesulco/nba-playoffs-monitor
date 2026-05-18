@@ -146,8 +146,11 @@ async function loadEditOverlay() {
 // These are global pages or legacy stubs that don't belong to one sport.
 //
 // v0.13.0 — every static route now carries BreadcrumbList JSON-LD too.
-// The home page additionally emits WebSite (with SearchAction) and
-// Organization, so the brand can land in Google's knowledge panel.
+// v0.61.0 — HOME_WEBSITE and HOME_ORG removed (audit F-013). Those schemas
+// now live ONLY in index.html (hardcoded in <head>), which avoids the
+// duplicate Organization + duplicate WebSite that Google's Rich Results
+// flags as a cardinality warning. The hardcoded WebSite carries the
+// SearchAction we used to emit here, so no functionality is lost.
 const breadcrumb = (items) => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -159,28 +162,6 @@ const breadcrumb = (items) => ({
   })),
 });
 
-const HOME_WEBSITE = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  url: SITE,
-  name: 'gibol.co',
-  alternateName: 'gila bola',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${SITE}/?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
-};
-
-const HOME_ORG = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'gibol.co',
-  alternateName: 'gila bola',
-  url: SITE,
-  logo: `${SITE}/gibol-logo-1024.png`,
-};
-
 const STATIC_ROUTES = [
   {
     path: '/',
@@ -191,7 +172,10 @@ const STATIC_ROUTES = [
     description: 'Skor live NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, Tenis ATP+WTA, dan Piala Dunia FIFA 2026. Klasemen, bracket, peluang juara, recap Bahasa.',
     keywords: 'gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 2026, liga inggris, premier league, tenis 2026, atp tour 2026, wta tour 2026, grand slam 2026, roland garros 2026, peringkat atp, peringkat wta, FIFA world cup 2026, piala dunia 2026',
     ogImage: DEFAULT_OG,
-    jsonLd: [HOME_WEBSITE, HOME_ORG],
+    // v0.61.0 — see comment above: WebSite + Organization moved to index.html.
+    // Home route emits no JSON-LD from the prerender layer; the head ships
+    // both schemas before React hydrates.
+    jsonLd: undefined,
   },
   {
     path: '/about',

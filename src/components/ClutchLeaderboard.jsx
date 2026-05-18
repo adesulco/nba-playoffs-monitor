@@ -28,7 +28,7 @@ export default function ClutchLeaderboard({ watchlist, accent, lang }) {
           </span>
         </div>
         <span style={{ fontSize: 9.5, color: C.dim }}>
-          {loading ? (lang === 'id' ? 'memuat…' : 'loading…') : `${coveredGames} ${lang === 'id' ? 'laga' : 'games'}`}
+          {loading ? (lang === 'id' ? 'memuat…' : 'loading…') : `${coveredGames} ${lang === 'id' ? 'laga' : (coveredGames === 1 ? 'game' : 'games')}`}
         </span>
       </div>
 
