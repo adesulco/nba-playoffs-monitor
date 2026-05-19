@@ -56,7 +56,12 @@ export default function About() {
             {lang === 'id' ? (
               <>
                 <p><strong>gibol.co</strong> (gila bola) adalah dashboard olahraga live yang dibangun untuk penggemar bola Indonesia. Tujuan kami sederhana: berikan fan apa yang mereka butuhkan untuk menikmati pertandingan — skor live, statistik, peluang juara, dan konteks — semua dalam Bahasa Indonesia dengan waktu WIB.</p>
-                <p>Kami percaya fan Indonesia pantas mendapat pengalaman nonton yang setara dengan fan di luar negeri. Jadi kami bangun dashboard yang fokus: tanpa iklan mengganggu, tanpa pop-up, tanpa login. Buka di browser, nikmati pertandingan.</p>
+                {/* v0.62.0 — removed the "tanpa pop-up" claim (audit
+                    F-001 (c)). The site now ships a consent banner on
+                    first visit per UU PDP 27/2022 Art. 21 — the prior
+                    sentence read as misleading once that landed. Detail
+                    privacy + tracker behaviour now lives at /privacy. */}
+                <p>Kami percaya fan Indonesia pantas mendapat pengalaman nonton yang setara dengan fan di luar negeri. Jadi kami bangun dashboard yang fokus: tanpa iklan mengganggu, tanpa login wajib. Pelacakan analytics dijalankan setelah kamu memberi persetujuan eksplisit — detail di <a href="/privacy" style={{ color: 'var(--amber)', textDecoration: 'underline' }}>Kebijakan Privasi</a>. Buka di browser, nikmati pertandingan.</p>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Apa yang kami sajikan</h2>
                 <ul style={{ paddingLeft: 24, lineHeight: 1.9 }}>
                   <li><strong>NBA Playoffs 2026</strong> — live score, play-by-play, win probability, shot chart, peluang juara Polymarket, watchlist pemain, bracket, dan jalan menuju juara untuk 30 tim NBA.</li>
@@ -74,7 +79,7 @@ export default function About() {
             ) : (
               <>
                 <p><strong>gibol.co</strong> ("gila bola" — Indonesian slang for sports-crazy) is a live sports dashboard built for Indonesian fans. Our goal is simple: give fans what they need to enjoy the game — live scores, stats, championship odds, and context — all in Bahasa Indonesia with WIB timezone.</p>
-                <p>Indonesian fans deserve the same viewing experience as fans overseas. So we built a focused dashboard: no intrusive ads, no popups, no login. Open your browser, enjoy the game.</p>
+                <p>Indonesian fans deserve the same viewing experience as fans overseas. So we built a focused dashboard: no intrusive ads, no required login. Analytics only runs after you give explicit consent — full detail at <a href="/privacy" style={{ color: 'var(--amber)', textDecoration: 'underline' }}>Privacy Policy</a>. Open your browser, enjoy the game.</p>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>What we cover</h2>
                 <ul style={{ paddingLeft: 24, lineHeight: 1.9 }}>
                   <li><strong>NBA Playoffs 2026</strong> — live scores, play-by-play, win probability, shot charts, Polymarket championship odds, player watchlist, bracket, and title path for all 30 NBA teams.</li>

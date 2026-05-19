@@ -10,9 +10,27 @@
 // lands in both funnels without rewrites.
 
 import { posthogCapture, posthogPageview } from './observability.js';
+import { getConsent } from './consent.js';
 
+/**
+ * v0.62.0 — isAnalyticsEnabled now ALSO checks the consent state.
+ * Previously this only verified that gtag() existed on window (i.e.,
+ * the GA4 script tag had loaded). Audit F-001 requires that no
+ * pageview / event fires until the user explicitly consents — even
+ * though the GA4 script itself stays in index.html so crawlers see
+ * the tag (necessary for GSC verification + Search Console).
+ *
+ * Pairs with index.html's `gtag('consent', 'default', { ... 'denied' })`
+ * call. When the user consents, the ConsentBanner sends
+ * `gtag('consent', 'update', { 'analytics_storage': 'granted' })`
+ * — but THIS gate is what stops trackPageview/trackEvent from
+ * even calling gtag('event', ...) in the meantime. Two layers of
+ * defense: GA4's consent_mode_v2 + our explicit check.
+ */
 export function isAnalyticsEnabled() {
-  return typeof window !== 'undefined' && typeof window.gtag === 'function';
+  if (typeof window === 'undefined') return false;
+  if (typeof window.gtag !== 'function') return false;
+  return getConsent().analytics === true;
 }
 
 /**

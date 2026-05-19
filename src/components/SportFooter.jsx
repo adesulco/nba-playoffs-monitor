@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
+import { openConsentSettings } from './ConsentBanner.jsx';
 
 /**
  * <SportFooter> — v0.13.0 SEO sprint, Ship 3E.
@@ -38,6 +39,15 @@ const META_LINKS = [
   { to: '/glossary',       labelId: 'Glosarium', labelEn: 'Glossary' },
   { to: '/settings/teams', labelId: 'Tim Favorit', labelEn: 'Favorite Teams' },
   { to: '/recap',          labelId: 'Catatan Playoff', labelEn: 'Playoff Recap' },
+];
+
+// v0.62.0 — audit F-001 / F-012 footer compliance row. Privacy + Terms
+// + Cookie Settings + Contact. Kept as a separate group from META_LINKS
+// so the visual treatment can differ if needed; rendered just below the
+// brand line so the legal/contact group reads as a self-contained block.
+const LEGAL_LINKS = [
+  { to: '/privacy', labelId: 'Kebijakan Privasi', labelEn: 'Privacy Policy' },
+  { to: '/terms',   labelId: 'Syarat & Ketentuan', labelEn: 'Terms of Service' },
 ];
 
 export default function SportFooter() {
@@ -154,12 +164,7 @@ export default function SportFooter() {
               <li key={m.to}>
                 <Link
                   to={m.to}
-                  style={{
-                    color: C.dim,
-                    textDecoration: 'none',
-                    padding: '6px 0',
-                    display: 'inline-block',
-                  }}
+                  style={metaLinkStyle}
                 >
                   {lang === 'id' ? m.labelId : m.labelEn}
                 </Link>
@@ -167,7 +172,77 @@ export default function SportFooter() {
             ))}
           </ul>
         </div>
+
+        {/* v0.62.0 — audit F-001 + F-012: legal + contact row. Sits below
+            the brand + nav-meta block so it reads as a self-contained
+            compliance band. Cookie Settings re-opens the CMP modal via
+            a custom event (no global handle, no ref drilling). */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: 12,
+            paddingTop: 12,
+            borderTop: `1px solid ${C.lineSoft}`,
+            fontSize: 11,
+          }}
+        >
+          <ul
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '6px 16px',
+            }}
+          >
+            {LEGAL_LINKS.map((m) => (
+              <li key={m.to}>
+                <Link to={m.to} style={metaLinkStyle}>
+                  {lang === 'id' ? m.labelId : m.labelEn}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <button
+                type="button"
+                onClick={openConsentSettings}
+                style={{
+                  ...metaLinkStyle,
+                  background: 'transparent',
+                  border: 'none',
+                  font: 'inherit',
+                  fontSize: 11,
+                  cursor: 'pointer',
+                }}
+              >
+                {lang === 'id' ? 'Pengaturan cookie' : 'Cookie Settings'}
+              </button>
+            </li>
+            <li>
+              <a
+                href="mailto:hi@gibol.co"
+                style={metaLinkStyle}
+              >
+                {lang === 'id' ? 'Kontak' : 'Contact'}
+              </a>
+            </li>
+          </ul>
+          <div style={{ color: C.dim, fontSize: 10, fontFamily: 'var(--font-mono)', letterSpacing: 0.5 }}>
+            © {new Date().getFullYear()} Tim gibol.co
+          </div>
+        </div>
       </div>
     </footer>
   );
 }
+
+const metaLinkStyle = {
+  color: 'var(--ink-3)',
+  textDecoration: 'none',
+  padding: '6px 0',
+  display: 'inline-block',
+};

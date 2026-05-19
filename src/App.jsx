@@ -15,6 +15,12 @@ import Home from './pages/Home.jsx';
 import V2TopBar from './components/v2/TopBar.jsx';
 import MobileBottomNav from './components/MobileBottomNav.jsx';
 import SearchOnboardingTooltip from './components/SearchOnboardingTooltip.jsx';
+// v0.62.0 — in-house CMP. Lazy because the typical user makes a consent
+// choice once and never sees it again; the React tree shouldn't carry
+// the cost on every paint. ConsentGate below renders it only when the
+// banner should be visible (or settings explicitly opened).
+import ConsentBanner from './components/ConsentBanner.jsx';
+import { getConsent, subscribe as subscribeConsent } from './lib/consent.js';
 // v0.13.4 Sprint 2 Theme C — scrolls to #hash fragments on
 // navigation. Required by the sport-aware MobileBottomNav whose
 // items deep-link to hub sections like #standings + #top-scorer.
@@ -120,6 +126,11 @@ const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 // a link grid to all sport hubs. Lazy because it's never above the
 // fold and the bundle stays small without it on initial paint.
 const SportFooter = lazy(() => import('./components/SportFooter.jsx'));
+// v0.62.0 — Kebijakan Privasi + Syarat & Ketentuan pages (audit F-001).
+// Both lazy — these aren't on hot paths and shipping them in the entry
+// bundle would defeat the purpose of route splitting.
+const Privacy = lazy(() => import('./pages/Privacy.jsx'));
+const Terms = lazy(() => import('./pages/Terms.jsx'));
 const Bracket = lazy(() => import('./pages/Bracket.jsx'));
 const BracketNew = lazy(() => import('./pages/BracketNew.jsx'));
 const BracketEdit = lazy(() => import('./pages/BracketEdit.jsx'));
@@ -187,6 +198,29 @@ function SkipLink() {
       {t('skipToContent')}
     </a>
   );
+}
+
+/**
+ * v0.62.0 — gate child rendering on consent.analytics. Used to wrap
+ * Vercel SpeedInsights + Analytics so they don't mount (and therefore
+ * don't inject their scripts or beacon endpoints) until the user has
+ * explicitly opted into analytics. Re-renders on consent changes so
+ * the gate flips without a page reload.
+ *
+ * Returns null when consent is not granted. The Vercel components run
+ * their own no-op path in local dev, so wrapping them costs nothing.
+ *
+ * Pattern intentionally tiny — a focused hook would be over-engineering
+ * for a one-off case.
+ */
+function ConsentGate({ children }) {
+  const [granted, setGranted] = React.useState(() => getConsent().analytics === true);
+  React.useEffect(() => {
+    const unsub = subscribeConsent((c) => setGranted(c.analytics === true));
+    return unsub;
+  }, []);
+  if (!granted) return null;
+  return children;
 }
 
 export default function App() {
@@ -348,6 +382,10 @@ export default function App() {
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/leaderboard/:leagueId" element={<LeaderboardLeague />} />
 
+            {/* v0.62.0 — Kebijakan Privasi + Syarat & Ketentuan (audit F-001). */}
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
@@ -368,13 +406,24 @@ export default function App() {
             Self-dismisses on user interaction, scroll, or 8s timeout;
             localStorage flag keeps it from returning. */}
         <SearchOnboardingTooltip />
+        {/* v0.62.0 — in-house CMP. Renders the consent banner on first
+            visit (and the settings modal on demand via the footer link
+            or `openConsentSettings()` global). Inside BrowserRouter so
+            its child <Link /> elements navigate via the SPA router. */}
+        <ConsentBanner />
         </BrowserRouter>
         {/* Vercel built-ins — Hobby plan includes both at no extra cost.
             SpeedInsights pipes real-user Core Web Vitals to the Vercel
             dashboard; Analytics adds privacy-friendly page visit counts.
-            Both are no-ops in local dev. */}
-        <SpeedInsights />
-        <Analytics />
+            Both are no-ops in local dev.
+            v0.62.0 — gated behind consent.analytics. ConsentGate
+            re-renders on consent changes so flipping the toggle in the
+            settings modal mounts/unmounts both components without a
+            page reload. */}
+        <ConsentGate>
+          <SpeedInsights />
+          <Analytics />
+        </ConsentGate>
       </AppProvider>
     </HelmetProvider>
     </SentryErrorBoundary>

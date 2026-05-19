@@ -6142,7 +6142,106 @@
 //
 // Audit ref: QA Test/gibol-co-prelaunch-audit.md F-015 (Option B).
 
-export const APP_VERSION = '0.61.3';
+// v0.62.0 — Minimal in-house CMP + Kebijakan Privasi + Syarat & Ketentuan.
+//
+// Closes audit Blocker F-001 (no consent banner / no privacy policy /
+// no ToS) and Critical F-007 (Sentry init pre-consent). Estimated
+// audit-score lift: 51.7 → ~78 weighted, both Blockers resolved →
+// verdict moves from RED to AMBER. F-002 Polymarket remains the only
+// Blocker outstanding pending Indonesian counsel memo (v0.61.2
+// shipped the interim kill-switch).
+//
+// New files:
+//   - src/lib/consent.js — state foundation. localStorage key
+//     `gibol:consent` = { analytics, marketing, _v, _t }. Subscribe
+//     pattern lets observability.js + analytics.js + App.jsx react to
+//     consent changes without page reload. _v=1 for forward-compat:
+//     when the policy materially changes, bump _v and the banner
+//     re-shows. Bridges into gtag('consent', 'update', ...) on setConsent
+//     so GA4's consent_mode_v2 flips in lockstep with the local state.
+//   - src/pages/Privacy.jsx — Kebijakan Privasi in Bahasa. 10 sections
+//     covering UU PDP 27/2022 Art. 21 (consent), Art. 22-25 (rights),
+//     Art. 26 (transparency), Art. 56 (overseas transfer). Discloses
+//     GA4, PostHog, Sentry, OneSignal, Vercel as US-hosted recipients.
+//     Includes a "Tarik persetujuan" button that calls clearConsent()
+//     and reloads. Entity kept anonymous per F-012 ("Tim gibol.co" —
+//     no NIB, no registered address).
+//   - src/pages/Terms.jsx — Syarat & Ketentuan in Bahasa. 10 sections.
+//     Key clause: § 4 explicit "BUKAN platform judi" disclaimer for the
+//     Polymarket panels (documentary half of the F-002 interim
+//     mitigation; operational half is the kill-switch from v0.61.2).
+//     Indonesian law as governing.
+//   - src/components/ConsentBanner.jsx — UI: compact banner + settings
+//     modal with three categories (strictly necessary always-on,
+//     analytics, marketing). Bahasa-only. Footer "Pengaturan cookie"
+//     re-opens the modal via a window CustomEvent
+//     (`gibol:open-consent`) — no global handle, no ref drilling.
+//
+// Modified:
+//   - src/lib/observability.js — initObservability now early-returns
+//     when consent.analytics is false. Subscribes to consent changes
+//     and re-inits when the user toggles to granted. On revoke,
+//     posthog.opt_out_capturing() fires (Sentry can't cleanly uninit
+//     mid-session — page reload guarantees clean state; documented in
+//     privacy policy). Added Sentry sendDefaultPii: false (explicit
+//     pin) + beforeSend / beforeBreadcrumb URL-query scrubbing per
+//     audit F-007. PostHog gets opt_out_capturing_by_default: true as
+//     belt-and-suspenders.
+//   - src/lib/analytics.js — isAnalyticsEnabled now also checks
+//     consent.analytics. trackPageview + trackEvent become no-ops
+//     when consent is denied, regardless of whether window.gtag
+//     exists (it does — GA4 script stays in index.html for GSC
+//     verification, but emits nothing).
+//   - index.html — added gtag('consent', 'default', { ... 'denied' })
+//     immediately after gtag('js', new Date()) with
+//     wait_for_update: 500 (GA4 queues hits up to 500 ms while the CMP
+//     decides). ad_*, ad_user_data, ad_personalization, analytics_storage
+//     all denied; functionality_storage + security_storage granted.
+//     The runtime gtag('consent', 'update', ...) call lives in
+//     consent.js's setConsent.
+//   - src/App.jsx — mounted <ConsentBanner /> inside the BrowserRouter
+//     (its <Link /> children need SPA routing). Added <ConsentGate>
+//     wrapper around <SpeedInsights /> + <Analytics /> so the Vercel
+//     beacons don't fire pre-consent. Added lazy routes /privacy + /terms.
+//   - src/components/SportFooter.jsx — added LEGAL_LINKS row below the
+//     existing meta row. Renders Kebijakan Privasi, Syarat &
+//     Ketentuan, Pengaturan cookie (button → openConsentSettings()),
+//     Kontak (mailto:hi@gibol.co), and a © Tim gibol.co line. Anonymous
+//     entity per F-012.
+//   - src/pages/About.jsx — removed the "tanpa pop-up" copy line in
+//     both ID and EN variants (audit F-001 (c)). Replaced with a
+//     sentence describing the consent-gated analytics posture and
+//     a link to /privacy.
+//
+// What the audit asked for, mapped to the implementation:
+//   F-001 (a) — Kebijakan Privasi + Syarat & Ketentuan published and
+//      linked from every page footer: ✓ (Privacy.jsx + Terms.jsx +
+//      SportFooter LEGAL_LINKS).
+//   F-001 (b) — Block non-essential trackers behind consent gate;
+//      explicit opt-in for analytics + push: ✓ (consent.js default
+//      analytics: false + observability.js consent check + analytics.js
+//      consent check + ConsentGate wrapping Vercel beacons + the v0.61.3
+//      push deferral).
+//   F-001 (c) — Update /about to either declare tracking honestly or
+//      remove the "tanpa pop-up" framing: ✓ (sentence rewritten in
+//      both languages, link to /privacy).
+//   F-001 (d) — Configure GA4 with consent_mode_v2 defaults denied: ✓
+//      (index.html gtag('consent', 'default', { ... 'denied' })).
+//   F-007 — Sentry sendDefaultPii: false + beforeSend scrubbing + gate
+//      init behind consent: ✓ (observability.js).
+//
+// Default consent state per audit: everything OFF. Banner pattern:
+// "Setujui semua" / "Tolak" / "Pengaturan". Tolak still records a
+// choice so the banner stops showing.
+//
+// Cross-tab: window 'storage' event in consent.js propagates changes
+// between tabs — open settings in tab 1, toggle, tab 2 reacts.
+//
+// Audit ref: QA Test/gibol-co-prelaunch-audit.md F-001 + F-007. Closes
+// the consent-related Blocker; verdict path RED → AMBER pending F-002
+// counsel memo.
+
+export const APP_VERSION = '0.62.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

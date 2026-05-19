@@ -119,13 +119,34 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:wght@400;500;600;700;800&display=swap" />
     </noscript>
 
-    <!-- Google Analytics 4 (hardcoded in HTML so crawlers / GSC verification find it) -->
+    <!-- Google Analytics 4 (hardcoded in HTML so crawlers / GSC verification find it).
+         v0.62.0 — audit F-001: GA4 now ships in CONSENT MODE V2 with all
+         storage categories defaulting to DENIED. The script tag stays so
+         Search Console can verify the property, but no measurement
+         actually flows until the user clicks "Setujui" in our banner
+         (src/components/ConsentBanner.jsx → src/lib/consent.js → the
+         analytics gate in src/lib/analytics.js + a runtime
+         gtag('consent', 'update', { analytics_storage: 'granted' })).
+         wait_for_update=500 gives our CMP a 500 ms window to fire the
+         update before GA4 sends the first hit, preventing a brief
+         pre-consent flash. -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLYNEMRZCE"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      // send_page_view=false so our React Router pageview tracker handles SPA navigation
+      // Consent mode v2 — all categories denied by default. The CMP
+      // flips analytics_storage to 'granted' on Setujui via a runtime
+      // gtag('consent', 'update', ...) call.
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
       gtag('config', 'G-BLYNEMRZCE', { send_page_view: false, anonymize_ip: true });
     </script>
   </head>
