@@ -6254,7 +6254,31 @@
 //
 // Audit ref: QA Test/gibol-co-prelaunch-audit.md F-001 (re-close).
 
-export const APP_VERSION = '0.62.1';
+// v0.62.2 — Vocab guard allowlist for the legal disclaimer pages.
+//
+// Root cause of the v0.62.0 → v0.61.3 prod stall: scripts/check-vocab.mjs
+// (which runs in the build chain before vite build) treats "judi",
+// "taruhan", "gambling", "betting" as forbidden vocabulary anywhere in
+// src/. But Terms.jsx § 4 MUST use those exact words to legally
+// disclaim that gibol.co is NOT a gambling/betting platform — the
+// disclaimer wouldn't be a disclaimer without naming the thing it
+// disclaims. So the vocab guard failed the build, Vercel held prod
+// on the last successful commit (v0.61.3 / 184c63f), and v0.62.0 +
+// v0.62.1 + the empty bump commit all stalled silently.
+//
+// Fix: extend the ALLOWLIST in check-vocab.mjs with three entries:
+//   - src/pages/Terms.jsx (the actual disclaimer)
+//   - src/pages/Privacy.jsx (defensive — privacy may describe odds sources)
+//   - src/lib/version.js (ship notes reference disclaimer text + audit refs)
+//
+// This unblocks the CMP ship without weakening the rule for the rest of
+// src/ (NBA hub, dashboards, copy, components — all still scanned).
+//
+// Lesson for next time: run `npm run build` (full chain) locally before
+// the first push of a big ship, not just `npx vite build`. The check-vocab
+// step is invisible from `vite build` alone.
+
+export const APP_VERSION = '0.62.2';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

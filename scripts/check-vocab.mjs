@@ -42,8 +42,21 @@ const BANNED = [
 // Files where these strings are allowed as technical references (regex
 // sources, vocab lists, gloss definitions that explicitly explain the rule).
 // Any file whose absolute path ENDS with one of these suffixes is skipped.
+//
+// v0.62.2 — added the Bahasa legal docs and ship-note history. Terms.jsx
+// MUST use "judi" + "taruhan" + "gambling" + "betting" to legally
+// disclaim that gibol.co is NOT a gambling/betting platform — the
+// disclaimer wouldn't be a disclaimer without naming the thing it
+// disclaims. Privacy.jsx is allowlisted defensively (future privacy
+// copy may need to reference these terms when describing the
+// Polymarket data source). version.js carries ship notes that document
+// the disclaimer + the F-002 mitigation; those references are
+// historical and must persist.
 const ALLOWLIST = [
   'scripts/check-vocab.mjs', // this file
+  'src/pages/Terms.jsx',     // explicit "BUKAN judi" disclaimer (audit F-002)
+  'src/pages/Privacy.jsx',   // defensive — privacy may describe odds sources
+  'src/lib/version.js',      // ship notes reference disclaimer text + audit refs
 ];
 
 function walk(dir, out = []) {
