@@ -6241,7 +6241,20 @@
 // the consent-related Blocker; verdict path RED → AMBER pending F-002
 // counsel memo.
 
-export const APP_VERSION = '0.62.0';
+// v0.62.1 — Hotfix: register /privacy + /terms as STATIC_ROUTES in
+// prerender.mjs. v0.62.0 deployed cleanly but prod returned 404 for
+// both routes because Vercel didn't have dist/privacy/index.html or
+// dist/terms/index.html — the prerender script emits per-route HTML
+// files only for routes in STATIC_ROUTES (or sport adapters), and
+// these two pages weren't on the list. Vercel's SPA fallback didn't
+// catch them because there's no rewrite rule for these paths in
+// vercel.json (the SPA fallback only fires for explicit rewrites).
+// Adding both to STATIC_ROUTES gives them proper prerendered HTML
+// with title/description/breadcrumb JSON-LD, same as /about + /glossary.
+//
+// Audit ref: QA Test/gibol-co-prelaunch-audit.md F-001 (re-close).
+
+export const APP_VERSION = '0.62.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -200,6 +200,36 @@ const STATIC_ROUTES = [
       { name: 'Glosarium', url: '/glossary' },
     ]),
   },
+  // v0.62.0 — audit F-001: Kebijakan Privasi + Syarat & Ketentuan.
+  // Both registered as STATIC_ROUTES so the prerender script emits
+  // dist/privacy/index.html + dist/terms/index.html. Without this,
+  // Vercel returns 404 for /privacy (the SPA fallback only fires for
+  // routes explicitly listed in vercel.json `rewrites`). The pages
+  // need to be crawlable for audit purposes anyway — emitting a
+  // proper prerendered HTML with title/description/breadcrumb JSON-LD
+  // is the right pattern, same as /about and /glossary.
+  {
+    path: '/privacy',
+    title: 'Kebijakan Privasi — gibol.co',
+    description: 'Bagaimana gibol.co mengumpulkan, memakai, dan melindungi data kamu. Apa yang dikumpulkan, siapa pihak ketiganya, dan cara opt-out.',
+    keywords: 'kebijakan privasi gibol, privacy policy gibol, UU PDP indonesia, cookie gibol, opt-out tracker',
+    ogImage: DEFAULT_OG,
+    jsonLd: breadcrumb([
+      { name: 'gibol.co', url: '/' },
+      { name: 'Kebijakan Privasi', url: '/privacy' },
+    ]),
+  },
+  {
+    path: '/terms',
+    title: 'Syarat & Ketentuan — gibol.co',
+    description: 'Aturan main pemakaian gibol.co — lisensi, akurasi data, disclaimer Polymarket, hak kekayaan intelektual, hukum yang berlaku.',
+    keywords: 'syarat ketentuan gibol, terms of service gibol, disclaimer polymarket gibol, hukum yang berlaku gibol',
+    ogImage: DEFAULT_OG,
+    jsonLd: breadcrumb([
+      { name: 'gibol.co', url: '/' },
+      { name: 'Syarat & Ketentuan', url: '/terms' },
+    ]),
+  },
   {
     path: '/ibl',
     // v0.13.0 trim — was 73 chars.
