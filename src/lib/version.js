@@ -6111,7 +6111,38 @@
 //
 // Audit ref: QA Test/gibol-co-prelaunch-audit.md F-002 + OR-3.
 
-export const APP_VERSION = '0.61.2';
+// v0.61.3 — Defer OneSignal SDK load until user opt-in (audit F-015, Option B).
+//
+// Audit caught OneSignal's web SDK loading on every page before consent:
+// the SDK injects a ~30 KB bundle, creates localStorage keys
+// (`os_pageViews`, `onesignal-notification-prompt`), and POSTs a
+// device-sync to api.onesignal.com — all before the user gives any
+// consent. UU PDP 27/2022 Art. 21 (informed/specific/unambiguous
+// consent) and the CMP requirement at F-001 both fail under that
+// pattern.
+//
+// Note on the audit's premise: the audit claimed "no visible UI surface
+// where the user opts in to push." That was incorrect — Home.jsx line
+// 257 already renders PushOptInButton with tag="nba_close". The opt-in
+// UI exists; the auditor likely tested HomeV2 (homeVariant=2) where it
+// doesn't render. So the deeper fix is not "remove the SDK" but
+// "don't load the SDK until the user clicks the existing opt-in."
+//
+// Change:
+//   src/main.jsx — removed the `idle(() => { initPush(); })` block (and
+//   the unused `initPush` import). Push capability is preserved
+//   end-to-end: PushOptInButton.jsx calls promptPush() on click, which
+//   calls initPush() — the SDK loads on demand at that moment, not
+//   before. Zero behavioral change for opted-in users.
+//
+// Cold-load data-controller footprint: OneSignal removed entirely from
+// the first-paint network graph. Sentry + GA4 + PostHog + Vercel
+// Analytics still fire pre-consent and will be gated by the v0.62.0
+// CMP ship (F-001).
+//
+// Audit ref: QA Test/gibol-co-prelaunch-audit.md F-015 (Option B).
+
+export const APP_VERSION = '0.61.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
