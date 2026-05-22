@@ -114,6 +114,22 @@ function toNbaItem(g, statusState) {
   };
 }
 
+// v0.62.3 — audit FUNC-001. The home MatchStrip soccer tiles used to
+// link to `/preview/{slug}` and `/recap/{slug}`, where slug was built
+// below as `{league}-{away}-vs-{home}-{date}`. That `{league}-` prefix
+// does not match the content engine's actual JSON filenames
+// (`arsenal-vs-fulham-2026-05-02.json`, no prefix) — so EVERY soccer
+// preview/recap tile 404'd. The Content Engine isn't provisioned until
+// 2026-06-01, so most matches have no JSON anyway. Until there's a
+// real published-content manifest to gate against, soccer tiles link
+// to the sport hub — guaranteed live, zero 404. Re-wiring proper
+// preview links (correct slug + manifest existence check) is a
+// Content Engine Phase 0+ follow-up.
+const SOCCER_HUB = {
+  epl: '/premier-league-2025-26',
+  'liga-1-id': '/super-league-2025-26',
+};
+
 // ─── EPL / Liga 1 (same shape) ───────────────────────────────────
 export function soccerItems({ upcoming = [], recent = [], league, mode }) {
   const now = Date.now();
@@ -144,7 +160,6 @@ function toSoccerItem(m, league, statusState) {
   if (statusState === 'post') statusLabel = 'FT';
   else if (statusState === 'in') statusLabel = (m.statusDetail || 'LIVE').toUpperCase();
   else statusLabel = `WIB ${fmtWib(m.kickoffUtc)}${daySuffix(m.kickoffUtc)}`;
-  const slug = `${league}-${m.away?.slug || aLabel.toLowerCase().replace(/\s+/g, '-')}-vs-${m.home?.slug || bLabel.toLowerCase().replace(/\s+/g, '-')}-${(m.kickoffUtc || '').slice(0, 10)}`;
   return {
     sport: league,
     id: `${league}-${m.id}`,
@@ -153,7 +168,9 @@ function toSoccerItem(m, league, statusState) {
     a: { label: aLabel, score: statusState !== 'pre' ? m.awayScore ?? m.away?.score : null },
     b: { label: bLabel, score: statusState !== 'pre' ? m.homeScore ?? m.home?.score : null },
     statusLabel,
-    href: statusState === 'post' ? `/recap/${slug}` : `/preview/${slug}`,
+    // v0.62.3 — audit FUNC-001: link to the sport hub, not a speculative
+    // `/preview/` or `/recap/` URL that 404s (see SOCCER_HUB note above).
+    href: SOCCER_HUB[league] || undefined,
   };
 }
 

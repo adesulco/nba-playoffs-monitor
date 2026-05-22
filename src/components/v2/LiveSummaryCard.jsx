@@ -115,9 +115,14 @@ export default function LiveSummaryCard({
             fontStyle: 'italic',
           }}
         >
-          AI live summary akan tersedia di v0.55.1 — backend cron + edge
-          function masih dalam tahap kerja. Sementara, baca play feed di
-          panel kanan untuk update real-time.
+          {/* v0.62.3 — audit UX-001: previous copy leaked an internal
+              version string ("v0.55.1 — backend cron + edge function")
+              as user-facing text on a live match page. Replaced with a
+              clean Bahasa fallback that points the reader at the
+              actionable thing (the live play feed) without naming
+              internal infrastructure or a version number. */}
+          Ringkasan AI buat laga ini belum tersedia. Sementara, ikuti
+          play-by-play di panel kanan buat update real-time.
         </div>
       ) : (
         <div

@@ -6278,7 +6278,42 @@
 // the first push of a big ship, not just `npx vite build`. The check-vocab
 // step is invisible from `vite build` alone.
 
-export const APP_VERSION = '0.62.2';
+// v0.62.3 — Audit cluster S1: broken/empty surfaces (critical).
+// Triage of audits/2026-05-22-gibol-dev-handover.md, cluster C1.
+//
+// UX-001 — dev-string leak on live match page.
+//   LiveSummaryCard's stub state rendered "AI live summary akan
+//   tersedia di v0.55.1 — backend cron + edge function masih dalam
+//   tahap kerja" as user-facing copy. Internal version + infra names
+//   leaking onto a live surface. Replaced with a clean Bahasa fallback
+//   pointing the reader at the live play-by-play feed — no version
+//   string, no infra reference.
+//
+// FUNC-001 — Liga 1 / soccer preview tiles 404.
+//   matchAggregate.toSoccerItem built href as `/preview/{slug}` where
+//   slug = `{league}-{away}-vs-{home}-{date}`. The `{league}-` prefix
+//   never matches the content engine's JSON filenames
+//   (`arsenal-vs-fulham-2026-05-02.json` — no prefix), so every soccer
+//   preview/recap tile 404'd. Content Engine isn't provisioned until
+//   2026-06-01 so most matches have no JSON regardless. Fix: soccer
+//   tiles link to the sport hub (SOCCER_HUB map) — live, zero 404.
+//   NBA + F1 tile hrefs were already real routes — untouched.
+//
+// FUNC-002 — "Profil lengkap" CTA silently bounces to home.
+//   ProfileLink linked blindly; an unpublished/missing target makes
+//   GeneratedArticle silently Navigate('/'). The component's own v1
+//   comment promised a "v2 manifest" gate — this ships it. New module
+//   src/lib/contentManifest.js fetches /content/index.json once
+//   (cached), exposes useContentManifest().isPublished(type, slug).
+//   ProfileLink now renders ONLY when `team:{slug}` is published.
+//   GeneratedArticle's draft-redirect is intact — deliberate directive
+//   for shared draft URLs; this change just stops the in-product CTA
+//   from ever leading into the bounce.
+//
+// Audit ref: audits/2026-05-22-gibol-dev-handover.md — FUNC-001,
+// FUNC-002, UX-001 (cluster C1).
+
+export const APP_VERSION = '0.62.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

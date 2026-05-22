@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
+import { useContentManifest } from '../lib/contentManifest.js';
 
 /**
  * /profile/[slug] cross-link CTA from canonical sport dashboards.
@@ -34,11 +35,15 @@ import { COLORS as C } from '../lib/constants.js';
  *               canonical F1Driver.slug is last name only ("verstappen")
  *               but profile slug uses full name ("f1-max-verstappen").
  *
- * Conditional rendering: v1 links blindly. If the profile is not yet
- * approved, the click takes the user to home (existing behavior of
- * `/profile/:slug` route's body-gate). Once ade approves the profile,
- * the link starts working. Acceptable for v1; v2 ship will add a
- * build-time approved-profiles manifest so the CTA hides until ready.
+ * Conditional rendering: v0.62.3 (audit FUNC-002) — the CTA now gates
+ * on the published-content manifest (`/content/index.json` via
+ * useContentManifest). It renders ONLY when `team:{slug}` is published.
+ * This is the "v2" behavior the original v1 comment promised: no more
+ * blind links, no more silent bounce-to-home when the click lands on an
+ * unpublished or missing profile. The /profile/:slug route's body-gate
+ * (silent Navigate to / for unpublished drafts) is left intact — that's
+ * a deliberate directive for shared draft URLs; this change just stops
+ * the in-product CTA from ever leading there.
  */
 
 // Lookup table for Liga 1 — canonical short slug → profile-slug-suffix.
@@ -140,7 +145,17 @@ export default function ProfileLink({
   const slug = computeProfileSlug({
     sport, teamFullName, entitySlug, canonicalSlug, driverName, playerName,
   });
+
+  // v0.62.3 — audit FUNC-002. Gate the CTA on the published-content
+  // manifest. Profiles live on disk as /content/team/{slug}.json, so
+  // the manifest type is 'team'. Render nothing until the manifest
+  // resolves AND confirms this profile is published — a missing
+  // secondary CTA is invisible; a CTA that bounces to home is a
+  // trust defect.
+  const { isPublished } = useContentManifest();
+
   if (!slug) return null;
+  if (!isPublished('team', slug)) return null;
 
   const subjectLabel =
     teamFullName || driverName || playerName || canonicalSlug || entitySlug || 'profil';
