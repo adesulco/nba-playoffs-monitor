@@ -6460,7 +6460,39 @@
 //
 // Audit ref: audits/2026-05-22-gibol-dev-handover.md UX-005.
 
-export const APP_VERSION = '0.62.7';
+// v0.62.8 — Audit cluster S5: performance.
+// Triage of audits/2026-05-22-gibol-dev-handover.md PERF items. One
+// FIX, one CHALLENGE, one DEFER.
+//
+// PERF-001 — FIX. Hero font preload. The home hero <h1> uses Newsreader
+//   700 (HomeV2.jsx, `disp serif`) — audit's guess confirmed. The font
+//   CSS loaded only via the media="print"/onload async swap, which
+//   never blocks render but DEFERS the fetch → visible FOUT on the
+//   hero. Added <link rel="preload" as="style"> for the same Google
+//   Fonts URL so the browser fetches the font CSS at high priority
+//   immediately; the print/onload link still applies it. Smaller FOUT
+//   window, zero render-block. Preloading the individual woff2 files
+//   would shave more but Google's gstatic URLs are version-pinned and
+//   rot — the robust win there is self-hosting Newsreader, scoped to
+//   the paper-grey design port (the design handoff mandates self-hosted
+//   fonts).
+//
+// PERF-002 — CHALLENGE. "Base64 image payloads in initial HTML" does
+//   not reproduce — verified zero `data:image/...;base64` in the prod
+//   home HTML, the prod CSS bundle, and src/index.css. The auditor
+//   likely conflated NewsroomSlice's inline <svg> gradient
+//   placeholders (which are SVG elements, not base64 data URIs) with
+//   base64 payloads. No change.
+//
+// API duplication — DEFER. ESPN scoreboard + Polymarket fetched ~4×
+//   per hub load. Real and worth fixing (a shared SWR-style request
+//   cache / dedupe layer) but it's a cross-cutting refactor across
+//   many hooks — bigger than a cluster. Its own perf sprint.
+//
+// Audit ref: audits/2026-05-22-gibol-dev-handover.md PERF-001/002 +
+// the site-wide API-duplication note.
+
+export const APP_VERSION = '0.62.8';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
