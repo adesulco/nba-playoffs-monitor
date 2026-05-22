@@ -153,15 +153,22 @@
   <body>
     <!-- SEO content: rendered in HTML source for crawlers even before React hydrates. -->
     <noscript>
+      <!-- v0.62.6 — audit UX-005: the noscript fallback (what non-JS
+           crawlers see) still tagged F1 / Liga Inggris / Liga 1 as
+           "(segera hadir)" long after they went live. Removed the
+           false tags; FIFA World Cup keeps an ETA. NBA display string
+           standardised to "NBA Playoffs" per UX-014. Liga 1 link
+           points at the canonical /super-league-2025-26 slug. -->
       <div style="padding:20px;font-family:system-ui;max-width:720px;margin:40px auto;color:#E6EEF9;background:#0A1628;">
-        <h1>gibol.co — Skor NBA Playoff 2026 Live</h1>
-        <p>Dashboard olahraga Bahasa-first untuk NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, Piala Dunia FIFA 2026, dan BRI Liga 1 Indonesia. Aktifkan JavaScript untuk melihat dashboard penuh.</p>
+        <h1>gibol.co — Skor NBA Playoffs 2026 Live</h1>
+        <p>Dashboard olahraga Bahasa-first untuk NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, Super League Indonesia 2025-26, Tenis ATP/WTA 2026, dan Piala Dunia FIFA 2026. Aktifkan JavaScript untuk melihat dashboard penuh.</p>
         <ul>
-          <li><a href="https://www.gibol.co/nba-playoff-2026">NBA Playoff 2026 — skor live, peluang juara, bracket</a></li>
-          <li><a href="https://www.gibol.co/formula-1-2026">Formula 1 2026 — jadwal balap, klasemen (segera hadir)</a></li>
-          <li><a href="https://www.gibol.co/premier-league-2025-26">Liga Inggris 2025-26 — klasemen, jadwal (segera hadir)</a></li>
-          <li><a href="https://www.gibol.co/fifa-world-cup-2026">Piala Dunia FIFA 2026 (segera hadir)</a></li>
-          <li><a href="https://www.gibol.co/liga-1-2026">BRI Liga 1 2026 — sepak bola Indonesia (segera hadir)</a></li>
+          <li><a href="https://www.gibol.co/nba-playoff-2026">NBA Playoffs 2026 — skor live, peluang juara, bracket</a></li>
+          <li><a href="https://www.gibol.co/formula-1-2026">Formula 1 2026 — jadwal balap, klasemen pembalap &amp; konstruktor</a></li>
+          <li><a href="https://www.gibol.co/premier-league-2025-26">Liga Inggris 2025-26 — klasemen, jadwal, top skorer</a></li>
+          <li><a href="https://www.gibol.co/super-league-2025-26">Super League Indonesia 2025-26 — klasemen, jadwal, hasil Liga 1</a></li>
+          <li><a href="https://www.gibol.co/tennis">Tenis ATP &amp; WTA 2026 — peringkat, turnamen</a></li>
+          <li><a href="https://www.gibol.co/fifa-world-cup-2026">Piala Dunia FIFA 2026 (mulai Juni 2026)</a></li>
         </ul>
       </div>
     </noscript>

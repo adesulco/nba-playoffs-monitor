@@ -6446,7 +6446,21 @@
 // Audit ref: audits/2026-05-22-gibol-dev-handover.md cluster C6
 // (UX-005, UX-009, UX-010, UX-014).
 
-export const APP_VERSION = '0.62.6';
+// v0.62.7 — UX-005 follow-up: index.html <noscript> block.
+// Post-deploy curl of /about (per the verify-in-prod rule) caught a
+// THIRD stale-copy location v0.62.6 missed: the <noscript> fallback in
+// index.html — what non-JS crawlers see — still tagged F1 / Liga
+// Inggris / Liga 1 as "(segera hadir)" months after launch. The
+// v0.62.6 fix only touched About.jsx (client-rendered). Updated the
+// noscript list: dropped the false tags, added Tennis, pointed Liga 1
+// at the canonical /super-league-2025-26 slug, FIFA keeps its ETA,
+// NBA display string standardised to "NBA Playoffs" (UX-014). Now
+// zero "segera hadir" on the indexable surface except the genuine
+// FIFA ETA line.
+//
+// Audit ref: audits/2026-05-22-gibol-dev-handover.md UX-005.
+
+export const APP_VERSION = '0.62.7';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
