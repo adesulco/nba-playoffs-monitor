@@ -425,10 +425,10 @@ export default function NBADashboard() {
     <div style={{ background: C.bg, minHeight: '100vh', overflowX: 'auto', fontFamily: '"JetBrains Mono", monospace', color: C.text, fontSize: 11.5, lineHeight: 1.4 }}>
       <SEO
         title={lang === 'id'
-          ? 'Skor NBA Playoff 2026 Live · Bracket, Peluang Juara, Play-by-Play | gibol.co'
+          ? 'Skor NBA Playoffs 2026 Live · Bracket, Peluang Juara, Play-by-Play | gibol.co'
           : 'NBA Playoffs 2026 Live Scores · Bracket, Title Odds, Play-by-Play | gibol.co'}
         description={lang === 'id'
-          ? 'Dashboard live NBA Playoff 2026: skor real-time, bracket Ronde 1, peluang juara Polymarket (OKC 44%), win probability, play-by-play, shot chart, statistik pemain, laporan cedera, dan watchlist. Update setiap 10–30 detik.'
+          ? 'Dashboard live NBA Playoffs 2026: skor real-time, bracket Ronde 1, peluang juara Polymarket (OKC 44%), win probability, play-by-play, shot chart, statistik pemain, laporan cedera, dan watchlist. Update setiap 10–30 detik.'
           : 'NBA Playoffs 2026 live dashboard: real-time scores, Round 1 bracket, Polymarket title odds (OKC 44%), win probability, play-by-play, shot chart, player stats, injury report, and watchlist. Refreshes every 10–30 seconds.'}
         path="/nba-playoff-2026"
         image="https://www.gibol.co/og/hub-nba.png"
@@ -461,10 +461,14 @@ export default function NBADashboard() {
             mounted into the global masthead via the useEffect further
             up in this component. */}
 
-        {/* A11y — single <h1> per page for screen-reader rotor + SEO. */}
+        {/* A11y — single <h1> per page for screen-reader rotor + SEO.
+            v0.62.6 — audit UX-014: display string standardised to
+            "NBA Playoffs" (the competition's official name); the EN
+            side + several ID strings already used it. The URL slug
+            stays /nba-playoff-2026 — a live SEO surface, untouched. */}
         <h1 className="sr-only">
           {lang === 'id'
-            ? 'Skor Live NBA Playoff 2026 — Bracket, Peluang Juara, Play-by-Play'
+            ? 'Skor Live NBA Playoffs 2026 — Bracket, Peluang Juara, Play-by-Play'
             : 'NBA Playoffs 2026 Live Scores — Bracket, Title Odds, Play-by-Play'}
         </h1>
 
@@ -881,10 +885,19 @@ export default function NBADashboard() {
           <div style={{ background: C.nbaRed, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>NEWS</div>
           <div style={{ overflow: 'hidden', padding: '9px 0' }}>
             <div className="ticker-inner">
+              {/* v0.62.6 — audit UX-010: this NEWS ticker is hand-
+                  maintained, not data-driven, so date-pinned lines
+                  rot. Dropped "Round 1 tips Apr 18 …" (past) and
+                  "Play-In finale tonight …" (said "tonight" for an
+                  April event — read as stale on a 22-May visit).
+                  Kept: the live-data line + evergreen series
+                  narrative + the forward-looking Finals date. A
+                  proper fix is to drive this off the published-
+                  content manifest (same source as NewsroomSlice
+                  below) — logged as a follow-up; not done here to
+                  keep the cluster minor + reversible. */}
               {[
                 `Thunder ${topChamp.pct}% title favorite · Polymarket ${fmtVol(champion.volume)} volume`,
-                `Round 1 tips Apr 18 · 8 best-of-7 series to start the bracket`,
-                'Play-In finale tonight: ORL-CHA and PHX-GSW on Prime',
                 'Pistons earn East No. 1 seed for first time since 2007–08',
                 'LeBron-Durant headline Lakers-Rockets, first since 2018 Finals',
                 'NBA Finals tip off June 3 on ABC',

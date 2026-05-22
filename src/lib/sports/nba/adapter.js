@@ -89,8 +89,10 @@ function prerenderRoutes() {
       // v0.13.0 trim — was 77 chars title / 224 chars description.
       // Now 56 / 156. Lead with the keyword users actually type
       // ("skor NBA playoff 2026"), keep brand suffix.
-      title: 'Skor NBA Playoff 2026 — Bracket, Peluang Juara | gibol.co',
-      description: 'Skor NBA Playoff 2026 live: bracket Ronde 1, peluang juara Polymarket, win probability, play-by-play, shot chart, statistik pemain, watchlist.',
+      // v0.62.6 — audit UX-014: "Playoff" → "Playoffs" in the prerendered
+      // hub title + description (display strings). URL slug unchanged.
+      title: 'Skor NBA Playoffs 2026 — Bracket, Peluang Juara | gibol.co',
+      description: 'Skor NBA Playoffs 2026 live: bracket Ronde 1, peluang juara Polymarket, win probability, play-by-play, shot chart, statistik pemain, watchlist.',
       keywords: 'skor nba, skor basket, skor playoff nba, skor nba live, skor nba hari ini, peluang juara nba 2026, bracket nba playoff 2026, jadwal nba playoff, nba playoff 2026 indonesia, live nba indonesia',
       ogImage: HUB_OG,
       jsonLd: [
@@ -172,7 +174,11 @@ function prerenderRoutes() {
 export const adapter = {
   id: 'nba',
   name: 'NBA Playoffs 2026',
-  nameId: 'NBA Playoff 2026',
+  // v0.62.6 — audit UX-014: was 'NBA Playoff 2026' (singular). The
+  // competition's official name is "NBA Playoffs"; `name` (EN) already
+  // used it. Standardised the ID display name to match. URL slug
+  // (routeBase /nba-playoff-2026) is unchanged — a live SEO surface.
+  nameId: 'NBA Playoffs 2026',
   routeBase,
   accent: '#e8502e',
   icon: 'nba',

@@ -731,12 +731,18 @@ export default function Recap() {
           />
         </div>
 
-        {/* Footer — v0.11.20 GIB-014 <footer role="contentinfo"> */}
+        {/* Footer — v0.11.20 GIB-014 <footer role="contentinfo">.
+            v0.62.6 — audit UX-009: this footer already used the same
+            pattern as the sport hubs (footer role=contentinfo +
+            ContactBar variant=inline + data-sources line) but with
+            looser padding (14/24 vs 7/14) + an extra letter-spacing,
+            so it read as a different footer. Aligned to the hub
+            footer metrics (see NBADashboard.jsx) for visual parity. */}
         <footer role="contentinfo" style={{
           display: 'flex', justifyContent: 'space-between',
-          padding: '14px 24px',
+          padding: '7px 14px',
           borderTop: `1px solid ${C.line}`,
-          fontSize: 9.5, color: C.muted, letterSpacing: 0.3,
+          fontSize: 9.5, color: C.muted,
           alignItems: 'center', flexWrap: 'wrap', gap: 8,
         }}>
           <div>gibol.co · {lang === 'id' ? 'catatan playoff harian' : 'daily playoff recap'}</div>

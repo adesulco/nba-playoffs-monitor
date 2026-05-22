@@ -6402,7 +6402,51 @@
 // Audit ref: audits/2026-05-22-gibol-dev-handover.md cluster C5
 // (FUNC-005 through FUNC-008).
 
-export const APP_VERSION = '0.62.5';
+// v0.62.6 — Audit cluster S4: copy / freshness.
+// Triage of audits/2026-05-22-gibol-dev-handover.md cluster C6. Four
+// findings, all FIX.
+//
+// UX-005 — stale "(segera hadir)" copy on /about. F1, Liga Inggris,
+//   and Super League Indonesia have been live for months but the
+//   About "what we cover" list still tagged them "segera hadir".
+//   Removed the false tags; added Tennis (also live, was missing);
+//   gave the genuinely-upcoming FIFA World Cup an ETA ("mulai Juni
+//   2026" / "starts June 2026") per the design handoff's no-ETA-free-
+//   coming-soon rule. The EN list was further out of date — never
+//   listed F1/PL/Super League/Tennis at all — brought to ID parity.
+//
+// UX-009 — Recap page footer. The footer already used the same
+//   pattern as the sport hubs (footer role=contentinfo + ContactBar
+//   variant=inline + data-sources line) but with looser padding
+//   (14/24 vs 7/14) + extra letter-spacing, so it read as different.
+//   Aligned the metrics to the hub footer. (The audit's "different
+//   footer" was a cosmetic delta, not a different component.)
+//
+// UX-010 — stale NEWS ticker on the NBA hub. The ticker is HAND-
+//   maintained, not data-driven — so the handover's "sort by
+//   published_at" fix didn't apply. It carried date-rotted lines:
+//   "Round 1 tips Apr 18 …" (past) and "Play-In finale tonight …"
+//   ("tonight" for an April event). Dropped both; kept the live-data
+//   line + evergreen series narrative + the forward-looking Finals
+//   date. Logged a follow-up to drive the ticker off the published-
+//   content manifest (same source as NewsroomSlice).
+//
+// UX-014 — "NBA Playoff" vs "NBA Playoffs" inconsistency. Standardised
+//   the display string to "NBA Playoffs" (the competition's official
+//   name; the EN strings + some ID strings already used it). Touched:
+//   adapter nameId, the hub <h1>, the NBA hub SEO title+description
+//   (id locale), and the prerendered hub title+description. The URL
+//   slug /nba-playoff-2026 is UNCHANGED — a live SEO surface in 218
+//   sitemap URLs. Residual: per-team-page titles (adapter.js ~153)
+//   + recap descriptions still say "Playoff" — a low-risk follow-up
+//   sweep, out of this minor cluster's scope.
+//
+// Verified: full npm run build passes.
+//
+// Audit ref: audits/2026-05-22-gibol-dev-handover.md cluster C6
+// (UX-005, UX-009, UX-010, UX-014).
+
+export const APP_VERSION = '0.62.6';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
