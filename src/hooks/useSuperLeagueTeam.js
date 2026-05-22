@@ -55,6 +55,17 @@ export function useSuperLeagueTeam(espnId) {
         const { CLUBS_BY_ESPN_ID } = await import('../lib/sports/liga-1-id/clubs.js');
 
         const events = sJson?.events || [];
+        // v0.62.5 — audit FUNC-007. Coerce a competitor score to a real
+        // number ONLY when ESPN gave an inline scalar. The team SCHEDULE
+        // endpoint returns competitor.score as a HATEOAS {$ref} object
+        // (no inline value), and Number({$ref}) is NaN — which then
+        // poisoned formResult + the results list. Non-numeric → null;
+        // W/D/L is derived from the reliable winner/drawn booleans.
+        const numScore = (v) => {
+          const n = typeof v === 'number' ? v
+            : (typeof v === 'string' && v.trim() !== '' ? Number(v) : NaN);
+          return Number.isFinite(n) ? n : null;
+        };
         const fx = events.map((ev) => {
           const comp = ev?.competitions?.[0] || ev;
           const competitors = comp?.competitors || [];
@@ -62,7 +73,11 @@ export function useSuperLeagueTeam(espnId) {
           const them = competitors.find((c) => String(c.team?.id) !== String(espnId));
           const oppTeam = them?.team || {};
           const oppClub = oppTeam.id ? CLUBS_BY_ESPN_ID[String(oppTeam.id)] : null;
-          const status = ev.status?.type?.state; // pre / in / post
+          // v0.62.5 — audit FUNC-007. ESPN's team schedule endpoint nests
+          // status on the COMPETITION, not the event. Reading ev.status
+          // yielded undefined for every fixture — which silently emptied
+          // the form widget AND the results/upcoming lists. Read comp.
+          const status = comp?.status?.type?.state; // pre / in / post
           return {
             id: ev.id,
             date: ev.date,
@@ -73,9 +88,9 @@ export function useSuperLeagueTeam(espnId) {
             opponentShortName: oppTeam.abbreviation || oppClub?.name || '',
             opponentAccent: oppClub?.accent || '#E2231A',
             status,
-            statusDetail: ev.status?.type?.shortDetail || '',
-            ourScore: us?.score != null ? Number(us.score) : null,
-            theirScore: them?.score != null ? Number(them.score) : null,
+            statusDetail: comp?.status?.type?.shortDetail || '',
+            ourScore: numScore(us?.score),
+            theirScore: numScore(them?.score),
             winner: us?.winner === true,
             drawn: status === 'post' && us?.winner === false && them?.winner === false,
           };

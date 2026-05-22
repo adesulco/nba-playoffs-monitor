@@ -69,12 +69,21 @@ function FormPill({ char, lang }) {
   );
 }
 
+// v0.62.5 — audit FUNC-007. Derive W/D/L from the reliable winner/drawn
+// booleans, not from ourScore/theirScore. ESPN's team SCHEDULE endpoint
+// doesn't return inline scores (competitor.score is a {$ref}), so the
+// numeric fields are null and can't be compared — but `winner` and
+// `drawn` are populated. Previously the null-score guard rejected every
+// completed match, which is why Persib showed an empty form widget over
+// 33 played matches.
 function formResult(fx) {
   if (!fx || fx.status !== 'post') return null;
-  if (fx.ourScore == null || fx.theirScore == null) return null;
-  if (fx.ourScore > fx.theirScore) return 'W';
-  if (fx.ourScore < fx.theirScore) return 'L';
-  return 'D';
+  if (fx.winner === true) return 'W';
+  if (fx.drawn === true) return 'D';
+  // Post + not winner + not drawn → loss. (If winner/drawn are both
+  // unset on a malformed record this still resolves to 'L'; acceptable
+  // — the schedule feed reliably sets one of them for completed games.)
+  return 'L';
 }
 
 export default function SuperLeagueClub() {
@@ -615,7 +624,15 @@ function FixtureList({ fixtures, lang, club, kind }) {
                   fontFamily: 'var(--font-mono)', fontSize: 14,
                   fontWeight: 700, color: resultColor,
                 }}>
-                  {ourScore ?? 0}–{theirScore ?? 0}
+                  {/* v0.62.5 — audit FUNC-007: the team schedule endpoint
+                      has no inline scores (competitor.score is a {$ref}),
+                      so ourScore/theirScore are null here. Render the
+                      W/D/L result letter instead of a misleading "0–0".
+                      When a real numeric score IS available (other
+                      feeds), show it. */}
+                  {Number.isFinite(ourScore) && Number.isFinite(theirScore)
+                    ? `${ourScore}–${theirScore}`
+                    : (result || 'FT')}
                 </div>
               ) : (
                 <div style={{ fontSize: 10, color: C.muted, letterSpacing: 0.5 }}>

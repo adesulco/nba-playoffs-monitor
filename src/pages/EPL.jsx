@@ -434,8 +434,12 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             <span style={{ width: 3, height: 16, background: top4Gap.fourthAccent || EPL_PURPLE }} />
             {top4Gap.club}
+            {/* v0.62.5 — audit FUNC-006: the gap delta was a bare "+3"
+                with no unit. The delta is a points gap — append the
+                unit so it doesn't read as "+3 places" or an unlabelled
+                figure. */}
             <span style={{ color: '#2563EB', fontFamily: 'var(--font-mono)', fontSize: 16 }}>
-              +{top4Gap.delta}
+              +{top4Gap.delta} {lang === 'id' ? 'poin' : 'pts'}
             </span>
           </span>
         ) : '—',
@@ -447,8 +451,9 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
         relGap ? (
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             {relGap.club}
+            {/* v0.62.5 — audit FUNC-006: append the points unit. */}
             <span style={{ color: '#EF4444', fontFamily: 'var(--font-mono)', fontSize: 16 }}>
-              +{relGap.delta}
+              +{relGap.delta} {lang === 'id' ? 'poin' : 'pts'}
             </span>
           </span>
         ) : '—',

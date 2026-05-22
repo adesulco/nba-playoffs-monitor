@@ -6358,7 +6358,51 @@
 // Audit ref: audits/2026-05-22-gibol-dev-handover.md cluster C4
 // (SEO-001 through SEO-007).
 
-export const APP_VERSION = '0.62.4';
+// v0.62.5 — Audit cluster S3: data correctness.
+// Triage of audits/2026-05-22-gibol-dev-handover.md cluster C5.
+// Four findings; two FIX, two CHALLENGE.
+//
+// FUNC-006 — FIX. EPL ContextStrip's TOP-4 RACE + RELEGATION CUT cells
+//   rendered a bare "+3" — a points gap with no unit, easily misread as
+//   "+3 places". Appended the unit: "+3 poin" (id) / "+3 pts" (en).
+//
+// FUNC-007 — FIX. Persib's form widget showed empty over 33 played
+//   matches. Two root causes in the team SCHEDULE data path:
+//   (1) useSuperLeagueTeam.js read status from `ev.status` — but ESPN's
+//       team schedule endpoint nests status on `ev.competitions[0]`.
+//       Every fixture got status=undefined, so formResult rejected all
+//       of them and the results/upcoming lists also came up empty.
+//       Fixed: read `comp.status` (statusDetail too).
+//   (2) competitor.score on the schedule endpoint is a HATEOAS {$ref}
+//       object, not an inline scalar — Number({$ref}) is NaN. Added a
+//       numScore() coercion that yields null for non-numeric values,
+//       and formResult now derives W/D/L from the reliable winner/drawn
+//       booleans instead of comparing (null) scores. FixtureList shows
+//       the W/D/L letter when no numeric score is available, instead of
+//       a misleading "0–0".
+//
+// FUNC-005 — CHALLENGE. F1 calendar verified correct: round 7 Canadian
+//   GP (countryId 'Kanada', 2026-05-24) is genuinely the next race;
+//   round 9 Spanish GP (Barcelona-Catalunya, 'Spanyol', 2026-06-14).
+//   The auditor misread the correct Canadian card. No data change.
+//
+// FUNC-008 — CHALLENGE. "Tennis Kabbaj labelled LAO not MAR" could not
+//   be reproduced — Kabbaj is not in the current ATP/WTA rankings feed
+//   (the audit was point-in-time). The countryCode derivation in
+//   useTennisRankings.js (regex on the flag image URL) was verified
+//   against 8 live records — ESPN serves flags as
+//   `/i/teamlogos/countries/500/{code}.png` and the regex resolves
+//   ita/esp/ger/ser/can/usa/rus all correctly. The most probable cause
+//   is an upstream ESPN data error for that one athlete record, which
+//   is not fixable in our code. A name→ISO override map for a single
+//   unverifiable record would be a speculative wrong-fix — declined.
+//   If it recurs, the hardening is to anchor the regex to the filename
+//   stem before the extension.
+//
+// Audit ref: audits/2026-05-22-gibol-dev-handover.md cluster C5
+// (FUNC-005 through FUNC-008).
+
+export const APP_VERSION = '0.62.5';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
