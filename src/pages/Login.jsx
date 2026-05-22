@@ -61,7 +61,13 @@ export default function Login() {
 
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
-      <SEO title={t.title} description={t.desc} path={location.pathname} lang={lang} />
+      {/* v0.62.4 — audit SEO-003: noindex on /login. Auth-gated routes
+          (/bracket, /settings/teams) bounce here as /login?next=…; without
+          noindex the login page (and, via canonical, those gated routes)
+          leaked into Google's index. path={location.pathname} already
+          yields a query-less canonical (/login); the only gap was the
+          missing noindex. */}
+      <SEO title={t.title} description={t.desc} path={location.pathname} lang={lang} noindex />
       <div className="dashboard-wrap" style={{ maxWidth: 520, margin: '0 auto', padding: '0 20px 40px' }}>
 
         <section style={{ padding: '36px 8px', display: 'flex', flexDirection: 'column', gap: 24 }}>

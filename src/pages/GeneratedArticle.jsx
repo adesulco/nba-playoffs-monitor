@@ -97,10 +97,17 @@ function renderMarkdown(md, opts = {}) {
     if (trimmed.startsWith('# ')) {
       // Phase B: when opts.skipFirstH1 is true, suppress the first H1
       // (stylistic duplicate of article.title rendered by the shell).
-      // Subsequent H1s — uncommon — pass through.
       if (opts.skipFirstH1 && !firstH1Skipped) {
         firstH1Skipped = true;
         return null;
+      }
+      // v0.62.4 — audit SEO-005: a generated article had two <h1>s — the
+      // shell's headline (article.title) plus any further body "# Heading"
+      // line. When skipFirstH1 is on, the shell owns the single page h1,
+      // so subsequent body H1s demote to <h2>. Callers that don't pass
+      // skipFirstH1 (no shell h1) keep the <h1>.
+      if (opts.skipFirstH1) {
+        return <h2 key={i} className="editorial-h1 disp serif" style={{ color: 'var(--ink)', margin: '0 0 16px', textWrap: 'balance' }}>{renderInline(trimmed.slice(2))}</h2>;
       }
       return <h1 key={i} className="editorial-h1 disp serif" style={{ color: 'var(--ink)', margin: '0 0 16px', textWrap: 'balance' }}>{renderInline(trimmed.slice(2))}</h1>;
     }

@@ -6313,7 +6313,52 @@
 // Audit ref: audits/2026-05-22-gibol-dev-handover.md — FUNC-001,
 // FUNC-002, UX-001 (cluster C1).
 
-export const APP_VERSION = '0.62.3';
+// v0.62.4 — Audit cluster S2: SEO/meta.
+// Triage of audits/2026-05-22-gibol-dev-handover.md cluster C4.
+// Six findings; verification collapsed four to CHALLENGE, two real fixes.
+//
+// SEO-003 — FIX. /login had no noindex. Auth-gated routes (/bracket,
+//   /settings/teams) bounce to /login?next=… so the login page is the
+//   canonical surface for that exposure; without noindex it (and the
+//   gated routes via canonical) leaked into Google's index. Added
+//   `noindex` to Login.jsx's <SEO>. Canonical was already query-less
+//   (path={location.pathname}).
+//
+// SEO-005 — FIX. Generated articles rendered two <h1>s: the article
+//   shell's headline (article.title) plus any further body "# Heading"
+//   line — renderMarkdown's skipFirstH1 only suppressed the FIRST body
+//   H1, later ones passed through as <h1>. Now, when skipFirstH1 is on
+//   (the shell owns the page h1), subsequent body H1s demote to <h2>.
+//   Exactly one h1 per article page.
+//
+// SEO-001 — CHALLENGE. Match pages already carry per-game <SEO>
+//   (NBAGameCenter.jsx:323-328 — the live component at the route;
+//   NBAGameDeepLink is the retired predecessor). Audit predates the
+//   v0.55.0 NBAGameCenter. Residual: pre-hydration static HTML for the
+//   un-prerendered dynamic match route shows homepage meta — that's the
+//   heavy SEO-002-class problem; match pages are transient, not worth
+//   per-game prerender.
+//
+// SEO-002 — CHALLENGE. Prerender bakes correct per-route meta. Verified:
+//   /nba-playoff-2026 raw HTML serves "Skor NBA Playoff 2026 — Bracket,
+//   Peluang Juara"; EPL hub serves its own description. Not reproducing.
+//
+// SEO-004 — CHALLENGE. Verified on prod: NBA hub has exactly 1 each of
+//   og:title / og:description / twitter:title. No duplication. The
+//   audit's own StrictMode-artifact pre-flag was correct.
+//
+// SEO-007 — CHALLENGE / already-done. BreadcrumbList JSON-LD verified
+//   present on every prerendered hub (/, /nba-playoff-2026,
+//   /premier-league-2025-26, /formula-1-2026) — emitted by the sport
+//   adapters' breadcrumbSchema + prerender's breadcrumb() helper across
+//   all 218 indexed routes. Note for a later pass: hubs show 2×
+//   BreadcrumbList — a possible dedup follow-up, not in this cluster's
+//   "add breadcrumb" scope.
+//
+// Audit ref: audits/2026-05-22-gibol-dev-handover.md cluster C4
+// (SEO-001 through SEO-007).
+
+export const APP_VERSION = '0.62.4';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
