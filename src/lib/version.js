@@ -7621,8 +7621,40 @@
 // 2. No new function added; still 11/12 functions.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md (P6.5 polish).
+//
+// v0.78.0 — list-fixtures teams embed (2026-05-24). Polish follow-on
+// closing the P2 server-side team-name gap.
+//
+// What changed:
+//
+// 1. api/_lib/pickem/fixtures.js select() embeds the teams rows via
+//    PostgREST's FK shortcut:
+//      home:teams!home_team(id, name, slug, abbr, league),
+//      away:teams!away_team(id, name, slug, abbr, league)
+//    Each fixture row now carries `home` + `away` objects in addition
+//    to the raw UUIDs. Single round-trip; no extra functions.
+//
+// 2. PredictingHub + FixtureDetail hydrateTeam helpers updated to
+//    read the embedded team's abbr / slug for the Flag code lookup
+//    + display label. WC2026 teams have abbr = FIFA alpha-3 code
+//    (BRA / ARG / etc.) — the Flag renders correctly. NBA + EPL +
+//    other leagues that have abbr (LAL, MUN) render with their team
+//    code; the country chip falls back to abbr until a per-team
+//    country mapping ships.
+//
+// 3. The "TXYZ" placeholder code path is preserved as a defensive
+//    fallback when the join can't resolve (e.g. orphan fixture
+//    referencing a deleted teams row) — no crash, just visible
+//    placeholder.
+//
+// This unblocks Survivor.jsx server rewire (deferred to a future
+// ship). Once Survivor calls list-fixtures(matchday=N), it gets real
+// team objects to render in the pick pool — no need for the
+// bracketData SAMPLE_GROUPS placeholder.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md (P2 polish).
 
-export const APP_VERSION = '0.77.0';
+export const APP_VERSION = '0.78.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -55,10 +55,16 @@ export default async function handler(req, res) {
   );
 
   const admin = getSupabaseAdmin();
+  // v0.78.0 — embed teams via PostgREST FK shortcut. Each fixture row
+  // gets `home` + `away` populated with the joined team row (id, name,
+  // slug, abbr, league). Clients can drop the UUID-prefix placeholder
+  // ("TBA"/"TXYZ") and render real team names without a follow-up
+  // round trip. Falls back gracefully on older clients that ignore
+  // the embedded objects.
   let q = admin
     .from('fixtures')
     .select(
-      'id, league, season, stage, matchday, home_team, away_team, kickoff_at, lock_at, status, home_score, away_score, outcome, p_home, p_draw, p_away, finalized_at',
+      'id, league, season, stage, matchday, home_team, away_team, kickoff_at, lock_at, status, home_score, away_score, outcome, p_home, p_draw, p_away, finalized_at, home:teams!home_team(id, name, slug, abbr, league), away:teams!away_team(id, name, slug, abbr, league)',
     )
     .eq('league', league)
     .order('kickoff_at', { ascending: true })

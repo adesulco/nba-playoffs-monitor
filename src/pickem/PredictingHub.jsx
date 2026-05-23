@@ -482,12 +482,18 @@ function groupByMatchday(fixtures) {
  * home_team_fkey(...)` in the list-fixtures select.
  */
 function hydrateTeam(fixture, side) {
+  // v0.78.0 — list-fixtures now embeds the teams row via PostgREST FK
+  // shortcut, so `fixture.home` and `fixture.away` carry { id, name,
+  // slug, abbr, league }. For WC2026 the team `abbr` is the FIFA/ISO
+  // alpha-3 code (e.g. 'BRA', 'ARG'); for NBA + other leagues abbr is
+  // the team code (e.g. 'LAL'). Either way, abbr drives the Flag chip.
   const embedded = side === 'home' ? fixture.home : fixture.away;
-  if (embedded && (embedded.name || embedded.code)) {
+  if (embedded && (embedded.name || embedded.abbr || embedded.code)) {
+    const abbr = embedded.abbr || embedded.code || '';
     return {
-      name: embedded.name || 'TBA',
-      short: embedded.short || embedded.abbr || embedded.code || 'TBA',
-      code: (embedded.country_code || embedded.code || 'IDN').toUpperCase().slice(0, 3),
+      name: embedded.name || abbr || 'TBA',
+      short: embedded.short || abbr || 'TBA',
+      code: (embedded.country_code || abbr || embedded.slug || 'IDN').toUpperCase().slice(0, 3),
     };
   }
   const uuid = side === 'home' ? fixture.home_team : fixture.away_team;
