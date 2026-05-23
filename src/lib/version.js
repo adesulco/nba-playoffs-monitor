@@ -7414,8 +7414,62 @@
 //   errors and Survivor.jsx stays localStorage-only.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P5 (follow-on P5.5).
+//
+// v0.74.0 — Pick'em P6.5: server-side recap PNG (2026-05-23).
+// Extends the existing api/og-recap.js edge function with three
+// Kartu Bola Pick'em variants. No new serverless function added —
+// still 11/12 functions. Recap.jsx now points its share URL at the
+// PNG endpoint so WhatsApp previews render the image inline.
+//
+// What changed:
+//
+// 1. api/og-recap.js dispatches by ?type — type=pickem-bigwin /
+//    pickem-upset / pickem-grupup branch to a new renderPickem()
+//    function. Anything else (or no `type` param) falls through to
+//    the existing NBA recap renderer unchanged. Backward-compatible
+//    with /recap/[gameId] callers that don't set ?type.
+//
+// 2. Three Kartu Bola variants ported 1:1 from
+//    src/pickem/components/recapCards.jsx, hex palette matches:
+//
+//    pickem-bigwin: ?matchday & ?weekday & ?points & ?headline &
+//                   ?subheadline & ?summary & ?rank & ?change
+//    pickem-upset:  ?pct & ?picked & ?home_label & ?away_label &
+//                   ?home_score & ?away_score & ?base & ?mult & ?total
+//    pickem-grupup: ?grup & ?change & ?headline1 & ?kicker & ?diff &
+//                   ?weeks & ?rank & ?row1..?row4
+//
+//    All values have sensible Bahasa defaults so a bare URL still
+//    renders a plausible card. Each PNG is 1080×1350 (IG/WA story
+//    4:5) — matches the in-app card layout pixel for pixel.
+//
+//    Cache-Control: public, max-age=31536000, immutable — same
+//    aggressive caching as the NBA recap PNG path. Each unique query
+//    is its own immutable URL.
+//
+// 3. src/pickem/Recap.jsx now computes a `shareImageUrl` pointing at
+//    /api/og-recap?type=pickem-… for the active variant, and uses
+//    that URL (not /pickem/recap) in the share message. WhatsApp
+//    + most social platforms fetch the URL as the link-preview
+//    image, so pasting `shareImageUrl` into a chat renders the
+//    Kartu Bola card inline — the screenshot moment without the
+//    screenshot.
+//
+// What's NOT shipped (deferred):
+//
+//   - Custom font loading in @vercel/og. The Pickem cards in-app use
+//     Space Grotesk + JetBrains Mono; the PNG falls back to the
+//     edge runtime's default sans because loading woff2 at edge adds
+//     measurable cold-start latency. P6.5.1 follow-on streams the
+//     woff2 once + caches in a top-level fetch.
+//   - SPA Helmet meta with og:image for /pickem/recap. The PNG URL
+//     in the share message handles WhatsApp link previews; SPA
+//     route og:image needs Helmet wiring + a prerender pass for
+//     bots that read /pickem/recap directly. Polish step.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P6 (follow-on P6.5).
 
-export const APP_VERSION = '0.73.0';
+export const APP_VERSION = '0.74.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -47,11 +47,23 @@ export default function Recap() {
     return u.toString();
   }, [variant]);
 
+  // v0.74.0 P6.5 — direct PNG URL via /api/og-recap. WhatsApp + IG +
+  // every social platform fetches this PNG as the link-preview image,
+  // so pasting `shareImageUrl` into a chat renders the Kartu Bola card
+  // inline. Same data driving the in-app card drives the PNG.
+  const shareImageUrl = useMemo(() => {
+    if (typeof window === 'undefined') return '';
+    const base = window.location.origin;
+    return `${base}/api/og-recap?type=pickem-${variant === 'big-win' ? 'bigwin' : variant === 'grup-up' ? 'grupup' : 'upset'}`;
+  }, [variant]);
+
   const shareMessage = useMemo(() => {
     const meta = RECAP_VARIANTS.find((v) => v.k === variant);
     const label = meta?.l || 'Recap';
-    return `${label} Pick'em WC 2026 — lihat catatan pekanku di Gibol.\n${shareUrl}`;
-  }, [variant, shareUrl]);
+    // Use the PNG URL directly — WhatsApp + most social previews it as
+    // the image, which IS the share card.
+    return `${label} Pick'em WC 2026 — lihat catatan pekanku di Gibol.\n${shareImageUrl}`;
+  }, [variant, shareImageUrl]);
 
   const onWhatsApp = () => {
     const txt = encodeURIComponent(shareMessage);
