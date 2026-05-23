@@ -38,6 +38,10 @@ import listGrupsHandler from './_lib/pickem/list-grups.js';
 // v0.70.0 — Pick'em P5 profile endpoint (still 11/12 functions).
 import listProfileHandler from './_lib/pickem/list-profile.js';
 
+// v0.72.0 — Pick'em P4.5 server-side bracket scoring (still 11/12).
+import upsertBracketHandler from './_lib/pickem/upsert-bracket.js';
+import scoreBracketHandler  from './_lib/pickem/score-bracket.js';
+
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
   switch (action) {
@@ -56,6 +60,9 @@ export default async function handler(req, res) {
     case 'list-grups':        return listGrupsHandler(req, res);
     // v0.70.0 P5 — profile aggregator (stats + streak + badges + history).
     case 'list-profile':      return listProfileHandler(req, res);
+    // v0.72.0 P4.5 — server-side WC bracket lifecycle (save + lock + score).
+    case 'upsert-bracket':    return upsertBracketHandler(req, res);
+    case 'score-bracket':     return scoreBracketHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
@@ -63,6 +70,7 @@ export default async function handler(req, res) {
           'create', 'create-league', 'join-league', 'pick', 'score',
           'list-fixtures', 'upsert-prediction', 'list-leaderboard', 'score-fixture',
           'list-grups', 'list-profile',
+          'upsert-bracket', 'score-bracket',
         ],
       });
   }

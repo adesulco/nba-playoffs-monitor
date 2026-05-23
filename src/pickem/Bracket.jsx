@@ -16,6 +16,8 @@ import {
   BracketLockConfirm,
   BracketStepper,
 } from './components/bracketStages.jsx';
+import { upsertBracket } from './api.js';
+import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 
 // ============================================================================
 // v0.69.0 — <Bracket /> · /pickem/bracket screen (Pick'em P4).
@@ -44,11 +46,23 @@ import {
 // ============================================================================
 
 const COMPETITION = 'WC2026';
+const SEASON = '2026';
 
 export default function Bracket() {
+  return (
+    <AuthProvider>
+      <BracketInner />
+    </AuthProvider>
+  );
+}
+
+function BracketInner() {
+  const { user } = useAuth();
   const [stage, setStage] = useState('group');
   const [confirmLock, setConfirmLock] = useState(false);
   const [autofilled, setAutofilled] = useState(false);
+  const [lockError, setLockError] = useState(null);
+  const [locking, setLocking] = useState(false);
   const b = useBracketState(COMPETITION);
 
   const stageIdx = STAGES.findIndex((s) => s.k === stage);
@@ -76,8 +90,27 @@ export default function Bracket() {
     setTimeout(() => setAutofilled(false), 2200);
   };
 
-  const handleConfirmLock = () => {
+  const handleConfirmLock = async () => {
+    setLockError(null);
+    setLocking(true);
+    // Try to persist + lock server-side first. If the user is signed in
+    // AND migration 0016 is applied, the bracket lands in the brackets +
+    // picks tables and the server lock_at stamp is authoritative. If
+    // either is missing, fall through to a local-only lock — the
+    // localStorage state still freezes; a future cron + claim flow can
+    // backfill once the schema is up.
+    if (user) {
+      const payload = buildUpsertPayload(b);
+      const res = await upsertBracket({ ...payload, lock: true });
+      if (!res.ok) {
+        // Soft fail: server can't save (schema missing or transient).
+        // Lock locally anyway so the user isn't blocked, surface the
+        // error inline.
+        setLockError(res.error || 'Gagal simpan ke server — terkunci lokal.');
+      }
+    }
     b.lock();
+    setLocking(false);
     setConfirmLock(false);
   };
 
@@ -209,10 +242,42 @@ export default function Bracket() {
           champion={b.champion || b.final?.pick}
           onCancel={() => setConfirmLock(false)}
           onConfirm={handleConfirmLock}
+          locking={locking}
+          error={lockError}
         />
       )}
     </PickemRoot>
   );
+}
+
+/**
+ * buildUpsertPayload(b) → the body shape /api/pickem upsert-bracket expects.
+ * Reads from useBracketState's exposed fields.
+ */
+function buildUpsertPayload(b) {
+  const groups = {};
+  for (const [letter, group] of Object.entries(b.groups || {})) {
+    groups[letter] = {};
+    for (const [code, rank] of Object.entries(group)) {
+      if (rank != null) groups[letter][code] = rank;
+    }
+  }
+  const koArray = (rows) =>
+    (rows || [])
+      .map((r, i) => (r.pick ? { slot_index: i + 1, picked_team_code: r.pick } : null))
+      .filter(Boolean);
+
+  return {
+    competition: COMPETITION,
+    season: SEASON,
+    groups,
+    r32: koArray(b.r32),
+    r16: koArray(b.r16),
+    qf: koArray(b.qf),
+    sf: koArray(b.sf),
+    final: b.final?.pick ? { picked_team_code: b.final.pick } : undefined,
+    champion: b.champion ? { picked_team_code: b.champion } : undefined,
+  };
 }
 
 // ── Sub-components ─────────────────────────────────────────────────────────

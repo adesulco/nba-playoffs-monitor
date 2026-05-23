@@ -252,3 +252,33 @@ export async function listProfile({ competition = 'WC2026', history_limit } = {}
     return { ok: false, error: String(err?.message || err) };
   }
 }
+
+/**
+ * upsertBracket({ bracket_id?, competition, season?, groups, r32, r16,
+ *                 qf, sf, final, champion, lock? })
+ * Auth required. Replace-all save of the WC bracket picks; optional
+ * lock in the same call. Returns { ok, bracket_id, picks_written,
+ * status, locked, locked_at }.
+ */
+export async function upsertBracket(payload) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const res = await fetch(buildUrl('upsert-bracket'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payload),
+    });
+    const data = await readJson(res);
+    if (!res.ok) {
+      const err = normalizeError(res, data);
+      return { ok: false, error: err, schemaReady: !isSchemaMissing(err) };
+    }
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}

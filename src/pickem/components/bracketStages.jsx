@@ -757,7 +757,7 @@ export function BracketMiniStrip({ champion, totalPicks, target = 68 }) {
 
 // ── Lock confirmation modal ────────────────────────────────────────────────
 
-export function BracketLockConfirm({ champion, onCancel, onConfirm }) {
+export function BracketLockConfirm({ champion, onCancel, onConfirm, locking = false, error = null }) {
   return (
     <div
       role="presentation"
@@ -851,11 +851,28 @@ export function BracketLockConfirm({ champion, onCancel, onConfirm }) {
             </div>
           </div>
         )}
+        {error && (
+          <div
+            role="alert"
+            style={{
+              marginBottom: 12,
+              padding: '8px 10px',
+              background: 'var(--p-down-wash)',
+              color: 'var(--p-down)',
+              borderRadius: 'var(--r-2)',
+              fontSize: 12,
+              textAlign: 'left',
+              fontFamily: 'var(--font-ui-pickem)',
+            }}
+          >
+            {error}
+          </div>
+        )}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <PickemBtn full size="lg" variant="primary" onClick={onConfirm}>
-            🔒 Kunci bracket
+          <PickemBtn full size="lg" variant="primary" onClick={onConfirm} disabled={locking}>
+            {locking ? 'Mengunci…' : '🔒 Kunci bracket'}
           </PickemBtn>
-          <PickemBtn full size="md" variant="ghost" onClick={onCancel}>
+          <PickemBtn full size="md" variant="ghost" onClick={onCancel} disabled={locking}>
             Nanti aja
           </PickemBtn>
         </div>

@@ -7308,8 +7308,62 @@
 //     when those surfaces sprout share affordances.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P6.
+//
+// v0.72.0 — Pick'em P4.5: bracket scoring server-side (2026-05-23).
+// The schema + RPC the P4 bracket UI was waiting on. All flag-gated.
+//
+// What changed:
+//
+// 1. supabase/migrations/0016_pickem_bracket_scoring.sql — adds:
+//    - picks.slot_type / slot_index / picked_team_code (nullable
+//      series_id for WC bracket-slot rows). XOR constraint: either
+//      series_id or slot_type, never both. Partial unique on
+//      (bracket_id, slot_type, slot_index) for WC rows.
+//    - brackets.competition / season / points_cache / locked_at.
+//      Backfills legacy NBA brackets with competition='NBA-Playoffs-2026'.
+//    - pickem_rules.bracket_pts_* config (§5.4 generalised:
+//      group_rank1=5 / rank2=3 / rank3=2 / r32=10 / r16=20 / qf=40 /
+//      sf=80 / finalist=160 / champion=200).
+//    - pickem_score_bracket(p_bracket_id) RPC. Walks every WC-slot
+//      pick, looks up the corresponding fixture in `fixtures`,
+//      awards per-pick points, writes brackets.points_cache. v1
+//      defers group_rank scoring (needs a group_standings view) —
+//      KO + champion picks score against fixtures.outcome cleanly.
+//      Idempotent.
+//
+// 2. api/_lib/pickem/upsert-bracket.js NEW — `?_action=upsert-bracket`.
+//    Authenticated batch save of the entire WC bracket (groups + R32
+//    + R16 + QF + SF + final + champion). Replace-all strategy —
+//    deletes existing WC slot rows for the bracket then inserts the
+//    new set, idempotent. Optional `lock: true` flips brackets.status
+//    open→locked in the same call.
+//
+// 3. api/_lib/pickem/score-bracket.js NEW — `?_action=score-bracket`.
+//    Admin-only (same x-admin-token model as score-fixture). Invokes
+//    the pickem_score_bracket RPC and returns the summary.
+//
+// 4. Dispatcher extended with upsert-bracket + score-bracket. Still
+//    11/12 functions (the new handlers live under api/_lib/pickem/).
+//
+// 5. src/pickem/api.js — upsertBracket(payload) wrapper.
+//
+// 6. src/pickem/Bracket.jsx — handleConfirmLock now calls upsertBracket
+//    with lock:true BEFORE flipping the local b.lock() state. If the
+//    user is signed in AND migration 0016 is applied, the bracket
+//    lands in the brackets + picks tables with the server lock_at
+//    stamp. If either is missing, the local lock still fires
+//    (predict-first principle); the error surfaces inline in the
+//    lock-confirm modal so the user knows save didn't persist.
+//
+// Manual step:
+//
+//   Apply 0016 via Supabase SQL Editor before the bracket lock
+//   round-trips to the server. Until then, locked brackets remain
+//   localStorage-only — the UX is the same for the user.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P4 (follow-on P4.5).
 
-export const APP_VERSION = '0.71.0';
+export const APP_VERSION = '0.72.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
