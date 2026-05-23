@@ -194,18 +194,18 @@ begin
           when 'final_winner' then rules.bracket_pts_finalist
         end;
       begin
+        -- fixtures.home_team / away_team are text tricodes (per 0015 fix);
+        -- compare directly without a teams join.
         if exists (
           select 1 from public.fixtures f
-          join public.teams t on t.id = case f.outcome
-            when 'H' then f.home_team
-            when 'A' then f.away_team
-            else null
-          end
           where f.league = coalesce(br.competition, 'WC2026')
             and f.stage = stage_key
             and f.status = 'final'
-            and t.id is not null
-            and (t.slug = lower(pick_row.picked_team_code) or upper(coalesce(t.abbr, '')) = upper(pick_row.picked_team_code))
+            and upper(case f.outcome
+              when 'H' then f.home_team
+              when 'A' then f.away_team
+              else null
+            end) = upper(pick_row.picked_team_code)
         ) then
           pts := coalesce(per_match_pts, 0);
         end if;
@@ -213,12 +213,10 @@ begin
     elsif pick_row.slot_type = 'champion' then
       if exists (
         select 1 from public.fixtures f
-        join public.teams t on t.id = case f.outcome when 'H' then f.home_team when 'A' then f.away_team else null end
         where f.league = coalesce(br.competition, 'WC2026')
           and f.stage = 'final'
           and f.status = 'final'
-          and t.id is not null
-          and (t.slug = lower(pick_row.picked_team_code) or upper(coalesce(t.abbr, '')) = upper(pick_row.picked_team_code))
+          and upper(case f.outcome when 'H' then f.home_team when 'A' then f.away_team else null end) = upper(pick_row.picked_team_code)
       ) then
         pts := coalesce(rules.bracket_pts_champion, 0);
       end if;

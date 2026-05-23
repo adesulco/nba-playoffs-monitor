@@ -30,8 +30,11 @@ create table if not exists public.fixtures (
   season        text not null,                         -- '2026', '2025-26'…
   stage         text not null,                         -- 'group' | 'R32' | 'R16' | 'QF' | 'SF' | 'final' | regular-season week
   matchday      int  not null,                         -- groups fixtures for cadence + Jagoan + Survivor scope
-  home_team     uuid not null references public.teams(id) on delete restrict,
-  away_team     uuid not null references public.teams(id) on delete restrict,
+  -- home_team / away_team store the team's tricode (e.g. 'BRA', 'ARG').
+  -- The existing teams table is keyed by tricode text (no surrogate uuid
+  -- id), so the FK references teams(tricode) rather than teams(id).
+  home_team     text not null references public.teams(tricode) on delete restrict,
+  away_team     text not null references public.teams(tricode) on delete restrict,
   kickoff_at    timestamptz not null,
   lock_at       timestamptz not null,                  -- predictions lock here (= kickoff by default)
   status        text not null default 'scheduled' check (status in ('scheduled', 'live', 'final')),
@@ -194,7 +197,8 @@ create table if not exists public.survivor_entries (
   competition          text not null,
   status               text not null default 'alive' check (status in ('alive','out')),
   eliminated_matchday  int,                          -- matchday on which user was eliminated
-  used_team_ids        uuid[] not null default '{}', -- no-reuse enforced in RPC
+  -- Team tricodes (matches public.teams PK type).
+  used_team_ids        text[] not null default '{}', -- no-reuse enforced in RPC
   created_at           timestamptz not null default now(),
   updated_at           timestamptz not null default now(),
   unique (user_id, competition)

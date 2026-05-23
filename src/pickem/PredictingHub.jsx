@@ -488,12 +488,12 @@ function hydrateTeam(fixture, side) {
   // alpha-3 code (e.g. 'BRA', 'ARG'); for NBA + other leagues abbr is
   // the team code (e.g. 'LAL'). Either way, abbr drives the Flag chip.
   const embedded = side === 'home' ? fixture.home : fixture.away;
-  if (embedded && (embedded.name || embedded.abbr || embedded.code)) {
-    const abbr = embedded.abbr || embedded.code || '';
+  if (embedded && (embedded.name || embedded.tricode || embedded.abbr || embedded.code)) {
+    const code = embedded.tricode || embedded.abbr || embedded.code || '';
     return {
-      name: embedded.name || abbr || 'TBA',
-      short: embedded.short || abbr || 'TBA',
-      code: (embedded.country_code || abbr || embedded.slug || 'IDN').toUpperCase().slice(0, 3),
+      name: embedded.name || code || 'TBA',
+      short: embedded.short || code || 'TBA',
+      code: (embedded.country_code || code || embedded.slug || 'IDN').toUpperCase().slice(0, 3),
     };
   }
   const uuid = side === 'home' ? fixture.home_team : fixture.away_team;

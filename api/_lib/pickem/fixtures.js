@@ -61,10 +61,13 @@ export default async function handler(req, res) {
   // ("TBA"/"TXYZ") and render real team names without a follow-up
   // round trip. Falls back gracefully on older clients that ignore
   // the embedded objects.
+  // The teams table is keyed by text `tricode` (e.g. 'BRA', 'LAL') —
+  // not a uuid `id`. The embed shape returns the team row with its
+  // available columns (name + city + conference + league + tricode).
   let q = admin
     .from('fixtures')
     .select(
-      'id, league, season, stage, matchday, home_team, away_team, kickoff_at, lock_at, status, home_score, away_score, outcome, p_home, p_draw, p_away, finalized_at, home:teams!home_team(id, name, slug, abbr, league), away:teams!away_team(id, name, slug, abbr, league)',
+      'id, league, season, stage, matchday, home_team, away_team, kickoff_at, lock_at, status, home_score, away_score, outcome, p_home, p_draw, p_away, finalized_at, home:teams!home_team(tricode, name, city, conference, league, primary_color), away:teams!away_team(tricode, name, city, conference, league, primary_color)',
     )
     .eq('league', league)
     .order('kickoff_at', { ascending: true })
