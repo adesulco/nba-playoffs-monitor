@@ -228,14 +228,23 @@ create table if not exists public.badges (
   created_at  timestamptz not null default now()
 );
 
+-- user_badges identity: a synthetic uuid PK keeps things simple while
+-- the composite uniqueness lives in a unique INDEX (Postgres allows
+-- expressions in unique indexes but not in PRIMARY KEY constraints).
+-- The coalesce() wrappers let (competition, matchday) be NULL for
+-- badges that are competition-wide / cross-matchday without breaking
+-- the idempotent `insert ... on conflict do nothing` pattern.
 create table if not exists public.user_badges (
+  id          uuid primary key default gen_random_uuid(),
   user_id     uuid not null references auth.users(id) on delete cascade,
   badge_code  text not null references public.badges(code) on delete cascade,
   awarded_at  timestamptz not null default now(),
   competition text,
-  matchday    int,
-  primary key (user_id, badge_code, coalesce(competition, ''), coalesce(matchday, 0))
+  matchday    int
 );
+
+create unique index if not exists user_badges_uniq
+  on public.user_badges (user_id, badge_code, coalesce(competition, ''), coalesce(matchday, 0));
 
 create index if not exists user_badges_user_idx on public.user_badges (user_id, awarded_at desc);
 
