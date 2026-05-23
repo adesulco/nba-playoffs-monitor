@@ -463,6 +463,81 @@ export function Tabs({ tabs, active, onChange }) {
 
 // ── #16 SegmentedPicker ────────────────────────────────────────────────────
 
+// ── #17 StreakFlame ────────────────────────────────────────────────────────
+
+/**
+ * <StreakFlame days /> — mono flame chip showing the user's current
+ * consecutive-matchday streak. Per spec §9 — "Streaks: Consecutive
+ * match-days with predictions submitted → a streak counter + small
+ * streak bonus. The habit loop; losing a streak hurts, so people come
+ * back."
+ */
+export function StreakFlame({ days }) {
+  return (
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 4,
+        fontFamily: 'var(--font-mono)',
+        fontSize: 12,
+        fontWeight: 700,
+        color: 'var(--p-live)',
+      }}
+    >
+      🔥 {days}
+    </span>
+  );
+}
+
+// ── #18 Badge ──────────────────────────────────────────────────────────────
+
+/**
+ * <Badge icon label sublabel locked color /> — one tile in the profile
+ * badge gallery. `locked` greys + de-saturates the badge. Status
+ * currency per spec §9 — the legal/on-brand reward currency.
+ */
+export function Badge({ icon, label, sublabel, locked = false, color = 'var(--pickem-orange)' }) {
+  return (
+    <div
+      style={{
+        padding: '14px 8px',
+        borderRadius: 12,
+        background: 'var(--bg-raised)',
+        border: '1px solid var(--line-1)',
+        textAlign: 'center',
+        opacity: locked ? 0.45 : 1,
+        fontFamily: 'var(--font-ui-pickem)',
+      }}
+    >
+      <div
+        aria-hidden="true"
+        style={{
+          fontSize: 30,
+          marginBottom: 4,
+          filter: locked ? 'grayscale(1)' : 'none',
+        }}
+      >
+        {icon}
+      </div>
+      <div
+        style={{
+          fontSize: 12,
+          fontWeight: 700,
+          color: locked ? 'var(--ink-2)' : 'var(--ink-1)',
+        }}
+      >
+        {label}
+      </div>
+      {sublabel && (
+        <div style={{ fontSize: 10, color: 'var(--ink-3)', marginTop: 2 }}>
+          {sublabel}
+        </div>
+      )}
+    </div>
+  );
+}
+
 /**
  * <SegmentedPicker items active onChange /> — compact segmented control.
  * `items`: [{ k, l }]

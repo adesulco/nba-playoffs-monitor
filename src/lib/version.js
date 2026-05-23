@@ -7192,8 +7192,63 @@
 //     the recap-card pipeline.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P4.
+//
+// v0.70.0 — Pick'em P5: Survivor + Profile + badges + streaks (2026-05-23).
+// The retention layer per spec §9. All flag-gated; default surface
+// unchanged.
+//
+// What changed:
+//
+// 1. Badge + StreakFlame components added to
+//    src/pickem/components/social.jsx — handoff primitives #17 + #18.
+//    Status currency surface for the profile screen.
+//
+// 2. api/_lib/pickem/list-profile.js NEW — single endpoint that
+//    aggregates everything /pickem/profile needs in one roundtrip:
+//    points + rank + accuracy (from leaderboard_competition view) +
+//    streak (from streaks table) + earned badges + full badge catalog +
+//    recent prediction history with the fixtures join. Auth required.
+//    Dispatcher extended to 'list-profile'; still 11/12 functions.
+//
+// 3. src/pickem/Profile.jsx — /pickem/profile surface. Avatar bubble
+//    with first-letter monogram, streak flame chip, 3-cell stats grid
+//    (POIN / RANK / AKURASI), badges gallery (locked badges greyed +
+//    desaturated), recent-history list. Reads via listProfile() from
+//    api.js. Auth-gated; unauth'd users round-trip through /login.
+//
+// 4. src/pickem/Survivor.jsx — /pickem/survivor "Fan Terakhir" surface.
+//    Anatomy from screens.jsx#ScreenSurvivor: status banner (alive /
+//    out), this-matchday pick grid (4 candidate teams shown), already-
+//    used team chips, lock-confirm modal. Client-side only for v1 —
+//    localStorage under `gibol:pickem:survivor:WC2026`. No-reuse
+//    enforced locally before the server has a fixtures-tied survivor
+//    pick column. Server-side advance/elimination already exists in
+//    pickem_score_fixture() (migration 0015) but reads is_jagoan as a
+//    placeholder until a P5.5 migration extends predictions with a
+//    dedicated survivor_pick column.
+//
+// 5. App.jsx — /pickem/survivor + /pickem/profile routes added
+//    behind UI.pickem.
+//
+// What's NOT shipped (deferred follow-ons):
+//
+//   - Server-tied Survivor picks. Migration 0015's
+//     pickem_score_fixture() infers Survivor advance/elimination from
+//     is_jagoan on predictions — a workable placeholder. P5.5 extends
+//     predictions with `survivor_pick boolean` (or a separate
+//     survivor_picks table) so Survivor + Jagoan can coexist on the
+//     same matchday.
+//   - Badge auto-award triggers. The catalog is seeded (5 launch
+//     badges) but no RPC yet evaluates the criteria JSONB on each
+//     scored prediction and writes user_badges rows. Server-side
+//     awarding wires alongside the survivor extension.
+//   - Streak auto-update. The streaks table exists; the cron that
+//     bumps current_streak on each daily prediction submission isn't
+//     written yet.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P5.
 
-export const APP_VERSION = '0.69.0';
+export const APP_VERSION = '0.70.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -233,3 +233,22 @@ export async function listMyGrups(competition) {
     return { ok: false, error: String(err?.message || err), grups: [] };
   }
 }
+
+/**
+ * listProfile({ competition?, history_limit? })
+ * Auth required. Returns { ok, profile } with stats / streak / badges /
+ * recent_predictions in one round trip.
+ */
+export async function listProfile({ competition = 'WC2026', history_limit } = {}) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const url = buildUrl('list-profile', { competition, history_limit });
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    return { ok: true, profile: data?.profile };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}

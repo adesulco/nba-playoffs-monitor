@@ -134,6 +134,9 @@ const GrupDetail     = lazy(() => import('./pickem/GrupDetail.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
 // v0.69.0 P4 — stage-paged WC 2026 bracket builder.
 const PickemBracket  = lazy(() => import('./pickem/Bracket.jsx'));
+// v0.70.0 P5 — Survivor + Profile.
+const PickemSurvivor = lazy(() => import('./pickem/Survivor.jsx'));
+const PickemProfile  = lazy(() => import('./pickem/Profile.jsx'));
 // v0.13.0 — site-wide cross-sport footer (Ship 3E). Mounts below the
 // route Suspense so every page (incl. NotFound + leaf pages) ends with
 // a link grid to all sport hubs. Lazy because it's never above the
@@ -409,6 +412,8 @@ export default function App() {
             {UI.pickem && <Route path="/pickem/grup/:id" element={<GrupDetail />} />}
             {UI.pickem && <Route path="/pickem/grup/:id/join" element={<GrupJoin />} />}
             {UI.pickem && <Route path="/pickem/bracket" element={<PickemBracket />} />}
+            {UI.pickem && <Route path="/pickem/survivor" element={<PickemSurvivor />} />}
+            {UI.pickem && <Route path="/pickem/profile" element={<PickemProfile />} />}
 
             {/* v0.62.0 — Kebijakan Privasi + Syarat & Ketentuan (audit F-001). */}
             <Route path="/privacy" element={<Privacy />} />

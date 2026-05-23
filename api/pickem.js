@@ -35,6 +35,9 @@ import scoreFixtureHandler from './_lib/pickem/score-fixture.js';
 // v0.68.0 — Pick'em P3 grup endpoint (still 11/12 functions).
 import listGrupsHandler from './_lib/pickem/list-grups.js';
 
+// v0.70.0 — Pick'em P5 profile endpoint (still 11/12 functions).
+import listProfileHandler from './_lib/pickem/list-profile.js';
+
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
   switch (action) {
@@ -51,13 +54,15 @@ export default async function handler(req, res) {
     case 'score-fixture':     return scoreFixtureHandler(req, res);
     // v0.68.0 P3 — grup endpoints (create-league extended in place).
     case 'list-grups':        return listGrupsHandler(req, res);
+    // v0.70.0 P5 — profile aggregator (stats + streak + badges + history).
+    case 'list-profile':      return listProfileHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
         allowed: [
           'create', 'create-league', 'join-league', 'pick', 'score',
           'list-fixtures', 'upsert-prediction', 'list-leaderboard', 'score-fixture',
-          'list-grups',
+          'list-grups', 'list-profile',
         ],
       });
   }
