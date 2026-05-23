@@ -94,7 +94,7 @@ function JoinLeagueInner() {
               borderRadius: 3,
               padding: 20,
             }}>
-              <h1 style={{ margin: 0, font: "700 20px 'Inter Tight'" }}>
+              <h1 style={{ margin: 0, font: "700 20px 'Space Grotesk'" }}>
                 {lang === 'id' ? 'Kode undangan tidak valid' : 'Invalid invite code'}
               </h1>
               <p style={{ marginTop: 8, fontSize: 13, color: C.dim }}>

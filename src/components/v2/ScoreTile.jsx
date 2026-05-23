@@ -252,7 +252,7 @@ export default function ScoreTile({
       {item.subtitle && (
         <div
           style={{
-            fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+            fontFamily: '"Space Grotesk", system-ui, sans-serif',
             fontSize: 13,
             fontWeight: 700,
             color: 'var(--ink)',

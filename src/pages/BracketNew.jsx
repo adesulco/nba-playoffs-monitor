@@ -90,7 +90,7 @@ function NewBracketInner() {
                   background: 'var(--amber)',
                   color: '#0A1628',
                   border: '1px solid var(--amber)',
-                  font: "700 13px 'Inter Tight'",
+                  font: "700 13px 'Space Grotesk'",
                   cursor: 'pointer',
                 }}
               >{lang === 'id' ? 'Coba lagi' : 'Try again'}</button>

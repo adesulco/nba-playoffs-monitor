@@ -1,0 +1,251 @@
+/* ==================================================================
+   Gibol Pick'em — v0.65.0 token sheet (paper + dark "Stadium Night")
+   -------------------------------------------------------------------
+   Ported from design-handoff-pickem/tokens.css + pickem-tokens.css.
+   Decision #1 from the handover (Pickem-ClaudeCode-Handover.md):
+   **scope the dark sheet under a Pick'em container** (`.pickem-root`)
+   so the bare `[data-theme="dark"]` selector in the source sheet
+   doesn't mutate shared tokens app-wide. Both light AND dark blocks
+   live under `.pickem-root` here for full self-containment — Pickem
+   renders correctly regardless of the global VITE_FLAG_BRAND setting.
+
+   Three reconciliations vs the source handover (which predates the
+   v0.63.0 paper-grey port):
+
+   1. Newsreader is gone. The source defines --font-display as
+      'Newsreader', Georgia, serif. We dropped Newsreader app-wide in
+      v0.63.0 (open question #4 confirmed by Ade). --font-display +
+      --font-ui-pickem here both resolve to Space Grotesk — same
+      family Pickem display headlines render in.
+
+   2. Light surface is paper-grey #EEF1F5, not cream #F5F1EA. The
+      source's `--pickem-orange: #9A3412` contrast claim ("7.4:1 on
+      paper") was measured against cream — verified on paper-grey it
+      stays in AA range (relative luminance is close).
+
+   3. pickem-tokens.css's dark block (`[data-theme="dark"] { ... }`)
+      collides with the paper tokens v0.63.0 ported into
+      `[data-brand="paper"]`. Scoped under `.pickem-root` here so the
+      collision is impossible by construction.
+   ================================================================== */
+
+/* ─────────────────────────────────────────────────────────────────
+   Light / paper Pick'em — the user-toggled "day" surface.
+   ─────────────────────────────────────────────────────────────── */
+.pickem-root {
+  /* Surfaces — paper stack (same values as the paper-grey port). */
+  --bg-deep:   #DDE3EA;
+  --bg-base:   #EEF1F5;
+  --bg-raised: #F8FAFC;
+  --bg-elev:   #FFFFFF;
+  --bg-paper:  #FFFFFF;
+
+  /* Ink */
+  --ink-1: #0F1E2E;
+  --ink-2: #3A4856;
+  --ink-3: #6B7480;
+  --ink-4: #98998E;
+  --ink-on-accent: #FFFFFF;
+  --ink-on-pulse:  #FFFFFF;
+
+  /* Lines */
+  --line-1: rgba(15, 30, 46, 0.08);
+  --line-2: rgba(15, 30, 46, 0.14);
+  --line-3: rgba(15, 30, 46, 0.22);
+
+  /* Pulse (brand green) */
+  --pulse:      #3B7A57;
+  --pulse-deep: #285E40;
+  --pulse-soft: #C9DECF;
+  --pulse-wash: #E9F1EC;
+
+  /* Type — Newsreader + Inter Tight dropped (paper-grey reconciliation
+     #1). Display + UI both resolve to Space Grotesk. */
+  --font-display:   'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-ui-pickem: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono:      'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Motion + radii + shadows — duplicated so the container is
+     self-contained when [data-brand="paper"] is not on globally. */
+  --r-1: 4px;
+  --r-2: 8px;
+  --r-3: 12px;
+  --r-4: 16px;
+  --r-5: 24px;
+  --r-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(15, 30, 46, 0.04);
+  --shadow-2: 0 1px 2px rgba(15, 30, 46, 0.04), 0 6px 18px -8px rgba(15, 30, 46, 0.10);
+  --shadow-3: 0 2px 4px rgba(15, 30, 46, 0.06), 0 16px 32px -12px rgba(15, 30, 46, 0.14);
+  --shadow-pop: 0 12px 40px -8px rgba(15, 30, 46, 0.22), 0 4px 8px rgba(15, 30, 46, 0.08);
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --ease-in:  cubic-bezier(0.6, 0, 0.8, 0.3);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+
+  --focus-ring: 0 0 0 3px rgba(43, 111, 219, 0.35);
+
+  /* Pickem accents — paper variant. Bare amber fails AA on paper
+     (~2:1) so primary CTA + accent text uses brand orange #9A3412
+     which hits AA on both cream (#F5F1EA, 7.4:1) and paper-grey
+     (#EEF1F5, ~6.8:1). */
+  --pickem-orange:      #9A3412;
+  --pickem-orange-deep: #7C2A0E;
+  --pickem-orange-soft: #F4D9CC;
+  --pickem-orange-wash: #F9EAE2;
+
+  /* Pick'em match-state semantics */
+  --p-up:        #1F8A5B;
+  --p-up-wash:   #DCEFE4;
+  --p-down:      #B8341F;
+  --p-down-wash: #F7E1DA;
+  --p-live:      #D97706;
+  --p-live-wash: #FCE9CD;
+  --p-info:      #2A6FDB;
+  --p-info-wash: #E1ECFA;
+
+  /* Jagoan (multiplier star) */
+  --p-jagoan:      #B45309;
+  --p-jagoan-wash: #FCE9CD;
+
+  /* Base typography */
+  font-family: var(--font-ui-pickem);
+  color: var(--ink-1);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Dark "Stadium Night" — the default Pick'em surface. The container
+   forces data-theme="dark" by default; users can toggle to light via
+   the theme switcher (P5+).
+   ─────────────────────────────────────────────────────────────── */
+.pickem-root[data-theme="dark"] {
+  --bg-deep:   #06101D;
+  --bg-base:   #0A1628;
+  --bg-raised: #0F1E36;
+  --bg-elev:   #16273F;
+  --bg-paper:  #0F1E36;
+
+  --ink-1: #E6EEF9;
+  --ink-2: #B6C4D8;
+  --ink-3: #9FB4CC;
+  --ink-4: #6B7B92;
+
+  --line-1: rgba(230, 238, 249, 0.08);
+  --line-2: rgba(230, 238, 249, 0.14);
+  --line-3: rgba(230, 238, 249, 0.22);
+
+  /* Pulse on dark — brighter green */
+  --pulse:      #34D399;
+  --pulse-deep: #10B981;
+  --pulse-soft: rgba(52, 211, 153, 0.20);
+  --pulse-wash: rgba(52, 211, 153, 0.10);
+
+  /* Pickem accent on dark — live amber #F59E0B (AAA 9.2:1 on ink) */
+  --pickem-orange:      #F59E0B;
+  --pickem-orange-deep: #D97706;
+  --pickem-orange-soft: rgba(245, 158, 11, 0.25);
+  --pickem-orange-wash: rgba(245, 158, 11, 0.12);
+
+  --p-up:        #34D399;
+  --p-up-wash:   rgba(52, 211, 153, 0.16);
+  --p-down:      #F87171;
+  --p-down-wash: rgba(248, 113, 113, 0.14);
+  --p-live:      #FBBF24;
+  --p-live-wash: rgba(251, 191, 36, 0.18);
+  --p-info:      #60A5FA;
+  --p-info-wash: rgba(96, 165, 250, 0.16);
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.35), 0 8px 24px -10px rgba(0, 0, 0, 0.45);
+  --shadow-3: 0 4px 10px rgba(0, 0, 0, 0.40), 0 20px 40px -16px rgba(0, 0, 0, 0.55);
+  --shadow-pop: 0 16px 48px -10px rgba(0, 0, 0, 0.6), 0 6px 12px rgba(0, 0, 0, 0.3);
+
+  --focus-ring: 0 0 0 3px rgba(96, 165, 250, 0.55);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Pick'em type utilities
+   ─────────────────────────────────────────────────────────────── */
+.pickem-root .p-display     { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.04; letter-spacing: -0.02em; }
+.pickem-root .p-display-sm  { font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.08; letter-spacing: -0.015em; }
+.pickem-root .p-headline    { font-family: var(--font-display); font-weight: 600; font-size: 22px; line-height: 1.15; letter-spacing: -0.01em; }
+.pickem-root .p-headline-it { font-family: var(--font-display); font-weight: 600; font-style: italic; font-size: 18px; line-height: 1.25; letter-spacing: -0.005em; }
+.pickem-root .p-body        { font-family: var(--font-ui-pickem); font-weight: 400; font-size: 15px; line-height: 1.45; }
+.pickem-root .p-bodysm      { font-family: var(--font-ui-pickem); font-weight: 400; font-size: 13px; line-height: 1.4; }
+.pickem-root .p-label       { font-family: var(--font-ui-pickem); font-weight: 600; font-size: 13px; line-height: 1.3; }
+.pickem-root .p-eyebrow {
+  font-family: var(--font-mono); font-weight: 500;
+  font-size: 11px; line-height: 1; letter-spacing: 0.10em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.pickem-root .p-score-xl { font-family: var(--font-mono); font-weight: 700; font-size: 56px; line-height: 0.95; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.pickem-root .p-score-lg { font-family: var(--font-mono); font-weight: 700; font-size: 40px; line-height: 0.95; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.pickem-root .p-score-md { font-family: var(--font-mono); font-weight: 600; font-size: 28px; line-height: 1;    font-variant-numeric: tabular-nums; }
+.pickem-root .p-score-sm { font-family: var(--font-mono); font-weight: 600; font-size: 18px; line-height: 1;    font-variant-numeric: tabular-nums; }
+
+/* Live pulse — sacred amber on dark, deeper amber on paper. */
+.pickem-root .p-live-dot {
+  display: inline-block;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--p-live);
+  box-shadow: 0 0 0 0 var(--p-live);
+  animation: p-live-ring 1.5s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
+}
+@keyframes p-live-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.6); }
+  70%  { box-shadow: 0 0 0 7px rgba(217, 119, 6, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+}
+
+/* Generic 1X2 picker — used by every direction (match / KO / survivor). */
+.pickem-root .p-pick {
+  appearance: none;
+  border: 1px solid var(--line-2);
+  background: var(--bg-raised);
+  color: var(--ink-1);
+  font-family: var(--font-ui-pickem);
+  font-weight: 600;
+  padding: 12px 0;
+  font-size: 14px;
+  cursor: pointer;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--dur-1) var(--ease-out);
+}
+.pickem-root .p-pick--selected { background: var(--ink-1); color: var(--ink-on-accent); border-color: var(--ink-1); }
+.pickem-root .p-pick--correct  { background: var(--p-up-wash); color: var(--p-up); border-color: var(--p-up); }
+.pickem-root .p-pick--wrong    { background: var(--p-down-wash); color: var(--p-down); border-color: var(--p-down); opacity: 0.7; }
+
+/* Country flag chip — placeholder uses emoji + COUNTRY_COLORS solid
+   fallback; production CDN/SVG pipeline swaps the inner via the
+   <Flag /> component (src/pickem/Flag.jsx). No heavy dependency on
+   hot paths per CLAUDE.md #7. */
+.pickem-root .p-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  background: var(--bg-deep);
+  flex-shrink: 0;
+}
+
+/* Focus + reduced-motion */
+.pickem-root :is(button, a, [role="button"], [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pickem-root .p-live-dot { animation: none; }
+}

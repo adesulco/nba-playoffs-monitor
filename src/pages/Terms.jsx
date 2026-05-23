@@ -209,7 +209,7 @@ const kicker = {
   margin: '0 0 8px',
 };
 const h1Style = {
-  fontFamily: 'Newsreader, Georgia, serif',
+  fontFamily: 'Space Grotesk, system-ui, sans-serif',
   fontSize: 'clamp(28px, 5vw, 44px)',
   fontWeight: 700,
   lineHeight: 1.15,

@@ -114,7 +114,7 @@ function NewLeagueInner() {
                 background: 'var(--amber)',
                 color: '#0A1628',
                 border: '1px solid var(--amber)',
-                font: "700 14px 'Inter Tight'",
+                font: "700 14px 'Space Grotesk'",
                 cursor: submitting ? 'not-allowed' : 'pointer',
                 opacity: submitting ? 0.6 : 1,
               }}

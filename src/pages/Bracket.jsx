@@ -94,7 +94,7 @@ function BracketsIndexInner() {
                 background: 'var(--amber)',
                 color: '#0A1628',
                 textDecoration: 'none',
-                font: "700 13px 'Inter Tight'",
+                font: "700 13px 'Space Grotesk'",
               }}
             >{lang === 'id' ? 'Bracket baru' : 'New bracket'}</Link>
           </header>
@@ -125,7 +125,7 @@ function BracketsIndexInner() {
                       </p>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <p style={{ margin: 0, font: "900 22px 'Inter Tight'" }}>{b.score ?? 0}</p>
+                      <p style={{ margin: 0, font: "900 22px 'Space Grotesk'" }}>{b.score ?? 0}</p>
                       <p style={{ margin: 0, fontSize: 10, color: C.dim, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                         {lang === 'id' ? 'poin' : 'points'}
                       </p>
@@ -160,7 +160,7 @@ function BracketsIndexInner() {
                   background: 'var(--amber)',
                   color: '#0A1628',
                   textDecoration: 'none',
-                  font: "700 13px 'Inter Tight'",
+                  font: "700 13px 'Space Grotesk'",
                 }}
               >{lang === 'id' ? 'Buat bracket pertama' : 'Create first bracket'}</Link>
             </div>
@@ -169,7 +169,7 @@ function BracketsIndexInner() {
           <section style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <h2 style={{
               margin: 0,
-              font: "700 14px 'Inter Tight'",
+              font: "700 14px 'Space Grotesk'",
               letterSpacing: '0.02em',
             }}>{lang === 'id' ? 'Liga privat' : 'Private leagues'}</h2>
 
@@ -224,7 +224,7 @@ function BracketsIndexInner() {
                 border: `1px solid ${C.line}`,
                 background: 'var(--bg-3)',
                 color: C.text, textDecoration: 'none',
-                font: "600 12px 'Inter Tight'",
+                font: "600 12px 'Space Grotesk'",
               }}
             >
               {lang === 'id' ? 'Leaderboard global' : 'Global leaderboard'}
@@ -237,7 +237,7 @@ function BracketsIndexInner() {
                 border: `1px solid ${C.line}`,
                 background: 'var(--bg-3)',
                 color: C.text, textDecoration: 'none',
-                font: "600 12px 'Inter Tight'",
+                font: "600 12px 'Space Grotesk'",
               }}
             >
               {lang === 'id' ? 'Buat liga privat' : 'New private league'}

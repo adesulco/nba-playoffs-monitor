@@ -99,43 +99,17 @@
          the home page has its own WebSite/Organization (above) which
          is correct site-wide signal. -->
 
-    <!-- Font loading strategy (Brand v2 — Phase A redesign):
-         • Preconnect to both fonts.googleapis.com and fonts.gstatic.com
-         • Fetch the main CSS stylesheet normally (non-blocking via media="print" → swap to "all" on load)
-         • font-display: swap ships inline in Google's CSS, so the system fallback renders immediately
-         • Inter Tight 400–900 powers body + display; JetBrains Mono 400–700 powers every numeric UI.
-         • Newsreader 400–800 powers editorial display + serif kicker (article shells, pull quotes, drop caps).
-           Added v0.51.0 Phase A — see docs/redesign-v4-handover.md §4 Phase A. Subset to Latin only;
-           weight 700 is the workhorse; lighter weights load lazily via display=swap. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- v0.62.8 — audit PERF-001. The font CSS below loads async via the
-         media="print"/onload swap so it never blocks render — but that
-         also DEFERS it, which is what makes the Newsreader hero headline
-         flash (FOUT). Adding rel="preload" as="style" for the same URL
-         tells the browser to fetch the font CSS at high priority right
-         away; the print/onload link still does the actual apply. Net:
-         the @font-face rules (and therefore the woff2 fetches) start
-         sooner → smaller FOUT window on the hero, with zero render-block.
-         Preloading the individual woff2 files would shave more, but
-         Google's gstatic URLs are version-pinned and would rot — the
-         robust win there is self-hosting Newsreader, which is scoped to
-         the paper-grey design port (the design handoff mandates
-         self-hosted fonts). -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700;6..72,800&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700;6..72,800&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:wght@400;500;600;700;800&display=swap" />
-    </noscript>
+    <!-- Self-hosted fonts (v0.63.0 paper-grey design port).
+         Space Grotesk (UI/display) + JetBrains Mono (data/numerals) live
+         in /public/fonts/. @font-face rules live in src/index.css.
+         We preload the woff2 files directly so the browser fetches at
+         high priority before CSS parses — the real fix for audit
+         PERF-001 (supersedes the v0.62.8 Google-Fonts CSS-preload
+         interim). Each woff2 is a variable font covering weights
+         400-700 from a single Latin-subset file. Inter Tight and
+         Newsreader were dropped — paper-grey has no serif. -->
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Google Analytics 4 (hardcoded in HTML so crawlers / GSC verification find it).
          v0.62.0 — audit F-001: GA4 now ships in CONSENT MODE V2 with all

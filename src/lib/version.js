@@ -6491,8 +6491,214 @@
 //
 // Audit ref: audits/2026-05-22-gibol-dev-handover.md PERF-001/002 +
 // the site-wide API-duplication note.
+//
+// v0.63.0 — Paper-grey design port: P1 foundation (2026-05-23).
+// First phase of the six-phase plan in
+// audits/2026-05-22-paper-grey-design-port-plan.md (approved 2026-05-22
+// after shipping audit clusters S1-S5 v0.62.3 → v0.62.8). Lands the
+// brand-system foundation behind VITE_FLAG_BRAND, visible behind
+// ?brand=paper. Nothing in the default chrome regresses; P2-P5 build on
+// this; P6 flips the flag.
+//
+// What changed in P1:
+//
+// 1. tokens.css ported verbatim under [data-brand="paper"] in
+//    src/index.css. The handoff token names (--bg-deep, --bg-base,
+//    --bg-raised, --bg-elev, --bg-paper / --ink-1..4 / --line-1..3 /
+//    --pulse* / --sport* / --live / --warn / --error / --info / type /
+//    space / radius / shadow / motion / focus) are the contract, ported
+//    as-is. Per-sport accent overrides (data-sport="nba|epl|liga1|f1|
+//    tennis|worldcup") scoped to paper so they never leak.
+//
+// 2. Legacy-alias layer inside [data-brand="paper"]. Re-maps the
+//    pre-paper token names (--bg, --ink, --panel, --accent, the
+//    semantic roles) onto paper values so un-migrated CSS-in-JS
+//    components keep rendering through the P5 surface migration.
+//    Deleted entirely in P6. Replaces the v0.60.0 cream block, which
+//    is gone — cream was the earlier take on Brand v1.0; paper-grey
+//    is the refined take and supersedes it.
+//
+// 3. Fonts self-hosted. Space Grotesk (UI/display, variable 400-700)
+//    + JetBrains Mono (data/numerals, variable 400-700) land as woff2
+//    in /public/fonts/. @font-face rules in src/index.css.
+//    <link rel="preload" as="font"> for both in index.html so the
+//    browser fetches at high priority before CSS parses — the real
+//    fix for audit PERF-001 (supersedes the v0.62.8 Google-Fonts
+//    CSS-preload interim, which was scoped to this design port). The
+//    Google Fonts <link> is gone. Inter Tight and Newsreader were
+//    dropped; the paper-grey system has no serif (open question #4
+//    resolved: editorial display moves to Space Grotesk 700).
+//
+// 4. Mechanical font-name swap across src/. Every 'Inter Tight' →
+//    'Space Grotesk' and every Newsreader stack collapsed onto
+//    'Space Grotesk', system-ui, sans-serif. ~89 occurrences across
+//    ~30 files, all font-family string literals. Comments mentioning
+//    the historical fonts left as ship-notes-style references.
+//
+// 5. <StateView> built (the A1 fix from the design handoff). Six
+//    states (loading / empty-yet / empty-na / partial / error /
+//    coming-soon), exhaustive. role + aria-live + reduced-motion
+//    correct per state. Skeleton matches eventual layout shape.
+//    coming-soon dev-warns when the ETA window is missing — the
+//    handoff's "must include month or date" policy enforced in code.
+//    Exports as { default: StateView, StatePanel, SkelRow } from
+//    src/components/v2/StateView.jsx + the v2 barrel. P5 surface
+//    migration replaces every bespoke loading / empty / error path
+//    across the app with this — six audit clusters collapse the
+//    moment that lands.
+//
+// 6. VITE_FLAG_BRAND repurposed. Flag values (0 = default chrome,
+//    1 = paper-grey) stay the same; the meaning of 1 changed from
+//    cream to paper. ?brand=paper / localStorage 'gibol:brand' =
+//    'paper' switch a session to paper without a deploy. AppContext
+//    writes [data-brand="paper"] on <html>. Default stays 0 until
+//    the P6 flip.
+//
+// 7. COLORS.PAPER mirror added to src/lib/constants.js — handoff
+//    token names exported as `var(--...)` strings for CSS-in-JS
+//    consumption. Parallel to the existing TOKENS object; legacy
+//    COLORS keys untouched.
+//
+// 8. Comment cleanup in the [data-brand="paper"] block + the
+//    editorial type-scale section. Stale per-file historical
+//    comments mentioning Inter Tight / Newsreader left intact —
+//    they describe what shipped at the time, and P5 / P6 retouch
+//    them as those surfaces migrate.
+//
+// What DIDN'T change (deliberate):
+// - The default dark chrome ([data-theme="dark"] / no data-brand).
+//   Visual delta in default mode is the font family only — Space
+//   Grotesk + JetBrains Mono replace Inter Tight + Newsreader
+//   everywhere, since the swap is global. Layout, colors, surfaces
+//   are unchanged.
+// - The Logo component's mode="cream" prop. It's an internal
+//   color-mode prop for the wordmark (ink letters on cream cover),
+//   not connected to the data-brand attribute. Surface migration
+//   (P5/P6) decides whether to retire the prop name.
+// - public/brand/tokens.css, the SVG wordmarks, and public/404.html.
+//   Out of P1 scope — they're brand assets, not app code.
+//
+// Verification: ?brand=paper switches the chrome behind the flag.
+// Default route renders unchanged except the global font swap.
+// <StateView> is built but not yet mounted on any surface — P5 wires
+// each surface as part of its migration PR.
+//
+// Audit ref: audits/2026-05-22-paper-grey-design-port-plan.md (P1).
+//
+// v0.65.0 — Paper-grey P2 + P3 components, Pick'em P0 scaffold (2026-05-23).
+// Three phase deltas, one shipped bump. All flag-gated; default chrome
+// unchanged. v0.64.0 was reserved for P2 in the plan but P2 + P3 landed
+// the same session so we ship them together at 0.65.0.
+//
+// What changed:
+//
+// PAPER-GREY P2 (systems · effort M) — flag-gated component builds:
+//
+// 1. <ToastHost /> + <Toast /> + useToast() in
+//    src/components/v2/Toast.jsx. One pattern for every silent action
+//    ack — Salin link, Simpan, Bagikan, Subscribe. Bottom-center stack,
+//    max 3, 2400ms (3600ms when copy > 28 chars), hover pauses,
+//    role="status" aria-live="polite", aria-atomic="true",
+//    reduced-motion cross-fade only. Closes audit UX-008.
+//
+// 2. LabelResolver in src/components/v2/LabelResolver.js — picks the
+//    largest abbreviation tier (full / medium / short / code) that
+//    fits a pair's per-entity slot width. Symmetric step-down: if one
+//    side fits Medium and the other only Short, BOTH drop to Short.
+//    Replaces ad-hoc text-overflow:ellipsis on names. Closes
+//    audit UX-011 + UX-012.
+//
+// 3. <Delta /> in src/components/v2/Delta.jsx — glyph + value + unit
+//    + screen-reader text. ▲ pulse-deep up / ▼ error down / ─ ink-3
+//    flat. Supersedes the v0.62.5 interim "+3 poin" with the
+//    canonical never-bare-delta component. Closes FUNC-006 properly.
+//
+// 4. data-sport accent helper in src/components/v2/sport.js —
+//    SPORT_META + SPORT_KEYS + resolveSportKey(). The CSS overrides
+//    already shipped in v0.63.0; this is the JS side. Six sport keys
+//    (nba / epl / liga1 / f1 / tennis / worldcup) with hub paths.
+//
+// PAPER-GREY P3 (chrome · effort L) — flag-gated component builds:
+//
+// 5. Responsive <Nav /> in src/components/v2/Nav.jsx. <MiniNav />
+//    (48px, mobile page chrome — back / title / star / share),
+//    <TopNav /> (full ≥1100 → short 900-1099 → icon 700-899 →
+//    mobile-hamburger <700, self-measuring via ResizeObserver — the
+//    handoff's "container query on the nav itself" rule), KbdHint
+//    (OS-aware ⌘K / Ctrl K). aria-current="page" drives active style.
+//    Closes nav-truncation + UX-015 + UX-016 + favorite-icon-aria.
+//
+// 6. <NotFound /> (paper variant) in src/components/v2/NotFound.jsx.
+//    Full chrome — same nav as anywhere else. Brand-voice Bahasa
+//    title, pre-focused search, the 404'd URL in mono, six sport-hub
+//    recovery cards, "Ramai dibaca" rail, "Kembali ke beranda"
+//    primary. Sits beside the legacy src/pages/NotFound.jsx; P5
+//    wires the route to render this variant when [data-brand="paper"]
+//    is on. Closes UX-004.
+//
+// 7. <SearchOverlay /> in src/components/v2/SearchOverlay.jsx. Solid
+//    scrim rgba(15,30,46,0.55) + backdrop-filter blur(8px), modal
+//    sheet (full-bleed mobile / center 560px desktop), Esc +
+//    outside-click close, focus trap on the input, body scroll lock,
+//    results grouped by entity type with <mark> highlights tinted by
+//    the row's data-sport. Closes UX-007.
+//
+// PICK'EM P0 (scaffold) — new top-level subsystem behind flags.pickem:
+//
+// 8. New src/pickem/ tree containing the Pick'em scaffold:
+//    - pickem.css: ports design-handoff-pickem/tokens.css +
+//      pickem-tokens.css scoped under .pickem-root (handover
+//      decision #1). Light block + dark "Stadium Night" block
+//      (.pickem-root[data-theme="dark"]) + Pick'em accent tokens
+//      (--pickem-orange, --p-up/-down/-live/-info, --p-jagoan) +
+//      .p-display / .p-headline / .p-body / .p-score-* / .p-eyebrow
+//      / .p-pick / .p-live-dot / .p-flag utility classes. p-live-ring
+//      keyframes global.
+//    - PickemRoot.jsx: container that forces data-theme="dark" and
+//      reflows BottomNav (mobile) / SideNav (desktop) at the
+//      max-width:1023px breakpoint. Independent gibol:pickem:theme
+//      localStorage so Pick'em can run light or dark regardless of
+//      the global app theme.
+//    - Nav.jsx: BottomNav (mobile, 4 items) + SideNav (desktop,
+//      6 items). Both pick up --pickem-orange on the active item.
+//    - icons.jsx + Flag.jsx: inline-SVG icon set + emoji-flag
+//      placeholder pipeline with COUNTRY_COLORS fallback (the SVG
+//      CDN swap lives behind the Flag component API — P1 ships
+//      that). No heavy dep on the hot path (CLAUDE.md #7).
+//    - PickemHome.jsx: P0 placeholder landing page. P2 replaces with
+//      the real Predicting Hub.
+//
+// 9. /pickem route added to App.jsx, lazy-loaded, gated behind
+//    UI.pickem. When flags.pickem is off the route doesn't exist —
+//    catch-all NotFound owns it. pickem.css imported once from
+//    main.jsx (inert until .pickem-root mounts).
+//
+// THREE RECONCILIATIONS baked into the Pick'em P0 port — the handover
+// doc predates the v0.63.0 paper-grey port and had stale assumptions:
+//
+//   a. Newsreader gone. The source defines --font-display as
+//      'Newsreader', Georgia, serif. Paper-grey dropped Newsreader
+//      (Ade confirmed Open Q #4). Pick'em --font-display +
+//      --font-ui-pickem both resolve to Space Grotesk now.
+//
+//   b. Paper surface is #EEF1F5 (cool grey), not cream #F5F1EA.
+//      Pick'em --pickem-orange #9A3412 contrast still passes AA on
+//      the new paper (close luminance).
+//
+//   c. pickem-tokens.css's dark block uses bare [data-theme="dark"],
+//      which would mutate paper tokens v0.63.0 ported into
+//      [data-brand="paper"]. Scoped to .pickem-root[data-theme="dark"]
+//      here so the collision is impossible by construction.
+//
+// Verification: ?brand=paper still toggles paper. Default route
+// unchanged. /pickem 404s with flags.pickem off; renders the scaffold
+// (BottomNav on mobile / SideNav on desktop, dark Stadium surface)
+// with VITE_FLAG_PICKEM=1.
+//
+// Audit ref: audits/2026-05-22-paper-grey-design-port-plan.md (P2+P3),
+// Pickem-ClaudeCode-Handover.md (P0).
 
-export const APP_VERSION = '0.62.8';
+export const APP_VERSION = '0.65.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

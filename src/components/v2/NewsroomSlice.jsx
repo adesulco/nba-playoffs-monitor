@@ -313,7 +313,7 @@ export default function NewsroomSlice({
           <h3
             className="serif"
             style={{
-              fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+              fontFamily: '"Space Grotesk", system-ui, sans-serif',
               fontSize: 'clamp(24px, 3.2vw, 36px)',
               fontWeight: 700,
               lineHeight: 1.14,
@@ -327,7 +327,7 @@ export default function NewsroomSlice({
           {lead.description && (
             <p
               style={{
-                fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+                fontFamily: '"Space Grotesk", system-ui, sans-serif',
                 fontSize: 17,
                 lineHeight: 1.5,
                 color: 'var(--ink-2)',
@@ -386,7 +386,7 @@ export default function NewsroomSlice({
             <h4
               className="serif"
               style={{
-                fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+                fontFamily: '"Space Grotesk", system-ui, sans-serif',
                 fontSize: 16,
                 fontWeight: 700,
                 lineHeight: 1.3,

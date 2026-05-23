@@ -135,7 +135,7 @@ export default function GlobalLeaderboard() {
                       </div>
                     </td>
                     <td style={{ padding: 12, color: C.dim }}>{r.city || '—'}</td>
-                    <td style={{ padding: 12, textAlign: 'right', font: "900 14px 'Inter Tight'" }}>
+                    <td style={{ padding: 12, textAlign: 'right', font: "900 14px 'Space Grotesk'" }}>
                       {r.score}
                     </td>
                   </tr>

@@ -21,6 +21,35 @@ export { default as Spark } from './Spark.jsx';
 export { default as Board } from './Board.jsx';
 export { Skeleton, SkeletonLine, EmptyState, ErrorState } from './states.jsx';
 
+// v0.63.0 — paper-grey design port: the canonical six-state component.
+// Replaces ad-hoc loading / empty / error / partial / coming-soon
+// surfaces as P5 migrates them. See StateView.jsx for the full state
+// vocabulary and acceptance criteria.
+export { default as StateView, StatePanel, SkelRow } from './StateView.jsx';
+
+// v0.64.0 — paper-grey P2 systems: Toast / LabelResolver / Delta /
+// data-sport sport descriptor. Independent flag-gated component builds;
+// P5 mounts them into surfaces.
+export { default as ToastHost, Toast, useToast } from './Toast.jsx';
+export { default as Delta } from './Delta.jsx';
+export {
+  TIER_ORDER,
+  TIER_BUDGETS,
+  pickTier,
+  readEntityTier,
+  fitsWidth,
+  resolvePair,
+  resolveOne,
+} from './LabelResolver.js';
+export { SPORT_META, SPORT_KEYS, resolveSportKey } from './sport.js';
+
+// v0.65.0 — paper-grey P3 chrome: responsive Nav (TopNav + MiniNav),
+// NotFound, SearchOverlay. KbdHint is OS-aware (⌘K on Apple, Ctrl K
+// elsewhere). All flag-gated until P5 / P6 wires them into surfaces.
+export { default as TopNav, MiniNav, KbdHint, useNavStage } from './Nav.jsx';
+export { default as NotFound } from './NotFound.jsx';
+export { default as SearchOverlay } from './SearchOverlay.jsx';
+
 // Re-export the v1 Logo — already matches Brand v1 / v2 spec (target-mark
 // glyph + Inter Tight 900 wordmark with amber period). No duplicate needed.
 export { default as Logo } from '../Logo.jsx';

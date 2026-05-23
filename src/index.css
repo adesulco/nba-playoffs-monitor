@@ -1,19 +1,42 @@
 /* ==================================================================
-   Gibol — Brand tokens v1 (Apr 2026) + v1.0 brand additive (May 2026)
+   Gibol — Brand tokens v1 (Apr 2026) + Pulse & Field paper-grey (May 2026)
    -------------------------------------------------------------------
-   Two coexisting palettes during Phase 1 of the Pulse & Field rebrand:
+   Two themes coexist during the paper-grey design port:
 
      1. EXISTING (active default): the dark navy chrome currently in
         production. --bg, --ink, --amber etc. — every component uses
-        these. Untouched in Phase 1.
-     2. NEW (--gibol-* prefix): the Pulse & Field cream/ink/orange
-        system from Brand Guideline v1.0. Available here so wordmark
-        + pulse mark + future cream-themed components can reference
-        them without polluting the existing dark theme.
+        these. Untouched until the P6 flag flip.
+     2. PAPER-GREY (Brand v1.0 "Pulse & Field"): ported verbatim from
+        design_handoff_gibol_v1/tokens.css, applied via
+        [data-brand="paper"] on <html>. Built behind VITE_FLAG_BRAND,
+        QA'd, then flipped to default in P6. Block lives further down.
 
-   Phase 2 (gated by VITE_FLAG_BRAND) will flip :root to map cream
-   onto --bg etc. Phase 1 keeps both palettes coexisting.
+   The cream theme (the earlier take on Brand v1.0) was retired in
+   v0.63.0 — paper-grey is the refined take and supersedes it.
    ================================================================== */
+
+/* ==================================================================
+   Self-hosted fonts — Brand v1.0 "Pulse & Field" (v0.63.0).
+   Space Grotesk (UI/display) + JetBrains Mono (data/numerals), Latin
+   subset, variable weight 400-700, font-display: swap. Replaces the
+   Google Fonts <link> — self-hosted woff2 + <link rel="preload"> in
+   index.html is the real fix for audit PERF-001 (the v0.62.8
+   CSS-preload was an interim). Inter Tight + Newsreader dropped.
+   ================================================================== */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+}
 
 /* v1.0 brand additive — drop-in copy of public/brand/tokens.css */
 :root {
@@ -42,8 +65,8 @@
   --gibol-line-soft:    rgba(15, 14, 12, .06);
 
   /* Type stacks */
-  --gibol-display:      'Newsreader', Georgia, serif;
-  --gibol-sans:         'Inter Tight', system-ui, sans-serif;
+  --gibol-display:      'Space Grotesk', system-ui, sans-serif;
+  --gibol-sans:         'Space Grotesk', system-ui, sans-serif;
   --gibol-mono:         'JetBrains Mono', ui-monospace, monospace;
 }
 
@@ -119,7 +142,7 @@
   /* ---- Radius & type ---- */
   --radius-sm: 6px;
   --radius:    10px;
-  --font-sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* ==================================================================
@@ -383,64 +406,129 @@
 }
 
 /* ==================================================================
-   v0.60.0 — Phase 2 Pulse & Field cream brand theme
+   v0.63.0 — Brand v1.0 "Pulse & Field" paper-grey theme
    -------------------------------------------------------------------
-   Applied via [data-brand="cream"] on <html>. AppContext sets the
-   attribute at boot based on the user's localStorage preference, the
-   ?brand= URL override, or VITE_FLAG_BRAND env var.
+   Ported verbatim from design_handoff_gibol_v1/tokens.css. Applied via
+   [data-brand="paper"] on <html>; AppContext sets the attribute from
+   localStorage 'gibol:brand', the ?brand= URL override, or the
+   VITE_FLAG_BRAND env var. Built behind the flag (P1-P5), flipped to
+   default in P6.
 
    This block OVERRIDES the existing dark/light themes when active —
-   higher cascade priority due to later position + matching specificity.
-   The 'default' brand state (attr absent) leaves the existing chrome
-   untouched.
+   later source position + matching specificity. The 'default' brand
+   state (attr absent) leaves the existing chrome untouched.
 
-   Key brand non-negotiables enforced here:
-     - Cream surface is the primary; ink is for emphasis only
-     - Warm ink #0F0E0C (not pure black) per brand v1.0
-     - --amber decorative usage remaps to BRAND ORANGE #9A3412 (passes
-       AA on cream at 5.6:1; live amber #F59E0B FAILS AA on cream at
-       2.0:1 per the brand spec contrast table)
-     - --live stays at live amber #F59E0B because it's only used on
-       ink-backed chips (e.g. "LIVE · 67'" pill on ink #0F0E0C bg
-       where it gets the AAA 9.2:1 contrast)
+   Two layers:
+     1. Handoff tokens — the design contract. Names, values and
+        structure ported verbatim from tokens.css (--bg-deep, --ink-1,
+        --pulse, --sport*, type / space / radius / shadow / motion /
+        focus). New + migrated components reference these directly.
+     2. Legacy-alias layer — maps the pre-paper token names (--bg,
+        --ink, --panel, --accent, the semantic roles) onto the paper
+        values so un-migrated CSS-in-JS components keep rendering
+        through the P5 surface migration. Deleted in P6.
+
+   Supersedes the [data-brand="cream"] block (removed v0.63.0) — cream
+   was the earlier take on Brand v1.0; paper-grey is the refined one.
    ================================================================== */
-:root[data-brand="cream"] {
-  /* ---- Brand surfaces — cream paper ----
-     v0.60.1: bumped --bg-2 from #EAE5DB → #FFFFFF for card separation.
-     Per brand mocks §06, cards on cream are pure white with a hairline
-     border. Original step-up cream (#EAE5DB) reads identical to --bg
-     at card size, killing separation. White cards + the existing
-     --line-soft border give crisp visual hierarchy on cream. */
-  --bg:         #F5F1EA;        /* paper surface */
-  --bg-2:       #FFFFFF;        /* card surface — pure white per §06 */
-  --bg-3:       #EAE5DB;        /* secondary step (hover, raised) */
-  --line:       rgba(15, 14, 12, .12);
-  --line-soft:  rgba(15, 14, 12, .06);
+:root[data-brand="paper"] {
+  /* ---------- Handoff tokens — ported verbatim ---------- */
 
-  /* ---- Brand ink scale — warm 6-step ramp ---- */
-  --ink:   #0F0E0C;             /* warm ink (was #0A0A0A) */
-  --ink-2: #3A3833;
-  --ink-3: #7E7B72;
-  --ink-4: #A8A49A;
+  /* Surfaces — paper stack (cool neutral) */
+  --bg-deep:   #DDE3EA;   /* recessed — rails, behind cards */
+  --bg-base:   #EEF1F5;   /* page background */
+  --bg-raised: #F8FAFC;   /* cards, sheets */
+  --bg-elev:   #FFFFFF;   /* tooltips, popovers */
+  --bg-paper:  #FFFFFF;   /* share-card crops */
 
-  /* ---- Brand accents ----
-     --amber on cream is DECORATIVE usage (kicker labels, primary CTAs,
-     section rules). Remapped to brand orange #9A3412 because the
-     reserved live amber #F59E0B fails WCAG AA on cream (2.0:1).
-     Components that want the TRUE live amber for a chip should use
-     --live, which lives on ink chips per brand spec. */
-  --blue:    #1E40AF;           /* dataviz away/neutral */
+  /* Ink */
+  --ink-1: #0F1E2E;       /* primary text, ~15:1 on paper */
+  --ink-2: #3A4856;       /* secondary */
+  --ink-3: #6B7480;       /* tertiary (AA large only) */
+  --ink-4: #98998E;       /* placeholder / disabled */
+  --ink-on-accent: #FFFFFF;
+  --ink-on-pulse:  #FFFFFF;
+
+  /* Lines / dividers */
+  --line-1: rgba(15, 30, 46, 0.08);
+  --line-2: rgba(15, 30, 46, 0.14);
+  --line-3: rgba(15, 30, 46, 0.22);
+
+  /* Pulse — brand green */
+  --pulse:      #3B7A57;
+  --pulse-deep: #285E40;
+  --pulse-soft: #C9DECF;
+  --pulse-wash: #E9F1EC;
+
+  /* Sport accents — default = pulse; [data-sport] retints (below) */
+  --sport:      var(--pulse);
+  --sport-deep: var(--pulse-deep);
+  --sport-soft: var(--pulse-soft);
+  --sport-wash: var(--pulse-wash);
+  --sport-on:   #FFFFFF;
+
+  /* Semantic */
+  --live:       #C8102E;   /* LIVE badge red — sacred, never errors */
+  --live-wash:  #FBE3E5;
+  --warn:       #C58D2C;
+  --warn-wash:  #F6EAD0;
+  --error:      #B8341F;
+  --error-wash: #F7E1DA;
+  --info:       #2A6FDB;
+  --info-wash:  #E1ECFA;
+  --success:    var(--pulse);
+
+  /* Type */
+  --font-ui:   'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Spacing — 4pt scale */
+  --s-0: 0;    --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 20px; --s-6: 24px; --s-7: 32px; --s-8: 40px; --s-9: 48px;
+  --s-10: 64px;
+
+  /* Radii */
+  --r-1: 4px; --r-2: 8px; --r-3: 12px; --r-4: 16px; --r-5: 24px;
+  --r-pill: 999px;
+
+  /* Shadow — paper-friendly */
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(15, 30, 46, 0.04);
+  --shadow-2: 0 1px 2px rgba(15, 30, 46, 0.04), 0 6px 18px -8px rgba(15, 30, 46, 0.10);
+  --shadow-3: 0 2px 4px rgba(15, 30, 46, 0.06), 0 16px 32px -12px rgba(15, 30, 46, 0.14);
+  --shadow-pop: 0 12px 40px -8px rgba(15, 30, 46, 0.22), 0 4px 8px rgba(15, 30, 46, 0.08);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --ease-in:  cubic-bezier(0.6, 0, 0.8, 0.3);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+
+  /* Focus */
+  --focus-ring: 0 0 0 3px rgba(43, 111, 219, 0.35);
+  --focus-ring-on-sport: 0 0 0 3px rgba(255, 255, 255, 0.55);
+
+  /* ---------- Legacy-alias layer ----------
+     Maps pre-paper token names onto the paper values above so
+     un-migrated components render during the P5 surface migration.
+     Deleted in P6 once every surface uses the handoff tokens. */
+  --bg:        var(--bg-base);
+  --bg-2:      var(--bg-raised);
+  --bg-3:      var(--bg-deep);
+  --line:      var(--line-2);
+  --line-soft: var(--line-1);
+  --ink:       var(--ink-1);
+  /* --ink-2 / -3 / -4 already carry their paper values above */
+
+  --blue:    var(--info);
   --blue-2:  #2563EB;
-  --amber:   #9A3412;           /* DECORATIVE accent — brand orange */
-  --amber-2: #C2410C;
+  --amber:   var(--pulse);        /* decorative accent → brand green */
+  --amber-2: var(--pulse-deep);
 
-  /* ---- Signals ---- */
-  --live: #F59E0B;              /* live amber — ONLY on ink chips */
-  --up:   #0F766E;              /* win / positive Δ */
-  --down: #B91C1C;              /* loss / negative Δ */
-  --warn: #9A3412;
+  --up:   var(--pulse);
+  --down: var(--error);
 
-  /* Legacy aliases re-resolve through the new tokens */
   --panel:        var(--bg-2);
   --panel2:       var(--bg-3);
   --panel-soft:   var(--bg-3);
@@ -451,56 +539,55 @@
   --amber-bright: var(--amber-2);
   --green:        var(--up);
   --red:          var(--down);
-  --hover:        #ECE4CE;
-  --topbar-bg:    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-  --hero-bg:      linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  --hover:        var(--bg-deep);
+  --topbar-bg:    linear-gradient(180deg, var(--bg-raised) 0%, var(--bg-base) 100%);
+  --hero-bg:      linear-gradient(180deg, var(--bg-raised) 0%, var(--bg-base) 100%);
 
-  /* Lines on cream are darker rgba — old dark-theme rgba(255,...) is
-     invisible on cream, fix here. */
-  --line-1: rgba(15,14,12,.06);
-  --line-2: rgba(15,14,12,.12);
-  --line-3: rgba(15,14,12,.18);
-
-  /* Surface roles + foreground roles */
   --ink-0: var(--bg);
-  --ink-1: var(--bg);
-  --fg-1: var(--ink);
-  --fg-2: var(--ink-2);
-  --fg-3: var(--ink-3);
+  --fg-1:  var(--ink);
+  --fg-2:  var(--ink-2);
+  --fg-3:  var(--ink-3);
   --accent:      var(--amber);
   --accent-soft: var(--amber-2);
   --soon:        var(--ink-4);
-  --success:     var(--up);
   --danger:      var(--down);
 
-  /* Semantic roles */
   --bg-page:        var(--bg);
   --bg-surface:     var(--bg);
-  --bg-raised:      var(--bg-2);
-  --bg-elevated:    var(--bg-3);
+  --bg-elevated:    var(--bg-elev);
   --fg-primary:     var(--ink);
   --fg-secondary:   var(--ink-2);
   --fg-tertiary:    var(--ink-3);
   --border-subtle:  var(--line-1);
   --border-default: var(--line-2);
   --border-strong:  var(--line-3);
-  --border-interactive: #7E7B72;       /* ink-3 — 3.6:1 on cream */
-  --accent-default: var(--amber);      /* primary CTA = brand orange */
+  --border-interactive: var(--ink-3);
+  --accent-default: var(--amber);
   --signal-live:    var(--live);
 
-  /* v4 redesign tokens (set on the existing light theme — preserve here) */
-  --ink-5: #8C8071;
-  --line-loud: #C9BFA8;
-  --blue-soft: rgba(30,64,175,0.10);
-  --amber-soft: rgba(154,52,18,0.12);
-  --live-soft: rgba(245,158,11,0.16);   /* amber-tinted for live chips */
-  --paper: #F5F1EA;
+  --ink-5:      var(--ink-4);
+  --line-loud:  var(--line-3);
+  --blue-soft:  var(--info-wash);
+  --amber-soft: var(--pulse-wash);
+  --live-soft:  var(--live-wash);
+  --paper:      var(--bg-base);
+  --font-sans:  var(--font-ui);
 
   /* Wordmark cover-rect tracks the active surface */
-  --gibol-cover: #F5F1EA;
+  --gibol-cover: var(--bg-base);
 
   color-scheme: light;
 }
+
+/* Per-sport accent overrides — set data-sport="…" on any subtree root
+   and --sport* retints. Scoped to paper so they never leak into the
+   legacy themes. The component wiring of data-sport lands in P2. */
+:root[data-brand="paper"] [data-sport="nba"]      { --sport: #E25822; --sport-deep: #B8421A; --sport-soft: #F6D4C5; --sport-wash: #FBE9DF; }
+:root[data-brand="paper"] [data-sport="epl"]      { --sport: #5B2D8A; --sport-deep: #432069; --sport-soft: #D8C7EA; --sport-wash: #ECE3F4; }
+:root[data-brand="paper"] [data-sport="liga1"]    { --sport: #C53030; --sport-deep: #9B1F1F; --sport-soft: #F1C9C9; --sport-wash: #F8E3E3; }
+:root[data-brand="paper"] [data-sport="f1"]       { --sport: #C8102E; --sport-deep: #971022; --sport-soft: #F3C7CE; --sport-wash: #FAE3E7; }
+:root[data-brand="paper"] [data-sport="tennis"]   { --sport: #6A8E2E; --sport-deep: #4E6921; --sport-soft: #D5E2B9; --sport-wash: #EBF1DC; }
+:root[data-brand="paper"] [data-sport="worldcup"] { --sport: #B7892E; --sport-deep: #8A6620; --sport-soft: #ECDBB5; --sport-wash: #F5EBD6; }
 
 html {
   /* Reserve space for the vertical scrollbar at all times so the viewport
@@ -850,7 +937,7 @@ input:focus-visible,
   color: var(--ink);
   border: 2px solid var(--amber);
   border-radius: 6px;
-  font: 600 13px 'Inter Tight', sans-serif;
+  font: 600 13px 'Space Grotesk', sans-serif;
   text-decoration: none;
   transition: top 0.15s ease;
 }
@@ -1391,7 +1478,7 @@ main#main {
  * + new components (AiByline, EditorialFootnote) opt in by adding the
  * `.v2` class somewhere up the tree.
  *
- *   .v2 .serif      Newsreader serif body voice
+ *   .v2 .serif      Space Grotesk display voice
  *   .v2 .disp       large display heading (h1 in article shell)
  *   .v2 .deck       standfirst / deck under headline
  *   .v2 .kicker     uppercase mono eyebrow over kicker rules
@@ -1402,16 +1489,16 @@ main#main {
  * NBADashboard or HomeV1. `.v2` opt-in is the cleanest seam.
  * ────────────────────────────────────────────────────────────────────── */
 .v2 .serif {
-  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
 }
 .v2 .disp {
-  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.08;
 }
 .v2 .deck {
-  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 400;
   font-size: 17px;
   line-height: 1.55;
@@ -1463,12 +1550,12 @@ main#main {
  * v0.52.0 — Phase B redesign: editorial article body styles.
  * Scoped under `.v2 .editorial-body` (the article shell wraps body
  * in `<article>` inside `<main className="v2">`). Drop cap is the
- * marquee styling — large Newsreader glyph floated left on the
+ * marquee styling — large Space Grotesk glyph floated left on the
  * first paragraph. Mobile-first: drop cap stays at ~64px on 480px
  * viewport (per redesign doc §4 mobile overrides — the glyph fits).
  * ────────────────────────────────────────────────────────────────────── */
 .v2 .editorial-body .editorial-dropcap::first-letter {
-  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(54px, 9vw, 78px);
   line-height: 0.85;
@@ -1479,13 +1566,13 @@ main#main {
 
 /* Tighter spacing between body paragraphs in the editorial shell. */
 .v2 .editorial-body .editorial-p {
-  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Body H2 sections in the editorial shell — Newsreader serif so
+/* Body H2 sections in the editorial shell — Space Grotesk so
  * the body rhythm matches the headline. */
 .v2 .editorial-body .v2-h2 {
-  font-family: 'Newsreader', 'Inter Tight', Georgia, serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
 }
 
 /* Mobile breakpoint: tighten the article shell padding + clamp
@@ -1496,3 +1583,145 @@ main#main {
     margin: 2px 8px 0 0;
   }
 }
+
+/* ==================================================================
+   v0.63.0 — Brand v1.0 "Pulse & Field" paper-grey primitives
+   -------------------------------------------------------------------
+   Utility classes ported verbatim from design_handoff_gibol_v1/
+   tokens.css. Scoped under [data-brand="paper"] so they never leak
+   into the legacy themes; they resolve the handoff tokens defined in
+   the [data-brand="paper"] block above. Consumed by <StateView> and
+   every surface migrated in P5.
+   ================================================================== */
+
+[data-brand="paper"] .g-root {
+  font-family: var(--font-ui);
+  color: var(--ink-1);
+  background: var(--bg-base);
+  font-feature-settings: 'ss01' on, 'cv11' on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+[data-brand="paper"] .g-mono { font-family: var(--font-mono); font-feature-settings: 'tnum' on, 'zero' on; }
+[data-brand="paper"] .g-tnum { font-variant-numeric: tabular-nums; }
+
+/* Type scale — mobile-first, never below 13px in chrome */
+[data-brand="paper"] .t-display { font-family: var(--font-ui); font-weight: 700; font-size: 34px; line-height: 1.05; letter-spacing: -0.02em; }
+[data-brand="paper"] .t-h1      { font-family: var(--font-ui); font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -0.015em; }
+[data-brand="paper"] .t-h2      { font-family: var(--font-ui); font-weight: 600; font-size: 20px; line-height: 1.2;  letter-spacing: -0.01em; }
+[data-brand="paper"] .t-h3      { font-family: var(--font-ui); font-weight: 600; font-size: 17px; line-height: 1.3; }
+[data-brand="paper"] .t-body    { font-family: var(--font-ui); font-weight: 400; font-size: 15px; line-height: 1.45; }
+[data-brand="paper"] .t-bodysm  { font-family: var(--font-ui); font-weight: 400; font-size: 14px; line-height: 1.4; }
+[data-brand="paper"] .t-meta    { font-family: var(--font-ui); font-weight: 500; font-size: 13px; line-height: 1.3; color: var(--ink-3); }
+[data-brand="paper"] .t-eyebrow {
+  font-family: var(--font-mono); font-weight: 500;
+  font-size: 11px; line-height: 1; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+[data-brand="paper"] .t-num-lg  { font-family: var(--font-mono); font-weight: 600; font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; }
+[data-brand="paper"] .t-num-md  { font-family: var(--font-mono); font-weight: 600; font-size: 20px; line-height: 1; font-variant-numeric: tabular-nums; }
+[data-brand="paper"] .t-num-sm  { font-family: var(--font-mono); font-weight: 500; font-size: 14px; line-height: 1; font-variant-numeric: tabular-nums; }
+
+/* Card primitive */
+[data-brand="paper"] .g-card {
+  background: var(--bg-raised);
+  border-radius: var(--r-3);
+  border: 1px solid var(--line-1);
+  box-shadow: var(--shadow-1);
+}
+
+/* Pulse dot — LIVE indicator */
+[data-brand="paper"] .pulse-dot {
+  display: inline-block;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--live);
+  position: relative;
+  box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.6);
+  animation: pulse-ring 1.6s var(--ease-out) infinite;
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0   rgba(200, 16, 46, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(200, 16, 46, 0);   }
+  100% { box-shadow: 0 0 0 0   rgba(200, 16, 46, 0);   }
+}
+
+/* Skeleton shimmer */
+[data-brand="paper"] .g-skel {
+  background: linear-gradient(
+    90deg,
+    rgba(15,30,46,0.05) 0%,
+    rgba(15,30,46,0.10) 50%,
+    rgba(15,30,46,0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: skel-slide 1.4s linear infinite;
+  border-radius: var(--r-2);
+}
+@keyframes skel-slide {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brand="paper"] .pulse-dot,
+  [data-brand="paper"] .g-skel { animation: none; }
+}
+
+/* Focus visibility — :focus-visible only */
+[data-brand="paper"] .g-root :is(button, a, [role="button"], [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-2);
+}
+
+/* Button primitives */
+[data-brand="paper"] .g-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  padding: 12px 18px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  transition: background var(--dur-1) var(--ease-out),
+              transform var(--dur-1) var(--ease-out),
+              box-shadow var(--dur-1) var(--ease-out);
+  white-space: nowrap;
+}
+[data-brand="paper"] .g-btn:active { transform: translateY(1px); }
+[data-brand="paper"] .g-btn--primary { background: var(--ink-1); color: var(--ink-on-accent); }
+[data-brand="paper"] .g-btn--primary:hover { background: #21344a; }
+[data-brand="paper"] .g-btn--sport { background: var(--sport); color: var(--sport-on); }
+[data-brand="paper"] .g-btn--sport:hover { background: var(--sport-deep); }
+[data-brand="paper"] .g-btn--ghost { background: transparent; color: var(--ink-1); border-color: var(--line-2); }
+[data-brand="paper"] .g-btn--ghost:hover { background: var(--bg-deep); }
+[data-brand="paper"] .g-btn--sm { min-height: 36px; padding: 8px 14px; font-size: 14px; }
+[data-brand="paper"] .g-btn--icon { padding: 0; width: 44px; height: 44px; min-height: 44px; }
+
+/* Chip */
+[data-brand="paper"] .g-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+  background: var(--bg-deep);
+  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+[data-brand="paper"] .g-chip--active { background: var(--ink-1); color: var(--ink-on-accent); }
+[data-brand="paper"] .g-chip--sport  { background: var(--sport-wash); color: var(--sport-deep); border-color: var(--sport-soft); }
+[data-brand="paper"] .g-chip--live   { background: var(--live-wash); color: var(--live); }

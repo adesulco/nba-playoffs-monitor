@@ -175,7 +175,7 @@ export default function HomeV2() {
         <h1
           className="disp serif"
           style={{
-            fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+            fontFamily: '"Space Grotesk", system-ui, sans-serif',
             fontSize: 'clamp(24px, 3.6vw, 36px)',
             fontWeight: 600,
             lineHeight: 1.18,
@@ -306,7 +306,7 @@ export default function HomeV2() {
                         </div>
                         <div
                           style={{
-                            fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+                            fontFamily: '"Space Grotesk", system-ui, sans-serif',
                             fontSize: 22,
                             fontWeight: 700,
                             color: 'var(--ink)',

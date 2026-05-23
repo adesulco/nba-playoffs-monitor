@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
+// v0.65.0 — Pick'em P0 scaffold token sheet (scoped under .pickem-root,
+// inert until <PickemRoot /> mounts behind flags.pickem).
+import './pickem/pickem.css';
 import { registerSW, installInstallPromptCapture } from './lib/pwa.js';
 import { initObservability } from './lib/observability.js';
 

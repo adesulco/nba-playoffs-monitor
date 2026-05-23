@@ -44,20 +44,21 @@ export function AppProvider({ children }) {
     try { localStorage.setItem(THEME_STORAGE_KEY, theme); } catch {}
   }, [theme, effectiveTheme]);
 
-  // v0.60.0 — Phase 2 Pulse & Field. Resolve final brand value:
+  // v0.63.0 — Paper-grey design port. Resolve final brand value:
   //   1. localStorage 'gibol:brand' = explicit user opt-in/out
-  //   2. URL ?brand=cream OR ?brand=default = override per session
-  //   3. VITE_FLAG_BRAND env var = global default per deploy
-  // Writes [data-brand] to <html>. CSS in index.css selects on this.
+  //   2. URL ?brand=paper OR ?brand=default = override per session
+  //   3. VITE_FLAG_BRAND env var = global default per deploy (1 = paper)
+  // Writes [data-brand="paper"] to <html>; CSS in index.css selects on
+  // that. Supersedes the cream brand (retired v0.63.0).
   const [brand, setBrandState] = useState(() => {
     try {
       const url = new URL(window.location.href);
       const qp = url.searchParams.get('brand');
-      if (qp === 'cream' || qp === 'default') return qp;
+      if (qp === 'paper' || qp === 'default') return qp;
       const saved = localStorage.getItem(BRAND_STORAGE_KEY);
-      if (saved === 'cream' || saved === 'default') return saved;
+      if (saved === 'paper' || saved === 'default') return saved;
     } catch {}
-    return brandVariant === 1 ? 'cream' : 'default';
+    return brandVariant === 1 ? 'paper' : 'default';
   });
 
   useEffect(() => {
@@ -70,7 +71,7 @@ export function AppProvider({ children }) {
   }, [brand]);
 
   const setBrand = (next) => {
-    if (next === 'cream' || next === 'default') {
+    if (next === 'paper' || next === 'default') {
       setBrandState(next);
       trackEvent?.('brand_changed', { brand: next });
     }
@@ -249,9 +250,10 @@ export function AppProvider({ children }) {
       trackEvent('tennis_player_select', { to: slug || 'clear' });
       setSelectedTennisPlayer(slug);
     },
-    // v0.60.0 — Phase 2 Pulse & Field rebrand. 'cream' applies the
-    // [data-brand="cream"] attribute on <html>, swapping the chrome
-    // to cream-on-ink. 'default' = the existing dark navy chrome.
+    // v0.63.0 — Paper-grey design port. 'paper' applies the
+    // [data-brand="paper"] attribute on <html>, swapping the chrome
+    // to the cool paper stack with pulse-green accents.
+    // 'default' = the existing dark navy chrome (active until P6 flip).
     brand,
     setBrand,
   };

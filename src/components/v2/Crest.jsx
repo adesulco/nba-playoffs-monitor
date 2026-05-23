@@ -29,7 +29,7 @@ export default function Crest({ short, color, size = 22, style, title, ...rest }
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontFamily: "'Inter Tight', sans-serif",
+        fontFamily: "'Space Grotesk', sans-serif",
         fontWeight: 800,
         fontSize: size * 0.4,
         flexShrink: 0,

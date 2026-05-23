@@ -179,7 +179,7 @@ export function Wordmark({
       <text
         x="60"
         y="180"
-        fontFamily='"Inter Tight", system-ui, sans-serif'
+        fontFamily='"Space Grotesk", system-ui, sans-serif'
         fontWeight="900"
         fontSize="180"
         letterSpacing="-10"

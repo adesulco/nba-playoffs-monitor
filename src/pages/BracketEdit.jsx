@@ -128,7 +128,7 @@ function BracketEditInner() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                   <div style={{ textAlign: 'right' }}>
-                    <p style={{ margin: 0, font: "900 28px 'Inter Tight'" }}>{bracket.score ?? 0}</p>
+                    <p style={{ margin: 0, font: "900 28px 'Space Grotesk'" }}>{bracket.score ?? 0}</p>
                     <p style={{
                       margin: 0, fontSize: 10, color: C.dim,
                       letterSpacing: '0.14em', textTransform: 'uppercase',

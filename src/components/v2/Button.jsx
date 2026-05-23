@@ -18,7 +18,7 @@ const BASE = {
   alignItems: 'center',
   gap: 6,
   borderRadius: 6,
-  font: "600 11px 'Inter Tight', sans-serif",
+  font: "600 11px 'Space Grotesk', sans-serif",
   cursor: 'pointer',
   textDecoration: 'none',
   transition: 'background 160ms var(--ease-standard, ease), color 160ms var(--ease-standard, ease)',

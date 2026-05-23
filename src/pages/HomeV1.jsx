@@ -123,7 +123,7 @@ function HeroGameCard({ game }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
             <Crest short={game.home?.abbr} color={homeColor} size={34} />
             <div style={{ minWidth: 0 }}>
-              <div style={{ font: '700 16px "Inter Tight"', color: 'var(--ink)' }}>
+              <div style={{ font: '700 16px "Space Grotesk"', color: 'var(--ink)' }}>
                 {TEAM_META[game.home?.abbr]?.name || game.home?.abbr}
               </div>
               <div className="mono" style={{ fontSize: 10, color: 'var(--ink-3)' }}>
@@ -135,10 +135,10 @@ function HeroGameCard({ game }) {
           <div
             className="tab"
             style={{
-              font: '900 48px "Inter Tight"',
+              font: '900 48px "Space Grotesk"',
               letterSpacing: '-0.06em',
               lineHeight: 1,
-              fontFamily: '"Inter Tight", sans-serif',
+              fontFamily: '"Space Grotesk", sans-serif',
               fontVariantNumeric: 'tabular-nums',
               textAlign: 'center',
               whiteSpace: 'nowrap',
@@ -155,7 +155,7 @@ function HeroGameCard({ game }) {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'flex-end', minWidth: 0 }}>
             <div style={{ textAlign: 'right', minWidth: 0 }}>
-              <div style={{ font: '700 16px "Inter Tight"', color: 'var(--ink)' }}>
+              <div style={{ font: '700 16px "Space Grotesk"', color: 'var(--ink)' }}>
                 {TEAM_META[game.away?.abbr]?.name || game.away?.abbr}
               </div>
               <div className="mono" style={{ fontSize: 10, color: 'var(--ink-3)' }}>
@@ -478,7 +478,7 @@ function RowLive({ abbr, name, color, score }) {
         <Crest short={abbr} color={color} size={20} />
         <span
           style={{
-            font: '600 13px "Inter Tight"',
+            font: '600 13px "Space Grotesk"',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
@@ -499,7 +499,7 @@ function Row({ abbr, color, score }) {
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 3 }}>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
         <Crest short={abbr} color={color} size={16} />
-        <span style={{ font: '600 12px "Inter Tight"' }}>{TEAM_META[abbr]?.name || abbr}</span>
+        <span style={{ font: '600 12px "Space Grotesk"' }}>{TEAM_META[abbr]?.name || abbr}</span>
       </span>
       <span className="tab mono" style={{ fontWeight: 800, fontSize: 13 }}>
         {score ?? '—'}
@@ -635,7 +635,7 @@ function FollowingCard({ lang, selectedConstructor, isAnon }) {
           >
             <Crest short={f.t.slice(0, 3).toUpperCase()} color={f.c} size={22} />
             <div style={{ minWidth: 0, flex: 1 }}>
-              <div style={{ font: '600 13px "Inter Tight"', color: 'var(--ink)' }}>{f.t}</div>
+              <div style={{ font: '600 13px "Space Grotesk"', color: 'var(--ink)' }}>{f.t}</div>
               <div className="mono" style={{ fontSize: 10, color: 'var(--ink-3)', marginTop: 1 }}>{f.s}</div>
             </div>
           </Link>
@@ -757,7 +757,7 @@ function UpcomingCard({ fixtures, lang }) {
               }}
             >
               <span className="mono" style={{ color: 'var(--ink-3)', minWidth: 28 }}>{r.w}</span>
-              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', font: '600 12px "Inter Tight"', color: 'var(--ink)' }}>{r.t}</span>
+              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', font: '600 12px "Space Grotesk"', color: 'var(--ink)' }}>{r.t}</span>
               <span className="tab mono" style={{ color: 'var(--ink-3)' }}>{r.s}</span>
             </Link>
           ))
@@ -919,7 +919,7 @@ export default function HomeV1() {
             >
               FANGIR · SHOP
             </div>
-            <div style={{ font: '700 13px "Inter Tight"', marginTop: 4, color: 'var(--ink)' }}>
+            <div style={{ font: '700 13px "Space Grotesk"', marginTop: 4, color: 'var(--ink)' }}>
               2026 IBL Trading Cards · Pack
             </div>
             <div style={{ fontSize: 10, color: 'var(--ink-3)', marginTop: 3 }}>

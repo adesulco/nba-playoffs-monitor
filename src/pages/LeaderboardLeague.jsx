@@ -145,7 +145,7 @@ function LeagueLeaderboardInner() {
                       <tr key={r.bracket_id ?? r.user_id ?? r.rank} style={{ borderBottom: `1px solid ${C.line}` }}>
                         <td style={{ padding: 12, fontWeight: 700 }}>{r.rank}</td>
                         <td style={{ padding: 12, fontWeight: 500 }}>{r.nickname}</td>
-                        <td style={{ padding: 12, textAlign: 'right', font: "900 14px 'Inter Tight'" }}>
+                        <td style={{ padding: 12, textAlign: 'right', font: "900 14px 'Space Grotesk'" }}>
                           {r.score}
                         </td>
                       </tr>

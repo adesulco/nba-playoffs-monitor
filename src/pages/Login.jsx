@@ -79,7 +79,7 @@ export default function Login() {
               borderRadius: 8,
               background: 'var(--amber)',
               color: '#0A1628',
-              font: "900 20px 'Inter Tight'",
+              font: "900 20px 'Space Grotesk'",
             }}>G</div>
             <h1 style={{
               margin: 0,
@@ -141,7 +141,7 @@ export default function Login() {
                   background: 'var(--amber)',
                   color: '#0A1628',
                   border: '1px solid var(--amber)',
-                  font: "700 14px 'Inter Tight'",
+                  font: "700 14px 'Space Grotesk'",
                   cursor: sending || !email ? 'not-allowed' : 'pointer',
                   opacity: sending || !email ? 0.6 : 1,
                 }}

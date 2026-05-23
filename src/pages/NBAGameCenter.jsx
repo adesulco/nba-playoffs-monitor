@@ -367,7 +367,7 @@ export default function NBAGameCenter() {
             <Link
               to={awayName ? `/nba-playoff-2026/${awayName.split(' ').pop().toLowerCase()}` : '#'}
               style={{
-                fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+                fontFamily: '"Space Grotesk", system-ui, sans-serif',
                 fontSize: 'clamp(18px, 2.4vw, 24px)',
                 fontWeight: 700,
                 color: 'var(--ink)',
@@ -436,7 +436,7 @@ export default function NBAGameCenter() {
             <Link
               to={homeName ? `/nba-playoff-2026/${homeName.split(' ').pop().toLowerCase()}` : '#'}
               style={{
-                fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+                fontFamily: '"Space Grotesk", system-ui, sans-serif',
                 fontSize: 'clamp(18px, 2.4vw, 24px)',
                 fontWeight: 700,
                 color: 'var(--ink)',

@@ -32,7 +32,7 @@ export default function WhatsAppShare({ text }) {
         background: '#22c55e',
         color: '#ffffff',
         border: '1px solid #22c55e',
-        font: "700 12px 'Inter Tight'",
+        font: "700 12px 'Space Grotesk'",
         cursor: 'pointer',
         whiteSpace: 'nowrap',
       }}

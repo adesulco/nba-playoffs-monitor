@@ -54,7 +54,7 @@ export default function Card({
  */
 export function CardHead({ title, right, style, ...rest }) {
   const titleStyle = {
-    font: "700 10px 'Inter Tight'",
+    font: "700 10px 'Space Grotesk'",
     letterSpacing: '0.14em',
     textTransform: 'uppercase',
     color: 'var(--ink-3)',

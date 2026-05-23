@@ -116,7 +116,7 @@ export default function BracketShare() {
                   fontFamily: 'var(--font-sans)',
                   fontSize: 28, fontWeight: 700, letterSpacing: '-0.02em',
                 }}>{bracket.name}</h1>
-                <p style={{ margin: 0, font: "900 30px 'Inter Tight'", color: 'var(--amber)' }}>
+                <p style={{ margin: 0, font: "900 30px 'Space Grotesk'", color: 'var(--amber)' }}>
                   {bracket.score ?? 0} {lang === 'id' ? 'poin' : 'pts'}
                 </p>
               </header>
@@ -129,7 +129,7 @@ export default function BracketShare() {
                     <div key={round} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                       <h3 style={{
                         margin: 0,
-                        font: "700 11px 'Inter Tight'",
+                        font: "700 11px 'Space Grotesk'",
                         letterSpacing: '0.14em', textTransform: 'uppercase',
                         color: C.dim,
                       }}>{roundLabel(round)}</h3>
@@ -182,7 +182,7 @@ export default function BracketShare() {
                     background: 'var(--amber)',
                     color: '#0A1628',
                     textDecoration: 'none',
-                    font: "700 13px 'Inter Tight'",
+                    font: "700 13px 'Space Grotesk'",
                   }}
                 >{lang === 'id' ? 'Buat bracket kamu juga' : 'Start your own bracket'}</Link>
               </div>

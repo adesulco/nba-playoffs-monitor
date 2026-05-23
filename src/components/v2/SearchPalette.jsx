@@ -359,7 +359,7 @@ export default function SearchPalette({ onClose }) {
               outline: 'none',
               background: 'transparent',
               color: 'var(--ink)',
-              font: '500 15px "Inter Tight", sans-serif',
+              font: '500 15px "Space Grotesk", sans-serif',
             }}
           />
           {q && (

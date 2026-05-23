@@ -121,6 +121,10 @@ const SettingsTeams = lazy(() => import('./pages/SettingsTeams.jsx'));
 // v0.12.10 — proper SPA NotFound (replaces the silent Navigate-to-/
 // catch-all that polluted Google's index by 200-ing every garbage URL)
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
+// v0.65.0 — Pick'em P0 landing (scaffold, behind flags.pickem). Lazy
+// so the Pick'em token CSS + container don't land on users who never
+// visit /pickem.
+const PickemHome = lazy(() => import('./pickem/PickemHome.jsx'));
 // v0.13.0 — site-wide cross-sport footer (Ship 3E). Mounts below the
 // route Suspense so every page (incl. NotFound + leaf pages) ends with
 // a link grid to all sport hubs. Lazy because it's never above the
@@ -381,6 +385,11 @@ export default function App() {
             <Route path="/league/:id/join" element={<LeagueJoin />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/leaderboard/:leagueId" element={<LeaderboardLeague />} />
+
+            {/* v0.65.0 — Pick'em P0 scaffold. Gated behind flags.pickem so
+                the route resolves to NotFound when the flag is off (does
+                NOT pollute the SPA's URL space until the feature ships). */}
+            {UI.pickem && <Route path="/pickem" element={<PickemHome />} />}
 
             {/* v0.62.0 — Kebijakan Privasi + Syarat & Ketentuan (audit F-001). */}
             <Route path="/privacy" element={<Privacy />} />

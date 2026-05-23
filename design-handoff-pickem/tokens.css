@@ -1,0 +1,243 @@
+/* ===========================================================
+   Gibol Brand v1.0 "Pulse & Field" — paper theme tokens
+   ===========================================================
+   Bahasa-first, mobile-first, shareable.
+   Space Grotesk (UI/display) + JetBrains Mono (data/code).
+   Paper-grey surfaces · navy ink · green pulse accent ·
+   Per-sport accent overrides via [data-sport="…"].
+   =========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------- Surfaces (paper stack) ------------------------ */
+  --bg-deep:   #DDE3EA;   /* recessed (rails, behind cards) */
+  --bg-base:   #EEF1F5;   /* page background */
+  --bg-raised: #F8FAFC;   /* cards, sheets */
+  --bg-elev:   #FFFFFF;   /* tooltips, popovers */
+  --bg-paper:  #FFFFFF;   /* share-card crops */
+
+  /* ---------- Ink ----------------------------------------- */
+  --ink-1: #0F1E2E;        /* primary text, ~15:1 on paper */
+  --ink-2: #3A4856;        /* secondary */
+  --ink-3: #6B7480;        /* tertiary */
+  --ink-4: #98998E;        /* placeholder, disabled */
+  --ink-on-accent: #FFFFFF;
+  --ink-on-pulse:  #FFFFFF;
+
+  /* ---------- Lines / dividers ---------------------------- */
+  --line-1: rgba(15, 30, 46, 0.08);
+  --line-2: rgba(15, 30, 46, 0.14);
+  --line-3: rgba(15, 30, 46, 0.22);
+
+  /* ---------- Pulse (brand green) ------------------------- */
+  --pulse:        #3B7A57;
+  --pulse-deep:   #285E40;
+  --pulse-soft:   #C9DECF;
+  --pulse-wash:   #E9F1EC;
+
+  /* ---------- Sport accents (default = pulse) ------------- */
+  --sport:        var(--pulse);
+  --sport-deep:   var(--pulse-deep);
+  --sport-soft:   var(--pulse-soft);
+  --sport-wash:   var(--pulse-wash);
+  --sport-on:     #FFFFFF;
+
+  /* ---------- Semantic ------------------------------------ */
+  --live:         #C8102E;     /* LIVE badge red */
+  --live-wash:    #FBE3E5;
+  --warn:         #C58D2C;
+  --warn-wash:    #F6EAD0;
+  --error:        #B8341F;
+  --error-wash:   #F7E1DA;
+  --info:         #2A6FDB;
+  --info-wash:    #E1ECFA;
+  --success:      var(--pulse);
+
+  /* ---------- Type --------------------------------------- */
+  --font-ui:   'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ---------- Spacing (4pt scale) ------------------------ */
+  --s-0:  0;
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 40px;
+  --s-9: 48px;
+  --s-10: 64px;
+
+  /* ---------- Radii -------------------------------------- */
+  --r-1: 4px;
+  --r-2: 8px;
+  --r-3: 12px;     /* default card */
+  --r-4: 16px;     /* sheet */
+  --r-5: 24px;
+  --r-pill: 999px;
+
+  /* ---------- Shadow (paper-friendly) -------------------- */
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(15, 30, 46, 0.04);
+  --shadow-2: 0 1px 2px rgba(15, 30, 46, 0.04), 0 6px 18px -8px rgba(15, 30, 46, 0.10);
+  --shadow-3: 0 2px 4px rgba(15, 30, 46, 0.06), 0 16px 32px -12px rgba(15, 30, 46, 0.14);
+  --shadow-pop: 0 12px 40px -8px rgba(15, 30, 46, 0.22), 0 4px 8px rgba(15, 30, 46, 0.08);
+
+  /* ---------- Motion ------------------------------------- */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --ease-in:  cubic-bezier(0.6, 0, 0.8, 0.3);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+
+  /* ---------- Focus -------------------------------------- */
+  --focus-ring: 0 0 0 3px rgba(43, 111, 219, 0.35);
+  --focus-ring-on-sport: 0 0 0 3px rgba(255, 255, 255, 0.55);
+}
+
+/* ===========================================================
+   Per-sport accent overrides
+   =========================================================== */
+[data-sport="nba"]      { --sport: #E25822; --sport-deep: #B8421A; --sport-soft: #F6D4C5; --sport-wash: #FBE9DF; }
+[data-sport="epl"]      { --sport: #5B2D8A; --sport-deep: #432069; --sport-soft: #D8C7EA; --sport-wash: #ECE3F4; }
+[data-sport="liga1"]    { --sport: #C53030; --sport-deep: #9B1F1F; --sport-soft: #F1C9C9; --sport-wash: #F8E3E3; }
+[data-sport="f1"]       { --sport: #C8102E; --sport-deep: #971022; --sport-soft: #F3C7CE; --sport-wash: #FAE3E7; }
+[data-sport="tennis"]   { --sport: #6A8E2E; --sport-deep: #4E6921; --sport-soft: #D5E2B9; --sport-wash: #EBF1DC; }
+[data-sport="worldcup"] { --sport: #B7892E; --sport-deep: #8A6620; --sport-soft: #ECDBB5; --sport-wash: #F5EBD6; }
+
+/* ===========================================================
+   Base reset & utility
+   =========================================================== */
+.g-root {
+  font-family: var(--font-ui);
+  color: var(--ink-1);
+  background: var(--bg-base);
+  font-feature-settings: 'ss01' on, 'cv11' on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.g-mono { font-family: var(--font-mono); font-feature-settings: 'tnum' on, 'zero' on; }
+.g-tnum { font-variant-numeric: tabular-nums; }
+
+/* Type scale — mobile-first, never below 13px in chrome */
+.t-display { font-family: var(--font-ui); font-weight: 700; font-size: 34px; line-height: 1.05; letter-spacing: -0.02em; }
+.t-h1      { font-family: var(--font-ui); font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -0.015em; }
+.t-h2      { font-family: var(--font-ui); font-weight: 600; font-size: 20px; line-height: 1.2;  letter-spacing: -0.01em; }
+.t-h3      { font-family: var(--font-ui); font-weight: 600; font-size: 17px; line-height: 1.3; }
+.t-body    { font-family: var(--font-ui); font-weight: 400; font-size: 15px; line-height: 1.45; }
+.t-bodysm  { font-family: var(--font-ui); font-weight: 400; font-size: 14px; line-height: 1.4; }
+.t-meta    { font-family: var(--font-ui); font-weight: 500; font-size: 13px; line-height: 1.3; color: var(--ink-3); }
+.t-eyebrow {
+  font-family: var(--font-mono); font-weight: 500;
+  font-size: 11px; line-height: 1; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.t-num-lg  { font-family: var(--font-mono); font-weight: 600; font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; }
+.t-num-md  { font-family: var(--font-mono); font-weight: 600; font-size: 20px; line-height: 1; font-variant-numeric: tabular-nums; }
+.t-num-sm  { font-family: var(--font-mono); font-weight: 500; font-size: 14px; line-height: 1; font-variant-numeric: tabular-nums; }
+
+/* Card primitive */
+.g-card {
+  background: var(--bg-raised);
+  border-radius: var(--r-3);
+  border: 1px solid var(--line-1);
+  box-shadow: var(--shadow-1);
+}
+
+/* Pulse dot — used for LIVE indicator */
+.pulse-dot {
+  display: inline-block;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--live);
+  position: relative;
+  box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.6);
+  animation: pulse-ring 1.6s var(--ease-out) infinite;
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0   rgba(200, 16, 46, 0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(200, 16, 46, 0);   }
+  100% { box-shadow: 0 0 0 0   rgba(200, 16, 46, 0);   }
+}
+
+/* Skeleton shimmer */
+.g-skel {
+  background: linear-gradient(
+    90deg,
+    rgba(15,30,46,0.05) 0%,
+    rgba(15,30,46,0.10) 50%,
+    rgba(15,30,46,0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: skel-slide 1.4s linear infinite;
+  border-radius: var(--r-2);
+}
+@keyframes skel-slide {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot, .g-skel { animation: none; }
+}
+
+/* Focus visibility */
+.g-root :is(button, a, [role="button"], [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-2);
+}
+
+/* Button primitives */
+.g-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  padding: 12px 18px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  transition: background var(--dur-1) var(--ease-out),
+              transform var(--dur-1) var(--ease-out),
+              box-shadow var(--dur-1) var(--ease-out);
+  white-space: nowrap;
+}
+.g-btn:active { transform: translateY(1px); }
+.g-btn--primary { background: var(--ink-1); color: var(--ink-on-accent); }
+.g-btn--primary:hover { background: #21344a; }
+.g-btn--sport { background: var(--sport); color: var(--sport-on); }
+.g-btn--sport:hover { background: var(--sport-deep); }
+.g-btn--ghost { background: transparent; color: var(--ink-1); border-color: var(--line-2); }
+.g-btn--ghost:hover { background: var(--bg-deep); }
+.g-btn--sm { min-height: 36px; padding: 8px 14px; font-size: 14px; }
+.g-btn--icon { padding: 0; width: 44px; height: 44px; min-height: 44px; }
+
+/* Chip */
+.g-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+  background: var(--bg-deep);
+  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.g-chip--active { background: var(--ink-1); color: var(--ink-on-accent); }
+.g-chip--sport  { background: var(--sport-wash); color: var(--sport-deep); border-color: var(--sport-soft); }
+.g-chip--live   { background: var(--live-wash); color: var(--live); }

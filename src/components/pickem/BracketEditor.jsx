@@ -131,7 +131,7 @@ export default function BracketEditor({
             }}>
               <h2 style={{
                 margin: 0,
-                font: "700 11px 'Inter Tight', sans-serif",
+                font: "700 11px 'Space Grotesk', sans-serif",
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: C.dim,
@@ -158,7 +158,7 @@ export default function BracketEditor({
                   }}>
                     <p style={{
                       margin: 0,
-                      font: "700 10px 'Inter Tight'",
+                      font: "700 10px 'Space Grotesk'",
                       letterSpacing: '0.14em', textTransform: 'uppercase',
                       color: C.dim,
                     }}>
@@ -262,7 +262,7 @@ function TeamButton({ code, team, selected, disabled, winnerLocked, onClick }) {
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <span style={{ font: "700 13px 'Inter Tight'" }}>{team.tricode}</span>
+        <span style={{ font: "700 13px 'Space Grotesk'" }}>{team.tricode}</span>
         <span style={{ fontSize: 11, color: C.dim }}>{team.name}</span>
       </div>
       <span

@@ -203,7 +203,7 @@ export default function V2TopBar({ children }) {
                     gap: 5,
                     background: active ? 'var(--bg-3)' : 'transparent',
                     color: active ? 'var(--ink)' : it.soon ? 'var(--ink-4)' : 'var(--ink-3)',
-                    font: '600 12px "Inter Tight", sans-serif',
+                    font: '600 12px "Space Grotesk", sans-serif',
                     padding: '6px 10px',
                     borderRadius: 6,
                     textDecoration: 'none',

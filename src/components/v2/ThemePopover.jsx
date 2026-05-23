@@ -149,7 +149,7 @@ export default function ThemePopover({ anchorRef, onClose }) {
             />
             <span
               style={{
-                font: '700 11px "Inter Tight", sans-serif',
+                font: '700 11px "Space Grotesk", sans-serif',
                 letterSpacing: '0.04em',
                 flex: 1,
               }}

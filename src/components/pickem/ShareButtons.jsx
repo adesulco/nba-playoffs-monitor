@@ -85,7 +85,7 @@ export default function ShareButtons({ url, title, storyUrl, squareUrl }) {
     }}>
       <h3 style={{
         margin: 0,
-        font: "700 14px 'Inter Tight'",
+        font: "700 14px 'Space Grotesk'",
         letterSpacing: '0.02em',
         color: C.text,
       }}>Bagikan recap</h3>
@@ -150,7 +150,7 @@ export default function ShareButtons({ url, title, storyUrl, squareUrl }) {
             background: 'var(--bg-3)',
             color: C.text,
             border: `1px solid ${C.line}`,
-            font: "600 13px 'Inter Tight'",
+            font: "600 13px 'Space Grotesk'",
             cursor: 'pointer',
           }}
         >
@@ -167,7 +167,7 @@ export default function ShareButtons({ url, title, storyUrl, squareUrl }) {
               background: 'var(--amber)',
               color: '#0A1628',
               border: `1px solid var(--amber)`,
-              font: "700 13px 'Inter Tight'",
+              font: "700 13px 'Space Grotesk'",
               cursor: 'pointer',
             }}
           >

@@ -129,15 +129,17 @@ export const homeVariant = envInt('VITE_FLAG_HOME', 0);
 // counsel-of-record memo (audit F-002 Blocker).
 export const polymarketEnabled = envFlag('VITE_FLAG_POLYMARKET', true);
 
-// v0.60.0 — Phase 2 Pulse & Field rebrand. Cream-theme flag:
+// v0.63.0 — Paper-grey design port. Brand flag (paper-grey theme):
 //   VITE_FLAG_BRAND=0 (default)  → existing dark navy chrome unchanged
-//   VITE_FLAG_BRAND=1            → cream-on-ink theme applied via the
-//                                  [data-brand="cream"] attribute on
+//   VITE_FLAG_BRAND=1            → paper-grey theme applied via the
+//                                  [data-brand="paper"] attribute on
 //                                  <html>. AppContext sets the attr
 //                                  at boot; user can opt-out via the
-//                                  TopBar theme toggle.
-// Independent from homeVariant + UI.v2 — brand flips chrome (colors,
-// type, lines); v2 flips layout/IA. Any combination is valid.
+//                                  TopBar theme toggle. The P6 flip
+//                                  changes the default from 0 to 1.
+// Repurposes the v0.60.0 cream flag — cream was retired in v0.63.0
+// and supersedes by the refined paper-grey take on Brand v1.0
+// "Pulse & Field". Independent from homeVariant + UI.v2.
 export const brandVariant = envInt('VITE_FLAG_BRAND', 0);
 
 export const FLAGS = {

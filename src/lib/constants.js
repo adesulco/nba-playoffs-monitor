@@ -281,3 +281,88 @@ export const TOKENS = {
   durBase:  'var(--dur-base)',
   durLong:  'var(--dur-long)',
 };
+
+/**
+ * v0.63.0 paper-grey design port — JS mirror of the handoff tokens
+ * defined in src/index.css under [data-brand="paper"]. Use these from
+ * new + migrated CSS-in-JS components so they reference the handoff
+ * names directly (--bg-deep, --ink-1, --pulse, --sport*, etc.) rather
+ * than the legacy aliases. Outside paper mode these vars resolve to
+ * the legacy values or fall back, so component output stays sensible
+ * during the P5 surface migration.
+ */
+export const PAPER = {
+  // Surfaces — paper stack
+  bgDeep:   'var(--bg-deep)',
+  bgBase:   'var(--bg-base)',
+  bgRaised: 'var(--bg-raised)',
+  bgElev:   'var(--bg-elev)',
+  bgPaper:  'var(--bg-paper)',
+
+  // Ink
+  ink1: 'var(--ink-1)',
+  ink2: 'var(--ink-2)',
+  ink3: 'var(--ink-3)',
+  ink4: 'var(--ink-4)',
+  inkOnAccent: 'var(--ink-on-accent)',
+  inkOnPulse:  'var(--ink-on-pulse)',
+
+  // Lines
+  line1: 'var(--line-1)',
+  line2: 'var(--line-2)',
+  line3: 'var(--line-3)',
+
+  // Pulse — brand green
+  pulse:     'var(--pulse)',
+  pulseDeep: 'var(--pulse-deep)',
+  pulseSoft: 'var(--pulse-soft)',
+  pulseWash: 'var(--pulse-wash)',
+
+  // Sport accents — resolve against the current data-sport subtree
+  sport:     'var(--sport)',
+  sportDeep: 'var(--sport-deep)',
+  sportSoft: 'var(--sport-soft)',
+  sportWash: 'var(--sport-wash)',
+  sportOn:   'var(--sport-on)',
+
+  // Semantic
+  live:      'var(--live)',
+  liveWash:  'var(--live-wash)',
+  warn:      'var(--warn)',
+  warnWash:  'var(--warn-wash)',
+  error:     'var(--error)',
+  errorWash: 'var(--error-wash)',
+  info:      'var(--info)',
+  infoWash:  'var(--info-wash)',
+  success:   'var(--success)',
+
+  // Type
+  fontUi:   'var(--font-ui)',
+  fontMono: 'var(--font-mono)',
+
+  // Radii
+  r1:    'var(--r-1)',
+  r2:    'var(--r-2)',
+  r3:    'var(--r-3)',
+  r4:    'var(--r-4)',
+  r5:    'var(--r-5)',
+  rPill: 'var(--r-pill)',
+
+  // Shadow
+  shadow0:   'var(--shadow-0)',
+  shadow1:   'var(--shadow-1)',
+  shadow2:   'var(--shadow-2)',
+  shadow3:   'var(--shadow-3)',
+  shadowPop: 'var(--shadow-pop)',
+
+  // Motion
+  easeOut: 'var(--ease-out)',
+  easeIn:  'var(--ease-in)',
+  dur1:    'var(--dur-1)',
+  dur2:    'var(--dur-2)',
+  dur3:    'var(--dur-3)',
+
+  // Focus
+  focusRing:        'var(--focus-ring)',
+  focusRingOnSport: 'var(--focus-ring-on-sport)',
+};

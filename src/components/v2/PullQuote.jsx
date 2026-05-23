@@ -44,7 +44,7 @@ export default function PullQuote({
         margin: '28px 0',
         padding: '4px 0 4px clamp(16px, 4vw, 24px)',
         borderLeft: `3px solid ${ruleColor}`,
-        fontFamily: 'Newsreader, "Inter Tight", Georgia, serif',
+        fontFamily: '"Space Grotesk", system-ui, sans-serif',
         fontStyle: 'italic',
         fontWeight: 500,
         fontSize: 'clamp(18px, 2.4vw, 22px)',
