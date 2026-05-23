@@ -7247,8 +7247,69 @@
 //     written yet.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P5.
+//
+// v0.71.0 — Pick'em P6: recap + share (2026-05-23).
+// The "WhatsApp screenshot moment" — Kartu Bola grammar share cards
+// + ScreenShareSheet pattern with variant swap. All flag-gated;
+// default surface unchanged.
+//
+// What changed:
+//
+// 1. src/pickem/components/recapCards.jsx — RecapShell + three
+//    variants ported from design-handoff-pickem/js/recap.jsx:
+//
+//    - <RecapBigWin /> — matchday summary. Green rail, oversized
+//      mono "+42" hero, picked-team flag rail at the bottom + global
+//      rank chip. Default props render a sample card; pass `data`
+//      to drive with real points / rank / team codes / Bahasa
+//      summary.
+//    - <RecapUpset /> — called-the-upset celebration. Amber rail,
+//      ink-bordered scoreline card with home/away flags, "POIN
+//      PRABEDA" math strip ("+6 dasar × 3 upset = +18"). The viral
+//      moment per spec §7.3 ("Berani tebak yang ini? Poin dobel.").
+//    - <RecapGrupUp /> — grup rank-up. Brand-orange rail, mini
+//      leaderboard with the user's row highlighted + a Bahasa
+//      "ngintilin Faiz" kicker. Diff-to-#1 + weeks-tersisa at the
+//      footer.
+//
+//    Cards use HEX literals (not CSS theme tokens) so they render
+//    identically on light or dark Pickem container — the screenshot
+//    needs to look the same on every device. Self-fonted Space
+//    Grotesk + JetBrains Mono.
+//
+//    A `<RecapCard variant data />` dispatcher and a `RECAP_VARIANTS`
+//    array (used by the SegmentedPicker) round out the module.
+//
+// 2. src/pickem/Recap.jsx — /pickem/recap surface. 4:5-framed card
+//    at the center, SegmentedPicker for variant swap, three share
+//    CTAs (WhatsApp deep-link via wa.me/?text=…, native Web Share
+//    API, copy-link with confirmation), and a small "screenshot
+//    petunjuk" footer. URL stays in sync with the active variant
+//    (`?variant=big-win|upset|grup-up`) so the deep-link is
+//    shareable.
+//
+// 3. App.jsx — /pickem/recap route added behind UI.pickem.
+//
+// What's NOT shipped (deferred follow-ons):
+//
+//   - Server-side PNG generation. Per handover decision #6, no
+//     runtime @vercel/og — the static-PNG pipeline (api/recap/
+//     [gameId].js + api/og-recap.js for NBA) is the path. Extending
+//     it for these 3 variants is a P6.5 follow-on that lifts the
+//     HEX/inline-style values from recapCards.jsx into a Satori
+//     template. For v1, users screenshot the in-app card.
+//   - Auto-detect "which variant fits the user's matchday best".
+//     The Recap screen currently lets the user pick; future code
+//     reads the user's last matchday and pre-selects the variant
+//     whose data is most flattering (e.g. RecapUpset if they nailed
+//     a long-shot, else RecapBigWin if they cleared 3+ correct).
+//   - Inline trigger from PredictingHub / GrupDetail / Profile.
+//     "Bagikan recap" CTAs that route to /pickem/recap?from=… land
+//     when those surfaces sprout share affordances.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P6.
 
-export const APP_VERSION = '0.70.0';
+export const APP_VERSION = '0.71.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
