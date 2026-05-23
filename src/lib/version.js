@@ -6822,8 +6822,150 @@
 //     -d '{"fixture_id":"<uuid>","home_score":2,"away_score":1}' | jq
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P1.
+//
+// v0.67.0 — Pick'em P2: match-predictor core (2026-05-23).
+// The spine of the feature per Pickem-ClaudeCode-Handover.md P2.
+// Predict-first guest flow + the full <FixtureCard /> across all five
+// states (open/locked/live/scored/missed) + Predicting Hub + Fixture
+// Detail. All flag-gated behind VITE_FLAG_PICKEM; default route surface
+// unchanged. P1 migration still pending manual application — the UI
+// gracefully degrades to a "Sedang disiapkan" state when /api/pickem
+// reports "table not found".
+//
+// What changed:
+//
+// 1. src/pickem/components/primitives.jsx — 7 small components ported
+//    from design-handoff-pickem/js/components.jsx #1-7:
+//
+//    - <StatePill state kickoff /> — open / locked / live / scored /
+//      missed / soon. The live variant pulses + announces via
+//      role="status" aria-live="polite". Open swaps in the kickoff
+//      time when supplied (e.g. "21:00 WIB").
+//    - <ProbabilityChip value label /> — neutral framing per legal:
+//      "Menang 64%", never "odds" or "stake". The §7.3 chip.
+//    - <LockCountdown value urgent /> — mono pre-lock counter; urgent
+//      flips to p-live when < 1 hour to lock.
+//    - <ScoreStepper /> — controlled mono stepper for exact-score
+//      input, clamps 0..20 client-side (API enforces 0..99).
+//    - <JagoanToggle active onClick compact koMult /> — the §5.2
+//      banker pill. Filled pickem-orange on active. `compact` renders
+//      the read-only "✦ ×N" chip used on locked/scored cards.
+//    - <OutcomePicker odds value onChange /> — 1X2 radiogroup with
+//      Bahasa labels (Menang / Seri / Kalah), tier codes (1/X/2),
+//      and the implied probability inline.
+//    - <PointsPill /> + <ScoreBreakdown /> — scored-card audit ladder
+//      ("Dasar 5 × Jagoan 2 × Upset 2.2").
+//
+// 2. src/pickem/components/FixtureCard.jsx — the spine. One card, five
+//    body variants, state derived from (fixture.status + prediction +
+//    now vs lock_at). Controlled — parent owns the prediction; the
+//    card calls onPredictionChange(partial) on every edit. Bodies:
+//
+//    - BodyOpen: OutcomePicker + ScoreStepper + JagoanToggle + live
+//      "Maks. poin" preview using previewScoring() from
+//      lib/pickemScoring.js + ProbabilityChip rail + LockCountdown.
+//      Score input auto-derives picked_outcome so the user can't
+//      submit a contradiction (H + 0-2 would 400 server-side).
+//    - BodyLocked: read-only "PREDIKSIMU: X menang · 2-1" with the
+//      compact JagoanToggle.
+//    - BodyLive: "ON TRACK" / "BELUM KENA" indicator vs the
+//      current scoreline.
+//    - BodyScored: PointsPill + ScoreBreakdown — the audit row.
+//    - BodyMissed: "Kamu nggak prediksi laga ini. +0".
+//
+// 3. src/pickem/guestStore.js — predict-first persistence:
+//
+//    - getDeviceId(): stable random id in localStorage
+//      `gibol:pickem:device-id`.
+//    - saveGuestPrediction({ fixture_id, league, matchday,
+//      picked_outcome, picked_home, picked_away, is_jagoan }):
+//      latest-wins per fixture in localStorage
+//      `gibol:pickem:guest-predictions`. Setting is_jagoan=true
+//      auto-clears any other Jagoan on the same (league, matchday)
+//      so the "exactly one Jagoan per matchday" rule (§5.2) holds
+//      locally before the server enforces it.
+//    - getGuestPrediction(fixtureId), listGuestPredictions(league?),
+//      clearGuestPrediction(), clearAllGuestPredictions().
+//    - hasBeenNudged() / markNudged(): one-shot flag for the
+//      first-save nudge (`gibol:pickem:nudged`).
+//    - claimGuestPredictions(upsertFn): replays every pending guest
+//      prediction against the authenticated API on login. Best-effort
+//      — successes are dropped; locked fixtures dropped too (can't
+//      be replayed); failures stay queued for the next attempt.
+//      Returns { ok, claimed, skipped, failed, failures }.
+//
+// 4. src/pickem/api.js — fetch wrapper over /api/pickem dispatcher
+//    (?_action=...) with auth-header injection and graceful error
+//    handling. Calls listFixtures / listLeaderboard / upsertPrediction
+//    / scoreFixture. When the API reports the migration-0015 schema
+//    missing (Could not find the table 'public.fixtures'), the result
+//    is marked schemaReady:false so the UI can render the
+//    "Sedang disiapkan" state instead of crashing. This lets P2 ship
+//    before Ade applies the migration; once 0015 lands, the path
+//    flips to live without a redeploy.
+//
+// 5. src/pickem/PredictingHub.jsx — replaces the v0.65.0 P0 placeholder
+//    PickemHome (still on disk; unused). The /pickem landing surface.
+//
+//    Flow:
+//    - On mount, fetch fixtures for WC2026 (hard-coded for v1) via
+//      listFixtures(). Empty list → "Jadwal belum dirilis" state.
+//      Schema missing → "Sedang disiapkan" state.
+//    - On AuthContext.user transitioning null → set, fire
+//      claimGuestPredictions() exactly once per session. Any
+//      previously-guest predictions move to the authed account
+//      transparently.
+//    - Prediction save:
+//        guest → saveGuestPrediction(...) + first-time nudge if
+//                 hasBeenNudged() returns false.
+//        authed → upsertPrediction(...) with the bearer token,
+//                  optimistic update + rollback on failure.
+//    - First-run nudge: bottom-sheet "Tersimpan — mau ikut peringkat?"
+//      with "Masuk dengan email" primary CTA → /login?next=/pickem
+//      and "Lewati dulu" secondary that closes the nudge and keeps
+//      predictions local. Never blocking, fires exactly once per
+//      device.
+//
+// 6. src/pickem/FixtureDetail.jsx — /pickem/fixture/:id deep-link
+//    surface. Same FixtureCard composition, plus a placeholder
+//    "FORM & H2H" panel where the per-team historical stripe lands
+//    in P3 once the join is wired.
+//
+// 7. App.jsx — /pickem now mounts PredictingHub instead of the P0
+//    PickemHome scaffold. /pickem/fixture/:id added behind the same
+//    flags.pickem gate.
+//
+// What still isn't there (deferred):
+//
+// - Server-side team join on list-fixtures. The endpoint returns
+//   home_team / away_team UUIDs; the FixtureCard falls back to a
+//   "TBA" placeholder when team data isn't embedded. A small
+//   follow-on extends the SELECT with `teams!fixtures_home_team_fkey
+//   (...)` PostgREST embed.
+// - list-predictions endpoint. The hub currently optimistically
+//   tracks predictions in component state — server reconciliation
+//   on cold load needs a `?_action=list-predictions&league=...`
+//   endpoint (small follow-on).
+// - <Toast /> mount inside PickemRoot. Toast calls in the hub are
+//   no-ops without a host; the first-save nudge handles the critical
+//   moment-of-conversion. A Pickem-themed toast (Stadium-dark aware)
+//   is the right thing here; the paper-grey Toast from v0.64.0
+//   resolves --ink-1 to white in dark mode which would render
+//   invisibly. Deferred to a follow-on.
+// - Real WC2026 fixtures + odds ingest. Migration 0015 is idempotent
+//   but empty; the spec is the schema, not seed data. P2.5 ships the
+//   ingest cron.
+//
+// Verification path (after migration applied + a fixture seeded):
+//
+//   # Open /pickem on the live SPA — PredictingHub renders the
+//   #   matchday-grouped FixtureCards. Without auth, picks save to
+//   #   localStorage; first save fires the nudge.
+//   # Click a card → /pickem/fixture/:id detail screen.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P2.
 
-export const APP_VERSION = '0.66.0';
+export const APP_VERSION = '0.67.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
