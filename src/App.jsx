@@ -139,6 +139,8 @@ const PickemSurvivor = lazy(() => import('./pickem/Survivor.jsx'));
 const PickemProfile  = lazy(() => import('./pickem/Profile.jsx'));
 // v0.71.0 P6 — Kartu Bola recap share surface.
 const PickemRecap    = lazy(() => import('./pickem/Recap.jsx'));
+// v0.75.0 P7 — read-only desktop bracket tree (horizontal full tree).
+const PickemBracketTree = lazy(() => import('./pickem/BracketTreeView.jsx'));
 // v0.13.0 — site-wide cross-sport footer (Ship 3E). Mounts below the
 // route Suspense so every page (incl. NotFound + leaf pages) ends with
 // a link grid to all sport hubs. Lazy because it's never above the
@@ -417,6 +419,7 @@ export default function App() {
             {UI.pickem && <Route path="/pickem/survivor" element={<PickemSurvivor />} />}
             {UI.pickem && <Route path="/pickem/profile" element={<PickemProfile />} />}
             {UI.pickem && <Route path="/pickem/recap" element={<PickemRecap />} />}
+            {UI.pickem && <Route path="/pickem/bracket/tree" element={<PickemBracketTree />} />}
 
             {/* v0.62.0 — Kebijakan Privasi + Syarat & Ketentuan (audit F-001). */}
             <Route path="/privacy" element={<Privacy />} />

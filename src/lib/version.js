@@ -7468,8 +7468,49 @@
 //     bots that read /pickem/recap directly. Polish step.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P6 (follow-on P6.5).
+//
+// v0.75.0 — Pick'em P7: desktop reflow + read-only bracket tree
+// (2026-05-23). Per handover: "Same components, SideNav + content +
+// right rail + read-only desktop bracket tree. Reflow, never re-skin."
+//
+// What changed:
+//
+// 1. src/pickem/BracketTreeView.jsx NEW — /pickem/bracket/tree.
+//    The full WC bracket laid out horizontally:
+//      R16 → QF → SF → Final → Champion ← SF ← QF ← R16
+//    Reads from the SAME useBracketState() instance the editor uses
+//    (gibol:pickem:bracket:WC2026), so the tree mirrors whatever the
+//    user has saved on the editor side. Read-only — editing remains
+//    on /pickem/bracket via the stage-paged surface that works on
+//    390px screens. Horizontal-scrollable on mobile; grid layout
+//    expands on ≥1024 widths.
+//
+//    Components ported from design-handoff-pickem/js/bracket.jsx#
+//    DesktopBracketView: BracketColumn (vertical stack of compact
+//    match cards), MatchCompact (selected team wash + accent border,
+//    mirrors right-of-center columns), FinalCard (centerpiece),
+//    ChampionPanel (ceremonial trophy + flag + label).
+//
+// 2. src/pickem/Bracket.jsx header gets a "LIHAT TREE →" pill that
+//    routes to /pickem/bracket/tree. Discoverable on mobile too.
+//
+// 3. App.jsx — /pickem/bracket/tree route behind UI.pickem.
+//
+// What's NOT shipped in P7 v1 (deferred polish):
+//
+//   - Right rail content for PredictingHub / Leaderboard. The
+//     PickemRoot SideNav already takes the left column at ≥1024 widths;
+//     adding a right rail needs a 3-column grid override on PickemRoot
+//     OR per-page slot props. Skip for v1 — the desktop nav + the
+//     bracket tree is the higher-value chunk; right-rail Grup list +
+//     streak chip can be its own polish ship.
+//   - Read-only bracket tree as the desktop default for /pickem/bracket
+//     itself (currently a separate URL). A toggle between editor/tree
+//     mode on desktop would be the natural next step.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P7.
 
-export const APP_VERSION = '0.74.0';
+export const APP_VERSION = '0.75.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

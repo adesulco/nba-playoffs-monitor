@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PickemRoot from './PickemRoot.jsx';
 import useBracketState from './useBracketState.js';
 import {
@@ -58,6 +59,7 @@ export default function Bracket() {
 
 function BracketInner() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [stage, setStage] = useState('group');
   const [confirmLock, setConfirmLock] = useState(false);
   const [autofilled, setAutofilled] = useState(false);
@@ -127,7 +129,11 @@ function BracketInner() {
           fontFamily: 'var(--font-ui-pickem)',
         }}
       >
-        <Header locked={b.locked} lockedAt={b.lockedAt} />
+        <Header
+          locked={b.locked}
+          lockedAt={b.lockedAt}
+          onViewTree={() => navigate('/pickem/bracket/tree')}
+        />
 
         {!b.locked && (
           <div style={{ padding: '0 18px 12px', display: 'flex', gap: 8 }}>
@@ -282,7 +288,7 @@ function buildUpsertPayload(b) {
 
 // ── Sub-components ─────────────────────────────────────────────────────────
 
-function Header({ locked, lockedAt }) {
+function Header({ locked, lockedAt, onViewTree }) {
   return (
     <header style={{ padding: '8px 18px 12px', flexShrink: 0 }}>
       <div
@@ -291,6 +297,8 @@ function Header({ locked, lockedAt }) {
           alignItems: 'center',
           justifyContent: 'space-between',
           marginBottom: 8,
+          gap: 12,
+          flexWrap: 'wrap',
         }}
       >
         <div
@@ -299,21 +307,45 @@ function Header({ locked, lockedAt }) {
         >
           BRACKET · WC 2026
         </div>
-        {locked ? (
-          <span
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 11,
-              fontWeight: 700,
-              color: 'var(--p-up)',
-              letterSpacing: '0.08em',
-            }}
-          >
-            ✓ TERKUNCI
-          </span>
-        ) : (
-          <LockCountdownLabel />
-        )}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {onViewTree && (
+            <button
+              type="button"
+              onClick={onViewTree}
+              style={{
+                appearance: 'none',
+                background: 'transparent',
+                border: '1px solid var(--line-2)',
+                color: 'var(--ink-2)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                padding: '6px 12px',
+                borderRadius: 'var(--r-pill)',
+                cursor: 'pointer',
+                minHeight: 30,
+              }}
+            >
+              LIHAT TREE →
+            </button>
+          )}
+          {locked ? (
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 11,
+                fontWeight: 700,
+                color: 'var(--p-up)',
+                letterSpacing: '0.08em',
+              }}
+            >
+              ✓ TERKUNCI
+            </span>
+          ) : (
+            <LockCountdownLabel />
+          )}
+        </div>
       </div>
       <h1
         style={{
