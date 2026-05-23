@@ -7362,8 +7362,60 @@
 //   localStorage-only — the UX is the same for the user.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P4 (follow-on P4.5).
+//
+// v0.73.0 — Pick'em P5.5: Survivor + badges + streaks server-side
+// (2026-05-23). Schema closes the P5 gap; the localStorage-only
+// Survivor screen + client-side Profile remain backward-compatible.
+//
+// What changed:
+//
+// 1. supabase/migrations/0017_pickem_survivor_badges_streaks.sql:
+//    - predictions.survivor_pick boolean — Survivor + Jagoan can
+//      coexist on the same matchday now.
+//    - pickem_update_streak(user, competition, matchday) — idempotent
+//      streak bump (consecutive matchday submission → current_streak +1,
+//      gap → reset to 1). Updates longest_streak in place.
+//    - pickem_award_badges(user, competition, matchday) — evaluates
+//      criteria and inserts user_badges rows. v1 implements
+//      nostradamus (3 exact-scores in a row), berani (upset hit at
+//      p≤0.20), konsisten (streak ≥10). raja_grup + survivor_top
+//      deferred (need per-grup matchday rank + survivor end-of-tournament
+//      eval). Idempotent via the user_badges primary key.
+//    - pickem_score_fixture refresh: Survivor branch reads
+//      survivor_pick instead of is_jagoan; calls pickem_update_streak +
+//      pickem_award_badges for each affected user at end of the score
+//      pass. Idempotent.
+//
+// 2. api/_lib/pickem/upsert-survivor.js NEW —
+//    `?_action=upsert-survivor-pick`. Authenticated. Enforces:
+//    - one survivor_pick per (user, competition, matchday)
+//    - no team reuse (survivor_entries.used_team_ids)
+//    - lock-at gate (fixture not yet locked)
+//    - the picked team must be one of the fixture's home/away.
+//
+// 3. api/_lib/pickem/list-survivor.js NEW — `?_action=list-survivor`.
+//    Returns the survivor_entries row + pick history with
+//    win/loss/pending result for each matchday.
+//
+// 4. Dispatcher extended (still 11/12). Client api.js wrappers:
+//    upsertSurvivorPick(), listSurvivor().
+//
+// Survivor.jsx + Profile.jsx client surfaces unchanged in this ship —
+// they continue working off localStorage / list-profile respectively.
+// A future client rewire plugs Survivor.jsx into upsertSurvivorPick +
+// listSurvivor so the server entry is authoritative across devices.
+// raja_grup + survivor_top auto-award are deferred to that follow-on
+// + a per-grup matchday rank materialisation job.
+//
+// Manual step:
+//
+//   Apply 0017 via Supabase SQL Editor (after 0015 + 0016). Until then,
+//   the new endpoints return "could not find column survivor_pick"
+//   errors and Survivor.jsx stays localStorage-only.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P5 (follow-on P5.5).
 
-export const APP_VERSION = '0.72.0';
+export const APP_VERSION = '0.73.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

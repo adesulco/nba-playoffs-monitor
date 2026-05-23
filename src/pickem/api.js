@@ -282,3 +282,47 @@ export async function upsertBracket(payload) {
     return { ok: false, error: String(err?.message || err) };
   }
 }
+
+/**
+ * upsertSurvivorPick({ fixture_id, picked_team_id })
+ * Auth required. Returns { ok, prediction, survivor_entry } on success.
+ */
+export async function upsertSurvivorPick({ fixture_id, picked_team_id }) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const res = await fetch(buildUrl('upsert-survivor-pick'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ fixture_id, picked_team_id }),
+    });
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * listSurvivor({ competition? })
+ * Auth required. Returns { ok, entry, picks: [...] }.
+ */
+export async function listSurvivor({ competition = 'WC2026' } = {}) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated', entry: null, picks: [] };
+  try {
+    const url = buildUrl('list-survivor', { competition });
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+    const data = await readJson(res);
+    if (!res.ok) {
+      return { ok: false, error: normalizeError(res, data), entry: null, picks: [] };
+    }
+    return { ok: true, entry: data?.entry || null, picks: data?.picks || [] };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err), entry: null, picks: [] };
+  }
+}
