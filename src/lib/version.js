@@ -6964,8 +6964,128 @@
 //   # Click a card → /pickem/fixture/:id detail screen.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P2.
+//
+// v0.68.0 — Pick'em P3: leaderboards + grups (2026-05-23).
+// Per Pickem-ClaudeCode-Handover.md P3. Adds the social retention
+// engine — global / grup / matchday leaderboards with the sticky
+// "you" row, grup CRUD with WhatsApp-deep-link invites, and the
+// empty-1-member nudge that drives the §8.3 viral loop. All
+// flag-gated; default app surface unchanged.
+//
+// What changed:
+//
+// 1. src/pickem/components/social.jsx — 7 components ported from
+//    design-handoff-pickem/js/components.jsx #9-12 + #15-16:
+//
+//    - <RankBadge rank movement /> — mono "#1" + ▲/▼ delta.
+//    - <LeaderboardRow row you onClick podium /> — one row in any of
+//      the three leaderboard views. `you` highlights with the
+//      pickem-orange wash + left border + "KAMU" tag.
+//      `podium` adds 🥇🥈🥉 to ranks 1-3 (global board only).
+//    - <GrupCard grup onClick /> — one row in the user's grup list.
+//      Shows name, member count, my_rank, weekly movement.
+//    - <EmptyState icon title body action tone /> — generic empty
+//      surface. tone='default'|'soon'|'error'.
+//    - <PickemBtn variant size icon full /> — canonical Pick'em
+//      button. variant: primary | secondary | ghost | inverse.
+//    - <Tabs tabs active onChange /> — underline tabs.
+//    - <SegmentedPicker items active onChange /> — compact segmented.
+//
+// 2. src/pickem/components/InviteSheet.jsx — bottom-sheet share modal.
+//    Three CTAs (WhatsApp deep-link via wa.me/?text=…, native Web
+//    Share API for iOS/Android, copy-link with confirmation). The
+//    6-char invite code is visible + tap-to-copy. WhatsApp first
+//    because it's the dominant channel in Indonesia per spec §8.3.
+//
+// 3. src/pickem/Leaderboard.jsx — /pickem/board surface. Three
+//    scopes via <SegmentedPicker /> (Global / Grup / Matchday). The
+//    user's grup list is pulled via listMyGrups() for the Grup
+//    picker. Sticky "you" row at the bottom shows the ±10 window
+//    around the user when they're below the top page (uses the
+//    `around=user_id` param of list-leaderboard from v0.66.0).
+//    Schema-missing + empty + not-in-any-grup states all handled.
+//    URL stays in sync with scope/grupId/matchday for deep-link
+//    sharing of leaderboard views.
+//
+// 4. api/_lib/pickem/create-league.js EXTENDED — accepts the
+//    Pick'em P3 columns added in migration 0015 (visibility,
+//    competition, enabled_modes, theme, color). Each field is
+//    individually validated; omitting a field falls through to the
+//    DB default. The legacy LeagueNew.jsx (NBA bracket flow) sends
+//    only { name } and continues to work unchanged.
+//
+// 5. api/_lib/pickem/list-grups.js NEW — `?_action=list-grups`
+//    returns the authenticated user's grup memberships with cached
+//    aggregates (points_cache, exact_count_cache, matchday_rank,
+//    previous_rank) + member_count + the user's rank within each
+//    grup (computed via the leaderboard_league view). Dispatcher
+//    extended; function count stays 11/12.
+//
+// 6. src/pickem/api.js extended — createGrup(), joinGrup({leagueId,
+//    inviteCode}), listMyGrups(competition?) added. Wrap the same
+//    /api/pickem dispatcher with auth-header injection.
+//
+// 7. src/pickem/Grup.jsx — /pickem/grup hub. Lists user's grups via
+//    <GrupCard />. Inline "Gabung pakai kode" form that routes to
+//    /pickem/grup/join?code=… for the (code → leagueId) resolution.
+//    Empty-state CTA → /pickem/grup/new. Auth-gated; unauth'd users
+//    redirect through /login?next=/pickem/grup.
+//
+// 8. src/pickem/GrupCreate.jsx — /pickem/grup/new form. Name +
+//    visibility (private/public) + per-mode toggles (match / jagoan
+//    / upset / bracket / survivor). Theme/color deferred. On submit,
+//    navigate to /pickem/grup/:id?welcome=1 which auto-pops the
+//    InviteSheet exactly once (the moment-of-conversion for sharing).
+//
+// 9. src/pickem/GrupDetail.jsx — /pickem/grup/:id leaderboard view.
+//    Uses listLeaderboard({scope:'league', league_id}). The 1-member
+//    empty state shows a sharing CTA + nudge body — this is the
+//    viral loop's critical surface. The "welcome=1" query param
+//    auto-pops the InviteSheet once for just-created grups.
+//
+// 10. src/pickem/GrupJoin.jsx — /pickem/grup/join?code=… and
+//     /pickem/grup/:id/join?code=… handler. Direct Supabase select
+//     resolves (code → leagueId) — RLS already permits anon read on
+//     `leagues` for invite-code validation (per existing 0002 policy).
+//     Already-a-member, success, and error states all handled.
+//     Unauth'd users redirect through /login?next=<original URL>
+//     so the join replays after magic-link callback.
+//
+// 11. App.jsx — 6 new routes behind UI.pickem:
+//     /pickem/board, /pickem/grup, /pickem/grup/new,
+//     /pickem/grup/join, /pickem/grup/:id, /pickem/grup/:id/join.
+//
+// Manual step still required:
+//
+//   Apply migration 0015 via Supabase SQL Editor before any of these
+//   surfaces will fetch data. The Leaderboard and Grup screens
+//   degrade gracefully (empty state + a "fetch error" hint) until it
+//   lands, but they won't render real rows.
+//
+// Verification path (after migration applied + at least one fixture
+// scored + at least two members in a test grup):
+//
+//   # leaderboard endpoint (anon)
+//   curl -s 'https://www.gibol.co/api/pickem?_action=list-leaderboard&scope=competition&league=WC2026'
+//
+//   # create-grup (auth required)
+//   curl -s -X POST 'https://www.gibol.co/api/pickem?_action=create-league' \
+//     -H "Authorization: Bearer $JWT" -H "Content-Type: application/json" \
+//     -d '{"name":"Grup Kantor","visibility":"private","competition":"WC2026"}'
+//
+//   # list-grups (auth required)
+//   curl -s 'https://www.gibol.co/api/pickem?_action=list-grups' \
+//     -H "Authorization: Bearer $JWT"
+//
+//   # In the SPA — /pickem/grup/new → /pickem/grup/:id → tap share →
+//   #   the WhatsApp deep-link opens with a pre-filled message
+//   #   carrying the join URL. Tapping that link on another device
+//   #   lands on /pickem/grup/join?code=… and joins automatically
+//   #   (after magic-link login if not already authed).
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P3.
 
-export const APP_VERSION = '0.67.0';
+export const APP_VERSION = '0.68.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

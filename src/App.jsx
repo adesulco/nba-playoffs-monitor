@@ -122,11 +122,16 @@ const SettingsTeams = lazy(() => import('./pages/SettingsTeams.jsx'));
 // catch-all that polluted Google's index by 200-ing every garbage URL)
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 // v0.65.0 — Pick'em P0 landing was a scaffold placeholder. v0.67.0 P2
-// replaces it with the real PredictingHub + FixtureDetail surfaces.
-// Lazy so the Pick'em token CSS + Supabase client don't land on users
-// who never visit /pickem.
-const PredictingHub = lazy(() => import('./pickem/PredictingHub.jsx'));
-const FixtureDetail = lazy(() => import('./pickem/FixtureDetail.jsx'));
+// replaces it with the real PredictingHub + FixtureDetail. v0.68.0 P3
+// adds the leaderboard + grup surfaces. Lazy so the Pick'em token CSS
+// + Supabase client don't land on users who never visit /pickem.
+const PredictingHub  = lazy(() => import('./pickem/PredictingHub.jsx'));
+const FixtureDetail  = lazy(() => import('./pickem/FixtureDetail.jsx'));
+const PickemLeaderboard = lazy(() => import('./pickem/Leaderboard.jsx'));
+const Grup           = lazy(() => import('./pickem/Grup.jsx'));
+const GrupCreate     = lazy(() => import('./pickem/GrupCreate.jsx'));
+const GrupDetail     = lazy(() => import('./pickem/GrupDetail.jsx'));
+const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
 // v0.13.0 — site-wide cross-sport footer (Ship 3E). Mounts below the
 // route Suspense so every page (incl. NotFound + leaf pages) ends with
 // a link grid to all sport hubs. Lazy because it's never above the
@@ -389,11 +394,18 @@ export default function App() {
             <Route path="/leaderboard/:leagueId" element={<LeaderboardLeague />} />
 
             {/* v0.65.0 — Pick'em P0 scaffold landing (now the real
-                PredictingHub from v0.67.0 P2). Gated behind flags.pickem
-                so the route resolves to NotFound when the flag is off
-                (does NOT pollute the SPA's URL space until the feature ships). */}
+                PredictingHub from v0.67.0 P2). v0.68.0 P3 adds the
+                leaderboard + grup surfaces. All gated behind flags.pickem;
+                routes resolve to NotFound when the flag is off (does NOT
+                pollute the SPA's URL space until the feature ships). */}
             {UI.pickem && <Route path="/pickem" element={<PredictingHub />} />}
             {UI.pickem && <Route path="/pickem/fixture/:id" element={<FixtureDetail />} />}
+            {UI.pickem && <Route path="/pickem/board" element={<PickemLeaderboard />} />}
+            {UI.pickem && <Route path="/pickem/grup" element={<Grup />} />}
+            {UI.pickem && <Route path="/pickem/grup/new" element={<GrupCreate />} />}
+            {UI.pickem && <Route path="/pickem/grup/join" element={<GrupJoin />} />}
+            {UI.pickem && <Route path="/pickem/grup/:id" element={<GrupDetail />} />}
+            {UI.pickem && <Route path="/pickem/grup/:id/join" element={<GrupJoin />} />}
 
             {/* v0.62.0 — Kebijakan Privasi + Syarat & Ketentuan (audit F-001). */}
             <Route path="/privacy" element={<Privacy />} />

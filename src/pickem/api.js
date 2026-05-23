@@ -163,3 +163,73 @@ export async function scoreFixture({ fixture_id, home_score, away_score, adminTo
     return { ok: false, error: String(err?.message || err) };
   }
 }
+
+// ────────────────────────────────────────────────────────────────────────────
+// v0.68.0 — Grup (private/public league) endpoints
+// ────────────────────────────────────────────────────────────────────────────
+
+/**
+ * createGrup({ name, visibility?, competition?, enabled_modes?, theme?, color? })
+ * Auth required. Returns { ok, id, invite_code, ... } on success.
+ */
+export async function createGrup(payload) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const res = await fetch(buildUrl('create-league'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(payload),
+    });
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * joinGrup({ leagueId, inviteCode })
+ * Auth required. Returns { ok, leagueId } on success.
+ */
+export async function joinGrup({ leagueId, inviteCode }) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const res = await fetch(buildUrl('join-league'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ leagueId, inviteCode }),
+    });
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * listMyGrups(competition?)
+ * Auth required. Returns { ok, grups: [...] }.
+ */
+export async function listMyGrups(competition) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated', grups: [] };
+  try {
+    const url = buildUrl('list-grups', competition ? { competition } : {});
+    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data), grups: [] };
+    return { ok: true, grups: data?.grups || [] };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err), grups: [] };
+  }
+}

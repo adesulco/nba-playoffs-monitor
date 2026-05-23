@@ -32,6 +32,9 @@ import predictHandler from './_lib/pickem/predict.js';
 import leaderboardHandler from './_lib/pickem/leaderboard.js';
 import scoreFixtureHandler from './_lib/pickem/score-fixture.js';
 
+// v0.68.0 — Pick'em P3 grup endpoint (still 11/12 functions).
+import listGrupsHandler from './_lib/pickem/list-grups.js';
+
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
   switch (action) {
@@ -46,12 +49,15 @@ export default async function handler(req, res) {
     case 'upsert-prediction': return predictHandler(req, res);
     case 'list-leaderboard':  return leaderboardHandler(req, res);
     case 'score-fixture':     return scoreFixtureHandler(req, res);
+    // v0.68.0 P3 — grup endpoints (create-league extended in place).
+    case 'list-grups':        return listGrupsHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
         allowed: [
           'create', 'create-league', 'join-league', 'pick', 'score',
           'list-fixtures', 'upsert-prediction', 'list-leaderboard', 'score-fixture',
+          'list-grups',
         ],
       });
   }
