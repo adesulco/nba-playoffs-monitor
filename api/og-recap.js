@@ -5,6 +5,52 @@ export const config = {
   runtime: 'edge',
 };
 
+// v0.77.0 — Custom font loading for crisp Kartu Bola Pick'em PNGs.
+// Space Grotesk (UI/display) + JetBrains Mono (data/numerals) are the
+// brand fonts. Both are self-hosted at /fonts/*.woff2 (v0.63.0 paper-
+// grey port). Fetched once at first edge invocation, memoized across
+// subsequent requests within the same edge instance — every PNG render
+// after the cold start uses the cached buffers.
+//
+// Without this, Satori (the renderer inside @vercel/og) falls back to
+// the default sans, which makes the Bahasa headlines look generic and
+// the mono numerals fail to align tabular. NBA path benefits too —
+// the existing renderer gets the proper UI font.
+
+let __cachedFonts = null;
+
+async function loadFonts(reqUrl) {
+  if (__cachedFonts) return __cachedFonts;
+  try {
+    const origin = new URL(reqUrl).origin;
+    const [sgBuf, jbmBuf] = await Promise.all([
+      fetch(`${origin}/fonts/space-grotesk-latin.woff2`).then((r) =>
+        r.ok ? r.arrayBuffer() : null,
+      ),
+      fetch(`${origin}/fonts/jetbrains-mono-latin.woff2`).then((r) =>
+        r.ok ? r.arrayBuffer() : null,
+      ),
+    ]);
+    const fonts = [];
+    if (sgBuf) {
+      // Variable font — register at 400 + 700 so Satori can pick the
+      // correct axis for both body and display weights.
+      fonts.push({ name: 'Space Grotesk', data: sgBuf, weight: 400, style: 'normal' });
+      fonts.push({ name: 'Space Grotesk', data: sgBuf, weight: 700, style: 'normal' });
+    }
+    if (jbmBuf) {
+      fonts.push({ name: 'JetBrains Mono', data: jbmBuf, weight: 400, style: 'normal' });
+      fonts.push({ name: 'JetBrains Mono', data: jbmBuf, weight: 700, style: 'normal' });
+    }
+    __cachedFonts = fonts;
+  } catch (err) {
+    // Don't fail the PNG render if font fetch errors — fall back to
+    // default sans. Renderer remains operational.
+    __cachedFonts = [];
+  }
+  return __cachedFonts;
+}
+
 // OG images are 1200x630 — canonical size for Twitter, Facebook, WhatsApp, LinkedIn, Slack.
 const W = 1200;
 const H = 630;
@@ -33,15 +79,18 @@ const PICKEM_ORANGE_WASH = '#F4D9CC';
 
 const h = React.createElement;
 
-export default function handler(req) {
+export default async function handler(req) {
   const url = new URL(req.url);
+  // v0.77.0 — Load custom fonts once per cold start; subsequent
+  // requests within this edge instance reuse the cached buffers.
+  const fonts = await loadFonts(req.url);
   // v0.74.0 — Pick'em P6.5 variants. ?type=pickem-bigwin|pickem-upset|
   // pickem-grupup branches to the Kartu Bola recap renderers. Falls
   // through to the existing NBA recap renderer for everything else
   // (back-compat with /recap/[gameId] callers).
   const type = url.searchParams.get('type') || '';
   if (type.startsWith('pickem-')) {
-    return renderPickem(type, url);
+    return renderPickem(type, url, fonts);
   }
   const rawDate = url.searchParams.get('date') || '';
   const rawHeadline = url.searchParams.get('headline') || '';
@@ -314,6 +363,7 @@ export default function handler(req) {
   return new ImageResponse(root, {
     width: W,
     height: H,
+    fonts: fonts && fonts.length ? fonts : undefined,
     headers: {
       'Cache-Control': 'public, max-age=31536000, immutable',
       'Content-Type': 'image/png',
@@ -351,7 +401,7 @@ export default function handler(req) {
 const PICKEM_W = 1080;
 const PICKEM_H = 1350;
 
-function renderPickem(type, url) {
+function renderPickem(type, url, fonts) {
   let card;
   if (type === 'pickem-bigwin') {
     card = renderBigWin(url);
@@ -366,6 +416,7 @@ function renderPickem(type, url) {
   return new ImageResponse(card, {
     width: PICKEM_W,
     height: PICKEM_H,
+    fonts: fonts && fonts.length ? fonts : undefined,
     headers: {
       // Pick'em recap PNGs are derived from a single user moment; cache
       // aggressively (1 year, immutable) the same way the NBA recap path

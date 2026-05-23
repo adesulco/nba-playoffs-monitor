@@ -7595,8 +7595,34 @@
 //   - axe-core or playwright a11y CI sweep — manual audit only for v1.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P8.
+//
+// v0.77.0 — og-recap custom font loading (2026-05-24).
+// Polish follow-on from P6.5. The Kartu Bola recap PNG renderer now
+// fetches the self-hosted woff2 fonts (v0.63.0 paper-grey port) at
+// edge invocation and passes them to Satori through @vercel/og.
+//
+// What changed:
+//
+// 1. api/og-recap.js — module-scoped __cachedFonts memoizes the
+//    woff2 buffers after the first cold-start fetch. Subsequent
+//    requests within the same edge instance reuse the cached
+//    buffers, so steady-state PNG render is identical-cost to the
+//    pre-font-load path.
+//
+//    Both Pick'em variants (pickem-bigwin / -upset / -grupup) and
+//    the legacy NBA recap path benefit — every PNG now renders with
+//    Space Grotesk at body + display weights and JetBrains Mono
+//    with tabular-nums on numerals (matches the in-app cards 1:1).
+//
+//    Defensive: if the fetch fails for any reason, the handler
+//    falls back to default sans-serif rather than 500-ing the
+//    request. PNG always renders.
+//
+// 2. No new function added; still 11/12 functions.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md (P6.5 polish).
 
-export const APP_VERSION = '0.76.0';
+export const APP_VERSION = '0.77.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
