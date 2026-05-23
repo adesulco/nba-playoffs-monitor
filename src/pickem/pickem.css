@@ -246,6 +246,60 @@
   box-shadow: var(--focus-ring);
   border-radius: var(--r-2);
 }
+
+/* v0.76.0 — P8 a11y: global reduced-motion compliance.
+   Honor prefers-reduced-motion across the entire Pickem subtree.
+   Animations collapse to near-instant; transitions are removed.
+   Specific elements (live pulse, skeleton shimmer) had per-component
+   rules already; this is the catch-all for the rest. */
 @media (prefers-reduced-motion: reduce) {
   .pickem-root .p-live-dot { animation: none; }
+  .pickem-root *,
+  .pickem-root *::before,
+  .pickem-root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* v0.76.0 — P8 a11y: visually-hidden helper (kept on the .pickem-root
+   subtree so it doesn't leak into paper-grey or default themes).
+   Used to attach screen-reader-only labels to interactive elements
+   that would otherwise be inferred from visible icons alone. */
+.pickem-root .p-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* v0.76.0 — Pick'em desktop right-rail layout (P8 polish).
+   PredictingHub + Leaderboard wrap their content in .pickem-hub-layout;
+   at <1024 the right rail stacks below (single column), at ≥1024 it
+   takes a 280px column on the right. The SideNav still owns the left
+   220px via PickemRoot's grid. */
+.pickem-root .pickem-hub-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .pickem-root .pickem-hub-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
+}
+.pickem-root .pickem-hub-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 20px;
 }

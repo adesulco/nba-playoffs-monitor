@@ -7509,8 +7509,94 @@
 //     mode on desktop would be the natural next step.
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P7.
+//
+// v0.76.0 — Pick'em P8: a11y + desktop right rail (2026-05-24).
+// Polish phase per the handover §"P8 · A11y + QA + perf":
+// "WCAG 2.2 AA (contrast pairs incl. amber-on-paper, :focus-visible,
+// keyboard-complete bracket, SR labels in Bahasa, color-never-alone),
+// reduced-motion, throttled live regions."
+//
+// What changed:
+//
+// 1. src/pickem/pickem.css — three additions:
+//
+//    - GLOBAL reduced-motion override for the Pickem subtree:
+//        @media (prefers-reduced-motion: reduce) {
+//          .pickem-root *, *::before, *::after {
+//            animation-duration: 0.01ms !important;
+//            transition-duration: 0.01ms !important;
+//            ...
+//          }
+//        }
+//      Catch-all for any per-component transition or animation that
+//      didn't already have its own reduced-motion guard. The
+//      pre-existing .p-live-dot rule stays for clarity.
+//
+//    - .p-sr-only utility — visually-hidden helper scoped to the
+//      Pickem subtree, used for screen-reader-only Bahasa labels.
+//
+//    - .pickem-hub-layout + .pickem-hub-rail — CSS-only responsive
+//      grid that collapses to a single column on <1024 widths and
+//      gives the right rail a sticky 280px column on ≥1024.
+//
+// 2. src/pickem/components/HubRightRail.jsx NEW — three cards:
+//
+//    - "Streak kamu": flame + matchday counter + rekor + akurasi%
+//      (reads list-profile).
+//    - "Grup kamu": top 3 grups by points_cache with rank + member
+//      count + my_points (reads list-grups). Empty state with a
+//      "Bikin grup" CTA.
+//    - "Cepat ke": quick links to /pickem/bracket, /pickem/survivor,
+//      /pickem/recap.
+//
+//    Auth-aware: guest users see a single "Masuk" card instead so
+//    the rail still has presence without requiring data.
+//
+// 3. PredictingHub wraps its main content in .pickem-hub-layout and
+//    mounts <HubRightRail user={user} />. Mobile layout (<1024)
+//    unchanged — the rail stacks below.
+//
+// Focus-visible rule was already in pickem.css from v0.65.0; the
+// browser respects it for every <button> + [role=button] inside the
+// Pickem subtree. Bracket buttons + group pager + knockout picks +
+// final pick + champion view are all tab-reachable via natural
+// document order.
+//
+// Bahasa SR labels — audit pass confirmed Pickem buttons either:
+//   (a) have explicit aria-label (icon-only / star / share / close /
+//        back / pager-arrows etc.) — already present,
+//   (b) derive their accessible name from visible Bahasa text
+//        ("Bikin grup", "Lanjut ke Final", "Pilih semua favorit",
+//        etc.).
+//
+// Color-never-alone — every state indicator carries non-color
+// redundancy:
+//   - Selected outcome: pickem-orange bg + filled chip + bold weight
+//   - Jagoan active: filled bg + filled ★ icon
+//   - Bracket selected pick: wash + left-border accent + bold weight
+//   - LIVE: pulsing dot + "LIVE" text
+//   - On-track / belum-kena: explicit Bahasa text label
+//   - Delta: ▲ / ▼ / ─ glyph + numeric value + Bahasa unit + SR text
+//
+// Live-region throttling: Pickem aria-live announcements are limited
+// to discrete user actions (toast on prediction save, lock confirm)
+// — not per-frame loops. Fixture cards don't fire announcements on
+// every render.
+//
+// What's NOT shipped in P8 v1 (deferred):
+//
+//   - Custom font loading in og-recap.js. The Pickem PNG renderer
+//     still falls back to edge runtime's default sans; loading
+//     Space Grotesk + JetBrains Mono woff2 at edge needs a top-level
+//     fetch + cache. Polish step.
+//   - Right rail on Leaderboard (P8 ships the rail on PredictingHub
+//     only; Leaderboard, Grup, Profile inherit the .pickem-hub-layout
+//     class with empty rail slots when the data flows are ready).
+//   - axe-core or playwright a11y CI sweep — manual audit only for v1.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P8.
 
-export const APP_VERSION = '0.75.0';
+export const APP_VERSION = '0.76.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

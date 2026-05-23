@@ -11,6 +11,7 @@ import {
 } from './guestStore.js';
 import { listFixtures, upsertPrediction } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
+import HubRightRail from './components/HubRightRail.jsx';
 
 // ============================================================================
 // v0.67.0 — Predicting Hub (Pick'em P2 spine).
@@ -180,37 +181,47 @@ function PredictingHubInner() {
 
   return (
     <PickemRoot active="predict">
-      <div style={{ padding: '20px 16px 32px', maxWidth: 720, margin: '0 auto' }}>
-        <Header user={user} />
+      <div
+        className="pickem-hub-layout"
+        style={{ padding: '20px 16px 32px', maxWidth: 1080, margin: '0 auto' }}
+      >
+        <div style={{ minWidth: 0 }}>
+          <Header user={user} />
 
-        {loading && <LoadingState />}
-        {!loading && !schemaReady && <NotReadyState />}
-        {!loading && schemaReady && fixtures.length === 0 && <EmptyState />}
-        {!loading && schemaReady && fixtures.length > 0 && (
-          <FixtureGroups
-            groups={grouped}
-            serverPredictions={serverPredictions}
-            guestPredictions={guestPredictions}
-            onChange={handlePredictionChange}
-          />
-        )}
+          {loading && <LoadingState />}
+          {!loading && !schemaReady && <NotReadyState />}
+          {!loading && schemaReady && fixtures.length === 0 && <EmptyState />}
+          {!loading && schemaReady && fixtures.length > 0 && (
+            <FixtureGroups
+              groups={grouped}
+              serverPredictions={serverPredictions}
+              guestPredictions={guestPredictions}
+              onChange={handlePredictionChange}
+            />
+          )}
 
-        {error && schemaReady && fixtures.length === 0 && (
-          <div
-            role="alert"
-            style={{
-              marginTop: 24,
-              padding: '12px 14px',
-              borderRadius: 'var(--r-3)',
-              background: 'var(--p-down-wash)',
-              color: 'var(--p-down)',
-              fontFamily: 'var(--font-ui-pickem)',
-              fontSize: 13,
-            }}
-          >
-            Gagal memuat jadwal: <span className="g-mono">{String(error)}</span>
-          </div>
-        )}
+          {error && schemaReady && fixtures.length === 0 && (
+            <div
+              role="alert"
+              style={{
+                marginTop: 24,
+                padding: '12px 14px',
+                borderRadius: 'var(--r-3)',
+                background: 'var(--p-down-wash)',
+                color: 'var(--p-down)',
+                fontFamily: 'var(--font-ui-pickem)',
+                fontSize: 13,
+              }}
+            >
+              Gagal memuat jadwal: <span className="g-mono">{String(error)}</span>
+            </div>
+          )}
+        </div>
+
+        {/* Right rail: streak + grup summary + quick links. The
+            .pickem-hub-layout CSS collapses this below the main column
+            on <1024 widths so the mobile layout is unchanged. */}
+        <HubRightRail user={user} />
       </div>
 
       {nudgeVisible && (
