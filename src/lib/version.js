@@ -7084,8 +7084,116 @@
 //   #   (after magic-link login if not already authed).
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md P3.
+//
+// v0.69.0 — Pick'em P4: bracket builder (2026-05-23).
+// The "set-once long game" pillar (Pickem-Gamification-Spec §5.4) +
+// the §"Critical integration decisions" #1 mandate: rebuild the
+// bracket to the WC stage-paging design and port useBracketState()
+// verbatim. Mobile-first; the whole flow works on 390px screens.
+//
+// What changed:
+//
+// 1. src/pickem/bracketData.js — seed data + scoring constants.
+//    SAMPLE_GROUPS (12 groups × 4 teams + lol-pct), SAMPLE_R32 / R16 /
+//    QF / SF / FINAL pre-seeded match-ups. STAGES + STAGE_LABELS
+//    drive the 7-pill stepper (group / r32 / r16 / qf / sf / final /
+//    champ). BRACKET_POINTS captures the §5.4 table (5/3/2 group,
+//    10/20/40/80 KO, 160 finalist, 200 champion).
+//    potentialBracketPoints(state) and maxBracketPoints() helpers
+//    compute the live + max points for the "Potensi poin" display.
+//    teamLabel(code) returns Bahasa country labels.
+//
+//    The seed is the spec's placeholder until real WC2026 group
+//    assignments + odds are ingested — at that point the constants
+//    swap for a server fetch without touching the stage components.
+//
+// 2. src/pickem/useBracketState.js — the hook ported VERBATIM from
+//    design-handoff-pickem/js/bracket.jsx#66-161 per handover
+//    critical-integration-decision #1. Preserves:
+//
+//    - exclusive-rank-per-group: setting rank R on team T clears
+//      whoever else held rank R within the same group.
+//    - toggle-off-on-resame: setting the same rank twice clears.
+//    - autoFill: prefills every pick from the higher-odds team
+//      per group / per match-up. Final + champion set to home of
+//      the final fixture.
+//    - reset: returns to empty state.
+//    - counts: per-stage pick totals.
+//
+//    Additions on top of the verbatim port:
+//
+//    - localStorage persistence under `gibol:pickem:bracket:WC2026`
+//      so the draft survives page reloads (predict-first principle).
+//    - `locked` + `lockedAt`: once locked, all setter calls become
+//      no-ops. lock() takes the bracket from editable to read-only
+//      per spec ("locks at first kickoff and can't be edited until
+//      the tournament ends"). For v1 the lock fires on user
+//      confirm; a future cron flips it server-side at kickoff.
+//
+// 3. src/pickem/components/bracketStages.jsx — six stage primitives
+//    ported from bracket.jsx#323-660:
+//
+//    - <BracketGroupStage groups setPick locked /> — 12-group pager
+//      with arrows + letter pills (each shows ✓ when all three ranks
+//      filled). Active group renders a card with one row per team:
+//      flag + Bahasa label + odds + 1/2/3 ranked-pick buttons.
+//      Info strip below explains group + best-3rd qualification.
+//    - <BracketKnockoutStage label stage matches setPick locked />
+//      — vertical list of match-ups (R32/R16/QF/SF). Tap a team to
+//      advance; selected team picks up the pickem-orange wash + left
+//      border + a "✓ LOLOS" header tag on the card.
+//    - <BracketFinalStage match setPick locked /> — ceremonial solo
+//      card with bigger type and the Maracanã / July 19 dressing.
+//      "Bonus juara: +200 poin" copy reflects the spec multiplier.
+//    - <BracketChampion team onCrown potentialPoints /> — trophy +
+//      flag + Bahasa label + potential-points pill. Auto-crowns the
+//      finalist on mount (the champ stage is ceremonial, not a new
+//      pick surface). Shows a friendly nudge if final unset.
+//    - <BracketMiniStrip champion totalPicks /> — persistent footer
+//      showing "N / 68 pilihan" + a champion preview chip when set.
+//    - <BracketLockConfirm champion onCancel onConfirm /> — modal
+//      with plain-Bahasa consequences ("nggak bisa diubah lagi
+//      sampai final WC 2026 selesai") + the picked champion chip.
+//    - <BracketStepper stages currentStage stageIdx counts
+//      onStageChange /> — 7-pill horizontal stepper, can't skip
+//      more than one stage forward (guides the funnel).
+//
+// 4. src/pickem/Bracket.jsx — /pickem/bracket screen orchestrating
+//    the stage flow. Header with eyebrow + headline + lock countdown.
+//    "Pilih semua favorit" + Reset action row (hidden when locked).
+//    Sticky stepper + stage progress meter ("N / total"). Per-stage
+//    body. Persistent MiniStrip + "Lanjut ke X →" / "🔒 Kunci
+//    bracket" CTA. Lock-confirm modal on final stage. Auto-fill
+//    success toast.
+//
+//    Lock flow: user reaches champ stage → "🔒 Kunci bracket" CTA →
+//    BracketLockConfirm → confirm → b.lock() → bracket flips to
+//    read-only ("Bracket kamu terkunci") with a LockedBanner
+//    showing potensi poin.
+//
+// 5. App.jsx — /pickem/bracket route added behind UI.pickem.
+//
+// What's NOT shipped (deferred follow-ons):
+//
+//   - Server-side bracket scoring. Spec §10.4: "Keep brackets +
+//     series + picks for the tournament tree. Add a slot_type to
+//     distinguish group-rank picks from knockout-winner picks.
+//     Generalise the round-weight table into pickem_rules." This
+//     needs migration 0016 (bracket_slot_type extension on the
+//     existing brackets/picks tables + a pickem_score_bracket RPC).
+//     For v0.69.0 the lock is purely client-side; the user's
+//     bracket lives in localStorage. Server scoring + leaderboard
+//     credit lands in a P4.5 follow-on.
+//   - Real WC2026 group draw + odds ingest. Seeds in bracketData.js
+//     are spec placeholders. Once FIFA releases the draw, ingestion
+//     swaps the SAMPLE_GROUPS constant for a fixture-table query.
+//   - "Edit your bracket" deep-link / share. The bracket is private
+//     v1 (no shareable URL). A future ShareBracket flow extends
+//     the recap-card pipeline.
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P4.
 
-export const APP_VERSION = '0.68.0';
+export const APP_VERSION = '0.69.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
