@@ -6697,8 +6697,133 @@
 //
 // Audit ref: audits/2026-05-22-paper-grey-design-port-plan.md (P2+P3),
 // Pickem-ClaudeCode-Handover.md (P0).
+//
+// v0.66.0 — Pick'em P1: data + API (2026-05-23).
+// Per the Pickem-ClaudeCode-Handover.md phased plan. Adds the
+// match-prediction layer (fixtures + predictions + Jagoan + upset
+// bonus + grup-relative bonus + survivor + badges + streaks) without
+// touching the existing NBA-series Pick'em (bracket / series / picks).
+// All scoring + schema decisions come from Gibol-Pickem-Gamification-
+// Spec.docx §5-§7 (extracted to /tmp/pickem-spec.txt during the build).
+//
+// What changed:
+//
+// 1. supabase/migrations/0015_pickem_match_prediction.sql — the full
+//    match-prediction schema in one idempotent migration:
+//
+//    - fixtures: per-match prediction primitive. league + season + stage
+//      + matchday + home/away_team + kickoff_at + lock_at + status +
+//      home/away_score + outcome (auto-derived on finalize) + vig-
+//      removed implied probabilities p_home/p_draw/p_away + finalized_at.
+//      Anon read; service-role write.
+//    - predictions: per-(user, fixture) pick with picked_outcome (H/D/A)
+//      + optional picked_home/picked_away + is_jagoan + audit columns
+//      (base_points, jagoan_mult_applied, upset_mult_applied,
+//      grup_bonus_points). Unique on (user_id, fixture_id). RLS:
+//      owner select/insert/update/delete, edits blocked after lock_at.
+//    - pickem_rules: extended with pts_exact (8) / pts_goaldiff (5) /
+//      pts_outcome (3) / jagoan_mult_group (2) / jagoan_mult_ko (3) /
+//      enable_upset_bonus / upset_floor (1) / upset_cap (3) /
+//      upset_curve (JSONB piecewise-linear breakpoints) /
+//      grup_bonus_points (2) / enable_survivor / ko_stages text[].
+//      A default WC2026 ruleset is seeded. Football low-scoring and
+//      basketball high-scoring competitions tune independently
+//      without code changes (§5.1 final paragraph).
+//    - leagues: extended with visibility (private|public) + competition
+//      (the Pick'em competition the grup tracks) + enabled_modes JSONB
+//      (which tiers count for this grup) + theme + color.
+//    - league_members: extended with points_cache + exact_count_cache
+//      + last_predicted_at + matchday_rank + previous_rank — these
+//      power the "naik 4 peringkat di Grup Kantor" copy without a
+//      compute on read.
+//    - survivor_entries: per-(user, competition) one-row entry with
+//      status (alive|out), eliminated_matchday, used_team_ids[]. Owner
+//      RLS; the RPC advances/eliminates entries on each fixture finalize.
+//    - badges + user_badges: status currency catalog + awarded rows.
+//      Seeded with launch badges (Nostradamus, Berani, Konsisten, Raja
+//      Grup, Fan Terakhir). Bahasa name_id is the canonical label;
+//      name_en for the optional EN-Beta toggle.
+//    - streaks: per-(user, competition) current_streak + longest_streak
+//      + last_matchday — the daily-return habit loop from §9.
+//    - leaderboard_competition: global rank per competition, tiebroken
+//      by points → exact_count → first_submitted_at (spec §6.4).
+//    - leaderboard_league: per-grup view reading the cached aggregates.
+//    - leaderboard_matchday: per (competition, matchday) — drives the
+//      post-matchday rank-shift copy.
+//    - pickem_upset_mult(p, curve, floor, cap): SECURITY helper for the
+//      piecewise-linear upset multiplier curve (§7.2).
+//    - pickem_score_fixture(p_fixture_id): the scoring engine.
+//      Idempotent. Walks every prediction on the fixture, computes
+//      base via the §5.1 ladder (exact 8 / goal-diff 5 / outcome 3 / 0),
+//      applies Jagoan (1/2/3) and upset multipliers (1.0-3.0), writes
+//      awarded_points + audit columns, refreshes league_members caches,
+//      tallies grup-relative bonuses (§6.3 — +N to the closest predictor
+//      in each grup, split if tied), advances/eliminates Survivor
+//      entries. Safe to re-run after a score correction.
+//    - fixtures_set_updated_at trigger: keeps updated_at fresh and
+//      auto-derives outcome + finalized_at when a fixture flips to
+//      'final' with both scores set.
+//
+//    Idempotent. Apply via Supabase SQL Editor on project
+//    egzacjfbmgbcwhtvqixc. CLAUDE.md flags database migrations as
+//    requiring explicit approval before executing — this file is
+//    written but NOT yet applied.
+//
+// 2. api/pickem.js dispatcher extended with four new actions, lifting
+//    the function count from 11/12 to STILL 11/12 (handlers live in
+//    api/_lib/pickem/ which are not deployed as separate functions —
+//    the same consolidation pattern the existing pick/score handlers
+//    use):
+//
+//    - list-fixtures (GET): fixtures by league + season? + matchday?
+//      + status? + after_iso?. 200 row default, 500 max. Edge-cached
+//      30s-60s. Anon-accessible.
+//    - upsert-prediction (POST): authenticated. Validates picked_outcome
+//      vs picked_home/picked_away consistency, blocks after lock_at,
+//      clears any other Jagoan on the same (league, matchday) when
+//      is_jagoan=true so the "exactly one Jagoan per matchday" rule
+//      (§5.2) is enforced server-side.
+//    - list-leaderboard (GET): scope=competition|league|matchday, with
+//      an optional `around=user_id` window (±10 rows centered on a
+//      specific user) for the sticky "kamu" row. Edge-cached 15-30s.
+//    - score-fixture (POST): admin-token gated. Finalizes the fixture
+//      (writes scores, the trigger derives outcome + finalized_at),
+//      then invokes pickem_score_fixture() and returns the
+//      aggregate report (scored_count + total_awarded).
+//
+//    vercel.json rewrites can OPTIONALLY be added later for prettier
+//    URLs (e.g. /api/pickem/fixtures → ?_action=list-fixtures); the
+//    new client code calls the action-query form directly.
+//
+// 3. src/lib/pickemScoring.js extended with DEFAULT_MATCH_RULES +
+//    basePointsForPrediction + jagoanMultiplier + upsetMultiplier +
+//    calledProbability + scorePrediction + previewScoring. Mirrors
+//    the SQL math exactly (same Math.floor at the end as SQL floor()
+//    cast to int). Used by the UI to show the live preview
+//    "Skor pas → ×2 Jagoan × ×2.2 upset = 35 poin" while the user
+//    composes a pick, before the fixture has finalized.
+//
+// Manual step required:
+//
+//   Apply 0015 via Supabase SQL Editor on project egzacjfbmgbcwhtvqixc
+//   before the new API endpoints will work. URL:
+//   https://supabase.com/dashboard/project/egzacjfbmgbcwhtvqixc/sql/new
+//   The migration is idempotent — safe to re-run if it errors partway.
+//
+// Verification path (post-deploy):
+//
+//   # list-fixtures (anon, no auth)
+//   curl -s 'https://www.gibol.co/api/pickem?_action=list-fixtures&league=WC2026' | jq '.fixtures | length'
+//
+//   # score-fixture (admin only, requires ADMIN_TOKEN env var)
+//   curl -s -X POST 'https://www.gibol.co/api/pickem?_action=score-fixture' \
+//     -H 'Content-Type: application/json' \
+//     -H "x-admin-token: $ADMIN_TOKEN" \
+//     -d '{"fixture_id":"<uuid>","home_score":2,"away_score":1}' | jq
+//
+// Audit ref: Pickem-ClaudeCode-Handover.md P1.
 
-export const APP_VERSION = '0.65.0';
+export const APP_VERSION = '0.66.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
