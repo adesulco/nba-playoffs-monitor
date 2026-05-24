@@ -328,7 +328,7 @@ select
 from public.predictions p
 left join public.profiles prof on prof.id = p.user_id
 where p.scored_at is not null
-group by p.league, p.user_id, prof.username, prof.avatar_url;
+group by p.league, p.user_id, prof.nickname, prof.avatar_url;
 
 comment on view public.leaderboard_competition is
   'Global leaderboard per Pickem competition. Tiebreakers (spec §6.4): points → exact_count → earliest first_submitted_at.';
@@ -378,7 +378,7 @@ from public.predictions p
 join public.fixtures f on f.id = p.fixture_id
 left join public.profiles prof on prof.id = p.user_id
 where p.scored_at is not null
-group by p.league, f.matchday, p.user_id, prof.username, prof.avatar_url;
+group by p.league, f.matchday, p.user_id, prof.nickname, prof.avatar_url;
 
 comment on view public.leaderboard_matchday is
   'Per-matchday leaderboard — feeds the "naik N peringkat di Grup X" post-matchday copy.';
