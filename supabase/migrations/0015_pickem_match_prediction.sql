@@ -308,7 +308,17 @@ create policy streaks_public_read on public.streaks for select to anon, authenti
 --    leaderboard_competition — global per competition (the public board).
 --    leaderboard_league      — per-grup (uses league_members cache).
 --    leaderboard_matchday    — per (competition, matchday) — for "naik N peringkat" copy.
+--
+--    Legacy NBA-bracket Pick'em already defined a `leaderboard_league`
+--    view with a different column shape (bracket_id-first). CREATE OR
+--    REPLACE can't rename existing columns, so drop the views up front
+--    and re-create them with the new shape. CASCADE handles any view-
+--    on-view dependencies. Idempotent: safe to re-run.
 -- ===========================================================================
+
+drop view if exists public.leaderboard_competition cascade;
+drop view if exists public.leaderboard_league cascade;
+drop view if exists public.leaderboard_matchday cascade;
 
 create or replace view public.leaderboard_competition as
 select
