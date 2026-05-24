@@ -46,13 +46,15 @@ export default async function handler(req, res) {
 
   const admin = getSupabaseAdmin();
 
-  // 1) Profile row (username, avatar). Falls back to email-prefix when
-  //    no profile row exists yet.
+  // 1) Profile row (nickname → exposed as `username` to the API
+  //    contract; avatar; created_at). Falls back to the email-prefix
+  //    when no profile row exists yet.
   const { data: profile } = await admin
     .from('profiles')
-    .select('id, username, avatar_url, created_at')
+    .select('id, nickname, avatar_url, created_at')
     .eq('id', user.id)
     .maybeSingle();
+  const profileUsername = profile?.nickname || null;
 
   // 2) Stats from the leaderboard_competition view — single query
   //    returns rank + points + exact_count + tiebreak data.
@@ -122,7 +124,7 @@ export default async function handler(req, res) {
     profile: {
       user_id: user.id,
       email: user.email,
-      username: profile?.username || (user.email ? user.email.split('@')[0] : null),
+      username: profileUsername || (user.email ? user.email.split('@')[0] : null),
       avatar_url: profile?.avatar_url || null,
       created_at: profile?.created_at || user.created_at,
       points: lbRow?.points ?? 0,
