@@ -35,7 +35,7 @@ import PickemHomeHero from '../components/PickemHomeHero.jsx';
  *     right: Live pulse  ·  Fans reacting (stubbed for Phase 3)
  *
  * Data sources (real, no mocks):
- *   - NBA hero + live grid: usePlayoffData (ESPN + Polymarket via proxy)
+ *   - NBA hero + live grid: usePlayoffData (ESPN scoreboard via proxy)
  *   - Upcoming EPL fixtures: useEPLFixtures (ESPN soccer scoreboard)
  *   - Following list: stub until TeamPicker wiring lands in v2 (Phase 3.1)
  *   - Fans reacting: stub — polls not built yet (see D3 backlog)

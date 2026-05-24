@@ -51,7 +51,7 @@ function resolvePlayInWinner(games, seriesMap, oneSeedAbbr, poolNames) {
   return null;
 }
 
-function TeamRow({ name, seed, odds, highlight, playInWinner }) {
+function TeamRow({ name, seed, playInWinner }) {
   // If the raw bracket entry is a TBD placeholder and we've detected a winner,
   // swap it out for the real team. Once R1 tips off the team is no longer "the
   // play-in winner" in any meaningful sense — it's just the 8-seed — so we
@@ -65,12 +65,12 @@ function TeamRow({ name, seed, odds, highlight, playInWinner }) {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '18px 20px 1fr auto',
+        gridTemplateColumns: '18px 20px 1fr',
         alignItems: 'center',
         gap: 6,
         padding: '5px 7px',
-        background: highlight ? 'rgba(255,179,71,0.08)' : COLORS.panelRow,
-        borderLeft: highlight ? `2px solid ${COLORS.amber}` : '2px solid transparent',
+        background: COLORS.panelRow,
+        borderLeft: '2px solid transparent',
         fontSize: 10,
       }}
     >
@@ -94,9 +94,6 @@ function TeamRow({ name, seed, odds, highlight, playInWinner }) {
       <span style={{ color: stillTBD ? COLORS.muted : COLORS.text }}>
         {stillTBD ? 'Play-In TBD' : (resolvedName || '').split(' ').slice(-1)[0]}
       </span>
-      {odds && !stillTBD && (
-        <span style={{ color: COLORS.amberBright, fontSize: 9.5, fontWeight: 600 }}>{odds}%</span>
-      )}
     </div>
   );
 }
@@ -137,14 +134,13 @@ function SeriesWatermark({ a, b, aAbbr, bAbbr, seriesMap }) {
   );
 }
 
-function Series({ series, oddsMap, seriesMap, playInWinner }) {
+function Series({ series, seriesMap, playInWinner }) {
   const [a, b] = series.teams;
-  // For watermark + favorite-highlight purposes, use the resolved names.
+  // For watermark purposes, use the resolved names.
+  // v0.79.0 — title-favorite highlight stripped (Komdigi de-risk 2026-05-23).
+  // Favorite came from the now-blocked futures-odds provider.
   const resolvedA = a && a.startsWith('TBD') && playInWinner ? playInWinner : a;
   const resolvedB = b && b.startsWith('TBD') && playInWinner ? playInWinner : b;
-  const oA = oddsMap[resolvedA];
-  const oB = oddsMap[resolvedB];
-  const favorite = (oA || 0) >= (oB || 0) ? resolvedA : resolvedB;
   const aAbbr = TEAM_META[resolvedA]?.abbr;
   const bAbbr = TEAM_META[resolvedB]?.abbr;
 
@@ -156,16 +152,16 @@ function Series({ series, oddsMap, seriesMap, playInWinner }) {
         marginBottom: 6,
       }}
     >
-      <TeamRow name={a} seed={series.seeds[0]} odds={oA} highlight={favorite === resolvedA} playInWinner={playInWinner} />
+      <TeamRow name={a} seed={series.seeds[0]} playInWinner={playInWinner} />
       <div style={{ height: 1, background: COLORS.lineSoft }} />
-      <TeamRow name={b} seed={series.seeds[1]} odds={oB} highlight={favorite === resolvedB} playInWinner={playInWinner} />
+      <TeamRow name={b} seed={series.seeds[1]} playInWinner={playInWinner} />
       <SeriesWatermark a={resolvedA} b={resolvedB} aAbbr={aAbbr} bAbbr={bAbbr} seriesMap={seriesMap} />
     </div>
   );
 }
 
-export default function Bracket({ championOdds, seriesMap, games }) {
-  const oddsMap = Object.fromEntries((championOdds || []).map((o) => [o.name, o.pct]));
+export default function Bracket({ seriesMap, games }) {
+  // v0.79.0 — championOdds prop removed (Komdigi de-risk 2026-05-23).
   const isMobile = useIsMobile();
 
   // Auto-resolve the two 8-seeds. v0.49.0 hotfix — also inspects
@@ -256,7 +252,6 @@ export default function Bracket({ championOdds, seriesMap, games }) {
               </div>
               <Series
                 series={s}
-                oddsMap={oddsMap}
                 seriesMap={seriesMap}
                 playInWinner={playInWinner}
               />
@@ -273,7 +268,7 @@ export default function Bracket({ championOdds, seriesMap, games }) {
             padding: '0 12px',
           }}
         >
-          Geser ← → · Highlighted = title favorite (Polymarket)
+          Geser ← → · Live R1 status per ESPN
         </div>
       </div>
     );
@@ -312,7 +307,7 @@ export default function Bracket({ championOdds, seriesMap, games }) {
           letterSpacing: 0.5,
         }}
       >
-        Highlighted = title favorite per Polymarket
+        Live R1 status per ESPN
       </div>
     </div>
   );

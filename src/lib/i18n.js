@@ -64,7 +64,7 @@ export const LOCALES = {
     leads: 'LEADS',
     tied: 'TIED',
     wins: 'WINS',
-    titleFavoritePoly: 'Highlighted = title favorite per Polymarket',
+    // titleFavoritePoly key dropped v0.79.0 (Komdigi de-risk 2026-05-23).
 
     // Panels
     titleOdds: 'TITLE ODDS',
@@ -112,8 +112,8 @@ export const LOCALES = {
     // Footer
     poll: 'Poll',
     last: 'last',
-    dataSources: 'Polymarket Gamma + CLOB WS · ESPN Scoreboard · 30s poll + live ticks',
-    builtBy: 'ESPN · Polymarket · Built by Claude',
+    dataSources: 'ESPN Scoreboard · 30s poll',
+    builtBy: 'ESPN · Built by Claude',
 
     // Theme toggle
     switchToLight: 'Switch to light mode',
@@ -260,7 +260,7 @@ export const LOCALES = {
     leads: 'UNGGUL',
     tied: 'SERI',
     wins: 'MENANG',
-    titleFavoritePoly: 'Disorot = favorit juara menurut Polymarket',
+    // titleFavoritePoly key dropped v0.79.0 (Komdigi de-risk 2026-05-23).
 
     // Panels
     titleOdds: 'PELUANG JUARA',
@@ -308,8 +308,8 @@ export const LOCALES = {
     // Footer
     poll: 'Poll',
     last: 'terakhir',
-    dataSources: 'Polymarket Gamma + CLOB WS · ESPN Scoreboard · poll 30d + tick langsung',
-    builtBy: 'ESPN · Polymarket · Dibuat oleh Claude',
+    dataSources: 'ESPN Scoreboard · poll 30d',
+    builtBy: 'ESPN · Dibuat oleh Claude',
 
     // Theme toggle
     switchToLight: 'Mode terang',

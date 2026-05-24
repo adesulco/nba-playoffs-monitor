@@ -10,8 +10,8 @@ import { useSuperLeagueMatchStatistics } from '../hooks/useSuperLeagueMatchStati
 import { useSuperLeagueMatchLineups } from '../hooks/useSuperLeagueMatchLineups.js';
 
 /**
- * Super League day-swipe scoreboard — minimal port of EPLDayScoreboard
- * without Polymarket odds (no IDN markets exist as of 2026-04).
+ * Super League day-swipe scoreboard — minimal port of EPLDayScoreboard.
+ * v0.79.0 — no odds rendered (Komdigi de-risk 2026-05-23).
  *
  * Anatomy:
  *   [ Day tabs · horizontal scroll-snap · ±7 days ]

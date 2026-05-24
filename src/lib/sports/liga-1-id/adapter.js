@@ -18,7 +18,7 @@
  *   - Top scorer / Golden Boot leaderboard (ESPN doesn't expose scorers
  *     for idn.1 — needs API-Football Pro at $19/mo).
  *   - Persija ↔ Persib derby ("El Clasico Indonesia") dedicated SEO page.
- *   - Polymarket odds (no IDN markets exist).
+ *   - the futures-odds provider odds (no IDN markets exist).
  */
 
 import { CLUBS, SEASON, SEASON_START, SEASON_END, LEAGUE_NAME, LEAGUE_NAME_FULL, LEAGUE_NAME_ID } from './clubs.js';

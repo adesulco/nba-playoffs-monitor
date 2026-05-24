@@ -21,7 +21,7 @@
  * Optional methods each phase adds as needed:
  *   useSportData(opts)     → { events, standings, status, errors, lastUpdate }
  *   useEventDetails(id)    → { events: playByPlay, stats, status }
- *   useOutrightOdds()      → Polymarket-shaped list
+ *   useOutrightOdds()      → the futures-odds provider-shaped list
  *   getEventSharePayload(event, lang) → { text, url }
  *
  * When a sport is 'soon' it only needs id, name/nameId, routeBase, accent,

@@ -5,7 +5,7 @@ import SEO from '../components/SEO.jsx';
 import SEOContent from '../components/SEOContent.jsx';
 // v0.53.1 — Phase C redesign: 3-up Newsroom Slice. Gated UI.v2.
 import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
-import { UI, polymarketEnabled } from '../lib/flags.js';
+import { UI } from '../lib/flags.js';
 import { readableOnDark } from '../lib/contrast.js';
 import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 // v0.17.0 Phase 2 Sprint B — shared chrome row.
@@ -25,8 +25,9 @@ import { useQueryParamSync } from '../hooks/useQueryParamSync.js';
 import { useEPLStandings } from '../hooks/useEPLStandings.js';
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
 import { useEPLScorers } from '../hooks/useEPLScorers.js';
-import { useEPLChampionOdds } from '../hooks/useEPLChampionOdds.js';
-import { useEPLMatchOdds } from '../hooks/useEPLMatchOdds.js';
+// v0.79.0 — useEPLChampionOdds + useEPLMatchOdds removed (the futures-odds provider
+// blocked in Indonesia 2026-05-22). The Title Odds panel + per-match
+// odds chips were the only consumers; both surfaces are gone.
 // v0.14.3 — shared Goals/Assists leaderboard panel powered by API-
 // Football. Replaces the bespoke <TopSkor> + ESPN useEPLScorers for
 // the hub-level leaderboard. useEPLScorers stays imported because
@@ -334,18 +335,15 @@ function Klasemen({ rows, loading, error, lang }) {
 }
 
 // ─── Context strip ──────────────────────────────────────────────────────────
-// 4-cell "dashboard at-a-glance" bar above the scoreboard. Mirrors NBA's
-// context strip (title favorite · next tip · finals tip · series lead).
-// Each cell: small uppercase label + big tabular value.
+// v0.79.0 — was a 4-cell strip; the "TITLE FAVORITE" (the futures-odds provider
+// champion-odds) cell was removed when the futures-odds provider was stripped from
+// the app. Auto-fit grid handles the 3-cell layout cleanly.
 //
-// Values:
-//   · TITLE FAVORITE   — top Polymarket champion-odds entry
+// Values now:
 //   · TOP-4 RACE       — gap from 4th to 5th place (UCL cut-off)
 //   · RELEGATION BATTLE — gap from 17th to 18th place (drop cut-off)
 //   · GOLDEN BOOT      — current top scorer + goals
-function ContextStrip({ standings, championOdds, scorers, lang }) {
-  const titleFav = (championOdds || [])[0];
-
+function ContextStrip({ standings, scorers, lang }) {
   const top4Gap = useMemo(() => {
     if (!standings || standings.length < 5) return null;
     const fourth = standings.find((r) => r.rank === 4);
@@ -416,18 +414,7 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
     }}>
-      {cell(
-        lang === 'id' ? 'FAVORIT JUARA' : 'TITLE FAVORITE',
-        titleFav ? (
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ width: 3, height: 16, background: titleFav.club?.accent || '#A855F7' }} />
-            {titleFav.canonicalName || titleFav.name}
-            <span style={{ color: '#A855F7', fontFamily: 'var(--font-mono)', fontSize: 16 }}>{titleFav.pct}%</span>
-          </span>
-        ) : '—',
-        '#A855F7',
-        lang === 'id' ? 'Polymarket · live' : 'Polymarket · live'
-      )}
+      {/* v0.79.0 — TITLE FAVORITE cell removed with the the futures-odds provider strip. */}
       {cell(
         lang === 'id' ? 'TOP-4 KETAT' : 'TOP-4 RACE',
         top4Gap ? (
@@ -510,115 +497,9 @@ function ContextStrip({ standings, championOdds, scorers, lang }) {
 }
 
 // ─── Peluang juara (Title odds) ─────────────────────────────────────────────
-// Live Polymarket 2025-26 champion odds. Polls every 60s.
-// Renders a compact top-5 bar — each row is a club accent, name, %, and
-// change delta vs last poll. Renders nothing when the hook returns empty
-// (e.g. Polymarket market doesn't exist for this season yet).
-function PeluangJuara({ odds, loading, error, lang }) {
-  // v0.61.2 — audit F-002 kill-switch. Env-var override
-  // VITE_FLAG_POLYMARKET=0 makes the entire panel render null without
-  // a code deploy. Lets ops pull the panel inside an hour on a Kominfo
-  // takedown notice.
-  if (!polymarketEnabled) return null;
-  // Hide the whole section if there's nothing meaningful to show.
-  // Loading with no prior data → hide. Error → hide (the rest of the
-  // dashboard shouldn't fail because Polymarket flinched).
-  if (!odds || odds.length === 0) return null;
-
-  return (
-    <section style={{
-      background: C.panel,
-      border: `1px solid ${C.line}`,
-      borderLeft: `3px solid ${EPL_PURPLE}`,
-      borderRadius: 3,
-      padding: '14px 14px 10px',
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 10 }}>
-        <h2 className="panel-title-mono" style={{
-          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
-          margin: 0, color: C.text, letterSpacing: -0.2,
-        }}>
-          {lang === 'id' ? 'Peluang juara' : 'Title odds'}
-        </h2>
-        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
-          {lang === 'id' ? 'POLYMARKET · LIVE' : 'POLYMARKET · LIVE'}
-        </div>
-      </div>
-
-      <div style={{ display: 'grid', gap: 4 }}>
-        {odds.slice(0, 6).map((o) => {
-          const displayName = lang === 'id'
-            ? (o.club?.nameId || o.canonicalName || o.name)
-            : (o.canonicalName || o.name);
-          const slug = o.club?.slug;
-          const accent = o.club?.accent || EPL_PURPLE;
-          const pct = Math.max(1, Math.min(100, o.pct)); // bar width floor at 1%
-          const changeColor = o.change > 0 ? C.green : o.change < 0 ? C.red : C.muted;
-          const changeSign = o.change > 0 ? '+' : '';
-          return (
-            <div
-              key={o.name}
-              style={{
-                display: 'grid',
-                // Mobile-friendly: name column is flexible-min 90px, bar is
-                // 1fr, % + delta trimmed slightly. Fits cleanly on 360px
-                // viewports where the old fixed 160px name column squeezed
-                // the accent bar to ~40px.
-                gridTemplateColumns: 'minmax(90px, 1.4fr) 1fr 48px 36px',
-                gap: 10,
-                alignItems: 'center',
-                padding: '7px 10px',
-                background: C.panelRow,
-                border: `1px solid ${C.lineSoft}`,
-                borderLeft: `2px solid ${accent}`,
-                borderRadius: 3,
-                fontSize: 11.5,
-              }}
-            >
-              <div style={{ color: C.text, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {slug ? (
-                  <Link
-                    to={`/premier-league-2025-26/club/${slug}`}
-                    style={{ color: C.text, textDecoration: 'none', display: 'inline-block', padding: '6px 0', minHeight: 24 }}
-                  >
-                    {displayName}
-                  </Link>
-                ) : displayName}
-              </div>
-              <div style={{ height: 8, background: C.panel2, borderRadius: 2, overflow: 'hidden', position: 'relative' }}>
-                <div style={{
-                  width: `${pct}%`, height: '100%',
-                  background: accent,
-                  transition: 'width 400ms var(--ease-standard, ease-out)',
-                }} />
-              </div>
-              <div style={{
-                textAlign: 'right',
-                fontFamily: 'var(--font-mono)',
-                fontSize: 13, fontWeight: 700, color: C.text,
-              }}>
-                {o.pct}%
-              </div>
-              <div style={{
-                textAlign: 'right',
-                fontFamily: 'var(--font-mono)',
-                fontSize: 10, fontWeight: 600, color: changeColor,
-              }}>
-                {o.change !== 0 ? `${changeSign}${o.change}` : '—'}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <div style={{ fontSize: 9, color: C.muted, letterSpacing: 0.3, marginTop: 8, lineHeight: 1.4 }}>
-        {lang === 'id'
-          ? 'Probabilitas pasar prediksi Polymarket. Update tiap 60 detik. Cuma tim dengan peluang >0% yang ditampilkan.'
-          : 'Polymarket prediction-market probabilities. Refreshes every 60s. Only teams with >0% odds shown.'}
-      </div>
-    </section>
-  );
-}
+// v0.79.0 — entire panel removed (the futures-odds provider blocked by Komdigi
+// 2026-05-22). A future "Prediksi Juara" Elo-model panel — fully
+// owned, no vendor block risk — will refill the slot.
 
 // (LiveSpotlight + Jadwal + MatchOddsChip removed in v0.12.7 — live games
 // now sort to the top of the active day inside EPLDayScoreboard, the
@@ -1028,7 +909,8 @@ export default function EPL() {
   const { rows, loading: sLoading, error: sError } = useEPLStandings();
   const { upcoming, recent, loading: fLoading, error: fError } = useEPLFixtures();
   const { scorers, loading: tLoading, error: tError } = useEPLScorers({ limit: 10 });
-  const { odds: championOdds, loading: oLoading, error: oError } = useEPLChampionOdds();
+  // v0.79.0 — useEPLChampionOdds + useEPLMatchOdds removed with the
+  // the futures-odds provider strip. Title-odds panel and per-match odds chips gone.
   const { selectedEPLClub, setSelectedEPLClub } = useApp();
   // v0.11.8 — URL ↔ picker sync so shared links like
   // /premier-league-2025-26?club=arsenal restore the filtered view.
@@ -1043,9 +925,7 @@ export default function EPL() {
   // the old standalone LiveSpotlight gave them, without the visual
   // duplication when a live match also appears under TODAY.
 
-  // Per-match Polymarket odds keyed by ESPN event id. Batched fetch —
-  // one Polymarket request per 60s covers the full 14-day fixture window.
-  const { byMatchId: oddsByMatchId } = useEPLMatchOdds({ upcomingMatches: upcoming });
+  // v0.79.0 — per-match the futures-odds provider odds removed.
 
   const leaders = useMemo(() => {
     const top = rows.slice(0, 3);
@@ -1153,7 +1033,6 @@ export default function EPL() {
           <EPLDayScoreboard
             upcoming={upcoming}
             recent={recent}
-            oddsByMatchId={oddsByMatchId}
             loading={fLoading}
             error={fError}
             lang={lang}
@@ -1164,7 +1043,6 @@ export default function EPL() {
               the live data leads. ── */}
           <ContextStrip
             standings={rows}
-            championOdds={championOdds}
             scorers={scorers}
             lang={lang}
           />
@@ -1177,7 +1055,7 @@ export default function EPL() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: 14,
           }}>
-            <PeluangJuara odds={championOdds} loading={oLoading} error={oError} lang={lang} />
+            {/* v0.79.0 — PeluangJuara (the futures-odds provider title odds) removed. */}
             <Klasemen rows={rows} loading={sLoading} error={sError} lang={lang} />
             {/* v0.14.3 — TopSkor swapped for the shared
                 <LeaderboardPanel> with Goals/Assists toggle. Pulls

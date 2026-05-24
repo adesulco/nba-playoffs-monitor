@@ -222,8 +222,8 @@ const STATIC_ROUTES = [
   {
     path: '/terms',
     title: 'Syarat & Ketentuan — gibol.co',
-    description: 'Aturan main pemakaian gibol.co — lisensi, akurasi data, disclaimer Polymarket, hak kekayaan intelektual, hukum yang berlaku.',
-    keywords: 'syarat ketentuan gibol, terms of service gibol, disclaimer polymarket gibol, hukum yang berlaku gibol',
+    description: 'Aturan main pemakaian gibol.co — lisensi, akurasi data, hak kekayaan intelektual, hukum yang berlaku.',
+    keywords: 'syarat ketentuan gibol, terms of service gibol, hukum yang berlaku gibol',
     ogImage: DEFAULT_OG,
     jsonLd: breadcrumb([
       { name: 'gibol.co', url: '/' },

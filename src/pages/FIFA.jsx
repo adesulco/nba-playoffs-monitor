@@ -8,7 +8,6 @@ const features = [
   { title: 'Group tables', desc: '12 groups, live standings, qualification scenarios updated in real time.' },
   { title: 'Knockout bracket', desc: 'Round of 32 through Final — path visualization with country flags and predictions.' },
   { title: 'Player tracking', desc: 'Star-player watchlist: goals, assists, cards, and minutes across the tournament.' },
-  { title: 'Prediction markets', desc: 'Polymarket + Kalshi for winner odds, top scorer, Golden Boot, and every match line.' },
   { title: 'Host city guides', desc: 'Venue info, broadcast schedule per region, and travel tips for all 16 host cities.' },
 ];
 
@@ -17,7 +16,6 @@ const featuresId = [
   { title: 'Tabel grup', desc: '12 grup, klasemen live, skenario kualifikasi update real-time.' },
   { title: 'Bagan gugur', desc: 'Ronde 32 sampai Final — visualisasi jalan dengan bendera negara dan prediksi.' },
   { title: 'Tracking pemain', desc: 'Watchlist pemain bintang: gol, assist, kartu, dan menit main sepanjang turnamen.' },
-  { title: 'Pasar prediksi', desc: 'Polymarket + Kalshi untuk peluang juara, top skor, Sepatu Emas, dan setiap line laga.' },
   { title: 'Panduan kota tuan rumah', desc: 'Info venue, jadwal siaran per region, dan tips travel untuk 16 kota tuan rumah.' },
 ];
 
@@ -138,8 +136,8 @@ function FIFAPreviewBlock() {
         </h3>
         <p style={{ margin: 0, color: C.dim }}>
           {lang === 'id'
-            ? 'Piala Dunia di Asia Tenggara selalu prime-time mendadak jadi tengah malam — laga AS kickoff sekitar jam 03:00 WIB. Dashboard FIFA 2026 dari gibol.co akan menampilkan jadwal dalam waktu WIB, xG live, tabel grup interaktif, dan prediksi Polymarket dalam Bahasa Indonesia. Supaya fan Indonesia nggak ketinggalan momen apapun.'
-            : 'World Cup matches in SEA timezones swing wildly — US games kick off around 3 AM WIB. Our dashboard shows schedules in WIB, live xG, interactive group tables, and Polymarket predictions — all in Bahasa Indonesia. So Indonesian fans never miss a moment.'}
+            ? 'Piala Dunia di Asia Tenggara selalu prime-time mendadak jadi tengah malam — laga AS kickoff sekitar jam 03:00 WIB. Dashboard FIFA 2026 dari gibol.co akan menampilkan jadwal dalam waktu WIB, xG live, tabel grup interaktif, dan panduan kota tuan rumah dalam Bahasa Indonesia. Supaya fan Indonesia nggak ketinggalan momen apapun.'
+            : 'World Cup matches in SEA timezones swing wildly — US games kick off around 3 AM WIB. Our dashboard shows schedules in WIB, live xG, interactive group tables, and host-city guides — all in Bahasa Indonesia. So Indonesian fans never miss a moment.'}
         </p>
       </section>
     </div>

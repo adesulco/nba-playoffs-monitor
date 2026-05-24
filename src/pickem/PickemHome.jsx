@@ -54,7 +54,7 @@ export default function PickemHome() {
             lineHeight: 1.6,
           }}
         >
-          <li>Prediksi pertandingan dengan peluang Polymarket</li>
+          <li>Prediksi pertandingan tiap pekan</li>
           <li>Papan peringkat global &amp; grup</li>
           <li>Bracket Piala Dunia 2026 (group → KO)</li>
           <li>Survivor mode &amp; lencana</li>

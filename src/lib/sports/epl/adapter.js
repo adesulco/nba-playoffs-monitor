@@ -7,10 +7,10 @@
  * /premier-league-2025-26/club/:slug, each with its own SportsTeam JSON-LD.
  * Status flipped 'soon' → 'live' so Home shows the LIVE badge.
  *
- * Phase 1B (v0.4.x, next ship): Polymarket championship + top-4 + relegation
+ * Phase 1B (v0.4.x, next ship): the futures-odds provider championship + top-4 + relegation
  * odds, ShareButton integration on club pages, Catatan Match-week recap PNG
  * generator. Intentionally deferred so this ship doesn't couple ESPN downtime
- * to Polymarket downtime.
+ * to the futures-odds provider downtime.
  */
 
 import { CLUBS, SEASON, SEASON_START, SEASON_END } from './clubs.js';

@@ -8,7 +8,7 @@
  * 'soon' → 'live' so Home shows the LIVE badge.
  *
  * Phase 1B (v0.2.3, next ship): OpenF1 live session mode (positions, intervals,
- * pit stops, telemetry), Polymarket championship odds, per-driver + per-team
+ * pit stops, telemetry), the futures-odds provider championship odds, per-driver + per-team
  * SEO pages with career stats. Intentionally deferred so this ship doesn't
  * couple Jolpica downtime to OpenF1 downtime.
  */
@@ -124,8 +124,8 @@ function prerenderRoutes() {
     path: routeBase,
     // v0.13.0 trim — was 78 chars / 225 chars.
     title: `F1 ${SEASON} — Klasemen, Jadwal 23 GP, Hasil Live | gibol.co`,
-    description: `Skor F1 ${SEASON} live: klasemen pembalap + konstruktor, kalender 23 GP dengan jam WIB, hasil balapan, podium, tracking juara. Bahasa Indonesia.`,
-    keywords: 'formula 1 2026, f1 2026, klasemen f1, jadwal f1 2026, hasil grand prix, peluang juara f1, max verstappen, lando norris, lewis hamilton, charles leclerc, oscar piastri, kimi antonelli, f1 bahasa indonesia, WIB f1',
+    description: `Skor F1 ${SEASON} live: klasemen pembalap + konstruktor, kalender 23 GP dengan jam WIB, hasil balapan, podium. Bahasa Indonesia.`,
+    keywords: 'formula 1 2026, f1 2026, klasemen f1, jadwal f1 2026, hasil grand prix, max verstappen, lando norris, lewis hamilton, charles leclerc, oscar piastri, kimi antonelli, f1 bahasa indonesia, WIB f1',
     ogImage: HUB_OG,
     jsonLd: [
       CHAMPIONSHIP_JSONLD,
@@ -169,7 +169,7 @@ function prerenderRoutes() {
       path: `${routeBase}/team/${team.slug}`,
       // v0.13.0 trim — was up to 73 chars (Red Bull Racing). Now ≤60.
       title: `${team.name} F1 2026 — Pembalap & Poin | gibol.co`,
-      description: `${team.name} F1 2026 — line-up ${driverNames}, basis ${team.base}, power unit ${team.power}. Poin, klasemen konstruktor, hasil, peluang juara.`,
+      description: `${team.name} F1 2026 — line-up ${driverNames}, basis ${team.base}, power unit ${team.power}. Poin, klasemen konstruktor, hasil per race.`,
       keywords: `${team.name.toLowerCase()} f1 2026, ${team.short.toLowerCase()} 2026, ${team.slug.replace(/-/g, ' ')} f1, pembalap ${team.short.toLowerCase()}, klasemen konstruktor 2026, ${driversForTeam.map((d) => d.name.toLowerCase()).join(', ')}`,
       // v0.13.0 Ship 4 — per-constructor OG card.
       ogImage: `${SITE}/og/f1/team-${team.slug}.png`,
@@ -192,7 +192,7 @@ function prerenderRoutes() {
       // v0.13.0 trim — was up to 95 chars. Now ≤55 even for longest
       // driver name (Andrea Kimi Antonelli = 21 + 36 = 57).
       title: `${driver.name} F1 2026 — Poin & Podium | gibol.co`,
-      description: `${driver.name} (#${driver.number}, ${driver.code}) di ${team ? team.name : 'F1 2026'}. Poin klasemen, jumlah podium, menang, peluang juara pembalap.`,
+      description: `${driver.name} (#${driver.number}, ${driver.code}) di ${team ? team.name : 'F1 2026'}. Poin klasemen, jumlah podium, menang, hasil race demi race.`,
       keywords: `${driver.name.toLowerCase()}, ${driver.slug}, ${driver.code.toLowerCase()} f1, f1 2026 ${driver.slug}, pembalap ${team ? team.short.toLowerCase() : 'f1'}, klasemen pembalap, podium ${driver.name.toLowerCase()}`,
       // v0.13.0 Ship 4 — per-driver OG card.
       ogImage: `${SITE}/og/f1/driver-${driver.slug}.png`,

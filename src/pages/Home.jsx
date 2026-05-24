@@ -11,7 +11,7 @@ import { useApp } from '../lib/AppContext.jsx';
 import { VERSION_LABEL } from '../lib/version.js';
 import { VISIBLE } from '../lib/flags.js';
 import { usePlayoffData } from '../hooks/usePlayoffData.js';
-import { useEPLChampionOdds } from '../hooks/useEPLChampionOdds.js';
+// v0.79.0 — useEPLChampionOdds import dropped (Komdigi de-risk 2026-05-23).
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
 import { useTennisScoreboard } from '../hooks/useTennisScoreboard.js';
 
@@ -34,8 +34,8 @@ const DASHBOARDS = [
     title: 'NBA Playoffs 2026',
     titleId: 'NBA Playoff 2026',
     league: 'NBA · POSTSEASON',
-    blurb: 'Round 1 live · OKC 44% title favorite · live scores, play-by-play, bracket, odds.',
-    blurbId: 'Ronde 1 live · OKC favorit juara 44% · skor live, play-by-play, bracket, peluang juara.',
+    blurb: 'Round 1 live · live scores, play-by-play, bracket, series-by-series rundown.',
+    blurbId: 'Ronde 1 live · skor live, play-by-play, bracket, ringkasan seri demi seri.',
     accent: '#e8502e',
     launchDate: null,
     icon: 'nba',
@@ -98,8 +98,8 @@ const DASHBOARDS = [
     title: 'FIFA World Cup 2026',
     titleId: 'Piala Dunia 2026',
     league: 'FIFA WC · 11 JUN – 19 JUL',
-    blurb: '48 teams · 104 matches · 16 host cities. Group stage, knockout bracket, outright odds in Bahasa.',
-    blurbId: '48 tim · 104 laga · 16 kota tuan rumah. Tabel grup, bagan gugur, peluang juara dalam Bahasa.',
+    blurb: '48 teams · 104 matches · 16 host cities. Group stage, knockout bracket, host-city guide in Bahasa.',
+    blurbId: '48 tim · 104 laga · 16 kota tuan rumah. Tabel grup, bagan gugur, panduan kota tuan rumah dalam Bahasa.',
     accent: '#326295',
     launchDate: 'Jun 11, 2026',
     icon: 'wc',
@@ -108,8 +108,8 @@ const DASHBOARDS = [
   },
   // v0.13.0 — Super League Indonesia (BRI Liga 1) restored to Home as LIVE.
   // Phase 1A: hub at /super-league-2025-26 + 18 per-club SEO pages, ESPN
-  // soccer/idn.1 data. Defers Golden Boot, Persija-Persib derby SEO page,
-  // and Polymarket odds (no IDN markets) to v0.13.x.
+  // soccer/idn.1 data. Defers Golden Boot + Persija-Persib derby SEO page.
+  // v0.79.0 — stale futures-odds reference scrubbed (Komdigi de-risk).
   {
     id: 'liga_1_id',
     href: '/super-league-2025-26',
@@ -131,12 +131,13 @@ const DASHBOARDS = [
 export default function Home() {
   const { lang } = useApp();
 
-  // v0.6.3 — live data teasers. Pulls the current title-odds leader +
-  // live-game count into small mono chips on the NBA + EPL cards so the
-  // landing page isn't just static marketing copy. Data comes from the
-  // same hooks the per-sport dashboards use — no new API calls.
-  const { games, champion } = usePlayoffData(30000);
-  const { odds: eplChampionOdds } = useEPLChampionOdds();
+  // v0.6.3 — live data teasers. Pulls live-game count into small mono
+  // chips on the NBA card so the landing page isn't just static marketing
+  // copy. Data comes from the same hooks the per-sport dashboards use —
+  // no new API calls.
+  // v0.79.0 — title-odds teaser (NBA + EPL) stripped (Komdigi de-risk
+  // 2026-05-23). eplChampionOdds hook + champion destructure both removed.
+  const { games } = usePlayoffData(30000);
   // v0.11.13 — pull EPL fixtures too so LiveHero can fall back to a
   // live EPL match when NBA is idle. 14-day window (7 back / 7 fwd)
   // is already what the EPL dashboard uses; same cache entry on the
@@ -153,26 +154,13 @@ export default function Home() {
   const liveTeaserById = useMemo(() => {
     const map = {};
 
-    // NBA: live game count + current champion favorite
+    // NBA: live game count only (v0.79.0 — title-favorite chip removed
+    // alongside the Komdigi de-risk; EPL title-race chip also stripped).
     const liveNba = (games || []).filter((g) => g.statusState === 'in').length;
-    const champ = champion?.odds?.[0];
-    const nbaBits = [];
-    if (liveNba > 0) nbaBits.push(`● ${liveNba} LIVE`);
-    if (champ?.name && champ?.pct) {
-      const short = (champ.name.split(' ').pop() || champ.name).toUpperCase();
-      nbaBits.push(`${short} ${champ.pct}%`);
-    }
-    if (nbaBits.length > 0) map.nba = nbaBits.join(' · ');
-
-    // EPL: current title-race leader from Polymarket
-    const eplTop = (eplChampionOdds || [])[0];
-    if (eplTop?.pct && (eplTop.canonicalName || eplTop.name)) {
-      const eplShort = ((eplTop.canonicalName || eplTop.name).split(' ')[0] || '').toUpperCase();
-      map.epl = `${eplShort} ${eplTop.pct}%`;
-    }
+    if (liveNba > 0) map.nba = `● ${liveNba} LIVE`;
 
     return map;
-  }, [games, champion, eplChampionOdds]);
+  }, [games]);
 
   // Flag-filter before render so we can kill a misbehaving card in prod
   // without a redeploy. Routes themselves still work via direct URL.
@@ -187,11 +175,11 @@ export default function Home() {
           ? 'gibol.co — gila bola · skor live NBA, F1, Liga Inggris, Tenis, Piala Dunia 2026'
           : 'gibol.co — gila bola · live scores NBA, F1, Premier League, Tennis, FIFA World Cup 2026'}
         description={lang === 'id'
-          ? 'Dashboard live untuk NBA Playoffs 2026, Formula 1, Liga Inggris, Tenis ATP + WTA, Piala Dunia FIFA 2026, dan Super League Indonesia (Liga 1). Skor live, peluang juara Polymarket, klasemen, bracket, peringkat, dan statistik — semua dalam Bahasa Indonesia.'
-          : 'Live dashboards for NBA Playoffs 2026, Formula 1, Premier League, ATP + WTA Tennis, FIFA World Cup 2026, and BRI Liga 1 Indonesia. Live scores, Polymarket title odds, standings, bracket, rankings, and stats — Bahasa-first.'}
+          ? 'Dashboard live untuk NBA Playoffs 2026, Formula 1, Liga Inggris, Tenis ATP + WTA, Piala Dunia FIFA 2026, dan Super League Indonesia (Liga 1). Skor live, klasemen, bracket, peringkat, dan statistik — semua dalam Bahasa Indonesia.'
+          : 'Live dashboards for NBA Playoffs 2026, Formula 1, Premier League, ATP + WTA Tennis, FIFA World Cup 2026, and BRI Liga 1 Indonesia. Live scores, standings, bracket, rankings, and stats — Bahasa-first.'}
         path="/"
         lang={lang}
-        keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 bahasa indonesia, liga inggris, premier league, epl, tenis 2026, atp tour 2026, wta tour 2026, grand slam 2026, roland garros 2026, wimbledon 2026, peringkat atp, peringkat wta, FIFA world cup 2026, piala dunia 2026, liga 1 indonesia, bri liga 1"
+        keywords="gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, bracket nba, formula 1 2026, f1 bahasa indonesia, liga inggris, premier league, epl, tenis 2026, atp tour 2026, wta tour 2026, grand slam 2026, roland garros 2026, wimbledon 2026, peringkat atp, peringkat wta, FIFA world cup 2026, piala dunia 2026, liga 1 indonesia, bri liga 1"
       />
       <div className="dashboard-wrap">
         {/* V2TopBar is rendered globally in App.jsx now so the masthead
@@ -305,7 +293,7 @@ export default function Home() {
             >
               {VERSION_LABEL}
             </span>
-            ESPN · Polymarket · OpenF1 · football-data.org · FIFA.com
+            ESPN · OpenF1 · football-data.org · FIFA.com
           </div>
         </footer>
       </div>

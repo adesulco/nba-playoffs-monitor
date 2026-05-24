@@ -12,23 +12,22 @@ import SEO from '../components/SEO.jsx';
  * avoids translation drift.
  *
  * Highlights:
- *  - § Polymarket: explicit disclaimer that the odds panels are
- *    EDITORIAL probability for journalistic context, NOT a betting
- *    platform and NOT an endorsement of gambling. This is the
- *    documentary half of the F-002 interim mitigation (the kill-switch
- *    in v0.61.2 is the operational half). The full Blocker close still
- *    needs an Indonesian counsel memo.
  *  - § Akurasi data: best-effort disclaimer for sports data accuracy;
- *    we proxy ESPN / Polymarket / Jolpica F1 / API-Football and don't
- *    warrant their output.
+ *    we proxy ESPN / Jolpica F1 / API-Football and don't warrant their
+ *    output.
  *  - § Hukum yang berlaku: Indonesia.
+ *
+ * v0.79.0 — § futures-odds disclaimer + the futures-odds provider name
+ * were removed (Komdigi de-risk 2026-05-23). All futures-odds widgets
+ * are now hard-removed from the runtime so the section it disclaimed
+ * no longer exists.
  */
 export default function Terms() {
   return (
     <div style={{ background: C.bg, minHeight: '100vh', color: C.text }}>
       <SEO
         title="Syarat & Ketentuan — gibol.co"
-        description="Aturan main pemakaian gibol.co — lisensi, akurasi data, disclaimer Polymarket, hak kekayaan intelektual, hukum yang berlaku."
+        description="Aturan main pemakaian gibol.co — lisensi, akurasi data, hak kekayaan intelektual, hukum yang berlaku."
         path="/terms"
         noindex={false}
       />
@@ -75,10 +74,9 @@ export default function Terms() {
         <Section title="3. Akurasi data — disclaimer best-effort">
           <p>
             Skor, klasemen, statistik, dan jadwal di gibol.co di-fetch dari
-            sumber publik (ESPN, Polymarket, Jolpica F1, API-Football) lewat
-            proxy server kami. Kami merefresh data ini secara berkala (10–30
-            detik untuk skor live, hingga 60 menit untuk standings + odds),
-            tapi:
+            sumber publik (ESPN, Jolpica F1, API-Football) lewat proxy server
+            kami. Kami merefresh data ini secara berkala (10–30 detik untuk
+            skor live, hingga 60 menit untuk standings), tapi:
           </p>
           <ul style={ulStyle}>
             <li>Bisa ada keterlambatan beberapa detik dari kejadian aktual di lapangan.</li>
@@ -92,29 +90,15 @@ export default function Terms() {
           </p>
         </Section>
 
-        <Section title="4. Panel peluang juara (Polymarket) — BUKAN platform judi">
-          <p>
-            Sebagian dashboard sport (NBA Title Odds, EPL Title Odds, F1
-            Championship Odds, Tennis Slam Odds) menampilkan persentase
-            peluang juara. Data persentase ini di-fetch dari prediction
-            market Polymarket dan ditampilkan sebagai <strong>konteks
-            editorial</strong> — sebanding dengan analisa pundit atau model
-            statistik media olahraga lain.
-          </p>
+        <Section title="4. gibol.co BUKAN platform judi">
           <p>
             <strong>gibol.co bukan platform judi, bukan agen taruhan, dan
             tidak memfasilitasi penempatan taruhan dalam bentuk apa pun.</strong>
             {' '}Tidak ada link affiliate ke situs judi, tidak ada bonus
-            sign-up, tidak ada penjualan tip atau "prediksi pemenang".
-            Persentase peluang yang ditampilkan adalah hasil agregat trader
-            di pasar prediksi — kami mengutipnya seperti media olahraga
-            mengutip rating ESPN BPI atau peringkat ATP.
-          </p>
-          <p>
-            Tampilan panel ini bisa dimatikan oleh tim gibol dalam 1 jam
-            tanpa redeploy (lihat <a href="https://github.com/adesulco/nba-playoffs-monitor" style={linkStyle}>repo</a>{' '}
-            untuk detail teknis) — sehingga kami siap merespons regulasi
-            yang berubah.
+            sign-up, dan tidak ada penjualan tip atau "prediksi pemenang"
+            di dashboard mana pun. Semua data yang ditampilkan adalah
+            statistik dan jadwal — tidak ada angka peluang dari pasar
+            taruhan.
           </p>
         </Section>
 

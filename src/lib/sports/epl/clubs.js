@@ -27,11 +27,11 @@
  *              (mirrors the NBA TEAM_META.handle pattern in constants.js).
  *              Resolve URL via `https://x.com/${club.handle}`. Verified
  *              against public club profiles 2026-04-21.
- *   polyAbbr — Polymarket's 3-letter club abbreviation, lowercase. Used
+ *   polyAbbr — the futures-odds provider's 3-letter club abbreviation, lowercase. Used
  *              to construct per-match event slugs
- *              (`epl-{home}-{away}-{YYYY-MM-DD}`). Note: Polymarket
+ *              (`epl-{home}-{away}-{YYYY-MM-DD}`). Note: the futures-odds provider
  *              uses `mac` (not `mci`) for Manchester City — this is
- *              Polymarket's own scheme, confirmed 2026-04-21 by
+ *              the futures-odds provider's own scheme, confirmed 2026-04-21 by
  *              enumerating their tag_slug=epl events.
  *   bio      — one short Bahasa paragraph for the club page "Tentang"
  *              block. Casual register — gue/lo OK, stays factual.

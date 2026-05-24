@@ -117,10 +117,10 @@ export function initObservability() {
       // Session replay on errors only (replays are expensive; sample errors 100%).
       replaysSessionSampleRate: 0.02,
       replaysOnErrorSampleRate: 1.0,
-      // Filter out noise: Polymarket/ESPN proxy 5xx errors are already surfaced
+      // Filter out noise: ESPN/Jolpica proxy 5xx errors are already surfaced
       // in UI fallbacks — don't alarm the dev on every edge blip.
+      // v0.79.0 — futures-odds provider regex removed (Komdigi de-risk).
       ignoreErrors: [
-        /Polymarket [a-z-]+: HTTP (5\d\d|429)/i,
         /ESPN .* HTTP (5\d\d|429)/i,
         /Jolpica .* HTTP (5\d\d|429)/i,
         // React-router's expected scroll-restoration chatter.

@@ -281,7 +281,7 @@ function sourcesForLeague(leagueId) {
       'ESPN soccer feed',
     ];
   }
-  if (leagueId === 'nba') return ['ESPN NBA play-by-play', 'Polymarket NBA odds'];
+  if (leagueId === 'nba') return ['ESPN NBA play-by-play'];
   if (leagueId === 'f1') return [
     { label: 'jolpica-f1', url: 'https://github.com/jolpica/jolpica-f1' },
     'OpenF1',

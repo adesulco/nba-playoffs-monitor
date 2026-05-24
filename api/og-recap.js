@@ -342,7 +342,7 @@ export default async function handler(req) {
         },
         h('span', null, gamesCount ? `${gamesCount} LAGA` : 'NBA PLAYOFF 2026'),
         h('span', { style: { color: accent } }, '●'),
-        h('span', null, 'ESPN · POLYMARKET')
+        h('span', null, 'ESPN')
       ),
       h(
         'div',

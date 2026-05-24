@@ -14,7 +14,6 @@
  *   This file:  api/proxy.js   (no brackets — deterministic routing)
  *
  * Browser URL shape is UNCHANGED — hooks still call:
- *   fetch('/api/proxy/polymarket-gamma/events?slug=2026-nba-champion')
  *   fetch('/api/proxy/espn/basketball/nba/scoreboard')
  *   fetch('/api/proxy/openf1/drivers?session_key=latest')
  *   fetch('/api/proxy/jolpica-f1/2026/driverStandings.json')
@@ -22,9 +21,9 @@
  * Why this proxy exists:
  *   - API-Football (Phase 4, Liga 1) ships a paid key that MUST NOT reach the
  *     browser. A server proxy is the only safe way.
- *   - ESPN / Polymarket / OpenF1 / Jolpica hosted endpoints get hit by every
- *     browser × poll frequency × live-window concurrency. Without edge cache,
- *     one viral share = easy rate-limit. With `s-maxage` headers below, N users
+ *   - ESPN / OpenF1 / Jolpica hosted endpoints get hit by every browser ×
+ *     poll frequency × live-window concurrency. Without edge cache, one
+ *     viral share = easy rate-limit. With `s-maxage` headers below, N users
  *     in 20s cost 1 upstream request instead of N.
  *   - Observability: one place to see which provider is flaky.
  *
@@ -32,10 +31,11 @@
  * below. Unknown providers → 404. Query string passes through (minus the
  * synthetic `path` key set by the rewrite).
  *
- * NOTE: NBA hooks still talk to ESPN/Polymarket directly in v0.2.0. The
- * migration through this proxy lands per-sport as each phase ships — so a
- * broken proxy change can't take down the live NBA dashboard during the
- * playoff window.
+ * v0.79.0 — Komdigi de-risk 2026-05-23. The `futures-odds-gamma` +
+ * `futures-odds-clob` provider entries were removed; the regulator
+ * blocked the upstream as judi online. Any incoming
+ * `/api/proxy/futures-odds-*` request now falls through to the
+ * unknown-provider 404 branch.
  */
 
 // ─── Provider registry ───────────────────────────────────────────────────────
@@ -67,16 +67,9 @@ const PROVIDERS = {
     cacheS: 300,
   },
 
-  'polymarket-gamma': {
-    base: 'https://gamma-api.polymarket.com',
-    headers: () => ({ accept: 'application/json' }),
-    cacheS: 20,
-  },
-  'polymarket-clob': {
-    base: 'https://clob.polymarket.com',
-    headers: () => ({ accept: 'application/json' }),
-    cacheS: 300,
-  },
+  // v0.79.0 — futures-odds-gamma + futures-odds-clob entries removed
+  // (Komdigi de-risk 2026-05-23). Upstream is blocked by the regulator;
+  // proxy must not relay it.
 
   'openf1': {
     base: 'https://api.openf1.org/v1',

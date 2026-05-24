@@ -747,7 +747,7 @@ export default function Recap() {
         }}>
           <div>gibol.co · {lang === 'id' ? 'catatan playoff harian' : 'daily playoff recap'}</div>
           <ContactBar lang={lang} variant="inline" />
-          <div>ESPN · Polymarket</div>
+          <div>ESPN</div>
         </footer>
       </div>
     </div>

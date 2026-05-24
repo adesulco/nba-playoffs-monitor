@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { usePlayoffData } from '../hooks/usePlayoffData.js';
-import { usePolymarketWS } from '../hooks/usePolymarketWS.js';
+// v0.79.0 — Komdigi de-risk (2026-05-23): useFuturesOddsWS removed.
+// the futures-odds provider was blocked in Indonesia; every futures-odds surface on
+// this page (title odds panel, MVP, WS ticker, champion KPI) is gone.
+// The ESPN per-game win-prob chart on the game view stays — that's
+// statistical.
 import { TEAM_META, COLORS as C } from '../lib/constants.js';
 import { readableOnDark } from '../lib/contrast.js';
 import Sparkline from '../components/Sparkline.jsx';
@@ -15,7 +19,7 @@ import HubActionRow from '../components/v2/HubActionRow.jsx';
 // v0.53.0 — Phase C redesign: 3-up Newsroom Slice at hub bottom.
 // Gated behind UI.v2 flag; self-hides on empty (no published articles).
 import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
-import { UI, polymarketEnabled } from '../lib/flags.js';
+import { UI } from '../lib/flags.js';
 import HubPicker from '../components/v2/HubPicker.jsx';
 import KpiStrip from '../components/v2/KpiStrip.jsx';
 import LiveGameFocus from '../components/LiveGameFocus.jsx';
@@ -192,7 +196,9 @@ function GameCard({ g, favTeam, isActive, onClick, injuries, streaks, lang }) {
 
 export default function NBADashboard() {
   const { lang, t } = useApp();
-  const { champion, mvp, games, gamesByDay, sparklines, lastUpdate, status, errors } = usePlayoffData(30000);
+  // v0.79.0 — champion / mvp / sparklines removed from usePlayoffData
+  // when the futures-odds provider was stripped. Hook returns scoreboard data only.
+  const { games, gamesByDay, lastUpdate, status, errors } = usePlayoffData(30000);
   const [now, setNow] = useState(new Date());
   const [favTeam, setFavTeam] = useState(() => {
     try { return localStorage.getItem(FAV_STORAGE_KEY) || null; } catch { return null; }
@@ -261,9 +267,10 @@ export default function NBADashboard() {
   // drops first-paint from ~14 parallel ESPN calls to ~6.
   const { byTeam: injuriesByTeam } = useInjuries({ enabled: !!focusEventId });
 
-  // Team player leaders (for the selected team — falls back to top title-favorite if no pick)
-  const topChampName = champion?.odds?.[0]?.name;
-  const leaderTeamAbbr = favMeta?.abbr || (topChampName ? TEAM_META[topChampName]?.abbr : null);
+  // Team player leaders (for the selected team — falls back to a fixed
+  // top-seed pick when no team is picked, since the prior the futures-odds provider
+  // title-favorite fallback is gone).
+  const leaderTeamAbbr = favMeta?.abbr || 'OKC';
   const { ref: leadersRef, inView: leadersInView } = useInView({ rootMargin: '400px' });
   const { leaders: teamLeaders } = useTeamLeaders(leaderTeamAbbr, { enabled: leadersInView });
   const { summary: focusSummary, winProb: focusWinProb, lastUpdate: focusLastUpdate } = useGameDetails(focusEventId);
@@ -329,33 +336,15 @@ export default function NBADashboard() {
   // Per-game live win probabilities from ESPN — only polls in-progress games.
   const liveWinProbs = useLiveWinProbs(games);
 
-  // Top 3 teams get WebSocket ticks
-  const topTokenIds = useMemo(
-    () => champion.odds.slice(0, 3).map((o) => o.yesTokenId).filter(Boolean),
-    [champion.odds]
-  );
-  const { prices: wsPrices, status: wsStatus } = usePolymarketWS(topTokenIds);
-
+  // v0.79.0 — the futures-odds provider WS + champion-odds wiring stripped. The
+  // remaining `now` ticker is kept for the time display.
   useEffect(() => {
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
 
-  // Overlay live WS prices on top of the 30s polled prices
-  const liveOdds = useMemo(() => {
-    return champion.odds.map((o) => {
-      if (o.yesTokenId && wsPrices[o.yesTokenId]?.price !== undefined) {
-        const livePct = Math.round(wsPrices[o.yesTokenId].price * 100);
-        return { ...o, pct: livePct, isLive: true };
-      }
-      return { ...o, isLive: false };
-    }).sort((a, b) => b.pct - a.pct);
-  }, [champion.odds, wsPrices]);
-
   const statusColor = { live: C.green, stale: C.amber, error: C.red, connecting: C.dim }[status];
   const statusLabel = { live: 'LIVE', stale: 'PARTIAL', error: 'OFFLINE', connecting: 'CONNECTING' }[status];
-  const topChamp = liveOdds[0] || { name: 'Oklahoma City Thunder', pct: 44 };
-  const fmtVol = (v) => (v >= 1e6 ? `$${(v / 1e6).toFixed(1)}M` : `$${(v / 1e3).toFixed(0)}K`);
 
   // Push the NBA sub-row (TeamPicker + Catatan Playoff deep-link + live
   // status / time / refresh strip) into the global V2 TopBar. The masthead
@@ -428,12 +417,12 @@ export default function NBADashboard() {
           ? 'Skor NBA Playoffs 2026 Live · Bracket, Peluang Juara, Play-by-Play | gibol.co'
           : 'NBA Playoffs 2026 Live Scores · Bracket, Title Odds, Play-by-Play | gibol.co'}
         description={lang === 'id'
-          ? 'Dashboard live NBA Playoffs 2026: skor real-time, bracket Ronde 1, peluang juara Polymarket (OKC 44%), win probability, play-by-play, shot chart, statistik pemain, laporan cedera, dan watchlist. Update setiap 10–30 detik.'
-          : 'NBA Playoffs 2026 live dashboard: real-time scores, Round 1 bracket, Polymarket title odds (OKC 44%), win probability, play-by-play, shot chart, player stats, injury report, and watchlist. Refreshes every 10–30 seconds.'}
+          ? 'Dashboard live NBA Playoffs 2026: skor real-time, bracket Ronde 1, win probability, play-by-play, shot chart, statistik pemain, laporan cedera, dan watchlist. Update setiap 10–30 detik.'
+          : 'NBA Playoffs 2026 live dashboard: real-time scores, Round 1 bracket, win probability, play-by-play, shot chart, player stats, injury report, and watchlist. Refreshes every 10–30 seconds.'}
         path="/nba-playoff-2026"
         image="https://www.gibol.co/og/hub-nba.png"
         lang={lang}
-        keywords={`skor nba, skor basket, skor playoff nba, skor nba live, skor nba hari ini, peluang juara nba 2026, bracket nba playoff 2026, jadwal nba playoff, ${favMeta ? `skor ${favMeta.abbr.toLowerCase()}, skor ${favTeam}` : 'skor lakers, skor celtics, skor okc, skor thunder, skor pistons'}, live nba indonesia`}
+        keywords={`skor nba, skor basket, skor playoff nba, skor nba live, skor nba hari ini, bracket nba playoff 2026, jadwal nba playoff, ${favMeta ? `skor ${favMeta.abbr.toLowerCase()}, skor ${favTeam}` : 'skor lakers, skor celtics, skor okc, skor thunder, skor pistons'}, live nba indonesia`}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "SportsEvent",
@@ -532,10 +521,13 @@ export default function NBADashboard() {
         <KpiStrip
           ariaLabel={lang === 'id' ? 'Stats kunci playoff' : 'Playoff key stats'}
           cells={[
+            // v0.79.0 — title-favorite KPI cell removed with the
+            // the futures-odds provider strip. Featured-series count slots in instead
+            // so the 4-cell grid layout stays intact.
             {
-              eyebrow: t('titleFavorite'),
-              value: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} ${topChamp.pct}%`,
-              sub: topChamp.name.split(' ').slice(-1)[0],
+              eyebrow: t('featuredSeries'),
+              value: 'ROUND 1',
+              sub: 'BEST-OF-7',
               valueAccent: accentBright,
             },
             {
@@ -580,7 +572,10 @@ export default function NBADashboard() {
                 <div style={panelMeta}>APR 18 – MAY 3</div>
               </div>
               <div className="bracket-viz">
-                <Bracket championOdds={liveOdds} seriesMap={seriesMap} games={games} />
+                {/* v0.79.0 — championOdds prop removed (was the futures-odds provider-
+                    sourced). Bracket renders without per-team odds
+                    overlays. */}
+                <Bracket seriesMap={seriesMap} games={games} />
               </div>
             </div>
 
@@ -600,7 +595,7 @@ export default function NBADashboard() {
                 { handle: '@NBA', url: 'https://x.com/NBA', age: '1h', text: 'Play-In Finale tonight on Prime — 8-seeds on the line in both conferences.' },
                 { handle: '@espn', url: 'https://x.com/espn', age: '2h', text: 'Pistons earn No. 1 seed in the East — first time since 2007–08.' },
                 { handle: '@BleacherReport', url: 'https://x.com/BleacherReport', age: '3h', text: 'LeBron vs KD in the playoffs for the first time since 2018 Finals.' },
-                { handle: '@PolymarketSport', url: 'https://x.com/Polymarket', age: '5h', text: `${TEAM_META[topChamp.name]?.abbr || 'OKC'} champ odds at ${topChamp.pct}%, volume tops ${fmtVol(champion.volume)}.` },
+                // v0.79.0 — the futures-odds provider ticker item removed.
               ]).map((a, i) => (
                 <a
                   key={i}
@@ -621,61 +616,15 @@ export default function NBADashboard() {
           </div>
           </LazyOnMobile>
 
-          {/* COL 2: Title Odds with sparklines + WS ticker. v0.13.11
-              — lazy on mobile. 11 odds rows × Sparkline SVG is the
-              heaviest below-fold render in the whole page. */}
-          <LazyOnMobile minHeight={520} ariaLabel={lang === 'id' ? 'Memuat peluang juara' : 'Loading title odds'}>
+          {/* COL 2: Featured Series + Clutch Leaderboard.
+              v0.79.0 — Komdigi de-risk (2026-05-23): the entire
+              "TITLE ODDS" panel (the futures-odds provider-fed champion odds with
+              sparklines + WebSocket live ticker) was removed. A
+              future "Prediksi Juara" model — Elo-based, fully owned,
+              no vendor block risk — is planned to refill the slot;
+              not in this PR. */}
+          <LazyOnMobile minHeight={520} ariaLabel={lang === 'id' ? 'Memuat seri unggulan' : 'Loading featured series'}>
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
-            {/* v0.61.2 — audit F-002 kill-switch. The TITLE ODDS panel is
-                the most prominently Polymarket-branded surface in the app
-                (panel header reads "POLYMARKET · LIVE"). Wrapping in the
-                polymarketEnabled flag lets ops drop the entire panel via
-                Vercel env var (VITE_FLAG_POLYMARKET=0) inside an hour on
-                a Kominfo notice, without a code deploy. The adjacent
-                Featured Series + Clutch Leaderboard sections are
-                in-house data — not gated. */}
-            {polymarketEnabled && (
-            <div style={panelBox}>
-              <div style={panelHeader}>
-                <div style={panelTitle}>{t('titleOdds')}</div>
-                <div style={panelMeta}>
-                  {errors.champion ? <span style={{ color: C.red }}>● CACHED</span> : <span style={{ color: C.green }}>● POLYMARKET</span>}
-                  {/* v0.61.0 — audit F-011: "WS TICK" was internal slang
-                      for "WebSocket tick" (live feed alive). No on-page
-                      glossary, no tooltip. Replaced with universally-clear
-                      "LIVE" which works in both languages. */}
-                  {wsStatus === 'live' && <span style={{ color: C.green, marginLeft: 6 }}>· LIVE</span>}
-                </div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '22px 1fr 70px 52px 36px', gap: 4, padding: '5px 12px', fontSize: 9, color: C.dim, letterSpacing: 1, borderBottom: `1px solid ${C.lineSoft}`, background: C.panelSoft }}>
-                <div>#</div><div>TEAM</div><div style={{ textAlign: 'center' }}>7D</div><div style={{ textAlign: 'right' }}>ODDS</div><div style={{ textAlign: 'right' }}>Δ</div>
-              </div>
-              <div>
-                {liveOdds.slice(0, 11).map((team, i) => {
-                  const meta = TEAM_META[team.name] || { abbr: '?', color: '#666' };
-                  const changeColor = team.change > 0 ? C.green : team.change < 0 ? C.red : C.muted;
-                  const changeIcon = team.change > 0 ? '▲' : team.change < 0 ? '▼' : '—';
-                  const spark = sparklines[team.name];
-                  return (
-                    <div key={team.name} className="lb-row" style={{ display: 'grid', gridTemplateColumns: '22px 1fr 70px 52px 36px', gap: 4, padding: '5px 12px', fontSize: 11, alignItems: 'center', borderBottom: `1px solid ${C.lineSoft}`, background: team.name === favTeam ? `${favMeta.color}22` : 'transparent', borderLeft: team.name === favTeam ? `2px solid ${favMeta.color}` : '2px solid transparent', transition: 'background 0.15s' }}>
-                      <div style={{ color: C.dim }}>{i + 1}</div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ width: 16, height: 16, borderRadius: 3, background: meta.color, fontSize: 8.5, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>{meta.abbr}</div>
-                        <span>{team.name.split(' ').slice(-1)[0]}</span>
-                        {team.isLive && <span style={{ fontSize: 7, color: C.green }}>●</span>}
-                      </div>
-                      <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Sparkline data={spark} />
-                      </div>
-                      <div style={{ textAlign: 'right', color: team.name === favTeam ? accentBright : C.amberBright, fontWeight: 600 }}>{team.pct}%</div>
-                      <div style={{ textAlign: 'right', color: changeColor, fontSize: 10 }}>{changeIcon}{team.change !== 0 && Math.abs(team.change)}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            )}
-
             <div style={panelBox}>
               <div style={panelHeader}>
                 <div style={panelTitle}>{t('featuredSeries')}</div>
@@ -705,7 +654,9 @@ export default function NBADashboard() {
               v0.13.11 — lazy on mobile. */}
           <LazyOnMobile minHeight={400} ariaLabel={lang === 'id' ? 'Memuat watchlist & stats' : 'Loading watchlist & stats'}>
           <div style={{ borderRight: `1px solid ${C.line}`, display: 'flex', flexDirection: 'column' }}>
-            {favMeta && <TitlePath favTeam={favTeam} championOdds={liveOdds} t={t} />}
+            {/* v0.79.0 — championOdds prop removed (the futures-odds provider-sourced).
+                TitlePath now renders without per-team odds bars. */}
+            {favMeta && <TitlePath favTeam={favTeam} t={t} />}
 
             <WatchlistPanel
               watchlist={watchlist}
@@ -873,9 +824,9 @@ export default function NBADashboard() {
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <span>Scores · <span style={{ color: errors.scores ? C.red : C.green }}>{errors.scores ? 'cached' : 'ESPN live'}</span></span>
                 {leaderTeamAbbr && <span>Players · <span style={{ color: C.green }}>ESPN {leaderTeamAbbr}</span></span>}
-                <span>Odds · <span style={{ color: errors.champion ? C.red : C.green }}>{errors.champion ? 'cached' : 'Polymarket'}</span></span>
+                {/* v0.79.0 — the futures-odds provider "Odds" status pill removed. */}
               </div>
-              <div>Poll 30s · WS {wsStatus} · last {lastUpdate?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) || '—'}</div>
+              <div>Poll 30s · last {lastUpdate?.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) || '—'}</div>
             </div>
           </div>
         </div>
@@ -897,7 +848,7 @@ export default function NBADashboard() {
                   below) — logged as a follow-up; not done here to
                   keep the cluster minor + reversible. */}
               {[
-                `Thunder ${topChamp.pct}% title favorite · Polymarket ${fmtVol(champion.volume)} volume`,
+                // v0.79.0 — leading the futures-odds provider champ-odds ticker item removed.
                 'Pistons earn East No. 1 seed for first time since 2007–08',
                 'LeBron-Durant headline Lakers-Rockets, first since 2018 Finals',
                 'NBA Finals tip off June 3 on ABC',
@@ -931,7 +882,7 @@ export default function NBADashboard() {
         <SEOContent lang={lang} />
 
         <footer role="contentinfo" style={{ display: 'flex', justifyContent: 'space-between', padding: '7px 14px', borderTop: `1px solid ${C.line}`, fontSize: 9.5, color: C.muted, alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
-          <div>Polymarket Gamma + CLOB WS · ESPN Scoreboard · 30s poll + live ticks</div>
+          <div>ESPN Scoreboard · 30s poll</div>
           <ContactBar lang={lang} variant="inline" />
           <div style={{ color: C.dim, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             <span
@@ -948,7 +899,7 @@ export default function NBADashboard() {
             >
               {VERSION_LABEL}
             </span>
-            ESPN · Polymarket · Built by Claude
+            {lang === 'id' ? 'ESPN · Dibuat oleh Claude' : 'ESPN · Built by Claude'}
           </div>
         </footer>
       </div>

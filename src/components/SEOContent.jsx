@@ -92,17 +92,12 @@ function faqSchema(faqs) {
 const idContent = {
   h1: 'Skor NBA Playoffs 2026 Live — Dashboard Gila Bola',
   intro:
-    'gibol.co adalah dashboard live untuk NBA Playoffs 2026. Kami menyajikan skor NBA live, peluang juara dari Polymarket, bracket Ronde 1, play-by-play, win probability, statistik pemain, laporan cedera, dan watchlist — semuanya dalam satu halaman yang update setiap 10–30 detik. Dibangun untuk pecinta bola basket Indonesia (gila bola) oleh Ade Sulistio Putra.',
+    'gibol.co adalah dashboard live untuk NBA Playoffs 2026. Kami menyajikan skor NBA live, bracket Ronde 1, play-by-play, win probability, statistik pemain, laporan cedera, dan watchlist — semuanya dalam satu halaman yang update setiap 10–30 detik. Dibangun untuk pecinta bola basket Indonesia (gila bola) oleh Ade Sulistio Putra.',
   sections: [
     {
       heading: 'Skor Live NBA Hari Ini',
       body:
         'Semua laga NBA hari ini tampil di Papan Skor Live di bagian atas dashboard. Skor real-time ditarik langsung dari ESPN dan update setiap 30 detik. Tekan kartu laga untuk membuka panel fokus: win probability, play-by-play, box score, shot chart, dan statistik kuarter.',
-    },
-    {
-      heading: 'Peluang Juara NBA 2026',
-      body:
-        'Peluang juara NBA 2026 ditarik langsung dari pasar prediksi Polymarket — pasar terbesar untuk NBA Champion. Thunder Oklahoma City saat ini unggulan dengan ~44%, diikuti Spurs 15%, Celtics 13%, Nuggets 9%. Volume total pasar tembus $475 juta. Odds update tiap 30 detik lewat WebSocket.',
     },
     {
       heading: 'Bracket Ronde 1 Lengkap',
@@ -132,8 +127,8 @@ const idContent = {
       a: 'Play-in finale berlangsung 17 April 2026 (ORL vs CHA jam 7:30 PM ET, PHX vs GSW jam 10:00 PM ET). Ronde 1 resmi tip-off 18 April 2026. NBA Finals tip-off 3 Juni 2026 di ABC, format best-of-7.',
     },
     {
-      q: 'Siapa favorit juara NBA 2026?',
-      a: 'Per Polymarket, Oklahoma City Thunder unggulan juara dengan peluang ~44%. Spurs (15%), Celtics (13%), dan Nuggets (9%) mengekor. Thunder catatkan rekor reguler 64–18 musim ini.',
+      q: 'Siapa unggulan jelang NBA Playoffs 2026?',
+      a: 'Oklahoma City Thunder masuk playoff dengan rekor reguler 64–18 (seed-1 Wilayah Barat). Detroit Pistons memimpin Wilayah Timur. Tracking seri demi seri ada di dashboard.',
     },
     {
       q: 'Di mana nonton NBA Playoff 2026 di Indonesia?',
@@ -141,7 +136,7 @@ const idContent = {
     },
     {
       q: 'Apakah gibol.co gratis?',
-      a: 'Ya, gibol.co 100% gratis. Tidak ada login, tidak ada paywall, tidak ada iklan di dalam dashboard. Data langsung dari ESPN dan Polymarket.',
+      a: 'Ya, gibol.co 100% gratis. Tidak ada login, tidak ada paywall, tidak ada iklan di dalam dashboard. Data langsung dari ESPN.',
     },
     {
       q: 'Kenapa bernama gibol?',
@@ -173,17 +168,12 @@ const idContent = {
 const enContent = {
   h1: '2026 NBA Playoffs — Live Scores & Companion Dashboard',
   intro:
-    'gibol.co is a live dashboard for the 2026 NBA Playoffs. Live scores, Polymarket championship odds, Round 1 bracket, play-by-play, win probability, player stats, injury report, and watchlist — all in one page, refreshed every 10–30 seconds. Built for Indonesian basketball fans (gila bola).',
+    'gibol.co is a live dashboard for the 2026 NBA Playoffs. Live scores, Round 1 bracket, play-by-play, win probability, player stats, injury report, and watchlist — all in one page, refreshed every 10–30 seconds. Built for Indonesian basketball fans (gila bola).',
   sections: [
     {
       heading: 'Live NBA Scores Today',
       body:
         'All today\'s NBA games appear in the Live Scoreboard at the top. Real-time scores pulled from ESPN, refreshed every 30 seconds. Tap any game card to open the Focus panel: win probability, play-by-play, box score, shot chart, quarter-by-quarter stats.',
-    },
-    {
-      heading: '2026 NBA Championship Odds',
-      body:
-        'Championship odds come live from Polymarket — the largest prediction market for the NBA Champion. Oklahoma City Thunder currently favored at ~44%, followed by Spurs 15%, Celtics 13%, Nuggets 9%. Total market volume exceeds $475M. Odds update every 30s via WebSocket.',
     },
     {
       heading: 'Round 1 Bracket',
@@ -213,12 +203,12 @@ const enContent = {
       a: 'The play-in finale is April 17, 2026 (ORL vs CHA 7:30 PM ET, PHX vs GSW 10:00 PM ET). Round 1 tips off April 18, 2026. NBA Finals tip-off June 3, 2026 on ABC, best-of-7.',
     },
     {
-      q: 'Who is the 2026 NBA title favorite?',
-      a: 'Per Polymarket, Oklahoma City Thunder is the title favorite at ~44%. Spurs (15%), Celtics (13%), and Nuggets (9%) follow. Thunder finished the regular season 64–18.',
+      q: 'Who is the 2026 NBA top seed?',
+      a: 'Oklahoma City Thunder enters the playoffs at 64–18, locking the Western Conference 1-seed. Detroit leads the East. Series-by-series tracking is on the dashboard.',
     },
     {
       q: 'Is gibol.co free?',
-      a: 'Yes, 100% free. No login, no paywall, no in-dashboard ads. Data flows direct from ESPN and Polymarket APIs.',
+      a: 'Yes, 100% free. No login, no paywall, no in-dashboard ads. Data flows direct from the ESPN APIs.',
     },
     {
       q: 'What does "gibol" mean?',
@@ -251,7 +241,7 @@ const enContent = {
 const eplIdContent = {
   h1: 'Liga Inggris 2025-26 — Klasemen, Jadwal, Top Skor Live',
   intro:
-    'Dashboard Liga Inggris (Premier League) 2025-26 dalam Bahasa Indonesia. Klasemen 20 klub dengan form 5 laga, jadwal pekan ini dalam WIB, hasil terbaru, ras Golden Boot, peluang juara dari Polymarket, dan halaman individual untuk tiap klub. 380 laga, Agustus 2025 – Mei 2026.',
+    'Dashboard Liga Inggris (Premier League) 2025-26 dalam Bahasa Indonesia. Klasemen 20 klub dengan form 5 laga, jadwal pekan ini dalam WIB, hasil terbaru, ras Golden Boot, dan halaman individual untuk tiap klub. 380 laga, Agustus 2025 – Mei 2026.',
   sections: [
     {
       heading: 'Klasemen Liga Inggris Live',
@@ -261,7 +251,7 @@ const eplIdContent = {
     {
       heading: 'Jadwal Match-day WIB',
       body:
-        'Jadwal pekan ini ditampilkan dalam Waktu Indonesia Barat (WIB, UTC+7). Geser tab tanggal untuk lihat hasil kemarin atau jadwal pekan depan. Tiap kartu menampilkan klub kandang dan tamu, jam kickoff WIB, dan peluang menang per klub dari Polymarket.',
+        'Jadwal pekan ini ditampilkan dalam Waktu Indonesia Barat (WIB, UTC+7). Geser tab tanggal untuk lihat hasil kemarin atau jadwal pekan depan. Tiap kartu menampilkan klub kandang dan tamu, jam kickoff WIB, dan badge venue HOME/AWAY.',
     },
     {
       heading: 'Top Skor — Ras Golden Boot',
@@ -274,11 +264,6 @@ const eplIdContent = {
         'Klik "Pilih klub kamu" di pojok kiri atas. Pilih dari 20 klub Premier League. Dashboard akan berubah warna sesuai warna klub kamu, memfilter berita ke klub itu, dan menampilkan akun resmi sosial media klub. Tiap klub punya halaman SEO sendiri di /premier-league-2025-26/club/{slug}.',
     },
     {
-      heading: 'Peluang Juara Polymarket',
-      body:
-        'Peluang juara Premier League dari pasar prediksi Polymarket — pasar terbesar untuk EPL Champion. Volume pasar > $20 juta. Top-6 favorit ditampilkan dengan persentase update tiap 60 detik.',
-    },
-    {
       heading: 'Halaman Per Klub',
       body:
         'Tiap dari 20 klub Premier League punya halaman sendiri yang memuat klasemen mini, form 5 laga, jadwal pekan ini, hasil terbaru, top skor klub, dan akun resmi — semua dalam Bahasa Indonesia. Crawlable untuk Google dan optimal untuk SEO Bahasa.',
@@ -286,10 +271,6 @@ const eplIdContent = {
   ],
   faqHeading: 'Pertanyaan yang Sering Diajukan',
   faqs: [
-    {
-      q: 'Klub mana favorit juara Premier League 2025-26?',
-      a: 'Per Polymarket, Manchester City favorit juara Premier League 2025-26. Arsenal dan Liverpool mengekor di top-3. Persentase peluang update tiap 60 detik di kolom Peluang Juara.',
-    },
     {
       q: 'Kapan musim Premier League 2025-26 selesai?',
       a: 'Musim 2025-26 berlangsung 16 Agustus 2025 – 24 Mei 2026. Total 380 laga, 38 pekan match-day. FA Cup final 16 Mei, Liga Champions final 30 Mei di Madrid.',
@@ -316,7 +297,7 @@ const eplIdContent = {
     },
     {
       q: 'Apakah data live update otomatis?',
-      a: 'Ya. Klasemen, hasil, dan jadwal update tiap 30 detik dari ESPN. Peluang juara update tiap 60 detik dari Polymarket. Tidak perlu refresh manual.',
+      a: 'Ya. Klasemen, hasil, dan jadwal update tiap 30 detik dari ESPN. Tidak perlu refresh manual.',
     },
   ],
 };
@@ -324,7 +305,7 @@ const eplIdContent = {
 const eplEnContent = {
   h1: 'Premier League 2025-26 — Live Table, Fixtures, Top Scorers',
   intro:
-    'Live Premier League 2025-26 dashboard in Bahasa Indonesia. 20-club table with 5-match form, this week\'s fixtures in WIB, latest results, the Golden Boot race, Polymarket title odds, and individual pages for every club. 380 matches, August 2025 – May 2026.',
+    'Live Premier League 2025-26 dashboard in Bahasa Indonesia. 20-club table with 5-match form, this week\'s fixtures in WIB, latest results, the Golden Boot race, and individual pages for every club. 380 matches, August 2025 – May 2026.',
   sections: [
     {
       heading: 'Live Premier League Table',
@@ -334,7 +315,7 @@ const eplEnContent = {
     {
       heading: 'Match-day Schedule (WIB)',
       body:
-        'This week\'s fixtures display in Western Indonesia Time (WIB, UTC+7). Swipe the date tabs to see yesterday\'s results or next week\'s fixtures. Each card shows home/away clubs, kickoff in WIB, and per-club Polymarket win odds.',
+        'This week\'s fixtures display in Western Indonesia Time (WIB, UTC+7). Swipe the date tabs to see yesterday\'s results or next week\'s fixtures. Each card shows home/away clubs, kickoff in WIB, and venue HOME/AWAY badging.',
     },
     {
       heading: 'Top Scorers — Golden Boot Race',
@@ -347,11 +328,6 @@ const eplEnContent = {
         'Click "Pick your club" in the top bar. Choose from any of the 20 Premier League clubs. The dashboard themes to your club colors, filters news to that club, and surfaces the club\'s official social accounts. Every club has its own SEO page at /premier-league-2025-26/club/{slug}.',
     },
     {
-      heading: 'Polymarket Title Odds',
-      body:
-        'Premier League title odds come from Polymarket prediction markets — the deepest market for EPL Champion. Volume above $20M. Top-6 favorites display with percentages refreshed every 60 seconds.',
-    },
-    {
       heading: 'Per-club Pages',
       body:
         'Each of the 20 Premier League clubs has its own page with mini-table, 5-match form, this week\'s fixtures, latest results, club top scorers, and official accounts — all in Bahasa Indonesia. Fully crawlable for Google and optimized for Bahasa SEO.',
@@ -359,10 +335,6 @@ const eplEnContent = {
   ],
   faqHeading: 'Frequently Asked Questions',
   faqs: [
-    {
-      q: 'Who is the 2025-26 Premier League title favorite?',
-      a: 'Per Polymarket, Manchester City is the title favorite for 2025-26. Arsenal and Liverpool sit in the chasing top-3. Live percentages refresh every 60 seconds in the Title Odds panel.',
-    },
     {
       q: 'When does the 2025-26 Premier League season end?',
       a: 'The 2025-26 season runs August 16, 2025 – May 24, 2026. 380 matches across 38 match-weeks. FA Cup final May 16, Champions League final May 30 in Madrid.',
@@ -389,7 +361,7 @@ const eplEnContent = {
     },
     {
       q: 'Does live data refresh automatically?',
-      a: 'Yes. Table, results, and fixtures refresh every 30 seconds from ESPN. Title odds refresh every 60 seconds from Polymarket. No manual refresh needed.',
+      a: 'Yes. Table, results, and fixtures refresh every 30 seconds from ESPN. No manual refresh needed.',
     },
   ],
 };
@@ -398,7 +370,7 @@ const eplEnContent = {
 const f1IdContent = {
   h1: 'Formula 1 2026 — Klasemen, Jadwal 23 GP, Hasil Live',
   intro:
-    'Dashboard Formula 1 2026 dalam Bahasa Indonesia. Klasemen pembalap dan konstruktor live, kalender 23 Grand Prix dengan jam start WIB, hasil tiap balapan, podium, dan tracking juara dari Polymarket. Regulasi chassis + power unit baru musim 2026, Audi & Cadillac gabung — musim paling seru dalam dekade.',
+    'Dashboard Formula 1 2026 dalam Bahasa Indonesia. Klasemen pembalap dan konstruktor live, kalender 23 Grand Prix dengan jam start WIB, hasil tiap balapan, dan podium. Regulasi chassis + power unit baru musim 2026, Audi & Cadillac gabung — musim paling seru dalam dekade.',
   sections: [
     {
       heading: 'Klasemen Pembalap & Konstruktor',
@@ -419,11 +391,6 @@ const f1IdContent = {
       heading: 'Hasil Race + Podium',
       body:
         'Setelah tiap balapan, dashboard menampilkan podium 1-2-3, fastest lap, plus hasil lengkap top 10 dengan poin yang didapat. Poin: P1=25, P2=18, P3=15, P4=12, P5=10, P6=8, P7=6, P8=4, P9=2, P10=1, fastest lap (jika top-10) +1.',
-    },
-    {
-      heading: 'Peluang Juara Polymarket',
-      body:
-        'Peluang juara F1 2026 dari pasar Polymarket update live tiap 60 detik. Pasar terbesar untuk F1 World Champion. Top-6 favorit pembalap dan konstruktor ditampilkan dengan persentase real-time.',
     },
     {
       heading: 'Pilih Tim atau Pembalap Favorit',
@@ -471,7 +438,7 @@ const f1IdContent = {
 const f1EnContent = {
   h1: 'Formula 1 2026 — Driver Standings, 23-GP Calendar, Live Results',
   intro:
-    'Live Formula 1 2026 dashboard in Bahasa Indonesia. Driver and constructor standings, 23-GP calendar with WIB start times, per-race results, podiums, and Polymarket title tracking. New chassis + power unit regulations for 2026, Audi & Cadillac join — most compelling F1 season in a decade.',
+    'Live Formula 1 2026 dashboard in Bahasa Indonesia. Driver and constructor standings, 23-GP calendar with WIB start times, per-race results, and podiums. New chassis + power unit regulations for 2026, Audi & Cadillac join — most compelling F1 season in a decade.',
   sections: [
     {
       heading: 'Driver & Constructor Standings',
@@ -492,11 +459,6 @@ const f1EnContent = {
       heading: 'Race Results + Podium',
       body:
         'After each race, the dashboard shows the 1-2-3 podium, fastest lap, and full top-10 with points awarded. Points: P1=25, P2=18, P3=15, P4=12, P5=10, P6=8, P7=6, P8=4, P9=2, P10=1, fastest lap (if top-10) +1.',
-    },
-    {
-      heading: 'Polymarket Title Odds',
-      body:
-        'F1 2026 title odds from Polymarket update live every 60 seconds — the deepest market for F1 World Champion. Top-6 driver and constructor favorites display with real-time percentages.',
     },
     {
       heading: 'Pick Your Team or Driver',
@@ -545,7 +507,7 @@ const f1EnContent = {
 const tennisIdContent = {
   h1: 'Tenis 2026 — Grand Slam, Masters 1000, ATP & WTA Finals',
   intro:
-    'Dashboard Tenis 2026 dalam Bahasa Indonesia. 4 Grand Slam, ATP Masters 1000, WTA 1000, dan Year-End Finals. Jadwal turnamen WIB, undian live, peringkat ATP + WTA, sorotan petenis Indonesia (Aldila Sutjiadi, Priska Nugroho, Christopher Rungkat), dan peluang juara dari pasar prediksi.',
+    'Dashboard Tenis 2026 dalam Bahasa Indonesia. 4 Grand Slam, ATP Masters 1000, WTA 1000, dan Year-End Finals. Jadwal turnamen WIB, undian live, peringkat ATP + WTA, dan sorotan petenis Indonesia (Aldila Sutjiadi, Priska Nugroho, Christopher Rungkat).',
   sections: [
     {
       heading: 'Grand Slam — 4 Major',

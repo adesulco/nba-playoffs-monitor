@@ -27,8 +27,9 @@ const EPL_PURPLE_TEXT = readableOnDark('#37003C');
  *   - Home team (crest + name + accent bar)
  *   - Score (live / final) OR kickoff time (upcoming)
  *   - Away team
- *   - Per-match Polymarket odds chip (when market exists)
  *   - Share button
+ *
+ * v0.79.0 — per-match odds chip removed (Komdigi de-risk 2026-05-23).
  *
  * Live match: LIVE pulse dot, red accent border, status detail ("67'").
  * Final: "FULL TIME" label, winner bolded.

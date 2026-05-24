@@ -50,7 +50,7 @@ export default function Privacy() {
           <ul style={ulStyle}>
             <li>Pengumpulan tracker (Google Analytics, PostHog, Sentry, OneSignal, Vercel Analytics) <strong>tidak aktif sampai kamu setuju lewat banner persetujuan</strong>.</li>
             <li>Preferensi yang kamu set di gibol — bahasa, tema, klub favorit, watchlist — disimpan di browser kamu (<code>localStorage</code>), tidak dikirim ke server.</li>
-            <li>Data skor olahraga yang ditampilkan diambil dari sumber publik (ESPN, Polymarket, Jolpica F1, API-Football) lewat proxy server kami.</li>
+            <li>Data skor olahraga yang ditampilkan diambil dari sumber publik (ESPN, Jolpica F1, API-Football) lewat proxy server kami.</li>
             <li>Notifikasi push (OneSignal) cuma aktif kalau kamu klik tombol opt-in secara eksplisit.</li>
             <li>Kontak privasi: <a href="mailto:hi@gibol.co" style={linkStyle}>hi@gibol.co</a></li>
           </ul>
@@ -134,7 +134,7 @@ export default function Privacy() {
             </table>
           </div>
           <p style={smallStyle}>
-            Sumber data olahraga (ESPN, Polymarket, Jolpica F1, API-Football) di-fetch
+            Sumber data olahraga (ESPN, Jolpica F1, API-Football) di-fetch
             server-side lewat <code>/api/proxy/*</code>; tidak ada koneksi langsung
             dari browser kamu ke server-server tersebut, dan tidak ada data personal
             kamu yang dikirim ke mereka.

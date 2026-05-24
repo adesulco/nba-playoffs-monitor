@@ -6,7 +6,7 @@ import ContactBar from '../components/ContactBar.jsx';
 import { setTopbarSubrow } from '../lib/topbarSubrow.js';
 // v0.53.1 — Phase C redesign: 3-up Newsroom Slice. Gated UI.v2.
 import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
-import { UI, polymarketEnabled } from '../lib/flags.js';
+import { UI } from '../lib/flags.js';
 // v0.17.0 Phase 2 Sprint B — shared chrome row replacing the inline
 // 200px F1 hero. eyebrow / h1 / LIVE chip / CopyLinkButton all
 // collapsed into <HubStatusStrip> mounted via setTopbarSubrow.
@@ -28,7 +28,9 @@ import { useApp } from '../lib/AppContext.jsx';
 import { useF1Schedule } from '../hooks/useF1Schedule.js';
 import { useF1Standings } from '../hooks/useF1Standings.js';
 import { useF1Results } from '../hooks/useF1Results.js';
-import { useF1ChampionOdds } from '../hooks/useF1ChampionOdds.js';
+// v0.79.0 — useF1ChampionOdds import dropped (Komdigi de-risk 2026-05-23).
+// Champion-odds widget was sourced from the blocked futures-odds provider.
+// A statistical Elo-based "Prediksi Juara" replaces it in a later release.
 import { TEAMS_BY_ID, nextGP, formatGPDate, SEASON } from '../lib/sports/f1/constants.js';
 
 const F1_RED = '#E10600';
@@ -564,17 +566,18 @@ function ConstructorStandings({ teams, loading, error, lang, selectedConstructor
 }
 
 // ─── Context strip (NBA/EPL parity) ─────────────────────────────────────────
-// Four-cell strip with the season's most important context at a glance.
+// Three-cell strip with the season's most important context at a glance.
 //
 // Cells:
 //   · NEXT RACE          — upcoming GP name + days-until countdown
 //   · DRIVERS LEADER     — top driver + points gap to 2nd
 //   · CONSTRUCTOR LEADER — top team + points gap to 2nd
-//   · CHAMPION ODDS      — top Polymarket champion-odds entry (live)
 //
+// v0.79.0 — fourth "CHAMPION FAVORITE" cell removed (Komdigi de-risk
+// 2026-05-23). It was sourced from the now-blocked futures-odds provider.
 // Before the season starts, DRIVERS/CONSTRUCTOR cells show "Musim belum
-// mulai" and we lean on the next-race + champion-odds cells for signal.
-function F1ContextStrip({ drivers, teams, races, championOdds, lang }) {
+// mulai" and we lean on the next-race cell for signal.
+function F1ContextStrip({ drivers, teams, races, lang }) {
   const next = useMemo(() => nextGP(), []);
   const todayISO = new Date().toISOString().slice(0, 10);
 
@@ -600,8 +603,6 @@ function F1ContextStrip({ drivers, teams, races, championOdds, lang }) {
   const teamGap = teams && teams.length >= 2
     ? (teams[0].points - teams[1].points)
     : null;
-
-  const titleFav = (championOdds || [])[0];
 
   const cell = (label, valueNode, accent, sub) => (
     <div style={{
@@ -705,160 +706,14 @@ function F1ContextStrip({ drivers, teams, races, championOdds, lang }) {
           ? `+${teamGap} ${lang === 'id' ? 'ke P2' : 'to P2'}`
           : (lang === 'id' ? '11 tim · regulasi baru' : '11 teams · new regs')
       )}
-
-      <div style={{ padding: '12px 14px', minWidth: 0 }}>
-        <div style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: 9, letterSpacing: 1,
-          color: '#A855F7', fontWeight: 700,
-          marginBottom: 4,
-        }}>
-          {lang === 'id' ? 'FAVORIT JUARA' : 'CHAMPION FAVORITE'}
-        </div>
-        <div style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: 18, fontWeight: 700, color: C.text,
-          letterSpacing: '-0.01em', lineHeight: 1.15,
-          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-        }}>
-          {titleFav ? (
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <span style={{
-                width: 3, height: 16,
-                background: titleFav.team?.accent || '#A855F7',
-              }} />
-              {titleFav.canonicalName || titleFav.name}
-              <span style={{ color: '#A855F7', fontFamily: 'var(--font-mono)', fontSize: 14 }}>
-                {titleFav.pct}%
-              </span>
-            </span>
-          ) : '—'}
-        </div>
-        <div style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: 9, color: C.muted, letterSpacing: 0.3, marginTop: 4,
-        }}>
-          {lang === 'id' ? 'Polymarket · live' : 'Polymarket · live'}
-        </div>
-      </div>
     </section>
   );
 }
 
-// ─── F1 title odds (top 6 champion favorites) ───────────────────────────────
-// Parallels the EPL PeluangJuara. Renders the top 6 Polymarket entries with
-// accent-tinted horizontal bars, % value, and delta vs last poll. Hidden
-// entirely when the hook returns nothing (market gone / proxy down).
-function F1PeluangJuara({ odds, lang }) {
-  // v0.61.2 — audit F-002 kill-switch (see flags.js polymarketEnabled).
-  if (!polymarketEnabled) return null;
-  if (!odds || odds.length === 0) return null;
-  return (
-    <section style={{
-      background: C.panel,
-      border: `1px solid ${C.line}`,
-      borderLeft: `3px solid ${F1_RED}`,
-      borderRadius: 3,
-      padding: '14px 14px 10px',
-    }}>
-      <div style={{
-        display: 'flex', justifyContent: 'space-between',
-        alignItems: 'baseline', marginBottom: 10,
-      }}>
-        <h2 className="panel-title-mono" style={{
-          fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 600,
-          margin: 0, color: C.text, letterSpacing: -0.2,
-        }}>
-          {lang === 'id' ? 'Peluang juara' : 'Championship odds'}
-        </h2>
-        <div style={{ fontSize: 9, color: C.muted, letterSpacing: 1 }}>
-          {lang === 'id' ? 'POLYMARKET · LIVE' : 'POLYMARKET · LIVE'}
-        </div>
-      </div>
-
-      <div style={{ display: 'grid', gap: 4 }}>
-        {odds.slice(0, 6).map((o) => {
-          const displayName = o.canonicalName || o.name;
-          const accent = o.team?.accent || F1_RED;
-          const pct = Math.max(1, Math.min(100, o.pct));
-          const changeColor = o.change > 0 ? C.green : o.change < 0 ? C.red : C.muted;
-          const changeSign = o.change > 0 ? '+' : '';
-          const driverSlug = o.driver?.slug;
-          return (
-            <div
-              key={o.name}
-              style={{
-                display: 'grid',
-                // Mobile-friendly: see EPL.jsx title-odds grid note.
-                gridTemplateColumns: 'minmax(100px, 1.4fr) 1fr 48px 36px',
-                gap: 10,
-                alignItems: 'center',
-                padding: '7px 10px',
-                background: C.panelRow,
-                border: `1px solid ${C.lineSoft}`,
-                borderLeft: `2px solid ${accent}`,
-                borderRadius: 3,
-                fontSize: 11.5,
-              }}
-            >
-              <div style={{
-                color: C.text, fontWeight: 600,
-                overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-              }}>
-                {driverSlug ? (
-                  <Link
-                    to={`/formula-1-2026/driver/${driverSlug}`}
-                    style={{ color: C.text, textDecoration: 'none' }}
-                  >
-                    {displayName}
-                  </Link>
-                ) : displayName}
-                {o.driver?.code && (
-                  <span style={{ marginLeft: 6, color: C.muted, fontSize: 9.5, letterSpacing: 0.5 }}>
-                    {o.driver.code}
-                  </span>
-                )}
-              </div>
-              <div style={{
-                height: 8, background: C.panel2,
-                borderRadius: 2, overflow: 'hidden', position: 'relative',
-              }}>
-                <div style={{
-                  width: `${pct}%`, height: '100%',
-                  background: accent,
-                  transition: 'width 400ms var(--ease-standard, ease-out)',
-                }} />
-              </div>
-              <div style={{
-                textAlign: 'right',
-                fontFamily: 'var(--font-mono)',
-                fontSize: 13, fontWeight: 700, color: C.text,
-              }}>
-                {o.pct}%
-              </div>
-              <div style={{
-                textAlign: 'right',
-                fontFamily: 'var(--font-mono)',
-                fontSize: 10, fontWeight: 600, color: changeColor,
-              }}>
-                {o.change !== 0 ? `${changeSign}${o.change}` : '—'}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <div style={{
-        fontSize: 9, color: C.muted, letterSpacing: 0.3,
-        marginTop: 8, lineHeight: 1.4,
-      }}>
-        {lang === 'id'
-          ? 'Probabilitas pasar prediksi Polymarket. Update tiap 60 detik. Hanya pembalap dengan peluang >0% yang ditampilkan.'
-          : 'Polymarket prediction-market probabilities. Refreshes every 60s. Only drivers with >0% odds shown.'}
-      </div>
-    </section>
-  );
-}
+// v0.79.0 — F1PeluangJuara (top-6 champion-odds widget) removed.
+// Sourced from the futures-odds provider blocked by Komdigi on 2026-05-22.
+// A statistical Elo-based "Prediksi Juara" will replace it in a later
+// release; do NOT swap a sportsbook API in.
 
 // ─── F1 key accounts (X/Twitter) ────────────────────────────────────────────
 // Parallel to TennisKeyAccounts / EPL AkunResmi. Surfaces the essential F1
@@ -984,7 +839,7 @@ export default function F1() {
   const { races, source } = useF1Schedule();
   const { drivers, teams, loading, error } = useF1Standings();
   const { resultsByRound } = useF1Results();
-  const { odds: championOdds } = useF1ChampionOdds();
+  // v0.79.0 — useF1ChampionOdds() removed (Komdigi de-risk 2026-05-23).
 
   // v0.2.5 — if a constructor is picked, tint the dashboard chrome with its
   // accent. Falls back to the F1 brand red.
@@ -1080,7 +935,7 @@ export default function F1() {
         path={seoPath}
         image="https://www.gibol.co/og/hub-f1.png"
         lang={lang}
-        keywords="formula 1 2026, f1 2026, klasemen f1, jadwal f1 2026, hasil grand prix, peluang juara f1, max verstappen, lando norris, lewis hamilton, charles leclerc, oscar piastri, f1 bahasa indonesia"
+        keywords="formula 1 2026, f1 2026, klasemen f1, jadwal f1 2026, hasil grand prix, max verstappen, lando norris, lewis hamilton, charles leclerc, oscar piastri, f1 bahasa indonesia"
         jsonLd={CHAMPIONSHIP_JSONLD}
       />
       <div className="dashboard-wrap">
@@ -1123,18 +978,15 @@ export default function F1() {
             <RoundDetail gp={activeGP} result={activeResult} lang={lang} />
           </div>
 
-          {/* ── Row 2 — Context strip: next race, leaders, title
-              favorite. Demoted from above the calendar. ── */}
+          {/* ── Row 2 — Context strip: next race, leaders.
+              v0.79.0 — title-favorite cell + Peluang juara widget
+              removed (Komdigi de-risk 2026-05-23). ── */}
           <F1ContextStrip
             drivers={drivers}
             teams={teams}
             races={races}
-            championOdds={championOdds}
             lang={lang}
           />
-
-          {/* ── Row 3 — Peluang juara, top 6. ── */}
-          <F1PeluangJuara odds={championOdds} lang={lang} />
 
           <div style={{
             display: 'grid',

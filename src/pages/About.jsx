@@ -55,7 +55,7 @@ export default function About() {
           <div style={{ marginTop: 28, fontSize: 14, lineHeight: 1.75, color: C.text, maxWidth: 700 }}>
             {lang === 'id' ? (
               <>
-                <p><strong>gibol.co</strong> (gila bola) adalah dashboard olahraga live yang dibangun untuk penggemar bola Indonesia. Tujuan kami sederhana: berikan fan apa yang mereka butuhkan untuk menikmati pertandingan — skor live, statistik, peluang juara, dan konteks — semua dalam Bahasa Indonesia dengan waktu WIB.</p>
+                <p><strong>gibol.co</strong> (gila bola) adalah dashboard olahraga live yang dibangun untuk penggemar bola Indonesia. Tujuan kami sederhana: berikan fan apa yang mereka butuhkan untuk menikmati pertandingan — skor live, statistik, dan konteks — semua dalam Bahasa Indonesia dengan waktu WIB.</p>
                 {/* v0.62.0 — removed the "tanpa pop-up" claim (audit
                     F-001 (c)). The site now ships a consent banner on
                     first visit per UU PDP 27/2022 Art. 21 — the prior
@@ -64,7 +64,7 @@ export default function About() {
                 <p>Kami percaya fan Indonesia pantas mendapat pengalaman nonton yang setara dengan fan di luar negeri. Jadi kami bangun dashboard yang fokus: tanpa iklan mengganggu, tanpa login wajib. Pelacakan analytics dijalankan setelah kamu memberi persetujuan eksplisit — detail di <a href="/privacy" style={{ color: 'var(--amber)', textDecoration: 'underline' }}>Kebijakan Privasi</a>. Buka di browser, nikmati pertandingan.</p>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Apa yang kami sajikan</h2>
                 <ul style={{ paddingLeft: 24, lineHeight: 1.9 }}>
-                  <li><strong>NBA Playoffs 2026</strong> — live score, play-by-play, win probability, shot chart, peluang juara Polymarket, watchlist pemain, bracket, dan jalan menuju juara untuk 30 tim NBA.</li>
+                  <li><strong>NBA Playoffs 2026</strong> — live score, play-by-play, win probability, shot chart, watchlist pemain, bracket, dan ringkasan seri untuk 30 tim NBA.</li>
                   <li><strong>Catatan Playoff harian</strong> — rekap hasil tiap hari dengan momen terbesar, top scorer, dan analisis singkat.</li>
                   {/* v0.62.6 — audit UX-005: F1, Liga Inggris, dan
                       Super League Indonesia sudah LIVE sejak v0.13.x–
@@ -75,17 +75,17 @@ export default function About() {
                   <li><strong>Formula 1 2026</strong> — jadwal balap, klasemen pembalap &amp; konstruktor, hasil tiap GP.</li>
                   <li><strong>Liga Inggris 2025-26</strong> — klasemen, jadwal, hasil, top skorer Premier League.</li>
                   <li><strong>Super League Indonesia 2025-26</strong> — klasemen, jadwal, hasil Liga 1 Indonesia.</li>
-                  <li><strong>Tenis ATP &amp; WTA 2026</strong> — peringkat, turnamen, peluang juara grand slam.</li>
+                  <li><strong>Tenis ATP &amp; WTA 2026</strong> — peringkat, jadwal turnamen, hasil per ronde.</li>
                   <li><strong>Piala Dunia FIFA 2026</strong> (mulai Juni 2026) — 48 tim, 104 pertandingan, 16 kota tuan rumah.</li>
                 </ul>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Sumber data</h2>
-                <p>Kami menggunakan API publik dari ESPN (skor & statistik) dan Polymarket (peluang juara). Semua sumber dicantumkan di tiap halaman. Data di-refresh setiap 10–30 detik saat laga berlangsung.</p>
+                <p>Kami menggunakan API publik dari ESPN (skor &amp; statistik), Jolpica F1 (klasemen F1), dan API-Football (Premier League + Liga 1). Semua sumber dicantumkan di tiap halaman. Data di-refresh setiap 10–30 detik saat laga berlangsung.</p>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Partnership &amp; kerjasama</h2>
                 <p>Tertarik bekerjasama? Kami terbuka untuk sponsor, press coverage, data partnership, dan kolaborasi editorial. Hubungi kami di <a href="mailto:hi@gibol.co" style={{ color: 'var(--amber)', fontWeight: 600 }}>hi@gibol.co</a>.</p>
               </>
             ) : (
               <>
-                <p><strong>gibol.co</strong> ("gila bola" — Indonesian slang for sports-crazy) is a live sports dashboard built for Indonesian fans. Our goal is simple: give fans what they need to enjoy the game — live scores, stats, championship odds, and context — all in Bahasa Indonesia with WIB timezone.</p>
+                <p><strong>gibol.co</strong> ("gila bola" — Indonesian slang for sports-crazy) is a live sports dashboard built for Indonesian fans. Our goal is simple: give fans what they need to enjoy the game — live scores, stats, and context — all in Bahasa Indonesia with WIB timezone.</p>
                 <p>Indonesian fans deserve the same viewing experience as fans overseas. So we built a focused dashboard: no intrusive ads, no required login. Analytics only runs after you give explicit consent — full detail at <a href="/privacy" style={{ color: 'var(--amber)', textDecoration: 'underline' }}>Privacy Policy</a>. Open your browser, enjoy the game.</p>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>What we cover</h2>
                 <ul style={{ paddingLeft: 24, lineHeight: 1.9 }}>
@@ -93,16 +93,16 @@ export default function About() {
                       it never listed F1 / Premier League / Super League
                       / Tennis even after those hubs went live. Brought
                       to parity with the ID list. */}
-                  <li><strong>NBA Playoffs 2026</strong> — live scores, play-by-play, win probability, shot charts, Polymarket championship odds, player watchlist, bracket, and title path for all 30 NBA teams.</li>
+                  <li><strong>NBA Playoffs 2026</strong> — live scores, play-by-play, win probability, shot charts, player watchlist, bracket, and series-by-series tracker for all 30 NBA teams.</li>
                   <li><strong>Daily Playoff Recap</strong> — every day's results with biggest moment, top scorer, and quick analysis.</li>
                   <li><strong>Formula 1 2026</strong> — race calendar, driver &amp; constructor standings, per-GP results.</li>
                   <li><strong>Premier League 2025-26</strong> — table, fixtures, results, Golden Boot race.</li>
                   <li><strong>Indonesian Super League 2025-26</strong> — table, fixtures, results for Liga 1 Indonesia.</li>
-                  <li><strong>ATP &amp; WTA Tennis 2026</strong> — rankings, tournaments, grand slam title odds.</li>
+                  <li><strong>ATP &amp; WTA Tennis 2026</strong> — rankings, tournament calendar, round-by-round results.</li>
                   <li><strong>FIFA World Cup 2026</strong> (starts June 2026) — 48 teams, 104 matches, 16 host cities.</li>
                 </ul>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Data sources</h2>
-                <p>We use ESPN's public APIs (scores &amp; stats) and Polymarket (title odds). All sources are credited on every page. Data refreshes every 10–30 seconds during live games.</p>
+                <p>We use ESPN's public APIs (scores &amp; stats), Jolpica F1 (F1 standings), and API-Football (Premier League + Liga 1). All sources are credited on every page. Data refreshes every 10–30 seconds during live games.</p>
                 <h2 style={{ marginTop: 32, marginBottom: 12, fontSize: 22, fontFamily: 'var(--font-sans)' }}>Partnerships</h2>
                 <p>Interested in working with us? We're open to sponsorships, press coverage, data partnerships, and editorial collaborations. Reach out at <a href="mailto:hi@gibol.co" style={{ color: 'var(--amber)', fontWeight: 600 }}>hi@gibol.co</a>.</p>
               </>
@@ -116,7 +116,7 @@ export default function About() {
         }}>
           <div>gibol.co · {lang === 'id' ? 'dari fan, untuk fan' : 'from fans, for fans'}</div>
           <ContactBar lang={lang} variant="inline" />
-          <div>ESPN · Polymarket · NBA</div>
+          <div>ESPN · NBA</div>
         </div>
       </div>
     </div>

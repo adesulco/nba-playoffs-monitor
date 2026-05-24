@@ -49,7 +49,7 @@ const BANNED = [
 // disclaimer wouldn't be a disclaimer without naming the thing it
 // disclaims. Privacy.jsx is allowlisted defensively (future privacy
 // copy may need to reference these terms when describing the
-// Polymarket data source). version.js carries ship notes that document
+// the futures-odds upstream when it still shipped). version.js carries ship notes that document
 // the disclaimer + the F-002 mitigation; those references are
 // historical and must persist.
 const ALLOWLIST = [

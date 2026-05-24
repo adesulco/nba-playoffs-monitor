@@ -2,7 +2,7 @@
 
 > Bahasa-first multi-sport dashboards for Indonesian fans — NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, Tenis 2026 (ATP + WTA), FIFA World Cup 2026, and BRI Liga 1 Indonesia. "Gibol" is Indonesian slang for "gila bola" (sports-obsessed). One hub, live data, zero backend.
 
-gibol.co is a real-time sports companion aggregating Polymarket prediction odds, ESPN scoreboard data, and play-by-play action into a single terminal-style dashboard. Content updates every 10–30 seconds during live games. All data is sourced from public APIs and displayed with attribution.
+gibol.co is a real-time sports companion aggregating ESPN scoreboard data and play-by-play action into a single terminal-style dashboard. Content updates every 10–30 seconds during live games. All data is sourced from public APIs and displayed with attribution.
 
 ## Live dashboards
 
@@ -46,7 +46,7 @@ gibol.co is a real-time sports companion aggregating Polymarket prediction odds,
 - Round 1 tips: April 18, 2026
 - Play-in finale: April 17, 2026 (ORL vs CHA 7:30 PM ET, PHX vs GSW 10:00 PM ET)
 - Finals tip-off: June 3, 2026 on ABC (best-of-7)
-- 2025–26 title favorite (per Polymarket): Oklahoma City Thunder (~44%)
+- 2025–26 top seeds: Oklahoma City Thunder (West, 64–18) and Detroit Pistons (East)
 - TV rights deal: $76B 11-year Disney/NBC/Amazon
 
 ## Features
@@ -70,8 +70,6 @@ gibol.co is a real-time sports companion aggregating Polymarket prediction odds,
 
 ## Data sources
 
-- Polymarket Gamma API (championship + MVP event markets)
-- Polymarket CLOB WebSocket (live price ticks for top contenders)
 - ESPN Scoreboard + Summary + Probabilities + Team Schedule + Injuries (all undocumented public endpoints)
 
 ## User accounts and personalization

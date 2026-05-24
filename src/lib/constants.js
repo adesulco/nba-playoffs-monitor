@@ -84,22 +84,11 @@ export function hasGoodContrastOnDark(hex) {
   return lum > 90; // empirical threshold — dark teams (Spurs, Celtics) fail.
 }
 
-export const FALLBACK_CHAMPION = [
-  { name: 'Oklahoma City Thunder', pct: 44, change: 2, volume: 0 },
-  { name: 'San Antonio Spurs',     pct: 15, change: 1, volume: 0 },
-  { name: 'Boston Celtics',        pct: 13, change: 0, volume: 0 },
-  { name: 'Denver Nuggets',        pct: 9,  change: -1, volume: 0 },
-  { name: 'Detroit Pistons',       pct: 6,  change: 1, volume: 0 },
-  { name: 'Cleveland Cavaliers',   pct: 4,  change: 0, volume: 0 },
-  { name: 'New York Knicks',       pct: 4,  change: -1, volume: 0 },
-  { name: 'Houston Rockets',       pct: 3,  change: 0, volume: 0 },
-  { name: 'Los Angeles Lakers',    pct: 2,  change: 0, volume: 0 },
-];
-
-export const FALLBACK_MVP = [
-  { name: 'Shai Gilgeous-Alexander', pct: 95 },
-  { name: 'Victor Wembanyama',       pct: 3 },
-];
+// v0.79.0 — FALLBACK_CHAMPION + FALLBACK_MVP removed. Both were
+// the futures-odds provider-derived title/MVP odds fallbacks (when the live fetch
+// errored). the futures-odds provider was blocked in Indonesia on 2026-05-22; we
+// pulled all futures-odds surfaces from the app, so neither fallback
+// has a consumer anymore.
 
 // Pool of teams that were in each conference's play-in tournament. The 8-seed
 // that actually advances gets auto-detected from ESPN R1 game data in the

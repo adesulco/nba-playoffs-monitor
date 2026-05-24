@@ -64,13 +64,11 @@ export default function TeamPage() {
   const { schedule } = useTeamSchedule(abbr);
   const { leaders } = useTeamLeaders(abbr);
   const { byTeam: injuriesByTeam } = useInjuries();
-  const { champion } = usePlayoffData();
-
-  const championOdds = useMemo(() => champion?.odds || [], [champion]);
-  const myOdds = useMemo(
-    () => (teamName ? championOdds.find((o) => o.name === teamName) : null),
-    [championOdds, teamName]
-  );
+  usePlayoffData(); // primes scoreboard cache for other surfaces
+  // v0.79.0 — championOdds + myOdds derivation removed (Komdigi de-risk
+  // 2026-05-23). The futures-odds chip on this page is gone alongside.
+  const championOdds = [];
+  const myOdds = null;
 
   const record = useMemo(() => computeRecord(schedule || [], abbr), [schedule, abbr]);
   const streak = useMemo(() => computeStreak(schedule, abbr), [schedule, abbr]);
@@ -118,8 +116,8 @@ export default function TeamPage() {
     : `${teamName} NBA Playoff 2026 · ${record.str} · Live Scores & Stats | gibol.co`;
 
   const seoDesc = lang === 'id'
-    ? `Skor live ${teamName} (${meta.abbr}) di NBA Playoff 2026. Rekor ${record.str}${streak ? `, ${streak} streak` : ''}. Jadwal lengkap, statistik pemain, laporan cedera, dan peluang juara${myOdds ? ` (${myOdds.pct}%)` : ''}. Star: ${meta.star}.`
-    : `Live scores for ${teamName} in the 2026 NBA Playoffs. Record ${record.str}${streak ? `, ${streak} streak` : ''}. Full schedule, player stats, injury report, championship odds${myOdds ? ` (${myOdds.pct}%)` : ''}. Star: ${meta.star}.`;
+    ? `Skor live ${teamName} (${meta.abbr}) di NBA Playoff 2026. Rekor ${record.str}${streak ? `, ${streak} streak` : ''}. Jadwal lengkap, statistik pemain, laporan cedera. Star: ${meta.star}.`
+    : `Live scores for ${teamName} in the 2026 NBA Playoffs. Record ${record.str}${streak ? `, ${streak} streak` : ''}. Full schedule, player stats, injury report. Star: ${meta.star}.`;
 
   const seoKeywords = [
     `skor ${nickname.toLowerCase()}`,
@@ -128,7 +126,6 @@ export default function TeamPage() {
     `${nickname.toLowerCase()} 2026`,
     `jadwal ${nickname.toLowerCase()}`,
     `statistik ${nickname.toLowerCase()}`,
-    `peluang juara ${nickname.toLowerCase()}`,
     `${teamName.toLowerCase()}`,
     `${meta.star.toLowerCase()}`,
     `nba playoff 2026`,
@@ -503,16 +500,13 @@ export default function TeamPage() {
                   <strong>{teamName}</strong> ({meta.abbr}) adalah tim NBA yang berkompetisi di {confLabel} pada Playoffs NBA 2025–26.
                   {meta.seed ? ` Tim menduduki peringkat unggulan #${meta.seed} dengan rekor reguler season ${record.str || '—'}.` : ` Tim harus melewati babak play-in untuk masuk bracket playoff.`}
                   {' '}Bintang utama tim adalah <strong>{meta.star}</strong>.
-                  {myOdds && (
-                    <> Peluang juara NBA 2026 tim berdasarkan pasar prediksi Polymarket saat ini adalah <strong>{myOdds.pct}%</strong>.</>
-                  )}
                 </p>
                 <p>
                   Pantau skor live <strong>{nickname}</strong> di setiap laga Playoff 2026 langsung dari gibol.co — win probability real-time, play-by-play tick-by-tick,
                   shot chart, box score pemain, laporan cedera terbaru, dan watchlist pemain dengan alert milestone (20/25/30/40 poin, double-double, triple-double).
                 </p>
                 <p style={{ color: C.dim, fontSize: 11 }}>
-                  Data di-refresh tiap 10–30 detik saat laga berlangsung. Sumber resmi: ESPN Scoreboard API untuk skor & statistik, Polymarket Gamma API untuk peluang juara.
+                  Data di-refresh tiap 10–30 detik saat laga berlangsung. Sumber resmi: ESPN Scoreboard API untuk skor &amp; statistik.
                 </p>
               </>
             ) : (
@@ -524,16 +518,13 @@ export default function TeamPage() {
                   <strong>{teamName}</strong> ({meta.abbr}) is an NBA team competing in the {confLabel} during the 2025–26 Playoffs.
                   {meta.seed ? ` The team holds the #${meta.seed} seed with a regular season record of ${record.str || '—'}.` : ` The team must navigate the play-in tournament to reach the bracket.`}
                   {' '}Their franchise star is <strong>{meta.star}</strong>.
-                  {myOdds && (
-                    <> Their current 2026 NBA championship odds on Polymarket are <strong>{myOdds.pct}%</strong>.</>
-                  )}
                 </p>
                 <p>
                   Track live <strong>{nickname}</strong> scores from every 2026 Playoff game directly on gibol.co — real-time win probability, tick-by-tick play-by-play,
                   shot chart, player box scores, latest injury report, and a player watchlist with milestone alerts (20/25/30/40-point games, double-doubles, triple-doubles).
                 </p>
                 <p style={{ color: C.dim, fontSize: 11 }}>
-                  Data refreshes every 10–30 seconds during live games. Sources: ESPN Scoreboard API for scores and stats, Polymarket Gamma API for championship odds.
+                  Data refreshes every 10–30 seconds during live games. Source: ESPN Scoreboard API for scores and stats.
                 </p>
               </>
             )}
@@ -590,7 +581,7 @@ export default function TeamPage() {
         }}>
           <div>gibol.co · {lang === 'id' ? `halaman tim ${nickname}` : `${nickname} team page`}</div>
           <ContactBar lang={lang} variant="inline" />
-          <div>ESPN · Polymarket · NBA</div>
+          <div>ESPN · NBA</div>
         </div>
       </div>
     </div>

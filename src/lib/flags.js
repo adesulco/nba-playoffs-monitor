@@ -112,22 +112,12 @@ function envInt(name, fallback) {
 
 export const homeVariant = envInt('VITE_FLAG_HOME', 0);
 
-// v0.61.2 — Polymarket panel kill-switch (audit F-002, interim).
-//   VITE_FLAG_POLYMARKET=1 (default)  → all Polymarket-branded panels render
-//   VITE_FLAG_POLYMARKET=0            → every panel with prominent "POLYMARKET"
-//                                       branding (NBA title odds, EPL title
-//                                       odds, F1 championship odds, Tennis
-//                                       slam odds) renders null
-//
-// Lets us pull the panels off prod in 1 hour via a Vercel env var change
-// if Kominfo issues a takedown notice over UU ITE 27(2) / KUHP 303
-// exposure, without a code deploy. Audit OR-3 mitigation. Underlying
-// /api/proxy/polymarket-* fetches continue (server-side, not user-visible
-// to a regulator scanning the rendered page).
-//
-// Full removal vs interim hide is decision-gated on an Indonesian
-// counsel-of-record memo (audit F-002 Blocker).
-export const polymarketEnabled = envFlag('VITE_FLAG_POLYMARKET', true);
+// v0.79.0 — futures-odds kill-switch flag removed (Komdigi de-risk
+// 2026-05-23). The kill-switch became a full hard-remove on the 23rd.
+// Every odds widget, fetcher, hook, proxy entry, brand label, and SEO
+// claim derived from the upstream is gone. The legacy env var that
+// previously toggled this is now ignored — safe to delete on next env
+// sweep.
 
 // v0.63.0 — Paper-grey design port. Brand flag (paper-grey theme):
 //   VITE_FLAG_BRAND=0 (default)  → existing dark navy chrome unchanged
@@ -144,7 +134,7 @@ export const brandVariant = envInt('VITE_FLAG_BRAND', 0);
 
 export const FLAGS = {
   VISIBLE, LIVE, UI,
-  homeVariant, brandVariant, polymarketEnabled,
+  homeVariant, brandVariant,
   isLive, isVisible, isUiV2,
 };
 export default FLAGS;

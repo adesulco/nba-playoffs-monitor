@@ -79,12 +79,11 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // v0.11.7 — Polymarket proxy ( /api/proxy/polymarket-* ) gets the
-  // same network-first-with-cache treatment so a patchy connection
-  // still paints championship odds from the last known snapshot
-  // instead of showing FALLBACK_CHAMPION. 24-hour fallback window is
-  // long enough to cover overnight connectivity hiccups but short
-  // enough that stale odds never outlive a reasonable trade window.
+  // v0.11.7 — proxy ( /api/proxy/* ) gets the same network-first-with-
+  // cache treatment so a patchy connection still paints the last known
+  // snapshot. v0.79.0 — the futures-odds proxy entries were removed
+  // (Komdigi de-risk 2026-05-23); the SW cache rule still covers ESPN +
+  // Jolpica + API-Football proxy paths.
   if (url.pathname.startsWith("/api/proxy/")) {
     event.respondWith(networkFirst(request, RUNTIME_CACHE, 5000));
     return;

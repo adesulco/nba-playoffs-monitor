@@ -7654,7 +7654,41 @@
 //
 // Audit ref: Pickem-ClaudeCode-Handover.md (P2 polish).
 
-export const APP_VERSION = '0.78.0';
+// v0.79.0 — Komdigi de-risk (futures-odds strip).
+//
+// 2026-05-22 Komdigi blocked the upstream futures-odds provider in
+// Indonesia as "judi online berkedok prediction market" (online
+// gambling disguised as a prediction market). This release hard-
+// removes every futures-odds widget, fetcher, hook, proxy entry,
+// brand label, and SEO claim derived from it across the runtime.
+// ESPN per-game win-probability (statistical model, not a betting
+// feed) is unchanged.
+//
+// Stripped (UI):
+//   - NBA title-odds panel + sparklines + champion ticker
+//   - NBA bracket title-favorite highlight + "Highlighted = …" label
+//   - NBA "Path to title" projection (TitlePath component → null stub)
+//   - EPL "Peluang juara" panel + per-match odds chips + TITLE FAVORITE cell
+//   - F1 F1PeluangJuara panel + CHAMPION FAVORITE cell + driver odds
+//   - Tennis slam-odds panel (ATP + WTA, 4 slams)
+//   - Home page card teasers + futures-odds-derived SEO copy
+//
+// Deleted (code):
+//   - src/lib/api.js fetchChampionOdds / fetchFuturesOddsEvent /
+//     fetchMvpOdds / fetchPriceHistory + POLY_BASE / POLY_CLOB_BASE
+//   - src/hooks/usePolymarketWS.js + useEPLChampionOdds.js +
+//     useEPLMatchOdds.js + useF1ChampionOdds.js + useTennisSlamOdds.js
+//   - api/proxy.js polymarket-gamma + polymarket-clob entries
+//   - api/health/data-sources.js polymarket-gamma probe
+//   - src/lib/flags.js polymarketEnabled flag
+//   - i18n keys: titleFavoritePoly + futures-odds branding in
+//     dataSources + builtBy
+//
+// Future: an Elo-based statistical "Prediksi Juara" can replace this
+// in a later release. Not in scope for this ship — and explicitly NOT
+// a sportsbook API swap.
+
+export const APP_VERSION = '0.79.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

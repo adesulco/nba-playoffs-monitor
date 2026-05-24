@@ -11,7 +11,8 @@
 
 const CHECKS = [
   { name: 'espn-nba', url: 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard' },
-  { name: 'polymarket-gamma', url: 'https://gamma-api.polymarket.com/events?slug=2026-nba-champion' },
+  // v0.79.0 — futures-odds-gamma probe removed (Komdigi de-risk 2026-05-23).
+  // The upstream is blocked by the regulator; we no longer relay or check it.
   // v0.60.5 — `&limit=1` is not a valid OpenF1 filter; the API treats
   // unrecognised query params as zero-match filters and returns 404
   // with body `{"detail":"No results found."}`. Reported red since
