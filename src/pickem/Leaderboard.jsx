@@ -4,6 +4,7 @@ import PickemRoot from './PickemRoot.jsx';
 import { LeaderboardRow, SegmentedPicker, EmptyState, PickemBtn } from './components/social.jsx';
 import { listLeaderboard, listMyGrups } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.68.0 — Leaderboard screen (Pick'em P3).
@@ -22,7 +23,7 @@ import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 // empty (no scored predictions yet), and not-in-any-grup.
 // ============================================================================
 
-const COMPETITION = 'WC2026';
+// v0.79.1 — COMPETITION now reads from usePickemCompetition() at render time.
 const SCOPES = [
   { k: 'competition', l: 'Global' },
   { k: 'league',      l: 'Grup' },
@@ -40,6 +41,8 @@ export default function Leaderboard() {
 
 function LeaderboardInner() {
   const { user } = useAuth();
+  const { competition } = usePickemCompetition();
+  const COMPETITION = competition.key;
   const [params, setParams] = useSearchParams();
   const initialScope = params.get('scope') || 'competition';
   const initialGrupId = params.get('grup') || null;
@@ -67,6 +70,7 @@ function LeaderboardInner() {
   }, [scope, grupId, matchday, setParams]);
 
   // Load the user's grups so the Grup scope picker knows what to render.
+  // Re-fetches when the user switches competitions.
   useEffect(() => {
     if (!user) return;
     (async () => {
@@ -76,7 +80,7 @@ function LeaderboardInner() {
         if (!grupId && res.grups?.length) setGrupId(res.grups[0].id);
       }
     })();
-  }, [user]);
+  }, [user, COMPETITION]);
 
   // Main fetch — switches by scope.
   const fetchBoard = useCallback(async () => {
@@ -112,7 +116,7 @@ function LeaderboardInner() {
     setMeWindow(around);
     setMeRank(myRank);
     setLoading(false);
-  }, [scope, grupId, matchday, user?.id]);
+  }, [scope, grupId, matchday, user?.id, COMPETITION]);
 
   useEffect(() => {
     fetchBoard();

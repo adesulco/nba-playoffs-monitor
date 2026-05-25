@@ -5,6 +5,7 @@ import useBracketState from './useBracketState.js';
 import Flag from './Flag.jsx';
 import { PickemBtn } from './components/social.jsx';
 import { teamLabel, teamShort, potentialBracketPoints } from './bracketData.js';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.75.0 — Desktop bracket tree (Pick'em P7).
@@ -24,10 +25,32 @@ import { teamLabel, teamShort, potentialBracketPoints } from './bracketData.js';
 // view reflects whatever the user has saved.
 // ============================================================================
 
-const COMPETITION = 'WC2026';
+// v0.79.1 — COMPETITION reads from usePickemCompetition() at render time.
 
 export default function BracketTreeView() {
+  const { competition } = usePickemCompetition();
+  // Mirror Bracket.jsx: gate first, then render the impl so the hooks order
+  // inside BracketTreeViewImpl (which calls useBracketState) stays stable.
+  if (!competition.hasBracket) {
+    return (
+      <PickemRoot active="bracket">
+        <div style={{ padding: '40px 16px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
+          <h1 className="p-display-sm" style={{ marginBottom: 12, color: 'var(--ink-1)' }}>
+            Bracket {competition.label} belum aktif
+          </h1>
+          <p style={{ color: 'var(--ink-2)', fontSize: 14 }}>
+            Format seri best-of-7 nggak pakai bracket prediksi. Cek tab <strong>Prediksi</strong>.
+          </p>
+        </div>
+      </PickemRoot>
+    );
+  }
+  return <BracketTreeViewImpl competition={competition} />;
+}
+
+function BracketTreeViewImpl({ competition }) {
   const navigate = useNavigate();
+  const COMPETITION = competition.key;
   const b = useBracketState(COMPETITION);
   const potential = potentialBracketPoints(b.rawState);
 

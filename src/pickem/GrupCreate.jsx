@@ -4,6 +4,7 @@ import PickemRoot from './PickemRoot.jsx';
 import { PickemBtn, SegmentedPicker } from './components/social.jsx';
 import { createGrup } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.68.0 — Grup create (Pick'em P3).
@@ -14,7 +15,7 @@ import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 // /pickem/grup/:id where the InviteSheet auto-pops once for sharing.
 // ============================================================================
 
-const COMPETITION = 'WC2026';
+// v0.79.1 — COMPETITION now reads from usePickemCompetition() at render time.
 const VISIBILITY_OPTIONS = [
   { k: 'private', l: 'Pribadi' },
   { k: 'public',  l: 'Publik' },
@@ -32,6 +33,8 @@ export default function GrupCreate() {
 
 function GrupCreateInner() {
   const { user, loading: authLoading } = useAuth();
+  const { competition } = usePickemCompetition();
+  const COMPETITION = competition.key;
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [visibility, setVisibility] = useState('private');

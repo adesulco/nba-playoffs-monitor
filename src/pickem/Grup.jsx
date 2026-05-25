@@ -4,6 +4,7 @@ import PickemRoot from './PickemRoot.jsx';
 import { GrupCard, EmptyState, PickemBtn } from './components/social.jsx';
 import { listMyGrups, joinGrup } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.68.0 — Grup hub (Pick'em P3).
@@ -17,7 +18,7 @@ import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 // The whole grup surface requires auth (you can't be in a grup anonymously).
 // ============================================================================
 
-const COMPETITION = 'WC2026';
+// v0.79.1 — COMPETITION reads from usePickemCompetition() at render time.
 
 export default function Grup() {
   return (
@@ -29,6 +30,8 @@ export default function Grup() {
 
 function GrupInner() {
   const { user, loading: authLoading } = useAuth();
+  const { competition } = usePickemCompetition();
+  const COMPETITION = competition.key;
   const navigate = useNavigate();
   const [grups, setGrups] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -54,7 +57,7 @@ function GrupInner() {
       }
       setLoading(false);
     })();
-  }, [user, authLoading, navigate]);
+  }, [user, authLoading, navigate, COMPETITION]);
 
   const onJoin = async (e) => {
     e?.preventDefault?.();

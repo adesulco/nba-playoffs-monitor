@@ -12,6 +12,7 @@ import {
 import { listFixtures, upsertPrediction } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import HubRightRail from './components/HubRightRail.jsx';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.67.0 — Predicting Hub (Pick'em P2 spine).
@@ -38,8 +39,10 @@ import HubRightRail from './components/HubRightRail.jsx';
 // the user switch via a SegmentedPicker at the top.
 // ============================================================================
 
-const COMPETITION = 'WC2026';
-const SEASON = '2026';
+// v0.79.1 — COMPETITION + SEASON were hardcoded to WC2026. The
+// usePickemCompetition() hook reads the active competition from
+// PickemCompetitionProvider (mounted in PickemRoot). NBA Playoffs is the
+// default until June 11, then WC2026 takes over.
 
 export default function PredictingHub() {
   // Match the existing Pickem page convention (Bracket.jsx, League*.jsx):
@@ -54,6 +57,9 @@ export default function PredictingHub() {
 
 function PredictingHubInner() {
   const { user } = useAuth();
+  const { competition } = usePickemCompetition();
+  const COMPETITION = competition.key;
+  const SEASON = competition.season;
   const [fixtures, setFixtures] = useState([]);
   const [serverPredictions, setServerPredictions] = useState({}); // by fixture_id
   const [guestPredictions, setGuestPredictions] = useState(() => indexByFixture(listGuestPredictions(COMPETITION)));
@@ -63,7 +69,7 @@ function PredictingHubInner() {
   const [nudgeVisible, setNudgeVisible] = useState(false);
   const claimedOnceRef = useRef(false);
 
-  // 1. Fetch fixtures on mount.
+  // 1. Fetch fixtures on mount AND when the user switches competitions.
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -82,10 +88,16 @@ function PredictingHubInner() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [COMPETITION, SEASON]);
+
+  // Reset the guest-prediction index when competition changes (each
+  // competition has its own queue in localStorage).
+  useEffect(() => {
+    setGuestPredictions(indexByFixture(listGuestPredictions(COMPETITION)));
+  }, [COMPETITION]);
 
   // 2. On login (or initial-mount-with-session), claim any pending guest
-  //    predictions exactly once.
+  //    predictions exactly once per session.
   useEffect(() => {
     if (!user || claimedOnceRef.current) return;
     claimedOnceRef.current = true;

@@ -8,6 +8,7 @@ import {
 } from './guestStore.js';
 import { listFixtures, upsertPrediction } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.67.0 — Fixture Detail (Pick'em P2).
@@ -23,8 +24,7 @@ import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 // deep-link doesn't pull the whole hub.
 // ============================================================================
 
-const COMPETITION = 'WC2026';
-const SEASON = '2026';
+// v0.79.1 — COMPETITION + SEASON now read from usePickemCompetition() hook.
 
 export default function FixtureDetail() {
   return (
@@ -38,6 +38,9 @@ function FixtureDetailInner() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { competition } = usePickemCompetition();
+  const COMPETITION = competition.key;
+  const SEASON = competition.season;
 
   const [fixture, setFixture] = useState(null);
   const [prediction, setPrediction] = useState(() => getGuestPrediction(id));
@@ -64,7 +67,7 @@ function FixtureDetailInner() {
     return () => {
       cancelled = true;
     };
-  }, [id]);
+  }, [id, COMPETITION, SEASON]);
 
   const handlePredictionChange = useCallback(
     async (fx, partial) => {

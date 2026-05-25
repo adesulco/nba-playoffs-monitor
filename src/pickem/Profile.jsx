@@ -5,6 +5,7 @@ import { Badge, StreakFlame, PickemBtn, EmptyState } from './components/social.j
 import { listProfile } from './api.js';
 import { teamShort } from './bracketData.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.70.0 — Profile screen (Pick'em P5).
@@ -33,6 +34,8 @@ export default function Profile() {
 
 function ProfileInner() {
   const { user, loading: authLoading } = useAuth();
+  const { competition } = usePickemCompetition();
+  const COMPETITION = competition.key;
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -46,7 +49,7 @@ function ProfileInner() {
     }
     (async () => {
       setLoading(true);
-      const res = await listProfile({ competition: 'WC2026', history_limit: 10 });
+      const res = await listProfile({ competition: COMPETITION, history_limit: 10 });
       if (res.ok) {
         setProfile(res.profile);
         setError(null);
@@ -55,7 +58,7 @@ function ProfileInner() {
       }
       setLoading(false);
     })();
-  }, [user, authLoading, navigate]);
+  }, [user, authLoading, navigate, COMPETITION]);
 
   const avatarLetter = useMemo(() => {
     if (!profile) return 'K';

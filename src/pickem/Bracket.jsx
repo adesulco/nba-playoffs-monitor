@@ -19,6 +19,7 @@ import {
 } from './components/bracketStages.jsx';
 import { upsertBracket } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.69.0 — <Bracket /> · /pickem/bracket screen (Pick'em P4).
@@ -46,8 +47,9 @@ import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 // the lock is purely client-side and the bracket is privately stored.
 // ============================================================================
 
-const COMPETITION = 'WC2026';
-const SEASON = '2026';
+// v0.79.1 — Bracket is WC2026-shape only. When the user is on a competition
+// without hasBracket (NBA Playoffs in v1), we render <BracketNotAvailable />
+// instead. SEASON used to drive the score-bracket key; now per-competition.
 
 export default function Bracket() {
   return (
@@ -60,6 +62,39 @@ export default function Bracket() {
 function BracketInner() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { competition } = usePickemCompetition();
+  const COMPETITION = competition.key;
+  const SEASON = competition.season;
+
+  // Short-circuit for competitions without a bracket (e.g. NBA Playoffs in
+  // v1). Rendering useBracketState() would crash on missing bracketData.
+  if (!competition.hasBracket) {
+    return <BracketNotAvailable competition={competition} />;
+  }
+
+  return <BracketInnerImpl user={user} navigate={navigate} COMPETITION={COMPETITION} SEASON={SEASON} />;
+}
+
+function BracketNotAvailable({ competition }) {
+  return (
+    <PickemRoot active="bracket">
+      <div style={{ padding: '40px 16px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
+        <div className="p-eyebrow" style={{ marginBottom: 10, opacity: 0.7 }}>BRACKET</div>
+        <h1 className="p-display-sm" style={{ marginBottom: 12, color: 'var(--ink-1)' }}>
+          Bracket {competition.label} belum aktif
+        </h1>
+        <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.55 }}>
+          Bracket prediksi tersedia untuk turnamen format grup + KO. {competition.label} pakai format seri best-of-7 — kamu bisa prediksi laga per hari di tab <strong>Prediksi</strong>, ranking di tab <strong>Papan</strong>.
+        </p>
+        <p style={{ color: 'var(--ink-3, var(--ink-2))', fontSize: 12, marginTop: 18 }}>
+          Bracket Piala Dunia 2026 (FIFA WC) aktif mulai 11 Juni 2026.
+        </p>
+      </div>
+    </PickemRoot>
+  );
+}
+
+function BracketInnerImpl({ user, navigate, COMPETITION, SEASON }) {
   const [stage, setStage] = useState('group');
   const [confirmLock, setConfirmLock] = useState(false);
   const [autofilled, setAutofilled] = useState(false);

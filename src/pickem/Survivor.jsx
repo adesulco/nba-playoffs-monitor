@@ -3,6 +3,7 @@ import PickemRoot from './PickemRoot.jsx';
 import Flag from './Flag.jsx';
 import { PickemBtn, EmptyState } from './components/social.jsx';
 import { teamLabel, GROUP_LETTERS, SAMPLE_GROUPS } from './bracketData.js';
+import { usePickemCompetition } from './useCompetition.jsx';
 
 // ============================================================================
 // v0.70.0 — Survivor "Fan Terakhir" screen (Pick'em P5).
@@ -91,6 +92,29 @@ function buildMatchdayPool(matchday) {
 }
 
 export default function Survivor() {
+  const { competition } = usePickemCompetition();
+  // Survivor is WC-shape only (one elimination per matchday across an 8-
+  // matchday tournament). NBA Playoffs has no matchday-loss equivalent
+  // (series last 4-7 games over ~2 weeks), so we short-circuit.
+  if (!competition.hasSurvivor) {
+    return (
+      <PickemRoot active="survivor">
+        <div style={{ padding: '40px 16px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
+          <div className="p-eyebrow" style={{ marginBottom: 10, opacity: 0.7 }}>SURVIVOR</div>
+          <h1 className="p-display-sm" style={{ marginBottom: 12, color: 'var(--ink-1)' }}>
+            Survivor {competition.label} belum aktif
+          </h1>
+          <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.55 }}>
+            Mode Survivor cocok untuk turnamen format gugur per-matchday. {competition.label} pakai seri best-of-7 — fitur ini aktif lagi pas Piala Dunia 2026 mulai 11 Juni.
+          </p>
+        </div>
+      </PickemRoot>
+    );
+  }
+  return <SurvivorImpl />;
+}
+
+function SurvivorImpl() {
   const [state, setState] = useState(() => readSurvivor());
   const [confirmPick, setConfirmPick] = useState(null);
 

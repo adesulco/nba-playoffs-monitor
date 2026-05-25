@@ -7688,7 +7688,34 @@
 // in a later release. Not in scope for this ship — and explicitly NOT
 // a sportsbook API swap.
 
-export const APP_VERSION = '0.79.0';
+// v0.79.1 — Pick'em multi-competition refactor.
+//
+// Pick'em was hardcoded to WC2026 across 7 screens (PredictingHub,
+// FixtureDetail, Bracket, BracketTreeView, Leaderboard, Grup, GrupCreate,
+// + Profile + HubRightRail). NBA-Playoffs-2026 fixtures were live in the
+// DB after v0.79.0's backfill but invisible to the UI.
+//
+// New: src/pickem/competitions.js registry + usePickemCompetition() hook
+// + PickemCompetitionProvider mounted in PickemRoot. Every screen reads
+// the active competition at render time and re-fetches on switch. A small
+// segmented pill at the top of <PickemRoot> lets the user toggle when
+// more than one competition is in-window.
+//
+// Competition shape gates which screens render:
+//   - NBA-Playoffs-2026 → has Predict + Grups; Bracket + Survivor show a
+//     "not available for this competition" placeholder (NBA's series-shape
+//     doesn't fit the WC group+KO bracket or matchday-elim survivor loop)
+//   - WC2026 → all features available (renders today when user selects;
+//     becomes the default on 2026-06-11 per defaultCompetitionKey())
+//
+// defaultCompetitionKey() picks the right competition for fresh visitors
+// without asking — currently NBA (in window), flips to WC2026 on June 11.
+//
+// Test: visit /pickem with no localStorage, expect NBA fixtures rendered;
+// switch to WC via the pill, expect empty state (no WC fixtures backfilled
+// yet — that's the next ship); switch back, NBA fixtures return.
+
+export const APP_VERSION = '0.79.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

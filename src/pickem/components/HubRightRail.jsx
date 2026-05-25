@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Badge, StreakFlame, PickemBtn } from './social.jsx';
 import { listMyGrups, listProfile } from '../api.js';
+import { usePickemCompetition } from '../useCompetition.jsx';
 
 // ============================================================================
 // v0.76.0 — Pick'em desktop right rail (P8 polish).
@@ -23,6 +24,8 @@ import { listMyGrups, listProfile } from '../api.js';
 
 export default function HubRightRail({ user }) {
   const navigate = useNavigate();
+  const { competition } = usePickemCompetition();
+  const COMPETITION = competition.key;
   const [profile, setProfile] = useState(null);
   const [grups, setGrups] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,8 +39,8 @@ export default function HubRightRail({ user }) {
     (async () => {
       setLoading(true);
       const [pRes, gRes] = await Promise.all([
-        listProfile({ competition: 'WC2026', history_limit: 1 }),
-        listMyGrups('WC2026'),
+        listProfile({ competition: COMPETITION, history_limit: 1 }),
+        listMyGrups(COMPETITION),
       ]);
       if (cancelled) return;
       if (pRes.ok) setProfile(pRes.profile);
@@ -47,7 +50,7 @@ export default function HubRightRail({ user }) {
     return () => {
       cancelled = true;
     };
-  }, [user]);
+  }, [user, COMPETITION]);
 
   if (!user) {
     return <GuestRail onLogin={() => navigate('/login?next=/pickem')} />;
