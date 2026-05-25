@@ -7715,7 +7715,35 @@
 // switch to WC via the pill, expect empty state (no WC fixtures backfilled
 // yet — that's the next ship); switch back, NBA fixtures return.
 
-export const APP_VERSION = '0.79.1';
+// v0.79.2 — Pick'em launches.
+//
+// VITE_FLAG_PICKEM default flipped from false to true in src/lib/flags.js.
+// The 13 /pickem routes now register in App.jsx without an env var, so
+// /pickem (PredictingHub), /pickem/board, /pickem/grup, /pickem/bracket,
+// /pickem/survivor, /pickem/profile, /pickem/recap, etc. are all live.
+//
+// Default competition is NBA-Playoffs-2026 (auto-picked by
+// defaultCompetitionKey() while we're in the playoff window). Switcher
+// pill at top of <PickemRoot> exposes WC2026 alongside once 2026-06-11
+// opens its window.
+//
+// What users see today:
+//   - /pickem      → PredictingHub with 8 backfilled NBA fixtures (WCF
+//                    + ECF games 4-7), predict-first guest flow, claim-
+//                    on-login when they sign in via magic link
+//   - /pickem/board → Empty leaderboard scoped to NBA-Playoffs-2026
+//                     (no scored predictions yet, expected)
+//   - /pickem/grup  → Auth-gated; logged-in users see their grups or
+//                     can create / join one
+//   - /pickem/bracket  → "Bracket NBA Playoffs belum aktif" placeholder
+//                        (best-of-7 series doesn't fit WC-shape bracket)
+//   - /pickem/survivor → Same placeholder shape as bracket
+//   - /pickem/profile  → User stats / badges / streak / recent picks
+//
+// Reversible: set VITE_FLAG_PICKEM=0 in Vercel production env to hide
+// every /pickem route without a code revert.
+
+export const APP_VERSION = '0.79.2';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -80,7 +80,12 @@ export const UI = {
   v2:            envFlag('VITE_FLAG_UI_V2', false),
   cmdCenter:     envFlag('VITE_FLAG_CMD_CENTER', false),
   terminalHome:  envFlag('VITE_FLAG_TERMINAL_HOME', false),
-  pickem:        envFlag('VITE_FLAG_PICKEM', false),
+  // v0.79.2 — Pick'em launched on NBA Playoffs 2026 window (2026-05-25).
+  // Default flipped from false to true. WC2026 (June 11+) becomes
+  // the second active competition via the in-app selector pill.
+  // Reversible: set VITE_FLAG_PICKEM=0 in Vercel to kill the surface
+  // without a revert.
+  pickem:        envFlag('VITE_FLAG_PICKEM', true),
   xgPerShot:     envFlag('VITE_FLAG_XG_PER_SHOT', false),
   tennisPbp:     envFlag('VITE_FLAG_TENNIS_PBP', false),
   f1TyrePit:     envFlag('VITE_FLAG_F1_TYRE_PIT', false),
