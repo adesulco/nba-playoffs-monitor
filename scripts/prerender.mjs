@@ -230,6 +230,25 @@ const STATIC_ROUTES = [
       { name: 'Syarat & Ketentuan', url: '/terms' },
     ]),
   },
+  // v0.79.3 — Pick'em hub. Prerender so WhatsApp / Slack / Discord
+  // unfurls see proper Bahasa meta instead of the NotFound stub. The
+  // SPA hydrates and routes to PredictingHub on the active competition
+  // (NBA-Playoffs-2026 today, WC2026 from 2026-06-11). The deep-link
+  // sub-routes (/pickem/board, /pickem/grup, /pickem/bracket, etc.) fall
+  // through to the SPA shell via the vercel.json /pickem/:path* rewrite
+  // — they share meta with the homepage rather than each having their
+  // own STATIC_ROUTES entry.
+  {
+    path: '/pickem',
+    title: "Pick'em — Prediksi NBA Playoff & Piala Dunia 2026 | gibol.co",
+    description: "Prediksi laga NBA Playoffs 2026 + Piala Dunia FIFA 2026 bareng teman. Bikin grup, kunci pilihan sebelum tip-off, naik ke papan peringkat. Bahasa-first, gratis, tanpa iklan.",
+    keywords: "pickem indonesia, prediksi nba 2026, prediksi piala dunia 2026, tebak skor nba, prediksi bola, fantasy bola indonesia, grup prediksi whatsapp",
+    ogImage: DEFAULT_OG,
+    jsonLd: breadcrumb([
+      { name: 'gibol.co', url: '/' },
+      { name: "Pick'em", url: '/pickem' },
+    ]),
+  },
   {
     path: '/ibl',
     // v0.13.0 trim — was 73 chars.

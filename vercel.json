@@ -24,6 +24,8 @@
     { "source": "/league/:path*", "destination": "/index.html" },
     { "source": "/leaderboard", "destination": "/index.html" },
     { "source": "/leaderboard/:leagueId", "destination": "/index.html" },
+    { "source": "/pickem", "destination": "/index.html" },
+    { "source": "/pickem/:path*", "destination": "/index.html" },
     { "source": "/nba", "destination": "/index.html" },
     { "source": "/nba-playoff-2026/game/:gameId", "destination": "/index.html" },
     { "source": "/editor", "destination": "/index.html" }

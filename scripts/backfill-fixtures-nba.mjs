@@ -110,6 +110,11 @@ if (!SERVICE_ROLE) {
 
 const DRY_RUN = process.argv.includes('--dry-run');
 const WINDOW_DAYS = Math.min(30, parseInt(process.env.WINDOW_DAYS || '14', 10));
+// v0.79.3 — also walk a small lookback window so games that finalized
+// since the last run pick up scores + outcome. 3 days back is enough
+// for NBA (no game stays in 'live' or 'scheduled' longer than that
+// without ESPN's status flipping to 'post'). Tunable via env if needed.
+const LOOKBACK_DAYS = Math.min(7, parseInt(process.env.LOOKBACK_DAYS || '3', 10));
 const LEAGUE_KEY = 'NBA-Playoffs-2026';
 const SEASON = '2025-26';
 
@@ -298,12 +303,12 @@ async function main() {
 
   const today = new Date();
   const dates = [];
-  for (let i = 0; i < WINDOW_DAYS; i++) {
+  for (let i = -LOOKBACK_DAYS; i < WINDOW_DAYS; i++) {
     const d = new Date(today);
     d.setUTCDate(today.getUTCDate() + i);
     dates.push(yyyymmdd(d));
   }
-  console.log(`[backfill] fetching ESPN scoreboard for ${dates.length} dates: ${dates[0]} → ${dates[dates.length - 1]}`);
+  console.log(`[backfill] fetching ESPN scoreboard for ${dates.length} dates: ${dates[0]} → ${dates[dates.length - 1]} (lookback=${LOOKBACK_DAYS}d, forward=${WINDOW_DAYS}d)`);
 
   const allowedTricodes = await fetchAllowedTricodes();
   console.log(`[backfill] allowed NBA tricodes in teams table: ${allowedTricodes.size}`);

@@ -7743,7 +7743,32 @@
 // Reversible: set VITE_FLAG_PICKEM=0 in Vercel production env to hide
 // every /pickem route without a code revert.
 
-export const APP_VERSION = '0.79.2';
+// v0.79.3 — Pick'em launch polish (2026-05-26).
+//
+// Three small fixes after the v0.79.2 flag flip:
+//
+// 1. vercel.json — added `/pickem` + `/pickem/:path*` rewrites to
+//    `/index.html`. Before this, cold loads of /pickem (no prerender
+//    entry) returned 404 + NotFound stub HTML. Now Vercel serves the
+//    SPA shell and React Router takes over.
+//
+// 2. scripts/prerender.mjs — added /pickem to STATIC_ROUTES with
+//    proper Bahasa meta (title + description + keywords + breadcrumb
+//    JSON-LD). WhatsApp / Slack / Discord unfurls now show the right
+//    preview card instead of "Halaman tidak ditemukan".
+//
+// 3. scripts/backfill-fixtures-nba.mjs — added LOOKBACK_DAYS=3 (env
+//    tunable). Previous version walked only forward, so games that
+//    finalized between runs never got their scores written. Now today's
+//    backfill picks up scores from up to 3 days ago.
+//
+// After the lookback fix, the first re-run picked up:
+//   - WCF G4 (5/25): SAS beat OKC 103-82, series tied 2-2
+//   - ECF G4 (5/26): NYK @ CLE live now
+//   - WCF G3 (5/24): NYK 121-108 CLE (historical, was missing)
+// Plus 6 more scheduled G5-G7 entries for both conference series.
+
+export const APP_VERSION = '0.79.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
