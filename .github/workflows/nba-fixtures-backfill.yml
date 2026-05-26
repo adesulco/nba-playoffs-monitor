@@ -1,0 +1,91 @@
+name: NBA Pick'em fixtures backfill
+
+# v0.79.5 — Pick'em ship support.
+#
+# Runs scripts/backfill-fixtures-nba.mjs on a schedule so the
+# public.fixtures table stays fresh — picks up new scheduled games
+# from ESPN, refreshes scores + outcome on finalised games (via the
+# LOOKBACK_DAYS=3 window), and never duplicates (deterministic UUIDs
+# from ESPN event IDs).
+#
+# Why GitHub Actions and not Vercel Cron: we're at 11/12 Vercel Hobby
+# function slots. Adding a cron-handler function would push us over.
+# GitHub Actions is free on a public repo, the script is pure Node
+# (no deps), and the run is ~5s.
+#
+# Secrets required (set in GitHub repo Settings → Secrets and variables →
+# Actions):
+#   SUPABASE_SERVICE_ROLE_KEY  — Supabase service-role JWT. Needed because
+#                                Pick'em fixtures sit behind RLS and the
+#                                script does an UPSERT.
+#   SUPABASE_URL               — (optional) defaults to
+#                                https://egzacjfbmgbcwhtvqixc.supabase.co
+#                                hardcoded in the script. Set only if the
+#                                project ever moves.
+
+on:
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: 'Days forward to fetch from ESPN (default 14, max 30)'
+        required: false
+        default: '14'
+        type: string
+      lookback_days:
+        description: 'Days backward to refresh finalised games (default 3, max 7)'
+        required: false
+        default: '3'
+        type: string
+  schedule:
+    # Every 6 hours. NBA playoff games run roughly 02:00-08:00 UTC; this
+    # cadence catches G4-G7 results within ~3h of the final whistle and
+    # picks up any newly-scheduled "if necessary" games before lock_at.
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nba-fixtures-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run NBA fixtures backfill
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://egzacjfbmgbcwhtvqixc.supabase.co' }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          WINDOW_DAYS: ${{ github.event.inputs.window_days || '14' }}
+          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '3' }}
+        run: |
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "FATAL: SUPABASE_SERVICE_ROLE_KEY secret is not set"
+            echo "Add it at: Settings → Secrets and variables → Actions"
+            exit 1
+          fi
+          node scripts/backfill-fixtures-nba.mjs
+
+      - name: Verify via public API
+        if: always()
+        run: |
+          # Sanity check: hit the public list-fixtures endpoint, confirm
+          # we still get a non-empty array. Doesn't fail the workflow on
+          # error (script may have just run a no-op write); just logs.
+          set +e
+          RESP=$(curl -sL "https://www.gibol.co/api/pickem?_action=list-fixtures&league=NBA-Playoffs-2026" 2>/dev/null)
+          COUNT=$(echo "$RESP" | python3 -c "import json, sys; print(len(json.load(sys.stdin).get('fixtures', [])))" 2>/dev/null || echo "?")
+          echo "Pick'em API now reports $COUNT NBA-Playoffs-2026 fixtures"

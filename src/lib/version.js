@@ -7786,7 +7786,26 @@
 // covers it. Can revisit once we have rendered prediction counts
 // worth showing.
 
-export const APP_VERSION = '0.79.4';
+// v0.79.5 — Pick'em fixtures backfill cron (2026-05-26).
+//
+// New: .github/workflows/nba-fixtures-backfill.yml runs
+// scripts/backfill-fixtures-nba.mjs every 6 hours via GitHub Actions
+// cron. No Vercel function slot used (we're 11/12). On each run:
+//   - Walks LOOKBACK_DAYS=3 backward + WINDOW_DAYS=14 forward
+//   - UPSERTs into public.fixtures with deterministic UUIDs (idempotent)
+//   - Catches new "if necessary" games as they get scheduled, and
+//     refreshes scores + outcome + finalized_at on games that ended
+//     since the last run
+//
+// Reads SUPABASE_SERVICE_ROLE_KEY from GitHub repo secrets (already
+// configured for content-cron.yml).
+//
+// To kill the cron without a code revert: edit the workflow file in
+// GitHub UI and comment out the `schedule:` block, OR delete the
+// SUPABASE_SERVICE_ROLE_KEY secret (the script will exit cleanly with
+// a non-zero status, but Vercel won't be touched).
+
+export const APP_VERSION = '0.79.5';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
