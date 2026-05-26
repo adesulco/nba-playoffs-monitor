@@ -198,7 +198,7 @@ function PredictingHubInner() {
         style={{ padding: '20px 16px 32px', maxWidth: 1080, margin: '0 auto' }}
       >
         <div style={{ minWidth: 0 }}>
-          <Header user={user} />
+          <Header user={user} competition={competition} />
 
           {loading && <LoadingState />}
           {!loading && !schemaReady && <NotReadyState />}
@@ -252,11 +252,15 @@ function PredictingHubInner() {
 
 // ── Sub-components ─────────────────────────────────────────────────────────
 
-function Header({ user }) {
+function Header({ user, competition }) {
+  // v0.79.7 — eyebrow was hardcoded "PIALA DUNIA 2026 · GRUP". Now
+  // pulls the active competition's label so NBA-Playoffs-2026 shows
+  // "NBA PLAYOFFS · GRUP" and WC2026 shows "PIALA DUNIA · GRUP".
+  const label = (competition?.labelLong || competition?.label || 'PICK\'EM').toUpperCase();
   return (
     <header style={{ marginBottom: 18 }}>
       <div className="p-eyebrow" style={{ marginBottom: 6 }}>
-        PIALA DUNIA 2026 · GRUP
+        {label} · GRUP
       </div>
       <h1 className="p-display-sm" style={{ marginBottom: 4, color: 'var(--ink-1)' }}>
         Prediksi hari ini
@@ -358,6 +362,7 @@ function FixtureGroups({ groups, serverPredictions, guestPredictions, onChange }
                 awayTeam={hydrateTeam(fx, 'away')}
                 prediction={serverPredictions[fx.id] || guestPredictions[fx.id] || null}
                 onPredictionChange={(partial) => onChange(fx, partial)}
+                allowDraw={competition.shape !== 'playoff-series'}
               />
             ))}
           </div>

@@ -7816,7 +7816,27 @@
 // Found during the v0.79.5 launch smoke test — couldn't score the
 // WCF G4 (SAS 103-82 OKC) because 103 > 99.
 
-export const APP_VERSION = '0.79.6';
+// v0.79.7 — three bugs caught in the launch smoke test (2026-05-26).
+//
+// 1. PredictingHub header eyebrow was hardcoded "PIALA DUNIA 2026 ·
+//    GRUP" — now reads `${competition.labelLong} · GRUP` so NBA shows
+//    "NBA PLAYOFFS 2026 · GRUP".
+// 2. OutcomePicker exposed a "Seri" (Draw) button for NBA, which can't
+//    end in a draw (best-of-7 series). New allowDraw prop, threaded
+//    from PredictingHub via competition.shape !== 'playoff-series'.
+//    ScoreStepper's derived outcome also respects this (a tie score
+//    keeps the prior outcome instead of snapping to 'D' when draws
+//    aren't legal).
+// 3. HubRightRail "Bracket WC 2026" quick link was hardcoded — now
+//    only renders if competition.hasBracket, with the active label.
+//    Same for Survivor (competition.hasSurvivor).
+//
+// All three caught during ade.sulistioputra's first real prediction
+// in production. Prediction itself worked perfectly — picked_outcome
+// 'H' (OKC to win G5 at home) saved correctly to the predictions
+// table.
+
+export const APP_VERSION = '0.79.7';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

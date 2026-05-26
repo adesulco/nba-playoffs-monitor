@@ -269,14 +269,20 @@ const OUTCOME_OPTS = [
   { value: 'A', code: '2', label: 'Kalah',  oddsKey: 'away' },
 ];
 
-export function OutcomePicker({ odds = {}, value, onChange, hint, disabled }) {
+export function OutcomePicker({ odds = {}, value, onChange, hint, disabled, allowDraw = true }) {
+  // v0.79.7 — allowDraw=false hides the X/Seri button. Used for NBA
+  // (best-of-7 series can't end in a draw) and any other sport whose
+  // competitions.js entry has shape === 'playoff-series'. The 1-X-2
+  // soccer ordering becomes a 1-2 two-button picker that splits 50/50.
+  const options = allowDraw ? OUTCOME_OPTS : OUTCOME_OPTS.filter((o) => o.value !== 'D');
+  const cols = allowDraw ? '1fr 1fr 1fr' : '1fr 1fr';
   return (
     <div
       role="radiogroup"
       aria-label={hint || 'Hasil pertandingan'}
-      style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}
+      style={{ display: 'grid', gridTemplateColumns: cols, gap: 8 }}
     >
-      {OUTCOME_OPTS.map((o) => {
+      {options.map((o) => {
         const sel = value === o.value;
         const prob = odds[o.oddsKey];
         return (

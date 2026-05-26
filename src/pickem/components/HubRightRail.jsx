@@ -64,7 +64,7 @@ export default function HubRightRail({ user }) {
     >
       <StreakCard profile={profile} loading={loading} />
       <GrupSnippet grups={grups} loading={loading} onCreate={() => navigate('/pickem/grup/new')} />
-      <QuickLinks navigate={navigate} />
+      <QuickLinks navigate={navigate} competition={competition} />
     </aside>
   );
 }
@@ -201,12 +201,20 @@ function GrupSnippet({ grups, loading, onCreate }) {
   );
 }
 
-function QuickLinks({ navigate }) {
-  const links = [
-    { l: 'Bracket WC 2026', to: '/pickem/bracket', sub: 'Bangun bracket sebelum kick-off' },
-    { l: 'Survivor', to: '/pickem/survivor', sub: 'Pilih satu tim per pekan' },
-    { l: 'Recap kamu', to: '/pickem/recap', sub: 'Kartu Bola buat WhatsApp' },
-  ];
+function QuickLinks({ navigate, competition }) {
+  // v0.79.7 — links are now competition-aware. Bracket + Survivor only
+  // appear when the active competition supports them (tournament-shape).
+  // For NBA Playoffs (playoff-series shape) these wouldn't open anything
+  // useful — the bracket renders a "tersedia mulai 11 Juni" placeholder.
+  const links = [];
+  if (competition?.hasBracket) {
+    const bracketLabel = `Bracket ${competition.label || 'WC'}`;
+    links.push({ l: bracketLabel, to: '/pickem/bracket', sub: 'Bangun bracket sebelum kick-off' });
+  }
+  if (competition?.hasSurvivor) {
+    links.push({ l: 'Survivor', to: '/pickem/survivor', sub: 'Pilih satu tim per pekan' });
+  }
+  links.push({ l: 'Recap kamu', to: '/pickem/recap', sub: 'Kartu Bola buat WhatsApp' });
   return (
     <RailCard label="CEPAT KE">
       <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>

@@ -75,6 +75,10 @@ export default function FixtureCard({
   onOpenDetail,
   rules = DEFAULT_MATCH_RULES,
   compact = false,
+  // v0.79.7 — false for competitions whose shape rules out draws
+  // (NBA Playoffs best-of-7 series). Passed down to BodyOpen which
+  // forwards to OutcomePicker.
+  allowDraw = true,
 }) {
   const state = useDerivedState(fixture, prediction);
   const lockInfo = useLockCountdown(fixture?.lock_at);
@@ -138,6 +142,7 @@ export default function FixtureCard({
               lockInfo={lockInfo}
               onPredictionChange={onPredictionChange}
               rules={rules}
+              allowDraw={allowDraw}
             />
           )}
           {state === 'locked' && (
@@ -323,7 +328,7 @@ function ScoreSlot({ fixture, state }) {
 
 // ── Body: open (predict mode) ──────────────────────────────────────────────
 
-function BodyOpen({ fixture, prediction, odds, lockInfo, onPredictionChange, rules }) {
+function BodyOpen({ fixture, prediction, odds, lockInfo, onPredictionChange, rules, allowDraw = true }) {
   const outcome = prediction?.picked_outcome || null;
   const pickedHome = prediction?.picked_home;
   const pickedAway = prediction?.picked_away;
@@ -346,8 +351,10 @@ function BodyOpen({ fixture, prediction, odds, lockInfo, onPredictionChange, rul
     setDraftHome(h);
     setDraftAway(a);
     // Derive the picked outcome from the score so the user can't enter a
-    // contradiction (server would 400 anyway).
-    const derived = h > a ? 'H' : h < a ? 'A' : 'D';
+    // contradiction (server would 400 anyway). When draws aren't legal
+    // (NBA / any playoff-series), a tie score falls back to the previous
+    // outcome rather than 'D' — user has to break the tie before save.
+    const derived = h > a ? 'H' : h < a ? 'A' : (allowDraw ? 'D' : outcome || null);
     onPredictionChange?.({ picked_home: h, picked_away: a, picked_outcome: derived });
   };
   const toggleJagoan = () => onPredictionChange?.({ is_jagoan: !isJagoan });
@@ -368,7 +375,7 @@ function BodyOpen({ fixture, prediction, odds, lockInfo, onPredictionChange, rul
 
   return (
     <div style={{ paddingTop: 14 }}>
-      <OutcomePicker odds={odds} value={outcome} onChange={setOutcome} />
+      <OutcomePicker odds={odds} value={outcome} onChange={setOutcome} allowDraw={allowDraw} />
 
       <div
         style={{
