@@ -46,11 +46,15 @@ export default async function handler(req, res) {
   const away_score = Number(body.away_score);
 
   if (!fixture_id) return res.status(400).json({ error: 'fixture_id required' });
-  if (!Number.isInteger(home_score) || home_score < 0 || home_score > 99) {
-    return res.status(400).json({ error: 'home_score must be integer 0..99' });
+  // v0.79.6 — was capped at 99 (fine for soccer, broke for NBA where
+  // games routinely hit 100+). Schema accepts any non-negative int.
+  // Cap at 300 as a sanity bound — no real sport produces a score
+  // higher than that, and it catches typos like `1030` for 103.
+  if (!Number.isInteger(home_score) || home_score < 0 || home_score > 300) {
+    return res.status(400).json({ error: 'home_score must be integer 0..300' });
   }
-  if (!Number.isInteger(away_score) || away_score < 0 || away_score > 99) {
-    return res.status(400).json({ error: 'away_score must be integer 0..99' });
+  if (!Number.isInteger(away_score) || away_score < 0 || away_score > 300) {
+    return res.status(400).json({ error: 'away_score must be integer 0..300' });
   }
 
   const admin = getSupabaseAdmin();

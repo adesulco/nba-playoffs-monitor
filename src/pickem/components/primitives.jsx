@@ -143,7 +143,7 @@ const STEP_BTN_STYLE = {
 
 /**
  * <ScoreStepper value={2} onChange={n => …} /> — mono numeric stepper for
- * exact-score input. Floors at 0, no upper cap (the API enforces 0..99).
+ * exact-score input. Floors at 0, no upper cap (the API enforces 0..300).
  * size='lg' bumps the buttons to 36px for the fixture-detail screen.
  */
 export function ScoreStepper({ value = 0, onChange, size = 'md', minValue = 0, maxValue = 20, ariaLabel }) {

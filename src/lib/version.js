@@ -7805,7 +7805,18 @@
 // SUPABASE_SERVICE_ROLE_KEY secret (the script will exit cleanly with
 // a non-zero status, but Vercel won't be touched).
 
-export const APP_VERSION = '0.79.5';
+// v0.79.6 — Pick'em smoke-test fix (2026-05-26).
+//
+// score-fixture + upsert-prediction were capping home_score/away_score
+// at 99 — fine for soccer/F1, broke immediately on NBA (games hit
+// 100+ routinely). Schema accepts any non-negative int; only the API
+// validators were over-strict. Cap raised to 300 (sanity bound that
+// catches typos but admits any real sport's final).
+//
+// Found during the v0.79.5 launch smoke test — couldn't score the
+// WCF G4 (SAS 103-82 OKC) because 103 > 99.
+
+export const APP_VERSION = '0.79.6';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

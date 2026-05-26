@@ -42,9 +42,12 @@ export default async function handler(req, res) {
   if ((picked_home == null) !== (picked_away == null)) {
     return res.status(400).json({ error: 'picked_home and picked_away must both be set or both null' });
   }
+  // v0.79.6 — was capped at 99 (soccer-safe), broke for NBA (100+).
+  // Match the score-fixture cap at 300 — sanity bound that catches
+  // typos but admits any real sport's final score.
   for (const v of [picked_home, picked_away]) {
-    if (v != null && (!Number.isInteger(v) || v < 0 || v > 99)) {
-      return res.status(400).json({ error: 'scores must be integers 0..99' });
+    if (v != null && (!Number.isInteger(v) || v < 0 || v > 300)) {
+      return res.status(400).json({ error: 'scores must be integers 0..300' });
     }
   }
 
