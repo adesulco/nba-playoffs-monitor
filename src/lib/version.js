@@ -7768,7 +7768,25 @@
 //   - WCF G3 (5/24): NYK 121-108 CLE (historical, was missing)
 // Plus 6 more scheduled G5-G7 entries for both conference series.
 
-export const APP_VERSION = '0.79.3';
+// v0.79.4 — Pick'em surfaced on Home (2026-05-26).
+//
+// Pick'em launched in v0.79.2 but was URL-only — nobody could find
+// /pickem unless they typed it. This commit adds a Home card right
+// under the NBA hero with the new "pickem" icon variant + Bahasa
+// blurb. Card uses pickem-orange #9A3412 (Pulse & Field design system),
+// "NEW" tag, and links to /pickem.
+//
+// New scaffolding:
+//   - SportIcon: pickem variant (target + checkmark glyph)
+//   - sportColor.js: SPORT_COLOR_LIGHT.pickem + SPORT_COLOR_DARK.pickem
+//   - flags.js: VISIBLE.pickem (co-uses VITE_FLAG_PICKEM so the card
+//     hides if the flag is killed)
+//
+// No live teaser data on the Home card yet — the comprehensive blurb
+// covers it. Can revisit once we have rendered prediction counts
+// worth showing.
+
+export const APP_VERSION = '0.79.4';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

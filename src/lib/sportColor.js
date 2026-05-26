@@ -18,6 +18,10 @@ export const SPORT_COLOR_DARK = {
   wc:     '#a0c2ea',
   id:     '#ff9ea0',
   tennis: '#e6c47a',
+  // v0.79.4 — Pick'em is cross-sport (prediction game over NBA + WC2026),
+  // so the accent is its own brand orange (Pulse & Field design system,
+  // pickem-orange #9A3412 verified AA-on-dark per palette audit).
+  pickem: '#ff9966',  // lighter rust — AA on parchment dark
 };
 
 export const SPORT_COLOR_LIGHT = {
@@ -27,6 +31,7 @@ export const SPORT_COLOR_LIGHT = {
   wc:     '#326295',
   id:     '#c1272d',
   tennis: '#d4a13a',
+  pickem: '#9A3412',  // full brand rust for cream/paper-grey theme
 };
 
 /**

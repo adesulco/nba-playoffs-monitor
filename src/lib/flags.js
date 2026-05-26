@@ -31,6 +31,10 @@ function envFlag(name, fallback) {
 // Visibility: should the Home grid include this sport's card at all?
 export const VISIBLE = {
   nba:        envFlag('VITE_FLAG_NBA', true),
+  // v0.79.4 — Pick'em added to Home cards. Co-uses the UI.pickem flag
+  // (which gates the /pickem routes themselves); when UI.pickem is off,
+  // the card is hidden too so we don't link to a 404.
+  pickem:     envFlag('VITE_FLAG_PICKEM', true),
   f1:         envFlag('VITE_FLAG_F1_VISIBLE', true),
   epl:        envFlag('VITE_FLAG_EPL_VISIBLE', true),
   tennis:     envFlag('VITE_FLAG_TENNIS_VISIBLE', true),

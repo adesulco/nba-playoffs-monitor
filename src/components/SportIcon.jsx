@@ -77,6 +77,15 @@ const PATHS = {
       <path d="M4 15c5-1 11-1 16 0" />
     </>
   ),
+  // v0.79.4 — Pick'em: target + checkmark = "predict + lock it in".
+  // Distinct from tennis (no curved seams) and wc (no points), so the
+  // glyph reads at 30px on the Home card and at 52px in the hero.
+  pickem: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M8.5 12.5l2.5 2.5 4.5-5" />
+    </>
+  ),
 };
 
 // Tile background (sport color at low alpha) — theme-independent because
@@ -88,6 +97,7 @@ const BG_BY_ID = {
   wc:     'rgba(50,98,149,.28)',
   id:     'rgba(193,39,45,.22)',
   tennis: 'rgba(212,161,58,.22)',
+  pickem: 'rgba(154,52,18,.22)',  // pickem-orange #9A3412 at low alpha
 };
 
 // Stroke color lives in src/lib/sportColor.js so Chip, Button, and SportIcon

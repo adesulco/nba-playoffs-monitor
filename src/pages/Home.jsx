@@ -42,6 +42,26 @@ const DASHBOARDS = [
     cta: 'Enter →',
     ctaId: 'Masuk →',
   },
+  // v0.79.4 — Pick'em card. Inserted right after NBA so it's visible
+  // immediately under the hero. NBA Playoffs is the active competition
+  // until 2026-06-11 when WC2026 opens — copy reflects that. Switcher
+  // pill in <PickemRoot> lets users toggle once both are in-window.
+  {
+    id: 'pickem',
+    href: '/pickem',
+    status: 'live',
+    tag: 'NEW',
+    title: "Pick'em — Predictions",
+    titleId: "Pick'em — Prediksi",
+    league: 'PREDIKSI · NBA + PIALA DUNIA 2026',
+    blurb: 'Predict NBA Playoff games and FIFA World Cup 2026 matches with friends. Lock picks before tip-off, climb the leaderboard, share Kartu Bola recaps to WhatsApp. Free, no ads.',
+    blurbId: 'Prediksi laga NBA Playoff dan Piala Dunia FIFA 2026 bareng temen. Kunci pilihan sebelum tip-off, naik peringkat, share Kartu Bola ke WhatsApp. Gratis, nggak ada iklan.',
+    accent: '#9A3412',
+    launchDate: null,
+    icon: 'pickem',
+    cta: 'Start →',
+    ctaId: 'Mulai →',
+  },
   {
     id: 'f1',
     href: '/formula-1-2026',
