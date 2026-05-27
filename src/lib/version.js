@@ -7836,7 +7836,20 @@
 // 'H' (OKC to win G5 at home) saved correctly to the predictions
 // table.
 
-export const APP_VERSION = '0.79.7';
+// v0.79.8 — Fix-on-fix (2026-05-26).
+//
+// v0.79.7 added `allowDraw={competition.shape !== 'playoff-series'}`
+// to <FixtureCard /> inside <FixtureGroups>, but <FixtureGroups> is
+// a sub-component that doesn't take `competition`. Production crashed
+// with ReferenceError: competition is not defined.
+//
+// Fix: thread the prop through. The other two header + quick-links
+// fixes from v0.79.7 work fine since they live in places where
+// competition was already in scope.
+//
+// Caught by re-loading /pickem in Chrome MCP after the v0.79.7 deploy.
+
+export const APP_VERSION = '0.79.8';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

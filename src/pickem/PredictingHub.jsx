@@ -209,6 +209,7 @@ function PredictingHubInner() {
               serverPredictions={serverPredictions}
               guestPredictions={guestPredictions}
               onChange={handlePredictionChange}
+              competition={competition}
             />
           )}
 
@@ -341,7 +342,7 @@ function NotReadyState() {
   );
 }
 
-function FixtureGroups({ groups, serverPredictions, guestPredictions, onChange }) {
+function FixtureGroups({ groups, serverPredictions, guestPredictions, onChange, competition }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {groups.map((g) => (
