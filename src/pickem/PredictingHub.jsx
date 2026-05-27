@@ -9,7 +9,7 @@ import {
   markNudged,
   getGuestPrediction,
 } from './guestStore.js';
-import { listFixtures, upsertPrediction } from './api.js';
+import { listFixtures, listPredictions, upsertPrediction } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import HubRightRail from './components/HubRightRail.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
@@ -104,10 +104,8 @@ function PredictingHubInner() {
     (async () => {
       const result = await claimGuestPredictions(upsertPrediction);
       // After claim: refresh local guest state (will be empty on full
-      // success), and the next fixture refetch will pick up the new
-      // server-side predictions. We could fetch /api/pickem?_action=
-      // list-predictions next — but we don't have that endpoint yet
-      // (deferred), so for v1 the local optimistic state is enough.
+      // success). The list-predictions effect below pulls the canonical
+      // server-side state into serverPredictions for re-display.
       setGuestPredictions(indexByFixture(listGuestPredictions(COMPETITION)));
       if (result.claimed > 0 && typeof window !== 'undefined' && window.gibolToast) {
         window.gibolToast.show({
@@ -117,6 +115,33 @@ function PredictingHubInner() {
       }
     })();
   }, [user]);
+
+  // 2b. Rehydrate server-side predictions on mount + auth + competition
+  //     switch. v0.79.9 — closes the gap surfaced in the launch smoke
+  //     where a saved prediction wouldn't re-highlight on page reload.
+  //     Returns { fixture_id → row }, merged into serverPredictions so
+  //     FixtureCard's `prediction` prop picks them up.
+  useEffect(() => {
+    if (!user) {
+      // Logged out: clear any stale server-side state from a prior
+      // session so we don't show another user's picks.
+      setServerPredictions({});
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      const res = await listPredictions({ competition: COMPETITION, limit: 200 });
+      if (cancelled || !res.ok) return;
+      const byFixture = {};
+      for (const p of res.predictions || []) {
+        byFixture[p.fixture_id] = p;
+      }
+      setServerPredictions(byFixture);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [user, COMPETITION]);
 
   // 3. Save flow — guest goes to localStorage, authed posts to API.
   const handlePredictionChange = useCallback(

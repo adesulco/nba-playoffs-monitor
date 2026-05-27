@@ -7849,7 +7849,28 @@
 //
 // Caught by re-loading /pickem in Chrome MCP after the v0.79.7 deploy.
 
-export const APP_VERSION = '0.79.8';
+// v0.79.9 — Rehydration gap closed (2026-05-27).
+//
+// Smoke test on v0.79.8 surfaced: a signed-in user's saved prediction
+// landed in the DB but didn't re-highlight on page reload — the only
+// path that populated serverPredictions was the optimistic write on
+// upsert. There was no server→client read.
+//
+// Fix:
+//   - api/_lib/pickem/list-predictions.js — new GET handler. Auth via
+//     bearer token, returns the user's predictions (optionally scoped
+//     to a competition), capped at limit=200/max=500.
+//   - api/pickem.js dispatcher routes `list-predictions` to it.
+//   - src/pickem/api.js — new listPredictions() client wrapper.
+//   - src/pickem/PredictingHub.jsx — rehydration useEffect that runs
+//     on user/competition change, populates serverPredictions by
+//     fixture_id. Cleared on logout so a fresh visitor doesn't see
+//     stale picks. Optimistic write path unchanged.
+//
+// Predictions made in earlier sessions now re-highlight correctly on
+// page reload + after sign-in claim.
+
+export const APP_VERSION = '0.79.9';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

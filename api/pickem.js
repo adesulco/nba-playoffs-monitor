@@ -46,6 +46,11 @@ import scoreBracketHandler  from './_lib/pickem/score-bracket.js';
 import upsertSurvivorHandler from './_lib/pickem/upsert-survivor.js';
 import listSurvivorHandler   from './_lib/pickem/list-survivor.js';
 
+// v0.79.9 — closes the rehydration gap. Returns the authenticated
+// user's predictions so PredictingHub can re-mark them as selected on
+// page reload + competition switch.
+import listPredictionsHandler from './_lib/pickem/list-predictions.js';
+
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
   switch (action) {
@@ -70,6 +75,8 @@ export default async function handler(req, res) {
     // v0.73.0 P5.5 — server-side Survivor persistence.
     case 'upsert-survivor-pick': return upsertSurvivorHandler(req, res);
     case 'list-survivor':        return listSurvivorHandler(req, res);
+    // v0.79.9 — read user's predictions for rehydration on reload.
+    case 'list-predictions':     return listPredictionsHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
@@ -79,6 +86,7 @@ export default async function handler(req, res) {
           'list-grups', 'list-profile',
           'upsert-bracket', 'score-bracket',
           'upsert-survivor-pick', 'list-survivor',
+          'list-predictions',
         ],
       });
   }

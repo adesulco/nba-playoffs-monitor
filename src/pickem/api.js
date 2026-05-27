@@ -254,6 +254,36 @@ export async function listProfile({ competition = 'WC2026', history_limit } = {}
 }
 
 /**
+ * listPredictions({ competition?, limit? })
+ *
+ * v0.79.9 — fetches the authenticated user's predictions for the
+ * given competition so PredictingHub can re-mark them as selected
+ * after a page reload. Returns { ok, predictions: [{ fixture_id,
+ * picked_outcome, picked_home, picked_away, is_jagoan, awarded_points,
+ * scored_at, ... }] }.
+ *
+ * No-op when not signed in — caller falls back to localStorage guest
+ * predictions (the same path used pre-login).
+ */
+export async function listPredictions({ competition, limit } = {}) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const params = {};
+    if (competition) params.competition = competition;
+    if (limit) params.limit = limit;
+    const res = await fetch(buildUrl('list-predictions', params), {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    return { ok: true, predictions: data?.predictions || [] };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
  * upsertBracket({ bracket_id?, competition, season?, groups, r32, r16,
  *                 qf, sf, final, champion, lock? })
  * Auth required. Replace-all save of the WC bracket picks; optional
