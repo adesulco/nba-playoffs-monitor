@@ -7883,7 +7883,23 @@
 // tier of the 8/5/3/0 ladder), and the leaderboard renders him #1
 // with 3 poin + gold medal + KAMU badge.
 
-export const APP_VERSION = '0.79.10';
+// v0.79.11 — Autonomous scoring (2026-05-28).
+//
+// The backfill cron refreshed fixture scores but didn't score
+// predictions — a human had to POST score-fixture per finished game.
+// Now scripts/backfill-fixtures-nba.mjs, after the UPSERT, calls the
+// pickem_score_fixture RPC (via PostgREST /rpc, service-role) for every
+// fixture that's now final + has an outcome.
+//
+// Idempotent: migration 0015 SETS awarded_points + recomputes
+// points_cache as a SUM (never increments), so re-scoring the whole
+// 3-day lookback window every 6h is safe + self-healing. Verified —
+// re-scoring Ade's correct G5 pick kept the leaderboard at 3 pts, not 6.
+//
+// The Pick'em loop is now fully autonomous: cron → ESPN refresh →
+// score → leaderboard, no human in the path.
+
+export const APP_VERSION = '0.79.11';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

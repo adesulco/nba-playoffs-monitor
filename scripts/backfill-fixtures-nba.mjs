@@ -297,6 +297,65 @@ async function upsertFixtures(rows) {
   return { inserted: returned.length, skipped: 0 };
 }
 
+// ─── Score final fixtures ────────────────────────────────────────────────────
+// v0.79.11 — after the UPSERT, trigger pickem_score_fixture for every
+// fixture that's now `final` with an outcome. This is what makes the
+// scoring loop autonomous — previously a human had to POST score-fixture
+// per finished game.
+//
+// We call the Postgres RPC directly via PostgREST (/rest/v1/rpc/...)
+// using the service-role key the script already holds — no admin token,
+// no round-trip to our own API. The RPC is idempotent (migration 0015
+// line 553: "Idempotent re-run overwrites prior values cleanly";
+// points_cache is recomputed as a SUM, not incremented), so re-scoring
+// an already-scored game every 6h is safe.
+//
+// The fixture must already be status='final' + outcome set — the UPSERT
+// above writes both (mapEvent derives outcome H/A for completed games),
+// so the RPC's not-final guard passes.
+async function scoreFinalFixtures(finalRows) {
+  if (finalRows.length === 0) return { scored: 0, awarded: 0, errors: 0 };
+  let scored = 0;
+  let awarded = 0;
+  let errors = 0;
+  for (const r of finalRows) {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/pickem_score_fixture`, {
+        method: 'POST',
+        headers: {
+          apikey: SERVICE_ROLE,
+          Authorization: `Bearer ${SERVICE_ROLE}`,
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ p_fixture_id: r.id }),
+      });
+      if (!res.ok) {
+        const err = await res.text();
+        console.warn(`[score] ${r.away_team}@${r.home_team} (${r.id}): HTTP ${res.status} ${err.slice(0, 120)}`);
+        errors++;
+        continue;
+      }
+      const result = await res.json();
+      // RPC returns the jsonb result object: { ok, scored_count, total_awarded, ... }
+      if (result?.ok === false) {
+        // not_final etc. — skip silently (e.g. a fixture that flipped back).
+        continue;
+      }
+      const sc = result?.scored_count ?? 0;
+      const aw = result?.total_awarded ?? 0;
+      scored += sc;
+      awarded += aw;
+      if (sc > 0) {
+        console.log(`[score] ${r.away_team}@${r.home_team} (${r.outcome}) → ${sc} prediction(s) scored, ${aw} pts awarded`);
+      }
+    } catch (err) {
+      console.warn(`[score] ${r.id}: ${String(err?.message || err)}`);
+      errors++;
+    }
+  }
+  return { scored, awarded, errors };
+}
+
 // ─── Main ───────────────────────────────────────────────────────────────────
 async function main() {
   console.log(`[backfill] mode=${DRY_RUN ? 'DRY-RUN' : 'WRITE'} window=${WINDOW_DAYS}d league=${LEAGUE_KEY}`);
@@ -364,6 +423,18 @@ async function main() {
   console.log(`[backfill] writing ${rows.length} rows to Supabase...`);
   const result = await upsertFixtures(rows);
   console.log(`[backfill] done — upserted ${result.inserted} rows`);
+
+  // v0.79.11 — score every fixture that's now final. Idempotent, so we
+  // re-score the whole lookback window each run (a handful of games);
+  // cheap and self-healing if a prior run's scoring failed.
+  const finalRows = rows.filter((r) => r.status === 'final' && r.outcome);
+  if (finalRows.length > 0) {
+    console.log(`[backfill] scoring ${finalRows.length} final fixture(s)...`);
+    const s = await scoreFinalFixtures(finalRows);
+    console.log(`[backfill] scoring done — ${s.scored} prediction(s) scored, ${s.awarded} pts awarded${s.errors ? `, ${s.errors} error(s)` : ''}`);
+  } else {
+    console.log('[backfill] no final fixtures to score this run');
+  }
 }
 
 main().catch((err) => {
