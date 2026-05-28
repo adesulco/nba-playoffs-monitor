@@ -67,32 +67,41 @@ async def _fetch(path: str, params: dict[str, Any]) -> dict[str, Any]:
         return resp.json()
 
 
-async def fetch_epl_gameweek(gameweek: int) -> dict[str, Any]:
+async def fetch_epl_gameweek(gameweek: int, season: int | None = None) -> dict[str, Any]:
     """Fetch all EPL fixtures for a given gameweek (round in API-Football lingo).
 
     Returns the raw API-Football response dict. The ``response`` key is a list
     of fixture objects; the rest is metadata. Pass the whole dict to
     ``normalizer.normalize_epl_fixtures`` to convert into our schema.
+
+    ``season`` overrides the configured current season (default 2025 =
+    2025-26). Used for historical backfill + for validating the pipeline
+    against seasons the API-Football plan covers (the free tier only
+    serves 2022-2024).
     """
     cfg = _LEAGUE_MAP["epl"]
     return await _fetch(
         "fixtures",
         {
             "league": cfg["af_id"],
-            "season": cfg["season"],
+            "season": season or cfg["season"],
             "round": f"{cfg['gameweek_label']} - {gameweek}",
         },
     )
 
 
-async def fetch_liga1_gameweek(gameweek: int) -> dict[str, Any]:
-    """Fetch all Liga 1 (Indonesian Super League) fixtures for a gameweek."""
+async def fetch_liga1_gameweek(gameweek: int, season: int | None = None) -> dict[str, Any]:
+    """Fetch all Liga 1 (Indonesian Super League) fixtures for a gameweek.
+
+    ``season`` overrides the configured current season — see
+    ``fetch_epl_gameweek`` for the rationale.
+    """
     cfg = _LEAGUE_MAP["liga-1-id"]
     return await _fetch(
         "fixtures",
         {
             "league": cfg["af_id"],
-            "season": cfg["season"],
+            "season": season or cfg["season"],
             "round": f"{cfg['gameweek_label']} - {gameweek}",
         },
     )

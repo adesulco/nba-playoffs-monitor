@@ -1,8 +1,14 @@
 # Content Engine — STATUS
 
-**Current phase:** Phase 0 (Foundation) — **🟢 Phase 0 work landed at v0.22.0 (ahead of June 1 target)**
-**Last updated:** 2026-04-27 — Phase 0 source + migration applied, awaiting Ade's local dry-run
-**Next action:** Ade runs `python -m content_engine.cli ingest --league premier-league --gameweek 35 --dry-run` locally (Python 3.12, pip install -e ".[dev]"). When that returns clean data → Phase 0 done → Phase 1 unlocks (writer agents).
+**Current phase:** Phase 0 (Foundation) — **🟢 pipeline validated 2026-05-28; one ops blocker before Phase 1**
+**Last updated:** 2026-05-28 — dry-run ran end-to-end on Ade's Mac (Python 3.12 via uv). Pipeline PROVEN.
+**Next action:** **Upgrade the API-Football key to a paid plan.** The dry-run works but the provisioned key is FREE-TIER (only serves seasons 2022-2024). `ingest --league premier-league --gameweek 35 --season 2023 --dry-run` returned 10 clean normalized fixtures — so the code path (auth → Vercel proxy → API-Football → normalizer) is validated. But current-season (2025-26) data is plan-locked, which blocks Phase 1 writers (and likely the live web app's API-Football-backed EPL/Liga 1 stats too — verify separately). Upgrade plan → re-run without `--season` → Phase 1 unlocks.
+
+**Findings from the 2026-05-28 dry-run (2 items for Ade):**
+1. **API-Football key is free-tier, not Pro.** Proxy returns `{"plan":"Free plans do not have access to this season, try from 2022 to 2024."}` for season=2025. CLAUDE.md claims "API-Football Pro $19/mo" — either the sub lapsed or a free key got provisioned. Fix in the API-Football dashboard / Vercel `API_FOOTBALL_KEY`.
+2. **6 pre-existing unit-test failures** surfaced when the suite was RUN for the first time (it had only been `ast.parse`-checked before): 5 in `test_anthropic_client.py` (cost-math constants drifted vs current model pricing) + 1 in `test_normalizer.py::test_normalize_epl_skips_missing_id` (expects 1, gets 2). NOT regressions from the v0.79.14 `--season` add — that code has no failing tests. Run with `PYTHONPATH=src .venv/bin/python -m pytest` (the editable install doesn't expose the package to pytest's import mode without it — a conftest.py would fix that permanently). 25 pass.
+
+**v0.79.14 added** `--season` override to `ingest` (CLI + api_football fetchers) — enables historical backfill + validating against plan-accessible seasons. Backward-compatible (defaults to the league's current season).
 
 This file tracks where we are in the build. Update on every meaningful commit. Future Claude Code / Cowork sessions read this first to know what's already done.
 

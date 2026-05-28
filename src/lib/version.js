@@ -7925,7 +7925,24 @@
 // Chrome verify — the /pickem/profile history row showed
 // "TOKC 127–114 TSAS · Prediksi TOKC menang".
 
-export const APP_VERSION = '0.79.13';
+// v0.79.14 — Content Engine Phase 0 dry-run validated + `--season` flag
+// (2026-05-28). Ran the ingest acceptance test on Ade's Mac: the
+// pipeline (auth → Vercel proxy → API-Football → normalizer) works
+// end-to-end — `ingest --league premier-league --gameweek 35
+// --season 2023 --dry-run` returned 10 clean normalized EPL fixtures.
+//
+// Two findings (see packages/content-engine/STATUS.md):
+//   1. API-Football key is FREE-tier (seasons 2022-2024 only), not the
+//      Pro plan CLAUDE.md claims — blocks current-season (2025-26) data
+//      and Phase 1 writers. Ade upgrades the plan; that's the only gate.
+//   2. 6 pre-existing unit tests rotted (cost-constant drift + 1
+//      normalizer edge case) — surfaced now that the suite runs for real.
+//
+// Added a `--season` override to `ingest` (cli.py + api_football.py
+// fetchers) so the pipeline can target plan-accessible seasons +
+// backfill history. Backward-compatible.
+
+export const APP_VERSION = '0.79.14';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

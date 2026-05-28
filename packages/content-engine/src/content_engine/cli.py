@@ -128,24 +128,26 @@ def health() -> None:
 def ingest(
     league: Annotated[str, typer.Option(help="League id: premier-league, liga-1-id, nba-playoffs-2026, f1-2026, fifa-wc-2026")],
     gameweek: Annotated[int | None, typer.Option(help="Gameweek (football); ignored for nba/f1.")] = None,
+    season: Annotated[int | None, typer.Option(help="Override season start-year (e.g. 2023 for 2023-24). Defaults to the league's current season. Note: API-Football FREE tier only serves 2022-2024.")] = None,
     dry_run: Annotated[bool, typer.Option(help="Fetch + normalize + log; do NOT write to ce_* tables.")] = False,
 ) -> None:
     """Fetch fixtures + events for a league/gameweek and store in ``ce_*`` tables.
 
     Phase 0 health check: ``ingest --league premier-league --gameweek 35 --dry-run``
     should return clean normalized rows for every fixture, with zero schema
-    mismatches and zero hallucinated data.
+    mismatches and zero hallucinated data. (If the API-Football plan is
+    free-tier, pass ``--season 2023`` to validate against an accessible season.)
     """
     from content_engine.data import api_football, normalizer, db
 
-    log.info("ingest.start", league=league, gameweek=gameweek, dry_run=dry_run)
+    log.info("ingest.start", league=league, gameweek=gameweek, season=season, dry_run=dry_run)
 
     async def _run() -> None:
         if league in {"premier-league", "epl"}:
-            raw = await api_football.fetch_epl_gameweek(gameweek or 35)
+            raw = await api_football.fetch_epl_gameweek(gameweek or 35, season=season)
             normalized = normalizer.normalize_epl_fixtures(raw)
         elif league in {"liga-1-id", "super-league"}:
-            raw = await api_football.fetch_liga1_gameweek(gameweek or 1)
+            raw = await api_football.fetch_liga1_gameweek(gameweek or 1, season=season)
             normalized = normalizer.normalize_liga1_fixtures(raw)
         else:
             typer.echo(f"League '{league}' not yet supported in Phase 0.", err=True)
