@@ -125,7 +125,7 @@ function LeaderboardInner() {
   return (
     <PickemRoot active="board">
       <div style={{ padding: '20px 16px 32px', maxWidth: 720, margin: '0 auto' }}>
-        <Header scope={scope} />
+        <Header scope={scope} competition={competition} />
 
         <div style={{ marginBottom: 16, display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
           <SegmentedPicker items={SCOPES} active={scope} onChange={setScope} />
@@ -204,19 +204,23 @@ function LeaderboardInner() {
   );
 }
 
-function Header({ scope }) {
+function Header({ scope, competition }) {
+  // v0.79.10 — eyebrow + global-scope subtitle were hardcoded to WC2026.
+  // Now read from the active competition (NBA Playoffs / WC2026 / …).
+  const compLabel = (competition?.labelLong || competition?.label || 'PICK\'EM').toUpperCase();
+  const compShort = competition?.label || 'kompetisi ini';
   const label =
     scope === 'competition' ? 'Papan global'
     : scope === 'league'    ? 'Papan grup'
     : 'Papan matchday';
   const sub =
-    scope === 'competition' ? 'Semua pemain WC2026.'
+    scope === 'competition' ? `Semua pemain ${compShort}.`
     : scope === 'league'    ? 'Cuma anggota grup yang dipilih.'
     : 'Skor di matchday yang dipilih.';
   return (
     <header style={{ marginBottom: 18 }}>
       <div className="p-eyebrow" style={{ marginBottom: 6 }}>
-        PAPAN PERINGKAT · PIALA DUNIA 2026
+        PAPAN PERINGKAT · {compLabel}
       </div>
       <h1 className="p-display-sm" style={{ marginBottom: 4, color: 'var(--ink-1)' }}>
         {label}

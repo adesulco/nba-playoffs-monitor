@@ -7870,7 +7870,20 @@
 // Predictions made in earlier sessions now re-highlight correctly on
 // page reload + after sign-in claim.
 
-export const APP_VERSION = '0.79.9';
+// v0.79.10 — Leaderboard header label (2026-05-28).
+//
+// Last hardcoded-WC2026 label, caught when the full scoring loop
+// completed: the /pickem/board header read "PAPAN PERINGKAT · PIALA
+// DUNIA 2026" + "Semua pemain WC2026." even on NBA. Now reads from
+// the active competition (same fix pattern as the v0.79.7 header).
+//
+// MILESTONE: the complete Pick'em loop is now proven in production.
+// ade.sulistioputra predicted OKC to win WCF G5 (picked_outcome 'H'),
+// OKC won 127-114, score-fixture awarded 3 points (correct-outcome
+// tier of the 8/5/3/0 ladder), and the leaderboard renders him #1
+// with 3 poin + gold medal + KAMU badge.
+
+export const APP_VERSION = '0.79.10';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
