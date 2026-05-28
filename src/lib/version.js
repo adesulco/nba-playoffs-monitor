@@ -7899,7 +7899,25 @@
 // The Pick'em loop is now fully autonomous: cron → ESPN refresh →
 // score → leaderboard, no human in the path.
 
-export const APP_VERSION = '0.79.11';
+// v0.79.12 — Pick'em nickname editor (2026-05-28).
+//
+// The leaderboard renders `username || user_id.slice(0,8)`, so an
+// unset nickname showed a raw hex prefix ("2280635b") — ugly on a
+// screenshot-and-share product. /pickem/profile now has an inline
+// nickname editor: "Atur nama tampilan" when unset, "Ubah nama" when
+// set. Writes profiles.nickname directly via the Supabase client
+// (RLS policy profiles_self_update_favorites is row-level on
+// auth.uid()=id, so self-update is allowed — no new serverless
+// function, important since we're at 11/12 Vercel slots).
+//
+// 2–20 char validation, optimistic local refresh + toast on save.
+// Leaderboard picks up the nickname via the profiles.nickname AS
+// username alias in the leaderboard views (migration 0015).
+//
+// Onboarding capture for brand-new users is a follow-up; this covers
+// every existing user (incl. ade, whose nickname was null).
+
+export const APP_VERSION = '0.79.12';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

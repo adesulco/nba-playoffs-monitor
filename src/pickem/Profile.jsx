@@ -6,6 +6,7 @@ import { listProfile } from './api.js';
 import { teamShort } from './bracketData.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
+import { supabase } from '../lib/supabase.js';
 
 // ============================================================================
 // v0.70.0 — Profile screen (Pick'em P5).
@@ -92,7 +93,12 @@ function ProfileInner() {
 
         {profile && (
           <>
-            <AvatarSection profile={profile} avatarLetter={avatarLetter} />
+            <AvatarSection
+              profile={profile}
+              avatarLetter={avatarLetter}
+              user={user}
+              onNicknameSaved={(nick) => setProfile((p) => (p ? { ...p, username: nick } : p))}
+            />
             <StatsGrid profile={profile} />
             <BadgesSection profile={profile} />
             <HistorySection profile={profile} />
@@ -122,7 +128,7 @@ function ProfileInner() {
 
 // ── Sections ───────────────────────────────────────────────────────────────
 
-function AvatarSection({ profile, avatarLetter }) {
+function AvatarSection({ profile, avatarLetter, user, onNicknameSaved }) {
   return (
     <section
       style={{
@@ -150,16 +156,11 @@ function AvatarSection({ profile, avatarLetter }) {
       >
         {avatarLetter}
       </div>
-      <div
-        style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 24,
-          fontWeight: 700,
-          color: 'var(--ink-1)',
-        }}
-      >
-        {profile.username || 'Kamu'}
-      </div>
+      <NicknameEditor
+        currentName={profile.username}
+        userId={user?.id}
+        onSaved={onNicknameSaved}
+      />
       <div style={{ color: 'var(--ink-3)', fontSize: 12, marginTop: 4 }}>
         {profile.email && (
           <>
@@ -189,6 +190,124 @@ function AvatarSection({ profile, avatarLetter }) {
         </div>
       )}
     </section>
+  );
+}
+
+// v0.79.12 — inline nickname editor. The leaderboard shows
+// `username || user_id.slice(0,8)`, so an unset nickname renders a raw
+// hex prefix — ugly on a screenshot-and-share product. This lets the
+// user set a display name. Writes profiles.nickname directly via the
+// Supabase client (RLS policy profiles_self_update_favorites is
+// row-level — auth.uid() = id — so self-update on any column is
+// allowed; no new serverless function needed, we're at 11/12 slots).
+function NicknameEditor({ currentName, userId, onSaved }) {
+  const [editing, setEditing] = useState(false);
+  const [value, setValue] = useState(currentName || '');
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
+
+  const hasName = !!currentName;
+
+  const save = async () => {
+    const next = value.trim();
+    if (next.length < 2 || next.length > 20) {
+      setError('Nama 2–20 karakter.');
+      return;
+    }
+    if (!userId) {
+      setError('Sesi habis — login lagi.');
+      return;
+    }
+    setSaving(true);
+    setError(null);
+    const { error: err } = await supabase
+      .from('profiles')
+      .update({ nickname: next })
+      .eq('id', userId);
+    setSaving(false);
+    if (err) {
+      setError('Gagal simpan. Coba lagi.');
+      return;
+    }
+    setEditing(false);
+    onSaved?.(next);
+    if (typeof window !== 'undefined' && window.gibolToast) {
+      window.gibolToast.show({ text: 'Nama tersimpan', icon: 'check' });
+    }
+  };
+
+  if (!editing) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+        <div
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 24,
+            fontWeight: 700,
+            color: 'var(--ink-1)',
+          }}
+        >
+          {currentName || 'Kamu'}
+        </div>
+        <button
+          type="button"
+          onClick={() => { setValue(currentName || ''); setEditing(true); setError(null); }}
+          style={{
+            appearance: 'none',
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            color: 'var(--pickem-orange)',
+            fontFamily: 'var(--font-ui-pickem)',
+            fontSize: 12,
+            fontWeight: 600,
+            padding: '2px 6px',
+          }}
+        >
+          {hasName ? 'Ubah nama' : 'Atur nama tampilan →'}
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => { if (e.key === 'Enter') save(); if (e.key === 'Escape') setEditing(false); }}
+        maxLength={20}
+        autoFocus
+        aria-label="Nama tampilan"
+        placeholder="Nama tampilan"
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 20,
+          fontWeight: 700,
+          textAlign: 'center',
+          color: 'var(--ink-1)',
+          background: 'var(--bg-raised)',
+          border: '1px solid var(--line-2)',
+          borderRadius: 'var(--r-2)',
+          padding: '6px 12px',
+          maxWidth: 240,
+        }}
+      />
+      <div style={{ display: 'flex', gap: 8 }}>
+        <PickemBtn variant="primary" size="sm" onClick={save} disabled={saving}>
+          {saving ? 'Menyimpan…' : 'Simpan'}
+        </PickemBtn>
+        <PickemBtn variant="ghost" size="sm" onClick={() => setEditing(false)} disabled={saving}>
+          Batal
+        </PickemBtn>
+      </div>
+      {error && (
+        <div role="alert" style={{ color: 'var(--p-down)', fontSize: 12, fontFamily: 'var(--font-ui-pickem)' }}>
+          {error}
+        </div>
+      )}
+    </div>
   );
 }
 
