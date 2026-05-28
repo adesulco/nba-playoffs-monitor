@@ -12,7 +12,7 @@ Two things live in this single repo:
 
 1. **The Gibol web app** — Vite + React 18 SPA at `www.gibol.co`. Code lives in `src/`, `api/`, `scripts/`, `public/`. This is the user-facing dashboard for NBA Playoffs 2026, Premier League 2025-26, Super League Indonesia (Liga 1) 2025-26, Formula 1 2026, Tennis 2026, and FIFA World Cup 2026.
 
-2. **The Gibol Content Engine** — Python package at `packages/content-engine/`. Agent-driven pipeline that produces Bahasa-native pre-match previews, post-match recaps, weekly standings explainers, race recaps, and evergreen profiles. Phase 0 starts 2026-06-01 per `docs/content-engine-response.md` § 3. **Not yet active.** Read `spec-content-agent.md` (repo root, verbatim from spec author) + `docs/content-engine-response.md` (Vite-aligned amendments + locked decisions) before anything non-trivial in `packages/content-engine/`.
+2. **The Gibol Content Engine** — Python package at `packages/content-engine/`. Agent-driven pipeline that produces Bahasa-native pre-match previews, post-match recaps, weekly standings explainers, race recaps, and evergreen profiles. **Phase 0 (foundation: schema, SDK wrapper, data layer, tests) landed early at v0.22.0 on 2026-04-27** — see `packages/content-engine/STATUS.md` for the authoritative status (it supersedes this section if they disagree). One gate remains before Phase 1 (writer agents): the local ingest dry-run acceptance. Read `spec-content-agent.md` (repo root, verbatim from spec author) + `docs/content-engine-response.md` (Vite-aligned amendments + locked decisions) + `packages/content-engine/STATUS.md` before anything non-trivial in `packages/content-engine/`.
 
 The two are sibling — generated content is written to `public/content/` as JSON, consumed by new lazy-loaded SPA routes (`/preview/[slug]`, `/recap/[slug]`, etc.), and prerendered by `scripts/prerender.mjs`.
 
@@ -26,7 +26,7 @@ The two are sibling — generated content is written to `public/content/` as JSO
 - **Functions:** Vercel Serverless under `api/`. Node runtime. **11 / 12 functions used** (Vercel Hobby limit). One slot remaining; next addition triggers consolidation.
 - **Backend:** Supabase project `egzacjfbmgbcwhtvqixc` (Mumbai / ap-south-1). Postgres 17. Migrations live at `supabase/migrations/`. Apply via SQL editor (no Management API token in this env).
 - **Data feeds:** ESPN (NBA + EPL + Liga 1), API-Football Pro $19/mo (EPL stats + Liga 1 + WC), Polymarket (NBA odds), jolpica-f1 + OpenF1 (F1), tennis sources via `tennis-news`. Anthropic API for the content engine. OpenAI embeddings (Phase 1+).
-- **Schema source of truth:** Supabase tables `teams`, `series`, `brackets`, `picks`, `leagues`, `league_members`, `pickem_rules`, `profiles`, `derby_polls`, `derby_poll_votes`, `derby_reactions`, `derby_oneliners`. Content engine adds `fixtures`, `events`, `stats`, `articles`, `article_runs` via migration `0006_content_engine.sql` (not applied yet).
+- **Schema source of truth:** Supabase tables `teams`, `series`, `brackets`, `picks`, `leagues`, `league_members`, `pickem_rules`, `profiles`, `derby_polls`, `derby_poll_votes`, `derby_reactions`, `derby_oneliners`. Content engine `ce_*` tables (`ce_leagues`, `ce_fixtures`, `ce_events`, `ce_articles`, `ce_article_runs`, `ce_cron_runs`, `ce_generation_failures`, `ce_external_corpus`) live via migration `0006_content_engine.sql` — **applied 2026-04-27**. Pick'em tables (`fixtures`, `predictions`, leaderboard views, scoring RPCs) live via migrations 0015–0017 — applied 2026-05-24.
 
 ### Content engine (Phase 0+)
 - **Language:** Python 3.12. `anthropic` Python SDK. Always enable prompt caching on system prompts + voice rules.
@@ -47,11 +47,12 @@ The two are sibling — generated content is written to `public/content/` as JSO
 | Voice rules | ✅ `packages/content-engine/prompts/voice-rules.md` |
 | Banned-phrase linter list | ✅ `packages/content-engine/prompts/banned-phrases.txt` |
 | Phase 0 status tracker | ✅ `packages/content-engine/STATUS.md` |
-| Postgres migration | 📋 written (`supabase/migrations/0006_content_engine.sql`), **not applied** |
+| Postgres migration | ✅ `supabase/migrations/0006_content_engine.sql` **applied** 2026-04-27 (all 7 `ce_*` tables live; `ce_leagues` seeded with 5 rows) |
 | Python package skeleton | ✅ `packages/content-engine/{src/{agents,data,quality,publish,orchestrator},eval,pyproject.toml,.env.example}` |
-| Anthropic API key | ⏳ to provision in Vercel env (`ANTHROPIC_API_KEY`) |
-| OpenAI embeddings key | ⏳ to provision (`OPENAI_API_KEY`) |
-| Phase 0 kickoff date | 📅 2026-06-01 |
+| Anthropic API key | ✅ provisioned in Vercel production env (`ANTHROPIC_API_KEY`, Encrypted) |
+| OpenAI embeddings key | ⏸️ deferred to Phase 4 (~Sept) — only used by evergreen retrieval, not needed until then |
+| Phase 0 kickoff date | 📅 was 2026-06-01; **work landed early at v0.22.0 on 2026-04-27** |
+| Phase 0 remaining gate | ⏳ local dry-run acceptance: `python -m content_engine.cli ingest --league premier-league --gameweek 35 --dry-run` (Ade's Mac, Python 3.12, needs `API_FOOTBALL_KEY` in local `.env`). Passing it unlocks Phase 1. |
 
 Locked decisions from `docs/content-engine-response.md` § 2:
 - (1) Author byline: **Gibol Newsroom org for v1; named human editor on flagship matches by Month 3.**
