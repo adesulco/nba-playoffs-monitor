@@ -7917,7 +7917,15 @@
 // Onboarding capture for brand-new users is a follow-up; this covers
 // every existing user (incl. ade, whose nickname was null).
 
-export const APP_VERSION = '0.79.12';
+// v0.79.13 — fix "TOKC"/"TSAS" stray-T tricodes in Profile history
+// (2026-05-28). teamShortFromUuid() was a pre-schema placeholder that
+// did `T${uuid.slice(0,3)}` assuming home_team/away_team were UUIDs.
+// They're tricodes (text FK to teams.tricode), so 'OKC' → 'TOKC'.
+// Now returns the tricode directly. Caught during the nickname-editor
+// Chrome verify — the /pickem/profile history row showed
+// "TOKC 127–114 TSAS · Prediksi TOKC menang".
+
+export const APP_VERSION = '0.79.13';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -517,10 +517,13 @@ function formatDate(iso) {
   }
 }
 
-function teamShortFromUuid(uuid) {
-  // Without a joined teams table, we render a 3-char identifier
-  // derived from the UUID. A future server-side join replaces this
-  // with the real team code.
-  if (!uuid) return 'TBA';
-  return `T${String(uuid).slice(0, 3).toUpperCase()}`;
+function teamShortFromUuid(code) {
+  // v0.79.13 — fix "TOKC"/"TSAS" stray-T bug. This was a placeholder
+  // from before the schema settled: it assumed home_team/away_team were
+  // UUIDs needing a derived 3-char code, so it did `T${uuid.slice(0,3)}`.
+  // But fixtures.home_team/away_team ARE the team tricode (text FK to
+  // teams.tricode), e.g. 'OKC' — so the old code produced 'T'+'OKC' =
+  // 'TOKC'. Return the tricode directly.
+  if (!code) return 'TBA';
+  return String(code).toUpperCase();
 }
