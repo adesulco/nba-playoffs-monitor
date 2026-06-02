@@ -181,11 +181,18 @@ async def check_budget(agent: str) -> None:
 # Per-model rates (USD per 1M tokens). Source: Anthropic pricing page Apr 2026.
 # Cache-write priced at 1.25x base input (the cache-creation premium).
 # Cache-read priced at 0.10x base input (the 90% off win).
+# Keyed by model FAMILY prefix (no date suffix). The lookup in
+# _cost_estimate() matches by prefix so a dated, pinned model ID like
+# "claude-haiku-4-5-20251001" or "claude-sonnet-4-6-20260415" still
+# resolves to the right rate. Exact-match keying was a latent footgun:
+# pinning any agent to a dated model ID (Anthropic's recommended
+# practice) silently dropped the cost estimate to $0 and blinded the
+# budget guardrail.
 _RATES = {
     # Sonnet 4.6: $3 / $15 per 1M input/output (standard).
     "claude-sonnet-4-6": {"in": 3.00, "out": 15.00},
     # Haiku 4.5: $0.25 / $1.25.
-    "claude-haiku-4-5-20251001": {"in": 0.25, "out": 1.25},
+    "claude-haiku-4-5": {"in": 0.25, "out": 1.25},
     # Opus 4.7: $15 / $75.
     "claude-opus-4-7": {"in": 15.00, "out": 75.00},
 }
@@ -206,7 +213,14 @@ def _cost_estimate(
     Regular non-cached input is the remainder ``input_tokens`` figure
     excluding cache_creation + cache_read.
     """
-    rate = _RATES.get(model)
+    # Match by family prefix so dated/pinned model IDs still resolve.
+    # Longest matching prefix wins (defensive against future overlap).
+    rate = None
+    best_len = -1
+    for family, r in _RATES.items():
+        if model.startswith(family) and len(family) > best_len:
+            rate = r
+            best_len = len(family)
     if not rate:
         log.warning("anthropic.cost.unknown_model", model=model)
         return 0.0

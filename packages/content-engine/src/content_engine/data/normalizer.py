@@ -92,9 +92,15 @@ def _normalize_af_fixtures(
             goals = fx.get("goals", {})
             home = teams.get("home", {}) or {}
             away = teams.get("away", {}) or {}
+            # Guard the id BEFORE str()-ing it: str(None) == "None" (a
+            # truthy string), which slipped past the `if not
+            # source_fixture_id` skip below and let id-less fixtures
+            # through. Keep it None so the skip fires.
+            raw_id = fixture.get("id")
+            source_fixture_id = str(raw_id) if raw_id is not None else None
             row = {
                 "league_id": league_id,
-                "source_fixture_id": str(fixture.get("id")),
+                "source_fixture_id": source_fixture_id,
                 "kickoff_utc": _af_kickoff_utc(fixture.get("date")),
                 "venue": _af_venue(fixture.get("venue")),
                 "status": _af_status(fixture.get("status", {}).get("short", "")),

@@ -97,3 +97,8 @@ ignore_missing_imports = true
 testpaths = ["tests"]
 asyncio_mode = "auto"
 addopts = "--strict-markers --strict-config -v"
+# src-layout: put src/ on sys.path so `import content_engine` resolves
+# without an editable install or a manual PYTHONPATH=src. (Before this,
+# a fresh `uv run pytest` / `.venv/bin/python -m pytest` failed to
+# collect with ModuleNotFoundError.)
+pythonpath = ["src"]

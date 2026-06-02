@@ -9,7 +9,10 @@
 
 **What unblocked it:** the old `hi@gibol.co` API-Football key was FREE-tier (seasons 2022-2024 only). Migrated to a **new account `dev@kultura.co.id`** (project-neutral for long-term non-Gibol use) on a **paid plan** (current-season access). Vercel `API_FOOTBALL_KEY` swapped to the new paid key via clipboard→file→`vercel env` (key never logged); production redeployed; proxy verified returning live 2025-26 fixtures.
 
-**Still open (non-blocking) — 6 pre-existing unit-test failures** surfaced when the suite ran for real the first time (was `ast.parse`-only before): 5 in `test_anthropic_client.py` (cost-math constants drifted vs current model pricing) + 1 in `test_normalizer.py::test_normalize_epl_skips_missing_id` (expects 1, gets 2). NOT regressions. Run via `PYTHONPATH=src .venv/bin/python -m pytest` (a `conftest.py` would fix the import-mode permanently). 25 pass. Worth a cleanup pass before Phase 1 ships writers, but doesn't block the dry-run acceptance.
+**Test suite — GREEN as of 2026-06-02 (31/31 pass).** The 6 failures that surfaced when the suite first ran for real were two genuine production bugs, now fixed:
+1. **Cost estimator was exact-match keyed** (`_RATES.get(model)`) — a dated/pinned model ID like `claude-sonnet-4-6-20260415` returned $0, silently blinding the budget guardrail. Fixed: rates keyed by model FAMILY + longest-prefix match in `_cost_estimate()`.
+2. **Normalizer let id-less fixtures through** — `str(fixture.get("id"))` turned a null id into the truthy string `"None"`, slipping past the `if not source_fixture_id` skip. Fixed: guard the id before stringifying.
+Also added `pythonpath = ["src"]` to `[tool.pytest.ini_options]` so `pytest` collects without a manual `PYTHONPATH=src` or editable install.
 
 **v0.79.14 added** `--season` override to `ingest` (CLI + api_football fetchers) — enables historical backfill + plan-accessible-season validation. Backward-compatible.
 
