@@ -7942,7 +7942,25 @@
 // fetchers) so the pipeline can target plan-accessible seasons +
 // backfill history. Backward-compatible.
 
-export const APP_VERSION = '0.79.14';
+// v0.79.15 — Content Engine Phase 0 CLOSED + API-Football paid key
+// (2026-06-02). Migrated API-Football from the free-tier hi@gibol.co
+// account to a new paid-plan dev@kultura.co.id account (project-neutral
+// for long-term non-Gibol reuse). Swapped Vercel API_FOOTBALL_KEY to
+// the paid key (clipboard→file→`vercel env`, never logged), redeployed
+// production. Proxy now returns live 2025-26 fixtures.
+//
+// Phase 0 acceptance PASSED: `ingest --league premier-league
+// --gameweek 35 --dry-run` (current season) normalized 10 EPL GW35
+// fixtures cleanly. Phase 1 (writer agents) is unblocked, pending Ade's
+// go on system-prompt work.
+//
+// Side effect: the live web app's API-Football-backed EPL/Liga 1 stats
+// (squad pages, top scorers) now get current-season data too — they'd
+// been silently on the free-tier 2022-2024 ceiling.
+//
+// See packages/content-engine/STATUS.md for the full close-out.
+
+export const APP_VERSION = '0.79.15';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
