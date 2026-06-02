@@ -31,6 +31,14 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         extra="ignore",
         case_sensitive=False,
+        # Treat an empty-string env var (e.g. ANTHROPIC_API_KEY="") as
+        # unset, so it doesn't shadow a real value in .env. Without this,
+        # a process env that exports an empty key — like the Claude Code
+        # harness does for ANTHROPIC_API_KEY — silently overrode the
+        # local .env's real key and the Anthropic client 401'd / failed
+        # to resolve auth. Production (Vercel / GH Actions secrets) sets
+        # real values so this only ever bit local runs.
+        env_ignore_empty=True,
     )
 
     # ── Required keys ─────────────────────────────────────────────────────────

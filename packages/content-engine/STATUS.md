@@ -1,8 +1,18 @@
 # Content Engine — STATUS
 
-**Current phase:** Phase 0 (Foundation) — **✅ COMPLETE 2026-06-02. Phase 1 (writer agents) is unblocked.**
-**Last updated:** 2026-06-02 — dry-run passed on current 2025-26 season after the API-Football plan upgrade.
-**Next action:** **Start Phase 1 — Preview Writer agent** (`agents/preview.py` + `prompts/preview-system.md`). Requires Ade's go (system-prompt work is approval-gated per CLAUDE.md).
+**Current phase:** Phase 1 — **already BUILT (through ~2026-05-18), was dormant; data pipeline restored 2026-06-02.**
+**Last updated:** 2026-06-02 — discovered Phase 1 is far more complete than this file claimed; restored the data layer; one blocker left (a valid Anthropic key for live writer runs).
+
+> ⚠️ This file's history below describes Phase 0 as "the work" — that was stale. Reality as of 2026-06-02: **Phase 1 (writer agents) is substantially built.** `src/content_engine/agents/` has 20 writer agents (preview, recap, nba_recap, f1_*, tennis_*, standings, qc, h2h, profiles). `src/content_engine/quality/` has the full stack (banned_phrase, fact_check + NBA/F1 variants, plagiarism, voice_lint, voice_fixer, inference_guard, polish, qc_sampler, flagship, write_loop). `src/content_engine/publish/` has json_writer + slug + auto_publish. 23 system prompts in `prompts/`, hardened with a DO-NOT-INFER pass (changelog v0.59.4, May 4). The changelog references "170 articles in the queue" — this engine was generating + being editorially reviewed in early May, then stalled.
+
+**Why it stalled (strong hypothesis, now fixed):** the API-Football key went free-tier, so the writers couldn't fetch current-season fixtures/standings/injuries. Fixed 2026-06-02 (paid key on dev@kultura.co.id). Verified: `preview --fixture-id 1379309 --dry-run` (Arsenal vs Fulham) ran the WHOLE data pipeline successfully — fixture + standings + top scorers + both teams' injuries + h2h, all current 2025-26, context built clean. Only the final Sonnet call failed.
+
+**One blocker left before live writer runs: a VALID Anthropic API key.**
+The local `.env` ANTHROPIC_API_KEY (108 chars, set ~24d ago) returns **401 invalid x-api-key** — stale/revoked. Need a fresh key in the local `.env` (and verify the GitHub Actions `ANTHROPIC_API_KEY` secret that the content-cron uses is also valid — it was likely set at the same time and may be dead too). Data pipeline is 100% ready; the writers just need working Anthropic auth.
+
+**Fixed 2026-06-02 (config hardening):** added `env_ignore_empty=True` to `SettingsConfigDict`. The Claude Code harness exports an empty `ANTHROPIC_API_KEY=""` into the process env, which pydantic-settings was prioritizing over the real `.env` value — so even a valid `.env` key resolved empty. Now empty env vars are ignored and `.env` wins. (Production sets real values, so this only bit local runs.)
+
+**Next action:** drop a valid `ANTHROPIC_API_KEY` into `packages/content-engine/.env` (and refresh the GH Actions secret), then re-run `preview --fixture-id 1379309 --dry-run` to get the first real Bahasa preview out of the restored pipeline.
 
 **Phase 0 acceptance — PASSED 2026-06-02:**
 `ingest --league premier-league --gameweek 35 --dry-run` (no season override, defaults to current 2025-26) returned **10 EPL GW35 fixtures normalized cleanly** — real 2026 dates (Arsenal vs Fulham, Chelsea vs Nottingham Forest, …), full venue data, zero errors, zero schema mismatches. Full path validated: auth → Vercel proxy → API-Football (paid) → normalizer.
