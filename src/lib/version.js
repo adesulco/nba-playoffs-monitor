@@ -7960,7 +7960,25 @@
 //
 // See packages/content-engine/STATUS.md for the full close-out.
 
-export const APP_VERSION = '0.79.15';
+// v0.79.16 — audit follow-ups (2026-06-02).
+//
+// 1. API-Football added to /api/health/data-sources (was an
+//    observability gap — a key/plan failure wouldn't have surfaced).
+//    Probes the /status endpoint with a body-validator on
+//    subscription.active, so a plan downgrade or dead key shows red
+//    even though a free-tier key still returns HTTP 200. pingOne now
+//    supports per-check headers + an optional body validator.
+//
+// Audit also surfaced (not code, logged in handoff):
+//   - WC2026 Pick'em is UN-BLOCKED: the paid API-Football plan has 72
+//     WC2026 fixtures (opener Mexico vs South Africa 2026-06-11). The
+//     old "waiting on FIFA schedule" blocker is gone. Buildable ahead
+//     of June 11 (seed 48 WC teams + football-shaped backfill).
+//   - Content Engine writers still blocked on a valid ANTHROPIC_API_KEY
+//     (local .env key is 401; no valid key exists anywhere in repo —
+//     needs a fresh one from console.anthropic.com + GH Actions secret).
+
+export const APP_VERSION = '0.79.16';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

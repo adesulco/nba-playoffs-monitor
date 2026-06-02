@@ -28,17 +28,51 @@ const CHECKS = [
   // env was either expired or removed (probe was 403 since v0.59.x). The
   // `football-data` provider config in api/proxy.js is left in place
   // (dead but harmless) in case a future paid-tier use case revives it.
+  //
+  // v0.79.16 — API-Football probe added (audit gap). The /status
+  // endpoint returns subscription + quota and is the cheapest call
+  // that proves the key is alive AND on an active paid plan. The
+  // body-validator below marks it red on a plan downgrade / dead key,
+  // not just on an HTTP failure — important because a free-tier key
+  // still returns HTTP 200 (just with empty current-season data).
+  // Only probed when API_FOOTBALL_KEY is set (skipped in envs without it).
+  ...(process.env.API_FOOTBALL_KEY
+    ? [{
+        name: 'api-football',
+        url: 'https://v3.football.api-sports.io/status',
+        headers: { 'x-apisports-key': process.env.API_FOOTBALL_KEY },
+        // ok only if the subscription is active (catches plan lapse).
+        validate: (body) => body?.response?.subscription?.active === true,
+      }]
+    : []),
 ];
 
 async function pingOne(check) {
   const t0 = Date.now();
   try {
-    const headers = { accept: 'application/json' };
+    const headers = { accept: 'application/json', ...(check.headers || {}) };
     const res = await fetch(check.url, { headers });
+    let ok = res.ok;
+    let detail;
+    // Optional body-validator: a provider can return HTTP 200 while
+    // being functionally degraded (e.g. API-Football free tier, or a
+    // lapsed plan). When present, the validator decides ok.
+    if (check.validate) {
+      try {
+        const body = await res.json();
+        const valid = !!check.validate(body);
+        ok = res.ok && valid;
+        if (res.ok && !valid) detail = 'reachable but validation failed (plan/quota?)';
+      } catch (e) {
+        ok = false;
+        detail = 'invalid JSON body';
+      }
+    }
     return {
-      ok: res.ok,
+      ok,
       status: res.status,
       ms: Date.now() - t0,
+      ...(detail ? { detail } : {}),
     };
   } catch (err) {
     return {
