@@ -264,10 +264,12 @@ function hydrateTeam(fixture, side) {
     return {
       name: embedded.name || code || 'TBA',
       short: embedded.short || code || 'TBA',
-      code: (embedded.country_code || code || embedded.slug || 'IDN').toUpperCase().slice(0, 3),
+      code: (embedded.country_code || code || embedded.slug || 'TBA').toUpperCase().slice(0, 3),
     };
   }
-  const uuid = side === 'home' ? fixture.home_team : fixture.away_team;
-  const short = uuid ? `T${String(uuid).slice(0, 3).toUpperCase()}` : 'TBA';
-  return { name: 'TBA', short, code: 'IDN' };
+  // No team embed — home_team/away_team hold the tricode directly (text PK),
+  // so use it as-is. Empty slot (TBA knockout) renders a neutral code pill.
+  const raw = side === 'home' ? fixture.home_team : fixture.away_team;
+  const codeStr = raw ? String(raw).toUpperCase() : '';
+  return { name: codeStr || 'TBA', short: codeStr || 'TBA', code: codeStr.slice(0, 3) || 'TBA' };
 }

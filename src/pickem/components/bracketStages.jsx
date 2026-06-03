@@ -142,11 +142,10 @@ export function BracketGroupStage({ groups, setPick, locked }) {
             Pilih urutan
           </span>
         </div>
-        {activeGroup.teams.map(([code, odds]) => (
+        {activeGroup.teams.map(([code]) => (
           <BracketGroupRow
             key={code}
             code={code}
-            odds={odds}
             rank={picks[code]}
             onSet={(r) => setPick(active, code, r)}
             locked={locked}
@@ -211,7 +210,7 @@ function PagerArrow({ ariaLabel, onClick, disabled, flip }) {
   );
 }
 
-function BracketGroupRow({ code, odds, rank, onSet, locked }) {
+function BracketGroupRow({ code, rank, onSet, locked }) {
   return (
     <div
       style={{
@@ -231,9 +230,10 @@ function BracketGroupRow({ code, odds, rank, onSet, locked }) {
             fontFamily: 'var(--font-mono)',
             fontSize: 10,
             color: 'var(--ink-3)',
+            letterSpacing: '0.04em',
           }}
         >
-          Peluang lolos {odds}%
+          {teamShort(code)}
         </div>
       </div>
       <div style={{ display: 'flex', gap: 4 }} role="radiogroup" aria-label={`Peringkat ${code}`}>

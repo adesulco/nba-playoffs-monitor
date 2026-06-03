@@ -7998,7 +7998,34 @@
 // consumer shares one instance. Would have been a June-11 launch bug
 // during any NBA↔WC overlap.
 
-export const APP_VERSION = '0.79.17';
+// v0.79.18 — WC2026 bracket wired to the REAL draw + Komdigi cleanup
+// (2026-06-03).
+//
+// The WC2026 bracket builder was still seeded from bracketData.js
+// placeholders: fantasy groups containing teams NOT in the tournament
+// (Indonesia IDN, Italy ITA) AND a fabricated "Peluang lolos {odds}%"
+// per-team probability — a betting-style number the Polymarket/Komdigi
+// strip (v0.79.0) missed because it was hardcoded in the bracket seed.
+//
+// Fixes:
+//   - scripts/seed-wc2026-groups.mjs stamps the real group letter (A–L)
+//     onto teams.conference for all 48 nations, read from the API-Football
+//     WC2026 standings draw (idempotent PATCH).
+//   - bracketData.js SAMPLE_GROUPS replaced with the real 12-group draw.
+//     The trailing tuple int is now a draw-order seed (autofill only) —
+//     never displayed. KO template (R32/R16/QF/SF/Final) rebuilt from real
+//     qualifiers only (12 winners + 12 runners-up + 8 best thirds); zero
+//     fantasy sides. Bahasa names expanded to all 48.
+//   - bracketStages.jsx: removed the "Peluang lolos %" display (replaced
+//     with the neutral mono country code). No fabricated probability left.
+//   - Flag.jsx: full 48-nation coverage. Emoji now DERIVED from an
+//     alpha3→alpha2 map (typo-proof) + special England/Scotland sequences;
+//     COUNTRY_COLORS + COUNTRY_NAMES (Bahasa) filled for the whole field.
+//   - PredictingHub/FixtureDetail: team fallback no longer defaults to
+//     'IDN' (Indonesia flag on unknown teams) → neutral 'TBA'; also fixed
+//     the legacy `T${code}` prefix bug (home_team is a tricode, not a UUID,
+//     so it produced 'TMEX' — same class as the v0.79.13 fix).
+export const APP_VERSION = '0.79.18';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

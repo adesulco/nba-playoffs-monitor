@@ -19,35 +19,77 @@ import React from 'react';
 // codes). Extend as the tournament demands.
 // ============================================================================
 
+// Primary flag color per nation (solid-tint fallback + 1px border).
+// Full WC2026 field (48) + legacy aliases (POR/ITA/IDN) for old data.
 export const COUNTRY_COLORS = {
-  ARG: '#74ACDF', BRA: '#FEDF00', FRA: '#0055A4', ENG: '#CE1124',
-  IDN: '#FF0000', ESP: '#AA151B', GER: '#000000', NED: '#FF6600',
-  POR: '#006600', CRO: '#171796', MAR: '#C1272D', JPN: '#BC002D',
-  USA: '#3C3B6E', MEX: '#006847', CAN: '#FF0000', ITA: '#009246',
-  BEL: '#FAE042', URU: '#5CBCE9', COL: '#FCD116', SEN: '#00853F',
-  KOR: '#003478', AUS: '#012169',
+  ALG: '#006233', ARG: '#74ACDF', AUS: '#012169', AUT: '#ED2939',
+  BEL: '#FAE042', BIH: '#002395', BRA: '#009C3B', CAN: '#FF0000',
+  CPV: '#003893', COL: '#FCD116', COD: '#007FFF', CRO: '#171796',
+  CUW: '#002B7F', CZE: '#11457E', ECU: '#FFDD00', EGY: '#CE1126',
+  ENG: '#CE1124', FRA: '#0055A4', GER: '#000000', GHA: '#006B3F',
+  HAI: '#00209F', IRN: '#239F40', IRQ: '#CE1126', CIV: '#F77F00',
+  JPN: '#BC002D', JOR: '#007A3D', MEX: '#006847', MAR: '#C1272D',
+  NED: '#FF6600', NZL: '#00247D', NOR: '#BA0C2F', PAN: '#005293',
+  PAR: '#0038A8', PRT: '#006600', QAT: '#8A1538', KSA: '#006C35',
+  SCO: '#0065BF', SEN: '#00853F', RSA: '#007A4D', KOR: '#003478',
+  ESP: '#AA151B', SWE: '#006AA7', SUI: '#D52B1E', TUN: '#E70013',
+  TUR: '#E30A17', USA: '#3C3B6E', URU: '#0038A8', UZB: '#1EB53A',
+  // legacy aliases
+  POR: '#006600', ITA: '#009246', IDN: '#FF0000',
 };
 
-// ISO alpha-3 → emoji shorthand. Indonesia + common WC qualifiers.
-// Production swap should drop this in favor of a Flag SVG CDN
-// (flagcdn.com or country-flag-icons) — emoji render inconsistently
-// across platforms.
-const COUNTRY_EMOJI = {
-  ARG: '🇦🇷', BRA: '🇧🇷', FRA: '🇫🇷', ENG: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-  IDN: '🇮🇩', ESP: '🇪🇸', GER: '🇩🇪', NED: '🇳🇱',
-  POR: '🇵🇹', CRO: '🇭🇷', MAR: '🇲🇦', JPN: '🇯🇵',
-  USA: '🇺🇸', MEX: '🇲🇽', CAN: '🇨🇦', ITA: '🇮🇹',
-  BEL: '🇧🇪', URU: '🇺🇾', COL: '🇨🇴', SEN: '🇸🇳',
-  KOR: '🇰🇷', AUS: '🇦🇺',
+// ISO alpha-3 (FIFA/IOC) → ISO 3166-1 alpha-2, used to DERIVE the flag
+// emoji at render time (typo-proof vs. hand-keying 48 emoji). England &
+// Scotland are UK subdivisions with no alpha-2 — handled by SPECIAL_EMOJI.
+// A future SVG swap (flagcdn.com) only needs this map, not new emoji.
+const ALPHA3_TO_ALPHA2 = {
+  ALG: 'DZ', ARG: 'AR', AUS: 'AU', AUT: 'AT', BEL: 'BE', BIH: 'BA',
+  BRA: 'BR', CAN: 'CA', CPV: 'CV', COL: 'CO', COD: 'CD', CRO: 'HR',
+  CUW: 'CW', CZE: 'CZ', ECU: 'EC', EGY: 'EG', FRA: 'FR', GER: 'DE',
+  GHA: 'GH', HAI: 'HT', IRN: 'IR', IRQ: 'IQ', CIV: 'CI', JPN: 'JP',
+  JOR: 'JO', MEX: 'MX', MAR: 'MA', NED: 'NL', NZL: 'NZ', NOR: 'NO',
+  PAN: 'PA', PAR: 'PY', PRT: 'PT', QAT: 'QA', KSA: 'SA', SEN: 'SN',
+  RSA: 'ZA', KOR: 'KR', ESP: 'ES', SWE: 'SE', SUI: 'CH', TUN: 'TN',
+  TUR: 'TR', USA: 'US', URU: 'UY', UZB: 'UZ',
+  // legacy aliases
+  POR: 'PT', ITA: 'IT', IDN: 'ID',
 };
 
-const COUNTRY_NAMES = {
-  ARG: 'Argentina', BRA: 'Brasil', FRA: 'Prancis', ENG: 'Inggris',
-  IDN: 'Indonesia', ESP: 'Spanyol', GER: 'Jerman', NED: 'Belanda',
-  POR: 'Portugal', CRO: 'Kroasia', MAR: 'Maroko', JPN: 'Jepang',
-  USA: 'Amerika Serikat', MEX: 'Meksiko', CAN: 'Kanada', ITA: 'Italia',
-  BEL: 'Belgia', URU: 'Uruguay', COL: 'Kolombia', SEN: 'Senegal',
-  KOR: 'Korea Selatan', AUS: 'Australia',
+// England + Scotland flag emoji (GB-ENG / GB-SCT tag sequences).
+const SPECIAL_EMOJI = {
+  ENG: '\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}',
+  SCO: '\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}',
+};
+
+// Regional-indicator base codepoint for 'A'.
+const RI_A = 0x1f1e6;
+
+function emojiFor(key) {
+  if (SPECIAL_EMOJI[key]) return SPECIAL_EMOJI[key];
+  const a2 = ALPHA3_TO_ALPHA2[key];
+  if (!a2 || a2.length !== 2) return null;
+  return String.fromCodePoint(
+    RI_A + a2.charCodeAt(0) - 65,
+    RI_A + a2.charCodeAt(1) - 65,
+  );
+}
+
+// Bahasa country names — full WC2026 field (48) + legacy aliases.
+export const COUNTRY_NAMES = {
+  ALG: 'Aljazair', ARG: 'Argentina', AUS: 'Australia', AUT: 'Austria',
+  BEL: 'Belgia', BIH: 'Bosnia', BRA: 'Brasil', CAN: 'Kanada',
+  CPV: 'Tanjung Verde', COL: 'Kolombia', COD: 'Kongo DR', CRO: 'Kroasia',
+  CUW: 'Curaçao', CZE: 'Ceko', ECU: 'Ekuador', EGY: 'Mesir',
+  ENG: 'Inggris', FRA: 'Prancis', GER: 'Jerman', GHA: 'Ghana',
+  HAI: 'Haiti', IRN: 'Iran', IRQ: 'Irak', CIV: 'Pantai Gading',
+  JPN: 'Jepang', JOR: 'Yordania', MEX: 'Meksiko', MAR: 'Maroko',
+  NED: 'Belanda', NZL: 'Selandia Baru', NOR: 'Norwegia', PAN: 'Panama',
+  PAR: 'Paraguay', PRT: 'Portugal', QAT: 'Qatar', KSA: 'Arab Saudi',
+  SCO: 'Skotlandia', SEN: 'Senegal', RSA: 'Afrika Selatan', KOR: 'Korea Selatan',
+  ESP: 'Spanyol', SWE: 'Swedia', SUI: 'Swiss', TUN: 'Tunisia',
+  TUR: 'Turki', USA: 'Amerika Serikat', URU: 'Uruguay', UZB: 'Uzbekistan',
+  // legacy aliases
+  POR: 'Portugal', ITA: 'Italia', IDN: 'Indonesia',
 };
 
 /**
@@ -66,7 +108,7 @@ const COUNTRY_NAMES = {
  */
 export default function Flag({ code, w = 32, h = 22, round = 4, label }) {
   const key = (code || '').toUpperCase();
-  const emoji = COUNTRY_EMOJI[key];
+  const emoji = emojiFor(key);
   const color = COUNTRY_COLORS[key];
   const name = COUNTRY_NAMES[key] || key;
   const ariaLabel = label || `Bendera ${name}`;

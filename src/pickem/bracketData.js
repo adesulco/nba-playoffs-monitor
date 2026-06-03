@@ -1,69 +1,77 @@
 // ============================================================================
 // v0.69.0 — Pick'em P4 bracket source-of-truth data.
+// v0.79.18 — Wired to the REAL WC2026 draw (12 groups × 4 nations, A–L),
+//   read from the API-Football WC2026 standings (league=1, season=2026) and
+//   mirrored into teams.conference via scripts/seed-wc2026-groups.mjs. The
+//   old placeholder seed (fantasy groups with Indonesia/Italy + fabricated
+//   "Peluang lolos %" odds — a Komdigi-sensitive leftover) is GONE.
 //
-// Placeholder seed for the WC2026 bracket builder. Lifted verbatim from
-// design-handoff-pickem/js/bracket.jsx so the UI port stays faithful.
-// Once migration 0015 is applied AND the bracket-data ingest exists, the
-// useBracketState hook should swap these constants for a real fetch
-// against the `series` table (existing) or a future `bracket_slots` view.
-//
-// Until then, the shape is the contract:
+// Shape contract:
 //
 //   GROUP_LETTERS:     ['A'..'L']
-//   SAMPLE_GROUPS[L]:  { teams: [[code, oddsPct], …4] }   // 12 groups
+//   SAMPLE_GROUPS[L]:  { teams: [[code, seed], …4] }   // 12 real groups
+//                      `seed` is a draw-order strength (4=pot-1 … 1) used
+//                      ONLY to order the autofill heuristic. It is NEVER
+//                      displayed — no probability/odds surfaces remain.
 //   SAMPLE_R32:        [{ id, home, away, pick }] × 16
 //   SAMPLE_R16_DEFAULT [{ id, home, away, pick }] × 8
 //   SAMPLE_QF:         [{ id, home, away, pick }] × 4
 //   SAMPLE_SF:         [{ id, home, away, pick }] × 2
 //   SAMPLE_FINAL:      { id, home, away, pick }
 //
-// The KO seedings are "plausible top-2 + best-3rds" placeholders — they
-// re-seed in real life from the actual group results, but the bracket
-// builder needs SOMETHING to render against until kickoff.
+// The KO match-ups are an EDITABLE starting template built only from real
+// qualifiers (12 group winners + 12 runners-up + the 8 best third-placed
+// teams from the standings ranking) — no fantasy sides. They re-seed in
+// real life from the actual group results; the builder needs a concrete
+// starting bracket of real teams to render against until kickoff.
 // ============================================================================
 
 export const GROUP_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
 
+// Real WC2026 draw. Teams listed in draw/pot order (first = top seed); the
+// trailing integer is that draw-order strength (4→1), used only by autofill.
 export const SAMPLE_GROUPS = {
-  A: { teams: [['CAN', 78], ['MEX', 65], ['IDN', 28], ['SEN', 56]] },
-  B: { teams: [['BRA', 88], ['BEL', 60], ['KOR', 32], ['MAR', 45]] },
-  C: { teams: [['ARG', 84], ['CRO', 58], ['KOR', 38], ['AUS', 30]] },
-  D: { teams: [['FRA', 80], ['NED', 62], ['JPN', 50], ['USA', 35]] },
-  E: { teams: [['ESP', 82], ['GER', 70], ['ITA', 55], ['URU', 40]] },
-  F: { teams: [['ENG', 76], ['POR', 68], ['COL', 48], ['AUS', 32]] },
-  G: { teams: [['BRA', 75], ['SEN', 55], ['MAR', 48], ['JPN', 40]] },
-  H: { teams: [['NED', 70], ['MEX', 58], ['CRO', 50], ['USA', 38]] },
-  I: { teams: [['GER', 72], ['BEL', 62], ['POR', 55], ['SEN', 35]] },
-  J: { teams: [['ITA', 68], ['COL', 55], ['CAN', 50], ['IDN', 30]] },
-  K: { teams: [['URU', 65], ['KOR', 52], ['MAR', 48], ['AUS', 35]] },
-  L: { teams: [['POR', 70], ['JPN', 58], ['CRO', 52], ['USA', 40]] },
+  A: { teams: [['MEX', 4], ['RSA', 3], ['KOR', 2], ['CZE', 1]] },
+  B: { teams: [['CAN', 4], ['BIH', 3], ['QAT', 2], ['SUI', 1]] },
+  C: { teams: [['BRA', 4], ['MAR', 3], ['HAI', 2], ['SCO', 1]] },
+  D: { teams: [['USA', 4], ['PAR', 3], ['AUS', 2], ['TUR', 1]] },
+  E: { teams: [['GER', 4], ['CUW', 3], ['CIV', 2], ['ECU', 1]] },
+  F: { teams: [['NED', 4], ['JPN', 3], ['SWE', 2], ['TUN', 1]] },
+  G: { teams: [['BEL', 4], ['EGY', 3], ['IRN', 2], ['NZL', 1]] },
+  H: { teams: [['ESP', 4], ['CPV', 3], ['KSA', 2], ['URU', 1]] },
+  I: { teams: [['FRA', 4], ['SEN', 3], ['IRQ', 2], ['NOR', 1]] },
+  J: { teams: [['ARG', 4], ['ALG', 3], ['AUT', 2], ['JOR', 1]] },
+  K: { teams: [['PRT', 4], ['COD', 3], ['UZB', 2], ['COL', 1]] },
+  L: { teams: [['ENG', 4], ['CRO', 3], ['GHA', 2], ['PAN', 1]] },
 };
 
+// R32 — all 32 real qualifiers (12 winners + 12 runners-up + 8 best thirds),
+// paired to avoid same-group meetings. Editable starting template.
 export const SAMPLE_R32 = [
-  ['CAN', 'MEX'], ['BRA', 'POR'], ['ARG', 'JPN'], ['FRA', 'GER'],
-  ['ESP', 'BEL'], ['ENG', 'URU'], ['NED', 'SEN'], ['ITA', 'COL'],
-  ['BRA', 'MAR'], ['GER', 'CRO'], ['POR', 'KOR'], ['CAN', 'USA'],
-  ['NED', 'BEL'], ['ESP', 'SEN'], ['ARG', 'MEX'], ['FRA', 'ITA'],
+  ['MEX', 'CRO'], ['ARG', 'RSA'], ['BRA', 'KOR'], ['ENG', 'SEN'],
+  ['FRA', 'QAT'], ['ESP', 'JPN'], ['GER', 'MAR'], ['NED', 'IRN'],
+  ['PRT', 'CPV'], ['BEL', 'PAR'], ['USA', 'BIH'], ['CAN', 'ALG'],
+  ['KSA', 'CIV'], ['HAI', 'SWE'], ['AUS', 'EGY'], ['COD', 'CUW'],
 ].map(([h, a], i) => ({ id: 'r32-' + i, home: h, away: a, pick: null }));
 
 export const SAMPLE_R16_DEFAULT = [
-  ['CAN', 'BRA'], ['ARG', 'FRA'], ['ESP', 'ENG'], ['NED', 'ITA'],
-  ['BRA', 'GER'], ['POR', 'CAN'], ['NED', 'ESP'], ['ARG', 'FRA'],
+  ['MEX', 'ARG'], ['BRA', 'ENG'], ['FRA', 'ESP'], ['GER', 'NED'],
+  ['PRT', 'BEL'], ['USA', 'CAN'], ['CIV', 'SWE'], ['EGY', 'COD'],
 ].map(([h, a], i) => ({ id: 'r16-' + i, home: h, away: a, pick: null }));
 
 export const SAMPLE_QF = [
-  { id: 'qf-0', home: 'CAN', away: 'ARG', pick: null },
-  { id: 'qf-1', home: 'ESP', away: 'NED', pick: null },
-  { id: 'qf-2', home: 'BRA', away: 'POR', pick: null },
-  { id: 'qf-3', home: 'NED', away: 'ARG', pick: null },
+  { id: 'qf-0', home: 'ARG', away: 'BRA', pick: null },
+  { id: 'qf-1', home: 'FRA', away: 'GER', pick: null },
+  { id: 'qf-2', home: 'PRT', away: 'USA', pick: null },
+  { id: 'qf-3', home: 'CIV', away: 'EGY', pick: null },
 ];
 
 export const SAMPLE_SF = [
-  { id: 'sf-0', home: 'ARG', away: 'NED', pick: null },
-  { id: 'sf-1', home: 'BRA', away: 'NED', pick: null },
+  { id: 'sf-0', home: 'ARG', away: 'FRA', pick: null },
+  { id: 'sf-1', home: 'PRT', away: 'EGY', pick: null },
 ];
 
-export const SAMPLE_FINAL = { id: 'final', home: 'ARG', away: 'BRA', pick: null };
+export const SAMPLE_FINAL = { id: 'final', home: 'ARG', away: 'PRT', pick: null };
 
 // Stage list — drives the stepper + paging order.
 export const STAGES = [
@@ -149,13 +157,24 @@ export function maxBracketPoints() {
  * to the code. Centralised so stage components don't duplicate the
  * lookup.
  */
+// Bahasa names — full WC2026 field (48) + legacy aliases. Kept in sync with
+// Flag.jsx COUNTRY_NAMES (duplicated rather than imported so this data module
+// stays free of the JSX/React Flag dependency).
 const TEAM_NAMES_ID = {
-  ARG: 'Argentina',   BRA: 'Brasil',     FRA: 'Prancis',  ENG: 'Inggris',
-  IDN: 'Indonesia',   ESP: 'Spanyol',    GER: 'Jerman',   NED: 'Belanda',
-  POR: 'Portugal',    CRO: 'Kroasia',    MAR: 'Maroko',   JPN: 'Jepang',
-  USA: 'Amerika',     MEX: 'Meksiko',    CAN: 'Kanada',   ITA: 'Italia',
-  BEL: 'Belgia',      URU: 'Uruguay',    COL: 'Kolombia', SEN: 'Senegal',
-  KOR: 'Korea Sel.',  AUS: 'Australia',
+  ALG: 'Aljazair',      ARG: 'Argentina',     AUS: 'Australia',     AUT: 'Austria',
+  BEL: 'Belgia',        BIH: 'Bosnia',        BRA: 'Brasil',        CAN: 'Kanada',
+  CPV: 'Tanjung Verde', COL: 'Kolombia',      COD: 'Kongo DR',      CRO: 'Kroasia',
+  CUW: 'Curaçao',       CZE: 'Ceko',          ECU: 'Ekuador',       EGY: 'Mesir',
+  ENG: 'Inggris',       FRA: 'Prancis',       GER: 'Jerman',        GHA: 'Ghana',
+  HAI: 'Haiti',         IRN: 'Iran',          IRQ: 'Irak',          CIV: 'Pantai Gading',
+  JPN: 'Jepang',        JOR: 'Yordania',      MEX: 'Meksiko',       MAR: 'Maroko',
+  NED: 'Belanda',       NZL: 'Selandia Baru', NOR: 'Norwegia',      PAN: 'Panama',
+  PAR: 'Paraguay',      PRT: 'Portugal',      QAT: 'Qatar',         KSA: 'Arab Saudi',
+  SCO: 'Skotlandia',    SEN: 'Senegal',       RSA: 'Afrika Selatan', KOR: 'Korea Selatan',
+  ESP: 'Spanyol',       SWE: 'Swedia',        SUI: 'Swiss',         TUN: 'Tunisia',
+  TUR: 'Turki',         USA: 'Amerika Serikat', URU: 'Uruguay',     UZB: 'Uzbekistan',
+  // legacy aliases
+  POR: 'Portugal',      ITA: 'Italia',        IDN: 'Indonesia',
 };
 
 export function teamLabel(code) {
