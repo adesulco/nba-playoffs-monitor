@@ -7978,7 +7978,27 @@
 //     (local .env key is 401; no valid key exists anywhere in repo —
 //     needs a fresh one from console.anthropic.com + GH Actions secret).
 
-export const APP_VERSION = '0.79.16';
+// v0.79.17 — WC2026 Pick'em fixtures seeded + multi-competition
+// provider bug fixed (2026-06-03).
+//
+// WC2026 Pick'em groundwork (the audit found the schedule un-blocked):
+//   - scripts/backfill-wc2026.mjs seeds the 48 WC nations into teams
+//     (FIFA codes; Portugal→PRT to dodge the NBA POR/Portland PK clash)
+//     + backfills 72 group-stage fixtures from the paid API-Football
+//     (league=1, season=2026). Idempotent (deterministic UUIDs).
+//   - Verified live: list-fixtures?league=WC2026 returns 72 with team
+//     embeds (South Africa @ Mexico, opener 2026-06-11).
+//
+// Provider hoist fix: PickemCompetitionProvider was mounted inside
+// PickemRoot, but screens call usePickemCompetition() above it → they
+// got the fallback default while PickemRoot's chrome got the real
+// selection. Selecting WC2026 flipped the switcher + right rail but
+// left the header + fixtures on NBA. Found by force-selecting WC2026
+// pre-window. Provider hoisted to the app root (App.jsx) so every
+// consumer shares one instance. Would have been a June-11 launch bug
+// during any NBA↔WC overlap.
+
+export const APP_VERSION = '0.79.17';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

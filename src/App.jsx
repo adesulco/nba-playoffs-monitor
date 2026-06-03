@@ -4,6 +4,16 @@ import { HelmetProvider } from 'react-helmet-async';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
 import { AppProvider, useApp } from './lib/AppContext.jsx';
+// v0.79.17 — Pick'em competition provider hoisted to the app root.
+// It was mounted inside PickemRoot, but the screen components
+// (PredictingHubInner etc.) call usePickemCompetition() ABOVE PickemRoot
+// — so they got the defensive fallback (defaultCompetitionKey) while
+// only PickemRoot's chrome read the real selected value. Symptom:
+// selecting WC2026 flipped the switcher + right rail but the fixtures
+// stayed on the default. Hoisting it here gives every consumer one
+// shared instance. Cheap (a useState + a localStorage listener) so
+// mounting it app-wide is harmless for non-Pick'em pages.
+import { PickemCompetitionProvider } from './pickem/useCompetition.jsx';
 import AnalyticsTracker from './components/AnalyticsTracker.jsx';
 import SportErrorBoundary from './components/SportErrorBoundary.jsx';
 import { SentryErrorBoundary } from './lib/observability.js';
@@ -274,6 +284,7 @@ export default function App() {
             skip-link focus target #main without making it a regular
             tab stop. */}
         <main id="main" tabIndex={-1} style={{ outline: 'none' }}>
+        <PickemCompetitionProvider>
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             {/* v0.57.0 — Phase E redesign: tri-state homeVariant flag.
@@ -428,6 +439,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        </PickemCompetitionProvider>
         </main>
         {/* v0.13.0 — site-wide cross-sport footer. Wrapped in its own
             Suspense so the chunk stream doesn't blank the page body

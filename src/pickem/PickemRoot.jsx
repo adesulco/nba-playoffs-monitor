@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BottomNav, SideNav } from './Nav.jsx';
-import { PickemCompetitionProvider, usePickemCompetition } from './useCompetition.jsx';
+import { usePickemCompetition } from './useCompetition.jsx';
 import { COMPETITIONS, COMPETITION_ORDER } from './competitions.js';
 
 // ============================================================================
@@ -136,35 +136,39 @@ export default function PickemRoot({ active = 'predict', onNavigate, theme, chil
     } catch {}
   }, [effective]);
 
+  // v0.79.17 — PickemCompetitionProvider was here, but the screen
+  // components that render <PickemRoot> call usePickemCompetition()
+  // ABOVE it, so they read the fallback default instead of the selected
+  // competition. The provider is now mounted once at the app root
+  // (src/App.jsx) so PickemRoot's chrome + every screen share one
+  // instance. PickemRoot just consumes it.
   return (
-    <PickemCompetitionProvider>
-      <div
-        className="pickem-root"
-        data-theme={effective}
+    <div
+      className="pickem-root"
+      data-theme={effective}
+      style={{
+        minHeight: '100vh',
+        display: 'grid',
+        gridTemplateColumns: mobile ? '1fr' : '220px 1fr',
+        gridTemplateRows: mobile ? '1fr auto' : '1fr',
+        background: 'var(--bg-base)',
+        color: 'var(--ink-1)',
+      }}
+    >
+      {!mobile && <SideNav active={active} onChange={onNavigate} />}
+
+      <main
         style={{
-          minHeight: '100vh',
-          display: 'grid',
-          gridTemplateColumns: mobile ? '1fr' : '220px 1fr',
-          gridTemplateRows: mobile ? '1fr auto' : '1fr',
-          background: 'var(--bg-base)',
-          color: 'var(--ink-1)',
+          minWidth: 0,
+          overflow: 'auto',
+          paddingBottom: mobile ? 12 : 0,
         }}
       >
-        {!mobile && <SideNav active={active} onChange={onNavigate} />}
+        <CompetitionSwitcher />
+        {children}
+      </main>
 
-        <main
-          style={{
-            minWidth: 0,
-            overflow: 'auto',
-            paddingBottom: mobile ? 12 : 0,
-          }}
-        >
-          <CompetitionSwitcher />
-          {children}
-        </main>
-
-        {mobile && <BottomNav active={active} onChange={onNavigate} />}
-      </div>
-    </PickemCompetitionProvider>
+      {mobile && <BottomNav active={active} onChange={onNavigate} />}
+    </div>
   );
 }
