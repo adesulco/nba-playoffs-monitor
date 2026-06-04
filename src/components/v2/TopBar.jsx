@@ -266,6 +266,7 @@ export default function V2TopBar({ children }) {
                 border: '1px solid var(--border-interactive)',
                 borderRadius: 6,
                 padding: '5px 10px',
+                minHeight: 40,
                 width: 200,
                 color: 'var(--ink-3)',
                 fontSize: 11,
@@ -317,6 +318,11 @@ export default function V2TopBar({ children }) {
                 letterSpacing: '0.1em',
                 padding: '6px 8px',
                 cursor: 'pointer',
+                // F-018 — ≥40px tap target (was ~22px).
+                minHeight: 40,
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               {langLabel}
@@ -338,6 +344,11 @@ export default function V2TopBar({ children }) {
                 borderRadius: 6,
                 cursor: 'pointer',
                 display: 'inline-flex',
+                // F-018 — ≥40px tap target (was ~26px).
+                minHeight: 40,
+                minWidth: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <Icon name="Settings" size={14} />

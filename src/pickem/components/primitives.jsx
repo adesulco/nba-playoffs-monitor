@@ -26,7 +26,9 @@ const STATE_LABELS = {
   open:   { l: 'TERBUKA',         fg: 'var(--pickem-orange)' },
   locked: { l: 'TERKUNCI',        fg: 'var(--ink-3)' },
   scored: { l: 'SELESAI',         fg: 'var(--ink-3)' },
-  missed: { l: 'TIDAK DIPREDIKSI', fg: 'var(--ink-3)' },
+  // F-016 — 'missed' is a faded/done state (you scored 0); dim it to --ink-4
+  // so it reads distinctly from the still-relevant 'locked' badge.
+  missed: { l: 'TIDAK DIPREDIKSI', fg: 'var(--ink-4)' },
   soon:   { l: 'SEGERA',          fg: 'var(--ink-3)' },
 };
 

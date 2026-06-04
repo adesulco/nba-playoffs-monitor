@@ -1,4 +1,17 @@
 import { supabase } from '../lib/supabase.js';
+import { trackEvent } from '../lib/analytics.js';
+
+// F-010 — Pick'em conversion analytics. trackEvent is consent-gated (no-op
+// until the user grants analytics consent) and bridges GA4 + PostHog. Some
+// conversions (predictions, bracket edits) auto-save on every keystroke/tap,
+// so we dedupe those to one event per key per page session — otherwise the
+// raw counts would be dominated by score-stepper taps.
+const _firedOnce = new Set();
+function trackOnce(key, eventName, params) {
+  if (_firedOnce.has(key)) return;
+  _firedOnce.add(key);
+  trackEvent(eventName, params);
+}
 
 // ============================================================================
 // v0.67.0 — Pick'em API client.
@@ -133,6 +146,7 @@ export async function upsertPrediction(payload) {
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    trackOnce(`pred:${payload?.fixture_id}`, 'pickem_prediction_saved', { league: payload?.league });
     return { ok: true, prediction: data?.prediction };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -186,6 +200,7 @@ export async function createGrup(payload) {
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    trackEvent('pickem_group_created', { competition: payload?.competition });
     return { ok: true, ...data };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -210,6 +225,7 @@ export async function joinGrup({ leagueId, inviteCode }) {
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    trackEvent('pickem_group_joined');
     return { ok: true, ...data };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -307,6 +323,7 @@ export async function upsertBracket(payload) {
       const err = normalizeError(res, data);
       return { ok: false, error: err, schemaReady: !isSchemaMissing(err) };
     }
+    trackOnce('bracket', 'pickem_bracket_saved');
     return { ok: true, ...data };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -331,6 +348,7 @@ export async function upsertSurvivorPick({ fixture_id, picked_team_id }) {
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    trackEvent('pickem_survivor_pick');
     return { ok: true, ...data };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };

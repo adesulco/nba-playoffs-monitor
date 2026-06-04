@@ -8070,7 +8070,20 @@
 //     form-action 'self', upgrade-insecure-requests); script/style/img/font/
 //     connect kept permissive (https:) so the SPA + GA/PostHog/Sentry/
 //     OneSignal/Supabase aren't broken. Tighten to nonces post-launch.
-export const APP_VERSION = '0.79.20';
+// v0.79.21 — audit remediation, final low-priority batch (2026-06-04).
+//   • F-010 — Pick'em had ZERO analytics instrumentation (the funnel was
+//     blind). Added consent-gated trackEvent conversions in src/pickem/api.js:
+//     pickem_prediction_saved (deduped per fixture/session — predictions
+//     auto-save on every score tap), pickem_group_created, pickem_group_joined,
+//     pickem_bracket_saved (deduped/session), pickem_survivor_pick.
+//   • F-018 — global TopBar control tap targets bumped to ≥40px (lang ~22→40,
+//     theme ~26→40, search ~24→40).
+//   • F-016 — 'missed' StatePill dimmed to --ink-4 so it reads distinctly
+//     from the still-relevant 'locked' badge.
+//   • F-017 (PostHog 7yr retention) is NOT a code change — it's a PostHog
+//     dashboard setting (cap to 12mo) + privacy-copy update; left for Ade so
+//     we don't state a retention period the dashboard doesn't enforce.
+export const APP_VERSION = '0.79.21';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
