@@ -127,6 +127,16 @@ function Icon({ name, size = 22 }) {
           <path d="M9 11h6" />
         </svg>
       );
+    case 'users':
+      // Two people — reads as "grup / friends".
+      return (
+        <svg {...common} aria-hidden="true">
+          <circle cx="9" cy="8" r="3" />
+          <path d="M3.5 19a5.5 5.5 0 0 1 11 0" />
+          <path d="M16 6.2a3 3 0 0 1 0 5.6" />
+          <path d="M17.5 19a5.5 5.5 0 0 0-2.2-4.4" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -140,6 +150,9 @@ function detectSport(pathname) {
   if (pathname.startsWith('/tennis')) return 'tennis';
   if (pathname.startsWith('/super-league-2025-26')) return 'superleague';
   if (pathname.startsWith('/fifa-world-cup-2026')) return 'fifa';
+  // v0.79.20 (audit F-005) — Pick'em is the launched flagship; surface its
+  // sections in the fixed thumb-bar instead of the generic Home/Cari/Bracket.
+  if (pathname.startsWith('/pickem')) return 'pickem';
   return null;
 }
 
@@ -203,6 +216,14 @@ function navItemsFor(sport, lang) {
         { icon: 'live', label: t('Piala Dunia', 'World Cup'), to: '/fifa-world-cup-2026' },
         search,
       ];
+    case 'pickem':
+      return [
+        home,
+        { icon: 'live',      label: t('Prediksi', 'Predict'), to: '/pickem', exact: true },
+        { icon: 'standings', label: t('Papan',    'Board'),   to: '/pickem/board' },
+        { icon: 'users',     label: t('Grup',     'Groups'),  to: '/pickem/grup' },
+        search,
+      ];
     default:
       // Default 3-item bar for home, /bracket, /settings, /login, /about, etc.
       return [home, search, bracket];
@@ -222,6 +243,9 @@ function isActive(item, location) {
     return location.pathname === path && location.hash === `#${hash}`;
   }
   if (item.to === '/') return location.pathname === '/';
+  // `exact` items (e.g. Pick'em "Prediksi" at /pickem) match only their own
+  // path, so deeper routes like /pickem/board don't also light them up.
+  if (item.exact) return location.pathname === path;
   return location.pathname === path || location.pathname.startsWith(`${path}/`);
 }
 

@@ -29,6 +29,9 @@ export default function HubRightRail({ user }) {
   const [profile, setProfile] = useState(null);
   const [grups, setGrups] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [reload, setReload] = useState(0);
+  const retry = () => setReload((n) => n + 1);
 
   useEffect(() => {
     if (!user) {
@@ -38,19 +41,30 @@ export default function HubRightRail({ user }) {
     let cancelled = false;
     (async () => {
       setLoading(true);
-      const [pRes, gRes] = await Promise.all([
-        listProfile({ competition: COMPETITION, history_limit: 1 }),
-        listMyGrups(COMPETITION),
-      ]);
-      if (cancelled) return;
-      if (pRes.ok) setProfile(pRes.profile);
-      if (gRes.ok) setGrups((gRes.grups || []).slice(0, 3));
-      setLoading(false);
+      setError(false);
+      try {
+        const [pRes, gRes] = await Promise.all([
+          listProfile({ competition: COMPETITION, history_limit: 1 }),
+          listMyGrups(COMPETITION),
+        ]);
+        if (cancelled) return;
+        if (pRes.ok) setProfile(pRes.profile);
+        if (gRes.ok) setGrups((gRes.grups || []).slice(0, 3));
+        // F-003 — surface an explicit error+retry only when BOTH loads fail.
+        // Otherwise a transient failure masquerades as an empty state
+        // ("Belum ikutan grup") the user can't distinguish from real data,
+        // and a throw (network/500) would leave loading=true forever.
+        if (!pRes.ok && !gRes.ok) setError(true);
+      } catch {
+        if (!cancelled) setError(true);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     })();
     return () => {
       cancelled = true;
     };
-  }, [user, COMPETITION]);
+  }, [user, COMPETITION, reload]);
 
   if (!user) {
     return <GuestRail onLogin={() => navigate('/login?next=/pickem')} />;
@@ -62,8 +76,8 @@ export default function HubRightRail({ user }) {
       aria-label="Ringkasan kamu"
       style={{ fontFamily: 'var(--font-ui-pickem)' }}
     >
-      <StreakCard profile={profile} loading={loading} />
-      <GrupSnippet grups={grups} loading={loading} onCreate={() => navigate('/pickem/grup/new')} />
+      <StreakCard profile={profile} loading={loading} error={error} onRetry={retry} />
+      <GrupSnippet grups={grups} loading={loading} error={error} onRetry={retry} onCreate={() => navigate('/pickem/grup/new')} />
       <QuickLinks navigate={navigate} competition={competition} />
     </aside>
   );
@@ -71,7 +85,7 @@ export default function HubRightRail({ user }) {
 
 // ── Cards ──────────────────────────────────────────────────────────────────
 
-function StreakCard({ profile, loading }) {
+function StreakCard({ profile, loading, error, onRetry }) {
   const current = profile?.streak?.current_streak ?? 0;
   const longest = profile?.streak?.longest_streak ?? 0;
   const accuracy = profile?.accuracy_pct;
@@ -79,6 +93,8 @@ function StreakCard({ profile, loading }) {
     <RailCard label="STREAK KAMU">
       {loading ? (
         <RailLoading />
+      ) : error ? (
+        <RailError onRetry={onRetry} />
       ) : (
         <>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
@@ -112,7 +128,7 @@ function StreakCard({ profile, loading }) {
   );
 }
 
-function GrupSnippet({ grups, loading, onCreate }) {
+function GrupSnippet({ grups, loading, error, onRetry, onCreate }) {
   return (
     <RailCard label="GRUP KAMU" trailing={
       grups.length > 0 ? (
@@ -130,6 +146,8 @@ function GrupSnippet({ grups, loading, onCreate }) {
     }>
       {loading ? (
         <RailLoading />
+      ) : error ? (
+        <RailError onRetry={onRetry} />
       ) : grups.length === 0 ? (
         <div>
           <div
@@ -346,6 +364,36 @@ function RailLoading() {
       }}
     >
       Memuat…
+    </div>
+  );
+}
+
+// F-003 — explicit failure state with a retry affordance, so a failed load
+// never shows an indefinite "Memuat…" or a misleading empty state.
+function RailError({ onRetry }) {
+  return (
+    <div style={{ fontFamily: 'var(--font-ui-pickem)' }}>
+      <div style={{ color: 'var(--ink-2)', fontSize: 12, lineHeight: 1.5, marginBottom: 8 }}>
+        Gagal memuat data.
+      </div>
+      <button
+        type="button"
+        onClick={onRetry}
+        style={{
+          appearance: 'none',
+          cursor: 'pointer',
+          background: 'transparent',
+          border: '1px solid var(--line-2)',
+          borderRadius: 8,
+          padding: '6px 12px',
+          color: 'var(--ink-1)',
+          fontFamily: 'var(--font-ui-pickem)',
+          fontSize: 12,
+          fontWeight: 600,
+        }}
+      >
+        Coba lagi
+      </button>
     </div>
   );
 }

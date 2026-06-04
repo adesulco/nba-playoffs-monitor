@@ -8056,7 +8056,21 @@
 // CRITICAL F-001 — league_members RLS infinite recursion (42P17) that 500s
 // every brackets/league_members read. Prepared, not yet applied (no mgmt
 // token in this env; DB migrations apply via the Supabase SQL editor).
-export const APP_VERSION = '0.79.19';
+// v0.79.20 — audit remediation, deferred batch (2026-06-04).
+//   • F-005 — global mobile bottom-nav is now Pick'em-aware: on /pickem/* the
+//     fixed thumb-bar shows Prediksi / Papan / Grup (+ Home/Cari) instead of
+//     the generic Home/Cari/Bracket. New 'users' icon for Grup; 'exact' flag
+//     so /pickem doesn't stay lit on deeper routes.
+//   • F-003 — HubRightRail now distinguishes load-failure from empty state:
+//     try/catch/finally + a "Gagal memuat — Coba lagi" retry card (was an
+//     indefinite "Memuat…" on throw, or a misleading "Belum ikutan grup" on
+//     a silent {ok:false}).
+//   • F-013 (CSP) — added a Content-Security-Policy. Structural directives
+//     locked (frame-ancestors 'none', base-uri 'self', object-src 'none',
+//     form-action 'self', upgrade-insecure-requests); script/style/img/font/
+//     connect kept permissive (https:) so the SPA + GA/PostHog/Sentry/
+//     OneSignal/Supabase aren't broken. Tighten to nonces post-launch.
+export const APP_VERSION = '0.79.20';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
