@@ -29,6 +29,11 @@
 --   created out-of-band via the dashboard, not a repo migration).
 -- ============================================================================
 
+-- Wrapped in a single transaction so the policy drop + recreate is atomic —
+-- if any statement fails, nothing applies (league_members never ends up with
+-- RLS enabled but zero policies = deny-all).
+begin;
+
 -- 1) Membership-check helper. SECURITY DEFINER → bypasses RLS internally, so
 --    calling it from a league_members policy does not recurse.
 create or replace function public.is_league_member(_league_id uuid, _user_id uuid)
@@ -98,6 +103,8 @@ create policy league_members_delete on public.league_members
   for delete
   to authenticated
   using (user_id = (select auth.uid()));
+
+commit;
 
 -- ============================================================================
 -- POST-APPLY VERIFICATION (run from a shell; expect HTTP 200, empty array []
