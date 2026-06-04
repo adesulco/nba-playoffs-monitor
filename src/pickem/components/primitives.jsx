@@ -147,7 +147,9 @@ const STEP_BTN_STYLE = {
  * size='lg' bumps the buttons to 36px for the fixture-detail screen.
  */
 export function ScoreStepper({ value = 0, onChange, size = 'md', minValue = 0, maxValue = 20, ariaLabel }) {
-  const dims = size === 'lg' ? { btn: 36, w: 24, fs: 16 } : { btn: 30, w: 20, fs: 14 };
+  // F-006: bumped tap targets (md 30→40, lg 36→44) — the −/+ stepper is the
+  // primary mobile interaction; 40/44px clears Apple HIG / Material guidance.
+  const dims = size === 'lg' ? { btn: 44, w: 24, fs: 16 } : { btn: 40, w: 20, fs: 14 };
   const clamp = (n) => Math.max(minValue, Math.min(maxValue, n));
   return (
     <div
@@ -291,6 +293,7 @@ export function OutcomePicker({ odds = {}, value, onChange, hint, disabled, allo
             type="button"
             role="radio"
             aria-checked={sel}
+            aria-label={o.label}
             disabled={disabled}
             onClick={() => onChange?.(o.value)}
             style={{

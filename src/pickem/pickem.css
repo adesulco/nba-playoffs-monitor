@@ -44,7 +44,7 @@
   --ink-1: #0F1E2E;
   --ink-2: #3A4856;
   --ink-3: #6B7480;
-  --ink-4: #98998E;
+  --ink-4: #6B6C64; /* F-008: darkened from #98998E → ≥4.5:1 on light --bg-raised */
   --ink-on-accent: #FFFFFF;
   --ink-on-pulse:  #FFFFFF;
 
@@ -133,7 +133,7 @@
   --ink-1: #E6EEF9;
   --ink-2: #B6C4D8;
   --ink-3: #9FB4CC;
-  --ink-4: #6B7B92;
+  --ink-4: #8B9AAF; /* F-008: lightened from #6B7B92 → ≥4.5:1 on dark --bg-base/raised */
 
   --line-1: rgba(230, 238, 249, 0.08);
   --line-2: rgba(230, 238, 249, 0.14);

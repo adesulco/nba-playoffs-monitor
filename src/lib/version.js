@@ -8025,7 +8025,38 @@
 //     'IDN' (Indonesia flag on unknown teams) → neutral 'TBA'; also fixed
 //     the legacy `T${code}` prefix bug (home_team is a tricode, not a UUID,
 //     so it produced 'TMEX' — same class as the v0.79.13 fix).
-export const APP_VERSION = '0.79.18';
+// v0.79.19 — pre-launch audit remediation, client-side batch (2026-06-04).
+//
+// Triaged an external pre-launch audit (23 findings). Verified each against
+// ground truth before acting — several were overstated or already handled:
+//   • F-009 (join-code maxLength) — FALSE: maxLength={12} already present.
+//   • F-012 (display-name maxLength) — FALSE: maxLength={20} + 2–20 validation.
+//   • F-019 (score/outcome contradiction) — already handled: setScore derives
+//     picked_outcome from the score (h>a→H, h<a→A) so it can't contradict.
+//   • F-006 (stepper "below WCAG 2.5.8 24px") — 30px already PASSES AA; bumped
+//     anyway for mobile comfort.
+//
+// Shipped client-side fixes:
+//   • F-011 — Grup eyebrow was hardcoded "PIALA DUNIA 2026" while operating on
+//     NBA. Now bound to competition.label (NBA Playoffs / Piala Dunia).
+//   • F-004 — every /pickem/* route inherited the homepage <title> + a "/"
+//     canonical (duplicate-content + wrong share previews). Added per-screen
+//     SEO (title/description/canonical, noindex on grup+profile) via one map
+//     in PickemRoot keyed on the active nav key.
+//   • F-008 — --ink-4 failed 4.5:1 contrast. Darkened light (#98998E→#6B6C64)
+//     + lightened dark (#6B7B92→#8B9AAF) to clear AA on both themes.
+//   • F-006 — score −/+ stepper tap targets bumped (md 30→40, lg 36→44px).
+//   • F-007 — OutcomePicker radios now carry per-option aria-labels, and the
+//     radiogroup gets a match-specific name ("Prediksi hasil RSA vs MEX").
+//   • F-002 — on denied/withdrawn consent, purge leftover PostHog ph_*
+//     localStorage (device/distinct id) + posthog.reset(true). Init gating was
+//     already correct; this closes the stale-storage erasure gap.
+//
+// SERVER-SIDE (needs Ade to apply): supabase/migrations/0018 fixes the
+// CRITICAL F-001 — league_members RLS infinite recursion (42P17) that 500s
+// every brackets/league_members read. Prepared, not yet applied (no mgmt
+// token in this env; DB migrations apply via the Supabase SQL editor).
+export const APP_VERSION = '0.79.19';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

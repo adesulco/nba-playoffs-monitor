@@ -81,7 +81,7 @@ function GrupInner() {
     <PickemRoot active="grup">
       <div style={{ padding: '20px 16px 32px', maxWidth: 720, margin: '0 auto' }}>
         <header style={{ marginBottom: 18 }}>
-          <div className="p-eyebrow" style={{ marginBottom: 6 }}>GRUP KAMU · PIALA DUNIA 2026</div>
+          <div className="p-eyebrow" style={{ marginBottom: 6 }}>GRUP KAMU · {competition.label.toUpperCase()}</div>
           <h1 className="p-display-sm" style={{ marginBottom: 4, color: 'var(--ink-1)' }}>
             Grup
           </h1>

@@ -27,6 +27,22 @@ let sentryReady = false;
 let posthogReady = false;
 let consentSubscribed = false;
 
+// F-002 — remove any PostHog-written localStorage keys (e.g.
+// `ph_<key>_posthog`) left over from a prior consented session. Called when
+// consent is denied/withdrawn so no device identifier persists without
+// consent. Safe no-op server-side or when storage is unavailable.
+function purgePosthogStorage() {
+  try {
+    if (typeof localStorage === 'undefined') return;
+    const doomed = [];
+    for (let i = 0; i < localStorage.length; i += 1) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('ph_') && k.includes('posthog')) doomed.push(k);
+    }
+    doomed.forEach((k) => localStorage.removeItem(k));
+  } catch { /* ignore */ }
+}
+
 // v0.62.0 — Sentry beforeSend scrub. Audit F-007: strip URL query strings
 // from breadcrumbs + transactions before they leave the browser. Even
 // with sendDefaultPii: false, request URLs in breadcrumbs can carry
@@ -92,7 +108,15 @@ export function initObservability() {
     // policy: a page reload guarantees a fully clean state.
     if (posthogReady) {
       try { posthog.opt_out_capturing(); } catch { /* ignore */ }
+      // F-002 — also purge PostHog's stored identifiers ($device_id /
+      // distinct_id) so a consent withdrawal leaves no personal data behind
+      // (UU PDP Art. 21 / GDPR Art. 17 erasure). reset(true) clears storage.
+      try { posthog.reset(true); } catch { /* ignore */ }
     }
+    // Even if PostHog was never inited THIS load, a prior consented session
+    // may have left ph_* keys in localStorage. With consent now denied, clear
+    // them so no device identifier persists without consent.
+    purgePosthogStorage();
     return;
   }
 

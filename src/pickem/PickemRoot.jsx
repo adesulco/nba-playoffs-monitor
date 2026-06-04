@@ -2,6 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { BottomNav, SideNav } from './Nav.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
 import { COMPETITIONS, COMPETITION_ORDER } from './competitions.js';
+import SEO from '../components/SEO.jsx';
+
+// v0.79.19 (audit F-004) — per-screen SEO. Previously every /pickem/* route
+// inherited the generic homepage <title> and a canonical pointing at "/",
+// so Google saw them as duplicate content and shared links previewed wrong.
+// Keyed on PickemRoot's `active` nav key → one source covers all screens.
+// Personal surfaces (grup, profile) are noindex.
+const PICKEM_SEO = {
+  predict:  { title: "Prediksi Hari Ini — Pick'em NBA & Piala Dunia 2026 | gibol.co", path: '/pickem',          description: 'Prediksi skor & hasil laga NBA Playoffs dan Piala Dunia 2026. Gratis, langsung tersimpan, main bareng teman.' },
+  board:    { title: "Papan Peringkat — Pick'em | gibol.co",                          path: '/pickem/board',    description: 'Lihat ranking prediksi kamu vs semua pemain dan grup teman di Gibol Pick\'em.' },
+  grup:     { title: "Grup Kamu — Pick'em | gibol.co",                                path: '/pickem/grup',     description: 'Main Pick\'em bareng teman. Bikin grup baru atau gabung pakai kode undangan.', noindex: true },
+  bracket:  { title: "Bracket Piala Dunia 2026 — Pick'em | gibol.co",                 path: '/pickem/bracket',  description: 'Bangun bracket Piala Dunia 2026 kamu — dari fase grup sampai juara dunia.' },
+  survivor: { title: "Survivor — Pick'em | gibol.co",                                 path: '/pickem/survivor', description: 'Pilih satu tim tiap pekan. Salah, kamu gugur. Bertahan jadi Fan Terakhir.' },
+  profile:  { title: "Profil Kamu — Pick'em | gibol.co",                              path: '/pickem/profile',  description: 'Streak, badge, dan riwayat prediksi kamu di Gibol Pick\'em.', noindex: true },
+};
 
 // ============================================================================
 // v0.65.0 — <PickemRoot /> · the Pick'em surface container.
@@ -123,6 +138,7 @@ function CompetitionSwitcher() {
 export default function PickemRoot({ active = 'predict', onNavigate, theme, children }) {
   const mobile = useMobile();
   const [effective, setEffective] = useState(() => theme || readSavedTheme());
+  const seo = PICKEM_SEO[active] || PICKEM_SEO.predict;
 
   // Sync the prop into local state when it changes.
   useEffect(() => {
@@ -155,6 +171,7 @@ export default function PickemRoot({ active = 'predict', onNavigate, theme, chil
         color: 'var(--ink-1)',
       }}
     >
+      <SEO title={seo.title} description={seo.description} path={seo.path} noindex={seo.noindex} />
       {!mobile && <SideNav active={active} onChange={onNavigate} />}
 
       <main

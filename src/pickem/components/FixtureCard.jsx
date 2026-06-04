@@ -373,9 +373,15 @@ function BodyOpen({ fixture, prediction, odds, lockInfo, onPredictionChange, rul
     ? rules.jagoan_mult_ko
     : rules.jagoan_mult_group;
 
+  // F-007 — give the outcome radiogroup a match-specific accessible name so
+  // screen-reader users know which match they're predicting.
+  const homeC = fixture.home?.tricode || fixture.home?.abbr || fixture.home_team || '';
+  const awayC = fixture.away?.tricode || fixture.away?.abbr || fixture.away_team || '';
+  const outcomeHint = homeC && awayC ? `Prediksi hasil ${awayC} vs ${homeC}` : undefined;
+
   return (
     <div style={{ paddingTop: 14 }}>
-      <OutcomePicker odds={odds} value={outcome} onChange={setOutcome} allowDraw={allowDraw} />
+      <OutcomePicker odds={odds} value={outcome} onChange={setOutcome} allowDraw={allowDraw} hint={outcomeHint} />
 
       <div
         style={{
