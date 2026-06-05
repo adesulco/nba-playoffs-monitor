@@ -8083,7 +8083,20 @@
 //   • F-017 (PostHog 7yr retention) is NOT a code change — it's a PostHog
 //     dashboard setting (cap to 12mo) + privacy-copy update; left for Ade so
 //     we don't state a retention period the dashboard doesn't enforce.
-export const APP_VERSION = '0.79.21';
+// v0.79.22 — Pick'em nickname onboarding nudge (2026-06-04).
+//   The leaderboard renders `username || user_id.slice(0,8)`, so a user who
+//   never set a nickname appears as a raw hex prefix ("2280635b") — ugly on a
+//   screenshot-and-share product. v0.79.12 added a nickname editor in Profile,
+//   but most users never open it, so the gap persisted.
+//   New <NicknameNudge> on the PredictingHub: for a logged-in user with an
+//   unset nickname (and not previously dismissed), shows a compact dismissible
+//   inline prompt with a one-tap name input. Self-contained — reads the
+//   current nickname via listProfile, writes profiles.nickname via the
+//   Supabase client (same self-update RLS path as the editor), fires
+//   pickem_nickname_set analytics, and hides once set/dismissed
+//   (localStorage gibol:pickem:nickname-nudge:v1). Starts hidden; only renders
+//   after confirming the nickname is unset (no flash).
+export const APP_VERSION = '0.79.22';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

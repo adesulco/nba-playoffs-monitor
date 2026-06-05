@@ -9,10 +9,13 @@ import {
   markNudged,
   getGuestPrediction,
 } from './guestStore.js';
-import { listFixtures, listPredictions, upsertPrediction } from './api.js';
+import { listFixtures, listPredictions, upsertPrediction, listProfile } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import HubRightRail from './components/HubRightRail.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
+import { supabase } from '../lib/supabase.js';
+import { PickemBtn } from './components/social.jsx';
+import { trackEvent } from '../lib/analytics.js';
 
 // ============================================================================
 // v0.67.0 — Predicting Hub (Pick'em P2 spine).
@@ -225,6 +228,8 @@ function PredictingHubInner() {
         <div style={{ minWidth: 0 }}>
           <Header user={user} competition={competition} />
 
+          <NicknameNudge user={user} competition={competition} />
+
           {loading && <LoadingState />}
           {!loading && !schemaReady && <NotReadyState />}
           {!loading && schemaReady && fixtures.length === 0 && <EmptyState />}
@@ -277,6 +282,124 @@ function PredictingHubInner() {
 }
 
 // ── Sub-components ─────────────────────────────────────────────────────────
+
+// v0.79.22 — nickname onboarding nudge. The leaderboard renders
+// `username || user_id.slice(0,8)`, so a user who never set a nickname shows
+// up as a raw hex prefix ("2280635b") — ugly on a screenshot-and-share
+// product. Profile has an editor, but most users never open it. This compact,
+// dismissible, inline prompt on the hub converts the nickname in one tap.
+// Self-contained: reads the current nickname via listProfile, writes
+// profiles.nickname via the Supabase client (self-update RLS, same path as
+// the Profile editor), and hides once the name is set or the nudge dismissed.
+const NICKNAME_NUDGE_KEY = 'gibol:pickem:nickname-nudge:v1';
+
+function NicknameNudge({ user, competition }) {
+  const [status, setStatus] = useState('idle'); // idle | needed | done
+  const [value, setValue] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!user) { setStatus('done'); return undefined; }
+    let dismissed = false;
+    try { dismissed = localStorage.getItem(NICKNAME_NUDGE_KEY) === '1'; } catch { /* ignore */ }
+    if (dismissed) { setStatus('done'); return undefined; }
+
+    let cancelled = false;
+    (async () => {
+      const res = await listProfile({ competition: competition?.key, history_limit: 1 });
+      if (cancelled) return;
+      // Only nudge when the profile loaded AND the nickname is unset. On any
+      // load failure, stay silent rather than risk nudging someone who has one.
+      if (res.ok && !res.profile?.username) setStatus('needed');
+      else setStatus('done');
+    })();
+    return () => { cancelled = true; };
+  }, [user, competition?.key]);
+
+  const dismiss = () => {
+    try { localStorage.setItem(NICKNAME_NUDGE_KEY, '1'); } catch { /* ignore */ }
+    setStatus('done');
+  };
+
+  const save = async () => {
+    const next = value.trim();
+    if (next.length < 2 || next.length > 20) { setError('Nama 2–20 karakter.'); return; }
+    if (!user?.id) { setError('Sesi habis — login lagi.'); return; }
+    setSaving(true);
+    setError(null);
+    const { error: err } = await supabase.from('profiles').update({ nickname: next }).eq('id', user.id);
+    setSaving(false);
+    if (err) { setError('Gagal simpan. Coba lagi.'); return; }
+    try { localStorage.setItem(NICKNAME_NUDGE_KEY, '1'); } catch { /* ignore */ }
+    trackEvent('pickem_nickname_set', { via: 'nudge' });
+    if (typeof window !== 'undefined' && window.gibolToast) {
+      window.gibolToast.show({ text: 'Nama tersimpan', icon: 'check' });
+    }
+    setStatus('done');
+  };
+
+  if (status !== 'needed') return null;
+
+  return (
+    <div
+      style={{
+        marginBottom: 16,
+        padding: '12px 14px',
+        borderRadius: 'var(--r-3)',
+        background: 'var(--p-info-wash, rgba(42,111,219,0.12))',
+        border: '1px solid rgba(42,111,219,0.30)',
+        fontFamily: 'var(--font-ui-pickem)',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
+        <div style={{ fontSize: 13, color: 'var(--ink-1)', lineHeight: 1.5 }}>
+          <strong>Pasang nama panggilan</strong> biar kamu muncul keren di papan peringkat — bukan kode acak.
+        </div>
+        <button
+          type="button"
+          onClick={dismiss}
+          aria-label="Tutup"
+          style={{
+            appearance: 'none', background: 'transparent', border: 'none',
+            cursor: 'pointer', color: 'var(--ink-3)', fontSize: 18, lineHeight: 1,
+            padding: 2, flexShrink: 0,
+          }}
+        >
+          ×
+        </button>
+      </div>
+      <div style={{ display: 'flex', gap: 8, marginTop: 10, flexWrap: 'wrap' }}>
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => { if (e.key === 'Enter') save(); }}
+          maxLength={20}
+          aria-label="Nama panggilan"
+          placeholder="Nama panggilan"
+          style={{
+            flex: '1 1 160px',
+            minWidth: 0,
+            fontFamily: 'var(--font-ui-pickem)',
+            fontSize: 14,
+            color: 'var(--ink-1)',
+            background: 'var(--bg-raised)',
+            border: '1px solid var(--line-2)',
+            borderRadius: 'var(--r-2)',
+            padding: '8px 12px',
+          }}
+        />
+        <PickemBtn variant="primary" size="sm" onClick={save} disabled={saving}>
+          {saving ? 'Menyimpan…' : 'Pakai nama ini'}
+        </PickemBtn>
+      </div>
+      {error && (
+        <div style={{ marginTop: 6, fontSize: 12, color: 'var(--p-down)' }}>{error}</div>
+      )}
+    </div>
+  );
+}
 
 function Header({ user, competition }) {
   // v0.79.7 — eyebrow was hardcoded "PIALA DUNIA 2026 · GRUP". Now
