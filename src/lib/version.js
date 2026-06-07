@@ -8096,7 +8096,14 @@
 //   pickem_nickname_set analytics, and hides once set/dismissed
 //   (localStorage gibol:pickem:nickname-nudge:v1). Starts hidden; only renders
 //   after confirming the nickname is unset (no flash).
-export const APP_VERSION = '0.79.22';
+// v0.79.23 — fix nickname-nudge detection (2026-06-04).
+//   v0.79.22's nudge gated on listProfile().profile.username, but that field
+//   falls back to the email-prefix in the API (list-profile.js:127), so it's
+//   never null → the nudge never fired even for users with no nickname (whose
+//   leaderboard row shows the raw hex user_id). Added a raw `has_nickname`
+//   boolean to the list-profile response and gate the nudge on that instead.
+//   Verified live: nulling profiles.nickname now makes the nudge appear.
+export const APP_VERSION = '0.79.23';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

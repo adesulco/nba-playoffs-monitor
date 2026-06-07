@@ -125,6 +125,10 @@ export default async function handler(req, res) {
       user_id: user.id,
       email: user.email,
       username: profileUsername || (user.email ? user.email.split('@')[0] : null),
+      // Raw signal: did the user actually set a nickname? `username` above
+      // falls back to the email-prefix so it's never null — the nickname
+      // onboarding nudge needs to know the real unset state.
+      has_nickname: !!profileUsername,
       avatar_url: profile?.avatar_url || null,
       created_at: profile?.created_at || user.created_at,
       points: lbRow?.points ?? 0,

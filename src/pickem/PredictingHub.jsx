@@ -309,9 +309,10 @@ function NicknameNudge({ user, competition }) {
     (async () => {
       const res = await listProfile({ competition: competition?.key, history_limit: 1 });
       if (cancelled) return;
-      // Only nudge when the profile loaded AND the nickname is unset. On any
-      // load failure, stay silent rather than risk nudging someone who has one.
-      if (res.ok && !res.profile?.username) setStatus('needed');
+      // Only nudge when the profile loaded AND no nickname is set. Gate on the
+      // raw has_nickname flag — `username` falls back to the email prefix in
+      // the API, so it's never null and would suppress the nudge forever.
+      if (res.ok && res.profile && !res.profile.has_nickname) setStatus('needed');
       else setStatus('done');
     })();
     return () => { cancelled = true; };
