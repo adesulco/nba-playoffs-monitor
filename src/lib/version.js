@@ -8103,7 +8103,14 @@
 //   leaderboard row shows the raw hex user_id). Added a raw `has_nickname`
 //   boolean to the list-profile response and gate the nudge on that instead.
 //   Verified live: nulling profiles.nickname now makes the nudge appear.
-export const APP_VERSION = '0.79.23';
+// v0.79.24 — Profile name-editor consistency (2026-06-04).
+//   Same email-prefix-fallback quirk the nickname nudge had (v0.79.23): the
+//   Profile screen's NicknameEditor gated on `currentName` (= profile.username,
+//   which falls back to the email prefix), so a user who never set a nickname
+//   saw "Ubah nama" + their email prefix instead of the "Atur nama tampilan →"
+//   prompt, and opening the editor pre-filled the email prefix. Now threads the
+//   raw has_nickname flag through → correct prompt + blank input for new users.
+export const APP_VERSION = '0.79.24';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

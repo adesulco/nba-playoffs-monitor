@@ -158,6 +158,7 @@ function AvatarSection({ profile, avatarLetter, user, onNicknameSaved }) {
       </div>
       <NicknameEditor
         currentName={profile.username}
+        hasNickname={profile.has_nickname}
         userId={user?.id}
         onSaved={onNicknameSaved}
       />
@@ -200,13 +201,18 @@ function AvatarSection({ profile, avatarLetter, user, onNicknameSaved }) {
 // Supabase client (RLS policy profiles_self_update_favorites is
 // row-level — auth.uid() = id — so self-update on any column is
 // allowed; no new serverless function needed, we're at 11/12 slots).
-function NicknameEditor({ currentName, userId, onSaved }) {
+function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState(currentName || '');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
 
-  const hasName = !!currentName;
+  // v0.79.24 — gate on the raw has_nickname flag, not currentName. `username`
+  // falls back to the email-prefix server-side, so it's never empty — without
+  // this, a user who never set a nickname saw "Ubah nama" + their email prefix
+  // instead of the "Atur nama tampilan →" prompt. Defensive fallback to
+  // currentName if an older API response omits has_nickname.
+  const hasName = hasNickname !== undefined ? !!hasNickname : !!currentName;
 
   const save = async () => {
     const next = value.trim();
@@ -251,7 +257,7 @@ function NicknameEditor({ currentName, userId, onSaved }) {
         </div>
         <button
           type="button"
-          onClick={() => { setValue(currentName || ''); setEditing(true); setError(null); }}
+          onClick={() => { setValue(hasName ? (currentName || '') : ''); setEditing(true); setError(null); }}
           style={{
             appearance: 'none',
             background: 'transparent',
