@@ -7,6 +7,7 @@ import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
 import SectionRule from '../components/v2/SectionRule.jsx';
 import { COLORS as C, TEAM_META } from '../lib/constants.js';
 import { usePlayoffData } from '../hooks/usePlayoffData.js';
+import { derivePlayoffStage } from '../lib/playoffStage.js';
 
 /**
  * /home (when VITE_FLAG_HOME=2) — HomeV2.
@@ -111,7 +112,16 @@ export default function HomeV2() {
     let cancelled = false;
     fetch('/content/homepage-sentence.json', { credentials: 'same-origin' })
       .then((r) => r.ok ? r.json() : null)
-      .then((j) => { if (!cancelled && j) setSentence(j); })
+      .then((j) => {
+        if (cancelled || !j) return;
+        // v0.79.26 — STALENESS GUARD. The static sentence sat un-edited for
+        // 5+ weeks ("NBA udah masuk Round 2" on the day of Finals G4). An
+        // editorial line older than 5 days is worse than no line — drop it
+        // and let the data-driven fallback below take over.
+        const age = Date.now() - new Date(j._updated_at || 0).getTime();
+        const MAX_AGE_MS = 5 * 24 * 3600 * 1000;
+        if (j.text && age < MAX_AGE_MS) setSentence(j);
+      })
       .catch(() => { /* silent: stale-or-absent file is fine */ });
     return () => { cancelled = true; };
   }, []);
@@ -145,10 +155,27 @@ export default function HomeV2() {
 
   const updatedAgo = lastUpdate ? _formatRelative(lastUpdate) : null;
 
-  // Default Bahasa-first sentence when JSON file isn't present.
-  const fallbackSentence = liveCount > 0
-    ? `Malam ini ${liveCount} game NBA Playoff lagi seru. Skor live, win-prob, dan play-by-play di bawah.`
-    : 'Selamat datang di Gibol — dashboard olahraga Bahasa-first untuk NBA, Premier League, F1, Tenis, dan Liga 1.';
+  // v0.79.26 — data-driven fallback sentence. Derives the playoff stage +
+  // matchup from the live scoreboard (same poll the LiveBand uses), so the
+  // headline self-heals as the bracket progresses instead of rotting like
+  // the old static copy. WC2026 line joins from kickoff day onward.
+  const fallbackSentence = useMemo(() => {
+    const stage = derivePlayoffStage(games);
+    const g = stage.game;
+    const wcLive = Date.now() >= new Date('2026-06-11T00:00:00+07:00').getTime();
+    const wcBit = wcLive ? ' Piala Dunia 2026 juga udah mulai — prediksi di Pick\'em.' : '';
+    if (liveCount > 0 && g) {
+      return `${stage.longId} LIVE sekarang: ${g.away?.abbr} @ ${g.home?.abbr}${g.seriesSummary ? ` (${g.seriesSummary})` : ''}. Skor live & play-by-play di bawah.${wcBit}`;
+    }
+    if (g && stage.key !== 'off') {
+      const note = g.note ? ` — ${g.note}` : '';
+      return `${stage.longId} NBA: ${g.away?.abbr} @ ${g.home?.abbr}${g.seriesSummary ? ` (${g.seriesSummary})` : note}.${wcBit}`;
+    }
+    if (wcLive) {
+      return 'Piala Dunia 2026 udah mulai — skor, grup, dan Pick\'em bracket semuanya di gibol.';
+    }
+    return 'Selamat datang di Gibol — dashboard olahraga Bahasa-first untuk NBA, Premier League, F1, Tenis, dan Liga 1.';
+  }, [games, liveCount]);
   const headline = sentence?.text || fallbackSentence;
 
   return (

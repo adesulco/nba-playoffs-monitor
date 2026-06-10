@@ -8129,7 +8129,29 @@
 // COMPETITION/SEASON that the v0.79.1 refactor deleted — saving a WC2026
 // bracket would have thrown on launch day (today). Fixed: threaded as
 // params. Also fixed a duplicate paddingTop key in Privacy.jsx.
-export const APP_VERSION = '0.79.25';
+// v0.79.26 — WC2026 GO-LIVE + stage-aware NBA/Home copy (2026-06-11).
+//
+// 1) /fifa-world-cup-2026 converted from the ComingSoon waitlist to a LIVE
+//    hub (approved protected-surface change — Ade's go-live directive):
+//    Pick'em CTA band (→ /pickem, /pickem/bracket), 3-day fixtures strip in
+//    WIB with live scores, 12 live group tables. Data via the api-football
+//    edge proxy (paid key server-side, s-maxage=60): new src/hooks/useWCLive.js
+//    (standings 5m TTL, fixtures 60s poll). Evergreen preview content kept
+//    below the live sections. Nav "SOON" badge dropped; LIVE.fifa_wc default
+//    flipped true.
+// 2) NEW src/lib/playoffStage.js — derives the CURRENT playoff stage from
+//    the live ESPN scoreboard (note headline "NBA Finals - Game 4" +
+//    series.summary "NY leads series 2-1"; calendar fallback). Scoreboard
+//    mapping in api.js now carries note + seriesSummary.
+// 3) NBA hub de-rotted: KPI strip ("ROUND 1/APR 18/JUN 3" hardcoded since
+//    April) → stage label + live series cell + today count; Featured Series
+//    panel (4 hardcoded April storylines) → live matchup/series/game-number
+//    rows; bracket panel meta → stage label.
+// 4) Home headline automation: homepage-sentence.json now has a 5-day
+//    STALENESS GUARD (the static line sat 5 weeks, claiming "Round 2" on
+//    Finals G4 day); fallback sentence is now data-driven from
+//    derivePlayoffStage + live games, with a WC2026 line from kickoff day.
+export const APP_VERSION = '0.79.26';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

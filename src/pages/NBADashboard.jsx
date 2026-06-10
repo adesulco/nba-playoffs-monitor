@@ -22,6 +22,7 @@ import NewsroomSlice from '../components/v2/NewsroomSlice.jsx';
 import { UI } from '../lib/flags.js';
 import HubPicker from '../components/v2/HubPicker.jsx';
 import KpiStrip from '../components/v2/KpiStrip.jsx';
+import { derivePlayoffStage, stageStorylines } from '../lib/playoffStage.js';
 import LiveGameFocus from '../components/LiveGameFocus.jsx';
 import { useSeriesState } from '../hooks/useSeriesState.js';
 import { useInjuries } from '../hooks/useInjuries.js';
@@ -410,6 +411,13 @@ export default function NBADashboard() {
   const panelTitle = { fontSize: 10, letterSpacing: 1.5, color: C.text, fontWeight: 600 };
   const panelMeta = { fontSize: 9.5, color: C.dim, letterSpacing: 0.5 };
 
+  // v0.79.26 — stage + storylines derived from the live scoreboard (ESPN
+  // note headlines), replacing the hardcoded April "ROUND 1" copy that sat
+  // stale through the conference finals into the Finals.
+  const playoffStage = derivePlayoffStage(games);
+  const storylines = stageStorylines(games, playoffStage, lang);
+  const nextGame = games[0];
+
   return (
     <div style={{ background: C.bg, minHeight: '100vh', overflowX: 'auto', fontFamily: '"JetBrains Mono", monospace', color: C.text, fontSize: 11.5, lineHeight: 1.4 }}>
       <SEO
@@ -521,25 +529,25 @@ export default function NBADashboard() {
         <KpiStrip
           ariaLabel={lang === 'id' ? 'Stats kunci playoff' : 'Playoff key stats'}
           cells={[
-            // v0.79.0 — title-favorite KPI cell removed with the
-            // the futures-odds provider strip. Featured-series count slots in instead
-            // so the 4-cell grid layout stays intact.
+            // v0.79.26 — the first three cells were hardcoded April copy
+            // ("ROUND 1 / APR 18 / JUN 3") that rotted through the playoffs.
+            // Now stage-aware via derivePlayoffStage(games).
             {
               eyebrow: t('featuredSeries'),
-              value: 'ROUND 1',
+              value: playoffStage.labelId,
               sub: 'BEST-OF-7',
               valueAccent: accentBright,
             },
             {
-              eyebrow: t('round1Tips'),
-              value: 'APR 18',
-              sub: `${games.length || 2} ${t('gamesFriday')}`,
+              eyebrow: lang === 'id' ? 'SERI' : 'SERIES',
+              value: nextGame ? `${nextGame.away?.abbr} @ ${nextGame.home?.abbr}` : '—',
+              sub: nextGame?.seriesSummary || (lang === 'id' ? 'Jadwal di bawah' : 'See schedule'),
               valueAccent: accentBright,
             },
             {
-              eyebrow: t('finalsTipoff'),
-              value: 'JUN 3',
-              sub: 'ABC · Best-of-7',
+              eyebrow: lang === 'id' ? 'HARI INI' : 'TODAY',
+              value: `${games.length || 0} LAGA`,
+              sub: playoffStage.longId,
               valueAccent: accentBright,
             },
             {
@@ -569,7 +577,7 @@ export default function NBADashboard() {
             <div style={panelBox}>
               <div style={panelHeader}>
                 <div style={panelTitle}>{t('round1Bracket')}</div>
-                <div style={panelMeta}>APR 18 – MAY 3</div>
+                <div style={panelMeta}>{playoffStage.labelId}</div>
               </div>
               <div className="bracket-viz">
                 {/* v0.79.0 — championOdds prop removed (was the futures-odds provider-
@@ -628,15 +636,13 @@ export default function NBADashboard() {
             <div style={panelBox}>
               <div style={panelHeader}>
                 <div style={panelTitle}>{t('featuredSeries')}</div>
-                <div style={panelMeta}>ROUND 1</div>
+                <div style={panelMeta}>{playoffStage.labelId}</div>
               </div>
               <div>
-                {[
-                  ['HEADLINE', 'Lakers–Rockets: LeBron vs KD, first playoff meeting since 2018'],
-                  ['REVENGE', 'Nuggets–Timberwolves: 3rd postseason meeting in 4 years'],
-                  ['RESURGENCE', "Pistons' first No. 1 East seed since 2007–08"],
-                  ['DEBUT', 'Wembanyama opens first career playoff series vs Portland'],
-                ].map(([label, text], i) => (
+                {/* v0.79.26 — storylines were four hardcoded April Round-1
+                    items; now derived live from the scoreboard (matchup +
+                    series state + game number). */}
+                {storylines.map(([label, text], i) => (
                   <div key={i} style={{ display: 'grid', gridTemplateColumns: '72px 1fr', gap: 6, padding: '7px 12px', borderBottom: `1px solid ${C.lineSoft}`, fontSize: 10.5 }}>
                     <div style={{ color: C.dim, fontSize: 9.5, letterSpacing: 0.5 }}>{label}</div>
                     <div>{text}</div>

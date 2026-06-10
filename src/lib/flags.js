@@ -49,7 +49,7 @@ export const LIVE = {
   f1:         envFlag('VITE_FLAG_F1', false),          // Phase 1 flips this
   epl:        envFlag('VITE_FLAG_EPL', false),         // Phase 2
   tennis:     envFlag('VITE_FLAG_TENNIS', true),       // v0.5.0 ships live
-  fifa_wc:    envFlag('VITE_FLAG_FIFA_WC', false),     // Phase 3
+  fifa_wc:    envFlag('VITE_FLAG_FIFA_WC', true),      // v0.79.26 — LIVE on kickoff day (2026-06-11)
   liga_1_id:  envFlag('VITE_FLAG_LIGA_1_ID', true),    // v0.13.0 ships live (Phase 1A)
 };
 
