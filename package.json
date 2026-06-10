@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-vocab.mjs && vite build && node scripts/prerender.mjs",
+    "build": "npm run lint && node scripts/check-vocab.mjs && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
-    "lint": "eslint src --ext js,jsx",
+    "lint": "eslint \"src/**/*.{js,jsx}\" \"api/**/*.js\" \"scripts/**/*.mjs\"",
     "check:vocab": "node scripts/check-vocab.mjs"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
+    "eslint": "^10.4.1",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
     "vite": "^5.3.1"

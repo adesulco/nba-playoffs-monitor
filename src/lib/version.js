@@ -8110,7 +8110,26 @@
 //   saw "Ubah nama" + their email prefix instead of the "Atur nama tampilan →"
 //   prompt, and opening the editor pre-filled the email prefix. Now threads the
 //   raw has_nickname flag through → correct prompt + blank input for new users.
-export const APP_VERSION = '0.79.24';
+// v0.79.25 — HOTFIX: NBA hub crash + lint gate (2026-06-11).
+//
+// OUTAGE: /nba-playoff-2026 had been rendering the SportErrorBoundary
+// ("Something's up with NBA Playoffs 2026") — during the FINALS (SAS@NY,
+// G? Jun 10). Root cause: src/components/Bracket.jsx desktop render still
+// passed `oddsMap={oddsMap}` after the v0.79.0 Polymarket strip deleted
+// the variable. Vite doesn't resolve identifiers at build time, so the
+// ReferenceError only fired at render, inside the error boundary, on a
+// surface nobody re-visited post-strip. Fixed: prop removed (Series no
+// longer accepts it anyway).
+//
+// PREVENTION: added eslint.config.mjs — a minimal correctness-only gate
+// (no-undef + no-dupe-keys/args + no-unreachable + use-isnan +
+// valid-typeof) wired into `npm run build`, so this class can never ship
+// again. The gate immediately caught a SECOND latent crash:
+// src/pickem/Bracket.jsx buildUpsertPayload() referenced module-level
+// COMPETITION/SEASON that the v0.79.1 refactor deleted — saving a WC2026
+// bracket would have thrown on launch day (today). Fixed: threaded as
+// params. Also fixed a duplicate paddingTop key in Privacy.jsx.
+export const APP_VERSION = '0.79.25';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

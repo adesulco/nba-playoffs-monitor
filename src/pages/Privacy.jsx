@@ -271,7 +271,6 @@ const h2Style = {
   fontWeight: 700,
   color: 'var(--ink)',
   margin: '0 0 12px',
-  paddingTop: 4,
   borderTop: '2px solid var(--ink)',
   paddingTop: 12,
 };

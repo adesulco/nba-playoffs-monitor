@@ -41,7 +41,7 @@ export function useQueryParamSync(key, value, setter) {
     if (fromUrl && fromUrl !== value) {
       setter(fromUrl);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // (react-hooks/exhaustive-deps intentionally not exhaustive here)
   }, []);
 
   // State → URL (on every change).
@@ -53,7 +53,7 @@ export function useQueryParamSync(key, value, setter) {
     if (next) nextParams.set(key, next);
     else nextParams.delete(key);
     setSearchParams(nextParams, { replace: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // (react-hooks/exhaustive-deps intentionally not exhaustive here)
   }, [value, key]);
 }
 
