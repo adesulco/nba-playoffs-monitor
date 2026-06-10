@@ -8,6 +8,7 @@
     "build": "npm run lint && node scripts/check-vocab.mjs && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx}\" \"api/**/*.js\" \"scripts/**/*.mjs\"",
+    "test": "vitest run",
     "check:vocab": "node scripts/check-vocab.mjs"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "eslint": "^10.4.1",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vitest": "^4.1.8"
   }
 }
