@@ -8176,7 +8176,30 @@
 // Also in this window (pre-D0, same day): migration 0019 applied+verified
 // (pool config, jagoan index, consensus audit, entitlements, KPI view) and
 // A2 scoring-core.js with the 78-test suite gating deploys.
-export const APP_VERSION = '0.80.0';
+// v0.80.1 — A3: pool-first commissioner layer, dispatcher actions (2026-06-11).
+//
+// Five new ?_action= cases in api/pickem.js (still 11/12 functions):
+//   update-league-settings — commissioner-only scoring_config/formats/
+//     late_join_policy; scoring rules FREEZE once any fixture in the
+//     competition has locked (409).
+//   league-detail — PUBLIC read for /g/:code invite landing + grup home
+//     (league config + members + cached points; nicknames only, never
+//     emails; 15s/30s cache).
+//   merge-guest — batch guest→account pick merge; server wins when locked,
+//     guest wins while open; jagoan intentionally not merged (re-star is
+//     one intentional tap; avoids partial-unique-index rejections).
+//   approve-member — pending→active; 402 + needs_upgrade on a full free
+//     cap (drives the upgrade sheet).
+//   grant-entitlement — PICKEM_ADMIN_TOKEN-guarded manual grant
+//     (provider='comp', idempotent on provider_ref) for gate testing +
+//     the IDR transfer stopgap if Midtrans KYB slips.
+// Extended: create-league accepts scoring_config/formats/late_join_policy
+// templates (shared validator api/_lib/pickem/league-config.js);
+// join-league lands member #11 of a free grup in status='pending'
+// (returns {pending:true}) — never an error, per the cap-paywall design.
+// Seam rule: stable JSDoc'd client fns added to src/pickem/api.js
+// (leagueDetail, updateLeagueSettings, mergeGuest, approveMember).
+export const APP_VERSION = '0.80.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

@@ -24,6 +24,7 @@
  */
 
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
+import { validateScoringConfig, validateFormats, validateLateJoinPolicy } from './league-config.js';
 
 const VALID_VISIBILITY = new Set(['private', 'public']);
 const VALID_MODE_KEYS = new Set(['match', 'jagoan', 'upset', 'bracket', 'survivor']);
@@ -93,6 +94,21 @@ export default async function handler(req, res) {
     const c = String(body.color).trim();
     if (c && !HEX_RE.test(c)) return res.status(400).json({ error: 'color must be hex #RRGGBB' });
     if (c) insertRow.color = c;
+  }
+
+  // A3 (flagship R1-1) — pool config at creation: scoring template +
+  // formats + late-join policy from the create-grup wizard step 2.
+  // Migration 0019 columns; validated by the shared league-config module.
+  for (const [field, validator] of [
+    ['scoring_config', validateScoringConfig],
+    ['formats', validateFormats],
+    ['late_join_policy', validateLateJoinPolicy],
+  ]) {
+    if (body[field] !== undefined && body[field] !== null) {
+      const v = validator(body[field]);
+      if (!v.ok) return res.status(400).json({ error: v.error });
+      if (v.value != null) insertRow[field] = v.value;
+    }
   }
 
   const admin = getSupabaseAdmin();

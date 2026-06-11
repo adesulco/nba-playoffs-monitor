@@ -51,6 +51,14 @@ import listSurvivorHandler   from './_lib/pickem/list-survivor.js';
 // page reload + competition switch.
 import listPredictionsHandler from './_lib/pickem/list-predictions.js';
 
+// v0.80.1 — Flagship Track A ticket A3: pool-first commissioner layer
+// (still 11/12 functions; everything dispatches here per handover §4.1).
+import leagueSettingsHandler   from './_lib/pickem/league-settings.js';
+import leagueDetailHandler     from './_lib/pickem/league-detail.js';
+import mergeGuestHandler       from './_lib/pickem/merge-guest.js';
+import approveMemberHandler    from './_lib/pickem/approve-member.js';
+import grantEntitlementHandler from './_lib/pickem/grant-entitlement.js';
+
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
   switch (action) {
@@ -77,6 +85,12 @@ export default async function handler(req, res) {
     case 'list-survivor':        return listSurvivorHandler(req, res);
     // v0.79.9 — read user's predictions for rehydration on reload.
     case 'list-predictions':     return listPredictionsHandler(req, res);
+    // v0.80.1 A3 — pool-first commissioner layer (flagship R1).
+    case 'update-league-settings': return leagueSettingsHandler(req, res);
+    case 'league-detail':          return leagueDetailHandler(req, res);
+    case 'merge-guest':            return mergeGuestHandler(req, res);
+    case 'approve-member':         return approveMemberHandler(req, res);
+    case 'grant-entitlement':      return grantEntitlementHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
@@ -87,6 +101,8 @@ export default async function handler(req, res) {
           'upsert-bracket', 'score-bracket',
           'upsert-survivor-pick', 'list-survivor',
           'list-predictions',
+          'update-league-settings', 'league-detail', 'merge-guest',
+          'approve-member', 'grant-entitlement',
         ],
       });
   }

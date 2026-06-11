@@ -374,3 +374,107 @@ export async function listSurvivor({ competition = 'WC2026' } = {}) {
     return { ok: false, error: String(err?.message || err), entry: null, picks: [] };
   }
 }
+
+// ════════════════════════════════════════════════════════════════════════════
+// v0.80.1 — Flagship Track A ticket A3: pool-first commissioner layer.
+// SEAM RULE (pickem-flagship/00-HANDOVER.md §3): Track B screens consume
+// ONLY these functions; signatures are stable. No fetch calls in components.
+// ════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Public read powering the /g/:inviteCode invite landing + grup home.
+ * NO AUTH — by design (social proof before signup).
+ * @param {{code?: string, id?: string}} ref invite code OR league id
+ * @returns {Promise<{ok:boolean, league?:object, members?:Array, error?:string}>}
+ *   league: { id, name, invite_code, competition, formats, late_join_policy,
+ *             scoring_config, max_members, tier, owner_id, member_count,
+ *             pending_count }
+ *   members: [{ user_id, display_name, points, exact_count, status,
+ *               is_owner, is_managed }] sorted by points desc
+ */
+export async function leagueDetail({ code, id } = {}) {
+  try {
+    const url = buildUrl('league-detail', code ? { code } : { id });
+    const res = await fetch(url);
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    return { ok: true, league: data?.league, members: data?.members || [] };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * Commissioner-only pool-config update. Rejected (409) once play has
+ * started for the competition — rules freeze at first lock.
+ * @param {{league_id:string, scoring_config?:object, formats?:string[],
+ *          late_join_policy?:'median'|'zero'}} payload
+ * @returns {Promise<{ok:boolean, league?:object, error?:string}>}
+ */
+export async function updateLeagueSettings(payload) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const res = await fetch(buildUrl('update-league-settings'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify(payload),
+    });
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    return { ok: true, league: data?.league };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * Batch-merge guest picks after first login. Server wins when a fixture
+ * is locked; guest wins while it's open. is_jagoan is intentionally NOT
+ * merged (user re-stars post-login).
+ * @param {Array<{fixture_id:string, picked_outcome:'H'|'D'|'A',
+ *                picked_home?:number, picked_away?:number}>} predictions
+ * @returns {Promise<{ok:boolean, merged?:number, skipped_locked?:number,
+ *                    errors?:Array, error?:string}>}
+ */
+export async function mergeGuest(predictions) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const res = await fetch(buildUrl('merge-guest'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ predictions }),
+    });
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    return { ok: true, merged: data?.merged ?? 0, skipped_locked: data?.skipped_locked ?? 0, errors: data?.errors || [] };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * Commissioner approves a pending member. 402 + needs_upgrade:true when
+ * the free cap is full (drives the upgrade sheet).
+ * @param {{league_id:string, user_id:string}} payload
+ * @returns {Promise<{ok:boolean, status?:string, needs_upgrade?:boolean, error?:string}>}
+ */
+export async function approveMember(payload) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated' };
+  try {
+    const res = await fetch(buildUrl('approve-member'), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify(payload),
+    });
+    const data = await readJson(res);
+    if (!res.ok) {
+      return { ok: false, error: normalizeError(res, data), needs_upgrade: data?.needs_upgrade === true };
+    }
+    return { ok: true, status: data?.status };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}

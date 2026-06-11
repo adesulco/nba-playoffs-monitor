@@ -34,12 +34,34 @@ export default async function handler(req, res) {
   // Verify the league + invite code server-side.
   const { data: league } = await admin
     .from('leagues')
-    .select('id, invite_code')
+    .select('id, invite_code, max_members, tier')
     .eq('id', leagueId)
     .maybeSingle();
   if (!league) return res.status(404).json({ error: 'League not found' });
   if (league.invite_code !== inviteCode) {
     return res.status(403).json({ error: 'Invalid invite code' });
+  }
+
+  // A3 (flagship R1-5) — the cap paywall. On a FREE league at capacity,
+  // the joiner lands in status='pending' (never an error): the commissioner
+  // sees "Rina wants to join" + the upgrade sheet. Re-joins of an existing
+  // active member skip the cap check (idempotent upsert below).
+  let joinStatus = 'active';
+  if (league.tier === 'free') {
+    const { data: existing } = await admin
+      .from('league_members')
+      .select('status')
+      .eq('league_id', league.id)
+      .eq('user_id', user.id)
+      .maybeSingle();
+    if (!existing || existing.status !== 'active') {
+      const { count } = await admin
+        .from('league_members')
+        .select('user_id', { count: 'exact', head: true })
+        .eq('league_id', league.id)
+        .eq('status', 'active');
+      if ((count ?? 0) >= (league.max_members ?? 10)) joinStatus = 'pending';
+    }
   }
 
   // Attach the user's most-recent 2026 bracket if one exists.
@@ -58,6 +80,7 @@ export default async function handler(req, res) {
         league_id: league.id,
         user_id: user.id,
         bracket_id: bracketRow?.[0]?.id ?? null,
+        status: joinStatus,
       },
       { onConflict: 'league_id,user_id' },
     );
@@ -67,5 +90,5 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: error.message });
   }
 
-  return res.status(200).json({ ok: true, leagueId: league.id });
+  return res.status(200).json({ ok: true, leagueId: league.id, pending: joinStatus === 'pending' });
 }
