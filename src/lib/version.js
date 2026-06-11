@@ -8199,7 +8199,35 @@
 // (returns {pending:true}) — never an error, per the cap-paywall design.
 // Seam rule: stable JSDoc'd client fns added to src/pickem/api.js
 // (leagueDetail, updateLeagueSettings, mergeGuest, approveMember).
-export const APP_VERSION = '0.80.1';
+// v0.80.2 — A4–A9: Track A COMPLETE (2026-06-11).
+//
+//   A4 — consensus-at-lock snapshot in score-fixture.js, written before the
+//        scoring RPC (3 batched UPDATEs per fixture, one per side; fills
+//        null-only = idempotent). Decision documented in-code: consensus is
+//        GLOBAL per fixture (a single prediction-row column can't hold
+//        per-league values for multi-grup users; global is auditable and
+//        the same number for everyone).
+//   A5 — api/_lib/pickem/entitlements.js: pure gate functions (host >1 grup,
+//        multi-entry HARD cap 3 even paid, manual entries, pre-pick
+//        consensus Gibol+-only, expiry handling) + fetchEntitlements/
+//        hasEntitlement DB layer. 17 gate tests.
+//   A6 — src/lib/pickemEvents.js: the GAP-6 GA4 event schema as typed
+//        functions (invite_open → rollover_accept), consent-gated via
+//        trackEvent. pickem_kpi_daily view already live (0019).
+//   A7 — ops/pickem-smoke.md (7-step prod smoke loop + cleanup SQL) and
+//        ops/billing-runbook.md (invariants, providers, refund path,
+//        manual-grant ledger; fills in at R3).
+//   A8 — backfill-wc2026.mjs now KNOCKOUT-READY: round parser extended
+//        beyond "Group Stage - N" (R32/R16/QF/SF/3rd-place/final →
+//        matchdays 4–8, jagoan-compatible); KO fixtures were silently
+//        skipped before. Dry-run verified (72 group fixtures unchanged).
+//        scripts/preseed-epl-2026-27.mjs skeleton (league 39, TODOs for
+//        the Jul 11–18 window).
+//   A9 — src/pickem/useProvisionalPoints.js: computeProvisional() pure fn
+//        (live-only, skips FT + scored rows, matchday floor, both feed
+//        shapes) + thin useMemo hook. Client-side only, never persisted.
+//        8 tests on recorded feed shapes. Suite now 102 tests.
+export const APP_VERSION = '0.80.2';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

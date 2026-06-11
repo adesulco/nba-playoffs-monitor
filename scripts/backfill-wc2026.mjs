@@ -115,10 +115,28 @@ async function fetchWcFixtures() {
   return data.response || [];
 }
 
-// ─── Map "Group Stage - N" → matchday int ───────────────────────────────────
-function roundToMatchday(round) {
-  const m = (round || '').match(/Group Stage\s*-\s*(\d+)/i);
-  return m ? parseInt(m[1], 10) : null;
+// ─── Map API-Football round → { stage, matchday } ──────────────────────────
+// A8 (2026-06-11): extended beyond "Group Stage - N" for the Jun 28
+// knockout re-run — KO fixtures were silently SKIPPED before this.
+// KO matchdays continue the group sequence (4..8) so jagoan's
+// one-per-matchday rule + matchday aggregation keep working.
+// Stage names match pickem_rules.ko_stages: ['R32','R16','QF','SF','final'].
+const KO_ROUNDS = [
+  [/round of 32/i,            { stage: 'R32',   matchday: 4 }],
+  [/round of 16/i,            { stage: 'R16',   matchday: 5 }],
+  [/quarter/i,                { stage: 'QF',    matchday: 6 }],
+  [/3rd place|third place/i,  { stage: 'SF',    matchday: 7 }], // scores with SF weight
+  [/semi/i,                   { stage: 'SF',    matchday: 7 }],
+  [/\bfinal\b/i,              { stage: 'final', matchday: 8 }],
+];
+function roundToStage(round) {
+  const r = round || '';
+  const m = r.match(/Group Stage\s*-\s*(\d+)/i);
+  if (m) return { stage: 'group', matchday: parseInt(m[1], 10) };
+  for (const [re, val] of KO_ROUNDS) {
+    if (re.test(r)) return val;
+  }
+  return null;
 }
 
 // ─── PostgREST upsert helper ────────────────────────────────────────────────
@@ -176,20 +194,20 @@ async function main() {
   const fixtureRows = [];
   let skipped = 0;
   for (const f of raw) {
-    const md = roundToMatchday(f.league?.round);
+    const st = roundToStage(f.league?.round);
     const homeName = f.teams?.home?.name;
     const awayName = f.teams?.away?.name;
     const home = NATION_TRICODE[homeName];
     const away = NATION_TRICODE[awayName];
-    if (md == null || !home || !away) { skipped++; continue; }
+    if (!st || !home || !away) { skipped++; continue; } // TBD KO teams skip until resolved
     const kickoff = f.fixture?.date;
     if (!kickoff) { skipped++; continue; }
     fixtureRows.push({
       id: deterministicUuid(f.fixture.id),
       league: COMPETITION,
       season: SEASON,
-      stage: 'group',
-      matchday: md,
+      stage: st.stage,
+      matchday: st.matchday,
       home_team: home,
       away_team: away,
       kickoff_at: kickoff,
@@ -199,7 +217,7 @@ async function main() {
       away_score: null,
       outcome: null,
       updated_at: new Date().toISOString(),
-      _label: `MD${md} ${away} @ ${home} ${kickoff.slice(0, 10)}`,
+      _label: `${st.stage === 'group' ? `MD${st.matchday}` : st.stage} ${away} @ ${home} ${kickoff.slice(0, 10)}`,
     });
   }
   fixtureRows.sort((a, b) => a.kickoff_at.localeCompare(b.kickoff_at));

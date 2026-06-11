@@ -137,7 +137,7 @@ function BracketInnerImpl({ user, navigate, COMPETITION, SEASON }) {
     // localStorage state still freezes; a future cron + claim flow can
     // backfill once the schema is up.
     if (user) {
-      const payload = buildUpsertPayload(b);
+      const payload = buildUpsertPayload(b, COMPETITION, SEASON);
       const res = await upsertBracket({ ...payload, lock: true });
       if (!res.ok) {
         // Soft fail: server can't save (schema missing or transient).
@@ -292,10 +292,14 @@ function BracketInnerImpl({ user, navigate, COMPETITION, SEASON }) {
 }
 
 /**
- * buildUpsertPayload(b) → the body shape /api/pickem upsert-bracket expects.
- * Reads from useBracketState's exposed fields.
+ * buildUpsertPayload(b, competition, season) → the body shape
+ * /api/pickem upsert-bracket expects. Reads from useBracketState's exposed
+ * fields. v0.79.25 — competition/season are now PARAMS: this helper used to
+ * reference module-level COMPETITION/SEASON constants that the v0.79.1
+ * multi-competition refactor deleted, so saving a bracket threw
+ * ReferenceError at runtime (caught by the new no-undef lint gate).
  */
-function buildUpsertPayload(b) {
+function buildUpsertPayload(b, competition, season) {
   const groups = {};
   for (const [letter, group] of Object.entries(b.groups || {})) {
     groups[letter] = {};
@@ -309,8 +313,8 @@ function buildUpsertPayload(b) {
       .filter(Boolean);
 
   return {
-    competition: COMPETITION,
-    season: SEASON,
+    competition,
+    season,
     groups,
     r32: koArray(b.r32),
     r16: koArray(b.r16),

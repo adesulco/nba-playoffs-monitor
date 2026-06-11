@@ -282,7 +282,6 @@ export default function Bracket({ seriesMap, games }) {
         <Series
           key={`e-${i}`}
           series={s}
-          oddsMap={oddsMap}
           seriesMap={seriesMap}
           playInWinner={s.seeds.includes(8) ? playInWinners.east : null}
         />
@@ -293,7 +292,6 @@ export default function Bracket({ seriesMap, games }) {
         <Series
           key={`w-${i}`}
           series={s}
-          oddsMap={oddsMap}
           seriesMap={seriesMap}
           playInWinner={s.seeds.includes(8) ? playInWinners.west : null}
         />

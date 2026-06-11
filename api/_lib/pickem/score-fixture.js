@@ -75,6 +75,38 @@ export default async function handler(req, res) {
   if (fxErr) return res.status(500).json({ error: fxErr.message });
   if (!fx) return res.status(404).json({ error: 'fixture not found' });
 
+  // 1.5) A4 (flagship R1-4) — consensus-at-lock snapshot, written BEFORE
+  // scoring so the underdog bonus has an auditable basis. Consensus is
+  // GLOBAL per fixture (share of all pickers choosing that side): the 06
+  // spec stores it on the prediction row, and a single column can't hold
+  // per-league values for users in multiple grups — global is the only
+  // auditable per-row interpretation, and it's gaming-resistant (same
+  // number for everyone). Idempotent: only fills rows where it's null.
+  // Three batched UPDATEs (one per side), not a per-row JS loop.
+  try {
+    const { data: picks } = await admin
+      .from('predictions')
+      .select('picked_outcome')
+      .eq('fixture_id', fixture_id);
+    const total = picks?.length || 0;
+    if (total > 0) {
+      const share = { H: 0, D: 0, A: 0 };
+      for (const p of picks) share[p.picked_outcome] = (share[p.picked_outcome] || 0) + 1;
+      for (const side of ['H', 'D', 'A']) {
+        if (!share[side]) continue;
+        await admin
+          .from('predictions')
+          .update({ consensus_at_lock: Number((share[side] / total).toFixed(4)) })
+          .eq('fixture_id', fixture_id)
+          .eq('picked_outcome', side)
+          .is('consensus_at_lock', null);
+      }
+    }
+  } catch (e) {
+    // Consensus is an enhancement — never block scoring on it.
+    console.error('[score-fixture] consensus snapshot failed', e);
+  }
+
   // 2) Run the scoring RPC.
   const { data: scoring, error: rpcErr } = await admin.rpc('pickem_score_fixture', {
     p_fixture_id: fixture_id,
