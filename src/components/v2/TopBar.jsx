@@ -48,8 +48,7 @@ const NAV_ITEMS = [
   { id: 'epl',    labelKey: 'navEPL',      label: 'Premier League', path: '/premier-league-2025-26' },
   { id: 'f1',     labelKey: null,          label: 'F1',             path: '/formula-1-2026' },
   { id: 'tennis', labelKey: 'navTennis',   label: 'Tennis',         path: '/tennis' },
-  // v0.79.26 — WC2026 went LIVE on kickoff day; `soon` badge dropped.
-  { id: 'wc',     labelKey: 'navWorldCup', label: 'World Cup',      path: '/fifa-world-cup-2026' },
+  { id: 'wc',     labelKey: 'navWorldCup', label: 'World Cup',      path: '/fifa-world-cup-2026', soon: true },
 ];
 
 // v0.11.6 Sprint 2 — prefetch per-route chunks on hover/focus. The

@@ -26,10 +26,6 @@ export async function fetchScoreboard() {
       date: e.date, // ISO UTC — used for local-timezone tipoff display
       status: c?.status?.type?.shortDetail || c?.status?.type?.description || '',
       statusState: c?.status?.type?.state,
-      // v0.79.26 — stage signals for derivePlayoffStage(): ESPN note
-      // headline ("NBA Finals - Game 4") + series state ("NY leads series 2-1").
-      note: c?.notes?.[0]?.headline || null,
-      seriesSummary: c?.series?.summary || null,
       home: {
         abbr: home?.team?.abbreviation,
         score: home?.score,

@@ -139,7 +139,10 @@ export const homeVariant = envInt('VITE_FLAG_HOME', 0);
 // Repurposes the v0.60.0 cream flag — cream was retired in v0.63.0
 // and supersedes by the refined paper-grey take on Brand v1.0
 // "Pulse & Field". Independent from homeVariant + UI.v2.
-export const brandVariant = envInt('VITE_FLAG_BRAND', 0);
+// v0.80.0 — THE P6 FLIP: paper is now the default brand site-wide (the
+// flagship design pass applies the lighter paper stack to every surface).
+// Rollback path: VITE_FLAG_BRAND=0 in Vercel env, or ?brand=default.
+export const brandVariant = envInt('VITE_FLAG_BRAND', 1);
 
 export const FLAGS = {
   VISIBLE, LIVE, UI,

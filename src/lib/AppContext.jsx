@@ -6,7 +6,10 @@ import { brandVariant } from './flags.js';
 const THEME_STORAGE_KEY = 'gibol:theme';
 const LANG_STORAGE_KEY = 'gibol:lang';
 const ACCENT_STORAGE_KEY = 'gibol:accent';
-const BRAND_STORAGE_KEY = 'gibol:brand';
+// v0.80.0 — key versioned :v2 for the paper flip. The pre-flip effect
+// auto-saved 'default' for EVERY visitor (not just togglers), so without a
+// new key the flag flip would never reach returning users.
+const BRAND_STORAGE_KEY = 'gibol:brand:v2';
 const F1_CONSTRUCTOR_KEY = 'gibol:f1:constructor';
 const EPL_CLUB_KEY = 'gibol:epl:club';
 const TENNIS_PLAYER_KEY = 'gibol:tennis:player';

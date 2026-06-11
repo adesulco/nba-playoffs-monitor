@@ -320,7 +320,7 @@ function LiveGridCard({ nbaGames, eplUpcoming, tennisLive, lang }) {
       });
     }
     // intentionally only on row-set change, not on every render
-    // (react-hooks/exhaustive-deps intentionally not exhaustive here)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [live.map((r) => r.key).join('|'), favCount]);
 
   // v0.12.4 — when no live games, surface NEXT UP across sports as a

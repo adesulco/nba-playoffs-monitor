@@ -8151,7 +8151,32 @@
 //    STALENESS GUARD (the static line sat 5 weeks, claiming "Round 2" on
 //    Finals G4 day); fallback sentence is now data-driven from
 //    derivePlayoffStage + live games, with a WC2026 line from kickoff day.
-export const APP_VERSION = '0.79.26';
+// v0.80.0 — PICK'EM FLAGSHIP R1 BEGINS · D0 design absorption (2026-06-11).
+//
+// The flagship design pass (design_handoff_flagship, from Ade's redesign
+// zip) is absorbed under the zero-design-support model — tokens and motion
+// port ONCE into production sheets; the bundle stays a read-only reference.
+// Plan: pickem-flagship/07-design-port-plan.md (D0–D7 tickets).
+//
+// 1) Paper goes SITE-WIDE: VITE_FLAG_BRAND default 0→1 (the long-planned
+//    "P6 flip"). Brand storage key versioned gibol:brand:v2 — the old
+//    effect auto-saved 'default' for every visitor, which would have
+//    swallowed the flip for returning users. Rollback: env
+//    VITE_FLAG_BRAND=0 or ?brand=default.
+// 2) Flagship paper values (flagship-overrides.css verbatim) replace the
+//    Brand v1.0 paper stack inside [data-brand="paper"]: deep #E9EDF1,
+//    base #F7F9FB, raised/elev/paper #FFFFFF. Dark Stadium untouched.
+// 3) Flagship motion utilities added globally (.f-confirm 280ms,
+//    .f-reveal 200ms, .f-sheet-up 240ms; all reduced-motion-disabled) —
+//    inert until the F-component set (D1) references them.
+// 4) EN-first rule: i18n default was ALREADY 'en'; new flagship strings
+//    get EN-primary + ID-secondary keys. SEO surfaces stay Bahasa (the
+//    216-URL moat is explicitly out of the rule's scope).
+//
+// Also in this window (pre-D0, same day): migration 0019 applied+verified
+// (pool config, jagoan index, consensus audit, entitlements, KPI view) and
+// A2 scoring-core.js with the 78-test suite gating deploys.
+export const APP_VERSION = '0.80.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
