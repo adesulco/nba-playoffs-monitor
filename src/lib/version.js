@@ -8227,7 +8227,30 @@
 //        (live-only, skips FT + scored rows, matchday floor, both feed
 //        shapes) + thin useMemo hook. Client-side only, never persisted.
 //        8 tests on recorded feed shapes. Suite now 102 tests.
-export const APP_VERSION = '0.80.2';
+// v0.80.3 — 08-teardown-deltas D1–D5 (2026-06-12).
+//
+// The handover gained 08-teardown-deltas.md (from the logged-in
+// PlayoffPickems 63-member-pool review). D1–D2 were written as 0019
+// amendments but 0019 was already applied — shipped as migration 0020
+// (applied + verified): tier +'sponsor', product +'sponsor_pool' (door
+// open for the R6 Sponsor Pool tier, no features now), and
+// leagues.description (≤2000 chars).
+//   D2 guard — the commissioner rules/prizes box is where judi-adjacent
+//   copy enters: server-side banned-vocab reject (pasang/taruhan/odds/
+//   judi/bandar/jackpot/deposit/withdraw + money-prize phrasing, both
+//   locales) in create-league + update-league-settings, friendly error.
+//   D3 — football default template = BOTH game types ({match, bracket})
+//   when the wizard doesn't choose: kills the 16-day group-stage dead-air
+//   their Bracket-Lock-only model produces.
+//   D4 — league-detail now returns league.current_matchday + per-member
+//   picked_current_matchday (the "no pick yet · nudge on WA" row costs
+//   zero extra client queries).
+//   D5 — src/pickem/entriesCsv.js: buildEntriesCsv (pure, tested) +
+//   downloadCsv for the commissioner panel; client-side, no endpoint.
+//   D1 — grant-entitlement accepts sponsor_pool.
+// D6–D7 (max-points denominators, FIFA-rank chip) are Track B UI notes,
+// queued in 07-design-port-plan.md. Suite: 105 tests.
+export const APP_VERSION = '0.80.3';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

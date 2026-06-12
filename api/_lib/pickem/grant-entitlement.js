@@ -14,7 +14,7 @@
 import { getSupabaseAdmin } from '../supabaseAdmin.js';
 import { parseBody } from './league-config.js';
 
-const PRODUCTS = new Set(['season_pass', 'lifetime', 'gibol_plus']);
+const PRODUCTS = new Set(['season_pass', 'lifetime', 'gibol_plus', 'sponsor_pool']); // D1: sponsor door open
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {

@@ -24,7 +24,13 @@
  */
 
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
-import { validateScoringConfig, validateFormats, validateLateJoinPolicy } from './league-config.js';
+import { validateScoringConfig, validateFormats, validateLateJoinPolicy, validateDescription } from './league-config.js';
+
+// D3 (08-teardown-deltas) — football default template = BOTH game types on:
+// Bracket Lock for the stake-in-the-ground feeling, match-by-match for the
+// daily loop (kills PlayoffPickems' 16-day group-stage dead air). Applied
+// only when the wizard doesn't send formats explicitly.
+const FOOTBALL_COMPETITION = /^(WC|EPL|LIGA|UCL|AFC)/i;
 
 const VALID_VISIBILITY = new Set(['private', 'public']);
 const VALID_MODE_KEYS = new Set(['match', 'jagoan', 'upset', 'bracket', 'survivor']);
@@ -103,12 +109,19 @@ export default async function handler(req, res) {
     ['scoring_config', validateScoringConfig],
     ['formats', validateFormats],
     ['late_join_policy', validateLateJoinPolicy],
+    ['description', validateDescription], // D2 — banned-vocab guard inside
   ]) {
     if (body[field] !== undefined && body[field] !== null) {
       const v = validator(body[field]);
       if (!v.ok) return res.status(400).json({ error: v.error });
       if (v.value != null) insertRow[field] = v.value;
     }
+  }
+
+  // D3 — football competitions default to both game types when the wizard
+  // didn't choose explicitly: {match, bracket}.
+  if (insertRow.formats == null && insertRow.competition && FOOTBALL_COMPETITION.test(insertRow.competition)) {
+    insertRow.formats = ['match', 'bracket'];
   }
 
   const admin = getSupabaseAdmin();

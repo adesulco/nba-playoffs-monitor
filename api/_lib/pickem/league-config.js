@@ -69,6 +69,28 @@ export function validateFormats(input) {
   return { ok: true, value: [...new Set(input)] };
 }
 
+// D2 (08-teardown-deltas) — the commissioner rules/prizes box is where
+// judi-adjacent copy will try to enter the product. Server-side reject of
+// betting vocabulary + money-prize phrasing, both locales. Friendly error.
+const BANNED_VOCAB = /\b(pasang(an)?|taruhan|bertaruh|odds|judi|bandar|jackpot|deposit|withdraw)\b/i;
+const MONEY_PRIZE = /\b(hadiah|prize|pot|pool\s*prize)\b[^.\n]{0,48}\b(uang|rp\.?|rupiah|idr|usd|cash|\$|€)|\b(uang|rp\.?|rupiah|idr|usd|cash)\b[^.\n]{0,48}\b(hadiah|prize)\b/i;
+
+/** Validate leagues.description (D2): ≤2000 chars, no betting vocabulary. */
+export function validateDescription(input) {
+  if (input == null) return { ok: true, value: null };
+  if (typeof input !== 'string') return { ok: false, error: 'description must be a string' };
+  const value = input.trim();
+  if (value.length === 0) return { ok: true, value: null };
+  if (value.length > 2000) return { ok: false, error: 'Description is too long (max 2000 characters).' };
+  if (BANNED_VOCAB.test(value) || MONEY_PRIZE.test(value)) {
+    return {
+      ok: false,
+      error: "Keep it friendly — betting or cash-prize wording isn't allowed. Merch and voucher prizes are fine. (Bahasa: bahasa taruhan/hadiah uang nggak diizinkan; hadiah merch/voucher boleh.)",
+    };
+  }
+  return { ok: true, value };
+}
+
 /** Validate late_join_policy. */
 export function validateLateJoinPolicy(input) {
   if (input == null) return { ok: true, value: null };

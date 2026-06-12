@@ -12,7 +12,8 @@
  */
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
 import {
-  validateScoringConfig, validateFormats, validateLateJoinPolicy, parseBody,
+  validateScoringConfig, validateFormats, validateLateJoinPolicy,
+  validateDescription, parseBody,
 } from './league-config.js';
 
 export default async function handler(req, res) {
@@ -57,6 +58,7 @@ export default async function handler(req, res) {
     ['scoring_config', validateScoringConfig],
     ['formats', validateFormats],
     ['late_join_policy', validateLateJoinPolicy],
+    ['description', validateDescription], // D2 — editable any time (not frozen)
   ]) {
     if (body[field] !== undefined) {
       const v = validator(body[field]);
@@ -72,7 +74,7 @@ export default async function handler(req, res) {
     .from('leagues')
     .update(patch)
     .eq('id', league.id)
-    .select('id, name, invite_code, competition, scoring_config, formats, late_join_policy, max_members, tier')
+    .select('id, name, invite_code, competition, scoring_config, formats, late_join_policy, max_members, tier, description')
     .single();
   if (error) return res.status(400).json({ error: error.message });
   return res.status(200).json({ ok: true, league: data });

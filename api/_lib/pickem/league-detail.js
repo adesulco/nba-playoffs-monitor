@@ -30,10 +30,36 @@ export default async function handler(req, res) {
   const admin = getSupabaseAdmin();
   let q = admin
     .from('leagues')
-    .select('id, name, invite_code, competition, formats, late_join_policy, scoring_config, max_members, tier, owner_id');
+    .select('id, name, invite_code, competition, formats, late_join_policy, scoring_config, max_members, tier, owner_id, description');
   q = code ? q.eq('invite_code', code) : q.eq('id', id);
   const { data: league } = await q.maybeSingle();
   if (!league) return res.status(404).json({ error: 'League not found' });
+
+  // D4 (08-teardown-deltas) — "who hasn't picked" is P0: per-member
+  // picked_current_matchday so the grup-home nudge row ("no pick yet ·
+  // nudge on WA →") costs zero extra client queries. Current matchday =
+  // the earliest matchday that still has an open fixture (what members
+  // should be picking right now).
+  let currentMatchday = null;
+  const pickedSet = new Set();
+  if (league.competition) {
+    const { data: openFx } = await admin
+      .from('fixtures')
+      .select('matchday')
+      .eq('league', league.competition)
+      .gt('lock_at', new Date().toISOString())
+      .order('matchday', { ascending: true })
+      .limit(1);
+    currentMatchday = openFx?.[0]?.matchday ?? null;
+    if (currentMatchday != null) {
+      const { data: picks } = await admin
+        .from('predictions')
+        .select('user_id')
+        .eq('league', league.competition)
+        .eq('matchday', currentMatchday);
+      for (const p of picks || []) pickedSet.add(p.user_id);
+    }
+  }
 
   // Members + cached points (refreshed by the scoring cron via
   // pickem_score_fixture; 0015). Join profiles for the display name.
@@ -53,6 +79,7 @@ export default async function handler(req, res) {
       status: m.status || 'active',
       is_owner: m.user_id === league.owner_id,
       is_managed: !!m.managed_by,
+      picked_current_matchday: pickedSet.has(m.user_id), // D4 — drives the WA-nudge row
     }))
     .sort((a, b) => b.points - a.points || b.exact_count - a.exact_count);
 
@@ -62,7 +89,12 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'public, max-age=15, s-maxage=30');
   return res.status(200).json({
     ok: true,
-    league: { ...league, member_count: memberCount, pending_count: pendingCount },
+    league: {
+      ...league,
+      member_count: memberCount,
+      pending_count: pendingCount,
+      current_matchday: currentMatchday,
+    },
     members: rows,
   });
 }
