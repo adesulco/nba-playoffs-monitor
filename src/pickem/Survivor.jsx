@@ -4,6 +4,7 @@ import Flag from './Flag.jsx';
 import { PickemBtn, EmptyState } from './components/social.jsx';
 import { teamLabel, GROUP_LETTERS, SAMPLE_GROUPS } from './bracketData.js';
 import { usePickemCompetition } from './useCompetition.jsx';
+import { usePickemT } from './i18n.js';
 
 // ============================================================================
 // v0.70.0 — Survivor "Fan Terakhir" screen (Pick'em P5).
@@ -92,6 +93,7 @@ function buildMatchdayPool(matchday) {
 }
 
 export default function Survivor() {
+  const tx = usePickemT();
   const { competition } = usePickemCompetition();
   // Survivor is WC-shape only (one elimination per matchday across an 8-
   // matchday tournament). NBA Playoffs has no matchday-loss equivalent
@@ -102,10 +104,13 @@ export default function Survivor() {
         <div style={{ padding: '40px 16px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
           <div className="p-eyebrow" style={{ marginBottom: 10, opacity: 0.7 }}>SURVIVOR</div>
           <h1 className="p-display-sm" style={{ marginBottom: 12, color: 'var(--ink-1)' }}>
-            Survivor {competition.label} belum aktif
+            {tx(`Survivor for ${competition.label} isn't live yet`, `Survivor ${competition.label} belum aktif`)}
           </h1>
           <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.55 }}>
-            Mode Survivor cocok untuk turnamen format gugur per-matchday. {competition.label} pakai seri best-of-7 — fitur ini aktif lagi pas Piala Dunia 2026 mulai 11 Juni.
+            {tx(
+              `Survivor mode fits matchday-elimination tournaments. ${competition.label} runs best-of-7 series — this feature comes back when the 2026 World Cup kicks off on June 11.`,
+              `Mode Survivor cocok untuk turnamen format gugur per-matchday. ${competition.label} pakai seri best-of-7 — fitur ini aktif lagi pas Piala Dunia 2026 mulai 11 Juni.`,
+            )}
           </p>
         </div>
       </PickemRoot>
@@ -115,6 +120,7 @@ export default function Survivor() {
 }
 
 function SurvivorImpl() {
+  const tx = usePickemT();
   const [state, setState] = useState(() => readSurvivor());
   const [confirmPick, setConfirmPick] = useState(null);
 
@@ -176,12 +182,15 @@ function SurvivorImpl() {
 
             <div style={{ padding: '0 18px 14px' }}>
               <div className="p-eyebrow" style={{ marginBottom: 10 }}>
-                PILIH SATU TIM YANG MENANG MATCHDAY {state.current_matchday}
+                {tx(
+                  `PICK ONE TEAM TO WIN MATCHDAY ${state.current_matchday}`,
+                  `PILIH SATU TIM YANG MENANG MATCHDAY ${state.current_matchday}`,
+                )}
               </div>
               {pool.length === 0 ? (
                 <EmptyState
-                  title="Semua tim sudah kamu pakai"
-                  body="Survivor selesai untuk kamu — kamu bertahan sampai akhir."
+                  title={tx('You\'ve used every team', 'Semua tim sudah kamu pakai')}
+                  body={tx('Survivor is done for you — you made it to the end.', 'Survivor selesai untuk kamu — kamu bertahan sampai akhir.')}
                 />
               ) : (
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
@@ -200,7 +209,7 @@ function SurvivorImpl() {
 
             {state.used_teams.length > 0 && (
               <div style={{ padding: '0 18px 14px' }}>
-                <div className="p-eyebrow" style={{ marginBottom: 8 }}>SUDAH KAMU PAKAI</div>
+                <div className="p-eyebrow" style={{ marginBottom: 8 }}>{tx('ALREADY USED', 'SUDAH KAMU PAKAI')}</div>
                 <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                   {state.used_teams.map((code) => (
                     <UsedChip key={code} code={code} />
@@ -214,7 +223,7 @@ function SurvivorImpl() {
                     fontStyle: 'italic',
                   }}
                 >
-                  Tim yang udah dipakai, nggak bisa dipakai lagi.
+                  {tx('A team you\'ve used can\'t be picked again.', 'Tim yang udah dipakai, nggak bisa dipakai lagi.')}
                 </div>
               </div>
             )}
@@ -236,8 +245,8 @@ function SurvivorImpl() {
                 onClick={() => setConfirmPick(state.current_pick)}
               >
                 {state.current_pick
-                  ? `Pilih ${teamLabel(state.current_pick)} · 🔒`
-                  : 'Pilih dulu salah satu tim'}
+                  ? tx(`Pick ${teamLabel(state.current_pick)} · 🔒`, `Pilih ${teamLabel(state.current_pick)} · 🔒`)
+                  : tx('Pick a team first', 'Pilih dulu salah satu tim')}
               </PickemBtn>
             </div>
           </>
@@ -258,10 +267,11 @@ function SurvivorImpl() {
 // ── Sub-components ─────────────────────────────────────────────────────────
 
 function Header({ matchday }) {
+  const tx = usePickemT();
   return (
     <header style={{ padding: '20px 18px 16px' }}>
       <div className="p-eyebrow" style={{ color: 'var(--pickem-orange)', marginBottom: 6 }}>
-        SURVIVOR · FAN TERAKHIR
+        {tx('SURVIVOR · LAST FAN STANDING', 'SURVIVOR · FAN TERAKHIR')}
       </div>
       <h1
         style={{
@@ -274,15 +284,16 @@ function Header({ matchday }) {
           color: 'var(--ink-1)',
         }}
       >
-        Matchday {matchday}
+        {tx('Matchday', 'Matchday')} {matchday}
         <br />
-        <span style={{ color: 'var(--ink-3)' }}>kamu masih hidup.</span>
+        <span style={{ color: 'var(--ink-3)' }}>{tx('you\'re still alive.', 'kamu masih hidup.')}</span>
       </h1>
     </header>
   );
 }
 
 function StatusBanner({ matchdaysSurvived }) {
+  const tx = usePickemT();
   return (
     <div style={{ padding: '0 18px 14px' }}>
       <div
@@ -300,7 +311,7 @@ function StatusBanner({ matchdaysSurvived }) {
       >
         <div>
           <div className="p-eyebrow" style={{ color: 'var(--p-up)', marginBottom: 2 }}>
-            STATUS
+            {tx('STATUS', 'STATUS')}
           </div>
           <div
             style={{
@@ -310,10 +321,10 @@ function StatusBanner({ matchdaysSurvived }) {
               color: 'var(--ink-1)',
             }}
           >
-            Hidup{matchdaysSurvived > 0 ? ` · ${matchdaysSurvived} matchday` : ''}
+            {tx('Alive', 'Hidup')}{matchdaysSurvived > 0 ? ` · ${matchdaysSurvived} matchday` : ''}
           </div>
           <div style={{ color: 'var(--ink-3)', fontSize: 12, marginTop: 2 }}>
-            Tinggal pilih satu tim. Salah sekali, kelar.
+            {tx('Just pick one team. One wrong call and you\'re out.', 'Tinggal pilih satu tim. Salah sekali, kelar.')}
           </div>
         </div>
         <span style={{ fontSize: 32 }} aria-hidden="true">
@@ -325,6 +336,7 @@ function StatusBanner({ matchdaysSurvived }) {
 }
 
 function OutBanner({ eliminatedMatchday, onReset }) {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -346,15 +358,15 @@ function OutBanner({ eliminatedMatchday, onReset }) {
           color: 'var(--ink-1)',
         }}
       >
-        Kamu tereliminasi
+        {tx('You\'re eliminated', 'Kamu tereliminasi')}
       </div>
       <div style={{ color: 'var(--ink-2)', fontSize: 13, marginBottom: 14 }}>
         {eliminatedMatchday
-          ? `Tim pilihanmu kalah di matchday ${eliminatedMatchday}.`
-          : 'Tim pilihanmu kalah.'}
+          ? tx(`Your pick lost on matchday ${eliminatedMatchday}.`, `Tim pilihanmu kalah di matchday ${eliminatedMatchday}.`)
+          : tx('Your pick lost.', 'Tim pilihanmu kalah.')}
       </div>
       <PickemBtn variant="primary" onClick={onReset}>
-        Main Survivor lagi musim depan
+        {tx('Play Survivor again next season', 'Main Survivor lagi musim depan')}
       </PickemBtn>
     </div>
   );
@@ -372,7 +384,7 @@ function PickCard({ team, opponent, selected, onClick }) {
         padding: 14,
         borderRadius: 12,
         background: selected ? 'var(--pickem-orange)' : 'var(--bg-raised)',
-        color: selected ? '#0A1628' : 'var(--ink-1)',
+        color: selected ? 'var(--ink-on-accent)' : 'var(--ink-1)',
         border: '1px solid ' + (selected ? 'var(--pickem-orange)' : 'var(--line-1)'),
         display: 'flex',
         alignItems: 'center',
@@ -440,6 +452,7 @@ function UsedChip({ code }) {
 }
 
 function LockPickConfirm({ team, onCancel, onConfirm }) {
+  const tx = usePickemT();
   return (
     <div
       role="presentation"
@@ -463,7 +476,7 @@ function LockPickConfirm({ team, onCancel, onConfirm }) {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Kunci pilihan survivor"
+        aria-label={tx('Lock survivor pick', 'Kunci pilihan survivor')}
         style={{
           background: 'var(--bg-raised)',
           border: '1px solid var(--line-1)',
@@ -489,11 +502,13 @@ function LockPickConfirm({ team, onCancel, onConfirm }) {
             letterSpacing: '-0.015em',
           }}
         >
-          Kunci pilihan?
+          {tx('Lock your pick?', 'Kunci pilihan?')}
         </div>
         <div style={{ color: 'var(--ink-2)', fontSize: 13, marginBottom: 18, lineHeight: 1.5 }}>
-          Begitu dikunci, kamu nggak bisa pakai {teamLabel(team)} lagi di Survivor. Pilihan
-          dievaluasi setelah matchday selesai.
+          {tx(
+            `Once locked, you can't use ${teamLabel(team)} again in Survivor. Your pick is settled after the matchday ends.`,
+            `Begitu dikunci, kamu nggak bisa pakai ${teamLabel(team)} lagi di Survivor. Pilihan dievaluasi setelah matchday selesai.`,
+          )}
         </div>
         <div
           style={{
@@ -511,7 +526,7 @@ function LockPickConfirm({ team, onCancel, onConfirm }) {
           <Flag code={team} w={32} h={22} round={3} />
           <div style={{ textAlign: 'left' }}>
             <div className="p-eyebrow" style={{ fontSize: 9, marginBottom: 1 }}>
-              PILIHANMU
+              {tx('YOUR PICK', 'PILIHANMU')}
             </div>
             <div
               style={{
@@ -527,10 +542,10 @@ function LockPickConfirm({ team, onCancel, onConfirm }) {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <PickemBtn full size="lg" variant="primary" onClick={onConfirm}>
-            🔒 Kunci pilihan
+            {tx('🔒 Lock pick', '🔒 Kunci pilihan')}
           </PickemBtn>
           <PickemBtn full size="md" variant="ghost" onClick={onCancel}>
-            Nanti aja
+            {tx('Later', 'Nanti aja')}
           </PickemBtn>
         </div>
       </div>

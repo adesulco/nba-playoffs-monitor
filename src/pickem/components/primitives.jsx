@@ -1,5 +1,6 @@
 import React from 'react';
 import { LockIcon, StarIcon } from '../icons.jsx';
+import { usePickemT } from '../i18n.js';
 
 // ============================================================================
 // v0.67.0 — Pick'em P2 match-predictor primitives.
@@ -22,17 +23,20 @@ import { LockIcon, StarIcon } from '../icons.jsx';
 
 // ── 1. StatePill ───────────────────────────────────────────────────────────
 
+// v0.81.0 — English-first labels with a Bahasa fallback (resolved per the
+// global lang toggle in StatePill via usePickemT).
 const STATE_LABELS = {
-  open:   { l: 'TERBUKA',         fg: 'var(--pickem-orange)' },
-  locked: { l: 'TERKUNCI',        fg: 'var(--ink-3)' },
-  scored: { l: 'SELESAI',         fg: 'var(--ink-3)' },
+  open:   { en: 'OPEN',       id: 'TERBUKA',          fg: 'var(--pickem-orange)' },
+  locked: { en: 'LOCKED',     id: 'TERKUNCI',         fg: 'var(--ink-3)' },
+  scored: { en: 'FINAL',      id: 'SELESAI',          fg: 'var(--ink-3)' },
   // F-016 — 'missed' is a faded/done state (you scored 0); dim it to --ink-4
   // so it reads distinctly from the still-relevant 'locked' badge.
-  missed: { l: 'TIDAK DIPREDIKSI', fg: 'var(--ink-4)' },
-  soon:   { l: 'SEGERA',          fg: 'var(--ink-3)' },
+  missed: { en: 'NOT PREDICTED', id: 'TIDAK DIPREDIKSI', fg: 'var(--ink-4)' },
+  soon:   { en: 'SOON',       id: 'SEGERA',           fg: 'var(--ink-3)' },
 };
 
 export function StatePill({ state, kickoff }) {
+  const tx = usePickemT();
   if (state === 'live') {
     return (
       <span
@@ -57,10 +61,10 @@ export function StatePill({ state, kickoff }) {
       </span>
     );
   }
-  const meta = STATE_LABELS[state] || { l: String(state).toUpperCase(), fg: 'var(--ink-3)' };
+  const meta = STATE_LABELS[state] || { en: String(state).toUpperCase(), fg: 'var(--ink-3)' };
   // 'open' is the only state where we replace the label with the kickoff
   // time when the caller supplies one (e.g. "21:00 WIB").
-  const label = state === 'open' && kickoff ? kickoff : meta.l;
+  const label = state === 'open' && kickoff ? kickoff : tx(meta.en, meta.id);
   return (
     <span
       style={{
@@ -167,7 +171,7 @@ export function ScoreStepper({ value = 0, onChange, size = 'md', minValue = 0, m
     >
       <button
         type="button"
-        aria-label="Kurangi skor"
+        aria-label="Decrease score"
         onClick={() => onChange?.(clamp(value - 1))}
         style={{ ...STEP_BTN_STYLE, width: dims.btn, height: dims.btn }}
       >
@@ -189,7 +193,7 @@ export function ScoreStepper({ value = 0, onChange, size = 'md', minValue = 0, m
       </span>
       <button
         type="button"
-        aria-label="Tambah skor"
+        aria-label="Increase score"
         onClick={() => onChange?.(clamp(value + 1))}
         style={{ ...STEP_BTN_STYLE, width: dims.btn, height: dims.btn }}
       >
@@ -232,7 +236,7 @@ export function JagoanToggle({ active, onClick, compact, koMult = 2 }) {
     <button
       type="button"
       onClick={onClick}
-      aria-label="Tandai jagoan matchday"
+      aria-label="Mark matchday banker"
       aria-pressed={active}
       style={{
         display: 'inline-flex',
@@ -243,7 +247,7 @@ export function JagoanToggle({ active, onClick, compact, koMult = 2 }) {
         minHeight: 40,
         cursor: 'pointer',
         background: active ? 'var(--pickem-orange)' : 'transparent',
-        color: active ? '#0A1628' : 'var(--pickem-orange)',
+        color: active ? 'var(--ink-on-accent)' : 'var(--pickem-orange)',
         border: '1px solid ' + (active ? 'var(--pickem-orange)' : 'var(--pickem-orange-soft)'),
         fontFamily: 'var(--font-ui-pickem)',
         fontWeight: 600,
@@ -267,23 +271,24 @@ export function JagoanToggle({ active, onClick, compact, koMult = 2 }) {
  * `odds` shape: { home, draw, away } — integer percentages.
  * `value`: 'H' | 'D' | 'A' (the spec code, also what the API expects).
  */
-const OUTCOME_OPTS = [
-  { value: 'H', code: '1', label: 'Menang', oddsKey: 'home' },
-  { value: 'D', code: 'X', label: 'Seri',   oddsKey: 'draw' },
-  { value: 'A', code: '2', label: 'Kalah',  oddsKey: 'away' },
+// v0.81.0 — labels default to English ('Home'/'Draw'/'Away'); callers pass
+// `labels={{ H, D, A }}` to show the actual team codes (e.g. 'BRA'/'Draw'/'ARG')
+// so the picker says WHICH team wins, not the ambiguous "Menang/Kalah".
+const OUTCOME_BASE = [
+  { value: 'H', code: '1', oddsKey: 'home', fallback: 'Home' },
+  { value: 'D', code: 'X', oddsKey: 'draw', fallback: 'Draw' },
+  { value: 'A', code: '2', oddsKey: 'away', fallback: 'Away' },
 ];
 
-export function OutcomePicker({ odds = {}, value, onChange, hint, disabled, allowDraw = true }) {
-  // v0.79.7 — allowDraw=false hides the X/Seri button. Used for NBA
-  // (best-of-7 series can't end in a draw) and any other sport whose
-  // competitions.js entry has shape === 'playoff-series'. The 1-X-2
-  // soccer ordering becomes a 1-2 two-button picker that splits 50/50.
-  const options = allowDraw ? OUTCOME_OPTS : OUTCOME_OPTS.filter((o) => o.value !== 'D');
+export function OutcomePicker({ odds = {}, value, onChange, hint, disabled, allowDraw = true, labels }) {
+  // v0.79.7 — allowDraw=false hides the X button (best-of-7 series can't draw).
+  const options = (allowDraw ? OUTCOME_BASE : OUTCOME_BASE.filter((o) => o.value !== 'D'))
+    .map((o) => ({ ...o, label: (labels && labels[o.value]) || o.fallback }));
   const cols = allowDraw ? '1fr 1fr 1fr' : '1fr 1fr';
   return (
     <div
       role="radiogroup"
-      aria-label={hint || 'Hasil pertandingan'}
+      aria-label={hint || 'Match result'}
       style={{ display: 'grid', gridTemplateColumns: cols, gap: 8 }}
     >
       {options.map((o) => {
@@ -303,7 +308,7 @@ export function OutcomePicker({ odds = {}, value, onChange, hint, disabled, allo
               cursor: disabled ? 'default' : 'pointer',
               border: '1px solid ' + (sel ? 'var(--pickem-orange)' : 'var(--line-2)'),
               background: sel ? 'var(--pickem-orange)' : 'transparent',
-              color: sel ? '#0A1628' : 'var(--ink-1)',
+              color: sel ? 'var(--ink-on-accent)' : 'var(--ink-1)',
               padding: '10px 8px',
               borderRadius: 10,
               minHeight: 56,

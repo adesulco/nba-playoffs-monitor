@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TEAM_META } from '../lib/constants.js';
+import { WC_LIVE_STATES } from '../hooks/useWCLive.js';
 
 /**
  * LiveHero — v0.11.11 Sprint 5, extended v0.11.13 for cross-sport.
@@ -106,6 +107,24 @@ function normalizeTennisMatch(m) {
   };
 }
 
+// v0.81.0 — World Cup 2026 live normalizer. WC fixtures (from useWCFixtures)
+// carry { statusShort, home: { name, goals }, away: { name, goals }, round }.
+// No brand color in the feed, so we use the FIFA WC accent for both sigils.
+function normalizeWcFixture(f) {
+  if (!f || !WC_LIVE_STATES.has(f.statusShort)) return null;
+  const wcAccent = '#326295';
+  const abbr = (name) => (name || '—').replace(/[^A-Za-z ]/g, '').trim().slice(0, 3).toUpperCase();
+  const clock = f.elapsed ? `${f.elapsed}'` : (f.statusShort === 'HT' ? 'HT' : 'LIVE');
+  return {
+    sport: 'fifa_wc',
+    sportLabel: 'PIALA DUNIA 2026',
+    href: '/fifa-world-cup-2026',
+    clock,
+    away: { abbr: abbr(f.away?.name), color: wcAccent, score: Number(f.away?.goals ?? 0) },
+    home: { abbr: abbr(f.home?.name), color: wcAccent, score: Number(f.home?.goals ?? 0) },
+  };
+}
+
 /**
  * Props:
  *   games         — NBA games array (from usePlayoffData)
@@ -113,18 +132,20 @@ function normalizeTennisMatch(m) {
  *                   Pass `upcoming` (which includes statusState 'pre' and 'in').
  *   tennisMatches — optional Tennis match array (from useTennisScoreboard).
  *                   Pass ATP + WTA merged, or either tour alone.
+ *   wcFixtures    — optional World Cup 2026 fixtures (from useWCFixtures).
  *
- * Priority: NBA > EPL > Tennis. F1 skipped — live race windows are
- * ~2h × 23 weekends/year; too narrow to justify an always-on fetch
- * on Home. When F1 live-race detection lands, add a branch here.
+ * Priority during the World Cup window: WC > NBA > EPL > Tennis — the WC is
+ * the tentpole event this window, so a live WC match leads. F1 skipped — live
+ * race windows are ~2h × 23 weekends/year; too narrow for an always-on fetch.
  */
-export default function LiveHero({ games, eplFixtures, tennisMatches }) {
-  const nbaLive = (games || []).map(normalizeNbaEvent).find(Boolean);
-  const eplLive = !nbaLive ? (eplFixtures || []).map(normalizeEplFixture).find(Boolean) : null;
-  const tennisLive = !nbaLive && !eplLive
+export default function LiveHero({ games, eplFixtures, tennisMatches, wcFixtures }) {
+  const wcLive = (wcFixtures || []).map(normalizeWcFixture).find(Boolean);
+  const nbaLive = !wcLive ? (games || []).map(normalizeNbaEvent).find(Boolean) : null;
+  const eplLive = !wcLive && !nbaLive ? (eplFixtures || []).map(normalizeEplFixture).find(Boolean) : null;
+  const tennisLive = !wcLive && !nbaLive && !eplLive
     ? (tennisMatches || []).map(normalizeTennisMatch).find(Boolean)
     : null;
-  const hero = nbaLive || eplLive || tennisLive;
+  const hero = wcLive || nbaLive || eplLive || tennisLive;
   if (!hero) return null;
 
   const awayLeads = hero.away.score > hero.home.score;

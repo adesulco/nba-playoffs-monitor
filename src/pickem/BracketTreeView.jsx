@@ -6,6 +6,7 @@ import Flag from './Flag.jsx';
 import { PickemBtn } from './components/social.jsx';
 import { teamLabel, teamShort, potentialBracketPoints } from './bracketData.js';
 import { usePickemCompetition } from './useCompetition.jsx';
+import { usePickemT } from './i18n.js';
 
 // ============================================================================
 // v0.75.0 — Desktop bracket tree (Pick'em P7).
@@ -28,6 +29,7 @@ import { usePickemCompetition } from './useCompetition.jsx';
 // v0.79.1 — COMPETITION reads from usePickemCompetition() at render time.
 
 export default function BracketTreeView() {
+  const tx = usePickemT();
   const { competition } = usePickemCompetition();
   // Mirror Bracket.jsx: gate first, then render the impl so the hooks order
   // inside BracketTreeViewImpl (which calls useBracketState) stays stable.
@@ -36,10 +38,13 @@ export default function BracketTreeView() {
       <PickemRoot active="bracket">
         <div style={{ padding: '40px 16px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
           <h1 className="p-display-sm" style={{ marginBottom: 12, color: 'var(--ink-1)' }}>
-            Bracket {competition.label} belum aktif
+            {tx(`Bracket for ${competition.label} isn't live yet`, `Bracket ${competition.label} belum aktif`)}
           </h1>
           <p style={{ color: 'var(--ink-2)', fontSize: 14 }}>
-            Format seri best-of-7 nggak pakai bracket prediksi. Cek tab <strong>Prediksi</strong>.
+            {tx(
+              <>Best-of-7 series don't use a prediction bracket. Check the <strong>Predictions</strong> tab.</>,
+              <>Format seri best-of-7 nggak pakai bracket prediksi. Cek tab <strong>Prediksi</strong>.</>,
+            )}
           </p>
         </div>
       </PickemRoot>
@@ -142,6 +147,7 @@ function BracketTreeViewImpl({ competition }) {
 // ── Header ────────────────────────────────────────────────────────────────
 
 function Header({ locked, potential, onEdit }) {
+  const tx = usePickemT();
   return (
     <header
       style={{
@@ -176,13 +182,13 @@ function Header({ locked, potential, onEdit }) {
               letterSpacing: '-0.02em',
             }}
           >
-            {locked ? 'Bracket terkunci' : 'Bracket kamu'}
+            {locked ? tx('Bracket locked', 'Bracket terkunci') : tx('Your bracket', 'Bracket kamu')}
           </div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ textAlign: 'right' }}>
             <div className="p-eyebrow" style={{ fontSize: 9, marginBottom: 2 }}>
-              POTENSI POIN
+              {tx('POTENTIAL POINTS', 'POTENSI POIN')}
             </div>
             <div
               style={{
@@ -197,7 +203,7 @@ function Header({ locked, potential, onEdit }) {
           </div>
           {!locked && (
             <PickemBtn variant="primary" onClick={onEdit}>
-              Edit bracket
+              {tx('Edit bracket', 'Edit bracket')}
             </PickemBtn>
           )}
         </div>
@@ -292,6 +298,7 @@ function MatchCompact({ match, mirror }) {
 // ── FinalCard (centerpiece) ───────────────────────────────────────────────
 
 function FinalCard({ home, away, pick }) {
+  const tx = usePickemT();
   if (!home || !away) {
     return (
       <div
@@ -306,7 +313,7 @@ function FinalCard({ home, away, pick }) {
           textAlign: 'center',
         }}
       >
-        Belum ada finalis
+        {tx('No finalists yet', 'Belum ada finalis')}
       </div>
     );
   }
@@ -358,6 +365,7 @@ function FinalCard({ home, away, pick }) {
 // ── ChampionPanel (trophy + flag, ceremonial) ─────────────────────────────
 
 function ChampionPanel({ team }) {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -378,7 +386,7 @@ function ChampionPanel({ team }) {
         className="p-eyebrow"
         style={{ color: 'var(--pickem-orange)', fontSize: 10 }}
       >
-        JUARA
+        {tx('CHAMPION', 'JUARA')}
       </div>
       <Flag code={team} w={48} h={34} round={4} />
       <div

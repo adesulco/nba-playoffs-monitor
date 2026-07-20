@@ -4,6 +4,7 @@ import PickemRoot from './PickemRoot.jsx';
 import { RecapCard, RECAP_VARIANTS } from './components/recapCards.jsx';
 import { PickemBtn, SegmentedPicker } from './components/social.jsx';
 import { WhatsAppIcon } from './icons.jsx';
+import { usePickemT } from './i18n.js';
 
 // ============================================================================
 // v0.71.0 — Recap card surface (Pick'em P6).
@@ -25,6 +26,7 @@ import { WhatsAppIcon } from './icons.jsx';
 // ============================================================================
 
 export default function Recap() {
+  const tx = usePickemT();
   const [params, setParams] = useSearchParams();
   const initial = params.get('variant') || 'big-win';
   const [variant, setVariantState] = useState(initial);
@@ -62,8 +64,11 @@ export default function Recap() {
     const label = meta?.l || 'Recap';
     // Use the PNG URL directly — WhatsApp + most social previews it as
     // the image, which IS the share card.
-    return `${label} Pick'em WC 2026 — lihat catatan pekanku di Gibol.\n${shareImageUrl}`;
-  }, [variant, shareImageUrl]);
+    return tx(
+      `${label} Pick'em WC 2026 — check out my week on Gibol.\n${shareImageUrl}`,
+      `${label} Pick'em WC 2026 — lihat catatan pekanku di Gibol.\n${shareImageUrl}`,
+    );
+  }, [variant, shareImageUrl, tx]);
 
   const onWhatsApp = () => {
     const txt = encodeURIComponent(shareMessage);
@@ -154,19 +159,19 @@ export default function Recap() {
             onClick={onWhatsApp}
             icon={<WhatsAppIcon size={18} />}
           >
-            Bagikan ke WhatsApp
+            {tx('Share to WhatsApp', 'Bagikan ke WhatsApp')}
           </PickemBtn>
           {typeof navigator !== 'undefined' && navigator.share && (
             <PickemBtn variant="secondary" full onClick={onNativeShare}>
-              Bagikan lainnya
+              {tx('Share elsewhere', 'Bagikan lainnya')}
             </PickemBtn>
           )}
           <PickemBtn variant="ghost" full onClick={onCopyLink}>
             {copied === 'link'
-              ? '✓ Link tersalin'
+              ? tx('✓ Link copied', '✓ Link tersalin')
               : copied === 'link-failed'
-              ? 'Gagal menyalin'
-              : 'Salin link recap'}
+              ? tx('Copy failed', 'Gagal menyalin')
+              : tx('Copy recap link', 'Salin link recap')}
           </PickemBtn>
         </div>
 
@@ -180,7 +185,10 @@ export default function Recap() {
             fontFamily: 'var(--font-ui-pickem)',
           }}
         >
-          Screenshot kartu di atas untuk dibagikan sebagai gambar di WhatsApp Story atau Instagram.
+          {tx(
+            'Screenshot the card above to share it as an image on WhatsApp Status or Instagram.',
+            'Screenshot kartu di atas untuk dibagikan sebagai gambar di WhatsApp Story atau Instagram.',
+          )}
         </p>
       </div>
     </PickemRoot>
@@ -188,19 +196,20 @@ export default function Recap() {
 }
 
 function Header() {
+  const tx = usePickemT();
   return (
     <header style={{ marginBottom: 4, textAlign: 'center' }}>
       <div
         className="p-eyebrow"
         style={{ marginBottom: 6, color: 'var(--pickem-orange)' }}
       >
-        KARTU BOLA · RECAP
+        {tx('KARTU BOLA · RECAP', 'KARTU BOLA · RECAP')}
       </div>
       <h1
         className="p-display-sm"
         style={{ margin: 0, color: 'var(--ink-1)' }}
       >
-        Bagikan recap kamu
+        {tx('Share your recap', 'Bagikan recap kamu')}
       </h1>
       <p
         style={{
@@ -211,7 +220,7 @@ function Header() {
           marginTop: 6,
         }}
       >
-        Pilih kartu yang paling kamu suka — kirim ke grup WhatsApp.
+        {tx('Pick the card you like best — send it to your WhatsApp group.', 'Pilih kartu yang paling kamu suka — kirim ke grup WhatsApp.')}
       </p>
     </header>
   );

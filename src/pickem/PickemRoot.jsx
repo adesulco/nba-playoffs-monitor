@@ -10,8 +10,8 @@ import SEO from '../components/SEO.jsx';
 // Keyed on PickemRoot's `active` nav key → one source covers all screens.
 // Personal surfaces (grup, profile) are noindex.
 const PICKEM_SEO = {
-  predict:  { title: "Prediksi Hari Ini — Pick'em NBA & Piala Dunia 2026 | gibol.co", path: '/pickem',          description: 'Prediksi skor & hasil laga NBA Playoffs dan Piala Dunia 2026. Gratis, langsung tersimpan, main bareng teman.' },
-  board:    { title: "Papan Peringkat — Pick'em | gibol.co",                          path: '/pickem/board',    description: 'Lihat ranking prediksi kamu vs semua pemain dan grup teman di Gibol Pick\'em.' },
+  predict:  { title: "Prediksi Piala Dunia 2026 — Pick'em | gibol.co", path: '/pickem',          description: 'Prediksi skor & hasil laga Piala Dunia FIFA 2026. Gratis, langsung tersimpan, main bareng teman di Liga Gibol.' },
+  board:    { title: "Papan Peringkat — Pick'em Piala Dunia 2026 | gibol.co",          path: '/pickem/board',    description: 'Lihat ranking prediksi kamu vs semua pemain Liga Gibol dan grup teman di Gibol Pick\'em.' },
   grup:     { title: "Grup Kamu — Pick'em | gibol.co",                                path: '/pickem/grup',     description: 'Main Pick\'em bareng teman. Bikin grup baru atau gabung pakai kode undangan.', noindex: true },
   bracket:  { title: "Bracket Piala Dunia 2026 — Pick'em | gibol.co",                 path: '/pickem/bracket',  description: 'Bangun bracket Piala Dunia 2026 kamu — dari fase grup sampai juara dunia.' },
   survivor: { title: "Survivor — Pick'em | gibol.co",                                 path: '/pickem/survivor', description: 'Pilih satu tim tiap pekan. Salah, kamu gugur. Bertahan jadi Fan Terakhir.' },
@@ -21,26 +21,38 @@ const PICKEM_SEO = {
 // ============================================================================
 // v0.65.0 — <PickemRoot /> · the Pick'em surface container.
 //
-// Wraps every Pick'em route in a `.pickem-root` div with
-// data-theme="dark" forced by default (handover line 41: "Pick'em forces
-// Stadium dark"). User-toggleable to "light" via localStorage —
-// independent of the global gibol:theme so the rest of the app stays
-// dark by default while Pick'em can run light or vice versa.
+// Wraps every Pick'em route in a `.pickem-root` div. The un-suffixed
+// `.pickem-root` block in pickem.css IS the Gibol light "paper" palette
+// (same #EEF1F5/#F7F9FB stack as the global [data-brand="paper"] default);
+// `.pickem-root[data-theme="dark"]` is the optional navy "Stadium Night"
+// override.
+//
+// v0.81.0 — default flipped from 'dark' → 'light'. Pick'em was forcing the
+// dark sheet on every visit, so the surface read blue/black while the rest
+// of gibol.co is light. Per Ade: "Pick'em design should be same as gibol
+// light color, not blue/black." Light is now the default; users can still
+// opt into the dark stadium sheet via the theme toggle (persisted in
+// gibol:pickem:theme, independent of the global gibol:theme).
 //
 // Layout: desktop shows <SideNav /> + content; mobile shows content +
 // <BottomNav />. Driven by a `(max-width: 1023px)` media query (matches
 // the design's mobile/desktop threshold).
 // ============================================================================
 
-const PICKEM_THEME_KEY = 'gibol:pickem:theme';
+// v0.81.0 — key bumped to :v2. The old default ('dark') was written to
+// gibol:pickem:theme on every mount, so returning visitors have a stale
+// 'dark' value that would survive the default flip. A new key resets
+// everyone to the light default exactly once; deliberate dark choices made
+// from v0.81.0 onward persist under the new key.
+const PICKEM_THEME_KEY = 'gibol:pickem:theme:v2';
 
 function readSavedTheme() {
-  if (typeof localStorage === 'undefined') return 'dark';
+  if (typeof localStorage === 'undefined') return 'light';
   try {
     const v = localStorage.getItem(PICKEM_THEME_KEY);
-    return v === 'light' || v === 'dark' ? v : 'dark';
+    return v === 'light' || v === 'dark' ? v : 'light';
   } catch {
-    return 'dark';
+    return 'light';
   }
 }
 

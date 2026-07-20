@@ -8227,30 +8227,52 @@
 //        (live-only, skips FT + scored rows, matchday floor, both feed
 //        shapes) + thin useMemo hook. Client-side only, never persisted.
 //        8 tests on recorded feed shapes. Suite now 102 tests.
-// v0.80.3 — 08-teardown-deltas D1–D5 (2026-06-12).
+// v0.81.0 — PICK'EM + HOME OVERHAUL (Ade's 10-item directive, 2026-06-18).
+// Minor bump: Pick'em re-themed, re-scoped, re-languaged, and promoted to the
+// home lead surface. Reversible per item via env flags / the commented NBA
+// competition block.
 //
-// The handover gained 08-teardown-deltas.md (from the logged-in
-// PlayoffPickems 63-member-pool review). D1–D2 were written as 0019
-// amendments but 0019 was already applied — shipped as migration 0020
-// (applied + verified): tier +'sponsor', product +'sponsor_pool' (door
-// open for the R6 Sponsor Pool tier, no features now), and
-// leagues.description (≤2000 chars).
-//   D2 guard — the commissioner rules/prizes box is where judi-adjacent
-//   copy enters: server-side banned-vocab reject (pasang/taruhan/odds/
-//   judi/bandar/jackpot/deposit/withdraw + money-prize phrasing, both
-//   locales) in create-league + update-league-settings, friendly error.
-//   D3 — football default template = BOTH game types ({match, bracket})
-//   when the wizard doesn't choose: kills the 16-day group-stage dead-air
-//   their Bracket-Lock-only model produces.
-//   D4 — league-detail now returns league.current_matchday + per-member
-//   picked_current_matchday (the "no pick yet · nudge on WA" row costs
-//   zero extra client queries).
-//   D5 — src/pickem/entriesCsv.js: buildEntriesCsv (pure, tested) +
-//   downloadCsv for the commissioner panel; client-side, no endpoint.
-//   D1 — grant-entitlement accepts sponsor_pool.
-// D6–D7 (max-points denominators, FIFA-rank chip) are Track B UI notes,
-// queued in 07-design-port-plan.md. Suite: 105 tests.
-export const APP_VERSION = '0.80.3';
+//   1. HOME · live results for ALL sports. Home only ever surfaced one event
+//      (LiveHero), so World Cup results never showed. New LiveResultsStrip
+//      (src/components/LiveResultsStrip.jsx) lists every live + recently-final
+//      match across WC, NBA, EPL, Tennis. LiveHero gained a WC normalizer and
+//      WC now leads its priority chain. liveTeaserById computes LIVE chips for
+//      every sport, not just NBA. FIFA WC Home card flipped soon → LIVE.
+//   2. HOME · Pick'em is now the lead surface (PickemHeroBand) — first,
+//      dominant CTA above the live hero + gateway grid. (/ still serves the
+//      SEO gateway; no hard redirect, so the traffic asset is intact.)
+//   3. THEME · Pick'em defaults to the Gibol light "paper" palette, not the
+//      navy "Stadium Night" sheet. PickemRoot default flipped dark → light +
+//      storage key bumped to :v2 so returning visitors migrate. pickem.css
+//      light surfaces aligned to the global [data-brand="paper"] stack;
+//      hardcoded #0A1628 on-accent text → var(--ink-on-accent) (was
+//      unreadable on the light deep-orange accent).
+//   4. SCOPE · NBA Playoffs Pick'em pulled — WC2026 is the only competition.
+//      competitions.js single-entry (NBA block preserved, commented). The
+//      switcher pill auto-hides; every screen defaults into the World Cup.
+//   5/8. FLOW · grup hub mirrors the playoff "open league" model: a prominent
+//      global "Gibol League" card (everyone, no invite) sits above the private
+//      groups you create + the join-by-code form. Leaderboard global scope
+//      relabelled "Gibol League".
+//   6. GROUP STAGE · the per-team [1][2][3] rank matrix ("pilih urutan") is
+//      now a playoff-style tap-to-rank-and-sort: tap a team to advance it into
+//      the next open slot (1→2→3); it rises to the top with a position badge.
+//   7. LANGUAGE · Pick'em is English-first with a Bahasa fallback, matching
+//      the app-wide lang default. New src/pickem/i18n.js usePickemT() helper;
+//      every Pick'em screen + primitive converted to tx(en, id).
+//   9. PAST GAMES · FixtureCard ScoreSlot shows the real scoreline for any
+//      finished/live game (incl. 'missed'/'locked'), not "– : –". A final game
+//      you predicted but isn't scored yet shows your pick + "Awaiting result".
+//   10. SCORE UX · no auto 1-0. Exact score is opt-in ("+ Add exact score"),
+//      reveals team-labelled steppers, only then layers a scoreline onto the
+//      outcome-only pick. Outcome picker shows team codes (BRA / Draw / ARG).
+//
+// NOTE: this intentionally makes Pick'em English-default, which is the same as
+// the global app (AppContext lang default = 'en'). CLAUDE.md still lists
+// "Bahasa-first" as non-negotiable; Ade explicitly directed English-first for
+// Pick'em this session ("again english first language, bahasa secondary").
+// Flag the doc reconciliation to Ade.
+export const APP_VERSION = '0.81.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

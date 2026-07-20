@@ -9,6 +9,7 @@ import {
 import { listFixtures, upsertPrediction } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
+import { usePickemT } from './i18n.js';
 
 // ============================================================================
 // v0.67.0 — Fixture Detail (Pick'em P2).
@@ -35,6 +36,7 @@ export default function FixtureDetail() {
 }
 
 function FixtureDetailInner() {
+  const tx = usePickemT();
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -126,7 +128,7 @@ function FixtureDetailInner() {
               fontSize: 13,
             }}
           >
-            Memuat pertandingan…
+            {tx('Loading match…', 'Memuat pertandingan…')}
           </div>
         )}
 
@@ -142,8 +144,8 @@ function FixtureDetailInner() {
               fontFamily: 'var(--font-ui-pickem)',
             }}
           >
-            <div className="p-eyebrow" style={{ marginBottom: 6 }}>SEDANG DISIAPKAN</div>
-            <div style={{ fontWeight: 600 }}>Backend belum aktif untuk Pick&apos;em.</div>
+            <div className="p-eyebrow" style={{ marginBottom: 6 }}>{tx('GETTING READY', 'SEDANG DISIAPKAN')}</div>
+            <div style={{ fontWeight: 600 }}>{tx('The Pick\'em backend isn\'t live yet.', 'Backend belum aktif untuk Pick\'em.')}</div>
           </div>
         )}
 
@@ -159,9 +161,9 @@ function FixtureDetailInner() {
             }}
           >
             <div className="p-eyebrow" style={{ marginBottom: 6 }}>404</div>
-            <div style={{ fontWeight: 600, marginBottom: 4 }}>Pertandingannya nggak ketemu</div>
+            <div style={{ fontWeight: 600, marginBottom: 4 }}>{tx('Match not found', 'Pertandingannya nggak ketemu')}</div>
             <div style={{ fontSize: 13, color: 'var(--ink-3)' }}>
-              ID: <span className="g-mono" style={{ fontFamily: 'var(--font-mono)' }}>{id}</span>
+              {tx('ID', 'ID')}: <span className="g-mono" style={{ fontFamily: 'var(--font-mono)' }}>{id}</span>
             </div>
           </div>
         )}
@@ -204,11 +206,12 @@ function FixtureDetailInner() {
 }
 
 function BackButton({ onClick }) {
+  const tx = usePickemT();
   return (
     <button
       type="button"
       onClick={onClick}
-      aria-label="Kembali ke daftar prediksi"
+      aria-label={tx('Back to predictions list', 'Kembali ke daftar prediksi')}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -228,12 +231,13 @@ function BackButton({ onClick }) {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M15 18 9 12l6-6" />
       </svg>
-      Kembali
+      {tx('Back', 'Kembali')}
     </button>
   );
 }
 
 function HistoricalPlaceholder({ fixture }) {
+  const tx = usePickemT();
   // Form + H2H stripe lands in P3 once the historical-results join is
   // wired. For P2 the slot exists so the screen feels finished and the
   // layout doesn't shift when the data fills in.
@@ -248,9 +252,12 @@ function HistoricalPlaceholder({ fixture }) {
         fontFamily: 'var(--font-ui-pickem)',
       }}
     >
-      <div className="p-eyebrow" style={{ marginBottom: 6 }}>FORM &amp; H2H</div>
+      <div className="p-eyebrow" style={{ marginBottom: 6 }}>{tx('FORM & H2H', 'FORM & H2H')}</div>
       <div style={{ fontSize: 13 }}>
-        Riwayat pertemuan + 5 laga terakhir kedua tim akan muncul di sini.
+        {tx(
+          'Head-to-head history plus both teams\' last 5 matches will show up here.',
+          'Riwayat pertemuan + 5 laga terakhir kedua tim akan muncul di sini.',
+        )}
       </div>
     </div>
   );

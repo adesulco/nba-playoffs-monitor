@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Flag from '../Flag.jsx';
 import { BackIcon } from '../icons.jsx';
 import { PickemBtn } from './social.jsx';
+import { usePickemT } from '../i18n.js';
 import {
   GROUP_LETTERS,
   SAMPLE_GROUPS,
@@ -27,10 +28,36 @@ import {
 // ── Group stage ────────────────────────────────────────────────────────────
 
 export function BracketGroupStage({ groups, setPick, locked }) {
+  const tx = usePickemT();
   const [active, setActive] = useState('A');
   const activeGroup = SAMPLE_GROUPS[active];
   const picks = groups[active] || {};
   const activeIdx = GROUP_LETTERS.indexOf(active);
+
+  // v0.81.0 — replace the per-team [1][2][3] rank matrix ("pilih urutan")
+  // with a playoff-style tap-to-rank-and-sort interaction (Ade: "picking
+  // group should be sorting like playoff pick'em, not pilih urutan"). Tap a
+  // team to advance it: it takes the next open position (1 → 2 → 3) and rises
+  // to the top of the list, exactly like tapping a team to advance in the
+  // knockout rounds. Tap a ranked team again to drop it.
+  const teamCodes = activeGroup.teams.map(([code]) => code);
+  const assignedRanks = new Set(Object.values(picks).filter((v) => v != null));
+  const nextFreeRank = [1, 2, 3].find((r) => !assignedRanks.has(r)) || null;
+  const sortedCodes = [...teamCodes].sort((a, b) => {
+    const ra = picks[a] ?? 99;
+    const rb = picks[b] ?? 99;
+    if (ra !== rb) return ra - rb;
+    return teamCodes.indexOf(a) - teamCodes.indexOf(b);
+  });
+  const handleTap = (code) => {
+    if (locked) return;
+    const cur = picks[code];
+    if (cur != null) {
+      setPick(active, code, cur); // toggle off (frees the rank)
+    } else if (nextFreeRank) {
+      setPick(active, code, nextFreeRank); // advance into the next open slot
+    }
+  };
 
   return (
     <>
@@ -48,7 +75,7 @@ export function BracketGroupStage({ groups, setPick, locked }) {
         }}
       >
         <PagerArrow
-          ariaLabel="Grup sebelumnya"
+          ariaLabel={tx('Previous group', 'Grup sebelumnya')}
           onClick={() => setActive(GROUP_LETTERS[Math.max(0, activeIdx - 1)])}
           disabled={activeIdx === 0}
           flip={false}
@@ -78,7 +105,7 @@ export function BracketGroupStage({ groups, setPick, locked }) {
                   height: 36,
                   borderRadius: 8,
                   background: sel ? 'var(--pickem-orange)' : 'var(--bg-raised)',
-                  color: sel ? '#0A1628' : done ? 'var(--p-up)' : 'var(--ink-2)',
+                  color: sel ? 'var(--ink-on-accent)' : done ? 'var(--p-up)' : 'var(--ink-2)',
                   border:
                     '1px solid ' +
                     (sel
@@ -103,7 +130,7 @@ export function BracketGroupStage({ groups, setPick, locked }) {
           })}
         </div>
         <PagerArrow
-          ariaLabel="Grup berikutnya"
+          ariaLabel={tx('Next group', 'Grup berikutnya')}
           onClick={() => setActive(GROUP_LETTERS[Math.min(11, activeIdx + 1)])}
           disabled={activeIdx === 11}
           flip
@@ -129,7 +156,7 @@ export function BracketGroupStage({ groups, setPick, locked }) {
           }}
         >
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 17, fontWeight: 700 }}>
-            Grup {active}
+            {tx('Group', 'Grup')} {active}
           </div>
           <span
             style={{
@@ -139,16 +166,19 @@ export function BracketGroupStage({ groups, setPick, locked }) {
               color: 'var(--ink-3)',
             }}
           >
-            Pilih urutan
+            {nextFreeRank
+              ? tx(`Tap to advance · ${nextFreeRank} of 3`, `Tap untuk lolos · ${nextFreeRank} dari 3`)
+              : tx('Top 3 set ✓', 'Top 3 lengkap ✓')}
           </span>
         </div>
-        {activeGroup.teams.map(([code]) => (
+        {sortedCodes.map((code) => (
           <BracketGroupRow
             key={code}
             code={code}
             rank={picks[code]}
-            onSet={(r) => setPick(active, code, r)}
+            onTap={() => handleTap(code)}
             locked={locked}
+            tx={tx}
           />
         ))}
       </div>
@@ -170,8 +200,16 @@ export function BracketGroupStage({ groups, setPick, locked }) {
             lineHeight: 1.5,
           }}
         >
-          <strong>Juara grup + runner-up</strong> langsung lolos. <strong>4 grup terbaik #3</strong>{' '}
-          menyusul. Otomatis dihitung dari pilihan kamu.
+          {tx(
+            <>
+              <strong>Group winner + runner-up</strong> advance automatically. The{' '}
+              <strong>4 best 3rd-place teams</strong> follow. Worked out from your picks.
+            </>,
+            <>
+              <strong>Juara grup + runner-up</strong> langsung lolos. <strong>4 grup terbaik #3</strong>{' '}
+              menyusul. Otomatis dihitung dari pilihan kamu.
+            </>,
+          )}
         </div>
       </div>
     </>
@@ -210,21 +248,67 @@ function PagerArrow({ ariaLabel, onClick, disabled, flip }) {
   );
 }
 
-function BracketGroupRow({ code, rank, onSet, locked }) {
+function BracketGroupRow({ code, rank, onTap, locked, tx }) {
+  const ranked = rank != null;
+  const ordinal =
+    rank === 1 ? tx('Winner', 'Juara')
+    : rank === 2 ? tx('Runner-up', 'Runner-up')
+    : rank === 3 ? tx('3rd place', 'Peringkat 3')
+    : '';
   return (
-    <div
+    <button
+      type="button"
+      onClick={onTap}
+      aria-pressed={ranked}
+      aria-label={ranked
+        ? `${teamLabel(code)} — ${ordinal}`
+        : `${tx('Advance', 'Loloskan')} ${teamLabel(code)}`}
+      disabled={locked}
       style={{
+        width: '100%',
+        appearance: 'none',
+        textAlign: 'left',
+        cursor: locked ? 'not-allowed' : 'pointer',
         display: 'flex',
         alignItems: 'center',
-        padding: '12px 14px',
-        borderBottom: '1px solid var(--line-1)',
         gap: 10,
+        padding: '12px 14px',
         minHeight: 64,
+        borderTop: 'none',
+        borderRight: 'none',
+        borderBottom: '1px solid var(--line-1)',
+        borderLeft: ranked ? '3px solid var(--pickem-orange)' : '3px solid transparent',
+        background: ranked ? 'var(--pickem-orange-wash)' : 'transparent',
+        opacity: locked && !ranked ? 0.6 : 1,
+        transition: 'all 120ms cubic-bezier(0.2, 0.7, 0.3, 1)',
       }}
     >
+      {/* Position badge — fills with the rank number once advanced. */}
+      <span
+        aria-hidden="true"
+        style={{
+          width: 26,
+          height: 26,
+          borderRadius: 999,
+          flexShrink: 0,
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontFamily: 'var(--font-mono)',
+          fontWeight: 700,
+          fontSize: 13,
+          background: ranked ? 'var(--pickem-orange)' : 'transparent',
+          color: ranked ? 'var(--ink-on-accent)' : 'var(--ink-4)',
+          border: ranked ? '1px solid var(--pickem-orange)' : '1px dashed var(--line-2)',
+        }}
+      >
+        {ranked ? rank : ''}
+      </span>
       <Flag code={code} w={32} h={22} round={3} />
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--ink-1)' }}>{teamLabel(code)}</div>
+        <div style={{ fontSize: 14, fontWeight: ranked ? 700 : 600, color: ranked ? 'var(--pickem-orange)' : 'var(--ink-1)' }}>
+          {teamLabel(code)}
+        </div>
         <div
           style={{
             fontFamily: 'var(--font-mono)',
@@ -236,39 +320,20 @@ function BracketGroupRow({ code, rank, onSet, locked }) {
           {teamShort(code)}
         </div>
       </div>
-      <div style={{ display: 'flex', gap: 4 }} role="radiogroup" aria-label={`Peringkat ${code}`}>
-        {[1, 2, 3].map((r) => {
-          const sel = rank === r;
-          return (
-            <button
-              key={r}
-              type="button"
-              role="radio"
-              aria-checked={sel}
-              aria-label={`Pilih ${code} sebagai peringkat ${r}`}
-              disabled={locked}
-              onClick={() => !locked && onSet(r)}
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 8,
-                cursor: locked ? 'not-allowed' : 'pointer',
-                opacity: locked ? 0.5 : 1,
-                background: sel ? 'var(--pickem-orange)' : 'var(--bg-base)',
-                color: sel ? '#0A1628' : 'var(--ink-2)',
-                border: '1px solid ' + (sel ? 'var(--pickem-orange)' : 'var(--line-2)'),
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 700,
-                fontSize: 13,
-                transition: 'all 120ms cubic-bezier(0.2, 0.7, 0.3, 1)',
-              }}
-            >
-              {r}
-            </button>
-          );
-        })}
-      </div>
-    </div>
+      {ranked && (
+        <span
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 10,
+            fontWeight: 700,
+            color: 'var(--pickem-orange)',
+            letterSpacing: '0.06em',
+          }}
+        >
+          {String(ordinal).toUpperCase()}
+        </span>
+      )}
+    </button>
   );
 }
 
@@ -292,6 +357,7 @@ export function BracketKnockoutStage({ label, stage, matches, setPick, locked })
 }
 
 function BracketMatch({ match, label, idx, onPick, locked }) {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -331,7 +397,7 @@ function BracketMatch({ match, label, idx, onPick, locked }) {
               letterSpacing: '0.08em',
             }}
           >
-            ✓ LOLOS
+            {tx('✓ ADVANCES', '✓ LOLOS')}
           </span>
         )}
       </div>
@@ -410,6 +476,7 @@ function BracketPickRow({ team, selected, onPick, locked, last }) {
 // ── Final stage ────────────────────────────────────────────────────────────
 
 export function BracketFinalStage({ match, setPick, locked }) {
+  const tx = usePickemT();
   return (
     <div style={{ paddingTop: 4 }}>
       <div
@@ -439,7 +506,7 @@ export function BracketFinalStage({ match, setPick, locked }) {
               marginBottom: 4,
             }}
           >
-            🏆 FINAL · MARACANÃ · MINGGU 19 JULI
+            {tx('🏆 FINAL · MARACANÃ · SUNDAY JULY 19', '🏆 FINAL · MARACANÃ · MINGGU 19 JULI')}
           </div>
           <div
             style={{
@@ -449,7 +516,7 @@ export function BracketFinalStage({ match, setPick, locked }) {
               color: 'var(--ink-1)',
             }}
           >
-            Siapa juaranya?
+            {tx('Who lifts the trophy?', 'Siapa juaranya?')}
           </div>
         </div>
         <BracketFinalRow
@@ -495,8 +562,16 @@ export function BracketFinalStage({ match, setPick, locked }) {
             lineHeight: 1.5,
           }}
         >
-          <strong style={{ color: 'var(--pickem-orange)' }}>Bonus juara:</strong> +200 poin kalau
-          tebakan kamu jadi juara. Tinggal pilih sekali lagi.
+          {tx(
+            <>
+              <strong style={{ color: 'var(--pickem-orange)' }}>Champion bonus:</strong> +200 points
+              if your pick lifts the trophy. Just one more tap.
+            </>,
+            <>
+              <strong style={{ color: 'var(--pickem-orange)' }}>Bonus juara:</strong> +200 poin kalau
+              tebakan kamu jadi juara. Tinggal pilih sekali lagi.
+            </>,
+          )}
         </div>
       </div>
     </div>
@@ -504,6 +579,7 @@ export function BracketFinalStage({ match, setPick, locked }) {
 }
 
 function BracketFinalRow({ team, selected, onPick, locked }) {
+  const tx = usePickemT();
   return (
     <button
       type="button"
@@ -520,7 +596,7 @@ function BracketFinalRow({ team, selected, onPick, locked }) {
         padding: '20px 18px',
         minHeight: 84,
         background: selected ? 'var(--pickem-orange)' : 'transparent',
-        color: selected ? '#0A1628' : 'var(--ink-1)',
+        color: selected ? 'var(--ink-on-accent)' : 'var(--ink-1)',
         border: 'none',
         textAlign: 'left',
         opacity: locked && !selected ? 0.55 : 1,
@@ -549,7 +625,7 @@ function BracketFinalRow({ team, selected, onPick, locked }) {
               letterSpacing: '0.08em',
             }}
           >
-            JUARAMU
+            {tx('YOUR CHAMPION', 'JUARAMU')}
           </div>
         )}
       </div>
@@ -561,6 +637,7 @@ function BracketFinalRow({ team, selected, onPick, locked }) {
 // ── Champion stage ─────────────────────────────────────────────────────────
 
 export function BracketChampion({ team, onCrown, potentialPoints }) {
+  const tx = usePickemT();
   // Side effect on mount: persist the picked finalist as the champion so the
   // champ stage doesn't require a second tap (matches handoff §"Champion").
   useEffect(() => {
@@ -592,10 +669,10 @@ export function BracketChampion({ team, onCrown, potentialPoints }) {
             marginBottom: 6,
           }}
         >
-          Belum ada juara
+          {tx('No champion yet', 'Belum ada juara')}
         </div>
         <div style={{ color: 'var(--ink-2)', fontSize: 13 }}>
-          Balik dulu ke Final untuk pilih.
+          {tx('Head back to the Final to pick one.', 'Balik dulu ke Final untuk pilih.')}
         </div>
       </div>
     );
@@ -627,7 +704,7 @@ export function BracketChampion({ team, onCrown, potentialPoints }) {
         className="p-eyebrow"
         style={{ color: 'var(--pickem-orange)', marginBottom: 12, fontSize: 11 }}
       >
-        JUARA DUNIA 2026 · MENURUT KAMU
+        {tx('2026 WORLD CHAMPION · YOUR PICK', 'JUARA DUNIA 2026 · MENURUT KAMU')}
       </div>
       <div style={{ marginBottom: 14, display: 'flex', justifyContent: 'center' }}>
         <Flag code={team} w={88} h={62} round={8} />
@@ -654,7 +731,10 @@ export function BracketChampion({ team, onCrown, potentialPoints }) {
           lineHeight: 1.55,
         }}
       >
-        Bracket kamu lengkap. Kunci sekarang dan nggak bisa diubah lagi sampai turnamen selesai.
+        {tx(
+          'Your bracket is complete. Lock it in now — no more changes until the tournament wraps.',
+          'Bracket kamu lengkap. Kunci sekarang dan nggak bisa diubah lagi sampai turnamen selesai.',
+        )}
       </div>
       {potentialPoints != null && (
         <div
@@ -669,7 +749,7 @@ export function BracketChampion({ team, onCrown, potentialPoints }) {
         >
           <div>
             <div className="p-eyebrow" style={{ fontSize: 9, marginBottom: 2 }}>
-              POTENSI POIN
+              {tx('POTENTIAL POINTS', 'POTENSI POIN')}
             </div>
             <div
               style={{
@@ -691,6 +771,7 @@ export function BracketChampion({ team, onCrown, potentialPoints }) {
 // ── Mini-strip (persistent footer) ─────────────────────────────────────────
 
 export function BracketMiniStrip({ champion, totalPicks, target = 68 }) {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -705,16 +786,16 @@ export function BracketMiniStrip({ champion, totalPicks, target = 68 }) {
     >
       <div>
         <div className="p-eyebrow" style={{ fontSize: 9, marginBottom: 2 }}>
-          BRACKET KAMU
+          {tx('YOUR BRACKET', 'BRACKET KAMU')}
         </div>
         <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--ink-1)' }}>
           {totalPicks > 0 ? (
             <>
               <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700 }}>{totalPicks}</span>
-              <span style={{ color: 'var(--ink-3)' }}> / {target} pilihan</span>
+              <span style={{ color: 'var(--ink-3)' }}>{tx(` / ${target} picks`, ` / ${target} pilihan`)}</span>
             </>
           ) : (
-            <span style={{ color: 'var(--ink-3)' }}>Belum ada pilihan</span>
+            <span style={{ color: 'var(--ink-3)' }}>{tx('No picks yet', 'Belum ada pilihan')}</span>
           )}
         </div>
       </div>
@@ -724,7 +805,7 @@ export function BracketMiniStrip({ champion, totalPicks, target = 68 }) {
           <Flag code={champion} w={28} h={20} round={3} />
           <div style={{ textAlign: 'right' }}>
             <div className="p-eyebrow" style={{ fontSize: 9, marginBottom: 1 }}>
-              JUARAMU
+              {tx('YOUR CHAMPION', 'JUARAMU')}
             </div>
             <div
               style={{
@@ -748,7 +829,7 @@ export function BracketMiniStrip({ champion, totalPicks, target = 68 }) {
             letterSpacing: '0.08em',
           }}
         >
-          PILIH SAMPAI JUARA →
+          {tx('PICK THROUGH TO THE CHAMPION →', 'PILIH SAMPAI JUARA →')}
         </div>
       )}
     </div>
@@ -758,6 +839,7 @@ export function BracketMiniStrip({ champion, totalPicks, target = 68 }) {
 // ── Lock confirmation modal ────────────────────────────────────────────────
 
 export function BracketLockConfirm({ champion, onCancel, onConfirm, locking = false, error = null }) {
+  const tx = usePickemT();
   return (
     <div
       role="presentation"
@@ -781,7 +863,7 @@ export function BracketLockConfirm({ champion, onCancel, onConfirm, locking = fa
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Kunci bracket"
+        aria-label={tx('Lock bracket', 'Kunci bracket')}
         style={{
           background: 'var(--bg-raised)',
           border: '1px solid var(--line-1)',
@@ -805,7 +887,7 @@ export function BracketLockConfirm({ champion, onCancel, onConfirm, locking = fa
             letterSpacing: '-0.015em',
           }}
         >
-          Kunci bracket?
+          {tx('Lock bracket?', 'Kunci bracket?')}
         </div>
         <div
           style={{
@@ -815,8 +897,10 @@ export function BracketLockConfirm({ champion, onCancel, onConfirm, locking = fa
             lineHeight: 1.5,
           }}
         >
-          Setelah dikunci, bracket nggak bisa diubah lagi sampai final WC 2026 selesai. Kamu masih
-          bisa main mode lain (matchday, jagoan, survivor).
+          {tx(
+            'Once locked, your bracket can\'t be changed until the WC 2026 final is done. You can still play the other modes (matchday, jagoan, survivor).',
+            'Setelah dikunci, bracket nggak bisa diubah lagi sampai final WC 2026 selesai. Kamu masih bisa main mode lain (matchday, jagoan, survivor).',
+          )}
         </div>
         {champion && (
           <div
@@ -836,7 +920,7 @@ export function BracketLockConfirm({ champion, onCancel, onConfirm, locking = fa
             <Flag code={champion} w={32} h={22} round={3} />
             <div style={{ textAlign: 'left' }}>
               <div className="p-eyebrow" style={{ fontSize: 9, marginBottom: 1 }}>
-                JUARAMU
+                {tx('YOUR CHAMPION', 'JUARAMU')}
               </div>
               <div
                 style={{
@@ -870,10 +954,10 @@ export function BracketLockConfirm({ champion, onCancel, onConfirm, locking = fa
         )}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <PickemBtn full size="lg" variant="primary" onClick={onConfirm} disabled={locking}>
-            {locking ? 'Mengunci…' : '🔒 Kunci bracket'}
+            {locking ? tx('Locking…', 'Mengunci…') : tx('🔒 Lock bracket', '🔒 Kunci bracket')}
           </PickemBtn>
           <PickemBtn full size="md" variant="ghost" onClick={onCancel} disabled={locking}>
-            Nanti aja
+            {tx('Later', 'Nanti aja')}
           </PickemBtn>
         </div>
       </div>
@@ -883,7 +967,31 @@ export function BracketLockConfirm({ champion, onCancel, onConfirm, locking = fa
 
 // ── Stepper (sticky stage selector) ───────────────────────────────────────
 
+// Per-stage English labels, keyed by stage `k`. The imported STAGES/
+// STAGE_LABELS hold Bahasa (they live in bracketData.js, a data module);
+// we map to English here at the render site and fall back to the Bahasa
+// value via tx() when the global lang is 'id'.
+const STAGE_LABELS_EN = {
+  group: 'Group Standings',
+  r32: 'Round of 32',
+  r16: 'Round of 16',
+  qf: 'Quarter-finals',
+  sf: 'Semi-finals',
+  final: 'Final',
+  champ: 'World Champion 2026',
+};
+const STAGE_SHORT_EN = {
+  group: 'Group',
+  r32: 'R32',
+  r16: 'R16',
+  qf: 'QF',
+  sf: 'SF',
+  final: 'Final',
+  champ: 'Champion',
+};
+
 export function BracketStepper({ stages, currentStage, stageIdx, counts, onStageChange }) {
+  const tx = usePickemT();
   return (
     <div
       role="tablist"
@@ -913,7 +1021,7 @@ export function BracketStepper({ stages, currentStage, stageIdx, counts, onStage
               type="button"
               role="tab"
               aria-selected={sel}
-              aria-label={STAGE_LABELS[s.k]}
+              aria-label={tx(STAGE_LABELS_EN[s.k] || STAGE_LABELS[s.k], STAGE_LABELS[s.k])}
               onClick={() => !lockedAhead && onStageChange?.(s.k)}
               disabled={lockedAhead}
               style={{
@@ -924,7 +1032,7 @@ export function BracketStepper({ stages, currentStage, stageIdx, counts, onStage
                 borderRadius: 999,
                 background: sel ? 'var(--pickem-orange)' : 'transparent',
                 color: sel
-                  ? '#0A1628'
+                  ? 'var(--ink-on-accent)'
                   : lockedAhead
                   ? 'var(--ink-4)'
                   : done
@@ -948,7 +1056,7 @@ export function BracketStepper({ stages, currentStage, stageIdx, counts, onStage
               }}
             >
               {done && <span style={{ fontSize: 10 }}>✓</span>}
-              {s.l}
+              {tx(STAGE_SHORT_EN[s.k] || s.l, s.l)}
             </button>
           );
         })}

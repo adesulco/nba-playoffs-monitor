@@ -5,6 +5,7 @@ import { GrupCard, EmptyState, PickemBtn } from './components/social.jsx';
 import { listMyGrups, joinGrup } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
+import { usePickemT } from './i18n.js';
 
 // ============================================================================
 // v0.68.0 — Grup hub (Pick'em P3).
@@ -31,6 +32,7 @@ export default function Grup() {
 function GrupInner() {
   const { user, loading: authLoading } = useAuth();
   const { competition } = usePickemCompetition();
+  const tx = usePickemT();
   const COMPETITION = competition.key;
   const navigate = useNavigate();
   const [grups, setGrups] = useState([]);
@@ -64,7 +66,7 @@ function GrupInner() {
     setJoinError(null);
     const trimmed = code.trim().toUpperCase();
     if (trimmed.length < 4 || trimmed.length > 12) {
-      setJoinError('Kode undangan 4–12 karakter.');
+      setJoinError(tx('Invite code is 4–12 characters.', 'Kode undangan 4–12 karakter.'));
       return;
     }
     setJoining(true);
@@ -81,18 +83,66 @@ function GrupInner() {
     <PickemRoot active="grup">
       <div style={{ padding: '20px 16px 32px', maxWidth: 720, margin: '0 auto' }}>
         <header style={{ marginBottom: 18 }}>
-          <div className="p-eyebrow" style={{ marginBottom: 6 }}>GRUP KAMU · {competition.label.toUpperCase()}</div>
+          <div className="p-eyebrow" style={{ marginBottom: 6 }}>
+            {tx('LEAGUES', 'LIGA')} · {competition.label.toUpperCase()}
+          </div>
           <h1 className="p-display-sm" style={{ marginBottom: 4, color: 'var(--ink-1)' }}>
-            Grup
+            {tx('Leagues & groups', 'Liga & grup')}
           </h1>
           <p style={{ color: 'var(--ink-2)', fontFamily: 'var(--font-ui-pickem)', fontSize: 13 }}>
-            Main bareng teman. Bikin grup baru atau masuk pakai kode undangan.
+            {tx(
+              "You're automatically in the global Gibol League. Create or join private groups to compete with friends.",
+              'Kamu otomatis ikut Liga Gibol global. Bikin atau gabung grup privat buat tanding sama teman.',
+            )}
           </p>
         </header>
 
+        {/* General/global league — everyone on Gibol is in it. Distinct from
+            the private groups you create (item 8: "a main general pick'em for
+            a general gibol league, different to when creating leagues"). Mirrors
+            the playoff pick'em global leaderboard. */}
+        <button
+          type="button"
+          onClick={() => navigate('/pickem/board')}
+          style={{
+            width: '100%',
+            appearance: 'none',
+            textAlign: 'left',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 12,
+            padding: '14px 16px',
+            marginBottom: 18,
+            borderRadius: 'var(--r-3)',
+            background: 'var(--pickem-orange-wash)',
+            border: '1px solid var(--pickem-orange-soft)',
+            borderLeft: '3px solid var(--pickem-orange)',
+            fontFamily: 'var(--font-ui-pickem)',
+          }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <div className="p-eyebrow" style={{ color: 'var(--pickem-orange)', marginBottom: 4 }}>
+              {tx('GENERAL LEAGUE', 'LIGA UMUM')}
+            </div>
+            <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink-1)' }}>
+              {tx('Gibol League', 'Liga Gibol')}
+            </div>
+            <div style={{ fontSize: 12.5, color: 'var(--ink-2)', marginTop: 2 }}>
+              {tx('Everyone playing — the global leaderboard. No invite needed.', 'Semua pemain — papan peringkat global. Tanpa undangan.')}
+            </div>
+          </div>
+          <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--pickem-orange)' }}>→</span>
+        </button>
+
+        <div className="p-eyebrow" style={{ marginBottom: 10, color: 'var(--ink-3)' }}>
+          {tx('YOUR GROUPS', 'GRUP KAMU')}
+        </div>
+
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 20 }}>
           <PickemBtn variant="primary" onClick={() => navigate('/pickem/grup/new')}>
-            Bikin grup
+            {tx('Create group', 'Bikin grup')}
           </PickemBtn>
         </div>
 
@@ -115,7 +165,7 @@ function GrupInner() {
             className="p-eyebrow"
             style={{ color: 'var(--ink-3)' }}
           >
-            GABUNG PAKAI KODE
+            {tx('JOIN WITH A CODE', 'GABUNG PAKAI KODE')}
           </label>
           <div style={{ display: 'flex', gap: 8 }}>
             <input
@@ -145,7 +195,7 @@ function GrupInner() {
               }}
             />
             <PickemBtn type="submit" variant="secondary" disabled={joining}>
-              {joining ? 'Mencari…' : 'Gabung'}
+              {joining ? tx('Searching…', 'Mencari…') : tx('Join', 'Gabung')}
             </PickemBtn>
           </div>
           {joinError && (
@@ -161,17 +211,20 @@ function GrupInner() {
 
         {loading && (
           <div style={{ padding: 20, textAlign: 'center', color: 'var(--ink-3)', fontSize: 13 }}>
-            Memuat grupmu…
+            {tx('Loading your groups…', 'Memuat grupmu…')}
           </div>
         )}
 
         {!loading && grups.length === 0 && (
           <EmptyState
-            title="Belum ikutan grup"
-            body="Bikin grup baru atau gabung pakai kode dari teman. Grup bikin main bareng terasa kompetitif."
+            title={tx('No groups yet', 'Belum ikutan grup')}
+            body={tx(
+              'Create a group or join with a friend’s code. Groups make playing together feel competitive.',
+              'Bikin grup baru atau gabung pakai kode dari teman. Grup bikin main bareng terasa kompetitif.',
+            )}
             action={
               <PickemBtn variant="primary" onClick={() => navigate('/pickem/grup/new')}>
-                Bikin grup pertama
+                {tx('Create your first group', 'Bikin grup pertama')}
               </PickemBtn>
             }
           />

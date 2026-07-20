@@ -5,6 +5,7 @@ import SEO from '../components/SEO.jsx';
 import ContactBar from '../components/ContactBar.jsx';
 import Card from '../components/Card.jsx';
 import LiveHero from '../components/LiveHero.jsx';
+import LiveResultsStrip from '../components/LiveResultsStrip.jsx';
 import MilikmuStrip from '../components/MilikmuStrip.jsx';
 import PushOptInButton from '../components/PushOptInButton.jsx';
 import { useApp } from '../lib/AppContext.jsx';
@@ -14,6 +15,9 @@ import { usePlayoffData } from '../hooks/usePlayoffData.js';
 // v0.79.0 — useEPLChampionOdds import dropped (Komdigi de-risk 2026-05-23).
 import { useEPLFixtures } from '../hooks/useEPLFixtures.js';
 import { useTennisScoreboard } from '../hooks/useTennisScoreboard.js';
+// v0.81.0 — World Cup 2026 live fixtures so Home surfaces WC results (item 1)
+// and the live hero can lead with a live WC match.
+import { useWCFixtures, WC_LIVE_STATES } from '../hooks/useWCLive.js';
 
 // Multi-sport build plan §1 — five-card layout. NBA is the featured live
 // dashboard; F1, EPL, FIFA WC, Liga 1 (Super League Indonesia) are coming-soon
@@ -51,16 +55,16 @@ const DASHBOARDS = [
     href: '/pickem',
     status: 'live',
     tag: 'NEW',
-    title: "Pick'em — Predictions",
-    titleId: "Pick'em — Prediksi",
-    league: 'PREDIKSI · NBA + PIALA DUNIA 2026',
-    blurb: 'Predict NBA Playoff games and FIFA World Cup 2026 matches with friends. Lock picks before tip-off, climb the leaderboard, share Kartu Bola recaps to WhatsApp. Free, no ads.',
-    blurbId: 'Prediksi laga NBA Playoff dan Piala Dunia FIFA 2026 bareng temen. Kunci pilihan sebelum tip-off, naik peringkat, share Kartu Bola ke WhatsApp. Gratis, nggak ada iklan.',
+    title: "Pick'em — World Cup 2026",
+    titleId: "Pick'em — Piala Dunia 2026",
+    league: 'PREDIKSI · PIALA DUNIA 2026',
+    blurb: 'Predict FIFA World Cup 2026 matches with friends. Lock picks before kickoff, climb the global Gibol League, build your champion bracket, share Kartu Bola recaps to WhatsApp. Free, no ads.',
+    blurbId: 'Prediksi laga Piala Dunia FIFA 2026 bareng temen. Kunci pilihan sebelum kickoff, naik Liga Gibol global, bangun bracket juara, share Kartu Bola ke WhatsApp. Gratis, nggak ada iklan.',
     accent: '#9A3412',
     launchDate: null,
     icon: 'pickem',
-    cta: 'Start →',
-    ctaId: 'Mulai →',
+    cta: 'Play →',
+    ctaId: 'Main →',
   },
   {
     id: 'f1',
@@ -113,18 +117,18 @@ const DASHBOARDS = [
   {
     id: 'fifa_wc',
     href: '/fifa-world-cup-2026',
-    status: 'soon',
-    tag: 'COMING SOON',
+    status: 'live',
+    tag: 'LIVE',
     title: 'FIFA World Cup 2026',
     titleId: 'Piala Dunia 2026',
     league: 'FIFA WC · 11 JUN – 19 JUL',
-    blurb: '48 teams · 104 matches · 16 host cities. Group stage, knockout bracket, host-city guide in Bahasa.',
-    blurbId: '48 tim · 104 laga · 16 kota tuan rumah. Tabel grup, bagan gugur, panduan kota tuan rumah dalam Bahasa.',
+    blurb: '48 teams · 104 matches · 16 host cities. Live group tables, fixtures in WIB, knockout bracket, plus free Pick’em predictions.',
+    blurbId: '48 tim · 104 laga · 16 kota tuan rumah. Tabel grup live, jadwal WIB, bagan gugur, plus prediksi Pick’em gratis.',
     accent: '#326295',
-    launchDate: 'Jun 11, 2026',
+    launchDate: null,
     icon: 'wc',
-    cta: 'Coming Soon',
-    ctaId: 'Segera Hadir',
+    cta: 'Enter →',
+    ctaId: 'Masuk →',
   },
   // v0.13.0 — Super League Indonesia (BRI Liga 1) restored to Home as LIVE.
   // Phase 1A: hub at /super-league-2025-26 + 18 per-club SEO pages, ESPN
@@ -170,17 +174,29 @@ export default function Home() {
   const { matches: atpMatches } = useTennisScoreboard('atp');
   const { matches: wtaMatches } = useTennisScoreboard('wta');
   const tennisMatches = useMemo(() => [...(atpMatches || []), ...(wtaMatches || [])], [atpMatches, wtaMatches]);
+  // v0.81.0 — World Cup live fixtures (yesterday→tomorrow window). Drives the
+  // live-results strip, the live hero fallback, and the WC card LIVE chip.
+  const { fixtures: wcFixtures } = useWCFixtures();
 
   const liveTeaserById = useMemo(() => {
     const map = {};
 
-    // NBA: live game count only (v0.79.0 — title-favorite chip removed
-    // alongside the Komdigi de-risk; EPL title-race chip also stripped).
+    // v0.81.0 — live-game count chips for every sport that has a live feed on
+    // Home, not just NBA. World Cup is the tentpole this window.
+    const liveWc = (wcFixtures || []).filter((f) => WC_LIVE_STATES.has(f.statusShort)).length;
+    if (liveWc > 0) map.fifa_wc = `● ${liveWc} LIVE`;
+
     const liveNba = (games || []).filter((g) => g.statusState === 'in').length;
     if (liveNba > 0) map.nba = `● ${liveNba} LIVE`;
 
+    const liveEpl = (eplFixtures || []).filter((m) => m.statusState === 'in').length;
+    if (liveEpl > 0) map.epl = `● ${liveEpl} LIVE`;
+
+    const liveTennis = (tennisMatches || []).filter((m) => m.status === 'live').length;
+    if (liveTennis > 0) map.tennis = `● ${liveTennis} LIVE`;
+
     return map;
-  }, [games]);
+  }, [games, eplFixtures, tennisMatches, wcFixtures]);
 
   // Flag-filter before render so we can kill a misbehaving card in prod
   // without a redeploy. Routes themselves still work via direct URL.
@@ -216,14 +232,27 @@ export default function Home() {
             : 'gibol.co — live sports dashboards in Bahasa Indonesia'}
         </h1>
 
-        {/* v0.11.11 Sprint 5 — hero live game (NBA priority, EPL
-            fallback as of v0.11.13). Renders only when some sport has
-            a live event; silent otherwise. Oversized (72–120 px
-            responsive) tabular score pulls the eye the moment a user
-            lands. Audit §05 stretch spec: "the single most-followed
-            live match is promoted to hero — a 120px score with team
-            sigils." */}
-        <LiveHero games={games} eplFixtures={eplFixtures} tennisMatches={tennisMatches} />
+        {/* v0.81.0 — Pick'em is now the lead surface on Home (Ade: "pick'em
+            becomes the main page when opening gibol.co"). It sits above the
+            live hero + gateway grid as the first, dominant call to action. */}
+        <PickemHeroBand lang={lang} liveWc={(wcFixtures || []).filter((f) => WC_LIVE_STATES.has(f.statusShort)).length} />
+
+        {/* v0.81.0 — full live-results strip across every sport Home polls
+            (World Cup first). Was hidden before: Home only surfaced one
+            event via LiveHero, so WC results never showed. Renders null
+            when nothing is live or recently finished. */}
+        <LiveResultsStrip
+          games={games}
+          eplFixtures={eplFixtures}
+          tennisMatches={tennisMatches}
+          wcFixtures={wcFixtures}
+          lang={lang}
+        />
+
+        {/* v0.11.11 Sprint 5 — hero live game. v0.81.0 — World Cup added to
+            the priority chain (WC > NBA > EPL > Tennis) so a live WC match
+            leads. Renders only when some sport has a live event. */}
+        <LiveHero games={games} eplFixtures={eplFixtures} tennisMatches={tennisMatches} wcFixtures={wcFixtures} />
 
         {/* v0.11.8 Sprint 3 — cross-sport "Milikmu" strip. Renders null
             when user has zero pins so first-time visitors see the
@@ -265,10 +294,10 @@ export default function Home() {
           <PushOptInButton tag="nba_close" lang={lang} compact />
           <span style={{ color: C.muted }}>·</span>
           <span>{lang === 'id' ? 'Lebih lanjut:' : 'More:'}</span>
-          <Link to="/bracket" style={{
+          <Link to="/pickem" style={{
             color: '#F59E0B', textDecoration: 'underline', textUnderlineOffset: 3, fontWeight: 600,
           }}>
-            {lang === 'id' ? '★ Bracket kamu · Pick\u2019em NBA' : '★ Your bracket · NBA Pick\u2019em'}
+            {lang === 'id' ? '★ Pick’em · Piala Dunia 2026' : '★ Pick’em · World Cup 2026'}
           </Link>
           <span style={{ color: C.muted }}>·</span>
           <Link to="/recap" style={{ color: C.text, textDecoration: 'underline', textUnderlineOffset: 3 }}>
@@ -317,6 +346,81 @@ export default function Home() {
           </div>
         </footer>
       </div>
+    </div>
+  );
+}
+
+/**
+ * v0.81.0 — Pick'em lead band. Ade asked for Pick'em to be the main thing you
+ * see on gibol.co; this is the first, dominant surface on Home, above the live
+ * hero + sport grid. Single CTA into /pickem (World Cup 2026), with a live chip
+ * when WC matches are in play. Theme-aware via CSS vars + the WC accent.
+ */
+function PickemHeroBand({ lang, liveWc = 0 }) {
+  const WC = '#326295';
+  const ORANGE = '#9A3412';
+  return (
+    <div style={{ padding: '16px 20px 4px' }}>
+      <Link
+        to="/pickem"
+        aria-label={lang === 'id' ? 'Main Pick’em Piala Dunia 2026' : 'Play World Cup 2026 Pick’em'}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 16,
+          flexWrap: 'wrap',
+          textDecoration: 'none',
+          padding: '18px 20px',
+          borderRadius: 14,
+          border: '1px solid var(--line)',
+          borderLeft: `3px solid ${ORANGE}`,
+          background: `linear-gradient(120deg, ${WC}1f 0%, ${ORANGE}14 55%, transparent 100%), var(--bg-2, var(--panel))`,
+          color: 'var(--ink, var(--text))',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ minWidth: 0, flex: '1 1 320px' }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 8,
+            fontFamily: '"JetBrains Mono", monospace', fontSize: 10, fontWeight: 700,
+            letterSpacing: 1.4, textTransform: 'uppercase', color: ORANGE,
+          }}>
+            {liveWc > 0 && (
+              <span className="live-dot" aria-hidden="true" style={{ width: 6, height: 6, margin: 0, background: 'var(--live, #EF4444)' }} />
+            )}
+            {lang === 'id' ? "Pick'em · Gratis" : "Pick'em · Free to play"}
+            {liveWc > 0 && (
+              <span style={{ color: 'var(--live, #EF4444)' }}>· {liveWc} {lang === 'id' ? 'LAGA LIVE' : 'LIVE'}</span>
+            )}
+          </div>
+          <div style={{
+            fontFamily: '"Space Grotesk", system-ui, sans-serif', fontWeight: 700,
+            fontSize: 'clamp(20px, 4vw, 28px)', letterSpacing: '-0.02em', lineHeight: 1.05,
+            marginBottom: 6, color: 'var(--ink, var(--text))',
+          }}>
+            {lang === 'id' ? 'Prediksi Piala Dunia 2026' : 'Predict the World Cup 2026'}
+          </div>
+          <div style={{
+            fontFamily: '"JetBrains Mono", monospace', fontSize: 12, lineHeight: 1.5,
+            color: 'var(--ink-2, var(--dim))', maxWidth: 540,
+          }}>
+            {lang === 'id'
+              ? 'Tebak hasil tiap laga, bangun bracket juara, naik Liga Gibol global, main bareng grup teman. Gratis, nggak ada iklan.'
+              : 'Call every match, build your champion bracket, climb the global Gibol League, play with your friends’ groups. Free, no ads.'}
+          </div>
+        </div>
+        <span style={{
+          flexShrink: 0,
+          display: 'inline-flex', alignItems: 'center', gap: 8,
+          background: ORANGE, color: '#fff',
+          fontFamily: '"Space Grotesk", system-ui, sans-serif', fontWeight: 700, fontSize: 15,
+          padding: '12px 20px', borderRadius: 999,
+        }}>
+          {lang === 'id' ? 'Main Pick’em' : 'Play Pick’em'} →
+        </span>
+      </Link>
     </div>
   );
 }

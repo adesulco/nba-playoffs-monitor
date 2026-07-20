@@ -1,4 +1,5 @@
 import React from 'react';
+import { usePickemT } from '../i18n.js';
 
 // ============================================================================
 // v0.68.0 — Pick'em P3 social primitives.
@@ -64,11 +65,12 @@ export function RankBadge({ rank, movement }) {
  * `podium` adds 🥇🥈🥉 to ranks 1-3 (use only for global board top).
  */
 export function LeaderboardRow({ row, you = false, onClick, podium = false }) {
+  const tx = usePickemT();
   const movement =
     row.previous_rank != null && row.matchday_rank != null
       ? row.previous_rank - row.matchday_rank
       : null;
-  const name = row.username || row.user_id?.slice(0, 8) || 'Pemain';
+  const name = row.username || row.user_id?.slice(0, 8) || tx('Player', 'Pemain');
   const accuracy = row.accuracy ?? null;
 
   const cell = (
@@ -103,7 +105,7 @@ export function LeaderboardRow({ row, you = false, onClick, podium = false }) {
                 marginLeft: 6,
               }}
             >
-              KAMU
+              {tx('YOU', 'KAMU')}
             </span>
           )}
         </div>
@@ -115,8 +117,8 @@ export function LeaderboardRow({ row, you = false, onClick, podium = false }) {
             fontFamily: 'var(--font-mono)',
           }}
         >
-          {(row.exact_count ?? 0)} skor pas
-          {accuracy != null ? ` · akurasi ${accuracy}%` : ''}
+          {(row.exact_count ?? 0)} {tx('exact scores', 'skor pas')}
+          {accuracy != null ? tx(` · ${accuracy}% accuracy`, ` · akurasi ${accuracy}%`) : ''}
         </div>
       </div>
       <div style={{ textAlign: 'right' }}>
@@ -138,7 +140,7 @@ export function LeaderboardRow({ row, you = false, onClick, podium = false }) {
             fontFamily: 'var(--font-mono)',
           }}
         >
-          poin
+          {tx('points', 'poin')}
         </div>
       </div>
     </>
@@ -178,6 +180,7 @@ export function LeaderboardRow({ row, you = false, onClick, podium = false }) {
  *   { id, name, members, rank, movement, color?, initial? }
  */
 export function GrupCard({ grup, onClick }) {
+  const tx = usePickemT();
   const movementColor =
     grup.movement > 0 ? 'var(--p-up)' : grup.movement < 0 ? 'var(--p-down)' : 'var(--ink-3)';
   return (
@@ -234,7 +237,7 @@ export function GrupCard({ grup, onClick }) {
           {grup.name}
         </div>
         <div style={{ color: 'var(--ink-3)', fontSize: 12, marginTop: 2 }}>
-          {grup.members} anggota{grup.rank != null ? ` · #${grup.rank} dari ${grup.members}` : ''}
+          {grup.members} {tx('members', 'anggota')}{grup.rank != null ? tx(` · #${grup.rank} of ${grup.members}`, ` · #${grup.rank} dari ${grup.members}`) : ''}
         </div>
       </div>
       {grup.movement != null && (
@@ -256,7 +259,7 @@ export function GrupCard({ grup, onClick }) {
               fontFamily: 'var(--font-mono)',
             }}
           >
-            pekan ini
+            {tx('this week', 'pekan ini')}
           </div>
         </div>
       )}
@@ -329,7 +332,7 @@ const BTN_SIZES = {
   lg: { p: '14px 22px', fs: 15, h: 52 },
 };
 const BTN_VARIANTS = {
-  primary:   { bg: 'var(--pickem-orange)', fg: '#0A1628',         border: 'transparent' },
+  primary:   { bg: 'var(--pickem-orange)', fg: 'var(--ink-on-accent)',         border: 'transparent' },
   secondary: { bg: 'transparent',          fg: 'var(--ink-1)',    border: 'var(--line-2)' },
   ghost:     { bg: 'transparent',          fg: 'var(--ink-2)',    border: 'transparent' },
   inverse:   { bg: 'var(--ink-1)',         fg: 'var(--bg-base)',  border: 'transparent' },

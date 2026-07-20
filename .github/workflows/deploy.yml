@@ -21,6 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # A2 — scoring-core is the money math; the suite gates every deploy.
+      - name: Test (scoring-core + unit suites)
+        run: npm test
+
       - name: Build
         run: npm run build
 

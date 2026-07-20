@@ -16,6 +16,7 @@ import { usePickemCompetition } from './useCompetition.jsx';
 import { supabase } from '../lib/supabase.js';
 import { PickemBtn } from './components/social.jsx';
 import { trackEvent } from '../lib/analytics.js';
+import { usePickemT } from './i18n.js';
 
 // ============================================================================
 // v0.67.0 — Predicting Hub (Pick'em P2 spine).
@@ -61,6 +62,7 @@ export default function PredictingHub() {
 function PredictingHubInner() {
   const { user } = useAuth();
   const { competition } = usePickemCompetition();
+  const tx = usePickemT();
   const COMPETITION = competition.key;
   const SEASON = competition.season;
   const [fixtures, setFixtures] = useState([]);
@@ -112,7 +114,7 @@ function PredictingHubInner() {
       setGuestPredictions(indexByFixture(listGuestPredictions(COMPETITION)));
       if (result.claimed > 0 && typeof window !== 'undefined' && window.gibolToast) {
         window.gibolToast.show({
-          text: `${result.claimed} prediksi tersimpan ke akunmu`,
+          text: tx(`${result.claimed} picks saved to your account`, `${result.claimed} prediksi tersimpan ke akunmu`),
           icon: 'check',
         });
       }
@@ -196,7 +198,7 @@ function PredictingHubInner() {
           if (typeof window !== 'undefined' && window.gibolToast) {
             window.gibolToast.show({
               kind: 'error',
-              text: res.error || 'Gagal menyimpan prediksi',
+              text: res.error || tx('Failed to save prediction', 'Gagal menyimpan prediksi'),
               icon: 'warn',
             });
           }
@@ -209,7 +211,7 @@ function PredictingHubInner() {
           markNudged();
           setNudgeVisible(true);
         } else if (typeof window !== 'undefined' && window.gibolToast) {
-          window.gibolToast.show({ text: 'Prediksi tersimpan', icon: 'check' });
+          window.gibolToast.show({ text: tx('Pick saved', 'Prediksi tersimpan'), icon: 'check' });
         }
       }
     },
@@ -256,7 +258,7 @@ function PredictingHubInner() {
                 fontSize: 13,
               }}
             >
-              Gagal memuat jadwal: <span className="g-mono">{String(error)}</span>
+              {tx('Failed to load the schedule', 'Gagal memuat jadwal')}: <span className="g-mono">{String(error)}</span>
             </div>
           )}
         </div>
@@ -294,6 +296,7 @@ function PredictingHubInner() {
 const NICKNAME_NUDGE_KEY = 'gibol:pickem:nickname-nudge:v1';
 
 function NicknameNudge({ user, competition }) {
+  const tx = usePickemT();
   const [status, setStatus] = useState('idle'); // idle | needed | done
   const [value, setValue] = useState('');
   const [saving, setSaving] = useState(false);
@@ -325,17 +328,17 @@ function NicknameNudge({ user, competition }) {
 
   const save = async () => {
     const next = value.trim();
-    if (next.length < 2 || next.length > 20) { setError('Nama 2–20 karakter.'); return; }
-    if (!user?.id) { setError('Sesi habis — login lagi.'); return; }
+    if (next.length < 2 || next.length > 20) { setError(tx('Name must be 2–20 characters.', 'Nama 2–20 karakter.')); return; }
+    if (!user?.id) { setError(tx('Session expired — sign in again.', 'Sesi habis — login lagi.')); return; }
     setSaving(true);
     setError(null);
     const { error: err } = await supabase.from('profiles').update({ nickname: next }).eq('id', user.id);
     setSaving(false);
-    if (err) { setError('Gagal simpan. Coba lagi.'); return; }
+    if (err) { setError(tx('Save failed. Try again.', 'Gagal simpan. Coba lagi.')); return; }
     try { localStorage.setItem(NICKNAME_NUDGE_KEY, '1'); } catch { /* ignore */ }
     trackEvent('pickem_nickname_set', { via: 'nudge' });
     if (typeof window !== 'undefined' && window.gibolToast) {
-      window.gibolToast.show({ text: 'Nama tersimpan', icon: 'check' });
+      window.gibolToast.show({ text: tx('Name saved', 'Nama tersimpan'), icon: 'check' });
     }
     setStatus('done');
   };
@@ -355,12 +358,15 @@ function NicknameNudge({ user, competition }) {
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10 }}>
         <div style={{ fontSize: 13, color: 'var(--ink-1)', lineHeight: 1.5 }}>
-          <strong>Pasang nama panggilan</strong> biar kamu muncul keren di papan peringkat — bukan kode acak.
+          {tx(
+            <><strong>Set a nickname</strong> so you show up properly on the leaderboard — not a random code.</>,
+            <><strong>Pasang nama panggilan</strong> biar kamu muncul keren di papan peringkat — bukan kode acak.</>,
+          )}
         </div>
         <button
           type="button"
           onClick={dismiss}
-          aria-label="Tutup"
+          aria-label={tx('Close', 'Tutup')}
           style={{
             appearance: 'none', background: 'transparent', border: 'none',
             cursor: 'pointer', color: 'var(--ink-3)', fontSize: 18, lineHeight: 1,
@@ -377,8 +383,8 @@ function NicknameNudge({ user, competition }) {
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => { if (e.key === 'Enter') save(); }}
           maxLength={20}
-          aria-label="Nama panggilan"
-          placeholder="Nama panggilan"
+          aria-label={tx('Nickname', 'Nama panggilan')}
+          placeholder={tx('Nickname', 'Nama panggilan')}
           style={{
             flex: '1 1 160px',
             minWidth: 0,
@@ -392,7 +398,7 @@ function NicknameNudge({ user, competition }) {
           }}
         />
         <PickemBtn variant="primary" size="sm" onClick={save} disabled={saving}>
-          {saving ? 'Menyimpan…' : 'Pakai nama ini'}
+          {saving ? tx('Saving…', 'Menyimpan…') : tx('Use this name', 'Pakai nama ini')}
         </PickemBtn>
       </div>
       {error && (
@@ -406,14 +412,15 @@ function Header({ user, competition }) {
   // v0.79.7 — eyebrow was hardcoded "PIALA DUNIA 2026 · GRUP". Now
   // pulls the active competition's label so NBA-Playoffs-2026 shows
   // "NBA PLAYOFFS · GRUP" and WC2026 shows "PIALA DUNIA · GRUP".
+  const tx = usePickemT();
   const label = (competition?.labelLong || competition?.label || 'PICK\'EM').toUpperCase();
   return (
     <header style={{ marginBottom: 18 }}>
       <div className="p-eyebrow" style={{ marginBottom: 6 }}>
-        {label} · GRUP
+        {label} · {tx('GROUP STAGE', 'FASE GRUP')}
       </div>
       <h1 className="p-display-sm" style={{ marginBottom: 4, color: 'var(--ink-1)' }}>
-        Prediksi hari ini
+        {tx("Today's matches", 'Prediksi hari ini')}
       </h1>
       <p
         style={{
@@ -424,14 +431,21 @@ function Header({ user, competition }) {
         }}
       >
         {user
-          ? `Halo, ${user.email?.split('@')[0] || 'kamu'}. Prediksi kamu langsung tersimpan.`
-          : 'Pilih pemenang dulu — login kamu tanya nanti. Prediksi tersimpan di perangkat ini.'}
+          ? tx(
+              `Hi, ${user.email?.split('@')[0] || 'there'}. Your picks save instantly.`,
+              `Halo, ${user.email?.split('@')[0] || 'kamu'}. Prediksi kamu langsung tersimpan.`,
+            )
+          : tx(
+              "Pick the winner first — we'll ask you to sign in later. Picks are saved on this device.",
+              'Pilih pemenang dulu — login kamu tanya nanti. Prediksi tersimpan di perangkat ini.',
+            )}
       </p>
     </header>
   );
 }
 
 function LoadingState() {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -442,12 +456,13 @@ function LoadingState() {
         fontSize: 13,
       }}
     >
-      Memuat jadwal…
+      {tx('Loading the schedule…', 'Memuat jadwal…')}
     </div>
   );
 }
 
 function EmptyState() {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -460,16 +475,20 @@ function EmptyState() {
         fontFamily: 'var(--font-ui-pickem)',
       }}
     >
-      <div className="p-eyebrow" style={{ marginBottom: 8 }}>BELUM ADA</div>
-      <div style={{ fontWeight: 600, marginBottom: 4 }}>Jadwal belum dirilis</div>
+      <div className="p-eyebrow" style={{ marginBottom: 8 }}>{tx('NOTHING YET', 'BELUM ADA')}</div>
+      <div style={{ fontWeight: 600, marginBottom: 4 }}>{tx('Schedule not released yet', 'Jadwal belum dirilis')}</div>
       <div style={{ fontSize: 13, color: 'var(--ink-3)' }}>
-        Draw resmi FIFA Juni 2026 — fixtures akan muncul di sini begitu publikasi rilis.
+        {tx(
+          'Official FIFA draw, June 2026 — fixtures appear here as soon as it publishes.',
+          'Draw resmi FIFA Juni 2026 — fixtures akan muncul di sini begitu publikasi rilis.',
+        )}
       </div>
     </div>
   );
 }
 
 function NotReadyState() {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -482,16 +501,17 @@ function NotReadyState() {
         fontFamily: 'var(--font-ui-pickem)',
       }}
     >
-      <div className="p-eyebrow" style={{ marginBottom: 8 }}>SEDANG DISIAPKAN</div>
-      <div style={{ fontWeight: 600, marginBottom: 4 }}>Pick&apos;em baru menyala</div>
+      <div className="p-eyebrow" style={{ marginBottom: 8 }}>{tx('GETTING READY', 'SEDANG DISIAPKAN')}</div>
+      <div style={{ fontWeight: 600, marginBottom: 4 }}>{tx("Pick'em is warming up", "Pick'em baru menyala")}</div>
       <div style={{ fontSize: 13, color: 'var(--ink-3)' }}>
-        Backend masih provisioning. Pulihkan halaman ini sebentar lagi.
+        {tx('Backend is still provisioning. Refresh this page in a moment.', 'Backend masih provisioning. Pulihkan halaman ini sebentar lagi.')}
       </div>
     </div>
   );
 }
 
 function FixtureGroups({ groups, serverPredictions, guestPredictions, onChange, competition }) {
+  const tx = usePickemT();
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
       {groups.map((g) => (
@@ -500,8 +520,8 @@ function FixtureGroups({ groups, serverPredictions, guestPredictions, onChange, 
             className="p-eyebrow"
             style={{ marginBottom: 10, display: 'flex', justifyContent: 'space-between' }}
           >
-            <span>Matchday {g.matchday}</span>
-            <span style={{ color: 'var(--ink-4)' }}>{g.fixtures.length} laga</span>
+            <span>{tx('Matchday', 'Matchday')} {g.matchday}</span>
+            <span style={{ color: 'var(--ink-4)' }}>{g.fixtures.length} {tx('matches', 'laga')}</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {g.fixtures.map((fx) => (
@@ -523,11 +543,12 @@ function FixtureGroups({ groups, serverPredictions, guestPredictions, onChange, 
 }
 
 function FirstRunNudge({ onLogin, onSkip }) {
+  const tx = usePickemT();
   return (
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Tersimpan — mau ikut peringkat?"
+      aria-label={tx('Saved — want to join the leaderboard?', 'Tersimpan — mau ikut peringkat?')}
       style={{
         position: 'fixed',
         inset: 0,
@@ -555,10 +576,10 @@ function FirstRunNudge({ onLogin, onSkip }) {
         }}
       >
         <div className="p-eyebrow" style={{ marginBottom: 8, color: 'var(--pickem-orange)' }}>
-          PREDIKSI TERSIMPAN
+          {tx('PICK SAVED', 'PREDIKSI TERSIMPAN')}
         </div>
         <div className="p-headline" style={{ marginBottom: 6 }}>
-          Mau ikut peringkat?
+          {tx('Want to join the leaderboard?', 'Mau ikut peringkat?')}
         </div>
         <p
           style={{
@@ -568,8 +589,10 @@ function FirstRunNudge({ onLogin, onSkip }) {
             marginBottom: 18,
           }}
         >
-          Masuk biar prediksi kamu kebaca di papan peringkat global dan grup teman. Prediksi
-          yang sudah kamu simpan auto-pindah ke akunmu.
+          {tx(
+            'Sign in so your picks count on the global leaderboard and in your friends’ groups. The picks you’ve already made move to your account automatically.',
+            'Masuk biar prediksi kamu kebaca di papan peringkat global dan grup teman. Prediksi yang sudah kamu simpan auto-pindah ke akunmu.',
+          )}
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <button
@@ -580,7 +603,7 @@ function FirstRunNudge({ onLogin, onSkip }) {
               border: 'none',
               cursor: 'pointer',
               background: 'var(--pickem-orange)',
-              color: '#0A1628',
+              color: 'var(--ink-on-accent)',
               fontFamily: 'var(--font-ui-pickem)',
               fontWeight: 700,
               fontSize: 15,
@@ -589,7 +612,7 @@ function FirstRunNudge({ onLogin, onSkip }) {
               minHeight: 48,
             }}
           >
-            Masuk dengan email
+            {tx('Sign in with email', 'Masuk dengan email')}
           </button>
           <button
             type="button"
@@ -606,7 +629,7 @@ function FirstRunNudge({ onLogin, onSkip }) {
               padding: '10px 14px',
             }}
           >
-            Lewati dulu
+            {tx('Skip for now', 'Lewati dulu')}
           </button>
         </div>
       </div>

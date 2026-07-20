@@ -5,6 +5,7 @@ import { PickemBtn, SegmentedPicker } from './components/social.jsx';
 import { createGrup } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
+import { usePickemT } from './i18n.js';
 
 // ============================================================================
 // v0.68.0 — Grup create (Pick'em P3).
@@ -16,10 +17,6 @@ import { usePickemCompetition } from './useCompetition.jsx';
 // ============================================================================
 
 // v0.79.1 — COMPETITION now reads from usePickemCompetition() at render time.
-const VISIBILITY_OPTIONS = [
-  { k: 'private', l: 'Pribadi' },
-  { k: 'public',  l: 'Publik' },
-];
 
 const DEFAULT_MODES = { match: true, jagoan: true, upset: true, bracket: true, survivor: false };
 
@@ -34,7 +31,12 @@ export default function GrupCreate() {
 function GrupCreateInner() {
   const { user, loading: authLoading } = useAuth();
   const { competition } = usePickemCompetition();
+  const tx = usePickemT();
   const COMPETITION = competition.key;
+  const VISIBILITY_OPTIONS = [
+    { k: 'private', l: tx('Private', 'Pribadi') },
+    { k: 'public',  l: tx('Public', 'Publik') },
+  ];
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [visibility, setVisibility] = useState('private');
@@ -53,11 +55,11 @@ function GrupCreateInner() {
     e.preventDefault();
     setError(null);
     if (name.trim().length < 2) {
-      setError('Nama grup minimal 2 karakter.');
+      setError(tx('Group name needs at least 2 characters.', 'Nama grup minimal 2 karakter.'));
       return;
     }
     if (name.trim().length > 60) {
-      setError('Nama grup maksimal 60 karakter.');
+      setError(tx('Group name can be at most 60 characters.', 'Nama grup maksimal 60 karakter.'));
       return;
     }
     setSubmitting(true);
@@ -69,7 +71,7 @@ function GrupCreateInner() {
     });
     setSubmitting(false);
     if (!res.ok) {
-      setError(res.error || 'Gagal membuat grup');
+      setError(res.error || tx('Failed to create group', 'Gagal membuat grup'));
       return;
     }
     navigate(`/pickem/grup/${res.id}?welcome=1`);
@@ -79,26 +81,26 @@ function GrupCreateInner() {
     <PickemRoot active="grup">
       <div style={{ padding: '20px 16px 32px', maxWidth: 560, margin: '0 auto' }}>
         <header style={{ marginBottom: 18 }}>
-          <div className="p-eyebrow" style={{ marginBottom: 6 }}>BIKIN GRUP BARU</div>
+          <div className="p-eyebrow" style={{ marginBottom: 6 }}>{tx('CREATE A GROUP', 'BIKIN GRUP BARU')}</div>
           <h1 className="p-display-sm" style={{ marginBottom: 4, color: 'var(--ink-1)' }}>
-            Grup kamu, aturanmu
+            {tx('Your group, your rules', 'Grup kamu, aturanmu')}
           </h1>
           <p style={{ color: 'var(--ink-2)', fontFamily: 'var(--font-ui-pickem)', fontSize: 13 }}>
-            Bikin dulu, ajak teman lewat WhatsApp setelahnya.
+            {tx('Create it first, invite friends over WhatsApp after.', 'Bikin dulu, ajak teman lewat WhatsApp setelahnya.')}
           </p>
         </header>
 
         <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           <Field
-            label="Nama grup"
-            hint="Misal: Grup Kantor, Garuda Faithful, Anak Kosan 17"
+            label={tx('Group name', 'Nama grup')}
+            hint={tx('e.g. Office Pool, Garuda Faithful, Apt 17 Crew', 'Misal: Grup Kantor, Garuda Faithful, Anak Kosan 17')}
           >
             <input
               type="text"
               autoFocus
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Beri nama grupmu"
+              placeholder={tx('Name your group', 'Beri nama grupmu')}
               maxLength={60}
               required
               aria-invalid={!!error && name.trim().length === 0}
@@ -106,7 +108,7 @@ function GrupCreateInner() {
             />
           </Field>
 
-          <Field label="Tipe" hint="Pribadi = hanya yang punya kode bisa masuk. Publik = ditampilkan di hub grup publik.">
+          <Field label={tx('Type', 'Tipe')} hint={tx('Private = only people with the code can join. Public = listed in the public groups hub.', 'Pribadi = hanya yang punya kode bisa masuk. Publik = ditampilkan di hub grup publik.')}>
             <SegmentedPicker
               items={VISIBILITY_OPTIONS}
               active={visibility}
@@ -114,7 +116,7 @@ function GrupCreateInner() {
             />
           </Field>
 
-          <Field label="Mode yang dihitung" hint="Centang mode yang ikut dihitung untuk leaderboard grup ini.">
+          <Field label={tx('Modes that count', 'Mode yang dihitung')} hint={tx('Check the modes that count toward this group’s leaderboard.', 'Centang mode yang ikut dihitung untuk leaderboard grup ini.')}>
             <ModesPicker value={modes} onChange={setModes} />
           </Field>
 
@@ -136,10 +138,10 @@ function GrupCreateInner() {
 
           <div style={{ display: 'flex', gap: 10 }}>
             <PickemBtn type="submit" variant="primary" disabled={submitting}>
-              {submitting ? 'Membuat…' : 'Bikin grup'}
+              {submitting ? tx('Creating…', 'Membuat…') : tx('Create group', 'Bikin grup')}
             </PickemBtn>
             <PickemBtn type="button" variant="ghost" onClick={() => navigate('/pickem/grup')}>
-              Batal
+              {tx('Cancel', 'Batal')}
             </PickemBtn>
           </div>
         </form>
@@ -165,12 +167,13 @@ function Field({ label, hint, children }) {
 }
 
 function ModesPicker({ value, onChange }) {
+  const tx = usePickemT();
   const MODES = [
-    { key: 'match',    label: 'Prediksi pertandingan' },
-    { key: 'jagoan',   label: 'Jagoan (banker)' },
-    { key: 'upset',    label: 'Bonus upset' },
-    { key: 'bracket',  label: 'Bracket turnamen' },
-    { key: 'survivor', label: 'Survivor' },
+    { key: 'match',    label: tx('Match predictions', 'Prediksi pertandingan') },
+    { key: 'jagoan',   label: tx('Banker (jagoan)', 'Jagoan (banker)') },
+    { key: 'upset',    label: tx('Upset bonus', 'Bonus upset') },
+    { key: 'bracket',  label: tx('Tournament bracket', 'Bracket turnamen') },
+    { key: 'survivor', label: tx('Survivor', 'Survivor') },
   ];
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>

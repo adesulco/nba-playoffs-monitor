@@ -20,6 +20,29 @@ import {
 import { upsertBracket } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
+import { usePickemT } from './i18n.js';
+
+// English labels for the next-stage CTA + stepper, keyed by stage `k`.
+// STAGES/STAGE_LABELS hold Bahasa (data module bracketData.js); we map
+// to English at the render site and fall back to Bahasa via tx().
+const STAGE_SHORT_EN = {
+  group: 'Group',
+  r32: 'R32',
+  r16: 'R16',
+  qf: 'QF',
+  sf: 'SF',
+  final: 'Final',
+  champ: 'Champion',
+};
+const STAGE_LABELS_EN = {
+  group: 'Group Standings',
+  r32: 'Round of 32',
+  r16: 'Round of 16',
+  qf: 'Quarter-finals',
+  sf: 'Semi-finals',
+  final: 'Final',
+  champ: 'World Champion 2026',
+};
 
 // ============================================================================
 // v0.69.0 — <Bracket /> · /pickem/bracket screen (Pick'em P4).
@@ -76,18 +99,25 @@ function BracketInner() {
 }
 
 function BracketNotAvailable({ competition }) {
+  const tx = usePickemT();
   return (
     <PickemRoot active="bracket">
       <div style={{ padding: '40px 16px', maxWidth: 560, margin: '0 auto', textAlign: 'center' }}>
-        <div className="p-eyebrow" style={{ marginBottom: 10, opacity: 0.7 }}>BRACKET</div>
+        <div className="p-eyebrow" style={{ marginBottom: 10, opacity: 0.7 }}>{tx('BRACKET', 'BRACKET')}</div>
         <h1 className="p-display-sm" style={{ marginBottom: 12, color: 'var(--ink-1)' }}>
-          Bracket {competition.label} belum aktif
+          {tx(`Bracket for ${competition.label} isn't live yet`, `Bracket ${competition.label} belum aktif`)}
         </h1>
         <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.55 }}>
-          Bracket prediksi tersedia untuk turnamen format grup + KO. {competition.label} pakai format seri best-of-7 — kamu bisa prediksi laga per hari di tab <strong>Prediksi</strong>, ranking di tab <strong>Papan</strong>.
+          {tx(
+            <>The prediction bracket is for group + knockout tournaments. {competition.label} runs a best-of-7 series format — you can predict matches day-by-day in the <strong>Predictions</strong> tab, and check rankings in the <strong>Board</strong> tab.</>,
+            <>Bracket prediksi tersedia untuk turnamen format grup + KO. {competition.label} pakai format seri best-of-7 — kamu bisa prediksi laga per hari di tab <strong>Prediksi</strong>, ranking di tab <strong>Papan</strong>.</>,
+          )}
         </p>
         <p style={{ color: 'var(--ink-3, var(--ink-2))', fontSize: 12, marginTop: 18 }}>
-          Bracket Piala Dunia 2026 (FIFA WC) aktif mulai 11 Juni 2026.
+          {tx(
+            'The 2026 World Cup (FIFA WC) bracket goes live on June 11, 2026.',
+            'Bracket Piala Dunia 2026 (FIFA WC) aktif mulai 11 Juni 2026.',
+          )}
         </p>
       </div>
     </PickemRoot>
@@ -95,6 +125,7 @@ function BracketNotAvailable({ competition }) {
 }
 
 function BracketInnerImpl({ user, navigate, COMPETITION, SEASON }) {
+  const tx = usePickemT();
   const [stage, setStage] = useState('group');
   const [confirmLock, setConfirmLock] = useState(false);
   const [autofilled, setAutofilled] = useState(false);
@@ -107,7 +138,13 @@ function BracketInnerImpl({ user, navigate, COMPETITION, SEASON }) {
   const isLast = stage === 'champ';
   const currentCount = b.counts[stage] ?? 0;
   const stageComplete = currentCount >= (stageMeta?.total ?? 0);
-  const nextLabel = isLast ? '🔒 Kunci bracket' : `Lanjut ke ${STAGES[stageIdx + 1]?.l} →`;
+  const nextStage = STAGES[stageIdx + 1];
+  const nextStageLabel = nextStage
+    ? tx(STAGE_SHORT_EN[nextStage.k] || nextStage.l, nextStage.l)
+    : '';
+  const nextLabel = isLast
+    ? tx('🔒 Lock bracket', '🔒 Kunci bracket')
+    : tx(`Next: ${nextStageLabel} →`, `Lanjut ke ${nextStageLabel} →`);
   const cannotAdvance = !stageComplete || b.locked;
 
   const potential = useMemo(() => potentialBracketPoints(b.rawState), [b.rawState]);
@@ -143,7 +180,7 @@ function BracketInnerImpl({ user, navigate, COMPETITION, SEASON }) {
         // Soft fail: server can't save (schema missing or transient).
         // Lock locally anyway so the user isn't blocked, surface the
         // error inline.
-        setLockError(res.error || 'Gagal simpan ke server — terkunci lokal.');
+        setLockError(res.error || tx('Couldn\'t save to the server — locked locally.', 'Gagal simpan ke server — terkunci lokal.'));
       }
     }
     b.lock();
@@ -173,10 +210,10 @@ function BracketInnerImpl({ user, navigate, COMPETITION, SEASON }) {
         {!b.locked && (
           <div style={{ padding: '0 18px 12px', display: 'flex', gap: 8 }}>
             <button type="button" onClick={handleAuto} style={autoBtnStyle}>
-              <span aria-hidden="true">⚡</span> Pilih semua favorit
+              <span aria-hidden="true">⚡</span> {tx('Pick all favorites', 'Pilih semua favorit')}
             </button>
             <button type="button" onClick={b.reset} style={resetBtnStyle}>
-              Reset
+              {tx('Reset', 'Reset')}
             </button>
           </div>
         )}
@@ -328,6 +365,7 @@ function buildUpsertPayload(b, competition, season) {
 // ── Sub-components ─────────────────────────────────────────────────────────
 
 function Header({ locked, lockedAt, onViewTree }) {
+  const tx = usePickemT();
   return (
     <header style={{ padding: '8px 18px 12px', flexShrink: 0 }}>
       <div
@@ -366,7 +404,7 @@ function Header({ locked, lockedAt, onViewTree }) {
                 minHeight: 30,
               }}
             >
-              LIHAT TREE →
+              {tx('VIEW TREE →', 'LIHAT TREE →')}
             </button>
           )}
           {locked ? (
@@ -379,7 +417,7 @@ function Header({ locked, lockedAt, onViewTree }) {
                 letterSpacing: '0.08em',
               }}
             >
-              ✓ TERKUNCI
+              {tx('✓ LOCKED', '✓ TERKUNCI')}
             </span>
           ) : (
             <LockCountdownLabel />
@@ -397,7 +435,7 @@ function Header({ locked, lockedAt, onViewTree }) {
           color: 'var(--ink-1)',
         }}
       >
-        {locked ? 'Bracket kamu terkunci' : 'Bangun bracket kamu'}
+        {locked ? tx('Your bracket is locked', 'Bracket kamu terkunci') : tx('Build your bracket', 'Bangun bracket kamu')}
       </h1>
       {locked && lockedAt && (
         <div
@@ -408,7 +446,7 @@ function Header({ locked, lockedAt, onViewTree }) {
             fontFamily: 'var(--font-ui-pickem)',
           }}
         >
-          Dikunci {formatLockedAt(lockedAt)}.
+          {tx(`Locked ${formatLockedAt(lockedAt)}.`, `Dikunci ${formatLockedAt(lockedAt)}.`)}
         </div>
       )}
     </header>
@@ -416,6 +454,7 @@ function Header({ locked, lockedAt, onViewTree }) {
 }
 
 function LockCountdownLabel() {
+  const tx = usePickemT();
   // WC 2026 kickoff is ~June 11 2026 — we'd compute the actual countdown
   // when the schedule is seeded. For the v0.69.0 ship the label is a
   // simple "WC dimulai" reminder so the bracket builder feels live.
@@ -429,12 +468,13 @@ function LockCountdownLabel() {
         letterSpacing: '0.06em',
       }}
     >
-      🔒 SEBELUM KICK-OFF
+      {tx('🔒 BEFORE KICK-OFF', '🔒 SEBELUM KICK-OFF')}
     </span>
   );
 }
 
 function StageProgress({ stage, count, total }) {
+  const tx = usePickemT();
   const done = count >= total;
   return (
     <div
@@ -453,7 +493,7 @@ function StageProgress({ stage, count, total }) {
           color: 'var(--ink-1)',
         }}
       >
-        {STAGE_LABELS[stage] || stage}
+        {tx(STAGE_LABELS_EN[stage] || STAGE_LABELS[stage] || stage, STAGE_LABELS[stage] || stage)}
       </span>
       <span
         style={{
@@ -471,6 +511,7 @@ function StageProgress({ stage, count, total }) {
 }
 
 function LockedBanner({ lockedAt, potential }) {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -490,15 +531,15 @@ function LockedBanner({ lockedAt, potential }) {
           className="p-eyebrow"
           style={{ fontSize: 9, color: 'var(--p-up)', marginBottom: 2 }}
         >
-          BRACKET TERKUNCI
+          {tx('BRACKET LOCKED', 'BRACKET TERKUNCI')}
         </div>
         <div style={{ fontSize: 13, color: 'var(--ink-1)', fontWeight: 600 }}>
-          Nggak bisa diubah lagi sampai final.
+          {tx('Can\'t be changed until the final.', 'Nggak bisa diubah lagi sampai final.')}
         </div>
       </div>
       <div style={{ textAlign: 'right' }}>
         <div className="p-eyebrow" style={{ fontSize: 9, marginBottom: 2 }}>
-          POTENSI POIN
+          {tx('POTENTIAL POINTS', 'POTENSI POIN')}
         </div>
         <div
           style={{
@@ -516,6 +557,7 @@ function LockedBanner({ lockedAt, potential }) {
 }
 
 function AutoFilledToast({ onDismiss }) {
+  const tx = usePickemT();
   return (
     <div
       role="status"
@@ -538,7 +580,7 @@ function AutoFilledToast({ onDismiss }) {
         cursor: 'pointer',
       }}
     >
-      ✓ Bracket diisi pakai favorit. Edit yang nggak setuju.
+      {tx('✓ Bracket filled with the favorites. Edit any you disagree with.', '✓ Bracket diisi pakai favorit. Edit yang nggak setuju.')}
     </div>
   );
 }
@@ -550,7 +592,7 @@ const autoBtnStyle = {
   padding: '12px 14px',
   minHeight: 44,
   background: 'var(--pickem-orange)',
-  color: '#0A1628',
+  color: 'var(--ink-on-accent)',
   border: 'none',
   borderRadius: 999,
   fontFamily: 'var(--font-ui-pickem)',

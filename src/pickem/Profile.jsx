@@ -7,6 +7,7 @@ import { teamShort } from './bracketData.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
 import { supabase } from '../lib/supabase.js';
+import { usePickemT } from './i18n.js';
 
 // ============================================================================
 // v0.70.0 — Profile screen (Pick'em P5).
@@ -34,6 +35,7 @@ export default function Profile() {
 }
 
 function ProfileInner() {
+  const tx = usePickemT();
   const { user, loading: authLoading } = useAuth();
   const { competition } = usePickemCompetition();
   const COMPETITION = competition.key;
@@ -72,7 +74,7 @@ function ProfileInner() {
       <div style={{ maxWidth: 720, margin: '0 auto', paddingBottom: 32 }}>
         {loading && (
           <div style={{ padding: '60px 0', textAlign: 'center', color: 'var(--ink-3)', fontSize: 13 }}>
-            Memuat profil…
+            {tx('Loading profile…', 'Memuat profil…')}
           </div>
         )}
 
@@ -80,11 +82,11 @@ function ProfileInner() {
           <div style={{ padding: '20px 16px' }}>
             <EmptyState
               tone="soon"
-              title="Profil belum siap"
-              body="Backend lagi disiapkan. Coba lagi sebentar."
+              title={tx('Profile isn\'t ready yet', 'Profil belum siap')}
+              body={tx('The backend is still being set up. Try again in a bit.', 'Backend lagi disiapkan. Coba lagi sebentar.')}
               action={
                 <PickemBtn variant="primary" onClick={() => navigate('/pickem')}>
-                  Kembali ke prediksi
+                  {tx('Back to predictions', 'Kembali ke prediksi')}
                 </PickemBtn>
               }
             />
@@ -129,6 +131,7 @@ function ProfileInner() {
 // ── Sections ───────────────────────────────────────────────────────────────
 
 function AvatarSection({ profile, avatarLetter, user, onNicknameSaved }) {
+  const tx = usePickemT();
   return (
     <section
       style={{
@@ -167,7 +170,7 @@ function AvatarSection({ profile, avatarLetter, user, onNicknameSaved }) {
           <>
             <span>@{(profile.username || profile.email.split('@')[0]).toLowerCase()}</span>
             {profile.created_at && (
-              <> · Gabung {formatDate(profile.created_at)}</>
+              <> · {tx('Joined', 'Gabung')} {formatDate(profile.created_at)}</>
             )}
           </>
         )}
@@ -186,7 +189,7 @@ function AvatarSection({ profile, avatarLetter, user, onNicknameSaved }) {
         >
           <StreakFlame days={profile.streak.current_streak} />
           <span style={{ fontSize: 12, color: 'var(--ink-2)', fontWeight: 600 }}>
-            streak {profile.streak.current_streak} matchday
+            {tx(`${profile.streak.current_streak} matchday streak`, `streak ${profile.streak.current_streak} matchday`)}
           </span>
         </div>
       )}
@@ -202,6 +205,7 @@ function AvatarSection({ profile, avatarLetter, user, onNicknameSaved }) {
 // row-level — auth.uid() = id — so self-update on any column is
 // allowed; no new serverless function needed, we're at 11/12 slots).
 function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
+  const tx = usePickemT();
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState(currentName || '');
   const [saving, setSaving] = useState(false);
@@ -217,11 +221,11 @@ function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
   const save = async () => {
     const next = value.trim();
     if (next.length < 2 || next.length > 20) {
-      setError('Nama 2–20 karakter.');
+      setError(tx('Name must be 2–20 characters.', 'Nama 2–20 karakter.'));
       return;
     }
     if (!userId) {
-      setError('Sesi habis — login lagi.');
+      setError(tx('Session expired — log in again.', 'Sesi habis — login lagi.'));
       return;
     }
     setSaving(true);
@@ -232,13 +236,13 @@ function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
       .eq('id', userId);
     setSaving(false);
     if (err) {
-      setError('Gagal simpan. Coba lagi.');
+      setError(tx('Couldn\'t save. Try again.', 'Gagal simpan. Coba lagi.'));
       return;
     }
     setEditing(false);
     onSaved?.(next);
     if (typeof window !== 'undefined' && window.gibolToast) {
-      window.gibolToast.show({ text: 'Nama tersimpan', icon: 'check' });
+      window.gibolToast.show({ text: tx('Name saved', 'Nama tersimpan'), icon: 'check' });
     }
   };
 
@@ -253,7 +257,7 @@ function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
             color: 'var(--ink-1)',
           }}
         >
-          {currentName || 'Kamu'}
+          {currentName || tx('You', 'Kamu')}
         </div>
         <button
           type="button"
@@ -270,7 +274,7 @@ function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
             padding: '2px 6px',
           }}
         >
-          {hasName ? 'Ubah nama' : 'Atur nama tampilan →'}
+          {hasName ? tx('Change name', 'Ubah nama') : tx('Set a display name →', 'Atur nama tampilan →')}
         </button>
       </div>
     );
@@ -285,8 +289,8 @@ function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
         onKeyDown={(e) => { if (e.key === 'Enter') save(); if (e.key === 'Escape') setEditing(false); }}
         maxLength={20}
         autoFocus
-        aria-label="Nama tampilan"
-        placeholder="Nama tampilan"
+        aria-label={tx('Display name', 'Nama tampilan')}
+        placeholder={tx('Display name', 'Nama tampilan')}
         style={{
           fontFamily: 'var(--font-display)',
           fontSize: 20,
@@ -302,10 +306,10 @@ function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
       />
       <div style={{ display: 'flex', gap: 8 }}>
         <PickemBtn variant="primary" size="sm" onClick={save} disabled={saving}>
-          {saving ? 'Menyimpan…' : 'Simpan'}
+          {saving ? tx('Saving…', 'Menyimpan…') : tx('Save', 'Simpan')}
         </PickemBtn>
         <PickemBtn variant="ghost" size="sm" onClick={() => setEditing(false)} disabled={saving}>
-          Batal
+          {tx('Cancel', 'Batal')}
         </PickemBtn>
       </div>
       {error && (
@@ -318,11 +322,12 @@ function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
 }
 
 function StatsGrid({ profile }) {
+  const tx = usePickemT();
   const cells = [
-    { label: 'POIN', value: Number(profile.points || 0).toLocaleString('id-ID'), color: 'var(--pickem-orange)' },
-    { label: 'RANK', value: profile.rank ? `#${profile.rank}` : '—', color: 'var(--ink-1)' },
+    { label: tx('POINTS', 'POIN'), value: Number(profile.points || 0).toLocaleString('id-ID'), color: 'var(--pickem-orange)' },
+    { label: tx('RANK', 'RANK'), value: profile.rank ? `#${profile.rank}` : '—', color: 'var(--ink-1)' },
     {
-      label: 'AKURASI',
+      label: tx('ACCURACY', 'AKURASI'),
       value: profile.accuracy_pct != null ? `${profile.accuracy_pct}%` : '—',
       color: 'var(--ink-1)',
     },
@@ -366,6 +371,7 @@ function StatsGrid({ profile }) {
 }
 
 function BadgesSection({ profile }) {
+  const tx = usePickemT();
   const earned = profile.badges?.earned || [];
   const catalog = profile.badges?.catalog || [];
   const earnedCodes = new Set(earned.map((b) => b.code));
@@ -391,7 +397,7 @@ function BadgesSection({ profile }) {
       </div>
       {catalog.length === 0 ? (
         <div style={{ color: 'var(--ink-3)', fontSize: 13, padding: 14 }}>
-          Lencana belum terkonfigurasi. Tunggu backend selesai.
+          {tx('Badges aren\'t configured yet. Hang tight for the backend.', 'Lencana belum terkonfigurasi. Tunggu backend selesai.')}
         </div>
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
@@ -411,15 +417,16 @@ function BadgesSection({ profile }) {
 }
 
 function HistorySection({ profile }) {
+  const tx = usePickemT();
   const rows = profile.recent_predictions || [];
   if (rows.length === 0) {
     return (
       <section style={{ padding: '4px 14px', fontFamily: 'var(--font-ui-pickem)' }}>
         <div className="p-eyebrow" style={{ marginBottom: 10, padding: '0 4px' }}>
-          RIWAYAT TERAKHIR
+          {tx('RECENT HISTORY', 'RIWAYAT TERAKHIR')}
         </div>
         <div style={{ color: 'var(--ink-3)', fontSize: 13, padding: 14 }}>
-          Belum ada prediksi yang dihitung. Riwayat muncul setelah pertandingan pertama selesai.
+          {tx('No scored predictions yet. History shows up after the first match wraps.', 'Belum ada prediksi yang dihitung. Riwayat muncul setelah pertandingan pertama selesai.')}
         </div>
       </section>
     );
@@ -427,7 +434,7 @@ function HistorySection({ profile }) {
   return (
     <section style={{ padding: '4px 14px 24px', fontFamily: 'var(--font-ui-pickem)' }}>
       <div className="p-eyebrow" style={{ marginBottom: 10, padding: '0 4px' }}>
-        RIWAYAT TERAKHIR
+        {tx('RECENT HISTORY', 'RIWAYAT TERAKHIR')}
       </div>
       <div
         style={{
@@ -446,6 +453,7 @@ function HistorySection({ profile }) {
 }
 
 function HistoryRow({ row, last }) {
+  const tx = usePickemT();
   const fx = row.fixtures || {};
   const total = (row.awarded_points || 0) + (row.grup_bonus_points || 0);
   const correct = (row.base_points || 0) > 0;
@@ -458,9 +466,9 @@ function HistoryRow({ row, last }) {
   const predictedScore =
     row.picked_home != null && row.picked_away != null
       ? `${row.picked_home}–${row.picked_away}`
-      : row.picked_outcome === 'H' ? `${homeShort} menang`
-      : row.picked_outcome === 'A' ? `${awayShort} menang`
-      : 'Seri';
+      : row.picked_outcome === 'H' ? tx(`${homeShort} win`, `${homeShort} menang`)
+      : row.picked_outcome === 'A' ? tx(`${awayShort} win`, `${awayShort} menang`)
+      : tx('Draw', 'Seri');
   return (
     <div
       style={{
@@ -490,9 +498,9 @@ function HistoryRow({ row, last }) {
             fontFamily: 'var(--font-ui-pickem)',
           }}
         >
-          Prediksi {predictedScore}
-          {row.is_jagoan && ' · Jagoan'}
-          {row.upset_mult_applied > 1 && ` · Upset ×${Number(row.upset_mult_applied).toFixed(1).replace(/\.0$/, '')}`}
+          {tx('Predicted', 'Prediksi')} {predictedScore}
+          {row.is_jagoan && tx(' · Jagoan', ' · Jagoan')}
+          {row.upset_mult_applied > 1 && ` · ${tx('Upset', 'Upset')} ×${Number(row.upset_mult_applied).toFixed(1).replace(/\.0$/, '')}`}
         </div>
       </div>
       <span

@@ -33,10 +33,13 @@
    Light / paper Pick'em — the user-toggled "day" surface.
    ─────────────────────────────────────────────────────────────── */
 .pickem-root {
-  /* Surfaces — paper stack (same values as the paper-grey port). */
-  --bg-deep:   #DDE3EA;
-  --bg-base:   #EEF1F5;
-  --bg-raised: #F8FAFC;
+  /* Surfaces — paper stack. v0.81.0: aligned to the global
+     [data-brand="paper"] values in index.css (lightened in the v0.80.0
+     flagship pass) so Pick'em is the *same* light as the rest of gibol.co
+     rather than the slightly darker pre-flagship cream. */
+  --bg-deep:   #E9EDF1;
+  --bg-base:   #F7F9FB;
+  --bg-raised: #FFFFFF;
   --bg-elev:   #FFFFFF;
   --bg-paper:  #FFFFFF;
 
@@ -134,6 +137,13 @@
   --ink-2: #B6C4D8;
   --ink-3: #9FB4CC;
   --ink-4: #8B9AAF; /* F-008: lightened from #6B7B92 → ≥4.5:1 on dark --bg-base/raised */
+  /* Text on the accent fill. Dark theme uses bright amber #F59E0B as the
+     accent, so on-accent text is dark navy (high contrast). Light theme's
+     accent is the deep burnt-orange #9A3412, so its on-accent text is white
+     (defined in the light block). v0.81.0 — components now read
+     var(--ink-on-accent) instead of hardcoding #0A1628, which was unreadable
+     on the light theme's deep accent. */
+  --ink-on-accent: #0A1628;
 
   --line-1: rgba(230, 238, 249, 0.08);
   --line-2: rgba(230, 238, 249, 0.14);

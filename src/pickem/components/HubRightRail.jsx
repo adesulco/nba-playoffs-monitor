@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Badge, StreakFlame, PickemBtn } from './social.jsx';
 import { listMyGrups, listProfile } from '../api.js';
 import { usePickemCompetition } from '../useCompetition.jsx';
+import { usePickemT } from '../i18n.js';
 
 // ============================================================================
 // v0.76.0 — Pick'em desktop right rail (P8 polish).
@@ -23,6 +24,7 @@ import { usePickemCompetition } from '../useCompetition.jsx';
 // ============================================================================
 
 export default function HubRightRail({ user }) {
+  const tx = usePickemT();
   const navigate = useNavigate();
   const { competition } = usePickemCompetition();
   const COMPETITION = competition.key;
@@ -73,7 +75,7 @@ export default function HubRightRail({ user }) {
   return (
     <aside
       className="pickem-hub-rail"
-      aria-label="Ringkasan kamu"
+      aria-label={tx('Your summary', 'Ringkasan kamu')}
       style={{ fontFamily: 'var(--font-ui-pickem)' }}
     >
       <StreakCard profile={profile} loading={loading} error={error} onRetry={retry} />
@@ -86,11 +88,12 @@ export default function HubRightRail({ user }) {
 // ── Cards ──────────────────────────────────────────────────────────────────
 
 function StreakCard({ profile, loading, error, onRetry }) {
+  const tx = usePickemT();
   const current = profile?.streak?.current_streak ?? 0;
   const longest = profile?.streak?.longest_streak ?? 0;
   const accuracy = profile?.accuracy_pct;
   return (
-    <RailCard label="STREAK KAMU">
+    <RailCard label={tx('YOUR STREAK', 'STREAK KAMU')}>
       {loading ? (
         <RailLoading />
       ) : error ? (
@@ -114,13 +117,13 @@ function StreakCard({ profile, loading, error, onRetry }) {
             >
               <StreakFlame days={current} />
               <span style={{ color: 'var(--ink-2)', fontSize: 11, fontWeight: 600 }}>
-                matchday
+                {tx('matchday', 'matchday')}
               </span>
             </span>
           </div>
           <div style={{ display: 'flex', gap: 18, fontSize: 12 }}>
-            <RailStat label="REKOR" value={longest > 0 ? longest : '—'} />
-            <RailStat label="AKURASI" value={accuracy != null ? `${accuracy}%` : '—'} />
+            <RailStat label={tx('BEST', 'REKOR')} value={longest > 0 ? longest : '—'} />
+            <RailStat label={tx('ACCURACY', 'AKURASI')} value={accuracy != null ? `${accuracy}%` : '—'} />
           </div>
         </>
       )}
@@ -129,8 +132,9 @@ function StreakCard({ profile, loading, error, onRetry }) {
 }
 
 function GrupSnippet({ grups, loading, error, onRetry, onCreate }) {
+  const tx = usePickemT();
   return (
-    <RailCard label="GRUP KAMU" trailing={
+    <RailCard label={tx('YOUR GROUPS', 'GRUP KAMU')} trailing={
       grups.length > 0 ? (
         <span
           style={{
@@ -158,10 +162,10 @@ function GrupSnippet({ grups, loading, error, onRetry, onCreate }) {
               lineHeight: 1.5,
             }}
           >
-            Belum ikutan grup. Bikin satu untuk main bareng teman.
+            {tx('Not in any group yet. Make one to play with friends.', 'Belum ikutan grup. Bikin satu untuk main bareng teman.')}
           </div>
           <PickemBtn variant="primary" size="sm" onClick={onCreate}>
-            Bikin grup
+            {tx('Create group', 'Bikin grup')}
           </PickemBtn>
         </div>
       ) : (
@@ -198,7 +202,7 @@ function GrupSnippet({ grups, loading, error, onRetry, onCreate }) {
                     marginTop: 2,
                   }}
                 >
-                  {g.member_count} anggota · {g.my_rank ? `#${g.my_rank}` : '—'}
+                  {g.member_count} {tx('members', 'anggota')} · {g.my_rank ? `#${g.my_rank}` : '—'}
                 </div>
               </div>
               <div
@@ -220,6 +224,7 @@ function GrupSnippet({ grups, loading, error, onRetry, onCreate }) {
 }
 
 function QuickLinks({ navigate, competition }) {
+  const tx = usePickemT();
   // v0.79.7 — links are now competition-aware. Bracket + Survivor only
   // appear when the active competition supports them (tournament-shape).
   // For NBA Playoffs (playoff-series shape) these wouldn't open anything
@@ -227,14 +232,14 @@ function QuickLinks({ navigate, competition }) {
   const links = [];
   if (competition?.hasBracket) {
     const bracketLabel = `Bracket ${competition.label || 'WC'}`;
-    links.push({ l: bracketLabel, to: '/pickem/bracket', sub: 'Bangun bracket sebelum kick-off' });
+    links.push({ l: bracketLabel, to: '/pickem/bracket', sub: tx('Build your bracket before kick-off', 'Bangun bracket sebelum kick-off') });
   }
   if (competition?.hasSurvivor) {
-    links.push({ l: 'Survivor', to: '/pickem/survivor', sub: 'Pilih satu tim per pekan' });
+    links.push({ l: 'Survivor', to: '/pickem/survivor', sub: tx('Pick one team per week', 'Pilih satu tim per pekan') });
   }
-  links.push({ l: 'Recap kamu', to: '/pickem/recap', sub: 'Kartu Bola buat WhatsApp' });
+  links.push({ l: tx('Your recap', 'Recap kamu'), to: '/pickem/recap', sub: tx('Kartu Bola for WhatsApp', 'Kartu Bola buat WhatsApp') });
   return (
-    <RailCard label="CEPAT KE">
+    <RailCard label={tx('QUICK TO', 'CEPAT KE')}>
       <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
         {links.map((it, i) => (
           <li
@@ -246,7 +251,7 @@ function QuickLinks({ navigate, competition }) {
             <button
               type="button"
               onClick={() => navigate(it.to)}
-              aria-label={`Buka ${it.l.toLowerCase()}`}
+              aria-label={tx(`Open ${it.l.toLowerCase()}`, `Buka ${it.l.toLowerCase()}`)}
               style={{
                 appearance: 'none',
                 background: 'transparent',
@@ -354,6 +359,7 @@ function RailStat({ label, value }) {
 }
 
 function RailLoading() {
+  const tx = usePickemT();
   return (
     <div
       style={{
@@ -363,7 +369,7 @@ function RailLoading() {
         fontFamily: 'var(--font-ui-pickem)',
       }}
     >
-      Memuat…
+      {tx('Loading…', 'Memuat…')}
     </div>
   );
 }
@@ -371,10 +377,11 @@ function RailLoading() {
 // F-003 — explicit failure state with a retry affordance, so a failed load
 // never shows an indefinite "Memuat…" or a misleading empty state.
 function RailError({ onRetry }) {
+  const tx = usePickemT();
   return (
     <div style={{ fontFamily: 'var(--font-ui-pickem)' }}>
       <div style={{ color: 'var(--ink-2)', fontSize: 12, lineHeight: 1.5, marginBottom: 8 }}>
-        Gagal memuat data.
+        {tx('Couldn\'t load data.', 'Gagal memuat data.')}
       </div>
       <button
         type="button"
@@ -392,20 +399,21 @@ function RailError({ onRetry }) {
           fontWeight: 600,
         }}
       >
-        Coba lagi
+        {tx('Try again', 'Coba lagi')}
       </button>
     </div>
   );
 }
 
 function GuestRail({ onLogin }) {
+  const tx = usePickemT();
   return (
     <aside
       className="pickem-hub-rail"
-      aria-label="Ringkasan kamu"
+      aria-label={tx('Your summary', 'Ringkasan kamu')}
       style={{ fontFamily: 'var(--font-ui-pickem)' }}
     >
-      <RailCard label="MASUK">
+      <RailCard label={tx('SIGN IN', 'MASUK')}>
         <div
           style={{
             color: 'var(--ink-2)',
@@ -414,10 +422,10 @@ function GuestRail({ onLogin }) {
             marginBottom: 12,
           }}
         >
-          Masuk untuk dapet papan peringkat, streak, dan grup teman.
+          {tx('Sign in to get the leaderboard, streaks, and friend groups.', 'Masuk untuk dapet papan peringkat, streak, dan grup teman.')}
         </div>
         <PickemBtn variant="primary" size="sm" onClick={onLogin}>
-          Masuk dengan email
+          {tx('Sign in with email', 'Masuk dengan email')}
         </PickemBtn>
       </RailCard>
     </aside>
