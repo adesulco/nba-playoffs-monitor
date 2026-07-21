@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gibol Pick'em — Wireframes v1 (inversion)</title>
+<style>
+  :root{
+    --paper:#EEF1F5; --ink:#15181D; --ink2:#5A6472; --line:#D7DDE5;
+    --card:#FFFFFF; --accent:#0E7A4A; --accent2:#0B5CD6; --gold:#C8930A;
+    --danger:#C03A2B; --chip:#E3E8EF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,'Inter',Segoe UI,Roboto,sans-serif}
+  body{background:#DDE2E9;color:var(--ink);padding:32px}
+  h1{font-size:22px;margin-bottom:4px}
+  .sub{color:var(--ink2);font-size:13px;margin-bottom:28px}
+  .row{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start;margin-bottom:40px}
+  .frame{width:320px;flex:0 0 auto}
+  .frame h3{font-size:13px;margin:0 0 2px;color:var(--ink)}
+  .frame .route{font-size:11px;color:var(--accent2);font-family:monospace;margin-bottom:8px;display:block}
+  .phone{background:var(--paper);border:2px solid #B9C1CC;border-radius:24px;overflow:hidden;box-shadow:0 8px 24px rgba(20,30,50,.12)}
+  .screen{padding:0 0 16px}
+  .ann{font-size:11px;color:var(--ink2);margin-top:8px;line-height:1.5}
+  .ann b{color:var(--ink)}
+  /* shared components */
+  .topbar{background:var(--card);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-weight:800;font-size:15px;letter-spacing:-.3px}
+  .logo span{color:var(--accent)}
+  .navchip{font-size:10px;color:var(--ink2);background:var(--chip);border-radius:99px;padding:4px 8px;margin-left:6px}
+  .pad{padding:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+  .btn{display:block;text-align:center;background:var(--accent);color:#fff;border-radius:10px;padding:11px;font-weight:700;font-size:13px}
+  .btn.sec{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.wa{background:#1FAF5A}
+  .btn.gold{background:var(--gold)}
+  .h-hero{font-size:21px;font-weight:800;line-height:1.2;letter-spacing:-.4px}
+  .muted{color:var(--ink2);font-size:11px}
+  .pill{display:inline-block;font-size:9px;font-weight:700;border-radius:99px;padding:2px 7px;background:var(--chip);color:var(--ink2);text-transform:uppercase;letter-spacing:.4px}
+  .pill.live{background:#FDE8E5;color:var(--danger)}
+  .pill.prem{background:#FBF3DC;color:var(--gold)}
+  .pill.green{background:#E2F3EA;color:var(--accent)}
+  .matchrow{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);font-size:12px}
+  .matchrow:last-child{border-bottom:0}
+  .team{display:flex;align-items:center;gap:6px;font-weight:600}
+  .flag{width:18px;height:13px;background:#C6CFDA;border-radius:2px;display:inline-block}
+  .pickbox{width:26px;height:26px;border:1.5px solid var(--line);border-radius:7px;background:#fff}
+  .pickbox.on{background:var(--accent);border-color:var(--accent)}
+  .lb{font-size:12px}
+  .lb .r{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--line)}
+  .lb .me{background:#E2F3EA;margin:0 -12px;padding:7px 12px;border-radius:8px;font-weight:700}
+  .steps{display:flex;gap:6px;margin-bottom:12px}
+  .steps i{flex:1;height:4px;border-radius:99px;background:var(--line);font-style:normal}
+  .steps i.on{background:var(--accent)}
+  input,select{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px;font-size:13px;background:#fff;color:var(--ink);margin-top:5px}
+  label{font-size:11px;font-weight:700;color:var(--ink2)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tag{font-size:10px;border:1px solid var(--line);border-radius:8px;padding:6px;text-align:center;background:#fff}
+  .secthead{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin:14px 0 6px}
+  .tabbar{display:flex;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:10px}
+  .tabbar div{flex:1;text-align:center;font-size:11px;font-weight:700;padding:8px;color:var(--ink2)}
+  .tabbar div.on{background:var(--ink);color:#fff}
+  .price{font-size:20px;font-weight:800}
+  .note{background:#FBF3DC;border:1px solid #EAD9A0;border-radius:10px;padding:8px;font-size:10px;color:#6B5408}
+  .bottomnav{display:flex;border-top:1px solid var(--line);background:var(--card);padding:8px 4px;margin-top:12px}
+  .bottomnav div{flex:1;text-align:center;font-size:9px;color:var(--ink2);font-weight:700}
+  .bottomnav div.on{color:var(--accent)}
+  .konsensus{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:4px}
+  .konsensus i{display:block;height:100%;background:var(--accent2);font-style:normal}
+</style>
+</head>
+<body>
+
+<h1>Gibol Pick'em — Wireframes v1</h1>
+<div class="sub">Inversion: <b>gibol.co = Pick'em (produk utama)</b> · skor.gibol.co = live data (addon). Paper-grey theme dipertahankan. Mobile-first, semua copy Bahasa casual. Pasangan dokumen: <code>01-strategy.md</code></div>
+
+<!-- ROW 1: acquisition funnel -->
+<div class="row">
+
+  <div class="frame">
+    <h3>1 · Landing baru (root)</h3>
+    <span class="route">gibol.co/</span>
+    <div class="phone"><div class="screen">
+      <div class="topbar"><div class="logo">gib<span>ol</span></div><div><span class="navchip">Harga</span><span class="navchip">Skor & Berita ↗</span><span class="navchip">EN</span></div></div>
+      <div class="pad">
+        <span class="pill live">● World Cup 2026 lagi jalan</span>
+        <div class="h-hero" style="margin-top:8px">Pool Pick'em lo.<br>Tanpa ribet.</div>
+        <div class="muted" style="margin:6px 0 12px">Bikin grup tebak-tebakan bareng tongkrongan, kantor, atau keluarga. Skor otomatis, klasemen real-time, tinggal share link di WA.</div>
+        <a class="btn">⚽ Bikin Grup — Gratis</a>
+        <a class="btn sec" style="margin-top:8px">Ikut Pool Publik Gibol</a>
+        <div class="secthead">Kompetisi</div>
+        <div class="grid2">
+          <div class="tag"><b>WC 2026</b><br><span class="pill live">LIVE</span></div>
+          <div class="tag"><b>NBA Playoffs</b><br><span class="pill green">Selesai</span></div>
+          <div class="tag"><b>EPL 26/27</b><br><span class="pill">Agustus</span></div>
+          <div class="tag"><b>Liga 1</b><br><span class="pill">Segera</span></div>
+        </div>
+        <div class="card" style="margin-top:12px;text-align:center">
+          <div class="muted">17.000+ tebakan · 900+ grup · skor otomatis tiap match</div>
+        </div>
+      </div>
+    </div></div>
+    <div class="ann"><b>Home lama digeser.</b> Hub olahraga tetap hidup di URL lama (nanti 301 → skor.gibol.co di Phase B). Hero menjual ke <b>komisioner</b>, bukan pemain. Toggle EN → landing internasional.</div>
+  </div>
+
+  <div class="frame">
+    <h3>2 · Buat Grup (3 langkah)</h3>
+    <span class="route">gibol.co/buat-grup</span>
+    <div class="phone"><div class="screen">
+      <div class="topbar"><div class="logo">gib<span>ol</span></div><span class="muted">Langkah 2/3</span></div>
+      <div class="pad">
+        <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
+        <div class="h-hero" style="font-size:17px">Aturan skor grup lo</div>
+        <div class="muted" style="margin:4px 0 10px">Pakai template atau atur sendiri. Bisa diubah sebelum match pertama.</div>
+        <div class="card">
+          <label>TEMPLATE</label>
+          <select><option>Standar Gibol (rekomendasi)</option><option>Knockout makin gede poinnya</option><option>Custom…</option></select>
+          <div class="grid2" style="margin-top:10px">
+            <div><label>Posisi grup benar</label><input value="4 pts"></div>
+            <div><label>Grup sempurna (bonus)</label><input value="8 pts"></div>
+            <div><label>R32–R16</label><input value="10 pts"></div>
+            <div><label>QF / SF / Final</label><input value="15/20/30"></div>
+          </div>
+          <div style="margin-top:10px"><label>MODE KNOCKOUT</label>
+            <select><option>Bracket dari hasil grup asli (default)</option><option>Auto-isi dari tebakan grup masing-masing</option></select>
+          </div>
+        </div>
+        <a class="btn">Lanjut → Bagikan</a>
+        <div class="note" style="margin-top:8px">Gratis: 1 grup, 10 anggota. Butuh lebih? Season Pass Rp 79rb.</div>
+      </div>
+    </div></div>
+    <div class="ann"><b>Parity dengan PlayoffPickems:</b> custom poin per ronde + bonus grup sempurna + dua mode knockout. Disimpan di <code>leagues.scoring_config</code> (jsonb) — tabel sudah ada, tinggal kolom.</div>
+  </div>
+
+  <div class="frame">
+    <h3>3 · Bagikan (langkah 3)</h3>
+    <span class="route">gibol.co/buat-grup ✓</span>
+    <div class="phone"><div class="screen">
+      <div class="topbar"><div class="logo">gib<span>ol</span></div><span class="muted">Langkah 3/3</span></div>
+      <div class="pad">
+        <div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+        <div style="text-align:center;padding:10px 0">
+          <div style="font-size:34px">🎉</div>
+          <div class="h-hero" style="font-size:17px">"Tongkrongan FC" siap!</div>
+          <div class="muted" style="margin:4px 0 12px">Share link ini — temen lo bisa langsung nebak, nggak wajib bikin akun dulu.</div>
+        </div>
+        <div class="card" style="font-family:monospace;font-size:12px;text-align:center">gibol.co/g/TKRG26</div>
+        <a class="btn wa">Share ke WhatsApp</a>
+        <a class="btn sec" style="margin-top:8px">Salin Link</a>
+        <div class="secthead">Anggota (1/10)</div>
+        <div class="card lb">
+          <div class="r"><span>👑 lo (komisioner)</span><span class="pill green">udah nebak</span></div>
+          <div class="r muted"><span>+ Tambah entry manual</span><span>untuk yang gaptek →</span></div>
+        </div>
+      </div>
+    </div></div>
+    <div class="ann"><b>WA-native.</b> Pesan share berisi preview OG card grup. "Entry manual" = fitur PlayoffPickems untuk anggota offline (komisioner isi atas nama mereka) — gate ke tier berbayar.</div>
+  </div>
+
+  <div class="frame">
+    <h3>4 · Join via invite (guest)</h3>
+    <span class="route">gibol.co/g/TKRG26</span>
+    <div class="phone"><div class="screen">
+      <div class="topbar"><div class="logo">gib<span>ol</span></div><span class="navchip">Masuk</span></div>
+      <div class="pad">
+        <div class="card" style="text-align:center">
+          <div class="pill green">UNDANGAN GRUP</div>
+          <div class="h-hero" style="font-size:17px;margin:6px 0 2px">Tongkrongan FC</div>
+          <div class="muted">World Cup 2026 · 7 anggota · dibuat sama @ade</div>
+        </div>
+        <a class="btn">Mulai Nebak Sekarang</a>
+        <div class="muted" style="text-align:center;margin:8px 0">↓ tanpa login — tebakan disimpan di HP lo</div>
+        <div class="secthead">Klasemen sementara</div>
+        <div class="card lb">
+          <div class="r"><span>1 · Budi</span><span>84 pts</span></div>
+          <div class="r"><span>2 · Sari</span><span>71 pts</span></div>
+          <div class="r"><span>3 · Ade 👑</span><span>69 pts</span></div>
+        </div>
+        <div class="note">Login (magic link) baru diminta pas lo mau <b>kunci</b> tebakan — biar masuk klasemen.</div>
+      </div>
+    </div></div>
+    <div class="ann"><b>Friksi minimum.</b> Klasemen kebuka publik (social proof). <code>guestStore.js</code> sudah ada — guest picks → merge ke akun saat login. Ini loop viralnya.</div>
+  </div>
+
+</div>
+
+<!-- ROW 2: core product -->
+<div class="row">
+
+  <div class="frame">
+    <h3>5 · Layar tebakan</h3>
+    <span class="route">gibol.co/main/wc-2026</span>
+    <div class="phone"><div class="screen">
+      <div class="topbar"><div class="logo">gib<span>ol</span></div><span class="navchip">Tongkrongan FC ▾</span></div>
+      <div class="pad">
+        <div class="tabbar"><div class="on">Malam Ini</div><div>Fase Grup</div><div>Knockout</div><div>Survivor</div></div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between"><b style="font-size:12px">Grup C — urutkan 1–4</b><span class="pill">0/16 pts</span></div>
+          <div class="matchrow"><span class="team"><span class="flag"></span>Brasil</span><span class="pill green">#1</span></div>
+          <div class="matchrow"><span class="team"><span class="flag"></span>Maroko</span><span class="pill green">#2</span></div>
+          <div class="matchrow"><span class="team"><span class="flag"></span>Skotlandia</span><span class="pill">#3</span></div>
+          <div class="matchrow"><span class="team"><span class="flag"></span>Haiti</span><span class="pill">#4</span></div>
+        </div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between"><b style="font-size:12px">Match malam ini</b><span class="pill live">Lock 23:00 WIB</span></div>
+          <div class="matchrow">
+            <span class="team"><span class="pickbox on"></span><span class="flag"></span>Indonesia… eh, Jepang</span>
+            <span class="team">Swedia<span class="flag"></span><span class="pickbox"></span></span>
+          </div>
+          <div class="muted">Konsensus grup: 71% Jepang <span class="pill prem">PREMIUM</span></div>
+          <div class="konsensus"><i style="width:71%"></i></div>
+          <div class="muted" style="margin-top:4px">Win prob ESPN: 64% · Form: WWDWL <span class="pill prem">PREMIUM</span></div>
+        </div>
+        <a class="btn">Kunci Tebakan</a>
+        <div class="bottomnav"><div class="on">Tebak</div><div>Grup Gue</div><div>Klasemen</div><div>Kartu</div><div>Profil</div></div>
+      </div>
+    </div></div>
+    <div class="ann"><b>Update per 03-game-mechanics:</b> tab default = <b>Malam Ini</b> (today's matches, 1-tap pick) — bracket & 12 grup adalah surface power-user, bukan first touch. Format <b>Tebak Skor</b> (exact score, 5/3/2 pts) jadi varian kartu match untuk bola. Konsensus tampil <i>setelah</i> pick (gratis) / <i>sebelum</i> pick (premium). Saat match live, klasemen menampilkan <b>poin sementara</b> (amber, dari feed live — moat vs PlayoffPickems). Picks lock per match pas kickoff.</div>
+  </div>
+
+  <div class="frame">
+    <h3>6 · Grup home + panel komisioner</h3>
+    <span class="route">gibol.co/grup/tkrg26</span>
+    <div class="phone"><div class="screen">
+      <div class="topbar"><div class="logo">gib<span>ol</span></div><span class="navchip">⚙️ Kelola</span></div>
+      <div class="pad">
+        <div class="h-hero" style="font-size:17px">Tongkrongan FC</div>
+        <div class="muted" style="margin-bottom:10px">WC 2026 · 9/10 anggota <span class="pill prem">1 slot lagi → upgrade</span></div>
+        <div class="card lb">
+          <div class="r"><span>1 · Budi 🔥3</span><span>84</span></div>
+          <div class="r me"><span>2 · Lo ↑1</span><span>78</span></div>
+          <div class="r"><span>3 · Sari</span><span>71</span></div>
+          <div class="r muted"><span>9 · Joko (belum nebak)</span><span>— <u>colek di WA</u></span></div>
+        </div>
+        <div class="secthead">Panel komisioner</div>
+        <div class="card lb">
+          <div class="r"><span>Aturan skor</span><span>Edit ›</span></div>
+          <div class="r"><span>Entry manual (offline)</span><span class="pill prem">PASS</span></div>
+          <div class="r"><span>Multi-entry per orang</span><span class="pill prem">PASS</span></div>
+          <div class="r"><span>Kartu klasemen buat WA</span><span>Bagikan ›</span></div>
+        </div>
+        <div class="bottomnav"><div>Tebak</div><div class="on">Grup Gue</div><div>Klasemen</div><div>Kartu</div><div>Profil</div></div>
+      </div>
+    </div></div>
+    <div class="ann"><b>"Colek di WA"</b> = solusi chasing-picks (pain #1 komisioner). Upgrade prompt muncul natural saat mendekati cap 10 anggota. Kartu klasemen = PNG statis shareable per matchday.</div>
+  </div>
+
+  <div class="frame">
+    <h3>7 · Harga</h3>
+    <span class="route">gibol.co/harga</span>
+    <div class="phone"><div class="screen">
+      <div class="topbar"><div class="logo">gib<span>ol</span></div><div class="tabbar" style="margin:0;width:90px"><div class="on">IDR</div><div>USD</div></div></div>
+      <div class="pad">
+        <div class="h-hero" style="font-size:17px">Mulai gratis, upgrade kalau grup lo makin rame</div>
+        <div class="card">
+          <b>Gratis</b> <span class="pill green">selamanya</span>
+          <div class="muted">1 grup · 10 anggota · 1 entry</div>
+        </div>
+        <div class="card" style="border-color:var(--accent);border-width:2px">
+          <b>Season Pass</b> <span class="pill">paling laku</span>
+          <div class="price">Rp 79rb<span class="muted">/musim</span></div>
+          <div class="muted">Anggota unlimited · grup unlimited · multi-entry · entry manual · sekali bayar</div>
+          <a class="btn" style="margin-top:8px">Bayar pakai QRIS / GoPay</a>
+        </div>
+        <div class="card">
+          <b>Lifetime</b>
+          <div class="price">Rp 249rb <span class="muted">sekali, semua kompetisi</span></div>
+        </div>
+        <div class="card">
+          <b>Gibol+ (pemain)</b> <span class="pill prem">PREMIUM</span>
+          <div class="price">Rp 19rb<span class="muted">/bulan</span></div>
+          <div class="muted">Konsensus + win-prob + form di layar tebakan · multi-entry · badge · bebas iklan</div>
+        </div>
+        <div class="note">Gibol nggak pernah pegang uang taruhan. Yang lo bayar = alat hosting pool. Hadiah antar-anggota urusan grup masing-masing.</div>
+      </div>
+    </div></div>
+    <div class="ann"><b>Dua persona:</b> komisioner (Pass/Lifetime) + pemain (Gibol+). USD toggle → $19/$49/$2 via Stripe; IDR via Midtrans/Xendit (QRIS/GoPay/OVO/Dana). Disclaimer legal selalu tampil.</div>
+  </div>
+
+  <div class="frame">
+    <h3>8 · Subdomain skor (Phase B)</h3>
+    <span class="route">skor.gibol.co/nba-playoff-2026</span>
+    <div class="phone"><div class="screen">
+      <div class="topbar"><div class="logo">skor·gib<span>ol</span></div><div><span class="navchip">Pick'em ↗</span></div></div>
+      <div class="pad">
+        <div class="muted" style="margin-bottom:8px">Hub yang sekarang — TIDAK berubah. Cuma pindah alamat + dapat backlink Pick'em.</div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between"><b style="font-size:12px">OKC 98 – 94 IND</b><span class="pill live">Q4 05:12</span></div>
+          <div class="konsensus"><i style="width:62%"></i></div>
+          <div class="muted">WIN ODDS · ESPN — OKC 62%</div>
+          <a class="btn sec" style="margin-top:8px;font-size:11px">⚽ Udah nebak match ini? Cek poin lo di Pick'em →</a>
+        </div>
+        <div class="card muted">…seluruh hub NBA/EPL/Liga 1/F1/Tennis/recap/derby persis seperti sekarang…</div>
+      </div>
+    </div></div>
+    <div class="ann"><b>Phase B, setelah final WC (akhir Juli):</b> 301 semua route hub www → skor, sitemap dipisah, canonical diperbarui. Setiap halaman game/recap dapat CTA balik ke Pick'em — addon yang memperkuat produk utama.</div>
+  </div>
+
+</div>
+
+<div class="sub">v1 · 2026-06-11 · pasangan: <code>01-strategy.md</code> · tokens warna ikut Brand v1.0 "paper" (#EEF1F5)</div>
+</body>
+</html>
