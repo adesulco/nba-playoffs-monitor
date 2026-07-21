@@ -1,6 +1,8 @@
 # CLAUDE.md — Gibol repo (web + content engine)
 
-Shared context for Claude Code, Cowork, and any other agent working in this repo. Read this first.
+Shared context for Claude Code, Cowork, and any other agent working in this repo.
+
+> **Read this first: `docs/handover-2026-07-18/00-PACKAGE-README.md`** (also at `../handover-2026-07-18/` outside the repo) — the frozen handover package of record. Its authority chain (Sistem 4a design bundle → 13-DEVELOPMENT-PLAN → 11-PLATFORM-STRATEGY → 09 R0 specs) supersedes anything here that conflicts.
 
 The umbrella project context (mission, who Ade is, how to work with him) lives at the parent project level (`Documents/Claude/Projects/Gibol/CLAUDE.md`). This file is the **repo-specific** companion: where code lives, what stack we're on, what each subdirectory owns, and what requires explicit approval before touching.
 
@@ -23,9 +25,9 @@ The two are sibling — generated content is written to `public/content/` as JSO
 ### Web app
 - **Frontend:** Vite + React 18 SPA. CSS-in-JS using the project's `COLORS` constant from `src/lib/constants.js`. CSS classes for media-query breakpoints in `src/index.css`. **Not Next.js** — anything assuming Next.js routing / MDX / ISR needs adaptation.
 - **Deploy:** Vercel project `nba-playoffs-monitor` in team `adesulcos-projects`. Production domain `www.gibol.co`. Apex 308-redirects to www. GitHub remote wired (`origin https://github.com/adesulco/nba-playoffs-monitor.git`); Vercel auto-deploys on push to `main` and the `gibol-ship` script polls the deploy. Manual override: `npx vercel --prod --yes` from the repo root.
-- **Functions:** Vercel Serverless under `api/`. Node runtime. **11 / 12 functions used** (Vercel Hobby limit). One slot remaining; next addition triggers consolidation.
+- **Functions:** Vercel Serverless under `api/`. Node runtime. **12 / 12 functions used** (Vercel Hobby limit — verified by file count 2026-07-20; underscore-prefixed helpers don't deploy). The budget is SPENT: new endpoints ship only as `?_action=` cases on the `api/pickem.js` dispatcher; R0-5 consolidates og/recap to free one slot for `api/billing.js`.
 - **Backend:** Supabase project `egzacjfbmgbcwhtvqixc` (Mumbai / ap-south-1). Postgres 17. Migrations live at `supabase/migrations/`. Apply via SQL editor (no Management API token in this env).
-- **Data feeds:** ESPN (NBA + EPL + Liga 1), API-Football Pro $19/mo (EPL stats + Liga 1 + WC), Polymarket (NBA odds), jolpica-f1 + OpenF1 (F1), tennis sources via `tennis-news`. Anthropic API for the content engine. OpenAI embeddings (Phase 1+).
+- **Data feeds:** ESPN (NBA + EPL + Liga 1), API-Football Pro $19/mo (EPL stats + Liga 1 + WC + AFF), jolpica-f1 + OpenF1 (F1), tennis sources via `tennis-news`. Anthropic API for the content engine. OpenAI embeddings (Phase 1+). (Polymarket was removed from the product; no odds/betting data feeds ever.)
 - **Schema source of truth:** Supabase tables `teams`, `series`, `brackets`, `picks`, `leagues`, `league_members`, `pickem_rules`, `profiles`, `derby_polls`, `derby_poll_votes`, `derby_reactions`, `derby_oneliners`. Content engine `ce_*` tables (`ce_leagues`, `ce_fixtures`, `ce_events`, `ce_articles`, `ce_article_runs`, `ce_cron_runs`, `ce_generation_failures`, `ce_external_corpus`) live via migration `0006_content_engine.sql` — **applied 2026-04-27**. Pick'em tables (`fixtures`, `predictions`, leaderboard views, scoring RPCs) live via migrations 0015–0017 — applied 2026-05-24.
 
 ### Content engine (Phase 0+)
@@ -88,15 +90,16 @@ These are not style preferences. Breaking any of these in production output is a
 
 ### Web app
 
-1. **Bahasa-first, casual register.** Default UI copy is Bahasa Indonesia. Voice matches the fan (gue/lo OK in editorial, formal in data tables). English is a user-driven toggle, not the default. Per `docs/phase-2-ux-response.md` § 2, the "English-default" proposal was rejected.
+1. **Voice (updated 2026-07-18, supersedes the old "Bahasa-first / gue-lo" rule).** App/UI copy uses the **kamu/-mu register** — warm-casual, never "lo/gue", never Gas-level street slang ("colek", "ingatkan", "udah" are fine). **EN is the default locale with native-ID keys** (double-keyed strings); named mechanics keep their ID names (Tebak Skor, colek, jagoan). Never betting/money vocabulary in any locale — prestige framing only ("Semua demi gengsi."). **Kabar article bodies are the exception:** they keep the content engine's own Bahasa-first voice rules (`packages/content-engine/prompts/voice-rules.md`) — two registers, one brand; the UI chrome around articles follows the design register. The Sistem 4a design canvas (`design_handoff_gibol_redesign/`) is the copy deck.
 2. **URL co-existence with content engine.** Existing canonical slugs (`/super-league-2025-26/club/[slug]`, `/premier-league-2025-26/club/[slug]`, `/nba-playoff-2026/[teamSlug]`, `/formula-1-2026/{race,team,driver}/[slug]`, `/tennis/[slug]`, `/tennis/rankings/[tour]`, `/derby/persija-persib`) are **canonical and must not be replaced or redirected.** Content engine adds NEW URLs only (`/preview/`, `/recap/`, `/standings/`, `/race/[circuit]/[year]`, `/h2h/`, `/glossary/[term]`).
 3. **Five protected surfaces** (per `docs/phase-2-ux-response.md` § 4) must not regress without explicit approval:
    1. `/derby/persija-persib` (engagement layer: Supabase polls/reactions/oneliners + JSON-LD + share OG)
    2. `/fifa-world-cup-2026` (waitlist content slot)
    3. PWA install prompt
    4. Favorites store
-   5. Per-club squad pages (squad data via API-Football, currently 11/12 functions used)
-4. **Vercel Hobby function limit (12) is hard-enforced.** We're at 11. Adding a function = consolidation pass first.
+   5. Per-club squad pages (squad data via API-Football)
+4. **Vercel Hobby function limit (12) is hard-enforced.** We're at 12/12 — the budget is spent. New endpoints go on the `api/pickem.js` dispatcher (`?_action=`); adding a function file requires the R0-5 consolidation first.
+4b. **Fonts amendment (2026-07-18).** Bricolage Grotesque (800) + Instrument Sans (400–700) ARE allowed — as **self-hosted woff2 subsets only** (≤80KB total, `font-display: swap`, base64 copies for share cards). No Google Fonts runtime request, no other new fonts. This amends the old "no new fonts" rule.
 5. **Lawful scraping only.** Public APIs preferred. For Liga 1 / IBL where APIs are limited, scrape politely, respect robots.txt, rate-limit, cache aggressively.
 
 ### Content engine (Phase 1+)
@@ -184,7 +187,7 @@ python -m content_engine.quality.voice_lint < draft.md
 ## Working with Ade
 
 - Ade is owner; technical and analytically sharp. Default to direct, concise, technical responses.
-- Bahasa-English code-switching in conversation is normal and welcomed; production output is Bahasa-only per voice rules.
+- Bahasa-English code-switching in conversation is normal and welcomed; production copy follows non-negotiable rule 1 (UI = kamu-register EN-default+ID; Kabar article bodies = content-engine Bahasa voice rules).
 - He's running multiple projects in parallel — don't make him repeat context already in this file or in `spec-content-agent.md`.
 - He prefers prose explanations over bullet lists for analysis; bullets are fine for action items, configs, and lists of facts.
 - When you disagree with a direction, say so once with reasoning. Don't argue past the first push-back unless there's new information.
