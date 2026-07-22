@@ -1,0 +1,64 @@
+name: WC2026 fixtures backfill + score
+
+# R0-1 (v0.81.0) — one-shot recovery action for the WC2026 scoring
+# blackout. workflow_dispatch only: the tournament ended Jul 19; the
+# first run (2026-07-21) backfilled all 104 results and scored every
+# prediction. Re-running is an idempotent no-op / self-heal.
+#
+# Results come from ESPN's public soccer API (free) because the
+# API-Football plan lapsed — see scripts/backfill-fixtures-football.mjs.
+#
+# Secrets required (already set for nba-fixtures-backfill.yml):
+#   SUPABASE_SERVICE_ROLE_KEY
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wc-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Backfill + score WC2026
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://egzacjfbmgbcwhtvqixc.supabase.co' }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "FATAL: SUPABASE_SERVICE_ROLE_KEY secret is not set"
+            exit 1
+          fi
+          node scripts/backfill-fixtures-football.mjs --competition WC2026
+
+      - name: Verify via public API
+        if: always()
+        run: |
+          set +e
+          RESP=$(curl -sL "https://www.gibol.co/api/pickem?_action=list-fixtures&league=WC2026&limit=500")
+          echo "$RESP" | python3 -c "
+          import json, sys
+          from collections import Counter
+          fx = json.load(sys.stdin).get('fixtures', [])
+          st = Counter(f['status'] for f in fx)
+          print(f'WC2026 fixtures: {len(fx)} — {dict(st)}')
+          missing = [f for f in fx if f['status'] == 'final' and f['home_score'] is None]
+          print(f'finals missing scores: {len(missing)}')
+          "
