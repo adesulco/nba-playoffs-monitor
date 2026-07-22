@@ -1,0 +1,67 @@
+name: Football fixtures backfill + score
+
+# R0-2 (v0.81.0) — the structural fix for the WC2026 blackout: a generic
+# football results cron so scoring never again depends on a human
+# running a script from one Mac. Same shape as the NBA v0.79.11 cron.
+#
+# Every 2 hours; each active competition passes --skip-if-idle so runs
+# between matchdays exit in ~1s after one cheap Supabase query.
+# workflow_dispatch runs never skip (self-heal / manual catch-up).
+#
+# Active competitions are the matrix below — add AFF2026 / EPL-2026-27
+# rows as their seeds land (R0-3 / R0-3b).
+#
+# Secrets required: SUPABASE_SERVICE_ROLE_KEY (already set).
+
+on:
+  workflow_dispatch:
+    inputs:
+      competition:
+        description: 'Competition key (must exist in the script registry)'
+        required: true
+        default: 'WC2026'
+        type: string
+  schedule:
+    - cron: '15 */2 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: football-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        # Scheduled runs sweep every active competition. Dispatch runs
+        # override via the input (single competition).
+        competition: ['WC2026', 'AFF2026']
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Backfill + score ${{ matrix.competition }}
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://egzacjfbmgbcwhtvqixc.supabase.co' }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          COMPETITION: ${{ github.event.inputs.competition || matrix.competition }}
+          IDLE_FLAG: ${{ github.event_name == 'schedule' && '--skip-if-idle' || '' }}
+        run: |
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "FATAL: SUPABASE_SERVICE_ROLE_KEY secret is not set"
+            exit 1
+          fi
+          node scripts/backfill-fixtures-football.mjs --competition "$COMPETITION" $IDLE_FLAG
