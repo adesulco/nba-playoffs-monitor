@@ -56,9 +56,29 @@ export const COMPETITIONS = {
     openAt:  '2026-06-11T00:00:00Z',
     closeAt: '2026-07-20T00:00:00Z',
   },
+  'AFF2026': {
+    key: 'AFF2026',
+    label: 'Piala AFF',
+    labelLong: 'ASEAN Championship 2026',
+    sport: 'football',
+    sportAccent: '#D92D1C',
+    season: '2026',
+    // tournament-bracket shape so OutcomePicker allows draws (group stage
+    // + individual KO legs can end level). Bracket + survivor stay OFF:
+    // the semis/final are two-legged (stages SF-L1/SF-L2/F-L1/F-L2 in
+    // fixtures) and the WC bracket template can't score aggregate ties —
+    // match predictions per leg are the AFF game.
+    shape: 'tournament-bracket',
+    hasPredict: true,
+    hasBracket: false,
+    hasSurvivor: false,
+    hasGrups: true,
+    openAt:  '2026-07-21T00:00:00Z',
+    closeAt: '2026-08-27T00:00:00Z',
+  },
 };
 
-export const COMPETITION_ORDER = ['NBA-Playoffs-2026', 'WC2026'];
+export const COMPETITION_ORDER = ['AFF2026', 'NBA-Playoffs-2026', 'WC2026'];
 
 const STORAGE_KEY = 'gibol:pickem:competition';
 

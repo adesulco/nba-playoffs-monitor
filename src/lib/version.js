@@ -8250,7 +8250,50 @@
 //   D1 — grant-entitlement accepts sponsor_pool.
 // D6–D7 (max-points denominators, FIFA-rank chip) are Track B UI notes,
 // queued in 07-design-port-plan.md. Suite: 105 tests.
-export const APP_VERSION = '0.80.3';
+// v0.81.0 — R0 RECOVERY: WC2026 scored + autonomous football cron
+//           (2026-07-21, per docs/handover-2026-07-18/ T0+R0-1+R0-2).
+//
+// T0 — repo rescue. The Mac working copy was frozen by APFS-dataless
+//   files (no provider; reads block forever) — fresh clone swapped in,
+//   damaged tree quarantined. The un-shipped Jun-18 "Pick'em + Home
+//   overhaul" WIP (which also called itself v0.81.0) is preserved on
+//   branch wip/2026-06-18-home-overhaul-v0.81 — NOT merged (stale base);
+//   this mainline v0.81.0 supersedes that numbering. Handover package +
+//   design bundles committed (docs/handover-2026-07-18/,
+//   design_handoff_gibol_redesign/); CLAUDE.md reconciled (kamu-register
+//   EN-default voice, 12/12 functions, Polymarket gone, fonts amendment).
+// R0-1 — WC2026 SCORED (the Jun-12→Jul-20 blackout). All 104 fixtures
+//   (72 group + 32 KO incl. the Jul-19 final ESP 1–0 ARG) backfilled
+//   final with scores + outcomes; predictions scored via
+//   pickem_score_fixture; brackets swept (0 existed). Results from
+//   ESPN's public soccer API — the API-Football plan lapsed to free
+//   ("Free plans do not have access to this season", found 2026-07-21;
+//   renewal owed by Ade, config kept in the script).
+//   .github/workflows/wc-backfill.yml = workflow_dispatch re-run.
+// R0-2 — scripts/backfill-fixtures-football.mjs: ONE generic football
+//   backfill+score script (competition registry, ESPN source now +
+//   api-football when renewed, deterministic provider-agnostic UUIDs,
+//   lock_at never drifts on matched rows, KO outcome = advancer with
+//   shootout tiebreak) + .github/workflows/football-backfill.yml cron
+//   every 2h with --skip-if-idle cheap-exit. Scoring-semantics fix over
+//   the A8 map: 3rd-place match ships as stage '3rd' (not 'SF') so
+//   pickem_score_bracket can't award phantom sf_winner points to a team
+//   that lost its semi; is_ko=false fallback verified in 0015.
+// R0-3b — AFF 2026 SEEDED + registry row (kickoff Jul 24). ESPN
+//   aff.championship verified: 26 events, 10 nations (PHI→PHL — NBA
+//   Philadelphia owns 'PHI'), 20 group fixtures live in prod across 5
+//   clustered matchdays; the two-legged semis/final ship later from the
+//   cron as stages SF-L1/SF-L2/F-L1/F-L2 (leg-suffixed so a single leg
+//   can never masquerade as the aggregate advancer to bracket scoring —
+//   AFF is match-predictions only: hasBracket/hasSurvivor false, draws
+//   on via tournament-bracket shape). AFF2026 is first in
+//   COMPETITION_ORDER → the default competition through Aug 26.
+// NOTE (found during T0/R0-1, 2026-07-21→22): this Mac actively evicts
+//   file data under ~/Documents (fileproviderd/bird thrash-loop, disk
+//   91%) — the working clone now lives OUTSIDE Documents at
+//   ~/gibol-workspace/nba-playoffs-monitor. Do not work from the
+//   Documents tree.
+export const APP_VERSION = '0.81.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
