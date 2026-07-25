@@ -8293,7 +8293,45 @@
 //   91%) — the working clone now lives OUTSIDE Documents at
 //   ~/gibol-workspace/nba-playoffs-monitor. Do not work from the
 //   Documents tree.
-export const APP_VERSION = '0.81.0';
+// v0.81.1 — R0 COMPLETE (2026-07-25). Remaining R0 tickets landed:
+// R0-3 — EPL 2026/27 seeded: 380 fixtures / 38 clean matchweeks + registry
+//   row. CALENDAR CORRECTION: MW1 is Aug 21–24 2026, not Aug 15 as the
+//   handover assumed (fixturedownload + ESPN eng.1 agree) — R3's freeze and
+//   root flip move with it. Seed via fixturedownload (RoundNumber =
+//   matchweek); ESPN eng.1 rolling window only UPDATES seeded rows, so
+//   matchweek numbers can't drift.
+// R0-4 — 105-test Vitest suite gating deploys. The gate is at the head of
+//   the `build` script because that's what Vercel runs; deploy.yml gets the
+//   same step as CI signal but CANNOT gate — its VERCEL_TOKEN secret is
+//   unset, so it has failed on every push since June while Vercel's own git
+//   integration deploys regardless. Worth fixing or deleting that workflow.
+// R0-5 — function budget VERIFIED at exactly 12/12 (underscore-prefixed
+//   api/og/_*.js helpers don't deploy). Dispatcher-only rule stands.
+//   og-derby→og-recap consolidation deferred to the Aug 25–Sep 1 quiet week:
+//   its only beneficiary is billing.js in R5, and refactoring live share
+//   surfaces mid-AFF-launch is risk without near-term payoff.
+// R0-6 — AFF→EPL rollover: src/pickem/components/RolloverBanner.jsx on the
+//   Grup surface. One tap re-creates a commissioned grup for the next
+//   competition (same name/settings) and returns a copy/WA-shareable invite
+//   link; tracks pickem_rollover_accept. No new endpoint — reuses
+//   create-league through the api.js seam. Shows only to a commissioner
+//   whose grup has no counterpart yet, from 3 weeks before EPL opens (which
+//   overlaps the AFF knockouts — both live, best moment to pitch). Plain
+//   styling; R2 reskins it as the 4a scarlet nudge banner.
+// R0-7 — the liveness alarm caught a real issue on first deploy: 5 NBA "if
+//   necessary" CF/Finals games ESPN scheduled for series that ended early,
+//   38 days stale and never finalizable. Stale window bounded to 14 days;
+//   older rows report as abandonedFixtures so the alarm can't cry wolf.
+// R0 EXIT GATE PASSED: WC scored · AFF pickable at kickoff (and scoring
+//   itself — 2 matchday-1 results landed with no human involved) · EPL
+//   fixtures live · football cron 31/31 green Jul 22→25 · CI red on a broken
+//   scoring test · function budget confirmed. R2 is unblocked.
+// ⚠ OPEN, NEEDS ADE: the API-Football plan lapsed to free ("Free plans do
+//   not have access to this season") — /api/health/data-sources reports it
+//   red. Everything above runs on ESPN + fixturedownload instead, so nothing
+//   is blocked, but renew it to restore the richer stats path (and the
+//   api-football source is still wired in the backfill script for that day).
+export const APP_VERSION = '0.81.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

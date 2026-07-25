@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PickemRoot from './PickemRoot.jsx';
 import { GrupCard, EmptyState, PickemBtn } from './components/social.jsx';
 import { listMyGrups, joinGrup } from './api.js';
+import RolloverBanner from './components/RolloverBanner.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
 
@@ -34,6 +35,7 @@ function GrupInner() {
   const COMPETITION = competition.key;
   const navigate = useNavigate();
   const [grups, setGrups] = useState([]);
+  const [allGrups, setAllGrups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [code, setCode] = useState('');
@@ -58,6 +60,19 @@ function GrupInner() {
       setLoading(false);
     })();
   }, [user, authLoading, navigate, COMPETITION]);
+
+  // R0-6 — the rollover banner needs grups across ALL competitions (it
+  // only pitches when there's no counterpart in the destination season),
+  // while the list above is scoped to the active one.
+  useEffect(() => {
+    if (authLoading || !user) return;
+    let cancelled = false;
+    (async () => {
+      const res = await listMyGrups();
+      if (!cancelled && res.ok) setAllGrups(res.grups || []);
+    })();
+    return () => { cancelled = true; };
+  }, [user, authLoading]);
 
   const onJoin = async (e) => {
     e?.preventDefault?.();
@@ -89,6 +104,14 @@ function GrupInner() {
             Main bareng teman. Bikin grup baru atau masuk pakai kode undangan.
           </p>
         </header>
+
+        <RolloverBanner
+          grups={allGrups}
+          userId={user?.id}
+          onRolledOver={() => {
+            listMyGrups().then((r) => { if (r.ok) setAllGrups(r.grups || []); });
+          }}
+        />
 
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 20 }}>
           <PickemBtn variant="primary" onClick={() => navigate('/pickem/grup/new')}>
