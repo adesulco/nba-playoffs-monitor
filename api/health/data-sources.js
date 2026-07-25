@@ -98,8 +98,17 @@ async function pingOne(check) {
 //
 // A competition with no past fixtures (seeded, not started — e.g. EPL
 // before Aug 21) is reported as `pending`, never as an alarm.
+//
+// The stale window is BOUNDED (STALE_WINDOW_DAYS): only fixtures that
+// kicked off within the window count. Older past-kickoff-but-unscored
+// rows are abandoned data, not an outage — e.g. the 5 NBA "if necessary"
+// CF/Finals games ESPN scheduled for series that ended early. They will
+// never finalize, and an unbounded check would sit red forever and train
+// us to ignore it. The WC blackout is still caught on day 2: fixtures
+// kicked off daily through June, so recent ones were always in-window.
 const LIVENESS_AMBER_DAYS = 2;
 const LIVENESS_RED_DAYS = 3;
+const STALE_WINDOW_DAYS = 14;
 
 async function checkScoringLiveness() {
   const url = process.env.SUPABASE_URL || 'https://egzacjfbmgbcwhtvqixc.supabase.co';
@@ -116,10 +125,11 @@ async function checkScoringLiveness() {
     const rows = await res.json();
 
     const now = Date.now();
+    const windowStart = now - STALE_WINDOW_DAYS * 86400000;
     const byLeague = new Map();
     for (const f of rows) {
       if (!byLeague.has(f.league)) {
-        byLeague.set(f.league, { lastFinalizedMs: null, stale: 0, past: 0 });
+        byLeague.set(f.league, { lastFinalizedMs: null, stale: 0, abandoned: 0, past: 0 });
       }
       const g = byLeague.get(f.league);
       const kickoffMs = new Date(f.kickoff_at).getTime();
@@ -129,7 +139,8 @@ async function checkScoringLiveness() {
         const finMs = new Date(f.finalized_at || f.kickoff_at).getTime();
         if (g.lastFinalizedMs === null || finMs > g.lastFinalizedMs) g.lastFinalizedMs = finMs;
       } else if (isPast) {
-        g.stale++;
+        if (kickoffMs >= windowStart) g.stale++;
+        else g.abandoned++;
       }
     }
 
@@ -140,6 +151,7 @@ async function checkScoringLiveness() {
         competitions[league] = { state: 'pending', staleFixtures: 0 };
         continue;
       }
+      const extra = g.abandoned ? { abandonedFixtures: g.abandoned } : {};
       const days = g.lastFinalizedMs === null
         ? Infinity
         : Math.floor((now - g.lastFinalizedMs) / 86400000);
@@ -155,6 +167,7 @@ async function checkScoringLiveness() {
         state,
         daysSinceLastScoredFixture: days === Infinity ? null : days,
         staleFixtures: g.stale,
+        ...extra,
       };
     }
 
