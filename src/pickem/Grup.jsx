@@ -77,7 +77,9 @@ function GrupInner() {
   const onJoin = async (e) => {
     e?.preventDefault?.();
     setJoinError(null);
-    const trimmed = code.trim().toUpperCase();
+    // Invite codes are case-SENSITIVE mixed case (e.g. "QyAumSpv") —
+    // uppercasing them made every join-by-code attempt 404.
+    const trimmed = code.trim();
     if (trimmed.length < 4 || trimmed.length > 12) {
       setJoinError('Kode undangan 4–12 karakter.');
       return;
@@ -148,8 +150,8 @@ function GrupInner() {
               autoComplete="off"
               spellCheck="false"
               value={code}
-              onChange={(e) => setCode(e.target.value.toUpperCase())}
-              placeholder="ABCD"
+              onChange={(e) => setCode(e.target.value)}
+              placeholder="Kode undangan"
               maxLength={12}
               aria-invalid={!!joinError}
               aria-describedby={joinError ? 'grup-code-err' : undefined}

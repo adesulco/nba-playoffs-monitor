@@ -36,7 +36,8 @@ function GrupJoinInner() {
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const { user, loading: authLoading } = useAuth();
-  const code = (params.get('code') || '').trim().toUpperCase();
+  // Case-SENSITIVE: invite codes are mixed case (e.g. "QyAumSpv").
+  const code = (params.get('code') || '').trim();
 
   const [status, setStatus] = useState('idle'); // 'idle' | 'resolving' | 'joining' | 'done' | 'error' | 'already'
   const [grup, setGrup] = useState(null);

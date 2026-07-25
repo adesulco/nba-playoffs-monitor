@@ -61,7 +61,10 @@ function InviteLandingInner() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const res = await leagueDetail({ code: code.trim().toUpperCase() });
+      // NB: invite codes are case-SENSITIVE mixed case (e.g. "QyAumSpv").
+      // Never upper/lower-case them — that was the bug that made every
+      // invite link 404 (see the fix commit for Grup/GrupJoin too).
+      const res = await leagueDetail({ code: code.trim() });
       if (cancelled) return;
       if (res?.ok) {
         setState({ loading: false, league: res.league, members: res.members || [], error: null });
