@@ -84,17 +84,107 @@ async function pingOne(check) {
   }
 }
 
+// ─── R0-7 · scoring liveness ────────────────────────────────────────────────
+// The WC2026 blackout (72 group fixtures left `scheduled` from Jun 12 to
+// Jul 20) was invisible because every upstream probe above was green: the
+// FEEDS were fine, the SCORING was dead. This checks the thing that
+// actually matters — did a fixture finalize recently for each competition
+// that has games in the past?
+//
+// Per competition: days since the most recent finalized fixture, and the
+// count of fixtures whose kickoff has passed but are still not final
+// ("stale"). Amber at 2 days, red at 3+ — a competition mid-window should
+// score within hours (the football cron runs every 2h).
+//
+// A competition with no past fixtures (seeded, not started — e.g. EPL
+// before Aug 21) is reported as `pending`, never as an alarm.
+const LIVENESS_AMBER_DAYS = 2;
+const LIVENESS_RED_DAYS = 3;
+
+async function checkScoringLiveness() {
+  const url = process.env.SUPABASE_URL || 'https://egzacjfbmgbcwhtvqixc.supabase.co';
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY
+    || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!key) return { ok: true, skipped: 'no supabase key in env' };
+
+  try {
+    const res = await fetch(
+      `${url}/rest/v1/fixtures?select=league,status,kickoff_at,finalized_at&limit=5000`,
+      { headers: { apikey: key, Authorization: `Bearer ${key}` } }
+    );
+    if (!res.ok) return { ok: false, error: `fixtures query HTTP ${res.status}` };
+    const rows = await res.json();
+
+    const now = Date.now();
+    const byLeague = new Map();
+    for (const f of rows) {
+      if (!byLeague.has(f.league)) {
+        byLeague.set(f.league, { lastFinalizedMs: null, stale: 0, past: 0 });
+      }
+      const g = byLeague.get(f.league);
+      const kickoffMs = new Date(f.kickoff_at).getTime();
+      const isPast = kickoffMs <= now;
+      if (isPast) g.past++;
+      if (f.status === 'final') {
+        const finMs = new Date(f.finalized_at || f.kickoff_at).getTime();
+        if (g.lastFinalizedMs === null || finMs > g.lastFinalizedMs) g.lastFinalizedMs = finMs;
+      } else if (isPast) {
+        g.stale++;
+      }
+    }
+
+    const competitions = {};
+    let worst = 0;
+    for (const [league, g] of byLeague) {
+      if (g.past === 0) {
+        competitions[league] = { state: 'pending', staleFixtures: 0 };
+        continue;
+      }
+      const days = g.lastFinalizedMs === null
+        ? Infinity
+        : Math.floor((now - g.lastFinalizedMs) / 86400000);
+      // Only alarm when there is unscored work sitting there: a finished
+      // competition (WC2026 post-final) legitimately goes quiet forever.
+      const alarming = g.stale > 0;
+      const state = !alarming ? 'ok'
+        : days >= LIVENESS_RED_DAYS ? 'red'
+        : days >= LIVENESS_AMBER_DAYS ? 'amber'
+        : 'ok';
+      if (alarming) worst = Math.max(worst, days === Infinity ? 999 : days);
+      competitions[league] = {
+        state,
+        daysSinceLastScoredFixture: days === Infinity ? null : days,
+        staleFixtures: g.stale,
+      };
+    }
+
+    const anyRed = Object.values(competitions).some((c) => c.state === 'red');
+    return {
+      ok: !anyRed,
+      thresholdDays: { amber: LIVENESS_AMBER_DAYS, red: LIVENESS_RED_DAYS },
+      worstStaleDays: worst || 0,
+      competitions,
+    };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err).slice(0, 200) };
+  }
+}
+
 export default async function handler(req, res) {
-  const settled = await Promise.all(CHECKS.map(pingOne));
+  const [settled, scoring] = await Promise.all([
+    Promise.all(CHECKS.map(pingOne)),
+    checkScoringLiveness(),
+  ]);
   const providers = Object.fromEntries(
     CHECKS.map((c, i) => [c.name, settled[i]])
   );
-  const allOk = settled.every((r) => r.ok);
+  const allOk = settled.every((r) => r.ok) && scoring.ok !== false;
 
   res.setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate=120');
   res.status(allOk ? 200 : 207).json({
     ok: allOk,
     checkedAt: new Date().toISOString(),
     providers,
+    scoring,
   });
 }

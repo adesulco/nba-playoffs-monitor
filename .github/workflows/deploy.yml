@@ -21,6 +21,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # R0-4 — scoring-core is the money math; the suite gates every
+      # deploy. NOTE: this step is the visible CI signal, but it is NOT
+      # what stops a bad deploy — this workflow's VERCEL_TOKEN secret is
+      # unset, so it fails at the deploy step on every push while Vercel's
+      # own git integration deploys anyway. The real gate is `npm test` at
+      # the head of the `build` script, which Vercel runs: a red suite
+      # fails the Vercel build and nothing ships.
+      - name: Test (scoring-core + unit suites, 105 tests)
+        run: npm test
+
       - name: Build
         run: npm run build
 

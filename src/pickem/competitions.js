@@ -76,9 +76,32 @@ export const COMPETITIONS = {
     openAt:  '2026-07-21T00:00:00Z',
     closeAt: '2026-08-27T00:00:00Z',
   },
+  'EPL-2026-27': {
+    key: 'EPL-2026-27',
+    label: 'Liga Inggris',
+    labelLong: 'Premier League 2026/27',
+    sport: 'football',
+    sportAccent: '#D92D1C',
+    season: '2026-27',
+    // League shape: 38 weekly matchweeks, no KO bracket, no survivor.
+    // 'tournament-bracket' only so OutcomePicker keeps the draw option —
+    // hasBracket/hasSurvivor false is what actually gates those screens.
+    shape: 'tournament-bracket',
+    hasPredict: true,
+    hasBracket: false,
+    hasSurvivor: false,
+    hasGrups: true,
+    // MW1 is Aug 21–24 2026 (fixturedownload + ESPN eng.1, verified
+    // 2026-07-22) — the handover's "MW1 = Aug 15" was wrong. R3's freeze
+    // and root flip move with it; opens for picking a week early.
+    openAt:  '2026-08-14T00:00:00Z',
+    closeAt: '2027-05-30T00:00:00Z',
+  },
 };
 
-export const COMPETITION_ORDER = ['AFF2026', 'NBA-Playoffs-2026', 'WC2026'];
+// AFF first while it runs (to Aug 26), then EPL takes over as the default
+// via defaultCompetitionKey()'s live-window scan.
+export const COMPETITION_ORDER = ['AFF2026', 'EPL-2026-27', 'NBA-Playoffs-2026', 'WC2026'];
 
 const STORAGE_KEY = 'gibol:pickem:competition';
 

@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-vocab.mjs && vite build && node scripts/prerender.mjs",
+    "build": "npm test && node scripts/check-vocab.mjs && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "lint": "eslint src --ext js,jsx",
-    "check:vocab": "node scripts/check-vocab.mjs"
+    "check:vocab": "node scripts/check-vocab.mjs",
+    "test": "vitest run"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.2",
@@ -30,6 +31,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vitest": "^4.1.10"
   }
 }

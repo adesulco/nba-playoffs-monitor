@@ -40,7 +40,7 @@ jobs:
       matrix:
         # Scheduled runs sweep every active competition. Dispatch runs
         # override via the input (single competition).
-        competition: ['WC2026', 'AFF2026']
+        competition: ['WC2026', 'AFF2026', 'EPL-2026-27']
 
     steps:
       - name: Check out repo

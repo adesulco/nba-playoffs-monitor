@@ -146,7 +146,36 @@ const COMPETITIONS = {
       IDN: 'Indonesia', PHL: 'Philippines',
     },
   },
-  // EPL-2026-27 lands with R0-3 (ESPN eng.1 or API-Football after renewal).
+  'EPL-2026-27': {
+    league: 'EPL-2026-27',
+    season: '2026-27',
+    shape: 'league',
+    // Rolling ESPN window for the every-2h score updates (the seed run
+    // uses --source fixturedownload). ESPN never creates rows for a
+    // league-shape comp — it only updates the 380 seeded ones (matched
+    // rows keep their matchday), so matchweek numbers can't drift.
+    espn: { code: 'eng.1', rolling: true },
+    espnRounds: {
+      'regular-season': { stage: 'regular', matchday: null },
+    },
+    tricodeOverrides: {},
+    // One-time seed source: fixturedownload.com has all 380 fixtures with
+    // RoundNumber (= matchweek 1..38). Verified 2026-07-22 — and it
+    // corrected the calendar: MW1 is Aug 21–24 2026, NOT Aug 15.
+    fixtureDownload: { url: 'https://fixturedownload.com/feed/json/epl-2026' },
+    // Feed team name → tricode (ESPN abbreviations, so the ESPN update
+    // path matches rows without a mapping layer). No collisions in the
+    // teams table (checked 2026-07-22).
+    clubs: {
+      'Arsenal': 'ARS', 'Aston Villa': 'AVL', 'Bournemouth': 'BOU',
+      'Brentford': 'BRE', 'Brighton': 'BHA', 'Chelsea': 'CHE',
+      'Coventry': 'COV', 'Crystal Palace': 'CRY', 'Everton': 'EVE',
+      'Fulham': 'FUL', 'Hull': 'HUL', 'Ipswich': 'IPS', 'Leeds': 'LEE',
+      'Liverpool': 'LIV', 'Man City': 'MNC', 'Man Utd': 'MAN',
+      'Newcastle': 'NEW', "Nott'm Forest": 'NFO', 'Spurs': 'TOT',
+      'Sunderland': 'SUN',
+    },
+  },
 };
 
 // ─── CLI ─────────────────────────────────────────────────────────────────────
@@ -217,8 +246,18 @@ function* dateRange(fromIso, toIso) {
 }
 
 async function fetchEspnEvents(cfg) {
+  let { from, to } = cfg;
+  if (cfg.rolling) {
+    const day = (offset) => {
+      const d = new Date();
+      d.setUTCDate(d.getUTCDate() + offset);
+      return d.toISOString().slice(0, 10);
+    };
+    from = day(-3);
+    to = day(10);
+  }
   const events = new Map();
-  for (const dstr of dateRange(cfg.from, cfg.to)) {
+  for (const dstr of dateRange(from, to)) {
     const url = `https://site.api.espn.com/apis/site/v2/sports/soccer/${cfg.code}/scoreboard?dates=${dstr}`;
     const res = await fetch(url);
     if (!res.ok) { console.warn(`[espn] ${dstr}: HTTP ${res.status}`); continue; }
@@ -379,20 +418,49 @@ async function main() {
     const events = await fetchEspnEvents(comp.espn);
     console.log(`[football] espn: ${events.length} events`);
     mapped = events.map((e) => mapEspnEvent(e, comp.espn));
+  } else if (source === 'fixturedownload' && comp.fixtureDownload) {
+    // One-time season seed (league shape): full fixture list with
+    // RoundNumber = matchweek. Score updates come from ESPN afterwards.
+    const res = await fetch(comp.fixtureDownload.url);
+    if (!res.ok) throw new Error(`fixturedownload: HTTP ${res.status}`);
+    const feed = await res.json();
+    console.log(`[football] fixturedownload: ${feed.length} fixtures`);
+    mapped = feed.map((m) => {
+      const home = comp.clubs[m.HomeTeam];
+      const away = comp.clubs[m.AwayTeam];
+      if (!home || !away) return { skip: `unmapped club '${!home ? m.HomeTeam : m.AwayTeam}'` };
+      const played = m.HomeTeamScore != null && m.AwayTeamScore != null;
+      return {
+        stage: 'regular',
+        matchday: m.RoundNumber,
+        home_team: home,
+        away_team: away,
+        kickoff_at: new Date(m.DateUtc).toISOString(),
+        status: played ? 'final' : 'scheduled',
+        home_score: played ? m.HomeTeamScore : null,
+        away_score: played ? m.AwayTeamScore : null,
+        outcome: played
+          ? (m.HomeTeamScore > m.AwayTeamScore ? 'H' : m.HomeTeamScore < m.AwayTeamScore ? 'A' : 'D')
+          : null,
+      };
+    });
   } else {
-    throw new Error(`source '${source}' not implemented yet (api-football plan lapsed)`);
+    throw new Error(`source '${source}' not available for ${comp.league} (api-football plan lapsed)`);
   }
 
   const skips = mapped.filter((m) => m.skip);
   for (const s of skips) console.warn(`[football] skip: ${s.skip}`);
   mapped = mapped.filter((m) => !m.skip);
 
-  // Placeholder KO slots (ESPN pseudo-teams like '2A'/'SFW1') and anything
-  // not in the nations map drop here; the cron re-runs pick real pairings
-  // up once the group stage resolves.
-  if (comp.nations) {
+  // Teams this competition should seed: nations map (tournament) or the
+  // inverted clubs map (league). Placeholder KO slots (ESPN pseudo-teams
+  // like '2A'/'SFW1') and anything unmapped drop here; the cron re-runs
+  // pick real pairings up once the group stage resolves.
+  const seedMap = comp.nations
+    || (comp.clubs ? Object.fromEntries(Object.entries(comp.clubs).map(([n, t]) => [t, n])) : null);
+  if (seedMap) {
     mapped = mapped.filter((m) => {
-      const ok = comp.nations[m.home_team] && comp.nations[m.away_team];
+      const ok = seedMap[m.home_team] && seedMap[m.away_team];
       if (!ok) console.warn(`[football] unresolved pairing skipped: ${m.away_team} @ ${m.home_team} (${m.stage})`);
       return ok;
     });
@@ -400,8 +468,8 @@ async function main() {
   assignRounds(mapped);
 
   // Seed missing teams before fixtures (FK on teams.tricode).
-  if (comp.nations && !DRY_RUN) {
-    const teamRows = Object.entries(comp.nations)
+  if (seedMap && !DRY_RUN) {
+    const teamRows = Object.entries(seedMap)
       .filter(([tricode]) => !allowed.has(tricode))
       .map(([tricode, name]) => ({ tricode, name, city: name, league: comp.league }));
     if (teamRows.length) {
@@ -409,7 +477,7 @@ async function main() {
       console.log(`[football] seeded ${seeded} ${comp.league} teams`);
     }
   }
-  if (comp.nations) for (const t of Object.keys(comp.nations)) allowed.add(t);
+  if (seedMap) for (const t of Object.keys(seedMap)) allowed.add(t);
 
   // 3. Build db rows: matched rows keep id/kickoff/lock/matchday; new rows
   //    get deterministic ids and source kickoff (lock_at = kickoff).
