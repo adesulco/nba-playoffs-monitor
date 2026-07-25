@@ -62,18 +62,37 @@ export default async function handler(req, res) {
   }
 
   // Members + cached points (refreshed by the scoring cron via
-  // pickem_score_fixture; 0015). Join profiles for the display name.
+  // pickem_score_fixture; 0015).
+  //
+  // R2 fix (2026-07-25): this used a PostgREST embed
+  // `profiles:user_id(nickname)`, which threw "Could not find a
+  // relationship between 'league_members' and 'user_id'" for EVERY call —
+  // league_members.user_id and profiles.id both reference auth.users, so
+  // there is no FK between the two tables for PostgREST to infer. The
+  // action was therefore 400-ing in production, which broke the /g/:code
+  // invite landing and the grup home. Fixed as a second query + client-side
+  // merge (code-only; no migration needed mid-window).
   const { data: members, error } = await admin
     .from('league_members')
-    .select('user_id, points_cache, exact_count_cache, status, managed_by, profiles:user_id(nickname)')
+    .select('user_id, points_cache, exact_count_cache, status, managed_by')
     .eq('league_id', league.id);
   if (error) return res.status(400).json({ error: error.message });
+
+  const memberIds = (members || []).map((m) => m.user_id);
+  const nicknameById = new Map();
+  if (memberIds.length) {
+    const { data: profs } = await admin
+      .from('profiles')
+      .select('id, nickname')
+      .in('id', memberIds);
+    for (const p of profs || []) nicknameById.set(p.id, p.nickname);
+  }
 
   const rows = (members || [])
     .filter((m) => m.status !== 'removed')
     .map((m) => ({
       user_id: m.user_id,
-      display_name: m.profiles?.nickname || `Pemain ${String(m.user_id).slice(0, 4)}`,
+      display_name: nicknameById.get(m.user_id) || `Pemain ${String(m.user_id).slice(0, 4)}`,
       points: m.points_cache ?? 0,
       exact_count: m.exact_count_cache ?? 0,
       status: m.status || 'active',
