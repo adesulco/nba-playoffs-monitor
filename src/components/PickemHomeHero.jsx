@@ -103,7 +103,7 @@ function AnonCTA({ lang }) {
         }}
       >
         {lang === 'id'
-          ? "Pick'em playoff sama temen lo. Bahasa Indonesia. Live score."
+          ? "Pick'em playoff sama temanmu. Bahasa Indonesia. Live score."
           : "Bracket pick'em with your friends. In Bahasa. Live scores."}
       </h2>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
@@ -182,7 +182,7 @@ function NoBracketCTA({ lang }) {
         }}
       >
         {lang === 'id'
-          ? 'Bracket lo belum jadi. Yuk mulai sekarang.'
+          ? 'Bracket kamu belum jadi. Yuk mulai sekarang.'
           : "You haven't built a bracket yet. Start one."}
       </h2>
       <Link

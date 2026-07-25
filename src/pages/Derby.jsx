@@ -561,8 +561,8 @@ function SharePredictionButton({ score, side }) {
                   : side === 'persib'  ? 'Bobotoh'
                   : null;
   const text = sideLabel
-    ? `${sideLabel} family — Persija ${score.replace('-', '–')} Persib. Prediksi gue derby 10 Mei 2026 di JIS.`
-    : `Prediksi gue derby Persija vs Persib 10 Mei 2026 di JIS — ${score.replace('-', '–')}.`;
+    ? `${sideLabel} family — Persija ${score.replace('-', '–')} Persib. Prediksiku derby 10 Mei 2026 di JIS.`
+    : `Prediksiku derby Persija vs Persib 10 Mei 2026 di JIS — ${score.replace('-', '–')}.`;
 
   async function handleShare() {
     if (busy) return;
@@ -570,7 +570,7 @@ function SharePredictionButton({ score, side }) {
     try {
       if (typeof navigator !== 'undefined' && navigator.share) {
         await navigator.share({
-          title: 'El Clasico Indonesia — Prediksi gue',
+          title: 'El Clasico Indonesia — Prediksiku',
           text,
           url: shareUrl,
         });

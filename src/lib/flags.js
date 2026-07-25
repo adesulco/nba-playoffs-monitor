@@ -95,6 +95,14 @@ export const UI = {
   f1TyrePit:     envFlag('VITE_FLAG_F1_TYRE_PIT', false),
   wc2026Teaser:  envFlag('VITE_FLAG_WC2026_TEASER', false),
   liga1Teaser:   envFlag('VITE_FLAG_LIGA1_TEASER', false),
+  // R1-4 — /dev/primitives visual-QA route for the Sistem 4a primitives.
+  // Default OFF: set VITE_FLAG_DEV_PRIMITIVES=1 locally (or temporarily
+  // in a preview env) to reach it. Never on in production.
+  devPrimitives: envFlag('VITE_FLAG_DEV_PRIMITIVES', false),
+  // R2 — Main root shell (tab bar Main/Grup/Skor/Kabar). Off until the
+  // R2 surfaces land; R3 flips it on so gibol.co root = Main (Aug 21,
+  // per the corrected EPL MW1 date).
+  pickemHome:    envFlag('VITE_FLAG_PICKEM_HOME', false),
 };
 
 export function isUiV2() {

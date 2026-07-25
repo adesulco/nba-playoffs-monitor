@@ -63,7 +63,7 @@ function LeagueLeaderboardInner() {
     : '';
   const waHref = league
     ? `https://wa.me/?text=${encodeURIComponent(
-        `Gabung liga Pick'em gue "${league.name}" di Gibol:\n${inviteUrl}`,
+        `Gabung liga Pick'em-ku "${league.name}" di Gibol:\n${inviteUrl}`,
       )}`
     : '#';
 

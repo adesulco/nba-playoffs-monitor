@@ -1,0 +1,252 @@
+/* ==========================================================================
+   Sistem 4a design tokens — R1-2 (v0.82.0)
+   Source of truth: design_handoff_gibol_redesign/README.md (locked spec
+   #t4/#t5/#t6). Scarlet / ink / cobalt on paper; Bricolage Grotesque +
+   Instrument Sans; rounded language.
+
+   HOW THE MIGRATION WORKS (handover 14 §3.3 — aliased, not additive):
+   the 4a tokens below are canonical, and the LEGACY names at the bottom
+   of each theme block are re-pointed at them. That means a surface not
+   yet ported to 4a class names still renders in the new palette instead
+   of drifting into a half-old/half-new mix. Route-by-route porting then
+   only has to change structure, never colour.
+
+   Load order matters: this file must come AFTER src/index.css and
+   src/pickem/pickem.css so the legacy aliases win. See main.jsx.
+
+   Dark mode is "Edisi Malam" — automatic 19:00–06:00 WIB with a manual
+   override, applied as [data-theme4a="dark"] on <html> by
+   src/lib/theme4a.js (R1-7).
+   ========================================================================== */
+
+:root {
+  /* ─── Brand / accent ─────────────────────────────────────────────── */
+  --g4-scarlet: #D92D1C;        /* brand accent, primary CTA, Bola accent, selected pick */
+  --g4-scarlet-soft: #FF6B57;   /* scarlet on dark surfaces (live dot, dark-mode highlights, share cards) */
+  --g4-cobalt: #1E3FBB;         /* links / tertiary accent, MotoGP accent */
+
+  /* ─── Ink & paper ────────────────────────────────────────────────── */
+  --g4-ink: #171310;            /* text, 2px structural rules, dark surfaces, secondary CTA */
+  --g4-paper: #FAF7F1;          /* app background — deliberately light, NOT deep cream */
+  --g4-card: #FFFFFF;           /* card surfaces on paper */
+  --g4-line: #E8E2D5;           /* hairline card borders (1–1.5px) */
+  --g4-line-soft: #F0EBDF;      /* row dividers inside cards */
+  --g4-muted: #9A8E7B;          /* secondary text, timestamps, inactive nav */
+  --g4-body-muted: #6E6455;     /* body copy on paper */
+
+  /* ─── Sport accents (skin config — see sportSkins.js) ───────────── */
+  --g4-sport-bola: #D92D1C;
+  --g4-sport-basket: #E07B00;
+  --g4-sport-motogp: #1E3FBB;
+  --g4-sport-voli: #7A2E8E;
+
+  /* ─── Result semantics ───────────────────────────────────────────── */
+  --g4-win: #1F7A3D;
+  --g4-win-bg: #E7F1E9;
+  --g4-lose: #A31F12;
+  --g4-lose-bg: #FBEAE7;
+
+  /* ─── Component-specific ─────────────────────────────────────────── */
+  --g4-locked-chip-bg: #EDE7D9; /* locked pick chip */
+  --g4-locked-chip-fg: #9A8E7B;
+  --g4-star-bg: #F2ECDF;        /* star (×2) button resting state */
+
+  /* ─── Type ───────────────────────────────────────────────────────── */
+  --g4-font-display: 'Bricolage Grotesque', 'Space Grotesk', system-ui, sans-serif;
+  --g4-font-ui: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+
+  /* Mobile scale (README "Scale (mobile)"). Desktop overrides below. */
+  --g4-size-hero: 28px;         /* 28–32; hero numbers, "3 pick belum masuk" */
+  --g4-size-hero-lg: 32px;
+  --g4-size-title: 22px;        /* 22–24; screen titles */
+  --g4-size-title-lg: 24px;
+  --g4-size-card-title: 15px;   /* 14–16 */
+  --g4-size-body: 13px;         /* 12–13 */
+  --g4-size-body-sm: 12px;
+  --g4-size-meta: 10px;         /* 9–11; labels, meta */
+  --g4-size-meta-sm: 9px;
+  --g4-size-badge: 10px;        /* countdown / lock badges, bold */
+
+  --g4-track-display: -0.5px;   /* Bricolage: −0.3 to −1px, tighter as it grows */
+  --g4-track-display-tight: -1px;
+
+  /* ─── Shape ──────────────────────────────────────────────────────── */
+  --g4-radius-card: 16px;       /* cards 14–18 */
+  --g4-radius-card-sm: 14px;
+  --g4-radius-hero: 18px;       /* hero cards */
+  --g4-radius-cta: 12px;        /* buttons/CTAs 12–14 */
+  --g4-radius-cta-lg: 14px;
+  --g4-radius-pill: 999px;      /* chips/badges */
+  --g4-radius-phone: 28px;      /* phone frame / sheet top */
+
+  /* ─── Structural rules ───────────────────────────────────────────── */
+  --g4-rule-strong: 2px;        /* solid ink under headers / tab-bar top */
+  --g4-rule-hair: 1px;          /* card borders */
+  --g4-rule-kabar-top: 3px;     /* sport-colour top border on Kabar cards */
+  --g4-rule-live-left: 4px;     /* sport-colour left border on live tiles */
+
+  /* ─── Spacing ────────────────────────────────────────────────────── */
+  --g4-gutter: 16px;            /* screen gutter */
+  --g4-gap-card: 12px;          /* 10–12 between cards */
+  --g4-gap-card-sm: 10px;
+  --g4-pad-card: 14px;          /* 12–14 card padding */
+  --g4-pad-card-sm: 12px;
+  --g4-safe-bottom: 22px;       /* tab-bar bottom safe area */
+
+  /* ─── Surfaces resolved for the active theme ─────────────────────── */
+  /* Ported components read these, so light/dark needs no branching. */
+  --g4-bg: var(--g4-paper);
+  --g4-surface: var(--g4-card);
+  --g4-text: var(--g4-ink);
+  --g4-text-muted: var(--g4-body-muted);
+  --g4-border: var(--g4-line);
+  --g4-border-soft: var(--g4-line-soft);
+  --g4-accent: var(--g4-scarlet);
+  --g4-tabbar-bg: var(--g4-card);
+  --g4-on-accent: #FFFFFF;
+  --g4-on-ink: var(--g4-paper);
+
+  /* ══ LEGACY ALIASES ══════════════════════════════════════════════
+     Old names re-pointed at 4a values (handover 14 §3.3). Delete a line
+     only once no surface reads that token any more. */
+  --paper: var(--g4-paper);
+  --bg-paper: var(--g4-paper);
+  --bg-page: var(--g4-paper);
+  --bg-base: var(--g4-paper);
+  --bg-raised: var(--g4-card);
+  --bg-elev: var(--g4-card);
+  --bg-elevated: var(--g4-card);
+  --bg-surface: var(--g4-card);
+  --panel: var(--g4-card);
+  --panel2: var(--g4-card);
+  --panel-soft: var(--g4-line-soft);
+  --panel-row: var(--g4-line-soft);
+
+  --ink-1: var(--g4-ink);
+  --ink-2: var(--g4-body-muted);
+  --ink-3: var(--g4-muted);
+  --ink-4: var(--g4-muted);
+  --ink-on-accent: var(--g4-on-accent);
+  --ink-on-pulse: var(--g4-on-accent);
+
+  /* pickem-orange WAS the Pick'em accent; 4a makes it scarlet. */
+  --pickem-orange: var(--g4-scarlet);
+  --pickem-orange-deep: #B02417;
+  --pickem-orange-soft: var(--g4-lose-bg);
+  --pickem-orange-wash: var(--g4-lose-bg);
+  --primary: var(--g4-scarlet);
+  --pulse: var(--g4-scarlet);
+  --pulse-deep: #B02417;
+  --pulse-soft: var(--g4-lose-bg);
+  --pulse-wash: var(--g4-lose-bg);
+
+  --p-up: var(--g4-win);
+  --p-up-wash: var(--g4-win-bg);
+  --p-down: var(--g4-lose);
+  --p-down-wash: var(--g4-lose-bg);
+  --p-live: var(--g4-scarlet);
+  --p-live-wash: var(--g4-lose-bg);
+  --p-info: var(--g4-cobalt);
+  --p-info-wash: #E7EBF9;
+
+  /* ★ star ×2 IS the existing jagoan mechanic — presentation only. */
+  --p-jagoan: var(--g4-scarlet);
+  --p-jagoan-wash: var(--g4-star-bg);
+
+  --p-line: var(--g4-line);
+  --p-card: var(--g4-card);
+  --p-ink: var(--g4-ink);
+  --p-muted: var(--g4-body-muted);
+}
+
+/* ==========================================================================
+   Edisi Malam — dark, automatic 19:00–06:00 WIB (R1-7), manual override.
+   Live tiles keep their 4px sport left borders; scores go scarlet-soft.
+   ========================================================================== */
+/* Both selectors on purpose: :root is how the theme engine applies it
+   globally, and the bare attribute lets any subtree opt in — which is
+   what makes the /dev/primitives route able to show light and Edisi
+   Malam side by side, and what R2 needs for always-dark share cards
+   inside a light app. */
+:root[data-theme4a='dark'],
+[data-theme4a='dark'] {
+  --g4-bg: #15110C;
+  --g4-surface: #211C15;
+  --g4-tabbar-bg: #1B1610;
+  --g4-border: #35302A;
+  --g4-border-soft: #2A251E;
+  --g4-text: #FAF7F1;
+  --g4-text-muted: var(--g4-muted);
+  --g4-accent: var(--g4-scarlet-soft);
+  --g4-on-ink: #FAF7F1;
+
+  /* Result tints need lifting off the dark surface. */
+  --g4-win: #7BC98F;
+  --g4-win-bg: rgba(31, 122, 61, 0.25);
+  --g4-lose: #FF8A75;
+  --g4-lose-bg: rgba(163, 31, 18, 0.25);
+
+  --g4-locked-chip-bg: #2A251E;
+  --g4-locked-chip-fg: var(--g4-muted);
+  --g4-star-bg: #2A251E;
+
+  /* Legacy aliases, dark. */
+  --paper: var(--g4-bg);
+  --bg-paper: var(--g4-bg);
+  --bg-page: var(--g4-bg);
+  --bg-base: var(--g4-bg);
+  --bg-raised: var(--g4-surface);
+  --bg-elev: var(--g4-surface);
+  --bg-elevated: var(--g4-surface);
+  --bg-surface: var(--g4-surface);
+  --panel: var(--g4-surface);
+  --panel2: var(--g4-surface);
+  --panel-soft: var(--g4-border-soft);
+  --panel-row: var(--g4-border-soft);
+
+  --ink-1: var(--g4-text);
+  --ink-2: #C9BFAE;
+  --ink-3: var(--g4-muted);
+  --ink-4: var(--g4-muted);
+
+  --pickem-orange: var(--g4-scarlet-soft);
+  --pickem-orange-deep: var(--g4-scarlet);
+  --pickem-orange-soft: rgba(255, 107, 87, 0.25);
+  --pickem-orange-wash: rgba(255, 107, 87, 0.18);
+  --primary: var(--g4-scarlet-soft);
+  --pulse: var(--g4-scarlet-soft);
+  --pulse-deep: var(--g4-scarlet);
+  --pulse-soft: rgba(255, 107, 87, 0.25);
+  --pulse-wash: rgba(255, 107, 87, 0.18);
+
+  --p-up: var(--g4-win);
+  --p-up-wash: var(--g4-win-bg);
+  --p-down: var(--g4-lose);
+  --p-down-wash: var(--g4-lose-bg);
+  --p-live: var(--g4-scarlet-soft);
+  --p-live-wash: rgba(255, 107, 87, 0.18);
+  --p-info: #7EA0FF;
+  --p-info-wash: rgba(126, 160, 255, 0.18);
+  --p-jagoan: var(--g4-scarlet-soft);
+  --p-jagoan-wash: var(--g4-star-bg);
+
+  --p-line: var(--g4-border);
+  --p-card: var(--g4-surface);
+  --p-ink: var(--g4-text);
+  --p-muted: #C9BFAE;
+}
+
+/* Desktop type step-up (#t6): the score detail reaches 44px. */
+@media (min-width: 1024px) {
+  :root {
+    --g4-size-hero: 32px;
+    --g4-size-hero-lg: 44px;
+    --g4-size-title: 24px;
+    --g4-size-card-title: 16px;
+    --g4-size-body: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --g4-motion: none; }
+}

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
  * WhatsAppShare — one-tap "Share WhatsApp" button. Copies the share text to
  * clipboard and opens wa.me so the user lands directly in a chat picker.
  *
- *   <WhatsAppShare text={`Cek bracket gue di Gibol: ${url}`} />
+ *   <WhatsAppShare text={`Cek bracketku di Gibol: ${url}`} />
  */
 export default function WhatsAppShare({ text }) {
   const [copied, setCopied] = useState(false);

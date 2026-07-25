@@ -136,7 +136,7 @@ function BracketEditInner() {
                   </div>
                   {isOwner && (
                     <WhatsAppShare
-                      text={`Cek bracket NBA Playoffs gue di Gibol — ${bracket.score ?? 0} poin sejauh ini.\nhttps://www.gibol.co/bracket/${bracket.id}/share`}
+                      text={`Cek bracket NBA Playoffs-ku di Gibol — ${bracket.score ?? 0} poin sejauh ini.\nhttps://www.gibol.co/bracket/${bracket.id}/share`}
                     />
                   )}
                 </div>

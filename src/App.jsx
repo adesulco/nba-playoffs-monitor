@@ -139,6 +139,8 @@ const PredictingHub  = lazy(() => import('./pickem/PredictingHub.jsx'));
 const FixtureDetail  = lazy(() => import('./pickem/FixtureDetail.jsx'));
 const PickemLeaderboard = lazy(() => import('./pickem/Leaderboard.jsx'));
 const Grup           = lazy(() => import('./pickem/Grup.jsx'));
+// R1-4 — Sistem 4a primitives QA route, flagged off by default.
+const DevPrimitives  = lazy(() => import('./pickem/DevPrimitives.jsx'));
 const GrupCreate     = lazy(() => import('./pickem/GrupCreate.jsx'));
 const GrupDetail     = lazy(() => import('./pickem/GrupDetail.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
@@ -421,6 +423,7 @@ export default function App() {
             {UI.pickem && <Route path="/pickem" element={<PredictingHub />} />}
             {UI.pickem && <Route path="/pickem/fixture/:id" element={<FixtureDetail />} />}
             {UI.pickem && <Route path="/pickem/board" element={<PickemLeaderboard />} />}
+            {UI.devPrimitives && <Route path="/dev/primitives" element={<DevPrimitives />} />}
             {UI.pickem && <Route path="/pickem/grup" element={<Grup />} />}
             {UI.pickem && <Route path="/pickem/grup/new" element={<GrupCreate />} />}
             {UI.pickem && <Route path="/pickem/grup/join" element={<GrupJoin />} />}

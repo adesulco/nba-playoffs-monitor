@@ -8331,7 +8331,58 @@
 //   red. Everything above runs on ESPN + fixturedownload instead, so nothing
 //   is blocked, but renew it to restore the richer stats path (and the
 //   api-football source is still wired in the backfill script for that day).
-export const APP_VERSION = '0.81.1';
+// v0.82.0 — R1 SISTEM 4a FOUNDATION (2026-07-25). The locked redesign's
+// substrate, on the unchanged engine. Nothing user-visible flips yet:
+// tokens alias, primitives live behind a flagged QA route, R2 composes
+// them into screens.
+// R1-1 — fonts: self-hosted latin subsets, 50KB total, no Google Fonts
+//   runtime request. Bricolage Grotesque PINNED to weight 800 (opsz 24) —
+//   the only weight the design uses — which cut it 75KB→21KB vs the full
+//   opsz 12..96 × wght 400..800 variable file; Instrument Sans stays
+//   variable 400..700 (smaller than four static instances). Budget was
+//   ≤80KB, so there's headroom if a second Bricolage weight is ever needed.
+// R1-2 — src/styles/tokens-4a.css: the full palette / type / shape /
+//   spacing tables from the design README, plus the Edisi Malam dark set.
+//   The migration is ALIASED per handover 14 §3.3: legacy names
+//   (--pickem-orange, --p-jagoan, --ink-1, --paper …) re-point at 4a
+//   values, so unported surfaces render in the new palette instead of
+//   drifting half-old/half-new. Loaded after index.css + pickem.css so the
+//   aliases win. Dark tokens intentionally match BOTH :root[data-theme4a]
+//   and a bare [data-theme4a] so a subtree can opt in — needed by the QA
+//   route and by R2's always-dark share cards inside a light app.
+// R1-3 — Logo4a: GI/BOL stacked block, pure CSS/type, radius+padding
+//   derived from font size so 12/15/26px all come from one component.
+//   Taglines exported ("Main. Skor. Kabar." / "Semua demi gengsi.").
+// R1-4 — the 6 primitives (src/pickem/components/primitives4a.jsx):
+//   MatchCard · PickChip (5 exact states) · LeaderboardRow (kamu tint +
+//   belum-pick badge) · LiveTile (4px sport border + personal pick status)
+//   · KabarCard (3px sport top border + pick hook) · LockBadge
+//   (countdown → terkunci). Presentation-only: they take data and
+//   callbacks and never fetch, so R2 composes them against the
+//   src/pickem/api.js seam. On /dev/primitives behind
+//   VITE_FLAG_DEV_PRIMITIVES (default off) in 3 skins × light/Edisi Malam.
+//   Browser-verified at 390×844; the route immediately earned itself by
+//   catching the :root-only dark-token scoping bug above.
+// R1-5 — sportSkins.js: Bola / Basket / MotoGP / Voli accents, event-unit
+//   nouns, pick grammar, lock verbs, live-tile mode. Keyed by SPORT, never
+//   by competition, with skinForCompetition() mapping AFF/EPL/WC → bola.
+// R1-6 — icons4a.jsx: inline-SVG set in Phosphor-bold style (24×24, 2.5px,
+//   round caps), no icon dependency. Replaces the canvas's ▲●▶■ unicode
+//   placeholders, which were explicitly not shipping.
+// R1-7 — theme4a.js: auto Edisi Malam 19:00–06:00 computed from a FIXED
+//   UTC+7 (WIB never observes DST), so "Malam Ini" means the same instant
+//   for a whole grup regardless of device timezone. Manual override is
+//   sticky-but-self-clearing: it stores which side of the schedule the user
+//   chose and expires once the schedule catches up, so forcing dark at noon
+//   doesn't strand anyone in dark forever. Applied before first paint.
+// R1-8 — copy migration + a REGISTER guard in check-vocab.mjs (build gate):
+//   kamu/-mu enforced, lo/gue rejected with the suggested fix printed.
+//   Matches only inside string literals and JSX text, because "lo" and
+//   "gue" collide with real tokens (lock, logo, league). It found 8
+//   pre-existing violations on first run — all migrated (Derby, BracketEdit,
+//   LeaderboardLeague, PickemHomeHero, WhatsAppShare share copy).
+// Suite: 114 tests (+9 — WIB window boundaries and the lock countdown).
+export const APP_VERSION = '0.82.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
