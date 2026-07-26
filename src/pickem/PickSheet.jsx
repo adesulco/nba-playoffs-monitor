@@ -390,7 +390,9 @@ function PickSheetInner() {
         ) : saved ? (
           <button
             type="button"
-            onClick={() => navigate(inviteCode ? `/g/${inviteCode}` : '/pickem')}
+            // After a confirmed pick the payoff is seeing where you stand,
+            // so land on the grup home rather than back on the invite.
+            onClick={() => navigate(inviteCode ? `/grup/${inviteCode}` : '/pickem')}
             style={{ ...S.cta, background: 'var(--g4-win)' }}
           >
             <IconCheck size={17} /> {tx('Pick locked in', 'Pick kamu tersimpan')}
