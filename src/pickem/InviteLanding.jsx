@@ -20,7 +20,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { leagueDetail } from './api.js';
+import { leagueDetail, listFixtures } from './api.js';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import Logo4a, { TAGLINE_SUPPORT } from './components/Logo4a.jsx';
@@ -57,6 +57,8 @@ function InviteLandingInner() {
   const tx = (en, id) => (lang === 'id' ? id : en);
 
   const [state, setState] = useState({ loading: true, league: null, members: [], error: null });
+  // The next unlocked fixture — both the CTA target and the teaser line.
+  const [nextFixture, setNextFixture] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -76,6 +78,24 @@ function InviteLandingInner() {
     return () => { cancelled = true; };
   }, [code, user]);
 
+  // Find the soonest fixture still open, so "Gabung grup" can land directly
+  // on a pick sheet (tap 1 of 3) instead of a hub the visitor has to parse.
+  useEffect(() => {
+    const comp = state.league?.competition;
+    if (!comp) return;
+    let cancelled = false;
+    (async () => {
+      const res = await listFixtures({ league: comp, status: 'scheduled', limit: 500 });
+      if (cancelled || !res?.ok) return;
+      const nowMs = Date.now();
+      const open = (res.fixtures || [])
+        .filter((f) => new Date(f.lock_at || f.kickoff_at).getTime() > nowMs)
+        .sort((a, b) => new Date(a.kickoff_at) - new Date(b.kickoff_at));
+      setNextFixture(open[0] || null);
+    })();
+    return () => { cancelled = true; };
+  }, [state.league?.competition]);
+
   const { loading, league, members, error } = state;
   const competition = league?.competition ? COMPETITIONS[league.competition] : null;
   const skin = useMemo(
@@ -87,13 +107,24 @@ function InviteLandingInner() {
   // returns without exposing emails.
   const inviter = members.find((m) => m.is_owner)?.display_name;
 
-  // Tap 1 of the ≤3-tap budget: straight into picking, no auth gate. The
-  // code rides along so the pick surface can join the grup on claim.
+  // Tap 1 of the ≤3-tap budget: straight into the pick sheet for the next
+  // pickable match — no auth gate, no intermediate hub. The invite code
+  // rides along so the pick surface can send them back here, and so the
+  // grup join can be claimed alongside the pick on first login.
   function handleJoin() {
-    const target = league?.competition
-      ? `/pickem?competition=${encodeURIComponent(league.competition)}&invite=${encodeURIComponent(code)}`
-      : '/pickem';
-    navigate(target);
+    if (nextFixture) {
+      navigate(
+        `/pick/${nextFixture.id}?league=${encodeURIComponent(league.competition)}` +
+        `&invite=${encodeURIComponent(code)}`
+      );
+      return;
+    }
+    // Nothing open to pick (between matchdays) — fall back to the hub.
+    navigate(
+      league?.competition
+        ? `/pickem?competition=${encodeURIComponent(league.competition)}`
+        : '/pickem'
+    );
   }
 
   if (loading) {
@@ -207,7 +238,14 @@ function InviteLandingInner() {
           'Menang, dibanggakan seminggu. Kalah, jadi bahan bercandaan.'
         )}
         <br />
-        <span style={{ color: 'var(--g4-text-muted)' }}>{TAGLINE_SUPPORT}</span>
+        {nextFixture ? (
+          <span style={{ color: 'var(--g4-text-muted)' }}>
+            {tx('Your first pick: ', 'Pick pertamamu: ')}
+            {nextFixture.home_team} vs {nextFixture.away_team}
+          </span>
+        ) : (
+          <span style={{ color: 'var(--g4-text-muted)' }}>{TAGLINE_SUPPORT}</span>
+        )}
       </p>
     </Shell>
   );

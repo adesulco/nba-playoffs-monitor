@@ -143,6 +143,8 @@ const Grup           = lazy(() => import('./pickem/Grup.jsx'));
 const DevPrimitives  = lazy(() => import('./pickem/DevPrimitives.jsx'));
 // R2 — /g/:code invite landing (public, no auth wall). Top of the loop.
 const InviteLanding  = lazy(() => import('./pickem/InviteLanding.jsx'));
+// R2 — /pick/:fixtureId pick sheet. Public: guest picks, no login wall.
+const PickSheet      = lazy(() => import('./pickem/PickSheet.jsx'));
 const GrupCreate     = lazy(() => import('./pickem/GrupCreate.jsx'));
 const GrupDetail     = lazy(() => import('./pickem/GrupDetail.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
@@ -427,6 +429,7 @@ export default function App() {
             {UI.pickem && <Route path="/pickem/board" element={<PickemLeaderboard />} />}
             {UI.devPrimitives && <Route path="/dev/primitives" element={<DevPrimitives />} />}
             {UI.pickem && <Route path="/g/:code" element={<InviteLanding />} />}
+            {UI.pickem && <Route path="/pick/:fixtureId" element={<PickSheet />} />}
             {UI.pickem && <Route path="/pickem/grup" element={<Grup />} />}
             {UI.pickem && <Route path="/pickem/grup/new" element={<GrupCreate />} />}
             {UI.pickem && <Route path="/pickem/grup/join" element={<GrupJoin />} />}

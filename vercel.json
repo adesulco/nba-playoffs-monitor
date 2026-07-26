@@ -25,6 +25,7 @@
     { "source": "/leaderboard", "destination": "/index.html" },
     { "source": "/leaderboard/:leagueId", "destination": "/index.html" },
     { "source": "/g/:code", "destination": "/index.html" },
+    { "source": "/pick/:fixtureId", "destination": "/index.html" },
     { "source": "/pickem", "destination": "/index.html" },
     { "source": "/pickem/:path*", "destination": "/index.html" },
     { "source": "/nba", "destination": "/index.html" },
