@@ -576,12 +576,29 @@ export function LockBadge({ secondsLeft, locked = false, label, style }) {
   );
 }
 
-/** HH:MM:SS, or MM:SS under an hour. */
+/**
+ * Lock countdown: MM:SS under an hour, HH:MM:SS under a day, and "2h 5j"
+ * style beyond that.
+ *
+ * The day form matters because fixtures are seeded a whole season ahead:
+ * a raw clock would render "lock 912:14:07" for an EPL match in May, and
+ * even a next-day match reads as a confusing "lock 25:42:10". Day/hour is
+ * the only form that stays legible across the full range.
+ *
+ * 'h'/'j' are hari/jam — the ID abbreviations, kept in both locales since
+ * they're compact and the surrounding "lock" label carries the meaning.
+ */
 export function formatCountdown(totalSeconds) {
   if (totalSeconds == null || !Number.isFinite(totalSeconds) || totalSeconds < 0) return '00:00';
+  const pad = (n) => String(n).padStart(2, '0');
+  const DAY = 86400;
+  if (totalSeconds >= DAY) {
+    const d = Math.floor(totalSeconds / DAY);
+    const h = Math.floor((totalSeconds % DAY) / 3600);
+    return `${d}h ${h}j`;
+  }
   const s = Math.floor(totalSeconds % 60);
   const m = Math.floor((totalSeconds / 60) % 60);
   const h = Math.floor(totalSeconds / 3600);
-  const pad = (n) => String(n).padStart(2, '0');
   return h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
 }

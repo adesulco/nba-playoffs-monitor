@@ -60,9 +60,18 @@ describe('formatCountdown', () => {
     expect(formatCountdown(3599)).toBe('59:59');
   });
 
-  it('shows HH:MM:SS at an hour and beyond', () => {
+  it('shows HH:MM:SS from an hour up to a day', () => {
     expect(formatCountdown(3600)).toBe('01:00:00');
     expect(formatCountdown(9669)).toBe('02:41:09'); // the canvas value
+    expect(formatCountdown(86399)).toBe('23:59:59');
+  });
+
+  it('switches to day/hour past 24h so far-future locks stay legible', () => {
+    // A raw clock would read "lock 25:42:10" for a next-day match and
+    // "lock 912:00:00" for an EPL fixture in May — both unreadable.
+    expect(formatCountdown(86400)).toBe('1h 0j');
+    expect(formatCountdown(92530)).toBe('1h 1j');
+    expect(formatCountdown(86400 * 38)).toBe('38h 0j');
   });
 
   it('degrades safely on junk rather than rendering NaN', () => {
