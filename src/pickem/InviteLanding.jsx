@@ -182,7 +182,8 @@ function InviteLandingInner() {
         <div style={S.grupName}>{league.name}</div>
         <div style={S.meta}>
           {tx(
-            `${memberCount} members · ${competition?.labelLong || league.competition}`,
+            // EN pluralises; ID doesn't (anggota is number-neutral).
+            `${memberCount} ${memberCount === 1 ? 'member' : 'members'} · ${competition?.labelLong || league.competition}`,
             `${memberCount} anggota · ${competition?.labelLong || league.competition}`
           )}
           {league.current_matchday ? tx(` · week ${league.current_matchday}`, ` · pekan ${league.current_matchday}`) : ''}
