@@ -105,6 +105,14 @@
   --g4-tabbar-bg: var(--g4-card);
   --g4-on-accent: #FFFFFF;
   --g4-on-ink: var(--g4-paper);
+  /* "Ink block" surfaces — the grup header, the star card, the grup
+     summary card: paper-on-ink panels that read as a deliberate dark
+     inset. In light mode that IS ink. In Edisi Malam, ink (#171310) sits
+     on a #15110C page and the block disappears, so dark lifts it to the
+     card tone instead + a hairline. Any full-bleed dark panel must use
+     this token, never --g4-ink directly. */
+  --g4-ink-block: var(--g4-ink);
+  --g4-ink-block-border: var(--g4-ink);
 
   /* ══ LEGACY ALIASES ══════════════════════════════════════════════
      Old names re-pointed at 4a values (handover 14 §3.3). Delete a line
@@ -179,6 +187,9 @@
   --g4-text-muted: var(--g4-muted);
   --g4-accent: var(--g4-scarlet-soft);
   --g4-on-ink: #FAF7F1;
+  /* Lifted so paper-on-ink panels stay visible against the dark page. */
+  --g4-ink-block: #241E17;
+  --g4-ink-block-border: #35302A;
 
   /* Result tints need lifting off the dark surface. */
   --g4-win: #7BC98F;

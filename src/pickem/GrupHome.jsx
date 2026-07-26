@@ -292,10 +292,11 @@ const S = {
     boxSizing: 'border-box',
   },
   inkHeader: {
-    background: 'var(--g4-ink)',
+    background: 'var(--g4-ink-block)',
     color: 'var(--g4-paper)',
     padding: '22px 20px 16px',
     borderRadius: '0 0 22px 22px',
+    borderBottom: '1px solid var(--g4-ink-block-border)',
   },
   inkTop: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
   iconBtnLight: {
@@ -387,7 +388,7 @@ const S = {
     display: 'block',
     width: 'calc(100% - 28px)',
     margin: '12px 14px 14px',
-    background: 'var(--g4-ink)',
+    background: 'var(--g4-ink-block)',
     color: 'var(--g4-paper)',
     borderRadius: 'var(--g4-radius-cta)',
     padding: 13,
@@ -416,7 +417,7 @@ const S = {
   copyPill: {
     appearance: 'none',
     border: 'none',
-    background: 'var(--g4-ink)',
+    background: 'var(--g4-ink-block)',
     color: 'var(--g4-paper)',
     font: '700 11px/1 var(--g4-font-ui)',
     padding: '8px 12px',

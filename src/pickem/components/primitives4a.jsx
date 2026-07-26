@@ -506,7 +506,7 @@ export function KabarCard({
                     appearance: 'none',
                     border: 'none',
                     marginTop: 10,
-                    background: 'var(--g4-ink)',
+                    background: 'var(--g4-ink-block)',
                     color: 'var(--g4-paper)',
                     borderRadius: 'var(--g4-radius-pill)',
                     padding: '7px 14px',
@@ -560,7 +560,7 @@ export function LockBadge({ secondsLeft, locked = false, label, style }) {
   return (
     <span
       style={{
-        background: 'var(--g4-ink)',
+        background: 'var(--g4-ink-block)',
         color: 'var(--g4-paper)',
         fontSize: 10,
         fontWeight: 700,
