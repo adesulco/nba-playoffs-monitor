@@ -1,5 +1,6 @@
 import { ImageResponse } from '@vercel/og';
 import React from 'react';
+import { buildShare4a, share4aSize } from './_lib/og/share4a.js';
 
 export const config = {
   runtime: 'edge',
@@ -23,11 +24,20 @@ async function loadFonts(reqUrl) {
   if (__cachedFonts) return __cachedFonts;
   try {
     const origin = new URL(reqUrl).origin;
-    const [sgBuf, jbmBuf] = await Promise.all([
+    const [sgBuf, jbmBuf, bricBuf, instBuf] = await Promise.all([
       fetch(`${origin}/fonts/space-grotesk-latin.woff2`).then((r) =>
         r.ok ? r.arrayBuffer() : null,
       ),
       fetch(`${origin}/fonts/jetbrains-mono-latin.woff2`).then((r) =>
+        r.ok ? r.arrayBuffer() : null,
+      ),
+      // R2 — the Sistem 4a typefaces, for the ?type=g4-* share cards.
+      // Same self-hosted subsets the app uses (R1-1), so a share card and
+      // the screen it came from are set in the same faces.
+      fetch(`${origin}/fonts/bricolage-grotesque-800-latin.woff2`).then((r) =>
+        r.ok ? r.arrayBuffer() : null,
+      ),
+      fetch(`${origin}/fonts/instrument-sans-latin.woff2`).then((r) =>
         r.ok ? r.arrayBuffer() : null,
       ),
     ]);
@@ -41,6 +51,18 @@ async function loadFonts(reqUrl) {
     if (jbmBuf) {
       fonts.push({ name: 'JetBrains Mono', data: jbmBuf, weight: 400, style: 'normal' });
       fonts.push({ name: 'JetBrains Mono', data: jbmBuf, weight: 700, style: 'normal' });
+    }
+    if (bricBuf) {
+      // Pinned to 800 upstream (the only weight the design uses), but
+      // registered at 400 too so a stray lighter node still resolves to
+      // Bricolage rather than silently falling back to default sans.
+      fonts.push({ name: 'Bricolage Grotesque', data: bricBuf, weight: 800, style: 'normal' });
+      fonts.push({ name: 'Bricolage Grotesque', data: bricBuf, weight: 400, style: 'normal' });
+    }
+    if (instBuf) {
+      fonts.push({ name: 'Instrument Sans', data: instBuf, weight: 400, style: 'normal' });
+      fonts.push({ name: 'Instrument Sans', data: instBuf, weight: 600, style: 'normal' });
+      fonts.push({ name: 'Instrument Sans', data: instBuf, weight: 700, style: 'normal' });
     }
     __cachedFonts = fonts;
   } catch (err) {
@@ -89,6 +111,20 @@ export default async function handler(req) {
   // through to the existing NBA recap renderer for everything else
   // (back-compat with /recap/[gameId] callers).
   const type = url.searchParams.get('type') || '';
+  // R2 — Sistem 4a share cards. Dispatched here rather than as their own
+  // endpoint because the Vercel Hobby function budget is 12/12.
+  if (type.startsWith('g4-')) {
+    const params = Object.fromEntries(url.searchParams.entries());
+    const { width, height } = share4aSize(params);
+    return new ImageResponse(buildShare4a(type, params), {
+      width,
+      height,
+      fonts,
+      headers: {
+        'Cache-Control': 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800',
+      },
+    });
+  }
   if (type.startsWith('pickem-')) {
     return renderPickem(type, url, fonts);
   }
