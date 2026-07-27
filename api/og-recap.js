@@ -401,8 +401,12 @@ export default async function handler(req) {
     height: H,
     fonts: fonts && fonts.length ? fonts : undefined,
     headers: {
+      // NB: do NOT set Content-Type here. ImageResponse already sets it,
+      // and the duplicate produced `content-type: image/png, image/png`,
+      // which made Vercel return HTTP 200 with a ZERO-BYTE body — every
+      // recap PNG silently blank in production. og-derby omits it and has
+      // always worked.
       'Cache-Control': 'public, max-age=31536000, immutable',
-      'Content-Type': 'image/png',
     },
   });
 }
@@ -457,8 +461,12 @@ function renderPickem(type, url, fonts) {
       // Pick'em recap PNGs are derived from a single user moment; cache
       // aggressively (1 year, immutable) the same way the NBA recap path
       // does. Each unique query produces a unique URL.
+      // NB: do NOT set Content-Type here. ImageResponse already sets it,
+      // and the duplicate produced `content-type: image/png, image/png`,
+      // which made Vercel return HTTP 200 with a ZERO-BYTE body — every
+      // recap PNG silently blank in production. og-derby omits it and has
+      // always worked.
       'Cache-Control': 'public, max-age=31536000, immutable',
-      'Content-Type': 'image/png',
     },
   });
 }
