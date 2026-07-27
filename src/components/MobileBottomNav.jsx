@@ -311,11 +311,22 @@ function NavButton({ icon, label, active, onClick, to }) {
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
+/**
+ * Routes that ship their own Sistem 4a tab bar (TabBar4a). Two fixed bars
+ * pinned to the same edge is a real conflict — this one has the higher
+ * z-index, so it would sit on top of the 4a bar and hide it. R3's root
+ * flip makes the 4a bar the primary navigation; until then these routes
+ * opt out explicitly.
+ */
+const FOUR_A_SHELL_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup\//, /^\/pick\//, /^\/g\//];
+
 export default function MobileBottomNav() {
   const location = useLocation();
   const { lang } = useApp();
   const sport = detectSport(location.pathname);
   const items = navItemsFor(sport, lang);
+
+  if (FOUR_A_SHELL_ROUTES.some((re) => re.test(location.pathname))) return null;
 
   function openSearch() {
     window.dispatchEvent(new CustomEvent('gibol:open-search'));

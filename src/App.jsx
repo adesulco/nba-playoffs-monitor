@@ -147,6 +147,10 @@ const InviteLanding  = lazy(() => import('./pickem/InviteLanding.jsx'));
 const PickSheet      = lazy(() => import('./pickem/PickSheet.jsx'));
 // R2 — /grup/:code grup home (klasemen, nudge, invite card).
 const GrupHome       = lazy(() => import('./pickem/GrupHome.jsx'));
+// R2 — the Main root shell + Skor tab. Main is behind
+// VITE_FLAG_PICKEM_HOME; R3 flips it so gibol.co root = Main.
+const MainShell      = lazy(() => import('./pickem/MainShell.jsx'));
+const SkorTab        = lazy(() => import('./pickem/SkorTab.jsx'));
 const GrupCreate     = lazy(() => import('./pickem/GrupCreate.jsx'));
 const GrupDetail     = lazy(() => import('./pickem/GrupDetail.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
@@ -433,6 +437,8 @@ export default function App() {
             {UI.pickem && <Route path="/g/:code" element={<InviteLanding />} />}
             {UI.pickem && <Route path="/pick/:fixtureId" element={<PickSheet />} />}
             {UI.pickem && <Route path="/grup/:code" element={<GrupHome />} />}
+            {UI.pickem && UI.pickemHome && <Route path="/main" element={<MainShell />} />}
+            {UI.pickem && UI.pickemHome && <Route path="/skor" element={<SkorTab />} />}
             {UI.pickem && <Route path="/pickem/grup" element={<Grup />} />}
             {UI.pickem && <Route path="/pickem/grup/new" element={<GrupCreate />} />}
             {UI.pickem && <Route path="/pickem/grup/join" element={<GrupJoin />} />}
