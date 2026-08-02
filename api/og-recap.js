@@ -6,13 +6,31 @@ export const config = {
   runtime: 'edge',
 };
 
-// IMPORTANT: these must be .ttf, NOT .woff2. Satori (inside @vercel/og)
-// cannot parse WOFF2 — handed one it throws mid-render, and Vercel answers
-// HTTP 200 with a ZERO-BYTE body. That is exactly what happened here: every
-// og-recap PNG was silently blank in production while og-derby (which
-// passes no custom fonts) rendered fine. The .ttf files are converted from
-// the same subsets the app loads as .woff2, so screen and card stay in the
-// same faces; the browser still gets woff2 via CSS.
+// ┌─ KNOWN ISSUE: custom fonts break this renderer. Do not re-enable
+// │  without verifying a non-zero-byte response in production.
+// │
+// │  Every og-recap PNG was returning HTTP 200 with a ZERO-BYTE body —
+// │  the NBA recap path AND the Kartu Bola pickem-* cards — so every
+// │  recap share image has been silently blank in prod. og-derby renders
+// │  fine (435KB) and differs in exactly one way: it passes NO custom
+// │  fonts. Runtime log from the failing call:
+// │
+// │      TypeError: Cannot read properties of undefined (reading '256')
+// │
+// │  i.e. Satori throws while parsing the font, and Vercel turns the
+// │  thrown edge exception into an empty 200 rather than a 500 — which is
+// │  why this went unnoticed: every health check saw "200 image/png".
+// │
+// │  Ruled out on the way here: a duplicated Content-Type header (real,
+// │  fixed, but not the cause) and WOFF2-vs-TTF (Satori indeed can't read
+// │  WOFF2, but .ttf conversions of the same subsets fail identically —
+// │  so the subsets themselves are missing tables Satori needs).
+// │
+// │  FIX FORWARD: rebuild the four faces as full (non-subset) TTFs from
+// │  upstream sources and re-enable via USE_CUSTOM_FONTS below. Until
+// │  then cards render in Satori's bundled face — correct layout and
+// │  copy, generic typography. Shipping beats blank.
+// └─
 //
 // v0.77.0 — Custom font loading for crisp Kartu Bola Pick'em PNGs.
 // Space Grotesk (UI/display) + JetBrains Mono (data/numerals) are the
@@ -28,7 +46,13 @@ export const config = {
 
 let __cachedFonts = null;
 
+// KILL SWITCH — see the note above. Custom fonts are disabled until the
+// subsets are rebuilt in a form Satori accepts. Flip to true only together
+// with a verified non-zero-byte render.
+const USE_CUSTOM_FONTS = false;
+
 async function loadFonts(reqUrl) {
+  if (!USE_CUSTOM_FONTS) return [];
   if (__cachedFonts) return __cachedFonts;
   try {
     const origin = new URL(reqUrl).origin;
