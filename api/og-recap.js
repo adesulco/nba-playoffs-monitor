@@ -6,6 +6,14 @@ export const config = {
   runtime: 'edge',
 };
 
+// IMPORTANT: these must be .ttf, NOT .woff2. Satori (inside @vercel/og)
+// cannot parse WOFF2 — handed one it throws mid-render, and Vercel answers
+// HTTP 200 with a ZERO-BYTE body. That is exactly what happened here: every
+// og-recap PNG was silently blank in production while og-derby (which
+// passes no custom fonts) rendered fine. The .ttf files are converted from
+// the same subsets the app loads as .woff2, so screen and card stay in the
+// same faces; the browser still gets woff2 via CSS.
+//
 // v0.77.0 — Custom font loading for crisp Kartu Bola Pick'em PNGs.
 // Space Grotesk (UI/display) + JetBrains Mono (data/numerals) are the
 // brand fonts. Both are self-hosted at /fonts/*.woff2 (v0.63.0 paper-
@@ -25,19 +33,19 @@ async function loadFonts(reqUrl) {
   try {
     const origin = new URL(reqUrl).origin;
     const [sgBuf, jbmBuf, bricBuf, instBuf] = await Promise.all([
-      fetch(`${origin}/fonts/space-grotesk-latin.woff2`).then((r) =>
+      fetch(`${origin}/fonts/space-grotesk-latin.ttf`).then((r) =>
         r.ok ? r.arrayBuffer() : null,
       ),
-      fetch(`${origin}/fonts/jetbrains-mono-latin.woff2`).then((r) =>
+      fetch(`${origin}/fonts/jetbrains-mono-latin.ttf`).then((r) =>
         r.ok ? r.arrayBuffer() : null,
       ),
       // R2 — the Sistem 4a typefaces, for the ?type=g4-* share cards.
       // Same self-hosted subsets the app uses (R1-1), so a share card and
       // the screen it came from are set in the same faces.
-      fetch(`${origin}/fonts/bricolage-grotesque-800-latin.woff2`).then((r) =>
+      fetch(`${origin}/fonts/bricolage-grotesque-800-latin.ttf`).then((r) =>
         r.ok ? r.arrayBuffer() : null,
       ),
-      fetch(`${origin}/fonts/instrument-sans-latin.woff2`).then((r) =>
+      fetch(`${origin}/fonts/instrument-sans-latin.ttf`).then((r) =>
         r.ok ? r.arrayBuffer() : null,
       ),
     ]);
@@ -119,7 +127,9 @@ export default async function handler(req) {
     return new ImageResponse(buildShare4a(type, params), {
       width,
       height,
-      fonts,
+      // Empty array would make Satori throw; undefined falls back to the
+      // bundled default face, so a font hiccup costs typography, not the card.
+      fonts: fonts && fonts.length ? fonts : undefined,
       headers: {
         'Cache-Control': 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800',
       },
