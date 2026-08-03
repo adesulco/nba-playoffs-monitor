@@ -8331,6 +8331,25 @@
 //   red. Everything above runs on ESPN + fixturedownload instead, so nothing
 //   is blocked, but renew it to restore the richer stats path (and the
 //   api-football source is still wired in the backfill script for that day).
+// v0.83.0 — R2 THE SIX SURFACES (2026-08-03). The Sistem 4a substrate from
+// R1 composed into real screens on live AFF traffic. The full loop is now
+// pixel-faithful to #t4 and shipped: invite landing /g/:code → pick sheet
+// /pick/:fixtureId → grup home /grup/:code → Main shell /main → Skor tab
+// /skor → share cards v2.
+//   /main and /skor are gated behind VITE_FLAG_PICKEM_HOME, which is OFF in
+//   production — R3 flips it so gibol.co root = Main. The first four
+//   surfaces are live and unflagged.
+//   Exit gate for R2 is a MEASUREMENT, not a build: invite→pick ≥50%
+//   same-session and ≥70% completion in the AFF beta grups. Not yet taken.
+//   Share cards: 4 moments (Juara · Streak · Matchday · Invite), always
+//   dark, 1080² + 1200×630 crop, dispatched off api/og-recap.js via
+//   ?type=g4-* because the Hobby function budget is 12/12.
+//   ⚠ Custom fonts are DISABLED in the OG renderer (USE_CUSTOM_FONTS=false).
+//   Satori threw on our font subsets and Vercel turned the edge exception
+//   into an empty HTTP 200 — every recap PNG, including the pre-existing
+//   Kartu Bola cards, was blank in production and had been for some time.
+//   Cards now render correct layout/copy in Satori's bundled face. Restoring
+//   brand typography needs full non-subset TTFs; see api/og-recap.js.
 // v0.82.0 — R1 SISTEM 4a FOUNDATION (2026-07-25). The locked redesign's
 // substrate, on the unchanged engine. Nothing user-visible flips yet:
 // tokens alias, primitives live behind a flagged QA route, R2 composes
@@ -8382,7 +8401,7 @@
 //   pre-existing violations on first run — all migrated (Derby, BracketEdit,
 //   LeaderboardLeague, PickemHomeHero, WhatsAppShare share copy).
 // Suite: 114 tests (+9 — WIB window boundaries and the lock countdown).
-export const APP_VERSION = '0.82.0';
+export const APP_VERSION = '0.83.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to
