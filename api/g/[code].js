@@ -23,6 +23,20 @@ export const config = { runtime: 'edge' };
 
 const ORIGIN = 'https://www.gibol.co';
 
+/**
+ * Human labels for competition keys. The edge runtime can't import the
+ * client-side COMPETITIONS registry, and `league-detail` returns the raw key
+ * — which put a literal "AFF2026" on the invite card, the single most-shared
+ * image we produce. Unknown keys fall through to no season line at all,
+ * because a blank line reads better than a slug.
+ */
+const COMPETITION_LABELS = {
+  AFF2026: 'Piala AFF 2026',
+  WC2026: 'Piala Dunia 2026',
+  'EPL-2026-27': 'Liga Inggris 2026/27',
+  'NBA-Playoffs-2026': 'NBA Playoff 2026',
+};
+
 export default async function handler(req) {
   const url = new URL(req.url);
   // Vercel supplies the segment as ?code=… on the rewrite; fall back to the
@@ -36,7 +50,7 @@ export default async function handler(req) {
   const name = league?.name || 'Grup Pick’em';
   const members = league?.member_count ?? 0;
   const inviter = league?.members?.[0]?.display_name || '';
-  const competition = league?.competition || '';
+  const seasonLabel = COMPETITION_LABELS[league?.competition] || '';
 
   const title = inviter
     ? `${inviter} ngajak kamu ke ${name}`
@@ -51,7 +65,7 @@ export default async function handler(req) {
     `&grup=${encodeURIComponent(name)}` +
     `&members=${encodeURIComponent(String(members))}` +
     `&code=${encodeURIComponent(code)}` +
-    (competition ? `&season=${encodeURIComponent(competition)}` : '');
+    (seasonLabel ? `&season=${encodeURIComponent(seasonLabel)}` : '');
 
   const html = `<!doctype html>
 <html lang="id">
