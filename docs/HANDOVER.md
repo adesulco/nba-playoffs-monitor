@@ -48,7 +48,24 @@ primitives, sport skins, icon set, kamu-register copy guard).
 
 ---
 
-## 3 · What we are working on right now
+## 3 · Pick up here — the pre-live checklist
+
+Ordered by value. Nothing below is started; the repo is clean at `f5f60b0`.
+
+| # | Item | Why it's on the list |
+|---|---|---|
+| 1 | **Invite OG card** (§5 blocker #1) | WhatsApp invite previews are wrong today. Acquisition loop's last mile. Template exists in-repo. |
+| 2 | **Port nickname nudge to the 4a surfaces** | After the R3 flip there is no path to set a nickname; klasemen shows raw `user_id`. |
+| 3 | **Turn `VITE_FLAG_PICKEM_HOME` on somewhere testable** | `/main` + `/skor` are built and browser-verified but OFF in prod, so testers can't reach them. A preview deploy with the env var set is enough — don't flip prod before R3. |
+| 4 | **Brand fonts on share cards** | Cards render, typography is generic. Cosmetic but launch-facing. |
+| 5 | **Take the R2 exit measurement** | See below — it gates R3 and the window closes Aug 11. |
+
+**How to verify anything you build here:** run `DEV_API_PROXY=https://www.gibol.co npm run dev`,
+drive the real screen at 390×844, and `curl` the deployed endpoint checking
+`%{size_download}` — not the status code. Every defect found in this last stretch was invisible
+to `npm run build` and visible within seconds in a browser.
+
+## 4 · The R2 exit gate (still open)
 
 **R2 is built. R2 is not *done*** — its exit gate is a measurement, not a build:
 
@@ -63,7 +80,37 @@ by Ade) and read the `pickemEvents` funnel.
 
 ---
 
-## 4 · What is missing
+## 5 · What is missing
+
+### 🔴 Pre-live blocker #1 — invite links have no OG card
+
+**Sharing a grup invite on WhatsApp currently previews "Skor Live NBA · F1 · Liga Inggris"
+with the generic site image.** Someone sends "join my grup" and the recipient sees a live-scores
+ad. The invite *is* the acquisition loop, so this is the highest-value fix before launch.
+
+Verify it yourself:
+
+```bash
+curl -sS -A "WhatsApp/2.23" https://www.gibol.co/g/QyAumSpv | grep 'og:image'
+```
+
+**Cause:** `/g/:code` rewrites to the static `/index.html` SPA shell. Crawlers don't run JS, so
+the `<SEO>` tags `InviteLanding.jsx` sets at runtime are never seen. Passing an `image` prop to
+`<SEO>` will *not* fix this on its own — it only changes what JS-executing clients see.
+
+**The fix already has a working template in this repo:** `api/recap/page/[gameId].js` is an edge
+function that returns crawler-ready HTML with correct OG meta, reached via a rewrite from
+`/recap/[gameId]`. Copy that shape for invites:
+1. New edge handler that looks up the grup by code and returns HTML whose `og:image` points at
+   `…/api/og-recap?type=g4-invite&grup=…&members=…&code=…` (that card renders correctly today).
+2. Rewrite `/g/:code` to it **with a `has` condition on the `user-agent` header** so only
+   crawlers are routed there and humans keep getting the SPA untouched — zero risk to the live
+   invite flow.
+
+**Function budget note:** the repo counts 8 Node + 4 Edge functions, and `api/recap/[gameId].js`
+carries an in-repo comment stating Edge functions don't count toward the Hobby 12-function cap.
+That suggests an Edge handler for this is affordable — **verify against Vercel before relying
+on it**, since the 12/12 figure in `CLAUDE.md` is what forced the share cards into `og-recap.js`.
 
 ### Known defects / debt
 - **Brand typography is off on every share card.** Satori throws on our font subsets
@@ -74,8 +121,12 @@ by Ade) and read the `pickemEvents` funnel.
   Ruled out already, don't re-litigate: duplicated `Content-Type` header (real, fixed, not
   the cause) and WOFF2-vs-TTF (Satori can't read WOFF2, but TTF conversions of the *same
   subsets* fail identically — the subsets lack tables Satori needs).
-- **Pick'em nickname onboarding** — leaderboards still show a truncated `user_id` until
-  `/onboarding/teams` sets a nickname.
+- **Nickname onboarding doesn't reach the new surfaces.** It *does* exist — the
+  `/onboarding/teams` route is live and `PredictingHub.jsx` has a one-tap nickname nudge
+  (v0.79.22). But that nudge lives on the **old** hub, which Main replaces at the R3 flag flip.
+  `MainShell` / `GrupHome` / `SkorTab` have no equivalent, so after R3 a new user has no path to
+  set a nickname and the klasemen shows `user_id.slice(0,8)`. Port the nudge to the 4a surfaces
+  before the flip — this is visible in every share card and every standings view.
 - **API-Football subscription lapsed** → *(Ade, payment action)*. Nothing is blocked; ESPN +
   fixturedownload carry the load. Renewing restores the richer stats path.
 - **`Kabar` tab is intentionally inert** (muted, non-navigating) until Kabar v1 in R4.
@@ -99,7 +150,7 @@ by Ade) and read the `pickemEvents` funnel.
 
 ---
 
-## 5 · The design direction, in one page
+## 6 · The design direction, in one page
 
 The redesign is **"Sistem 4a"** — the locked canvas is `#t4`; `#t6` covers desktop. The
 strategic move it encodes: **gibol.co stops being a scores site with a Pick'em feature and
@@ -129,7 +180,7 @@ Three structural consequences, all already built or scheduled:
 
 ---
 
-## 6 · Orientation map
+## 7 · Orientation map
 
 ```
 src/pickem/
