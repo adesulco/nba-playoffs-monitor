@@ -27,6 +27,7 @@ import { skinForCompetition } from './sportSkins.js';
 import { MatchCard, LockBadge } from './components/primitives4a.jsx';
 import TabBar4a from './components/TabBar4a.jsx';
 import Logo4a from './components/Logo4a.jsx';
+import NicknameNudge4a from './components/NicknameNudge4a.jsx';
 import { IconChevronRight } from './components/icons4a.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { useApp } from '../lib/AppContext.jsx';
@@ -217,6 +218,12 @@ function MainShellInner() {
                 : tx('Nice. Now go trash-talk the group.', 'Mantap. Sekarang saatnya nyindir grup.')}
             </p>
           </div>
+        )}
+
+        {/* Nickname nudge — Main is the root after R3, so this is where a
+            new user gets their name before the klasemen shows a raw id. */}
+        {user && (
+          <NicknameNudge4a user={user} competitionKey={competitionKey} lang={lang} />
         )}
 
         {/* Malam Ini */}

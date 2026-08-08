@@ -21,6 +21,7 @@ import {
   KabarCard,
   LockBadge,
 } from './components/primitives4a.jsx';
+import NicknameNudge4a from './components/NicknameNudge4a.jsx';
 import Logo4a, { LogoLockup } from './components/Logo4a.jsx';
 import { SPORT_SKINS, skin } from './sportSkins.js';
 import {
@@ -86,6 +87,13 @@ export default function DevPrimitives() {
             <LockBadge secondsLeft={75} />
             <LockBadge locked />
           </Row>
+
+          {/* ── 7. NicknameNudge (R2 port; qaForce = fabricated
+                 "needs nickname" state, since QA has no authed profile) ── */}
+          <Label>Nickname nudge · 4a port</Label>
+          <div style={{ marginBottom: 'var(--g4-gap-card)' }}>
+            <NicknameNudge4a qaForce lang="id" user={null} competitionKey="AFF2026" />
+          </div>
 
           {/* ── 1. MatchCard, per skin ────────────────────────────── */}
           <Label>Match card · per sport skin</Label>

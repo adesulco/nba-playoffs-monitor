@@ -24,6 +24,7 @@ import { leagueDetail, listFixtures } from './api.js';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { LeaderboardRow, LockBadge } from './components/primitives4a.jsx';
+import NicknameNudge4a from './components/NicknameNudge4a.jsx';
 import { IconChevronLeft, IconWhatsApp, IconCopy, IconCheck } from './components/icons4a.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { useApp } from '../lib/AppContext.jsx';
@@ -174,6 +175,17 @@ function GrupHomeInner() {
       </header>
 
       <div style={S.body}>
+        {/* Nickname nudge — right above the klasemen, which is exactly where
+            showing up as a raw hex id hurts. */}
+        {user && (
+          <NicknameNudge4a
+            user={user}
+            competitionKey={league?.competition}
+            lang={lang}
+            style={{ marginBottom: 'var(--g4-gap-card)' }}
+          />
+        )}
+
         {/* Klasemen */}
         <div style={S.sectionRule}>
           <span style={S.sectionTitle}>{tx('Standings', 'Klasemen')}</span>
