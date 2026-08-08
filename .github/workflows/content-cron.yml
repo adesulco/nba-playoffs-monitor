@@ -91,13 +91,7 @@ permissions:
   contents: write   # needs to commit + push the generated JSON files
 
 concurrency:
-  # `github.event.inputs` does not exist outside workflow_dispatch, and this
-  # expression is evaluated at workflow COMPILE time — so on any other event
-  # GitHub failed to start the workflow at all, registering a 0-second run
-  # with no jobs and no logs against whatever push happened to be in flight.
-  # `inputs.*` is the null-safe context, and the literal fallback keeps a
-  # valid group name on schedule runs.
-  group: content-cron-${{ inputs.mode || github.event.schedule || 'default' }}
+  group: content-cron-${{ github.event.inputs.mode || github.event.schedule }}
   cancel-in-progress: false
 
 jobs:
@@ -360,10 +354,10 @@ jobs:
           git add public/content/
           git commit -m "feat(content): cron generated ${{ steps.mode.outputs.mode }} articles
 
-Generated automatically by content-engine cron workflow.
-All articles land with manual_review:true — editor approval via /editor required before public.
+          Generated automatically by content-engine cron workflow.
+          All articles land with manual_review:true — editor approval via /editor required before public.
 
-Co-Authored-By: gibol-bot <bot@gibol.co>"
+          Co-Authored-By: gibol-bot <bot@gibol.co>"
           git push
 
       - name: Write audit row

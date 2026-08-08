@@ -9,6 +9,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Hoisted to job env because the `secrets` context is NOT permitted in a
+    # step-level `if:` — using it there fails workflow compilation outright
+    # (no jobs, no logs, 0s run). `env` IS permitted in `if:`.
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -43,7 +48,7 @@ jobs:
       # in production) stayed invisible for weeks. A CI signal nobody trusts
       # is worse than no signal. Set the secret to re-activate this path.
       - name: Deploy to Vercel
-        if: ${{ secrets.VERCEL_TOKEN != '' }}
+        if: ${{ env.VERCEL_TOKEN != '' }}
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
