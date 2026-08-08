@@ -1,7 +1,7 @@
 # Gibol — Where we are, what's next
 
 **Living document. Update it at the end of every working session.**
-Last updated: **2026-08-03** · shipped version **v0.83.0** · branch `main`
+Last updated: **2026-08-08** · shipped version **v0.83.0** · branch `main`
 
 If you are new to this repo, read this file, then `docs/pickem-flagship/13-DEVELOPMENT-PLAN.md`
 (the release calendar), then `CLAUDE.md` (voice, stack, and operating rules). Everything
@@ -15,9 +15,10 @@ else is background.
 |---|---|---|
 | 1 | **Do not work from `~/Documents/Claude.nosync/`.** macOS evicts file data there; reads block forever and `git status` hangs. It has already destroyed work once. | The working clone is **`~/gibol-workspace/nba-playoffs-monitor`**. Everything since v0.81.0 was committed from there. |
 | 2 | **Vite dev does not run the `api/` functions.** `/api/*` returns raw JS source, so every data-driven screen silently renders its empty state. | Run dev with `DEV_API_PROXY=https://www.gibol.co npm run dev`. Guest mode never writes to the server, so this is read-only in practice. Don't run admin/scoring actions behind it. |
-| 3 | **Vercel Hobby function budget is 12/12 — full.** | New endpoints are not possible. Add a `?type=` / `?_action=` branch to an existing function instead. This is why the 4a share cards live inside `api/og-recap.js`. |
+| 3 | **Node serverless function budget is 12/12 — full.** Edge functions are exempt (confirmed 2026-08-08 by shipping `api/g/[code].js`). | For a Node endpoint, add a `?type=` / `?_action=` branch to an existing function — that's why the 4a share cards live inside `api/og-recap.js`. A new **edge** function is fine. |
 | 4 | **A thrown exception in an edge function returns HTTP 200 with an empty body**, not a 500. | Never treat `200` as proof. Always check `%{size_download}`. This bug hid blank share cards in production for weeks. |
 | 5 | Invite codes are **case-sensitive**. | Never `.toUpperCase()` them — it breaks every join path. |
+| 6 | **Run `actionlint` before pushing any workflow edit.** A 0-second run with no jobs and no logs is a *startup* failure — the logs API has nothing to show by definition, so it is unguessable from the UI. | `content-cron.yml` was invalid YAML from the day it was written and had literally never run; a guard added to `deploy.yml` used the `secrets` context in a step `if:`, which is not permitted and stopped that workflow compiling too. Both were found in one actionlint run after two wrong guesses. |
 
 **Deploy:** push to `origin/main`; Vercel auto-deploys. Verify with `curl`, never with build success.
 **Secrets:** service-role key + `PICKEM_ADMIN_TOKEN` live only in Vercel env vars and local `.env.local`. Never commit them.
@@ -50,11 +51,11 @@ primitives, sport skins, icon set, kamu-register copy guard).
 
 ## 3 · Pick up here — the pre-live checklist
 
-Ordered by value. Nothing below is started; the repo is clean at `f5f60b0`.
+Ordered by value. Item 1 shipped 2026-08-08; the rest are open.
 
 | # | Item | Why it's on the list |
 |---|---|---|
-| 1 | **Invite OG card** (§5 blocker #1) | WhatsApp invite previews are wrong today. Acquisition loop's last mile. Template exists in-repo. |
+| ~~1~~ | ~~**Invite OG card**~~ | ✅ **Shipped 2026-08-08.** Invites now unfurl the real grup card. |
 | 2 | **Port nickname nudge to the 4a surfaces** | After the R3 flip there is no path to set a nickname; klasemen shows raw `user_id`. |
 | 3 | **Turn `VITE_FLAG_PICKEM_HOME` on somewhere testable** | `/main` + `/skor` are built and browser-verified but OFF in prod, so testers can't reach them. A preview deploy with the env var set is enough — don't flip prod before R3. |
 | 4 | **Brand fonts on share cards** | Cards render, typography is generic. Cosmetic but launch-facing. |
@@ -82,35 +83,23 @@ by Ade) and read the `pickemEvents` funnel.
 
 ## 5 · What is missing
 
-### 🔴 Pre-live blocker #1 — invite links have no OG card
+### ~~Pre-live blocker #1 — invite links have no OG card~~ ✅ FIXED (2026-08-08)
 
-**Sharing a grup invite on WhatsApp currently previews "Skor Live NBA · F1 · Liga Inggris"
-with the generic site image.** Someone sends "join my grup" and the recipient sees a live-scores
-ad. The invite *is* the acquisition loop, so this is the highest-value fix before launch.
+Sharing a grup invite now unfurls the real card: *"Bang Ade ngajak kamu ke Tongkrongan AFF"* ·
+*"1 orang udah gabung. Pick tiga tap, gratis — semua demi gengsi."* over the `g4-invite` image.
+Previously it previewed "Skor Live NBA · F1 · Liga Inggris" with the generic site image.
 
-Verify it yourself:
+`api/g/[code].js` is an edge handler serving crawler-ready OG meta, reached from a `/g/:code`
+rewrite gated on a **user-agent `has` condition placed ahead of the SPA rule** — so only crawlers
+hit it and human traffic still gets the SPA untouched. Verify either side:
 
 ```bash
 curl -sS -A "WhatsApp/2.23" https://www.gibol.co/g/QyAumSpv | grep 'og:image'
 ```
 
-**Cause:** `/g/:code` rewrites to the static `/index.html` SPA shell. Crawlers don't run JS, so
-the `<SEO>` tags `InviteLanding.jsx` sets at runtime are never seen. Passing an `image` prop to
-`<SEO>` will *not* fix this on its own — it only changes what JS-executing clients see.
-
-**The fix already has a working template in this repo:** `api/recap/page/[gameId].js` is an edge
-function that returns crawler-ready HTML with correct OG meta, reached via a rewrite from
-`/recap/[gameId]`. Copy that shape for invites:
-1. New edge handler that looks up the grup by code and returns HTML whose `og:image` points at
-   `…/api/og-recap?type=g4-invite&grup=…&members=…&code=…` (that card renders correctly today).
-2. Rewrite `/g/:code` to it **with a `has` condition on the `user-agent` header** so only
-   crawlers are routed there and humans keep getting the SPA untouched — zero risk to the live
-   invite flow.
-
-**Function budget note:** the repo counts 8 Node + 4 Edge functions, and `api/recap/[gameId].js`
-carries an in-repo comment stating Edge functions don't count toward the Hobby 12-function cap.
-That suggests an Edge handler for this is affordable — **verify against Vercel before relying
-on it**, since the 12/12 figure in `CLAUDE.md` is what forced the share cards into `og-recap.js`.
+Edge functions do **not** count against the Hobby 12-function cap — now confirmed by this
+shipping. That reopens the option for future crawler/meta endpoints; the 12/12 limit in §1
+applies to Node serverless functions.
 
 ### Known defects / debt
 - **Brand typography is off on every share card.** Satori throws on our font subsets
@@ -130,6 +119,10 @@ on it**, since the 12/12 figure in `CLAUDE.md` is what forced the share cards in
 - **API-Football subscription lapsed** → *(Ade, payment action)*. Nothing is blocked; ESPN +
   fixturedownload carry the load. Renewing restores the richer stats path.
 - **`Kabar` tab is intentionally inert** (muted, non-navigating) until Kabar v1 in R4.
+- **NBA close-game push scanner fails every 20 min** with `{"error":"espn","detail":"ESPN 403"}`
+  → HTTP 502. ESPN is refusing the scanner's requests. No user impact today (NBA is in
+  offseason) and the football backfill on the same upstream still succeeds, but the NBA nightly
+  slate in R5 rides on this path — fix before then. Not caused by, or fixed in, the R2 work.
 
 ### Not yet started, in calendar order
 - **R3 — EPL launch · Aug 13–15 · v0.90.** Freeze Aug 13; flip `VITE_FLAG_PICKEM_HOME`
