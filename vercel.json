@@ -4,60 +4,201 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/api/proxy/:path*", "destination": "/api/proxy?path=:path*" },
-    { "source": "/api/epl-news", "destination": "/api/news?sport=epl" },
-    { "source": "/api/f1-news", "destination": "/api/news?sport=f1" },
-    { "source": "/api/tennis-news", "destination": "/api/news?sport=tennis" },
-    { "source": "/api/pickem/create", "destination": "/api/pickem?_action=create" },
-    { "source": "/api/pickem/create-league", "destination": "/api/pickem?_action=create-league" },
-    { "source": "/api/pickem/join-league", "destination": "/api/pickem?_action=join-league" },
-    { "source": "/api/pickem/pick", "destination": "/api/pickem?_action=pick" },
-    { "source": "/api/pickem/score", "destination": "/api/pickem?_action=score" },
-    { "source": "/login", "destination": "/index.html" },
-    { "source": "/auth/callback", "destination": "/index.html" },
-    { "source": "/onboarding/teams", "destination": "/index.html" },
-    { "source": "/settings/teams", "destination": "/index.html" },
-    { "source": "/recap", "destination": "/index.html" },
-    { "source": "/recap/:date", "destination": "/index.html" },
-    { "source": "/bracket", "destination": "/index.html" },
-    { "source": "/bracket/:path*", "destination": "/index.html" },
-    { "source": "/league/:path*", "destination": "/index.html" },
-    { "source": "/leaderboard", "destination": "/index.html" },
-    { "source": "/leaderboard/:leagueId", "destination": "/index.html" },
-    { "source": "/g/:code", "destination": "/index.html" },
-    { "source": "/pick/:fixtureId", "destination": "/index.html" },
-    { "source": "/grup/:code", "destination": "/index.html" },
-    { "source": "/main", "destination": "/index.html" },
-    { "source": "/skor", "destination": "/index.html" },
-    { "source": "/pickem", "destination": "/index.html" },
-    { "source": "/pickem/:path*", "destination": "/index.html" },
-    { "source": "/nba", "destination": "/index.html" },
-    { "source": "/nba-playoff-2026/game/:gameId", "destination": "/index.html" },
-    { "source": "/editor", "destination": "/index.html" }
+    {
+      "source": "/api/proxy/:path*",
+      "destination": "/api/proxy?path=:path*"
+    },
+    {
+      "source": "/api/epl-news",
+      "destination": "/api/news?sport=epl"
+    },
+    {
+      "source": "/api/f1-news",
+      "destination": "/api/news?sport=f1"
+    },
+    {
+      "source": "/api/tennis-news",
+      "destination": "/api/news?sport=tennis"
+    },
+    {
+      "source": "/api/pickem/create",
+      "destination": "/api/pickem?_action=create"
+    },
+    {
+      "source": "/api/pickem/create-league",
+      "destination": "/api/pickem?_action=create-league"
+    },
+    {
+      "source": "/api/pickem/join-league",
+      "destination": "/api/pickem?_action=join-league"
+    },
+    {
+      "source": "/api/pickem/pick",
+      "destination": "/api/pickem?_action=pick"
+    },
+    {
+      "source": "/api/pickem/score",
+      "destination": "/api/pickem?_action=score"
+    },
+    {
+      "source": "/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/auth/callback",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/onboarding/teams",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/settings/teams",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/recap",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/recap/:date",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/bracket",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/bracket/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/league/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/leaderboard",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/leaderboard/:leagueId",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/g/:code",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "(?i).*(whatsapp|facebookexternalhit|facebot|twitterbot|slackbot|slack-imgproxy|telegrambot|linkedinbot|discordbot|pinterest|redditbot|embedly|googlebot|bingbot|skypeuripreview|vkshare|w3c_validator).*"
+        }
+      ],
+      "destination": "/api/g/:code"
+    },
+    {
+      "source": "/g/:code",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pick/:fixtureId",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/grup/:code",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/main",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/skor",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pickem",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/pickem/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/nba",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/nba-playoff-2026/game/:gameId",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/editor",
+      "destination": "/index.html"
+    }
   ],
   "redirects": [
-    { "source": "/liga-1-2026", "destination": "/super-league-2025-26", "permanent": true },
-    { "source": "/liga-1-2026/:path*", "destination": "/super-league-2025-26/:path*", "permanent": true },
-    { "source": "/nba-playoffs-2026", "destination": "/nba-playoff-2026", "permanent": true },
-    { "source": "/nba-playoffs-2026/:path*", "destination": "/nba-playoff-2026/:path*", "permanent": true }
+    {
+      "source": "/liga-1-2026",
+      "destination": "/super-league-2025-26",
+      "permanent": true
+    },
+    {
+      "source": "/liga-1-2026/:path*",
+      "destination": "/super-league-2025-26/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/nba-playoffs-2026",
+      "destination": "/nba-playoff-2026",
+      "permanent": true
+    },
+    {
+      "source": "/nba-playoffs-2026/:path*",
+      "destination": "/nba-playoff-2026/:path*",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=(), browsing-topics=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https: wss:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests" },
-        { "key": "Access-Control-Allow-Origin", "value": "https://www.gibol.co" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), interest-cohort=(), browsing-topics=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' data: https:; connect-src 'self' https: wss:; worker-src 'self' blob:; manifest-src 'self'; upgrade-insecure-requests"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://www.gibol.co"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]
