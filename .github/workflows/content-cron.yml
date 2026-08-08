@@ -91,7 +91,13 @@ permissions:
   contents: write   # needs to commit + push the generated JSON files
 
 concurrency:
-  group: content-cron-${{ github.event.inputs.mode || github.event.schedule }}
+  # `github.event.inputs` does not exist outside workflow_dispatch, and this
+  # expression is evaluated at workflow COMPILE time — so on any other event
+  # GitHub failed to start the workflow at all, registering a 0-second run
+  # with no jobs and no logs against whatever push happened to be in flight.
+  # `inputs.*` is the null-safe context, and the literal fallback keeps a
+  # valid group name on schedule runs.
+  group: content-cron-${{ inputs.mode || github.event.schedule || 'default' }}
   cancel-in-progress: false
 
 jobs:

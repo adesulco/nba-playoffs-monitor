@@ -34,7 +34,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Skipped unless VERCEL_TOKEN is set. It is NOT set, and that is fine:
+      # Vercel's own git integration deploys every push, and the real gate is
+      # `npm test` at the head of the `build` script that Vercel runs. Without
+      # this guard the step threw "Input required and not supplied:
+      # vercel-token" and painted the whole workflow red on EVERY push — which
+      # is how a genuinely broken thing (every share-card PNG rendering blank
+      # in production) stayed invisible for weeks. A CI signal nobody trusts
+      # is worse than no signal. Set the secret to re-activate this path.
       - name: Deploy to Vercel
+        if: ${{ secrets.VERCEL_TOKEN != '' }}
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
