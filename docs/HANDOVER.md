@@ -1,11 +1,20 @@
 # Gibol — Where we are, what's next
 
 **Living document. Update it at the end of every working session.**
-Last updated: **2026-08-08** · shipped version **v0.83.0** · branch `main`
+Last updated: **2026-08-09** · shipped version **v0.83.0** · branch `main`
 
-If you are new to this repo, read this file, then `docs/pickem-flagship/13-DEVELOPMENT-PLAN.md`
-(the release calendar), then `CLAUDE.md` (voice, stack, and operating rules). Everything
-else is background.
+If you are new to this repo, read this file, then `docs/pickem-flagship/16-MODULE-EXPANSION-CPO-BD-PLAN.md`
+(the approved module/BD plan — supersedes doc 13 for R4+), then `13-DEVELOPMENT-PLAN.md`
+(still plan of record through R3), then `CLAUDE.md` (voice, stack, operating rules).
+
+> **⚠ Reconciliation note on doc 16 (2026-08-09).** Doc 16's STRATEGY (modules M1–M13, BD
+> workstream, §7 decisions) is approved and current. Its §1 snapshot and R3′ ticket list were
+> drafted against a pre-R1/R2 state and are partly STALE: R3′-1 (EPL seed), R3′-2 (liveness
+> alarm), R3′-3 (CI gate + budget verify) all shipped in R0; R1/R2 are done (v0.83.0), not
+> "unstarted". Still genuinely open from R3′: the AFF SF/F seeding decision and the MW1
+> launch push. **Decision 1 (option B) is the operative change: EPL launches Aug 15 on the
+> CURRENT shell — the root-flip to Main is deferred; 4a keeps shipping route-by-route behind
+> flags.**
 
 ---
 
@@ -34,8 +43,8 @@ The **whole Pick'em loop is built and pixel-faithful** to the `#t4` design canva
 | Invite landing | `/g/:code` | **Live**, public, no auth |
 | Pick sheet | `/pick/:fixtureId` | **Live** |
 | Grup home | `/grup/:code` | **Live** |
-| Main root shell | `/main` | Built, **flag OFF in prod** (`VITE_FLAG_PICKEM_HOME`) |
-| Skor tab | `/skor` | Built, **flag OFF in prod** |
+| Main root shell | `/main` | **Live in prod by URL** (route flag on since 2026-08-09; nothing links to it — root untouched per doc 16 decision 1) |
+| Skor tab | `/skor` | **Live in prod by URL** (same) |
 | Share cards v2 | `api/og-recap?type=g4-*` | **Live**, renders |
 
 **The core loop is verified in a real browser at 390×844:** invite link → confirmed pick in
@@ -56,10 +65,12 @@ Ordered by value. Item 1 shipped 2026-08-08; the rest are open.
 | # | Item | Why it's on the list |
 |---|---|---|
 | ~~1~~ | ~~**Invite OG card**~~ | ✅ **Shipped 2026-08-08.** Invites now unfurl the real grup card. |
-| 2 | **Port nickname nudge to the 4a surfaces** | After the R3 flip there is no path to set a nickname; klasemen shows raw `user_id`. |
-| 3 | **Turn `VITE_FLAG_PICKEM_HOME` on somewhere testable** | `/main` + `/skor` are built and browser-verified but OFF in prod, so testers can't reach them. A preview deploy with the env var set is enough — don't flip prod before R3. |
+| ~~2~~ | ~~**Port nickname nudge to the 4a surfaces**~~ | ✅ **Shipped 2026-08-09** — `NicknameNudge4a` on MainShell + GrupHome, same dismissal key as the old hub's nudge. |
+| ~~3~~ | ~~**Make `/main` + `/skor` testable**~~ | ✅ **Done 2026-08-09** — route flag ON in production; reachable by URL, unlinked, root untouched (doc 16 decision 1). Vercel preview deploys turned out to be SSO-walled (302), so prod-by-URL is the tester path. |
 | 4 | **Brand fonts on share cards** | Cards render, typography is generic. Cosmetic but launch-facing. |
-| 5 | **Take the R2 exit measurement** | See below — it gates R3 and the window closes Aug 11. |
+| 5 | **Take the R2 exit measurement** | See below — it gates the launch and the AFF window closes Aug 11. |
+| 6 | **AFF SF/F decision** (doc 16 R3′-4) | Seed the semis/final only if two-leg handling verifies in <½ day; otherwise skip — group stage ends Aug 11. Log the decision either way. |
+| 7 | **EPL MW1 launch push** (doc 16 R3′-5) | Aug 15, on the current shell. Fixtures are seeded (MW1 kicks off Aug 21). WA-ready invite cards now unfurl correctly; rollover banner exists (R0-6). |
 
 **How to verify anything you build here:** run `DEV_API_PROXY=https://www.gibol.co npm run dev`,
 drive the real screen at 390×844, and `curl` the deployed endpoint checking
