@@ -6,30 +6,22 @@ export const config = {
   runtime: 'edge',
 };
 
-// ┌─ KNOWN ISSUE: custom fonts break this renderer. Do not re-enable
-// │  without verifying a non-zero-byte response in production.
+// ┌─ FONT RULE: Satori (inside @vercel/og) cannot parse VARIABLE fonts —
+// │  handed one it throws mid-parse ("Cannot read properties of undefined
+// │  (reading '256')"), and Vercel converts the thrown edge exception into
+// │  an empty HTTP 200, not a 500. That combination made every recap PNG
+// │  silently blank in production for weeks while health checks saw
+// │  "200 image/png".
 // │
-// │  Every og-recap PNG was returning HTTP 200 with a ZERO-BYTE body —
-// │  the NBA recap path AND the Kartu Bola pickem-* cards — so every
-// │  recap share image has been silently blank in prod. og-derby renders
-// │  fine (435KB) and differs in exactly one way: it passes NO custom
-// │  fonts. Runtime log from the failing call:
+// │  So: every font fetched below MUST be a STATIC instance (one weight,
+// │  no fvar table). The *-400/*-600/*-700 files are fontTools-instanced
+// │  from the same upstreams the app uses; the browser still gets the
+// │  variable woff2 via CSS. Before adding or changing ANY font here run:
 // │
-// │      TypeError: Cannot read properties of undefined (reading '256')
+// │      node scripts/test-satori-fonts.mjs public/fonts/<file>.ttf
 // │
-// │  i.e. Satori throws while parsing the font, and Vercel turns the
-// │  thrown edge exception into an empty 200 rather than a 500 — which is
-// │  why this went unnoticed: every health check saw "200 image/png".
-// │
-// │  Ruled out on the way here: a duplicated Content-Type header (real,
-// │  fixed, but not the cause) and WOFF2-vs-TTF (Satori indeed can't read
-// │  WOFF2, but .ttf conversions of the same subsets fail identically —
-// │  so the subsets themselves are missing tables Satori needs).
-// │
-// │  FIX FORWARD: rebuild the four faces as full (non-subset) TTFs from
-// │  upstream sources and re-enable via USE_CUSTOM_FONTS below. Until
-// │  then cards render in Satori's bundled face — correct layout and
-// │  copy, generic typography. Shipping beats blank.
+// │  which parse-tests against the exact satori build production runs —
+// │  then still verify a non-zero-byte response after deploy.
 // └─
 //
 // v0.77.0 — Custom font loading for crisp Kartu Bola Pick'em PNGs.
@@ -46,56 +38,44 @@ export const config = {
 
 let __cachedFonts = null;
 
-// KILL SWITCH — see the note above. Custom fonts are disabled until the
-// subsets are rebuilt in a form Satori accepts. Flip to true only together
-// with a verified non-zero-byte render.
-const USE_CUSTOM_FONTS = false;
+// Kill switch from the blank-PNG outage. Safe to re-enable 2026-08-10:
+// all fonts below are satori-tested static instances (see FONT RULE).
+const USE_CUSTOM_FONTS = true;
 
 async function loadFonts(reqUrl) {
   if (!USE_CUSTOM_FONTS) return [];
   if (__cachedFonts) return __cachedFonts;
   try {
     const origin = new URL(reqUrl).origin;
-    const [sgBuf, jbmBuf, bricBuf, instBuf] = await Promise.all([
-      fetch(`${origin}/fonts/space-grotesk-latin.ttf`).then((r) =>
-        r.ok ? r.arrayBuffer() : null,
-      ),
-      fetch(`${origin}/fonts/jetbrains-mono-latin.ttf`).then((r) =>
-        r.ok ? r.arrayBuffer() : null,
-      ),
-      // R2 — the Sistem 4a typefaces, for the ?type=g4-* share cards.
-      // Same self-hosted subsets the app uses (R1-1), so a share card and
-      // the screen it came from are set in the same faces.
-      fetch(`${origin}/fonts/bricolage-grotesque-800-latin.ttf`).then((r) =>
-        r.ok ? r.arrayBuffer() : null,
-      ),
-      fetch(`${origin}/fonts/instrument-sans-latin.ttf`).then((r) =>
-        r.ok ? r.arrayBuffer() : null,
-      ),
-    ]);
+    const grab = (file) =>
+      fetch(`${origin}/fonts/${file}`).then((r) => (r.ok ? r.arrayBuffer() : null));
+    // STATIC instances only — see FONT RULE above.
+    const [sg400, sg700, jbm400, jbm700, bric800, inst400, inst600, inst700] =
+      await Promise.all([
+        grab('space-grotesk-400.ttf'),
+        grab('space-grotesk-700.ttf'),
+        grab('jetbrains-mono-400.ttf'),
+        grab('jetbrains-mono-700.ttf'),
+        grab('bricolage-grotesque-800-latin.ttf'),
+        grab('instrument-sans-400.ttf'),
+        grab('instrument-sans-600.ttf'),
+        grab('instrument-sans-700.ttf'),
+      ]);
     const fonts = [];
-    if (sgBuf) {
-      // Variable font — register at 400 + 700 so Satori can pick the
-      // correct axis for both body and display weights.
-      fonts.push({ name: 'Space Grotesk', data: sgBuf, weight: 400, style: 'normal' });
-      fonts.push({ name: 'Space Grotesk', data: sgBuf, weight: 700, style: 'normal' });
-    }
-    if (jbmBuf) {
-      fonts.push({ name: 'JetBrains Mono', data: jbmBuf, weight: 400, style: 'normal' });
-      fonts.push({ name: 'JetBrains Mono', data: jbmBuf, weight: 700, style: 'normal' });
-    }
-    if (bricBuf) {
-      // Pinned to 800 upstream (the only weight the design uses), but
-      // registered at 400 too so a stray lighter node still resolves to
-      // Bricolage rather than silently falling back to default sans.
-      fonts.push({ name: 'Bricolage Grotesque', data: bricBuf, weight: 800, style: 'normal' });
-      fonts.push({ name: 'Bricolage Grotesque', data: bricBuf, weight: 400, style: 'normal' });
-    }
-    if (instBuf) {
-      fonts.push({ name: 'Instrument Sans', data: instBuf, weight: 400, style: 'normal' });
-      fonts.push({ name: 'Instrument Sans', data: instBuf, weight: 600, style: 'normal' });
-      fonts.push({ name: 'Instrument Sans', data: instBuf, weight: 700, style: 'normal' });
-    }
+    const reg = (name, data, weight) => {
+      if (data) fonts.push({ name, data, weight, style: 'normal' });
+    };
+    reg('Space Grotesk', sg400, 400);
+    reg('Space Grotesk', sg700, 700);
+    reg('JetBrains Mono', jbm400, 400);
+    reg('JetBrains Mono', jbm700, 700);
+    // 800 is the only Bricolage weight the design uses; also registered at
+    // 400 so a stray lighter node resolves to Bricolage, not default sans.
+    reg('Bricolage Grotesque', bric800, 800);
+    reg('Bricolage Grotesque', bric800, 400);
+    reg('Instrument Sans', inst400, 400);
+    reg('Instrument Sans', inst600, 600);
+    reg('Instrument Sans', inst700, 700);
     __cachedFonts = fonts;
   } catch (err) {
     // Don't fail the PNG render if font fetch errors — fall back to
