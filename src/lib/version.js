@@ -8331,6 +8331,25 @@
 //   red. Everything above runs on ESPN + fixturedownload instead, so nothing
 //   is blocked, but renew it to restore the richer stats path (and the
 //   api-football source is still wired in the backfill script for that day).
+// v0.84.0 — TEST-READY (2026-08-10). The pre-live finalization pass.
+//   - Invite links unfurl the real grup card: api/g/[code].js serves
+//     crawler OG meta via a user-agent-gated rewrite ahead of the SPA rule;
+//     humans still get the SPA. Edge functions confirmed EXEMPT from the
+//     Hobby 12-function cap.
+//   - Brand typography restored on ALL share cards. Root cause proven with
+//     scripts/test-satori-fonts.mjs: Satori cannot parse VARIABLE fonts —
+//     static Bricolage passed while the three variable files failed with
+//     the exact prod error. Static per-weight instances shipped;
+//     USE_CUSTOM_FONTS back on; FONT RULE comment in api/og-recap.js.
+//   - NicknameNudge4a on MainShell + GrupHome (R3 pre-condition).
+//   - /main + /skor LIVE IN PROD BY URL (route flag on; root untouched per
+//     doc 16 decision 1 — EPL launches Aug 15 on the current shell).
+//   - /main falls through to the next window when nothing is pickable
+//     ("Liga Inggris is coming — picks open 14 Aug") instead of dead-ending.
+//   - AFF SF/F decision logged: SEED ON RESOLUTION (ESPN aff.championship
+//     has all 6 knockout fixtures, real dates, placeholder pairings).
+//   - CI actually green: deploy.yml guarded on VERCEL_TOKEN via job env;
+//     content-cron.yml was invalid YAML since birth (run actionlint!).
 // v0.83.0 — R2 THE SIX SURFACES (2026-08-03). The Sistem 4a substrate from
 // R1 composed into real screens on live AFF traffic. The full loop is now
 // pixel-faithful to #t4 and shipped: invite landing /g/:code → pick sheet
@@ -8401,7 +8420,7 @@
 //   pre-existing violations on first run — all migrated (Derby, BracketEdit,
 //   LeaderboardLeague, PickemHomeHero, WhatsAppShare share copy).
 // Suite: 114 tests (+9 — WIB window boundaries and the lock countdown).
-export const APP_VERSION = '0.83.0';
+export const APP_VERSION = '0.84.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

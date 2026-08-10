@@ -1,7 +1,7 @@
 # Gibol — Where we are, what's next
 
 **Living document. Update it at the end of every working session.**
-Last updated: **2026-08-09** · shipped version **v0.83.0** · branch `main`
+Last updated: **2026-08-10** · shipped version **v0.84.0** · branch `main` · **STATUS: TEST-READY**
 
 If you are new to this repo, read this file, then `docs/pickem-flagship/16-MODULE-EXPANSION-CPO-BD-PLAN.md`
 (the approved module/BD plan — supersedes doc 13 for R4+), then `13-DEVELOPMENT-PLAN.md`
@@ -67,7 +67,7 @@ Ordered by value. Item 1 shipped 2026-08-08; the rest are open.
 | ~~1~~ | ~~**Invite OG card**~~ | ✅ **Shipped 2026-08-08.** Invites now unfurl the real grup card. |
 | ~~2~~ | ~~**Port nickname nudge to the 4a surfaces**~~ | ✅ **Shipped 2026-08-09** — `NicknameNudge4a` on MainShell + GrupHome, same dismissal key as the old hub's nudge. |
 | ~~3~~ | ~~**Make `/main` + `/skor` testable**~~ | ✅ **Done 2026-08-09** — route flag ON in production; reachable by URL, unlinked, root untouched (doc 16 decision 1). Vercel preview deploys turned out to be SSO-walled (302), so prod-by-URL is the tester path. |
-| 4 | **Brand fonts on share cards** | Cards render, typography is generic. Cosmetic but launch-facing. |
+| ~~4~~ | ~~**Brand fonts on share cards**~~ | ✅ **Shipped 2026-08-10.** Root cause: Satori can't parse VARIABLE fonts. Static per-weight instances shipped; `scripts/test-satori-fonts.mjs` is now the mandatory pre-deploy parse test for any font change (see FONT RULE in `api/og-recap.js`). |
 | 5 | **Take the R2 exit measurement** | See below — it gates the launch and the AFF window closes Aug 11. |
 | 6 | **AFF SF/F decision** (doc 16 R3′-4) | Seed the semis/final only if two-leg handling verifies in <½ day; otherwise skip — group stage ends Aug 11. Log the decision either way. |
 | 7 | **EPL MW1 launch push** (doc 16 R3′-5) | Aug 15, on the current shell. Fixtures are seeded (MW1 kicks off Aug 21). WA-ready invite cards now unfurl correctly; rollover banner exists (R0-6). |
@@ -113,15 +113,9 @@ shipping. That reopens the option for future crawler/meta endpoints; the 12/12 l
 applies to Node serverless functions.
 
 ### Known defects / debt
-- **Brand typography is off on every share card.** Satori throws on our font subsets
-  (`TypeError: Cannot read properties of undefined (reading '256')`), so
-  `USE_CUSTOM_FONTS=false` in `api/og-recap.js` and cards render in the bundled default face.
-  Layout and copy are correct; only the typeface is generic. **Fix forward:** build full
-  non-subset TTFs from upstream and verify a non-zero-byte response before re-enabling.
-  Ruled out already, don't re-litigate: duplicated `Content-Type` header (real, fixed, not
-  the cause) and WOFF2-vs-TTF (Satori can't read WOFF2, but TTF conversions of the *same
-  subsets* fail identically — the subsets lack tables Satori needs).
-- **Nickname onboarding doesn't reach the new surfaces.** It *does* exist — the
+- ~~Brand typography~~ ✅ fixed 2026-08-10 (variable fonts were the cause — see §1 FONT RULE).
+- ~~Nickname onboarding~~ ✅ ported 2026-08-10 (`NicknameNudge4a` on MainShell + GrupHome).
+- **(superseded notes below kept for the paper trail)** Nickname onboarding original note: It *does* exist — the
   `/onboarding/teams` route is live and `PredictingHub.jsx` has a one-tap nickname nudge
   (v0.79.22). But that nudge lives on the **old** hub, which Main replaces at the R3 flag flip.
   `MainShell` / `GrupHome` / `SkorTab` have no equivalent, so after R3 a new user has no path to
