@@ -22,7 +22,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { listFixtures, listPredictions, listMyGrups } from './api.js';
 import { listGuestPredictions } from './guestStore.js';
-import { COMPETITIONS, defaultCompetitionKey } from './competitions.js';
+import { COMPETITIONS, COMPETITION_ORDER, defaultCompetitionKey } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { MatchCard, LockBadge } from './components/primitives4a.jsx';
 import TabBar4a from './components/TabBar4a.jsx';
@@ -137,6 +137,31 @@ function MainShellInner() {
     return (soon.length ? soon : openFixtures).slice(0, 4);
   }, [openFixtures, now]);
 
+  // The next competition worth pointing at when the current one has nothing
+  // pickable: first in order that hasn't closed and isn't the current one.
+  // Registry-only on purpose — no fetch; openAt is the product's own "picks
+  // open" date, which is exactly what the teaser should say.
+  const nextWindow = useMemo(() => {
+    if (openFixtures.length > 0 || loading) return null;
+    const t = now;
+    for (const key of COMPETITION_ORDER) {
+      if (key === competitionKey) continue;
+      const c = COMPETITIONS[key];
+      if (!c?.openAt || new Date(c.closeAt).getTime() < t) continue;
+      const opens = new Date(c.openAt);
+      return {
+        label: c.label || key,
+        opensLabel:
+          opens.getTime() <= t
+            ? lang === 'id' ? 'sekarang' : 'now'
+            : opens.toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-GB', {
+                day: 'numeric', month: 'short', timeZone: 'Asia/Jakarta',
+              }),
+      };
+    }
+    return null;
+  }, [openFixtures.length, loading, now, competitionKey, lang]);
+
   const primaryGrup = grups[0] || null;
   const isNight = scheduledTheme() === 'dark';
   const dateLabel = new Date().toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-GB', {
@@ -205,17 +230,34 @@ function MainShellInner() {
               </button>
             </div>
           </div>
-        ) : (
+        ) : openFixtures.length > 0 ? (
+          <div style={S.heroCalm}>
+            <div style={S.heroCalmTitle}>{tx('All picks are in', 'Semua pick udah masuk')}</div>
+            <p style={S.heroCalmMeta}>
+              {tx('Nice. Now go trash-talk the group.', 'Mantap. Sekarang saatnya nyindir grup.')}
+            </p>
+          </div>
+        ) : nextWindow ? (
+          /* Between windows (e.g. AFF group done, semis unseeded, EPL a week
+             out) the shell must not dead-end — it points at the next thing.
+             Launch week IS this state, so this card is what a first-time
+             tester actually sees. */
           <div style={S.heroCalm}>
             <div style={S.heroCalmTitle}>
-              {openFixtures.length === 0
-                ? tx('Nothing to pick yet', 'Belum ada yang bisa dipick')
-                : tx('All picks are in', 'Semua pick udah masuk')}
+              {tx(`${nextWindow.label} is coming`, `${nextWindow.label} segera mulai`)}
             </div>
             <p style={S.heroCalmMeta}>
-              {openFixtures.length === 0
-                ? tx('The next matchday will show up here.', 'Matchday berikutnya muncul di sini.')
-                : tx('Nice. Now go trash-talk the group.', 'Mantap. Sekarang saatnya nyindir grup.')}
+              {tx(
+                `Picks open ${nextWindow.opensLabel}. Get your grup ready.`,
+                `Pick dibuka ${nextWindow.opensLabel}. Siapin grup kamu.`
+              )}
+            </p>
+          </div>
+        ) : (
+          <div style={S.heroCalm}>
+            <div style={S.heroCalmTitle}>{tx('Nothing to pick yet', 'Belum ada yang bisa dipick')}</div>
+            <p style={S.heroCalmMeta}>
+              {tx('The next matchday will show up here.', 'Matchday berikutnya muncul di sini.')}
             </p>
           </div>
         )}
