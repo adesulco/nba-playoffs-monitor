@@ -55,7 +55,12 @@ function MainShellInner() {
   const { user } = useAuth();
   const tx = (en, id) => (lang === 'id' ? id : en);
 
-  const competitionKey = defaultCompetitionKey();
+  // Data-aware competition selection. The registry default follows the
+  // calendar window, but a window can be open with nothing pickable (AFF
+  // between group stage and unseeded semis, while EPL MW1 sits fully
+  // seeded one key over). The shell serves whichever competition actually
+  // has open fixtures, in registry order, starting from the default.
+  const [competitionKey, setCompetitionKey] = useState(() => defaultCompetitionKey());
   const competition = COMPETITIONS[competitionKey];
   const skin = useMemo(
     () => skinForCompetition(competitionKey, competition),
@@ -76,12 +81,34 @@ function MainShellInner() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const res = await listFixtures({ league: competitionKey, status: 'scheduled', limit: 500 });
-      if (cancelled) return;
       const nowMs = Date.now();
-      const open = (res?.fixtures || [])
-        .filter((f) => new Date(f.lock_at || f.kickoff_at).getTime() > nowMs)
-        .sort((a, b) => new Date(a.kickoff_at) - new Date(b.kickoff_at));
+      const fetchOpen = async (key) => {
+        const res = await listFixtures({ league: key, status: 'scheduled', limit: 500 });
+        return (res?.fixtures || [])
+          .filter((f) => new Date(f.lock_at || f.kickoff_at).getTime() > nowMs)
+          .sort((a, b) => new Date(a.kickoff_at) - new Date(b.kickoff_at));
+      };
+
+      let open = await fetchOpen(competitionKey);
+      if (cancelled) return;
+
+      // Default window is empty — walk the registry for one that isn't.
+      if (open.length === 0) {
+        for (const key of COMPETITION_ORDER) {
+          const c = COMPETITIONS[key];
+          if (key === competitionKey || !c) continue;
+          const t = Date.now();
+          if (t < new Date(c.openAt).getTime() || t > new Date(c.closeAt).getTime()) continue;
+          const alt = await fetchOpen(key);
+          if (cancelled) return;
+          if (alt.length > 0) {
+            setCompetitionKey(key);
+            open = alt;
+            break;
+          }
+        }
+      }
+
       setOpenFixtures(open);
       setLoading(false);
     })();

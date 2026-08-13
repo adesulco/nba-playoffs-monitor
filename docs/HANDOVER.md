@@ -124,10 +124,13 @@ applies to Node serverless functions.
 - **API-Football subscription lapsed** → *(Ade, payment action)*. Nothing is blocked; ESPN +
   fixturedownload carry the load. Renewing restores the richer stats path.
 - **`Kabar` tab is intentionally inert** (muted, non-navigating) until Kabar v1 in R4.
-- **NBA close-game push scanner fails every 20 min** with `{"error":"espn","detail":"ESPN 403"}`
-  → HTTP 502. ESPN is refusing the scanner's requests. No user impact today (NBA is in
-  offseason) and the football backfill on the same upstream still succeeds, but the NBA nightly
-  slate in R5 rides on this path — fix before then. Not caused by, or fixed in, the R2 work.
+- **NBA close-game push scanner: workflow DISABLED 2026-08-13** (`gh workflow enable
+  "NBA close-game push scanner"` to restore). It had been failing every ~20 min with
+  `{"error":"espn","detail":"ESPN 403"}` → HTTP 502, emailing Ade hundreds of failure
+  notifications a day, and it does nothing useful in the NBA offseason. Before R5's NBA
+  nightly slate: fix the ESPN 403 (the scanner's ESPN call needs the same headers/endpoint
+  the working football backfill uses — that one still succeeds against ESPN), verify a
+  green run, THEN re-enable.
 
 ### Not yet started, in calendar order
 - **R3 — EPL launch · Aug 13–15 · v0.90.** Freeze Aug 13; flip `VITE_FLAG_PICKEM_HOME`

@@ -94,7 +94,10 @@ export const COMPETITIONS = {
     // MW1 is Aug 21–24 2026 (fixturedownload + ESPN eng.1, verified
     // 2026-07-22) — the handover's "MW1 = Aug 15" was wrong. R3's freeze
     // and root flip move with it; opens for picking a week early.
-    openAt:  '2026-08-14T00:00:00Z',
+    // Moved up from Aug 14 (2026-08-10): the FGD pretrial needs something
+    // pickable NOW, and AFF is between stages. Harmless to open early —
+    // every fixture still locks at its own kickoff (MW1 = Aug 21).
+    openAt:  '2026-08-10T00:00:00Z',
     closeAt: '2027-05-30T00:00:00Z',
   },
 };
