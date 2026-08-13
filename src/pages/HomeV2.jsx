@@ -250,6 +250,50 @@ export default function HomeV2() {
         <MatchStrip mode="results" />
       </section>
 
+      {/* Pick'em entry — the homepage's only door into the product the FGD
+          is testing. The root stays the scores home (doc 16 decision 1);
+          this card is the bridge until the R-later root flip. */}
+      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '0 20px' }}>
+        <Link
+          to="/main"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 16,
+            margin: '18px 0 6px',
+            padding: '16px 18px',
+            background: 'var(--bg-2)',
+            border: '2px solid var(--ink-1, var(--line))',
+            borderRadius: 12,
+            textDecoration: 'none',
+            color: 'inherit',
+          }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontSize: 16, fontWeight: 800, letterSpacing: '-0.3px' }}>
+              Tebak Skor Liga Inggris udah dibuka ⚽
+            </div>
+            <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 3 }}>
+              Pick pertandingan MW1, ajak grup WhatsApp kamu. Gratis — semua demi gengsi.
+            </div>
+          </div>
+          <span
+            style={{
+              flex: 'none',
+              fontSize: 13,
+              fontWeight: 700,
+              padding: '9px 16px',
+              borderRadius: 999,
+              background: 'var(--amber)',
+              color: '#1a1205',
+            }}
+          >
+            Main →
+          </span>
+        </Link>
+      </section>
+
       {/* Body grid — 2-col desktop, 1-col mobile */}
       <main
         className="home-v2-body"
