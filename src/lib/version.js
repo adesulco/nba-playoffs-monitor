@@ -8331,6 +8331,14 @@
 //   red. Everything above runs on ESPN + fixturedownload instead, so nothing
 //   is blocked, but renew it to restore the richer stats path (and the
 //   api-football source is still wired in the backfill script for that day).
+// v0.84.1 — FGD PRETRIAL LIVE (2026-08-13). EPL picks open early (openAt
+// Aug 10), /main walks the registry to the first competition with open
+// fixtures (serves EPL MW1 while AFF sits between stages), FGD grup seeded
+// (gibol.co/g/FgdGibol), homepage bridge card into /main, NBA close-game
+// scanner workflow disabled (was emailing hundreds of ESPN-403 failures a
+// day; re-enable only after a green run — see HANDOVER). Full loop
+// verified in prod: WA unfurl -> 3-tap guest pick on ARS-COV MW1.
+// docs/FGD-RUNBOOK.md is the FGD script.
 // v0.84.0 — TEST-READY (2026-08-10). The pre-live finalization pass.
 //   - Invite links unfurl the real grup card: api/g/[code].js serves
 //     crawler OG meta via a user-agent-gated rewrite ahead of the SPA rule;
@@ -8420,7 +8428,7 @@
 //   pre-existing violations on first run — all migrated (Derby, BracketEdit,
 //   LeaderboardLeague, PickemHomeHero, WhatsAppShare share copy).
 // Suite: 114 tests (+9 — WIB window boundaries and the lock countdown).
-export const APP_VERSION = '0.84.0';
+export const APP_VERSION = '0.84.1';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

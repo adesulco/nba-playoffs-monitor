@@ -1,7 +1,7 @@
 # Gibol — Where we are, what's next
 
 **Living document. Update it at the end of every working session.**
-Last updated: **2026-08-10** · shipped version **v0.84.0** · branch `main` · **STATUS: TEST-READY**
+Last updated: **2026-08-13** · shipped version **v0.84.1** · branch `main` · **STATUS: FGD-READY (pretrial live in prod)**
 
 If you are new to this repo, read this file, then `docs/pickem-flagship/16-MODULE-EXPANSION-CPO-BD-PLAN.md`
 (the approved module/BD plan — supersedes doc 13 for R4+), then `13-DEVELOPMENT-PLAN.md`
@@ -77,18 +77,15 @@ drive the real screen at 390×844, and `curl` the deployed endpoint checking
 `%{size_download}` — not the status code. Every defect found in this last stretch was invisible
 to `npm run build` and visible within seconds in a browser.
 
-## 4 · The R2 exit gate (still open)
+## 4 · The R2 exit gate → now the FGD (see `docs/FGD-RUNBOOK.md`)
 
-**R2 is built. R2 is not *done*** — its exit gate is a measurement, not a build:
-
-> invite→pick **≥50%** same-session · completion **≥70%** in the AFF beta grups
-
-**Nobody has taken that measurement yet. This is the single most important open item.**
-The AFF group stage (the live beta window) ends **Aug 11**, and the R3 freeze is **Aug 13** —
-so the window to gather it is closing now.
-
-To take it: seed 5–10 real grups (one exists — **"Tongkrongan AFF"**, code `QyAumSpv`, owned
-by Ade) and read the `pickemEvents` funnel.
+The AFF window closed before anyone measured it. The gate moves to the FGD + EPL MW1,
+**and everything it needs is live in production**: the FGD grup (`gibol.co/g/FgdGibol`,
+"FGD Gibol", EPL 2026/27), EPL picks open early (Aug 10), the loop verified end-to-end in
+prod on 2026-08-13 — WA invite unfurl → 3-tap guest pick ("Pick locked in", ARS vs COV MW1,
+guestStore persisted). Same thresholds: invite→pick **≥50%** same-session, completion
+**≥70%**. GA4 funnel: `invite_open → first_pick → pick → lock_complete`.
+**This needs real participants — it is Ade's next move, not a developer's.**
 
 ---
 
