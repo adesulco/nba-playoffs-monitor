@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
@@ -265,6 +265,21 @@ function ConsentGate({ children }) {
   return children;
 }
 
+const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup\//, /^\/pick\//, /^\/g\//];
+
+/**
+ * Renders children (the legacy masthead) only OUTSIDE the 4a shell.
+ * Since the 2026-08-13 root flip, "/" belongs to the shell too — but only
+ * while the flag actually serves MainShell there.
+ */
+function FourAChromeGate({ children }) {
+  const location = useLocation();
+  const isFourA =
+    FOUR_A_CHROME_ROUTES.some((re) => re.test(location.pathname)) ||
+    (location.pathname === '/' && UI.pickem && UI.pickemHome);
+  return isFourA ? null : children;
+}
+
 export default function App() {
   return (
     <SentryErrorBoundary fallback={<GlobalErrorFallback />}>
@@ -289,7 +304,13 @@ export default function App() {
             src/lib/topbarSubrow.js; the bar subscribes and re-renders
             only itself. Navigating between sports no longer remounts
             the header, and chunk loading no longer blanks the page. */}
-        <V2TopBar />
+        {/* Hidden on the 4a shell routes since the 2026-08-13 root flip —
+            MainShell carries its own header per the #t4 design; doubled
+            chrome read as "the old website" wrapping the new one. Legacy
+            routes (hubs, /beranda, recap, …) keep the masthead. */}
+        <FourAChromeGate>
+          <V2TopBar />
+        </FourAChromeGate>
         {/* A11y — <main> landmark wraps every route so screen-reader
             users land here via the skip-link and VoiceOver landmark
             rotor jumps straight to the page body. tabIndex=-1 lets the

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { UI } from '../lib/flags.js';
 import { useApp } from '../lib/AppContext.jsx';
 
 /**
@@ -319,6 +320,9 @@ function NavButton({ icon, label, active, onClick, to }) {
  * opt out explicitly.
  */
 const FOUR_A_SHELL_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup\//, /^\/pick\//, /^\/g\//];
+// The root joined the 4a shell at the 2026-08-13 flip — but only while the
+// flag serves MainShell there; with the flag off the legacy home needs
+// this nav back.
 
 export default function MobileBottomNav() {
   const location = useLocation();
@@ -326,7 +330,10 @@ export default function MobileBottomNav() {
   const sport = detectSport(location.pathname);
   const items = navItemsFor(sport, lang);
 
-  if (FOUR_A_SHELL_ROUTES.some((re) => re.test(location.pathname))) return null;
+  const isFourA =
+    FOUR_A_SHELL_ROUTES.some((re) => re.test(location.pathname)) ||
+    (location.pathname === '/' && UI.pickem && UI.pickemHome);
+  if (isFourA) return null;
 
   function openSearch() {
     window.dispatchEvent(new CustomEvent('gibol:open-search'));
