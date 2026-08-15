@@ -267,7 +267,7 @@ function ConsentGate({ children }) {
   return children;
 }
 
-const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup\//, /^\/pick\//, /^\/g\//];
+const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//];
 
 /**
  * Renders children (the legacy masthead) only OUTSIDE the 4a shell.

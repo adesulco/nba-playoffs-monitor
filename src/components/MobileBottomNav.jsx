@@ -319,7 +319,7 @@ function NavButton({ icon, label, active, onClick, to }) {
  * flip makes the 4a bar the primary navigation; until then these routes
  * opt out explicitly.
  */
-const FOUR_A_SHELL_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup\//, /^\/pick\//, /^\/g\//];
+const FOUR_A_SHELL_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//];
 // The root joined the 4a shell at the 2026-08-13 flip — but only while the
 // flag serves MainShell there; with the flag off the legacy home needs
 // this nav back.

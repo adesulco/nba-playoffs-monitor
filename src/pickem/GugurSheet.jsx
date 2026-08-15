@@ -260,7 +260,9 @@ function GugurSheetInner() {
             <div style={S.sectionRule}>
               <span style={S.sectionTitle}>{tx('Still standing', 'Masih bertahan')}</span>
               <span style={S.sectionMeta}>
-                {board.alive_count + (board.rows.some((r) => r.status === 'not_started') ? '+' : '')}/{board.total_count}
+                {/* standing = not yet eliminated; before anyone picks,
+                    everyone is standing — 0/N would read as a massacre. */}
+                {board.rows.filter((r) => r.status !== 'eliminated').length}/{board.total_count}
               </span>
             </div>
             {board.rows.map((r) => (
