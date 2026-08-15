@@ -1,12 +1,21 @@
 # Gibol — Where we are, what's next
 
 **Living document. Update it at the end of every working session.**
-Last updated: **2026-08-13** · shipped version **v0.84.1** · branch `main` · **STATUS: FGD-READY (pretrial live in prod)**
+Last updated: **2026-08-13** · shipped version **v0.84.1** · branch `main` · **STATUS: FGD-READY · root = new platform since 2026-08-15**
 
 If you are new to this repo, read this file, then `docs/pickem-flagship/16-MODULE-EXPANSION-CPO-BD-PLAN.md`
 (the approved module/BD plan — supersedes doc 13 for R4+), then `13-DEVELOPMENT-PLAN.md`
 (still plan of record through R3), then `CLAUDE.md` (voice, stack, operating rules).
 
+> **⚠ Root flip happened (2026-08-15, Ade's direct call — supersedes doc 16 decision 1's
+> deferral).** gibol.co root now renders the Pick'em Main shell with NO legacy chrome (the
+> V2TopBar masthead and legacy bottom nav are gated off all 4a routes via `FourAChromeGate` /
+> `FOUR_A_SHELL_ROUTES`). The old scores home lives at **/beranda**; every sport hub keeps its
+> URL. Rollback = turn off `VITE_FLAG_PICKEM_HOME`. Note for the next deploy check: verify
+> against the deployment **aliased to www.gibol.co** (`npx vercel inspect www.gibol.co`), not
+> the first row of `vercel ls` — and remember the PWA needs 1–2 reloads to hand off (SW
+> skipWaiting). Older reconciliation below still applies to doc 16's ticket list.
+>
 > **⚠ Reconciliation note on doc 16 (2026-08-09).** Doc 16's STRATEGY (modules M1–M13, BD
 > workstream, §7 decisions) is approved and current. Its §1 snapshot and R3′ ticket list were
 > drafted against a pre-R1/R2 state and are partly STALE: R3′-1 (EPL seed), R3′-2 (liveness
