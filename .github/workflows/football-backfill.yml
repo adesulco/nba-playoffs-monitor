@@ -17,9 +17,12 @@ on:
   workflow_dispatch:
     inputs:
       competition:
-        description: 'Competition key (must exist in the script registry)'
-        required: true
-        default: 'WC2026'
+        # Optional ON PURPOSE, and no default: this value overrides the
+        # matrix for EVERY job, so a default meant any manual dispatch ran
+        # WC2026 three times and never touched AFF/EPL — while looking green.
+        # Leave empty to sweep all competitions (matrix), set to target one.
+        description: 'Competition key (empty = sweep all)'
+        required: false
         type: string
   schedule:
     - cron: '15 */2 * * *'
