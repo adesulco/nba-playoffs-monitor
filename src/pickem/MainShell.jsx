@@ -201,10 +201,11 @@ function MainShellInner() {
 
   return (
     <div style={S.shell}>
+      {/* Indexable since the root flip (2026-08-13) — this IS the homepage.
+          Title keeps the site's search identity; description sells the loop. */}
       <SEO
-        title="Main — Pick'em | gibol.co"
-        description="Pick pertandingan, lihat klasemen grupmu, semua demi gengsi."
-        noindex
+        title="gibol — Tebak Skor Liga Inggris & multi-sport Pick'em bareng grup"
+        description="Pick pertandingan dalam 3 tap, ajak grup WhatsApp kamu, pantau klasemen. Gratis — semua demi gengsi."
       />
 
       {/* Header — logo + Edisi Malam · date + avatar, over a 2px ink rule */}

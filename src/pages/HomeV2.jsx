@@ -162,8 +162,14 @@ export default function HomeV2() {
   const fallbackSentence = useMemo(() => {
     const stage = derivePlayoffStage(games);
     const g = stage.game;
-    const wcLive = Date.now() >= new Date('2026-06-11T00:00:00+07:00').getTime();
+    // A window, not a start date — the old `>= kickoff` check kept
+    // announcing "Piala Dunia udah mulai" for weeks after the Jul 19 final.
+    const t = Date.now();
+    const wcLive =
+      t >= new Date('2026-06-11T00:00:00+07:00').getTime() &&
+      t <= new Date('2026-07-20T06:00:00+07:00').getTime();
     const wcBit = wcLive ? ' Piala Dunia 2026 juga udah mulai — prediksi di Pick\'em.' : '';
+    const eplLive = t >= new Date('2026-08-10T00:00:00+07:00').getTime();
     if (liveCount > 0 && g) {
       return `${stage.longId} LIVE sekarang: ${g.away?.abbr} @ ${g.home?.abbr}${g.seriesSummary ? ` (${g.seriesSummary})` : ''}. Skor live & play-by-play di bawah.${wcBit}`;
     }
@@ -174,6 +180,9 @@ export default function HomeV2() {
     }
     if (wcLive) {
       return 'Piala Dunia 2026 udah mulai — skor, grup, dan Pick\'em bracket semuanya di gibol.';
+    }
+    if (eplLive) {
+      return 'Liga Inggris 2026/27 mulai 21 Agustus — Tebak Skor udah dibuka, ajak grup kamu.';
     }
     return 'Selamat datang di Gibol — dashboard olahraga Bahasa-first untuk NBA, Premier League, F1, Tenis, dan Liga 1.';
   }, [games, liveCount]);

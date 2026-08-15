@@ -306,7 +306,18 @@ export default function App() {
                 Falls back to gateway on any unexpected value.
                 Inactive variants tree-shaken via lazy() — only the
                 active home's chunk loads. */}
+            {/* 2026-08-13, Ade's call (supersedes doc 16 decision 1's
+                deferral): gibol.co root = the Pick'em Main shell. The old
+                scores home stays at /beranda and every sport hub keeps its
+                URL, so nothing indexed breaks. Rollback = turn off
+                VITE_FLAG_PICKEM_HOME. */}
             <Route path="/" element={
+              UI.pickem && UI.pickemHome ? <MainShell /> :
+              homeVariant === 2 ? <HomeV2 /> :
+              (homeVariant === 1 || UI.v2) ? <HomeV1 /> :
+              <Home />
+            } />
+            <Route path="/beranda" element={
               homeVariant === 2 ? <HomeV2 /> :
               (homeVariant === 1 || UI.v2) ? <HomeV1 /> :
               <Home />
