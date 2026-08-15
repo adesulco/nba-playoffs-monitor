@@ -375,6 +375,25 @@ export async function listSurvivor({ competition = 'WC2026' } = {}) {
   }
 }
 
+/**
+ * survivorBoard({ code })
+ * R4a-1 (M1 Gugur) — the grup's survivor board, public read by invite
+ * code (display names + alive/eliminated only; no auth needed, same
+ * posture as leagueDetail). Powers the pantau state and the GrupHome
+ * Gugur strip.
+ */
+export async function survivorBoard({ code } = {}) {
+  try {
+    const url = buildUrl('survivor-board', { code });
+    const res = await fetch(url);
+    const data = await readJson(res);
+    if (!res.ok) return { ok: false, error: normalizeError(res, data), rows: [] };
+    return data;
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err), rows: [] };
+  }
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // v0.80.1 — Flagship Track A ticket A3: pool-first commissioner layer.
 // SEAM RULE (pickem-flagship/00-HANDOVER.md §3): Track B screens consume

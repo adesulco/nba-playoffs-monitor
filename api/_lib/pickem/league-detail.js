@@ -30,7 +30,7 @@ export default async function handler(req, res) {
   const admin = getSupabaseAdmin();
   let q = admin
     .from('leagues')
-    .select('id, name, invite_code, competition, formats, late_join_policy, scoring_config, max_members, tier, owner_id, description');
+    .select('id, name, invite_code, competition, formats, late_join_policy, scoring_config, max_members, tier, owner_id, description, enabled_modes');
   q = code ? q.eq('invite_code', code) : q.eq('id', id);
   const { data: league } = await q.maybeSingle();
   if (!league) return res.status(404).json({ error: 'League not found' });

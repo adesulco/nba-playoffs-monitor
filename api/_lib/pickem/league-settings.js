@@ -66,6 +66,27 @@ export default async function handler(req, res) {
       patch[field] = v.value;
     }
   }
+
+  // R4a-1 (M1 Gugur) — mode toggles. Deliberately NOT under the rules
+  // freeze above: switching Gugur on mid-season is the module's whole
+  // point, and modes change what's playable, not how points are counted.
+  // Merged over the stored value so an old row missing a key keeps its
+  // create-league default rather than dropping to undefined.
+  if (body.enabled_modes !== undefined) {
+    if (typeof body.enabled_modes !== 'object' || Array.isArray(body.enabled_modes) || body.enabled_modes === null) {
+      return res.status(400).json({ error: 'enabled_modes must be an object' });
+    }
+    const KNOWN = ['match', 'jagoan', 'upset', 'bracket', 'survivor'];
+    const unknown = Object.keys(body.enabled_modes).filter((k) => !KNOWN.includes(k));
+    if (unknown.length) {
+      return res.status(400).json({ error: `Unknown mode(s): ${unknown.join(', ')}` });
+    }
+    const { data: current } = await admin
+      .from('leagues').select('enabled_modes').eq('id', league.id).single();
+    const merged = { ...(current?.enabled_modes || {}) };
+    for (const [k, v] of Object.entries(body.enabled_modes)) merged[k] = v === true;
+    patch.enabled_modes = merged;
+  }
   if (Object.keys(patch).length === 0) {
     return res.status(400).json({ error: 'Nothing to update' });
   }
@@ -74,7 +95,7 @@ export default async function handler(req, res) {
     .from('leagues')
     .update(patch)
     .eq('id', league.id)
-    .select('id, name, invite_code, competition, scoring_config, formats, late_join_policy, max_members, tier, description')
+    .select('id, name, invite_code, competition, scoring_config, formats, late_join_policy, max_members, tier, description, enabled_modes')
     .single();
   if (error) return res.status(400).json({ error: error.message });
   return res.status(200).json({ ok: true, league: data });

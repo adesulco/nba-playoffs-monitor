@@ -151,6 +151,8 @@ const GrupHome       = lazy(() => import('./pickem/GrupHome.jsx'));
 // VITE_FLAG_PICKEM_HOME; R3 flips it so gibol.co root = Main.
 const MainShell      = lazy(() => import('./pickem/MainShell.jsx'));
 const SkorTab        = lazy(() => import('./pickem/SkorTab.jsx'));
+// R4a-1 (M1 Gugur) — grup-scoped survivor sheet.
+const GugurSheet     = lazy(() => import('./pickem/GugurSheet.jsx'));
 const GrupCreate     = lazy(() => import('./pickem/GrupCreate.jsx'));
 const GrupDetail     = lazy(() => import('./pickem/GrupDetail.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
@@ -471,6 +473,7 @@ export default function App() {
             {UI.pickem && <Route path="/grup/:code" element={<GrupHome />} />}
             {UI.pickem && UI.pickemHome && <Route path="/main" element={<MainShell />} />}
             {UI.pickem && UI.pickemHome && <Route path="/skor" element={<SkorTab />} />}
+            {UI.pickem && <Route path="/gugur/:code" element={<GugurSheet />} />}
             {UI.pickem && <Route path="/pickem/grup" element={<Grup />} />}
             {UI.pickem && <Route path="/pickem/grup/new" element={<GrupCreate />} />}
             {UI.pickem && <Route path="/pickem/grup/join" element={<GrupJoin />} />}

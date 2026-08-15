@@ -69,6 +69,20 @@ function moment(type, p) {
         cta: p.code ? `Ikut pick → gibol.co/g/${p.code}` : 'gibol.co',
         live: true,
       };
+    case 'g4-gugur':
+      // R4a-1 (M1). Elimination as a share moment — self-deprecating on
+      // purpose; the fallen player broadcasting their own fall is the
+      // re-engagement loop ("pantau" mode) doing marketing.
+      return {
+        context: p.context || 'GUGUR',
+        line1: 'Gugur',
+        line2: p.mw ? `di MW${p.mw}.` : 'duluan.',
+        stats: [
+          `${p.name || 'Satu kursi kosong'}${p.grup ? ` · ${p.grup}` : ''}`,
+          p.alive ? `${p.alive} orang masih bertahan.` : 'Sisanya masih bertahan.',
+        ],
+        cta: p.code ? `Berani coba? → gibol.co/gugur/${p.code}` : 'gibol.co',
+      };
     case 'g4-invite':
     default:
       return {
@@ -245,7 +259,7 @@ export function buildShare4a(type, params) {
   );
 }
 
-export const SHARE4A_TYPES = ['g4-juara', 'g4-streak', 'g4-matchday', 'g4-invite'];
+export const SHARE4A_TYPES = ['g4-juara', 'g4-streak', 'g4-matchday', 'g4-invite', 'g4-gugur'];
 
 /** Pixel size for a given request, so the caller can set ImageResponse. */
 export function share4aSize(params) {

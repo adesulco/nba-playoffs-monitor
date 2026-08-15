@@ -20,7 +20,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { leagueDetail, listFixtures } from './api.js';
+import { leagueDetail, listFixtures, updateLeagueSettings } from './api.js';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { LeaderboardRow, LockBadge } from './components/primitives4a.jsx';
@@ -57,6 +57,24 @@ function GrupHomeInner() {
   const [loading, setLoading] = useState(true);
   const [nextFixture, setNextFixture] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [gugurToggling, setGugurToggling] = useState(false);
+
+  // R4a-1 — commissioner switches survivor on. One-way from this strip on
+  // purpose: turning it OFF mid-run would erase a living game; that
+  // (rare) admin action can live in settings later.
+  const enableGugur = async () => {
+    if (!league || gugurToggling) return;
+    setGugurToggling(true);
+    const res = await updateLeagueSettings({
+      league_id: league.id,
+      enabled_modes: { survivor: true },
+    });
+    setGugurToggling(false);
+    if (res?.ok) {
+      setLeague((prev) => (prev ? { ...prev, enabled_modes: res.league.enabled_modes } : prev));
+      navigate(`/gugur/${league.invite_code}`);
+    }
+  };
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
@@ -263,6 +281,40 @@ function GrupHomeInner() {
           </div>
         )}
 
+        {/* R4a-1 — Gugur strip (survivor). Enabled: entry into the sheet.
+            Owner + disabled: the switch-on CTA, one tap via
+            updateLeagueSettings. Everyone else + disabled: nothing. */}
+        {league?.enabled_modes?.survivor ? (
+          <button
+            type="button"
+            onClick={() => navigate(`/gugur/${league.invite_code}`)}
+            style={S.gugurStrip}
+          >
+            <span style={{ minWidth: 0, textAlign: 'left' }}>
+              <span style={S.gugurTitle}>Gugur</span>
+              <span style={S.gugurMeta}>
+                {tx('One team a week. Wrong once — out.', 'Satu tim per pekan. Salah sekali — gugur.')}
+              </span>
+            </span>
+            <span style={S.gugurGo}>→</span>
+          </button>
+        ) : user?.id === league?.owner_id ? (
+          <button
+            type="button"
+            disabled={gugurToggling}
+            onClick={enableGugur}
+            style={{ ...S.gugurStrip, background: 'var(--g4-surface)', color: 'var(--g4-text)', border: '1.5px dashed var(--g4-text)' }}
+          >
+            <span style={{ minWidth: 0, textAlign: 'left' }}>
+              <span style={S.gugurTitle}>{tx('Turn on Gugur?', 'Nyalain Gugur?')}</span>
+              <span style={{ ...S.gugurMeta, opacity: 0.7 }}>
+                {tx('Survivor mode — last one standing wins the grup.', 'Mode survivor — yang terakhir bertahan juara grup.')}
+              </span>
+            </span>
+            <span style={S.gugurGo}>{gugurToggling ? '…' : '+'}</span>
+          </button>
+        ) : null}
+
         {/* Dashed invite card */}
         <div style={S.inviteCard}>
           <div style={{ minWidth: 0 }}>
@@ -407,6 +459,24 @@ const S = {
     font: '700 14px/1 var(--g4-font-ui)',
     cursor: 'pointer',
   },
+  gugurStrip: {
+    appearance: 'none',
+    border: 'none',
+    width: '100%',
+    background: 'var(--g4-ink-block)',
+    color: 'var(--g4-paper)',
+    borderRadius: 'var(--g4-radius-card)',
+    padding: '13px 16px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+    cursor: 'pointer',
+    boxSizing: 'border-box',
+  },
+  gugurTitle: { display: 'block', font: '800 14px/1.2 var(--g4-font-display)', letterSpacing: '-0.2px' },
+  gugurMeta: { display: 'block', font: '500 11px/1.4 var(--g4-font-ui)', opacity: 0.75, marginTop: 2 },
+  gugurGo: { font: '800 18px/1 var(--g4-font-display)', flex: 'none' },
   inviteCard: {
     background: 'var(--g4-surface)',
     border: '1.5px dashed var(--g4-text)',

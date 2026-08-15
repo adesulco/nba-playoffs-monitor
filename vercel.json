@@ -116,6 +116,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/gugur/:code",
+      "destination": "/index.html"
+    },
+    {
       "source": "/skor",
       "destination": "/index.html"
     },
