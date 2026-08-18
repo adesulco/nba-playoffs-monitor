@@ -92,3 +92,39 @@
     left: max(0px, calc(50% - 600px)) !important;
   }
 }
+
+/* ── Right rail: only where there is genuinely room for a third column ── */
+.g4-siderail { display: none; }
+
+@media (min-width: 1200px) {
+  .g4-shell.g4-has-rail {
+    max-width: 1240px !important;
+    padding-right: 300px !important;
+  }
+  /* The left rail is positioned off the viewport centre, so it MUST use the
+     same half-width as the shell it flanks. When .g4-has-rail widens the
+     shell to 1240, a rail still anchored to the 1100 layout sits inboard of
+     the shell's left edge and the content clips underneath it. */
+  .g4-shell.g4-has-rail ~ .g4-tabbar,
+  .g4-has-rail .g4-tabbar,
+  body:has(.g4-has-rail) .g4-tabbar {
+    left: max(0px, calc(50% - 620px)) !important;
+  }
+  .g4-siderail {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: max(0px, calc(50% - 620px));
+    width: 276px;
+    padding: 28px 16px;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 1400px) {
+  .g4-shell.g4-has-rail { max-width: 1320px !important; }
+  .g4-siderail { right: max(0px, calc(50% - 660px)); }
+  body:has(.g4-has-rail) .g4-tabbar { left: max(0px, calc(50% - 660px)) !important; }
+}

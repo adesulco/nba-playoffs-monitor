@@ -26,6 +26,7 @@ import { COMPETITIONS, COMPETITION_ORDER, defaultCompetitionKey } from './compet
 import { skinForCompetition } from './sportSkins.js';
 import { MatchCard, LockBadge } from './components/primitives4a.jsx';
 import TabBar4a from './components/TabBar4a.jsx';
+import SideRail4a from './components/SideRail4a.jsx';
 import Logo4a from './components/Logo4a.jsx';
 import NicknameNudge4a from './components/NicknameNudge4a.jsx';
 import { IconChevronRight } from './components/icons4a.jsx';
@@ -200,7 +201,7 @@ function MainShellInner() {
   }
 
   return (
-    <div className="g4-shell" style={S.shell}>
+    <div className="g4-shell g4-has-rail" style={S.shell}>
       {/* Indexable since the root flip (2026-08-13) — this IS the homepage.
           Title keeps the site's search identity; description sells the loop. */}
       <SEO
@@ -374,6 +375,7 @@ function MainShellInner() {
         )}
       </div>
 
+      <SideRail4a grups={grups} lang={lang} />
       <TabBar4a active="main" grupCode={primaryGrup?.invite_code} lang={lang} />
     </div>
   );

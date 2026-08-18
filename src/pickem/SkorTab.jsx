@@ -24,6 +24,7 @@ import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { LiveTile } from './components/primitives4a.jsx';
 import TabBar4a from './components/TabBar4a.jsx';
+import SideRail4a from './components/SideRail4a.jsx';
 import { IconLiveDot } from './components/icons4a.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { useApp } from '../lib/AppContext.jsx';
@@ -143,7 +144,7 @@ function SkorTabInner() {
   }, [rows]);
 
   return (
-    <div className="g4-shell" style={S.shell}>
+    <div className="g4-shell g4-has-rail" style={S.shell}>
       <SEO title="Skor — live | gibol.co" description="Skor live dengan status pickmu." noindex />
 
       <header style={S.header}>
@@ -253,6 +254,7 @@ function SkorTabInner() {
         )}
       </div>
 
+      <SideRail4a lang={lang} />
       <TabBar4a active="skor" lang={lang} />
     </div>
   );
