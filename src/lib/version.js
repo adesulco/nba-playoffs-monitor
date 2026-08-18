@@ -8331,6 +8331,18 @@
 //   red. Everything above runs on ESPN + fixturedownload instead, so nothing
 //   is blocked, but renew it to restore the richer stats path (and the
 //   api-football source is still wired in the backfill script for that day).
+// v0.85.0 — PLATFORM SWITCH COMPLETE (2026-08-18).
+//   - Legacy Pick'em app removed from reach: /pickem, /pickem/grup,
+//     /pickem/board, /pickem/survivor redirect to 4a equivalents. New /grup
+//     ('Grup Saya') replaced the legacy list that TabBar4a was linking to.
+//     World Cup (ended Jul 19) out of the masthead; login repainted in 4a.
+//   - Real DESKTOP layout: styles/desktop-4a.css turns TabBar4a into a left
+//     rail at >=900px and adds SideRail4a (grup + shortcuts) at >=1200px.
+//     Mobile untouched. Verified 390px and 1440px.
+//   - R4a-1 M1 Gugur shipped: /gugur/:code, survivor-board action,
+//     enabled_modes toggle, g4-gugur share card.
+//   - GrupHome got a tab bar (it was a dead end where the loop lands).
+//   - /grup 404'd in prod — missing SPA rewrite; all 66 routes audited.
 // v0.84.1 — FGD PRETRIAL LIVE (2026-08-13). EPL picks open early (openAt
 // Aug 10), /main walks the registry to the first competition with open
 // fixtures (serves EPL MW1 while AFF sits between stages), FGD grup seeded
@@ -8428,7 +8440,7 @@
 //   pre-existing violations on first run — all migrated (Derby, BracketEdit,
 //   LeaderboardLeague, PickemHomeHero, WhatsAppShare share copy).
 // Suite: 114 tests (+9 — WIB window boundaries and the lock countdown).
-export const APP_VERSION = '0.84.1';
+export const APP_VERSION = '0.85.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

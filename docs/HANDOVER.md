@@ -1,7 +1,7 @@
 # Gibol — Where we are, what's next
 
 **Living document. Update it at the end of every working session.**
-Last updated: **2026-08-13** · shipped version **v0.84.1** · branch `main` · **STATUS: FGD-READY · root = new platform since 2026-08-15**
+Last updated: **2026-08-18** · shipped version **v0.85.0** · branch `main` · **STATUS: FGD-READY · Pick'em platform switch COMPLETE**
 
 If you are new to this repo, read this file, then `docs/pickem-flagship/16-MODULE-EXPANSION-CPO-BD-PLAN.md`
 (the approved module/BD plan — supersedes doc 13 for R4+), then `13-DEVELOPMENT-PLAN.md`
@@ -36,7 +36,8 @@ If you are new to this repo, read this file, then `docs/pickem-flagship/16-MODUL
 | 3 | **Node serverless function budget is 12/12 — full.** Edge functions are exempt (confirmed 2026-08-08 by shipping `api/g/[code].js`). | For a Node endpoint, add a `?type=` / `?_action=` branch to an existing function — that's why the 4a share cards live inside `api/og-recap.js`. A new **edge** function is fine. |
 | 4 | **A thrown exception in an edge function returns HTTP 200 with an empty body**, not a 500. | Never treat `200` as proof. Always check `%{size_download}`. This bug hid blank share cards in production for weeks. |
 | 5 | Invite codes are **case-sensitive**. | Never `.toUpperCase()` them — it breaks every join path. |
-| 6 | **Run `actionlint` before pushing any workflow edit.** A 0-second run with no jobs and no logs is a *startup* failure — the logs API has nothing to show by definition, so it is unguessable from the UI. | `content-cron.yml` was invalid YAML from the day it was written and had literally never run; a guard added to `deploy.yml` used the `secrets` context in a step `if:`, which is not permitted and stopped that workflow compiling too. Both were found in one actionlint run after two wrong guesses. |
+| 6 | **Desktop is CSS-only.** The 4a screens are mobile-first inline styles capped at 480px; `src/styles/desktop-4a.css` promotes them at ≥640/900/1200px (left nav rail, wider measure, right `SideRail4a`). Overrides need `!important` because inline styles win. Both rails are positioned off the viewport centre — **if you change a shell's max-width you MUST change the rails' half-width to match**, or content slides under the left rail. | Verify at 390px AND 1440px after any shell change. |
+| 7 | **Run `actionlint` before pushing any workflow edit.** A 0-second run with no jobs and no logs is a *startup* failure — the logs API has nothing to show by definition, so it is unguessable from the UI. | `content-cron.yml` was invalid YAML from the day it was written and had literally never run; a guard added to `deploy.yml` used the `secrets` context in a step `if:`, which is not permitted and stopped that workflow compiling too. Both were found in one actionlint run after two wrong guesses. |
 
 **Deploy:** push to `origin/main`; Vercel auto-deploys. Verify with `curl`, never with build success.
 **Secrets:** service-role key + `PICKEM_ADMIN_TOKEN` live only in Vercel env vars and local `.env.local`. Never commit them.
@@ -52,8 +53,11 @@ The **whole Pick'em loop is built and pixel-faithful** to the `#t4` design canva
 | Invite landing | `/g/:code` | **Live**, public, no auth |
 | Pick sheet | `/pick/:fixtureId` | **Live** |
 | Grup home | `/grup/:code` | **Live** |
-| Main root shell | `/main` | **Live in prod by URL** (route flag on since 2026-08-09; nothing links to it — root untouched per doc 16 decision 1) |
-| Skor tab | `/skor` | **Live in prod by URL** (same) |
+| **Main shell** | **`/` and `/main`** | **The homepage.** Root flip 2026-08-15; old scores home moved to `/beranda`. |
+| Skor tab | `/skor` | Live |
+| Grup list ("Grup Saya") | `/grup` | Live — replaced the legacy `/pickem/grup` |
+| Gugur (Survivor) | `/gugur/:code` | Live — R4a-1 / M1 |
+| Legacy Pick'em app | `/pickem`, `/pickem/grup`, `/pickem/board`, `/pickem/survivor` | **Redirect to 4a equivalents** — the old navy app is unreachable |
 | Share cards v2 | `api/og-recap?type=g4-*` | **Live**, renders |
 
 **The core loop is verified in a real browser at 390×844:** invite link → confirmed pick in
@@ -77,9 +81,10 @@ Ordered by value. Item 1 shipped 2026-08-08; the rest are open.
 | ~~2~~ | ~~**Port nickname nudge to the 4a surfaces**~~ | ✅ **Shipped 2026-08-09** — `NicknameNudge4a` on MainShell + GrupHome, same dismissal key as the old hub's nudge. |
 | ~~3~~ | ~~**Make `/main` + `/skor` testable**~~ | ✅ **Done 2026-08-09** — route flag ON in production; reachable by URL, unlinked, root untouched (doc 16 decision 1). Vercel preview deploys turned out to be SSO-walled (302), so prod-by-URL is the tester path. |
 | ~~4~~ | ~~**Brand fonts on share cards**~~ | ✅ **Shipped 2026-08-10.** Root cause: Satori can't parse VARIABLE fonts. Static per-weight instances shipped; `scripts/test-satori-fonts.mjs` is now the mandatory pre-deploy parse test for any font change (see FONT RULE in `api/og-recap.js`). |
-| 5 | **Take the R2 exit measurement** | See below — it gates the launch and the AFF window closes Aug 11. |
-| 6 | **AFF SF/F decision** (doc 16 R3′-4) | Seed the semis/final only if two-leg handling verifies in <½ day; otherwise skip — group stage ends Aug 11. Log the decision either way. |
-| 7 | **EPL MW1 launch push** (doc 16 R3′-5) | Aug 15, on the current shell. Fixtures are seeded (MW1 kicks off Aug 21). WA-ready invite cards now unfurl correctly; rollover banner exists (R0-6). |
+| ~~5~~ | ~~**AFF SF/F seeding**~~ | ✅ **Done 2026-08-15.** All four semifinal legs seeded and pickable once ESPN resolved the pairings. Exposed a CI bug: manual football-backfill dispatches silently ran WC2026 three times (input default overrode the whole matrix). Fixed. |
+| ~~6~~ | ~~**Legacy site + desktop**~~ | ✅ **Done 2026-08-18.** Old `/pickem` app redirects to 4a; World Cup out of the masthead; real desktop layout at ≥900/1200px. |
+| 7 | **Take the FGD measurement** | The only remaining gate — needs real participants. See §4 and `docs/FGD-RUNBOOK.md`. |
+| 8 | **EPL MW1 launch push** | MW1 kicks off **Aug 21**. Platform side is done; what's left is distribution (WA blast, seed more grups). |
 
 **How to verify anything you build here:** run `DEV_API_PROXY=https://www.gibol.co npm run dev`,
 drive the real screen at 390×844, and `curl` the deployed endpoint checking
