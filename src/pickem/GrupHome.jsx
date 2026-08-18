@@ -25,6 +25,7 @@ import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { LeaderboardRow, LockBadge } from './components/primitives4a.jsx';
 import NicknameNudge4a from './components/NicknameNudge4a.jsx';
+import TabBar4a from './components/TabBar4a.jsx';
 import { IconChevronLeft, IconWhatsApp, IconCopy, IconCheck } from './components/icons4a.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { useApp } from '../lib/AppContext.jsx';
@@ -146,18 +147,18 @@ function GrupHomeInner() {
   }, [league, notPicked, nextFixture, inviteUrl, lang]);
 
   if (loading) {
-    return <Shell><p style={S.muted}>{tx('Loading your grup…', 'Memuat grupmu…')}</p></Shell>;
+    return <Shell code={code} lang={lang}><p style={S.muted}>{tx('Loading your grup…', 'Memuat grupmu…')}</p></Shell>;
   }
   if (!league) {
     return (
-      <Shell>
+      <Shell code={code} lang={lang}>
         <p style={S.muted}>{tx('That grup no longer exists.', 'Grup itu sudah tidak ada.')}</p>
       </Shell>
     );
   }
 
   return (
-    <Shell>
+    <Shell code={code} lang={lang}>
       <SEO title={`${league.name} — grup Pick'em | gibol.co`} description={`Klasemen ${league.name} di gibol.co.`} noindex />
 
       {/* Ink header block */}
@@ -340,8 +341,20 @@ function Tile({ value, label, accent }) {
   );
 }
 
-function Shell({ children }) {
-  return <div className="g4-shell" style={S.shell}>{children}</div>;
+/**
+ * GrupHome is a DESTINATION, not a focus surface — it had no tab bar, so
+ * landing here (which is exactly where a confirmed pick sends you) was a
+ * navigation dead end with no way back to Main or Skor. PickSheet and
+ * InviteLanding stay bar-less on purpose: those are single-task flows with
+ * their own sticky CTA.
+ */
+function Shell({ children, code, lang = 'en' }) {
+  return (
+    <div className="g4-shell" style={S.shell}>
+      {children}
+      <TabBar4a active="grup" grupCode={code} lang={lang} />
+    </div>
+  );
 }
 
 const S = {
@@ -352,7 +365,7 @@ const S = {
     fontFamily: 'var(--g4-font-ui)',
     maxWidth: 480,
     margin: '0 auto',
-    paddingBottom: 28,
+    paddingBottom: 96,  // clears the fixed TabBar4a
     boxSizing: 'border-box',
   },
   inkHeader: {
