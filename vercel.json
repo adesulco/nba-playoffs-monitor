@@ -104,6 +104,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/grup",
+      "destination": "/index.html"
+    },
+    {
       "source": "/grup/:code",
       "destination": "/index.html"
     },
