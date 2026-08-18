@@ -42,14 +42,19 @@ import LeagueChip from '../LeagueChip.jsx';
 // Indonesia-first mission) and Liga Inggris (EPL). Liga 1 sits first
 // among the football items so it gets visual weight.
 const NAV_ITEMS = [
-  { id: 'home',   labelKey: 'navHome',     label: 'Home',           path: '/' },
+  // Root is the Pick'em platform since 2026-08-15; the scores home moved
+  // to /beranda. 'Home' must point at the scores hub it has always meant
+  // in this masthead, otherwise the nav's Home and the site's root fight.
+  { id: 'home',   labelKey: 'navHome',     label: 'Home',           path: '/beranda' },
   { id: 'nba',    labelKey: null,          label: 'NBA',            path: '/nba-playoff-2026' },
   { id: 'liga1',  labelKey: 'navLiga1',    label: 'Liga 1',         path: '/super-league-2025-26' },
   { id: 'epl',    labelKey: 'navEPL',      label: 'Premier League', path: '/premier-league-2025-26' },
   { id: 'f1',     labelKey: null,          label: 'F1',             path: '/formula-1-2026' },
   { id: 'tennis', labelKey: 'navTennis',   label: 'Tennis',         path: '/tennis' },
-  // v0.79.26 — WC2026 went LIVE on kickoff day; `soon` badge dropped.
-  { id: 'wc',     labelKey: 'navWorldCup', label: 'World Cup',      path: '/fifa-world-cup-2026' },
+  // WC2026 ENDED 2026-07-19. Removed from the masthead 2026-08-18 — a
+  // finished tournament sitting in primary nav is the single loudest
+  // "this site is stale" signal. The /fifa-world-cup-2026 hub stays live
+  // and indexed as an archive; it just isn't front-door navigation.
 ];
 
 // v0.11.6 Sprint 2 — prefetch per-route chunks on hover/focus. The

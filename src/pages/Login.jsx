@@ -60,7 +60,7 @@ export default function Login() {
   };
 
   return (
-    <div style={{ background: C.bg, minHeight: '100vh', color: C.text, fontFamily: '"JetBrains Mono", monospace' }}>
+    <div style={{ background: 'var(--g4-bg)', minHeight: '100dvh', color: 'var(--g4-text)', fontFamily: 'var(--g4-font-ui)' }}>
       {/* v0.62.4 — audit SEO-003: noindex on /login. Auth-gated routes
           (/bracket, /settings/teams) bounce here as /login?next=…; without
           noindex the login page (and, via canonical, those gated routes)
@@ -77,8 +77,8 @@ export default function Login() {
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               height: 48, width: 48,
               borderRadius: 8,
-              background: 'var(--amber)',
-              color: '#0A1628',
+              background: 'var(--g4-accent)',
+              color: '#fff',
               font: "900 20px 'Space Grotesk'",
             }}>G</div>
             <h1 style={{
@@ -87,14 +87,14 @@ export default function Login() {
               fontSize: 28, fontWeight: 700,
               letterSpacing: '-0.02em',
             }}>{t.headline}</h1>
-            <p style={{ margin: 0, fontSize: 13, color: C.dim }}>{t.sub}</p>
+            <p style={{ margin: 0, fontSize: 13, color: 'var(--g4-text-muted)' }}>{t.sub}</p>
           </header>
 
           {sent ? (
             <div style={{
-              background: 'var(--bg-2)',
+              background: 'var(--g4-surface)',
               border: `1px solid ${C.line}`,
-              borderLeft: `3px solid var(--amber)`,
+              borderLeft: `3px solid var(--g4-accent)`,
               borderRadius: 3,
               padding: 20,
               textAlign: 'center',
@@ -102,7 +102,7 @@ export default function Login() {
             }}>
               <p style={{ margin: 0, fontSize: 22 }}>📬</p>
               <p style={{ margin: 0, fontWeight: 700 }}>{t.sentTitle}</p>
-              <p style={{ margin: 0, fontSize: 13, color: C.dim }}>{t.sentBody(email)}</p>
+              <p style={{ margin: 0, fontSize: 13, color: 'var(--g4-text-muted)' }}>{t.sentBody(email)}</p>
             </div>
           ) : (
             <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -123,7 +123,7 @@ export default function Login() {
                     width: '100%',
                     padding: '12px 14px',
                     borderRadius: 3,
-                    background: 'var(--bg-2)',
+                    background: 'var(--g4-surface)',
                     border: `1px solid ${C.line}`,
                     color: C.text,
                     fontSize: 14,
@@ -131,17 +131,17 @@ export default function Login() {
                   }}
                 />
               </div>
-              {err && <p style={{ margin: 0, fontSize: 12, color: C.red }}>{err}</p>}
+              {err && <p style={{ margin: 0, fontSize: 12, color: 'var(--g4-lose)' }}>{err}</p>}
               <button
                 type="submit"
                 disabled={sending || !email}
                 style={{
-                  padding: '12px 18px',
-                  borderRadius: 3,
-                  background: 'var(--amber)',
-                  color: '#0A1628',
-                  border: '1px solid var(--amber)',
-                  font: "700 14px 'Space Grotesk'",
+                  padding: '13px 18px',
+                  borderRadius: 'var(--g4-radius-cta)',
+                  background: 'var(--g4-ink-block)',
+                  color: 'var(--g4-paper)',
+                  border: 'none',
+                  font: '700 14px/1.2 var(--g4-font-ui)',
                   cursor: sending || !email ? 'not-allowed' : 'pointer',
                   opacity: sending || !email ? 0.6 : 1,
                 }}
