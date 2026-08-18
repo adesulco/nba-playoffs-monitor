@@ -24,15 +24,17 @@ export default function TabBar4a({ active = 'main', grupCode, lang = 'en' }) {
       key: 'grup',
       Icon: IconGrup,
       label: tx('Grup', 'Grup'),
-      // Straight to the grup when we know which one; otherwise the picker.
-      to: grupCode ? `/grup/${grupCode}` : '/pickem/grup',
+      // Straight to the grup when we know which one; otherwise the 4a grup
+      // list. This used to fall back to /pickem/grup — the LEGACY navy
+      // screen — so the new shell's own nav leaked the old website.
+      to: grupCode ? `/grup/${grupCode}` : '/grup',
     },
     { key: 'skor', Icon: IconSkor, label: tx('Skor', 'Skor'), to: '/skor' },
     { key: 'kabar', Icon: IconKabar, label: tx('Kabar', 'Kabar'), soon: true },
   ];
 
   return (
-    <nav style={S.bar} aria-label={tx('Main navigation', 'Navigasi utama')}>
+    <nav className="g4-tabbar" style={S.bar} aria-label={tx('Main navigation', 'Navigasi utama')}>
       {tabs.map(({ key, Icon, label, to, soon }) => {
         const isActive = key === active;
         const inert = soon || !to;

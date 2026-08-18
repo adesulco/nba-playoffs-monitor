@@ -9,6 +9,8 @@ import './pickem/pickem.css';
 // re-points the legacy token names at 4a values (aliased migration), so
 // an unported surface stays coherent instead of half-old/half-new.
 import './styles/tokens-4a.css';
+// Desktop/tablet layout for the 4a surfaces (mobile stays the inline default).
+import './styles/desktop-4a.css';
 import { registerSW, installInstallPromptCapture } from './lib/pwa.js';
 import { initObservability } from './lib/observability.js';
 import { startThemeEngine } from './lib/theme4a.js';

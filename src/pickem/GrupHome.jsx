@@ -163,7 +163,7 @@ function GrupHomeInner() {
       {/* Ink header block */}
       <header style={S.inkHeader}>
         <div style={S.inkTop}>
-          <button type="button" onClick={() => navigate('/pickem')} aria-label={tx('Back', 'Kembali')} style={S.iconBtnLight}>
+          <button type="button" onClick={() => navigate('/')} aria-label={tx('Back', 'Kembali')} style={S.iconBtnLight}>
             <IconChevronLeft size={20} />
           </button>
           <span style={S.codePill}>{tx('code', 'kode')} {league.invite_code}</span>
@@ -192,7 +192,7 @@ function GrupHomeInner() {
         </div>
       </header>
 
-      <div style={S.body}>
+      <div className="g4-body" style={S.body}>
         {/* Nickname nudge — right above the klasemen, which is exactly where
             showing up as a raw hex id hurts. */}
         {user && (
@@ -341,7 +341,7 @@ function Tile({ value, label, accent }) {
 }
 
 function Shell({ children }) {
-  return <div style={S.shell}>{children}</div>;
+  return <div className="g4-shell" style={S.shell}>{children}</div>;
 }
 
 const S = {

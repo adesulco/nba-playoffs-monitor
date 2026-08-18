@@ -153,6 +153,7 @@ const MainShell      = lazy(() => import('./pickem/MainShell.jsx'));
 const SkorTab        = lazy(() => import('./pickem/SkorTab.jsx'));
 // R4a-1 (M1 Gugur) — grup-scoped survivor sheet.
 const GugurSheet     = lazy(() => import('./pickem/GugurSheet.jsx'));
+const GrupList       = lazy(() => import('./pickem/GrupList.jsx'));
 const GrupCreate     = lazy(() => import('./pickem/GrupCreate.jsx'));
 const GrupDetail     = lazy(() => import('./pickem/GrupDetail.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
@@ -464,9 +465,9 @@ export default function App() {
                 leaderboard + grup surfaces. All gated behind flags.pickem;
                 routes resolve to NotFound when the flag is off (does NOT
                 pollute the SPA's URL space until the feature ships). */}
-            {UI.pickem && <Route path="/pickem" element={<PredictingHub />} />}
+            {UI.pickem && <Route path="/pickem" element={<Navigate to="/" replace />} />}
             {UI.pickem && <Route path="/pickem/fixture/:id" element={<FixtureDetail />} />}
-            {UI.pickem && <Route path="/pickem/board" element={<PickemLeaderboard />} />}
+            {UI.pickem && <Route path="/pickem/board" element={<Navigate to="/grup" replace />} />}
             {UI.devPrimitives && <Route path="/dev/primitives" element={<DevPrimitives />} />}
             {UI.pickem && <Route path="/g/:code" element={<InviteLanding />} />}
             {UI.pickem && <Route path="/pick/:fixtureId" element={<PickSheet />} />}
@@ -474,13 +475,22 @@ export default function App() {
             {UI.pickem && UI.pickemHome && <Route path="/main" element={<MainShell />} />}
             {UI.pickem && UI.pickemHome && <Route path="/skor" element={<SkorTab />} />}
             {UI.pickem && <Route path="/gugur/:code" element={<GugurSheet />} />}
-            {UI.pickem && <Route path="/pickem/grup" element={<Grup />} />}
+            {UI.pickem && <Route path="/grup" element={<GrupList />} />}
+            {/* LEGACY Pick'em app (navy design, WC-era copy). The switch to
+                the Pick'em platform is done — these entries now redirect to
+                their 4a equivalents so the old site can't be reached by URL,
+                bookmark, or stale sitemap entry. The remaining /pickem/*
+                deep routes stay mounted below as fallbacks for features
+                without a 4a screen yet (bracket, profile, recap), but
+                nothing in the new nav links to them. */}
+
+            {UI.pickem && <Route path="/pickem/grup" element={<Navigate to="/grup" replace />} />}
             {UI.pickem && <Route path="/pickem/grup/new" element={<GrupCreate />} />}
             {UI.pickem && <Route path="/pickem/grup/join" element={<GrupJoin />} />}
             {UI.pickem && <Route path="/pickem/grup/:id" element={<GrupDetail />} />}
             {UI.pickem && <Route path="/pickem/grup/:id/join" element={<GrupJoin />} />}
             {UI.pickem && <Route path="/pickem/bracket" element={<PickemBracket />} />}
-            {UI.pickem && <Route path="/pickem/survivor" element={<PickemSurvivor />} />}
+            {UI.pickem && <Route path="/pickem/survivor" element={<Navigate to="/grup" replace />} />}
             {UI.pickem && <Route path="/pickem/profile" element={<PickemProfile />} />}
             {UI.pickem && <Route path="/pickem/recap" element={<PickemRecap />} />}
             {UI.pickem && <Route path="/pickem/bracket/tree" element={<PickemBracketTree />} />}

@@ -114,7 +114,7 @@ function FixtureDetailInner() {
   return (
     <PickemRoot active="predict">
       <div style={{ padding: '12px 16px 32px', maxWidth: 640, margin: '0 auto' }}>
-        <BackButton onClick={() => navigate('/pickem')} />
+        <BackButton onClick={() => navigate('/')} />
 
         {loading && (
           <div

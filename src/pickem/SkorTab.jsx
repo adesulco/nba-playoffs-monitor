@@ -143,7 +143,7 @@ function SkorTabInner() {
   }, [rows]);
 
   return (
-    <div style={S.shell}>
+    <div className="g4-shell" style={S.shell}>
       <SEO title="Skor — live | gibol.co" description="Skor live dengan status pickmu." noindex />
 
       <header style={S.header}>
@@ -168,7 +168,7 @@ function SkorTabInner() {
         </div>
       )}
 
-      <div style={S.body}>
+      <div className="g4-body" style={S.body}>
         {loading && <p style={S.muted}>{tx('Loading scores…', 'Memuat skor…')}</p>}
 
         {!loading && live.length === 0 && finished.length === 0 && upcoming.length === 0 && (

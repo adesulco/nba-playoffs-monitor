@@ -103,7 +103,7 @@ function GrupDetailInner() {
             title="Grup nggak ditemukan"
             body="Mungkin sudah dihapus, atau kamu belum jadi anggotanya."
             action={
-              <PickemBtn variant="primary" onClick={() => navigate('/pickem/grup')}>
+              <PickemBtn variant="primary" onClick={() => navigate('/grup')}>
                 Kembali ke daftar grup
               </PickemBtn>
             }
@@ -216,7 +216,7 @@ function Header({ grup, memberCount, onShare }) {
         <PickemBtn variant="primary" onClick={onShare}>
           Bagikan grup
         </PickemBtn>
-        <PickemBtn variant="ghost" onClick={() => window.location.assign('/pickem')}>
+        <PickemBtn variant="ghost" onClick={() => window.location.assign('/')}>
           Buka prediksi
         </PickemBtn>
       </div>

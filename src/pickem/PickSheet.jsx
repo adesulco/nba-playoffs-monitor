@@ -282,7 +282,7 @@ function PickSheetInner() {
         </div>
       </div>
 
-      <div style={S.body}>
+      <div className="g4-body" style={S.body}>
         {/* Q1 — winner. The only required answer. */}
         <section style={S.card}>
           <h2 style={S.q}>1 · {tx('Who wins?', 'Siapa yang menang?')}</h2>
@@ -448,7 +448,7 @@ function stageLabel(fixture, lang) {
 
 function Shell({ children }) {
   return (
-    <div style={S.shell}>{children}</div>
+    <div className="g4-shell" style={S.shell}>{children}</div>
   );
 }
 

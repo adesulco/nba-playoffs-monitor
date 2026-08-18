@@ -139,7 +139,7 @@ function GugurSheetInner() {
   const title = `Gugur — ${league?.name || 'Pick’em'} | gibol.co`;
 
   return (
-    <div style={S.shell}>
+    <div className="g4-shell" style={S.shell}>
       <SEO title={title} description="Satu tim per pekan. Salah sekali, gugur." noindex />
 
       <header style={S.header}>
@@ -150,7 +150,7 @@ function GugurSheetInner() {
         )}
       </header>
 
-      <div style={S.body}>
+      <div className="g4-body" style={S.body}>
         {loading && <p style={S.muted}>{tx('Loading…', 'Memuat…')}</p>}
 
         {!loading && board && board.enabled === false && (

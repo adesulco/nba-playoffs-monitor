@@ -152,7 +152,7 @@ function InviteLandingInner() {
             )}
           </p>
         </div>
-        <Link to="/pickem" style={{ ...S.cta, textDecoration: 'none', display: 'block' }}>
+        <Link to="/" style={{ ...S.cta, textDecoration: 'none', display: 'block' }}>
           {tx('Explore Gibol', 'Lihat Gibol')}
         </Link>
       </Shell>

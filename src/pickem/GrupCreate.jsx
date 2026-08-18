@@ -138,7 +138,7 @@ function GrupCreateInner() {
             <PickemBtn type="submit" variant="primary" disabled={submitting}>
               {submitting ? 'Membuat…' : 'Bikin grup'}
             </PickemBtn>
-            <PickemBtn type="button" variant="ghost" onClick={() => navigate('/pickem/grup')}>
+            <PickemBtn type="button" variant="ghost" onClick={() => navigate('/grup')}>
               Batal
             </PickemBtn>
           </div>

@@ -188,7 +188,7 @@ function PickemBand({ lang }) {
         </div>
       </div>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        <Link to="/pickem" style={btn(true)}>{lang === 'id' ? 'Mulai prediksi →' : 'Start predicting →'}</Link>
+        <Link to="/" style={btn(true)}>{lang === 'id' ? 'Mulai prediksi →' : 'Start predicting →'}</Link>
         <Link to="/pickem/bracket" style={btn(false)}>{lang === 'id' ? 'Bangun bracket' : 'Build bracket'}</Link>
       </div>
     </section>

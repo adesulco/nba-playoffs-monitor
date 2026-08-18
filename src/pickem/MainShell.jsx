@@ -200,7 +200,7 @@ function MainShellInner() {
   }
 
   return (
-    <div style={S.shell}>
+    <div className="g4-shell" style={S.shell}>
       {/* Indexable since the root flip (2026-08-13) — this IS the homepage.
           Title keeps the site's search identity; description sells the loop. */}
       <SEO
@@ -226,7 +226,7 @@ function MainShellInner() {
         </button>
       </header>
 
-      <div style={S.body}>
+      <div className="g4-body" style={S.body}>
         {/* Utang-pick hero */}
         {loading ? (
           <div style={{ ...S.hero, padding: 18 }}>

@@ -1,0 +1,94 @@
+/*
+ * desktop-4a.css — desktop + tablet layout for the Sistem 4a surfaces.
+ *
+ * The 4a screens were built mobile-first at a hard 480px cap, which on a
+ * desktop browser rendered as a narrow phone-shaped column in the middle of
+ * a wide empty page. This file promotes the same components into a real
+ * desktop layout at >=900px, matching the reference pattern: persistent
+ * left rail for navigation, wider centred content column.
+ *
+ * Overrides use !important because the shells carry inline styles (the
+ * project's CSS-in-JS convention) and inline wins over stylesheets. The
+ * inline values remain the mobile source of truth; this file only takes
+ * over once there is room for it.
+ */
+
+/* ── Tablet: just let the column breathe ─────────────────────────────── */
+@media (min-width: 640px) {
+  .g4-shell {
+    max-width: 620px !important;
+  }
+  .g4-tabbar {
+    max-width: 620px !important;
+  }
+}
+
+/* ── Desktop: left rail + content column ─────────────────────────────── */
+@media (min-width: 900px) {
+  .g4-shell {
+    max-width: 1100px !important;
+    /* Rail width + gutter. The rail is fixed, so the content is offset
+       rather than laid out in a grid — keeps every child's own layout
+       untouched. */
+    padding-left: 232px !important;
+    padding-right: 24px !important;
+    padding-bottom: 40px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Tab bar → vertical left rail. Same component, same order, same active
+     state; only the axis changes. */
+  .g4-tabbar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: max(0px, calc(50% - 550px)) !important;
+    right: auto !important;
+    width: 208px !important;
+    max-width: 208px !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 4px !important;
+    padding: 28px 16px !important;
+    border-top: none !important;
+    border-right: var(--g4-rule-strong) solid var(--g4-text) !important;
+    background: var(--g4-bg) !important;
+  }
+  .g4-tabbar > button {
+    flex: none !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 11px 12px !important;
+    border-radius: var(--g4-radius-cta) !important;
+  }
+  .g4-tabbar > button > span {
+    font-size: 14px !important;
+  }
+  .g4-tabbar > button[aria-current='page'] {
+    background: var(--g4-surface) !important;
+  }
+
+  /* Content itself gets a comfortable measure — long lines are the other
+     half of "this looks like a phone on my monitor". */
+  .g4-body {
+    max-width: 720px !important;
+  }
+
+  /* Match cards and rows can afford more horizontal padding at this size. */
+  .g4-shell .g4-card-pad {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* ── Wide desktop: hold the measure, centre the whole thing ──────────── */
+@media (min-width: 1400px) {
+  .g4-shell {
+    max-width: 1200px !important;
+  }
+  .g4-tabbar {
+    left: max(0px, calc(50% - 600px)) !important;
+  }
+}

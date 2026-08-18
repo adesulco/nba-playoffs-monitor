@@ -165,11 +165,12 @@ const breadcrumb = (items) => ({
 const STATIC_ROUTES = [
   {
     path: '/',
-    // v0.13.0 trim — was 82 chars, "gibol.co — gila bola · skor live
-    // NBA, F1, Liga Inggris, Tenis, Piala Dunia 2026". Cut to 59 chars
-    // so it doesn't truncate in Google SERPs.
-    title: 'Skor Live NBA · F1 · Liga Inggris · Tenis | gibol.co',
-    description: 'Skor live NBA Playoffs 2026, Formula 1 2026, Liga Inggris 2025-26, Tenis ATP+WTA, dan Piala Dunia FIFA 2026. Klasemen, bracket, peluang juara, recap Bahasa.',
+    // Root flip 2026-08-15: '/' is the Pick'em platform, not the scores
+    // home (that moved to /beranda). Title/description sell the loop, and
+    // the retired Piala Dunia copy is gone — the tournament ended Jul 19.
+    // Kept under 60 chars so it doesn't truncate in SERPs.
+    title: "gibol — Tebak Skor bareng grup | Pick'em multi-sport",
+    description: 'Pick pertandingan dalam 3 tap, ajak grup WhatsApp kamu, pantau klasemen. Liga Inggris, Piala AFF, NBA — Bahasa-first, gratis, tanpa iklan.',
     keywords: 'gibol, gila bola, skor nba, skor basket, skor playoff, live skor nba, peluang juara nba 2026, bracket nba, formula 1 2026, f1 2026, liga inggris, premier league, tenis 2026, atp tour 2026, wta tour 2026, grand slam 2026, roland garros 2026, peringkat atp, peringkat wta, FIFA world cup 2026, piala dunia 2026',
     ogImage: DEFAULT_OG,
     // v0.61.0 — see comment above: WebSite + Organization moved to index.html.
@@ -238,17 +239,7 @@ const STATIC_ROUTES = [
   // through to the SPA shell via the vercel.json /pickem/:path* rewrite
   // — they share meta with the homepage rather than each having their
   // own STATIC_ROUTES entry.
-  {
-    path: '/pickem',
-    title: "Pick'em — Prediksi NBA Playoff & Piala Dunia 2026 | gibol.co",
-    description: "Prediksi laga NBA Playoffs 2026 + Piala Dunia FIFA 2026 bareng teman. Bikin grup, kunci pilihan sebelum tip-off, naik ke papan peringkat. Bahasa-first, gratis, tanpa iklan.",
-    keywords: "pickem indonesia, prediksi nba 2026, prediksi piala dunia 2026, tebak skor nba, prediksi bola, fantasy bola indonesia, grup prediksi whatsapp",
-    ogImage: DEFAULT_OG,
-    jsonLd: breadcrumb([
-      { name: 'gibol.co', url: '/' },
-      { name: "Pick'em", url: '/pickem' },
-    ]),
-  },
+
   {
     path: '/ibl',
     // v0.13.0 trim — was 73 chars.
