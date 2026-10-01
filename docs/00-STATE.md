@@ -1,8 +1,8 @@
 # Gibol — where prod is right now
 
-**Living document. Update it at the end of every sprint.** Plan of record: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`. History: `docs/HANDOVER.md` (frozen 2026-08-18).
+**Living document. Update it at the end of every sprint.** Plan of record: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`. Contract: `02-PLATFORM-CONTRACT.md`. History: `docs/archive/HANDOVER-2026-08-18.md`.
 
-Last updated: **2026-10-01** · live version **v0.87.0** · branch `main` · **S1 Truth shipped** (0022 apply pending)
+Last updated: **2026-10-01** · live version **v0.89.1** · branch `main` · **S0–S3 shipped in one day** (0022 apply pending)
 
 ## 1 · Read this before you touch anything
 
@@ -33,6 +33,15 @@ Last updated: **2026-10-01** · live version **v0.87.0** · branch `main` · **S
 
 **Scored predictions: 0.** The RPC scored 50 fixtures but no user has a server-side prediction on EPL yet — the FGD grup has one member (Bang Ade, 0 pts) because the 4a loop never claimed guest picks or joined anyone (audit finding 2). The doc 17 S0 exit check "FgdGibol klasemen non-zero" therefore cannot be met by S0; it is met the moment S1 ships join-on-confirm and claim-on-login and MD6 is scored.
 
+## 3 · Sprint log (2026-10-01)
+
+| Sprint | Version | Verified by |
+|---|---|---|
+| S0 Rescue | v0.86.0 | 50 EPL finals scored, health ok, 390/1440 screenshots |
+| S1 Truth | v0.87.0 | 0021 applied + EPL re-scored, 56 vectors SQL = JS, `verify-loop` 19/19, browser guest pick + invite stored |
+| S2 Platform | v0.88.0 | registry gate, Liga 1 teams + NBA 81 fixtures seeded, scanner/NBA/football runs green, entry 98 KB gzip, 4a login/create/profile in prod |
+| S3 Retention | v0.89.1 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
+
 ## 3 · Open
 
 - **S1 step 1 shipped (2026-10-01):** `0021_scoring_v1.sql` applied in prod via the SQL editor (the editor's "Potential issue detected" dialog must be confirmed, or nothing runs — that swallowed the first attempt). Probed after apply: EPL rules 5/3/2/1, history rows 8/5/3, tiers backfilled, `p_*` and `grup_bonus_points` gone, M8 badges, `streaks.kind`. All 50 EPL finals re-scored through the admin `score-fixture` action on the new engine (0 predictions exist yet). Ladder checked by hand on ARS 3-0 COV, FUL 1-1 MAN, MNC 5-3 SUN via the prod functions: exact 5 / margin 3 / result 2 / nyaris 1 / miss 0, jagoan+underdog 15/9/6/1/0.
@@ -43,6 +52,25 @@ Last updated: **2026-10-01** · live version **v0.87.0** · branch `main` · **S
 - **S1 Truth (Oct 4–10, before MD6 on Oct 10 18:30 WIB):** migrations `0021_scoring_v1.sql` and `0022_rls_close.sql` (Ade applies in the SQL editor), scoring parity vectors, `predict.js` writes `matchday` + `last_predicted_at`, join-on-confirm + claim-on-login + guest CTA, copy changes, `useProvisionalPoints` rendered. EPL MW1–5 were scored under the old 8/5/3 rules; S1 re-scores EPL once via the admin `score` action (allowed: no user has seen EPL points).
 - `Content Engine - Cron` fails on every scheduled run (Anthropic key rotation pending). Noise in the Actions tab; disable it or rotate the key.
 - `WC2026` and `AFF2026` are still in the backfill matrix; they idle-exit on schedule, so harmless, but drop them when Liga 1 is added in S2.
+
+## 3b · Manual grant runbook (until billing lands, doc 17 S4)
+
+A Season Pass or Lifetime order arrives through the `VITE_ORDER_URL` link. To grant it by hand:
+
+```bash
+curl -s -X POST 'https://www.gibol.co/api/pickem?_action=grant-entitlement' \
+  -H "x-admin-token: $PICKEM_ADMIN_TOKEN" -H 'content-type: application/json' \
+  -d '{"user_id":"<auth user uuid>","product":"season_pass","competition":"EPL-2026-27","provider":"comp","provider_ref":"<order ref>"}'
+```
+
+Then the commissioner taps "Setujui" on the pending member in GrupHome. `product` is one of `season_pass`, `lifetime`, `gibol_plus`, `sponsor_pool`; `provider_ref` keeps re-grants idempotent.
+
+## 3c · Still open after S3
+
+- `leagues.formats` is still read by 12 API call sites; drop it (0023) only after an API pass replaces it with `enabled_modes`.
+- `content-cron.yml` fails every scheduled run (Anthropic key) and carries pre-existing shellcheck warnings; disable or rotate.
+- Liga 1 fixtures appear automatically once ESPN publishes `idn.1` 2026/27; until then the row shows no fixtures (window opens Oct 15 — move `window.opensAt` if ESPN is late).
+- Share-card CTR: `pickem_share` events now flow to PostHog; the WPP weekly read needs the GA4 funnel exported.
 
 ## 4 · Decisions needed from Ade
 

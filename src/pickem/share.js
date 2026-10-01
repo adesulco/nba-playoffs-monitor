@@ -1,3 +1,5 @@
+import { trackEvent } from '../lib/analytics.js';
+
 /**
  * share.js — share a g4-* card (api/og-recap?type=g4-…) the way phones
  * expect: the PNG as a file through the Web Share API when the browser
@@ -13,6 +15,9 @@ export function cardUrl(type, params = {}) {
 export async function shareCard({ type, params, title, text, url }) {
   const image = cardUrl(type, params);
   if (typeof navigator === 'undefined') return 'none';
+  // Share-card CTR for PostHog (doc 17 S3 exit check): one event per attempt
+  // with the outcome filled in by the caller's chosen channel below.
+  const done = (via) => { try { trackEvent('pickem_share', { card: type, via }); } catch { /* ignore */ } return via; };
   try {
     if (navigator.share && navigator.canShare) {
       try {
@@ -21,18 +26,18 @@ export async function shareCard({ type, params, title, text, url }) {
           const file = new File([blob], `gibol-${type}.png`, { type: blob.type || 'image/png' });
           if (navigator.canShare({ files: [file] })) {
             await navigator.share({ files: [file], title, text: `${text}${url ? ` ${url}` : ''}` });
-            return 'file';
+            return done('file');
           }
         }
       } catch { /* fall through to link share */ }
     }
     if (navigator.share) {
       await navigator.share({ title, text, url: url || image });
-      return 'link';
+      return done('link');
     }
     if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(`${text} ${url || image}`.trim());
-      return 'copy';
+      return done('copy');
     }
   } catch { /* user cancelled or unsupported */ }
   return 'none';

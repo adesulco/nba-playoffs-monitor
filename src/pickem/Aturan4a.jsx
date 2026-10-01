@@ -1,5 +1,5 @@
 /**
- * /aturan — scoring rules + "kenapa gratis, tanpa taruhan" (doc 17 S3).
+ * /aturan — scoring rules + "kenapa gratis" (doc 17 S3).
  * Linked from the pick sheet's ⓘ and the grup home. Public, indexable.
  * Numbers come from the Spec v1 defaults in scoring-core, never typed twice.
  */
@@ -21,7 +21,7 @@ export default function Aturan4a() {
     <div className="g4-shell" style={S.shell}>
       <SEO
         title={tx('How scoring works · gibol.co', 'Cara hitung poin · gibol.co')}
-        description={tx('Gibol Pick\'em scoring: exact score 5, result + margin 3, result 2, nyaris 1, jagoan ×2. Free, no betting.', 'Poin Pick\'em Gibol: skor tepat 5, hasil + selisih 3, hasil 2, nyaris 1, jagoan ×2. Gratis, tanpa taruhan.')}
+        description={tx('Gibol Pick\'em scoring: exact score 5, result + margin 3, result 2, nyaris 1, jagoan ×2. Free — gengsi only.', 'Poin Pick\'em Gibol: skor tepat 5, hasil + selisih 3, hasil 2, nyaris 1, jagoan ×2. Gratis — demi gengsi.')}
       />
       <header style={S.header}>
         <button type="button" onClick={() => navigate(-1)} aria-label={tx('Back', 'Kembali')} style={S.back}><IconChevronLeft size={20} /></button>
@@ -70,7 +70,7 @@ export default function Aturan4a() {
         </section>
 
         <section style={{ ...S.card, background: 'var(--g4-ink-block)', color: 'var(--g4-paper)', borderColor: 'transparent' }}>
-          <h2 style={S.h2}>{tx('Why it’s free — and never betting', 'Kenapa gratis — dan bukan taruhan')}</h2>
+          <h2 style={S.h2}>{tx('Why it’s free — and gengsi is all that’s at stake', 'Kenapa gratis — yang dipertaruhkan cuma gengsi')}</h2>
           <p style={{ ...S.p, color: 'inherit', opacity: 0.9 }}>{tx('Nothing is wagered and nothing is paid out. Points are bragging rights in your own grup; the only thing on the line is gengsi. Gibol makes money from optional Season Passes for big grups and from sponsors, not from your picks.', 'Tidak ada yang dipertaruhkan dan tidak ada yang dibayarkan. Poin cuma gengsi di grup kamu sendiri. Gibol hidup dari Season Pass opsional buat grup besar dan dari sponsor, bukan dari pick kamu.')}</p>
         </section>
       </div>

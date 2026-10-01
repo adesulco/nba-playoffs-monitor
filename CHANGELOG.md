@@ -2,6 +2,23 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.1 — 2026-10-01 — S3 hotfix
+
+- v0.89.0 never deployed: the vocabulary guard rejected the rules page ("tanpa taruhan" / "no betting" are banned words even when negated). Reworded to "yang dipertaruhkan cuma gengsi".
+- `pickem_share` analytics event (card, channel) for the share-card CTR read in PostHog.
+- State doc: manual grant runbook and the post-S3 open items.
+
+## v0.89.0 — 2026-10-01 — S3 Retention
+
+- **Papan Nasional:** `leaderboard-national` action (points board from the Spec v1 view, streak board from `streaks(kind='correct')`, your own row pinned when signed in) and the `/papan` page, linked from Main.
+- **Klasemen:** Nyaris column (from the 0021 view) on GrupHome and the national board.
+- **Rules:** `/aturan` — the ladder, jagoan, underdog, templates, Gugur, tiebreaks, and "kenapa gratis"; linked from the pick sheet ⓘ, GrupHome and Papan.
+- **Share:** "Bagikan klasemen" (g4-juara) on GrupHome and "Bagikan pick-ku" (g4-matchday) after a pick, through the Web Share API with the PNG as a file when the browser allows, else link, else clipboard.
+- **PWA:** a tap-to-reload toast on service-worker `controllerchange`; SW cache version bumped and the precache list moved to the shell routes; manifest shortcuts (Pick, Grup, Skor), description and theme colours on the 4a paper (light and dark).
+- **Kabar:** a static digest of the published content index at `/kabar`; the tab is live.
+- **Hubs:** `/premier-league-2026-27` and `/super-league-2026-27` redirect to the canonical 2025-26 slugs; `/beranda` NBA calls go through `/api/proxy`.
+- **Docs:** collapsed to `00-STATE`, `01-PRODUCT`, `02-PLATFORM-CONTRACT`, `03-DESIGN` (+ doc 17/18 and audits); everything else in `docs/archive/`; `CLAUDE.md` rewritten.
+
 ## v0.88.0 — 2026-10-01 — S2 Platform
 
 One registry, two new competitions, the shell owns create/login/profile, and the entry bundle is under 100 KB.
