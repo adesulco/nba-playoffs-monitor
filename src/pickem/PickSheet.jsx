@@ -250,7 +250,7 @@ function PickSheetInner() {
         <span style={S.headerTitle}>
           {tx('Pick', 'Pick')} · {competition?.label || fixture.league}
         </span>
-        <LockBadge secondsLeft={secondsLeft} locked={locked} />
+        <LockBadge secondsLeft={secondsLeft} locked={locked} lang={lang} />
       </header>
 
       {/* Match banner — 2px ink border, scarlet strip */}

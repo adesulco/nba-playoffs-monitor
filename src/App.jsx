@@ -268,7 +268,10 @@ function ConsentGate({ children }) {
   return children;
 }
 
-const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//];
+// `/^\/grup$/` is separate from `/^\/grup\//`: the bare Grup tab (GrupList)
+// is a 4a screen too, and without it the legacy masthead + footer wrapped
+// the new shell on that one tab (audit 2026-10-01).
+const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//];
 
 /**
  * Renders children (the legacy masthead) only OUTSIDE the 4a shell.
@@ -508,9 +511,14 @@ export default function App() {
             Suspense so the chunk stream doesn't blank the page body
             while it loads; fallback is just empty space matching the
             footer's vertical footprint to avoid layout shift. */}
-        <Suspense fallback={<div style={{ minHeight: 320 }} aria-hidden="true" />}>
-          <SportFooter />
-        </Suspense>
+        {/* Gated off the 4a shell like the masthead: the shell has its own
+            TabBar and the hub footer under it read as the old website
+            leaking through (audit 2026-10-01). Hubs keep it. */}
+        <FourAChromeGate>
+          <Suspense fallback={<div style={{ minHeight: 320 }} aria-hidden="true" />}>
+            <SportFooter />
+          </Suspense>
+        </FourAChromeGate>
         {/* Mobile bottom-nav — hidden on ≥721 px via CSS. Reserves a
             60px bottom gutter on body so content never hides behind
             the fixed bar. Sprint 4 mobile craft pass. */}

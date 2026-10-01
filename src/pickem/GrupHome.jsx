@@ -268,7 +268,7 @@ function GrupHomeInner() {
                   {nextFixture.home_team} vs {nextFixture.away_team}
                 </div>
               </div>
-              <LockBadge secondsLeft={secondsLeft} />
+              <LockBadge secondsLeft={secondsLeft} lang={lang} />
             </div>
             <button
               type="button"

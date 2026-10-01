@@ -537,7 +537,7 @@ export function KabarCard({
    Countdown (ink fill) → "terkunci" (ink outline). Pass `secondsLeft`
    for a live HH:MM:SS countdown; the screen owns the ticking so this
    stays a pure presentational component. */
-export function LockBadge({ secondsLeft, locked = false, label, style }) {
+export function LockBadge({ secondsLeft, locked = false, label, style, lang = 'en' }) {
   if (locked || (secondsLeft != null && secondsLeft <= 0)) {
     return (
       <span
@@ -571,31 +571,32 @@ export function LockBadge({ secondsLeft, locked = false, label, style }) {
         ...style,
       }}
     >
-      {label || `lock ${formatCountdown(secondsLeft)}`}
+      {label || `lock ${formatCountdown(secondsLeft, lang)}`}
     </span>
   );
 }
 
 /**
- * Lock countdown: MM:SS under an hour, HH:MM:SS under a day, and "2h 5j"
- * style beyond that.
+ * Lock countdown: MM:SS under an hour, HH:MM:SS under a day, and "2d 5h"
+ * (EN) / "2h 5j" (ID) beyond that.
  *
  * The day form matters because fixtures are seeded a whole season ahead:
  * a raw clock would render "lock 912:14:07" for an EPL match in May, and
  * even a next-day match reads as a confusing "lock 25:42:10". Day/hour is
  * the only form that stays legible across the full range.
  *
- * 'h'/'j' are hari/jam — the ID abbreviations, kept in both locales since
- * they're compact and the surrounding "lock" label carries the meaning.
+ * Day/hour abbreviations follow the locale: EN 'd'/'h', ID 'h'/'j'
+ * (hari/jam). They used to be ID in both locales, so an EN reader saw
+ * "9h 9j" and read nine hours (audit 2026-10-01).
  */
-export function formatCountdown(totalSeconds) {
+export function formatCountdown(totalSeconds, lang = 'en') {
   if (totalSeconds == null || !Number.isFinite(totalSeconds) || totalSeconds < 0) return '00:00';
   const pad = (n) => String(n).padStart(2, '0');
   const DAY = 86400;
   if (totalSeconds >= DAY) {
     const d = Math.floor(totalSeconds / DAY);
     const h = Math.floor((totalSeconds % DAY) / 3600);
-    return `${d}h ${h}j`;
+    return lang === 'id' ? `${d}h ${h}j` : `${d}d ${h}h`;
   }
   const s = Math.floor(totalSeconds % 60);
   const m = Math.floor((totalSeconds / 60) % 60);

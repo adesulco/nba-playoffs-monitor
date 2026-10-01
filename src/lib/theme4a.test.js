@@ -69,9 +69,14 @@ describe('formatCountdown', () => {
   it('switches to day/hour past 24h so far-future locks stay legible', () => {
     // A raw clock would read "lock 25:42:10" for a next-day match and
     // "lock 912:00:00" for an EPL fixture in May — both unreadable.
-    expect(formatCountdown(86400)).toBe('1h 0j');
-    expect(formatCountdown(92530)).toBe('1h 1j');
-    expect(formatCountdown(86400 * 38)).toBe('38h 0j');
+    // EN default: d/h. ID: h/j (hari/jam).
+    expect(formatCountdown(86400)).toBe('1d 0h');
+    expect(formatCountdown(92530)).toBe('1d 1h');
+    expect(formatCountdown(86400 * 38)).toBe('38d 0h');
+    expect(formatCountdown(86400, 'id')).toBe('1h 0j');
+    expect(formatCountdown(92530, 'id')).toBe('1h 1j');
+    expect(formatCountdown(86400 * 38, 'id')).toBe('38h 0j');
+    expect(formatCountdown(9669, 'id')).toBe('02:41:09'); // clock forms are locale-free
   });
 
   it('degrades safely on junk rather than rendering NaN', () => {

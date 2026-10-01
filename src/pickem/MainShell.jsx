@@ -239,7 +239,7 @@ function MainShellInner() {
               <span>
                 {tx('PICKS DUE', 'UTANG PICK')} · {(competition?.label || competitionKey).toUpperCase()}
               </span>
-              {secondsLeft != null && <LockBadge secondsLeft={secondsLeft} style={S.heroLock} />}
+              {secondsLeft != null && <LockBadge secondsLeft={secondsLeft} style={S.heroLock} lang={lang} />}
             </div>
             <div style={S.heroBody}>
               <div style={S.heroLine}>

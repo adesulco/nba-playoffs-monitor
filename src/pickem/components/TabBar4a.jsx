@@ -19,7 +19,9 @@ export default function TabBar4a({ active = 'main', grupCode, lang = 'en' }) {
   const tx = (en, id) => (lang === 'id' ? id : en);
 
   const tabs = [
-    { key: 'main', Icon: IconMain, label: tx('Main', 'Main'), to: '/main' },
+    // '/' is the canonical Main since the 2026-08-15 root flip; '/main'
+    // stays as an alias but the shell's own nav must not send people there.
+    { key: 'main', Icon: IconMain, label: tx('Main', 'Main'), to: '/' },
     {
       key: 'grup',
       Icon: IconGrup,

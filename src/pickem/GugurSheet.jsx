@@ -146,7 +146,7 @@ function GugurSheetInner() {
         <button type="button" onClick={() => navigate(`/grup/${code}`)} aria-label={tx('Back', 'Kembali')} style={S.back}>‹</button>
         <span style={S.headerTitle}>Gugur · {league?.name || '…'}</span>
         {nextLock != null && (
-          <LockBadge secondsLeft={Math.max(0, Math.floor((nextLock - Date.now()) / 1000))} />
+          <LockBadge secondsLeft={Math.max(0, Math.floor((nextLock - Date.now()) / 1000))} lang={lang} />
         )}
       </header>
 
