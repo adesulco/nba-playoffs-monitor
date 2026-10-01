@@ -1,161 +1,133 @@
 // ============================================================================
-// scoring-core.js — THE Pick'em money math. Pure functions only.
-// Flagship Track A ticket A2 (pickem-flagship/00-HANDOVER.md §3).
+// scoring-core.js — THE Pick'em money math, Scoring Spec v1 (doc 17 §1).
 //
-// Single source of truth for every point computed anywhere: the scoring
-// cron handlers (score-fixture/score-bracket), the client preview surfaces,
-// and useProvisionalPoints (A9). No I/O, no Date.now, no randomness — every
-// function is (input) → output so the Vitest suite can be exhaustive.
+// A line-for-line mirror of the SQL in supabase/migrations/0021_scoring_v1.sql:
+//   pickem_resolve_config  ↔ resolveScoringConfig
+//   pickem_template_config ↔ templateConfig
+//   pickem_tier            ↔ tierFor
+//   pickem_points_for      ↔ pointsFor
+//   pickem_member_points   ↔ memberPoints
+// The SQL RPC is the only writer of predictions.awarded_points; this file is
+// the client's provisional engine and the admin tooling's cross-check. Both
+// are driven by the same vectors (scoring-vectors.json): scoring-core.test.js
+// runs them here, scripts/test-scoring-parity.mjs runs them against the SQL
+// pure functions in prod. If the two ever disagree, the SQL wins and this
+// file is wrong.
 //
-// CONFIG RESOLUTION (two shapes, one normalized form):
-//
-//   NEW  — leagues.scoring_config jsonb (migration 0019; commissioner-set):
-//     { group_position_pts, perfect_group_bonus,
-//       knockout_pts: {r32,r16,qf,sf,final},
-//       score_exact, score_result_margin, score_result,
-//       underdog_threshold, underdog_multiplier,
-//       streak_len, streak_bonus,
-//       jagoan_multiplier, jagoan_penalty, stack_cap, nemesis_bonus }
-//
-//   LEGACY — pickem_rules row (migration 0015; live in prod, has already
-//     scored real NBA picks — its semantics MUST be preserved for leagues
-//     without scoring_config):
-//     { pts_exact: 8, pts_goaldiff: 5, pts_outcome: 3,
-//       jagoan_mult_group: 2, jagoan_mult_ko: 3 (NO miss penalty),
-//       enable_upset_bonus, upset_floor, upset_cap,
-//       upset_curve: [{p, mult}…] (probability-curve, pre-match implied
-//       prob — inert in practice since the odds-provider strip),
-//       grup_bonus_points, ko_stages: ['R32','R16','QF','SF','final'] }
-//
-// resolveScoringConfig() maps either into the canonical shape below; all
-// other functions take ONLY the canonical config. Commissioners may zero
-// any value (06-gamification-audit §3.5) — every function must behave
-// sanely with 0/false/empty.
-//
-// JAGOAN (06 GAP-1): ×jagoan_multiplier when correct; when WRONG, a
-// penalty of jagoan_penalty × the pick's stake value (knockout_pts[stage]
-// for KO picks, score_result/pts_outcome for match picks) is deducted from
-// the MATCHDAY total, which floors at 0 (aggregateMatchday). Legacy
-// configs have penalty 0 (prod behavior unchanged). A single pick's
-// awarded points are capped at stack_cap × base (4× in the new system —
-// jagoan ×2 stacked on underdog ×1.5 = 3 ≤ 4 ✓).
-//
-// UNDERDOG (06/03): NEW mode — correct pick whose consensus_at_lock is
-// STRICTLY below underdog_threshold (0.30) earns ×underdog_multiplier
-// (1.5). Exactly 0.30 → no bonus. LEGACY mode — piecewise-linear curve on
-// pre-match implied probability (ported verbatim from pickemScoring.js).
+// Pure functions only. No I/O, no Date.now, no randomness.
 // ============================================================================
 
-// ── Canonical config ────────────────────────────────────────────────────────
-
-/** @typedef {Object} CanonConfig — output of resolveScoringConfig */
-
-export const NEW_DEFAULTS = Object.freeze({
-  group_position_pts: 4,
-  perfect_group_bonus: 8,
-  knockout_pts: Object.freeze({ r32: 10, r16: 12, qf: 15, sf: 20, final: 30 }),
+/** Spec v1 defaults — identical to the jsonb literal in pickem_resolve_config. */
+export const SPEC_V1_DEFAULTS = Object.freeze({
   score_exact: 5,
   score_result_margin: 3,
   score_result: 2,
+  score_nyaris: 1,
+  jagoan_multiplier: 2,
+  jagoan_penalty: 0,
   underdog_threshold: 0.30,
   underdog_multiplier: 1.5,
-  streak_len: 3,
-  streak_bonus: 3,
-  jagoan_multiplier: 2,
-  jagoan_penalty: 0.25,
   stack_cap: 4,
-  nemesis_bonus: 2,
+  streak_len: 3,
+  streak_bonus: 0,
+  group_position_pts: 4,
+  perfect_group_bonus: 8,
+  knockout_pts: Object.freeze({ r32: 10, r16: 12, qf: 15, sf: 20, final: 30 }),
+  ko_stages: Object.freeze(['R32', 'R16', 'QF', 'SF', 'final']),
+});
+/** @deprecated name kept for older imports; same object. */
+export const NEW_DEFAULTS = SPEC_V1_DEFAULTS;
+
+/** Templates — identical to pickem_template_config. */
+export const TEMPLATES = Object.freeze({
+  santai:  Object.freeze({ jagoan_multiplier: 1, jagoan_penalty: 0, underdog_multiplier: 1, streak_bonus: 0 }),
+  standar: Object.freeze({ jagoan_multiplier: 2, jagoan_penalty: 0, underdog_threshold: 0.30, underdog_multiplier: 1.5, stack_cap: 4, streak_len: 3, streak_bonus: 0 }),
+  sultan:  Object.freeze({ jagoan_multiplier: 2, jagoan_penalty: 0.25, underdog_threshold: 0.30, underdog_multiplier: 1.5, stack_cap: 4, streak_len: 3, streak_bonus: 3 }),
 });
 
-const LEGACY_KO_STAGES = Object.freeze(['R32', 'R16', 'QF', 'SF', 'final']);
+export function templateConfig(name) {
+  return TEMPLATES[String(name || 'standar').toLowerCase()] || TEMPLATES.standar;
+}
+
+const TIERS_CORRECT = new Set(['exact', 'margin', 'result']);
 
 /**
- * Resolve the effective config for a league.
- * @param {object|null|undefined} scoringConfig  leagues.scoring_config (new shape)
- * @param {object|null|undefined} pickemRules    pickem_rules row (legacy shape)
- * @returns {object} canonical config
- *
- * Precedence per ticket A2: league.scoring_config ?? pickem_rules.
- * A partial scoring_config is filled from NEW_DEFAULTS (NOT from
- * pickem_rules — mixing the two ladders inside one league would make
- * scores unexplainable to commissioners).
+ * Map a pickem_rules row (0021 column names; the 0015 names are accepted
+ * too so a stale row shape can't zero anyone) onto scoring_config keys.
+ * Undefined values are dropped, mirroring jsonb_strip_nulls.
+ */
+export function rulesRowToConfig(row) {
+  if (!row || typeof row !== 'object') return {};
+  const out = {
+    score_exact: row.pts_exact,
+    score_result_margin: row.pts_goaldiff,
+    score_result: row.pts_outcome,
+    score_nyaris: row.pts_nyaris,
+    jagoan_multiplier: row.jagoan_mult ?? row.jagoan_mult_group,
+    jagoan_penalty: row.jagoan_penalty,
+    underdog_threshold: row.underdog_threshold,
+    underdog_multiplier: row.underdog_mult,
+    stack_cap: row.stack_cap,
+    streak_len: row.streak_len,
+    streak_bonus: row.streak_bonus,
+    group_position_pts: row.bracket_pts_group_slot,
+    perfect_group_bonus: row.bracket_pts_perfect_group,
+    ko_stages: Array.isArray(row.ko_stages) ? row.ko_stages : undefined,
+  };
+  const ko = {
+    r32: row.bracket_pts_r32, r16: row.bracket_pts_r16, qf: row.bracket_pts_qf,
+    sf: row.bracket_pts_sf, final: row.bracket_pts_final ?? row.bracket_pts_finalist,
+  };
+  if (Object.values(ko).some((v) => v != null)) out.knockout_pts = ko;
+  for (const k of Object.keys(out)) if (out[k] == null) delete out[k];
+  return out;
+}
+
+/**
+ * Resolve the effective config. Order (same as SQL):
+ *   Spec v1 defaults ← pickem_rules row ← scoring_config.template ← scoring_config.
+ * Returns the canonical shape every other function takes.
  */
 export function resolveScoringConfig(scoringConfig, pickemRules) {
-  if (scoringConfig && typeof scoringConfig === 'object') {
-    const c = { ...NEW_DEFAULTS, ...scoringConfig };
-    return {
-      mode: 'new',
-      ladder: {
-        exact: num(c.score_exact, NEW_DEFAULTS.score_exact),
-        margin: num(c.score_result_margin, NEW_DEFAULTS.score_result_margin),
-        outcome: num(c.score_result, NEW_DEFAULTS.score_result),
-      },
-      knockoutPts: { ...NEW_DEFAULTS.knockout_pts, ...(c.knockout_pts || {}) },
-      koStages: LEGACY_KO_STAGES,
-      groupPositionPts: num(c.group_position_pts, NEW_DEFAULTS.group_position_pts),
-      perfectGroupBonus: num(c.perfect_group_bonus, NEW_DEFAULTS.perfect_group_bonus),
-      jagoan: {
-        multGroup: num(c.jagoan_multiplier, NEW_DEFAULTS.jagoan_multiplier),
-        multKo: num(c.jagoan_multiplier, NEW_DEFAULTS.jagoan_multiplier),
-        penalty: num(c.jagoan_penalty, NEW_DEFAULTS.jagoan_penalty),
-      },
-      underdog: {
-        mode: 'consensus',
-        threshold: num(c.underdog_threshold, NEW_DEFAULTS.underdog_threshold),
-        multiplier: num(c.underdog_multiplier, NEW_DEFAULTS.underdog_multiplier),
-      },
-      stackCap: num(c.stack_cap, NEW_DEFAULTS.stack_cap),
-      streak: { len: num(c.streak_len, NEW_DEFAULTS.streak_len), bonus: num(c.streak_bonus, NEW_DEFAULTS.streak_bonus) },
-      nemesisBonus: num(c.nemesis_bonus, NEW_DEFAULTS.nemesis_bonus),
-    };
+  let c = { ...SPEC_V1_DEFAULTS, knockout_pts: { ...SPEC_V1_DEFAULTS.knockout_pts } };
+  const fromRow = rulesRowToConfig(pickemRules);
+  c = { ...c, ...fromRow, knockout_pts: { ...c.knockout_pts, ...(fromRow.knockout_pts || {}) } };
+  let template = null;
+  if (scoringConfig && typeof scoringConfig === 'object' && !Array.isArray(scoringConfig)) {
+    if (scoringConfig.template) {
+      template = String(scoringConfig.template).toLowerCase();
+      c = { ...c, ...templateConfig(template) };
+    }
+    const { template: _t, knockout_pts, ...rest } = scoringConfig;
+    c = { ...c, ...rest, knockout_pts: { ...c.knockout_pts, ...(knockout_pts || {}) } };
   }
-
-  const r = pickemRules || {};
   return {
-    mode: 'legacy',
+    template,
     ladder: {
-      exact: num(r.pts_exact, 8),
-      margin: num(r.pts_goaldiff, 5),
-      outcome: num(r.pts_outcome, 3),
+      exact: num(c.score_exact, 5),
+      margin: num(c.score_result_margin, 3),
+      outcome: num(c.score_result, 2),
+      nyaris: num(c.score_nyaris, 1),
     },
-    knockoutPts: null, // legacy match scoring has no per-stage KO points
-    koStages: Array.isArray(r.ko_stages) ? r.ko_stages : LEGACY_KO_STAGES,
-    groupPositionPts: 0,
-    perfectGroupBonus: 0,
-    jagoan: {
-      multGroup: num(r.jagoan_mult_group, 2),
-      multKo: num(r.jagoan_mult_ko, 3),
-      penalty: 0, // legacy prod behavior: no miss penalty — MUST stay 0
-    },
-    underdog: r.enable_upset_bonus === false
-      ? { mode: 'off' }
-      : {
-          mode: 'curve',
-          curve: Array.isArray(r.upset_curve) && r.upset_curve.length
-            ? r.upset_curve
-            : [
-                { p: 0.65, mult: 1.0 },
-                { p: 0.45, mult: 1.5 },
-                { p: 0.33, mult: 2.0 },
-                { p: 0.18, mult: 2.2 },
-                { p: 0.12, mult: 3.0 },
-              ],
-          floor: num(r.upset_floor, 1.0),
-          cap: num(r.upset_cap, 3.0),
-        },
-    stackCap: Infinity, // legacy: bounded by upset_cap × jagoan_mult_ko already
-    streak: { len: 0, bonus: 0 }, // streak bonus is a new-system feature
-    nemesisBonus: 0,
+    jagoan: { mult: num(c.jagoan_multiplier, 2), penalty: num(c.jagoan_penalty, 0) },
+    underdog: { threshold: num(c.underdog_threshold, 0.30), multiplier: num(c.underdog_multiplier, 1.5) },
+    stackCap: num(c.stack_cap, 4),
+    streak: { len: num(c.streak_len, 3), bonus: num(c.streak_bonus, 0) },
+    groupPositionPts: num(c.group_position_pts, 4),
+    perfectGroupBonus: num(c.perfect_group_bonus, 8),
+    knockoutPts: Object.fromEntries(Object.entries(c.knockout_pts).map(([k, v]) => [k, num(v, 0)])),
+    koStages: Array.isArray(c.ko_stages) ? c.ko_stages : [...SPEC_V1_DEFAULTS.ko_stages],
   };
 }
 
 function num(v, fallback) {
-  return typeof v === 'number' && Number.isFinite(v) ? v : fallback;
+  const n = typeof v === 'string' ? Number(v) : v;
+  return typeof n === 'number' && Number.isFinite(n) ? n : fallback;
 }
 
-// ── Outcome + base ladder ───────────────────────────────────────────────────
+// ── Outcome + tier ──────────────────────────────────────────────────────────
 
-/** 'H' | 'D' | 'A' | null — null when either score is missing (walkover/void). */
+/** 'H' | 'D' | 'A' | null — null when either score is missing (void). */
 export function deriveOutcome(homeScore, awayScore) {
   if (homeScore == null || awayScore == null) return null;
   if (homeScore > awayScore) return 'H';
@@ -164,145 +136,124 @@ export function deriveOutcome(homeScore, awayScore) {
 }
 
 /**
- * Base points for a match prediction — the LARGEST tier that applies;
- * tiers never stack. Wrong/void → 0.
- *   exact scoreline → ladder.exact
- *   correct margin  → ladder.margin   (goal difference matches)
- *   correct result  → ladder.outcome
+ * Tier of one prediction against the SCORE at end of play (mirror of
+ * pickem_tier). Never reads fixtures.outcome: a KO tie stores the shootout
+ * advancer there, but a 1–1 pick on a 1–1 game is exact.
+ *   exact  → scoreline matches
+ *   margin → right result, same goal difference
+ *   result → right result
+ *   nyaris → wrong result, total goals within 1 (needs a scoreline pick)
+ *   miss   → everything else
+ *   void   → no score
  */
-export function basePoints(prediction, result, cfg) {
-  const actual = deriveOutcome(result.homeScore, result.awayScore);
-  if (!actual || prediction.pickedOutcome !== actual) return 0;
-  const { pickedHome, pickedAway } = prediction;
-  if (pickedHome != null && pickedAway != null) {
-    if (pickedHome === result.homeScore && pickedAway === result.awayScore) return cfg.ladder.exact;
-    if (pickedHome - pickedAway === result.homeScore - result.awayScore) return cfg.ladder.margin;
+export function tierFor(prediction, result) {
+  const { homeScore, awayScore } = result;
+  const actual = deriveOutcome(homeScore, awayScore);
+  if (!actual) return 'void';
+  const { pickedOutcome, pickedHome, pickedAway } = prediction;
+  const hasScore = pickedHome != null && pickedAway != null;
+  if (pickedOutcome === actual) {
+    if (hasScore && pickedHome === homeScore && pickedAway === awayScore) return 'exact';
+    if (hasScore && pickedHome - pickedAway === homeScore - awayScore) return 'margin';
+    return 'result';
   }
-  return cfg.ladder.outcome;
+  if (hasScore && Math.abs((pickedHome + pickedAway) - (homeScore + awayScore)) <= 1) return 'nyaris';
+  return 'miss';
+}
+
+/** Ladder value for a tier (0 for miss / void). */
+export function ladderPoints(tier, cfg) {
+  switch (tier) {
+    case 'exact': return cfg.ladder.exact;
+    case 'margin': return cfg.ladder.margin;
+    case 'result': return cfg.ladder.outcome;
+    case 'nyaris': return cfg.ladder.nyaris;
+    default: return 0;
+  }
+}
+
+/** @deprecated use tierFor + ladderPoints; kept for older callers. */
+export function basePoints(prediction, result, cfg) {
+  return ladderPoints(tierFor(prediction, result), cfg);
 }
 
 // ── Multipliers ─────────────────────────────────────────────────────────────
 
-/** Jagoan multiplier for a CORRECT pick (1 when not jagoan). */
-export function jagoanMultiplier({ isJagoan, stage }, cfg) {
-  if (!isJagoan) return 1;
-  const ko = (cfg.koStages || []).includes(stage);
-  return ko ? cfg.jagoan.multKo : cfg.jagoan.multGroup;
+/** Jagoan is ×mult in every stage (Spec v1); 1 when not jagoan. */
+export function jagoanMultiplier({ isJagoan }, cfg) {
+  return isJagoan ? cfg.jagoan.mult : 1;
 }
 
-/**
- * The stake value of a pick — what the jagoan miss-penalty is computed
- * against: knockout stage points when defined, else the outcome tier.
- */
-export function stakeValue(stage, cfg) {
-  if (cfg.knockoutPts) {
-    const key = String(stage || '').toLowerCase();
-    if (cfg.knockoutPts[key] != null) return cfg.knockoutPts[key];
-  }
+/** Underdog: consensus STRICTLY below the threshold → ×multiplier. No data → 1. */
+export function underdogMultiplier({ consensusAtLock }, cfg) {
+  if (consensusAtLock == null || Number.isNaN(Number(consensusAtLock))) return 1;
+  return Number(consensusAtLock) < cfg.underdog.threshold ? cfg.underdog.multiplier : 1;
+}
+
+/** The stake a jagoan miss is measured against: the result tier (SQL: score_result). */
+export function stakeValue(cfg) {
   return cfg.ladder.outcome;
 }
 
 /**
- * Jagoan miss-penalty (POSITIVE number of points to deduct from the
- * matchday total; 0 when not jagoan, when the pick was correct, or in
- * legacy mode). 06 GAP-1: −25% of the pick's stake value on a miss.
+ * Jagoan miss penalty (positive number to deduct at matchday aggregation).
+ * Only on a real miss or nyaris — never on a void match. round-half-up,
+ * like SQL round().
  */
-export function jagoanPenalty({ isJagoan, correct, stage }, cfg) {
-  if (!isJagoan || correct || !(cfg.jagoan.penalty > 0)) return 0;
-  return roundPts(cfg.jagoan.penalty * stakeValue(stage, cfg));
+export function jagoanPenalty({ isJagoan, tier }, cfg) {
+  if (!isJagoan || !(cfg.jagoan.penalty > 0)) return 0;
+  if (tier !== 'miss' && tier !== 'nyaris') return 0;
+  return Math.round(cfg.jagoan.penalty * stakeValue(cfg));
 }
 
 /**
- * Underdog multiplier for a CORRECT pick.
- *   consensus mode: consensusAtLock STRICTLY < threshold → ×multiplier.
- *     Exactly threshold → 1 (06: "boundary consensus = 0.30 exactly → no
- *     bonus — strict <"). null/undefined consensus → 1 (no data, no bonus).
- *   curve mode (legacy): piecewise-linear on impliedProb, clamped to
- *     [floor, cap]; null prob → floor.
+ * Points for one pick under a config (mirror of pickem_points_for).
+ * base × underdog × jagoan, floor(), then cap at stack_cap × base.
+ * Nyaris pays its ladder value and takes no multipliers.
  */
-export function underdogMultiplier({ consensusAtLock, impliedProb }, cfg) {
-  const u = cfg.underdog;
-  if (!u || u.mode === 'off') return 1;
-  if (u.mode === 'consensus') {
-    if (consensusAtLock == null || Number.isNaN(Number(consensusAtLock))) return 1;
-    return Number(consensusAtLock) < u.threshold ? u.multiplier : 1;
-  }
-  // legacy curve
-  const p = impliedProb;
-  if (p == null || Number.isNaN(Number(p))) return u.floor;
-  const curve = u.curve;
-  if (!curve.length) return u.floor;
-  if (p >= curve[0].p) return Math.max(u.floor, curve[0].mult);
-  const last = curve[curve.length - 1];
-  if (p <= last.p) return Math.min(u.cap, last.mult);
-  for (let i = 1; i < curve.length; i++) {
-    const prev = curve[i - 1];
-    const cur = curve[i];
-    if (p <= prev.p && p >= cur.p) {
-      if (prev.p === cur.p) return cur.mult;
-      const t = (prev.p - p) / (prev.p - cur.p);
-      const v = prev.mult + (cur.mult - prev.mult) * t;
-      return Math.max(u.floor, Math.min(u.cap, v));
-    }
-  }
-  return u.floor;
+export function pointsFor(tier, { isJagoan, consensusAtLock }, cfg) {
+  const base = ladderPoints(tier, cfg);
+  if (base <= 0) return 0;
+  if (!TIERS_CORRECT.has(tier)) return base;
+  let pts = base;
+  pts *= underdogMultiplier({ consensusAtLock }, cfg);
+  pts *= jagoanMultiplier({ isJagoan }, cfg);
+  pts = Math.floor(pts);
+  const cap = Math.floor(base * cfg.stackCap);
+  return pts > cap ? cap : pts;
 }
 
 // ── Full match-prediction scoring ───────────────────────────────────────────
 
 /**
- * Score one match prediction. Returns the audit breakdown the scoring
- * handlers persist (base_points, jagoan_mult_applied, upset_mult_applied,
- * awarded_points) plus `penalty` (deducted at matchday aggregation, NOT
- * from this pick's awarded value — a wrong pick awards 0, never negative).
- *
- * Stack order: base × underdog × jagoan, then floor(), then cap at
- * stack_cap × base (06 §3.1: "jagoan on an underdog" maxes at 4× base).
- *
+ * Score one match prediction. Returns the audit breakdown the SQL writes
+ * (tier, base_points, jagoan_mult_applied, upset_mult_applied,
+ * awarded_points, penalty_points) plus `capped`.
  * @param {object} prediction { pickedOutcome, pickedHome, pickedAway, isJagoan, consensusAtLock }
- * @param {object} fixture    { stage, homeScore, awayScore, impliedProb? }
+ * @param {object} fixture    { homeScore, awayScore }
  * @param {object} cfg        canonical config from resolveScoringConfig
  */
 export function scoreMatchPrediction(prediction, fixture, cfg) {
-  const base = basePoints(prediction, fixture, cfg);
-  const correct = base > 0;
-
-  const jMult = correct ? jagoanMultiplier({ isJagoan: prediction.isJagoan, stage: fixture.stage }, cfg) : 1;
-  const uMult = correct
-    ? underdogMultiplier({ consensusAtLock: prediction.consensusAtLock, impliedProb: fixture.impliedProb }, cfg)
-    : 1;
-
-  let awarded = Math.floor(base * uMult * jMult);
-  const cap = Number.isFinite(cfg.stackCap) ? Math.floor(base * cfg.stackCap) : Infinity;
-  const capped = awarded > cap;
-  if (capped) awarded = cap;
-
-  const penalty = jagoanPenalty(
-    { isJagoan: prediction.isJagoan, correct, stage: fixture.stage },
-    cfg,
-  );
-
-  return { base, jagoanMult: jMult, underdogMult: uMult, awarded, penalty, capped };
+  const tier = tierFor(prediction, fixture);
+  const correct = TIERS_CORRECT.has(tier);
+  const base = ladderPoints(tier, cfg);
+  const jagoanMult = correct ? jagoanMultiplier({ isJagoan: prediction.isJagoan }, cfg) : 1;
+  const underdogMult = correct ? underdogMultiplier({ consensusAtLock: prediction.consensusAtLock }, cfg) : 1;
+  const awarded = pointsFor(tier, { isJagoan: prediction.isJagoan, consensusAtLock: prediction.consensusAtLock }, cfg);
+  const capped = correct && Math.floor(base * underdogMult * jagoanMult) > awarded;
+  const penalty = jagoanPenalty({ isJagoan: prediction.isJagoan, tier }, cfg);
+  return { tier, base, jagoanMult, underdogMult, awarded, penalty, capped };
 }
 
-/**
- * Aggregate one member's matchday: sum of awarded minus jagoan penalties,
- * FLOORED AT 0 (06 GAP-1: "matchday floor 0" — a bad jagoan can erase a
- * matchday, never go negative).
- * @param {Array<{awarded:number, penalty:number}>} scored
- */
+/** Σ awarded − penalties, floored at 0 (a bad jagoan erases a matchday, never goes negative). */
 export function aggregateMatchday(scored) {
   const sum = scored.reduce((acc, s) => acc + (s.awarded || 0) - (s.penalty || 0), 0);
   return Math.max(0, sum);
 }
 
-// ── Streak + nemesis (new-system garnishes) ─────────────────────────────────
-
 /**
- * Streak bonus over an ORDERED sequence of pick correctness booleans.
- * Every COMPLETED run of `len` correct picks pays `bonus` once and the
- * counter resets clean (6 in a row with len 3 = 2 bonuses; never
- * compounds). Returns total bonus points.
+ * Streak bonus over an ORDERED sequence of correctness booleans: every
+ * completed run of `len` pays `bonus` once and the counter resets.
  */
 export function streakBonus(correctSeq, cfg) {
   const { len, bonus } = cfg.streak || {};
@@ -311,44 +262,67 @@ export function streakBonus(correctSeq, cfg) {
   let total = 0;
   for (const ok of correctSeq || []) {
     run = ok ? run + 1 : 0;
-    if (run === len) {
-      total += bonus;
-      run = 0; // resets clean — no compounding
-    }
+    if (run === len) { total += bonus; run = 0; }
   }
   return total;
 }
 
 /**
- * Nemesis ("Musuh Bersama", GAP-5) bonus: a CORRECT pick AGAINST the
- * member's nemesis team pays nemesis_bonus. "Against" = the nemesis
- * played in the fixture and the picked outcome means the nemesis did
- * not win it.
- * @param {object} args { nemesisTeam, homeTeam, awayTeam, pickedOutcome, correct }
+ * One member's points under one config (mirror of pickem_member_points):
+ * rows ordered by (matchday, kickoffAt, id); per matchday Σ points −
+ * penalties floored at 0; streak bonus on completed runs of correct picks;
+ * plus the late-join par. Void rows are skipped. Unscored rows must be
+ * filtered out by the caller.
+ * @param {Array<{tier, isJagoan, consensusAtLock, matchday, kickoffAt, id}>} rows
  */
-export function nemesisBonus(args, cfg) {
-  const b = cfg.nemesisBonus;
-  if (!b || !args.correct || !args.nemesisTeam) return 0;
-  const { nemesisTeam, homeTeam, awayTeam, pickedOutcome } = args;
-  const nemesisIsHome = nemesisTeam === homeTeam;
-  const nemesisIsAway = nemesisTeam === awayTeam;
-  if (!nemesisIsHome && !nemesisIsAway) return 0;
-  // picked against the nemesis = picked the side that isn't them (or a draw
-  // in a match they needed to win is NOT "beating them" — keep it strict:
-  // only an outright opposite-side win pays).
-  if (nemesisIsHome && pickedOutcome === 'A') return b;
-  if (nemesisIsAway && pickedOutcome === 'H') return b;
-  return 0;
+export function memberPoints(rows, cfg, basePointsPar = 0) {
+  const sorted = [...(rows || [])]
+    .filter((r) => r.tier && r.tier !== 'void')
+    .sort((a, b) => (a.matchday - b.matchday) || cmp(a.kickoffAt, b.kickoffAt) || cmp(a.id, b.id));
+  let total = 0, mdSum = 0, curMd = null, run = 0, exactCount = 0, nyarisCount = 0;
+  const { len, bonus } = cfg.streak;
+  for (const r of sorted) {
+    if (curMd !== r.matchday) { total += Math.max(mdSum, 0); mdSum = 0; curMd = r.matchday; }
+    mdSum += pointsFor(r.tier, { isJagoan: r.isJagoan, consensusAtLock: r.consensusAtLock }, cfg);
+    mdSum -= jagoanPenalty({ isJagoan: r.isJagoan, tier: r.tier }, cfg);
+    if (r.tier === 'exact') exactCount++;
+    if (r.tier === 'nyaris') nyarisCount++;
+    if (TIERS_CORRECT.has(r.tier)) {
+      run++;
+      if (len > 0 && bonus > 0 && run === len) { mdSum += bonus; run = 0; }
+    } else {
+      run = 0;
+    }
+  }
+  total += Math.max(mdSum, 0);
+  return { points: total + (basePointsPar || 0), exactCount, nyarisCount };
 }
 
-// ── Group + knockout (bracket-side, new system) ─────────────────────────────
+function cmp(a, b) { return a === b ? 0 : (a == null ? -1 : b == null ? 1 : (String(a) < String(b) ? -1 : 1)); }
 
 /**
- * Group-stage ranking points: group_position_pts per exactly-placed team,
- * plus perfect_group_bonus when ALL placements in the group are exact.
- * @param {string[]} picked  ordered team codes (rank 1..n) the member picked
- * @param {string[]} actual  ordered actual finishing order
+ * Preview for a pick sheet: what each tier would pay given the jagoan
+ * flag. Underdog is unknown before lock, so it is never previewed.
  */
+export function previewScoring({ pickedHome, pickedAway, isJagoan }, cfg) {
+  const flags = { isJagoan, consensusAtLock: null };
+  const hasExactPick = pickedHome != null && pickedAway != null;
+  const exactPoints = pointsFor('exact', flags, cfg);
+  const outcomePoints = pointsFor('result', flags, cfg);
+  return {
+    jagoanMult: isJagoan ? cfg.jagoan.mult : 1,
+    exactPoints: hasExactPick ? exactPoints : null,
+    goalDiffPoints: hasExactPick ? pointsFor('margin', flags, cfg) : null,
+    outcomePoints,
+    nyarisPoints: hasExactPick ? pointsFor('nyaris', flags, cfg) : null,
+    bestCaseLabel: hasExactPick ? 'exact' : 'outcome',
+    bestCasePoints: hasExactPick ? exactPoints : outcomePoints,
+  };
+}
+
+// ── Group + knockout (bracket) ──────────────────────────────────────────────
+
+/** Group ranking: group_position_pts per exact placement, perfect_group_bonus when all exact. */
 export function scoreGroupRanking(picked, actual, cfg) {
   if (!Array.isArray(picked) || !Array.isArray(actual) || actual.length === 0) {
     return { exact: 0, points: 0, perfect: false };
@@ -358,23 +332,11 @@ export function scoreGroupRanking(picked, actual, cfg) {
     if (picked[i] && picked[i] === actual[i]) exact += 1;
   }
   const perfect = exact === actual.length && picked.length >= actual.length;
-  const points = exact * cfg.groupPositionPts + (perfect ? cfg.perfectGroupBonus : 0);
-  return { exact, points, perfect };
+  return { exact, points: exact * cfg.groupPositionPts + (perfect ? cfg.perfectGroupBonus : 0), perfect };
 }
 
-/**
- * Knockout pick points: correct advancing team at a stage pays
- * knockout_pts[stage]. Unknown stage or legacy mode (knockoutPts null) → 0.
- */
+/** Knockout pick: correct advancing team at a stage pays knockout_pts[stage]. */
 export function scoreKnockoutPick({ pickedTeam, advancingTeam, stage }, cfg) {
-  if (!cfg.knockoutPts || !pickedTeam || pickedTeam !== advancingTeam) return 0;
-  const key = String(stage || '').toLowerCase();
-  return cfg.knockoutPts[key] ?? 0;
-}
-
-// ── helpers ─────────────────────────────────────────────────────────────────
-
-/** Round to nearest int, .5 up — penalties stay integers like all points. */
-function roundPts(x) {
-  return Math.round(x);
+  if (!pickedTeam || pickedTeam !== advancingTeam) return 0;
+  return cfg.knockoutPts[String(stage || '').toLowerCase()] ?? 0;
 }

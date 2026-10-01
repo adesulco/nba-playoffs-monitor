@@ -11,7 +11,11 @@ import {
   PointsPill,
   ScoreBreakdown,
 } from './primitives.jsx';
-import { previewScoring, DEFAULT_MATCH_RULES } from '../../lib/pickemScoring.js';
+import { previewScoring, resolveScoringConfig } from '../../../api/_lib/pickem/scoring-core.js';
+
+// Spec v1 competition defaults (doc 17 §1). Screens that know the grup pass
+// resolveScoringConfig(league.scoring_config, rulesRow) instead.
+const DEFAULT_CFG = resolveScoringConfig(null, null);
 
 // ============================================================================
 // v0.67.0 — <FixtureCard /> (Pick'em P2 match-predictor spine).
@@ -73,7 +77,7 @@ export default function FixtureCard({
   prediction,
   onPredictionChange,
   onOpenDetail,
-  rules = DEFAULT_MATCH_RULES,
+  rules = DEFAULT_CFG,
   compact = false,
   // v0.79.7 — false for competitions whose shape rules out draws
   // (NBA Playoffs best-of-7 series). Passed down to BodyOpen which
@@ -360,18 +364,13 @@ function BodyOpen({ fixture, prediction, odds, lockInfo, onPredictionChange, rul
   const toggleJagoan = () => onPredictionChange?.({ is_jagoan: !isJagoan });
 
   const preview = previewScoring({
-    pickedOutcome: outcome,
     pickedHome: outcome ? draftHome : null,
     pickedAway: outcome ? draftAway : null,
     isJagoan,
-    stage: fixture.stage,
-    fixture,
-    rules,
-  });
+  }, rules);
 
-  const koMult = (rules.ko_stages || DEFAULT_MATCH_RULES.ko_stages).includes(fixture.stage)
-    ? rules.jagoan_mult_ko
-    : rules.jagoan_mult_group;
+  // Spec v1: jagoan is ×2 in every stage.
+  const koMult = rules.jagoan.mult;
 
   // F-007 — give the outcome radiogroup a match-specific accessible name so
   // screen-reader users know which match they're predicting.
@@ -445,9 +444,9 @@ function BodyOpen({ fixture, prediction, odds, lockInfo, onPredictionChange, rul
             Maks. poin
           </span>
           <ScoreBreakdown
-            base={preview.bestCaseLabel === 'exact' ? rules.pts_exact : rules.pts_outcome}
+            base={preview.bestCaseLabel === 'exact' ? rules.ladder.exact : rules.ladder.outcome}
             jagoan={preview.jagoanMult}
-            upset={preview.upsetMult}
+            upset={1}
           />
           <span
             style={{
@@ -511,9 +510,7 @@ function BodyLocked({ fixture, home, away, prediction, rules }) {
     prediction.picked_home != null && prediction.picked_away != null
       ? `${prediction.picked_home}–${prediction.picked_away}`
       : null;
-  const koMult = (rules.ko_stages || DEFAULT_MATCH_RULES.ko_stages).includes(fixture.stage)
-    ? rules.jagoan_mult_ko
-    : rules.jagoan_mult_group;
+  const koMult = rules.jagoan.mult;
   return (
     <div
       style={{

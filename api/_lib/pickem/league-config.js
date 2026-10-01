@@ -6,14 +6,18 @@
 
 // Whitelisted scoring_config keys + per-key validators. Anything not here
 // is rejected (never silently dropped — commissioners should know).
-// Shape doc: migration 0019 header + scoring-core.js NEW_DEFAULTS.
+// Shape doc: migration 0021 pickem_resolve_config + scoring-core.js
+// SPEC_V1_DEFAULTS. `template` names a Santai/Standar/Sultan preset that
+// the overrides sit on top of (doc 17 §1 Templates).
 const SCORING_KEYS = {
+  template: (v) => ['santai', 'standar', 'sultan'].includes(v),
   group_position_pts: nonNegInt,
   perfect_group_bonus: nonNegInt,
   knockout_pts: knockoutShape,
   score_exact: nonNegInt,
   score_result_margin: nonNegInt,
   score_result: nonNegInt,
+  score_nyaris: nonNegInt,
   underdog_threshold: fraction,
   underdog_multiplier: nonNegNum,
   streak_len: nonNegInt,
@@ -21,7 +25,6 @@ const SCORING_KEYS = {
   jagoan_multiplier: nonNegNum,
   jagoan_penalty: fraction,
   stack_cap: nonNegNum,
-  nemesis_bonus: nonNegInt,
 };
 
 const KO_KEYS = new Set(['r32', 'r16', 'qf', 'sf', 'final']);

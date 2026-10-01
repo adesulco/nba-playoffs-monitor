@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState, useTransition } from 'react';
 import { COLORS as C } from '../../lib/constants.js';
-import { pointsForRoundPick } from '../../lib/pickemScoring.js';
+import { pointsForRoundPick } from './bracketRules.js';
 import { useAuth } from '../../lib/AuthContext.jsx';
 
 /**
