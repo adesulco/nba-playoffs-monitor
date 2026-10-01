@@ -4,6 +4,7 @@
  * Guests are sent to /masuk.
  */
 import { useEffect, useState } from 'react';
+import { onInstallAvailable, promptInstall } from '../lib/pwa.js';
 import { useNavigate } from 'react-router-dom';
 import { listProfile, updateProfile, signOut } from './api.js';
 import { COMPETITIONS, defaultCompetitionKey } from './competitions.js';
@@ -36,6 +37,9 @@ function ProfileInner() {
   const [draft, setDraft] = useState('');
   const [saving, setSaving] = useState(false);
   const [err, setErr] = useState(null);
+  // PWA install (audit: promptInstall was never called anywhere).
+  const [canInstall, setCanInstall] = useState(false);
+  useEffect(() => onInstallAvailable(setCanInstall), []);
 
   useEffect(() => {
     if (!authLoading && !user) navigate('/masuk?next=' + encodeURIComponent('/profil'), { replace: true });
@@ -133,6 +137,11 @@ function ProfileInner() {
           </>
         )}
 
+        {canInstall && (
+          <button type="button" onClick={() => promptInstall()} style={{ ...S.logout, background: 'var(--g4-ink-block)', color: 'var(--g4-paper)', borderColor: 'transparent' }}>
+            {tx('Install Gibol on this phone', 'Pasang Gibol di HP ini')}
+          </button>
+        )}
         <button type="button" onClick={logout} style={S.logout}>{tx('Log out', 'Keluar')}</button>
       </div>
 
