@@ -101,7 +101,7 @@ export default async function handler(req, res) {
   // 6) Recent prediction history with the fixture join.
   const { data: recent } = await admin
     .from('predictions')
-    .select('id, picked_outcome, picked_home, picked_away, is_jagoan, base_points, jagoan_mult_applied, upset_mult_applied, awarded_points, grup_bonus_points, scored_at, fixture_id, fixtures!inner(id, matchday, stage, home_team, away_team, home_score, away_score, outcome)')
+    .select('id, picked_outcome, picked_home, picked_away, is_jagoan, base_points, jagoan_mult_applied, upset_mult_applied, awarded_points, scored_at, fixture_id, fixtures!inner(id, matchday, stage, home_team, away_team, home_score, away_score, outcome)')
     .eq('user_id', user.id)
     .eq('league', competition)
     .not('scored_at', 'is', null)

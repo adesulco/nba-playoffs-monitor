@@ -115,7 +115,7 @@ export default async function handler(req, res) {
     .from('predictions')
     .upsert(row, { onConflict: 'user_id,fixture_id' })
     .select(
-      'id, user_id, fixture_id, league, picked_outcome, picked_home, picked_away, is_jagoan, awarded_points, base_points, jagoan_mult_applied, upset_mult_applied, grup_bonus_points, created_at, scored_at',
+      'id, user_id, fixture_id, league, picked_outcome, picked_home, picked_away, is_jagoan, awarded_points, base_points, jagoan_mult_applied, upset_mult_applied, created_at, scored_at',
     )
     .maybeSingle();
   if (upErr) return res.status(500).json({ error: upErr.message });

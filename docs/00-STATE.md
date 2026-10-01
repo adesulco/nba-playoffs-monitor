@@ -35,6 +35,8 @@ Last updated: **2026-10-01** · live version **v0.86.0** · branch `main` · **S
 
 ## 3 · Open
 
+- **S1 step 1 done, waiting on apply:** `supabase/migrations/0021_scoring_v1.sql` is written, tested on a local PG16 against 0015–0020 (`supabase/tests/0021_scoring_v1.test.sql`, 60+ assertions), and safe to apply once v0.86.1 is live (it removes the API selects of the columns 0021 drops). After apply: run the verification block at the bottom of the file, then re-score EPL via the admin `score` action and check three fixtures by hand.
+
 - **S1 Truth (Oct 4–10, before MD6 on Oct 10 18:30 WIB):** migrations `0021_scoring_v1.sql` and `0022_rls_close.sql` (Ade applies in the SQL editor), scoring parity vectors, `predict.js` writes `matchday` + `last_predicted_at`, join-on-confirm + claim-on-login + guest CTA, copy changes, `useProvisionalPoints` rendered. EPL MW1–5 were scored under the old 8/5/3 rules; S1 re-scores EPL once via the admin `score` action (allowed: no user has seen EPL points).
 - `Content Engine - Cron` fails on every scheduled run (Anthropic key rotation pending). Noise in the Actions tab; disable it or rotate the key.
 - `WC2026` and `AFF2026` are still in the backfill matrix; they idle-exit on schedule, so harmless, but drop them when Liga 1 is added in S2.

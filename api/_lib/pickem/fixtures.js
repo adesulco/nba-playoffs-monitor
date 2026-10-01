@@ -67,7 +67,7 @@ export default async function handler(req, res) {
   let q = admin
     .from('fixtures')
     .select(
-      'id, league, season, stage, matchday, home_team, away_team, kickoff_at, lock_at, status, home_score, away_score, outcome, p_home, p_draw, p_away, finalized_at, home:teams!home_team(tricode, name, city, conference, league, primary_color), away:teams!away_team(tricode, name, city, conference, league, primary_color)',
+      'id, league, season, stage, matchday, home_team, away_team, kickoff_at, lock_at, status, home_score, away_score, outcome, finalized_at, home:teams!home_team(tricode, name, city, conference, league, primary_color), away:teams!away_team(tricode, name, city, conference, league, primary_color)',
     )
     .eq('league', league)
     .order('kickoff_at', { ascending: true })
