@@ -2,7 +2,7 @@
 
 **Living document. Update it at the end of every sprint.** Plan of record: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`. Contract: `02-PLATFORM-CONTRACT.md`. History: `docs/archive/HANDOVER-2026-08-18.md`.
 
-Last updated: **2026-10-01** · live version **v0.89.1** · branch `main` · **S0–S3 shipped in one day** (0022 apply pending)
+Last updated: **2026-10-01** · live version **v0.89.5** · branch `main` · **S0–S3 shipped in one day** (0022 apply pending)
 
 ## 1 · Read this before you touch anything
 
@@ -40,7 +40,7 @@ Last updated: **2026-10-01** · live version **v0.89.1** · branch `main` · **S
 | S0 Rescue | v0.86.0 | 50 EPL finals scored, health ok, 390/1440 screenshots |
 | S1 Truth | v0.87.0 | 0021 applied + EPL re-scored, 56 vectors SQL = JS, `verify-loop` 19/19, browser guest pick + invite stored |
 | S2 Platform | v0.88.0 | registry gate, Liga 1 teams + NBA 81 fixtures seeded, scanner/NBA/football runs green, entry 98 KB gzip, 4a login/create/profile in prod |
-| S3 Retention | v0.89.2 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
+| S3 Retention | v0.89.5 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
 
 ## 3 · Open
 
@@ -67,7 +67,8 @@ Then the commissioner taps "Setujui" on the pending member in GrupHome. `product
 
 ## 3c · Still open after S3
 
-- `leagues.formats` is still read by 12 API call sites; drop it (0023) only after an API pass replaces it with `enabled_modes`.
+- **Apply `supabase/migrations/0023_drop_formats.sql`** (the API stopped reading `formats` in v0.89.3). Same editor dialog as 0022.
+- `api/billing.js` is live but key-gated: set `MIDTRANS_SERVER_KEY` (+ `MIDTRANS_ENV=production`) in Vercel when KYB closes and point Midtrans' notification URL at `https://www.gibol.co/api/billing/webhook`; until then the upgrade sheet uses `VITE_ORDER_URL`.
 - `content-cron.yml` fails every scheduled run (Anthropic key) and carries pre-existing shellcheck warnings; disable or rotate.
 - Liga 1 fixtures appear automatically once ESPN publishes `idn.1` 2026/27; until then the row shows no fixtures (window opens Oct 15 — move `window.opensAt` if ESPN is late).
 - Share-card CTR: `pickem_share` events now flow to PostHog; the WPP weekly read needs the GA4 funnel exported.

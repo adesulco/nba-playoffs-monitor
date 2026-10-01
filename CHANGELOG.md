@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.5 — 2026-10-01 — legacy screens deleted
+
+- The 20 unmounted navy Pick'em and legacy NBA bracket screens are gone (their routes already redirected since v0.88.0).
+
 ## v0.89.4 — 2026-10-01 — register fix
 
 - The Derby share card and page said "Prediksi gue" (audit stale-copy item); now "Prediksiku". v0.89.3 failed the register guard on Vercel once the guard covered `api/`.
