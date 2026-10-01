@@ -8440,7 +8440,7 @@
 //   pre-existing violations on first run — all migrated (Derby, BracketEdit,
 //   LeaderboardLeague, PickemHomeHero, WhatsAppShare share copy).
 // Suite: 114 tests (+9 — WIB window boundaries and the lock countdown).
-export const APP_VERSION = '0.85.0';
+export const APP_VERSION = '0.86.0';
 
 // Short ISO date. Vite replaces import.meta.env.VITE_BUILD_DATE at build
 // time if set (see vercel.json / build command); otherwise falls back to

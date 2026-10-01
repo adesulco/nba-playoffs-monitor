@@ -1,121 +1,59 @@
-# Monitoring the Playoffs — NBA 2026
+# Gibol — Pick'em untuk nongkrong bola
 
-Bloomberg-terminal-style live dashboard for the 2026 NBA Playoffs. Pulls real data from Polymarket and ESPN every 30 seconds, with WebSocket-driven tick updates for the top 3 championship contenders.
+**[gibol.co](https://www.gibol.co)** is an Indonesian multi-sport Pick'em platform: invite your grup, pick the score (Tebak Skor), star one jagoan per matchweek, climb the klasemen. Free, no money vocabulary, no betting — gengsi only.
 
-## Features
+Live competitions: Premier League 2026-27. Next rows: Liga 1 2026-27, NBA 2026-27 (see `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md` §3).
 
-- **Live championship odds** from Polymarket Gamma API (30s poll)
-- **WebSocket tick updates** from Polymarket CLOB for top 3 teams
-- **7-day price sparklines** per team from CLOB price history
-- **Live game scores** from ESPN scoreboard API
-- **MVP race leaderboard** from Polymarket
-- **Full Round 1 bracket** with favorite highlighting
-- **Mobile-responsive** — stacks cleanly below 1280px
-- **Graceful degradation** — every panel shows LIVE/CACHED/OFFLINE state
+## How it works
+
+1. A commissioner creates a grup and shares `gibol.co/g/<code>` (case-sensitive invite code).
+2. Anyone opens the link and locks a pick in three taps, no login wall. Guest picks live in `guestStore` and are claimed on first login.
+3. Fixtures lock at kickoff. A GitHub Actions cron pulls results from ESPN every two hours and scores them in Postgres (`pickem_score_fixture`).
+4. Klasemen, streaks, Gugur (survivor) and share cards update from the same tables.
+
+Scoring Spec v1 (doc 17 §1): exact score 5 · result + goal difference 3 · result 2 · Nyaris 1 · jagoan ★ ×2 · underdog ×1.5 when fewer than 30 % of pickers took that side at lock.
 
 ## Stack
 
-- Vite + React 18
-- Zero backend — all APIs called directly from the browser (CORS-enabled)
-- Ships as a static site
+| Layer | What |
+|---|---|
+| Frontend | Vite + React 18 SPA. 4a design system (`src/pickem/`, `src/styles/desktop-4a.css`), self-hosted Bricolage Grotesque + Instrument Sans. Mobile-first, desktop is CSS-only. |
+| API | Vercel functions under `api/`. One Node dispatcher `api/pickem.js?_action=…` plus edge functions for share cards and crawler OG. Budget 8/12 Node, edge exempt. |
+| Data | Supabase Postgres (`supabase/migrations/`, applied by hand in the SQL editor). RLS on every user table. |
+| Feeds | ESPN public scoreboard (football + NBA). No odds feeds, ever. |
+| Jobs | GitHub Actions: `football-backfill.yml` (every 2 h, scores), `health-watch.yml` (every 30 min, fails on red scoring), `deploy.yml` (tests + vocab guard). |
+| Observability | `/api/health/data-sources` (feeds + scoring liveness), Sentry, PostHog (after consent). |
+
+Screens consume only `src/pickem/api.js`. No direct Supabase calls from screens.
 
 ## Local development
 
 ```bash
 npm install
-npm run dev
+DEV_API_PROXY=https://www.gibol.co npm run dev   # Vite does not run api/; proxy to prod (read-only in practice)
+npm test                                          # Vitest
+npm run build                                     # tests + vocab guard + vite build + prerender
 ```
 
-Opens at http://localhost:5173
-
-## Production build
+Verify production with `curl`, never with build success. Edge functions return 200 with an empty body on throw — check `%{size_download}`.
 
 ```bash
-npm run build
-npm run preview  # test locally
+curl -s https://www.gibol.co/api/health/data-sources | jq .scoring
+curl -s 'https://www.gibol.co/api/pickem?_action=list-fixtures&league=EPL-2026-27&limit=500' | jq '[.fixtures[] | select(.status=="final")] | length'
 ```
 
-## Deployment
+## Repo map
 
-### Vercel (recommended)
+- `src/pickem/` — the 4a Pick'em screens, primitives, skins, `api.js` seam
+- `src/` (rest) — sport hubs (SEO assets at their canonical URLs), `/beranda` scores home
+- `api/` — Vercel functions; `api/_lib/pickem/` holds the dispatcher actions and `scoring-core.js`
+- `scripts/` — backfill + seed scripts, vocab guard, prerender, Satori font test
+- `supabase/migrations/` — schema; `0021_scoring_v1.sql` brings Spec v1 (S1)
+- `docs/` — `00-STATE.md` (where prod is), `pickem-flagship/17-…` (plan of record), `audits/`, `HANDOVER.md` (history)
+- `packages/content-engine/` — Kabar content pipeline (Python, paused pending key rotation)
 
-```bash
-npm i -g vercel
-vercel        # preview deploy
-vercel --prod # production
-```
+## Rules that bite
 
-On first run, Vercel auto-detects Vite, sets build command and output directory, and asks which project to link to. Accept the defaults.
+Copy is kamu/-mu register with EN and ID keys; named mechanics keep their names (Tebak Skor, jagoan, colek, Nyaris). `npm run build` runs the vocab guard. Run `actionlint` before pushing any workflow change. Run `scripts/test-satori-fonts.mjs` after any font change. Bump `APP_VERSION` in `src/lib/version.js` and `package.json` together and add a line to `CHANGELOG.md`.
 
-### Netlify (alternative)
-
-```bash
-npm i -g netlify-cli
-netlify deploy --build        # preview
-netlify deploy --build --prod # production
-```
-
-### Cloudflare Pages
-
-```bash
-npm run build
-npx wrangler pages deploy dist
-```
-
-## GitHub auto-deploy
-
-After pushing to GitHub and linking the Vercel project once:
-
-1. Every push to `main` → production deploy
-2. Every PR → preview deploy with unique URL
-
-Alternatively, the `.github/workflows/deploy.yml` gives you full CI control if you add three repo secrets:
-- `VERCEL_TOKEN` — from vercel.com/account/tokens
-- `VERCEL_ORG_ID` — from your project's `.vercel/project.json`
-- `VERCEL_PROJECT_ID` — same file
-
-## Project structure
-
-```
-src/
-├── App.jsx                       # Main dashboard
-├── main.jsx                      # React entry
-├── index.css                     # Global styles + responsive breakpoints
-├── components/
-│   ├── Bracket.jsx               # R1 bracket viz (E + W)
-│   └── Sparkline.jsx             # SVG sparkline
-├── hooks/
-│   ├── usePlayoffData.js         # 30s polling orchestrator
-│   └── usePolymarketWS.js        # CLOB WebSocket subscriber
-└── lib/
-    ├── api.js                    # Polymarket + ESPN clients
-    └── constants.js              # Team metadata, fallback data, colors
-```
-
-## Data sources
-
-| Source | Endpoint | Purpose | Auth |
-|---|---|---|---|
-| Polymarket Gamma | `gamma-api.polymarket.com/events` | Championship + MVP odds, volume | None |
-| Polymarket CLOB | `clob.polymarket.com/prices-history` | Sparkline price history | None |
-| Polymarket CLOB WS | `wss://ws-subscriptions-clob.polymarket.com/ws/market` | Live price ticks | None |
-| ESPN | `site.api.espn.com/.../scoreboard` | Today's game scores | None |
-
-Rate limits: Gamma 500 req/10s, CLOB generous. Polling at 30s uses ~0.2% of budget.
-
-## Extending
-
-**Add a new prediction market:**
-1. Find event slug in Polymarket URL
-2. Add a fetcher in `src/lib/api.js` following `fetchMvpOdds` pattern
-3. Wire it into `usePlayoffData`
-
-**Customize colors:** edit `COLORS` in `src/lib/constants.js`
-
-**Change refresh rate:** pass different ms to `usePlayoffData(ms)` in `App.jsx`
-
-**Add analytics:** install `@vercel/analytics` or Plausible; one import in `main.jsx`
-
-## License
-
-MIT
+See `CLAUDE.md` for the full operating rules.

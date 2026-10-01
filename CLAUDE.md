@@ -2,7 +2,7 @@
 
 Shared context for Claude Code, Cowork, and any other agent working in this repo.
 
-> **Read this first: `docs/handover-2026-07-18/00-PACKAGE-README.md`** (also at `../handover-2026-07-18/` outside the repo) — the frozen handover package of record. Its authority chain (Sistem 4a design bundle → 13-DEVELOPMENT-PLAN → 11-PLATFORM-STRATEGY → 09 R0 specs) supersedes anything here that conflicts.
+> **Read this first: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`** — plan of record from v0.86.0 (Scoring Spec v1, platform contract, sprints S0–S4). Then `docs/00-STATE.md` (where prod is right now) and `docs/audits/2026-10-01-deep-sweep-audit.md` (findings with file:line evidence). Where this file or `docs/HANDOVER.md` conflicts with doc 17, doc 17 wins. The 2026-07-18 handover package (`docs/handover-2026-07-18/`) is history.
 
 The umbrella project context (mission, who Ade is, how to work with him) lives at the parent project level (`Documents/Claude/Projects/Gibol/CLAUDE.md`). This file is the **repo-specific** companion: where code lives, what stack we're on, what each subdirectory owns, and what requires explicit approval before touching.
 
@@ -25,7 +25,7 @@ The two are sibling — generated content is written to `public/content/` as JSO
 ### Web app
 - **Frontend:** Vite + React 18 SPA. CSS-in-JS using the project's `COLORS` constant from `src/lib/constants.js`. CSS classes for media-query breakpoints in `src/index.css`. **Not Next.js** — anything assuming Next.js routing / MDX / ISR needs adaptation.
 - **Deploy:** Vercel project `nba-playoffs-monitor` in team `adesulcos-projects`. Production domain `www.gibol.co`. Apex 308-redirects to www. GitHub remote wired (`origin https://github.com/adesulco/nba-playoffs-monitor.git`); Vercel auto-deploys on push to `main` and the `gibol-ship` script polls the deploy. Manual override: `npx vercel --prod --yes` from the repo root.
-- **Functions:** Vercel Serverless under `api/`. Node runtime. **12 / 12 functions used** (Vercel Hobby limit — verified by file count 2026-07-20; underscore-prefixed helpers don't deploy). The budget is SPENT: new endpoints ship only as `?_action=` cases on the `api/pickem.js` dispatcher; R0-5 consolidates og/recap to free one slot for `api/billing.js`.
+- **Functions:** Vercel Serverless under `api/`. **Budget: 8/12 Node functions used, edge functions exempt** (recounted 2026-10-01: `approve, auth/callback, cron/nba-close-game-scan, derby, health/data-sources, news, pickem, proxy`; underscore-prefixed helpers don't deploy). A new Node function is allowed (`api/billing.js` is earmarked); still prefer `?_action=` cases on the `api/pickem.js` dispatcher.
 - **Backend:** Supabase project `egzacjfbmgbcwhtvqixc` (Mumbai / ap-south-1). Postgres 17. Migrations live at `supabase/migrations/`. Apply via SQL editor (no Management API token in this env).
 - **Data feeds:** ESPN (NBA + EPL + Liga 1), API-Football Pro $19/mo (EPL stats + Liga 1 + WC + AFF), jolpica-f1 + OpenF1 (F1), tennis sources via `tennis-news`. Anthropic API for the content engine. OpenAI embeddings (Phase 1+). (Polymarket was removed from the product; no odds/betting data feeds ever.)
 - **Schema source of truth:** Supabase tables `teams`, `series`, `brackets`, `picks`, `leagues`, `league_members`, `pickem_rules`, `profiles`, `derby_polls`, `derby_poll_votes`, `derby_reactions`, `derby_oneliners`. Content engine `ce_*` tables (`ce_leagues`, `ce_fixtures`, `ce_events`, `ce_articles`, `ce_article_runs`, `ce_cron_runs`, `ce_generation_failures`, `ce_external_corpus`) live via migration `0006_content_engine.sql` — **applied 2026-04-27**. Pick'em tables (`fixtures`, `predictions`, leaderboard views, scoring RPCs) live via migrations 0015–0017 — applied 2026-05-24.
@@ -98,7 +98,7 @@ These are not style preferences. Breaking any of these in production output is a
    3. PWA install prompt
    4. Favorites store
    5. Per-club squad pages (squad data via API-Football)
-4. **Vercel Hobby function limit (12) is hard-enforced.** We're at 12/12 — the budget is spent. New endpoints go on the `api/pickem.js` dispatcher (`?_action=`); adding a function file requires the R0-5 consolidation first.
+4. **Vercel Hobby function limit (12) is hard-enforced.** 8/12 Node used, edge exempt (2026-10-01). New endpoints go on the `api/pickem.js` dispatcher (`?_action=`) by default; a new Node function file needs a reason (billing is the planned one).
 4b. **Fonts amendment (2026-07-18).** Bricolage Grotesque (800) + Instrument Sans (400–700) ARE allowed — as **self-hosted woff2 subsets only** (≤80KB total, `font-display: swap`, base64 copies for share cards). No Google Fonts runtime request, no other new fonts. This amends the old "no new fonts" rule.
 5. **Lawful scraping only.** Public APIs preferred. For Liga 1 / IBL where APIs are limited, scrape politely, respect robots.txt, rate-limit, cache aggressively.
 
