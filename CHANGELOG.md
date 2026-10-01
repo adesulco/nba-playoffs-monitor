@@ -12,5 +12,5 @@ EPL had never scored. ESPN renamed the eng.1 `season.slug` and the football back
 - **Hardening:** ESPN non-200 is a job failure (one retry), fixture reads paginate past 1000 rows, every run writes a JSON summary.
 - **CI:** `football-backfill.yml` gains a verify step that fails when past non-final fixtures exist but zero source events matched. New `health-watch.yml` every 30 min fails on `scoring.ok == false` or any red competition.
 - **Chrome:** bare `/grup` is a 4a route (no legacy masthead or bottom nav); `SportFooter` gated off 4a routes; TabBar Main goes to `/`; EN lock countdown reads `1d 2h` (ID keeps `1h 2j`).
-- **Housekeeping:** README describes the Pick'em platform; `package.json` version matches `APP_VERSION`; CLAUDE.md function budget is 8/12 Node, edge exempt; docs 17/18 and the 2026-10-01 audit added; this file created.
+- **Housekeeping:** README describes the Pick'em platform; `package.json` version matches `APP_VERSION`; CLAUDE.md function budget is 8/12 Node, edge exempt; docs 17/18 and the 2026-10-01 audit added; `docs/00-STATE.md` created from HANDOVER; this file created.
 - **Not changed:** `vercel.json` Cache-Control. Verified in prod that function-set `Cache-Control` headers are honoured (health returns its own `s-maxage`, list-fixtures is an edge HIT). The audit measured with `curl -I`; the dispatcher answers HEAD with 405.
