@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
-import { supabase } from '../lib/supabase.js';
+import { supabase, getSupabaseAsync } from '../lib/supabase.js';
 import { trackEvent } from '../lib/analytics.js';
 import SEO from '../components/SEO.jsx';
 import { claimGuestPredictions, getGuestInvite, clearGuestInvite } from '../pickem/guestStore.js';
@@ -36,6 +36,9 @@ export default function AuthCallback() {
     let cancelled = false;
 
     async function run() {
+      // The client is lazy (S2); create it NOW so detectSessionInUrl can
+      // read the magic-link hash before we look for a session.
+      await getSupabaseAsync();
       const next = search.get('next') || '/';
       // Same-origin path only: no '//host' (protocol-relative) bounces.
       const safeNext = /^\/(?![\/\\])/.test(next) ? next : '/';

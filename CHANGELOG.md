@@ -2,6 +2,17 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.88.0 — 2026-10-01 — S2 Platform
+
+One registry, two new competitions, the shell owns create/login/profile, and the entry bundle is under 100 KB.
+
+- **Registry:** `src/pickem/competitions.js` is the single source (doc 17 §2.1); `competitions.json` is generated (`npm run registry`) and `npm run build` fails on drift. Skins, the invite OG card, create-league validation, server defaults, both backfill scripts and the football workflow matrix read it.
+- **Rows:** `LIGA1-2026-27` (ESPN `idn.1`, league shape, matchweeks created from the feed, 18 teams seeded with three-letter codes) — ESPN has no 2026/27 Liga 1 data yet, so the feed is marked pending; `NBA-2026-27` (regular season, weeks from the Oct 19 opening week, 81 fixtures seeded). NBA scanner re-enabled without the custom user agent and limited to NBA months; one green run each for scanner, NBA backfill and the registry-driven football matrix.
+- **4a screens:** `/grup/baru` wizard (name, competition, Santai/Standar/Sultan template → `scoring_config.template`), `/masuk` (+ `/login` alias) and `/profil` with logout inside the chrome gate; commissioner approvals with the upgrade sheet (`src/pickem/pricing.js`, order link from `VITE_ORDER_URL`). The navy `/pickem/*` screens and the legacy NBA bracket routes now redirect.
+- **PickSheet:** single-row reads, lock via one timeout, "x dari y pick MW" progress and next-pick chaining.
+- **Hygiene:** `api.js` 15 s read cache with in-flight dedupe and write invalidation; Skor polling pauses while hidden; the 1 Hz tick lives in `Countdown4a`.
+- **Bundle:** Sentry and PostHog load after consent, `Home.jsx` lazy, Supabase client deferred (proxy, imported on first use): entry 232 → 98 KB gzip.
+
 ## v0.87.0 — 2026-10-01 — S1 Truth
 
 The loop is true end to end: a pick made from an invite joins the grup, a guest's picks and invite are claimed on first login, and every screen writes through the API seam.
