@@ -41,9 +41,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Scheduled runs sweep every active competition. Dispatch runs
-        # override via the input (single competition).
-        competition: ['WC2026', 'AFF2026', 'EPL-2026-27']
+        # Scheduled runs (and dispatches with an empty input) sweep every
+        # active competition. A dispatch with a competition runs ONE job
+        # for it — before this, the input overrode COMPETITION in every
+        # matrix slot, so the EPL catch-up on 2026-10-01 ran three times.
+        competition: ${{ github.event.inputs.competition && fromJSON(format('["{0}"]', github.event.inputs.competition)) || fromJSON('["WC2026", "AFF2026", "EPL-2026-27"]') }}
 
     steps:
       - name: Check out repo
@@ -60,7 +62,7 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://egzacjfbmgbcwhtvqixc.supabase.co' }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          COMPETITION: ${{ github.event.inputs.competition || matrix.competition }}
+          COMPETITION: ${{ matrix.competition }}
           IDLE_FLAG: ${{ github.event_name == 'schedule' && '--skip-if-idle' || '' }}
           BACKFILL_SUMMARY: ${{ runner.temp }}/backfill-summary.json
         run: |
