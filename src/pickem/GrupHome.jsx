@@ -264,7 +264,7 @@ function GrupHomeInner() {
         {/* Join states (doc 17 S1-5). Guest: claim the device's picks and
             join in one sign-in. Signed in but not a member: one tap. */}
         {!user && (
-          <div style={S.card}>
+          <div style={{ ...S.card, marginTop: 10 }}>
             <div style={S.nextEyebrow}>{tx('YOUR PICKS ARE ON THIS DEVICE', 'PICKMU ADA DI PERANGKAT INI')}</div>
             <div style={{ ...S.nextMatch, marginBottom: 10 }}>
               {tx('Sign in once to claim them and join this grup.', 'Masuk sekali buat klaim pick dan gabung grup ini.')}
@@ -275,7 +275,7 @@ function GrupHomeInner() {
           </div>
         )}
         {user && !me && (
-          <div style={S.card}>
+          <div style={{ ...S.card, marginTop: 10 }}>
             <div style={S.nextEyebrow}>{tx('NOT A MEMBER YET', 'BELUM JADI ANGGOTA')}</div>
             <div style={{ ...S.nextMatch, marginBottom: 10 }}>
               {tx('Your picks count here once you join.', 'Pickmu dihitung di sini begitu kamu gabung.')}
