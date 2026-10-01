@@ -88,15 +88,18 @@ const ROWS = [
     feed: {
       provider: 'espn', code: 'idn.1', mode: 'rolling', status: 'pending',
       seedMode: 'create',
-      // ESPN 'BHA' (Bhayangkara) collides with Brighton's tricode — teams.tricode is global.
-      tricodeOverrides: { BHA: 'BHY' },
+      // teams.tricode is global and three letters (teams_tricode_check):
+      // ESPN 'BHA' collides with Brighton, 'PER' with Peru, and BALI / PSBS /
+      // PSIM / SPFC are four letters. Verified against all 108 prod tricodes
+      // on 2026-10-01.
+      tricodeOverrides: { BHA: 'BHY', PER: 'PJP', BALI: 'BLU', PSBS: 'BIA', PSIM: 'PSI', SPFC: 'SPD' },
       clubs: {
-        'Arema Indonesia': 'ARC', 'Bali United': 'BALI', 'Bhayangkara Presisi': 'BHY',
+        'Arema Indonesia': 'ARC', 'Bali United': 'BLU', 'Bhayangkara Presisi': 'BHY',
         'Borneo FC': 'BOR', 'Dewa United': 'DEW', 'Madura United FC': 'MDR',
-        'Malut United': 'MAL', 'PSBS Biak': 'PSBS', 'PSIM Yogyakarta': 'PSIM',
+        'Malut United': 'MAL', 'PSBS Biak': 'BIA', 'PSIM Yogyakarta': 'PSI',
         'PSM Makassar': 'PSM', 'Persebaya Surabaya': 'PSS', 'Persib': 'PSB',
-        'Persija': 'PSJ', 'Persijap': 'PER', 'Persik Kediri': 'KED', 'Persis Solo': 'PSO',
-        'Persita': 'PST', 'Semen Padang': 'SPFC',
+        'Persija': 'PSJ', 'Persijap': 'PJP', 'Persik Kediri': 'KED', 'Persis Solo': 'PSO',
+        'Persita': 'PST', 'Semen Padang': 'SPD',
       },
     },
     teamsLeagueKey: 'LIGA1-2026-27',

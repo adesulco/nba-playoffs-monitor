@@ -130,27 +130,32 @@
         "status": "pending",
         "seedMode": "create",
         "tricodeOverrides": {
-          "BHA": "BHY"
+          "BHA": "BHY",
+          "PER": "PJP",
+          "BALI": "BLU",
+          "PSBS": "BIA",
+          "PSIM": "PSI",
+          "SPFC": "SPD"
         },
         "clubs": {
           "Arema Indonesia": "ARC",
-          "Bali United": "BALI",
+          "Bali United": "BLU",
           "Bhayangkara Presisi": "BHY",
           "Borneo FC": "BOR",
           "Dewa United": "DEW",
           "Madura United FC": "MDR",
           "Malut United": "MAL",
-          "PSBS Biak": "PSBS",
-          "PSIM Yogyakarta": "PSIM",
+          "PSBS Biak": "BIA",
+          "PSIM Yogyakarta": "PSI",
           "PSM Makassar": "PSM",
           "Persebaya Surabaya": "PSS",
           "Persib": "PSB",
           "Persija": "PSJ",
-          "Persijap": "PER",
+          "Persijap": "PJP",
           "Persik Kediri": "KED",
           "Persis Solo": "PSO",
           "Persita": "PST",
-          "Semen Padang": "SPFC"
+          "Semen Padang": "SPD"
         }
       },
       "teamsLeagueKey": "LIGA1-2026-27",
