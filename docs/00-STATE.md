@@ -15,7 +15,7 @@ Last updated: **2026-10-01** · live version **v0.86.0** · branch `main` · **S
 | 5 | Invite codes are case-sensitive. | Never upper-case them. |
 | 6 | Desktop is CSS-only (`src/styles/desktop-4a.css`). | Verify shell changes at 390 px and 1440 px. |
 | 7 | `actionlint` before pushing any workflow change. | Installed via Homebrew on the Mac (1.7.12). |
-| 8 | Every push creates **two** prod deployments (Vercel git integration + `deploy.yml`). Bundle hashes differ per build, so the alias flips twice and for ~1 min an edge can serve HTML that references a bundle it has not got yet. A browser that hits that window keeps the 404 until a hard reload. | Wait 2 min after a push before verifying; reload twice. Consider deleting the deploy step in `deploy.yml` (keep tests). |
+| 8 | A push deploys once, via the Vercel git integration (`deploy.yml` only runs tests: its `VERCEL_TOKEN` secret is empty, so the deploy step is skipped). Propagation takes 2–4 min, and for a short window an edge can serve HTML that references a bundle it has not got yet; a browser that hits that window keeps the 404 until a hard reload. | Wait 3 min after a push before verifying, then check the index bundle for the version string; reload twice for the SW handoff. |
 | 9 | `npx vercel` token on this Mac is expired. | `vercel login` before `vercel inspect`; curl the bundle for the version meanwhile. |
 
 ## 2 · What S0 verified in prod (2026-10-01)
@@ -44,5 +44,5 @@ Last updated: **2026-10-01** · live version **v0.86.0** · branch `main` · **S
 ## 4 · Decisions needed from Ade
 
 1. Doc 17 §4 decisions 1–7 stand unless overridden (S1 builds on them).
-2. Keep or remove the CLI deploy step in `deploy.yml` (see §1 #8).
+2. `deploy.yml` has a dead Vercel deploy step (no token). Delete the step, or set the token if you want CI-gated deploys instead of the git integration.
 3. Content-engine cron: disable now, or rotate the key this week.
