@@ -16,8 +16,11 @@
 export default function handler(req, res) {
   const u = new URL(req.url, `https://${req.headers.host || 'www.gibol.co'}`);
   const code = u.searchParams.get('code') || '';
-  const next = u.searchParams.get('next') || '/bracket';
-  const safeNext = typeof next === 'string' && next.startsWith('/') ? next : '/bracket';
+  // Only a same-origin path survives: must start with a single '/', so
+  // '//evil.example' (protocol-relative) and '/\\evil' can't bounce the
+  // session off-site (audit 2026-10-01). Default is the Pick'em home.
+  const next = u.searchParams.get('next') || '/';
+  const safeNext = typeof next === 'string' && /^\/(?![\/\\])/.test(next) ? next : '/';
 
   const qs = new URLSearchParams();
   if (code) qs.set('code', code);

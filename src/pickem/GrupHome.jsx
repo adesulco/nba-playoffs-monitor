@@ -20,7 +20,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { leagueDetail, listFixtures, updateLeagueSettings } from './api.js';
+import { leagueDetail, listFixtures, listPredictions, updateLeagueSettings, joinGrup } from './api.js';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { LeaderboardRow, LockBadge } from './components/primitives4a.jsx';
@@ -30,6 +30,8 @@ import { IconChevronLeft, IconWhatsApp, IconCopy, IconCheck } from './components
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import SEO from '../components/SEO.jsx';
+import { saveGuestInvite } from './guestStore.js';
+import { computeProvisional } from './useProvisionalPoints.js';
 
 const AVATAR_COLORS = ['#1E3FBB', '#7A2E8E', '#E07B00', '#1F7A3D', '#D92D1C', '#171310'];
 function avatarColor(seed) {
@@ -59,6 +61,39 @@ function GrupHomeInner() {
   const [nextFixture, setNextFixture] = useState(null);
   const [copied, setCopied] = useState(false);
   const [gugurToggling, setGugurToggling] = useState(false);
+  const [joining, setJoining] = useState(false);
+  const [joinError, setJoinError] = useState(null);
+  // Provisional points (doc 17 S1-6): live fixtures × my unscored picks ×
+  // this grup's config. Presentation only; the cron owns real points.
+  const [liveFixtures, setLiveFixtures] = useState([]);
+  const [myPredictions, setMyPredictions] = useState([]);
+
+  const reloadDetail = async () => {
+    const res = await leagueDetail({ code: code.trim() });
+    if (res?.ok) { setLeague(res.league); setMembers(res.members || []); }
+  };
+
+  // Logged-in non-member: one tap joins (the invite code is in the URL,
+  // and league-detail by code already proved we hold it).
+  const handleJoin = async () => {
+    if (!league || joining) return;
+    setJoining(true);
+    setJoinError(null);
+    const res = await joinGrup({ leagueId: league.id, inviteCode: league.invite_code });
+    setJoining(false);
+    if (!res?.ok && !/already|member/i.test(String(res?.error || ''))) {
+      setJoinError(String(res?.error || tx('Could not join', 'Gagal gabung')));
+      return;
+    }
+    reloadDetail();
+  };
+
+  // Guest: remember the invite, sign in, and AuthCallback claims + joins.
+  const handleClaimAndJoin = () => {
+    if (!league) return;
+    saveGuestInvite(league.invite_code);
+    navigate(`/login?next=${encodeURIComponent(`/grup/${league.invite_code}`)}`);
+  };
 
   // R4a-1 — commissioner switches survivor on. One-way from this strip on
   // purpose: turning it OFF mid-run would erase a living game; that
@@ -110,6 +145,34 @@ function GrupHomeInner() {
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
+
+  // Live fixtures + my picks for the provisional strip. 60 s poll, paused
+  // while the tab is hidden; nothing runs for guests.
+  useEffect(() => {
+    const comp = league?.competition;
+    if (!comp || !user) return undefined;
+    let cancelled = false;
+    const tick = async () => {
+      if (typeof document !== 'undefined' && document.hidden) return;
+      const [fx, pr] = await Promise.all([
+        listFixtures({ league: comp, status: 'live', limit: 100 }),
+        listPredictions({ competition: comp, limit: 500 }),
+      ]);
+      if (cancelled) return;
+      if (fx?.ok) setLiveFixtures(fx.fixtures || []);
+      if (pr?.ok) setMyPredictions(pr.predictions || []);
+    };
+    tick();
+    const id = setInterval(tick, 60000);
+    return () => { cancelled = true; clearInterval(id); };
+  }, [league?.competition, user]);
+
+  const provisional = useMemo(
+    () => (liveFixtures.length && myPredictions.length
+      ? computeProvisional(liveFixtures, myPredictions, league?.scoring_config || null, null)
+      : { total: 0, perFixture: [] }),
+    [liveFixtures, myPredictions, league?.scoring_config]
+  );
 
   const competition = league?.competition ? COMPETITIONS[league.competition] : null;
   const skin = useMemo(
@@ -184,7 +247,11 @@ function GrupHomeInner() {
             label={tx('your rank', 'peringkatmu')}
             accent="var(--g4-scarlet-soft)"
           />
-          <Tile value={me ? me.points : '—'} label={tx('your points', 'poinmu')} />
+          <Tile
+            value={me ? me.points : '—'}
+            label={tx('your points', 'poinmu')}
+            hint={me && provisional.total > 0 ? tx(`+${provisional.total} provisional`, `+${provisional.total} sementara`) : null}
+          />
           <Tile
             value={me ? me.exact_count ?? 0 : '—'}
             label={tx('exact scores', 'skor tepat')}
@@ -194,6 +261,32 @@ function GrupHomeInner() {
       </header>
 
       <div className="g4-body" style={S.body}>
+        {/* Join states (doc 17 S1-5). Guest: claim the device's picks and
+            join in one sign-in. Signed in but not a member: one tap. */}
+        {!user && (
+          <div style={S.card}>
+            <div style={S.nextEyebrow}>{tx('YOUR PICKS ARE ON THIS DEVICE', 'PICKMU ADA DI PERANGKAT INI')}</div>
+            <div style={{ ...S.nextMatch, marginBottom: 10 }}>
+              {tx('Sign in once to claim them and join this grup.', 'Masuk sekali buat klaim pick dan gabung grup ini.')}
+            </div>
+            <button type="button" onClick={handleClaimAndJoin} style={S.pickCta}>
+              {tx('Claim picks & join →', 'Klaim pick & gabung →')}
+            </button>
+          </div>
+        )}
+        {user && !me && (
+          <div style={S.card}>
+            <div style={S.nextEyebrow}>{tx('NOT A MEMBER YET', 'BELUM JADI ANGGOTA')}</div>
+            <div style={{ ...S.nextMatch, marginBottom: 10 }}>
+              {tx('Your picks count here once you join.', 'Pickmu dihitung di sini begitu kamu gabung.')}
+            </div>
+            <button type="button" disabled={joining} onClick={handleJoin} style={S.pickCta}>
+              {joining ? tx('Joining…', 'Gabung…') : tx('Join grup →', 'Gabung grup →')}
+            </button>
+            {joinError && <p style={{ ...S.muted, marginTop: 8 }}>{joinError}</p>}
+          </div>
+        )}
+
         {/* Nickname nudge — right above the klasemen, which is exactly where
             showing up as a raw hex id hurts. */}
         {user && (
@@ -332,11 +425,12 @@ function GrupHomeInner() {
   );
 }
 
-function Tile({ value, label, accent }) {
+function Tile({ value, label, accent, hint }) {
   return (
     <div style={S.tile}>
       <div style={{ ...S.tileValue, ...(accent ? { color: accent } : {}) }}>{value}</div>
       <div style={S.tileLabel}>{label}</div>
+      {hint && <div style={{ ...S.tileLabel, color: 'var(--g4-win)', marginTop: 2 }}>{hint}</div>}
     </div>
   );
 }

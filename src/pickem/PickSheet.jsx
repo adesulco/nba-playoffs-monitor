@@ -27,8 +27,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { listFixtures, upsertPrediction, listPredictions } from './api.js';
-import { saveGuestPrediction, getGuestPrediction } from './guestStore.js';
+import { listFixtures, upsertPrediction, listPredictions, joinGrup, leagueDetail } from './api.js';
+import { saveGuestPrediction, getGuestPrediction, saveGuestInvite } from './guestStore.js';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { PickChip, LockBadge, formatCountdown } from './components/primitives4a.jsx';
@@ -161,8 +161,8 @@ function PickSheetInner() {
 
     if (user) {
       const res = await upsertPrediction(payload);
-      setSaving(false);
       if (!res?.ok) {
+        setSaving(false);
         setError(
           res?.error === 'not_authenticated'
             ? tx('Please sign in again', 'Coba masuk lagi')
@@ -170,9 +170,21 @@ function PickSheetInner() {
         );
         return;
       }
+      // Join-on-confirm (doc 17 §2.3): a pick made from an invite link
+      // enrols you in that grup. Best-effort — the pick is already saved;
+      // "already a member" and a full grup both leave the pick intact.
+      if (inviteCode) {
+        try {
+          const d = await leagueDetail({ code: inviteCode });
+          if (d?.ok && d.league?.id) await joinGrup({ leagueId: d.league.id, inviteCode });
+        } catch { /* best-effort */ }
+      }
+      setSaving(false);
     } else {
-      // No login wall: persist locally, claim on first sign-in.
+      // No login wall: persist locally, claim on first sign-in — and
+      // remember which grup invited us so the claim also joins it.
       saveGuestPrediction(payload);
+      if (inviteCode) saveGuestInvite(inviteCode);
       setSaving(false);
     }
 
@@ -200,7 +212,7 @@ function PickSheetInner() {
     return (
       <Shell>
         <p style={S.muted}>{tx('That match is no longer available.', 'Pertandingan itu sudah tidak tersedia.')}</p>
-        <button type="button" onClick={() => navigate('/pickem')} style={S.ctaInk}>
+        <button type="button" onClick={() => navigate('/')} style={S.ctaInk}>
           {tx('See all matches', 'Lihat semua pertandingan')}
         </button>
       </Shell>
@@ -241,7 +253,7 @@ function PickSheetInner() {
       <header style={S.header}>
         <button
           type="button"
-          onClick={() => navigate(inviteCode ? `/g/${inviteCode}` : '/pickem')}
+          onClick={() => navigate(inviteCode ? `/g/${inviteCode}` : '/')}
           aria-label={tx('Back', 'Kembali')}
           style={S.iconBtn}
         >
@@ -315,6 +327,13 @@ function PickSheetInner() {
             2 · {tx('Exact score?', 'Skor akhir?')}{' '}
             <span style={S.optional}>{tx('optional', 'opsional')}</span>
           </h2>
+          {/* Scoring Spec v1 ladder (doc 17 §1) — the one line every pick sheet shows. */}
+          <p style={S.hint}>
+            {tx(
+              'Exact score 5 · result + margin 3 · result 2 · nyaris 1 · ★ ×2',
+              'Skor tepat 5 · hasil + selisih 3 · hasil 2 · nyaris 1 · ★ ×2'
+            )}
+          </p>
           <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
             {scoresToShow.map(([h, a]) => {
               const isSel = score && score[0] === h && score[1] === a;
@@ -392,7 +411,7 @@ function PickSheetInner() {
             type="button"
             // After a confirmed pick the payoff is seeing where you stand,
             // so land on the grup home rather than back on the invite.
-            onClick={() => navigate(inviteCode ? `/grup/${inviteCode}` : '/pickem')}
+            onClick={() => navigate(inviteCode ? `/grup/${inviteCode}` : '/')}
             style={{ ...S.cta, background: 'var(--g4-win)' }}
           >
             <IconCheck size={17} /> {tx('Pick locked in', 'Pick kamu tersimpan')}

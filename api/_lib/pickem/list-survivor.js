@@ -29,15 +29,20 @@ export default async function handler(req, res) {
   if (!user) return res.status(401).json({ error: 'Not authenticated' });
 
   const competition = String(req.query?.competition || '').trim() || 'WC2026';
+  // 0021: a survivor life belongs to a grup. Without league_id the first
+  // entry on the competition is returned (legacy callers).
+  const leagueId = String(req.query?.league_id || '').trim() || null;
   const admin = getSupabaseAdmin();
 
+  let entryQ = admin
+    .from('survivor_entries')
+    .select('id, league_id, status, eliminated_matchday, used_team_ids, created_at, updated_at')
+    .eq('user_id', user.id)
+    .eq('competition', competition);
+  entryQ = leagueId ? entryQ.eq('league_id', leagueId).maybeSingle() : entryQ.order('created_at').limit(1).maybeSingle();
+
   const [{ data: entry, error: entryErr }, { data: picks, error: picksErr }] = await Promise.all([
-    admin
-      .from('survivor_entries')
-      .select('id, status, eliminated_matchday, used_team_ids, created_at, updated_at')
-      .eq('user_id', user.id)
-      .eq('competition', competition)
-      .maybeSingle(),
+    entryQ,
     admin
       .from('predictions')
       .select(

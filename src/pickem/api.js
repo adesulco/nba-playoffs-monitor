@@ -334,7 +334,7 @@ export async function upsertBracket(payload) {
  * upsertSurvivorPick({ fixture_id, picked_team_id })
  * Auth required. Returns { ok, prediction, survivor_entry } on success.
  */
-export async function upsertSurvivorPick({ fixture_id, picked_team_id }) {
+export async function upsertSurvivorPick({ fixture_id, picked_team_id, league_id }) {
   const token = await readBearer();
   if (!token) return { ok: false, error: 'not_authenticated' };
   try {
@@ -344,7 +344,7 @@ export async function upsertSurvivorPick({ fixture_id, picked_team_id }) {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ fixture_id, picked_team_id }),
+      body: JSON.stringify({ fixture_id, picked_team_id, league_id }),
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
@@ -359,11 +359,11 @@ export async function upsertSurvivorPick({ fixture_id, picked_team_id }) {
  * listSurvivor({ competition? })
  * Auth required. Returns { ok, entry, picks: [...] }.
  */
-export async function listSurvivor({ competition = 'WC2026' } = {}) {
+export async function listSurvivor({ competition = 'WC2026', league_id } = {}) {
   const token = await readBearer();
   if (!token) return { ok: false, error: 'not_authenticated', entry: null, picks: [] };
   try {
-    const url = buildUrl('list-survivor', { competition });
+    const url = buildUrl('list-survivor', { competition, league_id });
     const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
     const data = await readJson(res);
     if (!res.ok) {
@@ -479,6 +479,59 @@ export async function mergeGuest(predictions) {
  * @param {{league_id:string, user_id:string}} payload
  * @returns {Promise<{ok:boolean, status?:string, needs_upgrade?:boolean, error?:string}>}
  */
+/**
+ * getFixture({ id }) → { ok, fixture } — one fixture with teams embedded.
+ */
+export async function getFixture({ id }) {
+  try {
+    const res = await fetch(buildUrl('get-fixture', { id }));
+    const data = await readJson(res);
+    if (!res.ok || !data?.ok) return { ok: false, error: normalizeError(res, data, 'fixture unavailable') };
+    return { ok: true, fixture: data.fixture };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * getPrediction({ fixture_id }) → { ok, prediction|null }. Auth required.
+ */
+export async function getPrediction({ fixture_id }) {
+  try {
+    const token = await readBearer();
+    if (!token) return { ok: false, error: 'not_authenticated' };
+    const res = await fetch(buildUrl('get-prediction', { fixture_id }), {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await readJson(res);
+    if (!res.ok || !data?.ok) return { ok: false, error: normalizeError(res, data, 'prediction unavailable') };
+    return { ok: true, prediction: data.prediction ?? null };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * updateProfile({ nickname?, favorite_teams?, favorite_team?, city? })
+ * → { ok, profile }. The only profile write path (seam rule).
+ */
+export async function updateProfile(patch) {
+  try {
+    const token = await readBearer();
+    if (!token) return { ok: false, error: 'not_authenticated' };
+    const res = await fetch(buildUrl('update-profile'), {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify(patch || {}),
+    });
+    const data = await readJson(res);
+    if (!res.ok || !data?.ok) return { ok: false, error: normalizeError(res, data, 'profile update failed') };
+    return { ok: true, profile: data.profile };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
 export async function approveMember(payload) {
   const token = await readBearer();
   if (!token) return { ok: false, error: 'not_authenticated' };

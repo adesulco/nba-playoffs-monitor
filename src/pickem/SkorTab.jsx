@@ -19,6 +19,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { listFixtures, listPredictions } from './api.js';
+import { computeProvisional } from './useProvisionalPoints.js';
 import { listGuestPredictions } from './guestStore.js';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
@@ -273,9 +274,14 @@ function ScoreTile({ fixture: f, prediction, lang, live }) {
     const leading = f.home_score > f.away_score ? 'H' : f.home_score < f.away_score ? 'A' : 'D';
     const winning = prediction.picked_outcome === leading;
     pickStatus = winning ? 'ahead' : 'behind';
-    pickStatusLabel = winning
+    // Provisional points (doc 17 S1-6): what this pick pays if the score
+    // stays. Competition config; the grup's template may differ slightly.
+    const prov = live ? computeProvisional([f], [prediction], null, null) : null;
+    const pts = prov?.perFixture?.[0]?.awarded ?? 0;
+    const provLabel = live && pts > 0 ? tx(` · +${pts} provisional`, ` · +${pts} sementara`) : '';
+    pickStatusLabel = (winning
       ? tx('your pick is ahead ✓', 'pickmu unggul ✓')
-      : tx('your pick is behind', 'pickmu tertinggal');
+      : tx('your pick is behind', 'pickmu tertinggal')) + provLabel;
   }
 
   return (

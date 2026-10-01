@@ -2,8 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import PickemRoot from './PickemRoot.jsx';
 import { PickemBtn, EmptyState } from './components/social.jsx';
-import { joinGrup, listMyGrups } from './api.js';
-import { supabase } from '../lib/supabase.js';
+import { joinGrup, listMyGrups, leagueDetail } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 
 // ============================================================================
@@ -69,25 +68,17 @@ function GrupJoinInner() {
     ranRef.current = true;
     (async () => {
       setStatus('resolving');
-      // Resolve (code → leagueId) via direct Supabase select.
+      // Resolve (code → league) through the API seam; the code itself is
+      // the proof of invitation, so look up by code and check the id.
       let leagueId = leagueIdParam;
-      let league;
-      if (leagueId) {
-        const { data } = await supabase
-          .from('leagues')
-          .select('id, name, invite_code, visibility, color')
-          .eq('id', leagueId)
-          .maybeSingle();
-        league = data || null;
-      } else {
-        const { data } = await supabase
-          .from('leagues')
-          .select('id, name, invite_code, visibility, color')
-          .eq('invite_code', code)
-          .maybeSingle();
-        league = data || null;
-        if (league) leagueId = league.id;
+      const d = await leagueDetail({ code });
+      const league = d?.ok ? d.league : null;
+      if (league && leagueIdParam && league.id !== leagueIdParam) {
+        setStatus('error');
+        setError('Kode nggak cocok dengan grup ini.');
+        return;
       }
+      if (league) leagueId = league.id;
       if (!league || !leagueId) {
         setStatus('error');
         setError('Grup dengan kode ini nggak ketemu. Cek kode-nya sama si pembagi.');

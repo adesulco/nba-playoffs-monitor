@@ -19,7 +19,7 @@
 
 import { useEffect, useState } from 'react';
 import { listProfile } from '../api.js';
-import { supabase } from '../../lib/supabase.js';
+import { updateProfile } from '../api.js';
 import { trackEvent } from '../../lib/analytics.js';
 
 const NICKNAME_NUDGE_KEY = 'gibol:pickem:nickname-nudge:v1';
@@ -67,9 +67,9 @@ export default function NicknameNudge4a({ user, competitionKey, lang = 'en', sty
     }
     setSaving(true);
     setError(null);
-    const { error: err } = await supabase.from('profiles').update({ nickname: next }).eq('id', user.id);
+    const res = await updateProfile({ nickname: next });
     setSaving(false);
-    if (err) {
+    if (!res?.ok) {
       setError(tx('Save failed. Try again.', 'Gagal simpan. Coba lagi.'));
       return;
     }

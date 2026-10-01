@@ -40,8 +40,8 @@ export default async function handler(req, res) {
   }
 
   const status = String(req.query?.status || '').trim() || null;
-  if (status && !['scheduled', 'live', 'final'].includes(status)) {
-    return res.status(400).json({ error: "status must be 'scheduled'|'live'|'final'" });
+  if (status && !['scheduled', 'live', 'final', 'postponed'].includes(status)) {
+    return res.status(400).json({ error: "status must be 'scheduled'|'live'|'final'|'postponed'" });
   }
 
   const afterIso = String(req.query?.after_iso || '').trim() || null;

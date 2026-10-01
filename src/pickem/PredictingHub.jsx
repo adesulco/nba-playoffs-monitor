@@ -9,7 +9,7 @@ import {
   markNudged,
   getGuestPrediction,
 } from './guestStore.js';
-import { listFixtures, listPredictions, upsertPrediction, listProfile } from './api.js';
+import { listFixtures, listPredictions, upsertPrediction, listProfile, updateProfile } from './api.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import HubRightRail from './components/HubRightRail.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
@@ -329,9 +329,9 @@ function NicknameNudge({ user, competition }) {
     if (!user?.id) { setError('Sesi habis — login lagi.'); return; }
     setSaving(true);
     setError(null);
-    const { error: err } = await supabase.from('profiles').update({ nickname: next }).eq('id', user.id);
+    const res = await updateProfile({ nickname: next });
     setSaving(false);
-    if (err) { setError('Gagal simpan. Coba lagi.'); return; }
+    if (!res?.ok) { setError('Gagal simpan. Coba lagi.'); return; }
     try { localStorage.setItem(NICKNAME_NUDGE_KEY, '1'); } catch { /* ignore */ }
     trackEvent('pickem_nickname_set', { via: 'nudge' });
     if (typeof window !== 'undefined' && window.gibolToast) {

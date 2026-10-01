@@ -23,8 +23,28 @@
 const DEVICE_KEY = 'gibol:pickem:device-id';
 const QUEUE_KEY = 'gibol:pickem:guest-predictions';
 const NUDGE_KEY = 'gibol:pickem:nudged';
+const INVITE_KEY = 'gibol:pickem:guest-invite';
 
 const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+
+/**
+ * Guest invite code — the grup a signed-out visitor was invited to. Saved
+ * when they lock a pick from /g/:code (or tap "claim & join" on a grup
+ * home); AuthCallback joins that grup right after claiming the picks
+ * (doc 17 §2.3). Case-sensitive, stored verbatim.
+ */
+export function saveGuestInvite(code) {
+  if (!isBrowser || !code) return;
+  try { localStorage.setItem(INVITE_KEY, String(code)); } catch {}
+}
+export function getGuestInvite() {
+  if (!isBrowser) return null;
+  try { return localStorage.getItem(INVITE_KEY) || null; } catch { return null; }
+}
+export function clearGuestInvite() {
+  if (!isBrowser) return;
+  try { localStorage.removeItem(INVITE_KEY); } catch {}
+}
 
 /** Lazily create + return a stable per-device id. */
 export function getDeviceId() {

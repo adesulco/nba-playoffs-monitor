@@ -23,6 +23,7 @@
  */
 
 import { getSupabaseAdmin } from '../supabaseAdmin.js';
+import { isAdminRequest } from '../adminToken.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -30,11 +31,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const token = process.env.ADMIN_TOKEN || process.env.PICKEM_ADMIN_TOKEN;
-  const provided =
-    req.headers['x-admin-token'] ||
-    (req.headers.authorization || '').replace(/^Bearer\s+/i, '');
-  if (!token || provided !== token) {
+  if (!isAdminRequest(req)) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 

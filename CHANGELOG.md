@@ -2,6 +2,17 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.87.0 — 2026-10-01 — S1 Truth
+
+The loop is true end to end: a pick made from an invite joins the grup, a guest's picks and invite are claimed on first login, and every screen writes through the API seam.
+
+- **Scoring:** `scoring-core.js` mirrors the Spec v1 SQL; 56 shared vectors run in JS (`npm test`) and against the SQL pure functions in prod (`node scripts/test-scoring-parity.mjs`). `src/lib/pickemScoring.js` retired.
+- **Dispatcher:** new `get-fixture`, `get-prediction`, `update-profile`; `upsert-prediction` writes `matchday` and stamps `league_members.last_predicted_at` (tiebreak 4); `league-detail?id=` returns `invite_code` only to the owner or an active member (by code it is still public, as the code is the proof); admin actions compare `x-admin-token` only, with `crypto.timingSafeEqual`; `/api/auth/callback` rejects `next` values that start with `//` and defaults to `/`; `list-fixtures` accepts `status=postponed`.
+- **Join and claim:** PickSheet confirm joins the invite's grup when signed in and stores the invite code for guests; AuthCallback claims guest picks, joins the stored grup, defaults `next` to `/`, and skips the favourites onboarding for Pick'em routes; GrupHome shows "Klaim pick & gabung" to guests and "Gabung grup" to signed-in non-members. The four direct Supabase writes (NicknameNudge4a, Profile, GrupJoin, PredictingHub) go through `update-profile` / `league-detail`.
+- **Gugur:** survivor lives are per grup — `upsert-survivor-pick` takes `league_id`, checks membership and the grup's toggle, and releases the old team when the matchday's pick changes; `list-survivor` and `survivor-board` read by grup. Copy: "Seri = gugur".
+- **Copy and provisional points:** PickSheet shows "Skor tepat 5 · hasil + selisih 3 · hasil 2 · nyaris 1 · ★ ×2"; Skor live tiles and the GrupHome points tile show "+N sementara" from `useProvisionalPoints`.
+- **Not done:** the "share4a.js streak card" copy change — no such card exists in the repo (share cards are `api/og-recap.js?type=g4-*`, none of them a streak card). The S3 Streak board will carry "pick tepat beruntun".
+
 ## Unreleased — S1 step 2: migration 0022 RLS close (written, not yet applied)
 
 - **Migration:** `supabase/migrations/0022_rls_close.sql` — no client inserts or updates on `league_members` (join/approve/grant stay server-side), prediction writes limited to pick columns on the user's own row before lock (`awarded_points`, `base_points`, `tier` and the other audit columns are server-only), `leagues` writes server-only, scoring/badge/streak functions executable by `service_role` only, anon loses the roster and prediction grants. Tested on a local PG16 with `supabase/tests/0022_rls_close.test.sql`.

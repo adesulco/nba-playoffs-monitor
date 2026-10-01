@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     admin
       .from('survivor_entries')
       .select('user_id, status, eliminated_matchday, used_team_ids')
-      .eq('competition', league.competition)
+      .eq('league_id', league.id)
       .in('user_id', userIds),
   ]);
 

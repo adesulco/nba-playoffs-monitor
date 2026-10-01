@@ -75,7 +75,7 @@ export function validateFormats(input) {
 // D2 (08-teardown-deltas) — the commissioner rules/prizes box is where
 // judi-adjacent copy will try to enter the product. Server-side reject of
 // betting vocabulary + money-prize phrasing, both locales. Friendly error.
-const BANNED_VOCAB = /\b(pasang(an)?|taruhan|bertaruh|odds|judi|bandar|jackpot|deposit|withdraw)\b/i;
+export const BANNED_VOCAB = /\b(pasang(an)?|taruhan|bertaruh|odds|judi|bandar|jackpot|deposit|withdraw)\b/i;
 const MONEY_PRIZE = /\b(hadiah|prize|pot|pool\s*prize)\b[^.\n]{0,48}\b(uang|rp\.?|rupiah|idr|usd|cash|\$|€)|\b(uang|rp\.?|rupiah|idr|usd|cash)\b[^.\n]{0,48}\b(hadiah|prize)\b/i;
 
 /** Validate leagues.description (D2): ≤2000 chars, no betting vocabulary. */

@@ -60,6 +60,12 @@ import mergeGuestHandler       from './_lib/pickem/merge-guest.js';
 import approveMemberHandler    from './_lib/pickem/approve-member.js';
 import grantEntitlementHandler from './_lib/pickem/grant-entitlement.js';
 
+// v0.87.0 — S1 (doc 17 §2.3): single-row reads for the pick sheet and the
+// one profile write path, so screens stop hitting Supabase directly.
+import getFixtureHandler    from './_lib/pickem/get-fixture.js';
+import getPredictionHandler from './_lib/pickem/get-prediction.js';
+import updateProfileHandler from './_lib/pickem/update-profile.js';
+
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
   switch (action) {
@@ -93,6 +99,10 @@ export default async function handler(req, res) {
     case 'merge-guest':            return mergeGuestHandler(req, res);
     case 'approve-member':         return approveMemberHandler(req, res);
     case 'grant-entitlement':      return grantEntitlementHandler(req, res);
+
+    case 'get-fixture':            return getFixtureHandler(req, res);
+    case 'get-prediction':         return getPredictionHandler(req, res);
+    case 'update-profile':         return updateProfileHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
@@ -105,6 +115,7 @@ export default async function handler(req, res) {
           'list-predictions',
           'update-league-settings', 'league-detail', 'survivor-board', 'merge-guest',
           'approve-member', 'grant-entitlement',
+          'get-fixture', 'get-prediction', 'update-profile',
         ],
       });
   }

@@ -106,6 +106,7 @@ export default async function handler(req, res) {
     user_id:         user.id,
     fixture_id:      fixture_id,
     league:          fx.league,
+    matchday:        fx.matchday,   // 0019 column; the one-jagoan index keys on it
     picked_outcome,
     picked_home,
     picked_away,
@@ -115,10 +116,25 @@ export default async function handler(req, res) {
     .from('predictions')
     .upsert(row, { onConflict: 'user_id,fixture_id' })
     .select(
-      'id, user_id, fixture_id, league, picked_outcome, picked_home, picked_away, is_jagoan, awarded_points, base_points, jagoan_mult_applied, upset_mult_applied, created_at, scored_at',
+      'id, user_id, fixture_id, league, matchday, picked_outcome, picked_home, picked_away, is_jagoan, tier, awarded_points, base_points, jagoan_mult_applied, upset_mult_applied, created_at, scored_at',
     )
     .maybeSingle();
   if (upErr) return res.status(500).json({ error: upErr.message });
+
+  // Tiebreak 4 (doc 17 §1): earliest last pick wins ties. Stamp every grup
+  // the user is in for this competition. Best-effort; never blocks the pick.
+  try {
+    const { data: grups } = await admin.from('leagues').select('id').eq('competition', fx.league);
+    const ids = (grups || []).map((g) => g.id);
+    if (ids.length) {
+      await admin.from('league_members')
+        .update({ last_predicted_at: new Date().toISOString() })
+        .eq('user_id', user.id)
+        .in('league_id', ids);
+    }
+  } catch (e) {
+    console.error('[predict] last_predicted_at stamp failed', e);
+  }
 
   return res.status(200).json({ ok: true, prediction: upserted });
 }

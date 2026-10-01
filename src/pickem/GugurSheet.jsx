@@ -92,7 +92,7 @@ function GugurSheetInner() {
     if (!user || !league?.competition) return undefined;
     let cancelled = false;
     (async () => {
-      const res = await listSurvivor({ competition: league.competition });
+      const res = await listSurvivor({ competition: league.competition, league_id: league.id });
       if (cancelled) return;
       if (res.ok) { setEntry(res.entry); setPicks(res.picks); }
     })();
@@ -118,7 +118,7 @@ function GugurSheetInner() {
     if (saving || myMdPick) return;
     setSaving(tricode);
     setError(null);
-    const res = await upsertSurvivorPick({ fixture_id: fixture.id, picked_team_id: tricode });
+    const res = await upsertSurvivorPick({ fixture_id: fixture.id, picked_team_id: tricode, league_id: league.id });
     setSaving(null);
     if (!res.ok) {
       setError(
@@ -132,7 +132,7 @@ function GugurSheetInner() {
     }
     // Refresh authoritative state rather than patching locally — the
     // server may have cleared another pick on this matchday.
-    const fresh = await listSurvivor({ competition: league.competition });
+    const fresh = await listSurvivor({ competition: league.competition, league_id: league.id });
     if (fresh.ok) { setEntry(fresh.entry); setPicks(fresh.picks); }
   }
 
@@ -165,8 +165,8 @@ function GugurSheetInner() {
             {/* Rules strip — one line, always visible */}
             <p style={S.rules}>
               {tx(
-                'One team per matchday. Never the same team twice. One wrong pick — you’re out.',
-                'Satu tim per pekan. Gak boleh tim yang sama dua kali. Salah sekali — gugur.'
+                'One team per matchday. Never the same team twice. One wrong pick — you’re out. A draw counts as out.',
+                'Satu tim per pekan. Gak boleh tim yang sama dua kali. Salah sekali — gugur. Seri = gugur.'
               )}
             </p>
 

@@ -16,7 +16,7 @@
  *               is_owner, is_managed }]  // points desc
  * }
  */
-import { getSupabaseAdmin } from '../supabaseAdmin.js';
+import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -105,7 +105,22 @@ export default async function handler(req, res) {
   const memberCount = rows.filter((r) => r.status === 'active').length;
   const pendingCount = rows.filter((r) => r.status === 'pending').length;
 
-  res.setHeader('Cache-Control', 'public, max-age=15, s-maxage=30');
+  // The invite code is the key to the grup. Looking a grup up BY its code
+  // proves you have it; looking it up by id does not (audit 2026-10-01:
+  // `league-detail?id=` leaked every invite code). By id, the code is
+  // returned only to the owner or an active member, and that response is
+  // private so the edge never serves one member's copy to the next.
+  let exposeCode = !!code;
+  const authHeader = req.headers.authorization || req.headers.Authorization;
+  if (!exposeCode && authHeader) {
+    const caller = await getUserFromAuthHeader(authHeader);
+    if (caller && (caller.id === league.owner_id || rows.some((r) => r.user_id === caller.id && r.status === 'active'))) {
+      exposeCode = true;
+    }
+  }
+  if (!exposeCode) delete league.invite_code;
+
+  res.setHeader('Cache-Control', authHeader ? 'private, no-store' : 'public, max-age=15, s-maxage=30');
   return res.status(200).json({
     ok: true,
     league: {

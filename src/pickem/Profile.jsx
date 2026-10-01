@@ -2,11 +2,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PickemRoot from './PickemRoot.jsx';
 import { Badge, StreakFlame, PickemBtn, EmptyState } from './components/social.jsx';
-import { listProfile } from './api.js';
+import { listProfile, updateProfile } from './api.js';
 import { teamShort } from './bracketData.js';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { usePickemCompetition } from './useCompetition.jsx';
-import { supabase } from '../lib/supabase.js';
 
 // ============================================================================
 // v0.70.0 — Profile screen (Pick'em P5).
@@ -226,12 +225,9 @@ function NicknameEditor({ currentName, hasNickname, userId, onSaved }) {
     }
     setSaving(true);
     setError(null);
-    const { error: err } = await supabase
-      .from('profiles')
-      .update({ nickname: next })
-      .eq('id', userId);
+    const res = await updateProfile({ nickname: next });
     setSaving(false);
-    if (err) {
+    if (!res?.ok) {
       setError('Gagal simpan. Coba lagi.');
       return;
     }

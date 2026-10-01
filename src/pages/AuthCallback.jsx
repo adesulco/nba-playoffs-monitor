@@ -5,6 +5,12 @@ import { useApp } from '../lib/AppContext.jsx';
 import { supabase } from '../lib/supabase.js';
 import { trackEvent } from '../lib/analytics.js';
 import SEO from '../components/SEO.jsx';
+import { claimGuestPredictions, getGuestInvite, clearGuestInvite } from '../pickem/guestStore.js';
+import { upsertPrediction, joinGrup, leagueDetail } from '../pickem/api.js';
+
+// Pick'em shell routes skip the favourites onboarding (doc 17 S1-5): a
+// first login from an invite must land on the grup, not on a team picker.
+const PICKEM_ROUTE = /^\/($|\?|grup(\/|$)|pick\/|g\/|skor(\/|$)|gugur\/|main(\/|$))/;
 
 /**
  * /auth/callback — handles the magic-link redirect.
@@ -30,8 +36,9 @@ export default function AuthCallback() {
     let cancelled = false;
 
     async function run() {
-      const next = search.get('next') || '/bracket';
-      const safeNext = next.startsWith('/') ? next : '/bracket';
+      const next = search.get('next') || '/';
+      // Same-origin path only: no '//host' (protocol-relative) bounces.
+      const safeNext = /^\/(?![\/\\])/.test(next) ? next : '/';
 
       // Supabase magic links can land here via two flows:
       //   • PKCE (modern):  /auth/callback?code=...&next=...
@@ -89,7 +96,27 @@ export default function AuthCallback() {
       // fail with RLS errors for fresh editor accounts that don't
       // yet have a profile row + the auto-create trigger isn't set
       // up. Skip directly to /editor.
-      const skipOnboarding = safeNext.startsWith('/editor');
+      const skipOnboarding = safeNext.startsWith('/editor') || PICKEM_ROUTE.test(safeNext);
+
+      // Claim-on-login (doc 17 §2.3): replay the guest picks against the
+      // account, then join the grup that invited us. Best-effort; a
+      // failure here must never block the sign-in.
+      try {
+        const claim = await claimGuestPredictions(upsertPrediction);
+        const invite = getGuestInvite();
+        let joined = null;
+        if (invite) {
+          const d = await leagueDetail({ code: invite });
+          if (d?.ok && d.league?.id) {
+            const j = await joinGrup({ leagueId: d.league.id, inviteCode: invite });
+            joined = !!j?.ok;
+            if (j?.ok || /already|member/i.test(String(j?.error || ''))) clearGuestInvite();
+          } else if (d && !d.ok && /not found/i.test(String(d.error || ''))) {
+            clearGuestInvite();
+          }
+        }
+        trackEvent('pickem_claim_on_login', { claimed: claim?.claimed ?? 0, skipped: claim?.skipped ?? 0, invite: !!invite, joined });
+      } catch (_) { /* best-effort */ }
 
       try {
         const userId = exchangeData?.session?.user?.id || exchangeData?.user?.id;
