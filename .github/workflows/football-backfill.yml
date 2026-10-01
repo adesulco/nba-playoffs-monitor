@@ -62,9 +62,36 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           COMPETITION: ${{ github.event.inputs.competition || matrix.competition }}
           IDLE_FLAG: ${{ github.event_name == 'schedule' && '--skip-if-idle' || '' }}
+          BACKFILL_SUMMARY: ${{ runner.temp }}/backfill-summary.json
         run: |
           if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
             echo "FATAL: SUPABASE_SERVICE_ROLE_KEY secret is not set"
             exit 1
           fi
-          node scripts/backfill-fixtures-football.mjs --competition "$COMPETITION" $IDLE_FLAG
+          node scripts/backfill-fixtures-football.mjs --competition "$COMPETITION" ${IDLE_FLAG:+"$IDLE_FLAG"}
+
+      # Never silent again (audit 2026-10-01): for 40 days every event was
+      # skipped on a slug mismatch and this job stayed green. A run that
+      # finds past fixtures still not final but matches zero source events
+      # is a broken feed mapping, not a quiet matchweek — fail it so the
+      # failure email goes out.
+      - name: Verify feed mapping
+        env:
+          SUMMARY: ${{ runner.temp }}/backfill-summary.json
+        run: |
+          if [ ! -f "$SUMMARY" ]; then
+            echo "::error::backfill wrote no summary file — the script exited before reaching the summary"
+            exit 1
+          fi
+          jq . "$SUMMARY"
+          if [ "$(jq -r '.idle' "$SUMMARY")" = "true" ]; then
+            echo "idle run — nothing to verify"
+            exit 0
+          fi
+          past=$(jq -r '.dbPastNonFinal' "$SUMMARY")
+          matched=$(jq -r '.matched' "$SUMMARY")
+          if [ "$past" -gt 0 ] && [ "$matched" -eq 0 ]; then
+            echo "::error::$past past non-final fixture(s) in db but 0 source events matched — feed mapping is broken"
+            exit 1
+          fi
+          echo "ok: $matched matched, $past past non-final"

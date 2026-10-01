@@ -1,0 +1,49 @@
+name: Health watch
+
+# S0 (v0.86.0, audit 2026-10-01). /api/health/data-sources has reported
+# EPL scoring red since Aug 21 and nothing read it. This is the sink: every
+# 30 minutes, fetch the health JSON and fail the job when scoring is not
+# ok or any competition is red. A failed scheduled run emails the
+# workflow author — that is the whole alerting system, on purpose.
+#
+# Not using `curl -f`: the endpoint answers 207 (not an HTTP error) when
+# something is degraded, and an edge/serverless throw can answer 200 with
+# an EMPTY body (HANDOVER §1 #4) — so the body, not the status, decides.
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: health-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Probe /api/health/data-sources
+        run: |
+          body="$(curl -sS --max-time 25 https://www.gibol.co/api/health/data-sources || true)"
+          if [ -z "$body" ]; then
+            echo "::error::health endpoint returned an empty body (function threw or is unreachable)"
+            exit 1
+          fi
+          if ! echo "$body" | jq -e . >/dev/null 2>&1; then
+            echo "::error::health endpoint body is not JSON"
+            echo "$body" | head -c 500
+            exit 1
+          fi
+          echo "$body" | jq '.scoring'
+          scoring_ok="$(echo "$body" | jq -r '.scoring.ok')"
+          reds="$(echo "$body" | jq -r '[(.scoring.competitions // {}) | to_entries[] | select(.value.state == "red") | .key] | join(",")')"
+          if [ "$scoring_ok" = "false" ] || [ -n "$reds" ]; then
+            echo "::error::scoring.ok=$scoring_ok red=[$reds] — see https://www.gibol.co/api/health/data-sources"
+            exit 1
+          fi
+          echo "ok: scoring.ok=$scoring_ok"
