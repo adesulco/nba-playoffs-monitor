@@ -40,7 +40,7 @@ Last updated: **2026-10-01** · live version **v0.89.1** · branch `main` · **S
 | S0 Rescue | v0.86.0 | 50 EPL finals scored, health ok, 390/1440 screenshots |
 | S1 Truth | v0.87.0 | 0021 applied + EPL re-scored, 56 vectors SQL = JS, `verify-loop` 19/19, browser guest pick + invite stored |
 | S2 Platform | v0.88.0 | registry gate, Liga 1 teams + NBA 81 fixtures seeded, scanner/NBA/football runs green, entry 98 KB gzip, 4a login/create/profile in prod |
-| S3 Retention | v0.89.1 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
+| S3 Retention | v0.89.2 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
 
 ## 3 · Open
 

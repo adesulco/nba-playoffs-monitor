@@ -23,13 +23,19 @@ export default function Kabar4a() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch('/content/index.json').then((r) => (r.ok ? r.json() : [])).catch(() => [])
-      .then((list) => { if (!cancelled) setRows(Array.isArray(list) ? list : []); });
+    // The build-time index is { article_count, articles, generated_at };
+    // `approved` is the editor's publish decision (the publish ledger).
+    fetch('/content/index.json').then((r) => (r.ok ? r.json() : null)).catch(() => null)
+      .then((data) => {
+        if (cancelled) return;
+        const list = Array.isArray(data) ? data : (data?.articles || []);
+        setRows(list);
+      });
     return () => { cancelled = true; };
   }, []);
 
   const items = useMemo(() => (rows || [])
-    .filter((r) => r.published_at && r.manual_review !== true && r.path)
+    .filter((r) => r.published_at && r.approved === true && r.path)
     .sort((a, b) => String(b.published_at).localeCompare(String(a.published_at)))
     .slice(0, 40), [rows]);
   const latest = items[0]?.published_at ? new Date(items[0].published_at) : null;

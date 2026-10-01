@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.2 — 2026-10-01 — Kabar reads the real index
+
+- The content index is `{ articles }` with an `approved` flag (60 of 175 approved); Kabar listed nothing because it expected an array and filtered on the review flag.
+
 ## v0.89.1 — 2026-10-01 — S3 hotfix
 
 - v0.89.0 never deployed: the vocabulary guard rejected the rules page ("tanpa taruhan" / "no betting" are banned words even when negated). Reworded to "yang dipertaruhkan cuma gengsi".
