@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm test && node scripts/check-vocab.mjs && vite build && node scripts/prerender.mjs",
+    "build": "npm test && node scripts/check-registry.mjs && node scripts/check-vocab.mjs && vite build && node scripts/prerender.mjs",
+    "registry": "node scripts/build-registry.mjs",
     "preview": "vite preview",
     "lint": "eslint src --ext js,jsx",
     "check:vocab": "node scripts/check-vocab.mjs",

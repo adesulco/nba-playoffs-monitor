@@ -24,18 +24,15 @@ export const config = { runtime: 'edge' };
 const ORIGIN = 'https://www.gibol.co';
 
 /**
- * Human labels for competition keys. The edge runtime can't import the
- * client-side COMPETITIONS registry, and `league-detail` returns the raw key
- * — which put a literal "AFF2026" on the invite card, the single most-shared
- * image we produce. Unknown keys fall through to no season line at all,
- * because a blank line reads better than a slug.
+ * Human labels for competition keys come from the registry mirror
+ * (doc 17 §2.1) — the edge bundler inlines the JSON. Unknown keys fall
+ * through to no season line at all: a blank line reads better than a slug
+ * on the single most-shared image we produce.
  */
-const COMPETITION_LABELS = {
-  AFF2026: 'Piala AFF 2026',
-  WC2026: 'Piala Dunia 2026',
-  'EPL-2026-27': 'Liga Inggris 2026/27',
-  'NBA-Playoffs-2026': 'NBA Playoff 2026',
-};
+import registry from '../../src/pickem/competitions.json';
+const COMPETITION_LABELS = Object.fromEntries(
+  Object.values(registry.competitions).map((c) => [c.key, c.labelLong.id]),
+);
 
 export default async function handler(req) {
   const url = new URL(req.url);

@@ -52,7 +52,9 @@ export default async function handler(req, res) {
   // ─── Fetch live scoreboard ──────────────────────────────────────────
   let events;
   try {
-    const r = await fetch(ESPN_SCOREBOARD, { headers: { 'user-agent': 'gibol.co-cron/1' } });
+    // No custom user-agent: ESPN answers 403 to 'gibol.co-cron/1' (that is why
+    // the scanner was disabled on 2026-08-13); the football cron sends none.
+    const r = await fetch(ESPN_SCOREBOARD, { headers: { accept: 'application/json' } });
     if (!r.ok) throw new Error(`ESPN ${r.status}`);
     const data = await r.json();
     events = data?.events || [];

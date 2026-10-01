@@ -14,6 +14,8 @@
  * (Tebak Skor, jagoan/★, colek) in both locales.
  */
 
+import { COMPETITIONS } from './competitions.js';
+
 export const SPORT_SKINS = {
   bola: {
     key: 'bola',
@@ -104,13 +106,10 @@ export const SPORT_SKINS = {
   },
 };
 
-/** Competition key → sport skin key. */
-const COMPETITION_SPORT = {
-  'AFF2026': 'bola',
-  'EPL-2026-27': 'bola',
-  'WC2026': 'bola',
-  'NBA-Playoffs-2026': 'basket',
-};
+/** Competition key → sport skin key — read from the registry (doc 17 §2.1). */
+const COMPETITION_SPORT = Object.fromEntries(
+  Object.values(COMPETITIONS).map((c) => [c.key, c.sportKey]),
+);
 
 export const DEFAULT_SKIN = 'bola';
 

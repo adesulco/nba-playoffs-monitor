@@ -85,99 +85,39 @@ if (!SERVICE_ROLE) {
 }
 
 // ─── Competition registry ───────────────────────────────────────────────────
-// shape 'tournament' = group stage + KO bracket (WC template; AFF re-points
-// this). shape 'league' = matchday rounds only (EPL, Liga 1).
-const COMPETITIONS = {
-  WC2026: {
-    league: 'WC2026',
-    season: '2026',
-    shape: 'tournament',
-    espn: { code: 'fifa.world', from: '2026-06-11', to: '2026-07-19' },
-    apiFootball: { leagueId: 1, season: 2026 },
-    // ESPN season.slug → { stage, matchday }. Stage names match
-    // pickem_rules.ko_stages; KO matchdays continue the group sequence
-    // (4..8) so jagoan's one-per-matchday rule keeps working (A8 pattern).
-    espnRounds: {
-      'group-stage':      { stage: 'group', matchday: null }, // matchday from the seeded row
-      'round-of-32':      { stage: 'R32',   matchday: 4 },
-      'round-of-16':      { stage: 'R16',   matchday: 5 },
-      'quarterfinals':    { stage: 'QF',    matchday: 6 },
-      'semifinals':       { stage: 'SF',    matchday: 7 },
-      // Deliberately NOT 'SF' (deviates from the A8 KO_ROUNDS map):
-      // pickem_score_bracket validates sf_winner picks against ANY final
-      // fixture with stage='SF', so a 3rd-place winner (a team that LOST
-      // its semi) would earn phantom bracket points. Stage '3rd' is
-      // invisible to bracket scoring; match predictions on it still score
-      // via the outcome ladder (is_ko=false → group jagoan multiplier).
-      '3rd-place-match':  { stage: '3rd',   matchday: 7 },
-      'final':            { stage: 'final', matchday: 8 },
-    },
-    // ESPN abbreviation → teams.tricode where they differ. Everything
-    // else passes through (verified against the 48 seeded tricodes).
-    tricodeOverrides: { POR: 'PRT' }, // NBA Portland owns 'POR'
-  },
-  AFF2026: {
-    league: 'AFF2026',
-    season: '2026',
-    shape: 'tournament',
-    espn: { code: 'aff.championship', from: '2026-07-24', to: '2026-08-26' },
-    // ESPN verified 2026-07-21: 26 events (20 group + 4 SF legs + 2 final
-    // legs), 10 real teams; KO slots show placeholder pseudo-teams
-    // (2A/1B/SFW1…) until the group stage resolves — those events are
-    // skipped by the nations allowlist and picked up by the cron later.
-    espnRounds: {
-      // Group matchdays aren't numbered by ESPN — derive by clustering
-      // kickoff dates (gap ≤1 day = same matchday; 5 matchdays of 4 games).
-      'group-stage': { stage: 'group', matchday: 'cluster' },
-      // Two-legged rounds: stage gets a -L1/-L2 suffix per pairing (by
-      // kickoff order). Deliberately NOT plain 'SF'/'final': a single leg's
-      // outcome is not the aggregate advancer, and pickem_score_bracket
-      // reads stage='SF'/'final' outcomes as advancement — leg-suffixed
-      // stages are invisible to it (and to ko_stages: is_ko=false, group
-      // jagoan weight — acceptable; brackets stay off for AFF).
-      'semifinals':  { stage: 'SF', legs: true, baseMatchday: 6 },
-      'finals':      { stage: 'F',  legs: true, baseMatchday: 8 },
-    },
-    tricodeOverrides: { PHI: 'PHL' }, // NBA Philadelphia owns 'PHI'
-    // Seed these into teams (idempotent) before writing fixtures — the
-    // AFF nations aren't in the table. Keyed by tricode AFTER overrides.
-    nations: {
-      CAM: 'Cambodia', SIN: 'Singapore', TLS: 'Timor-Leste', VIE: 'Vietnam',
-      MYA: 'Myanmar', MAS: 'Malaysia', LAO: 'Laos', THA: 'Thailand',
-      IDN: 'Indonesia', PHL: 'Philippines',
-    },
-  },
-  'EPL-2026-27': {
-    league: 'EPL-2026-27',
-    season: '2026-27',
-    shape: 'league',
-    // Rolling ESPN window for the every-2h score updates (the seed run
-    // uses --source fixturedownload). ESPN never creates rows for a
-    // league-shape comp — it only updates the 380 seeded ones (matched
-    // rows keep their matchday), so matchweek numbers can't drift.
-    espn: { code: 'eng.1', rolling: true },
-    espnRounds: {
-      'regular-season': { stage: 'regular', matchday: null },
-    },
-    tricodeOverrides: {},
-    // One-time seed source: fixturedownload.com has all 380 fixtures with
-    // RoundNumber (= matchweek 1..38). Verified 2026-07-22 — and it
-    // corrected the calendar: MW1 is Aug 21–24 2026, NOT Aug 15.
-    fixtureDownload: { url: 'https://fixturedownload.com/feed/json/epl-2026' },
-    // Feed team name → tricode (ESPN abbreviations, so the ESPN update
-    // path matches rows without a mapping layer). No collisions in the
-    // teams table (checked 2026-07-22).
-    clubs: {
-      'Arsenal': 'ARS', 'Aston Villa': 'AVL', 'Bournemouth': 'BOU',
-      'Brentford': 'BRE', 'Brighton': 'BHA', 'Chelsea': 'CHE',
-      'Coventry': 'COV', 'Crystal Palace': 'CRY', 'Everton': 'EVE',
-      'Fulham': 'FUL', 'Hull': 'HUL', 'Ipswich': 'IPS', 'Leeds': 'LEE',
-      'Liverpool': 'LIV', 'Man City': 'MNC', 'Man Utd': 'MAN',
-      'Newcastle': 'NEW', "Nott'm Forest": 'NFO', 'Spurs': 'TOT',
-      'Sunderland': 'SUN',
-    },
-  },
-};
+// Read from the generated registry mirror (doc 17 §2.1): one row per sport,
+// feed config included. `npm run build` fails if competitions.json drifts
+// from competitions.js, so this script and the SPA can't disagree.
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const REGISTRY = require('../src/pickem/competitions.json');
+
+function compFromRegistry(key) {
+  const r = REGISTRY.competitions[key];
+  if (!r || r.feed?.provider !== 'espn' || r.sport !== 'bola') return null;
+  return {
+    league: r.key,
+    season: r.season,
+    shape: r.structure === 'league' ? 'league' : 'tournament',
+    espn: r.feed.mode === 'rolling'
+      ? { code: r.feed.code, rolling: true }
+      : { code: r.feed.code, from: r.feed.from, to: r.feed.to },
+    espnRounds: r.feed.roundMap || {},
+    tricodeOverrides: r.feed.tricodeOverrides || {},
+    nations: r.feed.nations || null,
+    clubs: r.feed.clubs || null,
+    fixtureDownload: r.feed.seedSource?.provider === 'fixturedownload' ? { url: r.feed.seedSource.url } : null,
+    // 'create': league-shape rows are created from the feed with a
+    // Monday-anchored matchweek (Liga 1: no seed source exists).
+    seedMode: r.feed.seedMode || 'match',
+    roundsStartsAt: r.rounds?.startsAt || null,
+    teamsLeagueKey: r.teamsLeagueKey || r.key,
+    feedStatus: r.feed.status,
+  };
+}
+const COMPETITIONS = Object.fromEntries(
+  Object.keys(REGISTRY.competitions).map((k) => [k, compFromRegistry(k)]).filter(([, v]) => v),
+);
 
 // ─── CLI ─────────────────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
@@ -470,7 +410,7 @@ async function main() {
     }
   }
   const allowed = new Set(
-    (await sbSelect(`teams?league=eq.${comp.league}&select=tricode`)).map((r) => r.tricode)
+    (await sbSelect(`teams?league=eq.${comp.teamsLeagueKey}&select=tricode`)).map((r) => r.tricode)
   );
   console.log(`[football] db: ${dbFixtures.length} fixtures, ${allowed.size} teams`);
 
@@ -547,11 +487,32 @@ async function main() {
   }
   assignRounds(mapped);
 
+  // League shape without a seed source (Liga 1): create rows from the feed
+  // with a Monday-anchored matchweek. The anchor is rounds.startsAt when the
+  // registry has it, else the earliest fixture already in the db, else this
+  // batch — so later runs keep numbering from the same week 1.
+  if (comp.shape === 'league' && comp.seedMode === 'create') {
+    const kick = (iso) => new Date(iso).getTime();
+    const candidates = [
+      comp.roundsStartsAt ? kick(comp.roundsStartsAt) : null,
+      dbFixtures.length ? Math.min(...dbFixtures.map((f) => kick(f.kickoff_at))) : null,
+      mapped.length ? Math.min(...mapped.map((m) => kick(m.kickoff_at))) : null,
+    ].filter((v) => v != null);
+    if (candidates.length) {
+      const anchor = new Date(candidates[0]);
+      const dow = (anchor.getUTCDay() + 6) % 7; // Monday = 0
+      const monday = Date.UTC(anchor.getUTCFullYear(), anchor.getUTCMonth(), anchor.getUTCDate() - dow);
+      for (const m of mapped) {
+        if (m.matchday == null) m.matchday = Math.floor((kick(m.kickoff_at) - monday) / (7 * 86400000)) + 1;
+      }
+    }
+  }
+
   // Seed missing teams before fixtures (FK on teams.tricode).
   if (seedMap && !DRY_RUN) {
     const teamRows = Object.entries(seedMap)
       .filter(([tricode]) => !allowed.has(tricode))
-      .map(([tricode, name]) => ({ tricode, name, city: name, league: comp.league }));
+      .map(([tricode, name]) => ({ tricode, name, city: name, league: comp.teamsLeagueKey }));
     if (teamRows.length) {
       const seeded = await sbUpsert('teams', teamRows, 'tricode');
       console.log(`[football] seeded ${seeded} ${comp.league} teams`);
@@ -566,7 +527,7 @@ async function main() {
   for (const m of mapped) {
     if (!allowed.has(m.home_team) || !allowed.has(m.away_team)) {
       unknownTeamN++;
-      console.warn(`[football] unknown tricode pair ${m.away_team} @ ${m.home_team} — not in teams(league=${comp.league})`);
+      console.warn(`[football] unknown tricode pair ${m.away_team} @ ${m.home_team} — not in teams(league=${comp.teamsLeagueKey})`);
       continue;
     }
     const existing = findExisting(m);

@@ -25,6 +25,7 @@
  */
 
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
+import { defaultCompetitionKey } from './registry.js';
 
 const HISTORY_DEFAULT = 10;
 const HISTORY_MAX = 50;
@@ -38,7 +39,7 @@ export default async function handler(req, res) {
   const user = await getUserFromAuthHeader(req.headers.authorization || req.headers.Authorization);
   if (!user) return res.status(401).json({ error: 'Not authenticated' });
 
-  const competition = String(req.query?.competition || '').trim() || 'WC2026';
+  const competition = String(req.query?.competition || '').trim() || defaultCompetitionKey();
   const historyLimit = Math.min(
     Math.max(parseInt(String(req.query?.history_limit || ''), 10) || HISTORY_DEFAULT, 1),
     HISTORY_MAX,

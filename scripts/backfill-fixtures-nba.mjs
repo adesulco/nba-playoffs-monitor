@@ -115,8 +115,28 @@ const WINDOW_DAYS = Math.min(30, parseInt(process.env.WINDOW_DAYS || '14', 10));
 // for NBA (no game stays in 'live' or 'scheduled' longer than that
 // without ESPN's status flipping to 'post'). Tunable via env if needed.
 const LOOKBACK_DAYS = Math.min(7, parseInt(process.env.LOOKBACK_DAYS || '3', 10));
-const LEAGUE_KEY = 'NBA-Playoffs-2026';
-const SEASON = '2025-26';
+// ─── Registry (doc 17 §2.1) ─────────────────────────────────────────────────
+// --competition picks the row (default: the first active basket row). The
+// row carries the ESPN season type (2 regular, 3 postseason), the week
+// anchor for regular-season "pekan" matchdays, and the tricode overrides.
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const REGISTRY = require('../src/pickem/competitions.json');
+function argValue(flag) { const i = process.argv.indexOf(flag); return i !== -1 ? process.argv[i + 1] : null; }
+const COMP_KEY = argValue('--competition')
+  || REGISTRY.activeFeeds.find((k) => REGISTRY.competitions[k]?.sport === 'basket')
+  || 'NBA-Playoffs-2026';
+const COMP = REGISTRY.competitions[COMP_KEY];
+if (!COMP || COMP.feed?.code !== 'nba') {
+  console.error(`FATAL: --competition must be an NBA registry row. Known: ${Object.keys(REGISTRY.competitions).join(', ')}`);
+  process.exit(1);
+}
+const LEAGUE_KEY = COMP.key;
+const SEASON = COMP.season;
+const SEASON_TYPE = COMP.feed.seasonType || 3;          // 2 regular · 3 postseason
+const TEAMS_LEAGUE = COMP.teamsLeagueKey || 'NBA';
+const WEEK_ANCHOR = COMP.rounds?.startsAt ? Date.parse(COMP.rounds.startsAt) : null;
+console.log(`[nba] competition=${LEAGUE_KEY} season=${SEASON} seasonType=${SEASON_TYPE}`);
 
 // ─── Deterministic UUID from ESPN event ID ─────────────────────────────────
 // SHA1-based v5 UUID, namespaced to 'gibol-nba-fixture:' so the same ESPN
@@ -142,13 +162,8 @@ function deterministicUuid(espnEventId) {
 // teams table uses the canonical 3-letter NBA abbreviation everywhere.
 // Verified mismatches as of 2026-05-25 by diffing ESPN scoreboard output
 // against `SELECT tricode FROM teams WHERE league='NBA'`.
-const ESPN_TO_DB_TRICODE = {
-  SA: 'SAS',   // San Antonio Spurs
-  NY: 'NYK',   // New York Knicks
-  NO: 'NOP',   // New Orleans Pelicans
-  GS: 'GSW',   // Golden State Warriors
-  WSH: 'WAS',  // Washington Wizards
-  UTAH: 'UTA', // Utah Jazz (ESPN sometimes returns "UTAH")
+const ESPN_TO_DB_TRICODE = COMP.feed.tricodeOverrides || {
+  SA: 'SAS', NY: 'NYK', NO: 'NOP', GS: 'GSW', WSH: 'WAS', UTAH: 'UTA',
 };
 function normalizeTricode(espnAbbr) {
   if (!espnAbbr) return espnAbbr;
@@ -186,29 +201,40 @@ function yyyymmdd(date) {
 
 async function fetchEspnForDate(yyyymmddStr) {
   const url = `${ESPN_BASE}/scoreboard?dates=${yyyymmddStr}`;
-  const res = await fetch(url);
-  if (!res.ok) {
-    console.warn(`[espn] ${yyyymmddStr}: HTTP ${res.status}`);
-    return [];
-  }
+  let res = await fetch(url);
+  if (!res.ok) { await new Promise((r) => setTimeout(r, 2000)); res = await fetch(url); }
+  if (!res.ok) throw new Error(`espn nba ${yyyymmddStr}: HTTP ${res.status}`);
   const data = await res.json();
   return data.events || [];
 }
 
 // ─── Map ESPN event → fixtures row ──────────────────────────────────────────
+function regularSeasonWeek(isoDate) {
+  // Monday-anchored week index from the registry's rounds.startsAt (opening
+  // week). Falls back to week 1 when no anchor is configured.
+  if (!WEEK_ANCHOR) return 1;
+  const a = new Date(WEEK_ANCHOR);
+  const dow = (a.getUTCDay() + 6) % 7;
+  const monday = Date.UTC(a.getUTCFullYear(), a.getUTCMonth(), a.getUTCDate() - dow);
+  return Math.max(1, Math.floor((Date.parse(isoDate) - monday) / (7 * 86400000)) + 1);
+}
+
 function mapEvent(event) {
-  // Filter: must be post-season (season.type === 3)
-  if (event.season?.type !== 3) return null;
+  // Filter on the registry's season type: 2 = regular season, 3 = postseason.
+  if (event.season?.type !== SEASON_TYPE) return null;
 
   const c = event.competitions?.[0];
   if (!c) return null;
 
   const headline = c.notes?.[0]?.headline || '';
-  const stageInfo = parsePostseasonHeadline(headline);
-  if (!stageInfo) {
-    // Could be a Play-In game ("Play-In Tournament" headline); skip for now —
-    // those games happen before R1 starts and the Pick'em window opens.
-    return null;
+  let stageInfo;
+  if (SEASON_TYPE === 2) {
+    stageInfo = { stage: 'regular', matchday: regularSeasonWeek(event.date), gameNumber: null };
+  } else {
+    stageInfo = parsePostseasonHeadline(headline);
+    // Play-In games have no round headline; they happen before the Pick'em
+    // window opens, so they are skipped.
+    if (!stageInfo) return null;
   }
 
   const teams = c.competitors || [];
@@ -266,7 +292,7 @@ function mapEvent(event) {
 
 // ─── Teams allowlist (defensive: skip events whose tricodes don't exist) ──
 async function fetchAllowedTricodes() {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/teams?league=eq.NBA&select=tricode`, {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/teams?league=eq.${TEAMS_LEAGUE}&select=tricode`, {
     headers: { apikey: SERVICE_ROLE, Authorization: `Bearer ${SERVICE_ROLE}` },
   });
   if (!res.ok) throw new Error(`teams fetch failed: HTTP ${res.status}`);
@@ -387,7 +413,7 @@ async function main() {
     for (const event of eventsByDate[dStr]) {
       if (seen.has(event.id)) continue;
       seen.add(event.id);
-      if (event.season?.type !== 3) { skippedNotPostseason++; continue; }
+      if (event.season?.type !== SEASON_TYPE) { skippedNotPostseason++; continue; }
       const row = mapEvent(event);
       if (!row) { skippedUnparsed++; continue; }
       if (!allowedTricodes.has(row.home_team) || !allowedTricodes.has(row.away_team)) {
@@ -399,8 +425,8 @@ async function main() {
     }
   }
 
-  console.log(`[backfill] discovered ${rows.length} postseason fixtures with known teams`);
-  console.log(`           (skipped ${skippedNotPostseason} non-postseason, ${skippedUnparsed} TBD/unparsed, ${skippedUnknownTricode} unknown-tricode)`);
+  console.log(`[backfill] discovered ${rows.length} fixtures (seasonType ${SEASON_TYPE}) with known teams`);
+  console.log(`           (skipped ${skippedNotPostseason} other-season-type, ${skippedUnparsed} TBD/unparsed, ${skippedUnknownTricode} unknown-tricode)`);
 
   // Pretty-print
   for (const r of rows) {

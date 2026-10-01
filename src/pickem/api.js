@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabase.js';
 import { trackEvent } from '../lib/analytics.js';
+import { defaultCompetitionKey } from './competitions.js';
 
 // F-010 — Pick'em conversion analytics. trackEvent is consent-gated (no-op
 // until the user grants analytics consent) and bridges GA4 + PostHog. Some
@@ -255,7 +256,7 @@ export async function listMyGrups(competition) {
  * Auth required. Returns { ok, profile } with stats / streak / badges /
  * recent_predictions in one round trip.
  */
-export async function listProfile({ competition = 'WC2026', history_limit } = {}) {
+export async function listProfile({ competition = defaultCompetitionKey(), history_limit } = {}) {
   const token = await readBearer();
   if (!token) return { ok: false, error: 'not_authenticated' };
   try {
@@ -359,7 +360,7 @@ export async function upsertSurvivorPick({ fixture_id, picked_team_id, league_id
  * listSurvivor({ competition? })
  * Auth required. Returns { ok, entry, picks: [...] }.
  */
-export async function listSurvivor({ competition = 'WC2026', league_id } = {}) {
+export async function listSurvivor({ competition = defaultCompetitionKey(), league_id } = {}) {
   const token = await readBearer();
   if (!token) return { ok: false, error: 'not_authenticated', entry: null, picks: [] };
   try {

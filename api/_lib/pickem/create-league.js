@@ -30,7 +30,7 @@ import { validateScoringConfig, validateFormats, validateLateJoinPolicy, validat
 // Bracket Lock for the stake-in-the-ground feeling, match-by-match for the
 // daily loop (kills PlayoffPickems' 16-day group-stage dead air). Applied
 // only when the wizard doesn't send formats explicitly.
-const FOOTBALL_COMPETITION = /^(WC|EPL|LIGA|UCL|AFC)/i;
+import { COMPETITIONS as REGISTRY, isCompetitionKey } from './registry.js';
 
 const VALID_VISIBILITY = new Set(['private', 'public']);
 const VALID_MODE_KEYS = new Set(['match', 'jagoan', 'upset', 'bracket', 'survivor']);
@@ -68,6 +68,11 @@ export default async function handler(req, res) {
 
   if (body.competition != null) {
     const comp = String(body.competition).trim();
+    // One sport = one registry row (doc 17 §2.1): a grup can only track a
+    // competition the platform knows how to feed and score.
+    if (!isCompetitionKey(comp)) {
+      return res.status(400).json({ error: `Unknown competition '${comp}'`, allowed: Object.keys(REGISTRY) });
+    }
     if (comp.length < 1 || comp.length > 60) {
       return res.status(400).json({ error: 'competition must be 1-60 chars' });
     }
@@ -120,8 +125,9 @@ export default async function handler(req, res) {
 
   // D3 — football competitions default to both game types when the wizard
   // didn't choose explicitly: {match, bracket}.
-  if (insertRow.formats == null && insertRow.competition && FOOTBALL_COMPETITION.test(insertRow.competition)) {
-    insertRow.formats = ['match', 'bracket'];
+  if (insertRow.formats == null && insertRow.competition) {
+    const row = REGISTRY[insertRow.competition];
+    insertRow.formats = row?.features?.bracket ? ['match', 'bracket'] : ['match'];
   }
 
   const admin = getSupabaseAdmin();

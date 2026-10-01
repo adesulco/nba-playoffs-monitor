@@ -77,7 +77,7 @@ jobs:
             echo "Add it at: Settings → Secrets and variables → Actions"
             exit 1
           fi
-          node scripts/backfill-fixtures-nba.mjs
+          node scripts/backfill-fixtures-nba.mjs --competition NBA-2026-27
 
       - name: Verify via public API
         if: always()

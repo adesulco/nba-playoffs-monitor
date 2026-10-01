@@ -1,0 +1,432 @@
+{
+  "_generated": "by scripts/build-registry.mjs from src/pickem/competitions.js — do not edit",
+  "order": [
+    "EPL-2026-27",
+    "LIGA1-2026-27",
+    "NBA-2026-27",
+    "AFF2026",
+    "NBA-Playoffs-2026",
+    "WC2026"
+  ],
+  "activeFeeds": [
+    "EPL-2026-27",
+    "LIGA1-2026-27",
+    "NBA-2026-27"
+  ],
+  "competitions": {
+    "EPL-2026-27": {
+      "key": "EPL-2026-27",
+      "sport": "bola",
+      "season": "2026-27",
+      "label": {
+        "en": "Premier League",
+        "id": "Liga Inggris"
+      },
+      "labelShort": {
+        "en": "EPL",
+        "id": "EPL"
+      },
+      "labelLong": {
+        "en": "Premier League 2026/27",
+        "id": "Liga Inggris 2026/27"
+      },
+      "structure": "league",
+      "rounds": {
+        "unit": "MW",
+        "count": 38
+      },
+      "features": {
+        "match": true,
+        "score": true,
+        "jagoan": true,
+        "bracket": false,
+        "survivor": true
+      },
+      "window": {
+        "opensAt": "2026-08-10T00:00:00Z",
+        "closesAt": "2027-05-30T00:00:00Z"
+      },
+      "lock": {
+        "policy": "kickoff",
+        "offsetMin": 0
+      },
+      "feed": {
+        "provider": "espn",
+        "code": "eng.1",
+        "mode": "rolling",
+        "status": "live",
+        "tricodeOverrides": {},
+        "seedSource": {
+          "provider": "fixturedownload",
+          "url": "https://fixturedownload.com/feed/json/epl-2026"
+        },
+        "clubs": {
+          "Arsenal": "ARS",
+          "Aston Villa": "AVL",
+          "Bournemouth": "BOU",
+          "Brentford": "BRE",
+          "Brighton": "BHA",
+          "Chelsea": "CHE",
+          "Coventry": "COV",
+          "Crystal Palace": "CRY",
+          "Everton": "EVE",
+          "Fulham": "FUL",
+          "Hull": "HUL",
+          "Ipswich": "IPS",
+          "Leeds": "LEE",
+          "Liverpool": "LIV",
+          "Man City": "MNC",
+          "Man Utd": "MAN",
+          "Newcastle": "NEW",
+          "Nott'm Forest": "NFO",
+          "Spurs": "TOT",
+          "Sunderland": "SUN"
+        }
+      },
+      "teamsLeagueKey": "EPL-2026-27",
+      "scoringTemplate": "standar",
+      "sportAccent": "#D92D1C"
+    },
+    "LIGA1-2026-27": {
+      "key": "LIGA1-2026-27",
+      "sport": "bola",
+      "season": "2026-27",
+      "label": {
+        "en": "Super League",
+        "id": "Super League"
+      },
+      "labelShort": {
+        "en": "Liga 1",
+        "id": "Liga 1"
+      },
+      "labelLong": {
+        "en": "Super League Indonesia 2026/27",
+        "id": "Super League Indonesia 2026/27"
+      },
+      "structure": "league",
+      "rounds": {
+        "unit": "MW",
+        "count": 34
+      },
+      "features": {
+        "match": true,
+        "score": true,
+        "jagoan": true,
+        "bracket": false,
+        "survivor": true
+      },
+      "window": {
+        "opensAt": "2026-10-15T00:00:00Z",
+        "closesAt": "2027-06-15T00:00:00Z"
+      },
+      "lock": {
+        "policy": "kickoff",
+        "offsetMin": 0
+      },
+      "feed": {
+        "provider": "espn",
+        "code": "idn.1",
+        "mode": "rolling",
+        "status": "pending",
+        "seedMode": "create",
+        "tricodeOverrides": {
+          "BHA": "BHY"
+        },
+        "clubs": {
+          "Arema Indonesia": "ARC",
+          "Bali United": "BALI",
+          "Bhayangkara Presisi": "BHY",
+          "Borneo FC": "BOR",
+          "Dewa United": "DEW",
+          "Madura United FC": "MDR",
+          "Malut United": "MAL",
+          "PSBS Biak": "PSBS",
+          "PSIM Yogyakarta": "PSIM",
+          "PSM Makassar": "PSM",
+          "Persebaya Surabaya": "PSS",
+          "Persib": "PSB",
+          "Persija": "PSJ",
+          "Persijap": "PER",
+          "Persik Kediri": "KED",
+          "Persis Solo": "PSO",
+          "Persita": "PST",
+          "Semen Padang": "SPFC"
+        }
+      },
+      "teamsLeagueKey": "LIGA1-2026-27",
+      "scoringTemplate": "standar",
+      "sportAccent": "#D92D1C"
+    },
+    "NBA-2026-27": {
+      "key": "NBA-2026-27",
+      "sport": "basket",
+      "season": "2026-27",
+      "label": {
+        "en": "NBA",
+        "id": "NBA"
+      },
+      "labelShort": {
+        "en": "NBA",
+        "id": "NBA"
+      },
+      "labelLong": {
+        "en": "NBA 2026/27",
+        "id": "NBA 2026/27"
+      },
+      "structure": "league",
+      "rounds": {
+        "unit": "W",
+        "count": 25,
+        "startsAt": "2026-10-19T00:00:00Z"
+      },
+      "features": {
+        "match": true,
+        "score": true,
+        "jagoan": true,
+        "bracket": false,
+        "survivor": false
+      },
+      "window": {
+        "opensAt": "2026-10-12T00:00:00Z",
+        "closesAt": "2027-04-20T00:00:00Z"
+      },
+      "lock": {
+        "policy": "kickoff",
+        "offsetMin": 0
+      },
+      "feed": {
+        "provider": "espn",
+        "code": "nba",
+        "mode": "rolling",
+        "status": "live",
+        "seasonType": 2,
+        "tricodeOverrides": {
+          "SA": "SAS",
+          "NY": "NYK",
+          "NO": "NOP",
+          "GS": "GSW",
+          "WSH": "WAS",
+          "UTAH": "UTA"
+        }
+      },
+      "teamsLeagueKey": "NBA",
+      "scoringTemplate": "standar",
+      "sportAccent": "#e8502e"
+    },
+    "AFF2026": {
+      "key": "AFF2026",
+      "sport": "bola",
+      "season": "2026",
+      "label": {
+        "en": "ASEAN Cup",
+        "id": "Piala AFF"
+      },
+      "labelShort": {
+        "en": "AFF",
+        "id": "AFF"
+      },
+      "labelLong": {
+        "en": "ASEAN Championship 2026",
+        "id": "Piala AFF 2026"
+      },
+      "structure": "tournament",
+      "rounds": {
+        "unit": "MD",
+        "count": 9
+      },
+      "features": {
+        "match": true,
+        "score": true,
+        "jagoan": true,
+        "bracket": false,
+        "survivor": false
+      },
+      "window": {
+        "opensAt": "2026-07-21T00:00:00Z",
+        "closesAt": "2026-08-27T00:00:00Z"
+      },
+      "lock": {
+        "policy": "kickoff",
+        "offsetMin": 0
+      },
+      "feed": {
+        "provider": "espn",
+        "code": "aff.championship",
+        "mode": "window",
+        "status": "done",
+        "from": "2026-07-24",
+        "to": "2026-08-26",
+        "roundMap": {
+          "group-stage": {
+            "stage": "group",
+            "matchday": "cluster"
+          },
+          "semifinals": {
+            "stage": "SF",
+            "legs": true,
+            "baseMatchday": 6
+          },
+          "finals": {
+            "stage": "F",
+            "legs": true,
+            "baseMatchday": 8
+          }
+        },
+        "tricodeOverrides": {
+          "PHI": "PHL"
+        },
+        "nations": {
+          "CAM": "Cambodia",
+          "SIN": "Singapore",
+          "TLS": "Timor-Leste",
+          "VIE": "Vietnam",
+          "MYA": "Myanmar",
+          "MAS": "Malaysia",
+          "LAO": "Laos",
+          "THA": "Thailand",
+          "IDN": "Indonesia",
+          "PHL": "Philippines"
+        }
+      },
+      "teamsLeagueKey": "AFF2026",
+      "scoringTemplate": "standar",
+      "sportAccent": "#D92D1C"
+    },
+    "WC2026": {
+      "key": "WC2026",
+      "sport": "bola",
+      "season": "2026",
+      "label": {
+        "en": "World Cup",
+        "id": "Piala Dunia"
+      },
+      "labelShort": {
+        "en": "WC",
+        "id": "PD"
+      },
+      "labelLong": {
+        "en": "FIFA World Cup 2026",
+        "id": "Piala Dunia 2026"
+      },
+      "structure": "tournament",
+      "rounds": {
+        "unit": "MD",
+        "count": 8
+      },
+      "features": {
+        "match": true,
+        "score": true,
+        "jagoan": true,
+        "bracket": true,
+        "survivor": true
+      },
+      "window": {
+        "opensAt": "2026-06-11T00:00:00Z",
+        "closesAt": "2026-07-20T00:00:00Z"
+      },
+      "lock": {
+        "policy": "kickoff",
+        "offsetMin": 0
+      },
+      "feed": {
+        "provider": "espn",
+        "code": "fifa.world",
+        "mode": "window",
+        "status": "done",
+        "from": "2026-06-11",
+        "to": "2026-07-19",
+        "roundMap": {
+          "group-stage": {
+            "stage": "group",
+            "matchday": null
+          },
+          "round-of-32": {
+            "stage": "R32",
+            "matchday": 4
+          },
+          "round-of-16": {
+            "stage": "R16",
+            "matchday": 5
+          },
+          "quarterfinals": {
+            "stage": "QF",
+            "matchday": 6
+          },
+          "semifinals": {
+            "stage": "SF",
+            "matchday": 7
+          },
+          "3rd-place-match": {
+            "stage": "3rd",
+            "matchday": 7
+          },
+          "final": {
+            "stage": "final",
+            "matchday": 8
+          }
+        },
+        "tricodeOverrides": {
+          "POR": "PRT"
+        }
+      },
+      "teamsLeagueKey": "WC2026",
+      "scoringTemplate": "standar",
+      "sportAccent": "#326295"
+    },
+    "NBA-Playoffs-2026": {
+      "key": "NBA-Playoffs-2026",
+      "sport": "basket",
+      "season": "2025-26",
+      "label": {
+        "en": "NBA Playoffs",
+        "id": "NBA Playoffs"
+      },
+      "labelShort": {
+        "en": "NBA PO",
+        "id": "NBA PO"
+      },
+      "labelLong": {
+        "en": "NBA Playoffs 2026",
+        "id": "NBA Playoff 2026"
+      },
+      "structure": "playoff-series",
+      "rounds": {
+        "unit": "R",
+        "count": 4
+      },
+      "features": {
+        "match": true,
+        "score": true,
+        "jagoan": true,
+        "bracket": false,
+        "survivor": false
+      },
+      "window": {
+        "opensAt": "2026-04-18T00:00:00Z",
+        "closesAt": "2026-06-25T00:00:00Z"
+      },
+      "lock": {
+        "policy": "kickoff",
+        "offsetMin": 0
+      },
+      "feed": {
+        "provider": "espn",
+        "code": "nba",
+        "mode": "rolling",
+        "status": "done",
+        "seasonType": 3,
+        "tricodeOverrides": {
+          "SA": "SAS",
+          "NY": "NYK",
+          "NO": "NOP",
+          "GS": "GSW",
+          "WSH": "WAS",
+          "UTAH": "UTA"
+        }
+      },
+      "teamsLeagueKey": "NBA",
+      "scoringTemplate": "standar",
+      "sportAccent": "#e8502e"
+    }
+  }
+}

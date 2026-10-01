@@ -35,17 +35,41 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # The matrix comes from the registry (doc 17 §2.1): every football row
+  # whose feed is not 'done'. A dispatch with a competition runs ONE job.
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      matrix: ${{ steps.list.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - id: list
+        env:
+          ONLY: ${{ github.event.inputs.competition }}
+        run: |
+          node -e '
+            const r = require("./src/pickem/competitions.json");
+            const only = process.env.ONLY && process.env.ONLY.trim();
+            const keys = only ? [only] : r.activeFeeds.filter((k) => r.competitions[k].sport === "bola");
+            console.log(JSON.stringify(keys));
+          ' > matrix.json
+          echo "matrix=$(cat matrix.json)" >> "$GITHUB_OUTPUT"
+          cat matrix.json
+
   backfill:
+    needs: plan
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
-        # Scheduled runs (and dispatches with an empty input) sweep every
-        # active competition. A dispatch with a competition runs ONE job
-        # for it — before this, the input overrode COMPETITION in every
-        # matrix slot, so the EPL catch-up on 2026-10-01 ran three times.
-        competition: ${{ github.event.inputs.competition && fromJSON(format('["{0}"]', github.event.inputs.competition)) || fromJSON('["WC2026", "AFF2026", "EPL-2026-27"]') }}
+        competition: ${{ fromJSON(needs.plan.outputs.matrix) }}
 
     steps:
       - name: Check out repo

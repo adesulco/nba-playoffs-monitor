@@ -18,6 +18,7 @@
  */
 
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
+import { defaultCompetitionKey } from './registry.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -28,7 +29,7 @@ export default async function handler(req, res) {
   const user = await getUserFromAuthHeader(req.headers.authorization || req.headers.Authorization);
   if (!user) return res.status(401).json({ error: 'Not authenticated' });
 
-  const competition = String(req.query?.competition || '').trim() || 'WC2026';
+  const competition = String(req.query?.competition || '').trim() || defaultCompetitionKey();
   // 0021: a survivor life belongs to a grup. Without league_id the first
   // entry on the competition is returned (legacy callers).
   const leagueId = String(req.query?.league_id || '').trim() || null;
