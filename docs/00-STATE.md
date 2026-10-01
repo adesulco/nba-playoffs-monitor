@@ -35,7 +35,9 @@ Last updated: **2026-10-01** · live version **v0.86.0** · branch `main` · **S
 
 ## 3 · Open
 
-- **S1 step 1 done, waiting on apply:** `supabase/migrations/0021_scoring_v1.sql` is written, tested on a local PG16 against 0015–0020 (`supabase/tests/0021_scoring_v1.test.sql`, 60+ assertions), and safe to apply once v0.86.1 is live (it removes the API selects of the columns 0021 drops). After apply: run the verification block at the bottom of the file, then re-score EPL via the admin `score` action and check three fixtures by hand.
+- **S1 step 1 shipped (2026-10-01):** `0021_scoring_v1.sql` applied in prod via the SQL editor (the editor's "Potential issue detected" dialog must be confirmed, or nothing runs — that swallowed the first attempt). Probed after apply: EPL rules 5/3/2/1, history rows 8/5/3, tiers backfilled, `p_*` and `grup_bonus_points` gone, M8 badges, `streaks.kind`. All 50 EPL finals re-scored through the admin `score-fixture` action on the new engine (0 predictions exist yet). Ladder checked by hand on ARS 3-0 COV, FUL 1-1 MAN, MNC 5-3 SUN via the prod functions: exact 5 / margin 3 / result 2 / nyaris 1 / miss 0, jagoan+underdog 15/9/6/1/0.
+- **S1 next:** 0022 RLS close + `scripts/rls-attack.mjs`; scoring-core parity vectors; `predict.js` writes `matchday` + `last_predicted_at`; join-on-confirm + claim-on-login; `upsert-survivor.js` must write `league_id` (survivor inserts fail until it does — nobody is in Gugur today).
+- Supabase dashboard shows an **outstanding invoice** banner (service-disruption warning). Pay before MD6.
 
 - **S1 Truth (Oct 4–10, before MD6 on Oct 10 18:30 WIB):** migrations `0021_scoring_v1.sql` and `0022_rls_close.sql` (Ade applies in the SQL editor), scoring parity vectors, `predict.js` writes `matchday` + `last_predicted_at`, join-on-confirm + claim-on-login + guest CTA, copy changes, `useProvisionalPoints` rendered. EPL MW1–5 were scored under the old 8/5/3 rules; S1 re-scores EPL once via the admin `score` action (allowed: no user has seen EPL points).
 - `Content Engine - Cron` fails on every scheduled run (Anthropic key rotation pending). Noise in the Actions tab; disable it or rotate the key.
