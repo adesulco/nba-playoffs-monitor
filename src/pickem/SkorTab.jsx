@@ -91,8 +91,13 @@ function SkorTabInner() {
       }
     }
     load();
-    const id = setInterval(load, POLL_MS);
-    return () => { cancelled = true; clearInterval(id); };
+    // Paused while the tab is hidden (doc 17 S2); a return to the tab
+    // refreshes immediately instead of waiting out the interval.
+    const tick = () => { if (typeof document === 'undefined' || !document.hidden) load(); };
+    const id = setInterval(tick, POLL_MS);
+    const onVisible = () => { if (!document.hidden) load(); };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => { cancelled = true; clearInterval(id); document.removeEventListener('visibilitychange', onVisible); };
   }, []);
 
   // My picks, keyed by fixture — server when signed in, device otherwise.

@@ -61,7 +61,7 @@ function GrupJoinInner() {
           ? `/pickem/grup/${leagueIdParam}/join?code=${encodeURIComponent(code)}`
           : `/pickem/grup/join?code=${encodeURIComponent(code)}`,
       );
-      navigate(`/login?next=${next}`, { replace: true });
+      navigate(`/masuk?next=${next}`, { replace: true });
       return;
     }
     if (ranRef.current) return;

@@ -45,6 +45,14 @@
       "destination": "/index.html"
     },
     {
+      "source": "/masuk",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/profil",
+      "destination": "/index.html"
+    },
+    {
       "source": "/auth/callback",
       "destination": "/index.html"
     },

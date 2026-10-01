@@ -21,7 +21,8 @@ import { SentryErrorBoundary } from './lib/observability.js';
 // F21 — route-based code splitting. Each page becomes its own bundle so the
 // home hero loads without pulling 300KB of dashboard logic, and vice versa.
 // Home is eagerly imported since it's the root entry.
-import Home from './pages/Home.jsx';
+// S2 (doc 17) — the legacy scores home is lazy: the shell is the entry.
+const Home = lazy(() => import('./pages/Home.jsx'));
 import V2TopBar from './components/v2/TopBar.jsx';
 import MobileBottomNav from './components/MobileBottomNav.jsx';
 import SearchOnboardingTooltip from './components/SearchOnboardingTooltip.jsx';
@@ -122,7 +123,6 @@ const Glossary = lazy(() => import('./pages/Glossary.jsx'));
 
 // Pick'em — bracket, private leagues, leaderboards. Lazy so the Supabase
 // client + auth context don't land on users who never visit /bracket.
-const Login = lazy(() => import('./pages/Login.jsx'));
 const AuthCallback = lazy(() => import('./pages/AuthCallback.jsx'));
 // v0.12.5 — first-login favorites picker
 const OnboardingTeams = lazy(() => import('./pages/OnboardingTeams.jsx'));
@@ -135,10 +135,6 @@ const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 // replaces it with the real PredictingHub + FixtureDetail. v0.68.0 P3
 // adds the leaderboard + grup surfaces. Lazy so the Pick'em token CSS
 // + Supabase client don't land on users who never visit /pickem.
-const PredictingHub  = lazy(() => import('./pickem/PredictingHub.jsx'));
-const FixtureDetail  = lazy(() => import('./pickem/FixtureDetail.jsx'));
-const PickemLeaderboard = lazy(() => import('./pickem/Leaderboard.jsx'));
-const Grup           = lazy(() => import('./pickem/Grup.jsx'));
 // R1-4 — Sistem 4a primitives QA route, flagged off by default.
 const DevPrimitives  = lazy(() => import('./pickem/DevPrimitives.jsx'));
 // R2 — /g/:code invite landing (public, no auth wall). Top of the loop.
@@ -154,18 +150,15 @@ const SkorTab        = lazy(() => import('./pickem/SkorTab.jsx'));
 // R4a-1 (M1 Gugur) — grup-scoped survivor sheet.
 const GugurSheet     = lazy(() => import('./pickem/GugurSheet.jsx'));
 const GrupList       = lazy(() => import('./pickem/GrupList.jsx'));
-const GrupCreate     = lazy(() => import('./pickem/GrupCreate.jsx'));
-const GrupDetail     = lazy(() => import('./pickem/GrupDetail.jsx'));
+// S2 (v0.88.0) — 4a create-grup wizard, login and profile inside the shell.
+const GrupCreate4a   = lazy(() => import('./pickem/GrupCreate4a.jsx'));
+const Login4a        = lazy(() => import('./pickem/Login4a.jsx'));
+const Profile4a      = lazy(() => import('./pickem/Profile4a.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
 // v0.69.0 P4 — stage-paged WC 2026 bracket builder.
-const PickemBracket  = lazy(() => import('./pickem/Bracket.jsx'));
 // v0.70.0 P5 — Survivor + Profile.
-const PickemSurvivor = lazy(() => import('./pickem/Survivor.jsx'));
-const PickemProfile  = lazy(() => import('./pickem/Profile.jsx'));
 // v0.71.0 P6 — Kartu Bola recap share surface.
-const PickemRecap    = lazy(() => import('./pickem/Recap.jsx'));
 // v0.75.0 P7 — read-only desktop bracket tree (horizontal full tree).
-const PickemBracketTree = lazy(() => import('./pickem/BracketTreeView.jsx'));
 // v0.13.0 — site-wide cross-sport footer (Ship 3E). Mounts below the
 // route Suspense so every page (incl. NotFound + leaf pages) ends with
 // a link grid to all sport hubs. Lazy because it's never above the
@@ -176,14 +169,6 @@ const SportFooter = lazy(() => import('./components/SportFooter.jsx'));
 // bundle would defeat the purpose of route splitting.
 const Privacy = lazy(() => import('./pages/Privacy.jsx'));
 const Terms = lazy(() => import('./pages/Terms.jsx'));
-const Bracket = lazy(() => import('./pages/Bracket.jsx'));
-const BracketNew = lazy(() => import('./pages/BracketNew.jsx'));
-const BracketEdit = lazy(() => import('./pages/BracketEdit.jsx'));
-const BracketShare = lazy(() => import('./pages/BracketShare.jsx'));
-const LeagueNew = lazy(() => import('./pages/LeagueNew.jsx'));
-const LeagueJoin = lazy(() => import('./pages/LeagueJoin.jsx'));
-const Leaderboard = lazy(() => import('./pages/Leaderboard.jsx'));
-const LeaderboardLeague = lazy(() => import('./pages/LeaderboardLeague.jsx'));
 
 // Minimal blank fallback — renders BELOW the persistent V2TopBar so the
 // masthead stays put during chunk streams. The outer sticky header (rendered
@@ -271,7 +256,7 @@ function ConsentGate({ children }) {
 // `/^\/grup$/` is separate from `/^\/grup\//`: the bare Grup tab (GrupList)
 // is a 4a screen too, and without it the legacy masthead + footer wrapped
 // the new shell on that one tab (audit 2026-10-01).
-const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//];
+const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//, /^\/masuk$/, /^\/login$/, /^\/profil$/];
 
 /**
  * Renders children (the legacy masthead) only OUTSIDE the 4a shell.
@@ -445,7 +430,11 @@ export default function App() {
                 (login + magic-link callback) and public share view live here.
                 Private pages enforce auth via AuthProvider + navigate to
                 /login?next=... when session is missing. */}
-            <Route path="/login" element={<Login />} />
+            {/* S2 — login lives in the shell now; /login stays as the alias every
+                old link and the API callback use. */}
+            <Route path="/masuk" element={<Login4a />} />
+            <Route path="/login" element={<Login4a />} />
+            <Route path="/profil" element={<Profile4a />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
             {/* v0.12.5 — first-login favorites picker. Anon users get
                 redirected to /login?next=/onboarding/teams from inside
@@ -454,14 +443,11 @@ export default function App() {
             {/* v0.12.9 — edit-favorites surface. Anon users redirect
                 to /login?next=/settings/teams from inside the page. */}
             <Route path="/settings/teams" element={<SettingsTeams />} />
-            <Route path="/bracket" element={<Bracket />} />
-            <Route path="/bracket/new" element={<BracketNew />} />
-            <Route path="/bracket/:id" element={<BracketEdit />} />
-            <Route path="/bracket/:id/share" element={<BracketShare />} />
-            <Route path="/league/new" element={<LeagueNew />} />
-            <Route path="/league/:id/join" element={<LeagueJoin />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/leaderboard/:leagueId" element={<LeaderboardLeague />} />
+            {/* S2 (doc 17 §2.5) — the legacy NBA bracket app is unmounted; its
+                URLs land on the Pick'em shell. */}
+            <Route path="/bracket/*" element={<Navigate to="/" replace />} />
+            <Route path="/league/*" element={<Navigate to="/grup" replace />} />
+            <Route path="/leaderboard/*" element={<Navigate to="/grup" replace />} />
 
             {/* v0.65.0 — Pick'em P0 scaffold landing (now the real
                 PredictingHub from v0.67.0 P2). v0.68.0 P3 adds the
@@ -469,7 +455,7 @@ export default function App() {
                 routes resolve to NotFound when the flag is off (does NOT
                 pollute the SPA's URL space until the feature ships). */}
             {UI.pickem && <Route path="/pickem" element={<Navigate to="/" replace />} />}
-            {UI.pickem && <Route path="/pickem/fixture/:id" element={<FixtureDetail />} />}
+            {UI.pickem && <Route path="/pickem/fixture/:id" element={<Navigate to="/" replace />} />}
             {UI.pickem && <Route path="/pickem/board" element={<Navigate to="/grup" replace />} />}
             {UI.devPrimitives && <Route path="/dev/primitives" element={<DevPrimitives />} />}
             {UI.pickem && <Route path="/g/:code" element={<InviteLanding />} />}
@@ -479,6 +465,7 @@ export default function App() {
             {UI.pickem && UI.pickemHome && <Route path="/skor" element={<SkorTab />} />}
             {UI.pickem && <Route path="/gugur/:code" element={<GugurSheet />} />}
             {UI.pickem && <Route path="/grup" element={<GrupList />} />}
+            {UI.pickem && <Route path="/grup/baru" element={<GrupCreate4a />} />}
             {/* LEGACY Pick'em app (navy design, WC-era copy). The switch to
                 the Pick'em platform is done — these entries now redirect to
                 their 4a equivalents so the old site can't be reached by URL,
@@ -488,15 +475,13 @@ export default function App() {
                 nothing in the new nav links to them. */}
 
             {UI.pickem && <Route path="/pickem/grup" element={<Navigate to="/grup" replace />} />}
-            {UI.pickem && <Route path="/pickem/grup/new" element={<GrupCreate />} />}
+            {/* S2 — the navy Pick'em app is unmounted (doc 17 §2.5). */}
+            {UI.pickem && <Route path="/pickem/grup/new" element={<Navigate to="/grup/baru" replace />} />}
             {UI.pickem && <Route path="/pickem/grup/join" element={<GrupJoin />} />}
-            {UI.pickem && <Route path="/pickem/grup/:id" element={<GrupDetail />} />}
             {UI.pickem && <Route path="/pickem/grup/:id/join" element={<GrupJoin />} />}
-            {UI.pickem && <Route path="/pickem/bracket" element={<PickemBracket />} />}
-            {UI.pickem && <Route path="/pickem/survivor" element={<Navigate to="/grup" replace />} />}
-            {UI.pickem && <Route path="/pickem/profile" element={<PickemProfile />} />}
-            {UI.pickem && <Route path="/pickem/recap" element={<PickemRecap />} />}
-            {UI.pickem && <Route path="/pickem/bracket/tree" element={<PickemBracketTree />} />}
+            {UI.pickem && <Route path="/pickem/grup/:id" element={<Navigate to="/grup" replace />} />}
+            {UI.pickem && <Route path="/pickem/profile" element={<Navigate to="/profil" replace />} />}
+            {UI.pickem && <Route path="/pickem/*" element={<Navigate to="/" replace />} />}
 
             {/* v0.62.0 — Kebijakan Privasi + Syarat & Ketentuan (audit F-001). */}
             <Route path="/privacy" element={<Privacy />} />

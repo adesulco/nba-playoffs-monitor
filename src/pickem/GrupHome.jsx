@@ -20,7 +20,9 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { leagueDetail, listFixtures, listPredictions, updateLeagueSettings, joinGrup } from './api.js';
+import { leagueDetail, listFixtures, listPredictions, updateLeagueSettings, joinGrup, approveMember } from './api.js';
+import Countdown4a from './components/Countdown4a.jsx';
+import UpgradeSheet4a from './components/UpgradeSheet4a.jsx';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { LeaderboardRow, LockBadge } from './components/primitives4a.jsx';
@@ -63,6 +65,17 @@ function GrupHomeInner() {
   const [gugurToggling, setGugurToggling] = useState(false);
   const [joining, setJoining] = useState(false);
   const [joinError, setJoinError] = useState(null);
+  // Commissioner: pending members (cap paywall) and the upgrade sheet.
+  const [approving, setApproving] = useState(null);
+  const [upgradeOpen, setUpgradeOpen] = useState(false);
+  const approve = async (userId) => {
+    if (!league || approving) return;
+    setApproving(userId);
+    const res = await approveMember({ league_id: league.id, user_id: userId });
+    setApproving(null);
+    if (res?.ok) { reloadDetail(); return; }
+    if (res?.needs_upgrade || /402|upgrade/i.test(String(res?.error || ''))) setUpgradeOpen(true);
+  };
   // Provisional points (doc 17 S1-6): live fixtures × my unscored picks ×
   // this grup's config. Presentation only; the cron owns real points.
   const [liveFixtures, setLiveFixtures] = useState([]);
@@ -92,7 +105,7 @@ function GrupHomeInner() {
   const handleClaimAndJoin = () => {
     if (!league) return;
     saveGuestInvite(league.invite_code);
-    navigate(`/login?next=${encodeURIComponent(`/grup/${league.invite_code}`)}`);
+    navigate(`/masuk?next=${encodeURIComponent(`/grup/${league.invite_code}`)}`);
   };
 
   // R4a-1 — commissioner switches survivor on. One-way from this strip on
@@ -141,8 +154,10 @@ function GrupHomeInner() {
     return () => { cancelled = true; };
   }, [league?.competition]);
 
+  // 30 s is enough for the urgency copy; the lock badge ticks on its own
+  // (Countdown4a), so the whole screen no longer re-renders every second.
   useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
+    const id = setInterval(() => setNow(Date.now()), 30000);
     return () => clearInterval(id);
   }, []);
 
@@ -351,6 +366,24 @@ function GrupHomeInner() {
           </div>
         )}
 
+        {/* Commissioner: members waiting at the cap (doc 17 §2.2). Approval
+            succeeds under the cap or on a paid tier; a 402 opens the
+            upgrade sheet. */}
+        {user?.id === league?.owner_id && members.some((m) => m.status === 'pending') && (
+          <div style={S.card}>
+            <div style={S.nextEyebrow}>{tx('WAITING TO JOIN', 'MENUNGGU DISETUJUI')}</div>
+            {members.filter((m) => m.status === 'pending').map((m) => (
+              <div key={m.user_id} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0' }}>
+                <span style={{ ...S.nextMatch, flex: 1, minWidth: 0 }}>{m.display_name}</span>
+                <button type="button" disabled={!!approving} onClick={() => approve(m.user_id)} style={S.copyPill}>
+                  {approving === m.user_id ? '…' : tx('Approve', 'Setujui')}
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+        <UpgradeSheet4a open={upgradeOpen} onClose={() => setUpgradeOpen(false)} grupName={league?.name} lang={lang} />
+
         {/* Next lock + pick CTA */}
         {nextFixture && (
           <div style={S.card}>
@@ -361,7 +394,7 @@ function GrupHomeInner() {
                   {nextFixture.home_team} vs {nextFixture.away_team}
                 </div>
               </div>
-              <LockBadge secondsLeft={secondsLeft} lang={lang} />
+              <Countdown4a lockAt={nextFixture.lock_at || nextFixture.kickoff_at} lang={lang} />
             </div>
             <button
               type="button"

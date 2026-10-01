@@ -180,7 +180,7 @@ function GugurSheetInner() {
                     'Status hidupmu harus ikut kamu di semua perangkat.'
                   )}
                 </p>
-                <button type="button" style={S.cta} onClick={() => navigate(`/login?next=/gugur/${code}`)}>
+                <button type="button" style={S.cta} onClick={() => navigate(`/masuk?next=/gugur/${code}`)}>
                   {tx('Log in & play', 'Masuk & main')}
                 </button>
               </div>

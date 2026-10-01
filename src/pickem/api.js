@@ -35,6 +35,40 @@ function trackOnce(key, eventName, params) {
 
 const BASE = '/api/pickem';
 
+// ── Read cache (doc 17 S2): short SWR window + in-flight dedupe for the GET
+// actions the screens poll. A pick/join/settings write invalidates the
+// matching reads so the next one is fresh.
+const CACHE_TTL_MS = 15000;
+const _cache = new Map();    // key -> { at, out }
+const _inflight = new Map(); // key -> Promise
+
+async function cachedGet(url, { ttl = CACHE_TTL_MS, headers } = {}) {
+  const key = headers?.Authorization ? `${url}#auth` : url;
+  const hit = _cache.get(key);
+  if (hit && Date.now() - hit.at < ttl) return hit.out;
+  if (_inflight.has(key)) return _inflight.get(key);
+  const p = (async () => {
+    try {
+      const res = await fetch(url, headers ? { headers } : undefined);
+      const data = await readJson(res);
+      const out = { res, data };
+      if (res.ok && data?.ok !== false) _cache.set(key, { at: Date.now(), out });
+      return out;
+    } finally {
+      _inflight.delete(key);
+    }
+  })();
+  _inflight.set(key, p);
+  return p;
+}
+
+/** Drop cached reads whose key contains any fragment (no fragments = all). */
+export function invalidateReads(...fragments) {
+  for (const key of [..._cache.keys()]) {
+    if (!fragments.length || fragments.some((f) => f && key.includes(f))) _cache.delete(key);
+  }
+}
+
 async function readBearer() {
   try {
     const { data } = await supabase.auth.getSession();
@@ -88,8 +122,7 @@ function normalizeError(res, data, fallback) {
 export async function listFixtures(params) {
   if (!params?.league) throw new Error('league required');
   try {
-    const res = await fetch(buildUrl('list-fixtures', params));
-    const data = await readJson(res);
+    const { res, data } = await cachedGet(buildUrl('list-fixtures', params));
     if (!res.ok) {
       const err = normalizeError(res, data);
       return { ok: false, error: err, schemaReady: !isSchemaMissing(err), fixtures: [] };
@@ -112,8 +145,7 @@ export async function listFixtures(params) {
 export async function listLeaderboard(params) {
   if (!params?.scope) throw new Error('scope required');
   try {
-    const res = await fetch(buildUrl('list-leaderboard', params));
-    const data = await readJson(res);
+    const { res, data } = await cachedGet(buildUrl('list-leaderboard', params));
     if (!res.ok) {
       return { ok: false, error: normalizeError(res, data), rows: [] };
     }
@@ -148,6 +180,7 @@ export async function upsertPrediction(payload) {
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
     trackOnce(`pred:${payload?.fixture_id}`, 'pickem_prediction_saved', { league: payload?.league });
+    invalidateReads('list-predictions', 'league-detail', 'list-leaderboard');
     return { ok: true, prediction: data?.prediction };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -202,6 +235,7 @@ export async function createGrup(payload) {
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
     trackEvent('pickem_group_created', { competition: payload?.competition });
+    invalidateReads('list-grups');
     return { ok: true, ...data };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -227,6 +261,7 @@ export async function joinGrup({ leagueId, inviteCode }) {
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
     trackEvent('pickem_group_joined');
+    invalidateReads('league-detail', 'list-grups', 'list-leaderboard');
     return { ok: true, ...data };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -289,10 +324,7 @@ export async function listPredictions({ competition, limit } = {}) {
     const params = {};
     if (competition) params.competition = competition;
     if (limit) params.limit = limit;
-    const res = await fetch(buildUrl('list-predictions', params), {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const data = await readJson(res);
+    const { res, data } = await cachedGet(buildUrl('list-predictions', params), { headers: { Authorization: `Bearer ${token}` } });
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
     return { ok: true, predictions: data?.predictions || [] };
   } catch (err) {
@@ -350,6 +382,7 @@ export async function upsertSurvivorPick({ fixture_id, picked_team_id, league_id
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
     trackEvent('pickem_survivor_pick');
+    invalidateReads('list-survivor', 'survivor-board');
     return { ok: true, ...data };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -415,8 +448,7 @@ export async function survivorBoard({ code } = {}) {
 export async function leagueDetail({ code, id } = {}) {
   try {
     const url = buildUrl('league-detail', code ? { code } : { id });
-    const res = await fetch(url);
-    const data = await readJson(res);
+    const { res, data } = await cachedGet(url);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
     return { ok: true, league: data?.league, members: data?.members || [] };
   } catch (err) {
@@ -442,6 +474,7 @@ export async function updateLeagueSettings(payload) {
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    invalidateReads('league-detail', 'list-grups');
     return { ok: true, league: data?.league };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -468,6 +501,7 @@ export async function mergeGuest(predictions) {
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
+    invalidateReads('list-predictions', 'league-detail');
     return { ok: true, merged: data?.merged ?? 0, skipped_locked: data?.skipped_locked ?? 0, errors: data?.errors || [] };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
@@ -480,6 +514,31 @@ export async function mergeGuest(predictions) {
  * @param {{league_id:string, user_id:string}} payload
  * @returns {Promise<{ok:boolean, status?:string, needs_upgrade?:boolean, error?:string}>}
  */
+/**
+ * sendMagicLink({ email, next }) → { ok } — the only auth call screens make.
+ */
+export async function sendMagicLink({ email, next = '/' }) {
+  try {
+    const safeNext = /^\/(?![\/\\])/.test(String(next || '')) ? next : '/';
+    const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeNext)}`;
+    const { error } = await supabase.auth.signInWithOtp({
+      email: String(email).trim(),
+      options: { emailRedirectTo: redirectTo, shouldCreateUser: true },
+    });
+    if (error) return { ok: false, error: error.message };
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/** signOut() → ends the session and clears every cached read. */
+export async function signOut() {
+  try { await supabase.auth.signOut(); } catch { /* ignore */ }
+  invalidateReads();
+  return { ok: true };
+}
+
 /**
  * getFixture({ id }) → { ok, fixture } — one fixture with teams embedded.
  */
@@ -546,6 +605,7 @@ export async function approveMember(payload) {
     if (!res.ok) {
       return { ok: false, error: normalizeError(res, data), needs_upgrade: data?.needs_upgrade === true };
     }
+    invalidateReads('league-detail', 'list-leaderboard');
     return { ok: true, status: data?.status };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };

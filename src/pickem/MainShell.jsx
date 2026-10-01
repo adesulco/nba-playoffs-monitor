@@ -24,7 +24,8 @@ import { listFixtures, listPredictions, listMyGrups } from './api.js';
 import { listGuestPredictions } from './guestStore.js';
 import { COMPETITIONS, COMPETITION_ORDER, defaultCompetitionKey } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
-import { MatchCard, LockBadge } from './components/primitives4a.jsx';
+import { MatchCard } from './components/primitives4a.jsx';
+import Countdown4a from './components/Countdown4a.jsx';
 import TabBar4a from './components/TabBar4a.jsx';
 import SideRail4a from './components/SideRail4a.jsx';
 import Logo4a from './components/Logo4a.jsx';
@@ -75,7 +76,7 @@ function MainShellInner() {
   const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
+    const id = setInterval(() => setNow(Date.now()), 30000);
     return () => clearInterval(id);
   }, []);
 
@@ -219,7 +220,7 @@ function MainShellInner() {
         </div>
         <button
           type="button"
-          onClick={() => navigate(user ? '/pickem/profile' : '/login?next=/main')}
+          onClick={() => navigate(user ? '/profil' : '/masuk?next=/')}
           aria-label={tx('Your profile', 'Profilmu')}
           style={S.avatar}
         >
@@ -239,7 +240,7 @@ function MainShellInner() {
               <span>
                 {tx('PICKS DUE', 'UTANG PICK')} · {(competition?.label || competitionKey).toUpperCase()}
               </span>
-              {secondsLeft != null && <LockBadge secondsLeft={secondsLeft} style={S.heroLock} lang={lang} />}
+              {nextFixture?.lock_at && <Countdown4a lockAt={nextFixture.lock_at} style={S.heroLock} lang={lang} />}
             </div>
             <div style={S.heroBody}>
               <div style={S.heroLine}>

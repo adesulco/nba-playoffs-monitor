@@ -42,6 +42,14 @@ export function getSupabase() {
   return client;
 }
 
-// Default export for ergonomic `import supabase from '...'` usage.
-export const supabase = getSupabase();
+// Lazy by default (doc 17 S2 entry-bundle diet): the client is created on
+// first use, not at module evaluation, so screens that only read public
+// endpoints never construct it. Every `supabase.x` works as before.
+export const supabase = new Proxy({}, {
+  get(_t, prop) {
+    const c = getSupabase();
+    const v = c[prop];
+    return typeof v === 'function' ? v.bind(c) : v;
+  },
+});
 export default supabase;

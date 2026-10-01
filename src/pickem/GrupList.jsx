@@ -104,7 +104,7 @@ function GrupListInner() {
             <button
               type="button"
               style={S.cta}
-              onClick={() => navigate(user ? '/pickem/grup/new' : '/login?next=/grup')}
+              onClick={() => navigate(user ? '/grup/baru' : '/masuk?next=/grup')}
             >
               {user ? tx('Create a grup', 'Bikin grup') : tx('Log in', 'Masuk')}
             </button>

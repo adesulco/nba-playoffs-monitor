@@ -27,8 +27,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
-import { listFixtures, upsertPrediction, listPredictions, joinGrup, leagueDetail } from './api.js';
-import { saveGuestPrediction, getGuestPrediction, saveGuestInvite } from './guestStore.js';
+import { listFixtures, upsertPrediction, listPredictions, joinGrup, leagueDetail, getFixture, getPrediction } from './api.js';
+import { saveGuestPrediction, getGuestPrediction, saveGuestInvite, listGuestPredictions } from './guestStore.js';
+import Countdown4a from './components/Countdown4a.jsx';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { PickChip, LockBadge, formatCountdown } from './components/primitives4a.jsx';
@@ -71,6 +72,9 @@ function PickSheetInner() {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState(null);
   const [now, setNow] = useState(() => Date.now());
+  // Matchweek chaining (doc 17 S2): the other fixtures of this MW and which
+  // ones already have my pick → "x dari y pick MW" + "Pick berikutnya".
+  const [mw, setMw] = useState({ fixtures: [], pickedIds: new Set() });
   const landedAt = useRef(Date.now());
   const tapsRef = useRef(0);
 
@@ -85,32 +89,18 @@ function PickSheetInner() {
     let cancelled = false;
     (async () => {
       setLoading(true);
-      // No single-fixture read action exists and the seam rule forbids
-      // adding one, so we pull a competition's fixture list (a cached GET,
-      // usually already warm from the hub) and pick ours out. Callers pass
-      // ?league= so that's ONE request; the sweep is only a fallback for a
-      // bare deep link.
-      const hint = params.get('league');
-      const order = hint && COMPETITIONS[hint]
-        ? [hint, ...Object.keys(COMPETITIONS).filter((k) => k !== hint)]
-        : Object.keys(COMPETITIONS);
-      let found = null;
-      for (const key of order) {
-        const res = await listFixtures({ league: key, limit: 500 });
-        if (cancelled) return;
-        const hit = (res?.fixtures || []).find((f) => f.id === fixtureId);
-        if (hit) { found = hit; break; }
-      }
+      // One read for the fixture (get-fixture, S1) instead of paging a
+      // competition's whole list to find it.
+      const res = await getFixture({ id: fixtureId });
       if (cancelled) return;
+      const found = res?.ok ? res.fixture : null;
       setFixture(found);
       setLoading(false);
-
       if (!found) return;
-
       // Prefill: server prediction when signed in, guest store otherwise.
       if (user) {
-        const res = await listPredictions({ competition: found.league, limit: 500 });
-        const mine = (res?.predictions || []).find((p) => p.fixture_id === fixtureId);
+        const res = await getPrediction({ fixture_id: fixtureId });
+        const mine = res?.ok ? res.prediction : null;
         if (mine && !cancelled) {
           setOutcome(mine.picked_outcome ?? null);
           if (mine.picked_home != null && mine.picked_away != null) {
@@ -133,16 +123,43 @@ function PickSheetInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fixtureId, user]);
 
-  // ─── Live lock countdown ──────────────────────────────────────────────
+  // ─── The rest of the matchweek (chaining + progress) ──────────────────
+  useEffect(() => {
+    if (!fixture?.league || fixture.matchday == null) return undefined;
+    let cancelled = false;
+    (async () => {
+      const [fx, pr] = await Promise.all([
+        listFixtures({ league: fixture.league, matchday: fixture.matchday, limit: 100 }),
+        user ? listPredictions({ competition: fixture.league, limit: 500 }) : Promise.resolve(null),
+      ]);
+      if (cancelled) return;
+      const fixtures = (fx?.fixtures || []).slice().sort((a, b) => new Date(a.kickoff_at) - new Date(b.kickoff_at));
+      const ids = new Set(fixtures.map((f) => f.id));
+      const pickedIds = new Set(
+        user
+          ? (pr?.predictions || []).filter((p) => ids.has(p.fixture_id)).map((p) => p.fixture_id)
+          : listGuestPredictions(fixture.league).filter((p) => ids.has(p.fixture_id)).map((p) => p.fixture_id),
+      );
+      setMw({ fixtures, pickedIds });
+    })();
+    return () => { cancelled = true; };
+  }, [fixture?.league, fixture?.matchday, user, saved]);
+
+  // ─── Lock state: one timeout at lock time, no 1 Hz loop (the badge ticks
+  //     on its own in Countdown4a). ──────────────────────────────────────
   const lockAtMs = fixture?.lock_at ? new Date(fixture.lock_at).getTime() : null;
+  useEffect(() => {
+    if (lockAtMs == null || lockAtMs <= Date.now()) return undefined;
+    const id = setTimeout(() => setNow(Date.now()), Math.min(lockAtMs - Date.now() + 50, 2 ** 31 - 1));
+    return () => clearTimeout(id);
+  }, [lockAtMs]);
   const secondsLeft = lockAtMs != null ? Math.max(0, Math.floor((lockAtMs - now) / 1000)) : null;
   const locked = fixture ? (fixture.status !== 'scheduled' || (secondsLeft != null && secondsLeft <= 0)) : false;
 
-  useEffect(() => {
-    if (locked || lockAtMs == null) return;
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, [locked, lockAtMs]);
+  const mwUnit = competition?.rounds?.unit || 'MW';
+  const mwPicked = mw.fixtures.filter((f) => (f.id === fixtureId ? (saved || mw.pickedIds.has(f.id)) : mw.pickedIds.has(f.id))).length;
+  const mwTotal = mw.fixtures.length;
+  const nextOpen = mw.fixtures.find((f) => f.id !== fixtureId && !mw.pickedIds.has(f.id) && f.status === 'scheduled' && new Date(f.lock_at || f.kickoff_at).getTime() > Date.now()) || null;
 
   // ─── Save ─────────────────────────────────────────────────────────────
   const handleConfirm = useCallback(async () => {
@@ -262,7 +279,7 @@ function PickSheetInner() {
         <span style={S.headerTitle}>
           {tx('Pick', 'Pick')} · {competition?.label || fixture.league}
         </span>
-        <LockBadge secondsLeft={secondsLeft} locked={locked} lang={lang} />
+        <Countdown4a lockAt={fixture.lock_at} locked={locked} lang={lang} />
       </header>
 
       {/* Match banner — 2px ink border, scarlet strip */}
@@ -407,15 +424,36 @@ function PickSheetInner() {
             {tx('Picks are locked', 'Pick sudah terkunci')}
           </div>
         ) : saved ? (
-          <button
-            type="button"
-            // After a confirmed pick the payoff is seeing where you stand,
-            // so land on the grup home rather than back on the invite.
-            onClick={() => navigate(inviteCode ? `/grup/${inviteCode}` : '/')}
-            style={{ ...S.cta, background: 'var(--g4-win)' }}
-          >
-            <IconCheck size={17} /> {tx('Pick locked in', 'Pick kamu tersimpan')}
-          </button>
+          <>
+            {mwTotal > 0 && (
+              <p style={S.progress}>
+                {tx(`${mwPicked} of ${mwTotal} picks ${mwUnit}${fixture.matchday}`, `${mwPicked} dari ${mwTotal} pick ${mwUnit}${fixture.matchday}`)}
+              </p>
+            )}
+            {nextOpen ? (
+              <button
+                type="button"
+                // Chain straight into the next unpicked match of this matchweek
+                // (doc 17 S2): one tap per fixture, not ~40 per matchweek.
+                onClick={() => {
+                  setSaved(false); setOutcome(null); setScore(null); setStar(false); setError(null);
+                  navigate(`/pick/${nextOpen.id}?league=${encodeURIComponent(fixture.league)}${inviteCode ? `&invite=${encodeURIComponent(inviteCode)}` : ''}`);
+                }}
+                style={{ ...S.cta, background: 'var(--g4-scarlet)', color: '#fff' }}
+              >
+                <IconCheck size={17} /> {tx(`Saved · next: ${nextOpen.home_team} vs ${nextOpen.away_team} →`, `Tersimpan · berikutnya: ${nextOpen.home_team} vs ${nextOpen.away_team} →`)}
+              </button>
+            ) : (
+              <button
+                type="button"
+                // After the last pick the payoff is seeing where you stand.
+                onClick={() => navigate(inviteCode ? `/grup/${inviteCode}` : '/')}
+                style={{ ...S.cta, background: 'var(--g4-win)' }}
+              >
+                <IconCheck size={17} /> {mwTotal > 0 && mwPicked >= mwTotal ? tx(`All ${mwUnit}${fixture.matchday} picks in`, `Semua pick ${mwUnit}${fixture.matchday} masuk`) : tx('Pick locked in', 'Pick kamu tersimpan')}
+              </button>
+            )}
+          </>
         ) : (
           <button
             type="button"
@@ -669,6 +707,10 @@ const S = {
     padding: '13px 22px',
     font: '700 14px/1 var(--g4-font-ui)',
     cursor: 'pointer',
+  },
+  progress: {
+    margin: '0 0 8px', textAlign: 'center',
+    font: '700 12px/1 var(--g4-font-ui)', color: 'var(--g4-text-muted)',
   },
   guestNote: {
     font: '500 10px/1.4 var(--g4-font-ui)',
