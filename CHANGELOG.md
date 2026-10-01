@@ -2,6 +2,11 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## Unreleased — S1 step 2: migration 0022 RLS close (written, not yet applied)
+
+- **Migration:** `supabase/migrations/0022_rls_close.sql` — no client inserts or updates on `league_members` (join/approve/grant stay server-side), prediction writes limited to pick columns on the user's own row before lock (`awarded_points`, `base_points`, `tier` and the other audit columns are server-only), `leagues` writes server-only, scoring/badge/streak functions executable by `service_role` only, anon loses the roster and prediction grants. Tested on a local PG16 with `supabase/tests/0022_rls_close.test.sql`.
+- **Tooling:** `scripts/rls-attack.mjs` signs in as a throwaway user and tries every hole with a real JWT; exit 1 while any succeeds. Against prod before 0022 it found 15 holes, including creating a league directly and anon executing `pickem_score_fixture`.
+
 ## v0.86.1 — 2026-10-01 — S1 step 1: migration 0021 (applied 2026-10-01, EPL re-scored)
 
 - **Migration:** `supabase/migrations/0021_scoring_v1.sql` — Scoring Spec v1 (doc 17 §1): ladder 5/3/2/1 with `predictions.tier`, jagoan ×2 flat with penalty off by default, consensus underdog ×1.5 under 30 %, stack cap 4×, `streaks.kind`, survivor per grup (draw = out, no pick = out, revived on correction), `league_members.base_points`, `fixtures.status = 'postponed'`, lock follows kickoff, M8 badges, bracket group_rank scoring with Spec v1 points, per-grup template config (Santai/Standar/Sultan) honoured in grup caches. Tested on a local PG16 with `supabase/tests/0021_scoring_v1.test.sql`.
