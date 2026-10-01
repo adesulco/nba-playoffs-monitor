@@ -31,12 +31,7 @@ import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 
 // Avatar palette — deterministic per member so a grup looks the same to
 // everyone who opens the link.
-const AVATAR_COLORS = ['#1E3FBB', '#7A2E8E', '#E07B00', '#1F7A3D', '#D92D1C', '#171310'];
-function avatarColor(seed) {
-  let h = 0;
-  for (let i = 0; i < String(seed).length; i++) h = (h * 31 + String(seed).charCodeAt(i)) % 997;
-  return AVATAR_COLORS[h % AVATAR_COLORS.length];
-}
+import { avatarColor } from './avatar.js';
 
 export default function InviteLanding() {
   // AuthProvider so the CTA can tell an existing session from a fresh
@@ -195,7 +190,7 @@ function InviteLandingInner() {
             <span
               style={{
                 ...S.avatar,
-                background: 'var(--g4-ink)',
+                background: 'var(--g4-ink-block)',
                 marginLeft: shown.length ? -10 : 0,
                 fontSize: 11,
               }}

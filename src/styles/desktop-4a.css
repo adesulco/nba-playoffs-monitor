@@ -25,7 +25,10 @@
 
 /* ── Desktop: left rail + content column ─────────────────────────────── */
 @media (min-width: 900px) {
-  .g4-shell {
+  /* Only a shell that carries a tab bar gets the left-rail offset (audit
+     2026-10-01: the pick sheet and sign-in have no rail and sat 232 px off
+     centre). Rail-less shells keep the tablet column, centred. */
+  .g4-shell:has(.g4-tabbar) {
     max-width: 1100px !important;
     /* Rail width + gutter. The rail is fixed, so the content is offset
        rather than laid out in a grid — keeps every child's own layout
@@ -85,7 +88,7 @@
 
 /* ── Wide desktop: hold the measure, centre the whole thing ──────────── */
 @media (min-width: 1400px) {
-  .g4-shell {
+  .g4-shell:has(.g4-tabbar) {
     max-width: 1200px !important;
   }
   .g4-tabbar {

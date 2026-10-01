@@ -71,3 +71,13 @@ grup / grup (never league, liga) · pick / pick · **Tebak Skor** · **jagoan �
 Keep four: `docs/00-STATE.md` (from HANDOVER), `docs/01-PRODUCT.md` (doc 11 + 14 §1–4 + 16 §5–7), `docs/02-PLATFORM-CONTRACT.md` (this §1–2.5), `docs/03-DESIGN.md` (4a README). Everything else to `docs/archive/`, including `handover-2026-07-18/`, root ship notes, three of the four design-handoff dirs, `version.js` changelog → `CHANGELOG.md`. Repo `CLAUDE.md` rewritten to point at these four.
 
 ---
+
+## Adding a sport (the checklist doc 17 §2.1 asked for)
+
+1. **Registry row** in `src/pickem/competitions.js`: key, `sport` (skin), season, labels, structure, rounds, features, window, lock, `feed` (provider, code, mode, status, `roundMap` for tournaments, `tricodeOverrides`, `clubs`/`nations` for team seeding, `seedSource` or `seedMode: 'create'`), `teamsLeagueKey`, `scoringTemplate`. Then `npm run registry`.
+2. **Tricodes**: three letters, global (`teams_tricode_check`); check collisions against every existing tricode before choosing overrides.
+3. **Feed adapter** only if the provider is new: football goes through `scripts/backfill-fixtures-football.mjs`, basketball through `scripts/backfill-fixtures-nba.mjs`; both read the registry. Dry-run first: `--competition KEY --dry-run`.
+4. **Teams**: the first real run of the football script seeds `clubs`/`nations` into `teams` under `teamsLeagueKey`.
+5. **Workflow**: nothing to edit — `football-backfill.yml` builds its matrix from `activeFeeds`; the NBA workflow passes `--competition`.
+6. **Rules row**: `pickem_rules` gets its row at first scoring with the Spec v1 defaults; set a different template with one update.
+7. **Verify**: `npm run build` (registry drift gate), `/api/health/data-sources`, `list-fixtures&league=KEY`, a 390 px screenshot of Main with the new rows.

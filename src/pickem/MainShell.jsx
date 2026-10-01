@@ -36,12 +36,7 @@ import { useApp } from '../lib/AppContext.jsx';
 import { scheduledTheme } from '../lib/theme4a.js';
 import SEO from '../components/SEO.jsx';
 
-const AVATAR_COLORS = ['#1E3FBB', '#7A2E8E', '#E07B00', '#1F7A3D', '#D92D1C'];
-function avatarColor(seed) {
-  let h = 0;
-  for (let i = 0; i < String(seed).length; i++) h = (h * 31 + String(seed).charCodeAt(i)) % 997;
-  return AVATAR_COLORS[h % AVATAR_COLORS.length];
-}
+import { avatarColor } from './avatar.js';
 
 export default function MainShell() {
   return (
@@ -449,7 +444,7 @@ const S = {
     font: '800 11px/1.2 var(--g4-font-display)',
     letterSpacing: '0.5px',
   },
-  heroLock: { background: 'var(--g4-ink)', color: 'var(--g4-paper)' },
+  heroLock: { background: 'var(--g4-ink-block)', color: 'var(--g4-paper)' },
   papanRow: {
     appearance: 'none', border: 'none', width: '100%', background: 'var(--g4-ink-block)', color: 'var(--g4-paper)',
     borderRadius: 'var(--g4-radius-card)', padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 10,

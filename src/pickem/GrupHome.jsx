@@ -36,12 +36,7 @@ import { saveGuestInvite } from './guestStore.js';
 import { shareCard } from './share.js';
 import { computeProvisional } from './useProvisionalPoints.js';
 
-const AVATAR_COLORS = ['#1E3FBB', '#7A2E8E', '#E07B00', '#1F7A3D', '#D92D1C', '#171310'];
-function avatarColor(seed) {
-  let h = 0;
-  for (let i = 0; i < String(seed).length; i++) h = (h * 31 + String(seed).charCodeAt(i)) % 997;
-  return AVATAR_COLORS[h % AVATAR_COLORS.length];
-}
+import { avatarColor } from './avatar.js';
 
 export default function GrupHome() {
   return (
@@ -588,7 +583,7 @@ const S = {
   nudgeMeta: { font: '500 11px/1.3 var(--g4-font-ui)', opacity: 0.9, marginTop: 2 },
   waPill: {
     background: '#fff',
-    color: 'var(--g4-ink)',
+    color: 'var(--g4-text)',
     font: '700 11px/1 var(--g4-font-ui)',
     padding: '8px 12px',
     borderRadius: 'var(--g4-radius-pill)',

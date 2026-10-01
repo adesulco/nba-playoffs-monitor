@@ -243,7 +243,7 @@ export function LeaderboardRow({
   rank,
   name,
   avatarInitial,
-  avatarColor = 'var(--g4-ink)',
+  avatarColor = 'var(--g4-ink-block)',
   points,
   streak,
   nyaris,

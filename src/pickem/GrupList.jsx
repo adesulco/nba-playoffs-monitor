@@ -21,12 +21,7 @@ import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import SEO from '../components/SEO.jsx';
 
-const AVATAR_COLORS = ['#1E3FBB', '#7A2E8E', '#E07B00', '#1F7A3D', '#D92D1C'];
-function avatarColor(seed) {
-  let h = 0;
-  for (let i = 0; i < String(seed).length; i++) h = (h * 31 + String(seed).charCodeAt(i)) % 997;
-  return AVATAR_COLORS[h % AVATAR_COLORS.length];
-}
+import { avatarColor } from './avatar.js';
 
 export default function GrupList() {
   return (

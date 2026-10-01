@@ -2,6 +2,15 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.6 — 2026-10-01 — audit polish
+
+- Desktop: the 232 px left-rail offset applies only to shells with a tab bar, so the pick sheet and sign-in are centred at ≥ 900 px.
+- Edisi Malam: the five direct `--g4-ink` uses now use `--g4-text` / `--g4-ink-block`.
+- One avatar palette (`src/pickem/avatar.js`) instead of five copies.
+- Seam guard (`scripts/check-seam.mjs`) in the build: only `api.js` may import Supabase.
+- Unused dependencies removed: tailwindcss, postcss, autoprefixer, @sentry/vite-plugin.
+- Tests for the registry, share URLs and avatar palette (125 total); the adding-a-sport checklist lives in `docs/02-PLATFORM-CONTRACT.md`.
+
 ## v0.89.5 — 2026-10-01 — legacy screens deleted
 
 - The 20 unmounted navy Pick'em and legacy NBA bracket screens are gone (their routes already redirected since v0.88.0).

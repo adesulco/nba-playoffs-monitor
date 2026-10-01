@@ -38,7 +38,7 @@ export default function DevPrimitives() {
 
   return (
     <div style={{ fontFamily: 'var(--g4-font-ui)' }}>
-      <div style={{ padding: '20px 16px', borderBottom: '2px solid var(--g4-ink)' }}>
+      <div style={{ padding: '20px 16px', borderBottom: '2px solid var(--g4-text)' }}>
         <LogoLockup size={28} />
         <p style={{ font: '500 13px/1.5 var(--g4-font-ui)', color: 'var(--g4-body-muted)', marginTop: 12 }}>
           Sistem 4a primitives · 6 components × 3 skins × light / Edisi Malam.
