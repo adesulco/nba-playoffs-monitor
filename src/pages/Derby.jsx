@@ -609,7 +609,7 @@ function SharePredictionButton({ score, side }) {
     >
       <div style={{ flex: 1, minWidth: 180 }}>
         <div style={{ fontSize: 12, fontWeight: 700, color: C.text, letterSpacing: 0.2 }}>
-          🎯 Prediksi gue: <span style={{ color: C.amber }}>Persija {score.replace('-', '–')} Persib</span>
+          🎯 Prediksiku: <span style={{ color: C.amber }}>Persija {score.replace('-', '–')} Persib</span>
         </div>
         <div style={{ fontSize: 11, color: C.dim, marginTop: 2 }}>
           Tap "Bagikan" — share card otomatis muncul di WhatsApp / X / IG.

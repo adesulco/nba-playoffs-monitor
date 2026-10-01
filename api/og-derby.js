@@ -108,9 +108,9 @@ export default function handler(req) {
         ? `linear-gradient(135deg, ${PERSIJA_RED}55 0%, ${BG_DARK} 50%, ${PERSIB_BLUE}99 100%)`
         : `linear-gradient(135deg, ${PERSIJA_RED}77 0%, ${BG_DARK} 50%, ${PERSIB_BLUE}77 100%)`;
 
-  const tagText = side === 'persija' ? 'JAKMANIA · PREDIKSI GUE'
-                : side === 'persib'  ? 'BOBOTOH · PREDIKSI GUE'
-                : 'PREDIKSI GUE';
+  const tagText = side === 'persija' ? 'JAKMANIA · PREDIKSIKU'
+                : side === 'persib'  ? 'BOBOTOH · PREDIKSIKU'
+                : 'PREDIKSIKU';
 
   // Layout — column for square/og, taller column for story.
   const padding = sizeKey === 'story' ? 80 : 56;
@@ -153,7 +153,7 @@ export default function handler(req) {
       h('span', { style: { color: TEXT, display: 'flex' } }, 'JIS'),
     ),
 
-    // Predikssi gue tag.
+    // Prediksiku tag.
     h(
       'div',
       {

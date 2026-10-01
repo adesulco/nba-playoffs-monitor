@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.4 — 2026-10-01 — register fix
+
+- The Derby share card and page said "Prediksi gue" (audit stale-copy item); now "Prediksiku". v0.89.3 failed the register guard on Vercel once the guard covered `api/`.
+
 ## v0.89.3 — 2026-10-01 — doc 17 leftovers
 
 - `api/billing.js` (9/12 Node): Midtrans Snap create-order, signature-checked webhook that upserts `entitlements` idempotently on `(provider, provider_ref)` and lifts the owner's grup tier, order status. Answers 503 `billing_not_configured` until `MIDTRANS_SERVER_KEY` is set (KYB).
