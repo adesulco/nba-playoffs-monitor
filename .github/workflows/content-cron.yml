@@ -193,7 +193,7 @@ jobs:
               import sys
               print(f'0.0000', flush=True)
               print(f'WARN: budget query failed: {e}', file=sys.stderr)
-          " TODAY=$TODAY)
+          " TODAY="$TODAY")
           echo "Today (UTC=$TODAY) spend: \$${SPENT}"
           echo "Budget cap:               \$${BUDGET_USD}"
           OK=$(python3 -c "print('1' if float('$SPENT') < float('$BUDGET_USD') else '0')")
@@ -215,7 +215,7 @@ jobs:
           mkdir -p /tmp/cmd-logs
           python -m content_engine.scripts.discover "${{ steps.mode.outputs.mode }}" 2>&1 | tee /tmp/cmd-logs/discover.log
           # Preserve exit code through the pipe
-          exit ${PIPESTATUS[0]}
+          exit "${PIPESTATUS[0]}"
 
       - name: Capture generation failures to Supabase
         if: always() && steps.budget.outputs.ok == 'true'
@@ -306,7 +306,6 @@ jobs:
           git add -N public/content/ 2>/dev/null || true
           CHANGED=$(git diff --name-only -- public/content/ 2>/dev/null; \
                     git ls-files --others --exclude-standard -- public/content/)
-          COUNT=0
           COST=$(python3 -c "
           import json, os, sys
           total = 0.0

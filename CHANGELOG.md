@@ -2,6 +2,15 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.3 — 2026-10-01 — doc 17 leftovers
+
+- `api/billing.js` (9/12 Node): Midtrans Snap create-order, signature-checked webhook that upserts `entitlements` idempotently on `(provider, provider_ref)` and lifts the owner's grup tier, order status. Answers 503 `billing_not_configured` until `MIDTRANS_SERVER_KEY` is set (KYB).
+- `score-fixture` accepts `advancer` for a knockout tie decided on penalties (score stays a draw for tiers; the bracket reads the advancer).
+- `leagues.formats` retired from the API; migration `0023_drop_formats.sql` written (apply after this version is live).
+- Vocabulary guard now scans `api/` as well.
+- Seven dead feature flags deleted from `src/lib/flags.js`.
+- `content-cron.yml` shellcheck findings fixed.
+
 ## v0.89.2 — 2026-10-01 — Kabar reads the real index
 
 - The content index is `{ articles }` with an `approved` flag (60 of 175 approved); Kabar listed nothing because it expected an array and filtered on the review flag.

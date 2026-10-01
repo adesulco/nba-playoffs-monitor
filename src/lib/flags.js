@@ -75,6 +75,7 @@ export function isVisible(sportId) {
 //   VITE_FLAG_F1_TYRE_PIT=1        → F1 tyre age + pit window viz
 //   VITE_FLAG_WC2026_TEASER=1      → WC2026 teaser page (no email capture)
 //   VITE_FLAG_LIGA1_TEASER=1       → Liga 1 teaser page (no email capture)
+// doc 17 §2.5 (S3): the dead flags were deleted on 2026-10-01 — cmdCenter, terminalHome, xgPerShot, tennisPbp, f1TyrePit, wc2026Teaser, liga1Teaser.
 export const UI = {
   // v0.6.3 — rolled back to FALSE. HomeV1 felt disconnected from the
   // sport dashboards (which still use v1 TopBar without search/theme),
@@ -82,19 +83,12 @@ export const UI = {
   // while we finish migrating all sport dashboards to V2TopBar first.
   // Re-enable with VITE_FLAG_UI_V2=1 when the chrome is consistent.
   v2:            envFlag('VITE_FLAG_UI_V2', false),
-  cmdCenter:     envFlag('VITE_FLAG_CMD_CENTER', false),
-  terminalHome:  envFlag('VITE_FLAG_TERMINAL_HOME', false),
   // v0.79.2 — Pick'em launched on NBA Playoffs 2026 window (2026-05-25).
   // Default flipped from false to true. WC2026 (June 11+) becomes
   // the second active competition via the in-app selector pill.
   // Reversible: set VITE_FLAG_PICKEM=0 in Vercel to kill the surface
   // without a revert.
   pickem:        envFlag('VITE_FLAG_PICKEM', true),
-  xgPerShot:     envFlag('VITE_FLAG_XG_PER_SHOT', false),
-  tennisPbp:     envFlag('VITE_FLAG_TENNIS_PBP', false),
-  f1TyrePit:     envFlag('VITE_FLAG_F1_TYRE_PIT', false),
-  wc2026Teaser:  envFlag('VITE_FLAG_WC2026_TEASER', false),
-  liga1Teaser:   envFlag('VITE_FLAG_LIGA1_TEASER', false),
   // R1-4 — /dev/primitives visual-QA route for the Sistem 4a primitives.
   // Default OFF: set VITE_FLAG_DEV_PRIMITIVES=1 locally (or temporarily
   // in a preview env) to reach it. Never on in production.

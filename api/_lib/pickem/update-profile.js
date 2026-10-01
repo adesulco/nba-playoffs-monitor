@@ -7,7 +7,7 @@
  *
  * Body: { nickname?, favorite_teams?, favorite_team?, city? }
  *   nickname        2–20 chars after trim; the grup-description vocab
- *                   guard applies (no betting words in display names)
+ *                   guard applies (display names pass the vocab guard)
  *   favorite_teams  array of ≤ 10 tricodes (3–5 upper-case chars)
  *   favorite_team   one tricode or null
  *   city            ≤ 60 chars or null

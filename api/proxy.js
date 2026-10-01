@@ -33,7 +33,7 @@
  *
  * v0.79.0 — Komdigi de-risk 2026-05-23. The `futures-odds-gamma` +
  * `futures-odds-clob` provider entries were removed; the regulator
- * blocked the upstream as judi online. Any incoming
+ * blocked the upstream under the online-gaming rules. Any incoming
  * `/api/proxy/futures-odds-*` request now falls through to the
  * unknown-provider 404 branch.
  */

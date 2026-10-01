@@ -24,7 +24,7 @@
  */
 
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
-import { validateScoringConfig, validateFormats, validateLateJoinPolicy, validateDescription } from './league-config.js';
+import { validateScoringConfig, validateLateJoinPolicy, validateDescription } from './league-config.js';
 
 // D3 (08-teardown-deltas) — football default template = BOTH game types on:
 // Bracket Lock for the stake-in-the-ground feeling, match-by-match for the
@@ -112,7 +112,6 @@ export default async function handler(req, res) {
   // Migration 0019 columns; validated by the shared league-config module.
   for (const [field, validator] of [
     ['scoring_config', validateScoringConfig],
-    ['formats', validateFormats],
     ['late_join_policy', validateLateJoinPolicy],
     ['description', validateDescription], // D2 — banned-vocab guard inside
   ]) {
@@ -125,10 +124,9 @@ export default async function handler(req, res) {
 
   // D3 — football competitions default to both game types when the wizard
   // didn't choose explicitly: {match, bracket}.
-  if (insertRow.formats == null && insertRow.competition) {
-    const row = REGISTRY[insertRow.competition];
-    insertRow.formats = row?.features?.bracket ? ['match', 'bracket'] : ['match'];
-  }
+  // doc 17 §2.2 / decision 5: enabled_modes is the one mode system; the
+  // legacy `formats` column is dropped by migration 0023 and never written.
+  delete insertRow.formats;
 
   const admin = getSupabaseAdmin();
 

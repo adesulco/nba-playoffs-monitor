@@ -21,6 +21,10 @@
       "destination": "/api/proxy?path=:path*"
     },
     {
+      "source": "/api/billing/:action",
+      "destination": "/api/billing?_action=:action"
+    },
+    {
       "source": "/api/epl-news",
       "destination": "/api/news?sport=epl"
     },
