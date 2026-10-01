@@ -5,6 +5,18 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/kabar",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/aturan",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/papan",
+      "destination": "/index.html"
+    },
+    {
       "source": "/api/proxy/:path*",
       "destination": "/api/proxy?path=:path*"
     },
@@ -176,6 +188,26 @@
       "source": "/nba-playoffs-2026/:path*",
       "destination": "/nba-playoff-2026/:path*",
       "permanent": true
+    },
+    {
+      "source": "/premier-league-2026-27",
+      "destination": "/premier-league-2025-26",
+      "permanent": false
+    },
+    {
+      "source": "/premier-league-2026-27/:path*",
+      "destination": "/premier-league-2025-26/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/super-league-2026-27",
+      "destination": "/super-league-2025-26",
+      "permanent": false
+    },
+    {
+      "source": "/super-league-2026-27/:path*",
+      "destination": "/super-league-2025-26/:path*",
+      "permanent": false
     }
   ],
   "headers": [

@@ -12,7 +12,7 @@
  * Bump SW_VERSION to force a cache flush.
  */
 
-const SW_VERSION = "gibol-2026-05-04-v3";
+const SW_VERSION = "gibol-2026-10-01-v4";
 const SHELL_CACHE = `${SW_VERSION}-shell`;
 const RUNTIME_CACHE = `${SW_VERSION}-runtime`;
 const IMMUTABLE_CACHE = `${SW_VERSION}-immutable`;
@@ -20,8 +20,8 @@ const IMMUTABLE_CACHE = `${SW_VERSION}-immutable`;
 // The minimum surface that must work offline: bracket view + home.
 const PRECACHE_URLS = [
   "/",
-  "/playoff",
-  "/bracket",
+  "/grup",
+  "/skor",
   "/offline",
   "/manifest.webmanifest",
   "/icons/icon-192.png",

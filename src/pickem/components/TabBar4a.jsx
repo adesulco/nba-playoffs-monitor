@@ -32,7 +32,8 @@ export default function TabBar4a({ active = 'main', grupCode, lang = 'en' }) {
       to: grupCode ? `/grup/${grupCode}` : '/grup',
     },
     { key: 'skor', Icon: IconSkor, label: tx('Skor', 'Skor'), to: '/skor' },
-    { key: 'kabar', Icon: IconKabar, label: tx('Kabar', 'Kabar'), soon: true },
+    // S3 — Kabar is a static digest of the published content (doc 17 S3).
+    { key: 'kabar', Icon: IconKabar, label: tx('Kabar', 'Kabar'), to: '/kabar' },
   ];
 
   return (

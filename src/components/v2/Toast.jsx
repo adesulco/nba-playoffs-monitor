@@ -140,7 +140,7 @@ export function ToastHost() {
       const duration =
         opts.duration || (text.length > LONG_TEXT_THRESHOLD ? LONG_DURATION : DEFAULT_DURATION);
       setItems((xs) => {
-        const next = [...xs, { id, text, icon: opts.icon, kind: opts.kind || 'success', duration }];
+        const next = [...xs, { id, text, icon: opts.icon, kind: opts.kind || 'success', duration, onClick: opts.onClick }];
         // Cap stack — oldest gets dismissed first.
         if (next.length > MAX_STACK) {
           const dropped = next.slice(0, next.length - MAX_STACK);
@@ -248,7 +248,7 @@ export function Toast({ kind = 'success', icon, text }) {
   );
 }
 
-function ToastItem({ kind, icon, text, duration, onMouseEnter, onMouseLeave, onDismiss }) {
+function ToastItem({ kind, icon, text, duration, onClick, onMouseEnter, onMouseLeave, onDismiss }) {
   const Icon = typeof icon === 'string' ? ICONS[icon] : null;
   const isError = kind === 'error';
   return (
@@ -257,7 +257,7 @@ function ToastItem({ kind, icon, text, duration, onMouseEnter, onMouseLeave, onD
       className="gibol-toast-item"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={onDismiss}
+      onClick={() => { try { onClick?.(); } catch { /* ignore */ } onDismiss(); }}
       style={{
         background: isError ? 'var(--error)' : 'var(--ink-1)',
         color: '#fff',

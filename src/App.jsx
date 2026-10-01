@@ -154,6 +154,10 @@ const GrupList       = lazy(() => import('./pickem/GrupList.jsx'));
 const GrupCreate4a   = lazy(() => import('./pickem/GrupCreate4a.jsx'));
 const Login4a        = lazy(() => import('./pickem/Login4a.jsx'));
 const Profile4a      = lazy(() => import('./pickem/Profile4a.jsx'));
+// S3 (v0.89.0) — Papan Nasional, rules, Kabar digest.
+const PapanNasional4a = lazy(() => import('./pickem/PapanNasional4a.jsx'));
+const Aturan4a       = lazy(() => import('./pickem/Aturan4a.jsx'));
+const Kabar4a        = lazy(() => import('./pickem/Kabar4a.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
 // v0.69.0 P4 — stage-paged WC 2026 bracket builder.
 // v0.70.0 P5 — Survivor + Profile.
@@ -256,7 +260,7 @@ function ConsentGate({ children }) {
 // `/^\/grup$/` is separate from `/^\/grup\//`: the bare Grup tab (GrupList)
 // is a 4a screen too, and without it the legacy masthead + footer wrapped
 // the new shell on that one tab (audit 2026-10-01).
-const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//, /^\/masuk$/, /^\/login$/, /^\/profil$/];
+const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//, /^\/masuk$/, /^\/login$/, /^\/profil$/, /^\/papan$/, /^\/aturan$/, /^\/kabar$/];
 
 /**
  * Renders children (the legacy masthead) only OUTSIDE the 4a shell.
@@ -435,6 +439,9 @@ export default function App() {
             <Route path="/masuk" element={<Login4a />} />
             <Route path="/login" element={<Login4a />} />
             <Route path="/profil" element={<Profile4a />} />
+            <Route path="/papan" element={<PapanNasional4a />} />
+            <Route path="/aturan" element={<Aturan4a />} />
+            <Route path="/kabar" element={<Kabar4a />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
             {/* v0.12.5 — first-login favorites picker. Anon users get
                 redirected to /login?next=/onboarding/teams from inside

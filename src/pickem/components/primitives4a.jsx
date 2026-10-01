@@ -246,6 +246,7 @@ export function LeaderboardRow({
   avatarColor = 'var(--g4-ink)',
   points,
   streak,
+  nyaris,
   isYou = false,
   hasNotPicked = false,
   onClick,
@@ -325,6 +326,14 @@ export function LeaderboardRow({
           </span>
         )}
       </span>
+      {nyaris > 0 && (
+        <span
+          title="nyaris"
+          style={{ font: `600 9px/1 ${uiFont}`, color: 'var(--g4-text-muted)', border: '1px solid var(--g4-border)', padding: '2px 6px', borderRadius: 'var(--g4-radius-pill)' }}
+        >
+          nyaris {nyaris}
+        </span>
+      )}
       {streak != null && (
         <span style={{ font: `600 10px/1 ${uiFont}`, color: 'var(--g4-win)' }}>▲{streak}</span>
       )}

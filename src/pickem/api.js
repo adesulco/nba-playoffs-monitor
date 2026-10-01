@@ -515,6 +515,24 @@ export async function mergeGuest(predictions) {
  * @returns {Promise<{ok:boolean, status?:string, needs_upgrade?:boolean, error?:string}>}
  */
 /**
+ * leaderboardNational({ league, board, limit, offset }) → { ok, rows, me, total }.
+ * Sends the bearer when there is one so `me` comes back.
+ */
+export async function leaderboardNational({ league, board = 'points', limit = 50, offset = 0 } = {}) {
+  try {
+    const token = await readBearer();
+    const { res, data } = await cachedGet(
+      buildUrl('leaderboard-national', { league, board, limit, offset }),
+      token ? { headers: { Authorization: `Bearer ${token}` } } : {},
+    );
+    if (!res.ok || !data?.ok) return { ok: false, error: normalizeError(res, data, 'board unavailable'), rows: [] };
+    return { ok: true, rows: data.rows || [], me: data.me || null, total: data.total ?? null };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err), rows: [] };
+  }
+}
+
+/**
  * sendMagicLink({ email, next }) → { ok } — the only auth call screens make.
  */
 export async function sendMagicLink({ email, next = '/' }) {

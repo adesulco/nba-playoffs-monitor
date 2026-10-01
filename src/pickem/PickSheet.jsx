@@ -30,6 +30,7 @@ import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { listFixtures, upsertPrediction, listPredictions, joinGrup, leagueDetail, getFixture, getPrediction } from './api.js';
 import { saveGuestPrediction, getGuestPrediction, saveGuestInvite, listGuestPredictions } from './guestStore.js';
 import Countdown4a from './components/Countdown4a.jsx';
+import { shareCard } from './share.js';
 import { COMPETITIONS } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { PickChip, LockBadge, formatCountdown } from './components/primitives4a.jsx';
@@ -349,7 +350,8 @@ function PickSheetInner() {
             {tx(
               'Exact score 5 · result + margin 3 · result 2 · nyaris 1 · ★ ×2',
               'Skor tepat 5 · hasil + selisih 3 · hasil 2 · nyaris 1 · ★ ×2'
-            )}
+            )}{' '}
+            <button type="button" onClick={() => navigate('/aturan')} aria-label={tx('How points work', 'Cara hitung poin')} style={S.infoBtn}>ⓘ</button>
           </p>
           <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
             {scoresToShow.map(([h, a]) => {
@@ -473,6 +475,21 @@ function PickSheetInner() {
                 : score
                   ? tx('Lock my pick', 'Kunci pick')
                   : tx('Lock my pick → add a score?', 'Kunci pick → tambah skor?')}
+          </button>
+        )}
+        {saved && outcome && (
+          <button
+            type="button"
+            style={S.shareBtn}
+            onClick={() => shareCard({
+              type: 'matchday',
+              params: { home, away, pick: outcome === 'H' ? home : outcome === 'A' ? away : tx('Draw', 'Seri'), code: inviteCode },
+              title: `${home} vs ${away}`,
+              text: tx(`My pick: ${outcome === 'H' ? home : outcome === 'A' ? away : 'draw'}${score ? ` ${score[0]}–${score[1]}` : ''} · gibol.co`, `Pick-ku: ${outcome === 'H' ? home : outcome === 'A' ? away : 'seri'}${score ? ` ${score[0]}–${score[1]}` : ''} · gibol.co`),
+              url: inviteCode ? `https://www.gibol.co/g/${inviteCode}` : 'https://www.gibol.co/',
+            })}
+          >
+            {tx('Share my pick', 'Bagikan pick-ku')}
           </button>
         )}
         {!user && (
@@ -707,6 +724,15 @@ const S = {
     padding: '13px 22px',
     font: '700 14px/1 var(--g4-font-ui)',
     cursor: 'pointer',
+  },
+  infoBtn: {
+    appearance: 'none', border: 'none', background: 'transparent', color: 'var(--g4-text)',
+    font: '700 12px/1 var(--g4-font-ui)', padding: '0 2px', cursor: 'pointer', verticalAlign: 'baseline',
+  },
+  shareBtn: {
+    appearance: 'none', border: '1.5px solid var(--g4-text)', background: 'transparent', color: 'var(--g4-text)',
+    font: '700 13px/1 var(--g4-font-ui)', padding: '12px 16px', borderRadius: 'var(--g4-radius-pill)',
+    cursor: 'pointer', width: '100%', marginTop: 8, boxSizing: 'border-box',
   },
   progress: {
     margin: '0 0 8px', textAlign: 'center',

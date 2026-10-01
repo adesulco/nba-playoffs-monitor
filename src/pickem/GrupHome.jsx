@@ -33,6 +33,7 @@ import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import SEO from '../components/SEO.jsx';
 import { saveGuestInvite } from './guestStore.js';
+import { shareCard } from './share.js';
 import { computeProvisional } from './useProvisionalPoints.js';
 
 const AVATAR_COLORS = ['#1E3FBB', '#7A2E8E', '#E07B00', '#1F7A3D', '#D92D1C', '#171310'];
@@ -336,6 +337,7 @@ function GrupHomeInner() {
                 name={m.display_name}
                 avatarColor={avatarColor(m.user_id)}
                 points={m.points}
+                nyaris={m.nyaris_count}
                 isYou={!!user && m.user_id === user.id}
                 hasNotPicked={!m.picked_current_matchday}
                 last={i === active.length - 1}
@@ -441,6 +443,29 @@ function GrupHomeInner() {
             <span style={S.gugurGo}>{gugurToggling ? '…' : '+'}</span>
           </button>
         ) : null}
+
+        {/* S3 — share the standings as a card + the rules page. */}
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <button
+            type="button"
+            style={{ ...S.copyPill, flex: 1, justifyContent: 'center' }}
+            onClick={() => {
+              const top = me || active[0];
+              shareCard({
+                type: 'juara',
+                params: { name: top?.display_name || league.name, points: top?.points ?? 0, members: active.length, grup: league.name, code: league.invite_code },
+                title: league.name,
+                text: tx(`${league.name} standings on Gibol`, `Klasemen ${league.name} di Gibol`),
+                url: inviteUrl,
+              });
+            }}
+          >
+            {tx('Share standings', 'Bagikan klasemen')}
+          </button>
+          <button type="button" style={{ ...S.copyPill, flex: 1, justifyContent: 'center', background: 'transparent', color: 'var(--g4-text)', border: '1.5px solid var(--g4-text)' }} onClick={() => navigate('/aturan')}>
+            {tx('Rules & why free', 'Aturan & kenapa gratis')}
+          </button>
+        </div>
 
         {/* Dashed invite card */}
         <div style={S.inviteCard}>

@@ -21,6 +21,20 @@ export function registerSW() {
       // Periodically check for updates while the tab is open
       setInterval(() => reg.update().catch(() => {}), 15 * 60 * 1000);
     })
+    .then(() => {
+      // S3 (doc 17): the SW calls skipWaiting, so a new version takes over
+      // silently and the next navigation can hit stale chunks. Say so once
+      // and offer the reload instead of leaving people on a half-updated app.
+      let announced = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (announced) return;
+        announced = true;
+        const toast = typeof window !== 'undefined' ? window.gibolToast : null;
+        if (toast?.show) {
+          toast.show({ text: 'Versi baru siap — ketuk untuk muat ulang', icon: 'refresh', duration: 12000, onClick: () => window.location.reload() });
+        }
+      });
+    })
     .catch((err) => {
       console.warn('[pwa] SW registration failed', err);
     });

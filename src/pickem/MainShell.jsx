@@ -366,6 +366,15 @@ function MainShellInner() {
           </button>
         )}
 
+        {/* S3 — Papan Nasional entry. */}
+        <button type="button" onClick={() => navigate('/papan')} style={S.papanRow}>
+          <span style={{ flex: 1, textAlign: 'left' }}>
+            <span style={{ display: 'block', font: '800 14px/1.1 var(--g4-font-display)' }}>{tx('National board', 'Papan Nasional')}</span>
+            <span style={{ display: 'block', font: '500 11px/1.3 var(--g4-font-ui)', opacity: 0.8, marginTop: 3 }}>{tx('Everyone who picks, one board.', 'Semua yang pick, satu papan.')}</span>
+          </span>
+          <span style={{ font: '700 16px/1 var(--g4-font-ui)' }}>→</span>
+        </button>
+
         {!user && (
           <p style={S.guestNote}>
             {tx(
@@ -441,6 +450,11 @@ const S = {
     letterSpacing: '0.5px',
   },
   heroLock: { background: 'var(--g4-ink)', color: 'var(--g4-paper)' },
+  papanRow: {
+    appearance: 'none', border: 'none', width: '100%', background: 'var(--g4-ink-block)', color: 'var(--g4-paper)',
+    borderRadius: 'var(--g4-radius-card)', padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 10,
+    cursor: 'pointer', boxSizing: 'border-box', marginBottom: 'var(--g4-gap-card-sm)',
+  },
   heroBody: { padding: '14px 14px 12px' },
   heroLine: {
     font: '800 28px/1.02 var(--g4-font-display)',

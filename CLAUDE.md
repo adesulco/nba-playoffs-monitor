@@ -1,228 +1,53 @@
-# CLAUDE.md — Gibol repo (web + content engine)
+# CLAUDE.md — Gibol repo
 
-Shared context for Claude Code, Cowork, and any other agent working in this repo.
+Shared context for Claude Code, Cowork, and any other agent working here. Rewritten 2026-10-01 (S3, doc 17 §2.6). Four docs are the truth; everything else is history in `docs/archive/`.
 
-> **Read this first: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`** — plan of record from v0.86.0 (Scoring Spec v1, platform contract, sprints S0–S4). Then `docs/00-STATE.md` (where prod is right now) and `docs/audits/2026-10-01-deep-sweep-audit.md` (findings with file:line evidence). Where this file or `docs/HANDOVER.md` conflicts with doc 17, doc 17 wins. The 2026-07-18 handover package (`docs/handover-2026-07-18/`) is history.
-
-The umbrella project context (mission, who Ade is, how to work with him) lives at the parent project level (`Documents/Claude/Projects/Gibol/CLAUDE.md`). This file is the **repo-specific** companion: where code lives, what stack we're on, what each subdirectory owns, and what requires explicit approval before touching.
-
----
+> **Read in this order.** `docs/00-STATE.md` (where prod is right now, what is open, what needs Ade) → `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md` (plan of record, sprints S0–S4) → `docs/02-PLATFORM-CONTRACT.md` (Scoring Spec v1 + platform contract) → `docs/01-PRODUCT.md` (what we build and refuse) → `docs/03-DESIGN.md` (Sistem 4a). Where anything here conflicts with doc 17, doc 17 wins.
 
 ## What this repo is
 
-Two things live in this single repo:
+The Gibol web app at `www.gibol.co`: an Indonesian multi-sport Pick'em (Vite + React 18 SPA, Vercel functions under `api/`, Supabase Postgres, GitHub Actions crons). The sport hubs stay at their URLs as SEO assets. `packages/content-engine/` (Python, Kabar articles) is paused pending an Anthropic key rotation; its status is `packages/content-engine/STATUS.md`.
 
-1. **The Gibol web app** — Vite + React 18 SPA at `www.gibol.co`. Code lives in `src/`, `api/`, `scripts/`, `public/`. This is the user-facing dashboard for NBA Playoffs 2026, Premier League 2025-26, Super League Indonesia (Liga 1) 2025-26, Formula 1 2026, Tennis 2026, and FIFA World Cup 2026.
+## Stack
 
-2. **The Gibol Content Engine** — Python package at `packages/content-engine/`. Agent-driven pipeline that produces Bahasa-native pre-match previews, post-match recaps, weekly standings explainers, race recaps, and evergreen profiles. **Phase 0 (foundation: schema, SDK wrapper, data layer, tests) landed early at v0.22.0 on 2026-04-27** — see `packages/content-engine/STATUS.md` for the authoritative status (it supersedes this section if they disagree). One gate remains before Phase 1 (writer agents): the local ingest dry-run acceptance. Read `spec-content-agent.md` (repo root, verbatim from spec author) + `docs/content-engine-response.md` (Vite-aligned amendments + locked decisions) + `packages/content-engine/STATUS.md` before anything non-trivial in `packages/content-engine/`.
+- **Frontend:** Vite + React 18, inline styles + `src/styles/tokens-4a.css` / `desktop-4a.css`. Not Next.js.
+- **Deploy:** Vercel project `nba-playoffs-monitor` (team `adesulcos-projects`), git integration deploys every push to `main` (`deploy.yml` only runs tests). Propagation takes 2–4 min; verify with `curl`, never with build success.
+- **Functions:** `api/` — budget **8/12 Node, edge functions exempt**. Prefer `?_action=` cases on `api/pickem.js`; a new Node file needs a reason (`api/billing.js` is the earmarked one).
+- **Data:** Supabase project `egzacjfbmgbcwhtvqixc` (Postgres 17). Migrations in `supabase/migrations/`, applied by Ade in the SQL editor (confirm the "Potential issue detected" dialog or nothing runs). After an apply, probe PostgREST for a new column before trusting it. Local PG16 (Homebrew) + `supabase/tests/*.test.sql` is how migrations are tested first.
+- **Feeds:** ESPN public scoreboard (football + NBA) through the scripts and `/api/proxy`. No odds feeds, ever.
+- **Jobs:** `football-backfill.yml` (every 2 h, matrix from the registry, scores via `pickem_score_fixture`), `nba-fixtures-backfill.yml` (every 6 h), `push-scanner.yml` (NBA months), `health-watch.yml` (every 30 min, fails on red scoring). `actionlint` before pushing any workflow change.
 
-The two are sibling — generated content is written to `public/content/` as JSON, consumed by new lazy-loaded SPA routes (`/preview/[slug]`, `/recap/[slug]`, etc.), and prerendered by `scripts/prerender.mjs`.
+## Non-negotiables
 
----
+1. **Copy:** kamu/-mu register, EN key + ID key, named mechanics keep their names (Tebak Skor, jagoan, colek, Nyaris, Gugur). Never betting or money vocabulary. `npm run build` runs the vocab guard.
+2. **One scoring truth:** `0021_scoring_v1.sql` writes points; `api/_lib/pickem/scoring-core.js` must match it on `scoring-vectors.json` (`npm test` + `node scripts/test-scoring-parity.mjs`).
+3. **One registry:** `src/pickem/competitions.js`; `npm run registry` regenerates the JSON; the build fails on drift. Adding a sport = one row (+ a feed adapter if the provider is new).
+4. **Seam:** screens call only `src/pickem/api.js`. No Supabase calls from screens (auth included: `sendMagicLink`, `signOut` live in the seam).
+5. **Security posture:** `0022_rls_close.sql`; `node scripts/rls-attack.mjs` must exit 0 against prod. Admin actions take `x-admin-token` only.
+6. **Fonts:** self-hosted Bricolage Grotesque + Instrument Sans, static weights; run `scripts/test-satori-fonts.mjs` after any font change.
+7. **Invite codes are case-sensitive.**
+8. **Desktop is CSS-only**; verify every shell change at 390 px and 1440 px.
+9. **Edge functions return 200 with an empty body on a throw** — check `%{size_download}`.
+10. **Versioning:** bump `APP_VERSION` in `src/lib/version.js` and `package.json` together; ship notes go to `CHANGELOG.md` (`version.js` is frozen history).
+11. **Prod verification after every loop change:** `node scripts/verify-loop.mjs` (throwaway user, cleans up after itself).
 
-## Stack (immutable unless explicitly changed)
-
-### Web app
-- **Frontend:** Vite + React 18 SPA. CSS-in-JS using the project's `COLORS` constant from `src/lib/constants.js`. CSS classes for media-query breakpoints in `src/index.css`. **Not Next.js** — anything assuming Next.js routing / MDX / ISR needs adaptation.
-- **Deploy:** Vercel project `nba-playoffs-monitor` in team `adesulcos-projects`. Production domain `www.gibol.co`. Apex 308-redirects to www. GitHub remote wired (`origin https://github.com/adesulco/nba-playoffs-monitor.git`); Vercel auto-deploys on push to `main` and the `gibol-ship` script polls the deploy. Manual override: `npx vercel --prod --yes` from the repo root.
-- **Functions:** Vercel Serverless under `api/`. **Budget: 8/12 Node functions used, edge functions exempt** (recounted 2026-10-01: `approve, auth/callback, cron/nba-close-game-scan, derby, health/data-sources, news, pickem, proxy`; underscore-prefixed helpers don't deploy). A new Node function is allowed (`api/billing.js` is earmarked); still prefer `?_action=` cases on the `api/pickem.js` dispatcher.
-- **Backend:** Supabase project `egzacjfbmgbcwhtvqixc` (Mumbai / ap-south-1). Postgres 17. Migrations live at `supabase/migrations/`. Apply via SQL editor (no Management API token in this env).
-- **Data feeds:** ESPN (NBA + EPL + Liga 1), API-Football Pro $19/mo (EPL stats + Liga 1 + WC + AFF), jolpica-f1 + OpenF1 (F1), tennis sources via `tennis-news`. Anthropic API for the content engine. OpenAI embeddings (Phase 1+). (Polymarket was removed from the product; no odds/betting data feeds ever.)
-- **Schema source of truth:** Supabase tables `teams`, `series`, `brackets`, `picks`, `leagues`, `league_members`, `pickem_rules`, `profiles`, `derby_polls`, `derby_poll_votes`, `derby_reactions`, `derby_oneliners`. Content engine `ce_*` tables (`ce_leagues`, `ce_fixtures`, `ce_events`, `ce_articles`, `ce_article_runs`, `ce_cron_runs`, `ce_generation_failures`, `ce_external_corpus`) live via migration `0006_content_engine.sql` — **applied 2026-04-27**. Pick'em tables (`fixtures`, `predictions`, leaderboard views, scoring RPCs) live via migrations 0015–0017 — applied 2026-05-24.
-
-### Content engine (Phase 0+)
-- **Language:** Python 3.12. `anthropic` Python SDK. Always enable prompt caching on system prompts + voice rules.
-- **Models:** Sonnet 4.6 for narrative writing (preview, recap, profile), Haiku 4.5 for templated (standings, voice lint), Opus 4.7 for 10% QC sweep. **Never change a model used by an agent without explicit approval.**
-- **Cost levers:** prompt caching always on (90% off cached input); Batch API for any work scheduled ≥1h ahead (50% off).
-- **Storage:** Existing Supabase Postgres + pgvector for embeddings. New tables in migration `0006`.
-- **Orchestration:** Cloudflare Workers + Queues for real-time triggers (final-whistle webhook → recap), GitHub Actions for batch (T-24h preview, weekly standings).
-- **Publishing target:** JSON files at `public/content/{type}/{slug}.json`. SPA routes consume them. Prerender emits static HTML at build time.
-
----
-
-## Content engine — current state
-
-| Item | Status |
-|---|---|
-| Spec received | ✅ `spec-content-agent.md` (verbatim from author) |
-| Vite-adapted amendments | ✅ `docs/content-engine-response.md` (locked decisions) |
-| Voice rules | ✅ `packages/content-engine/prompts/voice-rules.md` |
-| Banned-phrase linter list | ✅ `packages/content-engine/prompts/banned-phrases.txt` |
-| Phase 0 status tracker | ✅ `packages/content-engine/STATUS.md` |
-| Postgres migration | ✅ `supabase/migrations/0006_content_engine.sql` **applied** 2026-04-27 (all 7 `ce_*` tables live; `ce_leagues` seeded with 5 rows) |
-| Python package skeleton | ✅ `packages/content-engine/{src/{agents,data,quality,publish,orchestrator},eval,pyproject.toml,.env.example}` |
-| Anthropic API key | ✅ provisioned in Vercel production env (`ANTHROPIC_API_KEY`, Encrypted) |
-| OpenAI embeddings key | ⏸️ deferred to Phase 4 (~Sept) — only used by evergreen retrieval, not needed until then |
-| Phase 0 kickoff date | 📅 was 2026-06-01; **work landed early at v0.22.0 on 2026-04-27** |
-| Phase 0 remaining gate | ⏳ local dry-run acceptance: `python -m content_engine.cli ingest --league premier-league --gameweek 35 --dry-run` (Ade's Mac, Python 3.12, needs `API_FOOTBALL_KEY` in local `.env`). Passing it unlocks Phase 1. |
-
-Locked decisions from `docs/content-engine-response.md` § 2:
-- (1) Author byline: **Gibol Newsroom org for v1; named human editor on flagship matches by Month 3.**
-- (2) AI disclosure: **YES.** Standard footer on every generated article.
-- (3) Live match thread: **SKIP for v1 and v2.**
-- (4) English-language version: **SKIP.** Bahasa-first stays.
-- (5) Liga 1 voice supplement: **PHASE 2** alongside EPL auto-publish, not Phase 3.
-- (6) Push notifications + WhatsApp digest: **PHASE 4 stretch.**
-
----
-
-## Where to look first
-
-| If you need to… | Read |
-|---|---|
-| Understand the web app architecture | `../docs/01-architecture.md` (lives at the umbrella project level, not in this repo) |
-| Current web app status (live ship, what's open) | `src/lib/version.js` ship notes (authoritative) and `../docs/00-current-state.md` |
-| Phase 2 UX history (Sprints A–F) | `docs/phase-2-ux-directive.md` (revised) + `docs/phase-2-ux-response.md` |
-| Content engine architecture | `spec-content-agent.md` (author's spec) → THEN `docs/content-engine-response.md` (our amendments) |
-| Bahasa voice rules (non-negotiable) | `packages/content-engine/prompts/voice-rules.md` |
-| Banned phrases for the voice linter | `packages/content-engine/prompts/banned-phrases.txt` |
-| Content-engine implementation status | `packages/content-engine/STATUS.md` |
-| Web app pages | `src/pages/` |
-| Web app shared components | `src/components/`, `src/components/v2/` (Phase 2 chrome) |
-| Serverless functions | `api/` |
-| Generated articles (Phase 1+) | `public/content/{type}/{slug}.json` (not yet populated) |
-
----
-
-## Non-negotiable rules
-
-These are not style preferences. Breaking any of these in production output is a defect.
-
-### Web app
-
-1. **Voice (updated 2026-07-18, supersedes the old "Bahasa-first / gue-lo" rule).** App/UI copy uses the **kamu/-mu register** — warm-casual, never "lo/gue", never Gas-level street slang ("colek", "ingatkan", "udah" are fine). **EN is the default locale with native-ID keys** (double-keyed strings); named mechanics keep their ID names (Tebak Skor, colek, jagoan). Never betting/money vocabulary in any locale — prestige framing only ("Semua demi gengsi."). **Kabar article bodies are the exception:** they keep the content engine's own Bahasa-first voice rules (`packages/content-engine/prompts/voice-rules.md`) — two registers, one brand; the UI chrome around articles follows the design register. The Sistem 4a design canvas (`design_handoff_gibol_redesign/`) is the copy deck.
-2. **URL co-existence with content engine.** Existing canonical slugs (`/super-league-2025-26/club/[slug]`, `/premier-league-2025-26/club/[slug]`, `/nba-playoff-2026/[teamSlug]`, `/formula-1-2026/{race,team,driver}/[slug]`, `/tennis/[slug]`, `/tennis/rankings/[tour]`, `/derby/persija-persib`) are **canonical and must not be replaced or redirected.** Content engine adds NEW URLs only (`/preview/`, `/recap/`, `/standings/`, `/race/[circuit]/[year]`, `/h2h/`, `/glossary/[term]`).
-3. **Five protected surfaces** (per `docs/phase-2-ux-response.md` § 4) must not regress without explicit approval:
-   1. `/derby/persija-persib` (engagement layer: Supabase polls/reactions/oneliners + JSON-LD + share OG)
-   2. `/fifa-world-cup-2026` (waitlist content slot)
-   3. PWA install prompt
-   4. Favorites store
-   5. Per-club squad pages (squad data via API-Football)
-4. **Vercel Hobby function limit (12) is hard-enforced.** 8/12 Node used, edge exempt (2026-10-01). New endpoints go on the `api/pickem.js` dispatcher (`?_action=`) by default; a new Node function file needs a reason (billing is the planned one).
-4b. **Fonts amendment (2026-07-18).** Bricolage Grotesque (800) + Instrument Sans (400–700) ARE allowed — as **self-hosted woff2 subsets only** (≤80KB total, `font-display: swap`, base64 copies for share cards). No Google Fonts runtime request, no other new fonts. This amends the old "no new fonts" rule.
-5. **Lawful scraping only.** Public APIs preferred. For Liga 1 / IBL where APIs are limited, scrape politely, respect robots.txt, rate-limit, cache aggressively.
-
-### Content engine (Phase 1+)
-
-6. **Ground every factual claim in source data.** No score, no scorer, no minute, no statistic, no quote that isn't in the input data block. If data is missing, write that it's missing — never fabricate.
-7. **Voice rules are sacred.** Read `packages/content-engine/prompts/voice-rules.md` before any prompt change. Drift is the failure mode that kills this product. Every prompt edit gets logged in `packages/content-engine/prompts/prompt-changelog.md` (will exist Phase 1) with date + measured eval-set impact.
-8. **No auto-publish in Phase 1.** Every article goes through manual review. Auto-publish enabled in Phase 2 for non-flagship matches.
-9. **Never publish if any quality gate fails.** Fact validator + banned-phrase regex + length check + dedup hash + schema validity + (Phase 1 add) external sim-hash plagiarism check. No bypass flags.
-10. **High-profile matches always get human review** even after auto-publish is on: derbies, top-of-table EPL, NBA Finals, World Cup knockouts, F1 races at flagship circuits. Hard-coded list in `packages/content-engine/src/quality/flagship.py`.
-11. **Cost cap is enforced.** Hard daily token-budget per agent in env config. If exceeded, halt and alert — don't silently degrade or downgrade models.
-12. **AI disclosure footer on every generated article.** Static text per locked decision (`docs/content-engine-response.md` § 2.2): *"Konten ini disusun dengan bantuan AI dan diverifikasi oleh tim editorial Gibol. Data live diambil dari API-Football, ESPN, dan sumber resmi liga."*
-
----
-
-## Code conventions
-
-- **Web app (TypeScript-aware JS, JSX):** existing conventions — match what's there. CSS-in-JS via `COLORS` constant. Media-query CSS classes in `src/index.css`. Lazy-load every new page route via `React.lazy()`. SEO via `<SEO>` component (Helmet + JSON-LD).
-- **Content engine (Python 3.12):** ruff + black, type hints required for public functions, pytest for tests. Filenames snake_case for modules.
-- **Slugs:** Bahasa-friendly kebab-case (`liga-inggris-2025-26`, `manchester-united`, `mohamed-salah`, `persija-vs-persib-2026-05-10`).
-- **Commit messages:** conventional commits (`feat:`, `fix:`, `chore:`); generated content uses author `gibol-bot <bot@gibol.co>` so it's filterable.
-- **All prompts** live in `packages/content-engine/prompts/` as text files, not inline strings. Version-controlled and diffable.
-
----
-
-## Common commands
+## Commands
 
 ```bash
-# Web app dev
-npm run dev                                    # Vite dev server
-npm run build                                  # Vite build + prerender
-npx vercel --prod --yes                        # Production deploy
-
-# Web app verification (post-deploy)
-curl -sL "https://www.gibol.co/" | grep -oE '"[0-9]+\.[0-9]+\.[0-9]+"'   # version check
-
-# Content engine (Phase 0+, not yet active)
-cd packages/content-engine
-python -m content_engine.cli ingest --league premier-league --gameweek 35 --dry-run
-python -m content_engine.cli preview --fixture-id 1234567 --dry-run
-python -m content_engine.eval.run --suite all
-python -m content_engine.quality.voice_lint < draft.md
+npm install
+DEV_API_PROXY=https://www.gibol.co npm run dev    # Vite does not run api/; proxy to prod (read-only in practice)
+npm test                                           # Vitest (scoring vectors, primitives, provisional points)
+npm run build                                      # tests + registry gate + vocab guard + vite + prerender
+node scripts/test-scoring-parity.mjs               # SQL = JS on the shared vectors (prod, read-only)
+node scripts/rls-attack.mjs                        # must print "RLS posture holds"
+node scripts/verify-loop.mjs                       # the loop in prod, end to end
+node scripts/backfill-fixtures-football.mjs --competition EPL-2026-27 --dry-run
 ```
-
----
-
-## Workflow expectations
-
-**Before starting any non-trivial task:**
-
-1. If the task touches the **web app**: check `src/lib/version.js` ship notes for recent context, check `docs/phase-2-ux-directive.md` for Phase 2 surfaces, check `docs/phase-2-ux-response.md` for protected surfaces.
-2. If the task touches the **content engine**: read `spec-content-agent.md` § for that area, check `docs/content-engine-response.md` for the Vite-aligned amendments, check `packages/content-engine/STATUS.md` for current phase.
-3. If the task isn't in the current phase, stop and ask Ade before proceeding.
-
-**During work:**
-
-- Prefer small, reviewable PRs to one giant change.
-- Tests: web app uses minimal automated tests; content engine ingestion + validators + publishers require pytest coverage.
-- If you're about to change a system prompt, eval set, or voice rule: pause, propose the change, wait for approval.
-
-**Things that always require explicit approval before doing:**
-
-- Editing voice rules or banned phrases
-- Changing system prompts in any agent
-- Disabling or modifying a quality gate
-- Adding a new content type
-- Changing the URL/slug structure (SEO impact)
-- Adding a new data feed or removing one
-- Changing the model used by an agent
-- Anything that could publish to production without human review
-- Migrating Gibol web app off Vite to another framework
-- Modifying any of the 5 protected surfaces in a way that regresses behavior
-
-**Things you can just do:**
-
-- Write tests
-- Refactor internals as long as public interfaces and outputs are unchanged
-- Add logging, observability, error handling
-- Update `STATUS.md` to reflect work completed
-- Improve docstrings and type hints
-- Fix bugs that have a reproducible test case
-- Bump version in `src/lib/version.js` with a ship-notes entry
-
----
 
 ## Working with Ade
 
-- Ade is owner; technical and analytically sharp. Default to direct, concise, technical responses.
-- Bahasa-English code-switching in conversation is normal and welcomed; production copy follows non-negotiable rule 1 (UI = kamu-register EN-default+ID; Kabar article bodies = content-engine Bahasa voice rules).
-- He's running multiple projects in parallel — don't make him repeat context already in this file or in `spec-content-agent.md`.
-- He prefers prose explanations over bullet lists for analysis; bullets are fine for action items, configs, and lists of facts.
-- When you disagree with a direction, say so once with reasoning. Don't argue past the first push-back unless there's new information.
-- He uses Cowork (planning, research, docs) and Claude Code (implementation). Hand off work between them via files in this repo.
-- For destructive operations (database migrations, deletions, deploys to production), confirm in chat before executing.
-
----
-
-## Quick reference: agent responsibilities (Phase 1+)
-
-| Agent | Job | Model | File |
-|---|---|---|---|
-| Preview Writer | T-24h match previews | Sonnet 4.6 | `agents/preview.py` |
-| Recap Writer | Post-match recaps | Sonnet 4.6 | `agents/recap.py` |
-| Standings Explainer | Weekly tables analysis | Haiku 4.5 | `agents/standings.py` |
-| Profile Writer | Team/player evergreen | Sonnet 4.6 | `agents/profile.py` |
-| Race Writer | F1 weekend + race | Sonnet 4.6 | `agents/race.py` |
-| QC Reviewer | 10% sample editorial check | Opus 4.7 | `agents/qc.py` |
-| Voice Linter | Per-article naturalness | Haiku 4.5 | `quality/voice_lint.py` |
-| Fact Validator | Per-article fact-check | rule-based + Haiku 4.5 | `quality/fact_check.py` |
-| Plagiarism Check | 7-gram sim-hash vs external corpus | rule-based | `quality/plagiarism.py` (Phase 1, per response doc § 6) |
-
----
+Owner, technically sharp; direct and concise; Bahasa–English code-switching is normal. Prose for analysis, bullets for actions. Disagree once with reasoning. Confirm in chat before destructive operations (migrations, deletions, prod deploys outside the normal push). Report with curl output, not build logs. Update `docs/00-STATE.md` at the end of every sprint: version live, what the checks returned, what is open, what needs a decision.
 
 ## Definition of done
 
-A task is done when:
-
-1. Code is merged with passing tests (where tests apply)
-2. `STATUS.md` is updated (web app: ship-notes in `src/lib/version.js`; content engine: `packages/content-engine/STATUS.md`)
-3. If a prompt or eval changed: `prompt-changelog.md` records what changed and the measured eval-set impact
-4. If a content type was added or modified: `spec-content-agent.md` is updated
-5. The change has been verified end-to-end against at least one real fixture/page, not just unit-tested
-6. If the change touches a protected surface, the verification screenshot or curl output is in the ship notes
-
----
-
-*If anything in this file is wrong, outdated, or missing — flag it. CLAUDE.md is a living doc, not a contract. Cross-references between this file, `spec-content-agent.md`, and `docs/content-engine-response.md` should resolve cleanly; if they conflict, the response document is authoritative on Vite/URL/decisions.*
+Merged with green tests, verified in prod with `curl` (and a 390 px screenshot for shell changes), ship note in `CHANGELOG.md`, `docs/00-STATE.md` current.

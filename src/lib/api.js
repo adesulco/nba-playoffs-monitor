@@ -6,7 +6,8 @@
 // scoreboard / schedule / team / leaders / win-probability fetchers
 // below are unaffected — those are a statistical model + game
 // metadata.
-const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba';
+// S3 (doc 17): through the edge proxy (cache + one origin), not ESPN directly.
+const ESPN_BASE = '/api/proxy/espn/basketball/nba';
 
 /**
  * ESPN scoreboard — today's games, with live scores.
