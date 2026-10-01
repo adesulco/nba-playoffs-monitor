@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.7 — 2026-10-01 — install prompt
+
+- Profile offers the PWA install prompt when the browser allows it (`promptInstall` was never called anywhere).
+
 ## v0.89.6 — 2026-10-01 — audit polish
 
 - Desktop: the 232 px left-rail offset applies only to shells with a tab bar, so the pick sheet and sign-in are centred at ≥ 900 px.
