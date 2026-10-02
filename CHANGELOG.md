@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.13 — 2026-10-02 — dead code removed
+
+- 19 modules nothing reaches any more are deleted: the navy Pick'em kit (`primitives.jsx`, `FixtureCard`, `PickemHome`, bracket stages and state, recap cards, invite sheet, rollover banner, right rail, flags), the legacy bracket editor and share buttons, and a few orphaned components and hooks. Found by an import-graph walk from `src/main.jsx`, `api/`, `scripts/` and the tests; the `src/lib/sports` adapters stay because the prerender loads them dynamically. The audit's "two primitive kits / three bracket stacks" is down to one of each.
+
 ## v0.89.12 — 2026-10-02 — glossary guard
 
 - The vocabulary guard enforces the doc 17 §2.4 glossary: Pick'em copy (`tx()` arguments and JSX text under `src/pickem/`) says "grup", never "league"/"liga"; competition names and template variables are exempt.
