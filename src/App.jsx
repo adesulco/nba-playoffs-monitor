@@ -31,6 +31,7 @@ import SearchOnboardingTooltip from './components/SearchOnboardingTooltip.jsx';
 // the cost on every paint. ConsentGate below renders it only when the
 // banner should be visible (or settings explicitly opened).
 import ConsentBanner from './components/ConsentBanner.jsx';
+import ClaimOnSignIn from './pickem/ClaimOnSignIn.jsx';
 import { getConsent, subscribe as subscribeConsent } from './lib/consent.js';
 // v0.13.4 Sprint 2 Theme C — scrolls to #hash fragments on
 // navigation. Required by the sport-aware MobileBottomNav whose
@@ -525,6 +526,9 @@ export default function App() {
             or `openConsentSettings()` global). Inside BrowserRouter so
             its child <Link /> elements navigate via the SPA router. */}
         <ConsentBanner />
+        {/* Claim guest picks + join the inviting grup on any sign-in, not
+            only those that land on /auth/callback. Inert without guest data. */}
+        <ClaimOnSignIn />
         </BrowserRouter>
         {/* Vercel built-ins — Hobby plan includes both at no extra cost.
             SpeedInsights pipes real-user Core Web Vitals to the Vercel

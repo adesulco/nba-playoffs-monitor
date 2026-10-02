@@ -550,6 +550,19 @@ export async function sendMagicLink({ email, next = '/' }) {
   }
 }
 
+/**
+ * onSession(cb) — calls cb(session) now if signed in, and on every later
+ * sign-in. Returns an unsubscribe function. Keeps screens off Supabase.
+ */
+export function onSession(cb) {
+  let done = false;
+  supabase.auth.getSession().then(({ data }) => { if (!done && data?.session) cb(data.session); }).catch(() => {});
+  const sub = supabase.auth.onAuthStateChange((evt, session) => {
+    if (session && (evt === 'SIGNED_IN' || evt === 'TOKEN_REFRESHED' || evt === 'INITIAL_SESSION')) cb(session);
+  });
+  return () => { done = true; sub?.data?.subscription?.unsubscribe?.(); };
+}
+
 /** signOut() → ends the session and clears every cached read. */
 export async function signOut() {
   try { await supabase.auth.signOut(); } catch { /* ignore */ }

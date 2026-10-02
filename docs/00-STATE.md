@@ -2,7 +2,7 @@
 
 **Living document. Update it at the end of every sprint.** Plan of record: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`. Contract: `02-PLATFORM-CONTRACT.md`. History: `docs/archive/HANDOVER-2026-08-18.md`.
 
-Last updated: **2026-10-01** · live version **v0.89.7** · branch `main` · **S0–S3 shipped in one day** (0022 apply pending)
+Last updated: **2026-10-01** · live version **v0.89.8** · branch `main` · **S0–S3 shipped in one day** (0022 apply pending)
 
 ## 1 · Read this before you touch anything
 
@@ -33,6 +33,23 @@ Last updated: **2026-10-01** · live version **v0.89.7** · branch `main` · **S
 
 **Scored predictions: 0.** The RPC scored 50 fixtures but no user has a server-side prediction on EPL yet — the FGD grup has one member (Bang Ade, 0 pts) because the 4a loop never claimed guest picks or joined anyone (audit finding 2). The doc 17 S0 exit check "FgdGibol klasemen non-zero" therefore cannot be met by S0; it is met the moment S1 ships join-on-confirm and claim-on-login and MD6 is scored.
 
+## 2b · Launch readiness (checked 2026-10-02)
+
+gibol.co serves the loop in prod today. It is **not ready for a public push** until these four are closed — all are dashboard actions, about an hour in total:
+
+| # | Blocker | Evidence | Fix |
+|---|---|---|---|
+| 1 | RLS holes | `node scripts/rls-attack.mjs`: 15 holes; `leagues.formats` still present | Run `0022_rls_close.sql` + `0023_drop_formats.sql` (the SQL editor tab whose first line is `-- 0022`; its dialog is open) |
+| 2 | Auth email capped at **2 per hour** for the whole project | Auth → Rate Limits: `RATE_LIMIT_EMAIL_SENT = 2`, locked; Auth → Emails: custom SMTP off | Enable custom SMTP (Resend / Postmark / SES on a gibol.co sending domain), then raise the email limit |
+| 3 | Redirect allowlist lists exact URLs only | Auth → URL Configuration: `…/auth/callback`, `…?next=/bracket`, `…?next=/league` | Add `https://www.gibol.co/auth/callback**`. v0.89.8 also claims guest picks on any sign-in, so a fallback to the site root no longer loses the claim |
+| 4 | Outstanding Supabase invoice | dashboard banner warns of service disruption | Pay it |
+
+Then one real-phone run: open `gibol.co/g/FgdGibol` signed out → pick → "Klaim pick & gabung" → magic link from the inbox → land on the grup with the pick claimed and a klasemen row. Ten minutes.
+
+**Not blocking launch:** Liga 1 (ESPN has not published 2026/27), billing (free grups cover up to 10 members), API-Football (lapsed; nothing scores on it — it is the only red provider in `/api/health/data-sources`), content engine, Mandalika.
+
+**Calendar:** close 1–4 + the phone run by Oct 7 → public push for MD6 (first lock Sat Oct 10, 18:30 WIB) → FGD on MD7–8 (Oct 17–18) as the first measured read.
+
 ## 3 · Sprint log (2026-10-01)
 
 | Sprint | Version | Verified by |
@@ -40,7 +57,7 @@ Last updated: **2026-10-01** · live version **v0.89.7** · branch `main` · **S
 | S0 Rescue | v0.86.0 | 50 EPL finals scored, health ok, 390/1440 screenshots |
 | S1 Truth | v0.87.0 | 0021 applied + EPL re-scored, 56 vectors SQL = JS, `verify-loop` 19/19, browser guest pick + invite stored |
 | S2 Platform | v0.88.0 | registry gate, Liga 1 teams + NBA 81 fixtures seeded, scanner/NBA/football runs green, entry 98 KB gzip, 4a login/create/profile in prod |
-| S3 Retention | v0.89.7 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
+| S3 Retention | v0.89.8 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
 
 ## 3 · Open
 

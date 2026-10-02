@@ -2,6 +2,12 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.8 — 2026-10-02 — claim on any sign-in
+
+- One shared claim routine (`src/pickem/claim.js`) used by `/auth/callback` and by a root-level `ClaimOnSignIn` that runs only when the device holds guest picks or an invite. A magic link that falls back to the site root (redirect not on the Supabase allowlist) now still claims the picks and joins the grup.
+- `onSession()` in the API seam; tests for the claim routine (129 total).
+- State doc: launch-readiness table (RLS apply, auth email cap of 2/hour with custom SMTP off, redirect allowlist, invoice).
+
 ## v0.89.7 — 2026-10-01 — install prompt
 
 - Profile offers the PWA install prompt when the browser allows it (`promptInstall` was never called anywhere).

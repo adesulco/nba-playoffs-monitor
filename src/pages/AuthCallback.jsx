@@ -5,8 +5,7 @@ import { useApp } from '../lib/AppContext.jsx';
 import { supabase, getSupabaseAsync } from '../lib/supabase.js';
 import { trackEvent } from '../lib/analytics.js';
 import SEO from '../components/SEO.jsx';
-import { claimGuestPredictions, getGuestInvite, clearGuestInvite } from '../pickem/guestStore.js';
-import { upsertPrediction, joinGrup, leagueDetail } from '../pickem/api.js';
+import { claimGuestAndJoin } from '../pickem/claim.js';
 
 // Pick'em shell routes skip the favourites onboarding (doc 17 S1-5): a
 // first login from an invite must land on the grup, not on a team picker.
@@ -104,22 +103,7 @@ export default function AuthCallback() {
       // Claim-on-login (doc 17 §2.3): replay the guest picks against the
       // account, then join the grup that invited us. Best-effort; a
       // failure here must never block the sign-in.
-      try {
-        const claim = await claimGuestPredictions(upsertPrediction);
-        const invite = getGuestInvite();
-        let joined = null;
-        if (invite) {
-          const d = await leagueDetail({ code: invite });
-          if (d?.ok && d.league?.id) {
-            const j = await joinGrup({ leagueId: d.league.id, inviteCode: invite });
-            joined = !!j?.ok;
-            if (j?.ok || /already|member/i.test(String(j?.error || ''))) clearGuestInvite();
-          } else if (d && !d.ok && /not found/i.test(String(d.error || ''))) {
-            clearGuestInvite();
-          }
-        }
-        trackEvent('pickem_claim_on_login', { claimed: claim?.claimed ?? 0, skipped: claim?.skipped ?? 0, invite: !!invite, joined });
-      } catch (_) { /* best-effort */ }
+      await claimGuestAndJoin('callback');
 
       try {
         const userId = exchangeData?.session?.user?.id || exchangeData?.user?.id;
