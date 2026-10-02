@@ -44,6 +44,7 @@ export default async function handler(req, res) {
   let skippedLocked = 0;
   const errors = [];
 
+  const rows = [];
   for (const p of list) {
     const fx = fxById.get(p.fixture_id);
     if (!fx) { errors.push({ fixture_id: p.fixture_id, error: 'unknown fixture' }); continue; }
@@ -64,11 +65,17 @@ export default async function handler(req, res) {
       // partial unique index could reject the batch; the user re-stars
       // their jagoan post-login (one tap, and it's an intentional act).
     };
-    const { error } = await admin
-      .from('predictions')
-      .upsert(row, { onConflict: 'user_id,fixture_id' });
-    if (error) errors.push({ fixture_id: fx.id, error: error.message });
-    else merged += 1;
+    rows.push(row);
+  }
+
+  // One batch upsert (audit: up to 100 sequential service-role calls).
+  // Duplicate fixture ids in the payload would make Postgres reject the
+  // whole statement, so the last one wins before sending.
+  const deduped = [...new Map(rows.map((r) => [r.fixture_id, r])).values()];
+  if (deduped.length) {
+    const { error } = await admin.from('predictions').upsert(deduped, { onConflict: 'user_id,fixture_id' });
+    if (error) errors.push({ fixture_id: null, error: error.message });
+    else merged = deduped.length;
   }
 
   return res.status(200).json({ ok: true, merged, skipped_locked: skippedLocked, errors });

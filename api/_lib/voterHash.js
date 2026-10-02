@@ -14,12 +14,17 @@
 
 import crypto from 'crypto';
 
+// No literal fallback (audit 2026-10-01): a known secret makes the hash
+// reversible by brute force over IP space. If no env secret exists, use a
+// per-instance random one — dedupe weakens across instances, but nothing
+// guessable is ever used.
+const INSTANCE_SECRET = crypto.randomBytes(32).toString('hex');
 function getSecret() {
   return (
     process.env.VOTER_HASH_SECRET ||
     process.env.SUPABASE_SERVICE_ROLE ||
     process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    'gibol-fallback-not-secure'
+    INSTANCE_SECRET
   );
 }
 

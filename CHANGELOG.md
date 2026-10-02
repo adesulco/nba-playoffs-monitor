@@ -2,6 +2,16 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.9 — 2026-10-02 — audit security + ops entry
+
+- **Proxy:** GET/HEAD only; the paid API-Football key is relayed only for the read paths the app uses (fixtures, lineups, statistics, squads, top scorers/assists, teams, standings, status); the dead football-data provider is gone.
+- **Derby:** the state response carries the caller's own votes, so it is `private, no-store` instead of edge-cached for everyone.
+- **Voter hash:** no literal fallback secret; a per-instance random one if no env secret exists.
+- **Guest merge:** one batch upsert instead of up to 100 sequential calls.
+- **Invite landing:** between matchdays the CTA goes to the grup home (the code stays in the URL); a signed-in member sees "Kamu sudah gabung — buka grup".
+- **Skor:** link to the sport hubs (`/beranda`).
+- **`enter-result`** admin action (doc 17 §2.3): ops entry of fixtures for feedless competitions and of results through the same finalise-and-score path as `score-fixture`.
+
 ## v0.89.8 — 2026-10-02 — claim on any sign-in
 
 - One shared claim routine (`src/pickem/claim.js`) used by `/auth/callback` and by a root-level `ClaimOnSignIn` that runs only when the device holds guest picks or an invite. A magic link that falls back to the site root (redirect not on the Supabase allowlist) now still claims the picks and joins the grup.

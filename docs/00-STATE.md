@@ -2,7 +2,7 @@
 
 **Living document. Update it at the end of every sprint.** Plan of record: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`. Contract: `02-PLATFORM-CONTRACT.md`. History: `docs/archive/HANDOVER-2026-08-18.md`.
 
-Last updated: **2026-10-01** · live version **v0.89.8** · branch `main` · **S0–S3 shipped in one day** (0022 apply pending)
+Last updated: **2026-10-01** · live version **v0.89.9** · branch `main` · **S0–S3 shipped in one day** (0022 apply pending)
 
 ## 1 · Read this before you touch anything
 
@@ -57,7 +57,7 @@ Then one real-phone run: open `gibol.co/g/FgdGibol` signed out → pick → "Kla
 | S0 Rescue | v0.86.0 | 50 EPL finals scored, health ok, 390/1440 screenshots |
 | S1 Truth | v0.87.0 | 0021 applied + EPL re-scored, 56 vectors SQL = JS, `verify-loop` 19/19, browser guest pick + invite stored |
 | S2 Platform | v0.88.0 | registry gate, Liga 1 teams + NBA 81 fixtures seeded, scanner/NBA/football runs green, entry 98 KB gzip, 4a login/create/profile in prod |
-| S3 Retention | v0.89.8 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
+| S3 Retention | v0.89.9 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
 
 ## 3 · Open
 

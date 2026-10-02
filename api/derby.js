@@ -129,7 +129,10 @@ async function handleState(req, res) {
     oneliners = rows || [];
   } catch { schemaReady = false; }
 
-  res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=60');
+  // The response carries THIS voter's picks and reactions (myPicks,
+  // myReactions), so it must never be shared from the edge (audit
+  // 2026-10-01: one visitor's votes were served to the next).
+  res.setHeader('Cache-Control', 'private, no-store');
   return res.status(200).json({
     polls, reactions, myReactions, myPicks, oneliners, schemaReady,
   });

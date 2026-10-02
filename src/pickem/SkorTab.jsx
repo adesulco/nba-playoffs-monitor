@@ -258,6 +258,13 @@ function SkorTabInner() {
             })}
           </>
         )}
+
+        {/* doc 17 S2 "hub link in Skor": the sport hubs (full fixtures,
+            standings, other sports) live behind /beranda now that the
+            hub footer is gated off the shell. */}
+        <button type="button" onClick={() => navigate('/beranda')} style={S.hubLink}>
+          {tx('All scores, standings & other sports →', 'Semua skor, klasemen & cabang lain →')}
+        </button>
       </div>
 
       <SideRail4a lang={lang} />
@@ -343,6 +350,11 @@ function Pill({ active, onClick, children }) {
 }
 
 const S = {
+  hubLink: {
+    appearance: 'none', border: '1.5px solid var(--g4-text)', background: 'transparent', color: 'var(--g4-text)',
+    font: '700 13px/1 var(--g4-font-ui)', padding: '13px 16px', borderRadius: 'var(--g4-radius-pill)',
+    cursor: 'pointer', width: '100%', marginTop: 14, boxSizing: 'border-box',
+  },
   shell: {
     minHeight: '100dvh',
     background: 'var(--g4-bg)',

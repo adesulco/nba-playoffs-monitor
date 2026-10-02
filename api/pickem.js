@@ -68,6 +68,7 @@ import updateProfileHandler from './_lib/pickem/update-profile.js';
 
 // v0.89.0 — S3: Papan Nasional + streak board.
 import leaderboardNationalHandler from './_lib/pickem/leaderboard-national.js';
+import enterResultHandler from './_lib/pickem/enter-result.js';
 
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
@@ -107,6 +108,7 @@ export default async function handler(req, res) {
     case 'get-prediction':         return getPredictionHandler(req, res);
     case 'update-profile':         return updateProfileHandler(req, res);
     case 'leaderboard-national':   return leaderboardNationalHandler(req, res);
+    case 'enter-result':           return enterResultHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
@@ -119,7 +121,7 @@ export default async function handler(req, res) {
           'list-predictions',
           'update-league-settings', 'league-detail', 'survivor-board', 'merge-guest',
           'approve-member', 'grant-entitlement',
-          'get-fixture', 'get-prediction', 'update-profile', 'leaderboard-national',
+          'get-fixture', 'get-prediction', 'update-profile', 'leaderboard-national', 'enter-result',
         ],
       });
   }

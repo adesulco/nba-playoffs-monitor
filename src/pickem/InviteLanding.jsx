@@ -101,6 +101,7 @@ function InviteLandingInner() {
   // Who's inviting: the owner's display name, which league-detail already
   // returns without exposing emails.
   const inviter = members.find((m) => m.is_owner)?.display_name;
+  const isMember = !!user && members.some((m) => m.user_id === user.id && m.status !== 'pending');
 
   // Tap 1 of the ≤3-tap budget: straight into the pick sheet for the next
   // pickable match — no auth gate, no intermediate hub. The invite code
@@ -114,12 +115,10 @@ function InviteLandingInner() {
       );
       return;
     }
-    // Nothing open to pick (between matchdays) — fall back to the hub.
-    navigate(
-      league?.competition
-        ? `/pickem?competition=${encodeURIComponent(league.competition)}`
-        : '/pickem'
-    );
+    // Nothing open to pick (between matchdays): the grup home, which keeps
+    // the invite in the URL and offers "Klaim pick & gabung" / "Gabung
+    // grup" (audit: the old /pickem fallback dropped the code).
+    navigate(`/grup/${encodeURIComponent(code)}`);
   }
 
   if (loading) {
@@ -222,9 +221,15 @@ function InviteLandingInner() {
         </div>
       </div>
 
-      <button type="button" onClick={handleJoin} style={S.cta}>
-        {tx('Join the grup — free', 'Gabung grup — gratis')}
-      </button>
+      {isMember ? (
+        <button type="button" onClick={() => navigate(`/grup/${encodeURIComponent(code)}`)} style={S.cta}>
+          {tx('You’re in — open the grup →', 'Kamu sudah gabung — buka grup →')}
+        </button>
+      ) : (
+        <button type="button" onClick={handleJoin} style={S.cta}>
+          {tx('Join the grup — free', 'Gabung grup — gratis')}
+        </button>
+      )}
 
       {/* Prestige footer + first-pick teaser (canvas copy deck) */}
       <p style={S.footer}>
