@@ -99,8 +99,8 @@ DNS for gibol.co is at GoDaddy (`ns09/ns10.domaincontrol.com`). The root MX and 
 - Supabase dashboard shows an **outstanding invoice** banner (service-disruption warning). Pay before MD6.
 
 - **S1 Truth (Oct 4–10, before MD6 on Oct 10 18:30 WIB):** migrations `0021_scoring_v1.sql` and `0022_rls_close.sql` (Ade applies in the SQL editor), scoring parity vectors, `predict.js` writes `matchday` + `last_predicted_at`, join-on-confirm + claim-on-login + guest CTA, copy changes, `useProvisionalPoints` rendered. EPL MW1–5 were scored under the old 8/5/3 rules; S1 re-scores EPL once via the admin `score` action (allowed: no user has seen EPL points).
-- `Content Engine - Cron` fails on every scheduled run (Anthropic key rotation pending). Noise in the Actions tab; disable it or rotate the key.
-- `WC2026` and `AFF2026` are still in the backfill matrix; they idle-exit on schedule, so harmless, but drop them when Liga 1 is added in S2.
+- `Content Engine - Cron` **fixed 2026-10-02**: every run died in the budget guard (`TODAY` passed as an argument, not an env var), not on the key. Dispatched `nba-recaps` run is green (spend read, 0 articles in the NBA offseason). Whether the Anthropic key is still valid shows on the first run that actually generates an article.
+- ~~`WC2026` / `AFF2026` in the backfill matrix~~ done: the matrix is the registry `activeFeeds` (EPL, Liga 1, NBA).
 
 ## 3b · Manual grant runbook (until billing lands, doc 17 S4)
 
