@@ -8,13 +8,13 @@ const CACHE_KEY = 'epl-standings';
 const CACHE_TTL = 5 * 60 * 1000;
 
 /**
- * EPL 2025-26 standings via ESPN's `apis/v2/sports` standings endpoint
+ * EPL 2026-27 standings via ESPN's `apis/v2/sports` standings endpoint
  * (proxied through /api/proxy/espn-v2). ESPN returns a "groups" array — for
  * the Premier League (eng.1) there's one group with 20 entries, each an
  * object keyed by `team` + `stats`.
  *
  * Endpoint:
- *   GET /api/proxy/espn-v2/soccer/eng.1/standings?season=2025
+ *   GET /api/proxy/espn-v2/soccer/eng.1/standings?season=2026
  *
  * Return shape (normalized for the UI):
  *   rows: [{
@@ -25,7 +25,7 @@ const CACHE_TTL = 5 * 60 * 1000;
  * Refresh cadence: 60s during a match-day, standings rarely change faster.
  * The edge proxy caches at s-maxage=300 so 5 concurrent viewers ≈ 1 call.
  */
-const SEASON_YEAR = 2025; // ESPN labels PL seasons by their August-start year
+const SEASON_YEAR = 2026; // ESPN labels PL seasons by their August-start year
 
 // ESPN stat names we care about. Different ESPN responses key by `name` or
 // `abbreviation` — try both.

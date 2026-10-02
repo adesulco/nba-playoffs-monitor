@@ -110,7 +110,7 @@ function matchShareUrl(m) {
 }
 
 /**
- * Premier League 2025-26 dashboard — v0.4.0 Phase 1A.
+ * Premier League 2026-27 dashboard — v0.4.0 Phase 1A.
  *
  * Four sections, all Bahasa-first:
  *   1. Hero                        — Step 6 spec (Space Grotesk 36/700/-0.025em)
@@ -978,7 +978,7 @@ export default function EPL() {
     ? `Liga Inggris ${SEASON} · Klasemen 20 Klub, Jadwal Match-day, Top Skor Golden Boot | gibol.co`
     : `Premier League ${SEASON} · 20-Club Table, Match-day Fixtures, Golden Boot Race | gibol.co`;
   // v0.11.23 GIB-018 — when a club is picked, lead the title (and og:title)
-  // with that club so a deep-link share — `/liga-inggris-2025-26?club=arsenal` —
+  // with that club so a deep-link share — `/liga-inggris-2026-27?club=arsenal` —
   // shows up as "Arsenal · Liga Inggris …" in WhatsApp / Twitter unfurls.
   const title = favClub
     ? (lang === 'id'
@@ -1005,7 +1005,7 @@ export default function EPL() {
         path={seoPath}
         image="https://www.gibol.co/og/hub-epl.png"
         lang={lang}
-        keywords="liga inggris 2025-26, premier league 2025-26, klasemen liga inggris, top skor epl, skor liga inggris, jadwal liga inggris, arsenal liverpool manchester city chelsea, tottenham, newcastle, aston villa, epl bahasa indonesia"
+        keywords="liga inggris 2026-27, premier league 2026-27, klasemen liga inggris, top skor epl, skor liga inggris, jadwal liga inggris, arsenal liverpool manchester city chelsea, tottenham, newcastle, aston villa, epl bahasa indonesia"
         jsonLd={EPL_JSONLD}
       />
       <div className="dashboard-wrap">

@@ -1,5 +1,5 @@
 /**
- * English Premier League 2025-26 adapter — live in v0.4.0 (EPL Phase 1A).
+ * English Premier League 2026-27 adapter — live in v0.4.0 (EPL Phase 1A).
  *
  * Phase 1A scope (this ship): real dashboard at /premier-league-2025-26 powered
  * by ESPN soccer/eng.1 (standings, scoreboard, scorers) behind /api/proxy/espn,
@@ -13,7 +13,7 @@
  * to the futures-odds provider downtime.
  */
 
-import { CLUBS, SEASON, SEASON_START, SEASON_END } from './clubs.js';
+import { CLUBS, FORMER_CLUBS, SEASON, SEASON_START, SEASON_END } from './clubs.js';
 import { breadcrumbSchema } from '../_schema.js';
 
 const SITE = 'https://www.gibol.co';
@@ -26,7 +26,7 @@ const LEAGUE_JSONLD = {
   '@context': 'https://schema.org',
   '@type': 'SportsEvent',
   name: `Premier League ${SEASON}`,
-  description: `The ${SEASON} English Premier League season — 20 clubs, 380 matches, August 2025 through May 2026. Title race, Champions League qualification, and relegation tracked live in Bahasa.`,
+  description: `The ${SEASON} English Premier League season — 20 clubs, 380 matches, August 2026 through May 2027. Title race, Champions League qualification, and relegation tracked live in Bahasa.`,
   startDate: SEASON_START,
   endDate: SEASON_END,
   eventStatus: 'https://schema.org/EventScheduled',
@@ -68,33 +68,36 @@ function prerenderRoutes() {
     // v0.13.0 trim — was 76 chars / 244 chars.
     title: `Liga Inggris ${SEASON} — Klasemen & Top Skor | gibol.co`,
     description: `Skor Liga Inggris ${SEASON} live: klasemen 20 klub dengan form, jadwal pekan ini (WIB), hasil terbaru, top skor Golden Boot. Bahasa Indonesia.`,
-    keywords: 'liga inggris, premier league, epl 2025-26, klasemen liga inggris, top skor epl, skor liga inggris, jadwal liga inggris, golden boot, arsenal liverpool manchester city chelsea tottenham, epl bahasa indonesia',
+    keywords: 'liga inggris, premier league, epl 2026-27, klasemen liga inggris, top skor epl, skor liga inggris, jadwal liga inggris, golden boot, arsenal liverpool manchester city chelsea tottenham, epl bahasa indonesia',
     ogImage: HUB_OG,
     jsonLd: [
       LEAGUE_JSONLD,
       breadcrumbSchema([
         { name: 'gibol.co', url: '/' },
-        { name: 'Liga Inggris 2025-26', url: routeBase },
+        { name: 'Liga Inggris 2026-27', url: routeBase },
       ]),
     ],
   });
 
   // Per-club pages — 20 indexable URLs.
-  for (const club of CLUBS) {
+  // Former clubs keep their prerendered page (indexed URLs).
+  for (const club of [...CLUBS, ...FORMER_CLUBS]) {
+    // A relegated club's page speaks about the season it was last in.
+    const season = club.formerSeason || SEASON;
     out.push({
       path: `${routeBase}/club/${club.slug}`,
       // v0.13.0 trim — was up to 88 chars (Wolverhampton/Manchester
       // City). Tighter title fits even longest club names ≤60.
-      title: `${club.name} · Liga Inggris ${SEASON} | gibol.co`,
-      description: `${club.name} Liga Inggris ${SEASON}: klasemen, form 5 laga, jadwal pekan ini, hasil terbaru, top skor klub. Kandang ${club.stadium}, ${club.city}.`,
-      keywords: `${club.name.toLowerCase()}, ${club.nameId.toLowerCase()}, ${club.slug} 2025-26, liga inggris ${club.slug}, klasemen ${club.name.toLowerCase()}, jadwal ${club.name.toLowerCase()}, hasil ${club.name.toLowerCase()}, ${club.stadium.toLowerCase()}, ${club.city.toLowerCase()}, epl 2025-26`,
+      title: `${club.name} · Liga Inggris ${season} | gibol.co`,
+      description: `${club.name} Liga Inggris ${season}: klasemen, form 5 laga, jadwal pekan ini, hasil terbaru, top skor klub. Kandang ${club.stadium}, ${club.city}.`,
+      keywords: `${club.name.toLowerCase()}, ${club.nameId.toLowerCase()}, ${club.slug} ${season}, liga inggris ${club.slug}, klasemen ${club.name.toLowerCase()}, jadwal ${club.name.toLowerCase()}, hasil ${club.name.toLowerCase()}, ${club.stadium.toLowerCase()}, ${club.city.toLowerCase()}, epl 2026-27`,
       // v0.13.0 Ship 4 — per-club OG card.
       ogImage: `${SITE}/og/epl/${club.slug}.png`,
       jsonLd: [
         clubSchema(club),
         breadcrumbSchema([
           { name: 'gibol.co', url: '/' },
-          { name: 'Liga Inggris 2025-26', url: routeBase },
+          { name: `Liga Inggris ${season}`, url: routeBase },
           { name: club.name, url: `${routeBase}/club/${club.slug}` },
         ]),
       ],
@@ -109,8 +112,8 @@ function clubs() { return CLUBS; }
 
 export const adapter = {
   id: 'epl',
-  name: 'Premier League 2025-26',
-  nameId: 'Liga Inggris 2025-26',
+  name: 'Premier League 2026-27',
+  nameId: 'Liga Inggris 2026-27',
   routeBase,
   accent: '#37003C',
   icon: 'pl',

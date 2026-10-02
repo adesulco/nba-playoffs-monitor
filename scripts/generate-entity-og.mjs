@@ -206,7 +206,8 @@ async function loadEntities() {
 
   const { TEAM_META, teamSlug } = await import(constantsUrl);
   const { TEAMS_2026: F1_TEAMS, DRIVERS_2026: F1_DRIVERS, TEAMS_BY_ID: F1_TEAMS_BY_ID } = await import(f1Url);
-  const { CLUBS: EPL_CLUBS } = await import(eplClubsUrl);
+  const { CLUBS: EPL_CLUBS, SEASON: EPL_SEASON } = await import(eplClubsUrl);
+  EPL_SEASON_LABEL = String(EPL_SEASON || '').replace('-', '/');
   const { TOURNAMENTS_2026: TENNIS_TOURNAMENTS, tournamentPath } = await import(tennisUrl);
 
   return {
@@ -237,14 +238,15 @@ function nbaCardForTeam(t) {
   };
 }
 
+let EPL_SEASON_LABEL = '';
 function eplCardForClub(c) {
   return {
     outFile: path.join(OG_DIR, 'epl', `${c.slug}.png`),
     accent: c.accent || '#37003C',
     sportTag: 'EPL',
-    eyebrow: 'PREMIER LEAGUE · 2025/26',
+    eyebrow: `PREMIER LEAGUE · ${EPL_SEASON_LABEL}`,
     headline: (c.name || '').toUpperCase(),
-    tagline: c.stadium ? `${c.stadium} · ${c.city}` : 'Liga Inggris 2025-26',
+    tagline: c.stadium ? `${c.stadium} · ${c.city}` : `Liga Inggris ${EPL_SEASON_LABEL.replace('/', '-')}`,
     foot: `gibol.co/premier-league-2025-26/club/${c.slug}`,
   };
 }
@@ -341,9 +343,16 @@ async function main() {
     ents.slClubs && { label: 'Super League per-club', specs: ents.slClubs.map(slCardForClub) },
   ].filter(Boolean);
 
+  // OG_ONLY=coventry,hull,ipswich renders just those slugs (new entities)
+  // instead of rewriting every image in public/og.
+  const only = new Set((process.env.OG_ONLY || '').split(',').map((s) => s.trim()).filter(Boolean));
+  const pick = (spec) => !only.size || only.has(path.basename(spec.outFile, '.png'));
+
   for (const batch of batches) {
-    console.log(`\n[entity-og] rendering ${batch.label} — ${batch.specs.length} cards`);
-    for (const spec of batch.specs) {
+    const specs = batch.specs.filter(pick);
+    if (!specs.length) continue;
+    console.log(`\n[entity-og] rendering ${batch.label} — ${specs.length} cards`);
+    for (const spec of specs) {
       try {
         await renderCard(spec);
         total += 1;

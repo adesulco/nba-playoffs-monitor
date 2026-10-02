@@ -2,6 +2,12 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.10 — 2026-10-02 — EPL hub on 2026-27
+
+- The Premier League hub showed last season: standings requested `season=2025` and the club list was 2025-26. Standings now read `season=2026` (ESPN serves the 2026-27 table), and the 20 clubs are this season's: Coventry, Hull and Ipswich in, with bios and share cards.
+- Burnley, West Ham and Wolves move to `FORMER_CLUBS`: their indexed pages still resolve and prerender, labelled 2025-26. URLs stay on the canonical `/premier-league-2025-26` slug (doc 17).
+- `generate-entity-og.mjs` reads the season from the club module and accepts `OG_ONLY=slug,slug`.
+
 ## v0.89.9 — 2026-10-02 — audit security + ops entry
 
 - **Proxy:** GET/HEAD only; the paid API-Football key is relayed only for the read paths the app uses (fixtures, lineups, statistics, squads, top scorers/assists, teams, standings, status); the dead football-data provider is gone.

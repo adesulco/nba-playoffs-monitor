@@ -123,8 +123,8 @@ export default function EPLClub() {
     setTopbarSubrow(
       <HubStatusStrip
         srOnlyTitle={lang === 'id'
-          ? `${club.name} · Liga Inggris ${SEASON} — klasemen, jadwal, hasil`
-          : `${club.name} · Premier League ${SEASON} — standing, fixtures, results`}
+          ? `${club.name} · Liga Inggris ${club?.formerSeason || SEASON} — klasemen, jadwal, hasil`
+          : `${club.name} · Premier League ${club?.formerSeason || SEASON} — standing, fixtures, results`}
         accent={club.accent}
         picker={(
           <Link
@@ -148,7 +148,7 @@ export default function EPLClub() {
         )}
         live={(
           <span style={{ textTransform: 'uppercase' }}>
-            {lang === 'id' ? `LIGA INGGRIS · MUSIM ${SEASON}` : `PREMIER LEAGUE · ${SEASON}`}
+            {lang === 'id' ? `LIGA INGGRIS · MUSIM ${club?.formerSeason || SEASON}` : `PREMIER LEAGUE · ${club?.formerSeason || SEASON}`}
             <span style={{ marginLeft: 8, color: 'var(--ink-4)' }}>
               · {club.stadium} · {club.city}
             </span>
@@ -158,8 +158,8 @@ export default function EPLClub() {
           <HubActionRow
             url={`/premier-league-2025-26/club/${club.slug}`}
             shareText={lang === 'id'
-              ? `${club.name} · Liga Inggris ${SEASON} di gibol.co ⚽`
-              : `${club.name} · Premier League ${SEASON} on gibol.co ⚽`}
+              ? `${club.name} · Liga Inggris ${club?.formerSeason || SEASON} di gibol.co ⚽`
+              : `${club.name} · Premier League ${club?.formerSeason || SEASON} on gibol.co ⚽`}
             accent={club.accent}
             analyticsEvent="epl_club_share"
           />
@@ -219,18 +219,18 @@ export default function EPLClub() {
 
   // ─── SEO copy ─────────────────────────────────────────────────────────────
   const title = lang === 'id'
-    ? `${club.name} Liga Inggris 2025-26 · Klasemen, Jadwal, Hasil | gibol.co`
-    : `${club.name} Premier League 2025-26 · Standing, Fixtures, Results | gibol.co`;
+    ? `${club.name} Liga Inggris ${club?.formerSeason || SEASON} · Klasemen, Jadwal, Hasil | gibol.co`
+    : `${club.name} Premier League ${club?.formerSeason || SEASON} · Standing, Fixtures, Results | gibol.co`;
   const description = lang === 'id'
-    ? `${club.name} di Premier League 2025-26 — klasemen sementara, form 5 laga terakhir, jadwal pekan ini, hasil laga terbaru, dan top skor klub. Kandang di ${club.stadium}, ${club.city}. Dashboard Bahasa Indonesia.`
-    : `${club.name} in the 2025-26 Premier League — current standing, last 5 form, upcoming fixtures, latest results, and top scorers. Home: ${club.stadium}, ${club.city}. Indonesian-language dashboard.`;
+    ? `${club.name} di Premier League ${club?.formerSeason || SEASON} — klasemen sementara, form 5 laga terakhir, jadwal pekan ini, hasil laga terbaru, dan top skor klub. Kandang di ${club.stadium}, ${club.city}. Dashboard Bahasa Indonesia.`
+    : `${club.name} in the ${club?.formerSeason || SEASON} Premier League — current standing, last 5 form, upcoming fixtures, latest results, and top scorers. Home: ${club.stadium}, ${club.city}. Indonesian-language dashboard.`;
   const keywords = [
     club.name.toLowerCase(),
     club.nameId.toLowerCase(),
-    `${club.slug} 2025-26`,
+    `${club.slug} ${club?.formerSeason || SEASON}`,
     'liga inggris',
     'premier league',
-    'epl 2025-26',
+    `epl ${club?.formerSeason || SEASON}`,
     `klasemen ${club.name.toLowerCase()}`,
     `jadwal ${club.name.toLowerCase()}`,
     `hasil ${club.name.toLowerCase()}`,
@@ -266,7 +266,7 @@ export default function EPLClub() {
         <div style={{ padding: '0 20px' }}>
           <Breadcrumbs
             items={[
-              { name: lang === 'id' ? `Liga Inggris ${SEASON}` : `Premier League ${SEASON}`, to: '/premier-league-2025-26' },
+              { name: lang === 'id' ? `Liga Inggris ${club?.formerSeason || SEASON}` : `Premier League ${club?.formerSeason || SEASON}`, to: '/premier-league-2025-26' },
               { name: club.name },
             ]}
           />

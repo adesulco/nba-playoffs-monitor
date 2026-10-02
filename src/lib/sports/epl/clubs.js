@@ -1,5 +1,6 @@
 /**
- * Premier League 2025-26 — 20 clubs source of truth.
+ * Premier League 2026-27 — 20 clubs source of truth (FORMER_CLUBS keeps
+ * relegated clubs' pages resolvable; their URLs are indexed).
  *
  * Phase 1A (v0.4.0). Structure mirrors `src/lib/sports/f1/constants.js` so
  * future sport adapters can rhyme without copy-pasting the shape.
@@ -36,13 +37,14 @@
  *   bio      — one short Bahasa paragraph for the club page "Tentang"
  *              block. Casual register — gue/lo OK, stays factual.
  *
- * 2025-26 promoted trio: Leeds, Burnley, Sunderland (Championship play-off
- * winner). Relegated from 2024-25: Leicester, Ipswich, Southampton.
+ * 2026-27 promoted trio: Coventry, Hull, Ipswich (fixturedownload + ESPN
+ * eng.1, verified 2026-10-02). Relegated from 2025-26: Burnley, West Ham,
+ * Wolves — moved to FORMER_CLUBS, not deleted.
  */
 
-export const SEASON = '2025-26';
-export const SEASON_START = '2025-08-15';
-export const SEASON_END = '2026-05-24';
+export const SEASON = '2026-27';
+export const SEASON_START = '2026-08-21';
+export const SEASON_END = '2027-05-30';
 
 export const CLUBS = [
   {
@@ -111,19 +113,6 @@ export const CLUBS = [
     bio: 'Brighton — "The Seagulls". Skautinya terkenal nyari permata murah dari seluruh dunia, terus dijual mahal ke Big Six. Gaya De Zerbi bikin Brighton possession-based sekelas atas, tim kecil dengan otak paling tajam di liga.',
   },
   {
-    slug: 'burnley',
-    espnId: '379',
-    name: 'Burnley',
-    nameId: 'Burnley',
-    city: 'Burnley',
-    founded: 1882,
-    stadium: 'Turf Moor',
-    accent: '#6C1D45',
-    handle: 'BurnleyOfficial',
-    polyAbbr: 'bur',
-    bio: 'Burnley — "The Clarets" promosi ke EPL 2025-26 setelah juara Championship. Scott Parker bangun tim disiplin yang pragmatis. Turf Moor tetap salah satu lapangan tersulit buat tim tamu — dingin, sempit, fans setia.',
-  },
-  {
     slug: 'chelsea',
     espnId: '363',
     name: 'Chelsea',
@@ -135,6 +124,19 @@ export const CLUBS = [
     handle: 'ChelseaFC',
     polyAbbr: 'che',
     bio: 'Chelsea — "The Blues" dari London Barat. Proyek Boehly kembali serius setelah Maresca ngajarin squad termuda di liga cara main bola. Juara Conference League 2025, juara Club World Cup 2025 — fondasinya makin terbentuk.',
+  },
+  {
+    slug: 'coventry',
+    espnId: '388',
+    name: 'Coventry City',
+    nameId: 'Coventry',
+    city: 'Coventry',
+    founded: 1883,
+    stadium: 'Coventry Building Society Arena',
+    accent: '#59CBE8',
+    handle: 'Coventry_City',
+    polyAbbr: 'cov',
+    bio: 'Coventry City — "The Sky Blues". Balik ke kasta tertinggi Inggris untuk 2026-27, pertama kali sejak terdegradasi pada 2001. Juara Piala FA 1987, dan pendukungnya sudah lama menunggu musim seperti ini.',
   },
   {
     slug: 'crystal-palace',
@@ -174,6 +176,32 @@ export const CLUBS = [
     handle: 'FulhamFC',
     polyAbbr: 'ful',
     bio: 'Fulham — klub London tertua, dari tepi Sungai Thames. Marco Silva bangun tim solid + possession bersih. Craven Cottage dengan cottage di sudut lapangan tetap salah satu stadion paling ikonik di liga.',
+  },
+  {
+    slug: 'hull',
+    espnId: '306',
+    name: 'Hull City',
+    nameId: 'Hull',
+    city: 'Hull',
+    founded: 1904,
+    stadium: 'MKM Stadium',
+    accent: '#F5A12D',
+    handle: 'HullCity',
+    polyAbbr: 'hul',
+    bio: 'Hull City — "The Tigers" dari Yorkshire Timur. Kembali ke Premier League untuk 2026-27; musim terakhir mereka di kasta tertinggi adalah 2016-17. Finalis Piala FA 2014.',
+  },
+  {
+    slug: 'ipswich',
+    espnId: '373',
+    name: 'Ipswich Town',
+    nameId: 'Ipswich',
+    city: 'Ipswich',
+    founded: 1878,
+    stadium: 'Portman Road',
+    accent: '#3A64A3',
+    handle: 'IpswichTown',
+    polyAbbr: 'ips',
+    bio: 'Ipswich Town — "The Tractor Boys". Juara liga Inggris 1962 dan Piala UEFA 1981. Langsung balik ke Premier League untuk 2026-27 setelah terdegradasi di 2024-25.',
   },
   {
     slug: 'leeds',
@@ -279,7 +307,31 @@ export const CLUBS = [
     polyAbbr: 'tot',
     bio: 'Tottenham — "Spurs" dari London Utara. Juara Europa League 2024-25 — trofi besar pertama sejak 2008. Thomas Frank gantiin Postecoglou, bangun tim lebih defensif. Stadion baru 62 ribu di High Road salah satu yang terbaik di Eropa.',
   },
+];
+
+// ─── Lookup maps ─────────────────────────────────────────────────────────
+/**
+ * Clubs relegated since the hub launched. Not in the season's 20 (pickers,
+ * table, search), but their club pages keep resolving and prerendering —
+ * the URLs are indexed and slugs never change.
+ */
+export const FORMER_CLUBS = [
   {
+    formerSeason: '2025-26',
+    slug: 'burnley',
+    espnId: '379',
+    name: 'Burnley',
+    nameId: 'Burnley',
+    city: 'Burnley',
+    founded: 1882,
+    stadium: 'Turf Moor',
+    accent: '#6C1D45',
+    handle: 'BurnleyOfficial',
+    polyAbbr: 'bur',
+    bio: 'Burnley — "The Clarets" promosi ke EPL 2025-26 setelah juara Championship. Scott Parker bangun tim disiplin yang pragmatis. Turf Moor tetap salah satu lapangan tersulit buat tim tamu — dingin, sempit, fans setia.',
+  },
+  {
+    formerSeason: '2025-26',
     slug: 'west-ham',
     espnId: '371',
     name: 'West Ham United',
@@ -293,6 +345,7 @@ export const CLUBS = [
     bio: 'West Ham — "The Hammers" dari London Timur. Juara Conference League 2023, tim Inggris yang konsisten di Eropa. Graham Potter bangun ulang post-Moyes, London Stadium 62 ribu fans setia meski masih debat soal pindah dari Upton Park.',
   },
   {
+    formerSeason: '2025-26',
     slug: 'wolves',
     espnId: '380',
     name: 'Wolverhampton Wanderers',
@@ -307,10 +360,10 @@ export const CLUBS = [
   },
 ];
 
-// ─── Lookup maps ─────────────────────────────────────────────────────────
-export const CLUBS_BY_SLUG = Object.fromEntries(CLUBS.map((c) => [c.slug, c]));
-export const CLUBS_BY_ESPN_ID = Object.fromEntries(CLUBS.map((c) => [c.espnId, c]));
-export const CLUBS_BY_NAME = Object.fromEntries(CLUBS.map((c) => [c.name, c]));
+const ALL_CLUBS = [...CLUBS, ...FORMER_CLUBS];
+export const CLUBS_BY_SLUG = Object.fromEntries(ALL_CLUBS.map((c) => [c.slug, c]));
+export const CLUBS_BY_ESPN_ID = Object.fromEntries(ALL_CLUBS.map((c) => [c.espnId, c]));
+export const CLUBS_BY_NAME = Object.fromEntries(ALL_CLUBS.map((c) => [c.name, c]));
 
 // ─── Bahasa formatters ───────────────────────────────────────────────────
 const MONTHS_ID = [
