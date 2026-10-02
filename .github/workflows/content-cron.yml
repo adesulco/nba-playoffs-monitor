@@ -167,6 +167,7 @@ jobs:
           # degrade.
           set -e
           TODAY=$(date -u +%Y-%m-%d)
+          export TODAY
           SPENT=$(python3 -c "
           import os, json, urllib.request, urllib.parse
           url = os.environ['SUPABASE_URL'].rstrip('/') + '/rest/v1/ce_cron_runs'
@@ -193,7 +194,7 @@ jobs:
               import sys
               print(f'0.0000', flush=True)
               print(f'WARN: budget query failed: {e}', file=sys.stderr)
-          " TODAY="$TODAY")
+          ")
           echo "Today (UTC=$TODAY) spend: \$${SPENT}"
           echo "Budget cap:               \$${BUDGET_USD}"
           OK=$(python3 -c "print('1' if float('$SPENT') < float('$BUDGET_USD') else '0')")
