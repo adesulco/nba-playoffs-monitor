@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.14 — 2026-10-02 — soccer scoreboards per day
+
+- ESPN now answers HTTP 400 to date-range soccer scoreboards (`dates=YYYYMMDD-YYYYMMDD`), which emptied the EPL hub's fixture strip and the Liga 1 rows on `/beranda`. `src/lib/espnScoreboard.js` fetches each day in parallel through the edge proxy and merges events; one failed day no longer blanks the strip.
+
 ## v0.89.13 — 2026-10-02 — dead code removed
 
 - 19 modules nothing reaches any more are deleted: the navy Pick'em kit (`primitives.jsx`, `FixtureCard`, `PickemHome`, bracket stages and state, recap cards, invite sheet, rollover banner, right rail, flags), the legacy bracket editor and share buttons, and a few orphaned components and hooks. Found by an import-graph walk from `src/main.jsx`, `api/`, `scripts/` and the tests; the `src/lib/sports` adapters stay because the prerender loads them dynamically. The audit's "two primitive kits / three bracket stacks" is down to one of each.

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CLUBS_BY_ESPN_ID } from '../lib/sports/epl/clubs.js';
 import { readCache, writeCache } from '../lib/swrCache.js';
+import { fetchSoccerEvents } from '../lib/espnScoreboard.js';
 
 // v0.11.15 SWR key + TTL. Live fixtures tick every couple minutes —
 // 2 min ceiling matches NBA scoreboard cadence. Cache key includes
@@ -68,11 +69,8 @@ export function useEPLFixtures({ daysBack = 7, daysFwd = 7 } = {}) {
         const now = new Date();
         const from = new Date(now.getTime() - daysBack * 86400000);
         const to = new Date(now.getTime() + daysFwd * 86400000);
-        const url = `/api/proxy/espn/soccer/eng.1/scoreboard?dates=${ymd(from)}-${ymd(to)}`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`scoreboard ${res.status}`);
-        const json = await res.json();
-        const events = json?.events || [];
+        // Per-day fetches: ESPN no longer accepts date ranges for soccer.
+        const events = await fetchSoccerEvents('eng.1', from, to);
 
         const up = [];
         const rec = [];
