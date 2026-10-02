@@ -1,0 +1,25 @@
+<!--
+  Supabase Auth → Emails → Templates → "Magic Link" (and "Confirm signup":
+  a first-time address gets that template instead, so paste the same body).
+  Subject: Link masuk Gibol kamu
+  Copy rules: kamu register, no money/odds vocabulary (docs/01-PRODUCT.md).
+-->
+<div style="background:#15110C;padding:32px 16px;font-family:Helvetica,Arial,sans-serif;">
+  <div style="max-width:440px;margin:0 auto;background:#241E17;border-radius:20px;padding:28px 24px;color:#FAF7F1;">
+    <div style="font-weight:800;font-size:22px;letter-spacing:-0.02em;">gibol<span style="color:#D92D1C;">.</span></div>
+    <h1 style="font-size:24px;line-height:1.15;margin:20px 0 8px;font-weight:800;">Satu tap lagi, kamu masuk.</h1>
+    <p style="font-size:15px;line-height:1.5;margin:0 0 22px;color:#CFC6B8;">
+      Tap tombol di bawah untuk masuk ke Gibol. Pick yang sudah kamu buat sebagai tamu ikut tersimpan ke akunmu.
+    </p>
+    <a href="{{ .ConfirmationURL }}"
+       style="display:block;text-align:center;background:#D92D1C;color:#ffffff;text-decoration:none;font-weight:700;font-size:16px;padding:16px;border-radius:14px;">
+      Masuk ke Gibol
+    </a>
+    <p style="font-size:12px;line-height:1.5;margin:22px 0 0;color:#9C9282;">
+      Link ini cuma berlaku sekali dan kedaluwarsa dalam 1 jam. Kalau kamu tidak minta link ini, abaikan saja email ini.
+    </p>
+  </div>
+  <p style="max-width:440px;margin:16px auto 0;text-align:center;font-size:11px;color:#9C9282;">
+    Gibol · Pick'em gratis, semua demi gengsi · gibol.co
+  </p>
+</div>

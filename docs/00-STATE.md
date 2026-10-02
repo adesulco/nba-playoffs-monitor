@@ -35,13 +35,13 @@ Last updated: **2026-10-01** · live version **v0.89.14** · branch `main` · **
 
 ## 2b · Launch readiness (checked 2026-10-02)
 
-gibol.co serves the loop in prod today. It is **not ready for a public push** until these four are closed — all are dashboard actions, about an hour in total:
+gibol.co serves the loop in prod today. It is **not ready for a public push** until these are closed — all are dashboard actions, about an hour in total:
 
 | # | Blocker | Evidence | Fix |
 |---|---|---|---|
 | 1 | RLS holes | `node scripts/rls-attack.mjs`: 15 holes; `leagues.formats` still present | Run `0022_rls_close.sql` + `0023_drop_formats.sql` (the SQL editor tab whose first line is `-- 0022`; its dialog is open) |
-| 2 | Auth email capped at **2 per hour** for the whole project | Auth → Rate Limits: `RATE_LIMIT_EMAIL_SENT = 2`, locked; Auth → Emails: custom SMTP off | Enable custom SMTP (Resend / Postmark / SES on a gibol.co sending domain), then raise the email limit |
-| 3 | Redirect allowlist lists exact URLs only | Auth → URL Configuration: `…/auth/callback`, `…?next=/bracket`, `…?next=/league` | Add `https://www.gibol.co/auth/callback**`. v0.89.8 also claims guest picks on any sign-in, so a fallback to the site root no longer loses the claim |
+| 2 | Auth email capped at **2 per hour** for the whole project | Auth → Rate Limits: `RATE_LIMIT_EMAIL_SENT = 2`, locked; Auth → Emails: custom SMTP off | Resend runbook in §2c, then raise the email limit |
+| 3 | ~~Redirect allowlist lists exact URLs only~~ **closed 2026-10-02** | Auth → URL Configuration now has `https://www.gibol.co/auth/callback**` (6 URLs). Apex and http both 308 to `https://www.gibol.co`, so every magic link's `next=` is covered | — |
 | 4 | Outstanding Supabase invoice | dashboard banner warns of service disruption | Pay it |
 
 Then one real-phone run: open `gibol.co/g/FgdGibol` signed out → pick → "Klaim pick & gabung" → magic link from the inbox → land on the grup with the pick claimed and a klasemen row. Ten minutes.
@@ -49,6 +49,38 @@ Then one real-phone run: open `gibol.co/g/FgdGibol` signed out → pick → "Kla
 **Not blocking launch:** Liga 1 (ESPN has not published 2026/27), billing (free grups cover up to 10 members), API-Football (lapsed; nothing scores on it — it is the only red provider in `/api/health/data-sources`), content engine, Mandalika.
 
 **Calendar:** close 1–4 + the phone run by Oct 7 → public push for MD6 (first lock Sat Oct 10, 18:30 WIB) → FGD on MD7–8 (Oct 17–18) as the first measured read.
+
+## 2c · Custom SMTP runbook (Resend, chosen 2026-10-02)
+
+DNS for gibol.co is at GoDaddy (`ns09/ns10.domaincontrol.com`). The root MX and SPF belong to Zoho Mail and stay untouched: Resend sends from the `send.gibol.co` subdomain for bounces/SPF and signs DKIM as `gibol.co`, which passes the existing `_dmarc` policy (`p=quarantine`, relaxed alignment).
+
+1. **Resend:** sign up at resend.com → Domains → Add domain `gibol.co`, region **Tokyo (ap-northeast-1)** (closest to Indonesia).
+2. **GoDaddy → DNS → gibol.co → Add record**, copying the exact values Resend shows (the DKIM key is unique per account):
+
+   | Type | Name (GoDaddy "Host") | Value | Priority |
+   |---|---|---|---|
+   | TXT | `resend._domainkey` | `p=MIGfMA0…` (from Resend) | — |
+   | MX | `send` | `feedback-smtp.ap-northeast-1.amazonses.com` | 10 |
+   | TXT | `send` | `v=spf1 include:amazonses.com ~all` | — |
+
+   Do **not** add a second `_dmarc` record or touch the root `@` MX/TXT rows.
+3. Resend → Verify DNS records (GoDaddy usually propagates in 5–30 min). Check from a terminal: `dig +short TXT resend._domainkey.gibol.co` and `dig +short MX send.gibol.co`.
+4. **Resend → API Keys → Create**, permission **Sending access**, domain `gibol.co`. Copy it once; it is the SMTP password.
+5. **Supabase → Auth → Emails → SMTP Settings → Enable custom SMTP:**
+
+   | Field | Value |
+   |---|---|
+   | Sender email | `masuk@gibol.co` |
+   | Sender name | `Gibol` |
+   | Host | `smtp.resend.com` |
+   | Port | `465` |
+   | Username | `resend` |
+   | Password | the Resend API key |
+   | Minimum interval per user | 60 s (default) |
+
+6. **Supabase → Auth → Rate Limits →** emails sent per hour: **100** (the field unlocks once SMTP is on; Resend's free tier is 100/day, 3,000/month, so move to Pro before a big push).
+7. **Supabase → Auth → Emails → Templates:** paste `supabase/templates/magic_link.html` into both "Magic Link" and "Confirm signup", subject `Link masuk Gibol kamu`.
+8. **Verify:** request a link at `https://www.gibol.co/masuk` to a real inbox. It must arrive from `masuk@gibol.co` within a minute, not in spam, and Resend → Emails must show it delivered. Then run the phone test below.
 
 ## 3 · Sprint log (2026-10-01)
 
