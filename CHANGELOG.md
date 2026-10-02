@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.12 — 2026-10-02 — glossary guard
+
+- The vocabulary guard enforces the doc 17 §2.4 glossary: Pick'em copy (`tx()` arguments and JSX text under `src/pickem/`) says "grup", never "league"/"liga"; competition names and template variables are exempt.
+
 ## v0.89.11 — 2026-10-02 — EPL SEO copy
 
 - The hub's SEO block (EN + ID) describes 2026-27: season dates from the fixture list, the promoted clubs, and a broadcast answer that no longer asserts this season's rights holder.
