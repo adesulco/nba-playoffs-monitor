@@ -239,9 +239,9 @@ const enContent = {
 
 // ─── EPL ─────────────────────────────────────────────────────────────
 const eplIdContent = {
-  h1: 'Liga Inggris 2025-26 — Klasemen, Jadwal, Top Skor Live',
+  h1: 'Liga Inggris 2026-27 — Klasemen, Jadwal, Top Skor Live',
   intro:
-    'Dashboard Liga Inggris (Premier League) 2025-26 dalam Bahasa Indonesia. Klasemen 20 klub dengan form 5 laga, jadwal pekan ini dalam WIB, hasil terbaru, ras Golden Boot, dan halaman individual untuk tiap klub. 380 laga, Agustus 2025 – Mei 2026.',
+    'Dashboard Liga Inggris (Premier League) 2026-27 dalam Bahasa Indonesia. Klasemen 20 klub dengan form 5 laga, jadwal pekan ini dalam WIB, hasil terbaru, ras Golden Boot, dan halaman individual untuk tiap klub. 380 laga, Agustus 2026 – Mei 2027.',
   sections: [
     {
       heading: 'Klasemen Liga Inggris Live',
@@ -256,7 +256,7 @@ const eplIdContent = {
     {
       heading: 'Top Skor — Ras Golden Boot',
       body:
-        'Top skor Premier League 2025-26 update live. Kolom Top Skor menampilkan 10 pencetak gol terbanyak dengan jumlah gol, klub, dan posisi. Sepatu Emas (Golden Boot) diberikan ke top skor di akhir musim setiap Mei.',
+        'Top skor Premier League 2026-27 update live. Kolom Top Skor menampilkan 10 pencetak gol terbanyak dengan jumlah gol, klub, dan posisi. Sepatu Emas (Golden Boot) diberikan ke top skor di akhir musim setiap Mei.',
     },
     {
       heading: 'Pilih Klub Favoritmu',
@@ -272,12 +272,12 @@ const eplIdContent = {
   faqHeading: 'Pertanyaan yang Sering Diajukan',
   faqs: [
     {
-      q: 'Kapan musim Premier League 2025-26 selesai?',
-      a: 'Musim 2025-26 berlangsung 16 Agustus 2025 – 24 Mei 2026. Total 380 laga, 38 pekan match-day. FA Cup final 16 Mei, Liga Champions final 30 Mei di Madrid.',
+      q: 'Kapan musim Premier League 2026-27 selesai?',
+      a: 'Musim 2026-27 berlangsung 21 Agustus 2026 – 30 Mei 2027. Total 380 laga dalam 38 pekan match-day. Coventry, Hull, dan Ipswich naik kasta musim ini.',
     },
     {
       q: 'Di mana nonton Premier League di Indonesia?',
-      a: 'Premier League 2025-26 disiarkan live di Vidio (full season pass) dan beberapa laga tertentu di NET, K-Vision, dan TV berbayar lainnya. Cek jadwal siaran tiap pekan.',
+      a: 'Hak siar Premier League di Indonesia dipegang mitra resmi (musim 2025-26: Vidio, dengan beberapa laga di NET dan K-Vision). Cek jadwal siaran resmi tiap pekan.',
     },
     {
       q: 'Jam berapa kickoff Premier League di WIB?',
@@ -303,9 +303,9 @@ const eplIdContent = {
 };
 
 const eplEnContent = {
-  h1: 'Premier League 2025-26 — Live Table, Fixtures, Top Scorers',
+  h1: 'Premier League 2026-27 — Live Table, Fixtures, Top Scorers',
   intro:
-    'Live Premier League 2025-26 dashboard in Bahasa Indonesia. 20-club table with 5-match form, this week\'s fixtures in WIB, latest results, the Golden Boot race, and individual pages for every club. 380 matches, August 2025 – May 2026.',
+    'Live Premier League 2026-27 dashboard in Bahasa Indonesia. 20-club table with 5-match form, this week\'s fixtures in WIB, latest results, the Golden Boot race, and individual pages for every club. 380 matches, August 2026 – May 2027.',
   sections: [
     {
       heading: 'Live Premier League Table',
@@ -320,7 +320,7 @@ const eplEnContent = {
     {
       heading: 'Top Scorers — Golden Boot Race',
       body:
-        'Live 2025-26 Premier League top scorers. The Top Scorers panel lists the 10 leading goal-scorers with goals, club, and position. The Golden Boot is awarded to the season\'s top scorer in May.',
+        'Live 2026-27 Premier League top scorers. The Top Scorers panel lists the 10 leading goal-scorers with goals, club, and position. The Golden Boot is awarded to the season\'s top scorer in May.',
     },
     {
       heading: 'Pick Your Club',
@@ -336,12 +336,12 @@ const eplEnContent = {
   faqHeading: 'Frequently Asked Questions',
   faqs: [
     {
-      q: 'When does the 2025-26 Premier League season end?',
-      a: 'The 2025-26 season runs August 16, 2025 – May 24, 2026. 380 matches across 38 match-weeks. FA Cup final May 16, Champions League final May 30 in Madrid.',
+      q: 'When does the 2026-27 Premier League season end?',
+      a: 'The 2026-27 season runs August 21, 2026 – May 30, 2027: 380 matches across 38 match-weeks. Coventry, Hull and Ipswich are the promoted clubs.',
     },
     {
       q: 'Where to watch the Premier League in Indonesia?',
-      a: 'Premier League 2025-26 streams live on Vidio (full season pass) plus select matches on NET, K-Vision, and other paid TV partners. Check weekly broadcast schedules.',
+      a: 'Premier League rights in Indonesia sit with the official broadcast partners (2025-26: Vidio, plus select matches on NET and K-Vision). Check the official weekly schedule.',
     },
     {
       q: 'What time do Premier League matches kick off in WIB?',

@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.11 — 2026-10-02 — EPL SEO copy
+
+- The hub's SEO block (EN + ID) describes 2026-27: season dates from the fixture list, the promoted clubs, and a broadcast answer that no longer asserts this season's rights holder.
+
 ## v0.89.10 — 2026-10-02 — EPL hub on 2026-27
 
 - The Premier League hub showed last season: standings requested `season=2025` and the club list was 2025-26. Standings now read `season=2026` (ESPN serves the 2026-27 table), and the 20 clubs are this season's: Coventry, Hull and Ipswich in, with bios and share cards.
