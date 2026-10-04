@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "mia-at-tor-2026-10-03",
+  "title": "Recap Miami Heat 129-105 Toronto Raptors (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Miami Heat vs Toronto Raptors (129-105) di —, 3 October 2026.",
+  "body_md": "# Miami Heat Libas Toronto Raptors 129-105, Bench Jadi Bintang\n\nMiami Heat membuka seri regular season 2026 dengan kemenangan meyakinkan atas Toronto Raptors, 129-105. Bukan kartu truf starter yang bicara malam ini, justru unit bench MIA yang mendominasi dan mengubur perlawanan Raptors jauh sebelum peluit akhir.\n\n---\n\n## Bench MIA: Gila Efisien\n\nEmpat dari lima top scorer Miami datang dari bangku cadangan, dan angka efisiensi mereka sulit dipercaya.\n\nTim Hardaway Jr. tampil 11 menit saja dari bench, tapi cetak 14 poin dengan shooting sempurna: 4-4 field goal, 3-3 dari three-point line. Pelle Larsson menyusul dengan 13 poin dalam 11 menit, lagi-lagi 3-3 from the field. Ian Schieffelin menambah 11 poin, 3 rebound dalam 10 menit dengan konversi 4-4. Tiga pemain bench, total 31 menit bermain, tidak ada satu pun tembakan yang meleset dari dua poin atau dalam.\n\nNikola Jovic jadi yang paling lengkap di antara bench unit MIA: 11 poin, 7 rebound, 4 asis dalam 17 menit. Satu-satunya top scorer MIA dari starting lineup, Andrew Wiggins, ikut solid dengan 12 poin dan 4-6 from three dalam 13 menit.\n\nMasalahnya: malam ini, starter atau bench hampir tidak ada bedanya buat Heat.\n\n---\n\n## Raptors: Produktif tapi Tidak Cukup\n\nDari sisi Toronto, RJ Barrett dan Tyreke Key sama-sama cetak 15 poin, tertinggi di tim. Barrett tampil 17 menit sebagai starter, Key 16 menit dari bench. Scottie Barnes menambah 11 poin dan Chucky Hepburn, juga dari bench, menyumbang 11 poin dan 4 rebound dalam 25 menit.\n\nAngkanya tidak buruk di atas kertas. Masalahnya ada di efisiensi tim secara keseluruhan.\n\n---\n\n## Yang Menentukan: Efisiensi vs. Volume\n\nBox score menceritakan satu cerita dengan jelas.\n\nMiami menembak 49% from the field, Toronto hanya 39%. Dari three-point line: MIA 35% (14-40) vs TOR 29% (12-41). Selisih persentase mungkin tidak terlihat besar, tapi volume tembakan Toronto yang lebih tinggi dengan hasil lebih rendah membuat mereka terus tertinggal.\n\nYang paling mencolok: free throw. MIA masuk 31 dari 36 (86%), Raptors hanya 19 dari 30 (63%). Selisih 12 poin dari free throw line saja sudah cukup untuk menjelaskan margin 24 poin di akhir.\n\nSatu catatan menarik yang tidak begitu sering terlihat: Toronto unggul steal 17 vs 9. Secara teknis Raptors lebih aktif dalam merebut bola. Tapi turnover MIA yang mencapai 25 tidak cukup dimanfaatkan, fast-break points dua tim justru identik, sama-sama 27. Raptors dapat bola lebih banyak, tapi tidak bisa mengubahnya jadi keuntungan yang nyata.\n\nRebound juga condong ke Miami: 55 vs 43.\n\n---\n\n## Konteks Seri\n\nIni baru Game 1 dari tiga pertemuan regular season antara kedua tim musim ini. Secara stakes, tidak ada yang dipertaruhkan secara langsung malam ini, tapi kemenangan 24 poin dengan bench dominan memberikan Heat modal kepercayaan diri yang signifikan untuk laga-laga berikutnya.\n\n---\n\nRekap pertandingan Miami Heat vs Toronto Raptors bisa diikuti ulang lewat NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401902644",
+    "home_team": "Toronto Raptors",
+    "home_abbr": "TOR",
+    "away_team": "Miami Heat",
+    "away_abbr": "MIA",
+    "home_score": 105,
+    "away_score": 129,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-10-03T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 1/15",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0499,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has strong structure and accurate stats, but contains two high-severity issues: unjustified Wiggins inference and awkward free-throw phrasing that strains credibility. Multiple low-medium translation tics ('lagi-lagi', filler openings) push score down. Rewrite affected sections; stats and bench analysis are solid.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Satu-satunya top scorer MIA dari starting lineup, Andrew Wiggins",
+          "fix": "Delete 'satu-satunya' qualifier or rephrase: 'Andrew Wiggins, starter MIA, ikut solid dengan 12 poin.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Tiga pemain bench, total 31 menit bermain, tidak ada satu pun tembakan yang meleset dari dua poin atau dalam.",
+          "fix": "Rephrase: 'Tiga pemain bench cetak 38 poin dari kombinasi 11-11 FG dalam 31 menit total.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pelle Larsson menyusul dengan 13 poin dalam 11 menit, lagi-lagi 3-3 from the field.",
+          "fix": "Replace 'lagi-lagi' with 'juga' or restructure: 'Pelle Larsson nyusul 13 poin dalam 11 menit dengan shooting 3-3.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Tim Hardaway Jr. tampil 11 menit saja dari bench, tapi cetak 14 poin dengan shooting sempurna: 4-4 field goal",
+          "fix": "Reorder paragraphs or vary sentence structure to avoid back-to-back identical minute counts sounding generated."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Masalahnya ada di efisiensi tim secara keseluruhan.",
+          "fix": "Delete or merge into previous sentence. Jump straight: 'Toronto cetak efisien tapi tidak cukup.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Box score menceritakan satu cerita dengan jelas.",
+          "fix": "Delete. Jump straight to: 'Miami menembak 49% from the field, Toronto hanya 39%.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selisih 12 poin dari free throw line saja sudah cukup untuk menjelaskan margin 24 poin",
+          "fix": "Minor: 'Selisih 12 poin dari free throw line menjelaskan 24-poin margin' is tighter."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa75ef5aab889ef16",
+    "published_at": "2026-10-04T02:43:23+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
