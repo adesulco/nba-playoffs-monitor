@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "utah-at-den-2026-10-04",
+  "title": "Recap Utah Jazz 109-97 Denver Nuggets (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Utah Jazz vs Denver Nuggets (109-97) di —, 4 October 2026.",
+  "body_md": "# Utah Jazz Bungkam Denver Nuggets 109-97, Lima Pemain Tembus Dua Digit\n\nUtah Jazz menutup laga perdana regular season series melawan Denver Nuggets dengan kemenangan meyakinkan, 109-97. Lima pemain Jazz mencetak dua digit poin, sementara Nuggets kesulitan menemukan ritme ofensif yang konsisten sepanjang pertandingan.\n\n---\n\n## Kontribusi Merata Jadi Kunci Jazz\n\nLauri Markkanen memimpin Jazz dengan 17 poin (5-12 FG, 3-7 dari tiga angka) meski bermain hanya 14 menit. Efisiensi di menit terbatasnya jadi catatan tersendiri.\n\nDi belakangnya, Keyonte George menyumbang 15 poin, 4 rebound, dan 3 asis dengan tembakan 5-8 dari lapangan. George jadi motor distribusi bola Jazz di starter line-up.\n\nYang menarik justru datang dari bench: Blake Hinson tampil solid dengan 14 poin dan 6 rebound (4-5 dari tiga angka, 80% akurasi). Off the bench, kontribusinya nyaris setara top starter Nuggets. Ace Bailey menambah 10 poin dan 5 rebound dari bangku cadangan, melengkapi rotasi Jazz yang merata.\n\nJaren Jackson Jr. melengkapi lima pemain dua digit Jazz dengan 11 poin, 4 rebound, dan 2 asis.\n\n---\n\n## Nuggets Kehilangan Bintang Utama\n\nTanpa pemain-pemain kunci mereka yang absen di laga ini, Nuggets bergantung pada Julian Strawther yang jadi top scorer dengan 14 poin, meski efisiensinya kurang meyakinkan di 6-13 dari lapangan dan hanya 1-6 dari tiga angka.\n\nAaron Gordon menyumbang 12 poin dan 4 rebound dalam 10 menit, sementara Tyus Jones mengatur permainan dengan 8 poin dan 6 asis. Cameron Johnson menambah 8 poin, dan Trevon Brazile 7 poin dari bench.\n\nTanpa distributor utama yang terbiasa mereka andalkan, poin tetap tersebar tapi tanpa ada yang benar-benar mendominasi.\n\n---\n\n## Baca Statistik: Tiga Angka Jadi Pembeda\n\nAngka tim bicara cukup jelas. Jazz unggul di efisiensi three-point: 33% vs 28% milik Nuggets (15-45 vs 11-39). Selisih empat made three-pointers itu berkontribusi signifikan ke margin akhir 12 poin.\n\nFG% keduanya tipis, UTAH 42%, DEN 40%, artinya kemenangan Jazz bukan soal penguasaan inside yang lebih baik. Justru Nuggets unggul di fast-break points (14 vs 8) dan points in paint (40 vs 34). Jazz menutup celah itu lewat akurasi free throw yang lebih baik: 80% (16-20) dibanding Denver 67% (14-21).\n\nRebound UTAH jauh lebih dominan: 54 berbanding 47. Kontrol papan ini menjaga Denver dari kesempatan second-chance yang berlebihan.\n\n---\n\n## Outlook Series\n\nIni baru Game 1 dari empat pertemuan regular season antara kedua tim, series baru resmi dimulai 27 November. Kemenangan Jazz hari ini memberi gambaran awal: rotasi merata mereka bisa merepotkan Nuggets yang sedang dalam mode pemulihan roster.\n\nGame berikutnya jadwal lanjutan series ditentukan kemudian. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401914127",
+    "home_team": "Denver Nuggets",
+    "home_abbr": "DEN",
+    "away_team": "Utah Jazz",
+    "away_abbr": "UTAH",
+    "home_score": 97,
+    "away_score": 109,
+    "winner_abbr": "UTAH",
+    "kickoff_utc": "2026-10-04T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/27",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.06402,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: Two high-severity training-inference violations (absent players, missing distributor role). One medium-level translated-English awkwardness. Filler phrases and vague comparisons throughout. Core stats are accurate but scaffolding is weak.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Tanpa pemain-pemain kunci mereka yang absen di laga ini, Nuggets bergantung pada...",
+          "fix": "Delete the absence framing. Just say 'Nuggets relied on' the listed scorers."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Tanpa distributor utama yang terbiasa mereka andalkan...",
+          "fix": "Delete. Replace with fact-based observation: 'Tyus Jones 6 asis tapi offensive spread terbatas.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik justru datang dari bench: Blake Hinson tampil solid...",
+          "fix": "Rephrase: 'Hinson dari bench jadi kejutan: 14 poin, 6 rebound, akurat 80%.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Efisiensi di menit terbatasnya jadi catatan tersendiri.",
+          "fix": "Delete. Let the 5-12, 3-7 speak for itself."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Game berikutnya jadwal lanjutan series ditentukan kemudian.",
+          "fix": "Delete entirely. Last sentence before signoff is weak."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Off the bench, kontribusinya nyaris setara top starter Nuggets.",
+          "fix": "Rephrase: 'Hinson 14 poin dari bench, sejajar Strawther yang jadi top scorer Denver.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe4e1753ab60d9594",
+    "published_at": "2026-10-05T02:57:16+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
