@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "gs-at-lac-2026-10-04",
+  "title": "Recap Golden State Warriors 101-104 LA Clippers (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs LA Clippers (101-104) di —, 4 October 2026.",
+  "body_md": "# LA Clippers Kejutkan Golden State 104-101 di Laga NBA yang Dramatis\n\nLA Clippers keluar sebagai pemenang dalam thriller empat kuarter, mengalahkan Golden State Warriors 104-101 di laga NBA 2026, Senin 5 Oktober 2026. Tiga poin margin, tapi Q4 nyaris chaos — lima kali lead change di menit terakhir, sebelum pertandingan ditutup dengan dua free throw di 2,5 detik terakhir. Rui Hachimura jadi bintang utama LAC dengan 21 poin.\n\n---\n\n## Performa Pemain Kunci\n\nHachimura mendominasi dengan efisiensi luar biasa: 21 poin, 5 rebound, shooting 8-11 dari lapangan dan 4-5 dari tiga poin dalam 15 menit bermain. Angka itu luar biasa untuk seorang starter dengan menit terbatas, hampir satu poin per menit, dengan akurasi tiga poin yang mematikan. Di laga yang offense-nya tidak berjalan mulus untuk keduanya, Hachimura jadi anomali.\n\nDarius Garland tambah 15 poin, 3 rebound, 6 asis. Yang paling menonjol: sempurna dari lapangan 4-4, dan sempurna dari tiga poin 3-3. Setiap kali dia attack, hasilnya masuk.\n\nKeaton Wagler off the bench punya peran berbeda: 15 poin, 6 rebound, 3 asis, tapi dengan volume yang jauh lebih besar dan menyiksa, 3-15 dari lapangan dan 1-11 dari tiga poin dalam 30 menit. Wagler berjuang keras tapi tetap hadir di papan dan clutch time.\n\nDari sisi Warriors, tidak ada pemain yang benar-benar meledak. Charles Bassey jadi top scorer dengan 12 poin dan 8 rebound off the bench dalam 16 menit, efisien (6-10 dari lapangan), tapi menit yang terbatas. Graham Ike dan Brandon Williams masing-masing 11 poin, sama-sama dari bangku cadangan.\n\nYang paling mencolok justru Stephen Curry: hanya 10 poin dari 3-4 FG dan 2-3 three-pointer dalam 13 menit sebagai starter. Menit sangat terbatas untuk seorang bintang sekaliber Curry, dan output-nya mencerminkan keterbatasan rotasi Warriors malam ini.\n\n---\n\n## Apa yang Bicara dari Box Score\n\nThree-point efficiency: LAC 11-36 (31%), GS 6-33 (18%). Itu biasanya paling menentukan, dan malam ini tidak berbeda.\n\nGS sebenarnya unggul di beberapa area: assists lebih banyak (23 vs 18), steals jauh lebih dominan (15 vs 4), dan poin di paint mengejutkan, 62 berbanding 34. Warriors menang di dalam, menang di transisi, tapi kalah di tiga poin dan free throw. LAC 29-38 di garis foul (76%), GS hanya 21-31 (68%). Turnovers? LAC malah lebih boros (22 vs 16), tapi Warriors tidak cukup memanfaatkan keunggulan itu.\n\nRebound LAC tipis lebih baik, 52 vs 49. Tidak ada yang dominan di papan, tapi cukup untuk LAC.\n\n---\n\n## Clutch Time Penuh Drama\n\nQ4 menit-menit akhir adalah yang paling berharga dari data laga ini. Skor 97-97 di menit 1:19, dari situ, lima possession menentukan segalanya. Graham Ike tip shot untuk 101-100, GS kembali di depan. Keaton Wagler step back 19 kaki untuk 101-102, LAC lagi. Pertandingan ditutup dengan dua free throw di 2,5 detik terakhir: 101-104. GS tidak punya waktu lagi.\n\nLima lead change dalam satu menit lebih, itulah mengapa skor akhir 104-101 terasa lebih dramatis dari marginnya.\n\n---\n\n## Selanjutnya\n\nIni baru laga pertama dari empat pertemuan regular season antara kedua tim. Series berikutnya dijadwalkan mulai 1 November. LAC membawa momentum dan pelajaran berharga dari laga ini, terutama bagaimana Hachimura dan Garland bisa mengeksploitasi pertahanan three-point GS yang rapuh malam ini.\n\nSaksikan laga-laga NBA lainnya live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401918010",
+    "home_team": "LA Clippers",
+    "home_abbr": "LAC",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 104,
+    "away_score": 101,
+    "winner_abbr": "LAC",
+    "kickoff_utc": "2026-10-04T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/1",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023393,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stats, natural Indonesian voice, and good clutch-time narrative. Minor soft-phrase repetition and one code-switch word; no hard violations. Passes cleanly.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Hachimura jadi bintang utama... Hachimura jadi anomali",
+          "fix": "Second instance: 'Hachimura adalah anomali' or restructure to vary connector"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Setiap kali dia attack, hasilnya masuk",
+          "fix": "'Setiap kali dia serang' or 'drive', or just 'Dia konsisten mencetak'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Apa yang Bicara dari Box Score",
+          "fix": "'Cerita Box Score' or 'Baca Statistik' — more casual"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x8f91f53510ad3fd8",
+    "published_at": "2026-10-05T02:23:06+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
