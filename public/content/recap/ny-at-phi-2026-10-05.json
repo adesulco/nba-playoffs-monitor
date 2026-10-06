@@ -1,0 +1,109 @@
+{
+  "type": "recap",
+  "slug": "ny-at-phi-2026-10-05",
+  "title": "Recap New York Knicks 97-120 Philadelphia 76ers (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — New York Knicks vs Philadelphia 76ers (97-120) di —, 5 October 2026.",
+  "body_md": "# New York Knicks vs Philadelphia 76ers 97–120\n\nPhiladelphia 76ers mengalahkan New York Knicks 120–97 dalam pertandingan regular season pada 6 Oktober 2026. Keunggulan 23 poin memberi 76ers kemenangan meyakinkan di laga pembuka seri musim reguler.\n\n## Performa Ofensif Philadelphia\n\nJaylen Brown memimpin 76ers dengan 22 poin, 2 rebound, dan 2 assist dalam 17 menit pertandingan. Caleb Love menambah 15 poin dan 6 assist dari bangku pemain, sementara VJ Edgecombe mencetak 12 poin dengan 7 assist sebagai starter. Jabari Walker dan Dillon Jones masing-masing menyumbang 11 poin; Walker juga meraih 11 rebound.\n\nPhiladelphia menembak 42 persen dari lapangan (41–97) dan 35 persen dari tiga titik (16–46). Tim ini juga menguasai garis penalti dengan 22–28 (79 persen).\n\n## Knicks Tertinggal\n\nNew York gagal merespons serangan Philadelphia. OG Anunoby dan Jalen Brunson masing-masing 12 poin untuk Knicks, sementara Landry Shamet menambah 10 poin. Mohamed Diawara dan James Wiseman berkontribusi 8 poin masing-masing.\n\nKnicks hanya menembak 38 persen dari lapangan (35–91) dan 20 persen dari tiga titik (8–41). Garis penalti mereka juga buruk di 59 persen (19–32).\n\n## Statistik Tim\n\nPhiladelphia unggul dalam assist (29 vs 23), steal (6 vs 1), dan three-pointer (16–46 vs 8–41). Kedua tim berbagi poin di cat (46 masing-masing), namun 76ers menang dalam rebound (53 vs 51) dan mengurangi kesalahan (10 turnover vs 13 Knicks).\n\n76ers melanjutkan keunggulan dengan 15 poin dalam fast-break dibanding 12 milik Knicks.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401914101",
+    "home_team": "Philadelphia 76ers",
+    "home_abbr": "PHI",
+    "away_team": "New York Knicks",
+    "away_abbr": "NY",
+    "home_score": 120,
+    "away_score": 97,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-10-05T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 10/20",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.011111,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with all numeric anchors verified correctly. Pronoun & tense discipline clean. One medium issue: 'unggul dalam' reads like English calque — rephrase to natural Indonesian. Minor connectors could vary. Passes.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Philadelphia unggul dalam assist (29 vs 23), steal (6 vs 1), dan three-pointer",
+          "fix": "Philadelphia lebih unggul dalam assist (29 vs 23), steal (6 vs 1), dan tiga angka (16-46 vs 8-41)."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Jaylen Brown memimpin 76ers dengan 22 poin ... Caleb Love menambah 15 poin",
+          "fix": "Second instance: use 'kontribusi', 'kerja keras', or reorder clauses."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Knicks hanya menembak 38 persen dari lapangan",
+          "fix": "Remove 'hanya' for neutral register."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x06506ff158f9c424",
+    "published_at": "2026-10-06T02:17:32+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 62,
+      "headline_score": 40,
+      "headline_comment": "Judul body ('New York Knicks vs Philadelphia 76ers 97–98') pakai em-dash yang dilarang, dan judul utama berisi placeholder '(Game ?)' yang bocor dari template — harus diperbaiki sebelum publish.",
+      "lead_score": 55,
+      "lead_comment": "Lead cuma restate skor tanpa angle atau drama; tidak ada hook soal siapa yang jadi kunci atau kenapa laga ini penting.",
+      "structure_score": 60,
+      "structure_comment": "Struktur section-by-section terasa seperti data dump dengan sub-heading generik — tidak ada narasi momentum, quarter-by-quarter, atau turning point meski KEY PLAYS tersedia.",
+      "voice_score": 65,
+      "voice_comment": "Bahasa cukup bersih tapi terlalu kaku dan laporan-statistik; minim code-switching NBA (steal, assist, fast-break pakai Indonesia/campur tidak konsisten) dan tidak ada kanal tayang di closing.",
+      "suggestion_count": 6,
+      "summary": "Draft is a tidy stat-summary but reads like a box-score dump: template leaked in title, banned em-dash in H1, no narrative use of the Q1-Q2 play-by-play data, and no broadcast channel in closing. Editor can ship with ~15 min of surgical fixes.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap New York Knicks 97-120 Philadelphia 76ers (Game ?)",
+          "issue": "Placeholder '(Game ?)' bocor dari template dan jelas AI-generated artifact.",
+          "fix": "Ganti judul jadi angle-driven, mis.: 'Jaylen Brown 22 Poin, 76ers Hancurkan Knicks 120-97'."
+        },
+        {
+          "priority": "high",
+          "snippet": "New York Knicks vs Philadelphia 76ers 97–120",
+          "issue": "H1 body pakai en-dash/em-dash yang dilarang voice rules.",
+          "fix": "Pakai tanda hubung biasa atau rewrite: 'Knicks Takluk 97-120 di Tangan 76ers'."
+        },
+        {
+          "priority": "high",
+          "snippet": "Keunggulan 23 poin memberi 76ers kemenangan meyakinkan di laga pembuka seri musim reguler.",
+          "issue": "Lead flat — hanya restate skor tanpa angle, nama kunci, atau momentum.",
+          "fix": "Buka dengan hook spesifik: 'Jaylen Brown cetak 22 poin dalam 17 menit saat 76ers libas Knicks 120-97 di laga pembuka seri regular season, Senin pagi WIB.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "[seluruh artikel]",
+          "issue": "KEY PLAYS block berisi 8 momen scoring Q1-Q2 tapi sama sekali tidak dipakai — missed opportunity besar untuk narasi flow laga.",
+          "fix": "Tambah paragraf singkat quarter-by-quarter: skor imbang 26-26 di Q1, 76ers mulai lepas di Q2 lewat tembakan tiga Brown dan Walker."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Philadelphia unggul dalam assist (29 vs 23), steal (6 vs 1), dan three-pointer (16–46 vs 8–41).",
+          "issue": "Gap three-point (16 vs 8) adalah cerita utama kemenangan 23 poin, tapi dipendam di paragraf statistik generik.",
+          "fix": "Angkat jadi insight: 'Selisih 24 poin dari luar garis — 76ers 16 three-pointer vs Knicks 8 — praktis jadi margin kemenangan.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "[closing paragraf]",
+          "issue": "Artikel berakhir di stat fast-break tanpa closing yang jelas; tidak ada info kanal tayang (NBA League Pass / Vidio) atau konteks apa next.",
+          "fix": "Tambah 1-2 kalimat closing: next matchup series mulai 20/10, siaran NBA League Pass dan Vidio."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
