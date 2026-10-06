@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "phx-at-det-2026-10-05",
+  "title": "Recap Phoenix Suns 107-109 Detroit Pistons (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs Detroit Pistons (107-109) di —, 5 October 2026.",
+  "body_md": "# Detroit Pistons Curi Kemenangan di Phoenix, 109-107\n\nDetroit Pistons menang dramatis 109-107 di kandang Phoenix Suns, Senin 6 Oktober 2026. Bukan kemenangan meyakinkan, tapi dua poin tetap dua poin. Pistons mengunci hasil di detik-detik terakhir setelah pertandingan sempat tampak milik Suns.\n\n---\n\n## Top Performers\n\nRonald Holland II jadi motor Detroit dari bench. Pemain ini turun 24 menit dan cetak 14 poin (4-12 FG, 1-4 3PT), 4 rebound, 1 asis. John Collins dan Paul Reed kompak dengan masing-masing 10 poin. Reed tambah 7 rebound dan 3 asis, jadi salah satu box score paling lengkap malam itu. Cade Cunningham dan Ausar Thompson sama-sama 10 poin, Thompson dengan efisiensi solid 5-8 dari lapangan.\n\nPhoenix mengandalkan Devin Booker, yang cetak 13 poin (4-7 FG, 1-4 3PT) dalam 16 menit. Itu bukan output yang diharapkan dari bintang utama tim. Dillon Brooks dan Jalen Green masing-masing 11 poin, cukup untuk membantu, tidak cukup untuk menang. Jamaree Bouyea dari bench cetak 9 poin termasuk three-pointer yang hampir membalik keadaan di detik-detik akhir.\n\n---\n\n## Membaca Angka\n\nDari box score, Phoenix sebenarnya unggul di beberapa aspek. FG% Suns 49% vs Detroit 44%. Rebound 47-35 untuk Phoenix, dominasi papan yang signifikan. Fast-break points imbang 12-12.\n\nDua angka membedakan hasil. Detroit 21 steal vs Phoenix 12 steal. Suns membuang 32 possession lewat turnover, sementara Pistons hanya 20. Itu 12 possession ekstra untuk Detroit, di laga yang diputuskan dua poin, selisih itu fatal.\n\nFree throw juga bercerita. Detroit 26-41 (63%), Phoenix 17-33 (52%). Detroit solid di garis foul, sementara Suns jauh di bawah standar. Keunggulan di late-game free throw jadi penentu.\n\n---\n\n## Eksekusi Akhir\n\nBukan satu momentum besar yang membalik pertandingan. Laga ini diputuskan oleh eksekusi akhir.\n\nRonald Holland II cetak free throw untuk Detroit. Jamaree Bouyea membalas dengan three-pointer 24 kaki untuk Phoenix. Momentum bertukar-tukar. Koa Peat dunk di detik terakhir kejar-kejaran, skor 107-107.\n\nDetik 5,8: Ebuka Okorie bikin driving layup untuk Detroit. 109-107. Suns tidak dapat peluang balas. Peluit akhir.\n\n---\n\n## Selanjutnya\n\nIni adalah game pertama dari dua pertemuan reguler season antara kedua tim musim ini. Game kedua dijadwalkan 16 Desember. Detroit bawa pulang kemenangan tipis dari road trip, dan dengan cara seperti ini, poin tambahan di klasemen pasti terasa manis.\n\nTayang ulang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401908947",
+    "home_team": "Detroit Pistons",
+    "home_abbr": "DET",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 109,
+    "away_score": 107,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-10-05T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 12/16",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021752,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article fails on two critical high-severity inference violations: it names bench players (Koa Peat, Ebuka Okorie) as game-closer heroes without verification in TOP SCORERS, and incorrectly attributes specific plays to Holland II and Bouyea that don't match the KEY PLAYS block. Additional medium issues: 'Selanjutnya' opener, academic drift, redundant section logic. Regenerate with strict fact-checking against input data only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ronald Holland II cetak free throw untuk Detroit. Jamaree Bouyea membalas dengan three-pointer 24 kaki untuk Phoenix.",
+          "fix": "Remove specific play-by-play attribution or rewrite as general momentum description: 'Detik-detik terakhir penuh pergantian momentum' — don't invent who did what."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Koa Peat dunk di detik terakhir kejar-kejaran, skor 107-107. Detik 5,8: Ebuka Okorie bikin driving layup untuk Detroit. 109-107.",
+          "fix": "Describe the sequence generically: 'Final possessions tightened the gap until Detroit secured the win' without naming bench players as heroes."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Pertandingan sempat tampak milik Suns. Itu bukan output yang diharapkan.",
+          "fix": "Delete 'sempat'. Replace 'bukan output yang diharapkan' with concrete issue: '13 poin dari bintang utama tidak cukup.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selanjutnya, ini adalah game pertama dari dua pertemuan reguler season antara kedua tim.",
+          "fix": "Delete 'Selanjutnya'. Rephrase: 'Game kedua jadwal 16 Desember. Ini baru round pertama dari dua pertemuan musim ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Laga ini diputuskan oleh eksekusi akhir. Ronald Holland II cetak free throw...",
+          "fix": "Delete first sentence or merge it into the play description. Let the subsection header stand alone."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Detroit bawa pulang kemenangan tipis dari road trip, dan dengan cara seperti ini, poin tambahan di klasemen pasti terasa manis.",
+          "fix": "Cut to: 'Detroit bawa pulang kemenangan tipis dari kandang Suns.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x984121bf31f84fb2",
+    "published_at": "2026-10-06T02:49:47+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
