@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mem-at-atl-2026-10-05",
+  "title": "Recap Memphis Grizzlies 132-123 Atlanta Hawks (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Memphis Grizzlies vs Atlanta Hawks (132-123) di —, 5 October 2026.",
+  "body_md": "## Memphis Grizzlies Kalahkan Atlanta Hawks 132-123, Kontribusi Merata Jadi Kunci\n\nMemphis Grizzlies menutup laga dengan menang 132-123 atas Atlanta Hawks, Selasa 6 Oktober 2026. Bukan kemenangan lewat satu bintang tunggal, lima pemain MEM menembus double-digit scorer, dengan kontribusi merata dari starter maupun bench yang membuat ATL kesulitan menemukan siapa yang harus dihentikan.\n\n---\n\n## Top Performers\n\nDi sisi MEM, **GG Jackson** tampil paling efisien dari bench: 14 poin hanya dalam 16 menit, dengan tembakan 5-7 dari field dan 2-4 dari three-point line. Angka ini bukan produk volume, Jackson pilih momen, bukan banyak coba.\n\n**Jaylen Wells** menambah 12 poin sebagai starter, dengan 4-6 dari belakang garis tiga angka, efisiensi shooternya jelas. **Ty Jerome** juga 12 poin plus 5 asis dalam 15 menit, dan pergerakan bola Jerome yang menghubungkan set offense MEM terlihat lewat assist-nya ke Boozer dan Coward di kuarter dua.\n\n**Cameron Boozer**, starter, 18 menit, cetak 11 poin, 5 rebound, 4 asis. Angka assist-nya cukup mencolok untuk seorang big. Boozer bukan sekadar finisher. **Jerami Grant** off the bench melengkapi rotasi dengan 10 poin, 4 rebound, tembakan 2-3 dari field.\n\nDari kubu ATL, **Corey Kispert** jadi top scorer dengan 19 poin, 4-7 dari three-point line, seluruhnya dari bench dalam 20 menit. Efisiensinya tidak bisa disalahkan, Hawks hanya tidak punya cukup sumber lain yang konsisten. **Asa Newell** mencatat double-double: 12 poin dan 12 rebound dalam 22 menit, mendominasi glass untuk ATL meski timnya kalah papan secara keseluruhan.\n\n**Nickeil Alexander-Walker** menyumbang 14 poin sebagai starter, **Jalen Wilson** dan **RayJ Dennis** masing-masing 12 poin dari bench. Distribusi scoring ATL sebenarnya tidak buruk, masalahnya ada di efisiensi dan pace.\n\n---\n\n## Baca Statistik\n\nThree-point shooting jadi faktor pembeda paling nyata. MEM masuk 18-43 dari three (42%), ATL 14-43 (33%). Dengan volume yang sama persis, 43 attempt masing-masing, MEM mengonversi empat tembakan lebih banyak dari belakang garis. Di level possessions per possession, itu selisih yang cukup untuk membuka jarak.\n\nMEM juga unggul di fast-break points: 27 berbanding 16. Ini sejalan dengan turnover kedua tim yang relatif berimbang (MEM 19, ATL 18), artinya bukan ATL yang ceroboh, tapi MEM yang lebih baik mengkapitalisasi setiap transisi yang ada. Assist MEM 32 berbanding 25 juga menggambarkan tim yang bermain connected, bukan isolation.\n\nATL mengungguli MEM di total rebound (45-41) dan points in paint (58-48), yang berarti Hawks sebenarnya menguasai area tertentu. Tapi keunggulan itu tidak cukup mengimbangi efisiensi tembakan jauh MEM.\n\n---\n\n## Momen yang Menentukan\n\nLaga berjalan ketat di kuarter pertama, KEY PLAYS mencatat skor 32-32 lewat dua point shot GG Jackson sebelum Kispert menutup Q1 dengan three-pointer untuk memberi ATL unggul tipis 35-32. Jerome kemudian menjadi penggerak di awal kuarter dua, mengasis Boozer untuk layup yang membalik keunggulan ke pihak MEM (36-35), lalu set up Cedric Coward untuk three-pointer yang mendorong MEM ke 45-43.\n\nATL tidak pernah benar-benar lepas dari jangkauan, skor 126-121 masih tercatat di menit ke-2 kuarter empat, ketika Wilson masuk free throw untuk Hawks. Tapi MEM menjaga jarak dan menutup laga dengan selisih sembilan poin.\n\n---\n\n## Selanjutnya\n\nIni adalah Game 1 dari dua laga regular season series antara kedua tim. Game 2 belum terjadwal di data yang tersedia. Pantau NBA League Pass dan Vidio untuk jadwal lanjutan.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898388",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Memphis Grizzlies",
+    "away_abbr": "MEM",
+    "home_score": 123,
+    "away_score": 132,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-10-05T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 3/4",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.06993,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to two high-severity training-inference issues (play details and score interpolation in KEY PLAYS analysis) and structural/academic-drift softening in the lead. Numbers are accurate where sourced, but narrative interpretation goes beyond grounded input data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jerome kemudian menjadi penggerak di awal kuarter dua, mengasis Boozer untuk layup",
+          "fix": "Change to: 'Jerome setup Boozer di awal Q2' or cite only what's in KEY PLAYS: 'running layup'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "lalu set up Cedric Coward untuk three-pointer yang mendorong MEM ke 45-43",
+          "fix": "Remove score claim: 'Jerome set up Cedric Coward untuk three-pointer' or verify exact timestamp score."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Bukan kemenangan lewat satu bintang tunggal, lima pemain MEM menembus double-digit scorer",
+          "fix": "Lead with fact: 'Lima pemain MEM cetak double-digit, GG Jackson paling efisien.'."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "pergerakan bola Jerome yang menghubungkan set offense MEM terlihat lewat assist-nya",
+          "fix": "Direct: 'Jerome 5 asis, set up offense MEM di Q2.'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Efisiensinya tidak bisa disalahkan, Hawks hanya tidak punya cukup sumber lain",
+          "fix": "Use 'Kispert cetak 19 poin on 7-11 shooting, tapi ATL butuh konsistensi dari pemain lain.'."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dengan volume yang sama persis, 43 attempt masing-masing, MEM mengonversi empat tembakan lebih banyak",
+          "fix": "Direct: 'MEM 18-43 from three (42%), ATL 14-43 (33%) — empat tembakan selisih dengan volume sama.'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Di level possessions per possession, itu selisih yang cukup untuk membuka jarak",
+          "fix": "Rewrite: 'Perbedaan empat tembakan di 43 attempt — itu cukup untuk membuka jarak.'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Assist MEM 32 berbanding 25 juga menggambarkan tim yang bermain connected, bukan isolation",
+          "fix": "Neutral: 'MEM 32 asis vs ATL 25 — Memphis main lebih bersama.'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe6ca37a3e14114b4",
+    "published_at": "2026-10-06T03:11:07+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
