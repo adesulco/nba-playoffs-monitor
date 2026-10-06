@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "lal-at-sac-2026-10-06",
+  "title": "Recap Los Angeles Lakers 127-103 Sacramento Kings (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Los Angeles Lakers vs Sacramento Kings (127-103) di —, 6 October 2026.",
+  "body_md": "# Lakers Bungkam Kings 127-103, Tembakan Tiga Angka Jadi Pembeda\n\nLos Angeles Lakers membuka laga pertama Regular Season Series kontra Sacramento Kings dengan kemenangan telak, 127-103, Selasa pagi 6 Oktober 2026. Doncic tidak perlu tampil luar biasa, yang bicara justru efisiensi kolektif LAL, khususnya dari luar garis tiga angka. Ini game pertama dari empat laga head-to-head regular season Lakers vs Kings musim ini, tapi Lakers langsung kasih sinyal.\n\n---\n\n## Siapa yang Tampil\n\n**Dari kubu Lakers**, Luka Doncic memimpin dengan 21 poin, 2 rebound, 3 asis dalam 16 menit bermain, efisien di tiga poin (3-9), dan tidak perlu waktu panjang untuk membuat dampak. Di belakangnya, Cameron Carr tampil produktif dari bench: 19 poin, 3 rebound, 2 asis, dengan shooting 7-13 dari lapangan dan 3-7 dari luar. Quentin Grimes menambah 16 poin dengan efisiensi tinggi (5-7 dari lapangan, 2-3 dari tiga angka), sedangkan Ziaire Williams 13 poin dengan 4-6 FG (3-3 dari tiga angka, sempurna). Jake LaRavia dari bench: 12 poin, 3 rebound, 2 asis, dengan 2-3 dari jarak jauh.\n\nLima kontributor utama LAL masing-masing cetak dua digit. Itu bukan kebetulan, itu distribusi yang terorganisir.\n\n**Dari kubu Kings**, Nique Clifford jadi yang paling konsisten: 23 poin, 9 rebound, 2 asis dari bench, dengan 8-13 dari lapangan. Darius Acuff Jr. menyumbang 19 poin dan 4 asis sebagai starter, meski shooting-nya lebih boros (8-17). Maxime Raynaud dan Daeqwon Plowden masing-masing 12 poin dari bench. Zach LaVine sebagai starter hanya mencatat 9 poin dalam 15 menit.\n\n---\n\n## Yang Menjelaskan Hasilnya\n\nDua angka ini cukup untuk menjelaskan 24 poin selisih:\n\n**LAL tembak 20-44 dari tiga angka (45%). SAC hanya 4-23 (17%).**\n\nPerbedaan tiga angka itu (45% vs 17%) yang pisahkan kedua tim. Lakers tidak perlu mendominasi di dalam garis (SAC justru unggul di points in paint, 52-40) karena mereka terus-menerus mengonversi dari luar.\n\nStatistik lain yang mendukung: LAL mencatat 29 asis berbanding 20 dari SAC, dan 15 steal berbanding 10. Turnover LAL memang lebih banyak (21 vs 27 dari SAC), tapi mereka bisa mengkompensasinya lewat fast-break points 24-16 dan efisiensi field goal keseluruhan 50% vs 45%.\n\n---\n\n## Momentum Awal\n\nAwal kuartal pertama berjalan ketat. Kings sempat memimpin tipis di menit-menit awal sebelum Lakers balik lewat Quentin Grimes dan Ziaire Williams. Satu momen yang tercatat: Luka Doncic mencetak *running jump shot* dari 25 kaki yang membawa LAL kembali unggul 19-18 di Q1, sebelum Kings lagi-lagi membalas. Ziaire Williams kemudian menutup Q1 dengan three-pointer dari 27 kaki untuk membuat LAL unggul 22-20.\n\nDetail kuarter berikutnya tidak tersedia di data, tapi skor akhir 127-103 menunjukkan Lakers melepaskan diri dengan jelas setelah periode pembuka yang kompetitif.\n\n---\n\n## Apa Selanjutnya\n\nIni game pertama dari empat laga head-to-head regular season Lakers vs Kings musim ini. Seri reguler ini berlanjut mulai November mendatang. Lakers masih punya tiga kesempatan untuk menegaskan atau kehilangan momentum ini.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898716",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Los Angeles Lakers",
+    "away_abbr": "LAL",
+    "home_score": 103,
+    "away_score": 127,
+    "winner_abbr": "LAL",
+    "kickoff_utc": "2026-10-06T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/4",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.04883,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stats and natural Bahasa. Minor tense/phrasing stiffness and one meta-comment break flow, but no voice violations trigger auto-fail. Score reflects low-severity polish issues only.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Doncic tidak perlu tampil luar biasa, yang bicara justru efisiensi kolektif LAL",
+          "fix": "Rephrase: 'Doncic tidak perlu luar biasa; yang jelas adalah efisiensi kolektif LAL.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Lima kontributor utama LAL masing-masing cetak dua digit. Itu bukan kebetulan, itu distribusi yang terorganisir.",
+          "fix": "Optional: 'Lima pemain cetak dua digit. Bukan kebetulan—itu pola.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "masing-masing 12 poin dari bench ... Zach LaVine sebagai starter hanya mencatat 9 poin",
+          "fix": "Vary: 'Raynaud dan Plowden masing-masing 12 poin ... LaVine hanya 9 poin.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Detail kuarter berikutnya tidak tersedia di data, tapi skor akhir 127-103 menunjukkan Lakers melepaskan diri",
+          "fix": "Delete the meta-comment. Just write: 'Skor 127-103 menunjukkan Lakers melepaskan diri setelah Q1 ketat.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2652e1d1a0a5df37",
+    "published_at": "2026-10-06T05:08:13+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
