@@ -92,6 +92,7 @@ DNS for gibol.co is at GoDaddy (`ns09/ns10.domaincontrol.com`). The root MX and 
 | S1 Truth | v0.87.0 | 0021 applied + EPL re-scored, 56 vectors SQL = JS, `verify-loop` 19/19, browser guest pick + invite stored |
 | S2 Platform | v0.88.0 | registry gate, Liga 1 teams + NBA 81 fixtures seeded, scanner/NBA/football runs green, entry 98 KB gzip, 4a login/create/profile in prod |
 | S3 Retention | v0.89.14 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
+| S1 exit gap closed | v0.89.15–17 (2026-10-07) | two-grup Gugur: shared pick now syncs every grup life, "Ikut Gugur di grup ini juga" CTA, board nicknames; `scripts/verify-gugur.mjs` 14/14 in prod (5 failed on v0.89.14). Funnel events restored: `pickem_grup_create/join`, `pickem_upgrade_view/start`, WA nudge as `pickem_share` |
 
 ## 3 · Open
 
