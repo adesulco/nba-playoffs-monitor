@@ -115,7 +115,9 @@ function GugurSheetInner() {
   const nextLock = mdFixtures[0]?.lock_at ? new Date(mdFixtures[0].lock_at).getTime() : null;
 
   async function pickTeam(fixture, tricode) {
-    if (saving || myMdPick) return;
+    // A matchday pick made from another grup is shared; it may be reused
+    // here only to start this grup's life (survivor-core keeps both in sync).
+    if (saving || (myMdPick && entry)) return;
     setSaving(tricode);
     setError(null);
     const res = await upsertSurvivorPick({ fixture_id: fixture.id, picked_team_id: tricode, league_id: league.id });
@@ -123,7 +125,7 @@ function GugurSheetInner() {
     if (!res.ok) {
       setError(
         res.error === 'team_already_used'
-          ? tx('You already used that team.', 'Tim itu udah pernah kamu pakai.')
+          ? tx('You already used that team (here or in another Gugur grup).', 'Tim itu udah pernah kamu pakai (di sini atau di grup Gugur lain).')
           : res.error === 'fixture locked'
             ? tx('That match is locked.', 'Laga itu udah terkunci.')
             : tx('Save failed. Try again.', 'Gagal simpan. Coba lagi.')
@@ -212,6 +214,25 @@ function GugurSheetInner() {
                 <p style={S.calmMeta}>
                   {tx('Locked at kickoff. Survive and pick again next week.', 'Terkunci pas kickoff. Bertahan, lalu pilih lagi pekan depan.')}
                 </p>
+                {!entry && myMdPick.picked_team_id && (
+                  <>
+                    <p style={S.calmMeta}>
+                      {tx(
+                        'You made this pick in another grup. One pick counts for every grup you play Gugur in.',
+                        'Pilihan ini kamu buat di grup lain. Satu pilihan berlaku di semua grup tempat kamu main Gugur.'
+                      )}
+                    </p>
+                    <button
+                      type="button"
+                      style={S.cta}
+                      disabled={saving != null}
+                      onClick={() => pickTeam({ id: myMdPick.fixture_id }, myMdPick.picked_team_id)}
+                    >
+                      {tx('Play Gugur in this grup too', 'Ikut Gugur di grup ini juga')}
+                    </button>
+                    {error && <p style={S.error}>{error}</p>}
+                  </>
+                )}
               </div>
             )}
 

@@ -2,6 +2,12 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.15 — 2026-10-07 — two-grup Gugur
+
+- A Gugur pick is one shared row per matchday, but each grup keeps its own used-team list. A pick made from grup B left grup A's list on the old team, so A wrongly refused switching back and would later have allowed a real reuse. `upsert-survivor-pick` now plans the pick with `survivor-core.js` and writes it to every alive life the user holds in that competition; a team used in any alive grup is refused.
+- The Gugur sheet no longer strands a member whose matchday pick was made in another grup: it explains the shared pick and offers "Ikut Gugur di grup ini juga" to start this grup's life with it.
+- `scripts/verify-gugur.mjs` is the doc 17 S1 two-grup exit check against prod (failed 5 of 13 before this release). `scripts/rls-attack.mjs` now also probes the three leaderboard views (closed by `0024_leaderboard_views_close.sql`, awaiting apply).
+
 ## v0.89.14 — 2026-10-02 — soccer scoreboards per day
 
 - ESPN now answers HTTP 400 to date-range soccer scoreboards (`dates=YYYYMMDD-YYYYMMDD`), which emptied the EPL hub's fixture strip and the Liga 1 rows on `/beranda`. `src/lib/espnScoreboard.js` fetches each day in parallel through the edge proxy and merges events; one failed day no longer blanks the strip.

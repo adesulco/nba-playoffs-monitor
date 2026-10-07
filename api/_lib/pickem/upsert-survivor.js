@@ -19,6 +19,7 @@
  * Response: { ok: true, prediction, survivor_entry }
  */
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
+import { planSurvivorPick } from './survivor-core.js';
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -68,14 +69,17 @@ export default async function handler(req, res) {
   }
   const pickedOutcome = picked_team_id === fx.home_team ? 'H' : 'A';
 
-  // 3) Life in this grup.
-  const { data: entry } = await admin
+  // 3) Every life the user holds in this competition: the pick is shared,
+  //    so it is checked against and written to all of them (survivor-core).
+  const { data: entries, error: entErr } = await admin
     .from('survivor_entries')
-    .select('id, status, used_team_ids')
+    .select('id, league_id, status, used_team_ids')
     .eq('user_id', user.id)
-    .eq('league_id', league_id)
-    .maybeSingle();
-  if (entry?.status === 'out') return res.status(409).json({ error: 'survivor_eliminated' });
+    .eq('competition', fx.league);
+  if (entErr) return res.status(500).json({ error: entErr.message });
+  if ((entries || []).find((e) => e.league_id === league_id)?.status === 'out') {
+    return res.status(409).json({ error: 'survivor_eliminated' });
+  }
 
   // 4) The matchday's current survivor pick (any fixture): its team is
   //    released when the pick changes, so a second thought before lock
@@ -96,8 +100,12 @@ export default async function handler(req, res) {
     const team = p.picked_outcome === 'H' ? f.home_team : p.picked_outcome === 'A' ? f.away_team : null;
     if (team) releasedTeams.add(team);
   }
-  const used = (entry?.used_team_ids || []).filter((t) => !releasedTeams.has(t));
-  if (used.includes(picked_team_id)) return res.status(409).json({ error: 'team_already_used' });
+  const plan = planSurvivorPick({
+    entries: entries || [], leagueId: league_id, pickedTeam: picked_team_id, releasedTeams: [...releasedTeams],
+  });
+  if (plan.error) {
+    return res.status(409).json({ error: plan.error, ...(plan.league_id !== league_id ? { other_grup: true } : {}) });
+  }
 
   // 5) Clear any other survivor_pick on this matchday, then upsert the pick.
   const otherIds = (currentPicks || []).map((p) => p.fixture_id).filter((id) => id !== fixture_id);
@@ -115,24 +123,26 @@ export default async function handler(req, res) {
     .maybeSingle();
   if (predErr) return res.status(500).json({ error: predErr.message });
 
-  // 6) Upsert the life with the released-then-added team list.
-  const nextUsed = [...used, picked_team_id];
-  let survivorEntry;
-  if (!entry) {
+  // 6) Write the plan: every alive life gets the released-then-added list,
+  //    and this grup's life is created on its first pick.
+  let survivorEntry = null;
+  const now = new Date().toISOString();
+  for (const u of plan.updates) {
+    const { data: updated, error: updErr } = await admin
+      .from('survivor_entries')
+      .update({ used_team_ids: u.used_team_ids, updated_at: now })
+      .eq('id', u.id)
+      .select('*').single();
+    if (updErr) return res.status(500).json({ error: updErr.message });
+    if (u.league_id === league_id) survivorEntry = updated;
+  }
+  if (plan.create) {
     const { data: created, error: createErr } = await admin
       .from('survivor_entries')
-      .insert({ user_id: user.id, league_id, competition: fx.league, status: 'alive', used_team_ids: nextUsed })
+      .insert({ user_id: user.id, league_id, competition: fx.league, status: 'alive', used_team_ids: plan.create.used_team_ids })
       .select('*').single();
     if (createErr) return res.status(500).json({ error: createErr.message });
     survivorEntry = created;
-  } else {
-    const { data: updated, error: updErr } = await admin
-      .from('survivor_entries')
-      .update({ used_team_ids: nextUsed, updated_at: new Date().toISOString() })
-      .eq('id', entry.id)
-      .select('*').single();
-    if (updErr) return res.status(500).json({ error: updErr.message });
-    survivorEntry = updated;
   }
 
   return res.status(200).json({ ok: true, prediction, survivor_entry: survivorEntry });
