@@ -50,6 +50,8 @@ Then one real-phone run: open `gibol.co/g/FgdGibol` signed out → pick → "Kla
 
 **Calendar:** close 1–4 + the phone run by Oct 7 → public push for MD6 (first lock Sat Oct 10, 18:30 WIB) → FGD on MD7–8 (Oct 17–18) as the first measured read.
 
+**Re-checked 2026-10-07:** `rls-attack` still 15 holes and `leagues.formats` still present (0022/0023 not applied); no Resend DNS records on `send.gibol.co` / `resend._domainkey` yet (SMTP not started); invoice unknown from here. `verify-loop` passes, every workflow green for days, content cron now generates and commits NBA recaps (Anthropic key confirmed valid), MD6 (10 fixtures, first lock Oct 10 11:30 UTC) and MD7 seeded. ESPN `idn.1` still on the 2025-26 calendar.
+
 ## 2c · Custom SMTP runbook (Resend, chosen 2026-10-02)
 
 DNS for gibol.co is at GoDaddy (`ns09/ns10.domaincontrol.com`). The root MX and SPF belong to Zoho Mail and stay untouched: Resend sends from the `send.gibol.co` subdomain for bounces/SPF and signs DKIM as `gibol.co`, which passes the existing `_dmarc` policy (`p=quarantine`, relaxed alignment).
@@ -99,7 +101,7 @@ DNS for gibol.co is at GoDaddy (`ns09/ns10.domaincontrol.com`). The root MX and 
 - Supabase dashboard shows an **outstanding invoice** banner (service-disruption warning). Pay before MD6.
 
 - **S1 Truth (Oct 4–10, before MD6 on Oct 10 18:30 WIB):** migrations `0021_scoring_v1.sql` and `0022_rls_close.sql` (Ade applies in the SQL editor), scoring parity vectors, `predict.js` writes `matchday` + `last_predicted_at`, join-on-confirm + claim-on-login + guest CTA, copy changes, `useProvisionalPoints` rendered. EPL MW1–5 were scored under the old 8/5/3 rules; S1 re-scores EPL once via the admin `score` action (allowed: no user has seen EPL points).
-- `Content Engine - Cron` **fixed 2026-10-02**: every run died in the budget guard (`TODAY` passed as an argument, not an env var), not on the key. Dispatched `nba-recaps` run is green (spend read, 0 articles in the NBA offseason). Whether the Anthropic key is still valid shows on the first run that actually generates an article.
+- `Content Engine - Cron` **fixed 2026-10-02**: every run died in the budget guard (`TODAY` passed as an argument, not an env var), not on the key. Dispatched `nba-recaps` run is green (spend read, 0 articles in the NBA offseason). Key confirmed valid: scheduled runs since 2026-10-03 generate and commit NBA recaps.
 - ~~`WC2026` / `AFF2026` in the backfill matrix~~ done: the matrix is the registry `activeFeeds` (EPL, Liga 1, NBA).
 
 ## 3b · Manual grant runbook (until billing lands, doc 17 S4)
