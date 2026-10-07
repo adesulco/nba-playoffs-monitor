@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-cha-2026-10-06",
+  "title": "Recap Brooklyn Nets 124-90 Charlotte Hornets (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Charlotte Hornets (124-90) di —, 6 October 2026.",
+  "body_md": "# Brooklyn Nets Hajar Charlotte Hornets 124-90 dalam Laga Pembuka Seri Regular Season\n\nBrooklyn Nets membuka seri regular season melawan Charlotte Hornets dengan dominasi penuh, menang 124-90, selisih 34 poin yang berbicara sendiri. Laga ini bukan pertarungan, ini peragaan. BKN tampil lebih tajam di kedua sisi lapangan dan Charlotte nyaris tidak pernah menemukan ritme yang cukup untuk bersaing.\n\n## Performa Individu: BKN Merata, CHA Tanpa Playmaker\n\nBrooklyn tidak butuh satu pemain yang meledak, mereka menang lewat kedalaman. Michael Porter Jr. memimpin skuad dengan 16 poin, 5 rebound, dan 2 asis dengan tembakan yang sangat efisien: 6-9 dari lapangan, 4-6 dari garis tiga angka dalam 17 menit. Julius Randle menambah 13 poin, 3 asis, dan ikut panas dari luar dengan 2-3 dari garis tiga.\n\nYang menarik: tiga pemain bench BKN masuk dan langsung berdampak. Nolan Traore mencetak 10 poin dengan tembakan 3-4 dari lapangan dalam hanya 10 menit. Danny Wolf mengisi peran fasilitator, 9 poin, 5 asis, efisien 3-4 dari lapangan. Drake Powell menambah 9 poin dengan shooting 4-6.\n\nCharlotte memiliki beberapa pemain yang berjuang keras, tapi tanpa koneksi antar lini. Liam McNeeley jadi top scorer tim dengan 14 poin, efisien 5-8 dari lapangan, 4-6 dari tiga angka, tapi nol asis menggambarkan situasi Hornets malam ini: individu bermain sendiri-sendiri. Naz Reid (13 poin, 4 rebound) dan Grayson Allen (13 poin, 3-3 dari tiga angka) ikut menyumbang, tapi ketiganya tidak menghasilkan satu pun asis kombinasi, sinyal jelas bahwa offense CHA berjalan dalam isolasi.\n\n## Baca Statistik: BKN Unggul di Hampir Setiap Kategori\n\nAngka tim menceritakan cerita yang lebih lengkap. Brooklyn menembak 55% dari lapangan dibanding Charlotte yang hanya 40%, selisih efisiensi yang langsung terasa di skor. Dari garis tiga, BKN 54% (20-37) versus CHA 44% (16-36).\n\nTapi dua angka yang benar-benar menentukan laga ini:\n\n**Turnover:** BKN 14, CHA 25. Charlotte menyerahkan bola 11 kali lebih sering, dan Brooklyn memanfaatkannya.\n\n**Fast-break points:** BKN 25, CHA 6. Setiap kali Charlotte kehilangan bola, Nets berlari. Selisih 19 poin dari fast break hampir setara dengan selisih akhir skor.\n\nPoints in paint juga satu arah: BKN 44, CHA 22. Di dalam dan di luar, Charlotte tidak menemukan jawaban.\n\n## Momen Penentu\n\nSeri ini terbuka relatif ketat, skor 8-8 di kuarter pertama sebelum BKN mulai melepas diri. Michael Porter Jr. membuka keunggulan dengan three-pointer 24 kaki (dibantu Randle) untuk 11-10, lalu Randle membalas dengan three-pointer 25 kaki (dibantu Porter) untuk 14-12. Dari sana BKN tidak pernah melepas kendali. Ketika Charlotte sempat memimpin 36-33 di kuarter kedua lewat tembakan tiga Dennis Schroder, Randle kembali menjawab, three-pointer 25 kaki lagi untuk mengubah skor menjadi 38-36 sebelum BKN menutup paruh pertama dan tidak menoleh ke belakang.\n\n## Selanjutnya\n\nIni laga pertama dari seri regular season empat pertandingan, series baru resmi dimulai 21 Oktober. Jika Brooklyn mempertahankan pola turnover-to-fast-break seperti malam ini, Charlotte perlu jawaban yang lebih fundamental dari sekadar memperbaiki shooting percentage.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401901820",
+    "home_team": "Charlotte Hornets",
+    "home_abbr": "CHA",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 90,
+    "away_score": 124,
+    "winner_abbr": "BKN",
+    "kickoff_utc": "2026-10-06T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 10/21",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0691,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail on training-inference violation (Schroder) and translated-English drift ('Yang menarik'). Pronoun error ('ketiganya' for two people). Otherwise strong stats grounding and natural recap tone; high medium-severity issues prevent pass.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dennis Schroder makes 26-foot three pointer (score 33-36)",
+          "fix": "Remove Schroder reference; describe the moment as 'Charlotte sempat memimpin 36-33' without naming the scorer."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Yang menarik: tiga pemain bench BKN masuk dan langsung berdampak.",
+          "fix": "Use 'Depth BKN terukur: tiga pemain bench langsung berdampak' or just cut the connector."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka tim menceritakan cerita yang lebih lengkap.",
+          "fix": "Replace with 'Angka tim mengonfirmasi dominasi BKN' or jump straight to stats."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "three-pointer 25 kaki...three-pointer 25 kaki lagi",
+          "fix": "Second mention: 'Randle kembali menjawab dari arc untuk mengubah skor menjadi 38-36'."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Naz Reid (13 poin, 4 rebound) dan Grayson Allen (13 poin, 3-3 dari tiga angka) ikut menyumbang, tapi ketiganya tidak menghasilkan satu pun asis kombinasi",
+          "fix": "Replace 'ketiganya' with 'keduanya'."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "series baru resmi dimulai 21 Oktober",
+          "fix": "Current phrasing acceptable; no change needed."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Charlotte perlu jawaban yang lebih fundamental dari sekadar memperbaiki shooting percentage",
+          "fix": "Rephrase: 'Charlotte's turnover rate (25 vs 14) is the real problem, not just 40% shooting'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Rename section to 'Pertandingan Berikutnya' or 'Series Outlook'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa6bedfab54ddd498",
+    "published_at": "2026-10-07T02:20:59+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 55,
+      "headline_comment": "Judul tidak sepenuhnya salah tapi lemah — kata 'Hajar' kuat, namun 'Game ?' di title asli adalah placeholder yang bocor, dan 'Laga Pembuka Seri Regular Season' tidak akurat karena series baru mulai 21 Oktober.",
+      "lead_score": 78,
+      "lead_comment": "Lead efektif dengan angka selisih dan frasa 'bukan pertarungan, ini peragaan', tapi 'membuka seri regular season' menyesatkan karena data jelas menyebut series starts 10/21.",
+      "structure_score": 82,
+      "structure_comment": "Alur Individu → Statistik → Momen → Selanjutnya solid dan khas recap NBA, tapi 'Momen Penentu' seharusnya naik lebih tinggi untuk memberi narasi sebelum data tim.",
+      "voice_score": 76,
+      "voice_comment": "Register oke dan code-switching natural (fast break, three-pointer, turnover), tapi 'berbicara sendiri' klise terjemahan dan beberapa frasa seperti 'sinyal jelas bahwa' terasa over-explaining.",
+      "suggestion_count": 6,
+      "summary": "Solid recap with strong statistical storytelling and clean voice, but has a critical framing error: this is clearly a preseason tune-up (series starts 10/21 per input), yet article treats it as a series opener. Headline also leaked a '(Game ?)' placeholder. Fix framing + headline and this ships.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "membuka seri regular season melawan Charlotte Hornets",
+          "issue": "Framing 'membuka seri' bertabrakan dengan data input yang menyatakan series baru dimulai 21 Oktober — ini preseason/exhibition, bukan Game 1 series.",
+          "fix": "Reframe sebagai laga pramusim atau tune-up jelang series 21 Oktober; hapus 'laga pembuka seri' dari judul dan lead."
+        },
+        {
+          "priority": "high",
+          "snippet": "Recap Brooklyn Nets 124-90 Charlotte Hornets (Game ?)",
+          "issue": "Judul mentah dengan placeholder '(Game ?)' bocor ke output — langsung ketahuan sebagai artefak sistem.",
+          "fix": "Ganti dengan judul final tanpa placeholder, misal: 'Nets Libas Hornets 124-90, Fast Break Jadi Pembeda'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "selisih 19 poin dari fast break hampir setara dengan selisih akhir skor",
+          "issue": "Klaim bagus tapi matematika agak longgar (selisih skor 34, fast break 19) — bisa dibaca editor sebagai overclaim.",
+          "fix": "Reframe: 'fast break menyumbang lebih dari separuh selisih akhir' atau sebutkan juga paint differential 22 poin."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Grayson Allen (13 poin, 3-3 dari tiga angka) ikut menyumbang, tapi ketiganya tidak menghasilkan satu pun asis kombinasi",
+          "issue": "Klaim 'tidak satu pun asis kombinasi' adalah inferensi dari data assist=0, bukan fakta tercatat — bisa salah bila ada asis antar mereka yang tidak masuk top-5.",
+          "fix": "Lebih aman: 'total nol asis dari ketiga top scorer' — deskripsi faktual tanpa klaim kombinasi."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Charlotte memiliki beberapa pemain yang berjuang keras, tapi tanpa koneksi antar lini",
+          "issue": "Analisis bagus tapi 'berjuang keras' adalah hedge klise sport-writer; data assist 19 vs 31 sudah berbicara lebih keras.",
+          "fix": "Buka langsung dengan rasio asis: 'Charlotte hanya mencatat 19 asis dari 28 field goal — tanda offense berjalan dalam isolasi.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "selisih 34 poin yang berbicara sendiri",
+          "issue": "'Berbicara sendiri' adalah terjemahan harfiah dari 'speaks for itself', tidak natural dalam Bahasa.",
+          "fix": "Ganti: 'selisih 34 poin yang sulit diperdebatkan' atau cukup hapus klausa dan biarkan angkanya berdiri sendiri."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
