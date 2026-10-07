@@ -3,10 +3,14 @@
  * and approving them needs a Season Pass. Prices come from pricing.js;
  * until billing ships the order goes through VITE_ORDER_URL.
  */
+import { useEffect } from 'react';
 import { PRICING, formatRupiah } from '../pricing.js';
+import { evUpgradeView, evUpgradeStart } from '../../lib/pickemEvents.js';
 
-export default function UpgradeSheet4a({ open, onClose, grupName, lang = 'en' }) {
+export default function UpgradeSheet4a({ open, onClose, grupName, lang = 'en', trigger = 'cap' }) {
   const tx = (en, id) => (lang === 'id' ? id : en);
+  // Upgrade funnel (pickemEvents): one view per opening, start on the CTA.
+  useEffect(() => { if (open) evUpgradeView(trigger); }, [open, trigger]);
   if (!open) return null;
   const tiers = [PRICING.season, PRICING.lifetime];
   return (
@@ -32,7 +36,7 @@ export default function UpgradeSheet4a({ open, onClose, grupName, lang = 'en' })
           ))}
         </div>
         {PRICING.orderUrl ? (
-          <a href={PRICING.orderUrl} target="_blank" rel="noopener noreferrer" style={S.cta}>
+          <a href={PRICING.orderUrl} target="_blank" rel="noopener noreferrer" style={S.cta} onClick={() => evUpgradeStart(trigger)}>
             {tx('Get a Season Pass →', 'Ambil Season Pass →')}
           </a>
         ) : (

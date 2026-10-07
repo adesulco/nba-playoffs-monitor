@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.16 — 2026-10-07 — funnel events back
+
+- The 4a rebuild dropped the call sites of half the documented Pick'em funnel (`src/lib/pickemEvents.js`). Grup create and join now fire `pickem_grup_create` (template, competition) and `pickem_grup_join` (pending) from the api.js seam, replacing the parameterless `pickem_group_created` / `pickem_group_joined`. The upgrade sheet fires `pickem_upgrade_view` on open and `pickem_upgrade_start` on the order CTA. The WhatsApp "ingatkan" nudge counts as `pickem_share` (card `nudge`, via `wa`), next to the share cards. `pickem_upgrade_success` waits for billing (S4); `pickem_rollover_accept` has no screen yet.
+
 ## v0.89.15 — 2026-10-07 — two-grup Gugur
 
 - A Gugur pick is one shared row per matchday, but each grup keeps its own used-team list. A pick made from grup B left grup A's list on the old team, so A wrongly refused switching back and would later have allowed a real reuse. `upsert-survivor-pick` now plans the pick with `survivor-core.js` and writes it to every alive life the user holds in that competition; a team used in any alive grup is refused.

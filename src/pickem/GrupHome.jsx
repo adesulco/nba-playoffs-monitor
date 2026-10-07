@@ -34,6 +34,7 @@ import { useApp } from '../lib/AppContext.jsx';
 import SEO from '../components/SEO.jsx';
 import { saveGuestInvite } from './guestStore.js';
 import { shareCard } from './share.js';
+import { trackEvent } from '../lib/analytics.js';
 import { computeProvisional } from './useProvisionalPoints.js';
 
 import { avatarColor } from './avatar.js';
@@ -357,7 +358,7 @@ function GrupHomeInner() {
                   : tx('remind them', 'ingatkan mereka')}
               </div>
             </div>
-            <a href={waHref} target="_blank" rel="noopener noreferrer" style={S.waPill}>
+            <a href={waHref} target="_blank" rel="noopener noreferrer" style={S.waPill} onClick={() => trackEvent('pickem_share', { card: 'nudge', via: 'wa' })}>
               <IconWhatsApp size={14} /> {tx('via WA', 'via WA')}
             </a>
           </div>

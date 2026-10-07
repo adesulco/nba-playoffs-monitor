@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabase.js';
 import { trackEvent } from '../lib/analytics.js';
+import { evGrupCreate, evGrupJoin } from '../lib/pickemEvents.js';
 import { defaultCompetitionKey } from './competitions.js';
 
 // F-010 — Pick'em conversion analytics. trackEvent is consent-gated (no-op
@@ -234,7 +235,7 @@ export async function createGrup(payload) {
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
-    trackEvent('pickem_group_created', { competition: payload?.competition });
+    evGrupCreate({ template: payload?.scoring_config?.template, competition: payload?.competition });
     invalidateReads('list-grups');
     return { ok: true, ...data };
   } catch (err) {
@@ -260,7 +261,7 @@ export async function joinGrup({ leagueId, inviteCode }) {
     });
     const data = await readJson(res);
     if (!res.ok) return { ok: false, error: normalizeError(res, data) };
-    trackEvent('pickem_group_joined');
+    evGrupJoin({ pending: !!data?.pending });
     invalidateReads('league-detail', 'list-grups', 'list-leaderboard');
     return { ok: true, ...data };
   } catch (err) {
