@@ -61,21 +61,26 @@ export default async function handler(req, res) {
   //    returns rank + points + exact_count + tiebreak data.
   const { data: lbRow } = await admin
     .from('leaderboard_competition')
-    .select('rank, points, exact_count, first_submitted_at')
+    // 0021 views: first_submitted_at is gone (asking for it failed the
+    // query, so rank and points always read empty until 2026-10-07).
+    .select('rank, points, exact_count, nyaris_count')
     .eq('competition', competition)
     .eq('user_id', user.id)
     .maybeSingle();
 
-  // 3) Accuracy: scored predictions where base_points > 0 / total scored.
+  // 3) Accuracy: Spec v1 "correct" = tier exact/margin/result, the same
+  //    rule pickem_points_for uses (nyaris earns a point but is a wrong
+  //    result). Void picks don't count either way.
   const { data: scoredRows } = await admin
     .from('predictions')
-    .select('base_points', { count: 'exact' })
+    .select('tier', { count: 'exact' })
     .eq('user_id', user.id)
     .eq('league', competition)
     .not('scored_at', 'is', null);
 
-  const totalScored = scoredRows?.length ?? 0;
-  const correctCount = (scoredRows || []).filter((r) => (r.base_points ?? 0) > 0).length;
+  const counted = (scoredRows || []).filter((r) => r.tier && r.tier !== 'void');
+  const totalScored = counted.length;
+  const correctCount = counted.filter((r) => ['exact', 'margin', 'result'].includes(r.tier)).length;
   const accuracyPct = totalScored > 0 ? Math.round((correctCount / totalScored) * 100) : null;
 
   // 4) Streak.
@@ -84,6 +89,9 @@ export default async function handler(req, res) {
     .select('current_streak, longest_streak, last_matchday')
     .eq('user_id', user.id)
     .eq('competition', competition)
+    // One row per kind since 0021; without this maybeSingle() errors as soon
+    // as both exist. 'correct' is the streak that pays and the Papan board.
+    .eq('kind', 'correct')
     .maybeSingle();
 
   // 5) Badges — earned (joined with catalog) + full catalog for the gallery
@@ -135,6 +143,7 @@ export default async function handler(req, res) {
       points: lbRow?.points ?? 0,
       rank: lbRow?.rank ?? null,
       exact_count: lbRow?.exact_count ?? 0,
+      nyaris_count: lbRow?.nyaris_count ?? 0,
       accuracy_pct: accuracyPct,
       total_scored: totalScored,
       correct_count: correctCount,

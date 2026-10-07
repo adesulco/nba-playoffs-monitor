@@ -2,6 +2,11 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.18 — 2026-10-07 — profile stats + schema sweep
+
+- `/profil` showed 0 points and no national rank for everyone: `list-profile` asked `leaderboard_competition` for `first_submitted_at`, which the 0021 views dropped, so the query failed. It reads `rank, points, exact_count, nyaris_count`. The streak tile reads the `correct` streak (one row per kind since 0021; the unfiltered read errored once both kinds existed). Accuracy counts exact/margin/result tiers as correct, the same rule as the SQL engine: a nyaris point is a wrong result, and void picks are left out.
+- `scripts/check-api-columns.mjs` probes every literal API select against the prod schema (limit 0). It found both this and the v0.89.17 Gugur names bug. The Health watch workflow runs it daily at 01:17 UTC.
+
 ## v0.89.17 — 2026-10-07 — Gugur board names
 
 - The Gugur board listed every member as an 8-character id prefix: `survivor-board` asked `profiles` for a `username` column that does not exist, so the whole name query failed. It reads `nickname` only and falls back to "Pemain xxxx" like the grup page. `verify-gugur.mjs` now checks the board shows the nickname.

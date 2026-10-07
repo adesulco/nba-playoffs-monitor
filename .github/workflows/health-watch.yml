@@ -13,6 +13,8 @@ name: Health watch
 on:
   schedule:
     - cron: '*/30 * * * *'
+    # Daily: API selects vs the prod schema (scripts/check-api-columns.mjs).
+    - cron: '17 1 * * *'
   workflow_dispatch:
 
 permissions:
@@ -47,3 +49,20 @@ jobs:
             exit 1
           fi
           echo "ok: scoring.ok=$scoring_ok"
+
+  # A select naming a missing column fails the whole query and the screen
+  # shows zeros (2026-10-07: Gugur board names, profile rank/points).
+  api-columns:
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '17 1 * * *'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Probe every API select against prod
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/check-api-columns.mjs
