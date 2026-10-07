@@ -120,6 +120,11 @@ async function main() {
     record('forge a badge', true,
       (await user.from('user_badges').insert({ user_id: uid, badge_code: 'juara_grup', competition: open.league })).error);
     record('anon reads league_members', true, (await anon.from('league_members').select('user_id').limit(1)).error);
+    // 0024: the leaderboard views are server-only (they used to bypass RLS).
+    for (const v of ['leaderboard_league', 'leaderboard_competition', 'leaderboard_matchday']) {
+      record(`anon reads ${v}`, true, (await anon.from(v).select('user_id').limit(1)).error);
+      record(`user reads ${v}`, true, (await user.from(v).select('user_id').limit(1)).error);
+    }
     const tier = await user.rpc('pickem_tier', { p_picked_outcome: 'H', p_picked_home: 2, p_picked_away: 1, p_home_score: 2, p_away_score: 1 });
     record('control: pure helper pickem_tier callable', false, tier.error, `→ ${tier.data}`);
   } finally {

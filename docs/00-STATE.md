@@ -39,10 +39,10 @@ gibol.co serves the loop in prod today. It is **not ready for a public push** un
 
 | # | Blocker | Evidence | Fix |
 |---|---|---|---|
-| 1 | RLS holes | `node scripts/rls-attack.mjs`: 15 holes; `leagues.formats` still present | Run `0022_rls_close.sql` + `0023_drop_formats.sql` (the SQL editor tab whose first line is `-- 0022`; its dialog is open) |
+| 1 | RLS holes | 0022 + 0023 **applied 2026-10-07** (12/12 + formats-gone checks true, `rls-attack` held, `verify-loop` 19/19, parity 56/56). Same day the Supabase Advisor flagged the three leaderboard views as SECURITY DEFINER: anon could read every grup's roster and points. `rls-attack` now checks them (6 holes) | Apply `0024_leaderboard_views_close.sql`, then `node scripts/rls-attack.mjs` must print "RLS posture holds" |
 | 2 | Auth email capped at **2 per hour** for the whole project | Auth → Rate Limits: `RATE_LIMIT_EMAIL_SENT = 2`, locked; Auth → Emails: custom SMTP off | Resend runbook in §2c, then raise the email limit |
 | 3 | ~~Redirect allowlist lists exact URLs only~~ **closed 2026-10-02** | Auth → URL Configuration now has `https://www.gibol.co/auth/callback**` (6 URLs). Apex and http both 308 to `https://www.gibol.co`, so every magic link's `next=` is covered | — |
-| 4 | Outstanding Supabase invoice | dashboard banner warns of service disruption | Pay it |
+| 4 | Outstanding Supabase invoice | Ade paid on 2026-10-07; at 12:00 WIB the dashboard still showed both "Outstanding invoices" banners (this org and another org) | Confirm the banner clears; if not, check Org → Billing → Invoices for a second unpaid one |
 
 Then one real-phone run: open `gibol.co/g/FgdGibol` signed out → pick → "Klaim pick & gabung" → magic link from the inbox → land on the grup with the pick claimed and a klasemen row. Ten minutes.
 
@@ -81,7 +81,7 @@ DNS for gibol.co is at GoDaddy (`ns09/ns10.domaincontrol.com`). The root MX and 
    | Minimum interval per user | 60 s (default) |
 
 6. **Supabase → Auth → Rate Limits →** emails sent per hour: **100** (the field unlocks once SMTP is on; Resend's free tier is 100/day, 3,000/month, so move to Pro before a big push).
-7. **Supabase → Auth → Emails → Templates:** paste `supabase/templates/magic_link.html` into both "Magic Link" and "Confirm signup", subject `Link masuk Gibol kamu`.
+7. **Templates:** already done. "Magic link or OTP" carries a branded Indonesian template (subject "Link masuk ke Gibol 🏀"); leave it. `supabase/templates/magic_link.html` is a spare if "Confirm signup" needs one.
 8. **Verify:** request a link at `https://www.gibol.co/masuk` to a real inbox. It must arrive from `masuk@gibol.co` within a minute, not in spam, and Resend → Emails must show it delivered. Then run the phone test below.
 
 ## 3 · Sprint log (2026-10-01)
