@@ -1,0 +1,34 @@
+name: KPI weekly
+
+# doc 17 S3 exit check: WPP measured weekly. The DB half of the metrics
+# review (scripts/kpi-weekly.mjs) lands in this run's summary every Monday
+# 08:00 WIB; GA4/PostHog hold the behavioural funnel.
+
+on:
+  schedule:
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Window in days'
+        required: false
+        default: '7'
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Weekly KPIs
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          DAYS: ${{ github.event.inputs.days || '7' }}
+        run: node scripts/kpi-weekly.mjs --days "$DAYS"
