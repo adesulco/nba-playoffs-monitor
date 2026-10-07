@@ -23,7 +23,7 @@ The Gibol web app at `www.gibol.co`: an Indonesian multi-sport Pick'em (Vite + R
 2. **One scoring truth:** `0021_scoring_v1.sql` writes points; `api/_lib/pickem/scoring-core.js` must match it on `scoring-vectors.json` (`npm test` + `node scripts/test-scoring-parity.mjs`).
 3. **One registry:** `src/pickem/competitions.js`; `npm run registry` regenerates the JSON; the build fails on drift. Adding a sport = one row (+ a feed adapter if the provider is new).
 4. **Seam:** screens call only `src/pickem/api.js`. No Supabase calls from screens (auth included: `sendMagicLink`, `signOut` live in the seam).
-5. **Security posture:** `0022_rls_close.sql`; `node scripts/rls-attack.mjs` must exit 0 against prod. Admin actions take `x-admin-token` only.
+5. **Security posture:** `0022_rls_close.sql` + `0024_leaderboard_views_close.sql` (leaderboard views are server-only); `node scripts/rls-attack.mjs` must exit 0 against prod. Admin actions take `x-admin-token` only.
 6. **Fonts:** self-hosted Bricolage Grotesque + Instrument Sans, static weights; run `scripts/test-satori-fonts.mjs` after any font change.
 7. **Invite codes are case-sensitive.**
 8. **Desktop is CSS-only**; verify every shell change at 390 px and 1440 px.
@@ -41,6 +41,9 @@ npm run build                                      # tests + registry gate + voc
 node scripts/test-scoring-parity.mjs               # SQL = JS on the shared vectors (prod, read-only)
 node scripts/rls-attack.mjs                        # must print "RLS posture holds"
 node scripts/verify-loop.mjs                       # the loop in prod, end to end
+node scripts/verify-gugur.mjs                      # two-grup Gugur in prod (shared pick, per-grup lives)
+node scripts/check-api-columns.mjs                 # every API select vs the prod schema; run after each migration
+node scripts/kpi-weekly.mjs                        # WPP / WAP / picks / sign-ups, last 7 days vs previous
 node scripts/backfill-fixtures-football.mjs --competition EPL-2026-27 --dry-run
 ```
 
