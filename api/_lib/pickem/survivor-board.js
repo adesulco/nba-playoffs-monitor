@@ -54,7 +54,7 @@ export default async function handler(req, res) {
   }
 
   const [{ data: profiles }, { data: entries }] = await Promise.all([
-    admin.from('profiles').select('id, nickname, username').in('id', userIds),
+    admin.from('profiles').select('id, nickname').in('id', userIds),
     admin
       .from('survivor_entries')
       .select('user_id, status, eliminated_matchday, used_team_ids')
@@ -62,14 +62,17 @@ export default async function handler(req, res) {
       .in('user_id', userIds),
   ]);
 
-  const nameOf = new Map((profiles || []).map((p) => [p.id, p.nickname || p.username || p.id.slice(0, 8)]));
+  // profiles has no `username` column; asking for it failed the whole query
+  // and every row fell back to an id prefix (found 2026-10-07). Same
+  // fallback as league-detail.
+  const nameOf = new Map((profiles || []).filter((p) => p.nickname).map((p) => [p.id, p.nickname]));
   const entryOf = new Map((entries || []).map((e) => [e.user_id, e]));
 
   const rows = userIds.map((id) => {
     const e = entryOf.get(id);
     return {
       user_id: id,
-      display_name: nameOf.get(id) || id.slice(0, 8),
+      display_name: nameOf.get(id) || `Pemain ${String(id).slice(0, 4)}`,
       // DB values are 'alive' | 'out' (migration 0017); the API speaks
       // 'alive' | 'eliminated' | 'not_started' so the UI never leaks a
       // schema token into copy.

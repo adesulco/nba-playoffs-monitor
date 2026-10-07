@@ -1,7 +1,7 @@
 {
   "name": "nba-playoffs-monitor",
   "private": true,
-  "version": "0.89.16",
+  "version": "0.89.17",
   "type": "module",
   "scripts": {
     "dev": "vite",

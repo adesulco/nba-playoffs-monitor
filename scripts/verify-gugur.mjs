@@ -11,6 +11,7 @@
  *   4. a team used last week in A only   → refused from B (team_already_used)
  *   5. B eliminated                      → B refuses picks; a pick from A
  *                                          leaves B's life untouched
+ *   6. survivor-board names the member by nickname
  * Everything it creates is deleted at the end.
  *
  *   node scripts/verify-gugur.mjs [--competition EPL-2026-27]
@@ -115,6 +116,11 @@ try {
   const bAfter = await used(B);
   check(`5 pick ${Y} from A still works`, p6.status === 200, `${p6.status} ${p6.data?.error || ''}`);
   check('5 B life untouched (out, [X])', bAfter?.status === 'out' && same(bAfter.used_team_ids, [X]), JSON.stringify(bAfter));
+  // 6: the board names members by nickname, never an id prefix.
+  const nick = await call('update-profile', { method: 'POST', token: jwt, body: { nickname: 'Gugur Tester' } });
+  const board = await call('survivor-board', { params: { code: gA.data.invite_code } });
+  const row = board.data?.rows?.find((r) => r.user_id === uid);
+  check('6 survivor-board shows the nickname', nick.status === 200 && row?.display_name === 'Gugur Tester', `${board.status} ${row?.display_name}`);
 } finally {
   if (uid) {
     await admin.from('survivor_entries').delete().eq('user_id', uid);

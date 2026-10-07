@@ -2,6 +2,10 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.89.17 — 2026-10-07 — Gugur board names
+
+- The Gugur board listed every member as an 8-character id prefix: `survivor-board` asked `profiles` for a `username` column that does not exist, so the whole name query failed. It reads `nickname` only and falls back to "Pemain xxxx" like the grup page. `verify-gugur.mjs` now checks the board shows the nickname.
+
 ## v0.89.16 — 2026-10-07 — funnel events back
 
 - The 4a rebuild dropped the call sites of half the documented Pick'em funnel (`src/lib/pickemEvents.js`). Grup create and join now fire `pickem_grup_create` (template, competition) and `pickem_grup_join` (pending) from the api.js seam, replacing the parameterless `pickem_group_created` / `pickem_group_joined`. The upgrade sheet fires `pickem_upgrade_view` on open and `pickem_upgrade_start` on the order CTA. The WhatsApp "ingatkan" nudge counts as `pickem_share` (card `nudge`, via `wa`), next to the share cards. `pickem_upgrade_success` waits for billing (S4); `pickem_rollover_accept` has no screen yet.
