@@ -2,7 +2,35 @@
 
 **Living document. Update it at the end of every sprint.** Plan of record: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`. Contract: `02-PLATFORM-CONTRACT.md`. History: `docs/archive/HANDOVER-2026-08-18.md`.
 
-Last updated: **2026-10-01** · live version **v0.89.14** · branch `main` · **S0–S3 shipped in one day** (0022 apply pending)
+Last updated: **2026-10-08** · live version **v0.89.18** · branch `main` (clean, pushed, tags to v0.89.18) · S0–S3 shipped; launch blocked on three dashboard actions (§0)
+
+## 0 · Status and next (2026-10-08, clean stop)
+
+**Where it stands.** gibol.co runs the Pick'em loop in prod on Scoring Spec v1. Checked at the stop: `verify-loop` 19/19, `verify-gugur` 14/14, `check-api-columns` 70/70, scoring parity 56/56, health `scoring.ok: true`, 135 unit tests, every workflow green. Prod has 1 real account and 2 grups, so nothing has been measured yet. EPL MD6 (10 fixtures) locks **Sat Oct 10, 18:30 WIB**; MD7 is seeded.
+
+**Blocking the public push (all Ade, dashboard only):**
+
+| # | Action | Why | Done when |
+|---|---|---|---|
+| 1 | Paste `supabase/migrations/0024_leaderboard_views_close.sql` into the SQL editor, Run, confirm the "Potential issue detected" dialog | anon can read every grup's roster and points through the three leaderboard views (Supabase Advisor: 3 critical) | `node scripts/rls-attack.mjs` prints "RLS posture holds" (6 holes today) |
+| 2 | Resend SMTP per §2c (account, 3 GoDaddy DNS records, API key into Supabase SMTP, raise the email limit) | auth email is capped at 2/hour for the whole site | a magic link from `/masuk` arrives from `masuk@gibol.co`; `dig +short MX send.gibol.co` answers |
+| 3 | Clear the Supabase "Outstanding invoices" banner | service-disruption warning; one banner still showed on 2026-10-07 after Ade paid | banner gone |
+| 4 | Phone run: `gibol.co/g/FgdGibol` signed out → pick → "Klaim pick & gabung" → magic link → grup | the only loop step no script can drive (needs an inbox) | pick claimed, klasemen row present |
+
+**Next for development, in order:**
+
+1. **After 0024 lands:** run `rls-attack`, `verify-loop`, `verify-gugur`, `check-api-columns`; confirm the Advisor shows 0 issues.
+2. **After Resend:** send a real magic link, then the phone run; record both here.
+3. **MD6 (Oct 10–11):** doc 17 S1 exit "MD6 scored by Spec v1 within 2 h of the final whistle". Watch the `Football fixtures backfill + score` runs and `/api/health/data-sources`; spot-check a grup's klasemen.
+4. **Monday Oct 13, 08:00 WIB:** first scheduled `KPI weekly` run (Actions summary) — the WPP baseline for the push.
+5. **FGD on MD7–8 (Oct 17–18):** first measured read; `scripts/kpi-weekly.mjs --days 14` plus the PostHog funnel (`pickem_invite_open → pickem_first_pick → pickem_grup_join`, `pickem_share`).
+6. **Liga 1:** appears automatically once ESPN `idn.1` publishes 2026/27 (still on 2025-26 as of Oct 7). If ESPN is still empty by Oct 15, decide on another source or move `window.opensAt` in `src/pickem/competitions.js`.
+7. **S4 billing:** when Midtrans KYB closes, set `MIDTRANS_SERVER_KEY` (+ `MIDTRANS_ENV=production`) in Vercel and point the notification URL at `https://www.gibol.co/api/billing/webhook`; then wire `pickem_upgrade_success`. Until then: §3b grant runbook.
+8. **Not built, needs a product call:** Mandalika/MotoGP podium pick (go/no-go was due Oct 7; no-go means Sepang Oct 25 is first), rollover between competitions (`pickem_rollover_accept` has no screen).
+
+**Unverified by design:** the "Ikut Gugur di grup ini juga" button (v0.89.15) only appears for a signed-in player whose matchday pick came from another grup; the server path behind it is covered by `verify-gugur`, the screen state was not reproduced.
+
+**Session gotchas learned 2026-10-07:** the version string now lives in a lazy `assets/version-*.js` chunk, not the index bundle (grep the chunk named in the index). A select naming a missing column makes handlers return empty data with no error; run `check-api-columns` after every migration.
 
 ## 1 · Read this before you touch anything
 
@@ -15,7 +43,7 @@ Last updated: **2026-10-01** · live version **v0.89.14** · branch `main` · **
 | 5 | Invite codes are case-sensitive. | Never upper-case them. |
 | 6 | Desktop is CSS-only (`src/styles/desktop-4a.css`). | Verify shell changes at 390 px and 1440 px. |
 | 7 | `actionlint` before pushing any workflow change. | Installed via Homebrew on the Mac (1.7.12). |
-| 8 | A push deploys once, via the Vercel git integration (`deploy.yml` only runs tests: its `VERCEL_TOKEN` secret is empty, so the deploy step is skipped). Propagation takes 2–4 min, and for a short window an edge can serve HTML that references a bundle it has not got yet; a browser that hits that window keeps the 404 until a hard reload. | Wait 3 min after a push before verifying, then check the index bundle for the version string; reload twice for the SW handoff. |
+| 8 | A push deploys once, via the Vercel git integration (`deploy.yml` only runs tests: its `VERCEL_TOKEN` secret is empty, so the deploy step is skipped). Propagation takes 2–4 min, and for a short window an edge can serve HTML that references a bundle it has not got yet; a browser that hits that window keeps the 404 until a hard reload. | Wait 3 min after a push, then grep the `assets/version-*.js` chunk the index bundle names for the version string (it is no longer in the index bundle itself); reload twice for the SW handoff. |
 | 9 | `npx vercel` token on this Mac is expired. | `vercel login` before `vercel inspect`; curl the bundle for the version meanwhile. |
 
 ## 2 · What S0 verified in prod (2026-10-01)
@@ -33,7 +61,7 @@ Last updated: **2026-10-01** · live version **v0.89.14** · branch `main` · **
 
 **Scored predictions: 0.** The RPC scored 50 fixtures but no user has a server-side prediction on EPL yet — the FGD grup has one member (Bang Ade, 0 pts) because the 4a loop never claimed guest picks or joined anyone (audit finding 2). The doc 17 S0 exit check "FgdGibol klasemen non-zero" therefore cannot be met by S0; it is met the moment S1 ships join-on-confirm and claim-on-login and MD6 is scored.
 
-## 2b · Launch readiness (checked 2026-10-02)
+## 2b · Launch readiness (detail; current summary in §0)
 
 gibol.co serves the loop in prod today. It is **not ready for a public push** until these are closed — all are dashboard actions, about an hour in total:
 
@@ -48,9 +76,9 @@ Then one real-phone run: open `gibol.co/g/FgdGibol` signed out → pick → "Kla
 
 **Not blocking launch:** Liga 1 (ESPN has not published 2026/27), billing (free grups cover up to 10 members), API-Football (lapsed; nothing scores on it — it is the only red provider in `/api/health/data-sources`), content engine, Mandalika.
 
-**Calendar:** close 1–4 + the phone run by Oct 7 → public push for MD6 (first lock Sat Oct 10, 18:30 WIB) → FGD on MD7–8 (Oct 17–18) as the first measured read.
+**Calendar:** the Oct 7 target slipped; close 1, 2, 4 + the phone run before the MD6 lock (Sat Oct 10, 18:30 WIB) to push on MD6, else push on MD7 → FGD on MD7–8 (Oct 17–18) as the first measured read.
 
-**Re-checked 2026-10-07:** `rls-attack` still 15 holes and `leagues.formats` still present (0022/0023 not applied); no Resend DNS records on `send.gibol.co` / `resend._domainkey` yet (SMTP not started); invoice unknown from here. `verify-loop` passes, every workflow green for days, content cron now generates and commits NBA recaps (Anthropic key confirmed valid), MD6 (10 fixtures, first lock Oct 10 11:30 UTC) and MD7 seeded. ESPN `idn.1` still on the 2025-26 calendar.
+**Re-checked 2026-10-08:** 0022 + 0023 applied (2026-10-07); 0024 not applied (6 holes); no Resend DNS records; loop, Gugur, schema sweep and health all green.
 
 ## 2c · Custom SMTP runbook (Resend, chosen 2026-10-02)
 
@@ -94,16 +122,11 @@ DNS for gibol.co is at GoDaddy (`ns09/ns10.domaincontrol.com`). The root MX and 
 | S3 Retention | v0.89.14 | `/papan`, `/aturan`, `/kabar` live; `leaderboard-national`; share cards; SW toast; manifest; hub aliases (v0.89.0 failed the vocab guard on Vercel, fixed in .1) |
 | S1 exit gap closed | v0.89.15–17 (2026-10-07) | two-grup Gugur: shared pick now syncs every grup life, "Ikut Gugur di grup ini juga" CTA, board nicknames; `scripts/verify-gugur.mjs` 14/14 in prod (5 failed on v0.89.14). Funnel events restored: `pickem_grup_create/join`, `pickem_upgrade_view/start`, WA nudge as `pickem_share` |
 
-## 3 · Open
+## 3 · History notes
 
-- **S1 step 1 shipped (2026-10-01):** `0021_scoring_v1.sql` applied in prod via the SQL editor (the editor's "Potential issue detected" dialog must be confirmed, or nothing runs — that swallowed the first attempt). Probed after apply: EPL rules 5/3/2/1, history rows 8/5/3, tiers backfilled, `p_*` and `grup_bonus_points` gone, M8 badges, `streaks.kind`. All 50 EPL finals re-scored through the admin `score-fixture` action on the new engine (0 predictions exist yet). Ladder checked by hand on ARS 3-0 COV, FUL 1-1 MAN, MNC 5-3 SUN via the prod functions: exact 5 / margin 3 / result 2 / nyaris 1 / miss 0, jagoan+underdog 15/9/6/1/0.
-- **S1 shipped as v0.87.0 (2026-10-01):** scoring parity (56 vectors, SQL = JS in prod), dispatcher hardening, join-on-confirm, claim-on-login, per-grup Gugur, provisional points. Verified in prod by `node scripts/verify-loop.mjs` (19 checks with a throwaway user, all pass) and in the browser at 390 px: guest pick from `/g/FgdGibol` stores the pick + invite, GrupHome shows the claim CTA. The real magic-link login step is the only part not driven here (needs an inbox); the API half of that step is what verify-loop exercises.
-- **Waiting on apply:** `supabase/migrations/0022_rls_close.sql` (confirm the editor's destructive-statement dialog). `node scripts/rls-attack.mjs` reports 15 holes against prod today and must exit 0 after apply.
-- Supabase dashboard shows an **outstanding invoice** banner (service-disruption warning). Pay before MD6.
-
-- **S1 Truth (Oct 4–10, before MD6 on Oct 10 18:30 WIB):** migrations `0021_scoring_v1.sql` and `0022_rls_close.sql` (Ade applies in the SQL editor), scoring parity vectors, `predict.js` writes `matchday` + `last_predicted_at`, join-on-confirm + claim-on-login + guest CTA, copy changes, `useProvisionalPoints` rendered. EPL MW1–5 were scored under the old 8/5/3 rules; S1 re-scores EPL once via the admin `score` action (allowed: no user has seen EPL points).
-- `Content Engine - Cron` **fixed 2026-10-02**: every run died in the budget guard (`TODAY` passed as an argument, not an env var), not on the key. Dispatched `nba-recaps` run is green (spend read, 0 articles in the NBA offseason). Key confirmed valid: scheduled runs since 2026-10-03 generate and commit NBA recaps.
-- ~~`WC2026` / `AFF2026` in the backfill matrix~~ done: the matrix is the registry `activeFeeds` (EPL, Liga 1, NBA).
+- `0021_scoring_v1.sql` applied 2026-10-01; EPL MW1–5 re-scored on Spec v1 (ladder hand-checked: exact 5 / margin 3 / result 2 / nyaris 1 / miss 0). `0022_rls_close.sql` + `0023_drop_formats.sql` applied 2026-10-07. The SQL editor's "Potential issue detected" dialog must be confirmed or nothing runs — that swallowed two earlier "applied" reports, so always probe after an apply.
+- `Content Engine - Cron` fixed 2026-10-02 (budget guard passed `TODAY` as an argument); the Anthropic key is valid and NBA recaps commit on schedule.
+- The backfill matrix is the registry `activeFeeds` (EPL, Liga 1, NBA).
 
 ## 3b · Manual grant runbook (until billing lands, doc 17 S4)
 
@@ -119,14 +142,13 @@ Then the commissioner taps "Setujui" on the pending member in GrupHome. `product
 
 ## 3c · Still open after S3
 
-- **Apply `supabase/migrations/0023_drop_formats.sql`** (the API stopped reading `formats` in v0.89.3). Same editor dialog as 0022.
-- `api/billing.js` is live but key-gated: set `MIDTRANS_SERVER_KEY` (+ `MIDTRANS_ENV=production`) in Vercel when KYB closes and point Midtrans' notification URL at `https://www.gibol.co/api/billing/webhook`; until then the upgrade sheet uses `VITE_ORDER_URL`.
-- `content-cron.yml` fails every scheduled run (Anthropic key) and carries pre-existing shellcheck warnings; disable or rotate.
-- Liga 1 fixtures appear automatically once ESPN publishes `idn.1` 2026/27; until then the row shows no fixtures (window opens Oct 15 — move `window.opensAt` if ESPN is late).
-- Share-card CTR: `pickem_share` events now flow to PostHog; the WPP weekly read needs the GA4 funnel exported.
+- `api/billing.js` is live but key-gated (see §0 next step 7).
+- Liga 1 fixtures appear automatically once ESPN publishes `idn.1` 2026/27 (see §0 next step 6).
+- Share-card CTR: `pickem_share` (cards, WA nudge) flows to PostHog; the DB half of the weekly read is `KPI weekly`.
 
 ## 4 · Decisions needed from Ade
 
-1. Doc 17 §4 decisions 1–7 stand unless overridden (S1 builds on them).
-2. `deploy.yml` has a dead Vercel deploy step (no token). Delete the step, or set the token if you want CI-gated deploys instead of the git integration.
-3. Content-engine cron: disable now, or rotate the key this week.
+1. Doc 17 §4 decisions 1–7 stand unless overridden.
+2. `deploy.yml` has a dead Vercel deploy step (no token). Delete it, or set the token for CI-gated deploys.
+3. Mandalika/MotoGP: go or no-go (was due Oct 7).
+4. Liga 1 source if ESPN has not published 2026/27 by Oct 15 (API-Football renewal is the paid option).
