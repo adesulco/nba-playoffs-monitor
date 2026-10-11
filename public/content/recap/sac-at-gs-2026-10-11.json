@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "sac-at-gs-2026-10-11",
+  "title": "Recap Sacramento Kings 106-111 Golden State Warriors (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Sacramento Kings vs Golden State Warriors (106-111) di —, 11 October 2026.",
+  "body_md": "Golden State Warriors mengalahkan Sacramento Kings 111-106 dalam laga pembuka rangkaian regular season series empat pertemuan antara kedua tim. Pertandingan berlangsung Minggu, 11 Oktober 2026, tayang live di NBA League Pass dan Vidio mulai jam 07.30 WIB.\n\nGS menang tipis lima poin, cukup ketat sampai detik-detik terakhir, dengan clutch free throws di menit akhir Q4 yang menutup pertandingan.\n\n---\n\n## Top Performers\n\n**Golden State Warriors**\n\nYaxel Lendeborg jadi pemain paling lengkap malam ini: 23 poin, 10 rebound, 6 asis dengan shooting 10-14 dari lapangan. Nyaris sempurna, efisiensi yang sulit dibantah. Brandon Williams tampil meledak dari bench: 19 poin dengan 7-8 FG dan 2-2 dari tiga angka, hanya 17 menit bermain. Itu kontribusi bench yang sangat berbahaya.\n\nGui Santos menambah 15 poin dan 6 rebound (6-9 FG), sementara Brandin Podziemski melengkapi dengan 14 poin, 7 rebound, 4 asis. Georges Niang dari bench: 13 poin dengan 3-4 dari tiga angka, lima pemain GS tembus double figures, penyebaran beban yang ideal.\n\n**Sacramento Kings**\n\nDarius Acuff Jr. memimpin SAC dengan 25 poin, 4 rebound, 8 asis, shooting 8-15 dari lapangan, 4-6 dari tiga angka, dalam 27 menit. Luar biasa dari pemain yang kemungkinan besar masih muda di roster ini. Jonathan Mogbo solid dengan 12 poin dan 8 rebound. Zach LaVine hanya 11 poin dari 5-13 FG, shooting night yang susah. Maxime Raynaud efisien di waktu terbatas: 10 poin dengan 3-3 FG dan 1-1 dari tiga dalam sembilan menit.\n\n---\n\n## Baca Statistiknya\n\nGS unggul di hampir semua kategori krusial. FG% 48 vs 42 untuk SAC, GS lebih efisien dari lapangan. Fast-break points: GS 17, SAC hanya enam. Itu selisih 11 poin yang langsung tercermin di skor akhir.\n\nRebound total: GS 49 vs SAC 41. Assists: GS 26 vs SAC 20. GS lebih fluid, lebih terhubung dalam offense. SAC sebenarnya unggul di steals, 15 berbanding 10, tapi 17 turnovers dari SAC sendiri jadi masalah. Punya lebih banyak steal tapi lebih banyak buang bola? Hasil akhirnya ya kalah.\n\nSatu-satunya area SAC kompetitif secara statistik adalah free throws: 80% (20-25) vs 79% (23-29) GS. Di situlah SAC terus hidup di Q4.\n\n---\n\n## Akhir Pertandingan\n\nClutch time Q4 memperlihatkan betapa ketatnya laga ini. Dua menit terakhir, GS masih hanya unggul dua poin di skor 103-105. Sharp bikin 16-foot pullup jump shot untuk 103-105, disusul Will Richard dengan 23-foot running jump shot untuk 103-108, stretch itu yang sebenarnya memutus perlawanan SAC.\n\nMogbo masih bisa tambahkan dua free throw untuk 106-108, tapi Richard kembali bikin dua free throw untuk 106-110, dan Charles Bassey menutup 106-111 dari garis. SAC tidak sempat balas.\n\n---\n\n## Selanjutnya\n\nIni laga pertama dari empat pertemuan regular season series antara kedua tim. Series berikutnya baru mulai 25 November, masih ada waktu lama sebelum rematch. GS buka seri dengan kemenangan kandang yang meyakinkan. SAC perlu evaluasi turnover dan efisiensi shooting sebelum pertemuan berikutnya.\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898399",
+    "home_team": "Golden State Warriors",
+    "home_abbr": "GS",
+    "away_team": "Sacramento Kings",
+    "away_abbr": "SAC",
+    "home_score": 111,
+    "away_score": 106,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-10-11T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/25",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.070437,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to training-data inference (Sharp/Richard/Bassey names not in input top scorers, Acuff Jr. age speculation) and unverifiable clutch-play reconstruction. KEY PLAYS block has [?] team attribution which cannot be matched to confirmed players. Remove speculative plays and age commentary; stick to verifiable stats only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Luar biasa dari pemain yang kemungkinan besar masih muda di roster ini.",
+          "fix": "Delete the clause. Replace with: 'Acuff Jr. memimpin SAC dengan 25 poin, 4 rebound, 8 asis.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sharp bikin 16-foot pullup jump shot untuk 103-105, disusul Will Richard dengan 23-foot running jump shot",
+          "fix": "Delete this entire clutch play sequence. Summarize generically: 'Q4 ketat sampai menit akhir; free throw jadi pembeda.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Nyaris sempurna, efisiensi yang sulit dibantah.",
+          "fix": "Replace with: 'Efisiensi membunuh.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Itu kontribusi bench yang sangat berbahaya. ... Itu selisih 11 poin yang langsung tercermin",
+          "fix": "First: 'Kontribusi bench yang sangat berbahaya.' Second: 'Selisih 11 poin langsung tercermin.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Clutch time Q4 memperlihatkan betapa ketatnya laga ini. Dua menit terakhir, GS masih hanya unggul dua poin di skor 103-105.",
+          "fix": "Rewrite: 'Q4 ketat. GS unggul dua poin dengan menit-menit krusial tinggal beberapa.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Replace with: 'Rematch Berikutnya' or delete and merge with content."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Charles Bassey menutup 106-111 dari garis.",
+          "fix": "Replace with generic: 'Free throw akhir membuat skor final 106-111.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xefdfd3e89c458fa0",
+    "published_at": "2026-10-11T06:13:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
