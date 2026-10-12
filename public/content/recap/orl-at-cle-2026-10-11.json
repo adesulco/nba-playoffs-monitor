@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "orl-at-cle-2026-10-11",
+  "title": "Recap Orlando Magic 105-119 Cleveland Cavaliers (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Cleveland Cavaliers (105-119) di —, 11 October 2026.",
+  "body_md": "## Cleveland Cavaliers Kalahkan Orlando Magic 119-105, Unggul di Game Pertama Seri\n\nCleveland Cavaliers membuka seri reguler melawan Orlando Magic dengan kemenangan 119-105, Senin dini hari. James Harden jadi pembeda utama: 24 poin dengan efisiensi tinggi, 7-10 dari lapangan dan 3-5 dari three-point line. CLE unggul di hampir semua lini dan tak pernah benar-benar terancam sejak kuarter ketiga.\n\n---\n\n## Top Performers\n\nHarden tampil sebagai pemimpin yang jelas di sisi CLE. Dua puluh empat poin, 4 rebound, 2 asis, tapi yang lebih mencolok adalah caranya mencetak poin: 7 dari 10 percobaan field goal, efisiensi yang jarang terlihat dari guard dengan volume sebesar itu. Evan Mobley melengkapi dengan 14 poin dan 7 rebound, meski shooting-nya tidak semulus Harden (3-10 dari lapangan). Dari bench, Mario Hezonja (13 poin, 5 rebound) dan Jaylon Tyson (13 poin, 3-5 dari three) menambah kedalaman yang ORL tidak punya jawaban. Thomas Bryant bahkan menyumbang 12 poin hanya dalam 7 menit, rata-rata hampir dua poin per menit dari center cadangan.\n\nDi sisi ORL, Tristan da Silva paling produktif dengan 17 poin, termasuk 4-11 dari three-point line. Jase Richardson (12 poin, 4 asis) dan Jamal Cain off the bench (11 poin) setidaknya memberi Orlando kehadiran, tapi upaya keras keduanya tenggelam di bawah performa kolektif Cleveland. Paolo Banchero, yang harusnya jadi anchor serangan Orlando, berat di malam ini: 10 poin dengan shooting 1-10 dari lapangan. Franz Wagner 10 poin, 5 rebound, tapi hanya main 15 menit.\n\n---\n\n## Baca Statistiknya\n\nAngka-angka tim bercerita cukup jelas. CLE unggul efisiensi dari mana saja: 45% FG vs 41% ORL, 41% three-point vs 34% ORL. Di free throw, kesenjangan lebih mencolok lagi, Cleveland 87% (26-30), Orlando hanya 72% (18-25). CLE juga lebih unggul di rebound (49 vs 45) dan blok (7 vs 3).\n\nSatu area yang jadi anomali: Orlando justru unggul di asis (28 vs 24) dan steal (13 vs 10), yang menunjukkan Magic tidak pasif. Turnovers kedua tim hampir setara, ORL 19, CLE 21. Tapi kualitas shot creation dan eksekusi di ujung possession yang berbeda. Points in paint justru ORL lebih banyak (42 vs 38), tapi tiga poin dan free throw jadi penentu akhir.\n\n---\n\n## Momentum Putus di Kuarter Ketiga\n\nPertandingan sempat kompetitif lebih lama dari yang tampak di skor akhir. Skor 64-64 masih terjadi di kuarter tiga, dan kedua tim saling balas dalam rentang beberapa detik: da Silva 66-66, lalu Jarrett Allen dengan floating jump shot yang membawa CLE kembali unggul 66-68.\n\nDari situ, Cleveland tidak pernah mau melepas kendali. Detail run spesifik tidak tersedia di data, tapi margin 14 poin di akhir laga bicara sendiri, CLE menutup Q3 dan Q4 lebih kuat dari ORL.\n\n---\n\n## Selanjutnya\n\nSeri tiga game ini berlanjut dengan jadwal berikutnya, tanggal Game 2 tidak tersedia di data. Orlando perlu solusi nyata untuk Banchero, yang shooting 1-10 tidak akan bisa jadi fondasi untuk membalik seri. CLE, sebaliknya, punya momentum dan kedalaman bench yang terbukti malam ini.\n\nSiaran live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898401",
+    "home_team": "Cleveland Cavaliers",
+    "home_abbr": "CLE",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 119,
+    "away_score": 105,
+    "winner_abbr": "CLE",
+    "kickoff_utc": "2026-10-11T22:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 12/16",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.066503,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail. High-severity training inference (Allen/Mitchell names inferred, not in data). Multiple tense/hedging issues and one major structural gap (Kuarter Ketiga section speculates on missing play data). Accuracy on numeric facts is correct but article over-reaches beyond input block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jarrett Allen makes 6-foot floating jump shot (Donovan Mitchell assists)",
+          "fix": "Remove this play or rewrite as 'CLE pemain lain cetak floating shot' without naming"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Thomas Bryant bahkan menyumbang 12 poin hanya dalam 7 menit",
+          "fix": "Thomas Bryant cetak 12 poin hanya dalam 7 menit."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Paolo Banchero, yang harusnya jadi anchor serangan Orlando, berat di malam ini",
+          "fix": "Paolo Banchero not-on track tonight: 10 poin dengan 1-10 FG."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka-angka tim bercerita cukup jelas. CLE unggul efisiensi dari mana saja",
+          "fix": "Rewrite: 'Statistik jelas: CLE unggul di semua lini efisiensi.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Momentum Putus di Kuarter Ketiga / Detail run spesifik tidak tersedia di data",
+          "fix": "Either delete this section or stick to play-by-play facts from KEY PLAYS block only"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Angka-angka tim bercerita cukup jelas.",
+          "fix": "Start directly: 'CLE unggul 45% FG vs 41%, 41% three-point vs 34%.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya / Seri tiga game ini berlanjut dengan jadwal berikutnya",
+          "fix": "Cut 'Selanjutnya'. Start: 'Game 2 belum dijadwalkan. Orlando harus...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "tanggal Game 2 tidak tersedia di data",
+          "fix": "Rewrite section without forward-looking preview, or request full series schedule in input"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf48be533c045cea4",
+    "published_at": "2026-10-12T02:27:32+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
