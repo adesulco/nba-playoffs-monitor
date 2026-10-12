@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "chi-at-den-2026-10-12",
+  "title": "Recap Chicago Bulls 128-133 Denver Nuggets (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Chicago Bulls vs Denver Nuggets (128-133) di —, 12 October 2026.",
+  "body_md": "## Denver Nuggets Kalahkan Chicago Bulls 133-128, Jokic Triple-Double Jadi Kuncinya\n\nDenver Nuggets menutup laga dengan kuat untuk menang 133-128 atas Chicago Bulls, 12 Oktober 2026, 08.00 WIB. Nikola Jokic membukukan triple-double dengan 22 poin, 11 rebound, dan 10 asis, jadi orkestrator utama DEN sepanjang malam. Laga pertama dari dua pertemuan di regular season series ini berakhir dramatis di menit-menit akhir kuarter keempat.\n\n---\n\n## Top Performers\n\n**Denver Nuggets** dikomandoi Aaron Gordon yang tampil luar biasa efisien: 25 poin, 6 rebound, dengan shooting 9-12 dari lapangan dan 3-4 dari garis tiga angka. Statistik di luar biasa untuk Gordon — malam ini ia jadi top scorer DEN. Jokic 22 poin, tapi dampak jelas: 11 rebound, 10 asis dari seorang center adalah pengingat kenapa ia masih jadi pemain paling sulit dimatikan di liga. Cameron Johnson menambah 15 poin dengan 4-5 dari tiga angka, efisien dan tanpa banyak noise.\n\n**Chicago Bulls** tidak kalah sparks-nya, justru dari bench. Leonard Miller dari bench mencetak 26 poin dalam 22 menit, shooting 11-14 dari lapangan dan 4-6 dari tiga angka. Nomor yang luar biasa untuk seorang bench player dengan menit terbatas. Buddy Hield juga kontribusi dari bench: 15 poin, 4-6 dari tiga angka, dalam 19 menit. Dari starter, Caleb Wilson mengatur ritme dengan 17 poin dan 5 asis, sementara Matas Buzelis menambah 13 poin dan 6 rebound.\n\n---\n\n## Statistical Read\n\nDua hal yang menjelaskan hasil malam ini: free throw dan turnover.\n\nCHI dan DEN hampir identik dalam hal field goal, masing-masing 51% dari lapangan, 42% vs 41% dari tiga angka. Assists CHI bahkan lebih tinggi: 34 berbanding 26. Di atas kertas, Bulls seharusnya kompetitif sampai peluit akhir.\n\nTapi DEN menembak 32-46 free throw (70%) dibanding CHI yang cuma dapat 13-18 kesempatan (72%). Selisih 19 percobaan free throw di level playoffs itu game-changer. Bulls juga mencatat 18 turnover berbanding 15 milik DEN, bukan gap yang besar, tapi cukup untuk menambah beban di laga ketat.\n\n---\n\n## Momen Penentu\n\nQ4 menit-menit terakhir menceritakan semuanya. Chicago balas dengan three-pointer 28 kaki untuk potong jarak 128-131 di detik 15.9, tapi sudah terlambat untuk menyusul.\n\nDenver locked clutch free throws down the stretch, building cushion ke 133. Chicago hanya bisa balas 128 tanpa bisa menyentuh 133 lagi.\n\nPola ini konsisten dengan gap free throw attempt yang terlihat di box score. DEN tidak hanya menang di lapangan, mereka menang di garis.\n\n---\n\n## Selanjutnya\n\nDua tim bertemu lagi di pertemuan kedua regular season series ini, 22 November 2026. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401908941",
+    "home_team": "Denver Nuggets",
+    "home_abbr": "DEN",
+    "away_team": "Chicago Bulls",
+    "away_abbr": "CHI",
+    "home_score": 133,
+    "away_score": 128,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-10-12T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/22",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.065855,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: high-severity mixed-English sentence mid-paragraph ('Denver locked clutch...') breaks voice. Multiple soft-phrase repeats ('luar biasa' × 2), banned em-dash, and 'Selanjutnya' opener as paragraph start. Tighten phrasing and remove English fragments.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Denver locked clutch free throws down the stretch, building cushion ke 133.",
+          "fix": "Rewrite: 'Denver tahan mental, cetak free throw clutch, bangun lead ke 133.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Statistik di luar biasa untuk Gordon — malam ini ia jadi top scorer DEN.",
+          "fix": "Delete em-dash, rewrite: 'Gordon cemerlang jadi top scorer DEN malam ini.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "high",
+          "snippet": "tampil luar biasa efisien... Statistik di luar biasa untuk Gordon...",
+          "fix": "First use: 'tampil sangat efisien'; second: delete or use 'cemerlang'."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Laga pertama dari dua pertemuan di regular season series ini berakhir dramatis",
+          "fix": "Simpler: 'Dua tim bakal bertemu lagi 22 November.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Selanjutnya / Dua tim bertemu lagi di pertemuan kedua",
+          "fix": "Drop 'Selanjutnya'. Start: 'Pertemuan kedua regular season series...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "efisien dan tanpa banyak noise",
+          "fix": "Use: 'tanpa drama' or 'langsung saja'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Leonard Miller dari bench mencetak 26 poin dalam 22 menit",
+          "fix": "Neutral: 'Leonard Miller cetak 26 poin dalam 22 menit.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "malam ini ia jadi top scorer DEN",
+          "fix": "Delete 'malam ini': 'Gordon top scorer DEN dengan 25 poin.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x275b7dcad46547a8",
+    "published_at": "2026-10-12T03:57:29+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
