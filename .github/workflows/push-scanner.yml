@@ -27,8 +27,7 @@ name: NBA close-game push scanner
 
 on:
   schedule:
-    # NBA months only (Oct–Jun); the workflow is disabled outside them anyway.
-    - cron: '*/5 * * 1-6,10-12 *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 concurrency:

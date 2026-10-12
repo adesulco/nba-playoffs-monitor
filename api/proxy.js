@@ -33,7 +33,7 @@
  *
  * v0.79.0 — Komdigi de-risk 2026-05-23. The `futures-odds-gamma` +
  * `futures-odds-clob` provider entries were removed; the regulator
- * blocked the upstream under the online-gaming rules. Any incoming
+ * blocked the upstream as judi online. Any incoming
  * `/api/proxy/futures-odds-*` request now falls through to the
  * unknown-provider 404 branch.
  */
@@ -82,6 +82,14 @@ const PROVIDERS = {
     cacheS: 3600,
   },
 
+  'football-data': {
+    base: 'https://api.football-data.org/v4',
+    headers: (env) => ({
+      accept: 'application/json',
+      'X-Auth-Token': env.FOOTBALL_DATA_TOKEN || '',
+    }),
+    cacheS: 300,
+  },
 
   'api-football': {
     base: 'https://v3.football.api-sports.io',
@@ -90,10 +98,6 @@ const PROVIDERS = {
       'x-apisports-key': env.API_FOOTBALL_KEY || '',
     }),
     cacheS: 60,
-    // The paid key rides on every request, so only the read endpoints the
-    // app actually calls are relayed (audit 2026-10-01: the proxy forwarded
-    // the key for any path and any method).
-    allow: /^(fixtures(\/(lineups|statistics|events|headtohead))?|players\/(squads|topscorers|topassists)|teams|standings|status)$/,
   },
 };
 
@@ -145,17 +149,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    const method = (req.method || 'GET').toUpperCase();
-    if (method !== 'GET' && method !== 'HEAD') {
-      res.setHeader('Allow', 'GET, HEAD');
-      res.status(405).json({ error: 'method not allowed' });
-      return;
-    }
     const upstreamPath = upstreamParts.join('/');
-    if (cfg.allow && !cfg.allow.test(upstreamPath)) {
-      res.status(403).json({ error: `path not allowed for ${providerKey}` });
-      return;
-    }
     const qs = new URLSearchParams();
     for (const [k, v] of Object.entries(req.query || {})) {
       if (k === 'path') continue; // synthetic from rewrite
@@ -167,7 +161,7 @@ export default async function handler(req, res) {
 
     const headers = cfg.headers(process.env || {});
 
-    const upstreamRes = await fetch(url, { headers, method });
+    const upstreamRes = await fetch(url, { headers, method: req.method || 'GET' });
     const body = await upstreamRes.text();
 
     const ttl = effectiveTtl(providerKey, upstreamParts);
@@ -175,7 +169,7 @@ export default async function handler(req, res) {
     res.setHeader('Content-Type', upstreamRes.headers.get('content-type') || 'application/json');
     res.setHeader('X-Gibol-Proxy', providerKey);
     res.setHeader('X-Gibol-Upstream-Status', String(upstreamRes.status));
-    if (!cfg.allow) res.setHeader('X-Gibol-Upstream-Url', url);
+    res.setHeader('X-Gibol-Upstream-Url', url);
     res.status(upstreamRes.status).send(body);
   } catch (err) {
     res.setHeader('Cache-Control', 'no-store');

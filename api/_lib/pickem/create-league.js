@@ -24,13 +24,13 @@
  */
 
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
-import { validateScoringConfig, validateLateJoinPolicy, validateDescription } from './league-config.js';
+import { validateScoringConfig, validateFormats, validateLateJoinPolicy, validateDescription } from './league-config.js';
 
 // D3 (08-teardown-deltas) — football default template = BOTH game types on:
 // Bracket Lock for the stake-in-the-ground feeling, match-by-match for the
 // daily loop (kills PlayoffPickems' 16-day group-stage dead air). Applied
 // only when the wizard doesn't send formats explicitly.
-import { COMPETITIONS as REGISTRY, isCompetitionKey } from './registry.js';
+const FOOTBALL_COMPETITION = /^(WC|EPL|LIGA|UCL|AFC)/i;
 
 const VALID_VISIBILITY = new Set(['private', 'public']);
 const VALID_MODE_KEYS = new Set(['match', 'jagoan', 'upset', 'bracket', 'survivor']);
@@ -68,11 +68,6 @@ export default async function handler(req, res) {
 
   if (body.competition != null) {
     const comp = String(body.competition).trim();
-    // One sport = one registry row (doc 17 §2.1): a grup can only track a
-    // competition the platform knows how to feed and score.
-    if (!isCompetitionKey(comp)) {
-      return res.status(400).json({ error: `Unknown competition '${comp}'`, allowed: Object.keys(REGISTRY) });
-    }
     if (comp.length < 1 || comp.length > 60) {
       return res.status(400).json({ error: 'competition must be 1-60 chars' });
     }
@@ -112,6 +107,7 @@ export default async function handler(req, res) {
   // Migration 0019 columns; validated by the shared league-config module.
   for (const [field, validator] of [
     ['scoring_config', validateScoringConfig],
+    ['formats', validateFormats],
     ['late_join_policy', validateLateJoinPolicy],
     ['description', validateDescription], // D2 — banned-vocab guard inside
   ]) {
@@ -124,9 +120,9 @@ export default async function handler(req, res) {
 
   // D3 — football competitions default to both game types when the wizard
   // didn't choose explicitly: {match, bracket}.
-  // doc 17 §2.2 / decision 5: enabled_modes is the one mode system; the
-  // legacy `formats` column is dropped by migration 0023 and never written.
-  delete insertRow.formats;
+  if (insertRow.formats == null && insertRow.competition && FOOTBALL_COMPETITION.test(insertRow.competition)) {
+    insertRow.formats = ['match', 'bracket'];
+  }
 
   const admin = getSupabaseAdmin();
 

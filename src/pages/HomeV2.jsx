@@ -162,14 +162,8 @@ export default function HomeV2() {
   const fallbackSentence = useMemo(() => {
     const stage = derivePlayoffStage(games);
     const g = stage.game;
-    // A window, not a start date — the old `>= kickoff` check kept
-    // announcing "Piala Dunia udah mulai" for weeks after the Jul 19 final.
-    const t = Date.now();
-    const wcLive =
-      t >= new Date('2026-06-11T00:00:00+07:00').getTime() &&
-      t <= new Date('2026-07-20T06:00:00+07:00').getTime();
+    const wcLive = Date.now() >= new Date('2026-06-11T00:00:00+07:00').getTime();
     const wcBit = wcLive ? ' Piala Dunia 2026 juga udah mulai — prediksi di Pick\'em.' : '';
-    const eplLive = t >= new Date('2026-08-10T00:00:00+07:00').getTime();
     if (liveCount > 0 && g) {
       return `${stage.longId} LIVE sekarang: ${g.away?.abbr} @ ${g.home?.abbr}${g.seriesSummary ? ` (${g.seriesSummary})` : ''}. Skor live & play-by-play di bawah.${wcBit}`;
     }
@@ -180,9 +174,6 @@ export default function HomeV2() {
     }
     if (wcLive) {
       return 'Piala Dunia 2026 udah mulai — skor, grup, dan Pick\'em bracket semuanya di gibol.';
-    }
-    if (eplLive) {
-      return 'Liga Inggris 2026/27 mulai 21 Agustus — Tebak Skor udah dibuka, ajak grup kamu.';
     }
     return 'Selamat datang di Gibol — dashboard olahraga Bahasa-first untuk NBA, Premier League, F1, Tenis, dan Liga 1.';
   }, [games, liveCount]);
@@ -257,50 +248,6 @@ export default function HomeV2() {
       >
         <MatchStrip mode="upcoming" />
         <MatchStrip mode="results" />
-      </section>
-
-      {/* Pick'em entry — the homepage's only door into the product the FGD
-          is testing. The root stays the scores home (doc 16 decision 1);
-          this card is the bridge until the R-later root flip. */}
-      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '0 20px' }}>
-        <Link
-          to="/main"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 16,
-            margin: '18px 0 6px',
-            padding: '16px 18px',
-            background: 'var(--bg-2)',
-            border: '2px solid var(--ink-1, var(--line))',
-            borderRadius: 12,
-            textDecoration: 'none',
-            color: 'inherit',
-          }}
-        >
-          <div style={{ minWidth: 0 }}>
-            <div style={{ fontSize: 16, fontWeight: 800, letterSpacing: '-0.3px' }}>
-              Tebak Skor Liga Inggris udah dibuka ⚽
-            </div>
-            <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 3 }}>
-              Pick pertandingan MW1, ajak grup WhatsApp kamu. Gratis — semua demi gengsi.
-            </div>
-          </div>
-          <span
-            style={{
-              flex: 'none',
-              fontSize: 13,
-              fontWeight: 700,
-              padding: '9px 16px',
-              borderRadius: 999,
-              background: 'var(--amber)',
-              color: '#1a1205',
-            }}
-          >
-            Main →
-          </span>
-        </Link>
       </section>
 
       {/* Body grid — 2-col desktop, 1-col mobile */}

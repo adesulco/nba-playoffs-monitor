@@ -55,20 +55,9 @@ import listPredictionsHandler from './_lib/pickem/list-predictions.js';
 // (still 11/12 functions; everything dispatches here per handover §4.1).
 import leagueSettingsHandler   from './_lib/pickem/league-settings.js';
 import leagueDetailHandler     from './_lib/pickem/league-detail.js';
-import survivorBoardHandler    from './_lib/pickem/survivor-board.js';
 import mergeGuestHandler       from './_lib/pickem/merge-guest.js';
 import approveMemberHandler    from './_lib/pickem/approve-member.js';
 import grantEntitlementHandler from './_lib/pickem/grant-entitlement.js';
-
-// v0.87.0 — S1 (doc 17 §2.3): single-row reads for the pick sheet and the
-// one profile write path, so screens stop hitting Supabase directly.
-import getFixtureHandler    from './_lib/pickem/get-fixture.js';
-import getPredictionHandler from './_lib/pickem/get-prediction.js';
-import updateProfileHandler from './_lib/pickem/update-profile.js';
-
-// v0.89.0 — S3: Papan Nasional + streak board.
-import leaderboardNationalHandler from './_lib/pickem/leaderboard-national.js';
-import enterResultHandler from './_lib/pickem/enter-result.js';
 
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
@@ -99,16 +88,9 @@ export default async function handler(req, res) {
     // v0.80.1 A3 — pool-first commissioner layer (flagship R1).
     case 'update-league-settings': return leagueSettingsHandler(req, res);
     case 'league-detail':          return leagueDetailHandler(req, res);
-    case 'survivor-board':         return survivorBoardHandler(req, res);
     case 'merge-guest':            return mergeGuestHandler(req, res);
     case 'approve-member':         return approveMemberHandler(req, res);
     case 'grant-entitlement':      return grantEntitlementHandler(req, res);
-
-    case 'get-fixture':            return getFixtureHandler(req, res);
-    case 'get-prediction':         return getPredictionHandler(req, res);
-    case 'update-profile':         return updateProfileHandler(req, res);
-    case 'leaderboard-national':   return leaderboardNationalHandler(req, res);
-    case 'enter-result':           return enterResultHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
@@ -119,9 +101,8 @@ export default async function handler(req, res) {
           'upsert-bracket', 'score-bracket',
           'upsert-survivor-pick', 'list-survivor',
           'list-predictions',
-          'update-league-settings', 'league-detail', 'survivor-board', 'merge-guest',
+          'update-league-settings', 'league-detail', 'merge-guest',
           'approve-member', 'grant-entitlement',
-          'get-fixture', 'get-prediction', 'update-profile', 'leaderboard-national', 'enter-result',
         ],
       });
   }

@@ -1,29 +1,10 @@
 import { ImageResponse } from '@vercel/og';
 import React from 'react';
-import { buildShare4a, share4aSize } from './_lib/og/share4a.js';
 
 export const config = {
   runtime: 'edge',
 };
 
-// ┌─ FONT RULE: Satori (inside @vercel/og) cannot parse VARIABLE fonts —
-// │  handed one it throws mid-parse ("Cannot read properties of undefined
-// │  (reading '256')"), and Vercel converts the thrown edge exception into
-// │  an empty HTTP 200, not a 500. That combination made every recap PNG
-// │  silently blank in production for weeks while health checks saw
-// │  "200 image/png".
-// │
-// │  So: every font fetched below MUST be a STATIC instance (one weight,
-// │  no fvar table). The *-400/*-600/*-700 files are fontTools-instanced
-// │  from the same upstreams the app uses; the browser still gets the
-// │  variable woff2 via CSS. Before adding or changing ANY font here run:
-// │
-// │      node scripts/test-satori-fonts.mjs public/fonts/<file>.ttf
-// │
-// │  which parse-tests against the exact satori build production runs —
-// │  then still verify a non-zero-byte response after deploy.
-// └─
-//
 // v0.77.0 — Custom font loading for crisp Kartu Bola Pick'em PNGs.
 // Space Grotesk (UI/display) + JetBrains Mono (data/numerals) are the
 // brand fonts. Both are self-hosted at /fonts/*.woff2 (v0.63.0 paper-
@@ -38,44 +19,29 @@ export const config = {
 
 let __cachedFonts = null;
 
-// Kill switch from the blank-PNG outage. Safe to re-enable 2026-08-10:
-// all fonts below are satori-tested static instances (see FONT RULE).
-const USE_CUSTOM_FONTS = true;
-
 async function loadFonts(reqUrl) {
-  if (!USE_CUSTOM_FONTS) return [];
   if (__cachedFonts) return __cachedFonts;
   try {
     const origin = new URL(reqUrl).origin;
-    const grab = (file) =>
-      fetch(`${origin}/fonts/${file}`).then((r) => (r.ok ? r.arrayBuffer() : null));
-    // STATIC instances only — see FONT RULE above.
-    const [sg400, sg700, jbm400, jbm700, bric800, inst400, inst600, inst700] =
-      await Promise.all([
-        grab('space-grotesk-400.ttf'),
-        grab('space-grotesk-700.ttf'),
-        grab('jetbrains-mono-400.ttf'),
-        grab('jetbrains-mono-700.ttf'),
-        grab('bricolage-grotesque-800-latin.ttf'),
-        grab('instrument-sans-400.ttf'),
-        grab('instrument-sans-600.ttf'),
-        grab('instrument-sans-700.ttf'),
-      ]);
+    const [sgBuf, jbmBuf] = await Promise.all([
+      fetch(`${origin}/fonts/space-grotesk-latin.woff2`).then((r) =>
+        r.ok ? r.arrayBuffer() : null,
+      ),
+      fetch(`${origin}/fonts/jetbrains-mono-latin.woff2`).then((r) =>
+        r.ok ? r.arrayBuffer() : null,
+      ),
+    ]);
     const fonts = [];
-    const reg = (name, data, weight) => {
-      if (data) fonts.push({ name, data, weight, style: 'normal' });
-    };
-    reg('Space Grotesk', sg400, 400);
-    reg('Space Grotesk', sg700, 700);
-    reg('JetBrains Mono', jbm400, 400);
-    reg('JetBrains Mono', jbm700, 700);
-    // 800 is the only Bricolage weight the design uses; also registered at
-    // 400 so a stray lighter node resolves to Bricolage, not default sans.
-    reg('Bricolage Grotesque', bric800, 800);
-    reg('Bricolage Grotesque', bric800, 400);
-    reg('Instrument Sans', inst400, 400);
-    reg('Instrument Sans', inst600, 600);
-    reg('Instrument Sans', inst700, 700);
+    if (sgBuf) {
+      // Variable font — register at 400 + 700 so Satori can pick the
+      // correct axis for both body and display weights.
+      fonts.push({ name: 'Space Grotesk', data: sgBuf, weight: 400, style: 'normal' });
+      fonts.push({ name: 'Space Grotesk', data: sgBuf, weight: 700, style: 'normal' });
+    }
+    if (jbmBuf) {
+      fonts.push({ name: 'JetBrains Mono', data: jbmBuf, weight: 400, style: 'normal' });
+      fonts.push({ name: 'JetBrains Mono', data: jbmBuf, weight: 700, style: 'normal' });
+    }
     __cachedFonts = fonts;
   } catch (err) {
     // Don't fail the PNG render if font fetch errors — fall back to
@@ -123,22 +89,6 @@ export default async function handler(req) {
   // through to the existing NBA recap renderer for everything else
   // (back-compat with /recap/[gameId] callers).
   const type = url.searchParams.get('type') || '';
-  // R2 — Sistem 4a share cards. Dispatched here rather than as their own
-  // endpoint because the Vercel Hobby function budget is 12/12.
-  if (type.startsWith('g4-')) {
-    const params = Object.fromEntries(url.searchParams.entries());
-    const { width, height } = share4aSize(params);
-    return new ImageResponse(buildShare4a(type, params), {
-      width,
-      height,
-      // Empty array would make Satori throw; undefined falls back to the
-      // bundled default face, so a font hiccup costs typography, not the card.
-      fonts: fonts && fonts.length ? fonts : undefined,
-      headers: {
-        'Cache-Control': 'public, max-age=300, s-maxage=86400, stale-while-revalidate=604800',
-      },
-    });
-  }
   if (type.startsWith('pickem-')) {
     return renderPickem(type, url, fonts);
   }
@@ -415,12 +365,8 @@ export default async function handler(req) {
     height: H,
     fonts: fonts && fonts.length ? fonts : undefined,
     headers: {
-      // NB: do NOT set Content-Type here. ImageResponse already sets it,
-      // and the duplicate produced `content-type: image/png, image/png`,
-      // which made Vercel return HTTP 200 with a ZERO-BYTE body — every
-      // recap PNG silently blank in production. og-derby omits it and has
-      // always worked.
       'Cache-Control': 'public, max-age=31536000, immutable',
+      'Content-Type': 'image/png',
     },
   });
 }
@@ -475,12 +421,8 @@ function renderPickem(type, url, fonts) {
       // Pick'em recap PNGs are derived from a single user moment; cache
       // aggressively (1 year, immutable) the same way the NBA recap path
       // does. Each unique query produces a unique URL.
-      // NB: do NOT set Content-Type here. ImageResponse already sets it,
-      // and the duplicate produced `content-type: image/png, image/png`,
-      // which made Vercel return HTTP 200 with a ZERO-BYTE body — every
-      // recap PNG silently blank in production. og-derby omits it and has
-      // always worked.
       'Cache-Control': 'public, max-age=31536000, immutable',
+      'Content-Type': 'image/png',
     },
   });
 }

@@ -2,14 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import { COLORS as C } from '../lib/constants.js';
 import { useApp } from '../lib/AppContext.jsx';
-import { supabase, getSupabaseAsync } from '../lib/supabase.js';
+import { supabase } from '../lib/supabase.js';
 import { trackEvent } from '../lib/analytics.js';
 import SEO from '../components/SEO.jsx';
-import { claimGuestAndJoin } from '../pickem/claim.js';
-
-// Pick'em shell routes skip the favourites onboarding (doc 17 S1-5): a
-// first login from an invite must land on the grup, not on a team picker.
-const PICKEM_ROUTE = /^\/($|\?|grup(\/|$)|pick\/|g\/|skor(\/|$)|gugur\/|main(\/|$))/;
 
 /**
  * /auth/callback — handles the magic-link redirect.
@@ -35,12 +30,8 @@ export default function AuthCallback() {
     let cancelled = false;
 
     async function run() {
-      // The client is lazy (S2); create it NOW so detectSessionInUrl can
-      // read the magic-link hash before we look for a session.
-      await getSupabaseAsync();
-      const next = search.get('next') || '/';
-      // Same-origin path only: no '//host' (protocol-relative) bounces.
-      const safeNext = /^\/(?![\/\\])/.test(next) ? next : '/';
+      const next = search.get('next') || '/bracket';
+      const safeNext = next.startsWith('/') ? next : '/bracket';
 
       // Supabase magic links can land here via two flows:
       //   • PKCE (modern):  /auth/callback?code=...&next=...
@@ -98,12 +89,7 @@ export default function AuthCallback() {
       // fail with RLS errors for fresh editor accounts that don't
       // yet have a profile row + the auto-create trigger isn't set
       // up. Skip directly to /editor.
-      const skipOnboarding = safeNext.startsWith('/editor') || PICKEM_ROUTE.test(safeNext);
-
-      // Claim-on-login (doc 17 §2.3): replay the guest picks against the
-      // account, then join the grup that invited us. Best-effort; a
-      // failure here must never block the sign-in.
-      await claimGuestAndJoin('callback');
+      const skipOnboarding = safeNext.startsWith('/editor');
 
       try {
         const userId = exchangeData?.session?.user?.id || exchangeData?.user?.id;

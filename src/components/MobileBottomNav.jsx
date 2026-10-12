@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { UI } from '../lib/flags.js';
 import { useApp } from '../lib/AppContext.jsx';
 
 /**
@@ -312,28 +311,11 @@ function NavButton({ icon, label, active, onClick, to }) {
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
-/**
- * Routes that ship their own Sistem 4a tab bar (TabBar4a). Two fixed bars
- * pinned to the same edge is a real conflict — this one has the higher
- * z-index, so it would sit on top of the 4a bar and hide it. R3's root
- * flip makes the 4a bar the primary navigation; until then these routes
- * opt out explicitly.
- */
-const FOUR_A_SHELL_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//, /^\/masuk$/, /^\/login$/, /^\/profil$/, /^\/papan$/, /^\/aturan$/, /^\/kabar$/];
-// The root joined the 4a shell at the 2026-08-13 flip — but only while the
-// flag serves MainShell there; with the flag off the legacy home needs
-// this nav back.
-
 export default function MobileBottomNav() {
   const location = useLocation();
   const { lang } = useApp();
   const sport = detectSport(location.pathname);
   const items = navItemsFor(sport, lang);
-
-  const isFourA =
-    FOUR_A_SHELL_ROUTES.some((re) => re.test(location.pathname)) ||
-    (location.pathname === '/' && UI.pickem && UI.pickemHome);
-  if (isFourA) return null;
 
   function openSearch() {
     window.dispatchEvent(new CustomEvent('gibol:open-search'));

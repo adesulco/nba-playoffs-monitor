@@ -19,12 +19,8 @@
 //   we need to measure whether pick'em / push / newsletter actually
 //   retain users.
 
-// S2 (doc 17): both SDKs are dynamic imports — they load only after
-// analytics consent, so the entry bundle no longer carries ~130 KB of
-// tracker code for a visitor who never consents.
-import React from 'react';
-let Sentry = null;
-let posthog = null;
+import * as Sentry from '@sentry/react';
+import posthog from 'posthog-js';
 import { getConsent, subscribe as subscribeConsent } from './consent.js';
 
 let sentryReady = false;
@@ -91,7 +87,7 @@ function scrubEvent(event) {
  * pre-consent posted envelopes to ingest.us.sentry.io before any UI
  * rendered).
  */
-export async function initObservability() {
+export function initObservability() {
   // Wire the consent subscription exactly once — even if the SDKs aren't
   // yet inited, we need to know when the user later grants consent so we
   // can fire init at that moment without a page reload.
@@ -129,7 +125,6 @@ export async function initObservability() {
   const posthogHost = import.meta.env.VITE_POSTHOG_HOST || 'https://eu.posthog.com';
 
   if (dsn && !sentryReady) {
-    if (!Sentry) Sentry = await import('@sentry/react');
     Sentry.init({
       dsn,
       environment: import.meta.env.MODE,
@@ -160,7 +155,6 @@ export async function initObservability() {
   }
 
   if (posthogKey && !posthogReady) {
-    if (!posthog) posthog = (await import('posthog-js')).default;
     posthog.init(posthogKey, {
       api_host: posthogHost,
       capture_pageview: false, // AnalyticsTracker already handles SPA pageviews.
@@ -250,24 +244,4 @@ export function resetIdentity() {
  * sport-scoped error reporting (we already have SportErrorBoundary for UX
  * fallback; Sentry.ErrorBoundary is for reporting).
  */
-export class SentryErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { error: null };
-  }
-  static getDerivedStateFromError(error) {
-    return { error };
-  }
-  componentDidCatch(error, info) {
-    if (Sentry) {
-      try { Sentry.captureException(error, { extra: { componentStack: info?.componentStack } }); } catch { /* ignore */ }
-    }
-  }
-  render() {
-    if (this.state.error) {
-      const { fallback } = this.props;
-      return typeof fallback === 'function' ? fallback({ error: this.state.error }) : (fallback ?? null);
-    }
-    return this.props.children;
-  }
-}
+export const SentryErrorBoundary = Sentry.ErrorBoundary;

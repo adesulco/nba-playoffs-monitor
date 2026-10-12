@@ -6,18 +6,14 @@
 
 // Whitelisted scoring_config keys + per-key validators. Anything not here
 // is rejected (never silently dropped — commissioners should know).
-// Shape doc: migration 0021 pickem_resolve_config + scoring-core.js
-// SPEC_V1_DEFAULTS. `template` names a Santai/Standar/Sultan preset that
-// the overrides sit on top of (doc 17 §1 Templates).
+// Shape doc: migration 0019 header + scoring-core.js NEW_DEFAULTS.
 const SCORING_KEYS = {
-  template: (v) => ['santai', 'standar', 'sultan'].includes(v),
   group_position_pts: nonNegInt,
   perfect_group_bonus: nonNegInt,
   knockout_pts: knockoutShape,
   score_exact: nonNegInt,
   score_result_margin: nonNegInt,
   score_result: nonNegInt,
-  score_nyaris: nonNegInt,
   underdog_threshold: fraction,
   underdog_multiplier: nonNegNum,
   streak_len: nonNegInt,
@@ -25,6 +21,7 @@ const SCORING_KEYS = {
   jagoan_multiplier: nonNegNum,
   jagoan_penalty: fraction,
   stack_cap: nonNegNum,
+  nemesis_bonus: nonNegInt,
 };
 
 const KO_KEYS = new Set(['r32', 'r16', 'qf', 'sf', 'final']);
@@ -73,12 +70,12 @@ export function validateFormats(input) {
 }
 
 // D2 (08-teardown-deltas) — the commissioner rules/prizes box is where
-// wager-adjacent copy will try to enter the product. Server-side reject
-// of the banned vocabulary + money-prize phrasing, both locales.
-export const BANNED_VOCAB = /\b(pasang(an)?|taruhan|bertaruh|odds|judi|bandar|jackpot|deposit|withdraw)\b/i;
+// judi-adjacent copy will try to enter the product. Server-side reject of
+// betting vocabulary + money-prize phrasing, both locales. Friendly error.
+const BANNED_VOCAB = /\b(pasang(an)?|taruhan|bertaruh|odds|judi|bandar|jackpot|deposit|withdraw)\b/i;
 const MONEY_PRIZE = /\b(hadiah|prize|pot|pool\s*prize)\b[^.\n]{0,48}\b(uang|rp\.?|rupiah|idr|usd|cash|\$|€)|\b(uang|rp\.?|rupiah|idr|usd|cash)\b[^.\n]{0,48}\b(hadiah|prize)\b/i;
 
-/** Validate leagues.description (D2): ≤2000 chars, passes the vocab guard. */
+/** Validate leagues.description (D2): ≤2000 chars, no betting vocabulary. */
 export function validateDescription(input) {
   if (input == null) return { ok: true, value: null };
   if (typeof input !== 'string') return { ok: false, error: 'description must be a string' };
@@ -88,7 +85,7 @@ export function validateDescription(input) {
   if (BANNED_VOCAB.test(value) || MONEY_PRIZE.test(value)) {
     return {
       ok: false,
-      error: "Keep it friendly — wagering or cash-prize wording isn't allowed. Merch and voucher prizes are fine. (Bahasa: kata-kata pasang-pasangan/hadiah uang nggak diizinkan; hadiah merch/voucher boleh.)",
+      error: "Keep it friendly — betting or cash-prize wording isn't allowed. Merch and voucher prizes are fine. (Bahasa: bahasa taruhan/hadiah uang nggak diizinkan; hadiah merch/voucher boleh.)",
     };
   }
   return { ok: true, value };

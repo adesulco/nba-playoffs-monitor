@@ -23,7 +23,6 @@
  */
 
 import { getSupabaseAdmin } from '../supabaseAdmin.js';
-import { isAdminRequest } from '../adminToken.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -31,7 +30,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (!isAdminRequest(req)) {
+  const token = process.env.ADMIN_TOKEN || process.env.PICKEM_ADMIN_TOKEN;
+  const provided =
+    req.headers['x-admin-token'] ||
+    (req.headers.authorization || '').replace(/^Bearer\s+/i, '');
+  if (!token || provided !== token) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
@@ -41,14 +44,6 @@ export default async function handler(req, res) {
   const { fixture_id } = body;
   const home_score = Number(body.home_score);
   const away_score = Number(body.away_score);
-  // Spec v1 (doc 17 §1 "Score judged on"): a knockout tie is a draw on the
-  // scoreline (picks score as D) but the bracket needs the ADVANCER —
-  // pass advancer 'H'|'A' for a game decided on penalties. Ignored when the
-  // scores differ.
-  const advancer = body.advancer == null ? null : String(body.advancer).toUpperCase();
-  if (advancer != null && !['H', 'A'].includes(advancer)) {
-    return res.status(400).json({ error: "advancer must be 'H'|'A'" });
-  }
 
   if (!fixture_id) return res.status(400).json({ error: 'fixture_id required' });
   // v0.79.6 — was capped at 99 (fine for soccer, broke for NBA where
@@ -71,9 +66,7 @@ export default async function handler(req, res) {
       home_score,
       away_score,
       status: 'final',
-      // The trigger derives H/D/A from the score; a KO tie with an advancer
-      // stores the advancer instead (bracket scoring reads it, tiers don't).
-      outcome: home_score === away_score && advancer ? advancer : null,
+      outcome: null,        // cleared so the trigger re-derives from the new score
       finalized_at: null,   // re-set by the trigger to now()
     })
     .eq('id', fixture_id)

@@ -12,7 +12,6 @@
  * Response: { ok, entitlement }
  */
 import { getSupabaseAdmin } from '../supabaseAdmin.js';
-import { isAdminRequest } from '../adminToken.js';
 import { parseBody } from './league-config.js';
 
 const PRODUCTS = new Set(['season_pass', 'lifetime', 'gibol_plus', 'sponsor_pool']); // D1: sponsor door open
@@ -22,7 +21,8 @@ export default async function handler(req, res) {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (!isAdminRequest(req)) {
+  const token = req.headers['x-admin-token'];
+  if (!process.env.PICKEM_ADMIN_TOKEN || token !== process.env.PICKEM_ADMIN_TOKEN) {
     return res.status(401).json({ error: 'Not authorized' });
   }
 

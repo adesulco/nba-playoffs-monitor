@@ -25,7 +25,6 @@
  */
 
 import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
-import { defaultCompetitionKey } from './registry.js';
 
 const HISTORY_DEFAULT = 10;
 const HISTORY_MAX = 50;
@@ -39,7 +38,7 @@ export default async function handler(req, res) {
   const user = await getUserFromAuthHeader(req.headers.authorization || req.headers.Authorization);
   if (!user) return res.status(401).json({ error: 'Not authenticated' });
 
-  const competition = String(req.query?.competition || '').trim() || defaultCompetitionKey();
+  const competition = String(req.query?.competition || '').trim() || 'WC2026';
   const historyLimit = Math.min(
     Math.max(parseInt(String(req.query?.history_limit || ''), 10) || HISTORY_DEFAULT, 1),
     HISTORY_MAX,
@@ -61,26 +60,21 @@ export default async function handler(req, res) {
   //    returns rank + points + exact_count + tiebreak data.
   const { data: lbRow } = await admin
     .from('leaderboard_competition')
-    // 0021 views: first_submitted_at is gone (asking for it failed the
-    // query, so rank and points always read empty until 2026-10-07).
-    .select('rank, points, exact_count, nyaris_count')
+    .select('rank, points, exact_count, first_submitted_at')
     .eq('competition', competition)
     .eq('user_id', user.id)
     .maybeSingle();
 
-  // 3) Accuracy: Spec v1 "correct" = tier exact/margin/result, the same
-  //    rule pickem_points_for uses (nyaris earns a point but is a wrong
-  //    result). Void picks don't count either way.
+  // 3) Accuracy: scored predictions where base_points > 0 / total scored.
   const { data: scoredRows } = await admin
     .from('predictions')
-    .select('tier', { count: 'exact' })
+    .select('base_points', { count: 'exact' })
     .eq('user_id', user.id)
     .eq('league', competition)
     .not('scored_at', 'is', null);
 
-  const counted = (scoredRows || []).filter((r) => r.tier && r.tier !== 'void');
-  const totalScored = counted.length;
-  const correctCount = counted.filter((r) => ['exact', 'margin', 'result'].includes(r.tier)).length;
+  const totalScored = scoredRows?.length ?? 0;
+  const correctCount = (scoredRows || []).filter((r) => (r.base_points ?? 0) > 0).length;
   const accuracyPct = totalScored > 0 ? Math.round((correctCount / totalScored) * 100) : null;
 
   // 4) Streak.
@@ -89,9 +83,6 @@ export default async function handler(req, res) {
     .select('current_streak, longest_streak, last_matchday')
     .eq('user_id', user.id)
     .eq('competition', competition)
-    // One row per kind since 0021; without this maybeSingle() errors as soon
-    // as both exist. 'correct' is the streak that pays and the Papan board.
-    .eq('kind', 'correct')
     .maybeSingle();
 
   // 5) Badges — earned (joined with catalog) + full catalog for the gallery
@@ -110,7 +101,7 @@ export default async function handler(req, res) {
   // 6) Recent prediction history with the fixture join.
   const { data: recent } = await admin
     .from('predictions')
-    .select('id, picked_outcome, picked_home, picked_away, is_jagoan, base_points, jagoan_mult_applied, upset_mult_applied, awarded_points, scored_at, fixture_id, fixtures!inner(id, matchday, stage, home_team, away_team, home_score, away_score, outcome)')
+    .select('id, picked_outcome, picked_home, picked_away, is_jagoan, base_points, jagoan_mult_applied, upset_mult_applied, awarded_points, grup_bonus_points, scored_at, fixture_id, fixtures!inner(id, matchday, stage, home_team, away_team, home_score, away_score, outcome)')
     .eq('user_id', user.id)
     .eq('league', competition)
     .not('scored_at', 'is', null)
@@ -143,7 +134,6 @@ export default async function handler(req, res) {
       points: lbRow?.points ?? 0,
       rank: lbRow?.rank ?? null,
       exact_count: lbRow?.exact_count ?? 0,
-      nyaris_count: lbRow?.nyaris_count ?? 0,
       accuracy_pct: accuracyPct,
       total_scored: totalScored,
       correct_count: correctCount,
