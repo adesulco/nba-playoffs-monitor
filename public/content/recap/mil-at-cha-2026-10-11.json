@@ -1,0 +1,133 @@
+{
+  "type": "recap",
+  "slug": "mil-at-cha-2026-10-11",
+  "title": "Recap Milwaukee Bucks 90-105 Charlotte Hornets (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Milwaukee Bucks vs Charlotte Hornets (90-105) di —, 11 October 2026.",
+  "body_md": "# Charlotte Hornets Kalahkan Milwaukee Bucks 105-90 di Game 1 Regular Season Series\n\nCharlotte Hornets membuka seri tiga pertandingan kontra Milwaukee Bucks dengan kemenangan meyakinkan, 105-90, Senin 12 Oktober 2026. Brandon Miller dan Naz Reid tampil solid sebagai motor serangan CHA, sementara Bucks kesulitan menemukan ritme offensif sepanjang laga. Hornets unggul di hampir semua lini, hasilnya selisih 15 poin yang cukup nyaman.\n\n---\n\n## Top Performers\n\n**Brandon Miller** jadi top scorer CHA dengan 18 poin, 3 rebound, 4 asis, shooting 6-15 from field dan 4-9 dari tiga angka. Volume shooting-nya memang tinggi, tapi efisiensi dari perimeter cukup untuk menjaga Charlotte konsisten mencetak angka.\n\nDi belakangnya, **Naz Reid** tampil efisien: 16 poin dari 7-14 FG dan 2-6 dari tiga angka dalam 20 menit bermain. Untuk seorang starter yang hanya main 20 menit, angka itu solid. **Liam McNeeley** menambah 11 poin dengan 5 asis, jadi playmaker pendamping yang menjaga tempo Charlotte. Dari bench, **Sion James** kontribusi 11 poin dan 5 rebound dengan shooting nyaris sempurna: 3-4 dari tiga angka.\n\nDi kubu Bucks, **Tyler Herro** jadi top scorer dengan 18 poin, 7 rebound, 2 asis. Cukup produktif, tapi efisiensi tim secara keseluruhan mengkhianatinya. **Kyle Kuzma** dan **Ryan Rollins** masing-masing cetak 12 poin, Rollins dengan shooting 5-15 yang boros, 2-8 dari tiga angka. **Kel'el Ware** dari bench menambah 10 poin, salah satu yang paling efisien di MIL dengan 4-9 FG.\n\n---\n\n## Apa yang Bilang Angkanya\n\nPerbedaan hasil laga ini bisa dibaca dari satu baris: FG% CHA 42% vs MIL 36%. Bukan jurang yang dramatis, tapi konsisten sepanjang empat kuarter, dan itu yang akhirnya menentukan.\n\nBucks mencoba menutup gap lewat agresivitas: 15 steal dan 8 block, angka yang cukup tinggi. Tapi MIL juga lempar 46 tiga angka dengan konversi 33%, sama dengan Charlotte yang melempar 51 kali dengan persentase identik. Volume-nya seimbang, efisiensi keseluruhan Bucks yang kalah.\n\nYang lebih krusial: Charlotte unggul di rebound (54 vs 48) dan asis (29 vs 23). Fast-break points CHA 20 vs MIL 15, points in paint 40 vs 34. Hornets lebih efisien mengkonversi peluang second-chance dan transisi, dua area yang biasanya jadi indikator kontrol laga.\n\nFree throw juga jadi catatan untuk Milwaukee: 11-19 atau 58%, dibanding CHA yang konversi 10-14 alias 71%. Bukan selisih besar secara volume, tapi efisiensi dari garis bebas mencerminkan kesulitan MIL menutup laga di momen krusial.\n\n---\n\n## Momentum Laga\n\nKEY PLAYS menunjukkan laga sempat ketat di kuartal awal. Memasuki Q1 sisa 4:18, skor masih 18-19 setelah driving layup O'Neale. AJ Green kemudian bikin tiga angka 27 kaki untuk menyamakan 21-21, sebelum Tidjane Salaun balas dengan tiga angka 25 kaki, Charlotte naik 24-21.\n\nBucks sempat membalik keadaan di awal Q2: Kuzma koneksi umpan Kevin Porter Jr. untuk tiga angka, MIL 31-29. Miller langsung menjawab dengan tiga angka kedua dari asis Hannes Steinbach, skor berbalik 31-32 untuk Charlotte. Dari situ, momentum tidak pernah benar-benar kembali ke Milwaukee.\n\n---\n\n## Selanjutnya\n\nGame 2 dari tiga pertandingan regular season series ini belum ada jadwal pasti di input data. Yang jelas, Charlotte mulai seri dengan catatan 1-0. Bucks perlu jawaban nyata di sisi offensif, terutama menekan efisiensi shooting dan memperbaiki free throw, sebelum dua laga tersisa.\n\nPantau jadwal selengkapnya di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401901821",
+    "home_team": "Charlotte Hornets",
+    "home_abbr": "CHA",
+    "away_team": "Milwaukee Bucks",
+    "away_abbr": "MIL",
+    "home_score": 105,
+    "away_score": 90,
+    "winner_abbr": "CHA",
+    "kickoff_utc": "2026-10-11T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 1/3",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.052912,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "FAIL. Multiple unverified player names (AJ Green, Tidjane Salaun, Jericho Sims, Hannes Steinbach, Kevin Porter Jr.) introduced from partial KEY PLAYS data marked [?]. These do NOT appear in TOP SCORERS or TEAM STATS input blocks and violate training-inference rules. Additionally, three translated-English phrases and one academic-drift issue lower polish. Reject and regenerate with strict verification of every player name against input data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "AJ Green makes 27-foot three point jumper / Tidjane Salaun makes 25-foot three point jumper / Jericho Sims assists / Hannes Steinbach assists",
+          "fix": "Delete mentions of these players by name. Rewrite: 'A Bucks bench player made a 27-footer' or cut the key play entirely if unverified."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kevin Porter Jr. assists / Kevin Porter Jr.",
+          "fix": "Remove Kevin Porter Jr. by name. Write 'Kuzma's assisted three-pointer' or delete the play."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dari bench, Sion James kontribusi 11 poin dan 5 rebound dengan shooting nyaris sempurna: 3-4 dari tiga angka.",
+          "fix": "Rewrite: 'Sion James dari bench 11 poin, 5 rebound, 3-4 three-pointers.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Untuk seorang starter yang hanya main 20 menit, angka itu solid.",
+          "fix": "Delete 'Untuk seorang starter yang hanya main 20 menit,'. Start: 'Solid dari 20 menit bermain.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Bukan jurang yang dramatis, tapi konsisten sepanjang empat kuarter, dan itu yang akhirnya menentukan.",
+          "fix": "Rewrite: 'Tidak dramatis, tapi konsisten empat kuarter. Itulah yang menang.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Perbedaan hasil laga ini bisa dibaca dari satu baris:",
+          "fix": "Start: 'Angka-angkanya jelas: FG% CHA 42% vs MIL 36%.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "points in paint 40 vs 34. Hornets lebih efisien mengkonversi peluang second-chance dan transisi",
+          "fix": "Write: 'Hornets lebih efisien di fast-break dan rebounding.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7cfa7d89a421c5f0",
+    "published_at": "2026-10-12T03:03:53+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 68,
+      "headline_score": 45,
+      "headline_comment": "Headline generic dan panjang; 'Game 1 Regular Season Series' aneh karena NBA regular season bukan series, dan judul tidak punya hook atau angle.",
+      "lead_score": 62,
+      "lead_comment": "Lead memuat fakta inti tapi datar — tidak ada angle, 'tampil solid sebagai motor serangan' adalah hedge klise, dan 'kalah di hampir semua lini' lemah tanpa satu angka pembuka yang tajam.",
+      "structure_score": 70,
+      "structure_comment": "Struktur recap standar dan readable, tapi section 'Apa yang Bilang Angkanya' judulnya aneh gramatikal dan 'Momentum Laga' terlalu bergantung play-by-play dari data mentah tanpa narasi.",
+      "voice_score": 65,
+      "voice_comment": "Code-switching wajar, tapi ada drift ke English mentah ('6-15 from field', 'top scorer', 'volume shooting-nya') dan beberapa kalimat terasa diterjemahkan ('efisiensi tim secara keseluruhan mengkhianatinya').",
+      "suggestion_count": 6,
+      "summary": "Decent recap draft with solid statistical grounding, but two critical process-tells leak into the copy ('belum ada jadwal pasti di input data', 'KEY PLAYS menunjukkan') and one factual error on steals (15 vs actual 10). Headline and framing also need rework because the 'Game 1 Regular Season Series' concept doesn't match NBA convention.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Charlotte Hornets Kalahkan Milwaukee Bucks 105-90 di Game 1 Regular Season Series",
+          "issue": "Judul membingungkan — NBA regular season tidak pakai konsep 'Game 1' atau 'series', ini artefak dari input data yang menyebut 'Series starts 1/3' (kemungkinan maksudnya season series head-to-head, bukan playoff series). Juga liga di input menyebut 'NBA Playoffs 2026' yang bertentangan dengan 'Regula",
+          "fix": "Ganti ke judul yang fokus angle: 'Hornets Bungkam Bucks 105-90, Miller dan Reid Jadi Kunci' — hapus referensi 'Game 1 Series' yang tidak standar NBA."
+        },
+        {
+          "priority": "high",
+          "snippet": "Game 2 dari tiga pertandingan regular season series ini belum ada jadwal pasti di input data.",
+          "issue": "Kalimat ini membocorkan proses internal ('belum ada jadwal pasti di input data') — pembaca tidak boleh tahu ada 'input data'. Breaks the fourth wall.",
+          "fix": "Rewrite: 'Jadwal Game 2 belum dirilis. Yang jelas Charlotte mulai seri head-to-head musim ini dengan 1-0.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "KEY PLAYS menunjukkan laga sempat ketat di kuartal awal.",
+          "issue": "'KEY PLAYS' adalah label dari input data yang bocor ke artikel — fatal editorial tell.",
+          "fix": "Hapus label dan buka dengan: 'Laga sempat ketat di kuartal pertama.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Apa yang Bilang Angkanya",
+          "issue": "Judul section gramatikal aneh dalam Bahasa Indonesia — terdengar seperti terjemahan 'What the Numbers Say'.",
+          "fix": "Ganti ke 'Kata Statistik' atau 'Baca dari Angka' atau 'Gap Statistik'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Bucks mencoba menutup gap lewat agresivitas: 15 steal dan 8 block",
+          "issue": "Angka salah — input data menyebut MIL punya 10 steal, bukan 15. Fact-check gate seharusnya tangkap, tapi tetap perlu di-flag.",
+          "fix": "Koreksi ke '10 steal dan 8 block' sesuai TEAM STATS."
+        },
+        {
+          "priority": "medium",
+          "snippet": "efisiensi tim secara keseluruhan mengkhianatinya",
+          "issue": "Frasa terjemahan Inggris ('team efficiency betrayed him') — tidak natural dalam Bahasa sport Indonesia.",
+          "fix": "Ganti ke: 'tapi tim di sekitarnya tidak bisa ikut mencetak angka dengan efisien.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
