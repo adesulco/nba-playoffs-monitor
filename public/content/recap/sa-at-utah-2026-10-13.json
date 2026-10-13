@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "sa-at-utah-2026-10-13",
+  "title": "Recap San Antonio Spurs 109-119 Utah Jazz (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — San Antonio Spurs vs Utah Jazz (109-119) di —, 13 October 2026.",
+  "body_md": "# Utah Jazz Kalahkan San Antonio Spurs 119-109 di Laga Pembuka Regular Season Series\n\nUtah Jazz mengawali regular season series kontra San Antonio Spurs dengan kemenangan meyakinkan, 119-109. Pertandingan yang berlangsung Senin 13 Oktober 2026 ini bukan soal satu bintang dominan, Jazz menang karena efisiensi kolektif yang jauh melampaui Spurs dari tipis hingga akhir laga.\n\n---\n\n## Top Performers\n\nDi kubu Jazz, scoring load justru tersebar merata. Darryn Peterson jadi yang paling produktif dengan 14 poin, 2 rebound, 5 asis, efisien dari lapangan dengan 5-10 dari field. Jaren Jackson Jr. tampil tajam dengan 13 poin hanya dari 18 menit bermain, shooting 6-8 dari field termasuk satu three-pointer. Keyonte George 13 poin dari 16 menit dengan konversi 5-7. Lauri Markkanen dan Jaxson Hayes masing-masing menyumbang 11 poin, Hayes khususnya sangat efisien: 4-5 dari field, semua dari dalam paint.\n\nTidak ada yang mencetak 20+. Tapi tidak perlu. Lima starter Jazz semuanya double-digit, dan itu sudah cukup.\n\nSpurs punya Ja'Kobi Gillespie yang tampil sebagai top scorer malam ini, 25 poin, 4 asis, shooting 9-14 dari field dan 4-8 dari tiga poin, semua dari bangku cadangan dalam 25 menit. Penampilan yang bisa jadi highlight tersendiri kalau timnya menang. Harrison Barnes menambah 19 poin (3-7 dari tiga), sementara Keldon Johnson 15 poin dengan 4 rebound dan 4 asis, Jordan McLaughlin 14 poin dan 6 asis. Julian Champagnie turut menyumbang 14 poin.\n\nLima pemain Spurs di double-digit, persis seperti Jazz. Tapi efisiensinya yang beda cerita.\n\n---\n\n## Apa yang Menjelaskan Selisih 10 Poin\n\nAngka-angka tim berbicara keras. Jazz shooting 52% dari field. Spurs hanya 39%. Ini bukan soal keberuntungan, ini soal kualitas tembakan yang diciptakan.\n\n*Points in paint* jadi cermin paling jujur malam ini: Jazz 60, Spurs 34. Jazz konsisten masuk ke jantung pertahanan Spurs dan menyelesaikannya. Di sisi lain, Spurs mengandalkan perimeter, 15-42 dari tiga poin, sebagai jalan keluar, tapi konversi 36% tidak cukup untuk menutup ketertinggalan efisiensi di dalam paint.\n\nFast-break points pun timpang: Jazz 23, Spurs 10. Dengan selisih turnover yang hampir setara (Spurs 22, Jazz 21) tapi steal yang lebih banyak di pihak Jazz (18 vs 13), Jazz lebih sering mengkonversi turnover Spurs menjadi poin mudah di ujung lapangan.\n\nAssist count Jazz 26 berbanding 22 milik Spurs juga mencerminkan bagaimana Jazz bermain lebih terorganisir secara ofensif, lebih banyak skip pass, lebih sedikit isolation.\n\n---\n\n## Catatan Series\n\nIni game pertama dari regular season series tiga pertandingan antara Jazz dan Spurs. Game berikutnya dijadwalkan mulai 28 Oktober.\n\nKemenangan ini memberi Jazz modal bagus secara psikologis sebelum game kedua. Spurs punya modal tersebar di banyak pemain, tapi kalau efisiensi dari field, terutama di dalam paint, tidak membaik, pola malam ini bisa berulang.\n\nKedua laga bisa disaksikan di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898721",
+    "home_team": "Utah Jazz",
+    "home_abbr": "UTAH",
+    "away_team": "San Antonio Spurs",
+    "away_abbr": "SA",
+    "home_score": 119,
+    "away_score": 109,
+    "winner_abbr": "UTAH",
+    "kickoff_utc": "2026-10-13T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 10/28",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.048689,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid voice. Facts verified against input data. Minor repetition of 'penampilan' and one unnecessary filler phrase; neither disrupts readability. Bahasa flow is natural and confident.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Penampilan yang bisa jadi highlight tersendiri kalau timnya menang.",
+          "fix": "Use verb forms instead: 'Jaren tajam', 'Layak jadi highlight kalau Spurs menang'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Ini bukan soal keberuntungan, ini soal kualitas tembakan yang diciptakan.",
+          "fix": "'Bukan keberuntungan—kualitas tembakan. Jazz ciptakan peluang lebih baik.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Tidak ada yang mencetak 20+. Tapi tidak perlu. Lima starter Jazz semuanya double-digit...",
+          "fix": "Delete 'Tapi tidak perlu.' Start with 'Lima starter Jazz semuanya double-digit...'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6d63650b7823f584",
+    "published_at": "2026-10-13T03:29:24+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
