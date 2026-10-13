@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "min-at-ny-2026-10-12",
+  "title": "Recap Minnesota Timberwolves 122-104 New York Knicks (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs New York Knicks (122-104) di —, 12 October 2026.",
+  "body_md": "# Minnesota Timberwolves Hajar New York Knicks 122-104, Ant Edwards dan McDaniels Tampil Efisien\n\nMinnesota Timberwolves menggebuk New York Knicks 122-104 dalam laga reguler season, Senin 13 Oktober 2026. Anthony Edwards memimpin skuad MIN dengan 26 poin, sementara Jaden McDaniels tampil konsisten dengan 22 poin. Di atas kertas, ini bukan kejuaraan, tapi Minnesota mendominasi dari dua sisi yang paling penting: efisiensi tembakan tiga angka dan momentum fast break.\n\n---\n\n## Bintang Lapangan\n\n**Anthony Edwards** mengakhiri laga dengan 26 poin, 3 rebound, 3 asis dari 8-16 field goal dan 5-8 dari three-point line. Lima dari delapan percobaan tiga angka masuk, itu angka yang menyakitkan untuk tim lawan yang harus memilih: tutup ruang atau biarkan Ant Drive. Dengan hanya 25 menit di lapangan, efisiensinya per menit tidak perlu dipertanyakan.\n\nDi sampingnya, **Jaden McDaniels** mungkin tampil lebih tajam malam ini: 22 poin dari 8-12 field goal dan 4-5 dari tiga angka. 53% dari luar garis bukan anomali malam ini, itu pola tim. Minnesota kolektif memasukkan 18 dari 34 percobaan three-pointer (53%), bandingkan dengan New York yang hanya 8 dari 32 (25%). Selisih efisiensi ini yang lebih dari apa pun menjelaskan kenapa skor akhir terasa sebesar ini.\n\nDari bench, **Ayo Dosunmu** menyumbang 11 poin dengan 3-5 dari tiga angka dalam 20 menit. Bersama **Zyon Pullin** (8 poin, 3-4 FG) di rotasi bench, Minnesota membuktikan tekanan tidak hanya datang dari starting lineup.\n\n**LaMelo Ball** bermain sebagai playmaker dengan 7 asis, 10 poin, dan 3 rebound, termasuk tembakan tiga angka di Q1 yang diawali assist Edwards untuk memberi MIN keunggulan awal.\n\n---\n\nDi sisi Knicks, **Jalen Brunson** adalah satu-satunya yang benar-benar berjuang: 20 poin, 5 rebound, 3 asis. Tapi 6-13 dari field goal dan 1-4 dari tiga angka mencerminkan resistensi yang ia hadapi malam ini. **OG Anunoby** menambah 15 poin dari 4-8 field goal. **Karl-Anthony Towns**, mantan rekan setim Edwards di Minnesota, mengakhiri laga dengan 11 poin dan 4 asis, tapi hanya 1-4 dari tiga angka.\n\nYang menarik: **Tony Bradley** dari bench mencetak 10 poin dari 5-5 field goal dalam hanya 7 menit. Sempurna dari lapangan, tapi terlalu singkat untuk mengubah jalannya pertandingan.\n\n---\n\n## Baca Angkanya\n\nBox score MIN berbicara sendiri.\n\n54% vs 45% dari field goal. 53% vs 25% dari tiga angka. 39 rebound vs 28. 16 fast-break points vs 5.\n\nMinnesota menang di hampir setiap kategori yang menentukan momentum laga: mereka lebih efisien, lebih banyak menguasai papan, dan jauh lebih produktif dalam transisi. Fast-break 16-5 itu bukan kebetulan, itu cerminan siapa yang lebih banyak berlari dan siapa yang lebih banyak bereaksi.\n\nSatu catatan menarik: New York sebenarnya unggul di points in paint (42-36) dan free throw percentage (90% vs 67%). Knicks bisa masuk ke dalam, bisa ke garis, tapi mereka tidak bisa mengimbangi hujan tiga angka Minnesota. Dari 34 percobaan, 18 masuk. Itu dominasi.\n\nTurnover dua tim relatif berimbang (MIN 20, NY 19), jadi bukan kebocoran bola yang membunuh Knicks, memang efisiensi tembakan yang jadi pembeda.\n\n---\n\n## Selanjutnya\n\nIni Game 1 dari dua pertemuan reguler season antara kedua tim, seri kedua dijadwalkan mulai 19 November. Buat Minnesota, kemenangan ini memberi sinyal awal: roster mereka tajam, distribusi poin merata, dan tiga angka mereka bisa meledak kapan saja.\n\nBuat Knicks, PR-nya jelas sebelum rematch: cari jawaban untuk lini tiga angka Minnesota, atau bersiap menghadapi malam yang sama beratnya.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401914124",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 104,
+    "away_score": 122,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-10-12T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/19",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022668,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stats and good tactical breakdown. Minor academic drift and soft hedging in spots, but voice is mostly clean and conversational. No high-severity violations.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di atas kertas, ini bukan kejuaraan, tapi Minnesota mendominasi",
+          "fix": "Delete or rephrase: 'Juara atau bukan, Minnesota jelas lebih tajam malam ini.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Dengan hanya 25 menit di lapangan, efisiensinya per menit tidak perlu dipertanyakan.",
+          "fix": "'25 menit, 26 poin — itu sudah bicara sendiri.' Or just cut the sentence."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Satu catatan menarik: New York sebenarnya unggul di points in paint",
+          "fix": "Just start: 'New York sebenarnya unggul di paint (42-36) dan free throw (90%).'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "roster mereka tajam, distribusi poin merata, dan tiga angka mereka bisa meledak kapan saja",
+          "fix": "Break into two sentences or use structure: 'Roster tajam. Poin tersebar. Tiga angka mengancam setiap saat.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xeafab7b8a41d67b4",
+    "published_at": "2026-10-13T02:25:19+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,38 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-wsh-2026-10-12",
+  "title": "Recap Brooklyn Nets 131-122 Washington Wizards (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Washington Wizards (131-122) di —, 12 October 2026.",
+  "body_md": "# Brooklyn Nets Kalahkan Washington Wizards 131-122 di Laga Perdana Regular Season Series\n\nBrooklyn Nets menutup laga perdana regular season series melawan Washington Wizards dengan kemenangan 131-122. Michael Porter Jr. tampil sebagai top scorer BKN dengan 22 poin, didukung lima kontributor lain yang semuanya masuk double digit. Washington punya perlawanan sampai kuarter terakhir, tapi Brooklyn terlalu solid untuk dibalik.\n\n---\n\n## Top Performers\n\nDi sisi Brooklyn, Porter Jr. jadi yang paling produktif: 22 poin dari 8-13 field goal, termasuk 2-7 dari tiga poin, dalam 24 menit sebagai starter. Tidak spectacular dari luar, tapi efisiensi dalam lapangan yang menentukan. Julius Randle melengkapi dengan 14 poin, 4 rebound, dan 9 assist, playmaking role yang jelas terlihat dari assist total Brooklyn (29 secara tim).\n\nKejutan datang dari bench. Nolan Traore cetak 17 poin dengan efisiensi tinggi: 6-8 from field, 2-4 from three, dalam 20 menit. Noah Clowney nyaris sempurna dari tiga poin, 4-6, dengan tambahan 15 poin dan 4 assist. Keon Ellis menambah 15 poin dengan 3-4 from three. Kedalaman bench Brooklyn jadi pembeda nyata.\n\nUntuk Washington, Kyshawn George tampil paling impresif dari dua sisi: 21 poin dengan efisiensi mentereng, 6-7 from field, 3-3 from three, sempurna dari tiga poin tanpa satu pun miss. Bilal Coulibaly dari bench menyumbang 19 poin (7-11 FG, 3-5 dari luar). AJ Dybantsa menambah 14 poin dan 4 rebound, meski shooting-nya kurang meyakinkan (5-12 FG). Bub Carrington juga 14 poin dalam hanya 13 menit, salah satu cameo bench terbaik malam ini.\n\n---\n\n## Statistical Read\n\nBrooklyn menguasai laga lewat dua area krusial: efisiensi dalam lapangan dan points in paint. FG% BKN 57% vs WSH 51%, keunggulan yang cukup besar untuk laga dengan margin 9 poin. Yang lebih mencolok: points in paint Brooklyn 50 vs Washington 38. Penguasaan area paint ini yang jadi fondasi kemenangan, bukan hanya tembakan dari luar.\n\nMenariknya, Washington justru lebih baik dari three-point line: 47% (17-36) vs Brooklyn 41% (17-41). Kedua tim mencetak jumlah three-pointer yang sama (17), tapi Washington lebih hemat tembakan. Masalah Wizards ada di free throw ritme, mereka ke garis lebih sering (29 attempt vs 30 BKN) dengan konversi lebih tinggi (93% vs 73%), tapi tidak cukup untuk menutup defisit dari dalam lapangan.\n\nTurnover jadi catatan negatif untuk Brooklyn: 19 kali, lebih banyak dari Washington (23). Laga ini bisa lebih nyaman untuk BKN kalau bola lebih terjaga.\n\n---\n\n## Momen Krusial Q4\n\nWashington sempat memperketat di kuarter empat. Mengacu pada key plays yang tersedia, Wizards memotong defisit ke rentang 116-113 di menit 5:05, sebelum serangkaian poin dari kedua sisi menjaga skor ketat di kisaran tujuh angka. Momentum sempat terasa akan bergeser ke Washington, tapi Brooklyn tidak memberi ruang untuk comeback lebih jauh. Josh Minott menutup momentum tersebut dengan driving layup yang menggeser skor ke 124-119 di menit 2:44 Q4, dan dari situ Brooklyn tidak lepaskan kendali.\n\n---\n\n## Selanjutnya\n\nIni laga pertama dari tiga pertemuan dalam regular season series Brooklyn Nets vs Washington Wizards. Seri berlanjut mulai 20 Desember. Tonton live di NBA League Pass atau Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401901824",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 122,
+    "away_score": 131,
+    "winner_abbr": "BKN",
+    "kickoff_utc": "2026-10-12T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 12/20",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020597,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 0,
+      "summary": "",
+      "issues": []
+    },
+    "plagiarism_hash": "0x34ce61b07401e624",
+    "published_at": "2026-10-13T02:24:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

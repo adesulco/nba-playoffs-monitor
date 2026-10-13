@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "okc-at-atl-2026-10-12",
+  "title": "Recap Oklahoma City Thunder 110-113 Atlanta Hawks (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs Atlanta Hawks (110-113) di —, 12 October 2026.",
+  "body_md": "# Atlanta Hawks Kejutkan OKC 113-110 di Malam Penuh Drama\n\nAtlanta Hawks mencuri kemenangan 113-110 dari Oklahoma City Thunder dalam laga pembuka regular season series, Senin 13 Oktober 2026 dini hari WIB. Laga ditentukan di detik-detik terakhir, Hawks bertahan dari comeback OKC untuk menang tipis tiga poin.\n\n---\n\n## Top Performers\n\nDi sisi OKC, Bennett Stirtz jadi tumpuan utama: 26 poin, 4 rebound, 5 asis dengan efisiensi shooting yang solid, 9-16 dari lapangan, 6-9 dari garis tiga angka. Tapi angka itu tidak cukup. Brooks Barnhizer menyumbang 20 poin dan 8 rebound meski perjuangannya dari lapangan terasa berat (8-23 FG). Aday Mara tampil paling lengkap di kubu Thunder: 17 poin, 10 rebound, 6 asis, double-double yang dilengkapi kontribusi playmaking. Josh Dix menambah 16 poin dan 7 asis, sementara Otega Oweh menutup stat line-nya dengan 11 poin dan 10 rebound, double-double tersendiri.\n\nHawks punya distribusi yang lebih merata. Jock Landale memimpin dengan 17 poin dan 6 asis hanya dalam 21 menit bermain, efisiensi tinggi, 7-11 dari lapangan. Nickeil Alexander-Walker 16 poin dengan 4-7 dari tiga angka. Dari bench, Zuby Ejiofor muncul dengan 15 poin dan 9 rebound (5-9 FG) dalam 23 menit, dan RayJ Dennis mengatur serangan dengan 13 poin dan 7 asis. Jalen Wilson off the bench menambah 12 poin dan 8 rebound.\n\n---\n\n## Yang Membedakan Dua Tim\n\nSecara statistik, OKC dan ATL berimbang di banyak sisi, rebound 51 lawan 50, fast-break points 10-9, points in paint 46-46. Tapi dua angka bicara keras:\n\n**Turnover dan steal.** OKC membuang bola 18 kali, ATL hanya 12. Hawks memanfaatkannya dengan 11 steal berbanding 5. Di laga yang selisihnya hanya tiga poin, turnovers itu mahal.\n\n**Tiga angka.** ATL melepas 51 three-point attempts berbanding 31 OKC, volume jauh lebih agresif. Persentase Hawks lebih rendah (35% vs 42% OKC), tapi 13 tembakan ekstra dari luar membuat total tiga angka mereka jauh lebih banyak: 18 dibanding 13. Volume menang atas efisiensi malam ini.\n\nOKC lebih baik dari garis free throw (19-24, 79%) dan lebih banyak masuk ke dalam (FG% 43% vs 41%), tapi tidak cukup untuk menutup keunggulan turnover Hawks.\n\n---\n\n## Dua Menit Terakhir yang Menentukan\n\nQ4 menjadi cerita tersendiri. Aday Mara bikin OKC unggul 102-101 lewat dua free throw di menit ke-2:25. Tiga puluh detik kemudian, Jalen Wilson melepas tembakan tiga angka dari 24 kaki, diasis Ejiofor, dan ATL balik unggul 104-102. Brooks Barnhizer jawab dengan three-pointer 25 kaki dari umpan Josh Dix: 105-104 OKC.\n\nDari sana, Asa Newell dua kali menjawab serangan OKC. Turnaround jump shot dari 9 kaki di menit ke-1:11 membuat ATL kembali unggul 106-105. Mara membalas dengan alley-oop dunk dari umpan Stirtz: 107-106 Thunder. Newell menjawab lagi dengan driving dunk, 108-107 ATL.\n\nLalu dengan 11,6 detik sisa, RayJ Dennis melepas three-pointer 25 kaki, dan masuk. Skor 111-107 ATL. OKC masih sempat: Stirtz three-pointer di detik 0,5 dari umpan Dix membuat papan skor membaca 110-113. Tapi waktu habis. Hawks menang.\n\n---\n\n## Selanjutnya\n\nIni laga pertama dari dua pertemuan OKC vs ATL di regular season series. Pertemuan kedua dijadwalkan mulai 18 November. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898402",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 113,
+    "away_score": 110,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-10-12T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/18",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.05191,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with clean structure, accurate stats, and good analytical flow. Minor hedging phrasing and one soft-phrase repeat flagged but don't impede readability. Passes voice standards.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Laga ditentukan di detik-detik terakhir, Hawks bertahan dari comeback OKC untuk menang tipis tiga poin.",
+          "fix": "Rewrite: 'Hawks tahan serangan comeback OKC untuk menang tipis 113-110.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "double-double yang dilengkapi kontribusi playmaking... double-double tersendiri.",
+          "fix": "Change 'double-double tersendiri' to 'pantau juga rebound' or just restructure paragraph."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Secara statistik, OKC dan ATL berimbang di banyak sisi, rebound 51 lawan 50...",
+          "fix": "Open: 'Rebound sama persis: 51 lawan 50. Fast-break points juga setara 10-9.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6e9f63bbbe41c7a4",
+    "published_at": "2026-10-13T02:24:02+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
