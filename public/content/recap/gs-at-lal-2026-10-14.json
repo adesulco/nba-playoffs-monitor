@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "gs-at-lal-2026-10-14",
+  "title": "Recap Golden State Warriors 101-89 Los Angeles Lakers (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs Los Angeles Lakers (101-89) di —, 14 October 2026.",
+  "body_md": "# Golden State Kalahkan Lakers 101-89, Podziemski Jadi Penentu di Kuarter Akhir\n\nGolden State Warriors mengalahkan Los Angeles Lakers 101-89 dalam laga pramusim pertama dari empat pertemuan reguler sebelum jadwal resmi NBA dimulai 21 Oktober. Bukan pertandingan yang mulus untuk Warriors, mereka sempat tertinggal di kuarter empat, tapi Brandin Podziemski yang akhirnya menutup perlawanan Lakers dengan serangkaian tembakan krusial.\n\n---\n\n## Podziemski Tampil di Saat yang Tepat\n\nAustin Reaves bermain seperti pemain terbaik di lapangan malam ini. 28 poin, 4 rebound, 7 asis dengan efisiensi tinggi, 10-18 dari lapangan, 4-7 dari garis tiga angka. Untuk Lakers yang datang tanpa bintang-bintang utamanya, Reaves memikul beban itu dan hampir cukup.\n\nDi sisi Warriors, tidak ada satu pun pemain yang mendominasi secara statistik. Yaxel Lendeborg dan Brandin Podziemski sama-sama cetak 17 poin, Stephen Curry hanya 11 poin dari 23 menit, Gui Santos menyumbang 10 poin dengan efisiensi tiga angka yang lumayan (2-6 dari jarak jauh).\n\nTapi angka Podziemski di Q4 yang paling bicara.\n\nSaat Lakers memimpin 76-74 dengan sisa kurang dari 12 menit, Podziemski mencetak dua tembakan beruntun, first an 11-foot two point shot, kemudian pullup jump shot dari 15 kaki, untuk menyamakan kedudukan 76-76. Setelah Lakers kembali unggul 78-76, Gui Santos menyamakan lewat dua free throw. Lalu Podziemski menutupnya dengan three-pointer dari 27 kaki untuk membawa Warriors unggul 81-78, tembakan yang pada akhirnya jadi titik balik. Lakers tidak pernah kembali memimpin setelah itu.\n\n---\n\n## Statistik Tim: Dua Cerita Berbeda\n\nBox score tim lebih jujur dari skor akhir soal bagaimana pertandingan ini berjalan.\n\nWarriors secara keseluruhan lebih tidak efisien dari dalam lapangan, 39% FG berbanding 43% milik Lakers, bahkan kalah di poin dalam cat (34 vs 46) dan rebounds (40 vs 45). Lakers sebenarnya punya kontrol lebih besar di area-area itu.\n\nYang membedakan: turnovers dan steals. Warriors mencatat 20 steals berbanding hanya 8 dari Lakers, angka yang luar biasa tinggi untuk satu pertandingan. Lakers di sisi lain membuang bola 29 kali. Itu selisih 9 turnover yang pada dasarnya jadi sumber hidup bagi Warriors di laga ini.\n\nThree-point shooting juga lebih baik dari Warriors secara volume, 14-50 berbanding 9-34, meski persentase keduanya tidak meyakinkan (GS 28%, LAL 26%). Warriors lebih banyak mencoba dari jarak jauh dan lebih banyak masuk. Free throw Warriors lebih banyak tapi tidak akurat: 21-31 (68%) dibanding Lakers yang rapi 14-17 (82%).\n\nSatu lagi yang perlu dicatat: Walker Kessler muncul sebagai faktor di Lakers. 11 poin, 9 rebound, efisiensi tinggi 4-6 dari lapangan dalam 16 menit. Sandro Mamukelashvili dari bench juga solid dengan 10 poin dan 7 rebound. Tapi kontribusi keduanya tidak cukup tanpa dukungan dari pemain lain.\n\n---\n\n## Catatan untuk Seri Berikutnya\n\nIni adalah laga pertama dari empat pertemuan reguler antara Golden State dan Los Angeles Lakers musim ini, seri resmi baru dimulai 21 Oktober.\n\nUntuk Warriors, pola tadi perlu diperhatikan: unggul steals dan turnovers memang membantu, tapi efisiensi FG di angka 39% tidak bisa jadi gaya hidup. Curry 11 poin dari 23 menit juga di bawah kapasitasnya, though konteks pramusim tentu berbeda.\n\nUntuk Lakers, Reaves sudah membuktikan dirinya sebagai problem nyata bagi lawan. 28 poin dengan shot selection seefisien itu adalah performa starter All-Star. Tapi tanpa support yang lebih merata, dan tanpa mengurangi 29 turnover yang tadi, kemenangan akan sulit datang.\n\nLaga kedua dari seri reguler dijadwalkan 21 Oktober. Tayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898718",
+    "home_team": "Los Angeles Lakers",
+    "home_abbr": "LAL",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 89,
+    "away_score": 101,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-10-14T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 10/21",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.053209,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has strong structure and accurate stats, but fails on voice discipline: stray English phrases mid-sentence ('first an', 'though'), academic filler ('perlu dicatat', 'perlu diperhatikan'), and incomplete thoughts. Tense-marking is mostly clean but 'pada akhirnya' is padding. Verdict: regenerate § 3 (Podziemski Q4 section) and § 4 (team stats analysis) with stricter Indonesian register; § 5 (preview) is acceptable with minor tweaks.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "first an 11-foot two point shot, kemudian pullup jump shot",
+          "fix": "Rewrite: 'pertama tembakan dua poin dari 11 kaki, lalu pullup jump shot dari 15 kaki'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "tembakan yang pada akhirnya jadi titik balik",
+          "fix": "Simplify: 'tembakan yang akhirnya jadi titik balik' or remove 'pada akhirnya'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu lagi yang perlu dicatat: Walker Kessler muncul",
+          "fix": "Delete filler: 'Walker Kessler muncul sebagai faktor di Lakers.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Untuk Warriors, pola tadi perlu diperhatikan:",
+          "fix": "Rewrite: 'Untuk Warriors, pola tadi jadi soal serius' or 'Untuk Warriors, pola itu harus diperbaiki'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "though konteks pramusim tentu berbeda",
+          "fix": "Rewrite: 'meski konteks pramusim tentu berbeda' or just use comma/period"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Box score tim lebih jujur dari skor akhir",
+          "fix": "Optional: 'Statistik tim mengungkap cerita berbeda' or lead directly into breakdown"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Curry 11 poin dari 23 menit juga di bawah kapasitasnya",
+          "fix": "Add reasoning: 'Curry 11 poin dari 23 menit juga di bawah kapasitasnya — biasanya jadi performa baseline Warriors'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Laga kedua dari seri reguler dijadwalkan 21 Oktober.",
+          "fix": "Verify from input: series starts 10/21, so game 2 timing is unknown. Rewrite: 'Seri reguler resmi dimulai 21 Oktober.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xedeacdc83e99efb4",
+    "published_at": "2026-10-14T07:53:06+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
