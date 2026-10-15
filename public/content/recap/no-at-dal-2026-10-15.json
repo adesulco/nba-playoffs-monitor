@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "no-at-dal-2026-10-15",
+  "title": "Recap New Orleans Pelicans 101-97 Dallas Mavericks (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — New Orleans Pelicans vs Dallas Mavericks (101-97) di —, 15 October 2026.",
+  "body_md": "New Orleans Pelicans mengakhiri laga pertama musim reguler 2026 dengan kemenangan tipis 101-97 atas Dallas Mavericks, Kamis 15 Oktober 2026. Empat poin memisahkan kedua tim, dan drama di detik-detik terakhir Q4 membuktikan margin itu lebih sempit dari yang terlihat.\n\n---\n\n## Pemenang Malam: Bench yang Lebih Rakus\n\nPelicans menang bukan karena satu bintang mendominasi, tapi karena rotasi bench yang produktif. Jeremiah Fears tampil paling efisien, 16 poin, 3 rebound, 5 asis dari 6-11 shooting dan dua three-pointer dari tiga percobaan dalam 20 menit. Pemain starter ini jadi motor utama distribusi bola NO sepanjang malam.\n\nYang mengejutkan: Zion Williamson turun dari bench dan cetak 10 poin dengan efisiensi sempurna, 5-5 dari field goal, tanpa miss satu pun, dalam 18 menit. Karlo Matkovic melengkapi kontribusi starter dengan 11 poin dari 3-4 shooting termasuk tiga dari empat percobaan dari luar arc.\n\nDi sisi Dallas, bench justru jadi tumpuan utama. Tobi Lawal dan John Poulakidas sama-sama cetak 16 poin, tapi keduanya turun dari bench. Poulakidas tampil paling aktif dari luar, 4-8 dari three-point line dalam 26 menit. Sergio de Larrea mencatat 10 poin, 4 rebound, dan 6 asis sebagai playmaker lapangan untuk DAL.\n\n---\n\n## Statistik yang Menjelaskan Hasil\n\nPelicans menang meski tertinggal di beberapa kategori penting. Dallas mengambil lebih banyak rebound (47 vs 40) dan lebih banyak asis (21 vs 19). Namun dua angka membedakan kemenangan:\n\n**Field goal percentage:** NO 45% vs DAL 36%. Pelicans jauh lebih efisien mengonversi peluang, 34 dari 75 percobaan, dibanding Dallas yang hanya 30 dari 84. Dallas boros tembakan.\n\n**Fast-break points:** NO 23, DAL 8. Selisih 15 poin dari transisi ini hampir persis sama dengan margin kemenangan akhir. Pelicans, dipimpin 14 steal tim vs 8 milik Dallas dan 21 turnover lawan, mengubah kesalahan Mavericks jadi angka.\n\nSatu catatan untuk NO: free throw mereka buruk. 25 dari 38 percobaan (66%) dibanding Dallas yang 27-32 (84%). Kalau bukan karena efisiensi field goal dan fast break, angka FT ini bisa jadi bencana.\n\n---\n\n## Empat Poin di Q4\n\nKEY PLAYS mencatat drama terakhir dengan jelas. Dengan kurang dari dua menit tersisa dan skor 95-91 untuk NO, Seth Lundy masuk free throw untuk bikin 95-93. AJ Johnson jawab dari garis yang sama, 96-91. Lundy lanjut dengan dunk untuk memotong jarak: 98-95.\n\nTapi Jaron Pierre Jr., bench player NO yang cetak 10 poin dari 12 menit, bikin dua free throw beruntun di detik ke-32.2: 100-95. Poulakidas jawab dengan pullup jump shot 5 kaki di detik 8.9, skor 100-97. Dan AJ Johnson menutup dengan free throw di 0.4 detik tersisa: 101-97.\n\nDallas sempat mengancam, tapi tidak pernah benar-benar membalikkan keadaan.\n\n---\n\n## Selanjutnya\n\nIni Game 1 dari seri reguler empat laga antara New Orleans dan Dallas. Pelicans mulai dengan keunggulan. Game 2 belum terjadwal di input, tapi seri ini layak diikuti, selisih empat poin dengan bench kedua tim sebagai pencetak poin terbanyak menandakan kompetisi yang ketat sampai akhir.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401901825",
+    "home_team": "Dallas Mavericks",
+    "home_abbr": "DAL",
+    "away_team": "New Orleans Pelicans",
+    "away_abbr": "NO",
+    "home_score": 97,
+    "away_score": 101,
+    "winner_abbr": "NO",
+    "kickoff_utc": "2026-10-15T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 1/4",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.070623,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 58,
+      "issue_count": 7,
+      "summary": "Article has solid structure and stats accuracy, but multiple voice violations: training-inference edge (player role-labeling), soft-phrase repetition ('jadi tumpuan'), academic connectors ('satu catatan untuk'), and one calqued English phrase ('masuk free throw'). Closing paragraph breaks authority with meta-commentary. Regenerate with stricter pronoun/connector discipline and concrete closing.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jeremiah Fears tampil paling efisien, 16 poin, 3 rebound, 5 asis dari 6-11 shooting dan dua three-pointer dari tiga percobaan dalam 20 menit. Pemain starter ini jadi motor utama",
+          "fix": "Fears cetak 16 poin, 3 rebound, 5 asis dari 6-11 shooting... Dia jadi motor utama distribusi bola NO."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Di sisi Dallas, bench justru jadi tumpuan utama... Sergio de Larrea mencatat 10 poin, 4 rebound, dan 6 asis sebagai playmaker lapangan untuk DAL.",
+          "fix": "Replace second instance: 'Sergio de Larrea orchestrate offense dengan 10 poin, 4 rebound, 6 asis.' or similar."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu catatan untuk NO: free throw mereka buruk. 25 dari 38 percobaan (66%) dibanding Dallas yang 27-32 (84%). Kalau bukan karena efisiensi field goal dan fast break, angka FT ini bisa jadi bencana.",
+          "fix": "Cut 'Satu catatan untuk NO:' entirely. Rephrase: 'Free throw masalah: 66% vs DAL 84%. NO untung efisiensi field goal ngatasi ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan kurang dari dua menit tersisa dan skor 95-91 untuk NO, Seth Lundy masuk free throw untuk bikin 95-93.",
+          "fix": "Seth Lundy buat FT pertama, 95-93. Atau: Lundy ke garis penalti, kurangi jadi 95-93."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Ini Game 1 dari seri reguler empat laga antara New Orleans dan Dallas. Pelicans mulai dengan keunggulan. Game 2 belum terjadwal di input, tapi seri ini layak diikuti, selisih empat poin dengan bench kedua tim sebagai pencetak poin terbanyak",
+          "fix": "Cut meta note. End: 'Seri ini dimulai ketat. Tayang live NBA League Pass dan Vidio.'"
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "low",
+          "snippet": "Tapi Jaron Pierre Jr., bench player NO yang cetak 10 poin dari 12 menit, bikin dua free throw beruntun di detik ke-32.2: 100-95.",
+          "fix": "Move timing to first mention (earlier section) or drop from recap."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Replace with specific frame: 'Lanjut' or just start with 'Ini Game 1 dari...'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x254b6310764defb0",
+    "published_at": "2026-10-15T03:09:53+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

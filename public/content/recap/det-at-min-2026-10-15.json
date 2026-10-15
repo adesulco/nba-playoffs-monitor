@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "det-at-min-2026-10-15",
+  "title": "Recap Detroit Pistons 128-106 Minnesota Timberwolves (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs Minnesota Timberwolves (128-106) di —, 15 October 2026.",
+  "body_md": "# Detroit Pistons Hajar Timberwolves 128-106, Duren Mendominasi dalam 15 Menit\n\nDetroit Pistons menggebrak Minnesota Timberwolves 128-106 di laga pertama dari dua pertemuan regular season mereka, Rabu 15 Oktober 2026. Kemenangan 22 poin ini dibangun di atas efisiensi luar biasa dari dalam cat, DET mencatat 64 poin di area paint, lebih dari dua kali lipat MIN yang hanya 30.\n\n---\n\n## Performa Pemain Kunci\n\nJalen Duren jadi bintang paling mencuri perhatian malam ini, bukan karena menit mainnya, tapi karena efisiensinya. Duren mencetak 24 poin hanya dalam 15 menit dengan tembakan 8-9 dari lapangan, termasuk dua kali diumpan alley-oop oleh Cade Cunningham di kuarter kedua. Dalam waktu sesingkat itu, Duren sudah membuktikan mengapa Detroit membangun serangan mereka lewat dirinya di dalam cat.\n\nCade Cunningham tidak perlu banyak mencetak poin untuk mendominasi. Dengan 14 poin, 2 rebound, dan 9 asis dari 25 menit bermain, Cunningham menjalankan mesin offense DET seperti dirigen, memberi makan Duren dua kali di paint, menyuplai Duncan Robinson untuk three-pointer, dan mengalirkan permainan dengan efisien. Finishing tembakan 5-11 dari lapangan memang tidak sempurna, tapi angka distribusinya berbicara lebih keras.\n\nDuncan Robinson menambah 15 poin dengan 4-5 dari garis tiga angka, sementara Isaiah Joe off the bench menyumbang 14 poin. John Collins melengkapi starting lineup DET dengan 11 poin dari tembakan 4-5 dari lapangan.\n\nDi kubu Minnesota, Anthony Edwards memimpin dengan 20 poin, tapi butuh 15 percobaan untuk sampai ke sana, dengan efisiensi 5-15 dari lapangan dan 1-5 dari garis tiga angka. Jonathan Kuminga tampil lebih efisien dengan 16 poin dari hanya 6 tembakan (5-6 FG), tapi kontribusinya tidak cukup untuk menambal lubang besar yang dibuka Detroit sejak awal.\n\n---\n\n## Statistik yang Menjelaskan Segalanya\n\nAngka tim Detroit malam ini adalah gambaran permainan yang sangat satu arah. FG% DET 57% berbanding 38% MIN, selisih 19 poin persentase yang hampir tidak mungkin diatasi di level manapun. DET juga lebih baik dari garis tiga angka: 44% (11-25) vs 32% (11-34) MIN yang membutuhkan lebih banyak percobaan untuk hasil yang sama.\n\nTapi satu angka yang paling mencolok: poin di dalam cat. DET 64, MIN 30. Detroit bukan sekadar menang di luar, mereka mendominasi fisik dari dalam. Rebound total 45-34 mendukung narasi yang sama: DET menguasai papan, menguasai cat, menguasai laga.\n\nDua tim mencatat 20 turnover masing-masing, satu area yang DET tidak unggul. Tapi ketika selisih efisiensi FG% sekebar ini, turnover tidak banyak berpengaruh pada hasil akhir.\n\n---\n\n## Jalannya Pertandingan\n\nBabak pertama berjalan ketat. KEY PLAYS menunjukkan permainan yang imbang hingga akhir Q2, skor sempat berganti-ganti, MIN bahkan sempat unggul tipis beberapa kali. Jaden McDaniels masuk dengan 23-foot running jump shot untuk MIN, sebelum Duren merespons dua kali lewat dunk dan alley-oop atas umpan Cunningham di kuarter kedua. Robinson menutup ketertinggalan dengan three-pointer untuk menyamakan skor 56-56 menjelang akhir paruh pertama.\n\nDari titik itu, narasi berbeda. Detail breakdown per kuarter tidak tersedia di input, tapi selisih akhir 22 poin menunjukkan DET membuka jarak signifikan di paruh kedua, kemungkinan besar lewat keunggulan fisik di paint yang terus mereka eksploitasi.\n\n---\n\n## Selanjutnya\n\nPertemuan kedua dan terakhir antara Detroit Pistons dan Minnesota Timberwolves dalam regular season dijadwalkan pada 24 Januari. Laga ini bisa tayang di NBA League Pass dan Vidio, cek jadwal lengkap untuk konfirmasi waktu tayang WIB.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401914125",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 106,
+    "away_score": 128,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-10-15T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 1/24",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022712,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail: one high-severity training-inference error (alley-oop count unverifiable), plus structural issue with 'Selanjutnya' opener and translated-English idiom. Multiple tense-overmarking instances and date/series context confusion. Regenerate with stricter adherence to input data block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Rabu 15 Oktober 2026",
+          "fix": "Remove day-of-week or verify against calendar. Confirm this is regular season, not playoffs. Input says 'Series starts 1/24' meaning Jan 24 — this is likely preseason or early regular season."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "termasuk dua kali diumpan alley-oop oleh Cade Cunningham di kuarter kedua",
+          "fix": "Change to 'termasuk alley-oop dari Cade Cunningham' or cite only the one confirmed assist."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Duren sudah membuktikan mengapa Detroit membangun serangan",
+          "fix": "Change to 'Duren membuktikan mengapa Detroit membangun serangan'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Finishing tembakan 5-11 dari lapangan memang tidak sempurna, tapi angka distribusinya berbicara lebih keras",
+          "fix": "Change to 'tapi 9 asis menunjukkan kontribusi sebenarnya' or just end previous sentence."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "MIN bahkan sempat unggul tipis beberapa kali",
+          "fix": "Change to 'MIN unggul tipis beberapa kali' or 'MIN pernah unggul' if emphasis needed."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Angka tim Detroit malam ini adalah gambaran permainan yang sangat satu arah",
+          "fix": "Restructure as 'Statistik Detroit malam ini cerita yang jelas: satu arah.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Pertemuan kedua dan terakhir antara Detroit Pistons dan Minnesota Timberwolves dalam regular season dijadwalkan pada 24 Januari",
+          "fix": "Delete 'Selanjutnya' paragraph or rewrite as 'Tim bertemu lagi di season series 24 Januari.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x94d05f41dc6dcd7c",
+    "published_at": "2026-10-15T03:10:38+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
