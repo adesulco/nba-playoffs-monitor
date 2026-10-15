@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-mia-2026-10-14",
+  "title": "Recap Brooklyn Nets 128-144 Miami Heat (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Miami Heat (128-144) di —, 14 October 2026.",
+  "body_md": "## Miami Heat Buka Regular Season dengan Kemenangan Meyakinkan atas Brooklyn Nets 144-128\n\nMiami Heat mengawali regular season NBA 2026 dengan kemenangan meyakinkan atas Brooklyn Nets, 144-128, Rabu dini hari WIB. Game 1 dari empat pertemuan musim ini selesai dengan selisih 16 poin, angka yang cukup jelas menceritakan siapa yang lebih siap di awal musim. Giannis Antetokounmpo memimpin Miami dengan 20 poin, 15 rebound, dan 9 asis dalam 24 menit bermain, sementara di sisi Brooklyn, Michael Porter Jr. berjuang dengan 27 poin tapi dukungan timnya tidak cukup.\n\n---\n\n## Performa Pemain Kunci\n\nDi kubu Miami, Giannis tampil sangat efisien: 8-10 dari lapangan, nyaris tidak ada yang bisa menghentikannya di area cat. Sembilan asis di 24 menit adalah angka yang mengindikasikan dia bermain lebih sebagai point-forward, menggerakkan orang, bukan cuma mencari poin sendiri. Rebound 15 praktis memenangkan glass war sendirian.\n\nAndrew Wiggins 19 poin, 6 rebound, FG 8-15 jadi senjata kedua yang efektif. Dari bench, Ryan Conwell muncul dengan 13 poin (FG 5-8, 3PT 3-4) dan Davion Mitchell tambah 13 poin dengan 4 asis sebagai starter.\n\nUntuk Brooklyn, Porter Jr. jadi yang paling produktif dengan 27 poin dari FG 9-17, termasuk 4-8 dari tiga angka, tapi 27 menit bermain dan hanya 1 rebound dan 1 asis menggambarkan peran yang sangat individual. Egor Demin 17 poin plus 3 asis di 23 menit memberi sinyal positif sebagai starter muda. Julius Randle, Moritz Wagner, dan Mikel Brown Jr. masing-masing cetak 15 poin, tapi Randle butuh 13 percobaan field goal untuk sampai ke angka itu.\n\n---\n\n## Angka yang Menjelaskan Semuanya\n\nDua statistik menonjol dari box score dan keduanya mengarah ke arah yang sama.\n\nPertama, **paint points**: Miami 62, Brooklyn 38. Selisih 24 poin dari area dekat ring bukan soal skema, itu soal fisik. Heat lebih besar, lebih kuat di area tersebut, dan Brooklyn tidak punya jawaban untuk itu.\n\nKedua, **fast-break points**: Miami 20, Brooklyn 6. Nets melakukan 13 turnover, Heat memanfaatkannya. Turnover Miami sendiri juga 15, tapi Brooklyn gagal mengkonversi dengan efisiensi yang sama, dan itulah bedanya.\n\nDari perimeter sebenarnya relatif imbang: Miami 15-42 dari tiga angka (36%), Brooklyn 17-48 (35%). Bukan shootout yang memisahkan mereka, tapi dominasi di dalam dan di transition.\n\nFG% menjadi cerita lain: Miami 59%, Brooklyn 44%. Dua angka yang tidak mungkin dijelaskan hanya dengan skema, kualitas shot yang diambil jelas berbeda.\n\n---\n\n## Babak Ketiga: Momen Penentuan\n\nKuarter ketiga menyajikan satu stretch menarik. Skor masih ketat, bahkan sempat 81-81, sebelum Miami mulai membangun jarak. Ryan Conwell cetak dua three-pointer beruntun dibantu Giannis, dan ketika Egor Demin balas lewat jumper tiga angka untuk bikin 84-83, seolah laga masih terbuka. Tapi Miami terus merespons. Conwell kembali masuk dari sudut, Giannis kembali mengasistnya: 84-86. Dari situ selisih tidak pernah benar-benar kembali ke nol.\n\nBrooklyn tidak punya cukup kedalaman untuk terus bertukar pukulan. Heat tutup kuarter dan tidak pernah melepas kendali.\n\n---\n\n## Berikutnya\n\nIni Game 1 dari empat pertemuan dalam regular season series. Brooklyn perlu mencari solusi serius di area cat sebelum laga berikutnya, secara fisik mereka kalah bersaing malam ini. Miami bermain dari posisi kuat, dengan Giannis mencetak near triple-double dalam kurang dari 24 menit.\n\nPantau jadwal Game 2 regular season series ini. Laga tayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898404",
+    "home_team": "Miami Heat",
+    "home_abbr": "MIA",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 144,
+    "away_score": 128,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-10-14T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 1/7",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.051667,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate stats, natural Indonesian voice, and good structural flow. Three minor low-severity issues: one slightly over-hedged explanation, one marginally formal phrase, one vague forward reference. No hard violations. Publish-ready after small fixes.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Sembilan asis di 24 menit adalah angka yang mengindikasikan dia bermain lebih sebagai point-forward",
+          "fix": "Giannis main sebagai point-forward: 9 asis di 24 menit bukti eksak dia."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Dua statistik menonjol dari box score dan keduanya mengarah ke arah yang sama.",
+          "fix": "Dua statistik jelas bedain laga itu: dua poin yang masuk ke arah yang sama."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Pantau jadwal Game 2 regular season series ini.",
+          "fix": "Delete 'Pantau jadwal Game 2 regular season series ini.' Closer already has broadcast info."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x676b26a9e4850fb6",
+    "published_at": "2026-10-15T02:42:57+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

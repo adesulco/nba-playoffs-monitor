@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "phx-at-sa-2026-10-15",
+  "title": "Recap Phoenix Suns 103-123 San Antonio Spurs (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs San Antonio Spurs (103-123) di —, 15 October 2026.",
+  "body_md": "# San Antonio Spurs Kalahkan Phoenix Suns 123-103, Lima Pemain Cetak Dua Digit Poin\n\nSan Antonio Spurs mengalahkan Phoenix Suns 123-103 di pertandingan pembuka regular season series dua tim, Rabu 15 Oktober 2026. Lima pemain SA tembus dua digit poin, dengan Victor Wembanyama memimpin dengan 19 poin diikuti Stephon Castle 18 poin, cukup nyaman untuk menutup laga dengan selisih 20 angka.\n\nDi sisi Suns, tidak ada satu pemain pun yang menonjol jauh di atas rekan-rekannya. Ryan Dunn dan Jamaree Bouyea sama-sama cetak 15 poin sebagai top scorer PHX, tapi itu tidak cukup menutup jarak yang terbuka sejak paruh pertama.\n\n---\n\n## Wemby dan Castle Jadi Motor, Bryant Kunci dari Bench\n\nWembanyama tampil efisien: 19 poin dari 9-14 field goal di 23 menit bermain. Dia tidak produktif dari tiga angka (0-3), tapi tetap jadi ancaman konstan di dalam cat, sejalan dengan angka dominasi SA di area paint yang akan dibahas lebih lanjut.\n\nCastle melengkapi double act dengan 18 poin, 4 rebound, 3 asis dari 24 menit. Menariknya, Castle hanya 2-5 dari field goal dan 0-2 dari tiga angka, artinya sebagian besar poinnya datang dari free throw line, konsisten dengan volume free throw SA yang sangat tinggi malam ini.\n\nPemain yang paling mengejutkan datang dari bench: Carter Bryant cetak 16 poin dengan 4-7 dari tiga angka. Kontribusi Bryant dari luar arc jadi salah satu faktor penentu keunggulan SA di perimeter. Ja'Kobi Gillespie menambah 13 poin, 3-7 dari tiga angka, juga dari bench. Devin Vassell melengkapi starting five SA dengan 12 poin dan 6 rebound.\n\nDi kubu Suns, Dunn punya malam yang menarik secara individual, 15 poin dari 6-6 field goal, sempurna. Tapi dia hanya bermain 23 menit dan tidak mencetak asis. Bouyea lebih all-around dengan 15 poin, 8 asis, FG 7-11, sebagai playmaker utama malam ini. Koa Peat (bench) menyumbang 10 poin dari 5-8, dan Kennedy Chandler (bench) 10 poin dari 3-6.\n\n---\n\n## Angka Tim: Free Throw dan Rebound Ceritakan Segalanya\n\nDua kolom statistik yang paling berbicara malam ini:\n\n**Rebound: SA 50, PHX 36.** Selisih 14 papan adalah dominasi yang menyulitkan siapa pun. Ketika SA menguasai second possession, PHX tidak punya banyak kesempatan untuk memperbaiki keadaan.\n\n**Free throw: SA 30-35, PHX 12-15.** San Antonio dapat tiga kali lebih banyak kunjungan ke garis free throw. Itu bukan kebetulan, SA lebih agresif masuk ke dalam dan memaksa kontak. Dengan FT% 86, hampir semua peluang itu dikonversi.\n\nDari tiga angka, SA 13-35 (37%) vs PHX 7-31 (23%). Ketimpangan efisiensi dari perimeter ini menambah jarak yang sudah terbuka via rebound dan free throw.\n\nSatu sisi menarik dari PHX: unggul di fast-break points (18 vs 11) dan points in paint (64 vs 48). Suns sebenarnya lebih produktif di dalam cat, tapi kalah di hampir semua kategori yang memengaruhi volume, dan akhirnya kalah total poin 20 angka. Free throw dan penguasaan rebound SA terlalu besar untuk dikompensasi.\n\nTurnover kedua tim sama-sama tinggi: PHX 17, SA 21. Dengan 12 steal PHX dan 10 steal SA, kedua tim bermain agresif di sisi defensif, tapi sama-sama ceroboh dengan bola.\n\n---\n\n## Babak Dua Jadi Momen Kritis\n\nBerdasarkan KEY PLAYS yang tersedia, Q2 menjadi babak di mana laga sempat sangat ketat, skor berulang kali imbang di angka 32-32, 34-34, 43-43, 45-45, sebelum SA mulai membuat jarak kecil di akhir kuarter. Dari titik itu, SA tampaknya tidak pernah melepas kendali lagi.\n\nDetail momentum kuarter-kuarter selanjutnya tidak tersedia di data, tapi skor akhir 123-103 cukup menggambarkan: SA menutup tiga kuarter tersisa lebih kuat.\n\n---\n\n## Selanjutnya\n\nIni baru pertandingan pertama dari tiga seri regular season antara kedua tim. Seri dilanjutkan mulai 9 November. Tonton live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898722",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 123,
+    "away_score": 103,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-10-15T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/9",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024941,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has solid stats accuracy and structure, but multiple instances of AI-translated-English phrasing (Berdasarkan-openings, artinya-chains, yang mana-style clauses) and soft academic drift pull the voice down. Key statistics are verified against input; no training-inference errors detected. Recommend regenerate with tighter, more direct prose.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Berdasarkan KEY PLAYS yang tersedia, Q2 menjadi babak di mana laga sempat sangat ketat",
+          "fix": "Q2 jadi babak terketat: skor imbang di 32-32, 34-34, 43-43, 45-45 sebelum SA bikin jarak kecil."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Wembanyama tampil efisien: 19 poin dari 9-14 field goal di 23 menit bermain. Dia tidak produktif dari tiga angka (0-3), tapi tetap jadi ancaman konstan di dalam cat, sejalan dengan angka dominasi SA di area paint yang akan dibahas lebih lan",
+          "fix": "Delete 'yang akan dibahas lebih lanjut.' Next paragraph is the paint dominance."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "artinya sebagian besar poinnya datang dari free throw line, konsisten dengan volume free throw SA yang sangat tinggi malam ini.",
+          "fix": "Split: 'Sebagian besar poin datang dari free throw line. SA memang amat aktif di garis free throw malam ini.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Pemain yang paling mengejutkan datang dari bench: Carter Bryant cetak 16 poin dengan 4-7 dari tiga angka... Ja'Kobi Gillespie menambah 13 poin, 3-7 dari tiga angka, juga dari bench.",
+          "fix": "First: 'Pemain tergelincir dari bench paling bersinar: Carter Bryant...' Second keep as-is."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Menariknya, Castle hanya 2-5 dari field goal dan 0-2 dari tiga angka, artinya sebagian besar poinnya datang dari free throw line",
+          "fix": "Castle main 2-5 dari field goal, 0-2 dari tiga, tapi 18 poin: sebagian besar dari free throw."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua kolom statistik yang paling berbicara malam ini:",
+          "fix": "Rewrite: 'Dua statistik cerita segalanya malam ini:' or just 'Dua stat mencerminkan laga ini:'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Satu sisi menarik dari PHX: unggul di fast-break points (18 vs 11) dan points in paint (64 vs 48).",
+          "fix": "No data error. Just tighten: 'PHX lebih produktif di paint (64 vs 48) dan fast-break (18 vs 11), tapi tak cukup.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Seri dilanjutkan mulai 9 November.",
+          "fix": "Seri lanjut 9 November. Ini game 1 dari 3 regular season series."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x65d16b6a24e9e7a0",
+    "published_at": "2026-10-15T02:43:46+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

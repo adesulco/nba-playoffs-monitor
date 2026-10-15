@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "chi-at-mil-2026-10-15",
+  "title": "Recap Chicago Bulls 125-104 Milwaukee Bucks (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Chicago Bulls vs Milwaukee Bucks (125-104) di —, 15 October 2026.",
+  "body_md": "# Chicago Bulls Hajar Milwaukee Bucks 125-104, Shooting Tiga Poin Jadi Pembeda\n\nChicago Bulls membuka regular season series melawan Milwaukee Bucks dengan kemenangan meyakinkan, 125-104, Rabu 15 Oktober 2026. Matas Buzelis memimpin CHI dengan 19 poin efisien, sementara lima pemain Bulls menembus double figures. Kemenangan 21 poin ini bukan sekadar selisih skor, Bulls mendominasi dari sisi efisiensi dan ball movement sepanjang 48 menit.\n\n---\n\n## Top Performers\n\n### Chicago Bulls\n\n**Matas Buzelis** tampil paling efisien malam ini. Starter CHI itu mencetak 19 poin hanya dalam 24 menit, dengan shooting line yang mencolok: 6-9 dari lapangan, 5-7 dari tiga poin. Lima dari tujuh percobaan tiga poin masuk, angka yang tidak dicetak dengan memaksa. itu artinya Buzelis melepas tembakan yang memang terbuka.\n\n**Leonard Miller** jadi senjata utama dari bench. 18 poin, 7 rebound, dengan 3-4 dari belakang garis, Miller masuk 19 menit dan langsung memberi dampak di kedua sisi lapangan. Off the bench dengan efisiensi segitu, sulit dihentikan.\n\n**Norman Powell** menambah 16 poin sebagai starter, meski shooting-nya tidak sekonsisten dua rekan di atasnya (3-8 dari lapangan, 2-6 dari tiga poin). **Jalen Smith** melengkapi double-figure contributors dengan 15 poin dan 7 rebound, kontribusi dua arah yang solid dari starter CHI.\n\n### Milwaukee Bucks\n\n**Kam Jones** jadi yang terbaik di sisi MIL dengan 23 poin, 4 rebound off the bench, shooting 9-14 dari lapangan. Ini adalah performa individu yang layak, sayangnya tidak cukup untuk menutup gap team-wide yang terlalu lebar.\n\n**Brayden Burries** (19 poin, 5 rebound, 5 asis) dan **Kasparas Jakucionis** (18 poin, 6 asis) memberikan kontribusi yang memadai dari sisi distribusi bola. **Ousmane Dieng** mencatat 10 poin dan 11 rebound, double-double yang menunjukkan kehadiran fisik di paint, meski 4-12 dari lapangan menunjukkan Dieng juga tidak bebas sama sekali.\n\n---\n\n## Statistik Bicara\n\nDua angka yang menjelaskan keseluruhan pertandingan ini: **three-point percentage CHI 40% vs MIL 23%.**\n\nBulls melepas 50 percobaan tiga poin, 20 masuk. Bucks melepas 43 percobaan, hanya 10 yang masuk. Selisih 10 tembakan tiga poin yang masuk, dengan nilai masing-masing tiga poin, itu sendiri sudah menghasilkan gap 30 poin. Matematikanya sesederhana itu.\n\nDi luar shooting, Bulls juga unggul di ball movement. **35 asis vs 21 asis** untuk CHI, dengan 22 turnover di sisi Bulls vs 30 di sisi Bucks. MIL lebih banyak kehilangan bola, dan CHI memanfaatkannya dengan agresif, **fast-break points 22-6** menunjukkan seberapa sering Bulls berlari balik dari turnover lawan.\n\nMIL unggul di rebound (51-42) dan free throw percentage (81% vs 70%), tapi kedua keunggulan itu tidak cukup untuk mengimbangi perbedaan efisiensi shooting yang begitu besar. Bulls juga mencuri 14 bola vs hanya 7 dari MIL, angka steals yang tidak biasa dan menjadi penggerak utama fast-break opportunities CHI.\n\n---\n\n## Setelah Game 1\n\nIni bukan playoff, regular season series antara CHI dan MIL baru dimulai. Game 1 of 4 selesai dengan keuntungan ada di pihak Bulls. Game berikutnya dalam seri ini dijadwalkan mulai 23 Oktober 2026.\n\nYang perlu MIL evaluasi sebelum pertemuan berikutnya jelas: pertahanan di perimeter. Biarkan Bulls melepas 50 tembakan tiga poin lagi dengan persentase 40%, hasilnya kemungkinan tidak akan berbeda jauh.\n\nTayang live di NBA League Pass dan Vidio untuk laga-laga berikutnya.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401908942",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Chicago Bulls",
+    "away_abbr": "CHI",
+    "home_score": 104,
+    "away_score": 125,
+    "winner_abbr": "CHI",
+    "kickoff_utc": "2026-10-15T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 10/23",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021643,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Generally solid recap with correct stat citations and good flow. One training-inference issue (Game 2 date not in input) and two translated-English phrasing issues. Verdict: pass with editor note on the Game 2 date claim.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Matas Buzelis melepas tembakan yang memang terbuka.",
+          "fix": "Rewrite: 'Buzelis ambil peluang terbuka' atau 'Semua tembakan tiga Buzelis lepas saat wide open.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "itu artinya Buzelis melepas tembakan yang memang terbuka.",
+          "fix": "Capitalize: 'Itu artinya Buzelis...' or join to prior sentence with semicolon-substitute."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Off the bench dengan efisiensi segitu, sulit dihentikan.",
+          "fix": "Rewrite: 'Dari bench dengan efisiensi itu, Miller sulit dihentikan.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game berikutnya dalam seri ini dijadwalkan mulai 23 Oktober 2026.",
+          "fix": "Delete specific date or rewrite: 'Game berikutnya dalam seri ini akan dilangsungkan akhir bulan ini.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2e5bb5b0e0a3dc80",
+    "published_at": "2026-10-15T02:44:22+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
