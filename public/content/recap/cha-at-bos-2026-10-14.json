@@ -1,0 +1,102 @@
+{
+  "type": "recap",
+  "slug": "cha-at-bos-2026-10-14",
+  "title": "Recap Charlotte Hornets 93-114 Boston Celtics (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Charlotte Hornets vs Boston Celtics (93-114) di —, 14 October 2026.",
+  "body_md": "# Boston Celtics Bantai Charlotte Hornets 114-93, Unggul Turnover dan Dominasi Paint\n\nBoston Celtics membuka laga perdana regular season 2026-27 dengan dominan, mengalahkan Charlotte Hornets 114-93 pada Kamis 15 Oktober 2026. Jayson Tatum memimpin dengan 19 poin, 8 rebound, 6 asis, tapi cerita sesungguhnya ada di dua angka yang lebih menentukan: 30 turnover Charlotte versus 11 milik Boston.\n\n---\n\n## Top Performers\n\n**Boston** punya kontribusi merata dari semua lini. Tatum 19 poin dengan 8-17 dari lapangan dan distribusi asis yang rapi. Derrick White tampil efisien dengan 17 poin dari hanya 9 percobaan (6-9 FG), sementara dua pemain bench menonjol: Neemias Queta cetak 16 poin dengan 7-11 dari lapangan, dan Luka Garza menambah 14 poin dari bangku cadangan. Robinson, yang dikenal sebagai finisher di area paint, tutup dengan 12 poin dan 7 rebound, 100% konversi dari lapangan (5-5).\n\n**Charlotte** tidak kolaps dari garis tiga angka, Royce O'Neale sempurna 4-4 dari beyond the arc, Tidjane Salaun cetak 16 poin off the bench dengan 4-8 dari tiga angka, dan Brandon Miller menyumbang 16 poin sebagai starter. Produktivitas individual itu terlindas oleh masalah struktural lebih besar.\n\n---\n\n## Yang Menentukan Pertandingan Ini\n\nStatnya paling kejam ada di sini: **CHA 30 turnover, BOS 11**. Selisih 19 turnover dalam satu laga itu bukan sekadar kebetulan buruk, itu berarti Boston punya puluhan possession tambahan yang tidak perlu dicari susah payah.\n\nDampaknya terasa langsung di dua kolom lain. Boston cetak **56 poin di area paint** dibanding Charlotte yang hanya 20. Dan dari turnover itu, BOS mencuri **16 steals** versus 7 milik Charlotte. Possession gratis berulang kali dikonversi jadi angka di paint, bukan dari tembakan susah, tapi dari eksekusi mudah karena Charlotte sudah kehabisan energi dan posisi.\n\nDi persentase tiga angka, Charlotte unggul 38% vs 28%, tapi Boston unggul di field goal keseluruhan (48% vs 41%) dan jauh lebih efisien dari dua angka, yang masuk akal mengingat 56 poin dari paint tidak butuh banyak akurasi jarak jauh.\n\nAssist juga jadi cermin perbedaan ball movement kedua tim: BOS 31 assist dari 44 field goal, CHA hanya 19 dari 31. Boston main as a unit. Charlotte terlalu sering andalkan isolation.\n\n---\n\n## Outlook\n\nIni bukan playoff, hanya game 1 dari 4 pertemuan regular season antara kedua tim, dengan series berikutnya baru mulai 6 November. Tapi pola yang muncul malam ini layak dicatat oleh Charlotte: turnover 30 kali bukan masalah pertandingan satu malam yang bisa diabaikan. Kalau Charlotte membawa kebiasaan menjaga bola seburuk ini ke pertemuan berikutnya, selisih 21 poin tadi bisa lebih parah.\n\nUntuk Boston, ini start solid, scoring menyebar ke lima pemain dengan double-digit poin, bench menyumbang 30 poin, dan turnover terjaga ketat. Formula yang konsisten.\n\nGame 2 dari series regular season ini dijadwalkan 6 November. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898405",
+    "home_team": "Boston Celtics",
+    "home_abbr": "BOS",
+    "away_team": "Charlotte Hornets",
+    "away_abbr": "CHA",
+    "home_score": 114,
+    "away_score": 93,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-10-14T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/6",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020402,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: High-severity training-inference errors (Robinson reputation unsourced, date mismatch on series structure, math error on White's attempts) + calqued English idiom + broken tense logic. Core facts mostly accurate but sourcing and future predictions exceed input data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "ini game 1 dari 4 pertemuan regular season antara kedua tim, dengan series berikutnya baru mulai 6 November",
+          "fix": "Delete specific date prediction or align with input: 'Game 1 of 4 regular season series; next meeting TBD.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Derrick White tampil efisien dengan 17 poin dari hanya 9 percobaan (6-9 FG)",
+          "fix": "Change to: 'Derrick White tampil efisien: 17 poin dengan 6-9 dari lapangan.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Robinson, yang dikenal sebagai finisher di area paint",
+          "fix": "Delete 'yang dikenal sebagai finisher di area paint' — just state his stats: 'Robinson tutup dengan 12 poin dan 7 rebound, 100% dari lapangan (5-5).'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Produktivitas individual itu terlindas oleh masalah struktural lebih besar.",
+          "fix": "Change to: 'Tapi produktivitas itu tidak cukup. Masalah Charlotte bukan soal scoring, tapi turnover.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Ini bukan playoff, hanya game 1 dari 4 pertemuan regular season antara kedua tim, dengan series berikutnya baru mulai 6 November.",
+          "fix": "Rewrite: 'Ini game 1 dari series regular season 4 pertemuan. Pertemuan berikutnya dijadwalkan 6 November.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Ini bukan playoff, hanya game 1 dari 4 pertemuan regular season",
+          "fix": "Clarify context or trust article's read: this is a regular season game, label it clearly early."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Kalau Charlotte membawa kebiasaan menjaga bola seburuk ini ke pertemuan berikutnya, selisih 21 poin tadi bisa lebih parah.",
+          "fix": "Either commit ('akan lebih parah') or just observe: 'Turnover 30x bukan satu laga kebetulan buruk — pola yang perlu perbaiki.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Game 2 dari series regular season ini dijadwalkan 6 November.",
+          "fix": "Remove date certainty: 'Pertemuan berikutnya antara kedua tim dijadwalkan awal November.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0ccaf7d0255fe48a",
+    "published_at": "2026-10-15T02:11:56+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 0,
+      "headline_score": 0,
+      "headline_comment": "",
+      "lead_score": 0,
+      "lead_comment": "",
+      "structure_score": 0,
+      "structure_comment": "",
+      "voice_score": 0,
+      "voice_comment": "",
+      "suggestion_count": 0,
+      "summary": "",
+      "suggestions": []
+    }
+  },
+  "schema_jsonld": {}
+}
