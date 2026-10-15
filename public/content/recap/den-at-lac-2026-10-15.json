@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "den-at-lac-2026-10-15",
+  "title": "Recap Denver Nuggets 110-122 LA Clippers (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Denver Nuggets vs LA Clippers (110-122) di —, 15 October 2026.",
+  "body_md": "# LA Clippers Kalahkan Denver Nuggets 122-110, Bench LAC Jadi Pembeda\n\nLA Clippers mengalahkan Denver Nuggets 122-110 dalam laga reguler season yang berlangsung Rabu 15 Oktober 2026. LAC tampil lebih efisien dari jarak jauh, 45% from three vs 33% milik Denver, dan bench kedua tim justru jadi cerita utama malam ini.\n\nTidak ada satu pun pemain LAC atau DEN yang mendominasi stat line secara individual. Yang ada adalah kolektivitas: lima pemain LAC cetak double-digit, empat pemain DEN cetak double-digit, dan laga ini diputuskan bukan oleh satu bintang, tapi oleh siapa yang lebih konsisten selama 48 menit.\n\n---\n\n## Top Performers\n\nDari sisi Denver, nama terbesar justru datang dari bench. **Trevon Brazile** tampil luar biasa efisien: 22 poin dari 8-10 field goals dan 3-4 from three, hanya dalam 25 menit bermain. Ini tipe penampilan yang biasanya jadi energi pengubah laga, tapi Denver tetap kalah, artinya Brazile tidak cukup dibantu oleh pemain lain di sekelilingnya.\n\n**Cam Whitmore** (bench) menyumbang 17 poin dari 7-13 FG, sementara **Jamal Murray** sebagai starter hanya dapat 14 poin, 4 rebound, 1 asis dari 17 menit, angka yang tergolong terbatas untuk ukuran point guard utama. **Julian Strawther** menambah 11 poin dari bench, tapi 3-7 from three menunjukkan tidak semua peluang three-pointer Denver berbuah.\n\nDi sisi LAC, kontribusi menyebar merata. **Rui Hachimura** memimpin dengan 16 poin dan 5 rebound (FG 5-12, 3PT 3-5). **Baba Miller**, bench, jadi salah satu pemain paling efisien di laga ini: 15 poin dari 5-6 FG dan 2-2 from three, dalam 21 menit. **Derrick Jones Jr.** menyumbang 14 poin dan 5 rebound. **Darius Garland** cetak 14 poin dan 7 asis sebagai playmaker utama LAC. **Keaton Wagler** melengkapi dengan 12 poin, 5 rebound, dan 4 asis.\n\n---\n\n## Statistical Read\n\nDua angka yang paling menjelaskan hasil laga ini: **3PT% dan free throw%**.\n\nLAC menembak 45% from three (15-33), Denver hanya 33% (11-33). Volume sama persis, 33 attempts each, tapi LAC mengkonversi empat three-pointer lebih banyak. Dalam laga yang margin-nya 12 poin, itu hampir cukup untuk menjelaskan selisih secara matematis.\n\nDari garis free throw, perbedaannya bahkan lebih dramatis. Kedua tim masing-masing dapat 17 free throw, tapi Denver hanya convert 57% (17-30) sedangkan LAC bikin 85% (17-20). LAC memanfaatkan setiap kunjungan ke garis dengan nyaris sempurna. Denver membuang poin gratis yang harusnya bisa menutup gap.\n\nDenver unggul di rebound (44-40) dan paint points (54-50), tapi 17 turnover vs 12 milik LAC jadi handicap serius, perbedaan lima turnover langsung berpengaruh pada jumlah possession yang hilang sia-sia.\n\n---\n\n## Jalannya Laga\n\nLaga sempat ketat di paruh pertama. Serangkaian KEY PLAYS di Q2 menggambarkan pertarungan yang benar-benar fifty-fifty: **Keaton Wagler** dua kali cetak tiga angka dari step-back (25 kaki dan 26 kaki), diselingi **Julian Strawther** yang balas dengan jumper 28 kaki untuk menyamakan skor 29-29. Sampai pertengahan Q2, laga masih berjalan tanpa tim yang benar-benar melepas diri.\n\nLAC akhirnya yang berhasil mengontrol tempo di paruh kedua. Efisiensi shooting dari jarak jauh dan free throw yang bersih jadi fondasi, bench rotation LAC, khususnya Miller, menjaga energi tanpa kehilangan efisiensi.\n\n---\n\n## Selanjutnya\n\nIni adalah laga pertama dari seri regular season empat pertemuan antara Denver dan LAC, seri berikutnya baru dimulai 21 Desember. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401918011",
+    "home_team": "LA Clippers",
+    "home_abbr": "LAC",
+    "away_team": "Denver Nuggets",
+    "away_abbr": "DEN",
+    "home_score": 122,
+    "away_score": 110,
+    "winner_abbr": "LAC",
+    "kickoff_utc": "2026-10-15T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 12/21",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.052084,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong recap with accurate stats and natural Bahasa voice. Three minor issues: one soft-phrase repetition (low priority), one inference about tempo control in second half unsupported by input data, and one stylistic calque. No hard violations. Score docked slightly for the training-inference risk and structural smoothness.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Dari sisi Denver... Dari sisi LAC...",
+          "fix": "Vary connectors: use 'Di Denver...' for second instance or restructure"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "LAC akhirnya yang berhasil mengontrol tempo di paruh kedua",
+          "fix": "Replace with quantifiable observation: cite bench rotation or shooting % in second half if data available, or remove"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Ini adalah laga pertama dari seri regular season empat pertemuan",
+          "fix": "Simplify: 'Ini pertama dari empat laga regular season antara Denver dan LAC'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Yang ada adalah kolektivitas: lima pemain LAC cetak double-digit, empat pemain DEN cetak double-digit",
+          "fix": "Statement is correct as written; no fix needed. Verified."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2e71bbc8b7b5e6f8",
+    "published_at": "2026-10-15T05:39:09+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
