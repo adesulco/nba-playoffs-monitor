@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "okc-at-hou-2026-10-16",
+  "title": "Recap Oklahoma City Thunder 89-116 Houston Rockets (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs Houston Rockets (89-116) di —, 16 October 2026.",
+  "body_md": "# Houston Rockets Gebuk OKC 116-89, Bogdanovic & Sengun Tampil Gemilang\n\nHouston Rockets menutup preseason dengan kemenangan meyakinkan 116-89 atas Oklahoma City Thunder, Kamis pagi WIB. Ini bukan laga yang kompetitif di akhir, selisih 27 poin bicara sendiri. Dengan regular season dijadwalkan mulai 31 Oktober, Rockets memberi sinyal awal bahwa roster mereka sudah siap berjalan.\n\n---\n\n## Performers Terbaik: HOU Punya Lima Kontributor Merata\n\nHouston tidak bergantung pada satu bintang. Lima pemain menembus dua digit poin, dan yang menarik, dua di antaranya datang dari bench.\n\nBogdan Bogdanovic memimpin Rockets dengan 15 poin, 6 rebound, dan 1 asis hanya dalam 16 menit. Efisiensinya dari tiga angka yang paling mencolok: 5-8 dari garis tiga poin. Off the bench, dalam 16 menit, kontribusi itu sulit diabaikan.\n\nAlperen Sengun jadi anchor di paint: 14 poin, 7 rebound, 5 asis dengan konversi 7-11 dari lapangan. Peran playmaking-nya terasa, 5 asis dari center bukan angka yang remeh. Amen Thompson melengkapi triple-threat frontcourt dengan 12 poin, 5 rebound, 4 asis, menunjukkan kecepatan transition yang sudah jadi ciri khasnya.\n\nDari bench, Tari Eason menambah 12 poin dengan efisiensi tinggi: 5-7 dari lapangan, termasuk 2-2 dari tiga angka dalam 17 menit. Kevin Durant bermain terbatas, 16 menit, 11 poin, angka yang wajar untuk preseason.\n\nDi sisi OKC, Jalen Williams jadi top scorer dengan 18 poin dan 7 rebound (7-14 dari lapangan), diikuti Shai Gilgeous-Alexander dengan 17 poin dan 3 asis. Keduanya main masing-masing sekitar 25-26 menit, rotation preseason yang terkontrol. Masalahnya bukan pada keduanya secara individual, tapi pada apa yang terjadi di sekitar mereka.\n\n---\n\n## Statistik Tim: Tiga Angka yang Menjelaskan Segalanya\n\nTiga angka yang merangkum malam ini:\n\n**14% vs 32% dari tiga angka.** OKC melepas 36 upaya three-pointer dan hanya mencetak 5. Houston 17-53 dari jarak yang sama. Gap efisiensi dari tiga angka ini saja hampir cukup untuk menjelaskan selisih 27 poin.\n\n**16 turnover vs 8.** OKC dua kali lebih sering kehilangan bola dibanding Houston. Rockets mengonversi peluang itu: 12 steal untuk HOU vs 3 untuk OKC. Angka steal yang timpang ini berkontribusi langsung ke fast-break, Houston 22 fast-break points vs OKC 15.\n\n**34 asis vs 19.** Houston bergerak sebagai tim. 34 asis dari 47 field goal berarti hampir setiap bola masuk lahir dari kerja sama. OKC 19 asis dari 36 makes, bola lebih sering diselesaikan secara individual.\n\nFree throw menarik untuk dicatat sebagai kontras: OKC justru lebih efisien di sini (86%, 12-14) vs Houston yang hanya 45% (5-11). Tapi itu poin yang jauh lebih sedikit karena akses ke garis ini tidak berkompensasi atas defisit dari tiga angka.\n\n---\n\n## Konteks dan Catatan ke Depan\n\nIni preseason. Rotation tidak cerminkan lineup final, menit dikontrol, dan beberapa pemain sama sekali tidak tampil. Jared McCain, misalnya, bermain 21 menit sebagai bench player OKC dengan 8 poin dan 6 rebound, tapi shooting 0-8 dari tiga angka, yang kemungkinan besar bukan angka yang akan bertahan di regular season.\n\nYang lebih relevan untuk diperhatikan adalah sistem Houston secara keseluruhan. Ball movement mereka mengalir, bench memberikan kontribusi bermakna, dan Sengun sebagai playmaking center tampak nyaman di perannya.\n\nRegular season dimulai 31 Oktober. Series OKC vs HOU akan berlanjut, dua laga berikutnya masuk jadwal dalam rangkaian tersebut.\n\nSiaran langsung via NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401908622",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 116,
+    "away_score": 89,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-10-16T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 10/31",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021893,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong article with accurate stats and good tactical framing. One high-severity training-inference nudge on KD narrative; soft hedging and one vague phrase drop severity. Passes cleanly.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kevin Durant bermain terbatas, 16 menit, 11 poin",
+          "fix": "State the fact directly: 'Kevin Durant catat 11 poin dalam 16 menit.' No narrative about 'limited' role."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Kontribusi itu sulit diabaikan. Peran playmaking-nya terasa.",
+          "fix": "Merge: 'Sengun jadi orchestrator: 14 poin, 7 reb, 5 asis.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Houston tidak bergantung pada satu bintang... yang menarik, dua di antaranya datang dari bench.",
+          "fix": "Delete 'di antaranya': 'dua dari lima datang dari bench.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Masalahnya bukan pada keduanya secara individual, tapi pada apa yang terjadi di sekitar mereka.",
+          "fix": "Cut or replace with specific: 'Masalahnya di luar mereka: three-point shooting dan turnover.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6c7f7dbbb441cdb6",
+    "published_at": "2026-10-16T02:43:51+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

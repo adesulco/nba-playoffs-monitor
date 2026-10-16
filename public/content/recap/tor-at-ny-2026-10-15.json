@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "tor-at-ny-2026-10-15",
+  "title": "Recap Toronto Raptors 120-122 New York Knicks (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs New York Knicks (120-122) di —, 15 October 2026.",
+  "body_md": "New York Knicks menang tipis 122-120 atas Toronto Raptors dalam laga pembuka regular season series mereka, Jumat 16 Oktober 2026. Drama empat poin di dua menit terakhir membalik keunggulan Raptors, Knicks menang, tapi tak dengan mulus.\n\n---\n\n## Pemain Kunci\n\n**Toronto Raptors** tampil lewat trio starter yang solid. Scottie Barnes memimpin dengan 23 poin, 3 rebound, 4 asis (FG 9-15, termasuk 4-5 dari tiga poin dalam 28 menit). RJ Barrett menyusul dengan 21 poin, 8 rebound, 4 asis, FG 6-12. Immanuel Quickley menambah 18 poin, 5 rebound, 7 asis. Dari bench, Collin Murray-Boyles (12 poin, 5 rebound) dan Jamison Battle (10 poin, FG 3-5) berkontribusi nyata, bench TOR tidak hilang di momen penting.\n\n**New York Knicks** tidak menang lewat satu bintang tunggal. Jalen Brunson 20 poin, 7 asis sebagai motor offense. Karl-Anthony Towns mencatat 13 poin, 15 rebound, 9 asis, satu angka dari yang bisa disebut triple-double, tapi kontribusi all-around-nya tetap jadi faktor besar di kedua sisi. Andre Drummond off the bench efisien: 14 poin, 8 rebound dari hanya 15 menit, FG 6-7. Landry Shamet menambah 13 poin dari bench.\n\n---\n\n## Statistik yang Menjelaskan Laga\n\nDi atas kertas, Toronto lebih efisien: FG 51% vs NY 48%, fast-break points 18-8. Raptors juga unggul blocks 10-3, pertahanan rim mereka aktif. Tapi Knicks lebih produktif dari area paint (56 vs 42 poin) dan turnover kedua tim sama-sama 20, jadi tidak ada keunggulan ball security di salah satu sisi.\n\nKnicks juga menutup FT 21-27 (78%) lebih bersih dari Raptors 27-38 (71%). Dari volume free throw TOR yang lebih banyak, efisiensinya tidak maksimal, dan margin dua poin di akhir membuat setiap angka di papan terasa krusial.\n\n---\n\n## Empat Menit Terakhir\n\nInilah yang membalik laga. Toronto pegang keunggulan di paruh akhir kuarter empat. Malachi Smith cetak dua poin di menit 2:41 (skor 111-115 NY), lalu Jaden Bradley pullup jumper 12 kaki di menit 1:03 memangkas skor jadi 116-117, disusul satu free throw yang menyamakan 117-117.\n\nTapi Tyler Kolek jawab dengan three-pointer 28 kaki di sisa 53 detik, NY kembali unggul 117-120. Toronto tidak menyerah: Tyler Nickel kena foul, cetak dua free throw di sisa 16,8 detik (122-117). Malachi Smith balas dengan tembakan tiga poin 24 kaki dibantu Nimari Burnett di sisa 11,3 detik, skor jadi 120-122. Tidak cukup waktu. Knicks tutup 122-120.\n\n---\n\n## Selanjutnya\n\nIni Game 1 dari empat pertemuan regular season antara Toronto dan New York musim ini. Series berlanjut mulai 15 November. Tayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401908945",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 122,
+    "away_score": 120,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-10-15T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/15",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.06695,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "FAIL. Critical issue: fourth-quarter play-by-play (Malachi Smith, Jaden Bradley, Tyler Kolek, Tyler Nickel, Nimari Burnett) are not in input data — these are training-data inferences. Entire final sequence must be cut or rewritten to only verified facts. Secondary issues: 'motor offense' and 'drama empat poin' are translated-English calques; 'dari atas kertas' is academic filler. Rewrite Q4 section with verified stats only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Malachi Smith cetak dua poin di menit 2:41... Jaden Bradley pullup jumper... Tyler Kolek... Tyler Nickel... Nimari Burnett",
+          "fix": "Remove fourth-quarter play-by-play details. Stick to verified stats: final score, team FG%, paint points, fast-break points only."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Knicks tidak menang lewat satu bintang tunggal... Jalen Brunson 20 poin, 7 asis sebagai motor offense.",
+          "fix": "Rewrite: 'Jalen Brunson jadi orchestrator di 20 poin, 7 asis.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dari atas kertas, Toronto lebih efisien: FG 51% vs NY 48%",
+          "fix": "Write directly: 'Toronto lebih efisien: FG 51% vs NY 48%' or 'Efisiensi tim: Toronto 51%, Knicks 48%.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Knicks menutup FT 21-27 (78%) lebih bersih dari Raptors 27-38 (71%). Dari volume free throw TOR yang lebih banyak, efisiensinya tidak maksimal",
+          "fix": "Cut second sentence or: 'Raptors coba 38 free throw tapi hanya 71% — jelek untuk tekanan late-game.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "satu angka dari yang bisa disebut triple-double, tapi kontribusi all-around-nya",
+          "fix": "Rewrite: 'Towns satu rebound dari triple-double; all-around play tetap crucial di kedua sisi.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Drama empat poin di dua menit terakhir membalik keunggulan Raptors",
+          "fix": "Use: 'Pertarungan dua menit terakhir membalik keunggulan Raptors, margin akhir empat poin.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Tapi Knicks lebih produktif dari area paint (56 vs 42 poin) dan turnover kedua tim sama-sama 20, jadi tidak ada keunggulan ball security",
+          "fix": "Split: 'Knicks unggul di paint 56-42. Turnover sama-sama 20, jadi ball security bukan faktor.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tapi Tyler Kolek jawab dengan three-pointer 28 kaki",
+          "fix": "Since play-by-play is unverified, remove this whole sequence and close Q4 recap with verified final line only."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x362ce9d36081eda0",
+    "published_at": "2026-10-16T02:43:13+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
