@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "min-at-chi-2026-10-17",
+  "title": "Recap Minnesota Timberwolves 116-133 Chicago Bulls (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs Chicago Bulls (116-133) di —, 17 October 2026.",
+  "body_md": "# Chicago Bulls Tumbangkan Minnesota di Laga Pembuka, 133-116\n\nChicago Bulls menang telak atas Minnesota Timberwolves 133-116 di laga pertama dari dua pertemuan regular season mereka musim ini. Kemenangan ini bukan kejutan tipis, Bulls mendominasi hampir seluruh sisi statistik dan tidak memberi ruang bagi Timberwolves untuk berkembang. Distribusi poin Chicago merata di lima pemain teratas, sementara Minnesota terlalu bergantung pada bench untuk menyelamatkan angka.\n\n---\n\n## Pemain Kunci\n\nCaleb Wilson jadi yang paling konsisten di kubu Bulls: 16 poin, 7 rebound, 4 asis dengan efisiensi 7-15 dari lapangan dalam 23 menit saja. Output itu dalam waktu kurang dari setengah pertandingan, angka yang solid. Matas Buzelis menyumbang 14 poin dan 6 rebound, termasuk *alley oop dunk* di Q2 yang jadi salah satu momen paling bersih malam itu. Jordan Hawkins off the bench tampil sangat efisien: 14 poin dengan 4-5 dari *three-point line*, nyaris sempurna dari luar. Josh Giddey dan Leonard Miller masing-masing menyumbang 12 poin, keduanya juga membantu di sisi rebound dan distribusi bola.\n\nDi kubu Timberwolves, Isaiah Evans jadi yang paling produktif dengan 21 poin, semuanya datang dari *bench* dalam 30 menit. Tembakan jauhnya tajam: 5-10 dari *three-point line*, termasuk dua tembakan beruntun dari 26 dan 28 kaki di Q2 yang sempat membuat skor kembali imbang. Jaylen Clark dan Drew Timme masing-masing 18 poin dan 7 rebound, tapi keduanya tidak cukup untuk menutup gap yang dibuka Bulls. Zyon Pullin mencatat *double-double* 14 poin dan 10 asis, tapi 3-9 dari lapangan mencerminkan betapa sulitnya penetrasi malam itu.\n\n---\n\n## Baca Statistik\n\nSelisih 17 poin akhir tidak sepenuhnya bicara tentang *shooting*, angka dari lapangan memang beda (MIN 45% vs CHI 52%), tapi perbedaan sesungguhnya ada di tempat lain.\n\nRebound: Bulls unggul 54 berbanding 37. *Points in paint*: 76 berbanding 56. *Fast-break points*: 16 berbanding 8. *Blocks*: 10 berbanding 2. Ini narasi yang konsisten, Chicago lebih besar, lebih aktif di area, dan lebih cepat dalam transisi. Timberwolves mencoba mengkompensasi lewat *free throw line* (28-40 percobaan vs 21-25 milik Bulls), tapi konversi 70% berbanding 84% justru memperlemah keuntungan itu.\n\nTurnovers MIN lebih rendah (11 vs 17 milik CHI), tapi Bulls tidak cukup dihukum dari sana, *steals* dan konversi transisi mereka tetap lebih baik.\n\n---\n\n## Momen yang Mengubah Laga\n\nBabak kedua awal menjadi segmen paling kompetitif. Skor bolak-balik di kisaran 45-54: Evans dengan *three-pointer* 26 kaki, Miller jawab dari 24 kaki, Evans balas lagi dari 28 kaki, Clark seimbangkan dengan *floating jump shot* 8 kaki, Buzelis tutup dengan *alley oop*. Selama beberapa menit, ini pertandingan berbeda, ketat, intens, momentum terus berganti.\n\nTapi dari titik itu, Bulls mulai membangun selisih yang tidak pernah benar-benar terpangkas lagi. Pertahanan Chicago di paint, 10 *blocks* sepanjang malam, mengunci jalur yang biasanya jadi opsi utama Timberwolves.\n\n---\n\n## Selanjutnya\n\nDua tim ini akan bertemu lagi di seri regular season yang dijadwalkan mulai 14 November. Untuk Minnesota, laga ini jadi sinyal awal yang perlu dicermati: masalah di area paint dan ketergantungan pada *bench* scorer tidak akan mudah diperbaiki dalam semalam.\n\nSiaran langsung tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401908943",
+    "home_team": "Chicago Bulls",
+    "home_abbr": "CHI",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 133,
+    "away_score": 116,
+    "winner_abbr": "CHI",
+    "kickoff_utc": "2026-10-17T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/14",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021956,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Multiple instances of academic register and tense-overmarking drag this below threshold. Sections on 'baca statistik' and 'momen yang mengubah' are strongest; intro, closing, and analysis connectors need de-formalization. Rewrite issues 1–6, then re-submit.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Chicago Bulls menang telak atas Minnesota Timberwolves 133-116 di laga pertama dari dua pertemuan regular season mereka musim ini.",
+          "fix": "Delete 'musim ini' or restructure: 'Chicago Bulls menang telak 133-116 di laga pertama regular season mereka.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Selisih 17 poin akhir tidak sepenuhnya bicara tentang shooting, angka dari lapangan memang beda (MIN 45% vs CHI 52%), tapi perbedaan sesungguhnya ada di tempat lain.",
+          "fix": "Just state facts: 'Selisih 17 poin bukan soal shooting. Lapangan: MIN 45%, CHI 52%. Perbedaan nyata di rebound, paint, transisi.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Matas Buzelis menyumbang 14 poin dan 6 rebound... Jaylen Clark dan Drew Timme masing-masing 18 poin dan 7 rebound...",
+          "fix": "First: 'Buzelis cetak 14 poin...'; second keep 'sumbang' or use 'koleksi' or drop verb: 'Clark dan Timme 18 poin masing-masing.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini narasi yang konsisten, Chicago lebih besar, lebih aktif di area, dan lebih cepat dalam transisi.",
+          "fix": "Delete 'Ini narasi yang konsisten,' and start: 'Chicago lebih besar, lebih aktif di paint, lebih cepat transisi.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Tapi dari titik itu, Bulls mulai membangun selisih yang tidak pernah benar-benar terpangkas lagi.",
+          "fix": "Simplify: 'Dari situ, Bulls kabur. Gap tidak pernah kembali dekat.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Untuk Minnesota, laga ini jadi sinyal awal yang perlu dicermati: masalah di area paint dan ketergantungan pada bench scorer tidak akan mudah diperbaiki dalam semalam.",
+          "fix": "Factual: 'Minnesota punya PR: paint defense, bench reliability. Ulang 14 November.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Rename to 'Pertemuan Berikutnya' or just delete header, merge into closing paragraph."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Jordan Hawkins off the bench tampil sangat efisien: 14 poin dengan 4-5 dari three-point line, nyaris sempurna dari luar.",
+          "fix": "Rephrase: 'Jordan Hawkins off the bench sangat efisien: 14 poin, 4-5 tiga angka.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3fdb77e91c81db94",
+    "published_at": "2026-10-17T02:47:54+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "atl-at-dal-2026-10-17",
+  "title": "Recap Atlanta Hawks 135-111 Dallas Mavericks (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Atlanta Hawks vs Dallas Mavericks (135-111) di —, 17 October 2026.",
+  "body_md": "Atlanta Hawks menghancurkan Dallas Mavericks 135-111 di Game 1 series reguler dua laga, Sabtu 17 Oktober 2026. Kemenangan 24 poin yang tidak pernah terasa seperti pertandingan ketat, Hawks mendominasi dari tiga poin, free throw, sampai fast break.\n\n## Top Performers\n\nNickeil Alexander-Walker jadi pencetak poin terbanyak Hawks dengan 25 poin, 3 rebound, 5 asis, dan yang lebih mengesankan, dia melakukannya dengan efisiensi tinggi: 7-12 dari lapangan, 6-10 dari tiga poin. Enam three-pointer dalam satu malam itu bukan keberuntungan.\n\nJalen Johnson melengkapi dengan line yang lebih komplit: 20 poin, 14 rebound, 3 asis. Double-double yang solid, dan angka 14 rebound menjelaskan sebagian besar mengapa ATL menguasai papan 55-42.\n\nOff the bench, Aaron Wiggins memberi 19 poin, 7 rebound, 2 asis dengan 4-9 dari tiga poin. Jock Landale menambah 16 poin, 6 rebound, 5 asis, dengan shooting 4-5 dari lapangan dan 3-4 dari tiga. Bench Hawks tampil lebih dari sekadar pendukung. mereka jadi faktor.\n\nUntuk Dallas, Cooper Flagg paling keras berusaha: 26 poin, 12 rebound, 4 asis. Double-double dengan 8-20 dari lapangan, angka shooting yang mencerminkan betapa sulitnya malam ini buat Mavericks. Zaccharie Risacher dan Kyrie Irving masing-masing cetak 18 poin, tapi kontribusi mereka tidak cukup untuk menutup gap yang terus melebar.\n\n## Apa yang Bicara dari Box Score\n\nTiga poin adalah cerita utamanya. ATL masuk 21 dari 51 percobaan (41%), DAL hanya 13 dari 33 (39%), selisih delapan three-pointer yang langsung terasa di skor akhir.\n\nFree throw juga jadi faktor besar: Hawks 34-45, Mavericks 18-26. ATL lebih sering ke garis, dan selisih 16 free throw itu berkontribusi langsung ke margin kemenangan.\n\nFast break menegaskan segalanya, ATL cetak 19 poin dari fast break, DAL hanya 6. Ketika turnover Dallas (15 vs 13 Hawks) berubah jadi fast break points Atlanta, alur permainan sudah tidak lagi seimbang.\n\nSatu anomali menarik: DAL unggul dalam points in paint, 50 vs 38. Dallas lebih dominan di area cat, tapi Hawks menang di tiga poin, free throw, dan fast break. Di malam di mana ATL cetak 21 three-pointer, dominasi paint DAL tidak cukup.\n\n## Outlook Series\n\nSeries ini dua game. ATL menang Game 1 dengan dominasi yang tidak bisa dikategorikan sebagai kebetulan, shooting efisien, bench produktif, ball movement (36 asis tim) yang membuat Mavericks kesulitan menemukan momentum pertahanan.\n\nGame 2 menentukan siapa yang menutup series ini. DAL perlu jawaban yang berbeda, terutama dari tiga poin dan ball security, atau Hawks menutup series 2-0.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898408",
+    "home_team": "Dallas Mavericks",
+    "home_abbr": "DAL",
+    "away_team": "Atlanta Hawks",
+    "away_abbr": "ATL",
+    "home_score": 111,
+    "away_score": 135,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-10-17T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 1/2",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.037621,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on structural polish (lowercase 'm' after period) and translation-English feel in multiple key sentences. Academic framing (headings, 'anomali menarik', meta-commentary) creeps into what should be direct sport writing. Stats are accurate and well-sourced, but voice execution is inconsistent — some paragraphs nail casual Indonesian, others read translated.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Kemenangan 24 poin yang tidak pernah terasa seperti pertandingan ketat",
+          "fix": "Ubah ke: 'Kemenangan 24 poin membuktikan Hawks dominan dari awal.'"
+        },
+        {
+          "type": "structural",
+          "severity": "high",
+          "snippet": "Bench Hawks tampil lebih dari sekadar pendukung. mereka jadi faktor.",
+          "fix": "Join: 'Bench Hawks tampil lebih dari sekadar pendukung; mereka jadi faktor.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Tiga poin adalah cerita utamanya. ATL masuk 21 dari 51",
+          "fix": "Delete header or replace with: '## Three-Point Difference' or just continue prose"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ketika turnover Dallas berubah jadi fast break points Atlanta, alur permainan sudah tidak lagi seimbang",
+          "fix": "Simplify: '19 fast-break points dari 15 turnover Dallas. Itu selisihnya.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu anomali menarik: DAL unggul dalam points in paint, 50 vs 38",
+          "fix": "Start directly: 'Dallas unggul 50-38 di paint, tapi itu tidak cukup.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "shooting efisien, bench produktif, ball movement (36 asis tim)",
+          "fix": "Rewrite as: 'Shooting efisien Alexander-Walker, bench produktif (Wiggins, Landale), dan 36 asis tim.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Game 2 menentukan siapa yang menutup series ini",
+          "fix": "Try: 'Game 2 bisa tutup series. ATL menang, Hawks 2-0. DAL menang, kembali ke Atlanta 1-1.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Double-double yang solid, dan angka 14 rebound menjelaskan sebagian besar mengapa",
+          "fix": "Tighten: '14 rebound itu kenapa Hawks menguasai papan 55-42.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x665f27a290c1eeca",
+    "published_at": "2026-10-17T02:43:20+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

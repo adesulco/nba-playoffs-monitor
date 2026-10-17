@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "cha-at-mem-2026-10-17",
+  "title": "Recap Charlotte Hornets 98-117 Memphis Grizzlies (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Charlotte Hornets vs Memphis Grizzlies (98-117) di —, 17 October 2026.",
+  "body_md": "# Memphis Grizzlies Bungkam Charlotte Hornets 117-98, Bench MEM Jadi Pembeda\n\nMemphis Grizzlies menang 117-98 atas Charlotte Hornets dalam laga pertama dari dua pertemuan regular season keduanya, Sabtu dini hari WIB. Kemenangan 19 poin ini bukan hasil kerja satu bintang, Memphis menang karena kolektif, dengan kontribusi bench yang signifikan dan efisiensi tiga poin yang jauh di atas Hornets sepanjang malam.\n\n---\n\n## Top Performers\n\nCameron Boozer memimpin MEM dengan 19 poin dan 7 rebound, meski dia sendiri tidak efisien dari lapangan: 4-13 FG, termasuk 2-5 dari tiga poin. Boozer lebih berpengaruh lewat pergerakan tanpa bola dan kontribusi fisik di area paint daripada penciptaan shot. Di sampingnya, Ty Jerome tampil tajam: 17 poin, 4 rebound, 4 asis dengan 6-13 FG dan 3-7 dari tiga poin, solid two-way night.\n\nYang membuat Memphis benar-benar berbahaya adalah pemain-pemain yang datang dari bench. Cedric Coward (starter, 13 poin, 5 rebound, 4 asis dengan 5-8 FG) menjaga efisiensi, sementara Cam Spencer dari bench cetak 11 poin dengan tembakan sempurna dari tiga poin: 3-3. Quinten Post menambah 11 poin dan 6 rebound.\n\nDi kubu Charlotte, Hannes Steinbach jadi top scorer dengan 19 poin dan 10 rebound dari bench, double-double efisien: 7-9 dari lapangan, meski tanpa satu pun percobaan tiga poin. Brandon Miller (starter) tampil jauh di bawah performa terbaiknya: 15 poin dengan 4-12 FG dan 2-7 dari tiga poin, tidak satu rebound pun dikumpulkan. Christian Anderson dari bench menyumbang 15 poin dan 6 asis dengan efisiensi yang lebih baik: 3-7 FG, 1-2 dari tiga poin.\n\n---\n\n## Apa yang Bisa Dibaca dari Box Score\n\nSelisih tiga poin adalah inti dari kekalahan ini. Memphis masuk 14-34 dari tiga poin (41%), Charlotte hanya 10-33 (30%). Itu gap yang susah ditutup ketika kedua tim bermain di pace yang serupa.\n\nMasalah lebih besar Charlotte ada di ball security. Hornets mencatat 24 turnover dibanding 20 Memphis, dan MEM mengkonversi turnover itu jadi 21 fast-break points lawan 13 milik Charlotte. Setiap kali Hornets kehilangan bola, Memphis berlari. Pola itu berulang cukup untuk mengubah laga yang di atas kertas bisa kompetitif menjadi kekalahan 19 poin.\n\nSatu-satunya area di mana Charlotte unggul secara statistik adalah blocks: 7 berbanding 2. Tapi itu tidak berdampak ke hasil. Memphis tetap mencetak 42 poin dari dalam paint, lebih banyak dari Charlotte (40), dan menyelesaikan malam dengan 37-80 FG (46%) berbanding 31-75 (41%) milik Hornets.\n\n---\n\n## Catatan Laga\n\nPertandingan sempat cukup ketat di awal. Q2 menit 4:07, Christian Anderson masuk tiga poin dari 25 kaki untuk menyamakan kedudukan di 33-33. Skor imbang itu ternyata jadi titik terakhir keseimbangan sebelum Memphis mulai memisahkan diri.\n\nMemphis punya satu kelebihan lagi yang susah diabaikan: kedalaman rotasi. Lima pemain mereka cetak 11 poin ke atas. Di Charlotte, hanya tiga yang melakukan hal yang sama, dan dua di antaranya berasal dari bench.\n\n---\n\n## Selanjutnya\n\nPertemuan kedua keduanya baru dijadwalkan 23 November. Charlotte punya waktu untuk mengevaluasi masalah turnover dan penguasaan tiga poin sebelum membalas. Tapi malam ini adalah milik Memphis, menang konfortabel, kontribusi merata, bench tampil di atas ekspektasi.\n\n*Tayang live di NBA League Pass dan Vidio.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401901822",
+    "home_team": "Memphis Grizzlies",
+    "home_abbr": "MEM",
+    "away_team": "Charlotte Hornets",
+    "away_abbr": "CHA",
+    "home_score": 117,
+    "away_score": 98,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-10-17T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/23",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020869,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate numbers and good flow. Minor soft-phrase repeat and one speculative qualitative claim about Boozer's impact. No hard violations; passes.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya\n\nPertemuan kedua keduanya baru dijadwalkan 23 November.",
+          "fix": "Delete 'Selanjutnya' or restructure: 'Pertemuan kedua baru dijadwalkan 23 November.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Apa yang Bisa Dibaca dari Box Score",
+          "fix": "Rephrase to 'Statistik Kunci' or 'Apa yang Terjadi di Box Score'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Boozer lebih berpengaruh lewat pergerakan tanpa bola dan kontribusi fisik di area paint",
+          "fix": "Stick to stats: 'Boozer 4-13 FG; Jerome 6-13 FG, 3-7 tiga poin—Jerome lebih efisien.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6e5443f32641ec91",
+    "published_at": "2026-10-17T02:45:37+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

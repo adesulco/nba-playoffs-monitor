@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "mil-at-ind-2026-10-16",
+  "title": "Recap Milwaukee Bucks 128-127 Indiana Pacers (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Milwaukee Bucks vs Indiana Pacers (128-127) di —, 16 October 2026.",
+  "body_md": "Milwaukee Bucks menang dramatis 128-127 atas Indiana Pacers di laga pembuka regular season series, Sabtu 17 Oktober 2026. Kemenangan ini ditentukan di overtime, dengan dua alley oop layup Kel'el Ware di menit-menit akhir yang menyelamatkan MIL dari kekalahan.\n\n---\n\n## Tyler Herro Pimpin, Overtime Jadi Milik Ware\n\nTyler Herro tampil sebagai top scorer MIL dengan 25 poin, 3 rebound, dan 3 asis dari 24 menit bermain, efisiensi tinggi dengan 10-16 dari lapangan dan 5-7 dari tiga poin. Di belakangnya, dua pemain bench MIL mengejutkan: Brayden Burries dengan 14 poin dan 7 rebound, serta Kel'el Ware yang mencetak 13 poin meski berjuang dengan FG 6-12.\n\nKuzma menambahkan 11 poin dengan 3-3 dari tiga poin, perfect dari luar arc dalam 18 menit. Kevin Porter Jr. juga menyumbang 11 poin off the bench.\n\nDi kubu IND, Pascal Siakam mendominasi dengan 24 poin, 4 rebound, dan 3 asis dalam hanya 21 menit, FG 8-10 dan 5-7 dari tiga poin, efisiensi yang sulit diabaikan. Tyrese Haliburton menambahkan 17 poin dan 6 asis. Off the bench, Kobe Brown menjadi faktor krusial dengan 14 poin di overtime, sementara Ivica Zubac mengunci double-double dengan 11 poin dan 11 rebound.\n\n---\n\n## Statistik Tim: Dua Gaya, Satu Margin\n\nStatistik tim menunjukkan kontras yang mencolok. IND lebih efisien dari lapangan (49% vs 46%) dan dari garis free throw secara signifikan (73% vs 44%), perbedaan free throw 73% vs 44% yang bisa terasa di laga tipis. MIL unggul di rebound (57 vs 53), steal (9 vs 6), dan poin di paint (60 vs 52). Turnovers MIL 16 vs IND 23, keunggulan ball security yang akhirnya membantu MIL bertahan.\n\nDari tiga poin, dua tim nyaris identik: MIL 17-52 (33%), IND 16-48 (33%).\n\n---\n\n## Overtime yang Mendebarkan\n\nDelapan momentum swing di OT1 terjadi berturut-turut, berpindah tangan berkali-kali. Kobe Brown membuka OT dengan turnaround jump shot (score 122-119), lalu menambahkan driving layup (122-121). IND balik memimpin (124-125).\n\nLalu Kel'el Ware ambil alih. Dunk dua kaki mengembalikan MIL unggul 126-125, dan dengan 56.3 detik tersisa, Ware kembali menyelesaikan alley oop untuk 128-125. IND hanya sempat membalas untuk 128-127, tidak cukup.\n\n---\n\n## Selanjutnya\n\nRegular season series MIL vs IND baru mulai, series empat pertandingan ini resmi berjalan. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401914126",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "Milwaukee Bucks",
+    "away_abbr": "MIL",
+    "home_score": 127,
+    "away_score": 128,
+    "winner_abbr": "MIL",
+    "kickoff_utc": "2026-10-16T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 10/26",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.068848,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has two high-severity issues: day-of-week inference ('Sabtu') and incomplete/inferenced assist attribution in OT plays. Multiple medium-severity problems with tense-overmarking, soft hedging, and translated-English idioms. Repairs needed before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sabtu 17 Oktober 2026",
+          "fix": "Remove day-of-week or verify against external calendar; use only 'Jumat, 17 Oktober 2026' if confirmed."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kobe Brown membuka OT dengan turnaround jump shot (score 122-119), lalu menambahkan driving layup (122-121)",
+          "fix": "Cite only: 'Kobe Brown cetak 10-foot turnaround, lalu driving layup' without assist attribution for first play."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "yang mencetak 13 poin meski berjuang dengan FG 6-12",
+          "fix": "Kel'el Ware cetak 13 poin dari FG 6-12."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Statistik tim menunjukkan kontras yang mencolok",
+          "fix": "Start: 'IND lebih efisien dari lapangan (49% vs 46%)...' Drop the 'Statistik tim menunjukkan' wrapper."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Delapan momentum swing di OT1 terjadi berturut-turut, berpindah tangan berkali-kali",
+          "fix": "Overtime berjalan sengit—scoreboard bergonta-ganti empat kali dalam dua menit terakhir."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "perbedaan free throw 73% vs 44% yang bisa terasa di laga tipis",
+          "fix": "Remove: 'perbedaan free throw 73% vs 44% yang bisa terasa di laga tipis.' Sentence already makes the point."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Delete 'Selanjutnya' and open with: 'Regular season series MIL vs IND dimulai 26 Oktober dengan ketiga pertandingan sisa.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "efisiensi yang sulit diabaikan",
+          "fix": "Remove the clause. End sentence: 'Pascal Siakam mendominasi dengan 24 poin, 4 rebound, dan 3 asis dalam hanya 21 menit, 8-10 dari lapangan dan 5-7 dari tiga poin.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe6d3ed21764fcf86",
+    "published_at": "2026-10-17T02:41:42+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 68,
+      "headline_score": 40,
+      "headline_comment": "The '(Game ?)' placeholder is a critical publish-blocker — looks unfinished and amateur.",
+      "lead_score": 72,
+      "lead_comment": "Covers score and OT drama, but 'regular season series' is confusingly framed given the LIGA says NBA Playoffs 2026 — unresolved metadata contradiction leaks into the copy.",
+      "structure_score": 70,
+      "structure_comment": "Four sections work for a recap, but 'Selanjutnya' is thin filler and the OT section should probably lead given it's the actual story.",
+      "voice_score": 72,
+      "voice_comment": "Mostly clean, but 'yang bisa terasa di laga tipis' is awkward phrasing and 'score 122-119' English parentheticals read like raw data dumps.",
+      "suggestion_count": 6,
+      "summary": "Solid data grounding and clean voice, but a placeholder headline and an unresolved playoffs-vs-regular-season framing contradiction need editor intervention before ship. Two minor factual slips ('dunk dua kaki', Brown's 14 pts in OT) also need quick fixes.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap Milwaukee Bucks 128-127 Indiana Pacers (Game ?)",
+          "issue": "Headline contains unresolved placeholder '(Game ?)' — publish-blocker.",
+          "fix": "Rewrite with the actual hook: 'Dua Alley Oop Kel'el Ware Selamatkan Bucks dari Pacers di Overtime, 128-127'."
+        },
+        {
+          "priority": "high",
+          "snippet": "laga pembuka regular season series",
+          "issue": "Input says 'NBA Playoffs 2026' but body treats it as regular season — contradiction never resolved, reader confused about stakes.",
+          "fix": "Pick one framing based on actual context and commit; if regular season, drop 'Playoffs' entirely; if playoffs, reframe stakes properly."
+        },
+        {
+          "priority": "high",
+          "snippet": "perbedaan free throw 73% vs 44% yang bisa terasa di laga tipis",
+          "issue": "Repeats the exact same stat (73% vs 44%) twice in one sentence — awkward redundancy.",
+          "fix": "Cut the repeat: 'IND lebih efisien dari lapangan (49% vs 46%) dan jauh lebih tajam dari garis free throw (73% vs 44%) — margin yang biasanya menentukan di laga tipis seperti ini.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Delapan momentum swing di OT1 terjadi berturut-turut, berpindah tangan berkali-kali.",
+          "issue": "'Delapan momentum swing' isn't supported — the data shows 8 scoring plays, not 8 lead changes; also 'berturut-turut' + 'berpindah tangan berkali-kali' is redundant.",
+          "fix": "'OT1 jadi tukar-menukar skor habis-habisan — delapan tembakan beruntun, pimpinan berganti tiga kali dalam tiga menit terakhir.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Dunk dua kaki mengembalikan MIL unggul 126-125",
+          "issue": "'Dunk dua kaki' is a mistranslation of '2-foot dunk' — '2-foot' means distance from rim, not two-footed. Factual error from misreading input.",
+          "fix": "'Dunk dari jarak dekat' atau cukup 'Dunk Ware (assist Jakucionis) mengembalikan MIL unggul 126-125'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Kobe Brown menjadi faktor krusial dengan 14 poin di overtime",
+          "issue": "Implies all 14 of Brown's points came in OT, which isn't supported — data only shows his two OT buckets, not his full point breakdown.",
+          "fix": "'Kobe Brown jadi faktor krusial off the bench dengan 14 poin, termasuk dua tembakan pembuka OT.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
