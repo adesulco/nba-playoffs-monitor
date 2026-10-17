@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "den-at-lal-2026-10-17",
+  "title": "Recap Denver Nuggets 121-106 Los Angeles Lakers (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Denver Nuggets vs Los Angeles Lakers (121-106) di —, 17 October 2026.",
+  "body_md": "## Denver Nuggets Permalukan Lakers 121-106, Jokic Efisien di Laga Pembuka\n\nDenver Nuggets menang meyakinkan atas Los Angeles Lakers 121-106 di kandang LAL, Sabtu 17 Oktober 2026. Jamal Murray pimpin DEN dengan 21 poin, sementara Nikola Jokic tampil hampir sempurna sebagai playmaker. Lakers tak punya jawaban untuk two-way dominance Denver malam ini.\n\n---\n\n## Performa Kunci\n\nDari sisi Denver, Murray jadi top scorer dengan 21 poin, 3 rebound, 6 asis dari 8-15 field goal. Tapi yang lebih menarik adalah efisiensi Jokic, 17 poin, 6 rebound, 8 asis dengan shooting FG 7-8. Hampir tidak ada yang terbuang. Jokic hanya butuh 8 percobaan untuk cetak 17 poin, sembari distribusikan bola ke seluruh roster dengan 8 asis.\n\nChristian Braun menambah 16 poin dan 6 rebound sebagai starter. Dari bench, DeMar DeRozan sumbang 14 poin dan 5 asis (FG 6-9), sementara Marvin Bagley III tampil solid dengan 13 poin dan 8 rebound hanya dalam 17 menit, kontribusi off the bench yang efisien dari dua pemain cadangan DEN.\n\nLakers punya perlawanan dari beberapa nama. Austin Reaves jadi top scorer sisi tamu dengan 19 poin, 5 rebound, 3 asis, tapi butuh 11 percobaan untuk capai angka itu dengan FG 5-11 dan 1-7 from three. Luka Doncic hanya 15 poin, 4 rebound, 2 asis dari 19 menit bermain, kurang dominan dari yang biasanya diharapkan darinya. Sandro Mamukelashvili dari bench tampil solid dengan 15 poin, 8 rebound, 4 asis (FG 5-10, 3PT 3-7).\n\n---\n\n## Baca Statistik\n\nAngka tim bicara jelas soal kenapa Denver menang. FG% DEN 58% berbanding LAL 43%, itu perbedaan besar dalam efisiensi half-court. Lebih mencolok lagi: *points in paint* DEN 56 versus LAL 30. Denver mendominasi area dalam dengan cara yang membuat defense LAL terlihat tidak siap.\n\nDEN juga unggul di rebound total (45-39) dan asis (32-26), menunjukkan permainan yang lebih connected dan less isolation. Steals jadi statistik paling satu arah malam ini: DEN 12, LAL 5. Denver aktif di passing lane dan itu berkontribusi langsung ke fast-break points (DEN 11, LAL 8).\n\n---\n\n## Momen Penentu\n\nKuarter keempat sempat menyajikan ketegangan singkat. Saat LAL memangkas defisit, Mamukelashvili cetak tembakan tiga angka 22 kaki untuk tutup gap jadi 88-86. Sesaat Lakers tampak punya momentum untuk membalikkan keadaan.\n\nTapi Denver solid balasannya. Dunk Bagley dari assist DeRozan menjaga keunggulan. Di sisa Q4, LAL sempat dalam 4 poin lewat Hardy dengan 26-footer (score 109-105), tapi Denver menutup laga dengan solid, final 121-106.\n\n---\n\n## Konteks Seri\n\nIni Game 1 dari regular season series empat pertemuan DEN vs LAL musim 2026-27. Seri baru mulai 19 Desember. Denver langsung kirim pesan di pertemuan pertama: dominasi dalam paint dan efisiensi dua arah adalah identitas mereka.\n\nSiaran langsung tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898719",
+    "home_team": "Los Angeles Lakers",
+    "home_abbr": "LAL",
+    "away_team": "Denver Nuggets",
+    "away_abbr": "DEN",
+    "home_score": 106,
+    "away_score": 121,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-10-17T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 12/19",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.050196,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail. Two high-severity training-inference violations (venue assumption, opinion about Doncic's typical performance) plus three medium-severity issues (tense structure awkwardness, literal calques from English). Numeric accuracy is good, but unstated assumptions and translated-English phrasing break voice rules.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "di kandang LAL, Sabtu 17 Oktober 2026",
+          "fix": "Remove 'di kandang LAL' or rewrite as 'Denver mengalahkan Lakers 121-106, Sabtu 17 Oktober 2026' without venue assumption."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Luka Doncic hanya 15 poin, 4 rebound, 2 asis dari 19 menit bermain, kurang dominan dari yang biasanya diharapkan",
+          "fix": "State only fact: 'Luka Doncic catat 15 poin, 4 rebound, 2 asis dari 19 menit bermain' — cut the 'kurang dominan' assessment."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Jokic hanya butuh 8 percobaan untuk cetak 17 poin, sembari distribusikan",
+          "fix": "Rewrite: 'Jokic cetak 17 poin cuma 8 percobaan sambil distribusi 8 asis.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka tim bicara jelas soal kenapa Denver menang",
+          "fix": "Rewrite: 'Statistik tim jelas kenapa Denver menang' or 'Angka-angka itu cerita sendiri.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Steals jadi statistik paling satu arah malam ini: DEN 12, LAL 5",
+          "fix": "Rewrite: 'Steals paling mecolok malam ini: DEN 12, LAL 5' or 'Steals gap-nya jauh: 12-5.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Saat LAL memangkas defisit, Mamukelashvili cetak tembakan tiga angka 22 kaki",
+          "fix": "No fix needed; phrasing is accurate to input."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Denver langsung kirim pesan di pertemuan pertama: dominasi dalam paint dan efisiensi",
+          "fix": "Consider: 'Denver jelas dominan di paint dan efisiensi sejak laga pertama' — more direct, less idiom."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe6d9f3faa409de98",
+    "published_at": "2026-10-17T05:36:52+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
