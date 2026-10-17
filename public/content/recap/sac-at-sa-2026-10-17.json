@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "sac-at-sa-2026-10-17",
+  "title": "Recap Sacramento Kings 97-126 San Antonio Spurs (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Sacramento Kings vs San Antonio Spurs (97-126) di —, 17 October 2026.",
+  "body_md": "# San Antonio Spurs Hajar Sacramento Kings 126-97, Wembanyama dan Rekan Pesta Tembakan Tiga Angka\n\nSan Antonio Spurs membuka regular season dengan kemenangan meyakinkan atas Sacramento Kings, 126-97, Jumat 17 Oktober 2026. Lima starter SA tampil merata, tapi yang paling mencolok adalah dominasi tembakan tiga angka, 17 dari 51 percobaan masuk, sementara Kings hanya bisa convert 6 dari 25. Selisih di lini tiga angka inilah yang mengubur Kings sejak awal.\n\n---\n\n## Performa Top Pemain\n\nDylan Harper jadi leading scorer SA dengan 19 poin, 4 asis. Dalam 21 menit saja, Harper melepaskan 7-12 FG dan 3-6 dari three-point line dengan efisiensi tinggi. De'Aaron Fox tampil impactful dengan 16 poin, 6 rebound, 3 asis, plus 2-5 dari tiga angka.\n\nKeldon Johnson hadir dari bench dengan 15 poin, 5 rebound, kontribusi rotation yang langsung terasa. Stephon Castle menambah 13 poin, 5 rebound, 5 asis dengan efisiensi tembak 6-9, sekaligus jadi engine distribusi bola terbaik malam itu di pihak SA. Victor Wembanyama mencetak 14 poin dan 8 rebound dalam 17 menit. Wembanyama dominan di cat meski hanya 17 menit bermain.\n\nDi kubu Kings, Zach LaVine jadi top scorer dengan 20 poin, meski harus butuh 12 percobaan FG dan 5 percobaan three-pointer untuk sampai ke sana. Domantas Sabonis rajin mengumpulkan rebound (10) di samping 14 poin, jadi satu-satunya bright spot yang konsisten. Ben Simmons 14 poin, 8 rebound, 7 asis, line terlengkap Kings. Darius Acuff Jr. dan Precious Achiuwa masing-masing menyumbang 13 poin, tapi Kings tetap tidak punya cukup senjata untuk menandingi SA secara kolektif.\n\n---\n\n## Apa yang Menjelaskan Hasil Ini\n\n**Three-pointer:** SA 17-51 (33%) vs SAC 6-25 (24%). Ini perbedaan paling telak dan paling menentukan. SA melepaskan 51 percobaan tiga angka, hampir dua kali lipat Kings, dan convert-nya jauh lebih efisien. Kalau per-percobaan saja sudah unggul, secara total itu selisih puluhan poin yang lahir dari satu area.\n\n**Rebound:** SA menguasai papan 61-38. Dominasi rebound ofensif memberi SA lebih banyak possession, lebih banyak kesempatan second-chance, dan itu langsung terlihat di scoreboard.\n\n**Turnover:** Sama-sama 20, jadi ini tidak menjelaskan selisih 29 poin. Perbedaannya murni dari efisiensi tembak dan rebound.\n\nFG% SA 45% vs Kings 41%, tidak terlihat dramatis, tapi dikombinasikan dengan dominasi tiga angka dan rebound, compounding effect-nya besar.\n\n---\n\n## Catatan Series\n\nPertandingan ini bagian dari regular season series 4-game antara kedua tim. Kemenangan ini lebih jadi modal kepercayaan diri buat Spurs daripada sekadar angka standings di awal musim.\n\n---\n\nLaga berikutnya dalam regular season series ini dijadwalkan mulai 27 Oktober. Live di **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898843",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Sacramento Kings",
+    "away_abbr": "SAC",
+    "home_score": 126,
+    "away_score": 97,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-10-17T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 10/27",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.049966,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has one hard fail (training inference about season opener) and multiple medium issues (tense overmarking, translated English, academic drift, editorial inference). Facts are verifiable against input data, but voice drifts toward editorial commentary and awkward English calques. Regenerate with tighter factual discipline and simpler clause structures.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "San Antonio Spurs membuka regular season dengan kemenangan",
+          "fix": "Remove 'membuka regular season'. Say 'Spurs menang 126-97' or 'Spurs mulai regular season series dengan kemenangan'."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Wembanyama mencetak 14 poin dan 8 rebound dalam 17 menit. Wembanyama dominan di cat meski hanya 17 menit bermain.",
+          "fix": "Say 'Wembanyama 14 poin, 8 rebound dalam 17 menit' and stop. Let readers infer impact."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kalau per-percobaan saja sudah unggul, secara total itu selisih puluhan poin yang lahir dari satu area.",
+          "fix": "'Per-percobaan SA unggul 33% vs 24%. Berlipat-lipat di volume.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selisih di lini tiga angka inilah yang mengubur Kings sejak awal... Ini perbedaan paling telak dan paling menentukan.",
+          "fix": "Merge or delete first sentence; analysis section is enough."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "FG% SA 45% vs Kings 41%, tidak terlihat dramatis, tapi dikombinasikan dengan dominasi tiga angka dan rebound, compounding effect-nya besar.",
+          "fix": "'FG% beda cuma 4%, tapi dikombinasi rebound dan tiga angka, rugi Kings cepat besar.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Domantas Sabonis rajin mengumpulkan rebound (10) di samping 14 poin, jadi satu-satunya bright spot yang konsisten.",
+          "fix": "'Sabonis (14 poin, 10 rebound) jadi satu-satunya Kings yang efisien.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Darius Acuff Jr. dan Precious Achiuwa masing-masing menyumbang 13 poin, tapi Kings tetap tidak punya cukup senjata untuk menandingi SA secara kolektif.",
+          "fix": "Just end: 'Acuff dan Achiuwa masing-masing 13 poin.' Let stats speak."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Laga berikutnya dalam regular season series ini dijadwalkan mulai 27 Oktober.",
+          "fix": "'Laga kedua 27 Oktober.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6ff173e332453730",
+    "published_at": "2026-10-17T03:39:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
