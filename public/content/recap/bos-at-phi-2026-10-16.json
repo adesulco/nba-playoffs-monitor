@@ -1,0 +1,127 @@
+{
+  "type": "recap",
+  "slug": "bos-at-phi-2026-10-16",
+  "title": "Recap Boston Celtics 125-120 Philadelphia 76ers (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Philadelphia 76ers (125-120) di —, 16 October 2026.",
+  "body_md": "Satu hal yang langsung mencolok dari data ini sebelum menulis: KEY PLAYS menggunakan tag `[?]` untuk semua tim, artinya atribusi tim untuk setiap play tidak terkonfirmasi di input. Uzan dan Harper Jr. ada di roster BOS berdasarkan TOP SCORERS, jadi plays mereka diasumsikan BOS. Dillon Jones, Dillon Mitchell, Gabe McGlothan, Jameer Nelson Jr. tidak ada di TOP SCORERS manapun, mereka tidak akan disebutkan dengan atribusi tim spesifik.\n\n---\n\n## Boston Celtics Kalahkan Philadelphia 76ers 125-120 di Overtime, Dua Kubu Ukur Kekuatan di Laga Pembuka\n\nBoston Celtics menang 125-120 atas Philadelphia 76ers dalam laga yang harus diselesaikan lewat overtime, Sabtu 17 Oktober 2026. Ini Game 1 dari empat pertemuan reguler season antara dua tim, dengan seri resmi dimulai 11 Oktober, hasil malam ini langsung memberi sinyal bahwa musim ini keduanya tidak akan mudah satu sama lain.\n\nHugo Gonzalez jadi aktor utama kemenangan BOS. Datang dari bench, guard ini mencetak 21 poin dengan efisiensi yang solid: 6-10 dari lapangan, 3-7 dari garis tiga angka, dalam 20 menit bermain. Bukan starter, tapi angkanya adalah yang tertinggi di tim, persis tipe kontribusi yang dibutuhkan ketika laga memanjang ke overtime.\n\n---\n\n## Bench BOS Menanggung Beban, PHI Andalkan Trio Starter\n\nKedalaman bench BOS jadi variabel penentu malam ini. Ron Harper Jr. (16 poin, 7-20 FG, 35 menit) dan Luka Garza (13 poin, 6 rebound, 3-6 FG) juga datang dari bench. Dari lima top scorer BOS, tiga di antaranya bukan starter, angka yang tidak biasa untuk tim yang menang di overtime.\n\nDi sisi starter, Milos Uzan berkontribusi 14 poin (4-9 FG, 2-5 dari tiga angka) dan Chris Cenac Jr. menambah 12 poin plus 8 rebound. Cenac adalah satu-satunya BOS yang mencatatkan rebound di atas tujuh, relevan mengingat PHI menguasai poin dalam paint 52-44 dan fast-break points 25-18.\n\nPHI bermain dengan tiga starter produktif. Joel Embiid memimpin dengan 27 poin, 8 rebound, 5 asis (7-13 FG), angka yang cukup untuk menang di banyak malam lain. Tyrese Maxey menambah 22 poin dan 6 asis, Jaylen Brown 20 poin dan 8 rebound. Trio ini menghasilkan 69 poin dari total 120 PHI, dominan, tapi tidak cukup karena bench PHI tidak menutup gap di situasi kritis overtime.\n\n---\n\n## Statistik Tim: BOS Menang Rebound, PHI Unggul Efisiensi\n\nAngka tim berbicara tentang dua filosofi berbeda yang berbenturan sepanjang malam.\n\nPHI lebih efisien dari lapangan: FG% 45 vs 41 BOS, points in paint 52-44, fast-break points 25-18. Dalam banyak pertandingan, keunggulan efisiensi itu menentukan. Tapi malam ini BOS mengkompensasi dengan dua hal: volume tiga angka dan rebound.\n\nBOS melepas 54 tembakan tiga angka, jauh lebih banyak dari PHI yang mencoba 38, dan masuk 17 di antaranya (31%). PHI hanya masuk 7 dari 38 (18%). Selisih 10 three-pointer yang masuk adalah margin yang menjelaskan mengapa BOS bisa menyamakan dan akhirnya menang meski tertinggal di efisiensi dua angka.\n\nRebound total BOS 63 vs PHI 46, selisih 17, memberi BOS extra possessions yang dibutuhkan untuk mempertahankan volume serangan itu.\n\nSatu catatan untuk BOS: 24 turnover vs 18 PHI adalah angka yang perlu diperbaiki. Di seri yang lebih ketat, selisih enam turnover bisa berarti kekalahan.\n\n---\n\n## Overtime Diputuskan di Momen-Momen Kritis\n\nKEY PLAYS menunjukkan overtime yang ketat hingga menit-menit terakhir. Dengan skor 117-117, Dillon Mitchell mencetak dua poin dari running dunk untuk membalik keadaan, lalu menambah tembakan tiga angka dari jarak 26 kaki untuk membuat jarak 122-117. Uzan menutup dengan pullup jump shot 20 kaki di 21,1 detik tersisa (124-117), sebelum tembakan tiga angka Jameer Nelson Jr. menutup jarak menjadi 124-120 di detik-detik terakhir. Harper Jr. lalu memastikan kemenangan lewat free throw terakhir: 125-120 final.\n\nAtribusi tim untuk beberapa play overtime tidak terkonfirmasi di input, nama-nama selain Uzan dan Harper Jr. tidak muncul di data roster yang tersedia.\n\n---\n\n## Selanjutnya\n\nIni Game 1 dari empat pertemuan musim reguler antara BOS dan PHI. Laga berikutnya belum tercantum di input. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898407",
+    "home_team": "Philadelphia 76ers",
+    "home_abbr": "PHI",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 120,
+    "away_score": 125,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-10-16T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/10",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.047822,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 58,
+      "issue_count": 6,
+      "summary": "Article fails on training_inference (HIGH): names players from KEY PLAYS unconfirmed in roster data and attributes plays to them anyway, violating grounding rules. Also breaks fourth wall by mentioning 'input' metadata. Academic filler and some calqued-English phrasing lower quality. Regenerate with confirmed scorers only for overtime narrative.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dillon Mitchell mencetak dua poin dari running dunk... tembakan tiga angka... Jameer Nelson Jr. menutup jarak... Uzan melepas pullup jump shot",
+          "fix": "Rewrite overtime sequence using only confirmed scorers (Uzan, Harper Jr.) or describe action qualitatively without player names."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu catatan untuk BOS: 24 turnover vs 18 PHI adalah angka yang perlu diperbaiki.",
+          "fix": "Delete 'Satu catatan untuk BOS:' and start: '24 turnover vs 18 PHI — BOS perlu tighten possession play.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Ini Game 1 dari empat pertemuan musim reguler antara BOS dan PHI. Laga berikutnya belum tercantum di input.",
+          "fix": "Delete 'Laga berikutnya belum tercantum di input.' Just end: 'Ini Game 1 dari empat pertemuan musim reguler antara BOS dan PHI. Tayang live di NBA League Pass dan Vidio.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kedalaman bench BOS jadi variabel penentu malam ini.",
+          "fix": "Rewrite: 'Bench BOS yang mendalam jadi kunci kemenangan malam ini.' or 'Kedalaman bench BOS menentukan.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dalam banyak pertandingan, keunggulan efisiensi itu menentukan. Tapi malam ini BOS mengkompensasi...",
+          "fix": "Start new sentence: 'Malam ini BOS mengkompensasi dengan dua hal...'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Ini Game 1 dari empat pertemuan reguler season antara dua tim, dengan seri resmi dimulai 11 Oktober",
+          "fix": "Rewrite: 'Seri reguler resmi mereka dimulai 11 Oktober.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x636d31b1290de7f0",
+    "published_at": "2026-10-17T02:11:01+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "regenerate",
+      "overall_score": 52,
+      "headline_score": 45,
+      "headline_comment": "Headline mencantumkan '(Game ?)' yang jelas placeholder yang lolos ke publish — fatal untuk kredibilitas.",
+      "lead_score": 58,
+      "lead_comment": "Lead memuat skor dan konteks OT tapi kalimat kedua panjang dan membingungkan tentang 'seri resmi dimulai 11 Oktober' padahal ini Game 1.",
+      "structure_score": 65,
+      "structure_comment": "Struktur section logis (bench, stats, OT, next) tapi draft dibuka dengan meta-commentary soal tag [?] yang seharusnya tidak pernah masuk ke artikel publish.",
+      "voice_score": 60,
+      "voice_comment": "Umumnya bersih dari banned phrases, tapi 'aktor utama', 'dua kubu ukur kekuatan', dan 'berbenturan sepanjang malam' terasa klise sport-page lama.",
+      "suggestion_count": 6,
+      "summary": "Article has solid statistical grounding and clean voice in long stretches, but ships with a placeholder in the headline, internal writer notes bleeding into both the opening and the OT section, and an unexplained date contradiction. Regenerate with explicit instruction to strip meta-commentary and fix the headline template.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Satu hal yang langsung mencolok dari data ini sebelum menulis: KEY PLAYS menggunakan tag [?]...",
+          "issue": "Meta-commentary writer soal input data bocor ke artikel final — ini catatan internal, bukan copy publish.",
+          "fix": "Hapus seluruh paragraf pembuka sebelum headline H2."
+        },
+        {
+          "priority": "high",
+          "snippet": "Recap Boston Celtics 125-120 Philadelphia 76ers (Game ?)",
+          "issue": "Placeholder '(Game ?)' di title tag — langsung terbaca sebagai broken template.",
+          "fix": "Ganti ke 'Recap NBA: Celtics Tekuk 76ers 125-120 Lewat Overtime' atau serupa, tanpa penanda game."
+        },
+        {
+          "priority": "high",
+          "snippet": "Ini Game 1 dari empat pertemuan reguler season antara dua tim, dengan seri resmi dimulai 11 Oktober",
+          "issue": "Kontradiksi internal — jika Game 1 dimainkan 17 Oktober, 'seri dimulai 11 Oktober' tidak masuk akal dan membingungkan pembaca.",
+          "fix": "Hapus referensi tanggal 11 Oktober; cukup 'Ini pertemuan pertama dari empat laga reguler season antara kedua tim.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Dillon Mitchell mencetak dua poin dari running dunk... Jameer Nelson Jr. menutup jarak menjadi 124-120",
+          "issue": "Nama pemain yang tidak ada di roster top scorer BOS/PHI disebut tanpa atribusi tim — pembaca bingung siapa main untuk siapa.",
+          "fix": "Deskripsikan plays secara kualitatif ('BOS cetak dunk cepat, lalu tembakan tiga angka untuk membuka jarak lima poin') tanpa menyebut nama yang tidak terverifikasi."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Atribusi tim untuk beberapa play overtime tidak terkonfirmasi di input, nama-nama selain Uzan dan Harper Jr. tidak muncul di data roster yang tersedia.",
+          "issue": "Disclaimer internal muncul di body copy — pembaca tidak perlu tahu soal keterbatasan data input.",
+          "fix": "Hapus kalimat ini sepenuhnya."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Trio ini menghasilkan 69 poin dari total 120 PHI, dominan, tapi tidak cukup",
+          "issue": "Angka 69 benar (27+22+20) tapi framing 'dominan tapi tidak cukup' hampir dibilang dua kali di paragraf ini dan di section stats.",
+          "fix": "Pilih satu tempat untuk membuat argumen 'trio PHI tidak di-back-up bench' — rapikan redundansi."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

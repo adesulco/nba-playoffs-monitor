@@ -1,0 +1,51 @@
+{
+  "type": "recap",
+  "slug": "mia-at-orl-2026-10-16",
+  "title": "Recap Miami Heat 115-136 Orlando Magic (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Miami Heat vs Orlando Magic (115-136) di —, 16 October 2026.",
+  "body_md": "Saya tidak bisa menulis recap ini.\n\nData yang tersedia tidak cukup untuk artikel yang akurat dan credible.\n\n**Masalahnya spesifik:**\n\n**Individual stat lines semua nol.** NUMERIC ANCHORS mengkonfirmasi setiap pemain listed di 0 pts / 0 reb / 0 ast. Ini bukan data yang hilang, ini placeholder kosong. Artinya saya tidak punya satu pun stat pemain yang bisa dikutip.\n\n**Team stats block kosong.** Tidak ada FG%, 3P%, rebound total, turnover, atau stat tim apapun.\n\n**KEY PLAYS tidak punya skor pemain.** Ada empat play tersedia, tapi karena individual stat lines kosong, saya tidak tahu siapa pencetak poin terbanyak, siapa yang dominan, atau apa yang menjelaskan selisih 21 poin (MIA 115 - ORL 136).\n\n**Konteks seri membingungkan.** Header bilang \"NBA Playoffs 2026\" tapi SERIES STATE bilang \"Regular Season Series, Game 1 of 4\", ini kontradiksi yang tidak bisa saya resolve tanpa data yang benar.\n\n**Yang dibutuhkan:**\n\nKirim ulang dengan stat pemain yang terisi (poin, rebound, assist per pemain), team stats (FG%, 3P%, rebound), dan klarifikasi apakah ini Playoffs atau Regular Season. Dengan data itu, recap bisa ditulis.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401898406",
+    "home_team": "Orlando Magic",
+    "home_abbr": "ORL",
+    "away_team": "Miami Heat",
+    "away_abbr": "MIA",
+    "home_score": 136,
+    "away_score": 115,
+    "winner_abbr": "ORL",
+    "kickoff_utc": "2026-10-16T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 2/12",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.038165,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 2,
+      "summary": "This is not an article; it's a data validation failure logged as prose. The input stat block is empty (all zeros). Reject and re-queue with complete data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Saya tidak bisa menulis recap ini. Data yang tersedia tidak cukup.",
+          "fix": "The content agent should not submit articles that are refusals or meta-discussions. Route back to prompt or escalate data QA."
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Individual stat lines semua nol. NUMERIC ANCHORS mengkonfirmasi setiap pemain listed di 0 pts.",
+          "fix": "Regenerate with valid stats. Do not publish placeholder or refusal text as article output."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xaee9d4f848f584c6",
+    "published_at": "2026-10-17T02:09:33+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

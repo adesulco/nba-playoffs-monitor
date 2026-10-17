@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "tor-at-det-2026-10-16",
+  "title": "Recap Toronto Raptors 125-129 Detroit Pistons (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs Detroit Pistons (125-129) di —, 16 October 2026.",
+  "body_md": "Detroit Pistons mempermalukan Toronto Raptors 129-125 di kandang, Sabtu 17 Oktober 2026. Kemenangan tipis yang ditentukan di detik-detik terakhir kuarter empat, free throw Elijah Harkless menutup pertandingan dengan skor akhir 129-125.\n\n---\n\n## Detroit Dominan, Toronto Gigih tapi Tak Cukup\n\nAngka di papan skor mungkin terlihat ketat, tapi narasi pertandingan ini sebetulnya lebih satu sisi dari itu. Detroit menembak 58% dari field goal, 47-81, sementara Toronto hanya 42% (36-85). Di paint, gap-nya lebih mencolok lagi: DET 62, TOR 38. Detroit lebih agresif di lane, lebih efisien di setiap possession.\n\nYang membuat Toronto bertahan sampai menit terakhir adalah free throw dan perimeter shooting. Raptors masuk 39-46 dari garis charity (85%), jauh lebih konsisten dibanding Detroit yang 21-32 (66%). Dari tiga poin, selisihnya tipis: TOR 14-38, DET 14-34, persentase sedikit keunggulan Detroit (41% vs 37%), tapi volumenya beda satu attempt saja.\n\n---\n\n## Top Performers\n\nDari sisi Toronto, Malachi Smith tampil paling menonjol dari bench: **24 poin, 7 rebound, 3 asis** dengan shooting 8-18 dari lapangan dan 4-7 dari tiga poin dalam 33 menit. Di belakangnya, Trayce Jackson-Davis efisien habis, **23 poin** dengan shooting 4-5 dari field (tidak ada tembakan tiga). Jackson-Davis mengandalkan dalam dan free throw. angka efficiency-nya yang tertinggi di laga ini.\n\nNimari Burnett menambah **17 poin, 5 rebound, 1 asis** (3-7 dari tiga poin), Alijah Martin **15 poin** (4-10 FG, 1-3 dari tiga), dan Tyson Degenhart **14 poin, 4 rebound, 4 asis** dari bench.\n\nDetroit dipimpin Cade Cunningham: **18 poin, 7 asis**, shooting 8-12 dari lapangan. Efisiensi playmaking-nya terlihat dari angka assists tim, DET 29 vs TOR 20. Cunningham bukan pencetak poin terbanyak di laga ini, tapi dia yang paling menghubungkan serangan Detroit.\n\nJalen Duren **14 poin** (6-9 FG), Ebuka Okorie **14 poin** dalam hanya 9 menit, termasuk mengonversi dua free throw krusial di Q4, dan John Collins **12 poin, 8 rebound** melengkapi kontributor utama DET. Ausar Thompson **12 poin, 4 asis** dengan shooting sempurna 5-5 dari lapangan.\n\n---\n\n## Detik-Detik Penentu\n\nToronto sempat punya kesempatan. Di Q4 dengan sisa 34 detik, Jackson-Davis masuk dua free throw untuk memperkecil jarak. Burnett kemudian mencetak tembakan tiga poin dari jarak 24 kaki, diasis Degenhart, untuk memotong defisit menjadi satu poin (124-125), sisa 6,2 detik.\n\nTapi Detroit menjawab. Okorie tenang dari garis free throw (5,7 detik): dua masuk, 124-127. Setelah Jackson-Davis kembali masuk satu dari dua free throw (125-127, 4,1 detik), Harkless menutup pertandingan dengan dua free throw, 125-129, saat jarum jam hampir berhenti.\n\nToronto fast-break hanya 9 poin vs Detroit 19. Selisih transisi ini juga cerminan betapa Detroit lebih banyak mendikte tempo.\n\n---\n\n## Selanjutnya\n\nIni laga pertama dari empat pertemuan regular season series kedua tim. Series berikutnya dijadwalkan mulai 20 November. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401908946",
+    "home_team": "Detroit Pistons",
+    "home_abbr": "DET",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 129,
+    "away_score": 125,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-10-16T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/20",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.041577,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail. Two high-severity training-inference violations (Elijah Harkless name not in input; Okorie emotional inference). Multiple tense/translated-English issues reduce clarity. Rewrite required before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Elijah Harkless menutup pertandingan dengan skor akhir 129-125",
+          "fix": "Remove name; rewrite: 'Pemain Detroit menutup dengan dua free throw untuk final 129-125.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ebuka Okorie tenang dari garis free throw (5,7 detik): dua masuk",
+          "fix": "Rewrite: 'Okorie masuk dua free throw beruntun (5,7 detik) untuk 124-127.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Jackson-Davis mengandalkan dalam dan free throw. angka efficiency-nya yang tertinggi",
+          "fix": "Rewrite: 'Jackson-Davis andalkan free throw dan penetrasi. Efisiensi tertinggi skuad.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Cunningham bukan pencetak poin terbanyak di laga ini, tapi dia yang paling menghubungkan",
+          "fix": "Rewrite: 'Cunningham bukan top scorer, tapi maestro: 7 asis kontrol permainan.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Raptors masuk 39-46 dari garis charity (85%)",
+          "fix": "Use 'garis free throw' for consistency with rest of article."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Toronto fast-break hanya 9 poin vs Detroit 19. Selisih transisi ini juga cerminan betapa Detroit lebih banyak mendikte tempo.",
+          "fix": "Rewrite: 'Fast-break gap (19-9) menunjukkan Detroit pegang inisiatif tempo.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xcd717d6ae4efa9b2",
+    "published_at": "2026-10-17T02:13:05+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
