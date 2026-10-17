@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "wsh-at-no-2026-10-17",
+  "title": "Recap Washington Wizards 106-107 New Orleans Pelicans (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Washington Wizards vs New Orleans Pelicans (106-107) di —, 17 October 2026.",
+  "body_md": "# Wizards Kalah Dramatis 106-107, Pelicans Menang di Detik Terakhir\n\nNew Orleans Pelicans menang tipis 107-106 atas Washington Wizards dalam laga yang diputuskan di detik terakhir, Jumat 17 Oktober 2026 dini hari WIB. Saddiq Bey jadi top scorer dengan 19 poin off the bench, sementara Wizards harus pulang dengan tangan kosong meski sempat memimpin di kuarter akhir.\n\n---\n\n## Top Performers\n\nDari sisi Pelicans, Saddiq Bey adalah jawaban. Keluar dari bench, Bey mencetak 19 poin dengan efisiensi tinggi, 7-11 from field, 3-5 from three, ditambah 6 rebound dan 2 asis dalam 17 menit. Kontribusi off the bench yang menentukan di momen paling krusial.\n\nJeremiah Fears melengkapi dengan 14 poin dan 5 asis, berperan sebagai kreator serangan sekaligus pencetak gol. Zion Williamson dan Trey Murphy III masing-masing menyumbang 11 poin dengan 5 rebound, meski Zion tampil tidak efisien, 5-14 from field termasuk 0-4 dari luar arc.\n\nDi kubu Wizards, tidak ada satu pun pemain yang benar-benar mendominasi. Anthony Davis memimpin dengan 14 poin dan 11 rebound, double-double, tapi butuh 14 percobaan field goal untuk mencapainya. Kyshawn George mencetak 14 poin dengan 5-7 from field dan 3-5 from three, salah satu yang paling efisien di tim. AJ Dybantsa dan Alex Sarr masing-masing menambah 12 poin, dengan Sarr meraih 9 rebound sebagai anchor di paint.\n\n---\n\n## Baca Statistiknya\n\nSecara tim, Washington sebenarnya tidak bermain buruk di beberapa kategori, 12-41 from three (29%) vs Pelicans yang hanya 7-36 (19%), plus 51 rebound berbanding 48. Tapi dua angka ini yang menceritakan kekalahan Wizards: 62 points in paint Pelicans berbanding 42 Wizards, dan 18 turnover Pelicans vs 23 Wizards.\n\nPelicans mendominasi area dalam. Fast-break pun berpihak ke New Orleans, 22 berbanding 13. Washington lebih banyak shooting dari luar, Pelicans lebih konsisten menyerang dalam. Akhirnya, efisiensi dari garis free throw juga bicara, Pelicans 14-16 (88%), Wizards 22-31 (71%). Poin dari free throw yang terbuang menjadi selisih yang mahal.\n\n---\n\n## Detik Terakhir yang Menentukan\n\nKuarter empat berjalan dramatis. Pelicans membangun keunggulan 105-99 lewat tip shot Felix Okpara di menit 1:49, kemudian driving layup Bryce McGowens di menit 1:21 yang membuat skor 104-99. Tip shot Chris Livingston memperlebar jarak menjadi 105-101 di detik 55.\n\nWizards belum menyerah. Alondes Williams mencetak dua free throw di detik 27.9 untuk membawa Wizards lebih dekat, 103-105. Jaron Pierre Jr. kemudian menambah dua free throw lagi di sisa 1.4 detik, skor 103-107.\n\nTapi Wizards punya satu tembakan terakhir. Alondes Williams, dari jarak 24 kaki, melepas turnaround jump shot dengan asis Reece Beekman. Masuk. 106-107. Namun satu poin tidak cukup, peluit berbunyi, Pelicans menang.\n\n---\n\n## Selanjutnya\n\nIni adalah laga pertama dari dua pertemuan dalam regular season series. Wizards perlu mengevaluasi masalah turnover, 23 kali kehilangan bola adalah kemewahan yang tidak bisa terus diulang. Laga kedua jadi kesempatan untuk memperbaiki neraca head-to-head.\n\nSiaran tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401906509",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Washington Wizards",
+    "away_abbr": "WSH",
+    "home_score": 107,
+    "away_score": 106,
+    "winner_abbr": "NO",
+    "kickoff_utc": "2026-10-17T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 2/4",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021137,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail. Critical issue: article attributes multiple Q4 plays (Felix Okpara, Bryce McGowens, Chris Livingston, Alondes Williams × 2, Jaron Pierre Jr.) from KEY PLAYS block marked [?], indicating unverified training-data inference. Math claim about free throws being 'costly difference' doesn't hold up (1-2 poin). Secondary: academic drift opener 'Selanjutnya', stat format inconsistency. Remove or heavily rewrite Q4 sequence; verify all claims against input block only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Felix Okpara makes tip shot, Bryce McGowens makes driving layup, Chris Livingston makes tip shot, Alondes Williams makes turnaround jump shot",
+          "fix": "Remove specific play-by-play sequences or rephrase qualitatively: 'Pelicans membangun jarak di kuarter empat lewat beberapa layup defensif.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selanjutnya, ini adalah laga pertama dari dua pertemuan",
+          "fix": "Cut 'Selanjutnya' and lead with substance: 'Ini baru game satu dari dua pertemuan musim ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "12-41 from three (29%) vs Pelicans yang hanya 7-36 (19%), plus 51 rebound",
+          "fix": "Use consistent phrasing: 'Washington 12-41 tiga angka (29%), Pelicans 7-36 (19%), plus 51 rebound Wizards vs 48.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Poin dari free throw yang terbuang menjadi selisih yang mahal.",
+          "fix": "Rewrite: 'Free throw discipline membedakan: Pelicans 88%, Wizards 71% — selisih kecil tapi di akhir laga, signifikan.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Zion Williamson dan Trey Murphy III masing-masing menyumbang 11 poin",
+          "fix": "Simplify: 'Zion dan Trey Murphy III gabung 11 poin masing-masing dengan 5 rebound.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "double-double, tapi butuh 14 percobaan field goal",
+          "fix": "Use: 'double-double tapi perlu 14 tembakan field untuk capainya.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf06aef1534c9f5a2",
+    "published_at": "2026-10-17T03:09:19+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
