@@ -1,0 +1,69 @@
+{
+  "type": "recap",
+  "slug": "utah-at-phx-2026-10-17",
+  "title": "Recap Utah Jazz 119-116 Phoenix Suns (Game ?)",
+  "description": "Recap NBA Playoffs 2026 — Utah Jazz vs Phoenix Suns (119-116) di —, 17 October 2026.",
+  "body_md": "# Utah Jazz Kalahkan Phoenix Suns 119-116, Drama di Detik-Detik Terakhir\n\nUtah Jazz menutup laga dengan dramatis, menang 119-116 atas Phoenix Suns dalam NBA Regular Season 17 Oktober 2026. Tiga poin tipis yang ditentukan oleh sequence clutch time paling intens di menit-menit terakhir Q4. Lauri Markkanen memimpin Jazz dengan 19 poin, sementara Brice Sensabaugh off the bench jadi faktor kejutan dengan 16 poin dari hanya 17 menit bermain.\n\n---\n\n## Top Performers\n\n**Utah Jazz** punya lima pemain double-digit scorer, sesuatu yang biasanya jadi tanda distribusi serangan yang sehat, bukan ketergantungan pada satu bintang.\n\nMarkkanen mencetak 19 poin, 5 rebound, shooting 5-12 dari lapangan dan 3-7 dari three-point line. Akurat dan efisien sebagai anchor offense. Jaren Jackson Jr. menambahkan 17 poin dengan efisiensi lebih tajam: 6-10 dari lapangan dalam 21 menit, termasuk satu tembakan tiga angka.\n\nSensabaugh, keluar dari bench, cetak 16 poin dengan 4-7 from three dalam 17 menit — rata-rata hampir satu poin per menit. Darryn Peterson jadi pivot permainan Jazz: 13 poin, 6 rebound, 6 asis, statistik serba bisa yang tidak terlihat mewah tapi sangat berguna, terbukti di clutch time.\n\n**Phoenix Suns** sebetulnya punya amunisi yang sama banyaknya. Dillon Brooks dan Jalen Green masing-masing 18 poin, tapi keduanya butuh 13 tembakan untuk sampai ke angka itu (6-13 each). Devin Booker 16 poin dan 6 asis, shooting 6-16, bekerja keras tapi efisiensinya tidak ideal. Jamaree Bouyea dari bench menyumbang 12 poin dalam 14 menit, jadi salah satu spark yang membuat Suns tetap di permainan ini.\n\n---\n\n## Apa yang Bilang Angka\n\nJazz tidak unggul di statistik standar. PHX punya lebih banyak rebound (47 vs 43), lebih banyak steals (12 vs 9), lebih banyak points in paint (44 vs 40). Suns juga shoot 41-98 dibanding Jazz 37-75, PHX mencoba tembakan jauh lebih banyak.\n\nTapi Jazz menang di dua hal yang krusial:\n\n**Field goal percentage**: Jazz 49% vs PHX 42%. Volume Phoenix tidak dikonversi dengan efisien, 98 tembakan dengan 42% adalah banyak miss. Jazz lebih selektif, lebih akurat.\n\n**Free throws**: ini yang paling menentukan. Jazz 32-37 dari garis (86%) vs PHX 18-26 (69%). Dari sisi poin murni, Jazz dapat 32 poin dari free throws, PHX hanya 18. Selisih 14 poin dari garis foul, dalam pertandingan yang akhirnya cuma beda tiga, itulah game-winner sesungguhnya.\n\n---\n\n## Clutch Time yang Bikin Jantung Berhenti\n\nQ4 dua menit terakhir jadi milik siapa yang paling tenang di bawah tekanan.\n\nSkor 111-109 untuk Jazz saat Peterson konversi driving floating jump shot di menit 2:16. Kemudian Jazz perpanjang jarak menjadi 113-109. Suns balas dua kali, memperketat menjadi 115-113.\n\nBouyea driving layup di detik 58.3 sempat bikin tegang: 115-113. Jazz jawab dengan turnaround jump shot: 117-113. Peterson tambahkan satu free throw: 118-113.\n\nSuns balas dengan tiga-pointer dari jauh di detik ke-5.0 — 119-116 final. Suns tidak punya waktu lagi.\n\n---\n\n## Berikutnya\n\nIni adalah pertemuan pertama dari empat laga regular season antara Jazz dan Suns, series berlanjut mulai 20 November. Utah ambil keunggulan awal dengan kemenangan tipis yang ditentukan oleh efisiensi shooting dan garis free throw.\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401908948",
+    "home_team": "Phoenix Suns",
+    "home_abbr": "PHX",
+    "away_team": "Utah Jazz",
+    "away_abbr": "UTAH",
+    "home_score": 116,
+    "away_score": 119,
+    "winner_abbr": "UTAH",
+    "kickoff_utc": "2026-10-17T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series starts 11/20",
+    "game_number": 0,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023303,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 78,
+      "issue_count": 5,
+      "summary": "Article passes voice standards with mostly grounded stats. Minor calquing from English (sequence, not flashy) and one ambiguous grammar node. Score docked for medium-severity translated-English feel and academic filler, but no hard bans triggered.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tiga poin tipis yang ditentukan oleh sequence clutch time paling intens",
+          "fix": "Rephrase: 'Tiga poin tipis ditentukan oleh duel clutch time Q4 paling intens.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Sensabaugh, keluar dari bench, cetak 16 poin dengan 4-7 from three",
+          "fix": "Second mention: just 'Sensabaugh cetak 16 poin dengan 4-7 from three dalam 17 menit.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Statistik serba bisa yang tidak terlihat mewah tapi sangat berguna",
+          "fix": "Rephrase: 'Statistik dua digit di setiap kolom, tidak mentereng tapi efektif.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Suns sebetulnya punya amunisi yang sama banyaknya",
+          "fix": "Delete 'Sebetulnya': 'Suns punya amunisi yang sama banyaknya.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "PHX mencoba tembakan jauh lebih banyak",
+          "fix": "Clarify: 'PHX coba jauh lebih banyak tembakan' or 'PHX lebih suka volume.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa1e871bbe481f3b8",
+    "published_at": "2026-10-17T04:39:52+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
