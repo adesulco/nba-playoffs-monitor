@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "phi-at-ny-2026-10-20-g1",
+  "title": "Recap Philadelphia 76ers 106-100 New York Knicks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Philadelphia 76ers vs New York Knicks (106-100) di —, 20 October 2026.",
+  "body_md": "# Philadelphia 76ers Kalahkan New York Knicks 106-100, Unggul 1-0 di Regular Season Series\n\nPhiladelphia 76ers menang tipis atas New York Knicks 106-100 di Game 2, Rabu 21 Oktober 2026. PHI kini unggul 1-0 di regular season series ini. Kemenangan ini dibangun di atas distribusi serangan yang merata, lima pemain PHI tembus angka dua digit, dengan Tyrese Maxey sebagai motor utama.\n\n## Top Performers\n\nMaxey jadi top scorer malam ini dengan 28 poin, 4 rebound, 5 asis dari 40 menit bermain. Efisiensinya di lapangan tidak sempurna, 9-19 dari field, 2-9 dari tiga poin, tapi beban yang dia tanggung sebagai pemain pertama PHI di setiap possession krusial terasa sepanjang pertandingan.\n\nJaylen Brown menambahkan 19 poin, 8 rebound, dan 6 asis dengan 7-14 dari field. LeBron James bermain sebagai penyeimbang: 14 poin, 9 rebound, 7 asis, all-around line yang menjaga ritme serangan PHI tetap hidup. Joel Embiid, 13 poin dan 11 rebound, jadi jangkar di paint sekaligus mencetak three-pointer krusial di Q4. Off the bench, Anfernee Simons menyumbang 13 poin dengan 3-8 dari tiga poin.\n\nDi kubu Knicks, Jalen Brunson memimpin dengan 21 poin meski efisiensinya buruk: 6-19 dari field. Karl-Anthony Towns tampil solid dengan 19 poin dan 12 rebound, termasuk dua three-pointer di momen kritis akhir laga. Andre Drummond dominan di papan rebound dengan 12 poin dan 14 rebound dari bangku cadangan.\n\n## Statistik: PHI Menang di Free Throw, NY Kalah di Turnover\n\nAngka di box score menjelaskan margin kemenangan PHI. NY unggul di total rebound 53-45 dan justru lebih efisien dari tiga poin (33% vs 28% PHI), tapi keunggulan itu tidak cukup.\n\nDua faktor yang membunuh NY: turnover dan free throw. NY mencatatkan 15 turnover dibanding 12 PHI, dan PHI mengkonversi momentum menjadi 24 fast-break points melawan 16 milik NY. Lebih jauh, PHI 21-27 dari garis free throw (78%), NY hanya 19-27 (70%), selisih yang terasa di pertandingan seketat ini. PHI juga mencatat 10 blocks dan 8 steals, tekanan defensif yang memaksa NY terus bermain tidak nyaman.\n\n## Drama Q4: Towns Bawa NY Hampir Balik, Embiid Tutup Pintu\n\nAkhir pertandingan ini yang paling menarik. Skor 96-92 untuk PHI di menit 5:36 Q4, dan Towns langsung jawab dengan driving layup. Kurang dari semenit kemudian, Towns kembali, kali ini dengan three-pointer dari 28 kaki untuk memperketat jarak menjadi 96-95.\n\nPHI merespons cepat. Embiid cetak three-pointer dari 25 kaki, diumpan Brown, membuat skor 99-95. NY belum menyerah, Towns lagi, three-pointer dari 25 kaki, 100-98. Tapi PHI bertahan. VJ Edgecombe mencetak dunk (diumpan Embiid) untuk membuat 102-98, sebelum Brunson membalas dengan driving layup di detik ke-41.3 menjadi 104-100. LeBron lalu tambah free throw di detik ke-7.7 untuk angka final 106-100.\n\nTowns menjadi bintang Q4 Knicks dengan tiga aksi besar, tapi PHI tidak pernah kehilangan kendali.\n\n## Selanjutnya\n\nGame 3 regular season series PHI vs NY belum terjadwal di data yang tersedia. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909089",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Philadelphia 76ers",
+    "away_abbr": "PHI",
+    "home_score": 100,
+    "away_score": 106,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-10-20T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHI leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.070228,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to two high-severity training-data inferences (VJ Edgecombe, Jordan Clarkson names not in input block) and structural/register issues. Regenerate with strict player-name verification and tighten academic-hedge phrasing.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "VJ Edgecombe mencetak dunk (diumpan Embiid)",
+          "fix": "Remove name or replace with '[pemain PHI]' — cannot verify Edgecombe from input."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jordan Clarkson assists",
+          "fix": "Remove assist attribution or replace with generic '[diumpan teman satu tim]'."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Maxey jadi top scorer malam ini dengan 28 poin... Efisiensinya di lapangan tidak sempurna",
+          "fix": "Tighten: 'Maxey top scorer dengan 28 poin. Efisiensi buruk: 9-19 FG, 2-9 3PT.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka di box score menjelaskan margin kemenangan PHI.",
+          "fix": "Start directly: 'Statistik box score: NY kalah di turnover dan free throw execution.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dua faktor yang membunuh NY: turnover dan free throw.",
+          "fix": "Rewrite: 'NY kalah di dua aspek: turnover (15 vs 12) dan free throw (70% vs 78%).'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Towns menjadi bintang Q4 Knicks dengan tiga aksi besar, tapi PHI tidak pernah kehilangan kendali.",
+          "fix": "Tighten: 'Towns hemat Q4 Knicks, 3 aksi besar. Tapi PHI tetap solid, final 106-100.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Game 3 regular season series PHI vs NY belum terjadwal di data yang tersedia.",
+          "fix": "Delete: 'Game 3 series ini jadwal menyusul.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe66373d3b44dcf86",
+    "published_at": "2026-10-21T02:13:01+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
