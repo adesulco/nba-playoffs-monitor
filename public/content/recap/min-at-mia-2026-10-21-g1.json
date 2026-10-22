@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "min-at-mia-2026-10-21-g1",
+  "title": "Recap Minnesota Timberwolves 131-106 Miami Heat (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs Miami Heat (131-106) di —, 21 October 2026.",
+  "body_md": "# Anthony Edwards 45 Poin, Timberwolves Hancurkan Heat 131-106\n\nMinnesota Timberwolves menghajar Miami Heat 131-106 dalam laga NBA Playoffs 2026, Kamis 22 Oktober 2026. Anthony Edwards tampil di level yang berbeda, 45 poin, 10 rebound, 3 asis, dan Wolves tidak pernah benar-benar terancam setelah setengah pertandingan pertama berlalu. MIN kini unggul 1-0 di seri dua game ini, dengan satu game tersisa.\n\n---\n\n## Pemain Kunci\n\n**Edwards** jadi cerita utama malam ini, dan sulit berargumen lain. Shooting line-nya 16-29 dari field, 9-17 dari tiga, menunjukkan dominasi murni dalam 33 menit. MIA tidak punya jawaban untuk Edwards malam ini.\n\n**LaMelo Ball** menambah 21 poin dan 6 asis, menjadi distributor yang konsisten di sekeliling Edwards. Shooting-nya 5-13 dari tiga poin, ada yang masuk, ada yang tidak, tapi keberadaannya membuat MIA tidak bisa collapse habis-habisan ke Edwards.\n\n**Jaden McDaniels** diam-diam efektif: 17 poin dengan 8-11 from field, termasuk 8 rebound. Persentase shooting-nya malam ini mungkin yang terbaik di antara semua starter MIN. **Ayo Dosunmu** off the bench menyumbang 16 poin dan 5 rebound, kontribusi yang memastikan MIA tidak bisa bernapas bahkan ketika Dosunmu yang ada di lapangan.\n\nDi kubu Heat, **Giannis Antetokounmpo** memberikan yang bisa ia berikan: 35 poin dengan 13-19 dari field, 6 rebound. Giannis tetap menjadi pemain yang sangat sulit dihentikan di area paint, 0-2 dari tiga poin mengindikasikan ia tidak pergi ke luar, melainkan terus masuk ke dalam. Namun 35 poin dari seorang pemain dengan efisiensi setinggi itu seharusnya bisa menang. Malam ini tidak cukup karena sisi lain terlalu bolong.\n\n**Davion Mitchell** membuat satu stat line yang menarik: 11 poin, 11 asis dengan 0 rebound. Double-double yang cukup langka. Assist-nya tinggi, tapi MIA secara kolektif masih kesulitan mengkonversi peluang.\n\n---\n\n## Apa yang Cerita Angka\n\nTiga poin jadi pembeda utama: MIN cetak 21 three-pointer dari 50 percobaan (42%), MIA hanya 8 dari 33 (24%). Wolves memasukkan hampir tiga kali lipat tiga poin Heat. Di era NBA sekarang, gap tiga poin sekelas itu hampir selalu menentukan hasil akhir, dan di sini tidak ada pengecualian.\n\nRebounds juga tidak berimbang: MIN menguasai papan 52-34. Itu 18 rebound lebih banyak. MIN unggul di rebound, MIA kehabisan second chance.\n\nTurnover advantage MIA (19 vs 17) tidak cukup: fast-break MIA cuma 18 poin vs MIN 5. Setiap kali MIN ceroboh dengan bola, MIA bisa berlari. Tapi keseluruhan game terlalu dikontrol MIN untuk satu faktor itu jadi penentu.\n\n---\n\n## Momentum yang Menggeser Seri\n\nParuh pertama berlangsung kompetitif. Q2 masih melihat MIA di depan sesaat sebelum MIN membalik keadaan. MIN balik 52-50 di Q2 sebelum mengambil kontrol penuh setelah jeda.\n\nSetelah jeda, Wolves rupanya menemukan gear yang berbeda. Skor akhir 131-106 bicara sendiri.\n\n---\n\n## Selanjutnya\n\nGame 2 tinggal menanti. Dengan keunggulan 1-0, Wolves hanya perlu satu laga lagi untuk menutup seri. MIA, di sisi lain, harus menang tanpa ruang untuk kesalahan.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909091",
+    "home_team": "Miami Heat",
+    "home_abbr": "MIA",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 106,
+    "away_score": 131,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-10-21T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023682,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail due to high-severity training inference (says Playoffs when data says Regular Season) and awkward translated-English clauses that break voice rules. Secondary issues: hedging language, series state confusion, and a factual error (double-double). Needs regeneration on core facts and voice cleanup.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "NBA Playoffs 2026, Kamis 22 Oktober 2026",
+          "fix": "Change to 'NBA Regular Season Series' and remove day-of-week or verify it separately."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Ayo Dosunmu off the bench menyumbang 16 poin dan 5 rebound, kontribusi yang memastikan MIA tidak bisa bernapas bahkan ketika Dosunmu yang ada di lapangan.",
+          "fix": "Rephrase: 'Ayo Dosunmu dari bench ciptakan masalah: 16 poin, 5 rebound dalam 29 menit.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Giannis tetap menjadi pemain yang sangat sulit dihentikan di area paint, 0-2 dari tiga poin mengindikasikan ia tidak pergi ke luar, melainkan terus masuk ke dalam.",
+          "fix": "Simplify: 'Giannis fokus ke paint: 0-2 dari tiga, semua arah ke gawang.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Persentase shooting-nya malam ini mungkin yang terbaik di antara semua starter MIN.",
+          "fix": "Delete 'mungkin'. Write: 'McDaniels cetak 17 poin dengan 8-11 dari field—best efficiency di starter MIN malam ini.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Setelah jeda, Wolves rupanya menemukan gear yang berbeda. Skor akhir 131-106 bicara sendiri.",
+          "fix": "Combine: 'Setengah kedua, Wolves tarik 70-51 dan kontrol tidak pernah lepas.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Game 2 tinggal menanti. Dengan keunggulan 1-0, Wolves hanya perlu satu laga lagi untuk menutup seri.",
+          "fix": "Verify: is this the final game of a 2-game series? If yes, close with 'Seri berakhir 2-0 ke Wolves' or similar. If no, clarify which game this was."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Wolves memasukkan hampir tiga kali lipat tiga poin Heat. Di era NBA sekarang, gap tiga poin sekelas itu hampir selalu menentukan hasil akhir, dan di sini tidak ada pengecualian.",
+          "fix": "Write: 'MIN cetak 21 tiga-pointer, MIA 8. Gap itu selalu menentukan—dan di sini jelas begitu.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Double-double yang cukup langka.",
+          "fix": "Rewrite: 'Davion Mitchell stat line unik: 11 poin, 11 asis, nol rebound. Murni distributor.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xc8d9d5892255e7e6",
+    "published_at": "2026-10-22T02:46:53+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

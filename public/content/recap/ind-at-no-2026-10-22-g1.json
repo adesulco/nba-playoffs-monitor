@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "ind-at-no-2026-10-22-g1",
+  "title": "Recap Indiana Pacers 123-120 New Orleans Pelicans (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Indiana Pacers vs New Orleans Pelicans (123-120) di —, 22 October 2026.",
+  "body_md": "# Indiana Pacers Tahan Banting, Siakam-Haliburton Tutup Pelicans 123-120\n\nIndiana Pacers menang dramatis atas New Orleans Pelicans 123-120 di game kedua rangkaian regular season mereka, Kamis 22 Oktober 2026. Kemenangan ini sekaligus membuat IND unggul 2-0 dalam seri. Pascal Siakam memimpin dengan 30 poin, tapi momen penentu datang dari Tyrese Haliburton, dua floater beruntun di dua menit terakhir yang membuat Pelicans kehabisan cara.\n\n---\n\n## Top Performers\n\nSiakam tampil konsisten sepanjang 35 menit: 30 poin, 8 rebound, 13-23 dari lapangan. Bukan malam yang spektakuler di atas kertas, tapi Siakam mengerjakan tugasnya, scoring yang stabil, tekanan di post, dan kehadiran fisik yang membuat pertahanan NO tak bisa fokus ke satu ancaman saja.\n\nHaliburton mencatat 23 poin dan 12 asis, tapi angka-angka itu baru terasa bobotnya di clutch time. Dua floater mid-range di Q4, masing-masing di menit 2:00 dan 1:23, yang memisahkan IND dari NO di momen paling tegang. Controlling the game dari awal, lalu menutupnya sendiri.\n\nObi Toppin off the bench menyumbang 20 poin dengan 4-9 dari tiga angka. Kehadirannya di rotasi bench jadi faktor yang tidak terduga, NO nampaknya tidak punya jawaban untuk spacing yang dia bawa.\n\nAndrew Nembhard melengkapi IND dengan 18 poin dan 9 asis, sementara Ivica Zubac mendominasi paint dengan 16 poin dan 15 rebound. Double-double Zubac jadi fondasi diam-diam yang membuat IND tidak pernah benar-benar terlepas dari permainan.\n\nDi sisi Pelicans, Dejounte Murray mengakhiri malam dengan 23 poin dan 7 asis. Zion Williamson menyumbang 22 poin tapi 7-16 dari lapangan, ada efisiensi yang hilang di momen-momen penting. Yves Missi menjadi satu-satunya penyelamat NO dengan 13 poin dan 14 rebound, plus dua tip-in dan dunk di dua menit terakhir yang nyaris membalik pertandingan.\n\n---\n\n## Apa yang Dikatakan Statistik\n\nDi atas kertas, ini seharusnya pertandingan ketat, dan memang begitu. Tapi ada dua angka yang menjelaskan segalanya: fast-break points dan field goal percentage.\n\nIND mencatat 27 fast-break points versus 10 untuk NO. Ini bukan keberuntungan. ini pola. Pacers memanfaatkan 15 turnover Pelicans untuk berlari, dan dengan 9 steal IND vs 11 steal NO, tempo malam ini lebih berpihak ke gaya permainan Pacers.\n\nDari lapangan, IND tembak 52% (47-90) sementara NO hanya 43% (38-89). Angka tiga poin dua tim hampir sama, IND 9-30, NO 10-30, jadi perbedaan di two-point efficiency yang menjadi kunci. IND unggul di points in paint: 64 berbanding 48.\n\nSatu-satunya area di mana NO jelas lebih baik: free throw. Pelicans 92% (34-37) versus IND yang hanya 69% (20-29). Jika NO memanfaatkan perbedaan ini lebih awal, mungkin hasilnya berbeda.\n\n---\n\n## Drama Dua Menit Terakhir\n\nDengan skor 116-116 di menit 2:16 Q4, pertandingan bisa berakhir ke mana saja.\n\nHaliburton jawab dengan floater 14 kaki, 118-116 IND. Missi balas dengan tip-in dunk, 118-118. Haliburton lagi, floater 11 kaki, 120-118 IND. Lalu free throw Haliburton, 121-118. Missi sekali lagi, dunk dengan asis Jeremiah Fears, 121-120. Satu poin.\n\nLalu Quenton Jackson di menit 45.7, dua free throw yang tidak bisa ditolak: 123-120.\n\nTujuh poin dalam dua menit terakhir, dibalas enam poin oleh NO. Itu bukan blowout, itu survival.\n\n---\n\n## Selanjutnya\n\nDengan seri regular season ini, IND menutup head-to-head dengan Pelicans 2-0. Pantau jadwal lengkap NBA Playoffs 2026 selanjutnya di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909839",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Indiana Pacers",
+    "away_abbr": "IND",
+    "home_score": 120,
+    "away_score": 123,
+    "winner_abbr": "IND",
+    "kickoff_utc": "2026-10-22T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "IND leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023601,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to two critical training-inference errors: series score claimed as 2-0 when input data explicitly states 1-0. Also minor idiom calque, phrase repetition, and structural contradiction about playoff vs. regular season. Core stats (player lines, final score) are accurate.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kemenangan ini sekaligus membuat IND unggul 2-0 dalam seri.",
+          "fix": "Change to 'Kemenangan ini membuat IND unggul 1-0' or delete series claim entirely."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dengan seri regular season ini, IND menutup head-to-head dengan Pelicans 2-0.",
+          "fix": "Change final paragraph to 'Dengan kemenangan ini, IND unggul 1-0' or remove series summary."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Bukan malam yang spektakuler di atas kertas, tapi Siakam mengerjakan tugasnya",
+          "fix": "Delete phrase or replace with 'Angka-angka biasa, tapi' or 'Tidak jaw-dropping, tapi'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Haliburton lagi, floater 11 kaki, 120-118 IND.",
+          "fix": "Second instance: change 'Haliburton lagi, floater 11 kaki' to 'Haliburton balas floater 11 kaki' or 'Haliburton tidak berhenti.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Zion Williamson menyumbang 22 poin tapi 7-16 dari lapangan, ada efisiensi yang hilang",
+          "fix": "Rephrase: 'Zion 7-16 dari lapangan—efisiensi menurun di momen kunci.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Pantau jadwal lengkap NBA Playoffs 2026 selanjutnya di NBA League Pass dan Vidio.",
+          "fix": "Change to 'Saksikan game NBA selanjutnya di NBA League Pass dan Vidio.' or delete 'Playoffs 2026'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua floater beruntun di dua menit terakhir",
+          "fix": "Rephrase: 'floater di menit 2:00 dan 1:23, plus free throw, di dua menit terakhir.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd6f2e340a4c1de88",
+    "published_at": "2026-10-22T02:50:42+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "chi-at-tor-2026-10-21-g1",
+  "title": "Recap Chicago Bulls 92-135 Toronto Raptors (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Chicago Bulls vs Toronto Raptors (92-135) di —, 21 October 2026.",
+  "body_md": "## Toronto Raptors Libas Bulls 135-92, Unggul 1-0 di Regular Season Series\n\nToronto Raptors menghancurkan Chicago Bulls 135-92 di Game 2 regular season series, Kamis 22 Oktober 2026. Kemenangan selisih 43 poin ini buat TOR memimpin series 1-0 dengan satu game tersisa. Empat pemain starter Raptors mencetak 20+ poin masing-masing, sebuah dominasi kolektif yang tidak pernah bisa dijawab Bulls sepanjang laga.\n\n---\n\n## Top Performers\n\nKawhi Leonard, Scottie Barnes, dan Immanuel Quickley masing-masing cetak 23 poin di laga ini dari tiga pemain berbeda. Leonard cetak 23 poin dengan efisien: 6 rebound, 2 asis dalam 24 menit. Barnes melengkapi stat line-nya dengan 6 rebound dan 5 asis dalam 26 menit, sementara Quickley jadi playmaker dengan 7 asis 4 rebound di half-court.\n\nRJ Barrett menambah 20 poin, 4 rebound, dan 3 asis dalam 26 menit. Empat starter 20+; kedalaman Toronto terasa tidak tertandingi bagi pertahanan Chicago.\n\nDi kubu Bulls, tidak ada yang benar-benar bisa bersaing dengan kedalaman itu. Matas Buzelis memimpin dengan 17 poin dan 6 rebound, tapi dengan shooting yang berat: hanya 2-8 dari lapangan dan 0-4 dari three-point line dalam 25 menit. Caleb Wilson mencetak 16 poin tetapi butuh 21 tembakan untuk sampai ke sana, angka yang mencerminkan betapa susahnya Chicago mencari ruang. Jalen Smith (15 poin, 8 rebound) memberikan kontribusi paling efisien dari sisi starter Bulls dengan 5-10 dari lapangan.\n\n---\n\n## Apa yang Kata Statistik\n\nPerbedaan antara dua tim malam ini tidak soal satu faktor, semuanya bergerak ke arah yang sama untuk Toronto.\n\nDari lapangan: TOR 45% FG vs CHI 32%. Dari three-point line: selisih lebih jauh lagi, Toronto 32% (10-31), Chicago hanya 11% (4-36). Bulls melakukan 36 percobaan three-pointer, yang berarti hampir 42% tembakan mereka datang dari luar garis. 4-36 dari tiga; Chicago jadi terlalu berat di perimeter.\n\nYang lebih krusial: turnover dan transisi. Chicago melakukan 27 turnover dibanding hanya 11 dari Toronto. Selisih itu langsung diterjemahkan ke fast-break points: TOR 34, CHI 13. Raptors juga mendominasi di dalam garis dengan 58 points in paint vs 40 dari Bulls. Assist 31 vs 16 menunjukkan Toronto bermain jauh lebih terhubung, bola bergerak, pemain bergerak, dan hasilnya terlihat di papan skor.\n\nChicago kalah di hampir setiap kategori bermakna, dan turnover-nya sendiri sudah cukup untuk memastikan ini tidak pernah jadi pertandingan yang kompetitif.\n\n---\n\n## Implikasi Series\n\nTOR kini memimpin 1-0 di regular season series dengan satu game tersisa. Dengan margin kemenangan yang sebesar ini, momentum jelas ada di pihak Raptors, tapi konteks \"regular season series\" berarti tidak ada eliminasi di ujung jalan. Chicago perlu menemukan jawaban untuk masalah turnover dan three-point shooting mereka sebelum game terakhir.\n\nBagi Toronto, malam ini adalah validasi bahwa kedalaman roster mereka bisa menyala semua dalam satu waktu. Empat pemain 20+ poin bukan kebetulan, itu hasil dari assist yang tinggi, turnovers lawan yang dikonversi, dan eksekusi half-court yang konsisten.\n\nGame 3 dan terakhir dari series ini bisa ditonton lewat NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909837",
+    "home_team": "Toronto Raptors",
+    "home_abbr": "TOR",
+    "away_team": "Chicago Bulls",
+    "away_abbr": "CHI",
+    "home_score": 135,
+    "away_score": 92,
+    "winner_abbr": "TOR",
+    "kickoff_utc": "2026-10-21T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "TOR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020157,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate stats and natural flow. Minor phrasing awkwardness and one soft hedging word; no voice violations that threaten comprehension. Pass with light editorial note.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Quickley jadi playmaker dengan 7 asis 4 rebound di half-court",
+          "fix": "Remove 'di half-court' or clarify: 'Quickley jadi playmaker dominan dengan 7 asis, 4 rebound' — let the assist number speak."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "36 percobaan three-pointer, yang berarti hampir 42% tembakan mereka datang dari luar garis",
+          "fix": "Replace with exact: 'Dari 85 tembakan total, 36 dari three-point line — hampir setengah usaha mereka dari luar garis.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tidak ada yang benar-benar bisa bersaing dengan kedalaman itu",
+          "fix": "Simplify: 'Tak ada pemain Bulls yang bisa bersaing dengan kedalaman itu.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa657f1222c2190a6",
+    "published_at": "2026-10-22T02:49:22+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
