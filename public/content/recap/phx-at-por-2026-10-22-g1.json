@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "phx-at-por-2026-10-22-g1",
+  "title": "Recap Phoenix Suns 83-124 Portland Trail Blazers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs Portland Trail Blazers (83-124) di —, 22 October 2026.",
+  "body_md": "# Portland Libas Suns 41 Poin, Trail Blazers Unggul 2-0\n\nPortland Trail Blazers mempermalukan Phoenix Suns 124-83 di kandang sendiri, Kamis 22 Oktober 2026 pukul 09.00 WIB. Selisih 41 poin bukan sekadar kemenangan, ini pernyataan. Trail Blazers kini unggul 2-0 di regular season series dan tinggal sekali menang untuk sapu bersih.\n\n---\n\n## Malam Semua Orang Menyumbang\n\nPortland tidak butuh satu bintang malam ini. Mereka punya lima.\n\nDamian Lillard memimpin dengan 25 poin, 3 rebound, 6 asis, efisiensi luar biasa dari tembakan 7-12 dari lapangan dan 6-10 dari tiga angka. Enam dari sepuluh three-pointer masuk. Di sisi lain, Deni Avdija cetak double-double dengan 18 poin dan 10 rebound, dilengkapi 4 asis. Avdija jadi jangkar di dua sisi lapangan.\n\nToumani Camara menambah 18 poin dengan 4-7 dari tiga angka, kontribusi yang merata dari seorang starter yang tidak terlalu sering jadi sorotan. Scoot Henderson 15 poin off the bench, Ja Morant tutup malam dengan 14 poin, 5 rebound, dan 8 asis. Lima pemain di atas 13 poin, dengan dua playmaker yang masing-masing mencetak lebih dari tujuh asis gabungan. Distribusi ball movement Portland malam ini hampir sempurna.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nPortland tembak 48% dari lapangan. Phoenix? 36%. Selisih itu saja sudah menceritakan laga ini.\n\nTapi tiga angka yang benar-benar membunuh Phoenix adalah persentase three-pointer: POR 40% (19-47), PHX 19% (6-31). Portland hampir dua kali lipat efisiensi Phoenix dari luar garis. Dalam permainan modern di mana tembakan tiga poin menentukan margin, 19% adalah angka yang tidak bisa dikompensasi dengan cara apa pun.\n\nRebound juga bukan kompetisi: Portland 56, Phoenix 39. Assist 32 berbanding 14. Portland lebih solid di hampir setiap kategori. Turnover relatif imbang, POR 17, PHX 16, tapi Portland yang memenangkan semua pertempuran lain tidak butuh edge di sana.\n\nPhoenix mencatat 10 steal, lebih banyak dari Portland, tapi itu tidak tercermin di skor. Ketika tim kalah 41 poin, statistik defensive seperti steal hanya jadi catatan kaki.\n\n---\n\n## Sisi Phoenix yang Sepi\n\nDevin Booker jadi top scorer Suns dengan 23 poin dari tembakan 7-13, satu-satunya yang tampil cukup efisien. Dillon Brooks dan Jalen Green masing-masing 10 poin, tapi Brooks butuh 11 tembakan dan Green 12 tembakan untuk angka itu. Miles Bridges 8 poin dari 11 tembakan, 0 dari 5 dari tiga angka.\n\nKolektif Phoenix menembak 6-31 dari luar garis. Itu 19%. Dalam format modern di mana banyak tim membangun offense dari three-point volume, Phoenix malam ini tidak punya jawaban.\n\n---\n\n## Selanjutnya\n\nGame 3, dan kemungkinan game terakhir seri ini, menunggu. Portland sudah di posisi bisa tutup seri di kandang Phoenix. Untuk Suns, pertanyaannya bukan hanya soal taktik: perlu respons mental setelah kekalahan separuh skor seperti ini.\n\nJadwal Game 3 belum tersedia di data saat ini. Pantau di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909841",
+    "home_team": "Portland Trail Blazers",
+    "home_abbr": "POR",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 124,
+    "away_score": 83,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-10-22T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039886,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "FAIL: Critical factual error on series state (claims 2-0, input says 1-0). Multiple translated-English phrases and one incomplete stat citation undermine accuracy. High-severity inference mistake disqualifies for republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Trail Blazers kini unggul 2-0 di regular season series",
+          "fix": "Change to: 'Trail Blazers unggul 1-0 di regular season series dan tinggal sekali menang untuk selesaikan seri.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Selisih 41 poin bukan sekadar kemenangan, ini pernyataan.",
+          "fix": "Rewrite: 'Kemenangan 41 poin adalah dominasi total.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Damian Lillard memimpin dengan 25 poin... efisiensi luar biasa dari tembakan 7-12",
+          "fix": "Change to: 'Damian Lillard memimpin dengan 25 poin dalam efisiensi luar biasa: 7-12 FG, 6-10 three-point.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya",
+          "fix": "Start paragraph: 'Game 3 terakhir seri menunggu. Portland sudah bisa tutup di kandang Phoenix.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Toumani Camara menambah 18 poin dengan 4-7 dari tiga angka",
+          "fix": "Change to: 'Toumani Camara 18 poin (6-9 FG, 4-7 3PT) dari bench.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Dalam permainan modern di mana tembakan tiga poin menentukan margin",
+          "fix": "Change to: 'Era three-point, 19% adalah angka fatal.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "statistik defensive seperti steal hanya jadi catatan kaki",
+          "fix": "Change to: 'steal defensif tidak berarti saat kalah 41 poin.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Jadwal Game 3 belum tersedia di data saat ini.",
+          "fix": "Delete sentence. End with: 'Saksikan Game 3 di NBA League Pass dan Vidio.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x36c91ea31423deae",
+    "published_at": "2026-10-22T05:17:12+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
