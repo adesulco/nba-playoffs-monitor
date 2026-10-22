@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "mil-at-wsh-2026-10-21-g1",
+  "title": "Recap Milwaukee Bucks 116-128 Washington Wizards (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Milwaukee Bucks vs Washington Wizards (116-128) di —, 21 October 2026.",
+  "body_md": "# Washington Wizards Kejutkan Milwaukee Bucks 128-116, Anthony Davis Tampil Dominan\n\nWashington Wizards mempermalukan Milwaukee Bucks 128-116 di kandang lawan, Rabu 22 Oktober 2026 pukul 06.00 WIB. Anthony Davis jadi bintang utama dengan 34 poin dan 12 rebound, sementara Trae Young mengatur serangan dengan 20 poin dan 13 asis. WSH kini unggul 1-0 di regular season series setelah Game 2 dari 4 ini.\n\n---\n\n## Top Performers\n\n### Washington Wizards\n\n**Anthony Davis** adalah cerita utama malam ini. 34 poin, 12 rebound, 4 asis dengan efisiensi solid 11-20 dari field, angka yang susah dibantah. Davis bukan sekadar main interior. satu three-pointer masuk dari 3 percobaan, dan dia aktif di free throw line. Di sisi lain, **Trae Young** tidak mencetak satu rebound pun, tapi 13 asis-nya bicara sendiri, hampir tiap serangan WSH melewati tangannya. Young 4-13 dari field dan nol dari six dari tiga angka, tapi orchestration-nya tetap efektif.\n\n**Kyshawn George** 18 poin, 5 rebound, 3 asis dengan 8-14 dari field jadi kontribusi penting dari starting lineup. **Bilal Coulibaly** dan **Deandre Ayton** masing-masing menyumbang 11 poin, Ayton lebih efisien dengan 5-6 dari field dalam 15 menit sebagai bench player.\n\n### Milwaukee Bucks\n\n**Tyler Herro** memimpin MIL dengan 24 poin dan 9 asis, tapi 9-21 dari field dan 4-11 dari tiga angka menggambarkan malam yang tidak mulus. **Jaime Jaquez Jr.** tampil lebih efisien: 22 poin, 7 rebound, 8-12 dari field. Bench MIL menyumbang kontribusi lewat **Kasparas Jakucionis** (15 poin) dan **Brayden Burries** (12 poin, dua tembakan tiga angka masuk dari dua percobaan), tapi tidak cukup untuk membalik keadaan.\n\n---\n\n## Statistical Read\n\nDua angka yang menjelaskan kekalahan MIL: **points in paint** dan **steals**.\n\nWSH mencetak 70 poin di area paint vs MIL 50. Davis dan Ayton secara konsisten masuk ke area interior dan menyelesaikan peluang di dekat ring. MIL mencoba mengimbangi lewat tembakan tiga angka, 15 yang masuk dari 41 percobaan (37%) vs WSH yang hanya 6-28 (21%), tapi volume paint scoring WSH terlalu besar untuk dikompensasi.\n\n**Steals** juga krusial: WSH 11, MIL 5. Tiga belas turnover MIL dikapitalisasi WSH, dan itu langsung terlihat di fast-break points: 16 untuk MIL, tapi 9 untuk WSH meski steals mereka lebih banyak, WSH lebih memilih half-court offense yang lebih terkontrol. Free throw line juga bercerita: WSH 32-41 vs MIL 19-23. WSH lebih agresif masuk ke paint, MIL lebih banyak settle dari perimeter.\n\n---\n\n## Momentum Penentu\n\nQ4 menjadi kuarter yang menentukan. Skor sempat ketat 96-93 ketika Justin Champagnie menembak three-pointer di menit 11:26 dengan assist Trae Young. Tapi setelah itu, WSH merespons dengan run yang mengesankan, Trae Young floating shot menjadi 96-95, Deandre Ayton dunk membalik skor jadi 96-97, kemudian Tre Johnson mencetak dua kali beruntun dengan assist Young (98-99, lalu 98-101), dan Ayton menutup sequence dengan hook shot menjadi 98-103.\n\nDi rentang kurang dari dua menit itu, WSH membalik defisit menjadi keunggulan lima poin dan tidak pernah kembali terkejar. Trae Young sebagai playmaker, Ayton dan Johnson sebagai finisher, kombinasi yang bekerja dengan bersih di momen krusial.\n\n---\n\n## Selanjutnya\n\nDengan WSH unggul 1-0 di regular season series, Game 3 dari 4 menjadi penting bagi Milwaukee untuk menyamakan kedudukan. Jadwal dan venue Game 3 belum tersedia di data saat ini. Tonton via NBA League Pass atau Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909835",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Milwaukee Bucks",
+    "away_abbr": "MIL",
+    "home_score": 128,
+    "away_score": 116,
+    "winner_abbr": "WSH",
+    "kickoff_utc": "2026-10-21T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "WSH leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022843,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail: High-severity training-data inference (fabricated player names Justin Champagnie and Tre Johnson from KEY PLAYS [?] placeholders) and translated-English sentence fragment. Academic drift and structural redundancy. Rewrite Q4 sequence without invented player IDs.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Justin Champagnie menembak three-pointer di menit 11:26 dengan assist Trae Young",
+          "fix": "Delete specific player names from Q4 sequence or rewrite as 'three-pointer dengan assist Trae Young' without naming shooter."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Tre Johnson mencetak dua kali beruntun dengan assist Young (98-99, lalu 98-101), dan Ayton menutup sequence dengan hook shot",
+          "fix": "Rewrite as 'finisher lain menambah dua kali beruntun dengan assist Young' and remove specific play attribution."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Davis bukan sekadar main interior. satu three-pointer masuk dari 3 percobaan",
+          "fix": "Rewrite as 'Davis bukan sekadar main interior; satu three-pointer masuk dari 3 percobaan' or 'Davis tak hanya main interior — satu three-pointer masuk dari 3 percobaan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka yang menjelaskan kekalahan MIL: points in paint dan steals.",
+          "fix": "Rewrite as 'Paint scoring dan steals memutuskan laga ini.' or 'Dua statistik cerita kekalahan MIL.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tampil lebih efisien: 22 poin, 7 rebound, 8-12 dari field",
+          "fix": "Vary: 'Jaime Jaquez Jr. lebih efisien' or 'Jaquez Jr. hadir lebih efisien' — reduce tampil repetition."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Young 4-13 dari field dan nol dari six dari tiga angka, tapi orchestration-nya tetap efektif.",
+          "fix": "Use Indonesian numeral: 'nol dari enam' not 'nol dari six.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Jadwal dan venue Game 3 dari 4 menjadi penting bagi Milwaukee untuk menyamakan kedudukan. Jadwal dan venue Game 3 belum tersedia di data saat ini.",
+          "fix": "Delete second sentence or rewrite as 'Game 3 lokasi dan jadwal belum dikonfirmasi.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6c7f39fb7469c7a6",
+    "published_at": "2026-10-22T02:13:38+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
