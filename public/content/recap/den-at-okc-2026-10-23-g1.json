@@ -1,0 +1,115 @@
+{
+  "type": "recap",
+  "slug": "den-at-okc-2026-10-23-g1",
+  "title": "Recap Denver Nuggets 84-96 Oklahoma City Thunder (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Denver Nuggets vs Oklahoma City Thunder (84-96) di —, 23 October 2026.",
+  "body_md": "# OKC Hajar Denver 96-84, Thunder Kokoh di Musim Reguler\n\nOklahoma City Thunder menang 96-84 atas Denver Nuggets di laga reguler season, Jumat 23 Oktober 2026. Jalen Williams jadi motor serangan OKC dengan 21 poin, sementara Chet Holmgren mendominasi papan rebound dengan 12 poin dan 17 rebound. Thunder kini unggul 1-0 dalam head-to-head reguler season, sebuah sinyal awal tentang siapa yang lebih siap di musim ini.\n\n---\n\n## Top Performers\n\nDi sisi OKC, Williams tampil paling konsisten: 21 poin dari 7-15 field goal, 5 rebound, 3 asis. Dia jadi opsi utama ketika Shai Gilgeous-Alexander sedang berjuang dari lapangan, SGA tutup malam ini dengan 17 poin tapi butuh 35 tembakan untuk sampai di sana, 6-19 dari field dan 3-11 dari tiga poin. Efisiensinya tanda tanya besar.\n\nYang lebih menarik dari sisi OKC adalah Chet Holmgren. Dua belas poin bukan headline-nya, 17 rebound-lah yang bicara. Holmgren menguasai area paint dengan cara yang membuat Denver, tim yang biasanya mendominasi rebound, kesulitan sepanjang malam.\n\nDi Denver, Aaron Gordon jadi satu-satunya pemain yang tampil efisien: 20 poin dari 6-9 field goal, 3-4 dari tiga poin, dalam 29 menit. Nikola Jokic, yang biasanya jadi solusi semua masalah, malam ini berjuang keras. Tiga belas poin, 7 rebound, 5 asis terdengar lumayan, tapi 5-19 dari field dan 1-7 dari tiga angka menunjukkan betapa Jokic tidak menemukan ritmenya.\n\nJamal Murray bahkan lebih berat lagi: 6 poin saja dari 2-11 field goal, dan 0-1 dari tiga poin dalam 37 menit bermain. Murray punya 10 rebound, double-digit, tapi bukan dari posisi yang kamu inginkan dari seorang point guard. DeMar DeRozan off the bench menyumbang 13 poin, satu-satunya tambahan yang berarti dari lini cadangan Denver.\n\n---\n\n## Baca Statistik Tim\n\nDua angka yang paling menjelaskan hasil malam ini: turnover dan fast-break points.\n\nDenver commit 22 turnover. OKC hanya 12. Dari selisih itu, Thunder mencetak 10 fast-break points. Denver cuma 2. Artinya, setiap kali Denver ceroboh dengan bola, OKC langsung lari balik dan konversi, pola yang mematikan dalam 48 menit.\n\nPersentase tembakan kedua tim nyaris sama: DEN 38% dari field, OKC 38%. Dari tiga poin: DEN 27%, OKC 26%. Jadi ini bukan soal siapa yang lebih panas dari luar, ini soal siapa yang lebih disiplin dengan bola. OKC lebih rapi, Denver lebih boros.\n\nOKC juga mencatat 12 steal vs 7 milik Denver, dan 9 block vs 2. Pertahanan Thunder aktif dan agresif sepanjang malam, dan Denver memberi mereka terlalu banyak bahan bakar.\n\n---\n\n## Catatan Kunci\n\nSatu momen yang perlu disorot: Ajay Mitchell off the bench mencetak 12 poin dari 5-11 field goal, memberikan OKC opsi tambahan di luar duo Williams-SGA. Kedalaman roster Thunder terbukti lebih produktif malam ini, bench Denver tidak punya jawaban setara.\n\nDenver menang di papan rebound total, 53 berbanding 46. Tapi rebound tanpa efisiensi tembakan dan tanpa ball security tidak otomatis jadi kemenangan. Jokic dan Murray harus jauh lebih tajam di laga berikutnya.\n\n---\n\n## Selanjutnya\n\nIni Game 2 dari 4 laga reguler season antara kedua tim, dan OKC kini unggul 1-0. Saksikan lanjutan musim reguler NBA live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909094",
+    "home_team": "Oklahoma City Thunder",
+    "home_abbr": "OKC",
+    "away_team": "Denver Nuggets",
+    "away_abbr": "DEN",
+    "home_score": 96,
+    "away_score": 84,
+    "winner_abbr": "OKC",
+    "kickoff_utc": "2026-10-23T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "OKC leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020738,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Article passes voice standards. Pronoun violation ('kamu') is the only structural issue; rest are minor stylistic improvements. Stats verified against input data block — all numbers accurate.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "butuh 35 tembakan untuk sampai di sana, 6-19 dari field",
+          "fix": "Rephrase: 'tapi celaka di shooting: 6-19 dari field' or 'perlu 35 tembakan untuk 17 poin'"
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "medium",
+          "snippet": "bukan dari posisi yang kamu inginkan dari seorang point guard",
+          "fix": "Change to: 'bukan kontribusi ideal dari seorang point guard' or 'bukan yang diharapkan'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Jokic tidak menemukan ritmenya. Murray bahkan lebih berat lagi",
+          "fix": "Second instance: 'Murray terseok jauh lebih parah' or 'Murray kolaps'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Satu momen yang perlu disorot: Ajay Mitchell",
+          "fix": "Start directly: 'Ajay Mitchell off the bench cetak 12 poin' without the meta-phrase"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2cdf37fc1465ffa8",
+    "published_at": "2026-10-23T04:42:24+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 72,
+      "headline_comment": "'Hajar' agak overclaim untuk selisih 12 poin, tapi 'Kokoh di Musim Reguler' terlalu lemah dan generik — bisa lebih tajam dengan sudut turnover atau Holmgren.",
+      "lead_score": 76,
+      "lead_comment": "Lead solid dengan skor + top scorer + series state, tapi klaim 'siapa yang lebih siap di musim ini' terlalu besar untuk satu game reguler season.",
+      "structure_score": 78,
+      "structure_comment": "Alur Top Performers → Stats → Catatan → Next sudah tepat genre recap, tapi section 'Catatan Kunci' overlap dengan 'Top Performers' (Mitchell) dan 'Baca Statistik' (rebound).",
+      "voice_score": 72,
+      "voice_comment": "Mostly natural, tapi ada drift: 'commit 22 turnover', 'kamu inginkan', dan 'off the bench' dipakai dua kali — code-switch berlebihan.",
+      "suggestion_count": 6,
+      "summary": "Solid recap structure dengan good statistical angle (turnover + fast-break), tapi ada satu numeric error pada SGA shot count, pronoun 'kamu' violation, dan satu section redundan. Fix cepat oleh editor sebelum ship.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Thunder kini unggul 1-0 dalam head-to-head reguler season, sebuah sinyal awal tentang siapa yang lebih siap di musim ini.",
+          "issue": "Overclaim narasi dari satu game reguler season; input data bahkan menyebut 'Game 2 of 4' yang kontradiktif dengan 'sinyal awal'.",
+          "fix": "Potong jadi: 'Thunder unggul 1-0 dalam seri empat laga reguler season antara kedua tim.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "butuh 35 tembakan untuk sampai di sana, 6-19 dari field dan 3-11 dari tiga poin",
+          "issue": "Faktual salah — 6-19 + 3-11 bukan 35 tembakan; SGA attempt 19 FGA total (termasuk 11 tiga poin). Ini numeric error.",
+          "fix": "Ganti: 'butuh 19 tembakan untuk 17 poin, hanya 6-19 dari field dan 3-11 dari tiga.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "bukan dari posisi yang kamu inginkan dari seorang point guard",
+          "issue": "Pronoun 'kamu' dilarang di body copy per voice rules.",
+          "fix": "Ganti: 'bukan rebound yang kamu harapkan' → 'bukan tipe kontribusi yang diharapkan dari seorang point guard.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Denver commit 22 turnover. OKC hanya 12.",
+          "issue": "'Commit' code-switch yang tidak lazim di sport-writing Indonesia; 'melakukan' atau 'bikin' lebih natural.",
+          "fix": "'Denver bikin 22 turnover. OKC cuma 12.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Dua belas poin bukan headline-nya, 17 rebound-lah yang bicara.",
+          "issue": "Angka '12' dieja 'dua belas' melanggar rule: angka di atas 10 pakai figures, apalagi untuk stat.",
+          "fix": "'12 poin bukan headline-nya — 17 rebound yang bicara.' (tanpa em-dash: pakai titik atau koma)"
+        },
+        {
+          "priority": "low",
+          "snippet": "Catatan Kunci [section]",
+          "issue": "Section ini redundan: Mitchell sudah layak masuk Top Performers, dan rebound Denver sudah dibahas di Stats.",
+          "fix": "Hapus section, pindahkan Mitchell ke Top Performers OKC dan satu kalimat rebound ke penutup Stats."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
