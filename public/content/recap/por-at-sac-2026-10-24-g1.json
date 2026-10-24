@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "por-at-sac-2026-10-24-g1",
+  "title": "Recap Portland Trail Blazers 128-120 Sacramento Kings (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs Sacramento Kings (128-120) di —, 24 October 2026.",
+  "body_md": "Portland Trail Blazers menang tipis atas Sacramento Kings 128-120, Sabtu 24 Oktober 2026. Kemenangan ini membuat POR unggul 1-0 dalam seri reguler tiga pertandingan, tapi skor akhir sama sekali tidak mencerminkan betapa ketatnya laga di kuarter akhir.\n\n---\n\n## Sisi yang Menang Lebih Dulu\n\nDeni Avdija jadi motor Portland dengan 26 poin, 6 rebound, 6 asis, stat line paling lengkap di lapangan malam ini. Dia bukan sekadar top scorer. distribusinya di half-court offense Portland jadi perekat di antara semua bagian yang bergerak.\n\nToumani Camara dan Damian Lillard masing-masing menyumbang 19 poin. Camara efisien: 7-12 dari lapangan, 5-10 dari tiga poin. Lillard kurang begitu, 7-18 FG, 2-10 dari jarak jauh, tapi tetap hadir di momen-momen yang dibutuhkan. Off the bench, Sidy Cissoko cetak 15 poin dengan 7 rebound dalam 26 menit, dan Robert Williams III sempurna: 13 poin dengan 6-6 dari lapangan tanpa sekali pun melempar dari tiga poin.\n\n---\n\n## Sisi yang Kalah Lebih Ribut\n\nSacramento kalah, tapi dua pemain mereka bermain luar biasa.\n\nDomantas Sabonis membukukan **triple-double**: 27 poin, 19 rebound, 10 asis. Efisiensinya mencolok, 10-13 dari lapangan, termasuk satu-satunya tembakan tiga poin yang dia coba, masuk. Di kuarter empat, Sabonis hampir membawa Kings balik: dunk 5 kaki bikin skor 115-110, lalu tembakan tiga poin 27 kaki yang mengejutkan (diumpan Achiuwa) bikin papan berubah jadi 121-117 saat laga tinggal 3 menit lebih sedikit.\n\nDarius Acuff Jr. mencetak 33 poin, top scorer malam ini. Tapi angka itu datang dengan harga: 10-26 dari lapangan, 2-11 dari tiga poin. Dia agresif, dan di saat-saat tertentu produktif, dua tembakan tiga poin di Q4 sempat memangkas jarak dan membuat Kings terus dalam permainan. Driving layup-nya di menit ke-1:27 kuarter empat bikin skor menjadi 125-120, dan sejenak Portland terlihat gugup.\n\nZach LaVine menambah 22 poin (6-15 FG) untuk Kings. Tidak cukup.\n\n---\n\n## Yang Memisahkan Dua Tim\n\nStatistik tim berbicara jelas di dua area:\n\n**Tiga poin:** POR 14-48 (29%) vs SAC 8-31 (26%). Tidak ada yang efisien dari luar, tapi Portland melempar 17 percobaan lebih banyak dan akhirnya mencetak enam tembakan lebih. Di laga yang berakhir dengan selisih delapan poin, perbedaan itu cukup menentukan.\n\n**Asis dan turnover:** POR mencatat 30 asis berbanding 21 milik SAC. Portland juga lebih bersih: 10 turnover vs 14 Kings. Sacramento sering menciptakan peluang lewat individual skill, Acuff Jr. isolation, LaVine pull-up, tapi Portland bermain lebih kolektif, dan itu terlihat dari angka.\n\nSatu catatan yang mengganjal untuk Portland: free throw. POR hanya 22-30 (73%) sementara SAC sempurna 28-30 (93%). Dalam laga yang sempat menjadi sangat ketat di Q4, efisiensi dari garis ini yang membuat Kings tetap punya nafas.\n\n---\n\n## Apa Selanjutnya\n\nPortland Trail Blazers unggul 1-0 dalam seri tiga pertandingan ini. Game 2 belum tercantum dalam data yang tersedia, jadwal dan venue akan dikonfirmasi melalui NBA League Pass dan Vidio. Yang jelas, jika Sabonis bermain seperti malam ini dan Portland tidak menjaga rebound, seri ini masih jauh dari selesai.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909852",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 120,
+    "away_score": 128,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-10-24T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.041416,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has solid structure and stat accuracy, but significant voice violations: awkward translated-English clauses ('half-court offense'), filler academic connectors ('catatan yang mengganjal'), and a jarring meta-acknowledgment of missing data mid-flow. High-severity translated-English feel in key sentences. Restructure closing section and tighten opening.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Portland Trail Blazers menang tipis atas Sacramento Kings 128-120, Sabtu 24 Oktober 2026",
+          "fix": "Remove day name or verify against calendar. Use only: 'Portland Trail Blazers menang tipis atas Sacramento Kings 128-120, 24 Oktober 2026.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dia bukan sekadar top scorer. distribusinya di half-court offense Portland jadi perekat",
+          "fix": "Restructure: 'Dia bukan sekadar top scorer; distribusinya di lini pertahanan maju Portland jadi perekat.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu catatan yang mengganjal untuk Portland: free throw.",
+          "fix": "Cut to: 'Free throw Portland jadi masalah: 22-30 (73%) vs SAC sempurna 28-30 (93%).'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Game 2 belum tercantum dalam data yang tersedia, jadwal dan venue akan dikonfirmasi",
+          "fix": "Delete entire sentence. Closing para should focus on series implications only."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Di kuarter empat, Sabonis hampir membawa Kings balik: dunk 5 kaki",
+          "fix": "Use 'dunk 5 meter' or just 'dunk dekat ring' for clarity in Bahasa context."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Dia agresif, dan di saat-saat tertentu produktif, dua tembakan tiga poin di Q4 sempat memangkas",
+          "fix": "Use: 'dua tembakan tiga poin di Q4 memangkas jarak dan buat Kings tetap dalam laga.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Off the bench, Sidy Cissoko cetak 15 poin",
+          "fix": "Use: 'Dari bangku cadangan, Sidy Cissoko cetak 15 poin.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x40c9cb767c40c686",
+    "published_at": "2026-10-24T05:13:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
