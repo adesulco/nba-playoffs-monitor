@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "atl-at-cha-2026-10-23-g1",
+  "title": "Recap Atlanta Hawks 128-81 Charlotte Hornets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Atlanta Hawks vs Charlotte Hornets (128-81) di —, 23 October 2026.",
+  "body_md": "# Atlanta Hawks Hancurkan Charlotte Hornets 128-81, Blowout Sempurna di Game 2\n\nAtlanta Hawks tidak butuh waktu lama untuk menyelesaikan urusan. Final score 128-81, selisih 47 poin, bicara sendiri. Hawks mendominasi Charlotte Hornets dari awal sampai akhir di Game 2 regular season series ini, memimpin 1-0 di rangkaian empat pertemuan musim ini.\n\n---\n\n## Top Performers: Distribusi Merata, Satu Pesan\n\nSisi menarik dari kemenangan Hawks bukan satu bintang tunggal, melainkan seberapa merata kontribusi datang.\n\nJalen Johnson memimpin dengan 19 poin, 7 rebound, 8 asis dari posisi starter, shooting 9-16 dari lapangan dalam 29 menit. Hampir triple-double, tapi yang lebih penting adalah efisiensinya sebagai motor distribusi, 8 asis dengan hanya sedikit kesalahan menunjukkan kendali permainan yang matang.\n\nAaron Wiggins menyamai Johnson di angka 19 poin, tapi datang dari bench. Shooting-nya luar biasa: 7-9 dari lapangan, 3-5 dari tiga poin, dalam 22 menit. Pemain cadangan yang masuk dan langsung menembak dengan percaya diri seperti itu biasanya jadi pembeda di laga yang sudah condong satu arah.\n\nNickeil Alexander-Walker menambah 14 poin dan 5 asis (FG 5-12, 3PT 2-7), sementara CJ McCollum 13 poin dari tiga pointer dan driving layup. Dyson Daniels tidak mencetak banyak poin, 11, tapi 9 rebound dan 4 asis dari seorang starter menunjukkan kontribusi yang melampaui angka scoring.\n\nDi sisi Charlotte, Naz Reid jadi satu-satunya pemain yang benar-benar bersaing. Dia cetak 17 poin dan 6 rebound, shooting 7-16 termasuk 3-8 dari tiga poin. Reid tampil keras dalam kondisi yang sudah tidak menguntungkan. Tidjane Salaun dan Grayson Allen masing-masing menyumbang 11 poin dari bench, tapi itu tidak cukup untuk menutup jurang yang sudah terlalu lebar.\n\nYang paling mengkhawatirkan buat Hornets: Brandon Miller hanya cetak 6 poin dari 23 menit, shooting-nya 2-14 dari lapangan, 1-11 dari tiga poin. Malam yang sangat berat untuk salah satu pilar muda mereka.\n\n---\n\n## Baca Statistik: Hawks Menang di Semua Lini\n\nBox score ATL vs CHA berbicara keras.\n\n**Shooting efisiensi:** Hawks 51% FG vs Hornets 34%. Dari tiga poin, selisihnya bahkan lebih tajam, 40% (18-45) vs 22% (11-51). Charlotte mengambil lebih banyak tembakan tiga poin, tapi dengan persentase yang sangat buruk. Itu resep kekalahan besar.\n\n**Turnovers dan steals:** Atlanta mencatat 17 steal dari Charlotte yang melakukan 27 turnovers. Hawks sendiri hanya 13 turnovers. Artinya Charlotte kehilangan bola hampir dua kali lebih sering, dan Atlanta memanfaatkan hampir setiap kesempatan. Fast-break points yang dihasilkan: 19-6 untuk Hawks, langsung terkonversi dari turnover menjadi poin mudah.\n\n**Points in paint:** 54-34 untuk Atlanta. Bahkan di area yang harusnya jadi domain besar, Charlotte kalah jauh.\n\nSatu-satunya area Charlotte tidak kalah: rebound sama rata 48-48, dan free throw percentage lebih baik (83% vs 64%). Tapi dengan penguasaan tembakan dan ball security yang berbeda jauh, dua keunggulan itu tidak bermakna apapun di skor akhir.\n\n---\n\n## Outlook: Charlotte Perlu Jawaban Cepat\n\nDengan Hawks memimpin 1-0 di regular season series (dari total 4 pertemuan musim ini), Charlotte perlu introspeksi serius sebelum pertemuan berikutnya.\n\nMasalah utama bukan hanya skor, tapi bagaimana Hawks mendominasi lewat ball movement (37 asis) dan pressure defensif (17 steal). Itu bukan keberuntungan satu malam. itu sistem yang berjalan.\n\nMiller perlu bangkit. 2-14 dari lapangan bukan sekadar malam buruk, kalau tren itu berlanjut, Charlotte tidak punya banyak opsi lain untuk menandingi kedalaman rotasi Hawks.\n\nPantau jadwal pertemuan berikutnya antara Atlanta Hawks dan Charlotte Hornets. Siaran langsung tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909843",
+    "home_team": "Charlotte Hornets",
+    "home_abbr": "CHA",
+    "away_team": "Atlanta Hawks",
+    "away_abbr": "ATL",
+    "home_score": 81,
+    "away_score": 128,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-10-23T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022658,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Article is solid with accurate stats, natural Indonesian voice, and good tactical analysis. One formatting glitch (fragment after period) and minor soft-phrasing repeats noted; no hard violations. Passes comfortably.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Itu bukan keberuntungan satu malam. itu sistem yang berjalan.",
+          "fix": "Itu bukan keberuntungan satu malam — itu sistem yang berjalan. (or: Ini bukan keberuntungan...)"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Yang paling mengkhawatirkan buat Hornets: Brandon Miller hanya cetak 6 poin",
+          "fix": "Rewrite: 'Paling mengkhawatirkan untuk Hornets: Brandon Miller hanya cetak...' (simpler construction)"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Pantau jadwal pertemuan berikutnya antara Atlanta Hawks dan Charlotte Hornets.",
+          "fix": "Delete or replace with concrete insight: e.g., 'Game 3 akan jadi ujian sebenarnya — apakah Charlotte bisa adjust di defensif.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2e6267a124edbc88",
+    "published_at": "2026-10-24T02:44:03+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
