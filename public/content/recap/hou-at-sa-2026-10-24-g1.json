@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "hou-at-sa-2026-10-24-g1",
+  "title": "Recap Houston Rockets 114-110 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Houston Rockets vs San Antonio Spurs (114-110) di —, 24 October 2026.",
+  "body_md": "## Rockets Tahan Laju Spurs di Momen Krusial, Menang 114-110\n\nHouston Rockets menang tipis 114-110 atas San Antonio Spurs, Sabtu 24 Oktober 2026. Kemenangan ini bukan hadiah, SA memaksa Rockets bekerja keras sampai detik terakhir, dan empat menit akhir kuarter empat jadi pembuktian siapa yang lebih tenang di bawah tekanan.\n\n---\n\n## Sengun Pimpin, Thompson Jadi Kejutan\n\nAlperen Sengun jadi motor Rockets dengan 29 poin, 7 rebound, 7 asis dari 10-20 shooting. Bukan laga sempurna dari sisi efisiensi, tapi kontribusinya terasa di momen yang benar-benar penting, termasuk asis untuk three-pointer Durant di menit terakhir.\n\nKevin Durant 20 poin, 7 rebound, 6 asis dengan shooting yang jauh lebih efisien: 5-10 dari lapangan, 2-2 dari three-point line. Tidak banyak tembakan terbuang. Di saat tim butuh tiga angka di sisa 1:34 dengan skor 109-108, Durant yang eksekusi, 25-foot jumper yang langsung mengubah skor jadi 112-108.\n\nYang paling menarik dari sisi Rockets: Amen Thompson. 20 poin, 10 rebound, 4 asis, double-double yang solid dari pemain yang tampil 36 menit sebagai starter. Thompson jadi kontributor diam-diam yang membuat Rockets punya kedalaman di lini depan.\n\nFred VanVleet 14 poin, dua free throw di sisa 0.6 detik untuk menutup skor 114-110. Tenang di situasi paling menegangkan.\n\n---\n\n## Wembanyama Luar Biasa, Tapi SA Kalah di Detik Akhir\n\nVictor Wembanyama tidak bisa disalahkan. 25 poin, 13 rebound, angka yang mengesankan, termasuk alley oop dunk di menit ke-Q4 1:49 yang sempat memangkas selisih jadi 109-108 dan membuat kandang bergemuruh. Tapi asisnya hanya 2, dan shooting efficiency 9-21 menunjukkan bahwa Rockets cukup berhasil mempersulit ritme sang bintang.\n\nDe'Aaron Fox 19 poin, 4 rebound, 9 asis, dua free throw di 2:27 dan dua asis krusial di kuarter empat (termasuk setup alley oop Wembanyama dan running dunk Harper di 46 detik terakhir). Fox jelas jadi playmaker utama SA di situasi crunch time.\n\nDylan Harper 20 poin, termasuk running dunk di sisa 46 detik yang sempat membuat skor jadi 112-110. Tapi SA tidak punya kesempatan lagi setelah itu.\n\nStephon Castle 15 poin, 7 rebound, 5 asis, line yang komplet, tapi 6-15 dari lapangan mencerminkan malam yang sedikit frustrating dari sisi shooting.\n\n---\n\n## Statistik Bicara\n\nRockets menang di free throw, 28-31 (90%) berbanding 18-25 (72%) dari SA. Selisih 10 free throw yang masuk menjadi margin yang nyaris persis sama dengan selisih akhir. Di pertandingan sedekat ini, itu bukan kebetulan.\n\nDari tiga angka, HOU 10-25 (40%) vs SA 12-37 (32%). SA melempar lebih banyak, HOU lebih efisien. Rebound total 44-40 untuk Rockets, turnovers sama-sama 15.\n\n---\n\n## Rocket vs Spurs: Laga Berikutnya\n\nIni pertemuan kedua dari empat dalam regular season series, dan HOU kini unggul 1-0. Wembanyama masih sangat berbahaya, 25 poin dan 13 rebound bahkan dalam kekalahan. SA punya bahan untuk diperbaiki, terutama di free throw dan efisiensi three-pointer.\n\nSaksikan lanjutan laga di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909096",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Houston Rockets",
+    "away_abbr": "HOU",
+    "home_score": 110,
+    "away_score": 114,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-10-24T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039803,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Article is solid, voice natural. One training_inference error (day-of-week) requires fact-check; one translated-English phrasing needs rewrite. Stats are accurate to source. Pass with minor edits.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sabtu 24 Oktober 2026",
+          "fix": "Remove day-of-week or verify against input. Use only '24 Oktober 2026' if unsure."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang paling menarik dari sisi Rockets: Amen Thompson.",
+          "fix": "Rewrite: 'Amen Thompson jadi cerita menarik di sisi Rockets.' or just 'Amen Thompson cerita menarik.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "alley oop dunk di menit ke-Q4 1:49",
+          "fix": "Use 'Q4 1:49' or '1:49 kuarter empat', not both."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tapi SA tidak punya kesempatan lagi setelah itu.",
+          "fix": "Delete or replace with: 'VanVleet sealed it 114-110 di sisa 0.6 detik.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xaf8edfde9409f4e8",
+    "published_at": "2026-10-24T05:39:40+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
