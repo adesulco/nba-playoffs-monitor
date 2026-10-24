@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "tor-at-wsh-2026-10-23-g1",
+  "title": "Recap Toronto Raptors 112-102 Washington Wizards (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs Washington Wizards (112-102) di —, 23 October 2026.",
+  "body_md": "# Scottie Barnes Pimpin Raptors Kalahkan Wizards 112-102, Unggul 1-0 di Seri Regular Season\n\nToronto Raptors menang 112-102 atas Washington Wizards di Game 2 regular season series, Sabtu 24 Oktober 2026 jam 06.00 WIB. Scottie Barnes tampil dominan dengan 28 poin dan 14 rebound, RJ Barrett menambah 23 poin, dua bintang muda Raptors yang menentukan hasil akhir. TOR kini unggul 1-0 setelah Game 2 regular season series empat game.\n\n---\n\n## Scottie Barnes dan Barrett Jadi Tulang Punggung\n\nBarnes membuka malam dengan performa solid: 28 poin, 14 rebound, 5 asis—hampir semua stat membengkak plus poin yang cukup untuk jadi top scorer tim. Shooting-nya kurang efisien (FG 12-26, 3PT 1-6), tapi volume dan kontribusi di papan rebound tapi dominasi rebound ganjal efisiensi itu.\n\nBarrett konsisten di sampingnya. 23 poin, 9 rebound, 4 asis dengan FG 9-16, efisiensi lebih baik dari Barnes, dan cukup untuk menjaga tempo Raptors dari sisi lain. Kombinasi keduanya menghasilkan 51 poin dari dua starter, fondasi yang sulit ditandingi Wizards.\n\nKawhi Leonard melengkapi tiga besar Raptors dengan 16 poin dan 9 rebound, meski FG-nya 7-20 mencerminkan malam yang tidak mudah untuk finishing. Immanuel Quickley off the bench menyumbang 12 poin dan 6 asis, playmaking-nya krusial untuk menjaga flow serangan TOR.\n\nDi sisi Wizards, Trae Young tampil sebagai yang paling menonjol: 22 poin dan 12 asis, meski FG-nya hanya 5-15. Young mengandalkan free throw dan tembakan tiga angka (4-10 dari luar arc) untuk tetap relevan. Tre Johnson off the bench memberikan kejutan, 20 poin dengan FG 7-14 dan 4-8 dari tiga. Tapi kontribusi besar keduanya tidak cukup karena Anthony Davis tampil di bawah ekspektasi: 9 poin, 9 rebound, FG 3-12.\n\n---\n\n## Raptors Menang di Paint, Wizards Unggul di Tiga Angka\n\nBox score bercerita dengan jelas tentang karakter kedua tim di malam ini.\n\nRaptors mendominasi di dalam, *points in paint* 52 berbanding 32 untuk Wizards. Selisih 20 poin di area paint fundamental. TOR juga menguasai papan rebound 53-40 dan menekan dengan 12 steal versus 10 steal Wizards.\n\nTapi Wizards punya keunggulan di luar arc: 3PT% 32 berbanding 21 milik Raptors. TOR lempar lebih banyak (34 attempts) tapi konversinya mengecewakan, hanya 7 yang masuk. Jika Wizards bisa lebih konsisten menekan dari luar, seri ini bisa lebih ketat.\n\nFaktor lain yang membebani Raptors: turnover. TOR mencatat 17 turnover versus 23 dari Wizards, dua-duanya tidak ideal, tapi Wizards lebih banyak membuang bola. Raptors berhasil memanfaatkan kesalahan lawan dengan 12 steal di sepanjang laga.\n\n---\n\n## Momentum Q4 dan Sisa Seri\n\nDi kuarter keempat, Wizards sempat mendekat. Trae Young masuk dua free throw untuk skor 83-79, Tre Johnson menambah *fade away* 11 kaki (86-81), lalu Young sendiri mengunci dengan tembakan tiga angka dari 28 kaki untuk skor 94-89. Wizards sempat ada di dalam jangkauan.\n\nTapi Raptors tidak runtuh. Toronto akhirnya menutup laga 112-102, margin 10 poin yang cukup nyaman untuk menggambarkan kendali keseluruhan sepanjang 48 menit.\n\nDengan kemenangan ini TOR unggul 1-0 di seri empat game. Masih ada dua sisa. Wizards harus segera menemukan jawaban untuk dominasi di paint Raptors, dan Davis harus tampil jauh lebih produktif dari malam ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909846",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 102,
+    "away_score": 112,
+    "winner_abbr": "TOR",
+    "kickoff_utc": "2026-10-23T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "TOR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022859,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has multiple translation-smell issues (broken grammar, awkward clause construction) and one training-data inference problem (Davis 'below expectation' characterization). Factual stats are correct and well-sourced. Needs rewrite of paragraph 2 and several sentence-level fixes.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "hampir semua stat membengkak plus poin yang cukup untuk jadi top scorer",
+          "fix": "Rewrite: 'hampir semua stat solid; cukup untuk jadi top scorer tim.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "tapi volume dan kontribusi di papan rebound tapi dominasi rebound ganjal efisiensi",
+          "fix": "Rewrite: 'volume tinggi dan rebound banyak menyamarkan shooting 46% FG-nya.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Anthony Davis tampil di bawah ekspektasi: 9 poin, 9 rebound, FG 3-12",
+          "fix": "Remove 'di bawah ekspektasi'. State only: 'Anthony Davis 9 poin, 9 rebound, FG 3-12.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Box score bercerita dengan jelas tentang karakter kedua tim di malam ini",
+          "fix": "Simplify: 'Box score jaelas saja.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Fundamental yang membebani Raptors: turnover. TOR mencatat 17 turnover",
+          "fix": "Fix typo ('Faktor' not 'Fundamental'), then: 'TOR lepas 17 bola vs 23 Wizards.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Trae Young masuk dua free throw untuk skor 83-79, Tre Johnson menambah fade away 11 kaki",
+          "fix": "Rewrite: 'Young cetak dua free throw (83-79), Johnson tambah fade away 11 kaki (86-81).'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dengan kemenangan ini TOR unggul 1-0 di seri empat game. Masih ada dua sisa.",
+          "fix": "Rewrite: 'Dengan ini TOR unggul 1-0. Tiga game tinggal dijalankan.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Game 2 regular season series empat game",
+          "fix": "Clarify: '(Game 2 dari 4 regular season series)' in parenthesis on first mention only."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbd42cd612448d5e0",
+    "published_at": "2026-10-24T02:14:05+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 72,
+      "headline_score": 68,
+      "headline_comment": "Clear and informative but reads like a generic recap title — 'Unggul 1-0 di Seri Regular Season' is awkward because a regular-season series lead isn't a real NBA storyline readers care about.",
+      "lead_score": 65,
+      "lead_comment": "Covers the facts but the second sentence is grammatically broken ('dua bintang muda Raptors yang menentukan hasil akhir' is a fragment) and the whole lead reads flat without an angle.",
+      "structure_score": 75,
+      "structure_comment": "Three-section structure works, but Q4 momentum section is thin and the series framing (Game 2 of 4, 1-0 lead) is confusing because it's treated as consequential when it isn't really.",
+      "voice_score": 74,
+      "voice_comment": "Mostly clean conversational register, but has one em-dash violation, one broken sentence, and leans on generic phrases like 'tampil dominan' and 'tulang punggung'.",
+      "suggestion_count": 6,
+      "summary": "Solid structural bones and good use of stats, but held back by two broken sentences, one em-dash, and a confusing 'regular season series' framing inherited from the input. Editor can fix in 5 minutes — not a regenerate.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Scottie Barnes tampil dominan dengan 28 poin dan 14 rebound, RJ Barrett menambah 23 poin, dua bintang muda Raptors yang menentukan hasil akhir.",
+          "issue": "Run-on sentence with a dangling fragment at the end — 'dua bintang muda Raptors yang menentukan hasil akhir' has no verb and reads broken.",
+          "fix": "Split: 'Scottie Barnes tampil dominan dengan 28 poin dan 14 rebound. RJ Barrett menambah 23 poin. Duo ini yang menentukan hasil.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "28 poin, 14 rebound, 5 asis—hampir semua stat membengkak plus poin yang cukup untuk jadi top scorer tim.",
+          "issue": "Em-dash used (hard-banned punctuation) and the clause after it is nonsensical ('hampir semua stat membengkak plus poin').",
+          "fix": "Replace with period or comma and rewrite: '28 poin, 14 rebound, 5 asis. Angka top scorer tim malam ini.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "tapi volume dan kontribusi di papan rebound tapi dominasi rebound ganjal efisiensi itu.",
+          "issue": "Sentence is grammatically broken — double 'tapi', repeated 'rebound', meaning collapses.",
+          "fix": "Rewrite: 'Tapi volume shot dan 14 rebound menutupi efisiensi yang pas-pasan.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Toronto Raptors menang 112-102 atas Washington Wizards di Game 2 regular season series",
+          "issue": "Input data is contradictory (headline says Game 1, body says Game 2 of 4) and the whole 'regular season series 1-0' framing is confusing to NBA readers because regular-season games aren't a series.",
+          "fix": "Drop the series framing in the lead. Just say 'Toronto Raptors menang 112-102 atas Washington Wizards di Scotiabank Arena, Sabtu 24 Oktober 2026.' Address series state only if genuinely meaningful."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Khris Middleton makes 8-foot turnaround jump shot",
+          "issue": "Key play from input data (Middleton's turnaround + Trae Young assist at Q4 9:44) was dropped entirely — would have added texture to the Q4 momentum section.",
+          "fix": "Add one line: 'Khris Middleton menyambung dengan turnaround dari 8 kaki (88-83), Wizards mendekat.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Box score bercerita dengan jelas tentang karakter kedua tim di malam ini.",
+          "issue": "Generic transition sentence — reads like filler before the real analysis starts.",
+          "fix": "Cut it entirely and open the section directly with 'Raptors mendominasi di dalam, points in paint 52-32.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

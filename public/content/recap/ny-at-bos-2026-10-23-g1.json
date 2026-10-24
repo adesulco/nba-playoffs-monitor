@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "ny-at-bos-2026-10-23-g1",
+  "title": "Recap New York Knicks 103-107 Boston Celtics (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New York Knicks vs Boston Celtics (103-107) di —, 23 October 2026.",
+  "body_md": "# Boston Celtics Tahan New York Knicks 107-103, Tatum Tampil Dominan di Game 2\n\nBoston Celtics menang tipis atas New York Knicks 107-103 di Game 2 regular season series, Sabtu 24 Oktober 2026. Jayson Tatum menjadi motor kemenangan dengan 36 poin, 9 rebound, 7 asis, sementara drama clutch time Q4 nyaris membalikkan keadaan untuk NY. BOS kini unggul 2-0 di series empat game ini.\n\n---\n\n## Tatum dan Para Pemain Kunci\n\nTatum bermain 37 menit dan menyelesaikan malam dengan stat line 36 poin, 9 rebound, 7 asis dari tembakan 14-26. Bukan malam paling efisien dari lapangan, tapi volume dan akurasi cukup untuk jadi penentu di saat krusial. Di clutch time, Tatum cetak dua jumper berturut-turut, termasuk tembakan 19 kaki dan 18 kaki, untuk merentangkan keunggulan BOS dari 99-98 jadi 103-98 ketika NY mulai mengancam.\n\nDari bench, Neemias Queta jadi kejutan positif: 15 poin dan 6 rebound dalam 22 menit dengan efisiensi tinggi, 4-8 dari lapangan. Derrick White juga berkontribusi solid, 12 poin, 6 asis, 4 rebound dalam 33 menit, jadi pengatur ritme yang stabil di backcourt. Paul George menambah 15 poin dan 7 rebound, tapi tembakan 6-15 menunjukkan malam yang kurang mulus.\n\nDi sisi NY, lima starter semuanya berkontribusi double-digit, tapi itu belum cukup. Jalen Brunson tampil kurang efisien dengan 19 poin dari 7-17 percobaan, Brunson yang tidak tajam dari lapangan biasanya jadi pertanda buruk untuk NY. Karl-Anthony Towns mencatat double-double 22 poin dan 10 rebound dengan efisiensi bagus, 9-13 dari lapangan. OG Anunoby juga double-double: 20 poin, 10 rebound, 8 asis. Miles McBride off the bench jadi highlight NY, 20 poin dari 6-9 field goal, 6-8 dari tiga angka. Tapi kontribusinya datang terlambat untuk mengubah arah pertandingan.\n\n---\n\n## Statistik yang Menjelaskan Hasil\n\nBOS menang di turnover: NY buang bola 18 kali, BOS hanya 11. Selisih tujuh turnover di laga yang dimenangkan empat poin perbedaannya, itu angka yang bicara sendiri.\n\nNY unggul di rebound total, 44 berbanding 37, dan membuat lebih banyak free throw, 15-21 versus 12-16. Tapi BOS lebih efisien di paint, 38 poin in the paint berbanding 30 untuk NY, dan NY terlalu bergantung pada tembakan tiga angka untuk mengejar, 40 attempts dari tiga angka berbanding 39 untuk BOS. FG keseluruhan hampir setara: NY 44% dan BOS 46%.\n\nDi atas kertas, kedua tim bermain cukup seimbang. Yang memisahkan adalah turnover dan eksekusi di saat paling penting.\n\n---\n\n## Drama Q4 yang Nyaris Membalikkan Segalanya\n\nClutch time Q4 jadi bagian paling menarik malam ini. BOS sempat memimpin 99-96 sebelum NY mulai mengejar. Hart membuat three-pointer dari 27 kaki untuk memotong menjadi 99-96 dengan assist dari Anunoby, mendadak selisih tinggal tiga poin.\n\nBrunson kemudian memasukkan pullup jump shot 11 kaki, 98-99, NY tertinggal satu poin, 1:41 tersisa.\n\nTatum menjawab. Dua jumper berurutan, 19 kaki dan 18 kaki, dalam waktu kurang dari 40 detik merentangkan keunggulan BOS kembali jadi 103-98. Anunoby menambah dua free throw untuk NY, 100-103.\n\nLalu McBride dengan tenang memasukkan three-pointer dari 25 kaki, 103-106, NY masih bisa bermimpi. Hart assist, 13.9 detik tersisa.\n\nTapi Payton Pritchard menutupnya di garis free throw, 103-107, dan waktu NY habis.\n\n---\n\n## Berikutnya\n\nGame 3 regular season series antara NY dan BOS, BOS kini unggul 2-0. Jadwal dan lokasi game berikutnya tidak tersedia di data saat ini. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909095",
+    "home_team": "Boston Celtics",
+    "home_abbr": "BOS",
+    "away_team": "New York Knicks",
+    "away_abbr": "NY",
+    "home_score": 107,
+    "away_score": 103,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-10-23T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BOS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.053585,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 58,
+      "issue_count": 7,
+      "summary": "FAIL. Article contains two critical training-inference errors (series score listed as 2-0 when input explicitly states 1-0 in two places) that fundamentally misrepresent the series state. Secondary issues: pronoun clarity, phrase repetition, and unclear score sequence in clutch-time breakdown. Regenerate with focus on series state accuracy.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "BOS kini unggul 2-0 di series empat game ini",
+          "fix": "Change to 'BOS kini unggul 1-0 di series empat game ini' or 'BOS unggul 1-0 setelah menang Game 2'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 3 regular season series antara NY dan BOS, BOS kini unggul 2-0",
+          "fix": "Remove or rewrite: 'Game 3 regular season series antara NY dan BOS tunggu jadwal berikutnya'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tatum yang tidak tajam dari lapangan biasanya jadi pertanda buruk untuk NY",
+          "fix": "Rewrite: 'Brunson kurang tajam. Ketika playmaker utama NY out of rhythm, biasanya skor mengikuti'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "itu belum cukup. Jalen Brunson tampil kurang efisien dengan 19 poin dari 7-17 percobaan, Brunson yang tidak tajam",
+          "fix": "Restructure: 'Lima starter NY semua double-digit, tapi itu belum cukup buat menang. Brunson sendiri kurang efisien, 19 poin dari 7-17 percobaan'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "jadi kejutan positif: 15 poin... Derrick White juga berkontribusi solid, 12 poin... Paul George menambah 15 poin",
+          "fix": "Vary: 'Queta jadi kejutan... White stabil dengan 12 poin... George tempil 15 poin'."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Hart membuat three-pointer dari 27 kaki untuk memotong menjadi 99-96",
+          "fix": "Clarify: 'Hart tiga angka dari 27 kaki, memotong 96-99 menjadi 96-99' — or verify order of events from KEY PLAYS block."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Brunson kemudian memasukkan pullup jump shot 11 kaki, 98-99, NY tertinggal satu poin, 1:41 tersisa",
+          "fix": "Verify and clarify the exact sequence: what was score before Brunson's shot, and immediately after."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x26ea79d3f465c5ae",
+    "published_at": "2026-10-24T02:10:02+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

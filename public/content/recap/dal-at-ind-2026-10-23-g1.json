@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "dal-at-ind-2026-10-23-g1",
+  "title": "Recap Dallas Mavericks 121-105 Indiana Pacers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Dallas Mavericks vs Indiana Pacers (121-105) di —, 23 October 2026.",
+  "body_md": "# Dallas Mavericks Gebuk Indiana Pacers 121-105, Kyrie Irving dan Kedalaman Roster Jadi Kunci\n\nDallas Mavericks menutup seri dua laga melawan Indiana Pacers dengan kemenangan meyakinkan, 121-105, Sabtu 24 Oktober 2026. DAL menyapu bersih seri regular season ini 2-0. Kemenangan 16 poin ini bukan hasil kerja satu dua pemain, lima skuad DAL menembus angka dua digit, sinyal bahwa roster Dallas punya kedalaman yang berbahaya jelang Playoffs.\n\n---\n\n## Kyrie Memimpin, Tapi Bukan Sendirian\n\nKyrie Irving tampil efisien sebagai pencetak tertinggi DAL dengan 24 poin, 1 rebound, 3 asis dari hanya 25 menit bermain, 5-10 from three, tembakan jarak jauhnya tajam malam ini. Di belakangnya, P.J. Washington mencatat double-double solid: 20 poin dan 13 rebound dengan 2-4 from three. Washington jadi anchor di paint yang membuat Indiana kesulitan menguasai area itu.\n\nYang menarik justru kontribusi di bawah Kyrie. Max Christie 16 poin, 4 rebound, 4 asis dari posisi starter dengan 7-14 from field. Cooper Flagg, hanya main 17 menit, cetak 14 poin, 5 rebound, 6 asis dengan efisiensi luar biasa: 4-6 from field termasuk 2-2 from three. Naji Marshall off the bench menyumbang 15 poin dan 6 asis. Lima pemain DAL, satu suara: efisien dan kompak.\n\nPascal Siakam jadi pejuang kesepian di pihak Indiana. Siakam 23 poin, 3 rebound, 3 asis dengan 3-5 from three, angkanya bersih, tapi tidak cukup ketika sisi lain roster IND tidak bisa mengimbangi. Tyrese Haliburton 18 poin, 6 rebound, 7 asis, namun 0-4 from three-nya menggambarkan malam yang tidak mengalir untuk playmaker andalan Pacers itu. Andrew Nembhard menyumbang 16 poin dan 5 asis, Obi Toppin 13 poin off the bench. Ivica Zubac mengambil 11 rebound dengan 9 poin, satu-satunya pemain IND yang dominan di area yang diharapkan.\n\n---\n\n## Tiga Poin dan Turnover: Dua Angka yang Menjelaskan Segalanya\n\nBaca dua statistik ini, hasil pertandingan sudah terbaca.\n\n**Efisiensi tiga poin:** DAL 41% (14-34), IND 22% (7-32). Selisih tiga poin jadi keunggulan struktural DAL sepanjang laga. Ketika Kyrie 5-10 dan Flagg 2-2 dari luar, Dallas mengumpulkan volume yang tidak bisa dijawab Indiana.\n\n**Turnover:** DAL 15, IND 21. Enam turnover lebih banyak dari Indiana berarti enam possession tambahan untuk Dallas, dan dengan offense yang berjalan, possession ekstra itu langsung berbuah poin. Steals DAL 10 vs IND 6, blocks DAL 11 vs IND 6, sisi defensif Mavericks ikut menekan di malam ini.\n\nFG% juga mencerminkan dominasi menyeluruh: DAL 50% (44-88) vs IND 45% (39-87). Indiana tidak jelek, tapi Dallas lebih baik di hampir setiap lini.\n\n---\n\n## Catatan untuk Playoffs\n\nSeri regular season ini selesai, DAL 2-0. Tapi yang lebih relevan adalah sinyal yang dikirimkan pertandingan ini: Dallas punya lima pemain yang bisa mencetak 14 poin ke atas dalam satu malam, salah satunya (Flagg) hanya butuh 17 menit untuk sampai ke sana.\n\nUntuk Indiana, masalahnya jelas, Siakam dan Haliburton tidak cukup kalau keduanya tidak didukung efisiensi dari tiga poin. Malam ini IND 7-32 dari luar, dan itu tidak bisa terus terjadi di babak Playoffs.\n\nJadwal lanjutan tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909844",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "Dallas Mavericks",
+    "away_abbr": "DAL",
+    "home_score": 105,
+    "away_score": 121,
+    "winner_abbr": "DAL",
+    "kickoff_utc": "2026-10-23T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DAL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.042069,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stats, natural flow, and good analytical structure. Minor phrasing awkwardness ('di bawah Kyrie') and boilerplate closer, but no voice violations that fail. NBA voice is crisp and conversational.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik justru kontribusi di bawah Kyrie.",
+          "fix": "Rephrase: 'Tapi kontribusi di luar Kyrie sama menariknya.' atau cukup 'Menariknya, kontribusi dari pemain lain juga berdampak.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Catatan untuk Playoffs",
+          "fix": "Change to 'Takeaway untuk Playoffs' or just 'Matahari Terbit Mavericks' or delete header entirely, fold into prose."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Jadwal lanjutan tersedia di NBA League Pass dan Vidio.",
+          "fix": "Delete or replace with actual insight: 'DAL sudah membuat statement. IND perlu perbaikan tiga poin serius sebelum Playoffs.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xeaddf7c00c43cc2c",
+    "published_at": "2026-10-24T02:12:23+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
