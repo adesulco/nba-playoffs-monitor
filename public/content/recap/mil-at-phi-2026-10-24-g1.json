@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mil-at-phi-2026-10-24-g1",
+  "title": "Recap Milwaukee Bucks 116-127 Philadelphia 76ers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Milwaukee Bucks vs Philadelphia 76ers (116-127) di —, 24 October 2026.",
+  "body_md": "# Philadelphia 76ers Kalahkan Milwaukee Bucks 127-116, Embiid Cetak Triple-Double\n\nPhiladelphia 76ers menang 127-116 atas Milwaukee Bucks dalam laga regular season, Sabtu 25 Oktober 2026 dini hari WIB. Joel Embiid tampil dominan dengan triple-double 28 poin, 11 rebound, 10 asis, sementara Jaylen Brown dan Tyrese Maxey masing-masing menambah 27 dan 26 poin. PHI unggul 1-0 dalam regular season series ini.\n\n---\n\n## Embiid, Brown, Maxey, Tiga Serangkai yang Menentukan\n\nEmbiid jadi motor penggerak PHI malam ini. 10 asis dari seorang center menunjukkan PHI lancar mengalirkan bola. Tembakan Embiid sendiri memang tidak efisien (8-20 from field, 0-3 dari tiga poin), tapi perannya sebagai distributor membuat defense MIL terus kewalahan.\n\nBrown lebih efisien: 27 poin dari 9-19 FG, termasuk 3-6 dari tiga poin. Maxey melengkapi ketiganya dengan 26 poin (9-22 FG, 4-9 dari tiga poin) dan 4 asis. Embiid-Brown-Maxey mencetak 81 dari total 127 poin, selebihnya disumbang VJ Edgecombe yang luar biasa dengan 17 poin dan 13 rebound sebagai starter, serta Kentavious Caldwell-Pope dengan 12 poin off the bench (4-8 FG, 4-6 dari tiga poin).\n\nDari kubu MIL, Jaime Jaquez Jr. memimpin dengan 21 poin dan 8 rebound. Kel'el Ware impresif dari bench: 19 poin, 13 rebound (FG 6-11). Kyle Kuzma mencatatkan double-double 14 poin dan 12 rebound. Lima starter plus Ware berkontribusi solid, tapi tidak cukup menghentikan PHI yang lebih terkoordinasi malam ini.\n\n---\n\n## Statistik Tim: Turnovers dan Tiga Poin Jadi Pembeda\n\nBox score bicara gamblang. PHI mencuri 14 bola (MIL hanya 5) dan MIL membuang 22 turnovers dibanding 11 dari PHI. MIL mendominasi fast-break dengan 31 poin, tapi turnovers mereka yang banyak menghilangkan keunggulan itu.\n\nTiga poin menjadi keunggulan kritis PHI: 19-44 (43%) dibanding MIL yang hanya 11-34 (32%). Angka itu menjelaskan banyak hal, PHI tidak perlu masuk ke paint untuk mencetak. Sebaliknya, MIL justru mendominasi paint (58 poin vs 26) dan rebound total (62 vs 40), tapi kehilangan laga karena terlalu boros bola.\n\nFG% MIL sebenarnya lebih tinggi (47% vs 41%), tapi efisiensi tiga poin dan turnover PHI yang rendah menutup gap itu dengan nyaman.\n\n---\n\n## Kuarter Ketiga: Silih Berganti, PHI yang Tutup\n\nQ3 menjadi babak paling dramatis. Laga bergulir ketat dengan skor saling berbalas, Herro bikin 28-foot running pullup untuk unggul 67-66, Maxey balas dengan three-pointer (69-70), Jaquez Jr. samakan lagi lewat tembakan 23 kaki (72-72). PHI keluar lebih kuat di kuarter akhir.\n\nPada menit-menit terakhir Q4, MIL masih berjuang menutup gap, Kel'el Ware bikin layup dan free throw untuk membawa skor ke 114-117 dengan sisa dua menit, tapi PHI sudah terlalu jauh. Laga ditutup 127-116.\n\n---\n\n## Selanjutnya\n\nIni adalah Game 2 dari regular season series tiga pertemuan. PHI unggul 1-0. Pantau jadwal Game 3 berikutnya di NBA League Pass atau Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909855",
+    "home_team": "Philadelphia 76ers",
+    "home_abbr": "PHI",
+    "away_team": "Milwaukee Bucks",
+    "away_abbr": "MIL",
+    "home_score": 127,
+    "away_score": 116,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-10-24T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHI leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022282,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Multiple high-severity issues. Training inference (Embiid role, defense 'kewalahan'), translated-English phrasing ('from field', calqued idioms), and academic drift ('bicara gamblang', 'Selanjutnya') undermine voice consistency. Facts are accurate (all digits verified), but execution reads like edited English, not native Indonesian sport writing. Regenerate with stricter adherence to voice rules §4 (soft discouraged) and §8 (AI mistake patterns).",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Embiid jadi motor penggerak PHI malam ini. 10 asis dari seorang center menunjukkan PHI lancar mengalirkan bola.",
+          "fix": "Stick to facts: '10 asis dari Embiid memimpin PHI'. Delete interpretation about defense struggling."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Tembakan Embiid sendiri memang tidak efisien (8-20 from field, 0-3 dari tiga poin), tapi perannya sebagai distributor membuat defense MIL terus kewalahan.",
+          "fix": "Write: 'Tembakan Embiid tidak efisien (8-20 FG, 0-3 tiga poin), tapi 10 asis menunjukkan prioritasnya di distribusi.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Embiid-Brown-Maxey mencetak 81 dari total 127 poin, selebihnya disumbang VJ Edgecombe yang luar biasa dengan 17 poin dan 13 rebound sebagai starter",
+          "fix": "Write: 'VJ Edgecombe solid dari starter: 17 poin, 13 rebound' — let stats speak."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Box score bicara gamblang. PHI mencuri 14 bola (MIL hanya 5) dan MIL membuang 22 turnovers dibanding 11 dari PHI.",
+          "fix": "Delete first sentence. Start: 'PHI mencuri 14 bola (MIL 5), MIL 22 turnovers vs 11 — perbedaan besar.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "MIL mendominasi fast-break dengan 31 poin, tapi turnovers mereka yang banyak menghilangkan keunggulan itu.",
+          "fix": "Write: 'MIL unggul fast-break 31-13, tapi turnover tinggi buang peluang itu.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Angka itu menjelaskan banyak hal, PHI tidak perlu masuk ke paint untuk mencetak.",
+          "fix": "Write: 'Angka itu jelas. PHI tidak perlu attack paint sebanyak MIL.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Laga bergulir ketat dengan skor saling berbalas, Herro bikin 28-foot running pullup untuk unggul 67-66",
+          "fix": "Write: 'Herro buat tembakan jauh untuk unggul 67-66' — simplify, English terms OK but not mixed with measurements."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Selanjutnya / Ini adalah Game 2 dari regular season series tiga pertemuan.",
+          "fix": "Delete 'Selanjutnya'. Start: 'Game 2 selesai. PHI 1-0 dalam series tiga pertandingan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6af873116941c6bc",
+    "published_at": "2026-10-25T03:12:33+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "wsh-at-chi-2026-10-25-g1",
+  "title": "Recap Washington Wizards 124-120 Chicago Bulls (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Washington Wizards vs Chicago Bulls (124-120) di —, 25 October 2026.",
+  "body_md": "Washington Wizards menang tipis 124-120 atas Chicago Bulls di kandang tamu, Minggu 25 Oktober 2026 jam 07.00 WIB. Kemenangan ini membuat WSH unggul 1-0 dalam regular season series, dengan satu laga tersisa.\n\n---\n\n## Pahlawan Dari Dua Sisi\n\nCaleb Wilson jadi nama terbesar malam ini, 30 poin, 14 rebound, 3 asis. Angka yang seharusnya cukup untuk menang. Tapi CHI tetap kalah empat poin, dan itu cerita tersendiri.\n\nDi sisi WSH, Trae Young memimpin dengan 25 poin, 4 rebound, 9 asis. Efisien dari tiga poin: 4-10 dari jarak jauh. Kyshawn George ikut berkontribusi besar, 22 poin, 9 rebound, 5 asis dalam 36 menit. Anthony Davis menambah 19 poin, 6 rebound, 4 asis meski shooting-nya berat: 8-21 from field.\n\nJustin Champagnie dari bench menjadi elemen menarik. Hanya 11 poin, tapi 14 rebound, sama dengan Wilson yang jadi top scorer CHI. Rebound menjadi kunci perbedaan.\n\n---\n\n## Angka-Angka Pembeda\n\nAngka tim WSH dan CHI cukup rapat di banyak kategori, tapi ada dua celah yang menentukan.\n\nPertama, **fast-break points**: CHI 34, WSH hanya 9. CHI jauh lebih agresif dalam transition. Dengan 10 steal di malam ini vs WSH yang hanya dapat 5, CHI punya lebih banyak bahan bakar untuk fast break. Tapi poin itu tidak cukup menutup gap di tempat lain.\n\nKedua, **points in paint**: WSH 62, CHI 54. WSH lebih efektif di dalam area. Field goal percentage juga berpihak ke WSH, 48% vs 43%. Dari tiga poin, dua tim sama-sama tidak tajam: WSH 30% (10-33), CHI 28% (12-43).\n\nFree throw menjadi variabel krusial di akhir laga. CHI dapat lebih banyak kesempatan (28-30) vs WSH (24-28), dengan akurasi CHI 93% dibanding WSH 86%. Tapi WSH memanfaatkan momen-momen kritis.\n\n---\n\n## Kuarter Empat: Drama di Detik Akhir\n\nKuarter empat menyajikan drama yang cukup rapi.\n\nAnthony Davis membuktikan ketenangan di garis free throw dengan dua dari dua, skor jadi 120-115 WSH. Norman Powell masih berusaha dengan tiga poin dari 27 kaki, 122-118 di detik 3.4. Trae Young menambah satu dari dua free throw, 123-118. WSH menutup pertandingan dengan layup di detik 0.2, akhir pertandingan 124-120.\n\n---\n\n## Lanjutan\n\nLaga ketiga tinggal tunggu tanggal. WSH unggul 1-0 dalam regular season series. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909857",
+    "home_team": "Chicago Bulls",
+    "home_abbr": "CHI",
+    "away_team": "Washington Wizards",
+    "away_abbr": "WSH",
+    "home_score": 120,
+    "away_score": 124,
+    "winner_abbr": "WSH",
+    "kickoff_utc": "2026-10-25T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "WSH leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040184,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail on two high-severity training-inference errors: inferred day-of-week (Minggu) and assumed home court (kandang tamu) with no data support. Also translated-English code-switching and weak closing. Rewrite to remove venue assumption and verify date before resubmit.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Minggu 25 Oktober 2026 jam 07.00 WIB",
+          "fix": "Remove day-of-week or verify against actual calendar before publishing."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "di kandang tamu",
+          "fix": "Delete 'kandang tamu' or rephrase: 'Washington Wizards menang tipis 124-120 atas Chicago Bulls.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "shooting-nya berat: 8-21 from field",
+          "fix": "Rewrite: 'shooting-nya berat (8-21 dari lapangan).'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan 10 steal di malam ini vs WSH yang hanya dapat 5",
+          "fix": "Rewrite: 'Dengan 10 steal malam ini vs WSH yang hanya rebut 5'."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Laga ketiga tinggal tunggu tanggal. WSH unggul 1-0",
+          "fix": "Delete or replace with specific next-game detail (date, opponent, tip-off time if available)."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Anthony Davis menambah 19 poin ... meski shooting-nya berat",
+          "fix": "Optional: 'Anthony Davis tambahin 19 poin; shooting berat (8-21).'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xcddb6153e2a355b4",
+    "published_at": "2026-10-25T03:14:07+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
