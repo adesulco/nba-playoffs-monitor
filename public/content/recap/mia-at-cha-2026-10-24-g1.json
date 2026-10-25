@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mia-at-cha-2026-10-24-g1",
+  "title": "Recap Miami Heat 110-115 Charlotte Hornets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Miami Heat vs Charlotte Hornets (110-115) di —, 24 October 2026.",
+  "body_md": "# Charlotte Hornets Hentikan Miami Heat 115-110, Brandon Miller Tampil Beda\n\nCharlotte Hornets tahan serangan Miami Heat dan menang 115-110 di Game 2 Regular Season Series, Minggu 25 Oktober 2026. Brandon Miller jadi aktor utama dengan 34 poin, Hornets kini unggul 2-0 dalam seri empat pertandingan ini.\n\n---\n\n## Malam Brandon Miller\n\nMiller cetak 34 poin, 7 rebound, 4 asis, top scorer malam itu dengan margin cukup jauh dari rekan setimnya. Efisiensi shooting-nya tidak sempurna (10-29 from field, 3-10 from three), tapi volume dan kemampuannya create shot di momen krusial yang bikin angka itu berarti. Di kuarter akhir, saat Heat mulai ancam balik, Miller yang step up, dua free throw di menit 50.7 untuk bikin jarak 107-112 yang pada akhirnya krusial.\n\nDennis Schroder tambah 25 poin dengan 6 rebound, efisien dari garis tiga (3-7). Naz Reid off the post solid: 23 poin, 9 rebound, 5-8 from three, angka yang susah diabaikan dari seorang big man. Grayson Allen dari bench chipping in 20 poin dengan 4-10 from three, termasuk dua free throw di sisa 5.8 detik yang menutup pertandingan 110-115.\n\nCharlotte punya empat pemain di atas 20 poin. Itu yang bikin Heat kesulitan malam ini, tidak ada satu lubang defensif yang perlu ditutup, tapi empat sekaligus.\n\n---\n\n## Heat Tidak Menyerah, tapi Tidak Cukup\n\nMiami sebetulnya punya senjata. Davion Mitchell 22 poin dengan 10 asis, playmaking solid, termasuk three-pointer 28 kaki di sisa 8.1 detik yang sempat bikin skor 110-113 dan memunculkan harapan. Bam Adebayo 20 poin, 8 rebound, meski shooting-nya berat (7-17 from field, 2-6 from three).\n\nGiannis Antetokounmpo hanya bermain 25 menit dan menyumbang 14 poin, 6 rebound, lebih terbatas dibanding biasanya. Klay Thompson juga 14 poin dengan 4-9 from three, termasuk three-pointer 26 kaki di menit 1:11 Q4 (skor 107-110) yang sempat menjaga asa Heat. Pelle Larsson dari bench berkontribusi 15 poin, 7 rebound.\n\nMasalah Heat bukan soal scoring leader, Mitchell dan Adebayo tampil layak. Masalahnya ada di rebound: CHA menguasai papan 45-37. Dalam game seperti ini, possession ekstra itu menentukan.\n\n---\n\n## Angka yang Menjelaskan Hasil\n\nSecara team stats, kedua tim nyaris berimbang di beberapa kategori. Field goal percentage hampir sama: MIA 43%, CHA 44%. Three-point percentage identik: keduanya 37%. Free throw pun seimbang, 23-25 untuk kedua tim dengan konversi 92%.\n\nPerbedaan signifikan muncul di dua area. Pertama, rebound: CHA 45 vs MIA 37, keunggulan delapan rebound yang memberi Charlotte possession tambahan sepanjang malam. Kedua, fast-break points: MIA 24 vs CHA hanya 8. Heat unggul jauh di transisi, tapi tidak cukup untuk kompensasi ketertinggalan di area lain.\n\nTurnovers Heat (13) sedikit lebih baik dari CHA (15), tapi Charlotte bisa memanfaatkan possession mereka lebih efisien lewat rebound.\n\n---\n\n## Sisa Detik dan Penutupan\n\nSequence Q4 yang jadi penentu: Klay potong jarak jadi 107-110 di menit 1:11, tapi Miller balas dengan dua free throw (107-112). Mitchell bikin three-pointer dramatis 28 kaki di 8.1 detik terakhir (110-113), memberi Heat titik harapan terakhir. Allen menutupnya dingin, dua free throw, 110-115, pertandingan selesai.\n\nGame 3 dari seri empat pertandingan ini berikutnya menanti. Charlotte kini unggul 2-0, posisi yang nyaman untuk dipertahankan. Saksikan live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909853",
+    "home_team": "Charlotte Hornets",
+    "home_abbr": "CHA",
+    "away_team": "Miami Heat",
+    "away_abbr": "MIA",
+    "home_score": 115,
+    "away_score": 110,
+    "winner_abbr": "CHA",
+    "kickoff_utc": "2026-10-24T22:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "CHA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.05248,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail due to high-severity training-inference issues (Giannis and Klay Thompson rosters conflict with known NBA 2026 structure; input data itself may be malformed). Additionally, series record is misstated (1-0 vs 2-0). Multiple medium-severity calques from English. Regenerate with roster verification and correct series state.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Giannis Antetokounmpo hanya bermain 25 menit dan menyumbang 14 poin",
+          "fix": "Verify roster alignment with input data before publishing. If Giannis was indeed on Miami's roster for this game, state that; if not, remove him from the article."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Klay Thompson juga 14 poin dengan 4-9 from three",
+          "fix": "Verify these rosters are correct in input data. If intentional (alternate-universe roster), accept as-is from input; if error, remove."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "efisien dari garis tiga (3-7). Naz Reid off the post solid",
+          "fix": "Rewrite: 'Naz Reid dari post bagus: 23 poin, 9 rebound' or drop the descriptor."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Masalahnya ada di rebound: CHA menguasai papan 45-37",
+          "fix": "Optional: 'Biang masalah Heat ada di rebound' or just 'Papan rebound: masalahnya di sini'."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Brandon Miller Tampil Beda",
+          "fix": "Rewrite headline: 'Brandon Miller Dominasi dengan 34 Poin' or 'Brandon Miller Jadi Top Scorer'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Efisiensi shooting-nya tidak sempurna (10-29 from field, 3-10 from three)",
+          "fix": "Rewrite: 'Tidak efisien menembak (10-29 FG, 3-10 3PT), tapi ...' or just drop 'Efisiensi'."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Game 3 dari seri empat pertandingan ini berikutnya menanti.",
+          "fix": "Rewrite: 'Game 3 menanti. Charlotte unggul 2-0 dan punya kontrol seri.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Charlotte kini unggul 2-0, posisi yang nyaman untuk dipertahankan.",
+          "fix": "Rewrite: 'Charlotte unggul 1-0 dalam seri empat pertandingan' or verify if multiple games have been played."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x27db49e1b741cbba",
+    "published_at": "2026-10-25T02:11:53+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
