@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "hou-at-atl-2026-10-25-g1",
+  "title": "Recap Houston Rockets 121-114 Atlanta Hawks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Houston Rockets vs Atlanta Hawks (121-114) di —, 25 October 2026.",
+  "body_md": "# Houston Rockets Kunci Kemenangan 121-114 atas Atlanta Hawks\n\nHouston Rockets mengakhiri regular season series dengan kemenangan 121-114 atas Atlanta Hawks, Sabtu 25 Oktober 2026. Kevin Durant memimpin HOU dengan 22 poin, sementara Jalen Johnson tampil luar biasa di sisi ATL dengan 26 poin dan 16 assist, tapi kontribusinya tidak cukup untuk menyelamatkan Hawks.\n\n---\n\n## Top Performers\n\n**Kevin Durant** jadi ujung tombak Rockets dengan 22 poin, 4 rebound, 2 assist dari 37 menit bermain, efisien dari lapangan dengan 8-15 FG dan 3-7 dari garis tiga angka. Di belakangnya, **Reed Sheppard** tampil konsisten sebagai playmaker muda: 19 poin, 6 rebound, 7 assist, dengan 5-11 dari three-point line.\n\nYang juga mencolok dari bench HOU adalah **Tari Eason**, 19 poin dari 31 menit, meski tanpa assist sama sekali. Dua big man Rockets juga berkontribusi dua arah: **Alperen Sengun** (17 poin, 10 rebound, 7 assist) dan **Amen Thompson** (17 poin, 11 rebound, 6 assist) sama-sama mendominasi papan, keduanya double-double yang mengontrol ritme.\n\nDi kubu Hawks, **Jalen Johnson** bermain tanpa henti selama 38 menit, 26 poin, 9 rebound, 16 assist. Distribusinya luar biasa, tapi ATL butuh lebih banyak konversi. **Nickeil Alexander-Walker** (18 poin, 4-12 dari tiga angka) dan **Dyson Daniels** (18 poin, efisien 8-11 FG) menjaga Hawks tetap kompetitif sampai akhir, dibantu **CJ McCollum** (17 poin off the starter) dan **Aaron Wiggins** (16 poin, 4-9 dari tiga angka off the bench).\n\n---\n\n## Apa yang Membedakan\n\nStatistik tim menjelaskan semuanya. HOU menembak 48% dari lapangan vs ATL 45%, tipis. Tapi perbedaan besar ada di efisiensi tiga angka: **Rockets 40% (14-35) vs Hawks 27% (13-49)**. ATL melepaskan lebih banyak percobaan tiga angka, tapi dengan akurasi yang jauh lebih rendah.\n\nDi free throw, HOU juga unggul, 91% (21-23) dibanding ATL 71% (15-21). Poin-poin tambahan dari garis foul itu krusial di pertandingan yang selisihnya tujuh poin.\n\nSatu angka yang menarik: ATL mencatat 20 fast-break points vs HOU hanya 9, dan 58 points in paint vs 46. Hawks mendominasi di dalam dan di transisi, tapi tembakan tiga angka yang tidak efisien menggerus keunggulan itu. HOU menang lewat efisiensi, bukan volume.\n\n---\n\n## Catatan Akhir\n\nDengan HOU unggul 1-0 dalam regular season series dua game ini, series selesai. Rockets membuktikan kedalaman roster, lima pemain mencetak 17 poin atau lebih, dengan dua double-double dari Sengun dan Thompson. Atlanta sudah melakukan segalanya dari Johnson, tapi satu pemain tidak bisa menutup lubang yang ditinggalkan persentase tembakan tim.\n\n*Saksikan laga NBA berikutnya live di NBA League Pass dan Vidio.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909856",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Houston Rockets",
+    "away_abbr": "HOU",
+    "home_score": 114,
+    "away_score": 121,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-10-25T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.038216,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with all stats verified against input data. Voice is accessible and avoids hard bans. Minor issues: one calqued idiom, slight verb repetition, and one awkward code-switch phrasing. All pass-level; no high-severity violations.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kevin Durant jadi ujung tombak Rockets dengan 22 poin",
+          "fix": "Kevin Durant memimpin Rockets dengan 22 poin"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tampil luar biasa...tampil konsisten...juga berkontribusi dua arah",
+          "fix": "Use 'cetak', 'jadi', 'bawa', or drop the verb entirely"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "meski tanpa assist sama sekali",
+          "fix": "Simplify to 'tanpa assist' or 'tanpa layanan'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "17 poin off the starter...off the bench",
+          "fix": "CJ McCollum (17 poin) dari starting lineup"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2e522293e04185b4",
+    "published_at": "2026-10-25T04:14:59+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

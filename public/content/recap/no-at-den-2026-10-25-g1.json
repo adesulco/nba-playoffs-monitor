@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "no-at-den-2026-10-25-g1",
+  "title": "Recap New Orleans Pelicans 135-141 Denver Nuggets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New Orleans Pelicans vs Denver Nuggets (135-141) di —, 25 October 2026.",
+  "body_md": "Denver Nuggets menang 141-135 atas New Orleans Pelicans di overtime, Minggu 25 Oktober 2026. Jamal Murray jadi eksekutor: 42 poin, 8-16 from three, dan tidak satu pun dari poin-poin krusial di OT yang bisa dijauhkan Pelicans. DEN memimpin series regular season 1-0 menuju Game 2.\n\n---\n\n## Dua Superman, Satu Pemenang\n\nKalau ada satu alasan Denver menang malam ini, itu Jamal Murray.\n\n42 poin, 6 asis, 8-16 from three. Murray bermain 43 menit dan tidak terlihat lelah sampai peluit overtime berbunyi. Di paruh pertama ia yang membuka jarak. di OT ia yang menutup pertandingan. Bukan karena Pelicans tidak melawan, mereka melawan keras, tapi Murray lebih dingin di momen-momen yang menentukan.\n\nDi sisinya, Nikola Jokic mengisi semua celah yang ada: 35 poin, 15 rebound, 10 asis. Triple-double klasik Jokic, bukan karena flashy, tapi karena selalu di tempat yang benar. Dari 44 menit yang ia mainkan, tidak ada satu pun yang terbuang. FG 12-23, plus 3 dari 10 percobaan three-pointer yang semuanya meaningful.\n\nTrevon Brazile off the bench menambahkan 17 poin, 9 rebound, dan dua free throw di OT yang ikut mengunci hasil. Christian Braun 15 poin, 8 rebound. Denver punya kedalaman yang malam ini dibutuhkan.\n\n---\n\n## Pelicans Tidak Kalah Mudah\n\nMasalahnya bukan Pelicans tampil buruk. Mereka tampil sangat bagus, hanya tidak cukup bagus.\n\nTrey Murphy III memimpin dengan 26 poin (FG 10-17, 4-8 from three), Dejounte Murray 22 poin 6 asis 6 rebound, Zion Williamson 17 poin off 7-11 dari lapangan. Derik Queen dari bench menghasilkan 17 poin 8 rebound. Lima pemain NO masuk double digits. Di atas kertas ini roster yang harusnya cukup.\n\nTapi angka di kolom yang menentukan: turnovers. NO mencatat 18 turnover vs DEN 12. Selisih enam possession di laga yang berakhir enam poin, itu bukan kebetulan.\n\n---\n\n## Statistik yang Menjelaskan Margin\n\nNO sebenarnya menang di beberapa kategori penting:\n\n- FG%: NO 51% vs DEN 48%\n- Fast-break points: NO 23 vs DEN 12\n- Points in paint: NO 70 vs DEN 56\n- Assists: NO 33 vs DEN 26\n\nDi atas kertas, Pelicans lebih efisien di dalam dan lebih cepat di transition. Tapi three-point eficiency DEN lebih tajam (32% vs 29%), dan yang lebih krusial: dari free throw, DEN menembak lebih banyak dan relatif seefisien NO (30-39, 77% vs NO 24-30, 80%).\n\nPertandingan yang diputuskan di free throw line dan di overtime, dua area di mana ketenangan Jokic dan Murray tidak tergantikan.\n\n---\n\n## Overtime: Lima Menit yang Menentukan Seri\n\nDi OT dengan sisa 28.8 detik, skor masih bisa bergerak. Jokic masuk, cetak two-point shot: 132-136. Dejounte Murray balas dua free throw beruntun: 134-136. Jokic lagi, dua free throw: 134-138. Dejounte Murray satu lagi: 135-138. Brazile dari garis free throw: 135-139. Lalu Brazile lagi, kali ini two-point shot: 135-141.\n\nLima possession terakhir, Denver tidak meleset sekali pun. Pelicans tidak punya jawaban.\n\n---\n\n## Berikutnya\n\nGame 2 jadwalnya masih belum dikonfirmasi. Denver pulang dengan kemenangan dari laga tamu yang tidak seharusnya mudah, dan tidak mudah. Pelicans perlu menemukan cara menekan turnover sebelum seri ini bergeser lebih jauh.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909859",
+    "home_team": "Denver Nuggets",
+    "home_abbr": "DEN",
+    "away_team": "New Orleans Pelicans",
+    "away_abbr": "NO",
+    "home_score": 141,
+    "away_score": 135,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-10-25T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DEN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.041321,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to training inference about series state, multiple translated-English rhythms ('tidak satu pun...yang bisa dijauhkan', 'meaningful'), and academic paragraph setup. Stats are accurate, but voice drifts into formal register and calqued English phrasing throughout. Needs restructure on lead and series-state claim.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "DEN memimpin series regular season 1-0 menuju Game 2.",
+          "fix": "Remove series projection. Stick to: 'DEN unggul 1-0 di series regular season ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Jamal Murray jadi eksekutor: 42 poin, 8-16 from three, dan tidak satu pun dari poin-poin krusial di OT yang bisa dijauhkan Pelicans.",
+          "fix": "Rewrite: 'Setiap poin krusial di OT milik Murray. Pelicans tidak punya jawaban.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di paruh pertama ia yang membuka jarak. di OT ia yang menutup pertandingan.",
+          "fix": "Capitalize: 'Di OT ia yang menutup pertandingan.' And vary rhythm."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "FG 12-23, plus 3 dari 10 percobaan three-pointer yang semuanya meaningful.",
+          "fix": "Delete: 'FG 12-23, 3 dari 10 from three.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Masalahnya bukan Pelicans tampil buruk. Mereka tampil sangat bagus, hanya tidak cukup bagus.",
+          "fix": "Cut the first sentence. Start: 'Pelicans tampil sangat bagus, hanya tidak cukup bagus.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 2 jadwalnya masih belum dikonfirmasi.",
+          "fix": "Delete or rewrite: 'Seri berlanjut ke Game 2 dalam waktu dekat.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Di atas kertas ini roster yang harusnya cukup.",
+          "fix": "Rewrite: 'Roster mereka harusnya cukup menang. Tidak terjadi.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tapi angka di kolom yang menentukan: turnovers.",
+          "fix": "Use period or restructure: 'Tapi satu angka menjelaskan semuanya: turnover.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x8e5ee5ab341996b6",
+    "published_at": "2026-10-25T04:16:19+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
