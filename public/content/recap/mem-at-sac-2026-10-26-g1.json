@@ -1,0 +1,115 @@
+{
+  "type": "recap",
+  "slug": "mem-at-sac-2026-10-26-g1",
+  "title": "Recap Memphis Grizzlies 123-112 Sacramento Kings (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Memphis Grizzlies vs Sacramento Kings (123-112) di —, 26 October 2026.",
+  "body_md": "# Memphis Grizzlies Kalahkan Sacramento Kings 123-112, Unggul 1-0 di Series\n\nMemphis Grizzlies menutup kunjungan ke kandang Sacramento Kings dengan kemenangan 123-112, Minggu 26 Oktober 2026. Ty Jerome tampil sebagai motor utama dengan 31 poin, sementara MEM unggul 1-0 di series regular season; game ketiga menanti kedua tim.\n\n---\n\n## Performa Individu\n\nJerome jadi motor terpercaya. Dari 31 poin, dia cetak 8-17 dari lapangan dan 6 assist, angka yang solid untuk seorang playmaker yang harus menjaga ritme tim sepanjang 32 menit. Kontribusinya paling terasa di kuarter keempat ketika MEM butuh kepala dingin untuk menjaga jarak dari Kings yang terus bergerak mendekati.\n\nDi sisi frontcourt, dua rookie muda MEM masing-masing cetak double-double: Cameron Boozer 16 poin dan 11 rebound, Cedric Coward 15 poin dan 11 rebound. Boozer 2-7 dari tiga, tapi grab 11 rebound; itu yang membedakan di papan. Grizzlies finis dengan total 54 rebound lawan 44 milik Kings. Coward menambahkan 3-5 dari three-point line, yang memberi MEM kedalaman di rotation depan yang jarang terlihat dari pemain dengan profil fisiknya.\n\nWells cetak 16 poin dengan efisiensi elite: 6-7 FG, 2-2 3PT. Hampir sempurna dari lapangan, bahkan tanpa volume tembakan yang besar.\n\nDi kubu Kings, Zach LaVine mengangkat beban sendirian. 37 poin, FG 13-25, 40 menit, LaVine bermain hampir full game dan tetap jadi ancaman terbesar MEM sepanjang malam. Darius Acuff Jr. menambahkan 22 poin dan 7 asis dari slot point guard, tapi efisiensinya lebih berat: 9-23 dari lapangan, 2-9 dari tiga angka. Sabonis double-double 15-15, tapi Kings tetap tertinggal di FT dan 3PT efficiency.\n\n---\n\n## Baca Statistik\n\nDua stat mengubah segalanya: rebound dan free throw.\n\nMemphis menang di papan rebound 54-44. Dengan Boozer dan Coward masing-masing grab 11 rebound, dan Sabonis yang biasanya dominan di area ini \"dibatasi\" relatif di sisi offensive rebound oleh rotasi MEM, selisih 10 rebound itu langsung berdampak ke second-chance points dan possession tambahan.\n\nLini free throw lebih mencolok lagi. MEM masuk 24-27 dengan FT% 89%. SAC? 14-22, FT% 64%. Selisih 10 poin dari garis free throw itu kira-kira setara dengan margin kemenangan MEM. Di laga fisik seperti ini, efisiensi dari garis hukuman sering jadi pembeda, dan malam ini membuktikannya secara matematis.\n\nDari tiga angka, MEM juga lebih efisien: 15-40 (38%) vs Kings 10-33 (30%). Kings sebenarnya lebih baik dari area mid-range dan paint, 47% FG overall vs MEM 44%, tapi dari dua area krusial, Memphis menang.\n\n---\n\n## Kuarter Keempat: Ketat, Lalu Lepas\n\nTapi laga ini ketat sampai akhir. Kuarter keempat, Kings menyamakan berkali-kali.\n\nMenit 7:30, Ty Jerome cetak dua free throw, skor 104-101. Tapi Kings tidak menyerah, Acuff Jr. cetak running jump shot dibantu LaVine untuk 104-103. Boozer jawab dengan two-point shot, 106-103. Sabonis datang dua kali berturut-turut: reverse layup plus free throw tambahan untuk menyamakan 106-106 di menit 5:41.\n\nDi sinilah Memphis menjawab. Isaiah Stewart cetak floating jump shot plus free throw untuk 109-106. Coward tambah tip shot, skor melebar jadi 111-106. Dari titik itu, Kings tidak pernah kembali cukup dekat untuk membalik situasi. MEM tutup kuarter dengan efisien untuk kemenangan akhir 123-112.\n\n---\n\n## Selanjutnya\n\nMemphis unggul 1-0 di series regular season ini yang terdiri dari tiga game. Game ketiga dan terakhir akan menentukan siapa yang menutup series dengan rekor lebih baik. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909867",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Memphis Grizzlies",
+    "away_abbr": "MEM",
+    "home_score": 112,
+    "away_score": 123,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-10-26T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MEM leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023717,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap. Accuracy verified against input data; all stats cited correctly. Voice is mostly natural Bahasa sport writing. Minor phrasing redundancies ('dari' repetition, 'masing-masing' awkwardness) are low-severity stylistic notes. No hard violations. Passes.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "dua rookie muda MEM masing-masing cetak double-double",
+          "fix": "Remove 'masing-masing' or restructure: 'Cameron Boozer dan Cedric Coward keduanya cetak double-double'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Dari 31 poin, dia cetak 8-17 dari lapangan",
+          "fix": "Rephrase: '31 poin cetak 8-17 dari lapangan dan 6 assist'."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Hampir sempurna dari lapangan, bahkan tanpa volume tembakan yang besar.",
+          "fix": "No change needed; passes."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Sabonis double-double 15-15, tapi Kings tetap tertinggal",
+          "fix": "'Sabonis catat double-double 15-15' or 'Sabonis double-double 15-15' is acceptable in sport voice, actually fine."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2d9b3b7b74c3e6a4",
+    "published_at": "2026-10-26T03:53:27+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 76,
+      "headline_score": 65,
+      "headline_comment": "Fungsional tapi flat — judul tidak mencerminkan angle Jerome 31 atau LaVine 37, dan 'Unggul 1-0 di Series' agak misleading karena ini regular season bukan playoff series.",
+      "lead_score": 72,
+      "lead_comment": "Padat dan punya angka kunci, tapi 'menutup kunjungan ke kandang' terasa canggung dan angle Jerome dibilang 'motor utama' tanpa menyentuh LaVine 37 yang sebenarnya story terbesar kedua.",
+      "structure_score": 80,
+      "structure_comment": "Pembagian sections solid (performa, statistik, Q4, next) dan flow bergerak maju; section Q4 play-by-play jadi highlight.",
+      "voice_score": 74,
+      "voice_comment": "Umumnya natural dengan code-switching NBA yang pas, tapi beberapa frasa drift ke register awkward: 'efisiensi elite', 'kedalaman di rotation depan yang jarang terlihat dari pemain dengan profil fisiknya', 'secara matematis'.",
+      "suggestion_count": 6,
+      "summary": "Solid draft with strong Q4 narrative and good stat storytelling, but lead buries the LaVine 37-pt counter-story and two inferences ('rookie muda', 'Sabonis biasanya dominan') go beyond input data. Editor should also resolve the Playoffs-vs-Regular-Season contradiction in source data before publish.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "LIGA: NBA Playoffs 2026 ... Round: Regular Season Series",
+          "issue": "Input data kontradiktif (Playoffs vs Regular Season) dan artikel ikut bingung — judul bilang 'series', body bilang 'regular season', ini perlu diklarifikasi editor.",
+          "fix": "Flag ke editor: konfirmasi apakah ini playoff atau regular season sebelum publish; sesuaikan framing di judul dan lead."
+        },
+        {
+          "priority": "high",
+          "snippet": "Ty Jerome tampil sebagai motor utama dengan 31 poin, sementara MEM unggul 1-0 di series regular season",
+          "issue": "Lead melewatkan hook terbesar kedua: LaVine 37 poin dalam kekalahan, salah satu angle paling click-worthy dari laga ini.",
+          "fix": "Tambahkan satu klausa di lead: 'meski Zach LaVine cetak 37 poin untuk Kings' — kontras ini yang bikin recap menarik."
+        },
+        {
+          "priority": "medium",
+          "snippet": "dua rookie muda MEM masing-masing cetak double-double: Cameron Boozer ... Cedric Coward",
+          "issue": "Klaim 'rookie muda' adalah training-data inference — tidak ada di input data block, dan bisa salah.",
+          "fix": "Hapus 'rookie muda'; cukup 'duo frontcourt MEM' atau 'Boozer dan Coward'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Sabonis yang biasanya dominan di area ini \"dibatasi\" relatif di sisi offensive rebound oleh rotasi MEM",
+          "issue": "Spekulasi tanpa dukungan data — input tidak memisahkan offensive/defensive rebound, dan 'biasanya dominan' adalah training-data inference.",
+          "fix": "Ganti dengan fakta yang ada: 'Sabonis grab 15 rebound sendirian, tapi Kings total kalah 44-54 di papan.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Selisih 10 poin dari garis free throw itu kira-kira setara dengan margin kemenangan MEM ... membuktikannya secara matematis",
+          "issue": "'Kira-kira setara' lemah dan 'secara matematis' adalah tic akademis yang menjauhkan dari voice sport-casual.",
+          "fix": "'Selisih 10 poin dari garis free throw itu praktis sama dengan margin akhir 11 poin. Di laga seketat ini, FT yang membedakan.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Memphis unggul 1-0 di series regular season ini yang terdiri dari tiga game.",
+          "issue": "Kalimat kaku dengan 'yang terdiri dari' — bukan voice natural Indonesian sport writing.",
+          "fix": "'Memphis unggul 1-0 di series tiga game ini. Game ketiga jadi penentu.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
