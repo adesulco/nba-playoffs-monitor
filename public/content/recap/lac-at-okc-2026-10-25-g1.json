@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "lac-at-okc-2026-10-25-g1",
+  "title": "Recap LA Clippers 101-108 Oklahoma City Thunder (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — LA Clippers vs Oklahoma City Thunder (101-108) di —, 25 October 2026.",
+  "body_md": "# OKC Menang Tipis 108-101, SGA Jadi Beda\n\nOklahoma City Thunder menang 108-101 atas LA Clippers, Minggu pagi WIB. Shai Gilgeous-Alexander tampil dominan dengan 34 poin, 6 rebound, 5 asis, pemain paling menentukan di laga ini. Thunder kini unggul 1-0 di regular season series tiga pertemuan ini.\n\nQ4 menunjukkan betapa ketat pertandingan ini. Clippers sempat memangkas jarak sebelum OKC menutup pertandingan dengan barisan free throw yang efisien.\n\n---\n\n## Performa Individu\n\nSGA tangkap 34 poin dengan 13-26 FG—beban serangan berat yang ditanggung sendiri. Dukungan bench datang dari Ajay Mitchell, yang menyumbang 18 poin, 6 rebound, 4 asis dengan efisiensi 8-14 dari lapangan. Isaiah Hartenstein juga kontribusi ganda: 12 poin dan 12 rebound, yang menjaga OKC unggul di papan rebound secara keseluruhan (46 vs 38). Alex Caruso off the bench memberi dimensi lain: 12 poin, 7 rebound, 6 asis, plus peran kunci di possession kritis Q4.\n\nDi sisi Clippers, tidak ada yang mampu menandingi SGA secara individual. Darius Garland memimpin dengan 16 poin dan 11 asis, playmaking-nya solid, tapi efisiensi shooting 7-17 dari lapangan jadi cerminan kesulitan LAC menciptakan peluang bersih. Kris Dunn justru lebih efisien: 15 poin dari 6-8 tembakan, 1-3 dari three-point line, 6 asis. Brook Lopez off the bench menyumbang 15 poin dengan 3-6 dari three-point line, salah satu titik positif Clippers malam itu.\n\n---\n\n## Membaca Angka\n\nClippers unggul di satu area: three-point shooting. LAC 15-38 dari belakang garis (39%), OKC hanya 8-24 (33%). Kalau pertandingan dimenangkan di balik garis tiga angka, Clippers yang menang. Tapi bukan itu yang terjadi.\n\nOKC mendominasi area yang lebih menentukan. Points in paint: 64 vs 36, selisih 28 poin hanya dari dalam area. Itulah sebabnya OKC menang. Thunder lebih agresif masuk ke ring, lebih sering dapat foul (free throw 16-17, FT% 94%), sementara LAC 12-15 dari garis (80%). Turnovers juga jadi masalah besar untuk Clippers: 26 kali coughing up the ball vs 17 OKC. OKC mencatat 15 steals, transisi dari turnover LAC kemungkinan besar menyumbang sebagian dari 19 fast-break points Thunder.\n\n---\n\n## Momen Q4\n\nClippers sempat bikin dramatis. Derrick Jones Jr., starter yang konsisten malam itu dengan 11 poin, 6 rebound, 3-3 dari three-point line, nailed a 25-foot three di menit 3:00 Q4, dibantu Kris Dunn, memangkas jarak jadi 96-97. OKC tinggal unggul satu.\n\nTapi Caruso tenang di garis free throw: dua free throw berturut-turut, 96-99. Clippers sempat membalas lewat Lopez, dua poin plus satu free throw, score 99-103. SGA dapat free throw flagrant dan menambah keunggulan. Garland masih menjejalkan driving layup di menit 46.6 (101-106), tapi sudah terlambat. OKC menutup 108-101.\n\n---\n\n## Pertemuan Terakhir\n\nPertemuan ketiga di regular season series menentukan siapa yang memenangkan head-to-head. Data laga berikutnya tidak tersedia di sistem saat ini. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909865",
+    "home_team": "Oklahoma City Thunder",
+    "home_abbr": "OKC",
+    "away_team": "LA Clippers",
+    "away_abbr": "LAC",
+    "home_score": 108,
+    "away_score": 101,
+    "winner_abbr": "OKC",
+    "kickoff_utc": "2026-10-25T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "OKC leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020848,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate stats, natural flow, and good balance of team/individual narrative. Minor soft-discouraged phrase usage and one near-academic connector, but nothing that trips hard rules. Pass.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "menutup pertandingan dengan barisan free throw yang efisien",
+          "fix": "Use 'OKC amankan kemenangan via free throw' or similar"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "tidak ada yang mampu menandingi SGA secara individual",
+          "fix": "'tidak ada yang tandingi SGA' or 'no Clipper bisa kejar SGA'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Itulah sebabnya OKC menang",
+          "fix": "Optional refinement only; current version is fine"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe2fb7fc13113e588",
+    "published_at": "2026-10-26T02:20:46+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

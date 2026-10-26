@@ -1,0 +1,115 @@
+{
+  "type": "recap",
+  "slug": "det-at-phi-2026-10-25-g1",
+  "title": "Recap Detroit Pistons 106-93 Philadelphia 76ers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs Philadelphia 76ers (106-93) di —, 25 October 2026.",
+  "body_md": "Detroit Pistons kalahkan Philadelphia 76ers 106-93 di kandang PHI, Senin 26 Oktober 2026. Cade Cunningham memimpin DET dengan 26 poin, 8 rebound, 8 asis, sementara empat starter lain turut kontribusi dua digit. DET kini unggul 1-0 di regular season series ini.\n\n---\n\n## Top Performers\n\n**Cunningham** tampil sebagai floor general yang lengkap, 26 poin dengan 8 asis membuat offense DET terbaca rapi. Efisiensinya di tiga poin masih terjaga (3-8), tapi yang lebih penting adalah distribusinya: delapan asis dari seorang point guard yang juga mencetak 26 poin bukan statistik kecil.\n\nDi belakang Cunningham, **Duncan Robinson** jadi senjata jarak jauh yang tepat sasaran. 21 poin dengan 5-9 from three, ini bukan volume shooting buta, ini shooter yang tahu kapan harus melepas. **Daniss Jenkins** menambahkan 18 poin, 8 rebound, 6 asis, dan menjadi salah satu alasan DET bisa bermain with depth dari posisi guard. **John Collins** solid di dalam: 16 poin, 11 rebound, FG 7-15, double-double yang berkontribusi langsung pada dominasi rebound DET.\n\nDari sisi PHI, **Tyrese Maxey** sendirian yang benar-benar berjuang keras: 29 poin, 5 rebound, 4 asis, FG 11-24. Maxey sempat membawa PHI dekat di kuarter keempat, sundulan two point shot di menit 10:18 dan running dunk di 9:18 memangkas ketertinggalan menjadi 79-75 dan 82-78. Tapi PHI tidak punya cukup firepower di sekitarnya untuk menutup gap itu.\n\n**LeBron James** mencetak 18 poin dan 5 asis, tapi 0-3 from three dan hanya 2 rebound tidak membantu cukup dalam laga yang dimenangkan di papan rebound. **Jaylen Brown** kesulitan malam ini: 16 poin tapi dengan FG 5-20, efisiensi yang menyulitkan PHI untuk membangun momentum.\n\n---\n\n## Membaca Angkanya\n\nSatu angka yang paling menentukan: rebound. DET 54, PHI 37. Selisih 17 rebound di laga yang dimenangkan dengan margin 13 poin, ini bukan kebetulan. Collins dan Jenkins masing-masing mengambil 8 rebound, Cunningham ikut menyumbang 8. DET mendominasi second-chance opportunities.\n\nTiga poin juga menjadi perbedaan mencolok. DET 41% from three (14-34), PHI hanya 26% (7-27). Robinson sendirian bikin 5-9 dari garis tiga poin, sedangkan seluruh roster PHI gabungan cuma 7-27. Ketika tembakan tiga angkamu setengah efisiensi lawan, susah untuk menang.\n\nPHI memang lebih unggul di fast-break points (16 vs 9) dan points in paint (52 vs 42), yang artinya ada periode di mana mereka bisa menembus pertahanan DET di dalam. Tapi Pistons punya 11 blocks malam ini, PHI 8. Dan di ujungnya, rebound dan tiga poin lebih menentukan dari perimeter.\n\nTurnover juga jadi catatan DET: 17 kali kehilangan bola berbanding 11 milik PHI. Ini yang membuat PHI terus punya peluang meski tertinggal, termasuk momentum singkat di Q4 tadi.\n\n---\n\n## Seri Selanjutnya\n\nDengan kemenangan ini, DET unggul 1-0 di regular season series tiga laga. Game 2, dan kemungkinan penentu seri, menunggu.\n\nPHI perlu jawaban konkret: siapa yang support Maxey ketika Brown tidak efisien? Tiga poin 26% bukan angka yang bisa dibiarkan. Dan rebound, selama DET masih bisa kontrol papan seperti malam ini, PHI akan kesulitan membalik hasil.\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909866",
+    "home_team": "Philadelphia 76ers",
+    "home_abbr": "PHI",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 93,
+    "away_score": 106,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-10-25T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DET leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020813,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong recap with accurate stats and natural Bahasa flow. One significant training-inference issue (stakes over-framed) and minor translated-English phrasing. Reword one sentence about series implications and tighten one sequence phrase.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Cunningham memimpin DET dengan 26 poin, 8 rebound, 8 asis, sementara empat starter lain turut kontribusi dua digit.",
+          "fix": "Rephrase: \"empat starter lain menyumbang dua digit poin.\""
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Di belakang Cunningham, Duncan Robinson jadi senjata jarak jauh yang tepat sasaran.",
+          "fix": "Start fresh: \"Duncan Robinson jadi senjata jarak jauh...\" or \"Robinson tepat sasaran dari tiga.\""
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Maxey sempat membawa PHI dekat di kuarter keempat, sundulan two point shot di menit 10:18 dan running dunk di 9:18 memangkas ketertinggalan menjadi 79-75 dan 82-78.",
+          "fix": "Rephrase: \"Maxey two-point shot (10:18) dan running dunk (9:18) memangkas ketertinggalan ke 79-75, 82-78.\""
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 2, dan kemungkinan penentu seri, menunggu.",
+          "fix": "Rephrase: \"DET unggul 1-0 di regular season series tiga laga. Game 2 berikutnya di jadwal.\" — neutral, no inference about series-decider stakes."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x805bb1cb26f2d524",
+    "published_at": "2026-10-26T02:21:24+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 55,
+      "headline_comment": "Menyebut 'Game 1' padahal input menyatakan 'Game 2 of 3' dan regular season series — bukan playoff recap, headline misleading.",
+      "lead_score": 68,
+      "lead_comment": "Lead memuat skor dan top scorer tapi lemah angle — 'empat starter kontribusi dua digit' terlalu generik, kalah menarik dibanding dominasi rebound +17 yang sebenarnya cerita utama.",
+      "structure_score": 78,
+      "structure_comment": "Tiga-section standar (performers, angka, next) jalan rapi, tapi 'Membaca Angkanya' seharusnya naik lebih tinggi karena rebound differential adalah thesis sebenarnya.",
+      "voice_score": 72,
+      "voice_comment": "Umumnya natural, tapi beberapa code-switch kaku ('bermain with depth', 'firepower di sekitarnya') dan 'sundulan two point shot' salah terjemah — sundulan konteks basket tidak lazim.",
+      "suggestion_count": 6,
+      "summary": "Solid data-grounded recap with the right thesis buried in section 2 — the real story is rebound and three-point differential, not generic 'four starters in double digits.' Headline incorrectly labels this as 'Game 1' of what's actually a regular season series; fix headline, lead, and the 'sundulan' translation error before shipping.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap Detroit Pistons 106-93 Philadelphia 76ers (Game 1)",
+          "issue": "Headline sebut 'Game 1' tapi input bilang Game 2 of 3 regular season series, bukan playoff.",
+          "fix": "Ganti ke 'Pistons Kuasai Papan, Tekuk 76ers 106-93' atau cantumkan 'regular season' bukan 'Game 1'."
+        },
+        {
+          "priority": "high",
+          "snippet": "sundulan two point shot di menit 10:18 dan running dunk di 9:18",
+          "issue": "'Sundulan' adalah istilah sepak bola, tidak dipakai di basket — bikin writer terdengar tidak paham olahraga.",
+          "fix": "Hapus 'sundulan', cukup 'two point shot dari 14 kaki di 10:18 dan running dunk di 9:18'."
+        },
+        {
+          "priority": "high",
+          "snippet": "empat starter lain turut kontribusi dua digit",
+          "issue": "Lead buang angle terkuat (rebound +17, three-point 41% vs 26%) demi fakta generik.",
+          "fix": "Rewrite lead: 'DET menang lewat dominasi papan (+17 rebound) dan tiga poin (41% vs 26%), Cunningham cetak 26-8-8.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "DET bisa bermain with depth dari posisi guard",
+          "issue": "Code-switch 'with depth' kaku dan tidak lazim; AI-translation smell.",
+          "fix": "'DET punya kedalaman di posisi guard' atau 'rotasi guard DET dalam.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "PHI tidak punya cukup firepower di sekitarnya untuk menutup gap itu",
+          "issue": "'Firepower di sekitarnya' terjemahan literal 'around him'; terdengar canggung.",
+          "fix": "'Pemain lain PHI tidak sanggup bantu Maxey tutup selisih.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Game 2, dan kemungkinan penentu seri, menunggu",
+          "issue": "Koma apositif di tengah kalimat pendek terasa patah; closing section juga terlalu tipis untuk judul 'Seri Selanjutnya'.",
+          "fix": "'Game 2 yang kemungkinan jadi penentu seri menunggu' + tambah satu kalimat matchup/jadwal konkret jika tersedia."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
