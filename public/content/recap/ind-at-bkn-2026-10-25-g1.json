@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "ind-at-bkn-2026-10-25-g1",
+  "title": "Recap Indiana Pacers 136-109 Brooklyn Nets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Indiana Pacers vs Brooklyn Nets (136-109) di —, 25 October 2026.",
+  "body_md": "# Indiana Pacers Libas Brooklyn Nets 136-109, Haliburton Catat Double-Double\n\nIndiana Pacers membuka seri regular season 2026 dengan kemenangan meyakinkan atas Brooklyn Nets, 136-109. Tyrese Haliburton tampil sebagai playmaker dominan dengan 24 poin dan 10 asis, sementara efisiensi shooting IND di luar garis tiga angka jadi pembeda paling telak malam ini. Pacers unggul 1-0 di seri empat pertandingan ini.\n\n---\n\n## Top Performers\n\nHaliburton jadi pengatur serangan yang nyaris sempurna. Dari 13 percobaan field goal, masuk delapan tembakan, termasuk empat dari tujuh dari jarak tiga angka. 10 asis tanpa mendominasi bola—tipe permainan yang bikin rekan satu tim jadi lebih baik.\n\nPascal Siakam melengkapi double act itu dengan 21 poin, 7 rebound, 6 asis. FG 7-15 dan 3PT 3-6, tidak ada yang buang-buang tembakan di sini.\n\nCerita menariknya datang dari bench. Obi Toppin cetak 16 poin dari bangku cadangan dengan efisiensi luar biasa: 6-9 dari lapangan, 4-7 dari tiga angka, hanya butuh 20 menit. Jay Huff nambahin 14 poin dengan FG 5-6, hampir sempurna setiap kali dia sentuh bola. IND punya kedalaman bench yang malam ini benar-benar berasa.\n\nUntuk BKN, Nolan Traore jadi top scorer dengan 17 poin off the bench, tapi butuh 11 attempt untuk sampai ke sana. Josh Minott cetak 15 poin dan 8 rebound meski shooting tiga angkanya boros, 3-10 dari luar. Julius Randle punya stat line 10 poin, 7 rebound, 7 asis yang di atas kertas terlihat bagus, tapi FG 2-8 bilang cerita yang berbeda.\n\n---\n\n## Apa yang Menjelaskan Selisih 27 Poin\n\nAngkanya sederhana: IND 58% dari lapangan, BKN 41%. IND 49% dari tiga angka, 21 bola masuk dari 43 percobaan. BKN 33% dari tiga angka dengan 13 masuk dari 39 kali coba.\n\nItu bukan perbedaan tipis. Tiga angka dengan efisiensi hampir 50% di level apapun sudah crushing. Buat tim lawan, ini mimpi buruk.\n\nPoints in paint juga berbicara: IND 56, BKN 40. Bukan hanya Pacers menang di perimeter, mereka juga dominan di dalam. Fast-break points IND 25 lawan 18 BKN menunjukkan tempo permainan memang dikontrol Indiana dari awal.\n\nSatu anomali: BKN unggul 13-7 di steals. Tapi 15 turnover masing-masing, dan IND tetap menang 27 poin, artinya turnover BKN jauh lebih mahal dampaknya karena Pacers mengkonversi transisi lebih baik.\n\n---\n\n## Babak Kedua yang Mengunci Laga\n\nDi Q2, sempat ada drama kecil. BKN sempat balik unggul setelah Josh Minott masuk tembakan tiga angka 23 kaki, Traore yang asis, skor 32-35 untuk Nets. Sesaat sebelumnya, Moritz Wagner driving layup bikin skor 30-32.\n\nTapi IND merespons cepat. Jay Huff masuk tembakan tiga angka 25 kaki untuk membalik keadaan jadi 42-40. Ketika Wagner cetak tiga angka 26 kaki dari asis Randle untuk bikin BKN kembali unggul 49-51, Obi Toppin langsung jawab dengan tembakan 25 kaki: 52-51 untuk IND sebelum jeda babak.\n\nMomentum tidak pernah beneran berpindah ke BKN setelah itu.\n\n---\n\n## Lanjutan Seri\n\nPacers sudah tunjukkan blueprint yang jelas: Haliburton distribusikan bola, Siakam jadi second option yang konsisten, dan bench langsung nyambung tanpa penurunan kualitas. BKN butuh jawaban, terutama dari perimeter, 33% three-point shooting tidak akan cukup untuk menutup selisih sebesar ini.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909862",
+    "home_team": "Brooklyn Nets",
+    "home_abbr": "BKN",
+    "away_team": "Indiana Pacers",
+    "away_abbr": "IND",
+    "home_score": 109,
+    "away_score": 136,
+    "winner_abbr": "IND",
+    "kickoff_utc": "2026-10-25T22:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "IND leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022622,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong recap with solid voice and accurate stats. Minimal issues—one soft phrasing, one em-dash (which would fail auto-parse but didn't here), one redundant sentence structure. NBA voice register well-calibrated: analytical depth without jargon overload. Pass.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Haliburton tampil sebagai playmaker dominan dengan 24 poin dan 10 asis",
+          "fix": "Haliburton jadi playmaker dominan dengan 24 poin, 10 asis."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "10 asis tanpa mendominasi bola—tipe permainan yang bikin rekan satu tim jadi lebih baik",
+          "fix": "10 asis tanpa keserakahan bola. Itu tipe playmaking yang bikin tim lebih bagus."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tidak ada yang buang-buang tembakan di sini",
+          "fix": "Kedua-duanya shooting efficient. Bukan pemain yang asal tembak."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dari 13 percobaan field goal, masuk delapan tembakan",
+          "fix": "8 dari 13 dari lapangan—itu yang kita maksud efisien."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf3d22591260df2b4",
+    "published_at": "2026-10-26T02:50:51+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "orl-at-ny-2026-10-25-g1",
+  "title": "Recap Orlando Magic 111-102 New York Knicks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs New York Knicks (111-102) di —, 25 October 2026.",
+  "body_md": "Orlando Magic bungkam New York Knicks 111-102, Senin 26 Oktober 2026 jam 06.00 WIB. Franz Wagner jadi motor dengan 23 poin, 13 rebound, dan 9 asis, satu asis lagi dia triple-double, sementara empat pemain ORL lainnya ikut menyumbang dua digit. Magic kini unggul 1-0 di series ini.\n\n---\n\n## Empat Pemain Dua Digit, Satu Tim yang Balanced\n\nKemenangan Magic tidak bertumpu pada satu nama. Selain Wagner, Desmond Bane menyumbang 22 poin dengan 4-9 dari three-point line, Tristan da Silva 19 poin dari bangku cadangan (5-9 dari tiga angka), dan Anthony Black, juga dari bench, mencetak 18 poin plus 5 asis dengan efisiensi mencolok: 5-7 dari three-point line. Empat pemain double-digit dari lini yang berbeda adalah sinyal kedalaman roster yang sehat.\n\nWendell Carter Jr. tidak banyak mencetak angka, 9 poin, tapi 10 reboundnya jadi perekat pertahanan Orlando di bawah ring.\n\nDi sisi Knicks, Jalen Brunson membawa 28 poin tapi butuh 28 percobaan field goal untuk sampai ke sana (FG 12-28). Karl-Anthony Towns mencatatkan 22 poin dan 14 rebound, tapi OG Anunoby yang biasanya bisa diandalkan sebagai second scorer hanya finis dengan 22 poin dari 6-11, kontribusi yang oke secara angka, tapi tidak cukup untuk menutup gap. Mikal Bridges hanya 6 poin dari 35 menit bermain.\n\n---\n\n## Tiga Angka yang Menjelaskan Semuanya\n\nSatu angka yang paling berbicara malam ini: three-point percentage. Orlando 43% (18-42), New York 24% (9-38). Selisih efisiensi dari luar arc itu yang memutus pertandingan ini.\n\nDi sisi lain, Knicks sebenarnya mengungguli Orlando di points in paint: 52 berbanding 32, bukti bahwa serangan di area paint Knicks berfungsi. Tapi keunggulan itu tidak cukup mengompensasi kelemahan fatal dari tiga-point line. Field goal percentage juga setipis ini: ORL 43%, NY 41%, hampir identik, yang berarti perbedaannya memang ada di volume dan akurasi tembakan tiga angka.\n\nTurnovers? Sama persis: 16-16. Rebounds ORL unggul tipis 49-45. Dalam kertas, ini laga yang ketat, dan memang demikian, sampai kuarter keempat memutuskan semuanya.\n\n---\n\n## Kuarter Keempat: Wagner dan Bane Tutup Seri\n\nKEY PLAYS menunjukkan drama yang sesungguhnya terjadi di Q4. Skor sempat 87-89 untuk Knicks setelah Hart menjebol dari 24 kaki. Wagner membalas dengan dua poin untuk menyamakan 89-89, lalu drive layup untuk 91-89. Towns menyamakan lagi dengan driving dunk, 91-91.\n\nBane yang menutupnya. Tembakan tiga angka dari 26 kaki, diasis Wagner, mengubah skor jadi 94-91. Bane kembali menambah dua free throw untuk 95-91. Brunson memperkecil jarak dengan 98-94 di menit 2:42, tapi momentum sudah ada di tangan Orlando. Magic menambah 13 poin di sisa laga sementara Knicks hanya bisa 8, dan hasil akhirnya 111-102.\n\n---\n\n## Selanjutnya\n\nGame 2 series ini belum ada jadwal yang tercantum di input saat ini. Yang jelas, Knicks harus menemukan jawaban untuk perimeter defense mereka sebelum seri ini berlanjut, 18 three-pointers Orlando dari 42 percobaan terlalu mahal untuk dibiarkan terulang.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909863",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 102,
+    "away_score": 111,
+    "winner_abbr": "ORL",
+    "kickoff_utc": "2026-10-25T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ORL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040786,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has solid stats and structure but multiple translation artifacts, one misleading section headline ('Tutup Seri' implies playoffs), and meta-commentary about input data in published text. High-severity academic drift and two translated-English phrases prevent pass. Fixable with targeted rewrites.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "satu asis lagi dia triple-double",
+          "fix": "Rewrite as: 'tinggal satu asis dari triple-double' or 'hampir triple-double (23-13-9)'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Empat pemain double-digit dari lini yang berbeda adalah sinyal kedalaman roster yang sehat.",
+          "fix": "Delete the sentence entirely or: 'Kedalaman ORL jadi faktor kunci malam ini.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu angka yang paling berbicara malam ini: three-point percentage.",
+          "fix": "Start directly: 'Three-point percentage memutus pertandingan ini: ORL 43%, Knicks 24%.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dalam kertas, ini laga yang ketat, dan memang demikian, sampai kuarter keempat memutuskan semuanya.",
+          "fix": "Rewrite: 'Di atas kertas pertandingan ketat, tapi Q4 semua berubah.' or just delete 'dalam kertas' clause."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Kuarter Keempat: Wagner dan Bane Tutup Seri",
+          "fix": "Use: 'Kuarter Keempat: Wagner dan Bane Putuskan Laga' or 'Putuskan Pertandingan'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Game 2 series ini belum ada jadwal yang tercantum di input saat ini.",
+          "fix": "Delete entirely. If needed: 'Game berikutnya dari series ini belum dikonfirmasi jadwalnya.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Knicks sebenarnya mengungguli Orlando di points in paint: 52 berbanding 32",
+          "fix": "Optional: 'Knicks unggul di points in paint 52-32' (cut 'sebenarnya')"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Rename to 'Game Berikutnya' or 'Apa Selanjutnya untuk Knicks' or integrate into closing paragraph"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x72c9a3b2261967ac",
+    "published_at": "2026-10-26T02:52:29+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 82,
+      "headline_score": 68,
+      "headline_comment": "Headline keliru menyebut 'Game 1' padahal input menyatakan 'Game number: 2 of 3' dan 'Regular Season Series' — bukan playoffs sebenarnya.",
+      "lead_score": 84,
+      "lead_comment": "Lead solid dengan skor, tanggal, bintang pertandingan, dan status series — tapi frasa 'satu asis lagi dia triple-double' agak canggung secara struktural.",
+      "structure_score": 88,
+      "structure_comment": "Struktur empat bagian mengalir logis: pemain → statistik tim → momen Q4 → outlook, dengan narasi yang bergerak maju tanpa looping.",
+      "voice_score": 84,
+      "voice_comment": "Code-switching NBA (three-point line, points in paint, second scorer) terasa natural dan tense discipline bagus; sedikit tergelincir di 'Dalam kertas'.",
+      "suggestion_count": 6,
+      "summary": "Strong analytical recap with excellent use of the three-point differential as the narrative spine — but the headline mislabels this as 'Game 1' when it's Game 2 of a 3-game series, and one sentence leaks the 'input' meta-reference. Fix the headline and that line, and this ships.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap Orlando Magic 111-102 New York Knicks (Game 1)",
+          "issue": "Headline salah konteks — input bilang ini Regular Season Series Game 2 dari 3, bukan Playoffs Game 1.",
+          "fix": "Ganti ke 'Recap NBA: Orlando Magic Bungkam New York Knicks 111-102, Unggul 1-0 di Seri' atau serupa tanpa 'Game 1'."
+        },
+        {
+          "priority": "high",
+          "snippet": "LIGA: NBA Playoffs 2026 ... Round: Regular Season Series",
+          "issue": "Input sendiri kontradiktif (Playoffs vs Regular Season Series), dan artikel tidak menjelaskan konteks seri — pembaca bingung ini playoff atau bukan.",
+          "fix": "Klarifikasi di lead: sebut 'seri reguler tiga laga' atau konteks yang relevan, jangan biarkan ambigu."
+        },
+        {
+          "priority": "medium",
+          "snippet": "satu asis lagi dia triple-double, sementara empat pemain ORL lainnya ikut menyumbang dua digit",
+          "issue": "Dua ide ditumpuk di satu klausa, pembaca kehilangan ritme di kalimat kunci lead.",
+          "fix": "Pecah: 'Wagner nyaris triple-double, kurang satu asis. Empat pemain Magic lainnya ikut double-digit.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "OG Anunoby yang biasanya bisa diandalkan sebagai second scorer hanya finis dengan 22 poin",
+          "issue": "Klaim 'biasanya bisa diandalkan' adalah inferensi dari training data, bukan dari input — dan 22 poin dari 6-11 justru efisien, bukan kekurangan.",
+          "fix": "Fokus ke angka Knicks murni: 'Anunoby menambah 22 poin efisien dari 6-11, tapi kontribusi tiga starter lain tidak cukup.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Game 2 series ini belum ada jadwal yang tercantum di input saat ini.",
+          "issue": "'Tercantum di input' membocorkan proses AI — pembaca tidak boleh tahu ada 'input'.",
+          "fix": "Ubah ke: 'Jadwal Game 2 belum dikonfirmasi.' atau hapus kalimat ini sepenuhnya."
+        },
+        {
+          "priority": "low",
+          "snippet": "Dalam kertas, ini laga yang ketat",
+          "issue": "Terjemahan literal dari 'on paper' yang terdengar canggung di Bahasa.",
+          "fix": "Ganti ke 'on paper' langsung (code-switching natural) atau 'Secara statistik, laga ini ketat'."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
