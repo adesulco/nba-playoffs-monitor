@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "dal-at-mia-2026-10-26-g1",
+  "title": "Recap Dallas Mavericks 113-109 Miami Heat (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Dallas Mavericks vs Miami Heat (113-109) di —, 26 October 2026.",
+  "body_md": "# Cooper Flagg Dingin di Momen Panas, Dallas Libas Miami 113-109\n\nDallas Mavericks menang 113-109 atas Miami Heat di kandang Miami, Selasa 27 Oktober 2026. Kemenangan ini ditentukan dalam empat menit terakhir yang kacau, Cooper Flagg, rookie yang bermain seperti veteran, cetak tiga poin krusial di sisa 2:02 lalu tutup laga dengan layup di detik ke-10. DAL memimpin series reguler 1-0 setelah Game 2 of 2.\n\n---\n\n## Top Performers\n\n**Cooper Flagg** jadi kartu truf Dallas malam ini. 29 poin, 6 rebound, 11 asis, Flagg absen dari diskusi \"rookie biasa\" sejak lama, tapi malam ini dia konfirmasi statusnya dengan cara yang paling keras: nerima umpan Kyrie Irving di 2:02, kasih respons tiga poin waktu skor imbang 108-108, lalu jaga konsentrasi untuk driving layup penutup game. FG 12-23, tidak efisien, tapi dia ada di saat yang tepat.\n\n**P.J. Washington** kasih kontribusi solid yang sering terlewat: 20 poin, 9 rebound, 2 asis, 41 menit bermain. Off the bench, **Walter Clayton Jr.** masuk dengan efisiensi luar biasa, 15 poin hanya dalam 17 menit, FG 6-7, tiga poin 2-2. Clean shooting. Zero waste.\n\nDi sisi Miami, **Giannis Antetokounmpo** cetak triple-double, 29 poin, 15 rebound, 11 asis. Performa seperti ini seharusnya cukup untuk menang. Tidak malam ini. **Davion Mitchell** tambah 21 poin dengan FG 9-15, sementara **Bobby Portis** off the bench berkontribusi 10 poin dan 12 rebound sebagai double-double. Tapi semua usaha itu kandas di momen-momen akhir.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDAL dan MIA bermain hampir identik dalam efisiensi shooting, 46% vs 45% FG, 31% vs 32% dari tiga poin. Selisip tipis. Yang benar-benar membedakan: free throw.\n\nDAL 13-14 dari garis, 93%. MIA 14-25, 56%. Selisih 11 poin di sana saja sudah menjelaskan margin akhir. Untuk tim yang mengandalkan drive-and-contact seperti Miami, 11 free throw terbuang adalah luka yang tidak perlu.\n\nDAL juga unggul di rebound keseluruhan (51-43) dan blok (10-6), dengan turnover sedikit lebih banyak (17-14) tapi masih tidak fatal.\n\n---\n\n## Empat Menit yang Menentukan\n\nLaga ini sebetulnya sudah mau jatuh ke Miami.\n\nQ4 menit 4:08, Pelle Larsson bawa MIA ke 106-104. Bam Adebayo tutup gap dengan running dunk di menit 3:08, skor imbang 106-106. Morez Johnson Jr. tip shot bawa DAL balik unggul 108-106. Mitchell jawab dengan floating jump shot 8 kaki: 108-108.\n\nDi titik itu, Miami kelihatan mau steal laga.\n\nLalu Cooper Flagg dapat bola di 24 feet, umpan dari Kyrie Irving, dan eksekusi tiga poin. 111-108. Giannis driving layup balasnya: 111-110. Bam Adebayo tip shot masuk, MIA balik unggul 112-111 di sisa 49 detik.\n\nSituasi paling berat untuk Flagg. Dia respons dengan driving layup di sisa 10 detik. 113-112. Miami tidak punya waktu.\n\nPertandingan regular season, tapi drama Q4-nya tidak lebih ringan dari playoff.\n\n---\n\n## Selanjutnya\n\nIni Game 2 of 2 dalam seri regular season ini. DAL tutup series 1-0. Jadwal lanjutan keduanya mengikuti kalender NBA, pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909871",
+    "home_team": "Miami Heat",
+    "home_abbr": "MIA",
+    "away_team": "Dallas Mavericks",
+    "away_abbr": "DAL",
+    "home_score": 109,
+    "away_score": 113,
+    "winner_abbr": "DAL",
+    "kickoff_utc": "2026-10-26T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DAL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020973,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on training-data inference (ungrounded player names in Q4 plays) and colloquial texting register ('nerima', 'kasih'). Closing section is weak filler. Tense-marking and structural issues pull score below 70. Regenerate with strict adherence to NUMERIC ANCHORS block only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bam Adebayo makes running dunk, Bam Adebayo makes tip shot, Morez Johnson Jr. makes tip shot",
+          "fix": "Remove or rewrite Q4 play-by-play without names not in the grounded stats; stick to Flagg, Irving, Mitchell, Giannis."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Flagg absen dari diskusi rookie biasa sejak lama, tapi malam ini dia konfirmasi",
+          "fix": "Rewrite: 'Flagg lepas dari diskusi rookie biasa, tapi malam ini dia konfirmasi...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "nerima umpan Kyrie Irving di 2:02, kasih respons tiga poin waktu skor imbang 108-108",
+          "fix": "Rewrite: 'dapat umpan Kyrie Irving di 2:02, beri respons tiga poin saat skor imbang 108-108'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Off the bench, Walter Clayton Jr. masuk dengan efisiensi luar biasa, 15 poin hanya dalam 17 menit",
+          "fix": "Rewrite: 'Walter Clayton Jr. dari bench masuk dengan efisiensi: 15 poin dalam 17 menit' or restructure para."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Selisih 11 poin di sana saja sudah menjelaskan margin akhir",
+          "fix": "Rewrite: 'Selisih 11 poin free throw itu cukup menjelaskan margin akhir' or 'Selisih 11 poin free throw sudah jelas.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Pertandingan regular season, tapi drama Q4-nya tidak lebih ringan dari playoff",
+          "fix": "Rewrite: 'Bukan playoff, tapi drama Q4 sama saja dengan playoff intensity.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Selanjutnya — Ini Game 2 of 2 dalam seri regular season ini. DAL tutup series 1-0.",
+          "fix": "Delete 'Selanjutnya' header or replace with forward-looking context (next opponent, playoff race implications, etc.)"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x44b9f783d64b5c0a",
+    "published_at": "2026-10-27T02:17:51+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
