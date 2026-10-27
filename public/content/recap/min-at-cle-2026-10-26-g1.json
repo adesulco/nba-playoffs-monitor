@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "min-at-cle-2026-10-26-g1",
+  "title": "Recap Minnesota Timberwolves 125-127 Cleveland Cavaliers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs Cleveland Cavaliers (125-127) di —, 26 October 2026.",
+  "body_md": "# Edwards 47 Poin, tapi CLE Tetap Menang 127-125 di Overtime\n\nMinnesota Timberwolves kalah di laga paling menyakitkan yang bisa dibayangkan. Anthony Edwards cetak 47 poin, termasuk three-pointer 28 kaki di detik terakhir overtime yang sempat bikin semua orang berhenti bernapas, tapi angka itu tidak cukup. Cleveland Cavaliers menang 127-125 dalam overtime, menutup dua laga regular season series dengan rekor sempurna 2-0 atas Minnesota.\n\n---\n\n## Top Performers\n\nEdwards bermain 41 menit dan mengambil semuanya di pundak. Angkanya: 47 poin, 4 rebound, 4 asis — shooting 19-34, 5-15 dari tiga. Tidak efisien untuk ukuran bintang, tapi 47 poin tetap 47 poin. Masalahnya, di momen paling krusial, sisa 3,9 detik, MIN tertinggal dua poin, Edwards tembakan tiga-pointer 28 kaki masuk, tapi skor 125-127. MIN butuh tiga poin tambahan, bukan tiga poin untuk menyamakan. Overtime berakhir sebelum ada kesempatan lagi.\n\nJaden McDaniels menyumbang 14 poin (6-9 FG, 2-3 dari three), solid dan efisien. Dari bench, Terrence Shannon Jr. masuk dengan 14 poin dan 5 asis dalam 24 menit, pengaruh nyata meski starter. Joan Beringer sempurna dari lapangan: 12 poin dengan 6-6 FG, 7 rebound, 17 menit.\n\nDi sisi Cleveland, Donovan Mitchell jadi pembeda kelas. 26 poin, 5 rebound, 7 asis, termasuk fadeaway 19 kaki di overtime yang mempersempit gap ke 121-118. James Harden melengkapi dengan 19 poin, 5 rebound, 9 asis, dan, ini yang menyakitkan, dua free throw di menit ke-13 sisa overtime yang membalik keunggulan ke CLE. Evan Mobley double-double: 18 poin, 10 rebound, plus 4-5 from three. Meleek Thomas off the bench masuk dengan 16 poin (4-5 dari three) dalam 19 menit, efisiensi bench yang tidak tertandingi MIN.\n\n---\n\n## Pembeda di Box Score\n\nDua penyebab: three-point accuracy dan turnover.\n\nCleveland lebih tajam dari jarak jauh: 18-45 (40%) berbanding 13-40 (32%) milik MIN. Ini bukan perbedaan tipis, dalam laga yang berakhir dua poin, selisih persentase ini setara dengan perbedaan antara menang dan pulang.\n\nTurnover lebih mencolok lagi. MIN membuang 18 bola, CLE hanya 12. Fast-break points dari situlah: CLE 18, MIN 13. Jadi CLE dapat tambahan lima poin murni dari transisi, modal yang cukup untuk menang tipis.\n\nSatu-satunya bidang MIN dominan: points in paint, 58 berbanding 44. Dan rebound total 54-50. Tapi keunggulan fisik di dalam itu tidak terbawa ke kemenangan karena terlalu banyak bola hilang dan terlalu buruk dari luar.\n\n---\n\n## Overtime yang Tidak Akan Terlupakan\n\nYang terjadi di empat menit overtime ini terlalu ketat untuk disederhanakan.\n\nEdwards masuk three-pointer 24 kaki di menit 1:03 sisa overtime, MIN unggul 121-115. CLE bukannya runtuh. Mitchell balas dengan fadeaway 19 kaki, 121-118. MIN dapat satu free throw, 122-118. Harden masuk dua free throw beruntun, 122-120. Lalu Peyton Watson, yang bermain 37 menit dengan 15 poin 8 rebound, masuk dua free throw dengan 3,9 detik tersisa. Skor berbalik: 122-124.\n\nSisa waktu: 3,9 detik. Jarak yang harus ditempuh Edwards: 28 kaki. Hasilnya: masuk. Skor 125-124. CLE dapat satu kesempatan lagi, Watson kembali dari line. Free throw masuk. Final skor: 127-125 CLE. Waktu habis.\n\n---\n\n## Selanjutnya\n\nRegular season, tapi CLE 2-0 atas MIN. Kalau ketemu playoff, Minnesota tahu CLE bisa menang tipis. Minnesota punya Edwards. Cleveland punya kedalaman. Pertemuan berikutnya, dalam format apapun, tidak akan kurang dramatis dari malam ini.\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909869",
+    "home_team": "Cleveland Cavaliers",
+    "home_abbr": "CLE",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 127,
+    "away_score": 125,
+    "winner_abbr": "CLE",
+    "kickoff_utc": "2026-10-26T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "CLE leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024781,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: series record contradiction (claims 2-0 when input says 1-0 after this game), confusing overtime logic about Edwards' 3-pointer and the final sequence, and awkward translated-English phrasing. Timeline of final OT possession is muddled between earlier and later sections.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "CLE 2-0 atas MIN... regular season series dengan rekor sempurna 2-0",
+          "fix": "Change 'rekor sempurna 2-0' to '1-0' and 'CLE 2-0 atas MIN' to reflect this is game 2 of 2."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "MIN tertinggal dua poin, Edwards tembakan tiga-pointer 28 kaki masuk, tapi skor 125-127. MIN butuh tiga poin tambahan, bukan tiga poin untuk menyamakan.",
+          "fix": "Rewrite: 'Edwards tembakan 28 kaki masuk, MIN menyamakan 125-125. CLE balas dengan free throw, 125-127. Kalah dua poin.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Sisa waktu: 3,9 detik. Jarak yang harus ditempuh Edwards: 28 kaki.",
+          "fix": "Change to: 'Tinggal 3,9 detik. Edwards ambil bola dari half-court, 28 kaki dari ring.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua penyebab: three-point accuracy dan turnover.",
+          "fix": "Delete subheading or rewrite: 'Dua penyebab kekalahan jelas di box score.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Masalahnya, di momen paling krusial, sisa 3,9 detik, MIN tertinggal dua poin",
+          "fix": "Clarify: Edwards' 28-footer is the FINAL shot of OT (at 0.0 seconds per KEY PLAYS), not at 3.9 left."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tidak cukup... tidak efisien... tidak terbawa... tidak akan terlupakan",
+          "fix": "Vary with 'tak', active voice, or restructure some sentences to avoid cluster."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xed7ba7b0644be1d0",
+    "published_at": "2026-10-27T02:47:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

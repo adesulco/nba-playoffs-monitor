@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "ind-at-mil-2026-10-27-g1",
+  "title": "Recap Indiana Pacers 102-110 Milwaukee Bucks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Indiana Pacers vs Milwaukee Bucks (102-110) di —, 27 October 2026.",
+  "body_md": "# Milwaukee Bucks Pertahankan Keunggulan, Pacers Gagal Balik di Game 2\n\nMilwaukee Bucks menang 110-102 atas Indiana Pacers di Game 2 Regular Season Series, Senin 27 Oktober 2026. Tyler Herro tampil sebagai motor utama MIL dengan 23 poin, 10 rebound, 7 asis, didukung kontribusi merata dari seluruh rotation Bucks.\n\n---\n\n## Top Performers\n\nDi sisi Milwaukee, Herro adalah ancaman paling konsisten sepanjang malam. Dia meraih 23 poin, 10 rebound, 7 asis dari 32 menit bermain dengan persentase tembakan tiga 3-6, solid tanpa wasteful.\n\nRyan Rollins melengkapi pasangan guard MIL dengan 19 poin, juga efisien di 7-14 dari lapangan dengan 3-7 from three. Kyle Kuzma menambah 17 poin, 7 rebound, 3 asis, termasuk 4-6 from three, angka yang terasa menyakitkan buat Pacers. Dari bench, Kel'el Ware terlibat dalam pekerjaan yang lebih kotor: 16 poin dan 14 rebound dalam 19 menit, efisiensi tinggi di waktu terbatas.\n\nPacers punya argumen di atas kertas. Tyrese Haliburton 22 poin, 9 asis, 6 rebound, pemimpin tim yang hadir. Pascal Siakam 20 poin, 13 rebound, 6 asis dari 37 menit, double-double yang substantif. Obi Toppin menambah 14 poin dari bench. Tapi secara kolektif, IND tidak bisa menutup celah itu.\n\n---\n\n## Baca Statistik\n\nSelisih akhir delapan poin tidak mencerminkan seberapa besar perbedaan efisiensi kedua tim sepanjang malam.\n\nRebounds adalah cerita paling jelas: MIL 61, IND 48, selisih 13 rebound adalah masalah besar dalam playoff basketball. Kel'el Ware sendirian sudah menyumbang 14 rebound dalam 19 menit, lebih banyak dari kebanyakan starter Pacers dalam durasi penuh. Penguasaan bola second chance adalah salah satu sumber keunggulan Bucks yang tidak tercermin di scoreboard.\n\nDari perimeter, keduanya sama-sama terbatas: IND 27% (13-48), MIL 30% (13-44). Bukan malam yang bagus untuk tembakan tiga angka dari kedua sisi. Tapi MIL menutupinya dengan efisiensi di free throw, 71% (15-21) vs IND yang hanya 61% (11-18). Dalam laga ketat, selisih dari garis free throw punya dampak nyata. Dari sisi field goal secara keseluruhan, MIL 43% vs IND 41%, tipis, tapi konsisten.\n\nTurnovers imbang persis: masing-masing 13. Assists juga sama: 27-27. Artinya Pacers tidak kalah dalam ball movement, mereka kalah dalam konversi dan physicality di bawah ring.\n\n---\n\n## Kuarter Keempat: Pacers Tidak Bisa Menutup\n\nDi Q4, Haliburton masuk ke garis free throw dan mencetak satu poin. Berselang beberapa puluh detik, dia cetak tiga angka dari 24 kaki dengan step back jumpshot untuk memotong defisit. Siakam mencoba dengan fadeaway 8 kaki dan dua free throw beruntun, IND sempat mendekat. Tapi Rollins balas dari garis dan Bucks menutup pertandingan.\n\nPacers ada di sana di Q4. Mereka tidak menyerah. Tapi mereka tidak punya jawaban untuk setiap respons Bucks.\n\n---\n\n## Lanjutan\n\nDengan Bucks unggul 1-0 dalam seri, Pacers menghadapi Game 2 berikutnya. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909872",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Indiana Pacers",
+    "away_abbr": "IND",
+    "home_score": 110,
+    "away_score": 102,
+    "winner_abbr": "MIL",
+    "kickoff_utc": "2026-10-27T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023491,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has one critical training-inference error (misidentifies which game this recap covers) and several tense/translation issues. Fails on factual accuracy about series state. Restructure Q4 section and close; verify series numbering against input data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dengan Bucks unggul 1-0 dalam seri, Pacers menghadapi Game 2 berikutnya.",
+          "fix": "Delete this sentence or rewrite: 'Pacers kini tertinggal 0-1 dalam seri empat laga.' Series state is in input data."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dia meraih 23 poin, 10 rebound, 7 asis dari 32 menit bermain",
+          "fix": "Standardize past tense: 'Herro raih 23 poin' or 'Herro meraih'. Pick one and stick."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "solid tanpa wasteful",
+          "fix": "Rewrite: 'solid dan efisien' or 'tanpa pemborosan'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selisih akhir delapan poin tidak mencerminkan seberapa besar perbedaan efisiensi kedua tim sepanjang malam.",
+          "fix": "Start with fact: 'Bucks unggul delapan poin, tapi selisihnya menyembunyikan keunggulan nyata: rebound dan free throw.' Then explain."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Di Q4, Haliburton masuk ke garis free throw dan mencetak satu poin.",
+          "fix": "Use input data directly: 'Haliburton cetak free throw di 7:13 Q4 (IND 89-94), lalu tiga-pointer 24 kaki 6:48 kemudian.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Pacers ada di sana di Q4. Mereka tidak menyerah. Tapi mereka tidak punya jawaban untuk setiap respons Bucks.",
+          "fix": "Delete or merge with previous paragraph. Soft issue but lowers professionalism."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dengan Bucks unggul 1-0 dalam seri, Pacers menghadapi Game 2 berikutnya. Tayang live di NBA League Pass dan Vidio.",
+          "fix": "Rewrite: 'Bucks 1-0. Game 3 ditayangkan....' or delete this paragraph entirely."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x974ff193d471c5a4",
+    "published_at": "2026-10-27T02:50:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

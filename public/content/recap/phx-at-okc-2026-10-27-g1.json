@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "phx-at-okc-2026-10-27-g1",
+  "title": "Recap Phoenix Suns 114-125 Oklahoma City Thunder (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs Oklahoma City Thunder (114-125) di —, 27 October 2026.",
+  "body_md": "# OKC Permalukan Suns 125-114, Ajay Mitchell Jadi Bintang dengan 30 Poin\n\nOklahoma City Thunder menghajar Phoenix Suns 125-114 di kandang OKC, Senin 27 Oktober 2026. Ajay Mitchell tampil luar biasa dengan 30 poin, sementara Shai Gilgeous-Alexander menambah 26 poin, dua bintang muda OKC terlalu berat untuk diatasi Suns. Dengan kemenangan ini, OKC unggul 1-0 di regular season series tiga pertemuan.\n\n---\n\n## Dua Bintang OKC, Satu Masalah Besar untuk Suns\n\nMitchell jadi pemain terbaik malam ini. 30 poin dari 10-16 shooting, efisiensi yang sulit didapat siapa pun. Hanya 25 menit di lapangan, artinya dia cetak poin itu dengan tempo yang mematikan, bukan sekadar akumulasi main lama.\n\nSGA, seperti biasa, tidak jauh di belakang. 26 poin, 11-18 dari lapangan, konsisten dan tenang di bawah tekanan. Yang menarik, dua guard utama OKC ini tidak banyak distribusi asis malam ini (masing-masing 5 dan 3), tapi bukan karena isolasi, Jared McCain ikut andil dengan 18 poin dan 4-7 from three. OKC punya tiga opsi scoring yang semua tampil di atas 18 poin. Suns tidak punya jawaban untuk itu.\n\nDi sisi lain, Suns sebenarnya tidak bermain buruk secara individual. Jalen Green cetak 20 poin dengan efisiensi bagus (8-13 FG), Dillon Brooks tambah 19 poin dengan 5 asis. Miles Bridges mengisi stat line solid: 17 poin, 8 rebound. Tapi gabungan kerja keras ketiganya tetap tidak cukup untuk menutup jarak yang dibuka OKC.\n\n---\n\n## Box Score Bicara: Masalah Suns Ada di Paint dan Free Throw\n\nLihat team stats, dan ceritanya jelas.\n\nOKC mendominasi di dalam cat: **50 points in paint** vs **38 milik Suns**. Isaiah Hartenstein jadi mesin di bawah ring, 15 poin, 13 rebound, 6-7 dari lapangan. Aday Mara off the bench melanjutkan pekerjaan yang sama: 11 poin, 10 rebound, 4-6 FG. Dua big men OKC yang gabungan reboundnya 23, angka yang langsung mencekik Suns secara second-chance opportunity.\n\nFree throw juga jadi pembeda nyata. OKC **25-29 (86%)** vs Suns **18-25 (72%)**. Bukan hanya persentasenya, OKC lebih sering ke garis. Tujuh poin selisih dari garis charity, ditambah keunggulan di paint, dan margin 11 poin akhir punya penjelasan yang sederhana.\n\nSuns mencoba lewat tembakan tiga angka, 18 three-pointers dari 50 percobaan (36%). OKC 12 dari 32 (38%), lebih efisien meski lebih sedikit volume. Artinya Phoenix bermain lebih stretch, OKC bermain lebih seimbang antara dalam dan luar. Di malam ini, gaya OKC yang menang.\n\n---\n\n## Momentum Suns Tidak Pernah Tumbuh\n\nKuarter pertama ketat, laga bahkan sempat menyentuh 24-24 di sisa 1:53 Q1 sebelum Mitchell masuk dengan pullup jump shot untuk memberi OKC keunggulan 26-24. Dari sana, Thunder tidak pernah melepas keunggulan itu secara definitif.\n\nSuns punya 29 asis dengan hanya 13 turnover, lebih baik dari OKC yang 17 turnover. Fast-break points juga menguntungkan Suns (9-2). Tapi angka-angka itu tidak cukup untuk mengimbangi dominasi rebounding dan efisiensi shooting OKC secara keseluruhan.\n\n---\n\n## Selanjutnya\n\nRegular season series ini format tiga pertemuan, dan OKC sekarang unggul 1-0. Jika Suns ingin menyamakan kedudukan, mereka perlu jawaban nyata untuk Hartenstein-Mara di paint, dan perlu Mitchell tampil jauh di bawah 30 poin. Dua hal itu belum terlihat solusinya malam ini.\n\nPantau jadwal Game 3 melalui NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909873",
+    "home_team": "Oklahoma City Thunder",
+    "home_abbr": "OKC",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 125,
+    "away_score": 114,
+    "winner_abbr": "OKC",
+    "kickoff_utc": "2026-10-27T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "OKC leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021809,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate stats and natural voice. Three minor low-severity issues (phrase repetition, one stiff English calque, detached closing line) do not impact readability. Pass.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Mitchell jadi pemain terbaik malam ini... SGA, seperti biasa, tidak jauh di belakang.",
+          "fix": "Use 'malam hari' or drop second instance; vary temporal markers"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Hanya 25 menit di lapangan, artinya dia cetak poin itu dengan tempo yang mematikan",
+          "fix": "Try 'cetak poin itu dalam tempo gila-gilaan' or 'setiap menit dia pukul poin'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Pantau jadwal Game 3 melalui NBA League Pass dan Vidio.",
+          "fix": "Integrate into paragraph or rephrase: 'Game 3 akan tayang di NBA League Pass dan Vidio.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe148edabf0c997a6",
+    "published_at": "2026-10-27T02:51:11+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
