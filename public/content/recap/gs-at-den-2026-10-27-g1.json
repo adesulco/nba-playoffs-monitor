@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "gs-at-den-2026-10-27-g1",
+  "title": "Recap Golden State Warriors 134-114 Denver Nuggets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs Denver Nuggets (134-114) di —, 27 October 2026.",
+  "body_md": "# Golden State Warriors menghajar Denver Nuggets 134-114 dalam laga kedua Regular Season Series, Selasa pagi 27 Oktober 2026. GS memimpin 1-0 dalam seri ini, dan kemenangan ini datang dengan cara yang meyakinkan: Warriors mendominasi dari tiga poin sementara Denver tidak pernah benar-benar menemukan ritme untuk balik menyerang.\n\n---\n\n## Top Performers\n\n**Yaxel Lendeborg** jadi bintang utama malam ini. 31 poin, 12 rebound, 6 asis, double-double lengkap dengan kontribusi scoring yang besar. Shooting-nya tidak sempurna (9-19 dari lapangan, 1-8 dari tiga), tapi volume dan efektivitas di situasi lain menutup angka itu.\n\n**Stephen Curry** bermain efisien luar biasa: 24 poin dengan shooting 8-8 dari lapangan dan 3-3 dari tiga poin. Tidak ada missed shot yang tercatat di box score. Dalam 27 menit, itu output yang nyaris tanpa cela.\n\n**Brandin Podziemski** menambah 18 poin, 7 rebound, 5 asis dengan 3-7 dari tiga, salah satu engine Warriors yang paling stabil malam ini.\n\nDari sisi Denver, **DeMar DeRozan** keluar sebagai top scorer dengan 21 poin off the bench (7-15 dari lapangan). **Nikola Jokic** mencatat 19 poin, 7 rebound, dan 11 asis—assist-nya mengkilau—tapi catatan 8-18 dari lapangan menunjukkan Jokic tidak cukup efisien saat dibutuhkan. **Jamal Murray** menyumbang 19 poin, 6 rebound, 8 asis, tapi Denver secara keseluruhan tidak punya cukup produksi untuk menandingi depth Warriors malam ini.\n\n---\n\n## Baca Statistik\n\nKunci kemenangan Warriors: tiga poin.\n\nGS menembak 22-44 dari tiga (50%). Denver tiga poinnya tidak jatuh dengan baik. Selisih itu setara dengan keuntungan signifikan dari jarak jauh saja, di satu sisi memperlihatkan mengapa Warriors menang dengan margin 20, di sisi lain menunjukkan betapa berisiko permainan Denver jika tiga poin tidak jatuh.\n\nFG% keseluruhan tidak terlalu jauh: GS 54%, DEN 50%. Di paint, Denver malah sedikit unggul (48 vs 42). Tapi di luar arc, Warriors benar-benar menghukum. Ditambah rebound 45-32 yang sangat satu sisi, GS lebih banyak memiliki possession kedua untuk memanfaatkan miss.\n\nSatu catatan untuk Warriors: 18 turnover dibanding 12 Denver. Jika angka itu tidak dikompensasi oleh efisiensi tiga poin, skor mungkin jauh lebih ketat.\n\n---\n\n## Paruh Pertama: Seri Ketat Sebelum Warriors Lepas\n\nLaga ini tidak langsung menjadi blowout. KEY PLAYS menunjukkan pertarungan ketat sampai pertengahan Q2, 44-44, 47-47, 52-52 semuanya terjadi di paruh pertama. Momentum bergeser setelah jeda. Denver tidak mampu mempertahankan keseimbangan itu di paruh kedua, dan Warriors memanfaatkan efisiensi tiga poin mereka untuk membuka gap yang tidak pernah tertutup lagi.\n\n---\n\n## Seri dan Selanjutnya\n\nGS sekarang unggul 1-0 dalam Regular Season Series ini. Ada satu game lagi dalam seri ini, tayang live di NBA League Pass dan Vidio.\n\nDenver butuh jawaban yang lebih baik untuk perimeter defense mereka. Membiarkan Warriors menembak 50% dari tiga adalah masalah yang tidak bisa dibiarkan berlanjut ke game berikutnya.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909876",
+    "home_team": "Denver Nuggets",
+    "home_abbr": "DEN",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 114,
+    "away_score": 134,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-10-27T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "GS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.041782,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Generally solid voice adherence. Three medium issues: one calqued English idiom ('menutup angka'), slightly forced 'malah', and one academic connector ('possession kedua'). Numerics verified against input block; all stats accurate. Pass, but polish edges.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Shooting-nya tidak sempurna (9-19 dari lapangan, 1-8 dari tiga), tapi volume dan efektivitas di situasi lain menutup angka itu.",
+          "fix": "Rephrase: 'tapi volume dan efektivitasnya di tempat lain kompen­sasi shooting yang tidak ideal.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Dalam 27 menit, itu output yang nyaris tanpa cela.",
+          "fix": "Try: 'Dalam 27 menit itu, produksi yang nyaris sempurna.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di paint, Denver malah sedikit unggul (48 vs 42).",
+          "fix": "Soften: 'Di paint, Denver sedikit unggul (48 vs 42).'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Ditambah rebound 45-32 yang sangat satu sisi, GS lebih banyak memiliki possession kedua untuk memanfaatkan miss.",
+          "fix": "Rephrase: 'Rebound 45-32 juga beri GS lebih banyak kesempatan kedua.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2ebb77e2be28de9c",
+    "published_at": "2026-10-27T05:15:45+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
