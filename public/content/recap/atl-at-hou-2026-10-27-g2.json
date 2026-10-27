@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "atl-at-hou-2026-10-27-g2",
+  "title": "Recap Atlanta Hawks 110-120 Houston Rockets (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Atlanta Hawks vs Houston Rockets (110-120) di —, 27 October 2026.",
+  "body_md": "# Houston Rockets Tutup Musim Regular vs Atlanta 120-110, Sengun Hampir Triple-Double\n\nHouston Rockets mengakhiri regular season series melawan Atlanta Hawks dengan kemenangan 120-110, Selasa 27 Oktober 2026. HOU unggul 2-0 di seri ini. Alperen Sengun jadi bintang utama dengan 29 poin, 9 rebound, dan 9 assist, satu assist lagi dari triple-double.\n\n---\n\n## Top Performers\n\n**Houston:**\n\nSengun mendominasi dari dalam. Line-nya 29 poin dengan efisiensi tinggi, 11-15 dari lapangan, plus 9 rebound dan 9 assist. Peran ganda sebagai anchor offense sekaligus distributor membuat Rockets sulit dihentikan ketika dia menguasai bola.\n\nKevin Durant menambah 22 poin dan 9 rebound dengan 6-13 dari lapangan. Jabari Smith Jr. mengisi triple threat berbeda: 16 poin, 12 rebound, 5 assist. Rebound-nya jadi salah satu alasan HOU menguasai papan secara total.\n\nAmen Thompson (15 poin, 6-8 dari lapangan) dan Tari Eason off the bench (13 poin, 8 rebound) memastikan HOU punya kedalaman roster yang merata.\n\n**Atlanta:**\n\nJalen Johnson tampil paling solid untuk Hawks: 21 poin, 9 rebound, 4 assist. CJ McCollum menambah 20 poin dengan 4-7 dari tiga angka. Tapi kontribusi dua pemain teratas ini tidak cukup ketika seluruh roster HOU hadir malam itu.\n\n---\n\n## Baca Statistiknya\n\nPerbedaan terbesar ada di dua angka: FG% dan rebound total.\n\nHouston tembak 53% dari lapangan versus Atlanta 43%. Dari tiga angka keduanya tidak terlalu jauh, HOU 30%, ATL 28%, tapi Rockets punya efisiensi di dalam yang Atlanta tidak punya. Points in paint: HOU 64, ATL 56.\n\nYang lebih mematikan: Rockets menguasai rebound 52-35. Selisih 17 rebound memberikan HOU possession ekstra berulang kali, dan Atlanta, dengan 13 turnover yang berujung pada 22 free throw attempt HOU, tidak bisa menutupinya dari lini free throw. Houston 26-32 dari garis (81%), Atlanta 15-21 (71%).\n\n---\n\n## Momentum Kuarter Ketiga\n\nKEY PLAYS menunjukkan Q3 berjalan ketat. Skor berganti-ganti: Durant free throw buat HOU unggul 67-66, Okongwu balas dengan dunk dari asisst Jalen Johnson untuk ATL 68-67, Sengun layup balik ke HOU 75-68, Wiggins floating jump shot dari McCollum buat ATL kembali memimpin 76-75.\n\nHouston akhirnya melepaskan diri di Q4. Saat Sengun dkk membangun selisih ke 95-90, Atlanta sempat berjuang kembali, Alexander-Walker hit three dari 28 kaki untuk 93-95. ATL tidak pernah menutup selisih itu lagi.\n\n---\n\n## Penutup\n\nRegular season series HOU vs ATL selesai dengan hasil bersih 2-0 untuk Rockets. Laga berikutnya untuk keduanya mengikuti jadwal masing-masing. Tayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909874",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "Atlanta Hawks",
+    "away_abbr": "ATL",
+    "home_score": 120,
+    "away_score": 110,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-10-27T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU wins series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039788,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "FAIL. Four high-severity training-inference violations (VanVleet, Dort, Landale, Sheppard) introduce unverified player names not in input data. Additional tense/register drift throughout. Rewrite KEY PLAYS section entirely using only verified stats from input block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Fred VanVleet assists",
+          "fix": "Remove the specific assist attribution or replace with generic 'teammate assists' since VanVleet data is not provided."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Luguentz Dort makes two point shot",
+          "fix": "Remove this KEY PLAY reference entirely since Dort is not in the input roster or stats."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jock Landale assists",
+          "fix": "Remove specific name or replace with 'teammate assist' since Landale is not verified in input."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Reed Sheppard makes 25-foot three point jumper",
+          "fix": "Delete this KEY PLAY reference entirely."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Peran ganda sebagai anchor offense sekaligus distributor membuat Rockets sulit dihentikan ketika dia menguasai bola.",
+          "fix": "Simplify: 'Sengun jadi jangkar offense dan distributor bola — Rockets susah diimbangi kapan dia punya bola.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tapi kontribusi dua pemain teratas ini tidak cukup ketika seluruh roster HOU hadir malam itu.",
+          "fix": "Rewrite: 'Tapi HOU punya terlalu banyak sumber poin. Johnson dan McCollum sendirian tidak cukup.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "KEY PLAYS menunjukkan Q3 berjalan ketat.",
+          "fix": "'Q3 berjalan ketat' or 'Kuartal ketiga: pertarungan sengit.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Skor berganti-ganti: Durant free throw buat HOU unggul 67-66, Okongwu balas dengan dunk...",
+          "fix": "Break into separate sentences or short bullet list for clarity."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2cea5583e449c7e4",
+    "published_at": "2026-10-27T03:17:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
