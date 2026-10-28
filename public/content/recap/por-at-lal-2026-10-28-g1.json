@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "por-at-lal-2026-10-28-g1",
+  "title": "Recap Portland Trail Blazers 136-129 Los Angeles Lakers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs Los Angeles Lakers (136-129) di —, 28 October 2026.",
+  "body_md": "# Portland Tahan Badai Luka 41 Poin, Menang 136-129 atas Lakers\n\nPortland Trail Blazers menang 136-129 atas Los Angeles Lakers, Rabu 28 Oktober 2026. Kemenangan yang tidak mudah, Lakers sempat ancam di menit-menit akhir Q4, tapi POR punya cukup kedalaman untuk bertahan. Luka Doncic cetak 41 poin, tapi tidak cukup. Portland unggul 1-0 di regular season series ini.\n\n---\n\n## Top Performers\n\nDi sisi Portland, yang menonjol bukan satu nama, tapi empat sekaligus.\n\nDeni Avdija tampil sebagai pengatur ritme: 23 poin, 9 asis, shooting 8-15 dari lapangan dan 4-7 dari three-point line. Bukan stat line yang bikin headline, tapi dalam konteks kemenangan tim ini, perannya terasa. Ja Morant 23 poin dengan efisiensi tinggi, 9-13 dari lapangan. Ketika Morant hanya butuh 13 percobaan untuk cetak 23 poin, pertahanan lawan punya masalah nyata.\n\nJrue Holiday datang dari bench dan langsung berkontribusi: 22 poin, 8-12 dari lapangan. Itu penampilan starter dari seorang pemain bench. Damian Lillard 21 poin, 4-8 dari three-point line, dan Lillard punya peran penting di clutch time, tapi lebih soal itu nanti. Robert Williams III off the bench: 14 poin, 10 rebound, 6-8 dari lapangan. Double-double yang efisien.\n\nDi kubu Lakers, Luka Doncic lakukan segalanya yang bisa dia lakukan. 41 poin, 5 rebound, 9 asis, 12-22 dari lapangan, 6-15 dari three-point line. Volume besar, efisiensi wajar mengingat beban yang dia tanggung. Austin Reaves mendampingi dengan 26 poin, 4 rebound, 7 asis, shooting 4-8 dari three-point line. Dari bench, Sandro Mamukelashvili tambah 17 poin dengan 3-4 dari tiga angka.\n\nMasalah Lakers bukan di Luka atau Reaves. Masalahnya, tidak ada yang cukup untuk menutup gap yang dibuka Portland sejak awal.\n\n---\n\n## Apa yang Bicara di Stat Sheet\n\nDua angka yang menjelaskan hasil ini: three-point percentage dan poin di dalam area.\n\nPortland shooting 50% dari three-point line, 18-36. Lakers? 40%, 17-43. Portland tidak hanya lebih efisien dari jarak jauh, mereka juga lebih sedikit percobaan tapi dengan return lebih tinggi. Selisih di tiga angka itu yang membuka jarak.\n\nDi dalam area, Portland unggul 56-48 di poin dari zona paint. Robert Williams III kontribusi besar di sini, 14 poin dengan 6-8 dari lapangan, semuanya tanpa satu pun percobaan tiga angka. Kehadiran fisiknya membuat Portland punya dimensi yang Lakers tidak punya jawaban mudah.\n\nFast-break points Lakers unggul jauh, 22-10. Artinya Lakers punya lebih banyak kesempatan berlari balik dari turnover atau missed shot Portland. Tapi Portland cetak 56 poin di paint versus 48, dan three-point efficiency yang lebih tinggi menutup keunggulan transition itu.\n\nRebound: Portland 38, Lakers 31. Ketika tim menang rebounding battle sekaligus shooting percentage, biasanya hasil akhirnya sudah bisa ditebak.\n\n---\n\n## Clutch Time: Dua Menit yang Menentukan\n\nQ4 menit 3:38, skor masih dalam jangkauan. Lillard cetak tiga angka dari 24 kaki, Avdija assist, POR 124-121. Lillard tambah satu free throw, 125-121.\n\nLuka jawab langsung. 28-foot three, assist Mamukelashvili. 125-124. Tiba-tiba satu possession memisahkan dua tim.\n\nAvdija menjawab lagi: 28-foot three, assist Lillard. 128-124.\n\nZiaire Williams dari Lakers tidak menyerah, 24-foot three, assist Reaves. 128-127. Tiga poin tersisa, satu possession, semua orang berdiri.\n\nMorant tutup pertanyaan itu dengan dua cara berbeda. Menit 2:01: driving floating jump shot dari 11 kaki, 130-127. Menit 1:24: turnaround jump shot dari 6 kaki, 132-127. Dua basket, dua ketenangan.\n\nLuka cetak lagi, 8-foot pullup, 132-129. Tapi sisa waktu tidak cukup. Portland akhiri 136-129.\n\n---\n\n## Selanjutnya\n\nGame 2 regular season series ini masih terjadwal. Portland kini unggul 1-0. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909880",
+    "home_team": "Los Angeles Lakers",
+    "home_abbr": "LAL",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 129,
+    "away_score": 136,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-10-28T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.054445,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has strong structure and stat accuracy, but contains training-data inference (invented day-of-week), calqued English idioms ('tutup pertanyaan', 'ketika...punya masalah'), and one repeated soft-discouraged connector. Voice drifts toward academic hedging in analysis section. Fixable in regeneration; fails on day-of-week inference + idiom density.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Rabu 28 Oktober 2026",
+          "fix": "Remove day-of-week or verify from input data first. Use only: '28 Oktober 2026'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Morant tutup pertanyaan itu dengan dua cara berbeda.",
+          "fix": "Rephrase: 'Morant berada di depan untuk menjawab serangan Lakers' or simpler 'Morant ambil alih ritme.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Lakers sempat ancam di menit-menit akhir Q4, tapi POR punya cukup kedalaman untuk bertahan.",
+          "fix": "Tighten: 'Lakers ancam di Q4 akhir, tapi Portland punya kedalaman untuk bertahan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Masalah Lakers bukan di Luka atau Reaves. Masalahnya, tidak ada yang cukup untuk menutup gap yang dibuka Portland sejak awal.",
+          "fix": "Direct: 'Lakers punya penyerang, tapi bench mereka tidak bisa neutralisir kedalaman Portland.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya / Game 2 regular season series ini masih terjadwal.",
+          "fix": "Delete 'Selanjutnya' or rephrase: 'Game 2 regular season series masih terjadwal.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ketika Morant hanya butuh 13 percobaan untuk cetak 23 poin, pertahanan lawan punya masalah nyata.",
+          "fix": "Simplify: 'Morant cetak 23 poin dari 13 percobaan. Efisiensi itu tandanya pertahanan Lakers kebobolan.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Apa yang Bicara di Stat Sheet",
+          "fix": "Rephrase heading: 'Stat Sheet: Cerita di Balik Skor' or 'Dominasi di Tiga Angka.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Double-double yang efisien.",
+          "fix": "Context it: 'Double-double yang efisien: 14 poin dan 10 rebound' or just drop the label."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xb8cba9b7bc227562",
+    "published_at": "2026-10-28T06:09:58+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
