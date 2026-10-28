@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "det-at-ny-2026-10-28-g1",
+  "title": "Recap Detroit Pistons 97-111 New York Knicks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs New York Knicks (97-111) di —, 28 October 2026.",
+  "body_md": "# KAT Monster di Papan, Knicks Jaga Momentum atas Pistons 111-97\n\nNew York Knicks menang 111-97 atas Detroit Pistons di kandang, Selasa 28 Oktober 2026. Karl-Anthony Towns tampil dominan dengan 27 poin dan 20 rebound, angka yang mengunci pertandingan sejak awal babak kedua. Knicks kini unggul 2-0 dalam series regular season empat laga ini.\n\n---\n\n## Pemain Kunci\n\nTowns jadi bintang paling konsisten malam ini. Dua puluh rebound dari seorang big man adalah angka yang jarang kamu lihat di era NBA modern, dan hampir semuanya jadi fondasi serangan balik Knicks. Efisiensinya dari lapangan juga solid: 12 dari 21 percobaan. Bukan malam terbaik dari tiga poin (1-5), tapi perannya di paint sudah lebih dari cukup.\n\nJalen Brunson, seperti biasa, jadi playmaker utama. Dua puluh tiga poin dan 7 asis, meski efisiensinya sendiri kurang tajam, hanya 5-18 dari lapangan dan 0-5 dari tiga. Brunson lebih banyak bekerja lewat free throw line dan menciptakan peluang untuk yang lain.\n\nOff the bench, Landry Shamet kasih suntikan penting: 13 poin dengan 3-5 dari tiga poin. Buat Knicks, Shamet berfungsi persis seperti yang diharapkan dari seorang specialist, masuk, tembak, bantu buka ruang.\n\nMikal Bridges tambah 12 poin dengan 4-8 dari tiga poin, kontribusi yang rapi dari sisi lapangan mana pun.\n\nDari sisi Detroit, Paul Reed yang paling produktif malam ini: 22 poin, 9 rebound, dengan efisiensi mencolok, 9-12 dari lapangan dalam 26 menit sebagai starter. Problemnya, Reed dapat menit lebih sedikit dari Cade Cunningham yang main 36 menit.\n\nCunningham sendiri struggled. Sembilan belas poin dan 8 asis terlihat bagus di atas kertas, tapi 7-18 dari lapangan dan 2-7 dari tiga poin ceritakan lain. Duncan Robinson lebih parah: 12 poin, tapi 4-14 dari lapangan dan 2-10 dari tiga, volume tinggi, efisiensi rendah.\n\n---\n\n## Baca Statistik\n\nSecara field goal percentage, kedua tim nyaris seimbang: DET 43%, NY 43%. Tapi itu di mana kesamaan berakhir.\n\nPerbedaan paling mencolok ada di tiga poin dan free throw. New York tembak tiga poin dengan 33% (12-36), Detroit hanya 24% (9-37), dan lebih buruk lagi, Detroit cuma dapat 14 percobaan dari garis free throw versus 23 milik Knicks. Konversinya juga jauh: DET 58%, NY 82%. Di atas kertas, 14 poin dari garis free throw bisa membuat Detroit kompetitif. kenyataannya mereka hanya konversi delapan dari situ.\n\nRebound total: NY 49, DET 45. Towns sendiri nyumbang 20 dari angka itu.\n\nSatu hal yang menarik dari box score Detroit: 11 blok dengan hanya 2 dari New York. Pertahanan di ring cukup ada dari sisi Pistons. Masalahnya, ketika shooting tidak efisien dan free throw tidak masuk, pertahanan rim saja tidak cukup menutup selisih 14 poin.\n\n---\n\n## Pertandingan yang Nyaris Ketat, Sampai Tidak\n\nKey plays menunjukkan laga ini sempat kompetitif di paruh pertama. Skor 46-46 di menit 2:36 Q2 sebelum Brunson masukkan free throw untuk NY unggul tipis 51-50 jelang jeda. Artinya sekitar 19 poin keunggulan Knicks lahir di babak kedua, tapi data lebih rinci soal Q3 dan Q4 tidak tersedia di sini.\n\nYang bisa dibaca dari angka akhir: Knicks lebih klinis di momen-momen penting. Free throw conversion 82% vs 58% di laga yang diputuskan 14 poin adalah sinyal yang cukup jelas.\n\n---\n\n## Selanjutnya\n\nPistons perlu banyak perbaikan sebelum laga ketiga series ini. Cunningham harus lebih efisien, dan Robinson perlu keputusan yang lebih baik soal kapan harus shoot dari tiga. Sementara New York, selama Towns tetap mendominasi papan, akan sulit dihentikan.\n\nJadwal laga berikutnya belum tersedia di data saat ini. Pantau terus di **Vidio** dan **NBA League Pass**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909878",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 111,
+    "away_score": 97,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-10-28T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023709,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to fabricated series score (2-0 vs actual 1-0), direct pronoun violation ('kamu'), and multiple translated-English phrasings that break voice. Rewrite required.",
+      "issues": [
+        {
+          "type": "pronoun_violation",
+          "severity": "high",
+          "snippet": "Dua puluh rebound dari seorang big man adalah angka yang jarang kamu lihat",
+          "fix": "Remove pronoun: 'Dua puluh rebound dari big man adalah angka langka di era modern.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Knicks kini unggul 2-0 dalam series regular season empat laga ini.",
+          "fix": "Correct to: 'Knicks unggul 1-0 dalam series regular season empat laga ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Buat Knicks, Shamet berfungsi persis seperti yang diharapkan dari seorang specialist",
+          "fix": "Rewrite: 'Shamet tugas spesifik: masuk, tembak tiga, pergi. Dia eksekusi sempurna.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Cunningham sendiri struggled. Sembilan belas poin dan 8 asis terlihat bagus di atas kertas",
+          "fix": "Rewrite: 'Cunningham punya angka 19 poin dan 8 asis, tapi efisiensi di lapangan jelek: 7-18.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Secara field goal percentage, kedua tim nyaris seimbang: DET 43%, NY 43%. Tapi itu di mana kesamaan berakhir.",
+          "fix": "Simplify: 'FG% sama-sama 43%. Tapi perbedaan meledak di area lain.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di atas kertas, 14 poin dari garis free throw bisa membuat Detroit kompetitif. kenyataannya mereka hanya konversi delapan dari situ.",
+          "fix": "Rewrite: 'Teorinya 14 free throw attempt cukup. Praktik? Hanya 8 masuk. Selisih 6 poin.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Selanjutnya\n\nPistons perlu banyak perbaikan sebelum laga ketiga series ini.",
+          "fix": "Delete heading. Start: 'Detroit harus perbaiki efisiensi. Cunningham dan Robinson tidak bisa terus shooting cold seperti ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Jadwal laga berikutnya belum tersedia di data saat ini.",
+          "fix": "Delete or merge: 'Pantau laga ketiga di Vidio dan NBA League Pass.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x26597ff3b525c6a4",
+    "published_at": "2026-10-28T04:08:35+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

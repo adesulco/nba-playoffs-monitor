@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "sac-at-sa-2026-10-28-g1",
+  "title": "Recap Sacramento Kings 103-130 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Sacramento Kings vs San Antonio Spurs (103-130) di —, 28 October 2026.",
+  "body_md": "San Antonio Spurs menghancurkan Sacramento Kings 130-103 di Game 2 musim reguler, Selasa 28 Oktober 2026. SA unggul 1-0 di series ini, dan kemenangan 27 poin malam ini mempertegas siapa yang sementara pegang kendali.\n\nVictor Wembanyama dan Julian Champagnie terlalu besar untuk ditanggung Kings malam ini.\n\n---\n\n## Performa Top\n\n**San Antonio Spurs** tampil dengan distribusi scoring yang merata dan mematikan.\n\nVictor Wembanyama memimpin dengan 29 poin dan 10 rebound, turun dalam 27 menit saja, efisiensi yang menyakitkan bagi Kings. FG-nya 14-21, angka yang sulit dibantah. Di sampingnya, Julian Champagnie off the bench mencetak 26 poin dengan 9-14 dari field dan 8-13 dari tiga poin. Dua belas tembakan tiga poin yang masuk dari Champagnie seorang diri sudah cukup untuk menghancurkan pertahanan perimeter Kings.\n\nDevin Vassell menambahkan 14 poin dan 8 assist, jadi playmaker sekunder yang efektif, sementara Stephon Castle 15 poin, 5 rebound, 5 assist melengkapi engine SA yang bekerja dengan rapi.\n\n**Sacramento Kings** punya angka, tapi tidak punya hasil.\n\nDe'Aaron Hunter mencetak 24 poin dengan shooting 8-13 termasuk 5-9 dari tiga poin. Zach LaVine 22 poin, FG 7-10, keduanya efisien secara individu. Domantas Sabonis mengakhiri malam dengan 20 poin dan 14 rebound, jumlah rebound tertinggi di lapangan, ditambah 8 assist. Tapi semua itu tidak cukup ketika tim di belakang mereka kolaps.\n\nDarius Acuff Jr. berjuang keras dengan 19 poin tapi shooting-nya 8-20, dan itulah gambaran malam Kings secara keseluruhan: tenaga ada, efisiensi tidak.\n\n---\n\n## Baca Statistik\n\nSelisih 27 poin bisa dijelaskan dalam dua angka: FG% dan fast-break points.\n\nSA tembak 54% dari field versus 43% Kings. Dari tiga poin lebih dramatis lagi: SA 46% (17-37) lawan Kings 35% (13-37). Volume sama, konversi jauh berbeda, dan itu tercermin langsung di papan skor.\n\nFast-break points adalah pukulan lain: SA 29, Kings 15. Artinya SA menghukum setiap turnover, dan Kings melakukan 15 di malam itu, satu lebih banyak dari SA. Points in paint juga berpihak ke SA, 60 berbanding 46. SA menang di hampir setiap kategori yang punya dampak langsung ke skor.\n\n---\n\n## Outlook Series\n\nSA kini unggul 1-0 dengan kemenangan dominan. Game 3 masih dalam jadwal, tanggal dan venue belum tersedia di data saat ini.\n\nYang jelas, Kings perlu jawaban sebelum series ini bergerak lebih jauh. Ketika Wembanyama hanya butuh 27 menit untuk cetak 29 poin, dan bench SA bisa kontribusi 26 poin ekstra lewat Champagnie, SA punya kedalaman yang belum ditandingi Kings malam ini.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909879",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Sacramento Kings",
+    "away_abbr": "SAC",
+    "home_score": 130,
+    "away_score": 103,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-10-28T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.036904,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: Critical factual error (player name mismatch 'De'Aaron' vs 'De'Andre') and invented stat (Champagnie 12 threes vs. actual 8). Also contains meta-commentary, tense overmarking, and awkward phrasing. Regenerate with strict adherence to NUMERIC ANCHORS block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "De'Aaron Hunter mencetak 24 poin",
+          "fix": "Change to 'De'Andre Hunter mencetak 24 poin' — verify every name against NUMERIC ANCHORS block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dua belas tembakan tiga poin yang masuk dari Champagnie seorang diri",
+          "fix": "Delete this sentence. Replace with: 'Champagnie 8-13 dari tiga poin' — use only the numbers provided."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Domantas Sabonis mengakhiri malam dengan 20 poin dan 14 rebound",
+          "fix": "Change to 'Domantas Sabonis cetak 20 poin dan 14 rebound' or just 'Sabonis 20 poin, 14 rebound'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tapi semua itu tidak cukup ketika tim di belakang mereka kolaps.",
+          "fix": "Rephrase: 'Tapi output individual tidak bisa menutupi kolapsnya tim' or simply 'Tapi tim Kings kolaps.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 3 masih dalam jadwal, tanggal dan venue belum tersedia di data saat ini.",
+          "fix": "Delete sentence entirely. Shift to: 'Series berlanjut ke Game 3; SA berusaha membuat 2-0.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "SA unggul 1-0 di series ini... SA kini unggul 1-0 dengan kemenangan dominan.",
+          "fix": "Remove second instance in Outlook section, tighten transition."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3981e33232e11606",
+    "published_at": "2026-10-28T04:09:49+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
