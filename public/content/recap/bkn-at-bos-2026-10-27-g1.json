@@ -1,0 +1,133 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-bos-2026-10-27-g1",
+  "title": "Recap Brooklyn Nets 124-125 Boston Celtics (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Boston Celtics (124-125) di —, 27 October 2026.",
+  "body_md": "# Tatum 40 Poin, Celtics Kalahkan Nets 125-124 di Overtime\n\nBoston Celtics bertahan hidup di overtime, menang 125-124 atas Brooklyn Nets, Selasa 28 Oktober 2026. Jayson Tatum jadi penentu dengan 40 poin, dan tembakan paling krusial jatuh di detik terakhir.\n\n---\n\n## Momen Penentu\n\nOvertime berlangsung seperti thriller. Nets sempat unggul 124-119 setelah Mikel Brown Jr. menjebol tembakan tiga poin dari jarak 32 kaki di menit ketiga overtime. BOS tertinggal lima poin, waktu tersisa sekitar dua menit.\n\nTatum tidak panik. Dua free throw mendekatkan jarak menjadi 124-121. Paul George menyusul dengan dua free throw lagi, 124-123. Kemudian, dengan waktu habis, Tatum melepas *17-foot turnaround jump shot* yang masuk bersih: 125-124 untuk Boston.\n\nPertandingan selesai.\n\n---\n\n## Tatum dan Beban Ofensif BOS\n\n40 poin, 5 rebound, 8 asis, Tatum menanggung mayoritas beban ofensif Boston sepanjang laga. FG 10-20, cukup efisien untuk volume setinggi itu. Dari tiga poin dia hanya 2-7, artinya sebagian besar poin datang dari mid-range dan drive, dan dua poin paling penting malam ini datang dari *turnaround* di buzzer.\n\nPaul George mengisi ruang yang tersisa: 20 poin, 7 rebound, 7 asis dengan FG 8-16. Bukan triple-double, tapi kontribusinya lintas tiga kategori terasa. Dua free throw-nya di 1:02 tersisa menjaga BOS tetap dalam jangkauan.\n\nDerrick White 16 poin, 5 rebound, 6 asis. Jordan Walsh 15 poin dengan FG 5-8 yang efisien, termasuk 3-5 dari tiga poin. Sam Hauser off the bench menyumbang 11 poin, 3-8 dari luar.\n\n---\n\n## Porter Jr. Nyaris Cukup untuk BKN\n\nMichael Porter Jr. tampil luar biasa: 27 poin, 12 rebound, FG 8-16 dengan 6 tembakan tiga poin masuk dari 12 percobaan. Dia jadi satu-satunya pemain Nets yang secara konsisten menemukan ritme sepanjang 40 menit reguler plus overtime.\n\nJulius Randle mengumpulkan 24 poin dan 9 rebound, tapi FG-nya berat, 10-23, dan 0-7 dari tiga poin di laga ini. Volume besar, efisiensi tidak mengikuti. Mikel Brown Jr. 17 poin off the bench dengan 5 asis, dan tembakan 32 kakinya di overtime sempat membuat Nets hampir menang.\n\nNolan Traore dan Chaney Johnson masing-masing 15 poin, kedalaman roster BKN terasa malam ini.\n\n---\n\n## Apa yang Membedakan\n\nDari statistik tim, kedua tim hampir setara: BKN 46-97 FG (46%), BOS 42-93 (45%). Dari tiga poin, justru Nets lebih tajam, 17-50 (34%) vs BOS 11-41 (27%).\n\nYang membedakan: *free throw* dan *points in paint*.\n\nBOS ke garis 30 kali, BKN 22 kali. BOS konversi 30 dari 38 (79%), BKN 17 dari 22 (77%). Keunggulan ke garis itu yang menjaga Boston tetap kompetitif saat tembakan dari luar tidak jatuh.\n\nDi area paint, BOS unggul 52-46. Di turnover, BOS lebih rapi, 14 vs 16 milik Nets.\n\n---\n\n## Selanjutnya\n\nIni Game 2 dari regular season series BKN vs BOS, dan Boston kini unggul 1-0. Game berikutnya belum tercantum di data yang tersedia.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909877",
+    "home_team": "Boston Celtics",
+    "home_abbr": "BOS",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 125,
+    "away_score": 124,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-10-27T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BOS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.071127,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article is factually accurate and mostly natural in voice, but suffers from academic drift in stat paragraphs, some filler hedging ('artinya', 'lintas tiga kategori terasa'), and a weak closing. Paul George paragraph tangent and 'Apa yang Membedakan' section structure need rework. Fails on account of high-severity issues in clarity and efficiency.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dari tiga poin dia hanya 2-7, artinya sebagian besar poin datang dari mid-range dan drive",
+          "fix": "Rewrite: 'Tatum dominan mid-range dan drive, bukan bomber tiga poin (2-7).'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Dari statistik tim, kedua tim hampir setara: BKN 46-97 FG (46%), BOS 42-93 (45%). Dari tiga poin, justru Nets lebih tajam",
+          "fix": "Delete 'Dari statistik tim,' and start: 'Secara FG, BKN 46-97 (46%), BOS 42-93 (45%).'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Michael Porter Jr. tampil luar biasa: 27 poin, 12 rebound... Dia jadi satu-satunya pemain Nets yang secara konsisten menemukan ritme",
+          "fix": "Delete 'tampil luar biasa'; let the 27/12 and 8-16 FG speak. Then: 'Porter Jr. satu-satunya Nets yang ritme konsisten.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Bukan triple-double, tapi kontribusinya lintas tiga kategori terasa.",
+          "fix": "Delete sentence. The 20/7/7 stats already show his balanced contribution."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Ini Game 2 dari regular season series BKN vs BOS, dan Boston kini unggul 1-0. Game berikutnya belum tercantum di data yang tersedia.",
+          "fix": "Delete the 'Game berikutnya' sentence. End with: 'Boston unggul 1-0 dalam series reguler musim ini.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Dari tiga poin, justru Nets lebih tajam, 17-50 (34%) vs BOS 11-41 (27%). Yang membedakan: free throw dan points in paint.",
+          "fix": "Restructure: Lead with 'Free throw dan paint dominasi Boston, bukan tembakan tiga poin.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Tatum tidak panik. Dua free throw mendekatkan jarak menjadi 124-121.",
+          "fix": "Optional: 'Dua free throw, 124-121.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe5be43f91447422a",
+    "published_at": "2026-10-28T02:36:40+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 82,
+      "headline_comment": "Clear, punchy, mencantumkan angka kunci dan konteks overtime via skor; standar recap NBA yang solid meski bisa lebih tajam.",
+      "lead_score": 80,
+      "lead_comment": "Lead efisien dan langsung ke inti — overtime, skor, hero Tatum, buzzer — tapi tidak menyebut buzzer-beater secara eksplisit padahal itu angle terkuat.",
+      "structure_score": 82,
+      "structure_comment": "Alur logis: momen penentu → hero BOS → hero BKN → stat pembeda → selanjutnya; porsi tiap bagian seimbang untuk recap 500-kata.",
+      "voice_score": 76,
+      "voice_comment": "Mayoritas natural dan terkontrol, tapi beberapa frasa (\"menanggung mayoritas beban ofensif\", \"kedalaman roster BKN terasa\") terasa agak kaku dan hedge.",
+      "suggestion_count": 6,
+      "summary": "Solid recap with correct numbers and clean structure, but buries its biggest angle (buzzer-beater at 0.0) and swallows an internal data contradiction about series state. Quick editor pass to sharpen the lead, fix the series framing, and cut two hedge-y closing lines gets this to ship.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Kemudian, dengan waktu habis, Tatum melepas 17-foot turnaround jump shot yang masuk bersih",
+          "issue": "Momen buzzer-beater dengan sisa 0.0 detik adalah angle terbesar laga ini tapi tidak diframe sebagai buzzer-beater — pembaca kehilangan dramatic weight.",
+          "fix": "Sebut eksplisit \"buzzer-beater\" dan tegaskan 0.0 detik tersisa: \"Dengan 0.0 di jam, Tatum melepas turnaround 17-foot — masuk. Buzzer-beater, 125-124.\""
+        },
+        {
+          "priority": "high",
+          "snippet": "Ini Game 2 dari regular season series BKN vs BOS, dan Boston kini unggul 1-0.",
+          "issue": "Kontradiksi data: input menyebut \"Game number: 2 of 4\" tapi juga \"BOS leads series 1-0\" — artikel menelan kontradiksi itu bulat-bulat tanpa flag.",
+          "fix": "Pilih framing paling aman: skip klaim game number, cukup \"Boston unggul 1-0 di season series empat laga antara kedua tim.\""
+        },
+        {
+          "priority": "medium",
+          "snippet": "Kedalaman roster BKN terasa malam ini.",
+          "issue": "Kalimat penutup paragraf yang hedge dan tidak membawa muatan baru — ciri AI closing.",
+          "fix": "Ganti dengan observasi konkret atau potong total: \"Lima pemain BKN double-digit, tapi tak satu pun bisa menyamai dampak Tatum di overtime.\""
+        },
+        {
+          "priority": "medium",
+          "snippet": "Tatum menanggung mayoritas beban ofensif Boston sepanjang laga.",
+          "issue": "Frasa \"menanggung beban ofensif\" adalah cliché sportswriting Indonesia yang drift ke formal.",
+          "fix": "Lebih langsung: \"Tatum mengambil 20 shot — paling banyak di tim — dan 40 poinnya menyumbang hampir sepertiga total BOS.\""
+        },
+        {
+          "priority": "medium",
+          "snippet": "Overtime berlangsung seperti thriller.",
+          "issue": "\"Seperti thriller\" adalah telling, bukan showing — gates tidak flag tapi editor senior akan.",
+          "fix": "Hapus kalimat ini. Paragraf berikutnya sudah menunjukkan drama lewat urutan skor; biarkan fakta yang bicara."
+        },
+        {
+          "priority": "low",
+          "snippet": "Game berikutnya belum tercantum di data yang tersedia.",
+          "issue": "Meta-komentar tentang keterbatasan data terdengar seperti AI mengakui input gap — pembaca tidak perlu tahu itu.",
+          "fix": "Potong kalimat ini sepenuhnya; langsung ke info siaran."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
