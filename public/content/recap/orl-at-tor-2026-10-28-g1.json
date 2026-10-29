@@ -1,0 +1,38 @@
+{
+  "type": "recap",
+  "slug": "orl-at-tor-2026-10-28-g1",
+  "title": "Recap Orlando Magic 99-129 Toronto Raptors (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Toronto Raptors (99-129) di —, 28 October 2026.",
+  "body_md": "# Toronto Raptors Hajar Orlando Magic 129-99, Barnes dan Barrett Tampil Dominant\n\nToronto Raptors menang telak atas Orlando Magic 129-99 di kandang Toronto, Kamis 29 Oktober 2026. Barnes 28 poin dan Barrett 25 poin memastikan Toronto menang dengan margin 30 poin, keunggulan besar di semua lini.\n\n---\n\n## Top Performers\n\n**Scottie Barnes** jadi penggerak utama Toronto. Dari 11-17 field goal, Barnes mengakhiri malam dengan 28 poin, 6 rebound, 4 asis. Efisiensi tinggi dari wing berpostur besar yang dimainkan dalam flow cepat sistem Toronto.\n\n**RJ Barrett** tampil dengan stat line paling lengkap malam ini: 25 poin, 9 rebound, 6 asis. Barrett 9-18 dari lapangan dan 3-7 dari three-point line, kontribusinya di dua sisi lapangan sulit dibantah.\n\nDari bench, **Jamal Shead** menambah 13 poin, 4 rebound, dan 7 asis hanya dalam 23 menit. **Immanuel Quickley** menyumbang 16 poin dan 7 asis. Toronto punya kedalaman rotasi yang terasa nyata malam ini, dua pemain dengan 7 asis masing-masing adalah tanda distribusi bola yang sehat.\n\nDi sisi Orlando, **Tristan da Silva** jadi satu-satunya pemain yang tampil efisien: 20 poin dari 8-10 field goal dan 4-5 dari tiga angka, keluar dari bench dalam 31 menit. Tapi kontribusinya tidak cukup menutup kolaps kolektif. **Franz Wagner** (15 poin, 5 asis) dan **Desmond Bane** (13 poin) berjuang dengan tembakan, Wagner 4-11, Bane hanya 3-14 dari lapangan.\n\n---\n\n## Apa yang Membedakan\n\nToronto 50% FG vs Orlando 41%. Tapi beda terbesar di three-point: Toronto 43% (15-35), Orlando 29% (10-35). Keduanya melempar volume yang sama dari luar, hasilnya berbeda lima tembakan masuk—di level ini, selisih itu menentukan.\n\nRebound: 45 vs 34 untuk Toronto. Turnovers: Magic buang 20 bola vs 15 Toronto. Dua angka ini memberi Toronto lebih banyak possession sepanjang malam, dan mereka mengonversinya ke fast-break points 23 vs 12, lebih dari dua kali lipat. Magic bukan tim yang bisa bertahan dalam laga possession terbuka yang bergerak cepat.\n\nSteals juga timpang: Toronto 15 vs Orlando 8. Lima belas steal dalam satu laga itu angka ekstrem, artinya ball movement Orlando tidak aman dan transisi Toronto terus terancam dari awal serangan lawan.\n\n---\n\n## Catatan Laga\n\nLaga ketat di awal sebelum Toronto lepas kendali. Margin melebar sejak Q2. Orlando mencatat 20 turnover, angka yang tidak bisa ditambal dengan tembakan bagus dari bench.\n\n---\n\n## Selanjutnya\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909885",
+    "home_team": "Toronto Raptors",
+    "home_abbr": "TOR",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 129,
+    "away_score": 99,
+    "winner_abbr": "TOR",
+    "kickoff_utc": "2026-10-28T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "TOR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.026141,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 0,
+      "summary": "",
+      "issues": []
+    },
+    "plagiarism_hash": "0x7a51e3966049fca2",
+    "published_at": "2026-10-29T02:14:08+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

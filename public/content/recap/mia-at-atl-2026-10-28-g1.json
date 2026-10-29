@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "mia-at-atl-2026-10-28-g1",
+  "title": "Recap Miami Heat 129-117 Atlanta Hawks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Miami Heat vs Atlanta Hawks (129-117) di —, 28 October 2026.",
+  "body_md": "# Miami Heat Libas Atlanta Hawks 129-117, Giannis Jadi Mesin Ganda\n\nMiami Heat menang 129-117 atas Atlanta Hawks di Game 2 Regular Season Series, Kamis 29 Oktober 2026. Dengan kemenangan ini, MIA unggul 1-0 dalam series. Dua mesin Heat di pos besar tampil dominan, Giannis Antetokounmpo dan Bam Adebayo sama-sama cetak 24 poin, sementara Atlanta tidak punya jawaban untuk serangan di area paint sepanjang malam.\n\n---\n\n## Top Performers\n\nDi sisi Miami, Giannis Antetokounmpo jadi anchor dengan 24 poin dan 18 rebound dalam 31 menit, double-double yang brutal, khususnya di area rebounding. Efisiensinya cukup solid: 11-18 dari lapangan, meski nol dari dua percobaan three-pointer. Bam Adebayo melengkapi double-act itu dengan 24 poin dan 9 rebound, FG 8-16.\n\nAndrew Wiggins menambah 18 poin dengan tembakan tiga angka yang efisien, 4-7 from three, total FG 6-9 dalam 29 menit sebagai starter. Dari bangku cadangan, Pelle Larsson tampil serba bisa dengan 17 poin, 6 rebound, dan 8 asis. Tim Hardaway Jr. menyumbang 14 poin off the bench dengan 2-3 from three.\n\nAtlanta kesulitan menemukan konsistensi. Nickeil Alexander-Walker dan Kingston Flemings sama-sama cetak 23 poin, tapi butuh banyak percobaan, Alexander-Walker 8-18 dari lapangan. Yang paling lengkap secara stat line justru Jalen Johnson: 12 poin, 9 rebound, 11 asis, double-double dengan produktivitas assist yang tinggi namun belum cukup mengangkat Hawks. Kingston Flemings tampil efisien dari bench, 9-12 FG dan 3-5 from three dalam 28 menit.\n\n---\n\n## Baca Statistik\n\nMiami mendominasi dua area yang paling menentukan malam ini: paint dan rebounding.\n\nDi area paint, Heat unggul 70-52, selisih 18 poin yang mencerminkan betapa sulitnya Atlanta membendung Giannis dan Adebayo di dekat ring. Fast-break points juga berpihak ke MIA: 21 berbanding 13, artinya transisi Miami lebih tajam dan lebih sering menghasilkan angka mudah.\n\nDari rebounding, MIA menguasai 52 berbanding 40, selisih 12 yang konsisten dengan 18 rebound Giannis sendirian. Ketika satu pemain saja nyaris menyamai total rebound tiga pemain lawan teratas, itu masalah struktural buat Atlanta.\n\nMenariknya, Atlanta justru sedikit unggul dalam tembakan tiga angka: 42% (16-38) berbanding 38% Miami (11-29). Tapi MIA membalas dengan free throw yang lebih banyak, 16-23 versus 9-14, dan field goal percentage yang lebih tinggi: 53% (51-96) vs 48% (46-96). Heat juga unggul steal 9-6 dan blok 7-6, menjaga tekanan defensif sepanjang pertandingan.\n\n---\n\n## Momen Kunci\n\nQuarter pertama sempat berjalan ketat. Atlanta sempat memimpin 14-12 setelah balas dengan driving layup melalui umpan terobosan, tapi tidak bertahan lama. Andrew Wiggins balas dengan three-pointer untuk balik unggul 18-17, dan dari sana Miami tidak pernah benar-benar terkejar.\n\nDi quarter empat dengan skor 109-104, Johnson cetak driving layup untuk memangkas jarak jadi 5 poin, sejenak Atlanta punya celah. Okongwu kemudian masuk dengan three-pointer untuk menjawab dan memangkas defisit. Namun Miami kembali menutup setiap peluang Atlanta, termasuk Giannis ke garis free throw di menit 6:06 kuarter keempat untuk menjaga jarak. Atlanta tidak pernah benar-benar memotong cukup jauh untuk mengancam secara serius.\n\n---\n\n## Selanjutnya\n\nGame 3 Regular Season Series belum tercantum di data. Pantau jadwal lengkapnya di NBA League Pass dan Vidio. MIA unggul 1-0. Dua tim masih punya tiga game tersisa di series ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909881",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Miami Heat",
+    "away_abbr": "MIA",
+    "home_score": 117,
+    "away_score": 129,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-10-28T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.05019,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on two high-severity training-inference errors: series standing logic (1-0 after game 2 of 4) and day-of-week mismatch (Oct 29, 2026 is Wednesday, not Thursday). Also academic drift and soft-phrase repetition. Data accuracy is compromised.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dengan kemenangan ini, MIA unggul 1-0 dalam series.",
+          "fix": "Delete or rewrite: 'MIA kini memimpin series 1-0' is confusing. Clarify this is game 2 of 4 matchups."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kamis 29 Oktober 2026",
+          "fix": "Change to 'Rabu 29 Oktober 2026' or remove day-of-week and just cite date + time."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dari rebounding, MIA menguasai 52 berbanding 40, selisih 12 yang konsisten dengan 18 rebound Giannis sendirian.",
+          "fix": "Simplify: 'Giannis sendiri nyaris setara dengan total rebound Atlanta 18 vs 40'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Quarter pertama sempat berjalan ketat. Atlanta sempat memimpin 14-12 setelah balas dengan driving layup melalui umpan terobosan, tapi tidak bertahan lama.",
+          "fix": "Merge: 'Q1 ketat. Atlanta memimpin 14-12 sebentar via driving layup, tapi Wiggins balas three untuk MIA 18-17'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Andrew Wiggins menambah 18 poin dengan tembakan tiga angka yang efisien",
+          "fix": "Vary: 'Wiggins punchy dengan three-pointer (4-7)', remove one 'efisien' usage."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Menariknya, Atlanta justru sedikit unggul dalam tembakan tiga angka: 42% (16-38) berbanding 38% Miami (11-29).",
+          "fix": "Remove 'Menariknya': 'Atlanta justru unggul three-point %: 42% (16-38) vs 38% MIA (11-29)'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Game 3 Regular Season Series belum tercantum di data. Pantau jadwal lengkapnya di NBA League Pass dan Vidio.",
+          "fix": "Just cite broadcast: 'Tayang NBA League Pass dan Vidio. Game 3 penuh schedule, pantau jadwal.'  Or omit 'next game' section if unknown."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xee5a35a39449d4a4",
+    "published_at": "2026-10-29T02:08:57+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
