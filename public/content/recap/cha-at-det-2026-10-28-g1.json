@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "cha-at-det-2026-10-28-g1",
+  "title": "Recap Charlotte Hornets 89-97 Detroit Pistons (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Charlotte Hornets vs Detroit Pistons (89-97) di —, 28 October 2026.",
+  "body_md": "## Detroit Pistons Redam Charlotte, Cade Cunningham Jaga Ritme\n\nDetroit Pistons menang 97-89 atas Charlotte Hornets, Kamis 29 Oktober 2026. Kemenangan tandang ini membuat DET unggul 1-0 di regular season series, dan keunggulan itu dibangun di atas satu hal: mereka mengelola bola jauh lebih baik dari tuan rumah.\n\n---\n\n## Dua Bintang, Dua Gaya\n\nCade Cunningham dan Brandon Miller sama-sama tampil di level tinggi malam ini. Tapi outputnya berbeda cerita.\n\nMiller mencetak 31 poin, 12 rebound, 3 asis untuk Charlotte, statline yang di atas kertas luar biasa. Masalahnya, dia butuh 26 field goal attempt untuk sampai ke sana, FG 12-26. Efisiensinya bisa diperdebatkan, terutama dari tiga poin: 3-10.\n\nCunningham lebih efisien secara kontribusi tim. 30 poin, 5 rebound, 7 asis, dengan FG 10-22 dan 4-9 dari tiga. Tujuh asis menunjukkan Cunningham tidak hanya nyari poinnya sendiri. dia yang menggerakkan Detroit.\n\nDi belakang dua nama besar itu, Detroit punya kedalaman yang Charlotte tidak bisa tandingi. Paul Reed 16 poin dari posisi starter (FG 5-7, sangat efisien). Daniss Jenkins masuk dari bench, cetak 14 poin dengan FG 6-10. Duncan Robinson tambah 13 poin. Tiga pemain tambahan 40+ poin combined, Charlotte hanya punya Schroder sebagai penyumbang berarti kedua dengan 14 poin.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nSatu stat menonjol di atas semua yang lain: turnover.\n\nCharlotte buang bola 25 kali. Detroit hanya 14. Selisih 11 turnover di level Playoffs, atau di mana pun, hampir mustahil dikompensasi. Detroit memanfaatkannya dengan 13 steal malam ini versus 7 milik Charlotte.\n\nDari efisiensi tiga poin juga Detroit unggul: 39% (13-33) vs Charlotte 34% (12-35). Margin tipis, tapi konsisten dengan siapa yang menang.\n\nSatu catatan yang menguntungkan Charlotte: rebound. CHA menguasai 45 rebound vs DET 33, dominan di papan. Tapi turnover yang berlebihan membuat keunggulan rebound itu tidak pernah jadi momentum nyata.\n\nAusar Thompson versi malam ini mencerminkan peran yang dia emban: 7 poin bukan angka yang mencolok, tapi 9 rebound dan 8 asis, dua digit dari triple-double, menunjukkan kontribusinya melampaui scoresheet.\n\n---\n\n## Babak Keempat: Charlotte Tak Pernah Cukup Dekat\n\nKEY PLAYS menunjukkan Charlotte sempat berjuang di Q4. Miller cetak running layup (skor 79-82). Grayson Allen tembak tiga dari 23 kaki (86-91). Schroder tutup dengan tiga poin dari 29 kaki (89-94), tapi saat itu sisa waktu sudah di bawah satu menit dan defisit tetap lima angka.\n\nDetroit tidak pernah melepaskan kendali cukup lama untuk Charlotte kembali ke permainan. Keunggulan Detroit di assist (26 vs 17) mencerminkan tim yang bergerak dengan sistem, bukan individu yang mencoba menyelamatkan situasi satu per satu.\n\n---\n\n## Selanjutnya\n\nRegular season series DET vs CHA berlanjut, Detroit kini pegang keunggulan 1-0. Pertandingan berikutnya belum tercantum di data yang tersedia. Pantau jadwal lengkap di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909883",
+    "home_team": "Detroit Pistons",
+    "home_abbr": "DET",
+    "away_team": "Charlotte Hornets",
+    "away_abbr": "CHA",
+    "home_score": 97,
+    "away_score": 89,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-10-28T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DET leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040049,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to one high-severity calqued English idiom and structural integrity issues (KEY PLAYS label break, weak closing paragraph). Tense discipline is acceptable; pronoun rules followed. Rewrite the problematic passages and delete or strengthen 'Selanjutnya' section.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Tapi outputnya berbeda cerita.",
+          "fix": "Rewrite: 'Tapi cara mereka nyampe sana jauh beda.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "statline yang di atas kertas luar biasa",
+          "fix": "Delete 'di atas kertas' or rewrite: 'Angkanya memang besar.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Tujuh asis menunjukkan Cunningham tidak hanya nyari poinnya sendiri. dia yang menggerakkan",
+          "fix": "Capitalize: 'Dia yang menggerakkan'. Flow is acceptable on reread."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Tapi turnover yang berlebihan membuat keunggulan rebound itu tidak pernah jadi momentum nyata.",
+          "fix": "Rewrite: 'Tapi 11 turnover lebih menghancurkan dari 12 rebound lebih.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "dua digit dari triple-double, menunjukkan kontribusinya melampaui scoresheet",
+          "fix": "Rewrite: '9 rebound dan 8 asis menunjukkan kontribusinya...' — drop the triple-double reference."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "KEY PLAYS menunjukkan Charlotte sempat berjuang di Q4.",
+          "fix": "Rewrite: 'Charlotte sempat berjuang di Q4 dengan Miller, Allen, Schroder masing-masing...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Delete entire section or merge into closing sentence of previous paragraph."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Cade Cunningham dan Brandon Miller sama-sama tampil di level tinggi malam ini.",
+          "fix": "Rewrite: 'Cunningham dan Miller sama-sama cemerlang malam ini.' — more conversational."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0df3759b20cfec9c",
+    "published_at": "2026-10-29T02:40:44+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 70,
+      "headline_comment": "Fungsional dan jelas, tapi 'Jaga Ritme' agak lemah — tidak menangkap sudut turnover yang jadi tulang punggung artikel.",
+      "lead_score": 82,
+      "lead_comment": "Lead kuat: skor, tanggal, series state, dan angle (ball management) semua masuk di dua kalimat — tapi 'regular season series' bentrok dengan judul kategori 'NBA Playoffs 2026' di input.",
+      "structure_score": 80,
+      "structure_comment": "Alur masuk akal (duel bintang → statistik kunci → Q4 → next), tapi section 'Angka yang Menjelaskan Segalanya' overlap dengan 'Dua Bintang' soal depth DET.",
+      "voice_score": 78,
+      "voice_comment": "Code-switching natural (field goal attempt, starter, bench, triple-double), tense discipline bagus; tapi 'statline yang di atas kertas luar biasa' dan 'Angka yang Menjelaskan Segalanya' terasa sedikit over-dramatic untuk NBA voice.",
+      "suggestion_count": 6,
+      "summary": "Solid draft with strong statistical grounding and clean numerical accuracy, but needs editor pass to fix one typo, two phrasings that leak AI/input artifacts, and resolve the playoffs-vs-regular-season inconsistency in the lead.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Kemenangan tandang ini membuat DET unggul 1-0 di regular season series",
+          "issue": "Input LIGA menyebut 'NBA Playoffs 2026' tapi SERIES STATE bilang 'Regular Season Series' — artikel pilih yang kedua, tapi tidak menjelaskan konteksnya; pembaca bingung ini playoff atau bukan.",
+          "fix": "Hapus frasa 'regular season series' atau ganti jadi 'head-to-head musim ini' agar tidak bentrok dengan ekspektasi playoff."
+        },
+        {
+          "priority": "high",
+          "snippet": "Tiga pemain tambahan 40+ poin combined, Charlotte hanya punya Schroder sebagai penyumbang berarti kedua dengan 14 poin.",
+          "issue": "Kalimat berantakan secara sintaksis — 'tambahan 40+ poin combined' terjemahan kaku, dan transisi ke Schroder tanpa konjungsi.",
+          "fix": "Rewrite: 'Tiga pemain itu menyumbang 43 poin kombinasi. Di kubu Charlotte, Schroder cuma kontributor kedua yang berarti dengan 14 poin.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "dia yang menggerakkan Detroit.",
+          "issue": "Period hilang sebelum 'dia' — kalimat sebelumnya diakhiri titik lalu huruf kecil; typo editorial.",
+          "fix": "Kapitalisasi 'Dia' atau sambung dengan koma: 'nyari poinnya sendiri, dia yang menggerakkan Detroit.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Angka yang Menjelaskan Segalanya",
+          "issue": "Judul section hiperbolik dan generic — khas AI yang mencoba sound dramatic.",
+          "fix": "Ganti ke sudut spesifik: 'Turnover 25 vs 14' atau 'Charlotte Buang Bola Terlalu Sering'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Pertandingan berikutnya belum tercantum di data yang tersedia.",
+          "issue": "Breaks the fourth wall — pembaca tidak perlu tahu soal 'data yang tersedia'; terdengar seperti AI confession.",
+          "fix": "Hapus kalimat ini, atau ganti: 'Jadwal game berikutnya menyusul.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "KEY PLAYS menunjukkan Charlotte sempat berjuang di Q4.",
+          "issue": "Referensi 'KEY PLAYS' all-caps bocor dari input data — tidak ada pembaca yang tahu apa itu KEY PLAYS.",
+          "fix": "Ganti: 'Charlotte sempat berjuang di kuarter empat.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

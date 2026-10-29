@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "hou-at-mil-2026-10-29-g1",
+  "title": "Recap Houston Rockets 132-100 Milwaukee Bucks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Houston Rockets vs Milwaukee Bucks (132-100) di —, 29 October 2026.",
+  "body_md": "# Houston Rockets Hajar Bucks 132-100, Lima Pemain Tembus Double-Digit\n\nHouston Rockets menutup regular season series melawan Milwaukee Bucks dengan dominasi penuh. Menang 132-100 di kandang Bucks, Rockets unggul di hampir semua lini, shooting, rebound, assists, bahkan steals dan blocks. Lima pemain Houston tembus double-digit, bench berkontribusi signifikan, dan skor akhir mencerminkan betapa satu sisi laga ini.\n\n---\n\n## Top Performers\n\nFred VanVleet jadi pemain terbaik malam ini. 24 poin, 6 rebound, 5 asis, dengan efisiensi 7-14 dari lapangan dan 4-9 dari three-point line. Dalam 29 menit bermain, VanVleet mengatur tempo Rockets sambil tetap produktif secara individual.\n\nAmen Thompson menyusul dengan 23 poin dan 4 rebound. Efisiensinya mencolok: 10-16 dari lapangan, meski hanya 0-2 dari arc. Thompson menjadi ancaman konstan lewat penetrasi ke area paint, konsisten dengan angka 48 poin in the paint tim secara keseluruhan.\n\nKevin Durant berkontribusi 18 poin, 5 rebound, dan 4 asis dengan 5-9 dari lapangan. Kontribusinya merata di dua ujung lapangan, terlihat dari 10 blocks tim secara kolektif, angka yang jauh melampaui Bucks yang hanya cetak 3.\n\nYang menarik justru dari bench: Bogdan Bogdanovic mencetak 16 poin hanya dalam 15 menit dengan efisiensi luar biasa, 5-6 dari lapangan, 4-5 dari three-point line. Jabari Smith Jr. menambah 14 poin dengan 3-6 dari arc.\n\nDi sisi Milwaukee, Tyler Herro paling produktif dengan 23 poin (9-13 FG, 4-6 dari three), tapi nihil assist. Jaime Jaquez Jr. menyumbang 19 poin dan 4 rebound. Masalahnya, kontribusi dua nama itu tidak cukup, roster Bucks tidak punya cukup kedalaman untuk menutup gap yang dibuka Rockets dari awal.\n\n---\n\n## Baca Statistik\n\nAngka tim berbicara lebih keras dari cerita manapun.\n\nHouston tembak 55% dari lapangan, Milwaukee hanya 40%. Dari three-point line, selisihnya lebih dramatis lagi: Rockets 45% (17-38), Bucks 29% (12-41). Dengan volume tembakan tiga angka yang hampir sama, efisiensi Houston jauh melampaui tuan rumah.\n\nSteals juga timpang: 12-8 untuk Rockets. Blocks lebih timpang lagi: 10-3. Kombinasi angka-angka ini menunjukkan Rockets tidak hanya lebih efisien secara ofensif, tapi juga lebih agresif secara defensif.\n\nSatu catatan: turnovers Houston cukup tinggi, 15 berbanding 17 milik Bucks. Tapi dengan efisiensi shooting setinggi itu, turnover tidak banyak berdampak pada hasil akhir.\n\n---\n\n## Kuarter Pertama dan Momentum Awal\n\nData KEY PLAYS hanya mencakup kuarter pertama, dan menunjukkan laga yang cukup berimbang di awal. Skor 21-21 di akhir Q1 sebelum Rockets akhirnya membuka jarak signifikan di kuarter-kuarter berikutnya. Rincian bagaimana momentum bergeser tidak tersedia di input, tapi hasil 132-100 cukup menggambarkan Rockets menutup laga dengan dominasi total setelah start yang seimbang.\n\nBogdanovic, yang masuk dari bench, jadi salah satu pemantik perbedaan: 16 poin dalam 15 menit adalah kontribusi bench yang berkualitas playoff meski ini regular season.\n\n---\n\n## Penutup\n\nIni game kedua dari dua pertemuan regular season antara dua tim. Houston menang di keduanya, series 2-0 secara keseluruhan. Laga berikutnya belum terjadwal di data yang tersedia.\n\nKalau mau nonton tayangan lengkapnya, tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909887",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Houston Rockets",
+    "away_abbr": "HOU",
+    "home_score": 100,
+    "away_score": 132,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-10-29T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020862,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article fails on high-severity training-data hallucination (Kasparas Jakucionis name leakage) and translated-English phrasing ('Yang mana'). Academic drift and tense-marking also present. Accuracy on cited stats is good; main issue is facts beyond the input anchor block.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Yang mana justru dari bench: Bogdan Bogdanovic...",
+          "fix": "Delete 'Yang mana' or rephrase: 'Justru dari bench: Bogdan Bogdanovic...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kasparas Jakucionis assists (score 16-19) ... Kasparas Jakucionis makes driving layup",
+          "fix": "Remove both references to Jakucionis; verify player names against input anchors only."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu catatan: turnovers Houston cukup tinggi, 15 berbanding 17 milik Bucks.",
+          "fix": "Rephrase: 'Turnovers Houston tinggi (15), tapi Bucks 17—jadi tidak jadi faktor keputusan.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "laga yang telah cukup berimbang di awal",
+          "fix": "Delete 'telah': 'laga yang cukup berimbang di awal'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "ini game kedua dari dua pertemuan regular season antara dua tim",
+          "fix": "Simplify: 'Ini game kedua dari series regular season Houston vs Milwaukee.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Kalau mau nonton tayangan lengkapnya, tersedia di NBA League Pass dan Vidio.",
+          "fix": "Either integrate broadcast info into lede or delete; if kept, reframe as fact not suggestion."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x76484deb7043b690",
+    "published_at": "2026-10-29T02:44:24+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

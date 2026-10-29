@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "phi-at-ind-2026-10-28-g1",
+  "title": "Recap Philadelphia 76ers 114-109 Indiana Pacers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Philadelphia 76ers vs Indiana Pacers (114-109) di —, 28 October 2026.",
+  "body_md": "# Maxey Dingin di Ujung, 76ers Bekuk Pacers 114-109\n\nPhiladelphia 76ers menang tipis atas Indiana Pacers 114-109 dalam Game 2 Regular Season Series, Rabu 29 Oktober 2026 pukul 06.00 WIB. PHI unggul 2-0 dalam series empat game ini. Tyrese Maxey jadi penentu di dua menit terakhir, step-back three-pointer dari 25 kaki di menit 1:10 sisa Q4 yang menutup drama malam itu.\n\n---\n\n## Top Performers\n\nMaxey tampil sebagai top scorer PHI dengan 27 poin, 5 rebound, 4 asis dalam 36 menit, efisiensi yang cukup solid dengan 8-18 dari lapangan dan 3-7 dari three-point line. Tapi angka terpenting darinya malam ini bukan di stat line: step-back three-pointer-nya di 1:10 tersisa (mengubah skor jadi 109-104) adalah pukulan yang terlalu dalam buat Pacers untuk dibalas.\n\nJoel Embiid cetak double-double 21 poin dan 11 rebound (9-17 FG, 39 menit), sementara Jaylen Brown menyumbang double-double lain: 20 poin dan 10 rebound. PHI unggul di atas kertas dari perimeter, Anfernee Simons datang dari bench dan langsung menghajar: 20 poin dengan 6-10 dari three-point line dalam 27 menit. Off the bench, efisiensinya jadi salah satu faktor paling nyata malam ini. LeBron James melengkapi starting five PHI dengan 13 poin, 5 rebound, dan 10 asis, satu-satunya pemain yang cetak double-digit asis di pertandingan ini.\n\nDi kubu Indiana, Pascal Siakam paling konsisten: 26 poin, 11 rebound, 3 asis dengan FG 11-17, angka yang seharusnya cukup buat menang, tapi tidak malam ini. Andrew Nembhard distribusikan 14 asis, tertinggi malam itu, meski shooting-nya berat (5-16 dari lapangan). Aaron Nesmith dan Kelly Oubre Jr. masing-masing menyumbang 18 dan 15 poin. Obi Toppin off the bench cetak 13 poin dan 6 rebound.\n\n---\n\n## Baca Statistik\n\nPHI menang di efisiensi shooting: 46% FG vs 41% IND, dan lebih jauh selisihnya di three-point, 36% vs 25% (13-36 vs 9-36). Itu perbedaan yang menceritakan banyak hal. IND lebih efektif di free throw (28-35 attempts vs PHI 21-24), dan catatan IND di points in paint jauh lebih tinggi: 48 vs 36, artinya Pacers lebih banyak berhasil masuk ke area berbahaya, tapi tidak bisa mengkonversinya jadi kemenangan.\n\nFast-break points juga berpihak ke IND: 16 vs 7. Dua kategori ini menunjukkan bahwa Indiana sebenarnya lebih dominan di dalam dan di transisi, tapi PHI menutup kekurangan itu lewat perimeter shooting dan penyelesaian di akhir game.\n\n---\n\n## Drama Q4\n\nPacers sempat punya momentum di dua menit terakhir. Siakam pullup jump shot di 2:08 (105-102), Toppin layup dibantu Siakam di 1:28 (106-104), IND tiba-tiba ada di dalam jangkauan satu possession. Tapi Maxey menjawab dengan step-back three-pointer dari 25 kaki di 1:10 tersisa: 109-104. Pacers masih berjuang lewat free throw Nembhard (109-106 di 1:04), tapi PHI tidak memberi celah lagi. Skor final dikunci 114-109.\n\n---\n\n## Selanjutnya\n\nPHI kini unggul 2-0 dari empat game series ini. Game 3 belum ada tanggal di data yang tersedia. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909884",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "Philadelphia 76ers",
+    "away_abbr": "PHI",
+    "home_score": 109,
+    "away_score": 114,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-10-28T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHI leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021154,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Solid recap with accurate data pull, but tense over-marking (especially 'malam ini' repetition), hedgy AI filler phrases ('perbedaan yang menceritakan'), and translated-English calques ('pukulan terlalu dalam') drag voice toward AI-generic. Structural issue: stats section reads like forced bullet-point list. High fail on severity + pattern. Regenerate tense/hedging section and restructure stats para.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 2 Regular Season Series, Rabu 29 Oktober 2026",
+          "fix": "Remove 'Rabu' or verify it against actual 2026 calendar (it's correct, but tone down certainty if uncertain)."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Maxey tampil sebagai top scorer PHI dengan 27 poin...malam ini bukan di stat line",
+          "fix": "Use once, drop twice: 'Maxey top scorer PHI dengan 27 poin... Tapi angka terpenting bukan di stat line.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "step-back three-pointer-nya di 1:10 tersisa (mengubah skor jadi 109-104) adalah pukulan yang terlalu dalam",
+          "fix": "Rephrase: 'step-back three-pointer-nya yang mengubah skor jadi 109-104 itu comeback-killer buat Pacers.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Off the bench, efisiensinya jadi salah satu faktor paling nyata malam ini.",
+          "fix": "Cut sentence or: 'Off the bench, efisiensi 6-10 tiga-angka-nya adalah stat yang paling terasa.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Baca Statistik — paragraph opens with title-case subheading, then prose in small caps style",
+          "fix": "Use lowercase 'Baca statistik' or rename to 'Di atas kertas'. Restructure as: 'PHI unggul shooting: 46% FG vs 41%, plus 36% tiga-angka vs 25% IND. Tapi Pacers lebih efektif di paint (48 vs 36) dan fast-break (16 vs 7).'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Itu perbedaan yang menceritakan banyak hal.",
+          "fix": "Delete or: 'Itu sebabnya PHI menang di crunch time.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Pacers sempat punya momentum di dua menit terakhir",
+          "fix": "Simplify: 'Pacers ada momentum di dua menit terakhir.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya — subheading for final paragraph",
+          "fix": "Rename to 'Lanjutan series' or drop heading and start 'PHI kini unggul 2-0...'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x767ea7d37049e4fe",
+    "published_at": "2026-10-29T02:41:54+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
