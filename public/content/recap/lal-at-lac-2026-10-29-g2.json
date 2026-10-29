@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "lal-at-lac-2026-10-29-g2",
+  "title": "Recap Los Angeles Lakers 103-87 LA Clippers (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Los Angeles Lakers vs LA Clippers (103-87) di —, 29 October 2026.",
+  "body_md": "# Lakers Kukuhkan Dominasi atas Clippers, Menang 103-87\n\nLos Angeles Lakers menutup laga tandang dengan kemenangan 103-87 atas LA Clippers, Kamis 29 Oktober 2026. Kemenangan ini membuat LAL unggul 2-0 di regular season series, dan cara mereka menang bicara lebih keras dari sekadar selisih poin.\n\nLima pemain Lakers tembus dua digit. Quentin Grimes memimpin dengan 23 poin, 3 rebound, 5 asis. Collin Sexton menyusul dengan 21 poin dari bench, hanya butuh 21 menit untuk itu.\n\n---\n\n## Top Performers\n\nGrimes jadi motor utama LAL dengan 23 poin dari starter, meski efisiensi shooting-nya tidak sempurna: 7-15 from field, 0-3 dari tiga angka. Kontribusinya lebih terasa di playmaking, 5 asis dalam 38 menit menunjukkan peran ganda yang diembannya malam ini.\n\nYang paling mengejutkan: Collin Sexton. Datang dari bench, 21 poin dalam 21 menit. FG 6-11 dengan 4-7 dari tiga angka, Sexton outshine Grimes dengan efisiensi yang jarang terlihat dari pemain pengganti.\n\nAustin Reaves menambah 16 poin dengan 6 rebound, tapi butuh 16 tembakan (FG 6-16) untuk sampai ke sana. Matisse Thybulle justru lebih efisien: 15 poin dari 5-6 shooting, 4-5 di tiga angka, nyaris sempurna. Sandro Mamukelashvili off the bench menyumbang 13 poin dan 8 rebound, jadi andalan di area cat.\n\nDi kubu Clippers, Keaton Wagler paling banyak mencuri perhatian dengan 21 poin dari bench, tapi FG 4-15 mencerminkan perjuangan LAC sepanjang malam. Derrick Jones Jr. lebih efisien dengan 15 poin dari 6-10 (3-5 dari tiga angka). Darius Garland mengakhiri laga dengan 14 poin dan 5 asis, tapi 4-12 from field tidak cukup untuk memimpin Clippers keluar dari tekanan.\n\n---\n\n## Statistik Bicara\n\nLakers mendominasi lewat dua kategori yang paling menentukan malam ini: fast-break points dan points in paint.\n\nLAL mencetak 24 fast-break points vs LAC yang hanya 6. Angka ini tidak muncul begitu saja, 24 turnover Clippers vs 21 turnover Lakers, ditambah 15 steal LAL, jadi bahan bakar untuk serangan kilat yang berulang kali menghukum Clippers.\n\nDi area paint, LAL 48 poin vs LAC 28 poin, gap 20 poin yang menggambarkan dominasi fisik Lakers dalam dua sisi ring. Mamukelashvili dan Reaves berperan besar di sini.\n\nFG% jadi cermin akurat: LAL 44% vs LAC 35%. Bukan perbedaan besar secara angka, tapi konsistensi volume-nya yang menyakitkan Clippers. LAL melepaskan 79 field goal attempt vs 74 LAC, lebih banyak tembakan, lebih akurat, lebih sering sampai ke garis.\n\nLAC lebih presisi dari garis free throw, 93% vs 73% Lakers. Tapi 25 free throw attempt LAC tidak sebanding dengan 33 attempt LAL. Lakers masuk ke garis lebih sering, dan itu menjaga margin tetap nyaman.\n\n---\n\n## Outlook Series\n\nDengan keunggulan 2-0 di regular season series, Lakers dalam posisi kuat untuk menyapu LAC 4-0 sebelum regular season berakhir.\n\nBagi Clippers, masalahnya bukan hanya kekalahan, tapi pola kekalahan. Fast-break deficit 24-6 dan turnover 24 adalah tanda bahwa LAC kesulitan menjaga tempo. Wagler sebagai top scorer dari bench dengan efisiensi yang rendah (4-15) menandakan LAC belum punya opsi serangan yang cukup meyakinkan.\n\nLakers tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909892",
+    "home_team": "LA Clippers",
+    "home_abbr": "LAC",
+    "away_team": "Los Angeles Lakers",
+    "away_abbr": "LAL",
+    "home_score": 87,
+    "away_score": 103,
+    "winner_abbr": "LAL",
+    "kickoff_utc": "2026-10-29T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "LAL lead series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021312,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with good stat integration and natural pace. Minor hedging language and one logical series-count slip, but no voice-rule violations. Pass with editor note on series frame.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Grimes jadi motor utama LAL dengan 23 poin dari starter, meski efisiensi shooting-nya tidak sempurna",
+          "fix": "Grimes jadi motor LAL dengan 23 poin, tapi efisiensi shooting-nya berantakan: 7-15."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Keaton Wagler paling banyak mencuri perhatian dengan 21 poin dari bench",
+          "fix": "Keaton Wagler top scorer LAC dari bench dengan 21 poin."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Angka ini tidak muncul begitu saja, 24 turnover Clippers vs 21 turnover Lakers, ditambah 15 steal LAL, jadi bahan bakar",
+          "fix": "24 turnover Clippers, 21 Lakers, 15 steal LAL—itu yang bankir fast-break mereka."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dengan keunggulan 2-0 di regular season series, Lakers dalam posisi kuat untuk menyapu LAC 4-0 sebelum regular season berakhir.",
+          "fix": "Lakers mengarungi matchup ketiga dengan unggul 2-0; satu laga lagi di series ini."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xad4b69a829b1ef29",
+    "published_at": "2026-10-29T05:12:59+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

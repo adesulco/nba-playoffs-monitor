@@ -1,0 +1,69 @@
+{
+  "type": "recap",
+  "slug": "sa-at-utah-2026-10-29-g1",
+  "title": "Recap San Antonio Spurs 117-111 Utah Jazz (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — San Antonio Spurs vs Utah Jazz (117-111) di —, 29 October 2026.",
+  "body_md": "# Wembanyama 36 Poin, Spurs Kalahkan Jazz di Overtime 117-111\n\nSan Antonio Spurs membutuhkan overtime untuk menutup laga, tapi hasilnya jelas: menang 117-111 atas Utah Jazz, Rabu 29 Oktober 2026. Victor Wembanyama jadi penentu di momen krusial, monster line 36 poin, 14 rebound, 5 asis, dan dua dunk berturut-turut di overtime yang memutus perlawanan Jazz untuk selamanya. Ini game kedua dari tiga pertemuan regular season series, SA unggul 1-0.\n\n---\n\n## Top Performers\n\nWembanyama bermain 39 menit dan menyelesaikan malam dengan 36 poin dari 14-25 FG, termasuk 4-10 from three. Tapi yang lebih bicara adalah 14 reboundnya, SA menang rebound total cuma 51-53, artinya tanpa kontribusi Wemby di papan, angka itu bisa jauh lebih timpang.\n\nDevin Vassell jadi supporting act yang solid: 21 poin, 5 rebound, FG 8-18. Dia yang buka skor di overtime dengan jumper 10 kaki, lalu menambah tip-in dunk untuk melebarkan jarak. Di kuarter reguler mungkin inconsistent (1-7 from three sepanjang malam), tapi di momen yang paling dibutuhkan, Vassell tampil.\n\nDua rookie SA, Stephon Castle dan Dylan Harper, punya stat line yang mirip dan sama-sama impresif. Castle: 14 poin, 6 rebound, 8 asis. Harper: 13 poin, 5 rebound, 8 asis. Dua playmaker muda yang masing-masing distribusi bolanya rapi, meski Harper harus berjuang dari sisi shooting (4-17 FG sepanjang malam). De'Aaron Fox menambah 14 poin, 4 asis di 39 menit.\n\nDari sisi Jazz, Keyonte George tampil all-out: 31 poin, 4 rebound, FG 11-27 dengan 5 dari 12 percobaan tiga angka masuk. Volume shooter yang sebenarnya cukup efisien di laga hari ini. Ace Bailey ikut menyumbang 19 poin, 6 rebound. Darryn Peterson 18 poin dalam 26 menit sebagai starter, relatif efisien dengan 3-8 from three. Brice Sensabaugh dari bench: 16 poin, 4-5 from three, dalam hanya 18 menit bermain.\n\n---\n\n## Baca Statistiknya\n\nDua angka yang menjelaskan kenapa SA menang: turnover dan points in paint.\n\nJazz melakukan 19 turnover malam ini. SA hanya 11. Dari selisih itu, SA mencetak 14 fast-break points vs Jazz yang cuma 7. Setiap kali Jazz kehilangan bola, SA berlari, dan dengan Wembanyama plus roster atletis yang dimiliki Spurs, transisi itu berbahaya.\n\nPoints in paint: SA 54, Jazz 34. Selisih 20 poin hanya dari area paint. Ini bukan kebetulan, Wembanyama aktif di post, ditambah dua point guard muda (Castle dan Harper) yang terus menekan lane. Jazz tidak punya jawaban yang konsisten untuk tekanan interior ini.\n\nDari perimeter, justru Jazz yang lebih efisien: 38% three-point (15-39) vs SA 32% (12-38). Tapi advantage Jazz dari luar lapangan tenggelam oleh turnover mereka sendiri.\n\n---\n\n## Overtime yang Memutuskan Segalanya\n\nLaga masuk overtime dalam kondisi ketat. SA sempat tertinggal 107-108 sebelum Vassell menyamai lewat jumper 10 kaki yang dibantu Castle. Harper lalu masuk dua free throw untuk membalik: 109-108.\n\nDari situ, SA tidak berhenti. Vassell tip-in dunk: 111-108. Wembanyama, dibantu Fox, masuk jumper 12 kaki: 113-108. Satu serangan berikutnya, Vassell kembali assist, Wembanyama selesaikan dengan dunk dua kaki: 115-108. Fox menutup dengan running dunk: 117-108.\n\nSensabaugh sempat cetak three-pointer untuk 117-111, tapi sisa waktu sudah terlalu sedikit. SA mengontrol overtime dari awal sampai akhir.\n\n---\n\n## Selanjutnya\n\nGame ketiga dan terakhir regular season series ini menjadi penutup tiga pertemuan SA vs Utah musim ini. Tayangan live tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909890",
+    "home_team": "Utah Jazz",
+    "home_abbr": "UTAH",
+    "away_team": "San Antonio Spurs",
+    "away_abbr": "SA",
+    "home_score": 111,
+    "away_score": 117,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-10-29T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022561,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Strong article overall—clean narrative flow, accurate stat citations, voice is conversational and informed. One high-concern training-inference issue (De'Aaron Fox roster status unverified); one soft-phrase repetition; minor punctuation and register tuning. Recommend verifying Fox affiliation before publish, then pass.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Tapi yang lebih bicara adalah 14 reboundnya... Tapi di momen yang paling dibutuhkan...",
+          "fix": "Vary second opening: 'Di momen paling dibutuhkan, Vassell tampil' or restructure entirely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua rookie SA, Stephon Castle dan Dylan Harper, punya stat line yang mirip dan sama-sama impresif.",
+          "fix": "Consider: 'Dua rookie SA, Stephon Castle dan Dylan Harper, menunjukkan angka serupa dan sama-sama mengesankan.' Keeps stat-discussion momentum."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "De'Aaron Fox menambah 14 poin, 4 asis di 39 menit.",
+          "fix": "DELETE this sentence or verify Fox is actually on SA roster in 2026. As written, it's ungrounded inference."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Dari perimeter, justru Jazz yang lebih efisien: 38% three-point (15-39) vs SA 32% (12-38). Tapi advantage Jazz dari luar lapangan tenggelam oleh turnover mereka sendiri.",
+          "fix": "Rewrite: 'Tapi keunggulan tiga angka Jazz hilang karena 19 turnover mereka di malam itu.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Satu serangan berikutnya, Vassell kembali assist, Wembanyama selesaikan dengan dunk dua kaki: 115-108.",
+          "fix": "Add conjunction: '...Vassell kembali assist; Wembanyama selesaikan...' or period + new sentence."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xcc4f51b9b07dd2b2",
+    "published_at": "2026-10-29T05:11:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

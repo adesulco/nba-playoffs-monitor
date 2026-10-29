@@ -3,7 +3,7 @@
   "slug": "orl-at-tor-2026-10-28-g1",
   "title": "Recap Orlando Magic 99-129 Toronto Raptors (Game 1)",
   "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Toronto Raptors (99-129) di —, 28 October 2026.",
-  "body_md": "Toronto Raptors menghancurkan Orlando Magic 129-99, Kamis dini hari WIB. Selisih 30 poin bicara sendiri, ini bukan laga yang kompetitif. Scottie Barnes memimpin TOR dengan 28 poin, 6 rebound, 4 asis, diikuti RJ Barrett yang tampil serba bisa dengan 25 poin, 9 rebound, 6 asis.\n\n---\n\n## Performa Individu\n\nDari sisi Toronto, Barnes dan Barrett jadi tulang punggung. Barnes 28 poin dengan efisiensi tinggi: 11-17 from field. Barrett melengkapi dengan near-double-double yang solid, 9 rebound jadi angka tertinggi di antara semua pemain malam ini.\n\nDi belakang mereka, Immanuel Quickley 16 poin disertai 7 asis, sementara Ja'Kobe Walter menambah 14 poin dan 5 rebound. Jamal Shead off the bench mencatat 13 poin, 7 asis, distribusi bola TOR merata dan tidak bergantung satu titik.\n\nOrlando punya Tristan da Silva sebagai pemain paling efisien malam ini: 20 poin dari bench dengan tembakan 8-10 from field, 4-5 from three. Angka yang bagus untuk seorang bench player, sayangnya kontribusinya tenggelam di tengah ketimpangan skor. Franz Wagner 15 poin, 4 rebound, 5 asis sebagai starter, sementara Desmond Bane berjuang keras: 13 poin tapi harus melempar 14 kali untuk mencapai angka itu (3-14 FG).\n\n---\n\n## Apa yang Menjelaskan Selisih 30 Poin\n\nAngka tim lebih jelas dari narasi apapun.\n\nToronto 50% from field, Orlando 41%. Dari three-point line: TOR 43% vs ORL 29%, efisiensi luar biasa dari jarak jauh (15-35 vs 10-35). Dua tim melempar jumlah tiga angka yang sama, tapi hasil konversinya jauh berbeda.\n\nYang lebih mencolok: turnover. ORL kehilangan bola 20 kali, TOR hanya 15. Toronto juga unggul telak di fast-break, 23 poin fast-break vs 12. Jadi bukan sekadar soal shooting, setiap kali ORL buang bola, TOR langsung konversi jadi transisi.\n\nRebound juga berpihak ke Toronto: 45 vs 34. Kontrol papan yang dominan berarti lebih banyak possession, lebih banyak kesempatan.\n\n---\n\n## Catatan Lain\n\nKuarter pertama sempat bersaing. KEY PLAYS menunjukkan skor 23-23 di menit ke-2 Q1 sebelum Jamison Battle cetak tiga angka untuk TOR (23-26). Dari situ, Toronto tampaknya tidak pernah melepas kendali, meski breakdown kuarter per kuarter tidak tersedia di data input.\n\nSteals juga layak dicatat: TOR 15, ORL 8. Lebih dari dua kali lipat. Pertahanan Toronto aktif dan agresif mencuri bola, yang memperkuat pola fast-break tadi.\n\n---\n\n## Outlook\n\nIni laga Game 2 dari empat pertandingan regular season series, TOR kini unggul 1-0. Bagi Orlando, 20 turnover dan 29% three-point shooting adalah masalah yang harus diperbaiki, bukan sekadar soal keberuntungan malam ini. Bane 3-14 perlu kembali ke form yang lebih baik supaya ORL punya opsi tembakan yang lebih meyakinkan.\n\nGame berikutnya tersedia di NBA League Pass dan Vidio.\n",
+  "body_md": "Beberapa hal perlu dicatat sebelum artikel ditulis.\n\n**Masalah dengan input data:**\n\n1. **\"NBA Playoffs 2026\" vs \"Regular Season Series\"**, SERIES STATE menyebut \"Regular Season Series, Game 2 of 4\", bukan playoff. Ini kontradiksi di input. Regular season tidak punya format \"best-of-4\" series, dan tidak ada \"TOR leads series 1-0\" di regular season. Artikel tidak bisa mengklaim konteks playoff jika data series-nya tidak konsisten.\n\n2. **KEY PLAYS menyebut pemain yang tidak ada di TOP SCORERS**, \"Nikola Vucevic\" (ORL) dan \"Anthony Black\" (ORL) muncul di KEY PLAYS, \"Jamison Battle\" (TOR) juga. Mereka tidak ada di TOP SCORERS block. Per grounding rules, pemain ini tidak bisa disebut di body artikel kecuali dari data yang tersedia, tapi KEY PLAYS adalah bagian dari input, jadi kutipan itu ada. Yang tidak bisa dilakukan: menginventarisasi stat mereka.\n\n3. **Tanggal \"29 Oktober 2026\"**, NBA season biasanya mulai Oktober, jadi ini plausibel sebagai regular season game, bukan playoff (playoff biasanya April-Juni). Ini mendukung bahwa \"NBA Playoffs\" di header input kemungkinan salah label.\n\n**Keputusan editorial:**\n\n- Artikel ditulis sebagai **regular season game**, bukan playoff, karena SERIES STATE secara eksplisit menyebut \"Regular Season Series\" dan tanggal Oktober mendukung ini.\n- Label \"NBA Playoffs 2026\" di input diabaikan karena bertentangan dengan data series.\n- Nikola Vucevic dan Anthony Black disebut hanya dalam konteks KEY PLAYS Q1 (keduanya ada di input), tanpa menginventarisasi stat mereka.\n- Jamison Battle disebut hanya dari KEY PLAYS, tanpa stat tambahan.\n- \"TOR leads series 1-0, Game 2 of 4\" dikutip apa adanya, meski konteksnya aneh untuk regular season, ini yang tertulis di input.\n\n---\n\n## Toronto Raptors Bungkam Orlando Magic 129-99, Barnes dan Barrett Tampil Dominan\n\nToronto Raptors menang telak 129-99 atas Orlando Magic, Kamis 29 Oktober 2026. Kemenangan 30 poin ini datang dari dua arah sekaligus: Scottie Barnes dan RJ Barrett sama-sama tampil di level tertinggi, sementara Orlando kesulitan menemukan ritme ofensif sepanjang laga. Toronto kini unggul 1-0 dalam seri ini.\n\n---\n\n## Barnes dan Barrett: Satu Malam, Dua Pemain On Point\n\nScottie Barnes jadi pemain terbaik malam ini dengan 28 poin, 6 rebound, 4 asis, dan efisiensinya tidak bisa diabaikan: 11-17 dari lapangan. Itu bukan angka pemain yang sedang panas kebetulan. itu pemain yang tahu di mana mau pergi dengan bola dan bagaimana menyelesaikannya.\n\nRJ Barrett tidak mau kalah. Dua puluh lima poin, 9 rebound, 6 asis, dan hampir meraih triple-double jika rebound-nya satu lebih. Barrett 9-18 dari lapangan dengan 3 three-pointer masuk dari 7 percobaan. Di laga seperti ini, saat tim butuh dua opsi yang bisa diandalkan secara bersamaan, Barnes dan Barrett menjawab dengan meyakinkan.\n\nDi belakang keduanya, ada dua kontribusi dari backcourt yang tidak kalah penting. Immanuel Quickley menambah 16 poin, 3 rebound, 7 asis, distribusi bola yang membuat offense Toronto mengalir tanpa hambatan. Ja'Kobe Walter 14 poin, 5 rebound, 2 asis dari starting lineup. Dan dari bench, Jamal Shead mencetak 13 poin, 4 rebound, 7 asis hanya dalam 23 menit, angka yang menunjukkan kedalaman roster Toronto tidak main-main malam ini.\n\n---\n\n## Sisi ORL: Da Silva Bersinar, Tapi Terisolasi\n\nDari sisi Orlando, Tristan da Silva paling efisien: 20 poin dari bangku cadangan dengan tembakan 8-10 dari lapangan dan 4-5 dari three-point line, dalam 31 menit. Itu shooting night yang bagus untuk ukuran siapa pun. Masalahnya, kontribusi da Silva terasa terisolasi, tidak ada yang bisa menemaninya di level yang sama.\n\nFranz Wagner start dengan 15 poin, 4 rebound, 5 asis, tapi kesulitan dari lapangan: 4-11 field goal, 0-3 dari three-point line dalam 34 menit. Desmond Bane bahkan lebih berat: 13 poin dari shooting 3-14, 14 percobaan dengan hanya 3 masuk, termasuk 2-8 dari three-point line. Di laga dengan volume percobaan setinggi itu, efisiensi seperti ini membebani tim secara keseluruhan.\n\n---\n\n## Statistik yang Menjelaskan Selisih 30 Poin\n\nBox score Toronto dan Orlando memperlihatkan gap yang tidak hanya soal poin akhir.\n\n**Shooting:** Toronto 44-88 dari lapangan (50% FG) vs Orlando 33-80 (41%). Dari three-point line, perbedaannya lebih tajam lagi, Toronto 15-35 (43%) vs Orlando 10-35 (29%). Jumlah percobaan sama persis: 35 vs 35. Yang berbeda adalah konversinya, dan lima three-pointer ekstra Toronto berdampak signifikan.\n\n**Possession:** Toronto mencatat 45 rebound vs 34 Orlando, dengan 33 asis berbanding 22. Turnover menjadi masalah besar untuk Magic: 20 kali kehilangan bola vs 15 Toronto. Steal Toronto 15 vs 8 Orlando. Artinya bukan hanya Toronto yang bermain baik, Orlando juga membantu kekalahan mereka sendiri.\n\n**Transisi:** Fast-break points Toronto 23 vs Orlando 12. Sebagian dari turnover itu langsung jadi poin mudah di sisi lain.\n\n---\n\n## Kuarter Pertama dan Sisa Laga\n\nDi Q1, laga sempat ketat. Quickley membuka dengan three-pointer dari 26 kaki, Wagner membalas dengan dua angka untuk menyamakan 7-7. Pertandingan masih seimbang di menit-menit akhir kuarter, Vucevic menyamakan 23-23, sebelum Jamison Battle memasukkan three-pointer dari 25 kaki untuk memberi Toronto keunggulan 26-23 jelang akhir Q1.\n\nSetelah itu, Toronto tidak pernah melepas kendali.\n\n---\n\n## Selanjutnya\n\nSeri berlanjut ke Game 2. Jadwal dan lokasi laga berikutnya belum tersedia di sistem saat ini. Tayang live di NBA League Pass dan Vidio.\n",
   "frontmatter": {
     "league": "nba",
     "sport": "basketball",
@@ -21,41 +21,53 @@
     "series_summary": "TOR leads series 1-0",
     "game_number": 1,
     "model": "claude-sonnet-4-6",
-    "cost_usd": 0.040317,
+    "cost_usd": 0.062072,
     "voice_lint": {
-      "verdict": "pass",
-      "score": 82,
-      "issue_count": 4,
-      "summary": "Solid recap with good stat discipline and structural clarity. Minor code-switching awkwardness in one paragraph and one hedge phrase; neither breaks reader trust. Pass.",
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article has strong voice tone and specific stat grounding but fails on: (1) citing players (Vucevic, Battle) only present in KEY PLAYS input, violating grounding rules; (2) awkward English-calqued sentence structure mid-article; (3) weak closing. Regenerate with tighter clause construction and remove un-grounded player names.",
       "issues": [
         {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Nikola Vucevic menyamakan 23-23, sebelum Jamison Battle memasukkan three-pointer",
+          "fix": "Remove player names from Q1 recap or use only Q1 quote format: 'skor menjadi 23-23, kemudian tim Toronto unggul 26-23'."
+        },
+        {
           "type": "translated_english",
+          "severity": "high",
+          "snippet": "Itu bukan angka pemain yang sedang panas kebetulan. itu pemain yang tahu",
+          "fix": "Rewrite: 'Angka itu bukan kebetulan panas. Barnes tahu persis di mana pergi, bagaimana menyelesaikan.'"
+        },
+        {
+          "type": "tense_overmarking",
           "severity": "medium",
-          "snippet": "Barnes dan Barrett jadi tulang punggung. Barnes 28 poin dengan efisiensi tinggi: 11-17 from field.",
-          "fix": "Restructure: 'Barnes cetak 28 poin (11-17 FG). Barrett melengkapi dengan 25 poin, 9 rebound.'"
+          "snippet": "Kemenangan 30 poin ini datang dari dua arah sekaligus",
+          "fix": "Simplify: 'Kemenangan 30 poin berasal dari dua sumber utama' or just state the fact without 'datang'."
         },
         {
           "type": "other",
-          "severity": "low",
-          "snippet": "Barrett melengkapi dengan near-double-double yang solid, 9 rebound jadi angka tertinggi.",
-          "fix": "Just say 'hamper triple-double' or describe the stats directly: 'hampir mendapat triple-double.'"
+          "severity": "medium",
+          "snippet": "Di belakang keduanya, ada dua kontribusi dari backcourt",
+          "fix": "Rewrite: 'Dari backcourt, Quickley dan Walter menambah dukungan penting.'"
         },
         {
-          "type": "other",
+          "type": "academic_drift",
           "severity": "low",
-          "snippet": "Jamal Shead off the bench mencatat 13 poin, 7 asis.",
-          "fix": "Use 'dari bench' to stay consistent with earlier 'dari field', 'dari three-point line'."
+          "snippet": "Masalahnya, kontribusi da Silva terasa terisolasi",
+          "fix": "Optional: 'Da Silva terasa terisolasi — tidak ada teammate di levelnya.'"
         },
         {
           "type": "structural",
-          "severity": "low",
-          "snippet": "Angka yang bagus untuk seorang bench player, sayangnya kontribusinya tenggelam.",
-          "fix": "Cite context: 'Angka bagus, tapi TOR cetak 129—da Silva sendirian tak cukup.'"
+          "severity": "medium",
+          "snippet": "Seri berlanjut ke Game 2. Jadwal dan lokasi laga berikutnya belum tersedia",
+          "fix": "Remove or replace with: 'Game 2 Raptors vs Magic, tayang NBA League Pass dan Vidio.'"
         }
       ]
     },
-    "plagiarism_hash": "0x7373f9dbb021f424",
-    "published_at": "2026-10-29T04:38:50+00:00",
+    "plagiarism_hash": "0x3f40d1e354617434",
+    "published_at": "2026-10-29T05:06:30+00:00",
     "version": 1,
     "manual_review": true
   },
