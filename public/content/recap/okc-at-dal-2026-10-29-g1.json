@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "okc-at-dal-2026-10-29-g1",
+  "title": "Recap Oklahoma City Thunder 96-120 Dallas Mavericks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs Dallas Mavericks (96-120) di —, 29 October 2026.",
+  "body_md": "# Dallas Mavericks Hantam OKC 120-96, Cooper Flagg Tampil Mengesankan\n\nDallas Mavericks menang telak atas Oklahoma City Thunder 120-96 di kandang DAL, Kamis 29 Oktober 2026 jam 08.30 WIB. Ini Game 2 dari regular season series empat game, DAL kini unggul 2-0. Cooper Flagg 26 poin, 5 rebound, 8 asis. distribusi scoring merata di seluruh lineup DAL. OKC tampil tanpa senjata, terutama di tembakan tiga angka.\n\n---\n\n## Top Performers\n\n**Dallas Mavericks**\n\nCooper Flagg jadi motor penggerak DAL dengan 26 poin, 5 rebound, 8 asis dari 10-23 field goals. Angka assist-nya menonjol, Flagg bukan cuma pencetak poin, tapi playmaker yang terus menggerakkan offense. P.J. Washington mengisi peran physical dengan 18 poin dan 9 rebound dari 7-16 shooting, termasuk 2-7 dari tiga angka. Kyrie Irving 15 poin, 4 asis, efisien dari tiga angka: 3-8. Zaccharie Risacher, off the bench, jadi kejutan dengan 13 poin dari 5-6 field goals dan 2-3 dari tiga angka, efisiensi tertinggi di lineup DAL malam ini. Max Christie menambah 11 poin dengan 3-7 dari tiga angka.\n\n**Oklahoma City Thunder**\n\nAjay Mitchell jadi top scorer OKC dengan 29 poin, 4 rebound, 3 asis dari 12-20 shooting, satu-satunya pemain Thunder yang tampil konsisten. Shai Gilgeous-Alexander menghasilkan 21 poin dan 6 rebound, tapi berjuang dari lapangan: 7-19 FG, 1-6 dari tiga angka. Isaiah Hartenstein tampil solid di lini rebound dengan 14 rebound dan 10 poin dari 4-6 shooting. Jared McCain 10 poin tapi struggling di perimeter: 0-6 dari tiga angka.\n\n---\n\n## Baca Statistik\n\nAngka tiga angka bicara keras. DAL masuk 16-45 dari tiga angka (36%), OKC cuma 5-32 (16%). Perbedaan 11 tembakan masuk dari jarak jauh itu sendiri sudah hampir setara selisih akhir skor.\n\nEfisiensi keseluruhan mengikuti pola serupa: DAL 47% FG vs OKC 41%. Tapi yang paling mencolok adalah fast-break points, DAL cetak 17, OKC nihil. Ini bukan soal satu atau dua kesalahan. turnover OKC yang mencapai 14 kali dibanding DAL 11 kali langsung diterjemahkan jadi poin transisi oleh Mavericks.\n\nAssist pun timpang: DAL 30 asis vs OKC 17. DAL bermain sebagai tim. OKC terlalu mengandalkan individual.\n\n---\n\n## Momentum\n\nQ1 dimulai kompetitif, KEY PLAYS menunjukkan skor bergantian antara kedua tim, Mitchell dan Washington saling menjawab, skor pernah imbang 23-23 dan 28-30 di penghujung kuarter pertama. Tapi di sinilah OKC kehilangan momentum yang tak pernah kembali.\n\nEfisiensi tiga angka DAL meledak setelah Q1. Dengan Risacher efisien dari bench dan Christie terus masuk dari perimeter, Thunder tak punya jawaban untuk perimeter DAL yang terbuka. Fast-break points 17-0 juga mencerminkan energi pertahanan DAL yang lebih tinggi, setiap turnover OKC langsung jadi dua poin mudah untuk Mavericks.\n\n---\n\n## Selanjutnya\n\nDAL kini unggul 2-0 di regular season series ini. Game 3 dari empat game seri ini selanjutnya menunggu, jadwal dan venue belum tersedia di sistem kami. Live di NBA League Pass dan Vidio untuk yang ingin lanjut mengikuti.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909891",
+    "home_team": "Dallas Mavericks",
+    "home_abbr": "DAL",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 120,
+    "away_score": 96,
+    "winner_abbr": "DAL",
+    "kickoff_utc": "2026-10-29T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DAL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020977,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Critical training-inference error (series lead stated as 2-0 when input clearly says 1-0). Multiple medium-level issues with tense overmarking, translated English phrasing, and punctuation. Accuracy breach on factual claim makes this unsuitable for publish without major revision.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ini Game 2 dari regular season series empat game, DAL kini unggul 2-0.",
+          "fix": "Change to 'DAL leads 1-0' per input data. This is the second game of the series."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Ajay Mitchell jadi top scorer OKC dengan 29 poin... tapi berjuang dari lapangan: 7-19 FG",
+          "fix": "Rephrase: 'Shai Gilgeous-Alexander cetak 21 poin dan 6 rebound, tapi berjuang dari lapangan: 7-19 FG.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Perbedaan 11 tembakan masuk dari jarak jauh itu sendiri sudah hampir setara selisih akhir skor.",
+          "fix": "Simplify: '11 tembakan tiga angka lebih dari OKC — angka itu sendiri hampir selisih akhir.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Ini bukan soal satu atau dua kesalahan. turnover OKC yang mencapai 14 kali...",
+          "fix": "Capitalize: 'Turnover OKC yang mencapai 14 kali dibanding DAL 11 kali langsung jadi poin transisi.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Efisiensi tertinggi di lineup DAL malam ini... Efisiensi keseluruhan mengikuti pola...",
+          "fix": "Vary: 'Risacher paling efisien di lineup DAL malam ini.' Then start stats section differently."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Q1 dimulai kompetitif, KEY PLAYS menunjukkan skor bergantian antara kedua tim",
+          "fix": "Rephrase: 'Q1 terbuka kompetitif. Mitchell dan Washington saling menjawab, skor berulang kali imbang (23-23, 28-30).'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 3 dari empat game seri ini selanjutnya menunggu, jadwal dan venue belum tersedia di sistem kami.",
+          "fix": "Clarify: 'Game 3 menunggu di depan. Jadwal belum tersedia.' Or drop the ordinal if unsure."
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "Fast-break points 17-0 juga mencerminkan energi pertahanan DAL yang lebih tinggi",
+          "fix": "Stick to fact: 'DAL cetak 17 fast-break points; OKC nol.' Remove causal inference."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe2773fe2e04dede0",
+    "published_at": "2026-10-29T04:21:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
