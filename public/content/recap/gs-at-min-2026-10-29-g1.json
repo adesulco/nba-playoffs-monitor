@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "gs-at-min-2026-10-29-g1",
+  "title": "Recap Golden State Warriors 119-114 Minnesota Timberwolves (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs Minnesota Timberwolves (119-114) di —, 29 October 2026.",
+  "body_md": "# Curry 44 Poin, Warriors Tahan Serangan Balik Timberwolves 119-114\n\nGolden State Warriors menang tipis 119-114 atas Minnesota Timberwolves, Kamis 29 Oktober 2026. Stephen Curry menjadi penentu dengan 44 poin di 32 menit bermain, termasuk dua free throw penentu di detik-detik terakhir yang menutup laga. GS unggul 1-0 di regular season series tiga game ini.\n\n---\n\n## Curry dan Lendeborg, Dua Beban di Pundak GS\n\nCurry tampil luar biasa: 44 poin, 8 rebound, 6 asis dari lini starter. Angka kasarnya 11-27 dari field dan 6-16 dari three-point line, tidak sempurna dari jarak jauh, tapi cukup untuk jadi pemain paling krusial di laga ini. Ketika Timberwolves mulai memotong jarak di Q4, Curry yang tutup dengan tangan sendiri.\n\nDi sampingnya, Yaxel Lendeborg memberikan dukungan solid: 26 poin, 9 rebound, efisiensi 11-20 dari field. Dua starter menanggung 70 poin dari 119 total GS, artinya bench dan tiga starter lain hanya menyumbang 49. Brandin Podziemski (8 poin, 6 asis) jadi pengatur distribusi yang tenang, tapi secara poin GS sangat bergantung pada dua nama itu.\n\nDi sisi Minnesota, Jonathan Kuminga memimpin dengan 20 poin dan 5 asis, starter yang paling seimbang kontribusinya. Jaden McDaniels menambah 19 poin, 7 rebound, 4 asis. Terrence Shannon Jr. keluar dari bench dengan 19 poin, salah satu alasan MIN sempat membahayakan di akhir. Ayo Dosunmu (17 poin, 3-7 dari three) juga jadi ancaman dari jarak jauh.\n\n---\n\n## Box Score: Selisil Tipis di Hampir Semua Lini\n\nSecara team stats, dua tim ini hampir identik dari field: GS 39-89 (44%), MIN 40-90 (44%). Angka yang sama persis.\n\nPerbedaan nyata ada di free throw. GS mencetak 30 dari 37 percobaan (81%), sementara MIN 19 dari 27 (70%). Selisih itu, 11 poin dari garis, lebih dari margin kemenangan GS yang hanya lima poin. Di laga setipis ini, free throw adalah penentu.\n\nThree-pointer justru lebih tajam dari sisi MIN: 15-45 (33%) dibanding GS 11-35 (31%). Tapi volume sama-sama besar untuk kedua tim. Rebound jadi dominasi GS: 53 berbanding 42, Lendeborg berkontribusi besar di area ini.\n\nMIN punya fast-break points lebih banyak (17 vs 11) dan lebih banyak steal (10 vs 7), yang menunjukkan bahwa mereka bermain lebih aktif secara defensif. GS lebih unggul di points in paint: 54 berbanding 46.\n\n---\n\n## Detik-Detik yang Menentukan\n\nTimberwolves sempat menekan keras di akhir. Dengan skor 116-112 dan 32 detik tersisa, Dosunmu menghantam three-pointer dari 24 kaki, memotong jarak jadi empat poin. Pertandingan tiba-tiba hidup lagi.\n\nTapi GS tidak panik. Lendeborg menambah satu free throw untuk bikin 117-112, sebelum Bones Hyland mencetak jump bank shot dari 16 kaki di sisa 0,8 detik, 117-114. Masih tiga poin.\n\nCurry ke garis, dua free throw, selesai. 119-114. Itu cara seorang point guard menutup pertandingan.\n\n---\n\n## Selanjutnya\n\nGame 2 dari seri tiga laga ini belum ada jadwal pasti di input. Yang jelas, GS unggul 1-0 dan MIN harus cari jawaban atas Curry, 44 poin dengan 32 menit bermain bukan beban yang bisa diabaikan. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909888",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 114,
+    "away_score": 119,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-10-29T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "GS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021033,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Solid stats accuracy and structure, but translation-to-English interference in phrasing and one awkward closing section undermine voice. Fails on 'tutup dengan tangan sendiri' cliché and 'sempat membahayakan' tense over-marking (both high-severity). Remove 'Selanjutnya' section or add fixture info.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Curry yang tutup dengan tangan sendiri",
+          "fix": "Curry yang tutup laga. atau Curry yang selesaikan pertandingan."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "MIN sempat membahayakan di akhir",
+          "fix": "MIN membahayakan di akhir. or MIN hampir samain di akhir."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Secara team stats, dua tim ini hampir identik dari field",
+          "fix": "Dua tim ini hampir identik dari lapangan: both 44%."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Itu cara seorang point guard menutup pertandingan",
+          "fix": "Delete this line. The 119-114 speaks for itself."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Selanjutnya — Game 2 dari seri tiga laga ini belum ada jadwal pasti",
+          "fix": "Delete 'Selanjutnya' section or replace with concrete fixture date if available."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Curry yang tutup dengan tangan sendiri ... Curry ke garis, dua free throw, selesai",
+          "fix": "Vary: Curry yang amankan kemenangan."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xecf3a1c3b0a98ba0",
+    "published_at": "2026-10-29T03:18:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
