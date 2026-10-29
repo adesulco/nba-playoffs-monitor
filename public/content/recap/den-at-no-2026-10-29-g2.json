@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "den-at-no-2026-10-29-g2",
+  "title": "Recap Denver Nuggets 104-91 New Orleans Pelicans (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Denver Nuggets vs New Orleans Pelicans (104-91) di —, 29 October 2026.",
+  "body_md": "## Denver Nuggets Hajar New Orleans Pelicans 104-91, Jokic Triple-Double Jadi Pembeda\n\nDenver Nuggets menang 104-91 atas New Orleans Pelicans, Kamis 29 Oktober 2026. Kemenangan ini dibangun di atas triple-double Nikola Jokic, 21 poin, 13 rebound, 10 asis, dan tembakan tiga angka yang jauh lebih efisien dari lawan.\n\n---\n\n## Top Performers\n\n**Jokic** jadi mesin penggerak Denver. 21 poin dari 8-13 field goals, 13 rebound, 10 asis, triple-double yang bukan sekadar angka bagus, tapi menggambarkan dominasi total di kedua ujung lapangan. Tidak ada tembakan tiga angka dari Jokic malam ini (0-0), semua berasal dari dalam, dan hampir semua masuk.\n\n**Jamal Murray** menambah 23 poin dengan 9-19 dari lapangan, termasuk 5-11 dari tiga angka. Enam asis juga membantu Denver mengalirkan bola dengan baik di tengah 18 turnover tim, angka yang seharusnya menjadi masalah, tapi cukup tertutupi oleh efisiensi shooting.\n\n**Aaron Gordon** cetak double-double 15 poin dan 11 rebound, efisiensi rendah (3-10 FG) tapi kontribusi di papan pantul terasa. **Christian Braun** turut sumbang 15 poin dengan 3-8 dari tiga angka.\n\nDi sisi Pelicans, **Zion Williamson** tampil paling tajam: 25 poin dari 10-14 field goals, termasuk satu-satunya tembakan tiga angka yang dia coba dan masuk. Efisiensinya menonjol, tapi tidak cukup tanpa dukungan memadai dari rekan setim.\n\n**Derik Queen** dari bench cetak double-double 11 poin dan 12 rebound. **Dejounte Murray** berkontribusi 10 poin, 8 rebound, 5 asis. Keduanya solid, tapi bukan cukup untuk menutup gap yang sudah terbuka sejak jauh sebelum kuarter akhir.\n\n---\n\n## Statistik yang Menjelaskan Segalanya\n\nPerbedaan terbesar malam ini: efisiensi dari tiga angka. Denver 39% (12-31), New Orleans 23% (7-30). Dengan volume yang hampir sama, gap efisiensi itu diterjemahkan langsung ke selisih skor akhir.\n\nDenver juga unggul signifikan di assists, 30 berbanding 20. Ini konsisten dengan gaya main Nuggets yang digerakkan Jokic sebagai playmaker. Sebaliknya, 18 turnover Denver adalah catatan yang perlu diperhatikan. jika Pelicans lebih efisien mengonversi turnover itu, ceritanya bisa berbeda.\n\nNew Orleans sedikit unggul di poin dalam tembakan dari dalam (48-42) dan fast-break points (19-15), tapi kedua keunggulan itu tidak cukup mengimbangi ketidakefisienan dari tiga angka mereka.\n\n---\n\n## Kuarter Keempat: Drama Singkat, Denver Tetap Pegang Kendali\n\nSempat ada perlawanan dari Pelicans di Q4. Dari 81-76, New Orleans merespons lewat serangkaian skor, alley-oop Herbert Jones, free throw Derik Queen, lalu tembakan tiga angka Zion dari 25 kaki yang sempat memperketat jarak menjadi 88-83. Sebentar, kandang Pelicans punya alasan untuk hidup.\n\nTapi Denver tidak membiarkan itu berlanjut. Skor akhir 104-91 mengindikasikan Nuggets menutup laga dengan tegas setelah Pelicans sempat merangsek.\n\n---\n\n## Selanjutnya\n\nIni pertandingan ketiga dari seri empat game musim reguler, dan Denver memimpin 2-0. Game 4 jadi penutup seri, detail jadwal belum tersedia di data saat ini, tapi Nuggets sudah dalam posisi nyaman untuk menutup seri head-to-head ini.\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909889",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Denver Nuggets",
+    "away_abbr": "DEN",
+    "home_score": 91,
+    "away_score": 104,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-10-29T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DEN leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.042284,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article is factually sound and mostly natural Bahasa, but has 3 medium+ issues: academic drift ('catatan yang perlu diperhatikan'), translated-English passive voice ('digerakkan'), and vague Q4 recap that should cite the actual key plays in the input. Passes facts check but voice needs tightening.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Ini konsisten dengan gaya main Nuggets yang digerakkan Jokic sebagai playmaker.",
+          "fix": "Gaya main Nuggets dengan Jokic sebagai playmaker."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Sebaliknya, 18 turnover Denver adalah catatan yang perlu diperhatikan.",
+          "fix": "Denver bikin 18 turnover, angka yang bisa jadi masalah."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Jokic sebagai playmaker. Sebaliknya, 18 turnover Denver adalah catatan yang perlu diperhatikan. jika Pelicans lebih efisien mengonversi turnover itu, ceritanya bisa berbeda.",
+          "fix": "Denver bikin 18 turnover. Pelicans yang lebih efisien bisa ubah skor."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Sempat ada perlawanan dari Pelicans di Q4. Dari 81-76, New Orleans merespons lewat serangkaian skor...",
+          "fix": "Cite the actual 4 key plays in INPUT DATA (Mathurin dunk, Herbert Jones alley-oop, Queen FT, Zion 3PT)."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "ini pertandingan ketiga dari seri empat game musim reguler, dan Denver memimpin 2-0.",
+          "fix": "Cut 'Selanjutnya' header. Start: 'Game 3 sudah di tangan Denver 2-0.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "detail jadwal belum tersedia di data saat ini",
+          "fix": "Delete. Don't acknowledge data gaps to reader."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xeb707d72b69dd0a4",
+    "published_at": "2026-10-29T03:46:23+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

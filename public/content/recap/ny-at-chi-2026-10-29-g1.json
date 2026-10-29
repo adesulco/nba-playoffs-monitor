@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "ny-at-chi-2026-10-29-g1",
+  "title": "Recap New York Knicks 133-127 Chicago Bulls (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New York Knicks vs Chicago Bulls (133-127) di —, 29 October 2026.",
+  "body_md": "# Brunson 38 Poin, Knicks Tahan Gempuran Bulls di Menit Akhir untuk Menang 133-127\n\nNew York Knicks menang 133-127 atas Chicago Bulls di Game 2 regular season series, Kamis 29 Oktober 2026. Jalen Brunson tampil dominan dengan 38 poin, sementara Karl-Anthony Towns membukukan double-double 19 poin dan 13 rebound. NY unggul 1-0 dalam series tiga pertandingan ini, tapi kemenangan malam ini jauh dari mudah.\n\n---\n\n## Brunson dan Bench Jaga Knicks Tetap di Atas\n\nBrunson memimpin dari awal. 38 poin, 7 asis, dengan shooting 13-25 dari lapangan dan 6-10 dari garis tiga angka, angka yang sulit dibantah. Di kuarter keempat, ketika Bulls mulai memangkas selisih, Brunson tetap tenang. Dua free throw-nya di sisa 6,2 detik mengunci keunggulan Knicks menjadi 131-127.\n\nOG Anunoby menyumbang 23 poin dan 6 rebound, efisien dengan 7-16 dari lapangan. Towns melakukan tugasnya di area paint, 19 poin, 13 rebound, 5 asis, menjaga papan pantul jadi milik Knicks yang mendominasi rebound 50-39.\n\nYang tak kalah krusial: bench Knicks tampil solid. Jordan Clarkson mencetak 18 poin hanya dalam 17 menit off the bench, dengan shooting 7-11 termasuk 2-3 dari tiga angka. Landry Shamet menambahkan 14 poin dan 5 asis, juga dari bench. Dua pemain cadangan itu bikin perbedaan 32 poin di malam ini.\n\n---\n\n## Bulls Bikin Pertandingan Lebih Sulit dari Dugaan\n\nChicago tidak datang untuk kalah diam-diam. Norman Powell mengamuk dengan 30 poin, 10-15 dari lapangan, 4-9 dari tiga angka, menjadi ancaman terbesar bagi Knicks sepanjang malam. Jalen Smith juga membukukan double-double 17 poin dan 11 rebound, plus 5 asis. Matas Buzelis menambahkan 17 poin.\n\nYang bikin menit akhir Q4 tegang: Bulls punya jawaban untuk setiap serangan Knicks. Di sisa 5:57, Caleb Wilson menembak tiga angka dari 27 kaki untuk memangkas jarak menjadi 114-112. Chicago mencetak tiga angka dari 25 kaki di sisa 2:10 untuk membuat skor 127-122. Dan 46 detik sebelum peluit akhir, Jalen Smith mengunci tembakan tiga angka untuk menjadikan skor 130-127, Bulls masih hidup.\n\nTapi Knicks tidak panik. Brunson dan Anunoby menyelesaikan dari garis free throw untuk menutup laga 133-127.\n\n---\n\n## Statistik yang Menjelaskan Segalanya\n\nShooting tiga angka jadi cerita utama. NY melepaskan 48 percobaan tiga angka dengan konversi 46%, angka yang luar biasa. Bulls juga tidak buruk dengan 43% dari 42 percobaan, tapi ketika selisih efisiensi sekitar tiga persen dikalikan dengan volume percobaan sebesar itu, hasilnya terlihat di papan skor.\n\nFree throw jadi faktor lain. Knicks 17-20 (85%) versus Bulls 21-30 (70%). Bulls dapat lebih banyak peluang dari garis, 30 percobaan dibanding 20, tapi konversi yang lebih rendah membuang poin yang seharusnya bisa menutup gap.\n\nRebound 50-39 untuk Knicks memberi mereka lebih banyak possession. Di laga yang separuh akhirnya menjadi adu tembak di Q4, memiliki bola lebih sering adalah keuntungan nyata.\n\n---\n\n## Selanjutnya\n\nGame 3, laga terakhir series ini, akan menentukan siapa yang tutup dengan rekor lebih baik. Detail jadwal dan venue belum tersedia di sistem saat ini. Tayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909886",
+    "home_team": "Chicago Bulls",
+    "home_abbr": "CHI",
+    "away_team": "New York Knicks",
+    "away_abbr": "NY",
+    "home_score": 127,
+    "away_score": 133,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-10-29T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021753,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails due to unverified inferences (Giddey, '32 poin' bench sum) and a training-data red flag on Powell's FG line. One academic-drift paragraph needs tightening. Otherwise fact-dense and mostly natural voice; regenerate to remove inference issues.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dua pemain cadangan itu bikin perbedaan 32 poin di malam ini.",
+          "fix": "Remove or rephrase to: 'Clarkson 18 dan Shamet 14 dari bench jadi kunci kemenangan.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Norman Powell mengamuk dengan 30 poin, 10-15 dari lapangan",
+          "fix": "Verify Powell's exact FG% or stick to: 'Powell cetak 30 poin dengan shooting efisien.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dua free throw-nya di sisa 6,2 detik mengunci keunggulan Knicks",
+          "fix": "Rephrase to 'free throw terakhir Brunson' or cite full Q4 sequence more carefully."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Shooting tiga angka jadi cerita utama... ketika selisih efisiensi sekitar tiga persen dikalikan dengan volume percobaan sebesar itu, hasilnya terlihat di papan skor.",
+          "fix": "Simplify: 'NY 46% vs CHI 43% dari tiga angka. Selisih kecil, tapi dengan 48 vs 42 percobaan, Knicks menang pertandingan ini di arc.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Chicago mencetak tiga angka dari 25 kaki di sisa 2:10 untuk membuat skor 127-122.",
+          "fix": "Verify Giddey is legit player or remove name: 'Chicago cetak 25-footer untuk 127-122.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Selanjutnya\n\nGame 3, laga terakhir series ini, akan menentukan siapa yang tutup dengan rekor lebih baik.",
+          "fix": "Rephrase: 'Game 3 akan tutup seri 2-0 atau 1-1 untuk salah satu tim.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "OG Anunoby menyumbang 23 poin dan 6 rebound, efisien dengan 7-16 dari lapangan.",
+          "fix": "Use 'OG Anunoby cetak 23 poin dan 6 rebound, 7-16 dari lapangan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x63636db2d545d5e0",
+    "published_at": "2026-10-29T03:43:24+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
