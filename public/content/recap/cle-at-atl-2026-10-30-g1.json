@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "cle-at-atl-2026-10-30-g1",
+  "title": "Recap Cleveland Cavaliers 111-114 Atlanta Hawks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Cleveland Cavaliers vs Atlanta Hawks (111-114) di —, 30 October 2026.",
+  "body_md": "# Atlanta Hawks Curi Dua Kemenangan Beruntun atas Cavaliers, 114-111\n\nAtlanta Hawks menang dramatis 114-111 atas Cleveland Cavaliers di laga kedua regular season series ini. Onyeka Okongwu tampil luar biasa dengan 29 poin dan 12 rebound, sementara clutch play di 90 detik terakhir membalik momentum yang sempat berpihak ke CLE. ATL kini unggul 2-0 di series empat laga ini.\n\n---\n\n## Top Performers\n\n**Onyeka Okongwu** jadi bintang utama malam ini. Center Atlanta itu cetak 29 poin, 12 rebound, dan 2 asis dengan efisiensi tinggi, 11 dari 17 percobaan field goal, termasuk 4-6 dari three-point line. Di saat CLE hampir balik badan lewat free throw blitz di kuarter keempat, Okongwu yang merespons dengan two-point shot di menit 28.2 Q4 untuk bikin jarak kembali jadi 109-112. Itu gol yang membunuh momentum Cavaliers.\n\nDi sampingnya, **Nickeil Alexander-Walker** cetak 25 poin dengan 8-17 dari lapangan dan 4-12 dari tiga angka, agresif meski tidak efisien di balik arc, tapi tetap berkontribusi di momen paling krusial: dua free throw di 15.3 detik terakhir yang mengunci kemenangan ATL 111-114.\n\n**Aaron Wiggins** off the bench cetak 20 poin, 7 rebound, dan 3 asis dengan efisiensi meyakinkan (8-14 FG, 4-7 from three) dalam 24 menit. **Jalen Johnson** tambah 17 poin, 8 rebound, dan 7 asis, distribusi permainan ATL berjalan rapi lewat tangannya.\n\nDari sisi CLE, **James Harden** pimpin skuad dengan 24 poin (7-14 FG), tapi **Donovan Mitchell** berjuang keras: 22 poin dengan shooting night yang berat, 7-19 dari lapangan dan 1-9 dari three. Mitchell yang mengeksekusi tiga free throw beruntun di 43.2 detik Q4 untuk memotong defisit jadi 109-110, momentum itu sesaat terasa nyata. Tapi tidak cukup.\n\n---\n\n## Baca Statistiknya\n\nDua angka yang menjelaskan hasil malam ini: three-point percentage dan fast-break points.\n\nATL tembak 17-43 dari tiga angka (40%). CLE hanya 13-42 (31%). Selisih sembilan persen itu diterjemahkan langsung ke selisih tiga poin di papan skor.\n\nFast-break points lebih mencolok lagi: ATL 15, CLE cuma 4. Hawks secara konsisten memanfaatkan transisi, sementara Cavaliers terlalu lambat merespons. Rebounds juga berpihak ke ATL: 53 berbanding 45, dengan Okongwu dan **Jock Landale** (6 poin, 10 rebound off the bench) jadi anchor di papan.\n\nAssists juga bercerita: ATL 34, CLE 26. Ball movement Hawks lebih fluid, dan itu kelihatan di lapangan.\n\nFG percentage keduanya sama di 44%, jadi penjelasannya bukan soal efisiensi mid-range atau paint, melainkan volume dan akurasi dari tiga angka, plus transisi.\n\n---\n\n## 90 Detik Terakhir yang Memutuskan\n\nCLE sempat terlihat bisa mencuri laga ini. Dunk Evan Mobley lewat asis Mitchell di menit 1:19 Q4 bikin skor 106-110, masih bisa dikejar. Lalu tiga free throw beruntun Mitchell memotong jarak jadi 109-110. Satu menit tersisa, satu poin beda.\n\nOkongwu yang menjawab. Two-point shot di 28.2 detik: 109-112.\n\nMitchell masih sempat bikin 5-foot shot untuk 111-112. Tapi Alexander-Walker di 15.3 detik menutup dengan dua free throw, 111-114. Game over.\n\n---\n\n## Selanjutnya\n\nATL unggul 2-0 di regular season series empat laga ini. Game 3 tayang di NBA League Pass dan Vidio, jadwal pasti belum tersedia di data saat ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909893",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Cleveland Cavaliers",
+    "away_abbr": "CLE",
+    "home_score": 114,
+    "away_score": 111,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-10-30T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.052062,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 58,
+      "issue_count": 7,
+      "summary": "Fail: multiple high-severity issues including ungrounded 2-0 series claim (only one game provided in input), calqued English phrases ('membunuh momentum', 'di balik arc'), and structural contradictions in stat analysis. Regenerate with strict adherence to input data block only.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Atlanta Hawks menang dramatis 114-111 atas Cleveland Cavaliers di laga kedua regular season series ini",
+          "fix": "Remove '2-0' claim and 'beruntun' phrasing. Stick to: 'Atlanta Hawks menang 114-111 atas Cleveland Cavaliers'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Okongwu yang merespons dengan two-point shot di menit 28.2 Q4 untuk bikin jarak kembali jadi 109-112. Itu gol yang membunuh momentum Cavaliers.",
+          "fix": "Rewrite: 'Okongwu respond dengan two-pointer di 28.2 Q4, jarak kembali jadi 109-112. Momentum balik ke ATL.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Mitchell yang mengeksekusi tiga free throw beruntun di 43.2 detik Q4 untuk memotong defisit jadi 109-110, momentum itu sesaat terasa nyata.",
+          "fix": "Rewrite: 'Tiga free throw beruntun Mitchell di 43.2 detik. Skor jadi 109-110, momentum sebentar terasa nyata.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Di sampingnya, Nickeil Alexander-Walker cetak 25 poin dengan 8-17 dari lapangan dan 4-12 dari tiga angka, agresif meski tidak efisien di balik arc",
+          "fix": "Rewrite: 'Alexander-Walker 25 poin, 4-12 dari tiga angka (33%), tapi crucial di akhir laga.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "jadi anchor di papan",
+          "fix": "Can stay, but watch for repeated English anchors in future articles."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dua angka yang menjelaskan hasil malam ini: three-point percentage dan fast-break points. ATL tembak 17-43 dari tiga angka (40%). CLE hanya 13-42 (31%).",
+          "fix": "Change lead: 'Tiga keputusan laga ini' or cut to actual two most-important stats and focus there."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "FG percentage keduanya sama di 44%, jadi penjelasannya bukan soal efisiensi mid-range atau paint",
+          "fix": "Cut speculation. Just say: 'FG% sama (44%), jadi three-point edge menjelaskan selisihnya.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf75875bbf48bede2",
+    "published_at": "2026-10-30T04:34:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

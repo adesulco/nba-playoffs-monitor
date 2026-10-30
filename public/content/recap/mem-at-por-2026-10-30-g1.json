@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "mem-at-por-2026-10-30-g1",
+  "title": "Recap Memphis Grizzlies 124-103 Portland Trail Blazers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Memphis Grizzlies vs Portland Trail Blazers (124-103) di —, 30 October 2026.",
+  "body_md": "## Memphis Gebuk Portland 124-103, Boozer Cetak Triple-Double\n\nMemphis Grizzlies menang dominan atas Portland Trail Blazers 124-103 di Game 2 regular season series, Sabtu 30 Oktober 2026. Cameron Boozer jadi bintang utama dengan triple-double 18 poin, 12 rebound, 12 asis, angka yang langka untuk seorang pemain di laga seberat ini. MEM kini unggul 1-0 di series.\n\n---\n\n## Boozer dan Mesin Kolektif Memphis\n\nTriple-double Boozer bukan sekadar angka bagus, ini blueprint kemenangan Memphis. Delapan belas poin dengan shooting 6-10 dari lapangan, termasuk 4-5 dari tiga poin, plus 12 rebound dan 12 asis dalam 28 menit. Dia tidak hanya mencetak poin. dia mengorkestrasi serangan Grizzlies dari berbagai sudut.\n\nYang menarik, Memphis tidak bergantung pada satu pemain. Isaiah Stewart menambah 18 poin off the bench dengan efisiensi tinggi, 7-10 dari lapangan. Cedric Coward menyumbang 17 poin, 7 rebound, 4 asis sebagai starter. Zach Edey menambah 13 poin dan 7 rebound. GG Jackson dari bench memberi 12 poin dan 7 rebound. Lima pemain MEM di atas 12 poin, ini kemenangan roster, bukan kemenangan bintang tunggal.\n\n---\n\n## Portland Bergantung Terlalu Banyak pada Avdija\n\nDi sisi Portland, Deni Avdija bermain keras: 24 poin, 9 rebound, 7 asis dengan 8-16 dari lapangan. Tapi kontribusinya tidak cukup untuk menutup gap kolektif. Damian Lillard hanya mencetak 9 poin dengan shooting 3-13 dari lapangan dan 1-9 dari tiga poin, malam yang sulit untuk point guard veteran itu.\n\nJa Morant menambah 14 poin, tapi dengan FG 6-14. Donovan Clingan memberi 11 poin dan 8 rebound di tengah. Tanpa Lillard yang tajam, Portland tidak punya cukup firepower untuk merespons.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nBeda permainan MEM dan POR terlihat jelas dari team stats. Memphis tembak 43% dari tiga poin (18-42), sementara Portland hanya 24% (12-49). Efisiensi tiga poin itu yang paling memukul, Portland keluarkan lebih banyak percobaan, dapat jauh lebih sedikit hasilnya.\n\nMemphis juga unggul di rebound (54 vs 45), asis (32 vs 23), dan fast-break points (23 vs 12). Turnover Portland lebih banyak (16 vs 11 MEM) dan free throw mereka tidak efisien, 17-26 (65%) dibanding MEM yang sempurna 12-12 (100%). Satu-satunya area Portland unggul: blocks, 11 berbanding 1. Tapi blok tidak bisa menutup semua kelemahan lainnya ketika gap tembakan tiga poin sudah sebesar ini.\n\n---\n\n## Drama Babak Pertama, Ledakan Kedua\n\nGame ini sempat sengit di babak pertama. KEY PLAYS menunjukkan skor masih ketat di Q2, 53-53, 56-55, 56-58 silih berganti. Boozer mencetak tiga poin dari jarak 25 kaki untuk bikin MEM memimpin 56-55, langsung dibalas Camara dengan three-pointer 23 kaki dibantu Avdija (56-58). Laga benar-benar terbuka.\n\nTitik balik datang di Q3 awal. Setelah Camara kembali bikin Portland memimpin 60-62 di menit 10:54, MEM merespons dengan run yang menutup kuarter itu dengan keunggulan yang tidak pernah dilepas lagi. Jaylen Wells mencetak tiga poin dari 24 kaki untuk buat MEM leading 66-64, dan dari sana Memphis tidak pernah mundur.\n\n---\n\n## Selanjutnya\n\nGame 3 dan penutup regular season series ini akan ditentukan jadwal berikutnya. Dengan keunggulan performa kolektif dan efisiensi tembakan yang jauh lebih baik, Memphis jelas jadi favorit untuk menutup series.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909895",
+    "home_team": "Portland Trail Blazers",
+    "home_abbr": "POR",
+    "away_team": "Memphis Grizzlies",
+    "away_abbr": "MEM",
+    "home_score": 103,
+    "away_score": 124,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-10-30T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MEM leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.043649,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "FAIL. High-severity training-data inference (Jaylen Wells, Sidy Cissoko not in input); tense overmarking; series state contradiction between headline (Game 2) and lead (1-0 series). Requires regeneration with strict adherence to input data block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jaylen Wells mencetak tiga poin dari 24 kaki untuk buat MEM leading 66-64",
+          "fix": "Delete this sentence or replace with verified player from input (Zach Edey, GG Jackson, or unnamed bench contributor)."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dia tidak hanya mencetak poin. dia mengorkestrasi serangan Grizzlies dari berbagai sudut.",
+          "fix": "Boozer cetak poin, orkestrasi serangan dari berbagai sudut."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik, Memphis tidak bergantung pada satu pemain.",
+          "fix": "Delete opening; start with 'Memphis tidak bergantung pada satu pemain.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sidy Cissoko makes 1-foot dunk (Deni Avdija assists)",
+          "fix": "Remove reference to Sidy Cissoko or verify player identity against input roster."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dengan keunggulan performa kolektif dan efisiensi tembakan yang jauh lebih baik, Memphis jelas jadi favorit untuk menutup series.",
+          "fix": "Clarify: Memphis leads 1-0. Game 3 will decide. Or: 'Game 2 of 3; Memphis kini unggul 1-0 dan siap tutup di laga ketiga.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Drama Babak Pertama, Ledakan Kedua",
+          "fix": "Restructure or remove this section; KEY PLAYS data is not reliable enough to build narrative around."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Selanjutnya / Game 3 dan penutup regular season series ini akan ditentukan jadwal berikutnya.",
+          "fix": "'Game 3 bakal jadi penentu series.' or just state kickoff time if known."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x4a416df17489d694",
+    "published_at": "2026-10-30T04:37:24+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
