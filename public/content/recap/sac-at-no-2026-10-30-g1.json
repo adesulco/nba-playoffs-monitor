@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "sac-at-no-2026-10-30-g1",
+  "title": "Recap Sacramento Kings 120-132 New Orleans Pelicans (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Sacramento Kings vs New Orleans Pelicans (120-132) di —, 30 October 2026.",
+  "body_md": "New Orleans Pelicans menutup laga tandang dengan kemenangan 132-120 atas Sacramento Kings, Jumat 30 Oktober 2026 jam 07.00 WIB. NO pimpin series 1-0 setelah dua dari empat laga reguler.\n\n---\n\n## Dua Protagonis, Dua Cerita Berbeda\n\nDi sisi Pelicans, dua pemain jadi kunci: Zion Williamson dan Jeremiah Fears, masing-masing cetak 22 poin.\n\nZion melakukan apa yang biasanya dia lakukan ketika efisien, 10-12 dari lapangan, tanpa satu pun tembakan tiga angka. Murni dalam jangkauan. Dengan 6 rebound dan 2 asis, perannya sebagai anchor di interior jelas terbaca dari angka 80 poin dalam lapangan milik NO, jauh melampaui SAC yang 62.\n\nYang membuat Fears berbeda malam ini bukan poinnya, tapi kontrolnya. Rookie (atau pemain muda) ini selesai dengan 22 poin, **8 rebound, dan 13 asis**, bukan triple-double, tapi kombinasi distribusi dan efisiensi yang jarang. 9-16 dari lapangan, 3-5 dari tiga angka. Di 29 menit bermain, Fears menggerakkan bola dengan cara yang membuat seluruh skuad NO terasa lebih besar dari jumlah bagian-bagiannya.\n\nTrey Murphy III menambah 19 poin (6-12 dari lapangan), Herbert Jones 16 poin dengan efisiensi solid 7-12, dan Karlo Matkovic, yang mungkin di luar radar banyak orang, menyumbang 12 poin dari bangku, menyelesaikan roster distribution yang merata.\n\n---\n\n## SAC Tidak Menyerah Tanpa Perlawanan\n\nSacramento tidak mudah dilibas. Darius Acuff Jr. bermain 41 menit dan menyelesaikan laga dengan **34 poin, 6 rebound, dan 14 asis**, stat line yang sebetulnya cukup untuk menang di banyak malam lain. Tapi 13-26 dari lapangan dan 3-11 dari tiga angka menunjukkan bahwa Kings butuh banyak usaha untuk setiap poin yang mereka cetak.\n\nDe'Andre Hunter (24 poin, 4-8 dari tiga angka) dan Precious Achiuwa (24 poin, 9 rebound, 12-17 dari lapangan) menambah volume skoring yang tidak kecil. Zach LaVine 21 poin meski struggle dari tiga angka dengan 3-10.\n\nYang menjadi masalah SAC bukan soal skoring, mereka cetak 120 poin. Masalahnya adalah sisi lain dari box score.\n\n---\n\n## Di Mana Laga Ini Diputuskan\n\nDua angka merangkum segalanya:\n\n**Turnover:** SAC 25, NO 21. Selisih empat turnover mungkin tidak terlihat besar, tapi dikombinasikan dengan fast-break points NO yang 34 berbanding 29 milik SAC, setiap kesalahan SAC berubah jadi poin mudah di ujung lapangan lain.\n\n**Field goal percentage:** SAC tembak 52%, angka yang cukup bagus. NO tembak **60%**, dan itu bukan kebetulan. Zion mencetak 10 dari 12 percobaan, tim secara kolektif memilih shot dengan lebih cermat. Points in paint 80 berbanding 62 menegaskan bahwa NO lebih konsisten menyerang di zona yang paling efisien.\n\nSteals juga mencerminkan tekanan defensif NO yang lebih intens: 18 berbanding 12.\n\n---\n\n## Berikutnya\n\nGame 3 dari empat laga regular season series ini belum tertera jadwal rincinya di data yang tersedia. Pelicans sementara pimpin 1-0, Kings perlu respons cepat sebelum series bergerak lebih jauh dari jangkauan.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909894",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Sacramento Kings",
+    "away_abbr": "SAC",
+    "home_score": 132,
+    "away_score": 120,
+    "winner_abbr": "NO",
+    "kickoff_utc": "2026-10-30T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NO leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040931,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stat citations and good structural narrative flow. One training-inference flag (Fears' rookie status) and minor hedging phrases, but no hard voice violations. Passes publication bar.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "menutup laga tandang dengan kemenangan",
+          "fix": "Rewrite: 'New Orleans Pelicans tutup kemenangan 132-120' or 'meraih kemenangan 132-120'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Rookie (atau pemain muda) ini selesai dengan 22 poin",
+          "fix": "Remove rookie descriptor; cite only what's in data: 'Fears selesai dengan 22 poin, 8 rebound, 13 asis'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "bukan triple-double, tapi kombinasi distribusi dan efisiensi yang jarang",
+          "fix": "Simplify: 'Kombinasi 22 poin, 8 rebound, 13 asis menunjukkan kontrol tempo yang matang.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "stat line yang sebetulnya cukup untuk menang di banyak malam lain",
+          "fix": "Delete or reframe: 'Acuff Jr. cukup efisien dengan 14 asis, tapi 13-26 FG menunjukkan perlawanan solid NO.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x905bb9f72425b7e2",
+    "published_at": "2026-10-30T03:09:11+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
