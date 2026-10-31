@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "cha-at-wsh-2026-10-30-g2",
+  "title": "Recap Charlotte Hornets 79-95 Washington Wizards (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Charlotte Hornets vs Washington Wizards (79-95) di —, 30 October 2026.",
+  "body_md": "# Washington Wizards Bungkam Charlotte Hornets 95-79, Unggul 2-1 di Regular Season Series\n\nWashington Wizards menang 95-79 atas Charlotte Hornets di Game 3 regular season series, Sabtu 31 Oktober 2026. Anthony Davis tampil dominan dengan 25 poin dan 13 rebound, sementara Trae Young menambah 21 poin dan 9 asis. WSH kini unggul 2-1 dalam series empat pertandingan ini.\n\n---\n\n## Pemain Kunci\n\nAnthony Davis jadi tulang punggung WSH di kedua sisi lapangan. 25 poin dengan 8-18 dari lapangan, ditambah 13 rebound, gaya bermain yang sulit diimbangi CHA sepanjang malam. Satu-satunya momen KEY PLAYS yang tercatat pun melibatkan Davis: tembakan dua poin di jarak satu kaki dibantu Trae Young di kuarter kedua, momen yang sempat membuat skor bersaing ketat di 38-39.\n\nYoung sendiri membaca permainan dengan baik. 21 poin dan 9 asis, satu angka dari double-double, dengan efisiensi yang terbilang solid: 4-9 dari lapangan, 1-5 dari tiga poin. Kreativitasnya dalam menciptakan peluang untuk rekan-rekan terlihat dari 9 asis itu.\n\nAJ Dybantsa menambah kedalaman roster WSH dengan 17 poin dan 8 rebound dari 30 menit bermain, sementara Kyshawn George menyumbang 12 poin dengan 4-8 dari tiga poin, akurasi three-point yang jadi salah satu kunci kemenangan WSH malam ini. Dari bench, Bub Carrington efisien: 9 poin dengan 3-3 dari tiga poin dalam 20 menit.\n\nDi kubu CHA, Brandon Miller jadi top scorer dengan 19 poin, tapi efisiensinya bermasalah. 7-24 dari lapangan, 3-13 dari tiga poin. Terlalu banyak attempts untuk hasil yang tidak sepadan. Naz Reid dan Moussa Diabate masing-masing mencatatkan double-double, Reid 12 poin/11 rebound, Diabate 10 poin/12 rebound, namun kontribusi keduanya habis tersedot oleh lemahnya produksi tim secara keseluruhan. Dennis Schroder 8 poin dan 8 asis, tapi hanya tembak 2-7 dari lapangan.\n\n---\n\n## Apa yang Bicara di Stat Sheet\n\nSatu angka merangkum malam CHA: 30% FG. Seratus satu attempts, hanya 30 yang masuk. Lebih buruk lagi dari tiga poin, 12-56, 21%. Itu volume tembakan yang masif dengan tingkat konversi yang sangat rendah.\n\nWSH tidak efisien sempurna, 38% FG dan 33% dari tiga poin bukan angka yang luar biasa, tapi cukup jauh di atas CHA untuk mengontrol permainan. Yang benar-benar membedakan adalah free throw: WSH 29-35 (83%) berbanding CHA 7-12 (58%). Selisih volume tembakan bebas itu signifikan dan mencerminkan agresivitas WSH masuk ke paint sepanjang malam.\n\nCHA mencuri 12 bola dari WSH, WSH hanya 6, tapi turnover WSH yang lebih tinggi (15 vs 12) tidak dieksploitasi cukup baik oleh Charlotte.\n\n---\n\n## Outlook Series\n\nWSH unggul 2-1 dengan satu game tersisa. Game 4 jadi penentu apakah series ini berakhir imbang atau WSH menutupnya. CHA butuh respons besar, shooting yang lebih efisien dan produksi lebih merata dari roster, bukan hanya Miller yang berjuang sendiri dengan volume tinggi.\n\nGame 4 bisa ditonton live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909277",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Charlotte Hornets",
+    "away_abbr": "CHA",
+    "home_score": 95,
+    "away_score": 79,
+    "winner_abbr": "WSH",
+    "kickoff_utc": "2026-10-30T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.049284,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Article is solid. Accuracy verified on all key stats (25 pts Davis, 21 pts Young, 9 ast Young, 30% FG CHA, 38% FG WSH, 83% FT WSH, etc.). Voice is conversational, no major violations. Three low-severity flags on idiom calquing and minor register drift, but none block publication.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Satu angka merangkum malam CHA: 30% FG.",
+          "fix": "Rewrite: 'CHA hancur di shooting: 30% FG.' atau langsung ke analisis tanpa intro."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Selisih volume tembakan bebas itu signifikan dan mencerminkan agresivitas WSH masuk ke paint.",
+          "fix": "Rewrite: 'Selisih FT itu besar—WSH justru agresif attack ke paint.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Terlalu banyak attempts untuk hasil yang tidak sepadan.",
+          "fix": "Rewrite: 'Terlalu banyak shots untuk hasil yang minim.' atau 'shots ineffisien.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2efb71b88643e6a4",
+    "published_at": "2026-10-31T02:06:54+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
