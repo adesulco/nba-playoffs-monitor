@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "orl-at-tor-2026-10-30-g2",
+  "title": "Recap Orlando Magic 121-114 Toronto Raptors (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Toronto Raptors (121-114) di —, 30 October 2026.",
+  "body_md": "# Orlando Magic Menang 121-114, Lima Pemain Cetak 13+ Poin Kalahkan Toronto\n\nOrlando Magic menang 121-114 atas Toronto Raptors di Game 3 regular season series, Jumat 31 Oktober 2026. Kemenangan ini membuat Magic unggul 2-1 dalam head-to-head series. Lima pemain Orlando cetak dua digit, distribusi serangan yang membuat Toronto kesulitan fokus pertahanan ke satu titik, meski Scottie Barnes tampil luar biasa dengan 41 poin.\n\n---\n\n## Distribusi vs Solo Show\n\nKontras paling jelas malam ini: Orlando menang bukan karena satu bintang, tapi karena serangan yang merata.\n\nDesmond Bane memimpin dengan 28 poin, 6 asis, shooting 6-12 dari tiga angka. Franz Wagner 26 poin, 11 asis, dan jadi playmaker kunci di kuarter keempat. Wendell Carter Jr. tambah 20 poin dan 7 rebound dari posisi big man. Anthony Black 17 poin, 6 rebound, 10 asis, sebentar lagi double-double apik dari guard muda itu. Dan dari bench, Jamal Cain cetak 13 poin dengan shooting sempurna: 5-5 dari lapangan, 3-3 dari tiga angka.\n\nDi sisi lain, Toronto hampir sepenuhnya bergantung pada Scottie Barnes. Barnes tampil fenomenal, 41 poin dengan 19-34 dari lapangan. Tapi support di sekitarnya terlalu tipis. Immanuel Quickley 17 poin dan 8 asis, Collin Murray-Boyles 15 poin off the bench, Jakob Poeltl 12 poin dan 11 rebound. RJ Barrett hanya bisa sumbang 9 poin dengan shooting 3-10.\n\nSatu pemain tidak bisa menang sendirian. Malam ini membuktikan itu.\n\n---\n\n## Three-Point Gap yang Menentukan\n\nStatistik tim menjelaskan kemenangan Orlando lebih jauh.\n\nDari tiga angka: Magic 53% (18-34), Raptors 41% (11-27). Selisih efisiensi ini besar, terutama karena kedua tim punya volume attempt yang berbeda tipis. Orlando jauh lebih panas dari perimeter.\n\nFree throw jadi pembeda lain. ORL 25-29 (86%), TOR hanya 11-15 (73%). Orlando lebih sering ke garis, dan lebih konsisten menyelesaikannya.\n\nToronto punya keunggulan di beberapa area, fast-break points 11 lawan 1, points in paint 50 lawan 40, rebound 38 lawan 32. Tapi unggul di dalam cat tidak cukup ketika Orlando menembak jauh lebih efisien dari luar. Turnover kedua tim relatif seimbang: ORL 13, TOR 11.\n\n---\n\n## Kuarter Keempat: Wagner Menutup Pertandingan\n\nGame ini diputuskan dalam rentang tujuh menit terakhir.\n\nToronto sempat menempel ketat. Scottie Barnes masuk dua free throw di menit 7:17 Q4, membuat skor 102-103, Raptors unggul tipis. Situasi genting untuk Orlando.\n\nYang terjadi berikutnya adalah rangkaian momentum yang tidak bisa dijawab Toronto. Anthony Black (diumpan Franz Wagner) masuk three-pointer dari jarak 28 kaki, skor berbalik 105-103. Lalu Wagner sendiri menambah dua poin lewat two point shot, 107-103. Toronto sempat menjawab lewat Jamison Battle, 107-105. Tapi Wagner kembali masuk driving floater dan free throw, 110-105.\n\nSaat Murray-Boyles mencoba memperkecil defisit dengan dunk di menit 4:58, skor 112-107, gap sudah cukup jauh. Ja'Kobe Walter bikin 117-112 di menit 2:09, tapi waktu sudah tidak berpihak pada Toronto. Magic menutup laga 121-114.\n\nWagner jadi aktor kunci di kuarter pamungkas, bukan hanya dari poin tapi dari decision-making sebagai playmaker.\n\n---\n\n## Selanjutnya\n\nOrlando Magic unggul 2-1 dalam regular season series. Game 4 adalah laga terakhir dalam rangkaian ini, detail jadwal dan kanal tayang menyusul. Untuk saat ini, Magic sudah tunjukkan pola yang menarik: bahkan menghadapi 41 poin dari satu pemain lawan pun, mereka bisa menang jika distribusi serangan berjalan.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909281",
+    "home_team": "Toronto Raptors",
+    "home_abbr": "TOR",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 114,
+    "away_score": 121,
+    "winner_abbr": "ORL",
+    "kickoff_utc": "2026-10-30T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021966,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong recap with accurate stats, clear structure, and good Bahasa voice. Minor soft-phrase clichés and one academic-drift opener, but no hard violations. Pass with editor notes.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "sebentar lagi double-double apik dari guard muda itu",
+          "fix": "Change to 'Anthony Black 17 poin, 6 rebound, 10 asis—nyaris double-double dari guard rookie.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Tapi support di sekitarnya terlalu tipis.",
+          "fix": "Rewrite: 'Pemain lain di Toronto tak bisa backing Barnes cukup.' or just 'Barnes bermain di bubble: 41 poin tapi tim tidak ikut bernyanyi.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Statistik tim menjelaskan kemenangan Orlando lebih jauh.",
+          "fix": "Simplify: 'Angka tim menunjukkan perbedaan nyata di luar.' or just 'Three-point shooting jadi game-changer.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Situation genting untuk Orlando.",
+          "fix": "Replace 'genting' with 'gawat' or restructure: 'Toronto di depan tipis, Magic dalam tekanan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xabbfe162706aeca4",
+    "published_at": "2026-10-31T03:10:20+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

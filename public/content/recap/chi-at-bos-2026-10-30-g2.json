@@ -1,0 +1,69 @@
+{
+  "type": "recap",
+  "slug": "chi-at-bos-2026-10-30-g2",
+  "title": "Recap Chicago Bulls 111-125 Boston Celtics (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Chicago Bulls vs Boston Celtics (111-125) di —, 30 October 2026.",
+  "body_md": "# Boston Celtics Bekuk Chicago Bulls 125-111, Payton Pritchard Meledak 30 Poin dari Bangku Cadangan\n\nBoston Celtics menang 125-111 atas Chicago Bulls di Game 3 Regular Season Series, Sabtu 31 Oktober 2026. BOS kini unggul 2-0 dalam seri ini. Payton Pritchard jadi bintang malam itu dengan 30 poin off the bench, sementara Jayson Tatum bermain konsisten di segala lini. Bulls berjuang keras tapi tidak pernah benar-benar punya jawaban untuk kedalaman roster Boston.\n\n---\n\n## Performa Pemain Kunci\n\nPritchard adalah cerita terbesar malam ini. Shooting guard asal Oregon itu masuk dari bangku cadangan dan langsung merusak rhythm pertahanan Bulls, 30 poin, 3 rebound, 3 asis, dari 9-17 FG dan 3-9 dari tiga poin. Bukan malam paling efisien dari deep range, tapi volume dan agresivitasnya cukup untuk tetap jadi tumpuan utama serangan BOS.\n\nTatum melengkapi dengan lini stat yang hampir membentuk double-double: 26 poin, 7 rebound, 7 asis dari 9-20 FG. Dia jadi penggerak game, bukan hanya pencetak poin, distribusinya ke Paul George dan Pritchard terasa dalam pergerakan skor keseluruhan. George sendiri tampil di bawah radar tapi impactful: 18 poin, 8 asis, 6 rebound dari 7-15 FG. Kualitas playmaking-nya tidak tercermin di angka poin, tapi cukup terlihat dari 28 total asis Boston.\n\nDari bangku cadangan BOS, Neemias Queta menambah 13 poin dan 6 rebound dengan efisiensi tinggi dari post-up, 3-5 FG, semua dari dalam area. Mitchell Robinson turut berkontribusi 11 poin dengan FG sempurna 4-4 sebagai starter.\n\nDi sisi Bulls, tidak ada yang benar-benar meledak. Caleb Wilson paling produktif dengan 23 poin, 5 rebound, 4 asis, dan shooting yang cukup solid dari tiga poin (6-11). Josh Giddey mengatur tempo dengan 13 poin dan 5 asis. Tapi distribusinya rata, tidak ada satu pemain pun yang tampil dominan cukup untuk menggeser momentum.\n\n---\n\n## Baca Statistik\n\nAngka tim bercerita lebih jelas dari skor akhir. Boston jauh lebih efisien dari lapangan: 51% FG vs 38% milik Chicago. Perbedaan itu diterjemahkan langsung ke dalam keunggulan poin di area, 58 berbanding 40 untuk BOS. Ketika Boston konsisten menyerang ke dalam, Bulls tidak punya cukup respons.\n\nChicago justru melepaskan lebih banyak tembakan tiga poin (50 percobaan) vs Boston (32), tapi akurasi keduanya hampir setara, 30% vs 31%. Masalah Bulls bukan dari tiga poin, tapi dari cara mereka terlalu bergantung padanya tanpa bisa menerobos ke dalam cat. Free throw juga jadi pembeda signifikan: Chicago 65% (26-40) vs Boston 78% (31-40). Dalam pertandingan yang margin akhirnya 14 poin, selisih di garis free throw ikut berkontribusi nyata.\n\nTurnovers hampir imbang (16 vs 15), tapi Boston memanfaatkan possession mereka jauh lebih baik.\n\n---\n\n## Implikasi Seri\n\nBOS unggul 2-0 dalam Regular Season Series empat game ini. Dengan dua laga tersisa, Chicago perlu respons berbeda, terutama dalam hal efisiensi field goal dan penyelesaian di area. Mengandalkan 50 percobaan tiga poin setiap malam tanpa solusi alternatif bukan formula yang sustainable menghadapi tim sedalam Boston.\n\nGame 4 dari seri ini belum tercantum jadwalnya di data yang tersedia.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909278",
+    "home_team": "Boston Celtics",
+    "home_abbr": "BOS",
+    "away_team": "Chicago Bulls",
+    "away_abbr": "CHI",
+    "home_score": 125,
+    "away_score": 111,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-10-30T23:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BOS leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020222,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Generally solid recap with accurate stats and clear structure. One high-severity training-inference issue (college origin), two medium-severity translated-English phrases that should be smoothed. Minor academic drift. Pass with editorial notes.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Shooting guard asal Oregon itu masuk dari bangku cadangan",
+          "fix": "Remove 'asal Oregon' or rewrite as 'Pritchard masuk dari bangku cadangan'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Bukan malam paling efisien dari deep range, tapi volume dan agresivitasnya cukup",
+          "fix": "Rewrite: 'Akurasi tiga poinnya (3-9) biasa saja, tapi volume cukup tinggi'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Dia jadi penggerak game, bukan hanya pencetak poin, distribusinya ke Paul George dan Pritchard terasa dalam pergerakan skor keseluruhan",
+          "fix": "Simplify: 'Distribusinya ke George dan Pritchard jelas terlihat di skor'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kualitas playmaking-nya tidak tercermin di angka poin",
+          "fix": "Rewrite: 'Statistik poinnya tidak menunjukkan dampak playmaking-nya'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dalam pertandingan yang margin akhirnya 14 poin, selisih di garis free throw ikut berkontribusi nyata",
+          "fix": "Change to: 'Dengan margin 14 poin, selisih free throw ikut berkontribusi'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x054767b2842d588b",
+    "published_at": "2026-10-31T03:06:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
