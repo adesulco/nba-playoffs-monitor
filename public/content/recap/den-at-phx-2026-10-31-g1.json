@@ -1,0 +1,133 @@
+{
+  "type": "recap",
+  "slug": "den-at-phx-2026-10-31-g1",
+  "title": "Recap Denver Nuggets 127-120 Phoenix Suns (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Denver Nuggets vs Phoenix Suns (127-120) di —, 31 October 2026.",
+  "body_md": "# Murray-Braun Explosion Bawa Nuggets Tumbangkan Suns 127-120\n\nDenver Nuggets menang 127-120 atas Phoenix Suns dalam laga regular season NBA 2026, Jumat 31 Oktober pukul 09.00 WIB. Jamal Murray cetak 39 poin, Christian Braun tambah 31 poin, sementara Nikola Jokic jaga ritme dengan 18 poin dan 10 asis. Dengan kemenangan ini, Denver unggul 1-0 dalam seri regular season empat pertemuan musim ini.\n\n---\n\n## Top Performers\n\nMurray tampil sebagai bintang utama malam ini. Angka 39 poin, 8 rebound, 5 asis dengan efisiensi 10-18 dari lapangan, dan yang paling menonjol, 7-9 dari tiga poin, menunjukkan Murray dalam rhythm yang sulit dihentikan. Braun melengkapi dua guard starter Denver dengan performa hampir setara: 31 poin, 7-9 dari tiga poin juga, konsistensi yang membuat rotasi perimeter DEN jadi mimpi buruk buat defense Suns.\n\nJokic, meski \"hanya\" cetak 18 poin, tetap mengontrol permainan dari posisi center. Sepuluh asis dengan 8-13 dari lapangan, plus 7 rebound, triple-double kurang dua poin saja. Jokic tidak butuh scoring besar ketika Murray dan Braun sedingin malam ini.\n\nDi kubu Suns, Miles Bridges jadi yang paling konsisten: 24 poin, 10 rebound, double-double solid dengan 10-19 dari lapangan. Dillon Brooks efisien dari bench, 22 poin dengan 9-12 field goal dan 4-6 dari tiga poin dalam 21 menit. Devin Booker cetak 20 poin, tapi FG hanya 7-19, volume shooter yang malam ini agak boros. Collin Gillespie dari bench PHX menyumbang 16 poin dan 10 asis, playmaking yang sebenarnya tidak kalah dari Jokic dari sisi assist total.\n\n---\n\n## Apa Kata Statistik\n\nSatu angka yang langsung menjelaskan hasil malam ini: tiga poin. Denver masuk 20-37 dari tiga poin (54%), Suns hanya 18-42 (43%). Perbedaan efisiensi dari luar busur itu jadi margin penentu, Murray dan Braun masing-masing 7-9 dari tiga poin, dua shooter panas di malam yang sama.\n\nSisi lain, Phoenix sebenarnya mendominasi dalam beberapa aspek. PHX unggul rebound 42-40, asis 34-30, dan yang menarik: points in paint 50-32. Suns jauh lebih produktif di area restricted, tapi ketika Denver membalasnya dari tiga poin dengan persentase 54%, keunggulan di paint itu tidak cukup untuk tutup selisih. Turnover Denver yang mencapai 19 juga jadi catatan merah. PHX hanya 15. Denver menang bukan karena bermain bersih, tapi karena mereka jauh lebih tajam dari tiga poin.\n\nFree throw juga cerita tersendiri. Denver 23-30 (77%) vs PHX yang hampir sempurna 10-11 (91%). Frekuensi ke garis foul DEN yang jauh lebih tinggi memberikan extra possession yang tidak bisa diimbangi Suns.\n\n---\n\n## Momen Penentu\n\nDrama tersaji di babak kedua dan kuarter empat. Di Q2, pertandingan sempat ketat dan bolak-balik, Brooks bikin turnaround jump shot untuk PHX unggul 59-61, lalu Braun dengan asis Jokic samakan 61-61. Booker balas dengan pullup jumper 63-61, Braun jawab lagi dengan tembakan tiga poin 24 kaki untuk DEN unggul 64-63. Dua menit terakhir Q2 itu gambaran karakter laga, siapa yang lebih tenang di tembakan penting.\n\nDi Q4, PHX sempat coba kejar. Gillespie masuk dengan tiga poin 26 kaki di menit ke-10 Q4 untuk bikin 103-98, dan semua kembali terbuka. Tapi Denver tidak goyah. Jordan Goodwin menutup cerita PHX dengan step-back three pointer 25 kaki di detik ke-9.7 untuk bikin skor 125-120, terlalu terlambat untuk Suns membalik keadaan, dan Nuggets menutup laga 127-120.\n\n---\n\n## Selanjutnya\n\nGame 2 dari seri empat pertemuan regular season ini belum tersedia jadwal resminya di data kami. Denver sementara unggul 1-0 dan akan menjamu Phoenix sekali lagi sebelum seri pindah kandang. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909286",
+    "home_team": "Phoenix Suns",
+    "home_abbr": "PHX",
+    "away_team": "Denver Nuggets",
+    "away_abbr": "DEN",
+    "home_score": 120,
+    "away_score": 127,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-10-31T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DEN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023631,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article passes factual accuracy (all stats verified) but fails voice discipline. High tense overmarking, translated-English phrasing patterns ('meski \"hanya\"', 'triple-double kurang dua poin', 'Apa Kata Statistik' section header), and soft-phrase hedging. Reads like polished translation rather than natural Indonesian sport writing. Rework opening of 'Top Performers' and 'Statistik' sections for native register.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "meski \"hanya\" cetak 18 poin, tetap mengontrol permainan dari posisi center",
+          "fix": "Jokic cetak 18 poin, tapi kontrol permainan dari posisi center dengan 10 asis."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Satu angka yang langsung menjelaskan hasil malam ini: tiga poin.",
+          "fix": "Satu angka: tiga poin. Denver 54%, Phoenix 43%."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Apa Kata Statistik",
+          "fix": "Delete section header or use casual: 'Angka yang Bicara' or just flow into paragraph."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "triple-double kurang dua poin saja",
+          "fix": "Jokic hampir triple-double: tinggal butuh 2 poin lagi."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Braun melengkapi dua guard starter Denver dengan performa hampir setara",
+          "fix": "Braun ikut panas: 31 poin, 7-9 dari tiga juga."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 2 dari seri empat pertemuan regular season ini belum tersedia jadwal resminya",
+          "fix": "Clarify: ini game 1 dari 4 pertemuan musim ini. Game 2 akan datang."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Sisi lain, Phoenix sebenarnya mendominasi dalam beberapa aspek.",
+          "fix": "Phoenix unggul di rebound (42-40), asis (34-30), dan points in paint (50-32)."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x26d9cd1a34c16e06",
+    "published_at": "2026-10-31T05:15:41+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 76,
+      "headline_score": 72,
+      "headline_comment": "Solid dan informatif dengan duo Murray-Braun sebagai hook, tapi 'Explosion' terasa generic dan 'Tumbangkan' agak klise.",
+      "lead_score": 80,
+      "lead_comment": "Padat dengan skor, tiga nama kunci, dan konteks seri — tapi 'laga regular season NBA 2026' sedikit kaku, bisa lebih tajam dengan angle duo 7-9 dari three.",
+      "structure_score": 78,
+      "structure_comment": "Alur top performers → stats → momen → next game logis dan standar; closing agak lemah karena mengakui data tidak lengkap.",
+      "voice_score": 74,
+      "voice_comment": "Mostly natural dengan code-switching NBA yang pas, tapi beberapa frasa seperti 'rhythm yang sulit dihentikan' dan 'mimpi buruk buat defense' terasa diterjemahkan dari English.",
+      "suggestion_count": 6,
+      "summary": "Solid recap with strong statistical narrative around the three-point disparity, but contains one factual error (Brooks tagged as bench), an amateurish closing that references 'our data', and a few translated-English phrasings. Editor pass should take 10 minutes.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Game 2 dari seri empat pertemuan regular season ini belum tersedia jadwal resminya di data kami.",
+          "issue": "Closing mengakui keterbatasan data secara eksplisit — reader tidak perlu tahu soal 'data kami', ini break the fourth wall yang amatir.",
+          "fix": "Hapus kalimat ini; langsung ke 'Denver sementara unggul 1-0 dalam seri musim ini. Tayang live di NBA League Pass dan Vidio.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Dillon Brooks efisien dari bench, 22 poin dengan 9-12 field goal",
+          "issue": "Factual error — data menunjukkan Brooks adalah starter (bukan bench); yang dari bench adalah Gillespie dan Goodwin.",
+          "fix": "Ubah ke 'Dillon Brooks efisien dalam 21 menit, 22 poin dengan 9-12 field goal' — hapus 'dari bench'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Frekuensi ke garis foul DEN yang jauh lebih tinggi memberikan extra possession yang tidak bisa diimbangi Suns.",
+          "issue": "Insight bagus tapi tenggelam di akhir paragraf; FT 30 attempts vs 11 adalah gap besar yang layak jadi highlight tersendiri.",
+          "fix": "Angkat jadi kalimat pembuka paragraf: 'Denver hampir tiga kali lipat lebih sering ke garis foul: 30 attempts vs 11 milik Phoenix.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Murray tampil sebagai bintang utama malam ini.",
+          "issue": "Lead paragraf top performers lemah dan generic — langsung masuk angka akan lebih kuat.",
+          "fix": "Mulai dengan 'Murray cetak 39 dengan 7-9 dari tiga poin — malam di mana ring Phoenix berasa dua kali lebih lebar.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Jokic tidak butuh scoring besar ketika Murray dan Braun sedingin malam ini.",
+          "issue": "'Sedingin' ambigu dalam konteks basket Bahasa — biasanya 'panas' untuk shooter yang on fire; 'dingin' justru artinya cold shooting.",
+          "fix": "Ubah ke 'ketika Murray dan Braun sepanas malam ini' atau 'ketika dua guard-nya lagi on fire'."
+        },
+        {
+          "priority": "low",
+          "snippet": "triple-double kurang dua poin saja",
+          "issue": "Jokic butuh 2 poin lagi untuk triple-double, tapi phrasing bisa lebih tajam.",
+          "fix": "Ubah ke 'dua poin lagi dan itu triple-double' — lebih punchy, lebih Indonesian sport-press."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
