@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "ind-at-mia-2026-10-31-g1",
+  "title": "Recap Indiana Pacers 125-145 Miami Heat (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Indiana Pacers vs Miami Heat (125-145) di —, 31 October 2026.",
+  "body_md": "# Miami Heat Permalukan Indiana Pacers 145-125, Giannis Cetak Triple-Double\n\nMiami Heat menang telak atas Indiana Pacers 145-125 di Game 2 Regular Season Series. Giannis Antetokounmpo tampil luar biasa dengan 31 poin, 18 rebound, 10 asis, triple-double yang memimpin Heat ke rekor 1-0 dalam seri tiga laga ini. Miami tinggal butuh satu kemenangan lagi untuk menutup seri.\n\n---\n\n## Malam Giannis\n\nTriple-double Giannis bukan sekadar angka. Efisiensinya yang bikin sakit: 13-19 dari lapangan, 1-2 dari tiga poin. Hampir tidak ada tembakan terbuang. Untuk besar dan atletis seperti Giannis, 18 rebound dalam 31 menit adalah dominasi di papan yang sulit dibantah.\n\nBam Adebayo melengkapi double act interior Miami dengan 27 poin dan 9 rebound, tembakan 11-14 dari lapangan, efisiensi yang mematikan. Dua big men ini menghasilkan 58 poin kombinasi, dan IND kehabisan jawaban sepanjang malam.\n\nDi sisi lain, Klay Thompson bermain di luar ekspektasi: 25 poin dengan 7-12 dari tiga poin. Klay datang, serang, masuk. Itu sudah cukup. Pelle Larsson dari bench menambah 18 poin dengan shooting sempurna, 5-5 dari lapangan, 1-1 dari tiga poin. Davion Mitchell menutup baris starter Heat dengan 15 poin, 6 rebound, dan 11 asis, hampir triple-double sendiri.\n\n---\n\n## Pacers Punya Poin, Tapi Tidak Cukup\n\nPacers tidak kolaps total, 125 poin bukan skor tim yang kehabisan amunisi. Quenton Jackson off the bench mencetak 24 poin dalam 24 menit dengan tembakan 9-13 dari lapangan. Andrew Nembhard starter dengan 22 poin dan 9 asis, FG 8-16, 5-8 dari tiga poin. Bench IND malam ini tidak kalah jauh dari starter dalam urusan produksi poin.\n\nMasalah IND bukan di offense. Pascal Siakam, yang seharusnya jadi motor utama, berakhir dengan 13 poin dari 5-17 dari lapangan, angka yang mencerminkan betapa sulitnya menembak malam ini ketika pertahanan Miami sudah fokus.\n\nIND juga mencetak 17-37 dari tiga poin (46%), persentase yang sebenarnya tidak jelek. Tapi MIA lebih baik di hampir semua kategori lain yang lebih fundamental.\n\n---\n\n## Statistik yang Menjelaskan Selisih 20 Poin\n\nFG% berbicara paling keras: MIA 58%, IND 48%. Selisih sepuluh poin dalam efisiensi tembakan sepanjang laga akan selalu berakhir di angka seperti ini.\n\nRebound: MIA 48, IND 37. Selisih 11 rebound, sebagian besar karena Giannis dan Adebayo mendominasi papan. Possession tambahan dari offensive rebound langsung berubah jadi poin.\n\nPoints in paint: MIA 64, IND 50. Heat lebih sering masuk ke area berbahaya dan lebih sering mengkonversinya. Assists pun berbicara: MIA 38 vs IND 28. Tim Miami bermain sebagai tim, bukan kumpulan isolasi.\n\nSatu-satunya kategori yang IND unggul: steals (11 vs 8). Tapi dengan hanya 16 turnover dari Miami, pressure itu tidak cukup mengubah jalannya laga.\n\n---\n\n## Outlook Seri\n\nMiami unggul 1-0 dalam seri tiga laga ini dan tinggal butuh satu kemenangan. Game 3 adalah peluang closeout bagi Heat, dan dengan performa Giannis, Adebayo, plus kedalaman rotation yang terbukti malam ini, tekanan ada di pundak Indiana.\n\nPacers perlu solusi konkret untuk dua masalah utama: bagaimana menghentikan interior Miami, dan bagaimana Siakam bisa tampil lebih efisien dari 5-17.\n\nGame 3 bisa tayang di NBA League Pass dan Vidio, jadwal belum tersedia di data saat ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909282",
+    "home_team": "Miami Heat",
+    "home_abbr": "MIA",
+    "away_team": "Indiana Pacers",
+    "away_abbr": "IND",
+    "home_score": 145,
+    "away_score": 125,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-10-31T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021784,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on training inference (series closeout framing as narrative fact), academic drift in structure, and AI-translated English phrases. Tense marking is inconsistent. Remove speculative 'closeout' language and Game 3 section. Otherwise factual accuracy is solid.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Miami tinggal butuh satu kemenangan lagi untuk menutup seri.",
+          "fix": "Remove 'menutup seri' language. Use: 'Miami unggul 1-0 dalam Regular Season Series tiga laga.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Andrew Nembhard starter dengan 22 poin dan 9 asis, FG 8-16, 5-8 dari tiga poin.",
+          "fix": "Rewrite: 'Andrew Nembhard cetak 22 poin, 9 asis dengan FG 8-16.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Bam Adebayo melengkapi double act interior Miami dengan 27 poin dan 9 rebound, tembakan 11-14 dari lapangan, efisiensi yang mematikan.",
+          "fix": "Change to: 'Bam Adebayo melengkapi duo besar interior Miami...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Klay datang, serang, masuk. Itu sudah cukup.",
+          "fix": "Delete 'Itu sudah cukup.' or replace: 'Itu saja untuk membuat Heat unggul.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Statistik yang Menjelaskan Selisih 20 Poin",
+          "fix": "Rename to 'Dimana Beda 20 Poin Tercipta' or merge into flowing prose without subhead."
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Game 3 bisa tayang di NBA League Pass dan Vidio, jadwal belum tersedia di data saat ini.",
+          "fix": "Cut entirely or: 'Game 3 tayang via NBA League Pass dan Vidio.' Let missing date pass silently."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Pacers tidak kolaps total, 125 poin bukan skor tim yang kehabisan amunisi.",
+          "fix": "Rewrite: '125 poin bukan skor lemah, tapi tidak cukup lawan performa Miami.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0cda2d79e4e1c69a",
+    "published_at": "2026-10-31T04:40:29+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
