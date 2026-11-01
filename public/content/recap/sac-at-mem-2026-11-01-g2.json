@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "sac-at-mem-2026-11-01-g2",
+  "title": "Recap Sacramento Kings 105-136 Memphis Grizzlies (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Sacramento Kings vs Memphis Grizzlies (105-136) di —, 1 November 2026.",
+  "body_md": "Memphis Grizzlies melumat Sacramento Kings 136-105, Minggu 1 November 2026. Bukan sekadar menang, ini pernyataan. MEM unggul 31 poin dengan efisiensi shooting yang hampir sempurna, sementara SAC gagal memanfaatkan 38 poin luar biasa dari Darius Acuff Jr. yang tampil sendirian di tengah kehancuran tim.\n\n---\n\n## Performa Top\n\n**Darius Acuff Jr.** jadi satu-satunya cerita positif dari sisi Kings. Rookie itu cetak 38 poin, 5 rebound, 5 asis dengan shooting 12-25 dari lapangan dan 9-14 dari garis tiga angka, output yang di laga lain mungkin cukup untuk menang. Tapi malam ini tidak.\n\nDi seberang lapangan, Memphis punya kedalaman yang merata dan mematikan. **Cameron Boozer** memimpin dengan 27 poin, 9 rebound, 3 asis hanya dalam 26 menit, efisien dan tidak perlu berlama-lama. **Isaiah Stewart** menambahkan 24 poin dari bangku cadangan dengan shooting nyaris sempurna: 8-9 dari lapangan, 2-3 dari tiga angka. **GG Jackson** juga off the bench, cetak 21 poin dengan 5-5 dari garis tiga angka, satu pun tidak meleset.\n\nBench Memphis kolektif menghancurkan SAC. Stewart, Jackson, dan **Jerami Grant** (14 poin) keluar dari rotasi dan langsung membunuh laga.\n\nDari sisi Kings, **De'Andre Hunter** coba berkontribusi dengan 19 poin meski harus tembak 8-18. **Domantas Sabonis** catat 11 poin, 14 rebound, 8 asis, angka yang solid secara statistik, tapi tidak bisa menyembunyikan fakta bahwa SAC tidak punya cukup banyak pencetak poin yang berjalan malam ini.\n\n---\n\n## Baca Statistik\n\nAngka tim bicara lebih keras dari skor akhir. Memphis tembak 55% dari lapangan versus Kings yang hanya 41%. Di garis tiga angka, kesenjangan itu lebih ekstrem lagi: MEM 50% (19-38), SAC 29% (11-38). Dengan volume yang sama persis, 38 percobaan tiga angka masing-masing, MEM memasukkan delapan tembakan lebih banyak.\n\nDi dalam cat, Memphis juga dominan: 54 poin di paint versus 36 milik Kings. Fast-break points 25-13 untuk MEM, rebounds 45-33. SAC punya lebih banyak steal (9 vs 5), tapi turnover sama-sama tinggi di kedua sisi, MEM 17, SAC 16. Tidak ada tim yang bersih di sini, tapi Memphis cukup efisien untuk tidak peduli.\n\nSingkatnya: SAC kalah di hampir setiap kategori bermakna.\n\n---\n\n## Konteks Seri\n\nIni pertandingan ketiga dari seri reguler season, dan Memphis menutupnya dengan rekor 2-0 dalam seri ini. Kings tidak punya jawaban untuk kedalaman rotasi Grizzlies, dan malam ini membuktikan itu dengan jelas.\n\nAcuff Jr. memberi tahu semua orang bahwa dia bisa jadi ancaman nyata di level ini. Tapi Kings butuh lebih dari satu pemain panas untuk bersaing dengan tim yang bisa cetak 136 poin dengan lima pemain berbeda di double digits.\n\n---\n\nLaga ini bisa disaksikan via NBA League Pass atau Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909899",
+    "home_team": "Memphis Grizzlies",
+    "home_abbr": "MEM",
+    "away_team": "Sacramento Kings",
+    "away_abbr": "SAC",
+    "home_score": 136,
+    "away_score": 105,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-11-01T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MEM leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.037619,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid voice with natural Indonesian pace. Minor clause-structure wobbles and one soft-discouraged phrase, but no hard violations. Numeric anchors verified throughout; all cited stats match input data exactly.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "output yang di laga lain mungkin cukup untuk menang",
+          "fix": "Rephrase: 'output yang di pertandingan lain sudah cukup menang'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Bench Memphis kolektif menghancurkan SAC",
+          "fix": "Use 'kontrol', 'dominasi', or just state the scoring facts."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Angka tim bicara lebih keras dari skor akhir",
+          "fix": "Keep as-is or try: 'Statistik tim cerita lebih banyak dari skornya'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x814cf1c21c4faebe",
+    "published_at": "2026-11-01T04:07:47+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
