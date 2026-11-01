@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "cle-at-mil-2026-11-01-g1",
+  "title": "Recap Cleveland Cavaliers 136-111 Milwaukee Bucks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Cleveland Cavaliers vs Milwaukee Bucks (136-111) di —, 1 November 2026.",
+  "body_md": "Cleveland Cavaliers menghajar Milwaukee Bucks 136-111 di Game 2 regular season series, Sabtu 1 November 2026. CLE unggul 2-0 di seri ini, dominant dari atas kertas sampai papan skor.\n\n---\n\n## Duo big man jadi pembeda\n\nEvan Mobley dan Jarrett Allen tampil luar biasa malam ini, dan statistiknya mencerminkan itu.\n\nMobley cetak 27 poin, 5 rebound, 3 asis dengan efisiensi tinggi: 11-16 dari lapangan, 3-5 dari three-point line. Untuk pemain yang beroperasi di posisi big man, shooting 3 dari jarak jauh dengan persentase itu bukan hal kecil.\n\nAllen melengkapi dengan 25 poin dan 11 rebound, double-double yang solid, dengan FG 12-16. Dua big man starter CLE gabungkan 52 poin dengan total 13-32 dari lapangan yang terbuang, artinya lebih dari separuh tembakan mereka masuk. Ini bukan keberuntungan, ini dominasi interior.\n\nDonovan Mitchell bermain 24 menit dengan 15 poin (5-7 FG, 2-4 dari tiga angka). James Harden di sisi lain lebih playmaker malam ini: 13 poin, 7 asis, 6 rebound, berguna di distribusi bola. Dari bench, Meleek Thomas tambah 13 poin dengan 3-6 dari three-point line.\n\n---\n\n## MIL tanpa solusi interior\n\nDi sisi Bucks, Kel'el Ware jadi yang paling menonjol, 19 poin, 10 rebound, 3 asis dari bench. Double-double yang berarti, tapi konteks penting: FG-nya 6-16, termasuk 3-8 dari three. Volume ada, efisiensi kurang.\n\nTyler Herro starter dengan 15 poin, tapi butuh 18 tembakan untuk dapat angka itu, 5-18 dari lapangan, 4-11 dari tiga angka. Ini shooting night yang berat. Kyle Kuzma, Nate Ament, dan Brayden Burries masing-masing berkontribusi 14 poin, tapi kedalaman bench MIL yang mencetak angka merata tidak cukup mengatasi masalah efisiensi tim secara keseluruhan.\n\n---\n\n## Statistik tim bicara lebih keras\n\n| Stat | CLE | MIL |\n|------|-----|-----|\n| FG% | 52% | 41% |\n| 3PT% | 43% | 33% |\n| Rebound | 56 | 45 |\n| Assists | 41 | 33 |\n| Points in paint | 60 | 46 |\n\nSelisih 11 persen di FG% itu yang paling menentukan. CLE 52-100 vs MIL 41-100 dari lapangan, volume sama, output sangat berbeda. Ditambah dominasi rebound (56-45) dan points in paint (60-46), CLE menguasai hampir semua aspek permainan.\n\nAngka tiga angka juga timpang: CLE 20-46 (43%) vs MIL 17-51 (33%). MIL melempar lebih banyak, tapi persentase lebih rendah, pola yang sulit menang dari situ.\n\nSatu-satunya area MIL unggul: fast-break points (17-11). Tapi itu tidak cukup mengompensasi defisit di tempat lain.\n\n---\n\n## Selanjutnya\n\nGame 3 regular season series belum ada jadwal spesifik di data yang tersedia. CLE saat ini unggul 2-0, momentum ada di tangan mereka.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909900",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Cleveland Cavaliers",
+    "away_abbr": "CLE",
+    "home_score": 111,
+    "away_score": 136,
+    "winner_abbr": "CLE",
+    "kickoff_utc": "2026-11-01T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "CLE leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040911,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail: Critical training-data inference error (2-0 vs 1-0 series lead). Awkward phrasing in shooting math ('yang terbuang'). Section headers and filler weaken flow. Basketball recap is solid otherwise but cannot publish with the series score wrong.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "CLE unggul 2-0 di seri ini",
+          "fix": "Change to 'CLE unggul 1-0 di seri reguler; Cavaliers tampil dominan di Game 2.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dua big man starter CLE gabungkan 52 poin dengan total 13-32 dari lapangan yang terbuang",
+          "fix": "Change to 'Mobley dan Allen gabung 52 poin dari 23 tembakan (23 masuk).'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selisih 11 persen di FG% itu yang paling menentukan.",
+          "fix": "Start with: 'FG% jadi pembeda: CLE 52%, MIL 41%. Volume tembakan sama, output jauh beda.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya",
+          "fix": "Delete section header 'Selanjutnya'. Merge closing into final paragraph naturally."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 3 regular season series belum ada jadwal spesifik di data yang tersedia.",
+          "fix": "Delete. End with: 'CLE momentum di tangan; Game 3 tunggu jadwal NBA.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Untuk pemain yang beroperasi di posisi big man, shooting 3 dari jarak jauh dengan persentase itu bukan hal kecil.",
+          "fix": "Change to: 'Big man yang shoot 43% dari tiga tidak mainstream.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Ini bukan keberuntungan, ini dominasi interior.",
+          "fix": "Combine: 'Bukan keberuntungan—ini dominasi interior.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbe53cbc07c21e600",
+    "published_at": "2026-11-01T03:11:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
