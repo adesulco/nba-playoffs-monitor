@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "okc-at-hou-2026-11-01-g1",
+  "title": "Recap Oklahoma City Thunder 98-119 Houston Rockets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs Houston Rockets (98-119) di —, 1 November 2026.",
+  "body_md": "# Houston Rockets Hajar OKC 119-98, Jabari Smith Jr. Tampil Brutal\n\nHouston Rockets menang telak 119-98 atas Oklahoma City Thunder di Game 2 dari tiga laga regular season series ini. Jabari Smith Jr. jadi bintang utama dengan 30 poin, 9 rebound, dan 5 asis, performa all-around yang mematikan. HOU kini unggul 1-0 dan dengan kemenangan 21 poin ini, Rockets kirim pesan keras ke OKC sebelum laga penentuan.\n\n---\n\n## Top Performers\n\n### Houston Rockets\n\nJabari Smith Jr. tampil di level berbeda. 30 poin dari 10-18 field goals, 6-12 dari tiga, angka efisiensi yang tidak bisa diabaikan. Ditambah 9 rebound dan 5 asis, Smith Jr. bukan sekadar pencetak poin—dia terlibat di hampir setiap aspek permainan HOU.\n\nMarcus Smart melengkapi duet maut itu dari posisi guard. 24 poin dengan efisiensi luar biasa: 7-10 FG dan 7-10 dari tiga. Smart dengan efisiensi seperti itu jadi mustahil dibanding OKC 10-32 tiga-poin.\n\nAlperen Sengun tidak dominan di scoring malam ini, 16 poin dari 6-17 FG, tapi angka 9 rebound dan 9 asis-nya yang bicara. Satu assist lagi, Sengun triple-double. Sebagai playmaking center, perannya di build-up HOU sangat krusial.\n\nKevin Durant menambahkan 14 poin, 3 rebound, 4 asis dari 27 menit. Efisien, tapi lebih berperan sebagai stabilisator daripada main scorer malam ini.\n\n### Oklahoma City Thunder\n\nShai Gilgeous-Alexander melakukan yang dia bisa: 26 poin, 4 rebound, 3 asis dari 10-20 shooting. SGA single-handedly menghasilkan 20+ poin di laga 21-angka kalah itu. Williams 11 poin, Hartenstein 10 — tidak cukup. SGA sendiri mustahil carry 98 poin lawan 119.\n\n---\n\n## Membaca Statistik\n\n21 angka selisih. Tapi yang bicara: tiga-point shooting HOU vs OKC (44% vs 31%). Rockets menemukan ritme dari luar arc lebih awal dan lebih konsisten. Ketika Smart dan Smith Jr. sama-sama on fire from three, OKC tidak punya jawaban defensif yang memadai.\n\nDari sisi assist, HOU unggul signifikan: 29 vs 20. Rockets bermain lebih fluid, lebih banyak pergerakan bola sebelum shot. Turnover juga berpihak ke HOU: OKC buang bola 14 kali, Rockets hanya 10. Empat turnover ekstra di level playoff, atau bahkan regular season series seperti ini, bisa menjadi momentum besar yang berpindah tangan.\n\nSatu anomali menarik: OKC unggul di points in paint, 44-30. Di dalam area, Thunder lebih produktif. Tapi HOU tidak perlu mengandalkan paint, three-point barrage mereka sudah lebih dari cukup untuk menutup selisih itu dan melampaui OKC secara keseluruhan.\n\n---\n\n## Outlook Series\n\nHOU unggul 1-0. Game 3 jadi laga penentua. OKC perlu perkecil gap tiga-point: Smart 7-10 kemarin, Williams 3-6 kemarin dari tiga.\n\nGame 3 seri regular season ini tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909902",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 119,
+    "away_score": 98,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-11-01T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020721,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has accuracy (stats verify against input data) but voice bleeds into translated English in several places ('tidak bisa diabaikan', 'single-handedly', 'mustahil carry'). Series state confusion (Game 2 vs leading 1-0) creates logical dissonance. Soft phrase repetition and incomplete closing logic drop this to borderline fail.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "menang telak 119-98 atas Oklahoma City Thunder di Game 2 dari tiga laga regular season series ini",
+          "fix": "Houston Rockets menang 119-98 atas Oklahoma City Thunder di Game 2 series ini."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 2 dari tiga laga regular season series ini... HOU kini unggul 1-0",
+          "fix": "HOU menang Game 2; seri kini 1-0 untuk Rockets di regular season series best-of-3."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Jabari Smith Jr. tampil di level berbeda. 30 poin dari 10-18 field goals, 6-12 dari tiga, angka efisiensi yang tidak bisa diabaikan.",
+          "fix": "Jabari Smith Jr. tampil di level berbeda: 30 poin, 10-18 FG, 6-12 tiga-angka—efisiensi nyata."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Smart dengan efisiensi seperti itu jadi mustahil dibanding OKC 10-32 tiga-poin.",
+          "fix": "Smart 7-10 dari tiga lawan OKC yang cuma 10-32—beda hari dan malam."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Sebagai playmaking center, perannya di build-up HOU sangat krusial.",
+          "fix": "Sebagai playmaker center, peran Sengun di build-up Rockets krusial."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "SGA single-handedly menghasilkan 20+ poin di laga 21-angka kalah itu.",
+          "fix": "SGA cetak 26 poin sendiri di kekalahan 21 angka itu—tidak cukup."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "SGA sendiri mustahil carry 98 poin lawan 119.",
+          "fix": "SGA sendiri tidak bisa angkut 98 poin lawan 119."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "OKC perlu perkecil gap tiga-point: Smart 7-10 kemarin, Williams 3-6 kemarin dari tiga.",
+          "fix": "OKC perlu break the three-point barrage: Smart 7-10, Williams 3-6. Itu momentum Rockets yang susah dibendung."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6eef03df8c41ef98",
+    "published_at": "2026-11-01T04:37:28+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
