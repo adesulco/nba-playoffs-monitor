@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "min-at-sa-2026-11-01-g1",
+  "title": "Recap Minnesota Timberwolves 111-121 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs San Antonio Spurs (111-121) di —, 1 November 2026.",
+  "body_md": "# Wembanyama 43 Poin, San Antonio Spurs Kendalikan Seri Melawan Minnesota Timberwolves\n\nSan Antonio Spurs menang 121-111 atas Minnesota Timberwolves di Game 2, Minggu 1 November 2026. Victor Wembanyama cetak 43 poin, 7 rebound, 4 asis. SA memimpin 1-0 dalam regular season series. Minnesota butuh kemenangan di dua laga tersisa kalau mau balik ke posisi seimbang.\n\n---\n\n## Top Performers\n\nWembanyama adalah cerita utama malam ini. Empat puluh tiga poin dari 17-34 dari lapangan, termasuk 3-8 dari three-point line, volume tinggi, tapi efisiensi di ring tetap terjaga. Tujuh rebound, empat asis—jawaban sulit dibantah.\n\nDi belakangnya, San Antonio punya dua engine lain yang sama berbahayanya. Dylan Harper 25 poin, 7 reb, 6 ast—distribusi cukup seimbang antara scoring dan playmaking. De'Aaron Fox 22 poin, 8 rebound, 7 asis dengan efisiensi mencolok: 8-10 dari lapangan menunjukkan efisiensi tinggi.\n\nDari bench, Julian Champagnie tambah 12 poin dengan 3-7 dari three-point line, kontribusi yang menjaga pressure tetap konsisten bahkan ketika trio utama perlu istirahat.\n\nDi sisi Minnesota, Ayo Dosunmu tampil sebagai pillar paling solid: 27 poin, 9 rebound, 3 asis, efisiensi 11-17 dari lapangan. Jaden McDaniels dan Jonathan Kuminga masing-masing cetak 19 poin, tapi kedua pemain ini sama-sama berjuang dari lapangan, McDaniels 7-17, Kuminga 8-19. LaMelo Ball hanya cetak 10 poin dari 2-10 shooting dengan 0-4 dari three-point line dalam 20 menit, malam yang berat untuk Minnesota's ball-handler utama.\n\n---\n\n## Apa yang Dikatakan Angka\n\nSelisih 10 poin menunjukkan gap konsisten sepanjang pertandingan. San Antonio lebih efisien: 49% FG versus MIN 43%, dan perbedaan paling tajam datang dari three-point line, Minnesota hanya 27% (9-33) sementara San Antonio tembus 37% (10-27). Ketika volume tembakan tiga angka Minnesota lebih banyak tapi hasilnya lebih buruk, itu sinyal bahwa shot selection Timberwolves perlu dievaluasi.\n\nRebound cerita lain: SA unggul 49-38. San Antonio juga cetak 9 blocks berbanding 2 dari Minnesota, sebagian besar kredit langsung ke Wembanyama yang secara fisik mendominasi area paint. Points in paint pun mencerminkan itu: SA 60, MIN 52. Minnesota punya keunggulan di fast-break points (20-13) dan steals (11-6), tapi dua keunggulan itu tidak cukup menutup ketimpangan di hampir semua kategori lain.\n\nTurnovers kedua tim relatif berimbang, MIN 14, SA 16, jadi faktor itu bukan pembeda malam ini. Pembedanya adalah Wembanyama, dan shooting three yang tidak berjalan untuk Minnesota.\n\n---\n\n## Momen Kunci dan Outlook Seri\n\nKey plays menunjukkan laga yang sangat ketat di paruh pertama. Skor sempat seri di 18-18 di akhir Q1, seri lagi di 46-46 di Q2, dan masih ketat di Q3 dengan situasi 62-62. Minnesota masih ada di dalam pertandingan sampai pertengahan Q4, McDaniels cetak dunk di tengah kejar-kejaran skor 101-105, menunjukkan bahwa Timberwolves belum menyerah.\n\nTapi San Antonio menutup laga dengan cukup meyakinkan untuk menang 121-111. Wembanyama dan Fox yang efisien di situasi penting jadi kunci stretch akhir itu.\n\nSekarang San Antonio unggul 1-0 dalam regular season series. Minnesota harus menang dua kali di sisa dua game untuk menyamakan kedudukan.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909901",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 121,
+    "away_score": 111,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-01T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022241,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stat citation and natural flow. Minor translation-English tics and one soft-discouraged phrase candidate, but nothing that triggers failure. Voice sits comfortably in NBA-recap register.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Empat puluh tiga poin dari 17-34 dari lapangan",
+          "fix": "Use '43 poin dengan 17-34 shooting' or '43 poin (17-34 FG)'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Apa yang Dikatakan Angka",
+          "fix": "Consider 'Angka Bicara' or 'Statistik Jelas' for lighter feel, or remove subheading entirely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "shot selection Timberwolves perlu dievaluasi",
+          "fix": "Change to 'pilihan tembakan Timberwolves perlu dievaluasi' or keep English if consistency across all NBA coverage."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Tapi San Antonio menutup laga dengan cukup meyakinkan",
+          "fix": "Rephrase: 'San Antonio cukup meyakinkan di stretch akhir' or 'San Antonio lock game di Q4'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xb0c3f7e8aa1975b4",
+    "published_at": "2026-11-01T02:37:59+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
