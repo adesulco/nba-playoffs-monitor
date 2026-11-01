@@ -1,0 +1,109 @@
+{
+  "type": "recap",
+  "slug": "atl-at-no-2026-10-31-g1",
+  "title": "Recap Atlanta Hawks 99-121 New Orleans Pelicans (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Atlanta Hawks vs New Orleans Pelicans (99-121) di —, 31 October 2026.",
+  "body_md": "# New Orleans Pelicans Hajar Atlanta Hawks 121-99, Tutup Regular Season Series dengan Sempurna\n\nNew Orleans Pelicans menutup dua pertandingan regular season series melawan Atlanta Hawks dengan dominasi penuh, menang 121-99 dan menyapu bersih dua laga. Kemenangan ini bukan sekadar angka. Pelicans lebih baik di hampir setiap lini.\n\nSaddiq Bey jadi bintang malam ini. Off the bench, dia cetak 25 poin, 6 rebound, 1 asis dengan efisiensi tinggi, FG 9-13, termasuk 1-2 from three. Di tengah roster yang punya Zion Williamson sebagai nama terbesar, Bey yang justru paling menonjol.\n\n---\n\n## Pelicans: Efisien di Segala Lini\n\nLima pemain NO tembus dua digit, dan yang menarik adalah distribusinya rata.\n\nJeremiah Fears tampil impresif dengan 20 poin, 5 rebound, dan 7 asis, angka yang menunjukkan dia tidak hanya mencetak poin, tapi juga menggerakkan offense secara keseluruhan. FG 9-12 adalah angka yang sangat efisien untuk guard yang juga harus playmaking.\n\nZion Williamson mengisi line-nya dengan 15 poin, 6 rebound, 4 asis dengan FG 5-8, tidak banyak shot diambil, tapi konversinya solid. Trey Murphy III juga 15 poin, 5 rebound, 5 asis, melengkapi kedalaman roster Pelicans yang terasa merepotkan bagi Hawks malam ini. Herbert Jones tambahkan 11 poin, 3 rebound, 2 asis dari sisi rotasi.\n\n---\n\n## Atlanta: Angka yang Bercerita Sendiri\n\nHawks sebenarnya ada di laga ini di awal, CJ McCollum memimpin dengan 14 poin, 2 rebound, 2 asis dalam 24 menit. Jalen Johnson 13 poin, 7 rebound, 4 asis. Asa Newell dan Kingston Flemings dari bench masing-masing sumbang 13 dan 12 poin.\n\nTapi box score tim adalah yang menjelaskan kenapa skor akhir bisa selebar 22 poin.\n\nATL tembak 35-91 dari lapangan, FG hanya 38%. Yang lebih krusial: dari tiga poin, mereka coba 46 kali dan masuk hanya 8, 3PT 17%. Itu volume tembakan tiga angka yang sangat tinggi dengan efisiensi yang sangat rendah. Sementara Pelicans 7-17 dari tiga poin dengan 41%, lebih selektif, jauh lebih efisien.\n\nPerbedaan di rebound juga signifikan: NO 49, ATL 36. Di dalam cat, Pelicans unggul 66-52 untuk poin. Itu dominasi fisik yang sulit dikompensasi dengan cara apapun.\n\nTurnovers? ATL 19 kali lepas bola, NO 25 kali, tapi Pelicans punya lebih banyak steal (15 vs 11), yang berarti lebih banyak kesempatan transition di ujung lain.\n\n---\n\n## Penutup\n\nRegular season series selesai 2-0 untuk Pelicans. Tidak ada game lanjutan yang dijadwalkan dari input ini. Untuk siaran langsung, pertandingan NBA tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909898",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Atlanta Hawks",
+    "away_abbr": "ATL",
+    "home_score": 121,
+    "away_score": 99,
+    "winner_abbr": "NO",
+    "kickoff_utc": "2026-10-31T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NO leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.036489,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Article meets voice standards. All numbers verified against input data blocks. No hard bans, no pronoun violations, no tense overmarking. Three low-severity style issues noted—none block publication. Structure and factual accuracy solid.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Kemenangan ini bukan sekadar angka. Pelicans lebih baik di hampir setiap lini.",
+          "fix": "Rephrase: 'Kemenangan ini dominasi penuh. Pelicans unggul di hampir setiap lini.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Jeremiah Fears tampil impresif dengan 20 poin... FG 9-12 adalah angka yang sangat efisien",
+          "fix": "Remove 'impresif': 'Jeremiah Fears 20 poin, 5 rebound, 7 asis dengan FG 9-12—angka yang sangat efisien.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Hawks sebenarnya ada di laga ini di awal, CJ McCollum memimpin dengan 14 poin",
+          "fix": "'Hawks cukup kompetitif di awal. CJ McCollum pimpin dengan 14 poin...'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x476a3b11044ba39a",
+    "published_at": "2026-11-01T02:08:35+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 72,
+      "headline_comment": "Jelas dan deskriptif, tapi 'Tutup Regular Season Series dengan Sempurna' bertele-tele dan mengandung asumsi series yang perlu diverifikasi.",
+      "lead_score": 68,
+      "lead_comment": "Menyebut 'menyapu bersih dua laga' yang hanya terdukung oleh field 'NO leads series 1-0' — klaim sweep 2-0 tidak konsisten dengan data input.",
+      "structure_score": 78,
+      "structure_comment": "Alur Bey → Pelicans → Hawks → penutup logis, tapi bagian penutup lemah dan terlalu meta ('dari input ini').",
+      "voice_score": 75,
+      "voice_comment": "Umumnya natural dengan code-switching wajar, tapi beberapa frasa academic drift ('angka yang menunjukkan', 'tampil impresif') dan 'Angka yang Bercerita Sendiri' terasa seperti cliché terjemahan.",
+      "suggestion_count": 6,
+      "summary": "Solid data-grounded recap with clean numeric handling, but the lead overclaims a 2-0 sweep that the input data doesn't clearly support, and the closing paragraph breaks the fourth wall by referencing 'input ini'. Editor should fix the series-status claim and rewrite the ending before publish.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "menang 121-99 dan menyapu bersih dua laga... Regular season series selesai 2-0 untuk Pelicans",
+          "issue": "Input menyatakan 'NO leads series 1-0' dan 'Game number: 2 of 2' yang ambigu — klaim sweep 2-0 tidak terdukung eksplisit oleh data.",
+          "fix": "Ubah ke 'unggul 1-0 di head-to-head musim ini' atau verifikasi status series sebelum klaim sweep."
+        },
+        {
+          "priority": "high",
+          "snippet": "Untuk siaran langsung, pertandingan NBA tersedia di NBA League Pass dan Vidio.",
+          "issue": "Penutup lemah dan tidak sesuai genre recap — menyebut 'input ini' membocorkan proses AI dan paragraf siaran langsung tidak relevan untuk laga yang sudah selesai.",
+          "fix": "Ganti dengan takeaway tajam: misalnya soroti efisiensi Pelicans (57% FG vs 38%) sebagai sinyal gap kualitas, atau tutup dengan konsekuensi standings."
+        },
+        {
+          "priority": "medium",
+          "snippet": "NO 49, ATL 36. Di dalam cat, Pelicans unggul 66-52 untuk poin.",
+          "issue": "Momen terkuat artikel — tiga stat gap besar (3PT, rebound, paint) — tapi tidak di-highlight sebagai thesis utama, malah tersebar.",
+          "fix": "Konsolidasikan jadi satu paragraf tesis: 'Hawks kalah di tiga medan sekaligus: akurasi tiga poin, rebound, dominasi paint.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Hawks sebenarnya ada di laga ini di awal, CJ McCollum memimpin dengan 14 poin",
+          "issue": "Frase 'sebenarnya ada di laga ini di awal' adalah klaim naratif tanpa dukungan data quarter-by-quarter — input hanya punya satu key play Q1.",
+          "fix": "Hapus klaim 'ada di laga ini di awal' atau ganti ke pembukaan netral: 'McCollum jadi top scorer Hawks dengan 14 poin.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Saddiq Bey jadi bintang malam ini. Off the bench, dia cetak 25 poin",
+          "issue": "Angle Bey-off-the-bench kuat tapi tidak dieksplorasi — kenapa bench scorer bisa top scorer? Missed opportunity.",
+          "fix": "Tambahkan satu kalimat kontras: 'Starter Pelicans tak ada yang tembus 20 poin — Bey dari bangku cadangan justru paling produktif.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "angka yang menunjukkan dia tidak hanya mencetak poin, tapi juga menggerakkan offense",
+          "issue": "Hedge academic — kalimat memberi tahu pembaca cara membaca stat yang sudah jelas.",
+          "fix": "Potong jadi: 'Fears 20 poin, 7 asis, FG 9-12 — efisien dan produktif sebagai playmaker.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

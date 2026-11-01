@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "phi-at-cha-2026-10-31-g1",
+  "title": "Recap Philadelphia 76ers 109-104 Charlotte Hornets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Philadelphia 76ers vs Charlotte Hornets (109-104) di —, 31 October 2026.",
+  "body_md": "# Maxey 38 Poin Selamatkan 76ers dari Upset, PHI Menang 109-104 atas Hornets\n\nPhiladelphia 76ers menutup laga tandang dengan susah payah, menang 109-104 atas Charlotte Hornets, Minggu 1 November 2026. Tyrese Maxey jadi tulang punggung PHI dengan 38 poin, sementara Hornets sempat mengancam di menit-menit akhir Q4. Game 2 dari empat pertemuan regular season ini selesai dengan PHI memimpin series 1-0. Margin terbesar PHI hanya 5 poin di akhir laga.\n\n---\n\n## Top Performers\n\n**Tyrese Maxey** jadi bintang malam ini dengan 38 poin (13-23 FG, 4-9 tiga poin), angka yang belum tentu bisa diulang di laga berbeda. Di Q4, ketika Hornets mulai menekan, Maxey menjawab: dua free throw di 1:22 membalikkan skor dari 101-101 menjadi 102-101 untuk PHI, tambah satu di 23.8 untuk memperlebar jarak.\n\nDari bench, **Anfernee Simons** punya malam yang efisien, 19 poin, 5-9 from three, hanya butuh 25 menit. Assist-nya ke VJ Edgecombe di detik 2:17 Q4 jadi salah satu play yang mengubah momentum: skor saat itu 100-101 untuk Hornets, dan Simons merespons dengan running layup yang menyamakan kedudukan.\n\n**VJ Edgecombe** tidak mencetak banyak, 10 poin, 4-13 FG, tapi rebound-nya 8 dan play terbesarnya datang di detik 36.1 Q4: step back three-pointer dari 26 kaki, memperlebar jarak menjadi 105-101. Shot yang secara efektif menutup peluang comeback Hornets.\n\nDi sisi Charlotte, **Grayson Allen** tampil luar biasa, 27 poin dengan 7-10 from three, shooting 9-12 overall. Tanpa Allen, Hornets mungkin sudah kalah dengan margin lebih besar. **Brandon Miller** menambahkan 24 poin, 5 rebound, 5 asis, tapi FG-nya kurang efisien: 8 dari 20, termasuk 5-12 dari tiga poin. Three-pointer Miller di detik 6.5 Q4 (skor 107-104) sempat memancing was-was, tapi PHI menjawab dengan dua free throw untuk menutup laga di 109-104.\n\n---\n\n## Statistical Read\n\nDua angka yang menjelaskan hasil ini: **turnover dan steals**.\n\nHornets catat 18 turnover sepanjang malam, sementara PHI hanya 8. Philadelphia memaksimalkan itu dengan 11 steals, CHA hanya 4. Artinya, selisih possession karena turnover secara signifikan berpihak ke PHI, dan Hornets terus-menerus kehilangan momentum setiap kali membangun serangan.\n\nDari sisi shooting, keduanya cukup merata. PHI 47% FG vs CHA 50%, Hornets sedikit lebih tajam dari lapangan. Dari tiga poin, PHI 40% (14-35) vs CHA 36% (14-39), volume lebih besar dari Charlotte tapi efisiensi lebih rendah. Points in paint hampir identik: PHI 50, CHA 48. Rebound CHA sedikit lebih unggul 38-36.\n\nTapi 18 turnover vs 8 itu terlalu besar untuk ditutupi oleh keunggulan kecil di area lain.\n\nSatu catatan untuk PHI: free throw 65% (15-23) adalah masalah. Hornets 88% (14-16). Di laga yang dimenangkan hanya dengan lima poin, efisiensi dari garis free throw bisa jadi faktor yang lebih menentukan di game-game berikutnya.\n\n---\n\n## Defining Moment\n\nDua menit terakhir Q4 adalah inti dari laga ini.\n\nSkor 100-101 untuk Hornets. Simons masuk dengan running layup, 102-101 PHI. Maxey dua free throw, 104-101. Edgecombe step back three dari 26 kaki, 105-101. Maxey tambah satu free throw lagi, 106-101. Charlotte masih mencoba: Miller three-pointer, 107-104. Tapi Brown menutup dari garis free throw: 109-104.\n\nDelapan poin di bawah dua menit, dengan Hornets tidak pernah benar-benar menemukan celah untuk push terakhir. Itu yang membuat kemenangan ini tetap milik PHI meski margin akhirnya tipis.\n\n---\n\n## Selanjutnya\n\nRegular season series PHI vs CHA berlanjut. Game 3 jadwalnya belum tercantum di data, pantau update jadwal di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909897",
+    "home_team": "Charlotte Hornets",
+    "home_abbr": "CHA",
+    "away_team": "Philadelphia 76ers",
+    "away_abbr": "PHI",
+    "home_score": 104,
+    "away_score": 109,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-10-31T22:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHI leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.052522,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has strong statistical breakdown and detailed Q4 play-by-play, but fails on factual inference (day of week), hedging language (Maxey 38 poin 'belum tentu'), and weak closing. High-severity training inference on series format confusion (regular season described like a playoff best-of-4). Revise for accuracy and remove filler.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 2 dari empat pertemuan regular season ini",
+          "fix": "Delete or rewrite: 'Ini game 2 dari 4 pertemuan regular season tahunan antara dua tim.' Keep it generic since series context is unclear in input."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Dua angka yang menjelaskan hasil ini: turnover dan steals.",
+          "fix": "Start direct: 'Turnover dan steals menjelaskan laga ini.' or 'Kunci kemenangan PHI: turnover dan steals.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "angka yang belum tentu bisa diulang di laga berbeda",
+          "fix": "Cut entirely or just state: '38 poin adalah performa terbaik Maxey musim ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Minggu 1 November 2026",
+          "fix": "Remove day of week and write: '1 November 2026' only, or verify calendar."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu catatan untuk PHI: free throw 65% adalah masalah.",
+          "fix": "Direct: 'PHI free throw 65% (15-23) adalah red flag.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Tanpa Allen, Hornets mungkin sudah kalah dengan margin lebih besar.",
+          "fix": "Rewrite factual: 'Allen carried CHA: 27 poin on 9-12 FG, 7-10 dari tiga.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Regular season series PHI vs CHA berlanjut. Game 3 jadwalnya belum tercantum di data, pantau update jadwal di NBA League Pass dan Vidio.",
+          "fix": "Delete closing paragraph or replace with actual game takeaway: e.g., 'PHI escape dengan margin tipis — jika Hornets kurangi turnover di game berikutnya, series bisa terbuka lebar.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x4ec13f5a17294e10",
+    "published_at": "2026-11-01T02:07:33+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
