@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "bos-at-orl-2026-11-01-g1",
+  "title": "Recap Boston Celtics 108-97 Orlando Magic (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Orlando Magic (108-97) di —, 1 November 2026.",
+  "body_md": "# Boston Celtics Hentikan Orlando Magic 108-97, Tatum 32 Poin Pimpin Kemenangan\n\nBoston Celtics menang 108-97 atas Orlando Magic di laga kedua rangkaian regular season series, Minggu dini hari 2 November 2026. Jayson Tatum tampil dominan dengan 32 poin dan 7 asis, sementara bench BOS muncul sebagai faktor pembeda. BOS unggul 1-0 di series ini.\n\n---\n\n## Top Performers\n\nTatum jadi motor utama dengan 32 poin, 4 rebound, 7 asis, FG 8-19, 3PT 1-5. Angka shooting-nya dari luar tidak efisien, tapi efisiensinya dari dalam dan line free throw (22-26 untuk tim secara keseluruhan) menutup kekurangan itu.\n\nPaul George melengkapi dengan peran dua arah: 17 poin, 6 rebound, 8 asis, FG 6-14. Distribusi bola George tetap rapi meski shooting dari arc-nya tidak klik malam ini (3-10 dari tiga angka). Derrick White menyumbang 12 poin dengan efisiensi layak, 4-8 FG, 2-5 dari tiga angka.\n\nYang bikin menarik adalah kontribusi bench BOS. Luka Garza cetak 12 poin, 6 rebound, 4 asis, FG 4-7 termasuk 2-4 dari tiga angka. Baylor Scheierman menyusul dengan 10 poin dalam 20 menit dengan efisiensi tinggi: 4-5 FG, 2-3 dari tiga angka. Garza dan Scheierman cetak 22 poin gabungan — depth yang ORL tidak punya.\n\nDi sisi Magic, Orlando sebenarnya tidak tampil buruk. Tristan da Silva off the bench mencetak 23 poin, 10 rebound, FG 9-14 dengan 5-8 dari tiga angka, performa yang di laga lain bisa menentukan kemenangan. Anthony Black menyamai 23 poin ditambah 8 rebound. Desmond Bane menambah 19 poin, 5-9 dari tiga angka. Franz Wagner bermain sebagai playmaker utama dengan 12 asis meski shooting-nya berat: FG 5-20, 1-4 dari tiga angka. Wendell Carter Jr. cetak 7 poin, 10 rebound.\n\nORL punya banyak pemain yang cetak 19+ poin. Tapi BOS punya lebih banyak lagi.\n\n---\n\n## Baca Statistik\n\nSecara tim, ini bukan blowout yang skor akhirnya mungkin kesan-kesan. BOS 44% FG vs ORL 42%, hampir setara. Dari tiga angka justru ORL lebih efisien: 36% vs BOS hanya 27% (12-44 berbanding 14-39). ORL bahkan lebih banyak fast-break points (11 vs 9) dan total rebound lebih unggul (43 vs 41).\n\nDua area yang benar-benar memisahkan kedua tim: free throw dan turnover. BOS masuk 22-26 dari garis (85%), ORL 15-19 (79%), selisih 7 poin dari sana saja sudah signifikan. Turnovers lebih bicara lagi: ORL buang 18 bola, BOS hanya 13. Ditambah BOS mencatat 9 steal berbanding 6 milik ORL, dan 7 blok vs 2.\n\nBeda itu datang dari pertahanan BOS — memaksa turnover, dapat free throw.\n\n---\n\n## Momen Penentu\n\nQ4 jadi episode krusial. Anthony Black sempat bikin laga ketat saat mencetak driving layup plus free throw untuk menyamakan skor 79-79 di menit ke-11:11. Momentum berganti, ORL punya momentum.\n\nTapi BOS cepat merespons. Tiga poin beruntun, two point shot plus free throw, membangun ulang keunggulan. Magic beberapa kali coba mendekat: Wagner cetak floating jump shot untuk 87-83, Bane menambah dua poin untuk 97-93 di menit 3:59. Jarak tidak pernah benar-benar tertutup. BOS menutup laga dengan keunggulan akhir 11 poin.\n\n---\n\n## Selanjutnya\n\nRegular season series ini berlanjut. BOS unggul 1-0 dari empat laga yang dijadwalkan. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909903",
+    "home_team": "Orlando Magic",
+    "home_abbr": "ORL",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 97,
+    "away_score": 108,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-11-01T20:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BOS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.050963,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: Contains player (Pritchard) not in input stats (training inference). Vague Q4 sequence lacks specifics. Formal/translated phrasing in 'Yang bikin menarik' and 'berbanding' weakens voice. Fix stat accuracy and replace formal connectors with direct sport language.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Payton Pritchard makes two point shot (score 81-79)",
+          "fix": "Remove Q4 plays mentioning Pritchard. Use only players in TOP SCORERS block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Yang bikin menarik adalah kontribusi bench BOS.",
+          "fix": "Start directly: 'Bench BOS jadi pembeda: Luka Garza 12 poin, Baylor Scheierman 10 poin.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua area yang benar-benar memisahkan kedua tim:",
+          "fix": "Use: 'Dua faktor pisahkan BOS dan ORL:' or just delete the line, start with the stats."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ditambah BOS mencatat 9 steal berbanding 6 milik ORL",
+          "fix": "Rewrite: 'BOS catat 9 steal vs 6 punya ORL, 7 blok vs 2.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Tapi BOS cepat merespons. Tiga poin beruntun, two point shot plus free throw",
+          "fix": "Specify: 'Tatum & George jawab dengan layup, free throw — 82-79.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "ORL punya banyak pemain yang cetak 19+ poin. Tapi BOS punya lebih banyak lagi.",
+          "fix": "Count: 'ORL punya tiga pemain 19+ poin. BOS juga, tapi bench Garza-Scheierman menambah depth.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xcefb7b833525e7a1",
+    "published_at": "2026-11-02T02:07:45+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
