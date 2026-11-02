@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "lac-at-gs-2026-11-02-g1",
+  "title": "Recap LA Clippers 112-124 Golden State Warriors (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — LA Clippers vs Golden State Warriors (112-124) di —, 2 November 2026.",
+  "body_md": "# Golden State Tundukkan LA Clippers 124-112, Yaxel Lendeborg Tampil Mematikan\n\nGolden State Warriors mengalahkan LA Clippers 124-112 di Game 2 regular season series, Minggu 2 November 2026. GS kini unggul 2-0 dalam series ini, dan Yaxel Lendeborg jadi alasan utamanya: 37 poin, 4 rebound, 6 asis dengan shooting 13-19 dari lapangan dan 6-11 dari three-point line.\n\n37 poin dari satu pemain di satu laga Playoffs, angka itu tidak butuh konteks tambahan.\n\n---\n\n## Performa Individu\n\n**GS** memiliki empat pemain di atas 17 poin, tapi Lendeborg berdiri di kelas berbeda. Efisiensinya di laga ini brutal: 13 dari 19 percobaan field goal, lebih dari separuh tembakan three-nya masuk. De'Anthony Melton melengkapi serangan Warriors dengan 21 poin, 6 rebound, dan 6-8 dari tiga angka, shooting yang nyaris sempurna dari luar arc. Brandin Podziemski berkontribusi 17 poin, 8 rebound, 8 asis. Satu angka saja di salah satu kategori dan itu sudah triple-double, tapi tidak di sini, tetap jadi stat line yang solid untuk mengatur tempo.\n\nBrandon Williams off the bench menambah 17 poin dengan efisiensi baik (7-11 dari lapangan), sementara veteran Al Horford menyumbang 9 poin dan 5 rebound dari bench.\n\n**LAC** bergantung pada Rui Hachimura sebagai tumpuan utama: 24 poin, 7 rebound, dengan shooting 10-16 dan 4-7 dari three-point line. Darius Garland mencatat 15 poin dan 7 asis, tapi 4-12 dari lapangan dan 1-7 dari tiga angka menunjukkan malam yang berat untuknya di balik angka asisnya. Kobe Sanders (16 poin, 4-6 dari three) dan Nick Martinelli (10 poin dalam 6 menit) memberi spark dari bench, tapi itu tidak cukup memotong defisit.\n\n---\n\n## Apa yang Kata Angka\n\nIni kisahnya: GS menembak 53% dari lapangan dan 45% dari tiga angka. LAC menembak 44% dan 36%. Di level Playoffs, selisih efisiensi itu menentukan laga sebelum kuarter terakhir selesai.\n\nGS juga mencatat 32 asis berbanding 22 dari LAC, Warriors bergerak lebih cair, sharing bola lebih baik. Fast-break points: GS 20, LAC 13. Blok: GS 5, LAC 0. Di hampir semua kategori kritis, Warriors lebih baik.\n\nSatu area LAC unggul: free throw percentage, 95% berbanding 71%. LAC juga mencatat 11 steal berbanding 5. Tapi dengan GS lebih efisien dari lapangan dan dari three-point line sejauh ini, angka-angka itu tidak mengubah narasi utama.\n\n---\n\n## Outlook Series\n\nGS kini unggul 2-0. LAC perlu merespons di Game 3, atau series ini bisa cepat selesai. Garland butuh laga yang jauh lebih efisien jika ingin LAC kembali kompetitif, dan Warriors harus dijaga agar tidak kembali dengan Lendeborg dalam momen yang sama.\n\nGame 3 tayang live di NBA League Pass dan Vidio, pantau jadwal resmi untuk waktu tip-off berikutnya.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909905",
+    "home_team": "Golden State Warriors",
+    "home_abbr": "GS",
+    "away_team": "LA Clippers",
+    "away_abbr": "LAC",
+    "home_score": 124,
+    "away_score": 112,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-11-02T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "GS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.065691,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: Critical series score error (claims 2-0, should be 1-0 after Game 2). Playoff vs regular season framing contradictory. Otherwise solid voice and stat accuracy, but the series score mistake is a factual disqualifier.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "GS kini unggul 2-0 dalam series ini",
+          "fix": "Change to 'GS unggul 1-0 dalam series' — input explicitly states Game 2 of 4-game series."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "GS kini unggul 2-0",
+          "fix": "Delete or rewrite: 'GS unggul 1-0 dengan dua laga sisa di series ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Kobe Sanders (16 poin, 4-6 dari three)",
+          "fix": "Clarify: 'Kobe Sanders (16 poin, 4-6 dari three-point line, 6-9 dari lapangan)' to match input stat line."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Satu angka saja di salah satu kategori dan itu sudah triple-double, tapi tidak di sini",
+          "fix": "Rewrite: 'Satu assist lagi jadi triple-double, tapi tetap solid.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tumpuan utama",
+          "fix": "First occurrence acceptable. Monitor in subsequent recaps."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "37 poin dari satu pemain di satu laga Playoffs, angka itu tidak butuh konteks tambahan.",
+          "fix": "Clarify: 'regular season series within playoffs context' or rewrite to align with 'Playoffs 2026' label."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa759f9e2f52cecf4",
+    "published_at": "2026-11-02T04:07:12+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
