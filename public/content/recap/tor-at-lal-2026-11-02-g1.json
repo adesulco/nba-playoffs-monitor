@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "tor-at-lal-2026-11-02-g1",
+  "title": "Recap Toronto Raptors 125-131 Los Angeles Lakers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs Los Angeles Lakers (125-131) di —, 2 November 2026.",
+  "body_md": "Luka Doncic 45 poin, Los Angeles Lakers kalahkan Toronto Raptors 131-125. Angka itu sendiri sudah bercerita.\n\nLakers menang tipis enam poin, tapi statistik tidak sepenuhnya mencerminkan betapa dominannya Luka sepanjang laga. Tanpa dia, gap ini bisa jauh lebih lebar, atau terbalik.\n\n---\n\n## Luka Show, Dibantu Dinding Bernama Kessler\n\n45 poin, 15 rebound, 6 asis. Tiga kategori, semua monster. Luka cetak 8-12 dari three-point line, hampir dua pertiga tembakan tiga angkanya masuk. Dari 23 field goal attempt, 12 berhasil. Di 35 menit, dia jadi mesin yang sulit dimatikan.\n\nDi bawah ring, Walker Kessler melengkapi. 16 poin dari 6-6 FG, sempurna, tidak ada attempt yang mubazir, ditambah 15 rebound. Kombinasi Luka-Kessler jadi tulang punggung Lakers malam ini: satu buat skor, satu buat possession.\n\nAustin Reaves tambah 19 poin, meski efisiensinya lebih terbatas (6-16 FG, 2-7 from three). Collin Sexton off the bench dapat 14 poin dalam 19 menit, Sandro Mamukelashvili 11 poin dalam 24 menit, bench Lakers berkontribusi nyata.\n\n---\n\n## Raptors Punya Amunisi, Tapi Kurang Efisien\n\nToronto bukan tanpa respons. Scottie Barnes 29 poin, 6 rebound, 5 asis, tapi 0-3 dari three-point line jadi catatan tersendiri. Barnes harus kerja keras di dalam untuk cetak angka, sementara Luka bisa melakukannya dari mana saja.\n\nRJ Barrett satu-satunya Raptor yang catatkan double-double: 22 poin, 10 rebound, 5 asis. Shooting-nya juga lebih efisien, 9-18 FG, 4-9 from three.\n\nKejutan malam ini datang dari Jamison Battle, pemain bench yang cetak 20 poin dalam hanya 17 menit, 4-10 dari three-point line. Immanuel Quickley 12 poin dan 7 asis, meski FG-nya berat (3-13). Ja'Kobe Walter tambah 11 poin.\n\nMasalah Raptors ada di efisiensi kolektif. 45-105 field goal (43%) vs Lakers 43-80 (54%), Lakers butuh lebih sedikit attempt untuk cetak lebih banyak poin. Dari three-point line, gap lebih mencolok: Toronto 31% (17-54) vs Lakers 49% (18-37). Raptors melempar jauh lebih banyak tembakan tiga angka, tapi hasilnya jauh lebih buruk.\n\n---\n\n## Yang Menyelamatkan Raptors dari Kekalahan Lebih Besar\n\nToronto menang di dua area: assists (35 vs 26) dan turnovers, Raptors cuma buang 15 possession, Lakers 24. Itu angka signifikan. Fast-break points juga hampir seimbang (23 vs 20 untuk LAL).\n\nArtinya Raptors main cukup disiplin secara tim, tapi efisiensi shooting yang rendah membuat semua itu tidak cukup untuk balik hasil.\n\n---\n\n## Selanjutnya\n\nIni adalah game kedua dari dua pertandingan di matchup regular season ini, dengan Lakers unggul 1-0 di seri. Tidak ada game berikutnya yang dijadwalkan di input, tapi angka Luka malam ini pasti jadi bahan diskusi panjang.\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909906",
+    "home_team": "Los Angeles Lakers",
+    "home_abbr": "LAL",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 131,
+    "away_score": 125,
+    "winner_abbr": "LAL",
+    "kickoff_utc": "2026-11-02T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "LAL lead series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039412,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 58,
+      "issue_count": 8,
+      "summary": "Solid stat-dense recap with accurate numbers, but derailed by academic register creep ('Artinya...'), tense overmarking ('adalah...unggul'), and soft connectors ('Selanjutnya', 'datang dari'). High fix count; regenerate with stricter voice discipline.",
+      "issues": [
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Artinya Raptors main cukup disiplin secara tim, tapi efisiensi shooting yang rendah membuat semua itu tidak cukup untuk balik hasil.",
+          "fix": "Rephrase as causation: 'Disiplin Toronto hilang di shooting. 43% vs 54% Lakers—gap itu yang bungkam Raptors.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Ini adalah game kedua dari dua pertandingan di matchup regular season ini, dengan Lakers unggul 1-0 di seri.",
+          "fix": "Game kedua matchup regular season ini. Lakers unggul 1-0."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Kejutan malam ini datang dari Jamison Battle... Masalah Raptors ada di efisiensi kolektif.",
+          "fix": "Use 'Jamison Battle cetak 20 poin dalam 17 menit'—direct. Then 'Raptors jatuh di efisiensi kolektif.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tapi statistik tidak sepenuhnya mencerminkan betapa dominannya Luka sepanjang laga.",
+          "fix": "Tapi statistik sembunyikan seberapa mendominasi Luka, atau: Luka dominasi 40 menit penuh."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Luka cetak 8-12 dari three-point line, hampir dua pertiga tembakan tiga angkanya masuk.",
+          "fix": "Luka cetak 8-12 dari three-point line—67%, dua pertiga nyata masuk."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Luka Show, Dibantu Dinding Bernama Kessler",
+          "fix": "Use 'Walker Kessler' or generic 'partner defensif'; avoid invented nicknames without source."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selanjutnya",
+          "fix": "Delete header; merge closing info into final paragraph or cut entirely."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tidak ada game berikutnya yang dijadwalkan di input, tapi angka Luka malam ini pasti jadi bahan diskusi panjang.",
+          "fix": "Delete. Readers don't need to know what's in the input. End with broadcast info."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xab6ae1e720215c32",
+    "published_at": "2026-11-02T05:35:33+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
