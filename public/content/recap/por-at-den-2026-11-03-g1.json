@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "por-at-den-2026-11-03-g1",
+  "title": "Recap Portland Trail Blazers 118-110 Denver Nuggets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs Denver Nuggets (118-110) di —, 3 November 2026.",
+  "body_md": "# Portland Hancurkan Denver 118-110, Blazers Pegang Kendali Seri\n\nPortland Trail Blazers mengalahkan Denver Nuggets 118-110 dalam Game 2 Regular Season Series, Senin 3 November 2026. POR unggul 1-0 di seri ini, dan performa malam ini mempertegas bahwa ini bukan kemenangan keberuntungan. Empat pemain Portland tembus 17 poin atau lebih, Jrue Holiday keluar dari bench dengan lini stats yang bikin Denver sakit kepala, dan Donovan Clingan mendominasi papan rebound dengan cara yang Denver tidak punya jawaban sampai peluit akhir.\n\n---\n\n## Top Performers\n\n**Deni Avdija** jadi pencetak poin tertinggi Portland dengan 28 poin, 3 rebound, 5 asis, FG 10-22, termasuk 2-9 dari tiga poin dalam 35 menit. Produktif, tapi bukan malam terbaik dari luar busur. Kontribusi terbesarnya justru di fase krusial: asis ke Clingan untuk alley-oop di kuarter keempat yang membantu POR pertahankan jarak.\n\n**Damian Lillard** tampil efisien meski volume tembakan dibatasi, 20 poin, 6 rebound, 6 asis dari FG 5-11 dalam 30 menit. Dame tidak perlu heroik malam ini. dia cukup kelola permainan dan biarkan pemain lain ambil alih.\n\nCerita terbesar dari sisi Portland ada dua. Pertama, **Donovan Clingan**: 17 poin, 18 rebound, 3 asis, FG 8-16. Delapan belas rebound, angka yang memalukan buat tim manapun yang mengklaim sebagai kontender. Clingan menguasai paint seperti miliknya sendiri, dan Portland menang perang rebound 53-37 secara keseluruhan.\n\nKedua, **Jrue Holiday** off the bench: 17 poin, 8 rebound, 10 asis, FG 7-11, 3-4 dari tiga poin. Triple-double nyaris sempurna dari pemain cadangan, dengan efisiensi yang tidak wajar. Holiday yang seharusnya jadi role player berubah jadi pengatur game di saat Denver paling butuh menjaga jarak tetap tipis.\n\nDari kubu Denver, **Jamal Murray** lakukan segalanya yang bisa dilakukan, 35 poin, 5 rebound, 6 asis, FG 10-19, 4-9 dari tiga poin dalam 39 menit. Ini Murray di level terbaik. Masalahnya, 35 poin dari satu pemain tidak cukup kalau sisi lain roster tidak mengimbangi. **Nikola Jokic** mencatat 26 poin, 9 rebound, 8 asis, lini stats yang di malam kebanyakan sudah merupakan kemenangan, tapi tidak malam ini. Tanpa double-double rebound, Jokic sedikit di bawah standar fisik yang biasanya ia tetapkan.\n\n---\n\n## Baca Angkanya\n\nFG% kedua tim identik di 47%, artinya Portland tidak menang karena efisiensi field goal yang lebih baik. Perbedaannya ada di tiga aspek: tiga poin, rebound, dan free throw.\n\nPOR 15-41 dari tiga poin (37%) versus DEN 9-26 (35%). Selisih tipis dari persentase, tapi Portland melepas 41 tembakan tiga angka versus 26 Denver, volume yang jauh lebih agresif, dan itu menghasilkan 15 bola masuk versus 9.\n\nRebound sudah disebut: 53-37. Ini bukan sekadar Clingan, ini kemenangan kolektif di papan yang memberikan Portland second-chance opportunities setiap Denver gagal closing out.\n\nSatu catatan menarik: Denver menang di steals 13-3, dan fast-break points hampir seimbang (13-15 untuk DEN). Artinya Denver punya momen-momen mencuri momentum, tapi tidak cukup konsisten untuk membalik skor.\n\n---\n\n## Kuarter Keempat: Denver Sempat Mendekat\n\nYang bikin pertandingan ini menarik, Denver tidak menyerah begitu saja. Di kuarter keempat, saat POR pegang 99-94 di menit ke-7, Christian Braun masuk dengan running dunk (99-96). Dua menit penuh ketegangan menyusul: Clingan balas dengan alley-oop dari Avdija (101-96), Jokic respons dari 23 kaki (101-99). Tiba-tiba Denver hanya tertinggal dua poin.\n\nPortland tahan celah itu. Avdija tambah dua poin (103-99), dan Denver terus kejar, Jokic driving floater dari Murray (108-104), Murray sendiri dari 22 kaki (110-107) di menit 1:18. Denver pernah hanya tertinggal tiga poin di keempat. Namun momentum akhirnya mati ketika Jokic mencetak tiga poin dari 27 kaki, ke dalam gawang yang sudah terlambat, di sisa 25 detik, score 115-110, dan Portland akhirnya tutup 118-110.\n\n---\n\n## Selanjutnya\n\nPortland pegang keunggulan 1-0 di seri empat game ini. Game 3 menunggu, pantau jadwal lengkapnya di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909918",
+    "home_team": "Denver Nuggets",
+    "home_abbr": "DEN",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 110,
+    "away_score": 118,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-11-03T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.026477,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has accuracy error (Jokic double-double claim), tense/phrasing awkwardness, and some translated-English smell. Main fail: logical inconsistency re: series context + stat misreading. Needs regeneration.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 2 Regular Season Series",
+          "fix": "Restructure: 'Portland Trail Blazers mengalahkan Denver Nuggets 118-110, Senin 3 November 2026, mempertahankan keunggulan 1-0 di regular season series empat game.' Drop 'Game 2' framing."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Kontribusi terbesarnya justru di fase krusial: asis ke Clingan untuk alley-oop di kuarter keempat yang membantu POR pertahankan jarak.",
+          "fix": "Rewrite: 'Kontribusi terbesarnya di kuarter keempat: asis ke Clingan untuk alley-oop yang jaga jarak POR.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Triple-double nyaris sempurna dari pemain cadangan, dengan efisiensi yang tidak wajar.",
+          "fix": "Use: 'dengan efisiensi luar biasa' or 'dengan akurasi menggila' — more natural Indonesian."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Tanpa double-double rebound, Jokic sedikit di bawah standar fisik yang biasanya ia tetapkan.",
+          "fix": "Delete or reframe: 'Jokic 26 poin, 9 rebound, 8 asis — solid, tapi di bawah standar MVP-nya.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Masalahnya, 35 poin dari satu pemain tidak cukup kalau sisi lain roster tidak mengimbangi.",
+          "fix": "Rewrite: 'Masalahnya, 35 poin dari satu pemain tidak cukup kalau residu roster Denver lemah.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Satu catatan menarik: Denver menang di steals 13-3, dan fast-break points hampir seimbang (13-15 untuk DEN). Artinya Denver punya momen-momen mencuri momentum, tapi tidak cukup konsisten untuk membalik skor.",
+          "fix": "Optional: 'Denver punya momen-momen mencuri momentum (13 steals, 15 fast-break poin), tapi tidak konsisten untuk membalik skor.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Jokic respons dari 23 kaki (101-99).",
+          "fix": "Optional: rephrase for consistency, but not a violation."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Dan Portland menang perang rebound 53-37 secara keseluruhan.",
+          "fix": "Delete 'secara keseluruhan': 'Portland menang perang rebound 53-37.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1c5dd7e21400ce80",
+    "published_at": "2026-11-03T06:44:03+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

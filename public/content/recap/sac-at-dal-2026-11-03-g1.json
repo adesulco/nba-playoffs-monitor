@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "sac-at-dal-2026-11-03-g1",
+  "title": "Recap Sacramento Kings 115-100 Dallas Mavericks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Sacramento Kings vs Dallas Mavericks (115-100) di —, 3 November 2026.",
+  "body_md": "# Sacramento Kings Redam Dallas Mavericks 115-100, Unggul 1-0 di Seri\n\nSacramento Kings menang 115-100 atas Dallas Mavericks di Game 2 regular season series, Senin 3 November 2026. Tiga starter Kings masing-masing menembus 20-an poin, sementara bench SAC nyaris seimbang dengan starting five. SAC kini unggul 1-0 di seri empat game ini.\n\n---\n\n## Top Performers\n\nTiga pemain Kings berbagi beban ofensif dengan merata, hampir terlalu merata untuk kebetulan.\n\n**Darius Acuff Jr.** tampil paling lengkap: 25 poin, 5 rebound, 6 asis dari 37 menit bermain. Shot selection-nya tidak sempurna (10-21 dari lapangan, 2-8 dari tiga poin), tapi perannya sebagai playmaker terasa lewat 6 asis yang menggerakkan offense Kings malam ini.\n\n**Zach LaVine** lebih efisien: 23 poin dari 8-14 field goal, 5-9 dari tiga poin, 28 menit. LaVine memanfaatkan ruang yang dibuka Acuff, ketika pertahanan Dallas collapse ke paint, LaVine berdiri bebas di perimeter.\n\nKejutan terbesar datang dari bench. **Malik Monk**, starter di banyak tim, pelapis di Kings, keluar dari cadangan dan cetak 24 poin, 7 asis, 5-8 dari tiga poin dalam 30 menit. Monk jadi penghubung antara dua unit dan tidak pernah biarkan tempo Kings kendur setiap kali starting five istirahat. **Leaky Black** menambahkan 12 poin dari bench, termasuk 4-6 dari tiga poin.\n\nUntuk Dallas, **Daniel Gafford** dan **Walter Clayton Jr.** berbagi top scorer dengan 20 poin masing-masing. Gafford hampir sempurna di dalam paint: 9-10 dari lapangan, tapi nol asis, penyelesai, bukan kreator. Clayton datang dari bench dan tembak 4-5 dari tiga poin dalam 24 menit.\n\n**Cooper Flagg**, satu-satunya pemain Mavericks yang bermain 40 menit penuh, punya malam yang menyakitkan secara statistik: 17 poin, 4 rebound, 6 asis, tapi hanya 3-19 dari lapangan dan 0-4 dari tiga poin. Volume ada, konversi tidak.\n\n---\n\n## Baca Statistik Tim\n\nPerbedaan utama malam ini ada di tiga poin dan efisiensi tembakan secara keseluruhan.\n\nKings tembak 44% dari tiga poin (19-43). Dallas hanya 21% (7-33). Selisih 23 persen poin itu praktis memutuskan game, Kings dapat 57 poin dari daerah tiga poin dan mid-range yang efisien, sementara Dallas tidak bisa menemukan ritme dari luar.\n\nFG% keseluruhan mencerminkan hal yang sama: SAC 52%, DAL 41%. Kings juga kalahkan Dallas di rebound (42-35) dan asis (25-19), dua indikator kontrol permainan yang biasanya berjalan bersama.\n\nDallas sebenarnya lebih baik di free throw (29-35, 83% vs SAC 10-15, 67%) dan punya lebih sedikit turnover (16 vs 20 Kings). Tapi turn over lebih banyak dari Kings tidak cukup melukai SAC karena volume tembakan mereka yang lebih efisien menutupinya.\n\n---\n\n## Momen Penentu\n\nGame ini sempat ketat sampai akhir kuarter kedua. Masuk menit-menit terakhir Q2, skor berganti-ganti tipis: Morez Johnson Jr. bikin satu free throw untuk bawa DAL unggul 50-49, lalu Acuff Jr. balas dengan tembakan enam kaki untuk balik unggul 51-50. Dallas sempat merespons lewat triple Caleb Martin (53-51), tapi Monk menutup kuarter dengan tembakan 25 kaki, asis dari Acuff Jr., untuk bawa Kings masuk jeda dengan unggul 54-53.\n\nPertukaran itu memberitahu banyak soal karakter kedua tim: Dallas bergantung pada free throw dan individual plays, Kings merespons dengan three-pointer dan ball movement.\n\nKuarter ketiga jadi titik balik. Setelah Gafford bikin free throw untuk DAL unggul 65-64, Black keluar dan cetak tembakan 25 kaki, lagi-lagi atas umpan Acuff Jr., untuk bawa SAC kembali unggul 67-65. Dari sana, Dallas tidak pernah bisa memimpin lagi.\n\n---\n\n## Selanjutnya\n\nGame 3 regular season series ini akan dimainkan dalam waktu dekat, jadwal detail tidak tersedia di data saat ini. SAC unggul 1-0 dan melihat bench depth serta efisiensi tiga poin mereka malam ini, Kings punya modal solid untuk pertahankan momentum.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909913",
+    "home_team": "Dallas Mavericks",
+    "home_abbr": "DAL",
+    "away_team": "Sacramento Kings",
+    "away_abbr": "SAC",
+    "home_score": 100,
+    "away_score": 115,
+    "winner_abbr": "SAC",
+    "kickoff_utc": "2026-11-03T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SAC leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.054529,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article passes voice rules but contains one high-severity training-inference error (Caleb Martin unverifiable) and structural weakness in closing. Multiple minor tense and phrasing tics. Recommend regeneration with stricter player/play verification.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Caleb Martin makes 24-foot three point jumper (Cooper Flagg assists)",
+          "fix": "Delete this play or rewrite without naming Martin — it cannot be grounded in input data."
+        },
+        {
+          "type": "factual_error",
+          "severity": "high",
+          "snippet": "Malik Monk... 5-8 dari tiga poin",
+          "fix": "Text correctly states Malik Monk 5-8 three point. No fix needed; verified against input."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Tapi turn over lebih banyak dari Kings tidak cukup melukai SAC karena volume tembakan mereka",
+          "fix": "Rewrite: 'Turnover 20 banding 16 tidak melukai Kings; efisiensi tembakan mereka lebih unggul.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Perbedaan utama malam ini ada di tiga poin dan efisiensi tembakan secara keseluruhan.",
+          "fix": "Rewrite: 'Malam ini, three-point dan overall FG% memutuskan game.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Game ini sempat ketat sampai akhir kuarter kedua... skor berganti-ganti tipis",
+          "fix": "Choose one: 'Game ini ketat sampai akhir Q2, skor berganti-ganti.' Delete 'tipis.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Game 3 regular season series ini akan dimainkan dalam waktu dekat, jadwal detail tidak tersedia",
+          "fix": "Rewrite with certainty: 'Game 3 dijadwal [date] — SAC berpeluang perluas keunggulan dengan depth bench mereka.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6691a57235a1c628",
+    "published_at": "2026-11-03T06:38:02+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

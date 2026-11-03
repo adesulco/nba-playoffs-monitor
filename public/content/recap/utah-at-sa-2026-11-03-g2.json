@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "utah-at-sa-2026-11-03-g2",
+  "title": "Recap Utah Jazz 97-119 San Antonio Spurs (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Utah Jazz vs San Antonio Spurs (97-119) di —, 3 November 2026.",
+  "body_md": "# San Antonio Spurs Bungkam Utah Jazz 119-97, Empat Pemain Tembus 15+ Poin\n\nSan Antonio Spurs menang telak atas Utah Jazz 119-97 dalam laga Regular Season Series, Senin 3 November 2026. Spurs unggul di hampir setiap aspek permainan, kemenangan ini menutup seri tiga laga dengan catatan 2-0.\n\n---\n\n## Distribusi Scoring SA: Masalah buat Jazz\n\nYang bikin Jazz susah satu malam ini bukan satu bintang yang keterlaluan, tapi empat pemain SA yang tembus double-digit dengan efisien.\n\nDylan Harper memimpin dengan 17 poin, 7 rebound, 8 asis dari hanya 27 menit. Hampir triple-double, dan angka asisnya menunjukkan Spurs main dengan ball movement yang cair. Stephon Castle menyumbang 16 poin, 5 rebound, 4 asis, dua guard muda SA ini gabungkan 12 asis sendiri.\n\nKeldon Johnson off the bench cetak 15 poin, 7 rebound. Harrison Barnes, juga dari bench, tambahkan 13 poin dengan efisiensi tinggi: 3-4 dari three-point line, selesai dalam 21 menit.\n\nVictor Wembanyama? Bukan malam terbaiknya secara scoring, 12 poin dengan shooting 5-15 dari lapangan, 0-5 dari tiga. Tapi 11 rebound dan 5 asis menunjukkan kontribusinya melampaui angka poin. Wemby hadir di everywhere selain papan skor.\n\n---\n\n## Box Score Bicara: Selisih di Dalam Cat\n\nDua angka yang paling menjelaskan hasil malam ini:\n\n**Fast-break points: SA 26, UTAH 9.** Spurs memanfaatkan transisi jauh lebih agresif, selisih 17 poin dari situasi run-and-gun saja sudah hampir setara dengan margin kekalahan Jazz (22 poin).\n\n**Points in paint: SA 52, UTAH 36.** Setengah dari total poin SA datang dari dalam cat. Jazz punya tujuh block, tapi tetap tidak bisa menjaga perimeter-ke-paint connection yang jadi andalan SA.\n\nFG% juga bercerita: SA 46% vs UTAH 35%. Jazz memang tidak terlalu jauh di persentase tiga poin (35% vs 34%), tapi volume shooting Jazz yang lebih banyak missa, 34-96 field goal attempts, menunjukkan mereka sering memaksakan tembakan yang tidak layak diambil.\n\n---\n\n## Sisi Jazz: Markkanen Berjuang Sendiri\n\nLauri Markkanen tampil sebagai satu-satunya pemain Jazz yang benar-benar konsisten malam ini: 22 poin, 8 rebound, 3 asis dengan shooting 8-16 dari lapangan dan 4-7 dari tiga. Di laga yang berjalan berat, Markkanen adalah sumber scoring paling reliable Jazz.\n\nDarryn Peterson menyumbang 14 poin dan 6 asis, angka distribusi yang solid untuk pemain muda. Tapi secara kolektif, Jazz hanya cetak 16 asis tim dibanding 27 dari SA. Perbedaan yang cukup drastis dan mencerminkan betapa Jazz bermain lebih banyak isolation dibanding ball movement terorganisir.\n\n---\n\n## Penutup\n\nRegular Season Series ini berakhir 2-0 untuk San Antonio. Laga berikutnya untuk kedua tim tidak tercatat di data yang tersedia, tapi dari cara Spurs bermain malam ini, distribusi scoring merata dan fast-break execution yang tajam jadi sinyal positif untuk perjalanan musim mereka.\n\nSiaran tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909917",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Utah Jazz",
+    "away_abbr": "UTAH",
+    "home_score": 119,
+    "away_score": 97,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-03T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039496,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong recap with accurate stats, natural code-switching, and solid structure. Minor tense softness and one awkward meta-reference; easily fixed. Voice is solidly Indonesian, not translated.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "San Antonio Spurs menang telak atas Utah Jazz 119-97 dalam laga Regular Season Series, Senin 3 November 2026.",
+          "fix": "Change to: 'San Antonio Spurs menang 119-97 atas Utah Jazz dalam Regular Season Series, Senin 3 November 2026.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Wemby hadir di everywhere selain papan skor.",
+          "fix": "Change to: 'Wemby muncul di mana-mana, kecuali papan skor.' or 'Wemby ada di semua aspek kecuali scoring.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua angka yang paling menjelaskan hasil malam ini: Fast-break points...",
+          "fix": "Change to: 'Dua angka kunci hasil malam ini: Fast-break points...'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Laga berikutnya untuk kedua tim tidak tercatat di data yang tersedia, tapi dari cara Spurs bermain malam ini, distribusi scoring merata dan fast-break execution yang tajam jadi sinyal positif untuk perjalanan musim mereka.",
+          "fix": "Delete the meta-note. Simplify: 'Distribusi scoring merata dan fast-break execution Spurs jadi sinyal positif musim ini.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x200b79a26c93e880",
+    "published_at": "2026-11-03T06:43:09+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

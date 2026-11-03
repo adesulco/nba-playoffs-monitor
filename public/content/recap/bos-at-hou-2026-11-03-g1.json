@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "bos-at-hou-2026-11-03-g1",
+  "title": "Recap Boston Celtics 93-109 Houston Rockets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Houston Rockets (93-109) di —, 3 November 2026.",
+  "body_md": "# Alperen Sengun Dominan, Houston Rockets Bekuk Boston Celtics 109-93\n\nHouston Rockets mengakhiri dua laga regular season melawan Boston Celtics dengan dominasi penuh, menang 109-93 dan menyapu bersih rangkaian ini 2-0. Alperen Sengun tampil sebagai bintang utama dengan 26 poin, 7 rebound, dan 10 asis, angka yang membuat center Turki itu jadi mesin penggerak offense Houston dari awal sampai peluit akhir.\n\n---\n\n## Top Performers\n\n### Houston Rockets\n\nSengun adalah cerita utama malam ini. FG 12-15, efisiensi langka untuk seorang big man yang juga ngatur setengah dari offense timnya. 10 asis-nya bukan sekadar angka. itu cerminan betapa banyak keputusan yang melewati tangannya di setiap half-court set Houston. Di samping Sengun, **Jabari Smith Jr.** menyumbang 14 poin dan 10 rebound, double-double yang menjaga keunggulan fisik Houston di area cat. **Amen Thompson** menambahkan 14 poin dari 5-9 FG tanpa bergantung pada tembakan tiga angka sama sekali, murni dari drive dan transisi.\n\nTari Eason off the bench memberi Houston 13 poin dengan 3-6 from three, kontribusi bench yang krusial. **Kevin Durant** bermain efisien: 12 poin dari 5-6 FG meski tanpa tembakan tiga angka yang masuk, menunjukkan perannya malam ini lebih ke finishing situasional.\n\n### Boston Celtics\n\n**Jayson Tatum** mencatat 19 poin, 6 rebound, dan 9 asis, tapi angka itu menyembunyikan masalah yang lebih besar: FG 5-16 dan 3PT 1-7. Tatum kesulitan menemukan ritme. **Neemias Queta** jadi highlight yang tidak terduga, 16 poin dari FG 6-7, efisiensi terbaik di roster Boston malam ini. **Luka Garza** menyumbang 14 poin off the bench dengan 4-7 from three, mencoba menjaga BOS tetap di permainan, tapi kontribusinya tidak cukup untuk menutup gap. Derrick White hanya 7 poin dari FG 3-12, malam yang berat.\n\n---\n\n## Membaca Angka\n\nSelisih 16 poin di papan skor mencerminkan perbedaan yang konsisten di hampir setiap kategori penting. Houston menutup pertandingan dengan FG 54% vs Boston yang hanya 39%. Tiga angka pun lebih tajam: HOU 40% dari 35 percobaan, BOS 29% dari 42, Boston melempar lebih banyak, tapi jauh kurang akurat.\n\nDua angka yang paling menjelaskan pertandingan ini: **fast-break points 18-2** dan **points in paint 50-34**. Houston mendominasi transisi dan area cat secara bersamaan. BOS punya 16 turnovers vs 14 milik Houston, selisih yang kecil di angka, tapi Houston mengkonversinya jadi poin fastbreak dengan jauh lebih konsisten. Boston unggul di free throw (17-20, 85% FT%) tapi itu tidak mengubah arah pertandingan yang sudah condong sejak awal.\n\n---\n\n## Catatan Seri\n\nDengan kemenangan ini, Houston menutup regular season series melawan Boston 2-0. Untuk Celtics, masalahnya bukan cuma kekalahan, tapi bagaimana mereka kalah. Efisiensi shooting yang rendah, paint yang dikuasai lawan, dan fastbreak yang berjalan satu arah adalah pola yang lebih mengkhawatirkan dari sekadar skor akhir.\n\nKedua tim selanjutnya melanjutkan jadwal NBA Playoffs 2026 masing-masing. Tayangan lengkap tersedia di **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909916",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 109,
+    "away_score": 93,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-11-03T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019396,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Article passes voice check. Specific stats grounded in input data, Bahasa flows naturally, code-switching appropriate. One medium-severity 'translated English' phrasing and minor colloquialism notes, neither critical.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "itu cerminan betapa banyak keputusan yang melewati tangannya",
+          "fix": "Rephrase: 'Itu bukti berapa banyak Houston andalkan Sengun di setiap setup.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Untuk Celtics, masalahnya bukan cuma kekalahan, tapi bagaimana mereka kalah.",
+          "fix": "Change 'cuma' to 'hanya' for uniformity, or keep as-is if colloquial tone is intentional."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Dengan kemenangan ini, Houston menutup regular season series melawan Boston 2-0.",
+          "fix": "Optional: 'Houston tutup regular season series 2-0.' But current works fine."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x24cc45121571e6d0",
+    "published_at": "2026-11-03T06:42:00+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
