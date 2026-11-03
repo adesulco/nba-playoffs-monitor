@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "mia-at-lal-2026-11-03-g1",
+  "title": "Recap Miami Heat 117-138 Los Angeles Lakers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Miami Heat vs Los Angeles Lakers (117-138) di —, 3 November 2026.",
+  "body_md": "# Luka 42, Lakers Dominan, Miami Heat Tumbang 117-138\n\nLos Angeles Lakers menghajar Miami Heat 138-117 dalam laga NBA Playoffs 2026, Senin 3 November 2026. Luka Doncic tampil monster: 42 poin, 7 rebound, 13 asis. Lakers unggul 1-0 dalam seri ini.\n\nBukan sekadar menang, ini pernyataan. Lakers lebih efisien di hampir semua lini, dan Doncic jadi orkestrator yang sulit dibendung sepanjang 36 menit bermain.\n\n---\n\n## Doncic + Reaves, Terlalu Berat untuk Heat\n\nAngka Doncic berbicara sendiri. 42 poin lewat 14-24 from field, enam three-pointer dari 15 percobaan, plus 13 asis yang membuktikan dia bukan sekadar scorer, dia pengatur serangan sekaligus eksekutor utama. Combo yang menyebalkan untuk dihadapi.\n\nAustin Reaves melengkapi tekanan. 27 poin dengan efisiensi tinggi: 10-15 from field, 4-5 dari three-point line. Di laga-laga besar, Reaves sering jadi nama kedua yang terlupakan sampai box score keluar. Malam ini tidak ada yang bisa melupakannya.\n\nWalker Kessler jadi faktor ketiga yang sering diabaikan preview: 15 poin dan 15 rebound. Double-double bersih, dominasi di paint yang membuat Miami kesulitan dapat second-chance points. Off the bench, Sandro Mamukelashvili tambah 13 poin dengan 2-5 dari three, dan Ziaire Williams cetak 9 poin efisien (3-6, termasuk 3-6 dari arc).\n\n---\n\n## Giannis Solid, Tapi Miami Tidak Cukup\n\nGiannis Antetokounmpo mencetak 30 poin, 12 rebound, 7 asis, lini statistik yang di laga lain bisa jadi pemenang. Malam ini tidak cukup. FG-nya 10-17, tapi tiga percobaan three-pointer tidak ada yang masuk. Beban Giannis terasa karena sisi lain lineup Miami tidak bisa menopang secara konsisten.\n\nKlay Thompson menyumbang 19 poin dengan 4-7 dari three-point line, flashes of vintage Klay, tapi tidak cukup lama. Bam Adebayo solid: 16 poin, 9 rebound, 4 asis, FG 5-10. Davion Mitchell menarik dengan 15 poin dari lini asis 5-5 from field dan 4-4 dari three, efisiensi sempurna, tapi satu-satunya yang bisa diklaim positif tanpa catatan. Tim Hardaway Jr. tambah 9 poin dari bench.\n\n---\n\n## Baca Angka: Lakers Menang di Tempat yang Menentukan\n\nSelisih 21 poin tidak lahir dari satu faktor.\n\nLakers unggul FG% 57 berbanding 51 milik Miami, sudah jelas siapa yang lebih efisien. Di three-point line: Lakers 44% vs Miami 39%. Bukan jurang besar, tapi di volume serangan yang sama-sama tinggi, gap itu akumulatif.\n\nYang paling menceritakan: points in paint. Lakers 60, Miami 38. Dua puluh dua poin lebih di area terdalam lapangan, ini cerminan langsung dominasi Kessler dan agresivitas drive Doncic-Reaves. Miami mencoba mengimbangi lewat free throw (25-35 vs Lakers 17-24), tapi selisih di paint terlalu besar untuk ditutup dari garis.\n\nTurnovers jadi catatan Miami: 19 berbanding Lakers 16. Fast-break points pun dibalik, Miami 20, Lakers hanya 6. Heat unggul di transisi, tapi tidak cukup memanfaatkannya untuk membuat selisih kompetitif.\n\nAssists total mencerminkan cara masing-masing tim bermain: Lakers 39, Miami 28. Lakers lebih banyak bergerak, Miami lebih bergantung pada kreasi individu.\n\n---\n\n## Selanjutnya\n\nIni Game 2 dari dua laga di seri regular season ini, Lakers tutup seri 2-0 secara keseluruhan dengan kemenangan meyakinkan. Jadwal lanjutan dapat diikuti live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909921",
+    "home_team": "Los Angeles Lakers",
+    "home_abbr": "LAL",
+    "away_team": "Miami Heat",
+    "away_abbr": "MIA",
+    "home_score": 138,
+    "away_score": 117,
+    "winner_abbr": "LAL",
+    "kickoff_utc": "2026-11-03T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "LAL lead series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021753,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has strong stat accuracy and tactical breakdown, but training-inference closure claim + tense/phrase awkwardness + 'Malam ini' repetition push it below pass. Needs regeneration on sections 2, 3, and closing.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ini Game 2 dari dua laga di seri regular season ini",
+          "fix": "Delete closure prediction. Stick to: 'Game 2 dari regular season series ini'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Combo yang menyebalkan untuk dihadapi.",
+          "fix": "Rewrite: 'Perpaduan yang sulit dikontrol.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Malam ini tidak ada yang bisa melupakannya. / Malam ini tidak cukup.",
+          "fix": "Vary: 'Reaves cetak 27 poin efisien...' / 'Giannis solid, 30 poin, 12 rebound, 7 asis — tapi Miami kalah di tempat lain.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Giannis mencetak 30 poin... tapi tiga percobaan three-pointer tidak ada yang masuk.",
+          "fix": "Rewrite: 'FG 10-17, 0-3 dari three — cukup untuk 30 poin, tapi tidak ideal.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selisih 21 poin tidak lahir dari satu faktor. / Yang paling menceritakan: points in paint.",
+          "fix": "Simplify: '21 poin selisih lahir dari dominasi Lakers di mana-mana. / Points in paint paling jelas: Lakers 60, Miami 38.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "lini asis 5-5 from field dan 4-4 dari three",
+          "fix": "Rewrite: 'Davion Mitchell 15 poin, FG 5-5, 3PT 4-4 — efisiensi sempurna.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya / Jadwal lanjutan dapat diikuti live di NBA League Pass dan Vidio.",
+          "fix": "Delete heading. Replace final line: 'Game 3 tidak ada — seri berakhir 2-0 Lakers.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe7cce4a93c09deb8",
+    "published_at": "2026-11-03T07:12:02+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

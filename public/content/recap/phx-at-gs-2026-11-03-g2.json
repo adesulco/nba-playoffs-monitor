@@ -1,0 +1,133 @@
+{
+  "type": "recap",
+  "slug": "phx-at-gs-2026-11-03-g2",
+  "title": "Recap Phoenix Suns 113-116 Golden State Warriors (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs Golden State Warriors (113-116) di —, 3 November 2026.",
+  "body_md": "# Curry 34 Poin, Warriors Selamat dari Comeback Suns di Game 3\n\nGolden State Warriors menang dramatis atas Phoenix Suns 116-113 di Game 3 regular season series, Senin 3 November 2026. Stephen Curry cetak 34 poin jadi pembeda, tapi Warriors nyaris menyia-nyiakan keunggulan di menit-menit akhir sebelum akhirnya menutup laga lewat free throw. Seri 1-1 kini berpindah keunggulan ke Warriors yang memimpin 2-1.\n\n---\n\n## Top Performers\n\n**Stephen Curry** tampil sebagaimana biasanya di laga yang dibutuhkan Warriors, 34 poin, 6 rebound, 7 asis dengan 5-13 dari tiga angka. Efisiensinya dari lapangan tidak sempurna (9-21), tapi volume dan kualitas shot-nya tetap jadi momok buat Suns sepanjang malam. Di sisa-sisa Q4, Curry yang menutup pertandingan lewat empat free throw di detik-detik kritis.\n\n**Brandin Podziemski** chipped in 20 poin dengan 3-8 dari three-point line, kontribusi yang krusial mengingat Curry tidak bisa kerja sendirian. Charles Bassey off the bench jadi kejutan: 19 poin, 8 rebound dengan shooting 7-10 dari lapangan, efisiensi tertinggi di antara semua scorer malam ini. Yaxel Lendeborg menambah 16 poin, 5 rebound, 5 asis untuk melengkapi distribusi scoring Warriors yang merata.\n\nDi kubu Suns, **Devin Booker** memimpin dengan 26 poin, 5 asis, tapi butuh 18 field goal attempt untuk sampai ke sana. **Miles Bridges** cukup efisien, 21 poin dari 14 attempt, 3-5 dari tiga angka. **Dillon Brooks** memberi kontribusi dua arah: 18 poin, 8 rebound, 4 asis dengan shooting 2-2 dari tiga angka. Dan Jalen Green, meski hanya 11 poin dan 5-14 dari lapangan, jadi kreator utama dengan 8 rebound dan 8 asis.\n\n---\n\n## Apa yang Dijelaskan Statistik\n\nSuns sebenarnya layak menang di atas kertas di beberapa kategori penting. Mereka lebih baik dalam field goal percentage (47% vs 43%), fast-break points (14 vs 7), points in paint (48 vs 42), steals (11 vs 7), dan assists (28 vs 23). Pertahanan dan transisi Suns jelas lebih hidup malam ini.\n\nTapi Warriors menang di tiga angka, 13-42 attempt vs 11-30, dengan Suns sebenarnya punya conversion rate lebih baik (37% vs 31%). Bedanya: volume attempt Warriors jauh lebih banyak, dan mereka lebih baik di free throw line (84% vs 73%) dengan 31 attempt dibanding 30. Di laga sedekat ini, selisih di garis free throw bisa jadi faktor penentu.\n\nRebounds juga berpihak ke Warriors: 44 vs 37. Suns kehilangan possession-possession kritis di sana.\n\n---\n\n## Empat Menit Terakhir yang Menentukan\n\nLaga ini milik Suns kalau dilihat dari paruh terakhir Q4. KEY PLAYS block menunjukkan Suns menutup gap satu per satu, Oso Ighodaro dengan dunk 3 kaki di 38,4 detik tersisa memotong defisit jadi 110-113, lalu Jalen Green dengan driving dunk di 14,2 detik menjadikannya 112-113. Suns dalam jangkauan.\n\nTapi Curry tidak memberi mereka celah lebih lebar. Dua free throw di 7,4 detik tersisa memajukan Warriors ke 112-115, dan satu free throw tambahan di 5,1 detik menutup akses comeback Suns. Jalen Green masih sempat bikin satu free throw untuk skor akhir 113-116, tapi sudah terlambat.\n\n---\n\n## Selanjutnya\n\nWarriors kini memimpin seri 2-1 dengan satu game tersisa. Game 4 jadi penentu apakah Warriors tutup seri atau Suns paksa split. Jadwal Game 4 belum tersedia di data saat ini. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909919",
+    "home_team": "Golden State Warriors",
+    "home_abbr": "GS",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 116,
+    "away_score": 113,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-11-03T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022036,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on training-data inference (series position), weak code-switching, and phrase repetition. Series lead claim (2-1) contradicts input (tied 1-1, Game 3 of 4). Revise to remove series projection and tighten Podziemski / Green framing.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Seri 1-1 kini berpindah keunggulan ke Warriors yang memimpin 2-1.",
+          "fix": "Delete the series lead claim. State only what input confirms: 'Warriors menang mempertahankan seri tetap 1-1.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Stephen Curry tampil sebagaimana biasanya di laga yang dibutuhkan Warriors",
+          "fix": "Simplify: 'Stephen Curry tampil seperti biasa, memimpin Warriors saat dibutuhkan.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "cetak 34 poin jadi pembeda... 34 poin... 5-13 dari tiga angka",
+          "fix": "Second instance: 'Curry 34 poin dengan 5-13 dari tiga angka' (drop 'cetak X jadi')."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Brandin Podziemski chipped in 20 poin dengan 3-8 dari three-point line",
+          "fix": "Use 'menambah' or 'cetak': 'Brandin Podziemski cetak 20 poin dengan 3-8 dari three-point line.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Jalen Green... jadi kreator utama dengan 8 rebound dan 8 asis",
+          "fix": "Reframe: 'Jalen Green 11 poin dari 5-14 percobaan, tapi dominan di distribusi dengan 8 asis dan 8 rebound.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Laga ini milik Suns kalau dilihat dari paruh terakhir Q4.",
+          "fix": "Tighten: 'Paruh terakhir Q4 milik Suns. Mereka tutup gap satu per satu.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Jadwal Game 4 belum tersedia di data saat ini.",
+          "fix": "Delete sentence. Close with venue/broadcast info only: 'Pantau update Game 4 di NBA League Pass dan Vidio.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xadea69afb48ae7e0",
+    "published_at": "2026-11-03T07:09:33+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 72,
+      "headline_score": 78,
+      "headline_comment": "Jelas, informatif, dan punya angle (Curry 34 + comeback) — tapi 'Game 3' kontradiktif dengan sub-head yang bilang 'Seri 1-1'.",
+      "lead_score": 74,
+      "lead_comment": "Lead solid dengan news + angle, tapi kalimat terakhir ambigu: 'Seri 1-1 kini berpindah keunggulan ke Warriors yang memimpin 2-1' — logically broken.",
+      "structure_score": 75,
+      "structure_comment": "Alur rapi (hasil → top performers → stats → clutch moments → next), tapi section 'Empat Menit Terakhir' redundan dengan bagian Curry di Top Performers.",
+      "voice_score": 68,
+      "voice_comment": "Mostly natural, tapi ada drift: 'chipped in', 'off the bench', 'sebagaimana biasanya', dan referensi meta 'KEY PLAYS block' bocor dari input data.",
+      "suggestion_count": 6,
+      "summary": "Numbers all check out and structure is sound, but there are two blocking issues: an internal contradiction about series state (1-1 vs 2-1) and a prompt-data leak ('KEY PLAYS block'). Both are quick editor fixes, not regenerate-worthy.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Seri 1-1 kini berpindah keunggulan ke Warriors yang memimpin 2-1.",
+          "issue": "Kontradiksi internal — tidak mungkin seri 1-1 sekaligus 2-1. Input data juga menyebut 'Series tied 1-1' + 'Game 3 of 4', yang sendirinya ambigu.",
+          "fix": "Pilih satu framing berdasarkan konteks (kemungkinan: 'Warriors kini memimpin seri 2-1' saja) dan hapus '1-1'."
+        },
+        {
+          "priority": "high",
+          "snippet": "KEY PLAYS block menunjukkan Suns menutup gap satu per satu, Oso Ighodaro dengan dunk 3 kaki di 38,4 detik",
+          "issue": "Referensi 'KEY PLAYS block' bocor dari prompt input — pembaca tidak boleh lihat jeroan data pipeline.",
+          "fix": "Ganti jadi narasi langsung: 'Suns menutup gap satu per satu. Oso Ighodaro dunk di 38,4 detik tersisa memotong defisit jadi 110-113.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Stephen Curry tampil sebagaimana biasanya di laga yang dibutuhkan Warriors",
+          "issue": "'Sebagaimana biasanya' bentuk training-data inference — writer tidak punya basis untuk klaim pola kebiasaan Curry dari satu input data.",
+          "fix": "Potong jadi faktual: 'Stephen Curry memimpin Warriors dengan 34 poin, 6 rebound, 7 asis.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Brandin Podziemski chipped in 20 poin",
+          "issue": "'Chipped in' English idiom yang tidak lazim di body copy Indonesia. Code-switching di luar glossary.",
+          "fix": "'Brandin Podziemski tambah 20 poin' atau 'menyumbang 20 poin'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Charles Bassey off the bench jadi kejutan",
+          "issue": "'Off the bench' dipakai sebagai frasa — lebih natural dalam Indonesian NBA writing: 'dari bangku cadangan'.",
+          "fix": "'Charles Bassey dari bangku cadangan jadi kejutan: 19 poin, 8 rebound.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Jadwal Game 4 belum tersedia di data saat ini.",
+          "issue": "Frasa 'di data saat ini' bocor dari konteks pipeline — pembaca tidak peduli dengan sumber data writer.",
+          "fix": "'Jadwal Game 4 belum dikonfirmasi.' atau cukup 'Pantau jadwal Game 4 di NBA League Pass dan Vidio.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
