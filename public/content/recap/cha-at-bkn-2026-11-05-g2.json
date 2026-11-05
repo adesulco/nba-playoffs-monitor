@@ -1,0 +1,69 @@
+{
+  "type": "recap",
+  "slug": "cha-at-bkn-2026-11-05-g2",
+  "title": "Recap Charlotte Hornets 104-114 Brooklyn Nets (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Charlotte Hornets vs Brooklyn Nets (104-114) di —, 5 November 2026.",
+  "body_md": "# Brooklyn Nets Tutup Tamu Tanpa Ampun, BKN 114-104 atas CHA\n\nBrooklyn Nets menang 114-104 atas Charlotte Hornets dalam Game 3 regular season series, 5 November 2026 jam 07.30 WIB. Michael Porter Jr. tampil dominan dengan 26 poin dan 10 rebound, Julius Randle menambah 22 poin, sementara bench BKN keluar memberikan kontribusi besar yang jadi kunci kemenangan ini.\n\n---\n\n## Performa Terbaik Malam Ini\n\n**Michael Porter Jr.** jadi andalan BKN dengan 26 poin dan 10 rebound, satu-satunya pemain dengan double-double malam ini. Efisiensinya solid: 8 dari 17 field goal, termasuk 4 dari 9 dari three-point line. Berkontribusi di dua sisi lapangan, MPJ jadi anchor di pertahanan sekaligus scoring threat yang harus selalu dijaga Hornets.\n\nDi sampingnya, **Julius Randle** tampil stabil dengan 22 poin, 3 rebound, dan 4 asis dari 7-13 field goal. Tapi kejutan terbesar BKN malam ini datang dari bench.\n\n**Mikel Brown Jr.** masuk dari bangku cadangan dan langsung bikin masalah, 18 poin, 4 asis, shooting 3-5 dari three-point line hanya dalam 20 menit. **Danny Wolf** turut andil dengan 13 poin, 5 rebound, dan 3 asis dari 4-6 field goal dalam 19 menit. Dua bench player ini combined 31 poin dengan efisiensi tinggi, lebih dari cukup untuk menutup selisih yang ada.\n\nDari sisi CHA, **Naz Reid** berjuang keras dengan 28 poin dan 9 rebound, 11-18 dari field goal. **Grayson Allen** off the bench menyumbang 22 poin dengan 5 dari 7 tembakan tiga angka. Namun performa keduanya tergerus oleh shooting malam yang buruk dari **Brandon Miller**, hanya 10 poin dari 2-15 field goal dan 1-10 dari three-point line. Angka yang sangat mengkhawatirkan untuk seorang pemain yang diharapkan jadi pillar serangan CHA.\n\n---\n\n## Statistik yang Menjelaskan Segalanya\n\nBKN unggul di hampir semua aspek krusial. FG% BKN 51% berbanding 40% CHA, selisih yang besar dan langsung tercermin di papan skor. Dari three-point line, BKN 38% (14-37) vs CHA 30% (12-40): efisiensi yang lebih baik meski volume CHA lebih tinggi.\n\nYang paling krusial: **points in paint BKN 50, CHA hanya 34.** BKN berhasil mendominasi area cat secara konsisten, sesuatu yang sulit dilawan jika tim lawan juga kehilangan efisiensi di perimeter.\n\nCHA punya keunggulan di satu area, free throw. Hornets masuk 30-36 (83%) dari garis, sementara BKN hanya 20-28 (71%). Tanpa itu, selisih akhir bisa lebih besar.\n\nTurnover jadi masalah serius buat CHA: 17 kali melepas bola berbanding 12 untuk BKN. Momentum pertandingan dalam banyak momen diputus oleh kesalahan sendiri.\n\n---\n\n## Kuarter Keempat yang Menentukan\n\nMemasuki Q4 dalam posisi 83-83, kedua tim saling jual beli angka. Reid membuka Q4 dengan three-pointer dari 26 kaki untuk menyamakan skor. Lalu BKN merespons, **Danny Wolf** mencetak running jump shot 25 kaki, BKN mulai membuka jarak.\n\nReid terus berjuang: driving floater membawa CHA kembali ke minus empat (85-89). Tapi **Michael Porter Jr.** menjawab dengan three-pointer 26 kaki yang langsung mengunci momentum di pihak BKN, 92-87.\n\nDari situ BKN tidak lagi memberi ruang. Reid masih mencoba dengan beberapa drive, tapi pada saat skor menunjuk 95-100 di menit ke-6:21 Q4, pertandingan sudah praktis selesai. BKN menutup dengan kontrol penuh.\n\n---\n\n## Selanjutnya\n\nSeries antara BKN dan CHA saat ini tied 1-1 menjelang Game 4. Game keempat akan menjadi laga penentu arah regular season series ini. Jadwal dan detail game berikutnya belum tersedia di data saat ini.\n\nTayang live di **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909925",
+    "home_team": "Brooklyn Nets",
+    "home_abbr": "BKN",
+    "away_team": "Charlotte Hornets",
+    "away_abbr": "CHA",
+    "home_score": 114,
+    "away_score": 104,
+    "winner_abbr": "BKN",
+    "kickoff_utc": "2026-11-05T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023409,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Strong article with accurate stats and solid structure. One high-severity meta-commentary slip (data-availability note) and minor soft-phrase repetition. Tense and hedge-word usage acceptable for recap context. Pass with light edits recommended.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "BKN unggul di hampir semua aspek krusial... selisih yang besar dan langsung tercermin",
+          "fix": "Replace second 'krusial' with 'penting' or restructure: 'BKN unggul di hampir semua metrik penting.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Mikel Brown Jr. masuk dari bangku cadangan dan langsung bikin masalah",
+          "fix": "Use 'langsung produktif' or 'langsung berpengaruh' — clearer intent"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Tanpa itu, selisih akhir bisa lebih besar.",
+          "fix": "Delete or: 'Hornets selamat di garis bebas; tanpanya selisih bisa double digit.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "BKN berhasil mendominasi area cat secara konsisten, sesuatu yang sulit dilawan",
+          "fix": "'BKN dominasi area cat konsisten, sesuatu yang susah dilawan'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jadwal dan detail game berikutnya belum tersedia di data saat ini.",
+          "fix": "Delete entire sentence. End with: 'Series 1-1 menjelang Game 4 yang akan tentukan arah season series.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x72cb65caf2e57886",
+    "published_at": "2026-11-05T03:39:19+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
