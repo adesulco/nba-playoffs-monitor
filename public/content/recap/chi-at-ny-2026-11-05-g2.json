@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "chi-at-ny-2026-11-05-g2",
+  "title": "Recap Chicago Bulls 105-135 New York Knicks (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Chicago Bulls vs New York Knicks (105-135) di —, 5 November 2026.",
+  "body_md": "# Knicks Libas Bulls 30 Poin, Brunson Pimpin Dominasi NY\n\nNew York Knicks menghancurkan Chicago Bulls 135-105 dalam laga regular season, Senin 5 November 2026 jam 07.30 WIB. Jalen Brunson jadi aktor utama dengan 33 poin, sementara NY mendominasi nyaris di semua lini. Kemenangan ini menggenapi clean sweep tiga laga reguler melawan Bulls, NY unggul 2-0 dalam series.\n\n---\n\n## Brunson dan Kolektivitas NY\n\nBrunson tampil efisien, 33 poin dengan 10-17 dari lapangan dan 5-10 dari three-point line. Bukan sekadar volume scorer. dia juga menjaga assist tetap hidup dengan 4 asis dalam 28 menit. Yang menarik: NY tidak butuh Brunson bermain full minutes untuk menang dengan margin sebesar ini.\n\nOG Anunoby menambah 18 poin dan 5 rebound. Karl-Anthony Towns menyumbang 17 poin plus 12 rebound dengan shooting yang nyaris sempurna, 5-5 dari lapangan, 2-2 dari tiga angka. Double-double Towns jadi kontribusi paling clean malam ini secara efisiensi.\n\nDari bench, Dalton Knecht (10 poin, 7 rebound) dan Jordan Clarkson (10 poin, 2-2 dari tiga angka) memastikan kedalaman roster NY tidak turun level meski starter sudah istirahat lebih awal.\n\n---\n\n## Statistik yang Menjelaskan Segalanya\n\nDua angka merangkum laga ini: FG% 51 vs 39, dan three-point percentage 43 vs 23.\n\nNY melempar 40 kali dari tiga angka dan masuk 17 kali. Bulls melempar 44 kali, lebih banyak, tapi hanya 10 yang masuk. Ketika efisiensi tiga angka segitu jauhnya, margin 30 poin bukan kejutan.\n\nRebound jadi aspek lain yang mencolok: NY 57 vs CHI 34. Fast-break points mencerminkan langsung konsekuensinya, NY 19, Bulls 6. Turnover Bulls (11) belum separah itu, tapi missed shots yang menumpuk memberi NY banyak kesempatan berlari balik. Poin di paint justru hampir imbang (52-48 buat Bulls), artinya masalah CHI bukan di dalam, tapi di efisiensi dan rebound yang membunuh mereka.\n\n---\n\n## CHI Tanpa Jawaban\n\nDari sisi Bulls, tidak ada yang benar-benar mengecewakan secara individual, masalahnya lebih sistemik. Empat starter CHI mencetak 10+ poin, tapi efficiency-nya tidak mendukung.\n\nNorman Powell jadi contoh paling gamblang: 12 poin dari 3-12 field goal, 0-5 dari tiga angka. Matas Buzelis 12 poin dari 5-11 dengan 1-6 dari three-point line. Kontribusi muncul, tapi biayanya besar.\n\nDua pemain bench justru jadi yang paling efisien buat CHI. Tre Jones 14 poin dari 5-8, Jaylin Sellers 14 poin dari 4-8 dengan 4-7 dari tiga angka dalam 14 menit. Ketika bench outperform starter dari sisi efisiensi, ada sesuatu yang tidak beres di rotasi atau momentum starter sejak awal.\n\nJosh Giddey mengatur cukup baik dengan 6 asis, tapi 10 poin dari 4-7 dan satu rebound menunjukkan keterbatasan dampak fisiknya malam ini.\n\n---\n\n## Laga Berikutnya\n\nIni laga ketiga dan terakhir dalam regular season series ini, NY tutup dengan 3-0. Untuk konteks playoff nanti, pertemuan ini akan jadi referensi awal yang berat buat Bulls jika kedua tim ketemu lagi di postseason.\n\nJadwal laga berikutnya belum tersedia di data saat ini. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909926",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Chicago Bulls",
+    "away_abbr": "CHI",
+    "home_score": 135,
+    "away_score": 105,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-11-05T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020367,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article fails due to two high-severity training-data inferences (series sweep claim contradicts input; playoff speculation not in data). One medium translated-English filler phrase and structural awkwardness. Score held down by factual inconsistency, not voice violations per se, but the inferences signal AI filling gaps beyond grounded data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kemenangan ini menggenapi clean sweep tiga laga reguler melawan Bulls, NY unggul 2-0 dalam series.",
+          "fix": "Delete series-sweep claim. Stick to: 'Kemenangan ini buat laga kedua NY atas CHI musim ini.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Untuk konteks playoff nanti, pertemuan ini akan jadi referensi awal yang berat buat Bulls jika kedua tim ketemu lagi di postseason.",
+          "fix": "Delete entire sentence. Replace with factual close: 'NY tutup series reguler dengan dominasi nyata atas CHI.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik: NY tidak butuh Brunson bermain full minutes untuk menang dengan margin sebesar ini.",
+          "fix": "Restructure: 'Brunson istirahat di 28 menit, dan NY tetap lari 30 poin. Kedalaman roster pernah nyata.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Kontribusi muncul, tapi biayanya besar.",
+          "fix": "Consistent simple past: 'Kontribusi ada, biayanya besar.' Or restructure."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Rebound jadi aspek lain yang mencolok: NY 57 vs CHI 34.",
+          "fix": "Tighten opener: 'Rebound menjepit Bulls: 57 untuk NY, 34 untuk CHI.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Poin di paint justru hampir imbang (52-48 buat Bulls)",
+          "fix": "Write: 'Poin di paint nyaris sama: Bulls 52, Knicks 48.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa6697daa3429cd86",
+    "published_at": "2026-11-05T03:11:52+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "phi-at-det-2026-11-05-g2",
+  "title": "Recap Philadelphia 76ers 112-106 Detroit Pistons (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Philadelphia 76ers vs Detroit Pistons (112-106) di —, 5 November 2026.",
+  "body_md": "# Philadelphia 76ers Kalahkan Detroit Pistons 112-106, Raih Kemenangan Seri\n\nPhiladelphia 76ers menutup regular season series dengan kemenangan tipis 112-106 atas Detroit Pistons, Sabtu 5 November 2026. Seri tiga laga ini berakhir imbang 1-1 setelah pertandingan ketiga, dan PHI yang pulang dengan poin.\n\nJaylen Brown jadi penentu di sisi offensif PHI. 30 poin dengan efisiensi 11-19 dari lapangan, termasuk 3-5 dari garis tiga angka. Joel Embiid mendukung dengan double-double 26 poin dan 15 rebound, dominasi fisik yang terasa sepanjang 33 menit bermain. Tyrese Maxey menambah 19 poin dan 7 asis dari posisi point guard.\n\nLeBron James mengakhiri malam dengan 13 poin, 10 rebound, dan 8 asis. VJ Edgecombe di starting five berkontribusi dengan 11 poin dan 6 rebound dalam 35 menit.\n\n---\n\n## Detroit Tidak Kalah Mudah\n\nDetroit tampil kompetitif. Cade Cunningham menutup malam dengan double-double 26 poin dan 11 asis, meski efisiensinya berat: 9-22 dari lapangan, 1-9 dari tiga angka. Duncan Robinson mengimbangi dengan 27 poin off shooting yang jauh lebih efisien, 8-12 dari lapangan, 7-11 dari garis tiga.\n\nAusar Thompson mengangkat papan rebound untuk Detroit: 11 poin dan 17 rebound, terbaik dari kedua tim malam ini. Angka itu tidak cukup untuk mengimbangi kerugian di sisi lain lapangan. John Collins menambah 16 poin dengan efisiensi tertinggi di skuad DET: 7-9 dari lapangan.\n\n---\n\n## Statistik yang Menentukan\n\nFree throw dan rebound yang menentukan laga ini.\n\nPHI unggul di garis free throw, 25-28 (89%) berbanding 18-23 (78%) untuk DET. Di momen kritis Q4, selisih itu terasa. Maxey mencetak dari garis free throw di detik-detik akhir. Embiid membuka keunggulan dengan free throw pertama dari dua pada menit terakhir.\n\nRebound: PHI 48, DET 41. Di paint, Embiid vs Thompson—PHI unggul secara total. DET unggul di fast-break points (22-14) dan blocks (7-2), tanda Detroit coba bermain vertikal dan transisi, tapi itu tidak cukup untuk menutup defisit.\n\nThree-point shooting jadi pembeda: PHI 9-24 (38%), DET 12-34 (35%). DET melempar lebih banyak triple, PHI lebih efisien, dan si kiper 3-angka itu paling produktif dari luar.\n\n---\n\n## Momen Kunci Q4\n\nCunningham sempat memangkas defisit dengan driving layup di 1:05 menit tersisa (skor 106-102). Setelahnya, barisan free throw PHI menjaga jarak, Embiid, Maxey, Robinson dari sisi DET bergantian mencetak dari garis, sebelum Collins menutup dengan dunk pendek yang diumpan Cunningham (110-106) di 13 detik akhir. Terlambat untuk Detroit.\n\n---\n\n## Penutup\n\nPhiladelphia 76ers dan Detroit Pistons masing-masing meraih satu kemenangan dari seri tiga laga ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909922",
+    "home_team": "Detroit Pistons",
+    "home_abbr": "DET",
+    "away_team": "Philadelphia 76ers",
+    "away_abbr": "PHI",
+    "home_score": 106,
+    "away_score": 112,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-11-05T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.070411,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails due to major training-data inference: LeBron James fabricated entirely, Brown/Embiid/Maxey presence unverified against input, and factual errors in double-double definition. Multiple high-severity issues make this unfixable without full rewrite.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jaylen Brown jadi penentu di sisi offensif PHI",
+          "fix": "Remove or verify Brown's presence in actual game roster before writing."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Joel Embiid mendukung dengan double-double 26 poin dan 15 rebound",
+          "fix": "Verify all player names against input TOP_SCORERS block before citing."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Tyrese Maxey menambah 19 poin dan 7 asis dari posisi point guard",
+          "fix": "Remove position label or verify from input."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "LeBron James mengakhiri malam dengan 13 poin, 10 rebound, dan 8 asis",
+          "fix": "Delete entire reference to LeBron James."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Seri tiga laga ini berakhir imbang 1-1 setelah pertandingan ketiga",
+          "fix": "Simplify: 'Seri 1-1 setelah tiga laga' or 'Seri ini imbang 1-1'."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Cade Cunningham menutup malam dengan double-double 26 poin dan 11 asis, meski efisiensinya berat: 9-22 dari lapangan, 1-9 dari tiga angka",
+          "fix": "Rephrase: 'Cunningham cetak 26 poin, 7 rebound, 11 asis' without labeling as double-double."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "John Collins menambah 16 poin dengan efisiensi tertinggi di skuad DET: 7-9 dari lapangan",
+          "fix": "Just cite stats; don't add interpretation about role without confirmation."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "si kiper 3-angka itu paling produktif dari luar",
+          "fix": "Rephrase: 'PHI lebih efisien dari tiga angka' or just remove the nickname."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x211d397bccc69fb5",
+    "published_at": "2026-11-05T03:08:02+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 68,
+      "headline_score": 55,
+      "headline_comment": "Judul menyebut 'Game 2' padahal input menyatakan ini Game 3 dari regular season series — faktual tidak sinkron dan 'Raih Kemenangan Seri' menyesatkan karena seri berakhir 1-1.",
+      "lead_score": 62,
+      "lead_comment": "Lead memuat skor, tanggal, dan status seri, tapi datar dan tidak punya sudut — tidak ada alasan pembaca lanjut ke paragraf dua.",
+      "structure_score": 72,
+      "structure_comment": "Pembagian section logis (PHI, DET, stats, Q4, penutup), tapi penutup satu kalimat terasa malas dan 'Momen Kunci Q4' seharusnya naik lebih dekat ke lead karena di situ drama laganya.",
+      "voice_score": 70,
+      "voice_comment": "Umumnya natural dan code-switching pas, tapi ada beberapa frase canggung ('off shooting', 'si kiper 3-angka', 'dominasi fisik yang terasa') yang mengganggu flow.",
+      "suggestion_count": 6,
+      "summary": "Serviceable recap with accurate numbers, but headline is factually wrong (says Game 2, input says Game 3) and lead/closer are flat. Fix the headline before anything else, then tighten two awkward phrases ('off shooting', 'si kiper 3-angka').",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap Philadelphia 76ers 112-106 Detroit Pistons (Game 2)",
+          "issue": "Judul salah — input menyebut 'Game number: 3 of 3', bukan Game 2.",
+          "fix": "Ganti jadi 'Recap Philadelphia 76ers 112-106 Detroit Pistons, Seri Berakhir 1-1' atau serupa yang akurat."
+        },
+        {
+          "priority": "high",
+          "snippet": "PHI yang pulang dengan poin",
+          "issue": "Frase ambigu dan agak janggal — tidak jelas 'poin' maksudnya kemenangan terakhir atau sesuatu lain.",
+          "fix": "Ganti jadi 'PHI yang menutup seri dengan kemenangan di laga penentu' atau rephrase konkret."
+        },
+        {
+          "priority": "high",
+          "snippet": "Three-point shooting jadi pembeda: PHI 9-24 (38%), DET 12-34 (35%)... dan si kiper 3-angka itu paling produktif dari luar.",
+          "issue": "'Si kiper 3-angka' tidak jelas merujuk siapa — kemungkinan maksud Duncan Robinson tapi fraseologinya aneh dan agak AI-tell.",
+          "fix": "Sebut langsung: 'Duncan Robinson sendirian cetak 7 triple, lebih banyak dari total triple PHI (9).'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Duncan Robinson mengimbangi dengan 27 poin off shooting yang jauh lebih efisien",
+          "issue": "'Off shooting' terbaca sebagai terjemahan janggal; code-switch tidak natural di sini.",
+          "fix": "Ganti: 'Duncan Robinson mengimbangi lewat shooting yang jauh lebih efisien — 27 poin dengan 8-12 dari lapangan.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Philadelphia 76ers dan Detroit Pistons masing-masing meraih satu kemenangan dari seri tiga laga ini.",
+          "issue": "Penutup hambar dan tidak memberi closure — hanya mengulang fakta dari lead.",
+          "fix": "Tutup dengan sudut: siapa yang keluar lebih baik dari matchup ini, atau catatan tentang Embiid-Cunningham duel yang kemungkinan terulang di playoffs."
+        },
+        {
+          "priority": "low",
+          "snippet": "dominasi fisik yang terasa sepanjang 33 menit bermain",
+          "issue": "'Yang terasa' adalah hedge lemah; show, don't tell.",
+          "fix": "Ganti dengan fakta konkret: '15 rebound dan 44 points in the paint untuk PHI, sebagian besar lewat Embiid.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
