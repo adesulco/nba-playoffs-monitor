@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "lal-at-sac-2026-11-05-g1",
+  "title": "Recap Los Angeles Lakers 116-103 Sacramento Kings (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Los Angeles Lakers vs Sacramento Kings (116-103) di —, 5 November 2026.",
+  "body_md": "## Lakers Kalahkan Kings 116-103, Luka Doncic Pimpin Dominasi LAL\n\nLos Angeles Lakers menang 116-103 atas Sacramento Kings, 5 November 2026. Luka Doncic dominan dari luar dengan 6-13 tiga angka, memimpin Lakers dengan 40 poin, 9 rebound, dan 7 asis. Kemenangan ini membuat LAL unggul 1-0 di regular season series.\n\n---\n\n## Top Performers\n\n**Luka Doncic** menjadi tulang punggung Lakers dengan 40 poin dari 11-23 field goal dan 6-13 tiga angka. Doncic juga mencatat 7 asis dari total 20 asis tim dalam 35 menit bermain.\n\n**Austin Reaves** menambahkan 21 poin dengan 7-15 field goal, menjadi partner starter yang dapat diandalkan. Reaves menambah 3 rebound dan 4 asis.\n\n**Walker Kessler** memberikan kontribusi dua sisi: 15 poin dengan FG 6-8 yang efisien, plus 8 rebound. Kessler menjadi bagian dari alasan Lakers unggul 13 blocks berbanding 4 milik Kings.\n\nDari bench LAL, **Ziaire Williams** dan **Collin Sexton** masing-masing menyumbang 10 poin, menjaga depth tim.\n\nDi sisi Kings, **Darius Acuff Jr.** tampil gigih: 22 poin dan 12 asis dari posisi starter, meski dengan field goal 8-24 yang berat. Acuff Jr. main 42 menit, menunjukkan komitmen SAC pada permainan.\n\n**Zach LaVine** menyumbang 21 poin dengan 3-7 dari tiga angka. **Domantas Sabonis** menguasai papan rebound dengan 17 rebound, tapi Kings gagal mengkonversi dominasi di papan jadi poin yang cukup.\n\n---\n\n## Angka yang Menjelaskan Laga\n\nDi atas kertas, dua tim tampak seimbang di beberapa sisi: keduanya sama-sama 35 field goal, sama-sama 12-38 dari tiga angka. Free throw menjadi selisih krusial.\n\nLAL menembak 34 dari 38 free throw dengan akurasi 89%. Kings hanya dapat 21 upaya dengan 75%. Selisih itu sendiri sudah cukup menjadi margin kemenangan.\n\nTurnover pun timpang: SAC buang possession 18 kali, LAL 12. Steals LAL 11 berbanding 6 Kings. Fast-break points? LAL 21, Kings 11. Kings lebih banyak di rebound total (46 vs 38) dan points in paint (40 vs 34), tapi ball movement mereka terlalu sering mati sebelum kena ring.\n\n---\n\n## Tekanan ke Game Berikutnya\n\nLAL unggul 1-0 di regular season series ini setelah Game 2. Acuff Jr. jelas pemain yang mau bertempur, 22 poin dan 12 asis bukan garis biasa, tapi efisiensinya dari lapangan (8-24) perlu naik kalau Kings mau bisa kompetitif. Sabonis menguasai rebound tapi itu gak cukup ketika perimeter creation gak konsisten.\n\nLakers di sisi lain punya Doncic yang bermain di level berbeda, dukungan bench yang cukup, dan sistem pertahanan yang aktif menghasilkan turnover. Kombinasi itu susah dilawan tanpa eksekusi yang lebih rapi.\n\nGame 3 dan 4 masih menentukan bentuk akhir series ini. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909934",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Los Angeles Lakers",
+    "away_abbr": "LAL",
+    "home_score": 103,
+    "away_score": 116,
+    "winner_abbr": "LAL",
+    "kickoff_utc": "2026-11-05T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "LAL lead series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021784,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article fails on training-inference creep (inferring player roles/positions not in input), calqued English idiom, texting shorthand in body copy, and series-context confusion. Stats verification passes but structural/voice issues require regeneration.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "LAL unggul 1-0 di regular season series ini setelah Game 2",
+          "fix": "Remove 'setelah Game 2' or clarify: 'LAL unggul 1-0 di series ini (Game 2 dari 4)'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Acuff Jr. tampil gigih: 22 poin dan 12 asis dari posisi starter",
+          "fix": "Change to: 'Darius Acuff Jr. tampil dengan 22 poin dan 12 asis, 42 menit bermain' (cite data, not role)"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di atas kertas, dua tim tampak seimbang di beberapa sisi",
+          "fix": "Use: 'Statistiknya mirip di beberapa aspek' or 'Terlihat seimbang di beberapa sisi'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "tapi itu gak cukup ketika perimeter creation gak konsisten",
+          "fix": "Change to: 'tapi tidak cukup ketika permainan perimeter tidak konsisten'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "menjadi tulang punggung Lakers... menjadi partner starter... menjadi bagian",
+          "fix": "Vary: 'Doncic tulang punggung... Reaves partner starter... Kessler alasan Lakers unggul'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 3 dan 4 masih menentukan bentuk akhir series ini.",
+          "fix": "Clarify: 'Game 3 dan 4 masih tersisa di regular season series ini' (not 'bentuk akhir')"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa3d361c2721d87a2",
+    "published_at": "2026-11-05T07:10:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
