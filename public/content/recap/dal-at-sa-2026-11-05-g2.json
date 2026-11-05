@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "dal-at-sa-2026-11-05-g2",
+  "title": "Recap Dallas Mavericks 111-112 San Antonio Spurs (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Dallas Mavericks vs San Antonio Spurs (111-112) di —, 5 November 2026.",
+  "body_md": "# Wembanyama 52 Poin, 24 Rebound, Spurs Bertahan di Ujung Tanduk Lawan Mavericks\n\nSan Antonio Spurs menang dramatis 112-111 atas Dallas Mavericks dalam laga regular season, Senin 5 November 2026 jam 09.30 WIB. Victor Wembanyama mencetak 52 poin dan 24 rebound, angka yang hampir tidak masuk akal, dan dua free throw-nya di sisa 24,2 detik jadi penentu kemenangan. SA kini unggul 2-0 dalam regular season series ini, Game 4 jadi laga terakhir yang masih bisa ditunggu.\n\n---\n\n## Wemby Harus Kerja Sendirian\n\n52 poin, 24 rebound, 34 menit main. Kalau ada satu kalimat yang menggambarkan malam ini untuk SA, itu dia.\n\nWembanyama bukan cuma top scorer, dia adalah alasan Spurs masih berdiri di akhir laga. Shooting-nya tidak sempurna: 16-28 from field, 1-8 dari tiga angka. Tapi dia tetap memaksimalkan setiap peluang di dekat ring, mengendalikan paint, dan menyelamatkan SA setiap kali rekan-rekannya tidak bisa menemukan ritme.\n\nDylan Harper ikut berkontribusi dengan 21 poin, 5 rebound, 9-15 from field, cukup efisien. Stephon Castle dapat double-double: 17 poin, 10 rebound, meski efisiensinya berat di angka 6-20 from field. De'Aaron Fox relatif tenang dengan 10 poin dan 4 asis. Jelas sekali: tanpa Wemby di level itu, laga ini milik Dallas.\n\n---\n\n## Irving dan Bench Marshall Jaga Dallas Tetap Hidup\n\nDallas tidak menyerah. Kyrie Irving memimpin dengan 29 poin, 7 rebound, 5 asis, tapi shooting-nya berat, 9-27 from field dan 5-14 dari tiga angka. Kyrie tetap Kyrie di clutch, termasuk two point shot di menit 2:30 Q4 yang memotong defisit jadi 108-109.\n\nKejutan malam ini datang dari bench: Naji Marshall. 22 poin, 5 rebound, 9-12 from field, efisiensi tertinggi di roster DAL malam ini. Termasuk tiga angka di menit 1:41 Q4 yang menyamakan kedudukan 111-111 dan membuat AT&T Center, atau di manapun laga ini dimainkan, nyaris berhenti bernapas.\n\nP.J. Washington dapat double-double: 21 poin, 10 rebound, 7-18 from field. Cooper Flagg juga double-double: 19 poin, 10 rebound, 7-19 from field, plus 5 asis dan assist untuk three-pointer Marshall yang hampir membalik laga.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nSA menang di area yang paling fundamental: paint dan pertahanan.\n\nPoints in paint: SA 62, DAL 40. Ini bukan perbedaan kecil, ini 22 poin selisih hanya dari area paling basic di lapangan, dan itu hampir semuanya Wembanyama. Blok SA juga dominan: 10 berbanding 4. SA mengontrol ring di kedua ujung.\n\nDari tiga angka, cerita berbeda: DAL jauh lebih efisien, 14-37 (38%) berbanding SA yang hanya 5-36 (14%). Dallas hampir mengompensasi kerugian paint lewat perimeter, tapi tidak cukup.\n\nFree throw jadi aspek kritis: SA 33-39 (85%) berbanding DAL 19-26 (73%). SA dapat lebih banyak kesempatan ke garis, dan dua free throw Wemby di akhir membuktikan betapa mahalnya selisih itu.\n\nRebound total: SA 61, DAL 50. SA mengontrol ritme.\n\n---\n\n## Q4 yang Tidak Bisa Dilupakan\n\nEmpat menit terakhir laga ini layak disimpan.\n\nFlagg dua free throw → Wemby layup 104-107 → Flagg jumper 106-107 → Wemby two point shot 106-109 → Irving 10-foot 108-109 → Wemby tip shot 108-111 → Marshall three-pointer 111-111 → Wemby dua free throw, 111-112.\n\nDelapan possession terakhir, semua ditentukan player-player di lapangan tanpa ada yang bisa keluar lebih dulu. Marshall menyamakan di 111-111, tapi Wembanyama tidak panik. Dua free throw tenang, waktu habis, Spurs menang satu poin.\n\n---\n\n## Selanjutnya\n\nSA unggul 2-0 di regular season series ini. Game 4, laga terakhir, jadi taruhan gengsi terakhir untuk Dallas. Laga ini tayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909933",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Dallas Mavericks",
+    "away_abbr": "DAL",
+    "home_score": 112,
+    "away_score": 111,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-05T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023513,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stat citations and natural conversational flow. Minor training-inference creep (AT&T Center venue assumption) and one soft-phrase repetition; neither breaks the voice. Verdict: pass.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "di AT&T Center, atau di manapun laga ini dimainkan",
+          "fix": "Delete venue speculation entirely; focus on the stat and the moment"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Wembanyama bukan cuma top scorer, dia adalah alasan",
+          "fix": "Vary sentence structure; use 'Wemby jadi alasan utama...' or restructure second instance"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Kyrie tetap Kyrie di clutch",
+          "fix": "Rewrite as 'Kyrie tetap solid di clutch' or 'Kyrie tidak panik di momen penting'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7e7a67b390cbeb08",
+    "published_at": "2026-11-05T06:22:01+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
