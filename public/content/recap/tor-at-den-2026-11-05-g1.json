@@ -1,0 +1,69 @@
+{
+  "type": "recap",
+  "slug": "tor-at-den-2026-11-05-g1",
+  "title": "Recap Toronto Raptors 109-128 Denver Nuggets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs Denver Nuggets (109-128) di —, 5 November 2026.",
+  "body_md": "# Jokic Triple-Double Bawa Denver Nuggets Libas Toronto 128-109\n\nDenver Nuggets menang telak 128-109 atas Toronto Raptors, Senin 5 November 2026. Nikola Jokic tampil dominan dengan triple-double 32 poin, 10 rebound, 11 asis, dan melakukan itu semua hanya dalam 30 menit bermain. Denver menutup regular season series dua pertandingan dengan keunggulan 1-0 atas Toronto.\n\n---\n\n## Performa Individu\n\nJokic adalah argumen yang berjalan sendiri. Efisiensinya tidak masuk akal: 13-19 from field, nol tiga poin yang dibuang sia-sia karena memang dia tidak butuh itu, dan asis-asis yang mengalir ke seluruh roster. Triple-double dalam 30 menit, Denver punya luxury untuk istirahatkan dia di garbage time.\n\nDi sisi lain, Aaron Gordon tampil sebagai partner yang solid: 17 poin dengan efisiensi tinggi, 7-9 from field. Jamal Murray menambah 14 poin dan 7 asis, menjaga traffic di lini belakang serangan Denver. Kejutan datang dari Bryce Hopkins off the bench, 18 poin dengan shooting nyaris sempurna 6-7, termasuk satu tembakan tiga angka.\n\nToronto punya RJ Barrett sebagai top scorer dengan 22 poin, 5 rebound, 3 asis, tapi butuh 17 percobaan untuk sampai ke sana (7-17 from field). Scottie Barnes bermain seimbang: 17 poin, 6 rebound, 6 asis, menunjukkan bahwa dia memahami dua sisi permainan bahkan di malam yang berat. Immanuel Quickley menyumbang 13 poin dan 7 asis. Collin Murray-Boyles 13 poin off starter slot. Angka-angka Toronto tidak buruk secara individual, masalahnya ada di tempat lain.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka merangkum malam ini: **76 poin di dalam cat vs 46 poin Toronto**. Denver menelan Raptors di area yang paling primitif, drive, post-up, lob ke Jokic, lob dari Jokic. Ketika tim mencetak 30 poin lebih banyak di dalam cat, selisih akhir 19 poin hampir tidak mengejutkan.\n\nFG% keduanya bercerita juga: Denver 62% berbanding Toronto 48%. Toronto sebenarnya cukup aktif dari tiga poin (12-34, 35%) dan mencuri 10 bola, tapi turnover 16 kali memberikan Denver peluang gratis yang mereka konversi dengan disiplin. Free throw juga menjadi pembeda: Toronto 68% (15-22), Denver 85% (23-27). Efisiensi di detail-detail kecil ini yang membuat selisih 19 poin terasa wajar, bukan keberuntungan.\n\n---\n\n## Catatan Akhir\n\nRegular season series selesai, Denver tutup dengan rekor 1-0 atas Toronto. Ini bukan sampel besar, tapi cara mereka menang memberi sinyal yang jelas: selama Jokic bisa tampil seperti malam ini (triple-double dalam 30 menit, shooting efisiensi 68%), Denver akan jadi masalah bagi siapapun.\n\nUntuk Toronto, beban ke Barnes dan Barrett masih ada. Keduanya bermain solid, tapi tim butuh lebih banyak konsistensi di lini interior, terutama menghadapi tim yang punya center dominan.\n\nJadwal selanjutnya tidak tersedia di input. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909931",
+    "home_team": "Denver Nuggets",
+    "home_abbr": "DEN",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 128,
+    "away_score": 109,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-11-05T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DEN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.018559,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Solid recap with accurate stats and good structure. Minor tense-overmarking and one translated-English phrase hurt flow but don't break voice rules. Pass with polish notes.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Nikola Jokic tampil dominan dengan triple-double 32 poin, 10 rebound, 11 asis, dan melakukan itu semua hanya dalam 30 menit bermain.",
+          "fix": "Remove 'dan melakukan itu semua' — sentence works without it: 'Jokic dengan triple-double 32 poin, 10 rebound, 11 asis dalam 30 menit.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Efisiensinya tidak masuk akal: 13-19 from field, nol tiga poin yang dibuang sia-sia karena memang dia tidak butuh itu",
+          "fix": "Simplify: '13-19 from field, nol tembakan tiga angka — dia memang tidak perlu itu.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "asis-asis yang mengalir ke seluruh roster",
+          "fix": "Just say: 'asis yang tersebar di seluruh skuad' or 'asis nya produktif.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Kejutan datang dari Bryce Hopkins off the bench, 18 poin dengan shooting nyaris sempurna 6-7",
+          "fix": "Replace: 'Bryce Hopkins off the bench memberikan dampak langsung: 18 poin, 6-7 from field.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Scottie Barnes bermain seimbang: 17 poin, 6 rebound, 6 asis, menunjukkan bahwa dia memahami dua sisi permainan bahkan di malam yang berat.",
+          "fix": "'Barnes seimbang di kedua sisi: 17 poin, 6 rebound, 6 asis — bahkan di malam berat Raptors.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6049f1d2fc69eca4",
+    "published_at": "2026-11-05T04:43:26+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
