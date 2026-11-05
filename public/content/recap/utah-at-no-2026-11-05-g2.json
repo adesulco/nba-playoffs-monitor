@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "utah-at-no-2026-11-05-g2",
+  "title": "Recap Utah Jazz 113-120 New Orleans Pelicans (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Utah Jazz vs New Orleans Pelicans (113-120) di —, 5 November 2026.",
+  "body_md": "# Pelicans Tutup Laga di Overtime, Jazz Kalah dengan Banyak Pertanyaan\n\nNew Orleans Pelicans menang 120-113 atas Utah Jazz di perpanjangan waktu, Senin 5 November 2026. Seri regular season tetap 1-1, dengan Game 3 ini menjadi momentum penting bagi kedua tim.\n\nBukan laga yang mudah untuk siapapun. Saddiq Bey, pemain bench, yang memutuskan semuanya di overtime.\n\n---\n\n## Top Performers\n\nKeyonte George bermain 44 menit dan mencetak 39 poin, 2 rebound, 9 asis dengan shooting 14-26 dari lapangan. Beban luar biasa, George hampir selamatkan Jazz sendirian. Masalahnya, tim tidak beri dukungan cukup.\n\nLauri Markkanen menambahkan 21 poin dan 10 rebound dengan 5-12 dari three-point line. Double-double solid, tapi efisiensinya tidak tajam: 6-15 dari lapangan secara keseluruhan. Di momen paling krusial overtime, Markkanen cetak tiga angka dari jarak 30 kaki atas asis George, sebuah usaha terakhir yang cantik, tapi datang terlambat.\n\nDi sisi Pelicans, tidak ada satu bintang, ada lima pemain yang sama-sama mengambil peran. Zion Williamson memimpin dengan 23 poin walau 0-dari-lapangan untuk three-pointer (6-14 FG, all from inside). Saddiq Bey off the bench: 22 poin, 9-14 dari lapangan, 2-4 dari tiga angka. Dejounte Murray: 20 poin, 8 rebound, 4 asis. Derik Queen juga dari bench: 20 poin, 9 rebound, 6 asis. Jeremiah Fears: 19 poin, 6 rebound.\n\nLima pemain Pelicans antara 19 sampai 23 poin. Itu yang membuat Jazz sulit menemukan solusi.\n\n---\n\n## Statistik Membicara\n\nJazz unggul dalam volume tiga angka, 47 percobaan versus 20 milik Pelicans. Tapi hasilnya? Jazz 23%, Pelicans 25%. Ini bukan soal selisih persentase yang besar, tapi Jazz bergantung pada three-pointer sebagai rute utama. Ketika tidak masuk, tidak ada plan B yang memadai.\n\nYang lebih merusak: free throw. Jazz 20-30 (67%), Pelicans 39-43 (91%). Dua masalah sekaligus, Jazz lebih jarang masuk ke garis, dan ketika masuk, penyelesaiannya buruk. Pelicans hampir sempurna dari garis: 39 percobaan, 91% konversi. Di laga yang akhirnya ditentukan di overtime, selisih ini sangat terasa.\n\nPoints in paint: Jazz 48, Pelicans 62. Zion Williamson bermain di area itu, tidak ada tiga angka, tapi 23 poin dari dalam lukisan. Jazz tidak punya jawaban untuk itu.\n\nTurnover Jazz: 22. Pelicans: 19. Jazz fast-break points: 8. Pelicans: 15. Setiap kategori menggambarkan cerita yang sama, Pelicans lebih efisien di hampir semua area yang menentukan.\n\n---\n\n## Overtime Milik Bey\n\nOvertime dimulai dengan Jazz masih dalam permainan. Lalu Saddiq Bey mengambil alih.\n\nMenit 1:55 OT, Bey masuk dua free throw untuk bawa Pelicans unggul 112-110. Dua puluh tiga detik kemudian, dia driving layup: 114-110. Ketika Jazz mencoba merapatkan jarak, Bey kembali, step back jumpshot dari enam kaki, skor jadi 116-110 dengan 39 detik tersisa.\n\nZion tambahkan dua free throw: 118-110. Markkanen cetak tiga angka spektakuler dari 30 kaki (asis George) untuk jadikan 118-113, sebentar ada harapan. Tapi Murray tutup dengan dua free throw, final 120-113.\n\nPemain bench yang memutuskan seri.\n\n---\n\n## Selanjutnya\n\nJazz harus menang di Game 4 untuk paksa game terakhir. Jika kalah, Pelicans tutup seri reguler dengan keunggulan 3-1. Jadwal Game 4 tidak tersedia di input.\n\nYang jelas: Jazz punya Keyonte George yang bisa cetak 39 poin kapan saja. Tapi selama free throw belum beres dan tiga angka tidak masuk dengan konsisten, mengandalkan satu pemain tidak akan cukup.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909928",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Utah Jazz",
+    "away_abbr": "UTAH",
+    "home_score": 120,
+    "away_score": 113,
+    "winner_abbr": "NO",
+    "kickoff_utc": "2026-11-05T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024214,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has two high-severity issues: training-inference narrative layer on Markkanen's clutch three and untranslated English 'plan B'. One structural violation (meta-comment about input). Tense overmarking and academic drift present but recoverable. Factual accuracy checks pass (all numbers verified against input data block).",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Lauri Markkanen cetak tiga angka dari jarak 30 kaki atas asis George",
+          "fix": "Rewrite as: 'Markkanen cetak tiga angka 30 kaki atas asis George' — remove narrative layer about timing"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Ketika tidak masuk, tidak ada plan B yang memadai.",
+          "fix": "Use 'tidak ada opsi cadangan' or restructure: 'Strategi Jazz sangat bergantung tiga angka'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Saddiq Bey yang memutuskan semuanya di overtime.",
+          "fix": "Write: 'Saddiq Bey putuskan semuanya di overtime' or 'Saddiq Bey jadi pembeda di OT'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Setiap kategori menggambarkan cerita yang sama",
+          "fix": "Cut to: 'Setiap stat menunjukkan keunggulan Pelicans' atau just list without meta-commentary"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Jadwal Game 4 tidak tersedia di input.",
+          "fix": "Delete entirely; if schedule unknown, omit paragraph or write: 'Seri dilanjutkan minggu depan'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Masalahnya, tim tidak beri dukungan cukup.",
+          "fix": "Write: 'Tim tidak bantu George' atau 'Dukungan tim tidak cukup'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Pemain bench yang memutuskan seri.",
+          "fix": "Write: 'Pemain bench yang putuskan laga ini' atau 'Bey bawa Pelicans menang'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf3c6d102342fe690",
+    "published_at": "2026-11-05T05:16:03+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

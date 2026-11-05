@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "min-at-hou-2026-11-05-g1",
+  "title": "Recap Minnesota Timberwolves 117-107 Houston Rockets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs Houston Rockets (117-107) di —, 5 November 2026.",
+  "body_md": "# Minnesota Timberwolves Tekuk Houston Rockets 117-107, Pimpin Seri 1-0\n\nMinnesota Timberwolves menang 117-107 atas Houston Rockets di Game 2 regular season series, Senin 5 November 2026. Lima starter dan satu bench piece MIN tembus double-digit points, sementara HOU gagal memanfaatkan triple-double Alperen Sengun yang cemerlang. MIN kini unggul 1-0 di seri empat game ini.\n\n---\n\n## Top Performers\n\nDi sisi MIN, Ayo Dosunmu memimpin dengan 21 poin, 1 rebound, 6 asis, efisien dari lapangan dengan 10-20 FG meski gagal dari luar arc (0-3 dari tiga poin). LaMelo Ball di sampingnya: 20 poin, 2 rebound, 6 asis, dengan 4-7 dari three-point line yang jadi salah satu faktor kunci efisiensi MIN malam ini.\n\nBones Hyland cuma main 16 menit tapi cetak 19 poin. Shooting-nya 4-7 dari tiga. Jonathan Kuminga (16 poin, 8 rebound, 5 asis, 4-7 dari tiga) dan Jaden McDaniels (14 poin, 8 rebound, 4 asis) melengkapi rotasi starter yang solid, meski McDaniels sendiri 0-6 dari luar dan lebih berkontribusi lewat fisik dan pertahanan.\n\nUntuk HOU, Kevin Durant tampil konsisten: 21 poin, 5 rebound, 2 asis, 7-14 FG, 2-5 dari tiga. Fred VanVleet menambah 18 poin dengan 4-9 dari three-point line. Alperen Sengun cetak triple-double: 17 poin, 12 rebound, 10 asis. Sengun 5-15 FG malam ini, efisiensi rendah meski triple-double. HOU secara keseluruhan tidak mampu memanfaatkan creation-nya untuk menghasilkan kemenangan.\n\n---\n\n## Baca Statistik Tim\n\nMIN 53% FG vs HOU 43%. Dari tiga angka, MIN 43% (15-35) vs HOU 35% (13-37). \n\nFast-break points lebih ekstrem lagi: MIN 19, HOU 7. MIN cetak 12 steal malam ini vs HOU cuma 6, dan angka turnover MIN (17) memang lebih tinggi dari yang idealnya diinginkan, tapi MIN berhasil mengonversi turnover HOU (22) jadi poin transisi lebih efektif. Points in paint juga berpihak ke MIN: 54 vs 40. HOU memang lebih baik dari garis free throw (80% vs MIN yang hanya 53%), tapi itu tidak cukup untuk menutup gap di efisiensi lapangan.\n\n---\n\n## Kuarter Keempat: Sengun Coba, MIN Jawab\n\nHOU sempat membuat game ini menarik di Q4. Durant layup di menit 5:43 memperketat skor menjadi 99-98. Dua puluh detik kemudian, LaMelo Ball membuat three-pointer dari 23 kaki untuk menjawab (102-98). HOU tidak menyerah: Sengun tambah satu free throw (104-99), VanVleet three-pointer dari 27 kaki (104-102), lalu fadeaway 14 kaki (106-104), tiba-tiba seri ketat lagi.\n\nDi sinilah Kuminga menutup percakapan. Three-pointer dari 23 kaki, diumpan Dosunmu, membuat skor 109-104 di menit 2:37. Durant masih tambah dua free throw (111-106), tapi momentum sudah jelas di tangan MIN. Sisa waktu tinggal formalitas.\n\n---\n\n## Lanjutan\n\nMIN kini unggul 1-0 di seri empat game ini. Game 3 jadwal dan venue belum tercantum di data yang tersedia. Siaran langsung di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909930",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 107,
+    "away_score": 117,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-11-05T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021268,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Article passes voice rules. Factual accuracy solid (all stats verified against input data blocks). Minor issues: one soft-phrase repetition, one calqued idiom, one awkward structural sentence — all low severity. Recommend small rewrites noted above, but publishable as-is.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Alperen Sengun cetak triple-double: 17 poin, 12 rebound, 10 asis. Sengun 5-15 FG malam ini",
+          "fix": "Change second to: 'Dia 5-15 FG malam ini' or restructure into one sentence."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Di sinilah Kuminga menutup percakapan. Three-pointer dari 23 kaki, diumpan Dosunmu",
+          "fix": "Use: 'Di sinilah Kuminga tentukan pertandingan' or 'Kuminga lepas tembakan penentu'."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Game 3 jadwal dan venue belum tercantum di data yang tersedia.",
+          "fix": "Delete sentence entirely. Readers expect missing info without apology. Or: 'Lanjutan series week depan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x24ce7fe36189aea4",
+    "published_at": "2026-11-05T05:18:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
