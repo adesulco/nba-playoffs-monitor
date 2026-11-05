@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "por-at-phx-2026-11-05-g2",
+  "title": "Recap Portland Trail Blazers 132-119 Phoenix Suns (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs Phoenix Suns (132-119) di —, 5 November 2026.",
+  "body_md": "# Portland Libas Phoenix 132-119, Avdija Jadi Dalang dengan 21 Poin dan 12 Asis\n\nPortland Trail Blazers menang 132-119 atas Phoenix Suns di laga ketiga regular season series, Senin 5 November 2026 jam 09.00 WIB. POR unggul 2-0 dalam regular season series ini. Damian Lillard memimpin dengan 25 poin, tapi bintang sejati malam ini ada dua nama: Donovan Clingan yang dominan di paint, dan Deni Avdija yang nyaris impossible untuk dikunci.\n\n---\n\n## Performa Top Pemain\n\nAvdija bermain 35 menit sebagai starter dan menutup malam dengan stat line yang jarang terlihat: 21 poin, 7 rebound, 12 asis, dari 7-16 dari lapangan. 12 asis berarti hampir setiap serangan POR lewat Avdija, dan Phoenix gagal menemukan jawaban sepanjang malam.\n\nClingan: 24 poin dari cuma 12 field goal attempt, plus 11 rebound. FG 9-12. Dia mendominasi paint dan tak perlu banyak percobaan untuk merusak PHX. Lillard menambah 25 poin dan 5 asis dengan 9-17 dari lapangan, tidak meledak, tapi cukup untuk mengendalikan tempo.\n\nHoliday dari bench: 15 poin, 5-9 dari tiga titik.\n\nDi sisi Phoenix, Devin Booker memimpin dengan 33 poin, 9-19 FG, tapi hanya 1 rebound dan 2 asis. Jalen Green menambah 22 poin dari 6-17 dari lapangan. Miles Bridges paling lengkap untuk PHX dengan 18 poin, 7 rebound, 5 asis, satu-satunya yang bermain lebih dari sekadar mencetak poin.\n\n---\n\n## Baca Statistik Tim\n\nIni bukan pertandingan ketat, efisiensi yang membedakan.\n\nPOR tembak 51% dari lapangan vs PHX 45%. Dari three-point line, selisihnya lebih lebar: POR 36% (14-39) vs PHX 28% (10-36). Kedua tim sama-sama banyak mencoba dari luar, tapi POR jauh lebih dingin di eksekusi.\n\nFast-break points berbicara soal tempo: POR 19, PHX 9. Portland berlari, Phoenix tidak bisa mengikuti. Points in paint juga berpihak ke POR, 56-46, Clingan punya peran besar di sini.\n\nPHX lebih hati-hati dengan turnover (12 vs 18 POR), tapi tak manfaatkan kesempatan dari turnover Portland.\n\n---\n\n## Momentum dan Catatan Series\n\nQuarter pertama berjalan ketat. Bridges bikin tiga angka dari luar, Booker menyambung dengan pullup jumper, Avdija balas dengan free throw. Hingga 23-23 dan 25-26, laga masih terbuka. Avdija kemudian bikin driving layup di Q2 untuk membalik keunggulan jadi 40-39. Momentum bergeser dari titik itu.\n\nSetelah paruh pertama, PHX tidak pernah benar-benar kembali. POR punya terlalu banyak cara untuk mencetak, Avdija sebagai playmaker, Clingan di paint, Lillard dari mid-range, Holiday dari sudut. PHX terlalu bergantung pada Booker sebagai scorer tunggal, dan itu tidak cukup untuk menutup selisih 13 poin di akhir.\n\n---\n\n## Selanjutnya\n\nRegular season series berakhir dengan POR unggul 2-0. Dengan Avdija bermain seperti point forward bintang dan Clingan makin nyaman sebagai finisher, POR punya identity yang solid menuju fase berikutnya musim ini.\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909932",
+    "home_team": "Phoenix Suns",
+    "home_abbr": "PHX",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 119,
+    "away_score": 132,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-11-05T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022056,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with solid stat anchoring and clear structure. Voice is conversational and accurate. Three low-severity issues (soft connector use, minor idiom phrasing, sentence fragment) do not impact overall quality. Numerical accuracy verified against input block.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya | Regular season series berakhir dengan POR unggul 2-0.",
+          "fix": "Delete 'Selanjutnya' line break; merge into single closing paragraph."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "12 asis berarti hampir setiap serangan POR lewat Avdija",
+          "fix": "Rewrite: 'Avdija mengatur hampir semua poin Portland' or just cite the number without interpretation."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Holiday dari bench: 15 poin, 5-9 dari tiga titik.",
+          "fix": "Expand: 'Holiday mencetak 15 poin dari bench dengan 5-9 dari tiga titik.' Or embed into previous paragraph."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbad609aa6421ee80",
+    "published_at": "2026-11-05T05:45:17+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

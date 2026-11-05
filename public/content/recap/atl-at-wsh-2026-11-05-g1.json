@@ -3,7 +3,7 @@
   "slug": "atl-at-wsh-2026-11-05-g1",
   "title": "Recap Atlanta Hawks 120-105 Washington Wizards (Game 1)",
   "description": "Recap NBA Playoffs 2026 — Atlanta Hawks vs Washington Wizards (120-105) di —, 5 November 2026.",
-  "body_md": "Atlanta Hawks mengakhiri kunjungan Washington Wizards dengan kemenangan 120-105, Jumat pagi 5 November 2026. Kemenangan ini membawa ATL unggul 1-0 dalam regular season series dua tim.\n\n---\n\n## Top Performers\n\n**Nickeil Alexander-Walker** jadi pemain terbaik malam ini di sisi ATL, 26 poin, 4 rebound, 2 asis dari posisi starter. Efisiensinya dari luar lumayan solid: 6-14 dari garis tiga angka, termasuk tembakan dari 25 kaki di kuartal pertama yang sempat menyamakan kedudukan 19-19.\n\n**Onyeka Okongwu** bukan top scorer, tapi dominasinya di papan rebound patut dicatat: 14 poin dan 16 rebound dalam 31 menit, angka yang membuat ATL unggul jauh dalam total rebound (57 vs 41). Untuk center yang main di dalam, 2-5 dari tiga angka juga bonus yang tidak banyak diharapkan.\n\nDua bench player ATL, **CJ McCollum** (15 poin, 5 rebound, 5 asis) dan **Aaron Wiggins** (15 poin, 4 rebound), memberikan kedalaman yang dibutuhkan. McCollum aktif mengalirkan bola setelah masuk. assist-nya ke Okongwu untuk floating jumper di Q1 memberi gambaran bagaimana ATL membangun ritme.\n\nDi sisi WSH, **Anthony Davis** main efisien: 26 poin, 10 rebound, 3 asis dengan FG 12-19, double-double bersih. **Kyshawn George** ikut berjuang keras dengan 25 poin dan 7 asis dari 10-14 field goals, angka shooting yang sebenarnya lebih bagus dari sebagian rekan-rekannya. **Trae Young** tambah 18 poin dan 6 asis, tapi Washington secara kolektif tidak cukup.\n\n---\n\n## Pembeda: Tiga Angka dan Rebound\n\nDua angka ini yang menjelaskan sebagian besar perbedaan hasil.\n\nATL menembak 19-49 dari tiga angka (39%), sementara WSH hanya 6-26 (23%). Selisih 13 tembakan tiga yang masuk, hampir 39 poin, tidak bisa dikompensasi meski WSH unggul di poin dalam cat (62 vs 50). WSH memang lebih efektif di area dekat ring, tapi terlalu sering melewatkan kesempatan dari luar.\n\nRebound juga berpihak ke ATL: 57 berbanding 41. Okongwu menyumbang porsi besar, tapi angka kolektif ini menandakan ATL lebih agresif di papan sepanjang 48 menit.\n\nSatu catatan menarik: WSH punya 9 blocks berbanding 2 milik ATL, dan unggul turnover (ATL buang 15 bola, WSH 12). Artinya WSH tidak kalah di semua aspek, mereka menang di beberapa area pertahanan dalam dan disiplin bola. Tapi keunggulan ATL di tiga angka dan rebound terlalu besar untuk ditutupi.\n\n---\n\n## Kuartal Pertama yang Ketat\n\nData KEY PLAYS menunjukkan Q1 berlangsung kompetitif, skor berulang kali bergantian: 11-12, 19-19, 21-21, 23-23, bahkan WSH sempat unggul 25-23 lewat pullup jumper Dybantsa. ATL baru mulai membuka jarak belakangan, dengan McCollum mencetak running jumper untuk balik unggul 27-25 di akhir kuartal.\n\nDetail babak-babak sesudahnya tidak tersedia di input, tapi selisih akhir 15 poin (120-105) memberi gambaran: ATL memperlebar jarak secara bertahap, bukan lewat satu ledakan tunggal.\n\n---\n\n## Selanjutnya\n\nGame 2 regular season series ATL vs WSH belum ada jadwal spesifik di input. Pantau update di NBA League Pass dan Vidio untuk jadwal lanjutan.\n",
+  "body_md": "Atlanta Hawks menghempaskan Washington Wizards 120-105. ATL unggul 1-0 di regular season series ini.\n\nLima pemain ATL tembus angka ganda. Nickeil Alexander-Walker jadi top scorer dengan 26 poin, 4 rebound, 2 asis, efisien dari luar dengan 6-14 from three. Onyeka Okongwu rebounding mesin: 16 board, set tone ATL di mana-mana. CJ McCollum 15 poin, 5 rebound, 5 asis dari bench. Aaron Wiggins juga 15 poin dari bench dengan 3-7 from three. Kingston Flemings menyumbang 14 poin efisien, 6-9 from field.\n\nWSH punya trio yang berbicara. Anthony Davis 26 poin, 10 rebound, 3 asis, double-double solid, tapi tidak cukup. Kyshawn George 25 poin, 4 rebound, 7 asis dengan 10-14 from field, shooting terbaik di lapangan malam ini. Trae Young 18 poin, 2 rebound, 6 asis. Di luar trio itu, kontribusi terbatas. Sarr 11 poin, Dybantsa 9 poin, keduanya tidak mampu menutup gap.\n\nPembeda utama ada di angka tiga poin. ATL 19-49 from three, 39%. WSH 6-26, hanya 23%. Selisih tiga belas triple yang masuk itu setara dengan margin kemenangan ATL. WSH dominasi paint, 62 poin lawan 50 ATL, dan Davis konsisten menekan ke ring. Tapi tidak ada guna mendominasi paint kalau perimeter defense bocor separah itu.\n\nRebound juga berpihak ke ATL: 57 lawan 41. Okongwu hampir menyamai setengah total rebound WSH sendirian. ATL juga unggul asis 34-25, tanda rotasi bola yang lebih cair.\n\nQ1 berjalan ketat. Skor sempat 23-23, dua kali imbang di menit-menit awal. Davis layup, Kyshawn George drive, Dybantsa pullup, WSH sempat memimpin. Tapi ATL menjawab lewat tembakan-tembakan perimeter, dan setelah paruh pertama keunggulan ATL tidak pernah benar-benar terancam.\n",
   "frontmatter": {
     "league": "nba",
     "sport": "basketball",
@@ -21,59 +21,41 @@
     "series_summary": "ATL leads series 1-0",
     "game_number": 1,
     "model": "claude-sonnet-4-6",
-    "cost_usd": 0.042184,
+    "cost_usd": 0.035959,
     "voice_lint": {
-      "verdict": "review",
-      "score": 62,
-      "issue_count": 7,
-      "summary": "Fail: 'patut dicatat' banned phrase + academic drift in section thesis + awkward translations (tidak kalah di semua aspek) violate voice rules. Remove filler ('satu catatan menarik'), tighten structural flow, delete meta-commentary about input data.",
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stats and natural basketball analysis. One medium-severity phrasing issue (calqued English idiom); otherwise clean. Pass with minor polish notes.",
       "issues": [
-        {
-          "type": "soft_phrase_repeat",
-          "severity": "high",
-          "snippet": "Onyeka Okongwu bukan top scorer, tapi dominasinya di papan rebound patut dicatat",
-          "fix": "Delete; lead with fact instead: 'Okongwu bukan top scorer, tapi rebounding-nya dominan: 14 poin, 16 rebound.'"
-        },
-        {
-          "type": "academic_drift",
-          "severity": "high",
-          "snippet": "Dua angka ini yang menjelaskan sebagian besar perbedaan hasil.",
-          "fix": "Combine with next sentence: 'Tiga angka dan rebound: dua statistik yang pisahin kedua tim.'"
-        },
         {
           "type": "translated_english",
           "severity": "medium",
-          "snippet": "Artinya WSH tidak kalah di semua aspek, mereka menang di beberapa area",
-          "fix": "'WSH unggul di beberapa aspek (blocks, turnover discipline), tapi itu tidak cukup.'"
-        },
-        {
-          "type": "tense_overmarking",
-          "severity": "medium",
-          "snippet": "McCollum aktif mengalirkan bola setelah masuk. assist-nya ke Okongwu untuk floating jumper di Q1 memberi gambaran",
-          "fix": "'McCollum jadi aktif setelah masuk; asisnya ke Okongwu untuk floating jumper Q1 tunjukkan ritme ATL.'"
+          "snippet": "rebounding mesin: 16 board, set tone ATL di mana-mana",
+          "fix": "Okongwu rebounding mesin dengan 16 board, dominan di kedua ujung lapangan."
         },
         {
           "type": "other",
-          "severity": "medium",
-          "snippet": "Satu catatan menarik: WSH punya 9 blocks berbanding 2 milik ATL",
-          "fix": "Delete phrase: 'WSH punya 9 blocks vs 2, tapi keunggulan ATL di tiga angka menutupinya.'"
+          "severity": "low",
+          "snippet": "dari bench dengan 10-14 from field, shooting terbaik di lapangan malam ini",
+          "fix": "10-14 from field, efisiensi tertinggi di laga ini."
         },
         {
-          "type": "academic_drift",
+          "type": "translated_english",
           "severity": "low",
-          "snippet": "Untuk center yang main di dalam, 2-5 dari tiga angka juga bonus",
-          "fix": "'Bonus: Okongwu 2-5 dari tiga untuk seorang center area dekat ring.'"
+          "snippet": "Di luar trio itu, kontribusi terbatas.",
+          "fix": "Tiga besar itu saja; sisanya terbatas."
         },
         {
-          "type": "structural",
+          "type": "other",
           "severity": "low",
-          "snippet": "Game 2 regular season series ATL vs WSH belum ada jadwal spesifik di input.",
-          "fix": "Delete entire closing paragraph; end with the blocks/rebound paragraph instead"
+          "snippet": "Selisih tiga belas triple yang masuk itu setara dengan margin kemenangan ATL.",
+          "fix": "Tiga belas triple selisih itu bermakna 39 poin leverage—persis margin."
         }
       ]
     },
-    "plagiarism_hash": "0x6c5973b0a6659de4",
-    "published_at": "2026-11-05T05:08:42+00:00",
+    "plagiarism_hash": "0xb9df21b07c6bd094",
+    "published_at": "2026-11-05T05:36:28+00:00",
     "version": 1,
     "manual_review": true
   },
