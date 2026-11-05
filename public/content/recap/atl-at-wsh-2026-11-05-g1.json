@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "atl-at-wsh-2026-11-05-g1",
+  "title": "Recap Atlanta Hawks 120-105 Washington Wizards (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Atlanta Hawks vs Washington Wizards (120-105) di —, 5 November 2026.",
+  "body_md": "# Atlanta Hawks Libas Washington Wizards 120-105, Alexander-Walker Panas dari Luar\n\nAtlanta Hawks menang 120-105 atas Washington Wizards dalam Game 2 Regular Season Series, Selasa pagi 5 November 2026. ATL unggul 1-0 di head-to-head, dan kemenangan ini dibangun di atas efisiensi tembakan tiga angka yang jauh melampaui tuan rumah, plus performa rebound dominan yang menutup semua celah WSH.\n\nNickeil Alexander-Walker jadi pemimpin skor ATL dengan 26 poin dari 9-20 FG, 6-14 tiga angka, 4 rebound, 2 asis. Akurasi dari deep efisien cukup untuk jadi poros serangan Atlanta malam itu.\n\n---\n\n## Performer Kunci\n\nDari bench, dua nama justru jadi faktor pembeda. CJ McCollum 15 poin, 5 rebound, 5 asis dengan 25 menit bermain, distribusi dua arah yang rapi. Aaron Wiggins menyumbang 15 poin, 4 rebound, 2 asis dengan 3-7 dari tiga.\n\nYang paling menonjol dari lineup Atlanta: Onyeka Okongwu cetak double-double 14 poin dan 16 rebound, 4 asis dalam 31 menit. Enam belas rebound itu bukan sekadar angka, itu yang menghancurkan second-chance opportunities WSH sepanjang malam. Kingston Flemings, yang masuk sebagai starter, berkontribusi 14 poin dengan shooting mulus: 6-9 FG dan sempurna 2-2 dari tiga angka dalam 23 menit.\n\nWashington punya cerita lain: Anthony Davis tampil keras dengan 26 poin dan 10 rebound, 3 asis, 12-19 dari lapangan, efisien. Kyshawn George 25 poin, 4 rebound, 7 asis dengan 10-14 FG, shooting terbaik di lapangan malam itu. Trae Young 18 poin, 2 rebound, 6 asis. Alex Sarr menjaga kehadiran dengan 11 poin dan 9 rebound. Secara individu, WSH tidak kekurangan kontributor. Tapi tiga angka dingin Wizards beda permainan.\n\n---\n\n## Apa yang Beda\n\nAngka tim bicara jelas. ATL 19-49 dari garis tiga angka (39%), WSH hanya 6-26 (23%). Selisih tiga belas three-pointer yang masuk itu setara dengan 39 poin ekstra, lebih dari margin kemenangan Atlanta sendiri.\n\nWSH unggul di poin dalam paint: 62 berbanding 50. Davis dan Sarr memastikan itu. Tapi keunggulan rebound ATL, 57 lawan 41, memotong banyak kesempatan second possession WSH. Okongwu di sana, terus di sana.\n\nAssists ATL 34 versus WSH 25 menunjukkan bola bergerak lebih lancar di sisi Hawks. Turnovers hampir imbang (ATL 15, WSH 12), tapi ATL mampu mencetak 19 fast-break points melawan WSH yang membuat 9 blok. WSH memblok lebih banyak, tapi masih kecolongan di tempo transisi.\n\n---\n\n## Momen Penentu\n\nBabak pertama berjalan ketat, momentum beralih Q2 ketika Alexander-Walker panas dari tiga. Wizards nggak bisa follow. Efisiensi tiga angka ATL mulai meninggalkan WSH yang kesulitan merespons dari garis yang sama, dan jarak yang tercipta di kuartal dua tidak pernah terbantahkan lagi.\n\n---\n\n## Selanjutnya\n\nATL unggul 1-0 di regular season series (2 of 4). Posisi Hawks menguntungkan untuk menutup head-to-head musim ini. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909923",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Atlanta Hawks",
+    "away_abbr": "ATL",
+    "home_score": 105,
+    "away_score": 120,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-11-05T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020376,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Solid recap with correct stats but mid-article prose quality dips into translated English and informal register ('nggak'). Moralizing about numbers and weak structural close drag score down. Fix phrasing and tighten close.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Akurasi dari deep efisien cukup untuk jadi poros serangan Atlanta",
+          "fix": "Rewrite: 'Ketepatan dari jarak tiga efisien. Alexander-Walker jadi poros serangan Atlanta.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Enam belas rebound itu bukan sekadar angka, itu yang menghancurkan second-chance",
+          "fix": "'Enam belas rebound Okongwu potong second-chance WSH sepanjang malam.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Okongwu di sana, terus di sana.",
+          "fix": "Delete or: 'Okongwu jadi ancaman di rebound basket kedua.'"
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "medium",
+          "snippet": "Wizards nggak bisa follow.",
+          "fix": "Rewrite: 'Wizards tidak bisa mengikuti momentum.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Babak pertama berjalan ketat, momentum beralih Q2 ketika Alexander-Walker panas",
+          "fix": "Trim to: 'Babak pertama ketat. Momentum bergeser Q2 ketika Alexander-Walker panas dari tiga.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya / ATL unggul 1-0",
+          "fix": "Merge into final sentence or add details about playoff implications."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x665f65b36c68b1ae",
+    "published_at": "2026-11-05T04:08:29+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
