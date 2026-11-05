@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "mia-at-lac-2026-11-05-g1",
+  "title": "Recap Miami Heat 117-116 LA Clippers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Miami Heat vs LA Clippers (117-116) di —, 5 November 2026.",
+  "body_md": "# Klay Thompson Tutup Laga, Miami Heat Rebut Kemenangan 117-116 di Overtime\n\nMiami Heat mengalahkan LA Clippers 117-116 lewat overtime yang menegangkan, Senin 5 November 2026. Klay Thompson menjadi pahlawan dengan three-pointer di detik terakhir, mencetak 30 poin dalam satu malam yang seharusnya milik Clippers.\n\n---\n\n## Pemain Kunci\n\n**Miami Heat** mengandalkan trio besar yang semuanya tampil produktif.\n\nBam Adebayo jadi tumpuan utama: 35 poin, 10 rebound, 4 asis dengan shooting 14-20 dari lapangan. Efisien dan konsisten selama 41 menit. Di overtime, Adebayo cetak fade-away jump shot yang sempat memangkas defisit menjadi 114-116, membuka ruang untuk drama terakhir.\n\nKlay Thompson mencatatkan 30 poin, 5 rebound, 3 asis. Dari tiga poin, Klay selesaikan dengan 8-17, volume shooter yang tetap berbahaya meski persentase tidak ideal. Dua three-pointer di overtime, termasuk tembakan 23 kaki di sisa satu detik yang membalik skor dari 114-116 menjadi 117-116.\n\nGiannis Antetokounmpo melengkapi trio dengan 27 poin, 14 rebound, 6 asis. Fisik Giannis mendominasi area paint, 14 rebound adalah angka tertinggi dari kedua tim. Dua free throw di menit 3:56 overtime mengembalikan paritas 109-109 setelah Clippers sempat memimpin.\n\nDavion Mitchell perannya juga patut dicatat: 11 poin, 10 asis, game playmaking yang solid sepanjang 43 menit.\n\n**LA Clippers** tidak kalah produktif, tapi tidak cukup untuk menang.\n\nDarius Garland tampil impresif dengan 26 poin dan 7 asis dari shooting 10-14, termasuk 4-6 dari tiga poin. Di overtime, Garland yang paling aktif: three-pointer 27 kaki (assist Brook Lopez) untuk 109-112, lalu dua jumper beruntun membawa Clippers unggul 112-116 di sisa 1:19. Clippers sudah di ambang kemenangan, dan Klay merobohkannya.\n\nRui Hachimura menyumbang 21 poin, 9 rebound, 7 asis. Brook Lopez efisien dengan 20 poin, 8 rebound dari shooting 8-11. Derrick Jones Jr. menambah 12 poin dan 8 rebound. Keaton Wagler off the bench: 11 poin dengan 3-4 dari tiga poin dalam 16 menit.\n\n---\n\n## Baca Statistik Tim\n\nDua angka yang menjelaskan hasil laga ini: turnovers dan tembakan tiga poin.\n\nClippers unggul efisiensi shooting, 48% FG vs 43% Miami, 37% three-point vs 25%. Di atas kertas, LAC seharusnya menang. Tapi Miami mencatat 10 steals vs 7 milik Clippers, dan Clippers berbuat 20 turnover berbanding 12 Miami. Tiap possession menjadi krusial di laga ketat seperti ini, dan Clippers terlalu sering melepas bola.\n\nMiami juga mendominasi area paint: 54 poin vs 40. Adebayo dan Giannis mengontrol zona tersebut sepanjang laga, memberi Miami keunggulan yang sulit diimbangi Clippers hanya dari perimeter.\n\nFree throw jadi pembeda lain: Miami 21-26 (81%) vs Clippers 14-20 (70%). Delapan free throw selisih itu kecil, tapi di laga yang dipisahkan satu poin, angka seperti ini terasa besar.\n\n---\n\n## Drama Overtime\n\nEmpat menit overtime menyajikan segalanya.\n\nGiannis leveled the score lewat dua free throw, 109-109. Garland jawab dengan three-pointer 27 kaki untuk 109-112. Klay Thompson samakan lagi dengan running jump shot 23 kaki (assist Giannis), 112-112. Garland tidak menyerah, dua jumper beruntun membawa Clippers unggul 112-116.\n\nAdebayo pangkas jarak dengan fade-away: 114-116. Sisa 1.0 detik.\n\nKlay Thompson, bola di tangan, tembakan 23 kaki. Masuk. 117-116. Miami menang.\n\n---\n\n## Selanjutnya\n\nIni laga kedua dari dua pertemuan regular season Miami dan LA Clippers musim ini. Miami unggul 1-0 di head-to-head series. Jadwal berikutnya belum tersedia di data saat ini. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909935",
+    "home_team": "LA Clippers",
+    "home_abbr": "LAC",
+    "away_team": "Miami Heat",
+    "away_abbr": "MIA",
+    "home_score": 116,
+    "away_score": 117,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-11-05T03:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.044822,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article has strong structure and accurate stats, but two calqued English phrases ('leveled the score', 'samakan lagi') break voice registers mid-paragraph. Closing paragraph is filler. Revise those three issues and this passes.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Klay Thompson samakan lagi dengan running jump shot 23 kaki (assist Giannis), 112-112.",
+          "fix": "Ganti 'samakan lagi' jadi 'seimbangkan' atau 'balas dengan'. E.g., 'Klay balas dengan running jump shot 23 kaki, 112-112.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Davion Mitchell perannya juga patut dicatat: 11 poin, 10 asis",
+          "fix": "Rephrase: 'Davion Mitchell solid juga: 11 poin, 10 asis' or cut the frame entirely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Giannis leveled the score lewat dua free throw, 109-109.",
+          "fix": "Use Indonesian: 'Giannis seimbangkan skor lewat dua free throw, 109-109.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Jadwal berikutnya belum tersedia di data saat ini. Pantau update di NBA League Pass dan Vidio.",
+          "fix": "Delete this paragraph. End with the Klay shot or move 'Pantau NBA League Pass' into previous sentence."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Klay selesaikan dengan 8-17, volume shooter yang tetap berbahaya meski persentase tidak ideal.",
+          "fix": "Rephrase to more natural Bahasa word order."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Clippers sudah di ambang kemenangan, dan Klay merobohkannya.",
+          "fix": "Change to: 'Clippers di ambang kemenangan, dan Klay merobohkannya.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xce08df90c4c543a2",
+    "published_at": "2026-11-05T06:49:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
