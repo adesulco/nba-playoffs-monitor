@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "orl-at-phx-2026-11-06-g1",
+  "title": "Recap Orlando Magic 104-117 Phoenix Suns (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Phoenix Suns (104-117) di —, 6 November 2026.",
+  "body_md": "# Suns Redam Magic 117-104, Booker dan Brooks Jadi Biang Kerok\n\nPhoenix Suns mengalahkan Orlando Magic 117-104 dalam laga reguler season, Senin 6 November 2026. Devin Booker memimpin Suns dengan 30 poin dan 8 asis, dibantu Dillon Brooks yang menambah 24 poin, dua nama yang paling bikin Orlando kesakitan sepanjang malam.\n\n---\n\n## Top Performers\n\nBooker tampil efisien dari luar: 4-8 dari three-point line, termasuk dua tembakan dari jarak 30 kaki dan 26 kaki di kuarter pertama yang langsung menekan Orlando sejak awal. Stat line-nya 30 poin, 1 rebound, 8 asis dari 34 menit, distributor sekaligus pencetak poin utama.\n\nBrooks melengkapi duo mematikan itu dengan 24 poin atas dasar efisiensi solid: 9-16 dari field, 4-6 dari arc. Dua belas poin dari bench turut datang dari Luke Kennard (12 poin, 3-6 dari three) dan Ryan Dunn yang menambah 11 poin plus kontribusi di lini pertahanan.\n\nMiles Bridges jadi pemain paling lengkap di sisi Suns: 18 poin, 13 rebound, 5 asis, double-double yang juga menguras tenaga Orlando di dalam cat.\n\nDi sisi Orlando, Wendell Carter Jr. main luar biasa secara personal. Dua puluh tujuh poin dan 13 rebound dengan efisiensi tinggi (FG 10-12, termasuk 2-2 dari three) jadi double-double terbaik malam itu. Tapi kontribusi Carter tenggelam oleh performa kolektif Suns yang lebih rapi.\n\nFranz Wagner mencetak 15 poin, 8 rebound, dan 15 asis, angka asis yang mencolok, tapi Magic tidak bisa mengkapitalisasi servis Wagner dengan cukup konsisten. Tristan da Silva (18 poin dari bench) dan Desmond Bane (15 poin) mencoba merespons, namun efisiensi three-point mereka tidak setajam Suns.\n\n---\n\n## Apa yang Bicara di Box Score\n\nSatu angka yang paling menjelaskan hasil malam ini: three-point percentage. Phoenix 50% dari arc (17-34), Orlando hanya 34% (13-38). Suns menembak lebih sedikit dari garis tiga angka tapi memasukkan jauh lebih banyak, gap efisiensi itu setara belasan poin selisih.\n\nTurnover Orlando juga krusial. Dua puluh lima turnover berbanding 15 milik Suns, dan Phoenix tercatat 14 steal. Artinya sebagian besar turnover Orlando lahir dari tekanan aktif pertahanan Suns, bukan sekadar kesalahan sendiri. Poin dari turnover bisa menjadi faktor besar yang tidak tercermin di skor kuarter per kuarter.\n\nYang menarik: Orlando sebenarnya lebih dominan di area tertentu. Rebound Magic 48 berbanding 33, keunggulan papan yang signifikan. Fast-break points juga berpihak ke Orlando (23 vs 16), dan points in paint-nya lebih banyak (48 vs 40). Tapi keunggulan-keunggulan itu tidak cukup menutup lubang yang dibuka oleh three-point Suns dan turnover Magic sendiri.\n\nFree throw Orlando juga jadi masalah: 13-24 (54%) berbanding Suns yang 10-13 (77%). Suns lebih sedikit ke garis tapi lebih sering memasukkannya.\n\n---\n\n## Satu Laga Tersisa, Satu Kerugian Sudah Pasti\n\nIni adalah Game 2 dari dua laga regular season series antara kedua tim. Phoenix kini unggul 1-0 dalam seri ini, dan dengan hanya dua game dijadwalkan, Magic tidak punya laga ketiga untuk membalas.\n\nBuat Suns, kemenangan ini memperlihatkan formula yang bisa diandalkan: Booker sebagai motor serangan, Brooks sebagai penembak kedua yang agresif, dan pertahanan kolektif yang bisa memaksa lawan kehilangan bola 25 kali semalam. Kalau konsistensi ini terbawa ke fase yang lebih penting musim ini, Phoenix layak disorot lebih serius.\n\nLaga lengkap bisa disaksikan ulang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909936",
+    "home_team": "Phoenix Suns",
+    "home_abbr": "PHX",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 117,
+    "away_score": 104,
+    "winner_abbr": "PHX",
+    "kickoff_utc": "2026-11-06T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHX leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.051435,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stat citations and natural flow. Minor phrasing adjustments for consistency, but no factual errors or major voice violations. Score reflects strong execution with only cosmetic notes.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Stat line-nya 30 poin, 1 rebound, 8 asis dari 34 menit",
+          "fix": "Booker: 30 poin, 1 rebound, 8 asis dari 34 menit main."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Miles Bridges jadi pemain paling lengkap di sisi Suns",
+          "fix": "Miles Bridges paling serba bisa Suns: 18 poin, 13 rebound, 5 asis."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Artinya sebagian besar turnover Orlando lahir dari tekanan aktif pertahanan Suns",
+          "fix": "Turnover Magic kebanyakan hasil tekanan pertahanan Suns, bukan kesalahan sendiri."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Kalau konsistensi ini terbawa ke fase yang lebih penting musim ini",
+          "fix": "No change needed."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x8dc397bbbac9fc84",
+    "published_at": "2026-11-06T04:33:37+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
