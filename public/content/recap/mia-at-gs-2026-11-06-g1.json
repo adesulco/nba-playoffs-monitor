@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mia-at-gs-2026-11-06-g1",
+  "title": "Recap Miami Heat 100-120 Golden State Warriors (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Miami Heat vs Golden State Warriors (100-120) di —, 6 November 2026.",
+  "body_md": "# Golden State Warriors Pukul Miami Heat 120-100, Curry Pimpin Pesta dari Luar Arc\n\nGolden State Warriors menang 120-100 atas Miami Heat dalam laga NBA Playoffs 2026, Kamis 6 November 2026 pukul 10.00 WIB. Stephen Curry cetak 29 poin, Warriors unggul di hampir semua lini statistik. GS memimpin series 1-0 di regular season series dua laga ini.\n\n---\n\n## Top Performers\n\n**Stephen Curry** kembali jadi masalah terbesar buat siapapun yang mencoba menjaganya. 29 poin dari 9-19 field goal, dengan 6-12 dari luar arc dalam 28 menit. Setiap kali Heat mencoba membangun momentum, Curry muncul dengan pullup jumper dari jarak yang tidak masuk akal.\n\nDi sisi Warriors, **Yaxel Lendeborg** 17 poin, 8 rebound, 6 asis dari 6-14 field goal — performa lengkap untuk rotasi GS. **Georges Niang** off the bench tambahkan 13 poin efisien dengan 5-8 dari lapangan, termasuk 2-5 dari tiga angka.\n\nUntuk Miami, **Davion Mitchell** berjuang keras dengan 22 poin dan 8 asis, stat line yang bagus di atas kertas, tapi tidak cukup untuk mengimbangi Warriors malam ini. **Giannis Antetokounmpo** catat 20 poin dan 14 rebound dari 7-13 field goal, double-double yang solid. **Bam Adebayo** catat double-double: 18 poin, 10 rebound. Miami tidak kekurangan big men yang produktif, masalahnya ada di tempat lain.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka langsung menjelaskan hasil ini: **FG% 53 vs 41**, dan **fast-break points 21 vs 7**.\n\nWarriors menembak lebih efisien dari mana saja, 53% field goal keseluruhan, 39% dari tiga angka berbanding 30% Miami. Tapi yang lebih menyakitkan buat Heat adalah transisi: GS mencetak 21 poin dari fast break, sementara Miami hanya 7. Ini bukan soal bakat. Ini soal turnover. Miami mencatat 22 turnover berbanding 19 milik Warriors, dan Golden State mengkonversi peluang itu dengan konsisten.\n\nPoints in paint juga satu arah: 50 untuk GS, 32 untuk Miami. Warriors tidak hanya menang dari luar, mereka masuk ke dalam juga, dan Heat tidak punya jawaban yang memadai sepanjang empat kuarter.\n\n---\n\n## Momentum Balik di Kuarter Ketiga\n\nPertandingan sempat ketat hingga pertengahan Q3. Skor 53-53 setelah Giannis masuk dua free throw di akhir Q2. Awal Q3, kedua tim saling balas: Lendeborg layup jadi 55-53, Giannis driving layup samakan 58-58. Sesaat terasa seperti Heat punya energi untuk berbalik.\n\nMenit 8:20 Q3, Curry masuk pullup jump shot dari 25 kaki, 64-66 untuk GS. Stretch kecil itu tidak terlihat dramatis di angka, tapi dari situ Miami tidak pernah benar-benar kembali. Warriors tutup Q3 dengan keunggulan yang sudah cukup untuk dikonversi di kuarter terakhir.\n\n---\n\n## Penutup\n\nGS menyudahi series 1-0. Laga tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909937",
+    "home_team": "Golden State Warriors",
+    "home_abbr": "GS",
+    "away_team": "Miami Heat",
+    "away_abbr": "MIA",
+    "home_score": 120,
+    "away_score": 100,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-11-06T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "GS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020473,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "High-severity training-inference errors (Klay Thompson, Draymond Green, mischaracterization of series type as Playoffs) and awkward translated-English clause structures. Fails on accuracy grounding and inference discipline.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "laga NBA Playoffs 2026, Kamis 6 November 2026",
+          "fix": "Change to 'regular season series' per input data SERIES STATE field."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Klay Thompson makes 26-foot three pointer (Davion Mitchell assists)",
+          "fix": "Delete this reference or rewrite without naming Thompson."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Draymond Green assists",
+          "fix": "Delete this reference. Do not name assisters not in the data block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Stephen Curry kembali jadi masalah terbesar buat siapapun yang mencoba menjaganya",
+          "fix": "Simplify: 'Stephen Curry jadi pembeda malam ini' or 'Curry cetak 29 poin tanpa lawan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Setiap kali Heat mencoba membangun momentum, Curry muncul dengan pullup jumper dari jarak yang tidak masuk akal.",
+          "fix": "Cut to: 'Curry muncul dengan pullup dari jarak 25 kaki.' Let stat speak."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "stat line yang bagus di atas kertas, tapi tidak cukup",
+          "fix": "Consider: '22 poin, 8 asis, tapi tidak cukup buat mengimbangi Curry.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Warriors menembak lebih efisien dari mana saja, 53% field goal keseluruhan",
+          "fix": "Already correct; no change needed."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "GS menyudahi series 1-0.",
+          "fix": "Rewrite: 'GS kuasai regular season series. Laga tersedia di NBA League Pass dan Vidio.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xc5fbd14a442d8f8e",
+    "published_at": "2026-11-06T06:11:35+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
