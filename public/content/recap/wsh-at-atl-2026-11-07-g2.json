@@ -1,0 +1,127 @@
+{
+  "type": "recap",
+  "slug": "wsh-at-atl-2026-11-07-g2",
+  "title": "Recap Washington Wizards 132-139 Atlanta Hawks (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Washington Wizards vs Atlanta Hawks (132-139) di —, 7 November 2026.",
+  "body_md": "Atlanta Hawks mengakhiri laga luar biasa 139-132 atas Washington Wizards, Sabtu 7 November 2026. Kemenangan ini sekaligus mempertegas posisi ATL di regular season series: unggul 2-0 dari empat laga yang dijadwalkan. WSH punya banyak poin, 132 bukan angka kecil, tapi ATL lebih efisien di momen-momen yang menentukan.\n\n---\n\n## Pemain Kunci\n\n**Kyshawn George** jadi yang paling menonjol di sisi Wizards: 33 poin, 4 rebound, 7 asis dengan shooting 10-19 dari lapangan dan 5-7 dari tiga angka. Angka yang harusnya cukup untuk menang di kebanyakan laga. Tidak malam ini.\n\n**Trae Young** menambah 23 poin dan 10 asis, double-double yang mencerminkan perannya sebagai motor offense WSH. **Tre Johnson** off the bench juga nyumbang 23 poin dengan 5-10 dari tiga angka dalam 27 menit, salah satu penampilan terbaik dari bench WSH malam ini.\n\nDi sisi Hawks, **Nickeil Alexander-Walker** top scorer dengan 28 poin meski butuh 20 field goal attempt (7-20, 4-12 dari tiga). **Luguentz Dort** lebih efisien: 25 poin dengan 9-15 dari lapangan dan 5-7 dari tiga angka, plus 7 rebound. **Onyeka Okongwu** dominan di dalam: 22 poin, 10 rebound, FG 8-12, double-double yang menyulitkan WSH sepanjang malam.\n\nYang menarik: **Dyson Daniels** hanya cetak 13 poin, tapi 12 asisnya jadi angka tertinggi di laga ini. Distribusi bola ATL mengalir lewat dia.\n\n---\n\n## Baca Statistiknya\n\nDua angka yang menjelaskan hasil laga ini: **points in paint dan assists**.\n\nATL unggul 62-50 di area cat, artinya penetrasi ATL secara konsisten berhasil menembus pertahanan WSH dan menciptakan poin berkualitas tinggi. WSH unggul di tiga angka (53% vs 42%, dengan 18-34 vs 16-38), tapi keunggulan shooting perimeter tidak cukup menutup ketertinggalan di dalam.\n\nAssists: ATL 38, WSH 28. Selisih 10 assist mencerminkan bagaimana ATL bermain lebih kolektif, bola bergerak, pemain bergerak, peluang terbuka. WSH lebih bergantung pada kreasi individual.\n\nFG% hampir setara: WSH 51%, ATL 53%. Ini bukan soal siapa yang lebih panas, ini soal *di mana* poin-poin itu diciptakan.\n\n---\n\n## Momen Penentu\n\nEmpat menit terakhir kuarter empat menggambarkan dinamika laga. Kyshawn George masih berjuang, dua free throw di menit 1:34 memperkecil jarak (127-131), lalu three-pointer 25 kaki yang dibantu Alex Sarr membawa skor 132-135 dengan sembilan detik tersisa.\n\nTapi ATL tidak panik. Alexander-Walker memanfaatkan free throw secara konsisten di ujung laga. Setiap kali WSH mendekat, ATL punya jawaban dari garis. Skor akhir 139-132, WSH tidak pernah benar-benar bisa menutup gap.\n\n---\n\n## Selanjutnya\n\nRegular season series antara kedua tim kini 2-0 untuk Atlanta, dengan dua laga tersisa. WSH perlu evaluasi serius, terutama di area cat dan distribusi bola, sebelum laga keempat. Keduanya bisa disaksikan via NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909287",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Washington Wizards",
+    "away_abbr": "WSH",
+    "home_score": 139,
+    "away_score": 132,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-11-07T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.070048,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article passes on accuracy and most voice rules, but fails on two hard violations: 'Selanjutnya' as paragraph opener (soft-discourage rule broken—used 2x total), and 'Yang menarik' as AI-translated filler. Hedging phrases in lead and structural typo ('asis') also present. Regenerate with stricter connector discipline and tighter opening.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Yang menarik: Dyson Daniels hanya cetak 13 poin, tapi 12 asisnya jadi angka tertinggi di laga ini.",
+          "fix": "Delete phrase entirely: 'Dyson Daniels hanya cetak 13 poin, tapi 12 asisnya—angka tertinggi laga ini—jadi kunci distribusi ATL.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Selanjutnya, Regular season series antara kedua tim kini 2-0 untuk Atlanta...",
+          "fix": "Cut 'Selanjutnya' entirely. Start: 'Regular season series antara kedua tim kini 2-0 untuk Atlanta...'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "WSH punya banyak poin, 132 bukan angka kecil, tapi ATL lebih efisien di momen-momen yang menentukan.",
+          "fix": "Rewrite: 'WSH cetak 132 poin—cukup untuk menang di kebanyakan laga. Malam ini tidak.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka yang harusnya cukup untuk menang di kebanyakan laga. Tidak malam ini.",
+          "fix": "Combine into prior sentence or use: 'Angka yang seharusnya cukup menang. Tapi ATL main lebih bagus saat dibutuhkan.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "**Trae Young** menambah 23 poin dan 10 asis, double-double yang mencerminkan perannya sebagai motor offense WSH.",
+          "fix": "Rewrite: 'Trae Young 23 poin, 10 assist sebagai motor offense WSH—peran yang harusnya cukup penting tapi ATL tutup dengan baik.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua angka yang menjelaskan hasil laga ini: **points in paint dan assists**.",
+          "fix": "Optional: 'Dua angka cerita: ATL dominan di cat (62-50) dan passing (38 assist vs 28).'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7c49a53bd040e084",
+    "published_at": "2026-11-07T02:34:25+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "regenerate",
+      "overall_score": 58,
+      "headline_score": 35,
+      "headline_comment": "Headline menyebut 'Game 2' padahal data jelas menyatakan ini Game 3 of 4 dengan series state ATL leads 2-0 — factual error di judul.",
+      "lead_score": 62,
+      "lead_comment": "Lead memberi skor dan series state tapi 'laga luar biasa' adalah telling bukan showing, dan tidak ada angle kenapa pembaca harus peduli.",
+      "structure_score": 72,
+      "structure_comment": "Struktur recap standar dan runtut, tapi section 'Momen Penentu' terlalu pendek untuk clutch sequence yang punya 8 key plays di data.",
+      "voice_score": 70,
+      "voice_comment": "Umumnya natural dengan code-switching NBA yang pas, tapi 'nyumbang' terlalu kasual dan 'harusnya cukup untuk menang' terasa hedge.",
+      "suggestion_count": 6,
+      "summary": "Factually broken headline (Game 2 vs actual Game 3) and unresolved context tension (playoffs label vs regular-season series) make this a regenerate. Writing has decent bones but clutch sequence is under-built and the paint/assist story deserves to lead the whole article.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap Washington Wizards 132-139 Atlanta Hawks (Game 2)",
+          "issue": "Judul menyebut Game 2, tapi input data eksplisit: 'Game number: 3 of 4'. Error faktual di headline.",
+          "fix": "Ganti ke '(Game 3)' atau hapus kurung; pertimbangkan judul dengan angle, misal 'Hawks Kunci Series Lewat Dominasi di Paint, Tekuk Wizards 139-132'."
+        },
+        {
+          "priority": "high",
+          "snippet": "NBA Playoffs 2026",
+          "issue": "Liga disebut 'NBA Playoffs 2026' di input tapi series state-nya 'Regular Season Series' — artikel tidak klarifikasi konteks aneh ini sama sekali.",
+          "fix": "Artikel harus memilih framing yang konsisten dengan series state (regular season) dan drop referensi playoffs, atau sebutkan konteks sebenarnya."
+        },
+        {
+          "priority": "high",
+          "snippet": "Kemenangan ini sekaligus mempertegas posisi ATL di regular season series: unggul 2-0 dari empat laga yang dijadwalkan.",
+          "issue": "Konsep 'regular season series 4 laga' aneh tanpa konteks — pembaca Indonesia tidak familiar dan artikel tidak menjelaskan.",
+          "fix": "Tambahkan satu kalimat konteks: ini pertemuan ketiga dari empat pertemuan reguler musim ini, atau klarifikasi format yang relevan."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Empat menit terakhir kuarter empat menggambarkan dinamika laga.",
+          "issue": "Klaim 'empat menit terakhir' tapi key play pertama yang dikutip di 1:34, bukan 4:00. Juga clutch sequence under-developed padahal datanya kaya.",
+          "fix": "Buka dengan skor saat memasuki menit akhir, ikuti ritme free throw Alexander-Walker yang konsisten (3 trip), tunjukkan WSH tidak pernah dekat dari 3 poin."
+        },
+        {
+          "priority": "medium",
+          "snippet": "WSH punya banyak poin, 132 bukan angka kecil, tapi ATL lebih efisien di momen-momen yang menentukan.",
+          "issue": "'Lebih efisien' tidak akurat — FG% hampir sama (51 vs 53). Framing sebenarnya adalah volume paint touches dan ball movement.",
+          "fix": "Ganti ke angle yang didukung data: 'ATL menang lewat volume di paint (62-50) dan bola yang lebih bergerak (38 assist vs 28).'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Tre Johnson off the bench juga nyumbang 23 poin",
+          "issue": "'Nyumbang' terlalu kasual untuk register Gibol, dan '23 poin dari bench dalam 27 menit' itu newsworthy tapi dikubur.",
+          "fix": "Ganti ke 'Tre Johnson keluar dari bangku cadangan dengan 23 poin dalam 27 menit, 5-10 dari tiga angka — angka starter dari pemain bench.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
