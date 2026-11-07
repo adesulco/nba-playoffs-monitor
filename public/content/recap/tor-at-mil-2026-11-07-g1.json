@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "tor-at-mil-2026-11-07-g1",
+  "title": "Recap Toronto Raptors 121-107 Milwaukee Bucks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs Milwaukee Bucks (121-107) di —, 7 November 2026.",
+  "body_md": "# Toronto Raptors Kalahkan Milwaukee Bucks 121-107, Unggul 1-0 di Seri\n\nToronto Raptors keluar sebagai pemenang di kandang Milwaukee Bucks, menang 121-107 di Game 2 dari seri tiga pertandingan Regular Season. Dengan hasil ini, TOR unggul 1-0 dalam seri. Kemenangan dibangun di atas kontribusi merata, lima pemain Raptors tembus angka dua digit, dengan Alijah Martin jadi kejutan terbesar dari bench.\n\n---\n\n## Dua Barrett, Satu Martin, Satu Malam yang Sibuk\n\nRJ Barrett dan Alijah Martin berbagi top scorer malam ini, keduanya mencetak 27 poin, tapi dengan cara yang sangat berbeda.\n\nBarrett bermain 37 menit sebagai starter, menyelesaikan malam dengan 27 poin, 7 rebound, dan 5 asis. Efisiensinya dari lapangan biasa-biasa saja: 9-21 dari field, 0-4 dari garis tiga angka. Poinnya dari volume, bukan akurasi tinggi dari tiga angka.\n\nMartin ceritanya lain. Pemain bench ini tampil hanya 31 menit, tapi line-nya terasa lebih clean: 9-11 dari field, 6-7 dari tiga angka. Dua puluh tujuh poin dengan shot selection sangat efisien, dan hampir semuanya dari luar arc. Padahal TOR cuma 28% dari tiga (9-32), Martin nyetak enam-of-seven.\n\nDi bagian dalam, Jakob Poeltl membuat hidupnya susah buat Milwaukee. Ia mencatat 19 poin dan 11 rebound, satu-satunya pemain di pertandingan ini yang finish dengan double-double. 9-14 dari field. Di paint, TOR unggul 58-52.\n\nJamal Shead melengkapi gambaran TOR dengan 10 poin dan 16 asis. Enam belas. Di tengah semua drama scoring, Shead atur semuanya, TOR total mencatat 28 asis, angka yang tinggi untuk tim yang menang dengan margin 14 poin.\n\n---\n\n## Bucks Punya Jawaban, Tapi Tidak Cukup\n\nMilwaukee bukan tanpa senjata. Tyler Herro mencetak 23 poin, 5 rebound, dan 10 asis, double-double yang menunjukkan Herro bukan hanya scorer tapi playmaker malam ini. Brayden Burries juga tampil solid dengan 21 poin dan 11 rebound, double-double kedua di sisi Bucks.\n\nMasalah MIL bukan pada individu, masalahnya di turnover. MIL mencatat 21 turnover dibanding TOR yang 16. Raptors mengkonversi tekanan itu menjadi 12 steal, jauh di atas MIL yang hanya 7. Lebih banyak kehilangan bola, lebih sedikit mengambil bola kembali: kombinasi yang menyulitkan.\n\nEfisiensi tiga angka juga tidak membantu Bucks. MIL 25% dari tiga (10-40), TOR sedikit lebih baik di 28% (9-32), keduanya shooting tiga angka buruk malam ini, tapi Bucks lebih banyak mencoba dengan hasil yang sama tipis.\n\n---\n\n## Q4: Martin Tutup Pertandingan\n\nKey plays block menunjukkan Q4 sempat ketat. Skor 97-93 untuk TOR ketika AJ Green membuat tembakan tiga angka, Bucks masih dalam jangkauan. Herro kemudian memotong jarak jadi 97-95. Pertandingan masih terbuka di menit ke-7 kuarter empat.\n\nMartin yang menutupnya. Tembakan tiga angka dari 25 kaki, dibantu Barrett, mengubah skor jadi 100-95 di menit 6:22. Poeltl menambah dua poin di menit 5:45, 102-97. Dari sana, TOR mengelola sisa pertandingan dan menutup dengan margin 14 poin.\n\n---\n\n## Game 3\n\nGame 3, penutup seri tiga pertandingan ini, tinggal tunggu. TOR membawa modal unggul 1-0 dalam seri. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909292",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 107,
+    "away_score": 121,
+    "winner_abbr": "TOR",
+    "kickoff_utc": "2026-11-07T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "TOR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.043006,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: High-severity training inference (game labeling ambiguity) + high-severity translated-English headline + multiple medium issues (code-switching mix, academic drift, filler closing). Article has solid stat accuracy and structure, but voice drifts into formal register and awkward English-calqued phrasing in multiple places. Rewrite closing section and clean up Martin section.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dua Barrett, Satu Martin, Satu Malam yang Sibuk",
+          "fix": "Rewrite as 'Barrett dan Martin Sama-sama 27 Poin' or 'Dominasi RJ dan Martin di Q4'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Efisiensinya dari lapangan biasa-biasa saja: 9-21 dari field, 0-4 dari garis tiga angka.",
+          "fix": "Simplify: 'Barrett 9-21 dari lapangan, 0-4 dari tiga. Volume, bukan akurasi.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Martin ceritanya lain. Pemain bench ini tampil hanya 31 menit, tapi line-nya terasa lebih clean",
+          "fix": "Rewrite: 'Martin cerita beda. 31 menit dari bench, tapi stat-nya jauh lebih efisien: 9-11, 6-7 tiga angka.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Padahal TOR cuma 28% dari tiga (9-32), Martin nyetak enam-of-seven.",
+          "fix": "Standardize: 'Martin 6-7 dari tiga' or 'enam dari tujuh.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Ia mencatat 19 poin dan 11 rebound, satu-satunya pemain di pertandingan ini yang finish dengan double-double.",
+          "fix": "Use 'yang selesai dengan double-double' or drop: 'satu-satunya double-double malam ini.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Game 3, penutup seri tiga pertandingan ini, tinggal tunggu. TOR membawa modal unggul 1-0.",
+          "fix": "Delete or rewrite with actual Game 3 details (date, time, venue) if available in input. Currently just placeholder."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 2 dari seri tiga pertandingan Regular Season",
+          "fix": "Verify: is this really Game 2 of 3? Input says 'Round: Regular Season Series, Status: TOR leads 1-0, Game: 2 of 3' — so yes, but phrase carefully: 'Game 2 dari seri 3 pertandingan antara TOR-MIL' is clearer."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Masalah MIL bukan pada individu, masalahnya di turnover.",
+          "fix": "Acceptable as-is; minor style note only."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xee5f4fa1752df780",
+    "published_at": "2026-11-07T04:40:03+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

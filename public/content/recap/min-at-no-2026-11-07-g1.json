@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "min-at-no-2026-11-07-g1",
+  "title": "Recap Minnesota Timberwolves 115-109 New Orleans Pelicans (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs New Orleans Pelicans (115-109) di —, 7 November 2026.",
+  "body_md": "# Minnesota Timberwolves Tutup Kandang NO, Unggul 1-0 di Regular Season Series\n\nMinnesota Timberwolves menang tipis atas New Orleans Pelicans 115-109 di Game 2 regular season series, 7 November 2026. Dengan hasil ini, MIN unggul 1-0. Satu kemenangan lagi, series tamat. Laga dramatis, New Orleans sempat memangkas jarak di menit akhir, tapi tidak cukup.\n\n---\n\n## Top Performers\n\n**Sisi MIN**, Ayo Dosunmu tampil paling efisien malam ini. 26 poin dari 8-14 field goal, termasuk 4-6 tiga angka—angka solid untuk starter. Jaden McDaniels menyumbang 23 poin, 6 rebound, 5 asis, meski butuh 19 percobaan untuk sampai ke angka itu (8-19 FG). LaMelo Ball jadi playmaker utama: 22 poin, 8 asis, dengan 3-8 from three. Jonathan Kuminga berkontribusi 17 poin dan 8 rebound, peran yang lebih ke arah energi dan kontrol paint. Rudy Gobert, seperti biasa, hadir bukan untuk scoring: 8 poin saja, tapi 11 rebound dalam 25 menit.\n\n**Sisi NO**, Jeremiah Fears tampil paling menonjol dengan 24 poin, 5 rebound, 5 asis, 9-16 from field dan hampir bawa Pelicans comeback di kuarter akhir. Karlo Matkovic cetak 18 poin efisien (7-13 FG, 4-8 from three) dalam hanya 18 menit, salah satu yang paling produktif per menit di laga ini. Saddiq Bey off the bench: 17 poin, 5 rebound, 4 asis. Zion Williamson 13 poin dan 8 rebound, present, tapi bukan faktor penentu.\n\n---\n\n## Baca Statistik\n\nMIN menang meski kalah dari hampir semua sisi efisiensi shooting: NO punya FG% lebih tinggi (45% vs 43%) dan 3PT% jauh di atas (42% vs 31%). NO juga unggul di fast-break points, 30 berbanding 11, selisih yang signifikan.\n\nMIN menang di garis free throw dan rebound. Dua faktor itu beda main. MIN ke garis free throw 37 kali, masuk 27 (73%). NO hanya 26 percobaan, masuk 21 (81%, lebih baik per percobaan, tapi volume lebih kecil). Di rebound, MIN dominan 49-41. Gobert dan Kuminga jadi anchor di sana. MIN juga unggul di blocks (6-4), yang membantu batasi akses NO ke rim.\n\nTurnover? Relatif seimbang, MIN 14, NO 13. Bukan faktor pembeda.\n\n---\n\n## Momen Penentu\n\nKuarter empat jadi babak paling menegangkan. Saddiq Bey sempat bawa harapan: tiga free throw beruntun di menit 4:44 (skor 97-94), lalu three-pointer dari 23 kaki, 104-99. NO masih hidup.\n\nTapi yang membuat MIN bertahan adalah dua detik krusial di akhir. Jeremiah Fears layup bikin 113-111, jarak sekali. Tapi MIN punya bola terakhir. Jonathan Kuminga dunk 115-111. Pertandingan selesai. Fears sendiri cetak poin terakhir NO di detik 22.8 lewat dua poin plus free throw untuk 113-109, tapi itu saja tidak cukup mengubah cerita.\n\n---\n\n## Selanjutnya\n\nMIN unggul 1-0 di regular season series (best of 3). Game berikutnya belum ada jadwal di input data. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909293",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 109,
+    "away_score": 115,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-11-07T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020923,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has solid structure and accurate stats, but suffers from calqued English phrasing (especially in transitions), overmarked tense in Q4 recap, and a hard failure: meta-commentary about input data embedded in body copy. Requires rewrite of opening paragraph, statistics section transitions, and removal of 'input data' line.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dengan hasil ini, MIN unggul 1-0. Satu kemenangan lagi, series tamat.",
+          "fix": "Rephrase: 'MIN butuh satu kemenangan lagi untuk tamat series' or just remove filler."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "New Orleans sempat memangkas jarak di menit akhir, tapi tidak cukup.",
+          "fix": "'New Orleans pangkas jarak di akhir, tapi terlambat' or 'gagal comeback'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Ayo Dosunmu tampil paling efisien malam ini. ... Jaden McDaniels menyumbang 23 poin",
+          "fix": "Use 'cetak' or 'catat' for Dosunmu: 'Dosunmu cetak 26 poin paling efisien.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Rudy Gobert, seperti biasa, hadir bukan untuk scoring: 8 poin saja...",
+          "fix": "'Gobert bukannya scorer: 8 poin, tapi 11 rebound jadi kontribusi.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Karlo Matkovic cetak 18 poin efisien (7-13 FG, 4-8 from three) dalam hanya 18 menit",
+          "fix": "'Matkovic cetak 18 poin dari 7-13, termasuk 4-8 tiga angka, dalam 18 menit.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Rename: 'Game Berikutnya' or 'Laga Selanjutnya.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game berikutnya belum ada jadwal di input data.",
+          "fix": "Delete entirely. Or: 'Game 3 belum dijadwalkan.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Baca Statistik",
+          "fix": "Rename: 'Statistik Laga' or 'Pertarungan Angka.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe0eae1b1a40db7b1",
+    "published_at": "2026-11-07T04:41:04+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
