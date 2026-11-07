@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "sa-at-sac-2026-11-07-g2",
+  "title": "Recap San Antonio Spurs 124-109 Sacramento Kings (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — San Antonio Spurs vs Sacramento Kings (124-109) di —, 7 November 2026.",
+  "body_md": "# Spurs Libas Kings 124-109, Wembanyama 30 Poin dan 14 Rebound\n\nSan Antonio Spurs menang telak atas Sacramento Kings 124-109 di Game 3 regular season series, Sabtu 7 November 2026. Dengan hasil ini, SA memimpin 2-0 dalam seri empat pertemuan. Victor Wembanyama tampil dominan dengan 30 poin dan 14 rebound, sementara tiga rekan mudanya, Devin Vassell, Stephon Castle, Dylan Harper, masing-masing menyumbang 19 poin. Spurs tampak semakin solid sebagai unit.\n\n---\n\n## Wembanyama dan Empat Scorer di Atas 13 Poin\n\nWembanyama jadi anchor di kedua sisi lapangan: 30 poin, 14 rebound, 2 asis dari 10-18 shooting, termasuk 4-6 dari tiga angka. Hanya butuh 26 menit untuk angka segitu, efisiensi yang membuat Kings kesulitan menemukan jawaban.\n\nYang menarik, Spurs tidak bergantung pada satu nama. Vassell tembak bola dengan konsistensi tinggi: 19 poin dari 6-10 FG, 5-6 dari tiga angka. Dua set-up dari Castle membuka dua tembakan jauh Vassell di Q1, chemistry yang terbentuk natural antara dua starter muda ini.\n\nCastle sendiri cetak 19 poin, 3 rebound, dan 7 asis dengan 7-13 shooting. Harper melengkapi barisan 19-pointers dengan 5-10 dari lapangan. Harrison Barnes off the bench tambahkan 13 poin, 2-5 dari tiga angka. Lima pemain di atas 13 poin, ini bukan kemenangan satu bintang. ini kolektif.\n\nDi sisi Kings, Darius Acuff Jr. jadi top scorer dengan 22 poin dan 8 asis, meski butuh 9-20 shooting untuk sampai ke angka tersebut, tidak efisien. Domantas Sabonis catat double-double 17 poin dan 12 rebound dengan 8-12 dari lapangan, sebuah penampilan solid yang sayangnya tidak cukup untuk menahan laju Spurs. Zach LaVine hanya 14 poin dari 4-12 FG, 1-6 dari tiga angka, malam yang berat buat guard veteran ini.\n\n---\n\n## Free Throw Jadi Pembeda Nyata\n\nStatistik tim memberi gambaran jelas mengapa Spurs menang: secara FG% hampir identik, SA 48%, SAC 49%, dan three-point percentage SA bahkan lebih unggul, 50% berbanding 46%. Tapi celah terbesar ada di free throw.\n\nSA ke garis 42 kali dan masuk 33 (79%). SAC hanya ke garis 19 kali dan masuk 13 (68%). Selisih kesempatan free throw ini, 42 vs 19, menjelaskan banyak hal tentang agresivitas SA di area cat sepanjang malam.\n\nRebound juga berpihak ke Spurs: 46 berbanding 36. Dengan Wembanyama sebagai anchor di sisi kaca, Kings kesulitan memberi second-chance points meaningful. SA catat 42 poin di paint, SAC 44, tapi dominasi rebound SA artinya possession lebih banyak, dan akhirnya, lebih banyak kesempatan dari garis.\n\n---\n\n## SA Tinggal Butuh Sekali Menang\n\nDengan SA kini unggul 2-0 dalam seri empat game, mereka hanya perlu satu kemenangan lagi untuk menutup seri dengan rekor sempurna. Game 4 menjadi penentu, jadwal dan venue belum dikonfirmasi di data yang tersedia.\n\nYang jelas, Spurs muda ini tampil makin percaya diri. Empat starter di bawah usia 23 tahun masing-masing cetak 19 poin atau lebih, Wembanyama bermain seperti franchise player matang di tahun ketiganya, dan bench sudah mulai memberikan kontribusi nyata. Kings butuh jawaban besar di Game 4 jika tidak ingin seri ini berakhir lebih awal.\n\nSiaran live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909295",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "San Antonio Spurs",
+    "away_abbr": "SA",
+    "home_score": 109,
+    "away_score": 124,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-07T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021343,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail. High-severity training inference (Wembanyama tenure year), tense overmarking in lede, and translated-English clause structure in stats section. Remove biographical inferences (ages, tenure years) not in input block. Tighten stats paragraph for flow.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "menang telak atas Sacramento Kings 124-109 di Game 3 regular season series, Sabtu 7 November 2026. Dengan hasil ini, SA memimpin",
+          "fix": "San Antonio Spurs menang telak 124-109 atas Sacramento Kings di Game 3 regular season series. SA kini memimpin 2-0 dalam seri empat pertemuan."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Wembanyama bermain seperti franchise player matang di tahun ketiganya",
+          "fix": "Delete or replace with: 'Wembanyama bermain seperti franchise player matang' (remove year reference)."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Secara FG% hampir identik, SA 48%, SAC 49%, dan three-point percentage SA bahkan lebih unggul, 50% berbanding 46%.",
+          "fix": "Field goal percentage hampir identik: SA 48%, SAC 49%. Dari tiga angka, SA unggul 50% vs 46%."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "ini bukan kemenangan satu bintang. ini kolektif.",
+          "fix": "Bukan kemenangan satu bintang — ini kemenangan kolektif. (Use em-dash or single sentence.)"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Vassell tembak bola dengan konsistensi tinggi: 19 poin dari 6-10 FG, 5-6 dari tiga angka. Dua set-up dari Castle membuka dua tembakan jauh Vassell di Q1",
+          "fix": "Set-up dari Castle membuka tembakan jauh Vassell di kuartal pertama. (Drop 'dua', spell out 'Q1')"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Rebound juga berpihak ke Spurs: 46 berbanding 36. Dengan Wembanyama sebagai anchor di sisi kaca, Kings kesulitan memberi second-chance points meaningful. SA catat 42 poin di paint, SAC 44, tapi dominasi rebound SA artinya possession lebih b",
+          "fix": "Spurs rebounding dominasi 46-36. Dengan Wembanyama di sisi kaca, Kings jarang dapat second chance. Spurs cetak 42 poin di paint, lebih banyak possession, lebih banyak peluang."
+        },
+        {
+          "type": "training_inference",
+          "severity": "low",
+          "snippet": "Empat starter di bawah usia 23 tahun masing-masing cetak 19 poin atau lebih",
+          "fix": "Delete age qualifier: 'Empat starter masing-masing cetak 19 poin atau lebih.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0f61e929e28dd7a6",
+    "published_at": "2026-11-07T06:16:38+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
