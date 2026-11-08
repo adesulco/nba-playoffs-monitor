@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "orl-at-gs-2026-11-08-g1",
+  "title": "Recap Orlando Magic 119-126 Golden State Warriors (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Golden State Warriors (119-126) di —, 8 November 2026.",
+  "body_md": "# Golden State Warriors Tumbangkan Orlando Magic 126-119 di Overtime\n\nGolden State Warriors membutuhkan overtime untuk menumbangkan Orlando Magic 126-119, Sabtu 8 November 2026. Stephen Curry jadi penentu di momen krusial, Warriors unggul 1-0 di regular season series ini.\n\n---\n\n## Curry Tutup di Overtime\n\nRegulasi berakhir imbang. Lalu, dalam lima menit overtime, Curry mengambil alih.\n\nDua menit lebih sedikit sebelum waktu berakhir, da Silva beri harapan Magic dengan tiga angka 24 kaki, dibantu Wagner. Skor jadi 118-117. ORL punya peluang.\n\nTapi Curry tidak memberi ruang. Dua puluh detik kemudian, dia masuk dengan tembakan 8 kaki, free throw masuk, skor berbalik 118-120. Ketika da Silva tidak bisa membalas, Curry menambah 8 kaki lagi, 118-122. Setelah Carter Jr. mencetak dua free throw untuk ORL, Lendeborg menutup pertandingan dengan dunk plus dua free throw. Final: 126-119.\n\nCurry mengakhiri malam dengan 41 poin, 6 rebound, 6 asis, dan efisiensi yang sulit dibantah: 13-19 from the field, 5-10 dari garis tiga angka.\n\n---\n\n## Wagner Bawa ORL Sampai Overtime\n\nOrlando sebenarnya bukan tim yang kalah jauh sepanjang malam.\n\nFranz Wagner memimpin dengan 30 poin, 11 asis, dan 6 rebound. Angkanya membuktikan: playmaker sejati, bukan sekadar pencetak gol. Dia yang mengatur tempo, dia yang mengassist da Silva di momen terpenting overtime.\n\nWendell Carter Jr. menambah 19 poin dan 11 rebound dengan 6-12 FG, double-double yang dibutuhkan tim untuk bertarung di papan. Jamal Cain dari bench menambah 18 poin dan 12 rebound. Anthony Black 18 poin, 8 rebound, 6 asis.\n\nKurnya jadi soal: ORL menembak 38% from the field secara keseluruhan, dibanding GS yang 54%. Da Silva sendiri 7-21 dari lapangan, 33%, meski mencetak 19 poin.\n\n---\n\n## Statistik yang Bicara\n\nPerbedaan antara kedua tim ada di efisiensi, bukan volume.\n\nORL melempar lebih banyak, 113 field goal attempts vs 80 milik GS. Tapi hasilnya hampir sama: 43 buat masing-masing tim. FG% Warriors 54% vs ORL 38%. Di garis tiga angka, GS 47% vs ORL 33%.\n\nORL dominan di rebound, 57 vs 42. Tapi dominasi papan tidak cukup menutup selisih efisiensi. Warriors juga menang di free throw: 25-31 (81%) vs ORL 15-21 (71%).\n\nGS banyak turnover (19 vs 14), tapi Magic tidak manfaatkan sepenuhnya. Fast-break points: GS 8, ORL 5.\n\n---\n\n## Lendeborg: Faktor X GS\n\nDi balik Curry, Yaxel Lendeborg jadi kejutan malam ini.\n\n23 poin, 8 rebound, 3 asis, dan dua basket terakhir yang mengunci overtime. Dunk Lendeborg di sisa 11 detik, disusul dua free throw, memastikan Warriors tidak perlu overthink di momen penutup.\n\nBrandin Podziemski menambah 15 poin dengan 4-5 from three, efisiensi tinggi dari 39 menit bermain. Georges Niang off the bench menyumbang 11 poin dengan 3-3 dari garis tiga angka.\n\n---\n\n## Selanjutnya\n\nIni laga kedua dan terakhir dari regular season series antara ORL dan GS. Golden State Warriors menutup seri 1-0.\n\nTayang ulang tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909942",
+    "home_team": "Golden State Warriors",
+    "home_abbr": "GS",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 126,
+    "away_score": 119,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-11-08T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "GS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039101,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has strong structure and accurate stats, but contains training-data inference creep (Lendeborg framed as 'surprise'), awkward translated-English transitions ('Regulasi berakhir imbang'), and essay-like thesis openings. Tighten prose and remove narrative overlay not in input data.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Regulasi berakhir imbang. Lalu, dalam lima menit overtime, Curry mengambil alih.",
+          "fix": "Lawan hentian di normal time. Overtime dimulai, Curry ambil alih."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Curry mengakhiri malam dengan 41 poin... efisiensi yang sulit dibantah",
+          "fix": "Curry selesai dengan 41 poin, 13-19 FG, 5-10 three-pointers."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Perbedaan antara kedua tim ada di efisiensi, bukan volume.",
+          "fix": "Start with facts. Warriors 54% FG, Magic 38%. Efisiensi, bukan volume."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Kurnya jadi soal: ORL menembak 38% from the field",
+          "fix": "Tapi angka shooting ceritanya berbeda. ORL 38% FG, GS 54%."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya / Ini laga kedua dan terakhir dari regular season series",
+          "fix": "Delete 'Selanjutnya' header. Merge into closing paragraph."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Yaxel Lendeborg jadi kejutan malam ini",
+          "fix": "Remove 'kejutan' framing. Just: 'Lendeborg menambah 23 poin, 8 rebound, 3 asis.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua menit lebih sedikit sebelum waktu berakhir",
+          "fix": "Dengan 2:24 di overtime, da Silva bikin tiga angka 24 kaki, 118-117."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Brandin Podziemski menambah 15 poin dengan 4-5 from three, efisiensi tinggi dari 39 menit bermain.",
+          "fix": "Brandin Podziemski tambah 15 poin, 4-5 three-pointers, 39 menit."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xabdfe46236418785",
+    "published_at": "2026-11-08T04:38:38+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
