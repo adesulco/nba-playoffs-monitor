@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "sa-at-por-2026-11-08-g1",
+  "title": "Recap San Antonio Spurs 125-103 Portland Trail Blazers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — San Antonio Spurs vs Portland Trail Blazers (125-103) di —, 8 November 2026.",
+  "body_md": "# San Antonio Spurs Sikat Portland 125-103, Wembanyama 29 Poin Pimpin Kemenangan\n\nSan Antonio Spurs kembali menang atas Portland Trail Blazers, 125-103, dalam laga regular season Sabtu 8 November 2026. Ini kemenangan kedua berturut-turut Spurs atas Portland musim ini, mereka unggul 2-0 di pertemuan musim ini setelah menang di laga pertama. Kemenangan meyakinkan dengan margin 22 poin ini dibangun di atas efisiensi tembakan tiga angka dan dominasi rebound yang tak terbantahkan.\n\n---\n\n## Wembanyama Efisien, Skuad Merata\n\nVictor Wembanyama tampil efisien dengan 29 poin, 7 rebound, dan 3 asis hanya dalam 24 menit. Yang bikin angka itu impresif: Wemby mencapainya dengan shooting 9-13 dari field dan 3-6 dari tiga angka. Bukan volume shooter, dia selesaikan misi lebih cepat dari siapapun di lapangan.\n\nYang menarik dari malam ini bukan cuma Wembanyama. Spurs merotasi kontribusi dengan rapi. Devin Vassell tambah 15 poin dengan efisiensi 4-8 dari field. Stephon Castle cetak 14 poin, 7 rebound, dan 5 asis, angka yang menggambarkan guard muda yang sudah paham floor game. Dylan Harper juga 13 poin dan 7 rebound dalam 28 menit sebagai starter.\n\nLalu ada Julian Champagnie dari bench. Empat-dari-tujuh dari tiga angka, total 14 poin, bench scorer yang menjaga momentum ketika starter istirahat. Ini bukan kemenangan satu orang. ini tim yang lagi dalam irama.\n\n---\n\n## Statistik Bilang Apa\n\nDua angka menjelaskan hasil malam ini lebih dari yang lain.\n\n**Tiga angka:** SA 17-44 (39%) vs POR 9-35 (26%). Spurs mencetak hampir dua kali lebih banyak three-pointer dengan persentase yang jauh lebih tinggi. Dalam liga yang semakin dimenangkan dari belakang garis, perbedaan ini saja sudah menjelaskan sebagian besar margin 22 poin.\n\n**Rebound:** SA 51, POR 38. Spurs menguasai papan dengan selisih 13 rebound, artinya lebih banyak second-chance opportunity, lebih sedikit ruang buat Portland untuk membangun offense dari rebound ofensif sendiri.\n\nAssists pun berbicara: SA 28 vs POR 17. Spurs bermain basketball yang lebih terkoneksi, lebih banyak pergerakan bola, lebih sedikit isolation yang menguras.\n\nSatu catatan buat Portland: turnovers 18 berbanding 16 milik Spurs, selisih tipis, tapi dalam konteks kekalahan 22 poin setiap possession yang terbuang terasa lebih mahal.\n\n---\n\n## Portland Tak Punya Jawaban\n\nDi sisi Portland, tidak ada yang bermain buruk secara individual, tapi tidak ada yang cukup baik secara kolektif. Deni Avdija topscorer dengan 15 poin, tapi shooting-nya 5-13 dari field. Scoot Henderson 13 poin tapi 0-5 dari tiga angka, malam yang menggambarkan keterbatasan Henderson sebagai ancaman perimeter.\n\nDamian Lillard 12 poin dan 7 asis, angkanya ada, tapi Portland butuh lebih dari itu dari pemain dengan peran sebesar Lillard. Yang Hansen dari bench setidaknya berikan fight di papan: 12 poin dan 10 rebound adalah double-double yang solid, satu-satunya pemain Portland yang benar-benar mendominasi satu aspek laga.\n\nJrue Holiday tambah 11 poin dari bench, tapi Portland secara keseluruhan tidak punya jawaban untuk intensitas Spurs di tiga angka dan rebound.\n\n---\n\n## Ke Depan\n\nDua kemenangan Spurs dalam dua pertemuan musim ini membentuk tren yang perlu diperhatikan Portland. Laga ketiga dari empat pertemuan musim reguler antara kedua tim belum terjadwal dalam input yang tersedia, tapi jika Portland tidak menemukan cara untuk menutup gap tiga angka dan rebound, polanya kemungkinan akan berulang.\n\nPantau lanjutannya di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909944",
+    "home_team": "Portland Trail Blazers",
+    "home_abbr": "POR",
+    "away_team": "San Antonio Spurs",
+    "away_abbr": "SA",
+    "home_score": 103,
+    "away_score": 125,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-08T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022337,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail due to critical training-data inference (claiming 2-0 series lead when input shows 1-0, plus speculative future-games paragraph). Multiple instances of translated-English syntax and unnecessary tense marking. Typo on page. Rewrite closing section and series-state claim.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ini kemenangan kedua berturut-turut Spurs atas Portland musim ini, mereka unggul 2-0",
+          "fix": "Delete 'kedua berturut-turut' and 'mereka unggul 2-0'. Rewrite: 'Spurs unggul 1-0 di series reguler musim ini setelah kemenangan convincing ini.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Laga ketiga dari empat pertemuan musim reguler antara kedua tim belum terjadwal dalam input yang tersedia",
+          "fix": "Cut entire 'Ke Depan' section or replace with: 'Spurs kembali menjamu Portland dalam regular season series ini musim depan di jadwal yang akan ditentukan.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang bikin angka itu impresif: Wemby mencapainya dengan shooting 9-13",
+          "fix": "Rewrite: 'Angkanya impresif dalam efisiensi: 9-13 dari field, 3-6 dari tiga angka.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Stephon Castle cetak 14 poin, 7 rebound, dan 5 asis, angka yang menggambarkan guard muda yang sudah paham floor game.",
+          "fix": "Rewrite: 'angka yang menggambarkan guard muda yang paham floor game.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dalam liga yang semakin dimenangkan dari belakang garis, perbedaan ini saja sudah menjelaskan",
+          "fix": "Rewrite: 'Dalam liga modern, keunggulan tiga angka ini saja bisa menjelaskan selisih 22 poin.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Pantau lanjutannya di NBA League Pass dan Vidio.",
+          "fix": "Delete sentence or replace with: 'Pertandingan NBA dapat ditonton via NBA League Pass dan Vidio.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Ini bukan kemenangan satu orang. ini tim yang lagi dalam irama.",
+          "fix": "Capitalize: 'Ini tim yang lagi dalam irama.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Di sisi Portland, tidak ada yang bermain buruk secara individual, tapi tidak ada yang cukup baik secara kolektif.",
+          "fix": "Rewrite: 'Portland tidak punya pemain yang jelek individual-nya, tapi kolektif mereka gagal.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x1deb29a62021ceb2",
+    "published_at": "2026-11-08T06:40:43+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 76,
+      "headline_score": 78,
+      "headline_comment": "Jelas dan informatif dengan angka kunci, tapi 'Sikat' sedikit klise dan tidak ada angle unik di luar skor + top scorer.",
+      "lead_score": 72,
+      "lead_comment": "Lead memuat fakta inti tapi klaim 'kemenangan kedua berturut-turut' dan 'unggul 2-0' tidak didukung input — ini masalah groundedness yang serius.",
+      "structure_score": 80,
+      "structure_comment": "Alur recap standar yang bersih: bintang, statistik, pihak kalah, outlook — proporsi pas, tidak berlebihan.",
+      "voice_score": 78,
+      "voice_comment": "Register kasual-informatif pas untuk NBA, code-switching natural, tapi beberapa kalimat masih terasa template ('Statistik Bilang Apa').",
+      "suggestion_count": 6,
+      "summary": "Solid recap with clean structure and good stat-driven analysis, but two hard groundedness fails (fabricated '2-0 series' claim + prompt meta-leak about 'input yang tersedia') need fixing before publish. Headline '(Game 1)' tag also contradicts the series state in the data.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Ini kemenangan kedua berturut-turut Spurs atas Portland musim ini, mereka unggul 2-0 di pertemuan musim ini setelah menang di laga pertama.",
+          "issue": "Input hanya menyebut 'SA leads series 1-0' dan 'Game number: 2 of 4' — klaim 'kemenangan kedua berturut-turut' dan 'unggul 2-0' adalah fabrikasi.",
+          "fix": "Ganti dengan: 'Spurs memimpin head-to-head musim ini 1-0 setelah kemenangan ini, dari total empat pertemuan terjadwal.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Laga ketiga dari empat pertemuan musim reguler antara kedua tim belum terjadwal dalam input yang tersedia",
+          "issue": "Frasa 'dalam input yang tersedia' bocor meta-language dari prompt ke pembaca — tanda AI tell yang serius.",
+          "fix": "Hapus seluruh klausa dan tulis: 'Masih ada dua pertemuan lagi di sisa musim reguler untuk Portland mencari jawaban.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Recap San Antonio Spurs 125-103 Portland Trail Blazers (Game 1)",
+          "issue": "Title tag menyebut '(Game 1)' padahal input bilang 'Game number: 2 of 4' dan status series 1-0 — inkonsisten dan membingungkan.",
+          "fix": "Hapus '(Game 1)' dari title, atau ganti ke konteks 'pertemuan kedua musim' sesuai data."
+        },
+        {
+          "priority": "medium",
+          "snippet": "regular season Sabtu 8 November 2026",
+          "issue": "LIGA di input adalah 'NBA Playoffs 2026' tapi artikel konsisten menyebut 'regular season' — potensi konflik data yang tidak diklarifikasi (walau konteks series 1-0 dari 4 memang mengindikasikan reguler).",
+          "fix": "Tambahkan konteks waktu: 'laga awal musim' dan hindari label kategoris jika ambigu."
+        },
+        {
+          "priority": "medium",
+          "snippet": "## Statistik Bilang Apa",
+          "issue": "Heading terasa generik dan template-ish; recap kuat biasanya pakai heading yang bawa angle.",
+          "fix": "Ganti ke heading berbasis insight: 'Tiga Angka dan Papan Jadi Pembeda' atau 'Gap 22 Poin Dibangun dari Dua Area'."
+        },
+        {
+          "priority": "low",
+          "snippet": "ini tim yang lagi dalam irama.",
+          "issue": "Typo kapitalisasi — kalimat baru setelah titik tidak diawali huruf kapital.",
+          "fix": "Perbaiki jadi 'Ini tim yang lagi dalam irama.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
