@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-atl-2026-11-08-g1",
+  "title": "Recap Brooklyn Nets 121-124 Atlanta Hawks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Atlanta Hawks (121-124) di —, 8 November 2026.",
+  "body_md": "Atlanta Hawks menang tipis 124-121 atas Brooklyn Nets, Sabtu pagi 8 November 2026 pukul 07.30 WIB. ATL unggul 1-0 di regular season series ini, dan kemenangan ini bukan soal dominasi penuh, tapi soal siapa yang lebih tenang di momen krusial.\n\n---\n\n## Pemain Kunci\n\nJalen Johnson jadi tulang punggung Atlanta malam ini. 30 poin, 7 rebound, 6 asis, efisiensi solid dengan 11-17 dari lapangan. Dua nama lain yang bikin BKN kewalahan: Nickeil Alexander-Walker dan Aaron Wiggins, masing-masing cetak 20 poin. Wiggins datang dari bench dengan 7-19 dari lapangan dan 5 three-pointer, ini kontribusi yang signifikan dari pemain rotasi. Onyeka Okongwu menambahkan 16 poin plus 5 asis dari posisi center.\n\nDi sisi Brooklyn, Michael Porter Jr. tampil paling konsisten: 25 poin, 9 rebound, dengan 8-17 dari lapangan. Julius Randle memberikan kontribusi ganda yang seimbang, 19 poin, 7 rebound, 8 asis, efisien dengan 8-14 dari lapangan. Nolan Traore juga menyumbang 19 poin dengan efisiensi tertinggi di tim: 8-10 dari lapangan. Satu nama yang menarik perhatian adalah Day'Ron Sharpe, 12 poin, 10 rebound, dan 13 asis. Stat line itu sebuah triple-double, meski Brooklyn tetap kalah.\n\n---\n\n## Baca Statistik Tim\n\nBKN sebenarnya punya persentase tembakan lapangan lebih baik: 48% vs ATL 45%. Dari garis tiga angka, Brooklyn juga unggul tipis, 33% (14-42) vs Atlanta 26% (12-46). Di atas kertas, efisiensi tembakan BKN tidak buruk.\n\nTapi dua angka menjelaskan kekalahan ini dengan gamblang.\n\n**Turnover: 22 vs 12.** Brooklyn buang bola hampir dua kali lebih sering. Itu terlalu mahal di pertandingan yang akhirnya diputuskan tiga poin.\n\n**Fast-break points: 4 vs 20.** ATL mengkapitalisasi setiap kesalahan Brooklyn menjadi transition offense. Angka ini berkorelasi langsung dengan turnover, dan ini yang membuat selisih akhir terasa lebih kecil dari seharusnya bagi Atlanta. BKN sebenarnya bisa lebih jauh tertinggal.\n\nSatu kelebihan Brooklyn yang tidak berdampak cukup: rebound 53 vs 40. Papan dikuasai BKN, tapi keunggulan itu tidak dikonversi menjadi second-chance points yang menentukan.\n\n---\n\n## Momen Penentu\n\nEmpat menit terakhir kuarter keempat menentukan segalanya.\n\nSkor masih 114-114 ketika Alexander-Walker masuk ke garis free throw di menit 1:26, ia cetak dua poin untuk ATL unggul 115-114. Tiga detik kemudian, running layup-nya memperlebar jarak jadi 117-114.\n\nJalen Johnson menambahkan driving layup di 38,5 detik tersisa, 119-114. Randle balas dengan layup untuk BKN di 16,2 detik, Dyson Daniels tambah satu free throw, skor 121-116.\n\nBKN sempat memperketat lewat free throw Porter Jr. di 5,5 detik, 118-123. Lalu di 1,5 detik tersisa, Danny Wolf cetak three-pointer dengan asis Randle: 121-123, satu poin lebih dekat.\n\nTapi Okongwu tenang di garis free throw, 0,2 detik tersisa, cetak 1 dari 2, skor final 124-121. Waktu habis.\n\n---\n\n## Selanjutnya\n\nATL unggul 1-0 di seri tiga game ini. Game ketiga jadwalnya belum tertera di data yang tersedia, pantau update di NBA League Pass dan Vidio untuk informasi siaran lanjutan.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909939",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 124,
+    "away_score": 121,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-11-08T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040299,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article fails due to two hallucinated players (Dyson Daniels, Danny Wolf) not in input data. Additional issues: minor tense/translation drift, structural play-by-play mismatch. Accuracy on roster is non-negotiable in sports recap.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dyson Daniels tambah satu free throw",
+          "fix": "Remove Dyson Daniels reference or rewrite as 'BKN Free throw 1 of 2' without player name"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Danny Wolf cetak three-pointer dengan asis Randle",
+          "fix": "Remove Danny Wolf or rewrite as 'BKN three-pointer, assist Randle' without inventing name"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Jalen Johnson jadi tulang punggung Atlanta malam ini",
+          "fix": "Simply 'Jalen Johnson tulang punggung Atlanta' or 'jadi pemain terbaik'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di atas kertas, efisiensi tembakan BKN tidak buruk",
+          "fix": "Use 'Angka menunjukkan, efisiensi tembakan BKN tidak buruk' or drop opener"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Stat line itu sebuah triple-double, meski Brooklyn tetap kalah",
+          "fix": "Sharpe cetak triple-double (12 pts, 10 reb, 13 ast), tapi sia-sia"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Empat menit terakhir kuarter keempat menentukan segalanya.",
+          "fix": "Change to 'Dua menit terakhir' or focus only on the KEY PLAYS provided"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa6b2ece204cdc7e4",
+    "published_at": "2026-11-08T03:35:43+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
