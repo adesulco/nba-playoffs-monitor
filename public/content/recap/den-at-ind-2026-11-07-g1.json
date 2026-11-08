@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "den-at-ind-2026-11-07-g1",
+  "title": "Recap Denver Nuggets 114-102 Indiana Pacers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Denver Nuggets vs Indiana Pacers (114-102) di —, 7 November 2026.",
+  "body_md": "# Denver Nuggets Kalahkan Indiana Pacers 114-102, Jokic Catat Near Triple-Double\n\nDenver Nuggets menutup rangkaian dua laga regular season melawan Indiana Pacers dengan kemenangan 114-102. Tanpa Jokic mencetak angka spektakuler, Denver tetap menang lewat kedalaman roster, dan keunggulan di area yang paling menentukan: cat dan free throw line.\n\n---\n\n## Pemain Kunci\n\nNikola Jokic bermain seperti biasa: tidak perlu terlihat dominan untuk tetap menentukan. Angkanya 19 poin, 13 rebound, 8 asis, satu asis lagi dari triple-double. Efisiensi shooting-nya tidak ideal di malam ini (7-20 from field), tapi kontribusi Jokic tidak pernah bisa dibaca hanya dari kolom poin. Dua belas rebound di sisi Nuggets, distribusi 8 asis yang menggerakkan seluruh offense, peran itu tidak ada gantinya.\n\nCameron Johnson jadi penyeimbang penting. Delapan belas poin dengan efisiensi tinggi: 8-12 from field, 2-5 dari tiga angka, 29 menit. Jamal Murray melengkapi backcourt Denver dengan 16 poin, 6 rebound, dan 8 asis, bersama Jokic, dua playmaker itu mencatatkan total 16 asis dari sisi Denver.\n\nKejutan datang dari bench. Spencer Jones, 21 menit, cetak 13 poin dengan shooting sempurna: 5-6 from field, 3-3 dari tiga angka. Kontribusi bench yang sulit ditandingi.\n\nUntuk Indiana, Pascal Siakam paling keras berusaha. Dua puluh tiga poin, 5 asis, 10-18 from field, top scorer di pihak Pacers. Larry Nance Jr. efisien dari bench dengan 15 poin lewat 5-7 from field dan 5-7 dari tiga angka dalam 13 menit. Ivica Zubac solid di dalam: 10 poin, 12 rebound, 5 asis. Tapi itu tidak cukup.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka paling cerita di pertandingan ini: **fast-break points** dan **free throws**.\n\nIndiana unggul 21-8 di fast-break points, artinya Pacers lebih banyak memanfaatkan transisi, tapi itu tidak cukup untuk menutup selisih. Denver unggul di area yang lebih efisien: **points in paint 54-44**, dan free throw 16-19 (84%) vs Indiana 5-7 (71%). Ketika Nuggets lebih sering masuk ke cat dan lebih sering ke garis, itu biasanya berakhir satu cara.\n\nTurnover jadi pembeda lain yang krusial: Denver hanya 5, Indiana 10. Di level playoff, dan lawan sekelas Denver, 10 turnover adalah terlalu mahal.\n\nDari tiga angka, kedua tim tidak tampil tajam malam ini. Denver 10-35 (29%), Indiana 15-48 (31%). Keduanya di bawah rata-rata tim tiga angka yang efisien. Denver tidak mengandalkan arc untuk menang, mereka menang lewat kehadiran fisik di dalam dan eksekusi di garis.\n\n---\n\n## Catatan Akhir\n\nIni laga regular season, bukan playoff, tapi pola yang muncul di sini relevan: ketika Jokic tidak perlu mencetak 30-an dan Denver masih menang 12 poin, itu pertanda roster sedang sehat secara kolektif. Johnson dan Murray support-nya meyakinkan, dan bench, terutama Jones, memberikan opsi tambahan yang berbahaya.\n\nUntuk Indiana, Siakam sudah bekerja keras. Tapi selama turnover masih double-digit dan serangan dari transition tidak bisa menutup gap di dalam, hasilnya sulit berbeda.\n\nLaga berikutnya bisa disaksikan lewat **NBA League Pass** atau **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909938",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "Denver Nuggets",
+    "away_abbr": "DEN",
+    "home_score": 102,
+    "away_score": 114,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-11-07T22:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DEN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.049548,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Article passes voice rules with strong accuracy on stats and natural Bahasa flow. One mid-severity phrasing awkwardness ('satu asis lagi dari triple-double') and one clarity issue on rebound reference. Overall tone, code-switching, and structure solid. No hard bans violated.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "satu asis lagi dari triple-double",
+          "fix": "Rephrase to 'hampir cetak triple-double' or 'tinggal satu asis dari triple-double'."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Nikola Jokic bermain seperti biasa: tidak perlu terlihat dominan untuk tetap menentukan.",
+          "fix": "No change needed; this is acceptable."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua belas rebound di sisi Nuggets",
+          "fix": "Change to 'Jokic ambil 13 rebound' or clarify it's team context, not Jokic alone."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Kejutan datang dari bench. Spencer Jones, 21 menit, cetak 13 poin...",
+          "fix": "Optional: 'Kejutan dari bench: Spencer Jones cetak 13 poin dalam 21 menit...' or just delete opener."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xac7cd54ab4f9ef82",
+    "published_at": "2026-11-08T02:06:57+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
