@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "wsh-at-okc-2026-11-08-g1",
+  "title": "Recap Washington Wizards 75-114 Oklahoma City Thunder (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Washington Wizards vs Oklahoma City Thunder (75-114) di —, 8 November 2026.",
+  "body_md": "# OKC Thunder Hajar Wizards 114-75, SGA Dominant dengan 30 Poin\n\nOklahoma City Thunder menutup regular season series melawan Washington Wizards dengan kemenangan telak, 114-75. Shai Gilgeous-Alexander tampil dominant, 30 poin, 2 rebound, 9 asis, dan OKC unggul di hampir semua lini untuk menyempurnakan sweep dua laga atas Wizards.\n\n---\n\n## Pemain Kunci\n\nSGA kembali jadi mesin utama Thunder. Dari 29 menit bermain, dia cetak 30 poin dengan 11-20 dari lapangan dan 3-5 dari garis tiga angka, efisien, bersih, dan sering merepotkan pertahanan Wizards di half-court. Sembilan asisnya juga mencerminkan OKC yang bermain sebagai unit, bukan mengandalkan satu bintang saja.\n\nYang menarik dari sisi OKC adalah kontribusi bench dan pemain muda. Jared McCain cetak 19 poin off the bench dengan efisiensi tinggi, 8-10 dari lapangan, 2-4 dari tiga angka, hanya 23 menit. Aday Mara juga tampil solid: 18 poin, 8 rebound, 3 asis, dengan 8-10 field goal. Dua nama ini bukan pelengkap, mereka mempertebal kedalaman roster OKC dengan serius.\n\nDi sisi Washington, AJ Dybantsa jadi top scorer dengan 19 poin dari 31 menit, tapi butuh 15 tembakan untuk sampai ke sana. Alex Sarr cetak double-double: 15 poin dan 14 rebound, meski kesulitan dari lapangan dengan 7-17 (1-9 dari tiga angka). Kyshawn George menyumbang 14 poin, 7 rebound, 6 asis, stat line yang rapi, tapi tidak cukup untuk menutup gap yang sudah terbuka lebar.\n\n---\n\n## Apa yang Bicara lewat Statistik\n\nAngka-angka pertandingan ini tidak ambigu. Washington tembak 30% dari lapangan dan 16% dari tiga angka, 7-43 dari luar busur. OKC? 49% FG dan 36% dari three-point line. Gap efisiensi sebesar itu hampir mustahil ditutup oleh tim manapun.\n\nPoints in paint menambah cerita: OKC 56, WSH 32. Thunder lebih agresif masuk ke area cat, lebih sering menang di titik kontak. Fast-break points juga condong ke OKC, 21 berbanding 11, menunjukkan Washington kesulitan menjaga transisi setiap kali bola berpindah.\n\nAssists jadi indikator paling jelas: OKC 33, WSH 20. Ini bukan soal SGA bermain hero-ball, ini soal tim yang tahu cara bergerak tanpa bola.\n\n---\n\n## Gambaran Pertandingan\n\nKEY PLAYS menunjukkan Q1 berlangsung kompetitif di awal. Sarr membuka dengan three-pointer dari 26 kaki, diikuti tip shot dan floating jump shot, WSH sempat menjaga paritas. SGA balas dengan step-back dan dua free throw. Sesaat skor masih 16-17 untuk OKC di pertengahan Q1.\n\nTapi dari sana, WSH tidak punya jawaban untuk tempo dan efisiensi Thunder yang terus meningkat. Margin akhir 39 poin berbicara sendiri, ini bukan pertandingan yang dimenangkan oleh satu momentum, tapi oleh superioritas konsisten selama 48 menit.\n\n---\n\n## Ke Mana Selanjutnya\n\nRegular season series ini selesai dengan OKC sweep 2-0 atas Washington. Untuk Thunder, kemenangan ganda atas Wizards mengonfirmasi kedalaman roster, SGA memimpin, tapi McCain dan Mara membuktikan OKC bukan satu pria satu tim.\n\nBagi Wizards, tim yang sedang dalam proses membangun, Dybantsa, Sarr, dan George tetap jadi fondasi menarik untuk dilihat ke depan. Tapi malam ini, gap antara mereka dan kandidat juara seperti OKC masih terasa nyata.\n\nPantau jadwal lanjutan NBA di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909941",
+    "home_team": "Oklahoma City Thunder",
+    "home_abbr": "OKC",
+    "away_team": "Washington Wizards",
+    "away_abbr": "WSH",
+    "home_score": 114,
+    "away_score": 75,
+    "winner_abbr": "OKC",
+    "kickoff_utc": "2026-11-08T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "OKC leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020554,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate numbers, natural voice, and good stat integration. Minor academic-register drift and one structural seam that could tighten prose. Passes voice standards.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik dari sisi OKC adalah kontribusi bench",
+          "fix": "Start paragraph: 'Bench OKC tampil solid. Jared McCain cetak 19 poin...'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Gap efisiensi sebesar itu hampir mustahil ditutup oleh tim manapun",
+          "fix": "Rewrite: 'Gap efisiensi sebesar itu hampir mustahil ditutup.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Assists jadi indikator paling jelas: OKC 33, WSH 20. Ini bukan soal SGA bermain hero-ball",
+          "fix": "Split into two paragraphs or restructure as: 'OKC 33 asis, WSH 20—ini soal unit, bukan hero-ball.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xc24d6be84448b5f0",
+    "published_at": "2026-11-08T04:09:20+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "ny-at-cle-2026-11-08-g1",
+  "title": "Recap New York Knicks 109-97 Cleveland Cavaliers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New York Knicks vs Cleveland Cavaliers (109-97) di —, 8 November 2026.",
+  "body_md": "New York Knicks menang 109-97 atas Cleveland Cavaliers, Sabtu 8 November 2026. Meski Donovan Mitchell tampil luar biasa dengan 37 poin, effort individual itu tidak cukup untuk menyelamatkan CLE dari kekalahan. Dua nama besar NY, Jalen Brunson dan Karl-Anthony Towns, tampil berbarengan, dan kombinasi keduanya terlalu berat untuk dihadapi Cleveland sendirian.\n\n---\n\n## Dua Kepala Lebih Baik dari Satu\n\nBrunson membuat 31 poin, 6 rebound, 9 asis, nyaris sempurna tapi tidak sepenuhnya efisien (12-25 FG). Tapi di sebelahnya ada Towns yang lebih meyakinkan: 29 poin, 13 rebound, 3 asis dengan FG 11-21. Towns juga jadi faktor besar di papan rebound, NY unggul 49-40 dalam total rebound, dan kontribusi Towns terasa di setiap kuarter.\n\nMitchell memang mencetak 37 poin untuk CLE (13-22 FG, 5-13 dari luar busur), dan sampai akhir laga dia tidak menyerah. Tapi Cleveland tidak punya rekan yang sebanding. Evan Mobley dan Peyton Watson masing-masing cetak 12 poin, tapi keduanya hanya menyentuh angka dua digit, tidak ada yang bisa meringankan beban Mitchell secara konsisten.\n\nOG Anunoby menambah 15 poin untuk NY (4-13 FG, 3-9 dari tiga angka), cukup membantu meski tidak efisien dari luar.\n\n---\n\n## Statistik yang Menentukan\n\nFG% kedua tim identik: 43% vs 43%. Persentase tiga angka pun sama: NY 32% (14-44), CLE 32% (16-50). Di atas kertas, keduanya seimbang dari lapangan.\n\nPerbedaan ada di free throw. NY melaksanakan 93% (13-14), CLE hanya 58% (11-19). Di laga yang diputuskan 12 poin, 8 poin yang terbuang di garis free throw CLE adalah cerita yang tidak bisa diabaikan.\n\nNY juga unggul di steals: 7 berbanding 3. Tekanan defensif NY berhasil memaksa turnover dan menciptakan possession tambahan, meski fast-break points justru lebih banyak milik CLE (15 vs 10).\n\n---\n\n## Momen Penentu\n\nPertandingan berjalan ketat di kuarter pertama. Mitchell cetak step-back three-pointer dari 24 kaki untuk bawa CLE unggul, tapi NY terus menjawab. Anunoby menutup Q1 dengan driving dunk untuk balik memimpin 26-25.\n\nKuarter kedua sempat berbalik lagi, Meleek Thomas cetak three-pointer untuk bawa CLE unggul 45-43. Brunson langsung merespons dengan running jump shot untuk NY kembali di depan, 46-45. Data input tidak menyediakan breakdown lengkap sisa pertandingan, tapi skor akhir 109-97 menunjukkan NY berhasil memperlebar margin di paruh kedua.\n\n---\n\n## Selanjutnya\n\nIni adalah Game 2 dari regular season series empat pertandingan. NY kini unggul 1-0. Game berikutnya belum tercantum di data yang tersedia. Siaran live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909940",
+    "home_team": "Cleveland Cavaliers",
+    "home_abbr": "CLE",
+    "away_team": "New York Knicks",
+    "away_abbr": "NY",
+    "home_score": 97,
+    "away_score": 109,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-11-08T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039367,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Readable recap with good stat grasp, but soft-phrase repetition, translated-English phrasing (especially 'effort individual', passive constructions), and a data-transparency break pull it below pass threshold. Rewrite paragraph 1 for more natural English→Indonesian translation, tighten verb variety in stats section, cut the data-input admission.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Brunson membuat 31 poin... Towns yang lebih meyakinkan: 29 poin... Mitchell memang mencetak 37 poin",
+          "fix": "Vary: 'Brunson 31 poin... Towns 29... Mitchell put up 37' or use 'torehan', 'koleksi' once"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Meski Donovan Mitchell tampil luar biasa dengan 37 poin, effort individual itu tidak cukup",
+          "fix": "Mitchell cetak 37 tapi tidak cukup selamatkan CLE, atau: upaya individual Mitchell tidak cukup."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "kombinasi keduanya terlalu berat untuk dihadapi Cleveland sendirian",
+          "fix": "NY terlalu kuat untuk CLE selamatkan, atau: Brunson-Towns terlalu berat dipikul CLE sendiri"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Towns juga jadi faktor besar di papan rebound... Towns jadi faktor besar",
+          "fix": "Second mention: 'kontribusi di papan rebound terasa di setiap kuarter' or 'dominan di rebound'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "sampai akhir laga dia tidak menyerah... tidak ada yang bisa meringankan",
+          "fix": "sampai gong akhir Mitchell tidak menyerah, atau: hingga akhir Mitchell terus berusaha"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Perbedaan ada di free throw. NY melaksanakan 93%",
+          "fix": "NY cetak 93% (13-14), CLE hanya 58%"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "8 poin yang terbuang di garis free throw CLE adalah cerita yang tidak bisa diabaikan",
+          "fix": "'8 poin yang terbuang' or 'CLE buang 8 poin di free throw — perbedaan final' — shorter, punchier"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Data input tidak menyediakan breakdown lengkap sisa pertandingan",
+          "fix": "Delete this sentence. Skip to: 'Skor akhir 109-97 menunjukkan NY perlebar margin di paruh kedua.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x8601e785cc8dca8c",
+    "published_at": "2026-11-08T04:08:45+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
