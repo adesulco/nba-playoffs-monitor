@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "phi-at-chi-2026-11-08-g2",
+  "title": "Recap Philadelphia 76ers 127-121 Chicago Bulls (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Philadelphia 76ers vs Chicago Bulls (127-121) di —, 8 November 2026.",
+  "body_md": "# Philadelphia 76ers Tahan Tekanan Chicago Bulls, Menang 127-121\n\nPhiladelphia 76ers menutup laga ketiga musim regular dengan kemenangan 127-121 atas Chicago Bulls, Senin dini hari 9 November 2026 jam 03.30 WIB. PHI kini unggul 2-0 dalam series empat pertemuan musim ini. Laga ini jauh dari mudah, dengan Bulls terus menekan di Q4 sebelum PHI meredam tekanan dari garis free throw.\n\n---\n\n## Top Performers\n\n**Jaylen Brown** memimpin PHI dengan 29 poin, 7 rebound, 4 asis. Efisiensinya tidak sempurna, 11-22 dari lapangan, 2-6 dari tiga poin, tapi Brown yang paling dingin di momen panas: dua free throw berturut-turut dengan 51 detik tersisa mengamankan keunggulan jadi 125-120, satu free throw lagi di detik 13.4 menuntaskan perlawanan Bulls.\n\n**Tyrese Maxey** cetak 27 poin, 7 asis, 4 rebound dengan 9-16 dari lapangan. Maxey menorkestrasi transisi PHI, dengan 7 asis mencerminkan prioritas pergerakan bola sebelum isolation menjadi pilihan.\n\n**LeBron James** menyumbang 22 poin, 5 rebound, 5 asis dengan 8-16 dari lapangan. **Joel Embiid** 18 poin dan 10 rebound, satu-satunya double-double malam ini, plus 5 asis, meski shooting-nya kurang efisien (7-19). **VJ Edgecombe** 13 poin, 6 rebound, 3-6 dari tiga poin.\n\nUntuk CHI, **Josh Giddey** tampil sebagai playmaker: 19 poin, 15 asis, 7 rebound. Giddey nyaris mencetak triple-double dan hampir seorang diri membuat Bulls kompetitif dari sisi distribusi bola. **Matas Buzelis** 19 poin termasuk running dunk di Q4 yang memotong defisit. **Jalen Smith** 17 poin, 8 rebound dengan efisiensi solid (7-11). **Caleb Wilson** 18 poin meski hanya 7-18 dari lapangan.\n\n---\n\n## Baca Statistiknya\n\nAngka yang paling menjelaskan hasil malam ini: tiga poin dari arc.\n\nPHI 41% dari tiga poin (14-34). CHI hanya 27% (10-37). Selisih efisiensi dari jarak jauh itu yang membuat PHI bisa menang meski kalah dalam FG% keseluruhan, CHI justru lebih efisien dari dua poin (52% vs 46% FG keseluruhan, dengan Bulls punya FG% lapangan yang lebih tinggi).\n\nRebound jadi penentu lain. PHI 54, CHI 42, keunggulan 12 papan berarti lebih banyak second-chance points dan lebih sedikit ruang buat Bulls membangun momentum offensif. Turnover juga berpihak ke PHI: 9 turnover dibanding 13 milik Bulls. PHI 8 steal berbanding 6, cukup untuk beberapa kali mengonversi langsung ke fast break. Fast-break points PHI 18, CHI 15.\n\nCHI unggul dalam points in paint, 64 berbanding 58, namun Bulls tidak bisa mengonversinya jadi kemenangan karena bocor di tiga poin dan turnover.\n\n---\n\n## Momen Penentu\n\nDua menit terakhir Q4 menceritakan semuanya.\n\nEmbiid ke garis free throw menit 2:40, membuat dua free throw berturut-turut. Skor 120-116. PHI sepertinya sudah aman. Lalu Buzelis mencetak running dunk off assist Giddey untuk 123-120. Setelah Wilson free throw sebelumnya (123-118), Bulls tiba-tiba hidup.\n\nDi situlah Brown mengambil alih. Free throw pertama 124-120. Free throw kedua 125-120. Smith membalas satu free throw untuk 125-121. Brown kembali ke garis di detik 13.4, cetak satu lagi: 126-121. Laga selesai.\n\nSkenario yang bisa jadi mahal, defisit tiga poin di injury time, diredam tanpa panik. Brown 4-4 dari free throw di dua menit terakhir.\n\n---\n\n## Selanjutnya\n\nPHI memimpin series 2-0 dengan satu laga tersisa. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909945",
+    "home_team": "Chicago Bulls",
+    "home_abbr": "CHI",
+    "away_team": "Philadelphia 76ers",
+    "away_abbr": "PHI",
+    "home_score": 121,
+    "away_score": 127,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-11-08T20:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHI leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.052767,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail. Article has one high-severity translated-English issue ('hampir seorang diri'), multiple soft-phrase overuse, and weak structural connectors. Stats are accurate, storytelling is sound, but voice drifts toward AI-assisted-translation register instead of sharp Indonesian sport writing. Regenerate with focus on cutting hedging language and tightening transitions.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "menutup laga ketiga musim regular... menutup perlawanan Bulls",
+          "fix": "Replace second 'menutup' with 'menuntaskan' or restructure: 'Brown's 126-121 freeze kemenangan PHI'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Giddey nyaris mencetak triple-double dan hampir seorang diri membuat Bulls kompetitif",
+          "fix": "Rewrite: 'Giddey nyaris triple-double; orchestration-nya yang keep Bulls in it' or just 'Giddey's 15 ast almost carry CHI'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Baca Statistiknya... Angka yang paling menjelaskan...",
+          "fix": "Delete 'Angka yang paling menjelaskan hasil malam ini:' and go straight to 'Tiga poin dari arc'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Rebound jadi penentu lain. PHI 54, CHI 42...",
+          "fix": "Start: 'Rebound 54-42 untuk PHI. Keunggulan 12 papan berarti...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "cukup untuk beberapa kali mengonversi langsung ke fast break",
+          "fix": "Rewrite: 'PHI 8 steal, beberapa langsung jadi fast-break points (PHI 18, CHI 15)'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dua menit terakhir Q4 menceritakan semuanya",
+          "fix": "Just describe: 'Dua menit terakhir Q4 baru tegang. Embiid free throw 2-2, 120-116...' or 'Q4 akhir: siapa yang tenang?'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Skenario yang bisa jadi mahal, defisit tiga poin di injury time, diredam tanpa panik.",
+          "fix": "Simpler: 'Defisit 3 di injury time. PHI tetap tenang. Brown 4-4 free throw akhir.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya... PHI memimpin series 2-0 dengan satu laga tersisa",
+          "fix": "Cut 'Selanjutnya'. Start directly: 'PHI memimpin series 2-0 dengan satu laga tersisa.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x25736b93248545b0",
+    "published_at": "2026-11-09T02:07:46+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

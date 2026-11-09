@@ -1,0 +1,69 @@
+{
+  "type": "recap",
+  "slug": "lal-at-det-2026-11-08-g1",
+  "title": "Recap Los Angeles Lakers 121-116 Detroit Pistons (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Los Angeles Lakers vs Detroit Pistons (121-116) di —, 8 November 2026.",
+  "body_md": "# Austin Reaves 43 Poin, Lakers Tahan Banting Lawan Pistons 121-116\n\nLos Angeles Lakers menutup regular season series melawan Detroit Pistons dengan kemenangan tipis 121-116, Minggu 9 November 2026. Austin Reaves jadi penentu dengan 43 poin, penampilan individual yang praktis memikul Lakers sendirian di momen-momen kritis Q4. LAL unggul 1-0 di head-to-head series musim ini.\n\n---\n\n## Reaves dan Dua Bench Pistols dari Detroit\n\nReaves tampil 37 menit sebagai starter dengan 43 poin, 5 rebound, 4 asis, shooting 14-27 dari lapangan dan 4-6 dari tiga poin. Bukan garis statistik yang efisien secara shooting, tapi angka absolutnya bicara sendiri: hampir sepertiga dari 121 poin Lakers berasal dari satu orang. Di sisa waktu kritis, free throw-nya yang menentukan, dua tembakan beruntun di detik 2.2 yang mengunci skor 121-116.\n\nDari bench Lakers, Ziaire Williams dan Collin Sexton masing-masing menyumbang 17 poin. Williams 6-10 dari field dengan 4-8 from three, Sexton 5-10 dari lapangan. Keduanya jadi pelapis yang solid di menit-menit reguler, meski kontribusi mereka di Q4 lebih banyak lewat free throw daripada serangan terorganisir.\n\nSisi Detroit punya narasi sendiri yang menarik: dua top scorer mereka keluar dari bench. Daniss Jenkins 31 poin, 5 rebound, 4 asis dengan 8-15 from three, angka yang luar biasa untuk pemain rotasi. Kevin Huerter menambah 24 poin, 5 rebound, 5 asis dengan 4-8 from three. Dua pemain bench, 55 poin gabungan. Jika dua starter andalan Detroit bisa perform seperti itu dari bangku cadangan, wajar pertandingan ini ketat sampai detik terakhir.\n\nCade Cunningham sebagai motor utama Pistons mencatat 14 poin, 4 rebound, 8 asis, tapi shooting-nya berat: 6-15 dari field, 1-6 from three. Cunningham lebih banyak jadi kreator untuk orang lain di laga ini.\n\n---\n\n## Statistik Tim: Dua Area Pembeda\n\nBox score tim menunjukkan dua pertandingan yang hampir seimbang di banyak aspek, tapi ada dua area yang menjelaskan selisih lima poin akhir.\n\n**Free throw**: Lakers 26-33 (79%), Pistons 13-20 (65%). LAL dapat 13 kunjungan tambahan ke garis free throw dibanding DET. Di laga yang diputuskan lima poin, selisih itu krusial.\n\n**Points in paint**: LAL 58, DET 46. Lakers agresif masuk ke area cat, Walker Kessler 12 poin dari 5-10 field goal, plus 16 rebound (kombinasi yang langka dan impactful). Kessler praktis mendominasi area di bawah ring secara sepihak.\n\nDari tiga poin, kedua tim hampir seimbang: LAL 11-28 (39%), DET 19-48 (40%). DET lebih banyak mencoba (48 versus 28), tapi akurasi setara. Yang membedakan bukan tiga poin, tapi agresivitas LAL masuk ke paint dan kapasitas mereka mengkonversi free throw.\n\n---\n\n## Q4: Cunningham Terus Mencoba, Reaves Menutup\n\nSisa Q4 adalah pertarungan Detroit coba menutup gap, Lakers bertahan lewat free throw.\n\nSetelah Sexton bikin free throw untuk 115-110, Cunningham menjawab dengan driving layup untuk 116-112. Reaves balas dengan free throw untuk 117-112. Cunningham kembali, kali ini dengan 2-foot driving dunk untuk 118-114. Pistons tidak berhenti, Huerter bikin driving layup di 2.6 detik tersisa untuk 119-116. Lalu Reaves ke garis free throw, dua kali, untuk menutup 121-116.\n\nDetroit memberi perlawanan sampai detik terakhir. Tapi Lakers punya Reaves di ujung laga, dan itu sudah cukup.\n\n---\n\nLaga ini selesai sebagai penutup regular season series. Lakers dan Pistons tidak bertemu lagi dalam jadwal head-to-head musim ini. Untuk perkembangan selanjutnya dari kedua tim, pantau di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909946",
+    "home_team": "Detroit Pistons",
+    "home_abbr": "DET",
+    "away_team": "Los Angeles Lakers",
+    "away_abbr": "LAL",
+    "home_score": 116,
+    "away_score": 121,
+    "winner_abbr": "LAL",
+    "kickoff_utc": "2026-11-08T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "LAL lead series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022586,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Solid recap with accurate stats and clear structure. Minor issues: inconsistent shooting notation (mixing Indonesian/English), one speculative inference about Jenkins/Huerter being 'starter-caliber', and some hedging language in Q4 analysis. No hard-ban violations or tense overmarking. Passes with low-severity flags.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Reaves tampil 37 menit sebagai starter dengan 43 poin, 5 rebound, 4 asis, shooting 14-27 dari lapangan dan 4-6 dari tiga poin.",
+          "fix": "Reaves tampil 37 menit dengan 43 poin (14-27 FG, 4-6 3PT), 5 rebound, 4 asis. Or: Reaves cetak 43 poin dari 14-27 percobaan, plus 5 rebound dan 4 asis."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Williams 6-10 dari field dengan 4-8 from three, Sexton 5-10 dari lapangan.",
+          "fix": "Use one system: Williams 6-10 FG dan 4-8 3PT, Sexton 5-10 FG. Or all Indonesian: Williams 6 dari 10 lapangan, 4 dari 8 tiga angka."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Dua pemain bench, 55 poin gabungan. Jika dua starter andalan Detroit bisa perform seperti itu dari bangku cadangan, wajar pertandingan ini ketat sampai detik terakhir.",
+          "fix": "Delete speculation. Keep fact-level: Jenkins 31 poin, Huerter 24 poin dari bench. Dua orang cetak 55 poin, dorong laga jadi ketat."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Dari bench Lakers, Ziaire Williams dan Collin Sexton masing-masing menyumbang 17 poin.",
+          "fix": "Keep first instance (bed established). Rephrase second: Williams dan Sexton cetak 17 poin masing-masing."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Keduanya jadi pelapis yang solid di menit-menit reguler, meski kontribusi mereka di Q4 lebih banyak lewat free throw daripada serangan terorganisir.",
+          "fix": "State only what's in data: Keduanya cetak poin steady di reguler time. Di Q4, free throw mereka jadi sumber poin."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe3e421ab24c1cca0",
+    "published_at": "2026-11-09T02:08:28+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
