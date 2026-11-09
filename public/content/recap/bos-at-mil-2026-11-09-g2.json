@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "bos-at-mil-2026-11-09-g2",
+  "title": "Recap Boston Celtics 117-97 Milwaukee Bucks (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Milwaukee Bucks (117-97) di —, 9 November 2026.",
+  "body_md": "Boston Celtics menutup seri reguler melawan Milwaukee Bucks dengan dominasi penuh, menang 117-97, clean sweep tiga pertandingan. Paul George dan Jayson Tatum memimpin dari depan, tapi kemenangan ini dibangun di atas fondasi kolektif yang solid di semua lini.\n\n---\n\n## Dua Top Scorer, Dua Cara Berbeda\n\nPaul George tampil paling efisien malam ini: 27 poin dari 11-18 field goal, dengan 5-10 dari luar arc dalam 28 menit bermain. Produktif tanpa perlu memaksakan.\n\nTatum menyusul dengan 21 poin, 4 rebound, 6 asis, meski butuh 19 percobaan dari lapangan untuk sampai ke sana (6-19 FG). Kontribusinya lebih dari sekadar angka. enam asis mencerminkan peran playmaker yang dia emban di sistem BOS.\n\nDi sisi bench, Mitchell Robinson tampil sempurna secara efisiensi: 12 poin dari 6-6 field goal, plus 7 rebound dalam 18 menit. Payton Pritchard menambah 12 poin dari luar arc (4-11 dari tiga angka). Neemias Queta melengkapi rotasi starter dengan 13 poin dan 9 rebound.\n\nUntuk MIL, Kyle Kuzma berjuang sendiri. 27 poin, 6-13 dari tiga angka, angka yang layak di atas kertas, tapi tidak cukup untuk menahan tekanan BOS secara keseluruhan. Tyler Herro (13 poin) dan Brayden Burries (13 poin, 8 rebound) memberikan kontribusi, tapi MIL tidak punya jawaban kolektif.\n\n---\n\n## Apa yang Bicara di Box Score\n\nBOS unggul di hampir semua kategori penting.\n\nRebound: 48 berbanding 36 untuk BOS. Di laga NBA di mana transisi dan second-chance points menentukan, selisih 12 rebound itu signifikan, dan angka-angka lain mengonfirmasi dampaknya: fast-break points BOS 15 vs MIL 9, points in paint 44 vs 28.\n\nTurnover juga bercerita: BOS 10, MIL 15. BOS mengkapitalisasi dengan 12 steal versus MIL 5, tekanan defensif BOS konsisten sepanjang laga.\n\nShooting dari tiga angka: BOS 38% (18-48) vs MIL 35% (15-43). Selisihnya tipis di persentase, tapi BOS mencoba lebih banyak dan mengkonversi lebih banyak secara absolut.\n\nSatu catatan yang sedikit mengganjal untuk BOS: free throw 64% (9-14). MIL jauh lebih bersih di garis, 86% (12-14). Tapi dalam kemenangan 20 poin, angka itu tidak mengubah cerita.\n\n---\n\n## Penutup Seri\n\nBOS menutup seri reguler tiga laga ini dengan clean sweep, unggul 2-0 dalam series tracking. Momentum mengarah jelas ke satu sisi.\n\nLaga berikutnya bisa disimak live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909949",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 97,
+    "away_score": 117,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-11-09T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BOS leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.033764,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stats, natural Indonesian voice, and strong structure. One training-inference (Derrick White assist) should be removed; soft phrase 'menutup' repeats but within tolerance. Pass with minor polish.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "menutup seri reguler... Paul George dan Jayson Tatum memimpin dari depan",
+          "fix": "Use 'tutup seri' or 'selesaikan seri' in one instance; rename heading to 'Seri Berakhir' or 'Dominasi Sempurna'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Derrick White assists... (score 28-27)",
+          "fix": "Delete the KEY PLAYS reference entirely or rewrite without the assist attribution if not verified in input."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Brayden Burries (13 poin, 8 rebound) memberikan kontribusi",
+          "fix": "Optional: add 'dan 4 asis' for completeness per input data."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Kyle Kuzma berjuang sendiri. 27 poin, 6-13 dari tiga angka",
+          "fix": "Soften: 'Kyle Kuzma tampil konsisten 27 poin, 6-13 dari tiga...' — accurate but not 'struggle' framing."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x804b31ba74c9a4bc",
+    "published_at": "2026-11-09T03:38:19+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
