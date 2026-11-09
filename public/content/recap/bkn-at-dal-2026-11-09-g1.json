@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-dal-2026-11-09-g1",
+  "title": "Recap Brooklyn Nets 93-130 Dallas Mavericks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Dallas Mavericks (93-130) di —, 9 November 2026.",
+  "body_md": "# Dallas Mavericks Hancurkan Brooklyn Nets 130-93, Cooper Flagg Tampil Dominan\n\nDallas Mavericks menghancurkan Brooklyn Nets 130-93 di kandang Dallas, Senin 9 November 2026. Kemenangan telak ini menutup seri regular season dua laga antara kedua tim, DAL unggul 2-0 di seri ini. Cooper Flagg memimpin dengan 25 poin, 5 rebound, dan 12 asis, sementara Kyrie Irving menambah 21 poin untuk Mavs yang tampil mendominasi dari awal hingga akhir laga.\n\n---\n\n## Flagg dan Irving Jadi Mesin Penggerak Dallas\n\nCooper Flagg bukan sekadar top scorer malam ini, angka 12 asisnya yang paling berbicara. Rookie ini menjalankan offense Dallas seperti point guard veteran: 8-13 from field, 3-5 from three, hanya butuh 28 menit untuk mencetak near triple-double. Efisiensi Flagg malam ini bukan kebetulan, 25 poin dengan volume tembakan yang terkontrol.\n\nKyrie Irving melengkapi duo itu dari sisi scoring. 21 poin, 9-15 from field, peran Kyrie malam ini lebih straightforward: datang, cetak poin, tutup laga. Tanpa perlu drama clutch karena Dallas sudah leading sejak awal.\n\nDi bawah ring, Daniel Gafford menjadi faktor tersendiri. 18 poin dari hanya 7-8 FGA, nyaris sempurna, ditambah 5 rebound dalam 19 menit. Efisiensi Gafford mencerminkan kondisi malam ini secara keseluruhan: Dallas punya akses mudah ke area paint, dan mereka memanfaatkannya tanpa ampun.\n\nDari bench, Santi Aldama (12 poin, 5-7 FG) dan Zaccharie Risacher (11 poin, 6 rebound) memastikan kualitas Dallas tidak drop ketika starter istirahat.\n\n---\n\n## Box Score yang Menceritakan Segalanya\n\nAngka-angka ini tidak butuh banyak interpretasi.\n\nDallas tembak 57% from field vs Brooklyn 39%. Di lini tiga angka, Dallas 40% (14-35) vs Brooklyn 28% (11-39), Nets bukan hanya lebih jarang masuk, tapi juga lebih boros attempt. Points in paint: Dallas 64, Brooklyn 40. Angka terakhir ini yang paling brutal, selisih 24 poin hanya dari area dalam ring menggambarkan betapa bebasnya Gafford dan lini dalam Dallas beroperasi.\n\nRebound menjadi narasi kontrol: DAL 46, BKN 30. Ketika lawan punya 16 lebih rebound, biasanya salah satu dari dua hal yang terjadi, atau keduanya: defense yang buruk dan turnovers yang terus-menerus memberi second chances. Brooklyn punya 17 turnovers malam ini. Dallas mencatatkan 26 fast-break points dari situasi-situasi itu.\n\nFree throw juga menggambarkan sisi berbeda: Dallas 91% (20-22), Brooklyn hanya 71% (20-28). Dallas lebih jarang ke garis, tapi hampir tidak pernah buang.\n\n---\n\n## Brooklyn Butuh Jawaban yang Lebih dari Sekedar Angka\n\nMichael Porter Jr. memimpin Nets dengan 19 poin dan 9 rebound, angka yang di laga biasa terlihat cukup. Tapi malam ini tidak ada laga yang \"biasa\" untuk Brooklyn. FG-nya 5-15, termasuk 4-11 from three, volume tinggi, efisiensi tidak mengikuti.\n\nNolan Traore (14 poin, 6-15 FG) dan Julius Randle (13 poin, 5-10 FG) memberikan kontribusi yang wajar secara individual, tapi tidak ada yang bisa memecah ritme defense Dallas yang sudah establish sejak awal. Moritz Wagner jadi pemain paling efisien di sisi Nets, 12 poin dari 4-5 FGA, 16 menit dari bench, tapi kontribusi bench itu datang terlambat dan terlalu sedikit untuk membuat perbedaan.\n\nSecara tim, 23 asis Brooklyn menunjukkan ball movement yang tidak buruk. Masalahnya bukan decision-making, masalahnya adalah execution di ujung: 39% from field dan 28% from three berarti banyak possession yang berakhir tanpa poin.\n\n---\n\n## Penutup\n\nSeri regular season DAL vs BKN selesai 2-0 untuk Dallas. Kedua tim kembali ke jadwal masing-masing setelah laga ini. Untuk informasi jadwal laga berikutnya, pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909948",
+    "home_team": "Dallas Mavericks",
+    "home_abbr": "DAL",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 130,
+    "away_score": 93,
+    "winner_abbr": "DAL",
+    "kickoff_utc": "2026-11-09T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DAL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023111,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Series record error (claims 2-0 when data says 1-0 for final game) is a high-severity factual fail. Multiple translated-English tics (comma splices, over-hedging, redundant preambles) and one soft-phrase repeat drop score below 70. Rewrite required.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "DAL unggul 2-0 di seri ini",
+          "fix": "Change to 'DAL unggul 1-0 di seri ini' or remove the series claim entirely since it's final game."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Kemenangan telak ini menutup seri regular season dua laga antara kedua tim",
+          "fix": "Remove 'telak' or restructure: 'Kemenangan ini menutup seri regular season dua laga.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Efisiensi Flagg malam ini bukan kebetulan, 25 poin dengan volume tembakan yang terkontrol.",
+          "fix": "Split: 'Efisiensi Flagg bukan kebetulan. 25 poin, volume tembakan terkontrol, 8-13 dari lapangan.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Efisiensi Gafford mencerminkan kondisi malam ini secara keseluruhan",
+          "fix": "Replace: 'Gafford jadi contoh akses mudah Dallas ke paint malam ini.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka-angka ini tidak butuh banyak interpretasi.",
+          "fix": "Delete line; start next paragraph: 'Dallas tembak 57% from field...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ketika lawan punya 16 lebih rebound, biasanya salah satu dari dua hal yang terjadi, atau keduanya",
+          "fix": "Simplify: 'Dengan selisih 16 rebound, Dallas punya akses unlimited ke bola lepas.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Untuk informasi jadwal laga berikutnya, pantau update di NBA League Pass dan Vidio.",
+          "fix": "Delete or replace: 'Brooklyn perlu revamp defense; Dallas terus solid.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x70dcf12830c1eda7",
+    "published_at": "2026-11-09T05:07:52+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

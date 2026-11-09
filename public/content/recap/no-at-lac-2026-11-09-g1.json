@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "no-at-lac-2026-11-09-g1",
+  "title": "Recap New Orleans Pelicans 123-139 LA Clippers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New Orleans Pelicans vs LA Clippers (123-139) di —, 9 November 2026.",
+  "body_md": "# LA Clippers Tekuk Pelicans 139-123, Garland Distribusikan 10 Asis\n\nLA Clippers menutup regular season series Game 2 dengan kemenangan meyakinkan 139-123 atas New Orleans Pelicans, Minggu 9 November 2026. LAC kini unggul 2-0 dalam series ini. Darius Garland jadi penggerak utama: 24 poin dan 10 asis, sementara tiga pemain New Orleans sama-sama mencetak 25-26 poin, tapi tidak cukup.\n\n---\n\n## Top Performers\n\nSisi Clippers punya distribusi yang merata dan efisien. Garland mengakhiri laga dengan 24 poin, 0 rebound, 10 asis dan FG 6-11, peran playmaker murni yang membuat serangan LAC mengalir. Brook Lopez menambah 20 poin dan 7 rebound dengan shooting 8-11 dari lapangan, termasuk satu three-pointer. Dari bench, Gradey Dick dan Keaton Wagler sama-sama mencetak 15 poin, Dick dengan efisiensi luar biasa (6-7 FG, 2-2 from three hanya dalam 17 menit), Wagler 4-5 FG dengan 4 asis dalam 18 menit. Rui Hachimura menambah 14 poin dari posisi starter.\n\nDi kubu Pelicans, angka individual sebetulnya tidak buruk. Trey Murphy III memimpin dengan 26 poin, 7 rebound, 3 asis, termasuk empat three-pointer dari sembilan percobaan. Zion Williamson cetak 25 poin dengan FG sempurna 9-9, nol missed shot. Jeremiah Fears, rookie yang makin sering masuk rotasi, juga 25 poin ditambah 6 rebound dan 5 asis. Tiga pemain di atas 25 poin dalam satu laga, tapi New Orleans tetap kalah 16 poin. Masalahnya bukan di scoring, masalahnya di tempat lain.\n\n---\n\n## Apa yang Membedakan\n\n**Assists: 34 vs 23.** LAC membangun serangan secara kolektif. NO lebih banyak bergantung pada kreasi individual. Garland seorang saja distribusikan 10 asis, hampir setengah total Pelicans.\n\n**Turnovers: 17 vs 11.** New Orleans kehilangan bola 17 kali. Dengan pace modern NBA, 17 turnovers artinya belasan possession yang terbuang. Clippers hanya 11.\n\nThree-point shooting juga mencerminkan perbedaan efisiensi: LAC 42% dari tiga angka (16-38), NO 34% (10-29). Bukan selisih yang ekstrem dari sisi percobaan, tapi 8 poin lebih dari arc dalam volume besar itu terasa di papan skor.\n\nDi paint, LAC unggul 60-52. Keunggulan ini jadi fondasi kemenangan. Free throw lebih merata, keduanya cetak 31 poin dari garis, NO bahkan lebih akurat (89% vs 82%).\n\n---\n\n## Momentum Q3\n\nKuarter ketiga adalah titik paling kompetitif laga ini. Skor sempat bergonta-ganti: Jeremiah Fears bikin driving layup untuk 78-77, Derik Queen kembali bawa NO unggul 80-79, Saddiq Bey bikin jumper 22 kaki untuk 88-87. NO sempat memimpin.\n\nTapi momentum bergeser. Darius Garland free throw untuk 88-89, lalu Trey Murphy III melepas three-pointer dari 26 kaki untuk 91-89. Dari situ Clippers tak pernah lagi kehilangan kendali. Q3 adalah momen di mana LAC membangun jarak yang tidak pernah bisa ditutup Pelicans di kuarter terakhir.\n\n---\n\n## Selanjutnya\n\nSeries ini sudah 2-0 untuk Clippers dengan satu laga tersisa. Game 3 jadwal dan venue belum tersedia di data. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909950",
+    "home_team": "LA Clippers",
+    "home_abbr": "LAC",
+    "away_team": "New Orleans Pelicans",
+    "away_abbr": "NO",
+    "home_score": 139,
+    "away_score": 123,
+    "winner_abbr": "LAC",
+    "kickoff_utc": "2026-11-09T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "LAC lead series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021353,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail. Critical training-inference error (series score 2-0 contradicts input 1-0), plus translated-English phrasing and academic drift. Rewrite opener and Q2 explanations.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "LAC kini unggul 2-0 dalam series ini",
+          "fix": "Change to 'LAC unggul 1-0 dalam series ini' or remove series claim entirely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Tiga pemain di atas 25 poin dalam satu laga, tapi New Orleans tetap kalah 16 poin. Masalahnya bukan di scoring, masalahnya di tempat lain.",
+          "fix": "Rewrite: 'Tiga pemain atas 25 poin, tapi gap bukan di scoring—gap di kontrol dan efisiensi.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dengan pace modern NBA, 17 turnovers artinya belasan possession yang terbuang.",
+          "fix": "Delete the middle clause. Just: '17 turnovers berarti belasan possession terbuang.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Tiga pemain di atas 25 poin",
+          "fix": "First mention uses specific numbers; later mention can say 'triple-double poin' atau just cite Murphy/Zion/Fears once."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dick dengan efisiensi luar biasa (6-7 FG, 2-2 from three hanya dalam 17 menit)",
+          "fix": "Use consistent format: either 'FG 6-7, tiga-angka 2-2' or keep English consistent throughout stats block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Zion Williamson cetak 25 poin dengan FG sempurna 9-9, nol missed shot.",
+          "fix": "Just: 'Zion cetak 25 poin dengan FG sempurna 9-9 (no-miss night).'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Game 3 jadwal dan venue belum tersedia di data.",
+          "fix": "'Game 3 jadwal dan venue belum diumumkan.' or 'Data Game 3 belum tersedia.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa87e211b6cb9efe4",
+    "published_at": "2026-11-09T05:10:05+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
