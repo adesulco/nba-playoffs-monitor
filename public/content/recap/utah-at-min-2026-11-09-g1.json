@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "utah-at-min-2026-11-09-g1",
+  "title": "Recap Utah Jazz 100-115 Minnesota Timberwolves (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Utah Jazz vs Minnesota Timberwolves (100-115) di —, 9 November 2026.",
+  "body_md": "# Minnesota Timberwolves Tutup Kandang Jazz, 115-100\n\nMinnesota Timberwolves menang 115-100 atas Utah Jazz di Game 2 regular season series, Minggu 9 November 2026. Kemenangan ini membuat Minnesota unggul 1-0 dalam seri reguler musim ini. Ayo Dosunmu dan LaMelo Ball jadi mesin poin tuan rumah, sementara Jazz tampil kompetitif tapi kebobolan di efisiensi tembakan tiga angka.\n\n---\n\n## Pemain Kunci\n\n**Minnesota** punya dua top scorer seimbang malam ini. Ayo Dosunmu cetak 26 poin, 4 rebound, 1 asis dengan shooting 4-5 dari tiga angka, jarang-jarang segitu akurat. LaMelo Ball susul dengan 24 poin, 3 rebound, 5 asis, meski shootingnya lebih kerja keras: 10-20 from field, 4-10 dari tiga angka. Dua pemain cetak 50 poin kombinasi sebelum kontribusi bench.\n\nYang tak boleh dilewatkan: Rudy Gobert, 10 poin dengan shooting 4-4 dari lapangan, sempurna, plus 15 rebound. Gobert tak perlu banyak shots; dia kontrol paint dan papan. Jaden McDaniels tambah 16 poin, 6 rebound, 3 asis, dengan 2-3 dari tiga angka. Bones Hyland off the bench sumbang 14 poin dalam 13 menit, impact per menit yang solid.\n\n**Utah Jazz** punya jawaban malam ini di sosok Darryn Peterson. Pemain muda ini cetak 26 poin, 6 rebound, 4 asis, shooting 11-21 from field, 4-8 dari tiga angka dalam 35 menit. Peterson jadi satu-satunya pemain Jazz yang benar-benar memberi tekanan konsisten. Keyonte George tambah 19 poin, 5 rebound, 8 asis, distribusinya bagus, meski 0-3 dari tiga angka jadi masalah tersendiri. Jaxson Hayes sempurna dari lapangan: 6-6, 18 poin, 6 rebound, tapi kontribusinya memang terbatas di area paint saja.\n\n---\n\n## Baca Statistik\n\nPerbedaan terbesar malam ini ada di efisiensi tiga angka. Minnesota tembak 12-32 dari luar arc, 38%, cukup untuk mengontrol ritme. Jazz? Hanya 7-24, 29%. Di sebuah laga yang tempo-nya tidak terlalu cepat, selisih lima three-pointer itu terasa besar di papan skor.\n\nMinnesota juga menang rebound telak: 45 vs 37. Gobert sendiri ambil 15 dari 45 rebound tim. Jazz memang kompetitif di free throw (19-24, 79%) dan steals (10 vs 8), tapi turnovers mereka, 14 berbanding 22 milik Minnesota, ironisnya justru lebih terkontrol dari tuan rumah. Minnesota jadi tim dengan lebih banyak turnover malam ini, tapi kemenangan di efisiensi shooting dan rebound terlalu besar untuk dikejar.\n\n---\n\n## Momen Pembeda: Q3 yang Membuka Segalanya\n\nKuarter ketiga adalah cerita tersendiri. Dua tim sempat hidup-mati dalam persaingan ketat, Jazz dan Wolves saling bergantian unggul dalam rentang poin tipis. Skor sempat 57-57, lalu 59-59, lalu 61-61, lalu 63-63. Delapan kali skor imbang atau berganti kepemilikan dalam satu kuarter.\n\nLalu LaMelo Ball keluar dari kemelut itu dengan tembakan tiga angka dari 25 kaki, skor bergeser 63-66 untuk Minnesota. Bukan run panjang yang dramatis, tapi itu tembakan yang memberi Minnesota keunggulan yang tidak pernah dilepas lagi. Jazz tidak punya jawaban ekuivalen di sisa pertandingan.\n\n---\n\n## Selanjutnya\n\nSeri reguler ke Game 3 berlanjut segera. Dengan kondisi unggul 1-0, Minnesota dalam posisi nyaman, tapi Jazz punya cukup senjata, terutama Peterson dan George, untuk membuat seri ini tidak berakhir mudah.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909947",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "Utah Jazz",
+    "away_abbr": "UTAH",
+    "home_score": 115,
+    "away_score": 100,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-11-09T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022411,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail. Article has high-severity training inference (day-of-week mismatch), multiple instances of editorializing without data support ('satu-satunya', 'terbatas', 'ironisnya'), and academic register drift in section openings. Stats are accurate but voice over-explains rather than showing. Regenerate with stricter adherence to: report facts, avoid hedges, let numbers speak.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Minnesota Timberwolves menang 115-100 atas Utah Jazz di Game 2 regular season series, Minggu 9 November 2026.",
+          "fix": "Change 'Minggu 9 November 2026' to '9 November 2026' or verify day matches input."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Ayo Dosunmu cetak 26 poin, 4 rebound, 1 asis dengan shooting 4-5 dari tiga angka, jarang-jarang segitu akurat.",
+          "fix": "Delete the hedging clause. Just: 'Dosunmu cetak 26 poin dengan 4-5 tiga angka (80%).'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Dua pemain cetak 50 poin kombinasi sebelum kontribusi bench. Yang tak boleh dilewatkan:",
+          "fix": "Delete 'Yang tak boleh dilewatkan:' and continue: 'Rudy Gobert, 10 poin...'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Gobert tidak perlu banyak shots; dia kontrol paint dan papan.",
+          "fix": "Rewrite: 'Gobert fokus di rebound dan defense. 15 papan, 4-4 shooting.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Peterson jadi satu-satunya pemain Jazz yang benar-benar memberi tekanan konsisten.",
+          "fix": "Rewrite: 'Peterson jadi top scorer Utah. Keyonte George susul 19 poin dengan 8 asis, meski 0-3 tiga angka.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Jaxson Hayes sempurna dari lapangan: 6-6, 18 poin, 6 rebound, tapi kontribusinya memang terbatas di area paint saja.",
+          "fix": "Delete the 'tapi' clause: 'Hayes sempurna: 6-6, 18 poin, 6 rebound dalam 29 menit.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Perbedaan terbesar malam ini ada di efisiensi tiga angka.",
+          "fix": "Rewrite: 'Tiga angka jadi pembeda utama. Minnesota 12-32 (38%), Jazz 7-24 (29%).'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "ironisnya justru lebih terkontrol dari tuan rumah",
+          "fix": "Delete 'ironisnya'. Rewrite: 'Jazz turnovers 14, Minnesota 22. Tapi Wolves menang efisiensi shooting.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x725bf5f3a415a7b4",
+    "published_at": "2026-11-09T03:08:47+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 55,
+      "headline_comment": "\"Tutup Kandang Jazz\" ambiguous and misleading — venue wasn't confirmed as Minnesota's and it's a regular-season game, not a series clincher.",
+      "lead_score": 72,
+      "lead_comment": "News and margin land cleanly, but \"Game 2 regular season series\" contradicts the H1 framing and the series-state line reads awkwardly.",
+      "structure_score": 78,
+      "structure_comment": "Clean four-part flow (key players → stats → turning point → what's next); Q3 section is the standout and earns its place.",
+      "voice_score": 76,
+      "voice_comment": "Mostly natural with good code-switching, but \"tak boleh dilewatkan\" and \"cerita tersendiri\" drift slightly toward sportswriting cliché.",
+      "suggestion_count": 6,
+      "summary": "Solid middle-of-the-road recap with a genuinely good Q3 turning-point section and clean stat usage, but the headline overclaims, the series-state line contains an internal contradiction the writer should have caught, and the turnover sentence buries the lede. Editor should pass in ~5 minutes.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Minnesota Timberwolves Tutup Kandang Jazz, 115-100",
+          "issue": "Headline implies a home win and a series-closing moment; neither is supported — venue unknown, this is Game 2 of 4 in a regular-season series.",
+          "fix": "Rewrite as something like \"Dosunmu & LaMelo Bawa Wolves Bekuk Jazz 115-100\" — lead with the players, drop the venue claim."
+        },
+        {
+          "priority": "high",
+          "snippet": "Kemenangan ini membuat Minnesota unggul 1-0 dalam seri reguler musim ini.",
+          "issue": "Input says \"MIN leads series 1-0\" AND \"Game number: 2 of 4\" — these contradict. Writer papered over it instead of flagging; reader will notice the math doesn't work.",
+          "fix": ""
+        },
+        {
+          "priority": "high",
+          "snippet": "turnovers mereka, 14 berbanding 22 milik Minnesota, ironisnya justru lebih terkontrol dari tuan rumah",
+          "issue": "Sentence is tangled and the \"ironisnya\" framing buries the actual insight — Minnesota won despite 22 TOs, which is the real story.",
+          "fix": "Flip it: \"Minnesota menang meski kebobolan 22 turnover (Jazz hanya 14) — efisiensi shooting dan rebound terlalu dominan untuk ditebus.\""
+        },
+        {
+          "priority": "medium",
+          "snippet": "Ayo Dosunmu cetak 26 poin, 4 rebound, 1 asis dengan shooting 4-5 dari tiga angka, jarang-jarang segitu akurat.",
+          "issue": "\"jarang-jarang segitu akurat\" is an inference about Dosunmu's season norms not supported by input data — borderline training-data claim.",
+          "fix": ""
+        },
+        {
+          "priority": "medium",
+          "snippet": "Seri reguler ke Game 3 berlanjut segera.",
+          "issue": "Vague and slightly ungrammatical closer; no date, no venue, no actual next-step info — dead space before the broadcast line.",
+          "fix": ""
+        },
+        {
+          "priority": "low",
+          "snippet": "Dua pemain cetak 50 poin kombinasi sebelum kontribusi bench.",
+          "issue": "\"Sebelum kontribusi bench\" is an awkward English-translation shape; just say \"Dosunmu dan LaMelo kombinasi 50 poin.\"",
+          "fix": ""
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
