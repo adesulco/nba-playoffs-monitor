@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "no-at-gs-2026-11-10-g1",
+  "title": "Recap New Orleans Pelicans 87-138 Golden State Warriors (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New Orleans Pelicans vs Golden State Warriors (87-138) di —, 10 November 2026.",
+  "body_md": "# Golden State Warriors Hancurkan Pelicans 87-138, Lima Pemain Tembus Dua Digit\n\nGolden State Warriors membantai New Orleans Pelicans 138-87 di kandang sendiri, Senin 10 November 2026. Selisih 51 poin, blowout sempurna yang tidak butuh banyak penjelasan. Ini Game 2 dari seri regular season tiga pertandingan, GS kini unggul 1-0.\n\n---\n\n## Tiga Pistol, Satu Malam\n\nStephen Curry dan Brandin Podziemski masing-masing cetak 25 poin. Yaxel Lendeborg tambah 23 poin, 7 rebound, 4 asis. Tiga pemain ini tampil di bawah 30 menit, dan Warriors tetap menang 51 poin.\n\nCurry efisien: 6-10 dari lapangan, 4-7 dari tiga poin, hanya 21 menit main. Podziemski sedikit lebih banyak kerja, 10-19 FG, 5-11 dari tiga poin, 26 menit.\n\nLendeborg yang paling menarik. Shooting 8-10 dari lapangan termasuk sempurna 4-4 dari tiga poin. Volume rendah, efisiensi sangat tinggi. Dua pemain bench, De'Anthony Melton (16 poin, 4-8 from three) dan Charles Bassey (12 poin, 10 rebound), menambah kedalaman roster yang jelas terlalu berat untuk Pelicans malam ini.\n\n---\n\n## Angka yang Memalukan untuk New Orleans\n\nPelicans tembak 29-80 dari lapangan, FG% 36. Dari tiga poin, 8-28 atau 29%. Warriors? 50-91 dari lapangan (55%), 21-44 dari tiga poin (48%).\n\nAssists: GS 37, NO 21. Rebounds: GS 50, NO 31. Fast-break points: GS 17, NO 6. Turnovers: Pelicans 13 kali buang bola, Warriors 11.\n\nHampir tidak ada satu kategori pun yang dikuasai Pelicans malam ini. Bahkan free throw, satu-satunya area tipis, cuma selisih satu persen (NO 88%, GS 89%).\n\nDerik Queen jadi top scorer Pelicans dengan 16 poin off the bench, 4-8 FG, hanya 21 menit main. Ironis, pemain terbaik mereka malam ini adalah bench player yang bahkan tidak main penuh. Starter Jeremiah Fears coba distribusi dengan 8 asis, tapi shooting-nya 4-12 dari lapangan, 1-5 dari tiga poin, tidak membantu ritme serangan New Orleans.\n\n---\n\n## Momentum Sejak Menit Pertama\n\nWarriors mulai strong: Jeremiah Fears membuka skor Pelicans dengan three-pointer dari 26 kaki, dibalas langsung oleh Yaxel Lendeborg dari jarak yang sama, 3-5 untuk Warriors di menit-menit awal. Setelah itu, skema Warriors berjalan mulus. Pelicans tidak pernah benar-benar menemukan ritme yang bisa menandinginya.\n\nPoints in paint 52-38 untuk Warriors menunjukkan dominasi fisik yang bukan hanya soal tiga poin.\n\n---\n\n## Ke Mana Series Ini Pergi\n\nGS unggul 1-0 dalam seri regular season tiga pertandingan. Game 3 adalah laga terakhir, dan setelah penampilan seperti ini, sulit membayangkan narasi apa yang bisa mengubah dinamika kedua tim dalam waktu dekat.\n\nWarriors punya kedalaman roster yang terlihat nyata malam ini: lima pemain tembus 12 poin atau lebih, dua di antaranya dari bench. Pelicans, di sisi lain, butuh jawaban lebih dari sekadar satu pertandingan.\n\nGame 3 tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909959",
+    "home_team": "Golden State Warriors",
+    "home_abbr": "GS",
+    "away_team": "New Orleans Pelicans",
+    "away_abbr": "NO",
+    "home_score": 138,
+    "away_score": 87,
+    "winner_abbr": "GS",
+    "kickoff_utc": "2026-11-10T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "GS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021209,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: High-severity training-inference play reconstruction, translated English idiom in lede, math presentation error, and logical gap in Derik Queen framing. Voice lints okay otherwise, but fact accuracy and English-to-Indonesian translation smell drag score below 70.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jeremiah Fears membuka skor Pelicans dengan three-pointer dari 26 kaki, dibalas langsung oleh Yaxel Lendeborg",
+          "fix": "Remove specific play-by-play reconstruction. Use only aggregated stats from TOP SCORERS block."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Selisih 51 poin, blowout sempurna yang tidak butuh banyak penjelasan.",
+          "fix": "Remove. Replace with: 'Dominasi total Warriors.'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Dari tiga poin, 8-28 atau 29%.",
+          "fix": "Write: 'Dari tiga poin, 8-28 (29%).'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Momentum Sejak Menit Pertama",
+          "fix": "Reframe: 'Warriors Langsung Dominan' or 'Hilang dari Awal.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Ironis, pemain terbaik mereka malam ini adalah bench player yang bahkan tidak main penuh.",
+          "fix": "Clarify: 'Queen, pemain bench, jadi top scorer Pelicans dengan 16 poin di 21 menit.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Setelah itu, skema Warriors berjalan mulus.",
+          "fix": "Write: 'Warriors lalu kuasai pertandingan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xec2bd3032c9d7ecc",
+    "published_at": "2026-11-10T05:42:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

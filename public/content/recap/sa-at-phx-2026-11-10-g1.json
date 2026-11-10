@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "sa-at-phx-2026-11-10-g1",
+  "title": "Recap San Antonio Spurs 122-96 Phoenix Suns (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — San Antonio Spurs vs Phoenix Suns (122-96) di —, 10 November 2026.",
+  "body_md": "# Wembanyama 40 Poin, Spurs Hancurkan Suns 122-96\n\nSan Antonio Spurs melumat Phoenix Suns 122-96 di Game 2 dari tiga laga regular season series, Senin 10 November 2026. Victor Wembanyama bermain seperti sedang melaknat lawan, 40 poin, 11 rebound, dalam 25 menit saja. SA kini unggul 2-0 di series ini.\n\n---\n\n## Wembanyama Tidak Perlu Waktu Lama\n\nDua puluh lima menit. Itu waktu yang dipakai Wembanyama untuk mencetak 40 poin dan 11 rebound. Efisiensinya brutal: 15-19 dari lapangan, 2-3 dari tiga poin. Di kuarter pertama, laga masih bersaing, Booker sempat bawa PHX unggul 25-24 lewat three-pointer dari jarak 25 kaki, sebelum Wembanyama balas dengan tip-in dunk satu kaki untuk balikin keunggulan ke SA (26-25). Setelah momen itu, narasi pertandingan praktis selesai.\n\nDylan Harper melengkapi frontcourt Spurs dengan 17 poin, 5 rebound, 4 asis dari 7-10 field goals. De'Aaron Fox lebih banyak ngerjain hal-hal yang tidak kelihatan, 15 poin, 9 rebound, 6 asis, 2-4 dari tiga poin, tapi angka itu menjelaskan kenapa distribusi serangan SA mengalir tanpa hambatan. Julian Champagnie dan Harrison Barnes masing-masing menyumbang 11 poin, Champagnie sebagai starter (3-9 dari tiga poin) dan Barnes dari bench (2-6 dari tiga poin).\n\n---\n\n## Suns Kalah di Mana-mana\n\nDi sisi Phoenix, Devin Booker sendirian. Tiga puluh dua poin, 10-17 dari lapangan, 3-5 dari tiga, angka yang di laga lain bisa jadi dasar kemenangan. Di sini cuma jadi statistik individu yang bagus di tim yang kalah telak. Tidak ada scorer kedua yang bisa diandalkan: Khaman Maluach 11 poin dari bench, Dillon Brooks, Miles Bridges, dan Oso Ighodaro masing-masing 7 poin.\n\nYang lebih merusak dari angka poin: Brooks cuma 3-14 dari lapangan. Bridges 3-9 dengan 0-4 dari tiga poin. PHX tidak punya mekanisme lain untuk menciptakan tembakan berkualitas selain mengandalkan Booker, dan SA tahu itu.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nDua statistik yang merangkum keseluruhan pertandingan:\n\n**Rebound: SA 55, PHX 35.** Spurs hampir dua kali lebih dominan di papan. Ini bukan perbedaan tipis, ini kontrol fisik penuh selama 48 menit.\n\n**Points in paint: SA 62, PHX 48.** SA lebih produktif 14 poin di area paling efisien di lapangan. Dikombinasikan dengan fast-break points SA 23 berbanding PHX 10, Spurs tidak sekadar lebih baik secara shooting, mereka jauh lebih efisien dalam menciptakan peluang.\n\nFG% SA 51% vs PHX 39% adalah kesimpulan dari dua hal di atas: SA mendapat tembakan yang lebih mudah, dari posisi yang lebih baik, lebih sering. PHX bermain dengan 7 turnover berbanding 11 milik SA, tapi jumlah turnover yang lebih sedikit tidak banyak menolong ketika rebounding dan transisi sudah dikuasai lawan sedemikian rupa.\n\n---\n\n## Selanjutnya\n\nGame 3, game terakhir di regular season series ini, masih akan datang. Dengan SA unggul 2-0, Suns butuh jawaban yang belum terlihat di dua game sejauh ini: siapa yang bantu Booker? Selama pertanyaan itu belum terjawab, Wembanyama dan Spurs akan terus mengeksploitasi gap itu.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909958",
+    "home_team": "Phoenix Suns",
+    "home_abbr": "PHX",
+    "away_team": "San Antonio Spurs",
+    "away_abbr": "SA",
+    "home_score": 96,
+    "away_score": 122,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-10T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020989,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail. Critical series-state error (claims 2-0 when input shows 1-0 after Game 2). Multiple secondary issues with hedging, redundancy, and awkward translated phrasing. Regenerate with corrected series standing and tighter prose.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "SA kini unggul 2-0 di series ini",
+          "fix": "Change to 'SA unggul 1-0 di series ini' or 'SA sekarang 1-1 after Game 2' — verify against input."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "bermain seperti sedang melaknat lawan",
+          "fix": "Use 'Wembanyama main buas' or 'merajai lapangan' or just describe the stats."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "yang di laga lain bisa jadi dasar kemenangan",
+          "fix": "Change to 'di laga lain, itu menang' or 'di laga biasa, itu cukup menang'."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dua puluh lima menit. Itu waktu yang dipakai Wembanyama",
+          "fix": "Merge into one sentence: 'Wembanyama pake 25 menit buat cetak 40 poin, 11 rebound.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Booker sempat bawa PHX unggul 25-24 lewat three-pointer dari jarak 25 kaki",
+          "fix": "Change to 'Booker cetak three 25 kaki, PHX unggul 25-24' for clarity."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Could use 'Game berikutnya' or just 'Game 3' as subhead."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "adalah kesimpulan dari dua hal di atas:",
+          "fix": "Change to 'itulah hasilnya:' or just delete and start next sentence."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe271712a3c59c6be",
+    "published_at": "2026-11-10T05:41:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
