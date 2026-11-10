@@ -3,7 +3,7 @@
   "slug": "wsh-at-det-2026-11-10-g1",
   "title": "Recap Washington Wizards 111-122 Detroit Pistons (Game 1)",
   "description": "Recap NBA Playoffs 2026 — Washington Wizards vs Detroit Pistons (111-122) di —, 10 November 2026.",
-  "body_md": "# Detroit Pistons Kalahkan Washington Wizards 122-111\n\nDetroit Pistons mempermalukan Washington Wizards 122-111 di laga kedua rangkaian regular season tiga pertandingan, Senin 10 November 2026 jam 07.00 WIB. DET unggul 1-0 dalam seri. Anthony Davis cetak 44 poin dan 13 rebound, angka monster yang tidak cukup menyelamatkan WSH dari kekalahan 11 poin.\n\n## Performa Individu\n\nDavis tampil di level berbeda: 44 poin dengan FG 16-21, efisiensi luar biasa untuk volume sebesar itu, ditambah 13 rebound. Sulit ada lain yang bisa bantu. AJ Dybantsa 21 poin, 8 rebound dengan FG 8-17. Trae Young 20 poin dan 7 asis tapi butuh 17 tembakan untuk sampai ke sana, dan hanya 3-10 dari three-point line. Kyshawn George tambah 12 poin. Alex Sarr nyaris tidak terasa secara ofensif: 4 poin, FG 2-5, meski berkontribusi 8 rebound.\n\nDET lebih merata poin. John Collins pimpin tim dengan 24 poin, 10 rebound, 3 asis, FG 9-13, sangat efisien. Duncan Robinson 22 poin dengan 4-8 from three, ancaman nyata dari luar. Daniss Jenkins 22 poin, 6 rebound, 8 asis, motor penggerak offense DET malam itu. Cade Cunningham 17 poin, 7 asis meski 0-4 dari three. Kevin Huerter off the bench tambah 12 poin.\n\n## Yang Membedakan\n\nDET catat 31 asis, WSH 16. Itu cerita keseluruhan malam ini.\n\nFast-break points ceritain apa yang terjadi: DET 19, WSH 4. WSH buang 19 turnover, DET hanya 11, delapan possession ekstra yang langsung dikonversi DET lewat transisi.\n\nShooting dari tiga angka? Nyaris sama tipis untuk kedua tim: WSH 9-36 (25%), DET 8-31 (26%). FG% juga hampir identik, 46% vs 47%. Jadi kekalahan ini bukan soal WSH tidak bisa menembak, ini soal WSH kehilangan bola terlalu sering dan membiarkan DET berlari.\n\nFree throw juga jadi faktor. WSH hanya 71% dari garis (20-28), DET 90% (28-31). DET lebih akurat dan mendapat lebih banyak kesempatan.\n\n## Catatan\n\nSkor akhir dan gap fast-break points menunjukkan DET menemukan ritme di paruh kedua. DET unggul 1-0 dalam seri tiga pertandingan. WSH perlu selesaikan masalah turnover sebelum laga berikutnya.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "body_md": "Detroit Pistons menang tipis 122-111 atas Washington Wizards, Senin 10 November 2026 pukul 07.00 WIB. DET unggul 1-0 di regular season series ini. Anthony Davis tampil luar biasa dengan 44 poin dan 13 rebound, tapi tidak cukup untuk menyelamatkan Wizards dari kekalahan 11 poin.\n\n---\n\n## Performa Individu\n\nDavis adalah satu-satunya alasan Wizards masih relevan di laga ini. 44 poin dengan shooting 16-21 dari lapangan, termasuk dua three-pointer dari empat percobaan, plus 13 rebound, stat line yang seharusnya menang di kebanyakan pertandingan. Masalahnya, Detroit punya lima pemain yang masing-masing berkontribusi secara merata, dan Wizards tidak.\n\nAJ Dybantsa menyumbang 21 poin dan 8 rebound untuk WSH, cukup solid, tapi shooting 8-17 masih di bawah efisiensi yang dibutuhkan. Trae Young cetak 20 poin dan 7 assist, tapi efficiency-nya bermasalah: 6-17 dari lapangan, 3-10 dari three-point line. Young juga berkontribusi pada masalah turnovers yang lebih besar di tim ini.\n\nDi sisi Detroit, John Collins jadi tumpuan: 24 poin, 10 rebound, 3 assist dengan shooting 9-13, efisiensi tertinggi di antara top scorers kedua tim. Duncan Robinson dan Daniss Jenkins masing-masing cetak 22 poin. Robinson mengandalkan three-pointer dengan 4-8 dari luar garis, Jenkins lebih all-around dengan 6 rebound dan 8 assist dari 36 menit bermain. Cade Cunningham 17 poin dan 7 assist mengatur tempo DET, sementara Kevin Huerter 12 poin off the bench melengkapi rotasi yang dalam.\n\n---\n\n## Apa yang Membedakan\n\nDua angka yang menjelaskan hasil ini: **turnovers** dan **free throws**.\n\nWizards buang bola 19 kali, Detroit hanya 11. Selisih delapan turnovers itu langsung dikonversi, DET cetak 19 fast-break points, WSH hanya 4. Ketika lawan punya empat kali lipat fast-break points dari Anda, kekalahan 11 poin jadi masuk akal.\n\nFree throw juga mencolok. DET maju ke garis 31 kali dan konversi 28 (90%). WSH dapat 28 kesempatan tapi hanya masukkan 20 (71%). Selisih delapan poin dari free throw line, ditambah selisih fast-break, itu sudah 23 poin yang bukan dari setengah lapangan. Hampir sama persis dengan margin kekalahan akhir.\n\nShooting tiga angka kedua tim sebenarnya hampir setara: WSH 25%, DET 26%, sama-sama buruk. Perbedaannya bukan di three-pointer, tapi di cara DET memanfaatkan turnover WSH dan menyelesaikan dari garis free throw.\n\n---\n\n## Laga Selanjutnya\n\nDetroit unggul 1-0 di regular season series ini. Game 3 dari tiga laga belum ada jadwal spesifik di input data. Tayang live di NBA League Pass dan Vidio.\n",
   "frontmatter": {
     "league": "nba",
     "sport": "basketball",
@@ -21,41 +21,35 @@
     "series_summary": "DET leads series 1-0",
     "game_number": 1,
     "model": "claude-sonnet-4-6",
-    "cost_usd": 0.040276,
+    "cost_usd": 0.036892,
     "voice_lint": {
       "verdict": "pass",
       "score": 82,
-      "issue_count": 4,
-      "summary": "Solid recap with accurate stats and disciplined structure. Minor phrasing awkwardness (AI-translated idiom traces) but no hard violations. Voice is mostly natural Bahasa with appropriate casualness and no banned markers.",
+      "issue_count": 3,
+      "summary": "Strong article. Numbers accurate, voice natural, analysis sound. One medium issue (meta-commentary breaks immersion); two low style notes. Pass.",
       "issues": [
         {
-          "type": "translated_english",
+          "type": "training_inference",
           "severity": "medium",
-          "snippet": "Sulit ada lain yang bisa bantu.",
-          "fix": "Rewrite: 'Tim lain tidak bisa mengandalkan siapapun.' or just delete — context covers it."
-        },
-        {
-          "type": "soft_phrase_repeat",
-          "severity": "low",
-          "snippet": "Daniss Jenkins 22 poin, 6 rebound, 8 asis, motor penggerak offense DET malam itu.",
-          "fix": "No action needed; this is within soft-discouraged limit (1x per article)."
+          "snippet": "Game 3 dari tiga laga belum ada jadwal spesifik di input data.",
+          "fix": "Delete sentence. Just end: 'Detroit unggul 1-0 di regular season series ini.'"
         },
         {
           "type": "translated_english",
           "severity": "low",
-          "snippet": "Fast-break points ceritain apa yang terjadi: DET 19, WSH 4.",
-          "fix": "Rewrite: 'Fast-break points tunjukkan apa yang terjadi:' or 'Fast-break points berbicara banyak:'"
+          "snippet": "stat line yang seharusnya menang di kebanyakan pertandingan",
+          "fix": "Rewrite: 'statistik yang biasanya cukup untuk menang'"
         },
         {
-          "type": "structural",
+          "type": "other",
           "severity": "low",
-          "snippet": "Nyaris sama tipis untuk kedua tim: WSH 9-36 (25%), DET 8-31 (26%).",
-          "fix": "Rewrite: 'Nyaris sama untuk kedua tim:' or 'Tidak beda jauh:'"
+          "snippet": "Free throw juga mencolok.",
+          "fix": "Open with fact: 'DET 28-31 dari garis (90%), WSH 20-28 (71%).'"
         }
       ]
     },
-    "plagiarism_hash": "0xe1d371abb5a17124",
-    "published_at": "2026-11-10T04:09:00+00:00",
+    "plagiarism_hash": "0x05c35311a4296720",
+    "published_at": "2026-11-10T04:37:02+00:00",
     "version": 1,
     "manual_review": true
   },
