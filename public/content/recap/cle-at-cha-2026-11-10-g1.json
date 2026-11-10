@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "cle-at-cha-2026-11-10-g1",
+  "title": "Recap Cleveland Cavaliers 112-124 Charlotte Hornets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Cleveland Cavaliers vs Charlotte Hornets (112-124) di —, 10 November 2026.",
+  "body_md": "# Charlotte Hornets Hentikan Cleveland, Grayson Allen dan Naz Reid Jadi Bintang\n\nCharlotte Hornets mengalahkan Cleveland Cavaliers 124-112 dan kini unggul 1-0 dalam regular season series tiga pertandingan. Grayson Allen dan Naz Reid tampil luar biasa dan jadi alasan utama kenapa CLE pulang dengan tangan kosong.\n\n---\n\n## Charlotte Punya Dua Bintang Malam Ini\n\nGrayson Allen tutup laga dengan 27 poin, 4 rebound, 6 asis, efisiensinya dari tiga poin jadi pembeda: 6-12 dari belakang garis, atau 50% dari jarak jauh. Bukan hanya mencetak poin, Allen juga menggerakkan offense CHA dengan asis yang tepat waktu.\n\nNaz Reid bermain dominan di papan dengan 13 rebound dan 25 poin. 25 poin dan 13 rebound, satu-satunya pemain di lapangan yang double-double malam ini. Dari 26 percobaan field goal, Reid berhasil konversi 10, termasuk 4-9 dari tiga poin. Agresivitasnya di area rebound juga terasa, CHA finish dengan 49 rebound tim berbanding 32 untuk CLE.\n\nDari bench, Salaun cetak 14 poin dalam 18 menit dengan FG 4-6, 3PT 3-4. Sementara Coby White, meski hanya 10 poin dari 3-12 shooting, menyumbang 9 asis untuk menjaga ritme offense Charlotte.\n\n---\n\n## Cleveland Tidak Punya Jawaban\n\nCleveland poin tersebar, tapi tak ada pemain yang dominan. Meleek Thomas memimpin CLE dari bench dengan 18 poin (7-12 field goal, 4-6 dari tiga poin), ironisnya, pemain bench CLE justru lebih efisien dari para starter-nya.\n\nDonovan Mitchell dan James Harden, dua pemain yang diharapkan memimpin, masing-masing hanya 11 poin. Mitchell butuh 11 percobaan untuk 4 konversi. Harden 3-9 dari lapangan dengan 2-7 dari tiga poin. Jarrett Allen solid di dalam dengan 12 poin dan 7 rebound, tapi tren bola besar secara keseluruhan menjelaskan masalah CLE: kalah rebound 32-49 adalah angka yang sulit diatasi.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nDua statistik yang paling berbicara malam ini: tiga poin dan rebound.\n\nCharlotte 23-46 dari tiga poin (50%), Cleveland hanya 14-35 (40%). Selisih volume dan persentase itu menghasilkan perbedaan poin yang signifikan dari jarak jauh. Ketika field goal percentage dua tim tidak terlalu jauh, CLE 51%, CHA 47%, efisiensi dari belakang garis inilah yang membuka jarak.\n\nRebound 49-32 untuk Charlotte juga bukan sekadar angka. Possession tambahan dari offensive rebound memberi CHA lebih banyak kesempatan, dan itu terlihat langsung di poin akhir.\n\nSatu area di mana Cleveland unggul: points in paint (48-34) dan fast-break points (18-13). CLE lebih agresif di area dekat ring dan lebih cepat dalam transisi. Tapi keunggulan lokal itu tidak cukup untuk mengimbangi dominasi Charlotte di papan dan dari tiga poin.\n\n---\n\n## Selanjutnya\n\nDengan skor series 1-0 untuk Charlotte, game ketiga musim reguler tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909953",
+    "home_team": "Charlotte Hornets",
+    "home_abbr": "CHA",
+    "away_team": "Cleveland Cavaliers",
+    "away_abbr": "CLE",
+    "home_score": 124,
+    "away_score": 112,
+    "winner_abbr": "CHA",
+    "kickoff_utc": "2026-11-10T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "CHA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039031,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article has solid stat anchoring and structure but suffers from repetitive phrasing, over-formal connectors (academic drift), and translated-English reasoning in the analytics section. Closing 'Selanjutnya' paragraph is filler. Rewrite the stats analysis paragraph and tighten connectors.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Naz Reid bermain dominan di papan dengan 13 rebound dan 25 poin. 25 poin dan 13 rebound, satu-satunya pemain",
+          "fix": "Combine: 'Naz Reid bermain dominan dengan 13 rebound dan 25 poin—satu-satunya pemain dengan double-double malam ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Ketika field goal percentage dua tim tidak terlalu jauh, CLE 51%, CHA 47%, efisiensi dari belakang garis inilah yang membuka jarak.",
+          "fix": "Rewrite: 'FG% serupa (CLE 51%, CHA 47%), tapi tiga poin yang bikin beda—50% vs 40%.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua statistik yang paling berbicara malam ini: tiga poin dan rebound.",
+          "fix": "Cut it. Start directly: 'Tiga poin dan rebound. Itu bedanya.' or just merge into next para."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Bukan hanya mencetak poin, Allen juga menggerakkan offense CHA dengan asis yang tepat waktu.",
+          "fix": "Combine with prior sentence or cut: 'Allen cetak 27 poin dan gerakkan offense dengan 6 asis.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dengan skor series 1-0 untuk Charlotte, game ketiga musim reguler tersedia di NBA League Pass dan Vidio.",
+          "fix": "Delete or rewrite to actual info: 'Game ketiga musim reguler series berlanjut [date/when]. Tayang live di NBA League Pass dan Vidio.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Satu area di mana Cleveland unggul: points in paint (48-34) dan fast-break points (18-13).",
+          "fix": "Simplify: 'CLE unggul di paint (48-34) dan fast-break (18-13).'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xc8dd69f18565ec80",
+    "published_at": "2026-11-10T03:35:55+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
