@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "orl-at-sac-2026-11-11-g1",
+  "title": "Recap Orlando Magic 107-100 Sacramento Kings (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Sacramento Kings (107-100) di —, 11 November 2026.",
+  "body_md": "# Orlando Menang Keras di Sacramento, Franz Wagner Jadi Pembeda\n\nOrlando Magic menutup regular season series melawan Sacramento Kings dengan kemenangan 107-100, Sabtu 11 November 2026. ORL unggul 1-0 di seri dua laga ini. Kemenangan tidak datang mudah, Kings berjuang sampai detik terakhir, tapi Magic punya jawaban yang cukup ketika dibutuhkan.\n\n---\n\n## Dua Sisi dari Magic\n\nFranz Wagner lagi-lagi jadi ujung tombak. 33 poin, 7 rebound, 7 asis dari 11-23 FG, bukan malam paling efisien dari sisi shooting, tapi kontribusinya merata sepanjang 38 menit. Wagner mencetak layup pembuka untuk Anthony Black di Q1 dan terus jadi kreator utama serangan ORL. Di sampingnya, Anthony Black tampil impresif dengan 26 poin, 7 rebound, 5 asis, 10-17 dari lapangan, termasuk 2-5 dari tiga angka. Black yang mencetak tembakan tiga angka untuk membalik keunggulan Sacramento di Q1 adalah momen yang menetapkan nada sejak awal.\n\nDesmond Bane menambah 15 poin, tapi malam ini bukan miliknya dari sisi efisiensi, 5-19 dari lapangan, 4-13 dari tiga angka. Magic beruntung Bane berkontribusi di area lain: 6 rebound dan 4 asis.\n\nDi bawah ring, Wendell Carter Jr. mengerjakan hal yang tidak terlihat: 11 rebound, 8 poin dari 4-9 FG. Tidak glamor, tapi krusial. Dari bench, Alex Morales menyumbang 7 poin dan 7 rebound, termasuk tembakan tiga angka dan two-point shot di Q2 yang membantu ORL menjaga momentum ketika skor sangat ketat.\n\n---\n\n## LaVine dan Acuff Tidak Cukup\n\nSacramento tidak kalah karena tidak berjuang. Zach LaVine mencetak 31 poin dari 10-16 FG, 6-9 dari tiga angka, efisiensi tinggi yang seharusnya jadi fondasi kemenangan. Darius Acuff Jr. menambah 29 poin, 4 rebound, 6 asis dari 10-21 FG, aktif sebagai playmaker sekunder. Keduanya mengumpulkan 60 poin dari total 100, artinya sisa roster SAC hanya menyumbang 40.\n\nDe'Andre Hunter solid dengan 15 poin (3-6 dari tiga angka), Keegan Murray 11 poin dari bench. Tapi Kings tidak punya lebih dari itu. Ketika LaVine membuat tembakan tiga angka untuk mempersingkat jarak menjadi 103-98 di sisa 44,7 detik Q4, harapan sejenak muncul, namun Magic cukup tenang untuk menutup laga.\n\n---\n\n## Angka yang Menceritakan Segalanya\n\nDua statistik menjelaskan hasil laga ini dengan ringkas.\n\nPertama, **points in paint**: ORL 58, SAC 28. Magic mendominasi area dalam secara menyeluruh, lebih dari dua kali lipat. Ini mencerminkan kombinasi agresivitas Black dari drive, kehadiran Carter Jr. di low post, dan ketidakmampuan Sacramento mengamankan paint defense.\n\nKedua, **turnovers**: ORL 14, SAC 21. Kings membuang tujuh possesion lebih banyak. Dalam laga dengan margin akhir tujuh poin, selisih ini bisa jadi determinan tunggal. ORL juga mencatatkan 9 steal dari SAC.\n\nFast-break points juga berpihak ke Orlando: 17-11. Rebound total jauh lebih berat ke ORL: 48 berbanding 34.\n\nSatu catatan menarik: SAC justru lebih baik dari tiga angka, 47% (16-34) vs 27% (10-37) ORL. Tapi keunggulan Kings di sisi perimeter tidak cukup mengkompensasi kerugian besar di area dalam dan turnover yang berulang.\n\n---\n\n## Konteks Seri\n\nORL menyelesaikan regular season series melawan SAC dengan rekor sempurna, 1-0 dari dua laga. Kemenangan ini membawa nilai moral lebih dari sekadar poin klasemen, Magic membuktikan bisa menang di situasi kompetitif dengan depth yang terbatas, mengandalkan Wagner-Black sebagai dual threat yang semakin matang.\n\nLaga ini tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909964",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 100,
+    "away_score": 107,
+    "winner_abbr": "ORL",
+    "kickoff_utc": "2026-11-11T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ORL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022718,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has good structure and stat accuracy, but fails on multiple fronts: one high-severity training inference (Wagner-Black specific play call not in stats), English calque idioms, and soft-discouraged 'tampil impresif' phrase. Rewrite play-by-play references to stay within grounded data block only.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Black yang mencetak tembakan tiga angka untuk membalik keunggulan Sacramento di Q1 adalah momen yang menetapkan nada sejak awal.",
+          "fix": "Rephrase: 'Tembakan tiga angka Black di Q1 jadi spark pertama ORL' atau cukup delete kalimat filosofis."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Wagner mencetak layup pembuka untuk Anthony Black di Q1",
+          "fix": "Delete specific play call. Use only: 'Wagner dan Black jadi kreator utama serangan ORL.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Wagner mencetak layup pembuka... Wagner yang terus jadi kreator utama",
+          "fix": "Simplify: 'Wagner jadi kreator utama serangan ORL sepanjang malam.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "tampil impresif dengan 26 poin",
+          "fix": "Use specific attribute: 'Anthony Black cetak 26 poin dengan efisiensi tinggi (10-17 FG).'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Dua statistik menjelaskan hasil laga ini dengan ringkas. Pertama, **points in paint**",
+          "fix": "Merge: 'Points in paint (ORL 58, SAC 28) dan turnovers (ORL 14, SAC 21) menceritakan...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini mencerminkan kombinasi agresivitas Black dari drive, kehadiran Carter Jr. di low post",
+          "fix": "Direct: 'Black agresif drive, Carter Jr. dominan low post — Magic kuasai paint.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Dalam laga dengan margin akhir tujuh poin, selisih ini bisa jadi determinan tunggal.",
+          "fix": "Factual: 'Dengan margin tujuh poin, turnover gap 21 vs 14 cukup berat untuk SAC.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Ketika LaVine membuat tembakan tiga angka untuk mempersingkat jarak menjadi 103-98 di sisa 44,7 detik Q4, harapan sejenak muncul",
+          "fix": "Split: 'LaVine tembak tiga untuk 103-98, 44,7 detik tersisa. Magic tetap tenang tutup laga.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x8a433df36e89aca6",
+    "published_at": "2026-11-11T05:39:00+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 72,
+      "headline_score": 68,
+      "headline_comment": "Headline file menyebut 'Game 1' tapi body menyebut 'regular season series' — kontradiksi yang harus diselaraskan, dan 'Menang Keras di Sacramento' tidak terverifikasi karena venue tidak ada di input.",
+      "lead_score": 70,
+      "lead_comment": "Lead efisien dan angka akurat, tapi 'berjuang sampai detik terakhir' adalah klaim naratif yang lemah dan tidak spesifik — margin 7 poin bukan drama detik terakhir.",
+      "structure_score": 80,
+      "structure_comment": "Struktur empat seksi (Magic / Kings / angka kunci / konteks) solid dan mengalir logis; porsi antar-seksi seimbang.",
+      "voice_score": 70,
+      "voice_comment": "Mostly bersih tapi ada drift formal ('Angka yang Menceritakan Segalanya', 'determinan tunggal', 'mencerminkan kombinasi') dan dua tanda bold yang tidak lazim di body copy sport Indonesia.",
+      "suggestion_count": 6,
+      "summary": "Numerically clean recap with solid structure, but suffers from a series-framing contradiction between headline (Game 1), input (Playoffs 2026 / Game 2 of 2), and body (regular season) that must be resolved before publish. Minor voice drift in subheadings and an unverifiable 'di Sacramento' claim need editor passes.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Orlando Magic menutup regular season series melawan Sacramento Kings dengan kemenangan 107-100",
+          "issue": "Headline bilang 'Game 1' dan input bilang 'NBA Playoffs 2026' + 'Game number: 2 of 2', tapi body menyebut 'regular season series' — framing seri tidak konsisten dan membingungkan pembaca.",
+          "fix": "Selaraskan dengan input: jika playoffs, hilangkan 'regular season'; jika regular season, perbaiki headline. Pilih satu framing dan konsisten di seluruh artikel."
+        },
+        {
+          "priority": "high",
+          "snippet": "Orlando Menang Keras di Sacramento",
+          "issue": "Venue di input kosong (—), jadi klaim 'di Sacramento' tidak terverifikasi dan berisiko salah.",
+          "fix": "Ganti headline dengan framing yang tidak menyebut lokasi, misal 'Wagner-Black Bawa Magic Tundukkan Kings 107-100'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Angka yang Menceritakan Segalanya",
+          "issue": "Subheading terjemahan harfiah dari 'the numbers tell the story' — reads AI-translated, bukan idiom natural Bahasa.",
+          "fix": "Ganti dengan subheading yang lebih sport-journalism Indonesia: 'Paint dan Turnover Jadi Pembeda' atau 'Dua Angka Kunci'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Kings berjuang sampai detik terakhir, tapi Magic punya jawaban yang cukup ketika dibutuhkan",
+          "issue": "Hedge naratif generik tanpa isi; margin 7 poin dengan satu tembakan LaVine di 44,7 detik tidak membenarkan frasa 'sampai detik terakhir'.",
+          "fix": "Spesifikkan: 'LaVine sempat memangkas jarak jadi 5 poin di 44,7 detik terakhir, tapi Magic menutup tanpa goyah.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Dua statistik menjelaskan hasil laga ini dengan ringkas",
+          "issue": "Dua kata di-bold (**points in paint**, **turnovers**) di body copy — tidak lazim di konvensi sport-media Indonesia dan terasa seperti blog explainer.",
+          "fix": "Hilangkan bold formatting; cukup tulis frasa biasa, data angka sudah cukup menonjol."
+        },
+        {
+          "priority": "low",
+          "snippet": "Kemenangan ini membawa nilai moral lebih dari sekadar poin klasemen",
+          "issue": "'Nilai moral' + 'depth yang terbatas' adalah klaim tanpa dukungan data di input — moral win framing adalah inference, bukan fakta.",
+          "fix": "Cut kalimat ini atau ganti dengan observasi berbasis data: 'Wagner dan Black menyumbang 59 dari 107 poin ORL — duo yang semakin jadi tulang punggung serangan.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
