@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "okc-at-por-2026-11-11-g1",
+  "title": "Recap Oklahoma City Thunder 103-123 Portland Trail Blazers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs Portland Trail Blazers (103-123) di —, 11 November 2026.",
+  "body_md": "Portland Trail Blazers mempermalukan Oklahoma City Thunder 123-103 di kandang sendiri, Sabtu 11 November 2026. Kemenangan ini sekaligus membawa POR unggul 1-0 di pertemuan regular season series dua tim.\n\nBukan upset kecil, 20 poin margin, dan Thunder yang musim ini dikenal sebagai kandidat kuat tetap tak berdaya di paruh kedua.\n\n---\n\n## Dua Kepala POR yang Bikin Masalah\n\nDamian Lillard cetak 25 poin, 3 rebound, 3 asis dengan FG 8-15 dan 4-10 from three. Angka-angkanya bersih, efisien, dan cukup merepotkan, tapi bukan Lillard yang paling berbahaya malam ini.\n\nDeni Avdija yang mencuri perhatian. Forward Slovenia itu keluar dengan 24 poin, 6 rebound, 8 asis, statistik yang jarang terlihat dari pemain di posisinya. FG 8-15, 2-4 from three, dan 34 menit di court. Delapan asis itu bukan aksidental. Avdija yang sering jadi initiator ketika POR membangun serangan dari sisi sayap. Dua asis ke Cissoko dan Camara di kuartal ketiga langsung berujung three-pointer.\n\nSidy Cissoko tambah 17 poin (5-14 FG, 3-10 from three), Toumani Camara 12 poin, dan Jrue Holiday 11 dari bangku cadangan. POR punya distribusi yang merata, lima pemain double-digit, assist keseluruhan 26.\n\n---\n\n## SGA Berjuang Sendirian\n\nShai Gilgeous-Alexander usahakan 26 poin, 8 rebound, 3 asis, tapi FG-nya 8-22 dan 0-4 from three. Upaya keras di volume yang besar, namun konversinya tidak sejalan malam ini.\n\nJared McCain menyumbang 21 poin dari starting lineup (6-12, 4-7 from three), dan Ajay Mitchell 14 poin. Dari bangku, Bennett Stirtz kasih 13 poin efisien (5-8 FG), sementara Aday Mara jadi satu-satunya OKC yang bisa diklaim dominan di satu aspek: 10 poin, 10 rebound, double-double dari bangku cadangan.\n\nTapi Portland tidak membiarkan satu orang menjadi penentu pertandingan. Tekanan datang dari banyak arah.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nFG% sama persis, OKC dan POR sama-sama 44%. Di sana keunggulan Thunder habis.\n\nThree-pointer jadi penentu riil: POR 19-50 (38%) vs OKC 8-22 (36%). Volume Portland jauh lebih tinggi, 50 percobaan vs 22, dan mereka konversi hampir dua kali lipat jumlah tembakan berhasil. Di liga yang makin bergantung pada efisiensi tiga angka, selisih 11 three-pointer masuk itu sulit diimbangi dari mana pun.\n\nFree throw juga satu lagi celah: POR 24-26 (92%) vs OKC 21-27 (78%). Fourteenth poin bisa jadi tiga atau empat angka berbeda kalau free throw OKC lebih mulus.\n\nAssists POR 26 vs OKC 20 menggambarkan permainan tim yang lebih cair. Turnover OKC 12 vs POR 9, tiga turnover lebih banyak di pertandingan ketat selisih possession, jumlahnya lumayan.\n\n---\n\n## Momen Pemutus di Kuartal Ketiga\n\nKuartal ketiga jadi titik balik. Dua tim sempat terikat beberapa kali, 59-59, 64-64, 69-67, sebelum POR memutus keterikatan itu.\n\nAvdija asis ke Cissoko untuk three-pointer (59-62), lalu Avdija lagi asis ke Camara untuk three-pointer lain (64-67). OKC sempat balik unggul 69-67 lewat McCain, tapi Lillard jawab langsung dengan 30-foot three-pointer untuk 69-70. Sisa pertandingan Portland tidak lagi membiarkan Thunder mendekat.\n\n---\n\n## Selanjutnya\n\nPertemuan berikutnya di regular season series ini, Game 3 dari 4, belum ada jadwal resmi di input. POR saat ini unggul 1-0.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909965",
+    "home_team": "Portland Trail Blazers",
+    "home_abbr": "POR",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 123,
+    "away_score": 103,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-11-11T04:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.044879,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 58,
+      "issue_count": 6,
+      "summary": "Article fails on training inference (Avdija's nationality injected from training data, not input). Translated-English phrasing ('bukan aksidental') and unclear math explanation ('Fourteenth poin') reduce clarity. Otherwise solid structure and stat citations are accurate.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Forward Slovenia itu keluar dengan 24 poin",
+          "fix": "Remove 'Forward Slovenia' or replace with position only: 'Forward itu keluar dengan 24 poin'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Delapan asis itu bukan aksidental.",
+          "fix": "Use 'Eight assists itu bukan kebetulan' or simpler: 'Delapan asis itu hasil orchestration sistematis'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Tekanan datang dari banyak arah.",
+          "fix": "Delete or merge into previous sentence: 'Mara jadi satu-satunya dominan di satu aspek, sisanya POR tutup rapat'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Fourteenth poin bisa jadi tiga atau empat angka berbeda",
+          "fix": "Rewrite: 'Free throw 14 poin itu beda signifikan kalau OKC shoot 92% seperti Portland'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "POR yang mencuri perhatian.",
+          "fix": "Optional: 'Tapi Deni Avdija yang mencuri perhatian malam ini.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Angka-angkanya bersih, efisien, dan cukup merepotkan",
+          "fix": "For Stirtz line, use 'productive' or just state FG%: '13 poin cepat'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd56943b89189eae8",
+    "published_at": "2026-11-11T07:40:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
