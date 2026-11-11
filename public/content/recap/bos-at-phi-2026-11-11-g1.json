@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "bos-at-phi-2026-11-11-g1",
+  "title": "Recap Boston Celtics 123-101 Philadelphia 76ers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Philadelphia 76ers (123-101) di —, 11 November 2026.",
+  "body_md": "## Paul George 36 Poin, Celtics Hajar 76ers 123-101 dan Unggul 2-0\n\nBoston Celtics menang dominan atas Philadelphia 76ers 123-101 di Game 2, Rabu 11 November 2026. Paul George tampil luar biasa dengan 36 poin, angka tertinggi di antara semua pemain malam ini, dan Boston kini unggul 2-0 di regular season series ini.\n\n---\n\n## Paul George Memimpin, Bench BOS Ikut Menghancurkan\n\nGeorge membuktikan kenapa dia jadi tumpuan Boston. Dari 22 tembakan field goal, 14 masuk. Dari 11 tembakan tiga angka, 6 bersarang. Efisiensi 36 poin dalam 30 menit bermain itu bukan keberuntungan, itu dominasi.\n\nJayson Tatum melengkapi dengan 21 poin, 6 rebound, 4 asis dari 32 menit sebagai starter. Dua nama itu saja sudah cukup untuk memenangkan banyak laga. Tapi yang membuat kemenangan ini terasa lebih meyakinkan adalah bench Boston yang ikut berkontribusi besar.\n\nPayton Pritchard, dari bangku cadangan, cetak 18 poin dengan 4-8 from three, plus 6 rebound dan 5 asis. Sam Hauser lebih efisien lagi: 12 poin dengan 4-6 dari tiga angka, hanya bermain 18 menit. Hugo Gonzalez menambahkan 10 poin dengan 2-4 from three dalam 19 menit. Bench Boston malam ini bukan pelengkap, mereka co-star.\n\n---\n\n## Philadelphia Tanpa Jawaban\n\nDi sisi Philadelphia, Tyrese Maxey jadi satu-satunya yang benar-benar melawan arus. 24 poin, 4 asis, shooting 8-12 dari lapangan dan 3-4 from three, efisiensi tinggi, tapi tidak cukup ketika tim di sekelilingnya tidak bisa mengikuti.\n\nJoel Embiid kesulitan: 16 poin dari 2-9 field goal attempts. Hanya dua tembakan dari sembilan yang masuk dari lapangan, plus 1-3 from three. Rebound 6 tetap solid, tapi angka shooting itu mencerminkan malam yang berat. LeBron James bermain sebagai playmaker, 11 poin, 8 rebound, 5 asis, tapi 4-12 dari lapangan dan 1-6 from three menunjukkan bahwa pertahanan Boston mempersulit ritmenya. Jaylen Brown dan Anfernee Simons masing-masing menambahkan 13 dan 17 poin, tapi tidak cukup untuk menutup gap yang sudah terbuka lebar.\n\n---\n\n## Angka-Angka yang Menjelaskan Segalanya\n\nBoston menembak 51% dari lapangan, Philadelphia 42%. Tapi perbedaan paling tajam ada di tembakan tiga angka: BOS 45% (22-49) vs PHI 30% (11-37). Dua belas tembakan tiga angka tambahan yang masuk, itulah selisih 22 poin di scoreboard.\n\nFast-break points justru dimenangi Philadelphia 21-10, tapi itu tidak cukup mengganti kerugian di efisiensi half-court. Boston juga unggul 46-32 di points in paint dan mencatat 9 turnover berbanding 14 dari PHI, penguasaan bola yang lebih bersih dari tuan rumah.\n\n---\n\n## Selanjutnya\n\nBoston unggul 2-0 di regular season series ini. Game 3 dan 4 dijadwalkan berlanjut, jadwal lengkap belum tersedia di data saat ini. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909961",
+    "home_team": "Philadelphia 76ers",
+    "home_abbr": "PHI",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 101,
+    "away_score": 123,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-11-11T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BOS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039224,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fails on critical training-inference violation: article claims BOS leads 2-0 when input explicitly states 1-0 after Game 2. Also infers future games (3 & 4) without grounded data. Translated-English phrasing in stats paragraph and soft-connector overuse. Fix inference errors and tighten language.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Boston unggul 2-0 di regular season series ini",
+          "fix": "Change to 'Boston unggul 1-0 di regular season series ini' or 'Game 2 berakhir imbang di aggregate'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 3 dan 4 dijadwalkan berlanjut, jadwal lengkap belum tersedia",
+          "fix": "Delete this sentence. Stick to what the input provides: this is Game 2 of 4 in the regular season series"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua belas tembakan tiga angka tambahan yang masuk, itulah selisih 22 poin di scoreboard",
+          "fix": "Rewrite: 'Bedanya di tiga angka: BOS cetak 22, PHI 12. Itu saja selisihnya.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Tapi yang membuat kemenangan ini terasa lebih meyakinkan adalah bench Boston",
+          "fix": "First 'Tapi': replace with 'Yang buat kemenangan lebih meyakinkan...' Second 'Tapi': use 'Masalahnya,' or 'Sayangnya,'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Dari 22 tembakan field goal, 14 masuk. Dari 11 tembakan tiga angka, 6 bersarang.",
+          "fix": "Change 'bersarang' to 'masuk' for consistency"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Bench Boston malam ini bukan pelengkap, mereka co-star.",
+          "fix": "Change to 'bintang pendamping' or restructure: 'Bench Boston jadi bintang utama malam ini'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Jaylen Brown dan Anfernee Simons masing-masing menambahkan 13 dan 17 poin, tapi tidak cukup",
+          "fix": "Reorder for input fidelity: 'Anfernee Simons 17 dan Jaylen Brown 13 poin, tapi tetap tidak cukup'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2a1b7d7ade6da5a6",
+    "published_at": "2026-11-11T04:08:45+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
