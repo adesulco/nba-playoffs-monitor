@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mia-at-utah-2026-11-11-g1",
+  "title": "Recap Miami Heat 115-109 Utah Jazz (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Miami Heat vs Utah Jazz (115-109) di —, 11 November 2026.",
+  "body_md": "## Miami Heat Survive Utah Jazz 115-109, Giannis Jadi Pembeda\n\nMiami Heat menutup regular season series melawan Utah Jazz dengan kemenangan 115-109, Senin 11 November 2026. Giannis Antetokounmpo tampil dominan dengan double-double 30 poin dan 11 rebound, cukup untuk mengamankan kemenangan meski Heat kesulitan dari sisi efisiensi shooting sepanjang malam.\n\n---\n\n## Giannis Angkat Heat di Atas Efisiensi Buruk\n\nTanpa Giannis, angka shooting Heat malam ini hampir pasti jadi masalah serius. Heat hanya cetak 39% dari field, jauh di bawah Jazz yang efisien di angka 49%. Dari tiga angka, Heat bahkan lebih parah: 29% berbanding 39% milik Jazz.\n\nGiannis jadi jawaban atas semua itu. 30 poin, 11 rebound, 4 asis dalam 31 menit, efisien di 12-21 dari field, termasuk 1-2 dari three-point line. Double-double yang bersih, bukan yang diraih dari garbage time.\n\nDi belakangnya, Davion Mitchell melengkapi backcourt Heat dengan 19 poin, 5 rebound, dan 8 asis. Mitchell juga jadi penggerak offense Heat, 38 menit di lapangan, 3-7 dari three. Pelle Larsson menyumbang 14 poin dan 7 rebound dari posisi starter, efisien di 4-7 dari field termasuk 2-3 dari three-point line. Andrew Wiggins menambah 13 poin off the bench dengan 5-8 dari field. Bam Adebayo kurang berhari baik secara scoring, 11 poin dengan 1-8 dari field, tapi kontribusinya terasa di 8 rebound dan 4 asis dalam 37 menit.\n\n---\n\n## Jazz Punya Angka Lebih Bagus, Tapi Kalah di Turnover\n\nUtah Jazz sebenarnya bermain lebih baik dari statistik dasar. FG% 49%, 3PT% 39%, 49 rebound berbanding 40 milik Heat, plus 50 poin di paint dibanding Heat yang hanya 32, semua angka itu menunjukkan Jazz seharusnya bisa bersaing ketat sampai akhir.\n\nYang membunuh Jazz: turnover. 19 turnover berbanding hanya 8 milik Heat. Heat mencetak 8 steal malam ini, Jazz hanya 6. Di level playoff, margin error sekecil itu langsung berubah jadi selisih poin.\n\nDarryn Peterson jadi andalan utama Jazz dengan 25 poin, 4 rebound, 4 asis, 10-19 dari field, 4-9 dari three. Ace Bailey tampil solid di 23 poin dan 7 rebound dengan efisiensi tinggi: 10-15 dari field, 3-5 dari three. Isaiah Collier off the bench menyumbang 17 poin, 5 reb, 5 asis, termasuk 4-4 sempurna dari three-point line. Tapi kontribusi positif ketiganya sebagian besar dinetralisir oleh kebocoran di ball-handling.\n\n---\n\n## Free Throw Jadi Pembeda di Akhir Laga\n\nSatu faktor yang sering luput: Heat ke garis free throw sebanyak 44 kali, Jazz hanya 22. Heat mengonversi 33 dari 44 (75%), Jazz 14 dari 22 (64%). Selisih 19 poin dari free throw antara kedua tim, di laga yang berakhir dengan margin 6 poin, itu bukan detail kecil.\n\nDi kuarter keempat, dengan sisa 47,7 detik dan skor 112-107, Svi Mykhailiuk mencetak two-point shot yang diumpan Isaiah Collier untuk memperpendek jarak. Tapi terlambat. Heat sudah cukup aman untuk menutup laga.\n\n---\n\n## Catatan Akhir\n\nHeat menang regular season series 2-0 atas Jazz. Laga berikutnya belum tercantum di data input saat ini. Siaran langsung tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909963",
+    "home_team": "Utah Jazz",
+    "home_abbr": "UTAH",
+    "away_team": "Miami Heat",
+    "away_abbr": "MIA",
+    "home_score": 109,
+    "away_score": 115,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-11-11T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020904,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Major training-inference violation (Svi Mykhailiuk), multiple tense/translation awkwardnesses, meta-reference to input data breaks fourth wall. Score 62 due to 2 medium-severity issues that don't trigger hard fail but cumulative soft issues push under 70.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Svi Mykhailiuk mencetak two-point shot yang diumpan Isaiah Collier",
+          "fix": "Delete or rewrite: 'Isaiah Collier assist on driving layup' — cite only players in top-scorers block"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Giannis jadi jawaban atas semua itu",
+          "fix": "Rephrase: 'Giannis bawa Heat keluar dari krisis efisiensi'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tanpa Giannis, angka shooting Heat malam ini hampir pasti jadi masalah serius",
+          "fix": "Rewrite: 'Tanpa Giannis, shooting Heat 39% ini bisa fatal di playoff-caliber laga'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Giannis jadi jawaban... Giannis bawa... Di belakangnya, Davion Mitchell",
+          "fix": "Restructure: 'Giannis single-handedly mengangkat Heat... Behind him, Mitchell's 19 points...'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Mitchell juga jadi penggerak offense Heat, 38 menit di lapangan, 3-7 dari three",
+          "fix": "Consolidate: '19 poin, 8 asis, 38 menit di court, 3-7 three'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Di belakangnya, Davion Mitchell melengkapi backcourt Heat dengan 19 poin",
+          "fix": "Simpler: 'Davion Mitchell supporting di backcourt dengan 19 poin, 8 asis'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Laga berikutnya belum tercantum di data input saat ini",
+          "fix": "Delete entirely. End with 'Siaran langsung tersedia di NBA League Pass dan Vidio' or add actual next-game info"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Catatan Akhir",
+          "fix": "Delete section header or merge final 2 sentences into previous paragraph naturally"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe5cb61f3a46bb7b4",
+    "published_at": "2026-11-11T05:10:38+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
