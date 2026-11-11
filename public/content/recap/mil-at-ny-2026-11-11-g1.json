@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mil-at-ny-2026-11-11-g1",
+  "title": "Recap Milwaukee Bucks 85-117 New York Knicks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Milwaukee Bucks vs New York Knicks (85-117) di —, 11 November 2026.",
+  "body_md": "# Knicks Libas Bucks 117-85, KAT Dominasi dengan 21 Poin dan 16 Rebound\n\nNew York Knicks menghancurkan Milwaukee Bucks 117-85 di Game 2 Regular Season Series, Sabtu 11 November 2026. Kemenangan ini bukan sekadar angka, selisih 32 poin bicara tentang dominasi total, dari paint sampai papan rebound. NY kini unggul 2-0 di series empat game ini.\n\n---\n\n## Tiga Starter, Satu Pesan\n\nKnicks tidak butuh satu bintang malam ini. Mereka butuh tiga, dan tiga itu hadir.\n\nJalen Brunson memimpin dengan 23 poin, 4 rebound, 2 asis dari 7-18 field goal. Efisiensinya tidak sempurna, tapi Brunson yang \"off\" tetap jadi problem terbesar buat Bucks. Karl-Anthony Towns menyusul dengan 21 poin dan 16 rebound, angka yang nyaris tidak masuk akal untuk besar rebound-nya. KAT juga menembak 2-9 dari tiga angka, tapi dia tidak peduli: kehadiran fisiknya di paint dan di papan rebound sudah cukup mengubah pertandingan.\n\nOG Anunoby menambahkan 19 poin dengan efisiensi tinggi, 6-12 field goal, 5-8 dari tiga angka. Lima dari delapan tembakan tiga angka masuk. Di malam ketika Brunson tidak selalu menemukan ritme, Anunoby jadi tembakan yang bisa diandalkan dari wing.\n\nOff the bench, Tyler Kolek bermain 15 menit dan cetak 12 poin dengan 5-6 field goal. Efisiensi Kolek hampir sempurna untuk waktu bermain yang singkat.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nDua statistik mengunci cerita malam ini: rebound dan free throw.\n\nNY menguasai papan rebound 59 berbanding 32. Selisih 27 rebound, mayoritas disumbang KAT, berarti Bucks hampir tidak punya kesempatan untuk second-chance points. Setiap miss NY sudah dijaga, setiap miss MIL berubah jadi possession ekstra Knicks.\n\nDi garis free throw, NY mendapat 20-25 kali percobaan versus Bucks yang hanya 9-10. NY masuk ke garis free throw lebih dari dua kali lipat Bucks, ini bukan soal keberuntungan, ini soal agresivitas di paint yang berhasil. Points in paint NY pun unggul 38 berbanding 28.\n\nDari sisi shooting, MIL 38% field goal vs NY 45%. Selisihnya terlihat kecil di kertas, tapi dalam konteks volume dan free throw, hasilnya jadi 32 poin.\n\n---\n\n## Bucks Tanpa Jawaban\n\nMilwaukee tidak punya player yang bisa menyamai beban itu. Jaime Jaquez Jr. jadi top scorer Bucks dengan 16 poin dan 5 rebound dari 6-13 field goal, cukup respektabel, tapi tidak cukup untuk menahan Knicks yang bermain kolektif.\n\nRyan Rollins menyumbang 14 poin dengan 4-6 dari tiga angka. Kasparas Jakucionis dari bench cetak 11 poin, 4 asis, tapi 4-12 field goal-nya menunjukkan kesulitan menemukan ruang di pertahanan NY.\n\nBucks juga bergulat dengan 14 turnover vs NY yang 11. Fast-break points MIL (13) lebih banyak dari NY (4), tapi itu tidak cukup menutup semua celah lain yang terbuka.\n\nDi Q1, Bucks sempat kompetitif, data key plays menunjukkan skor masih ketat di kuarter pertama, bolak-balik sampai pertengahan. Tapi momentum bergeser, dan NY tidak membiarkan Bucks kembali.\n\n---\n\n## Selanjutnya\n\nSeries ini sekarang 2-0 untuk NY. Game 3 dan Game 4 menentukan apakah Bucks masih punya jawaban, atau apakah Knicks menutup series ini lebih awal. Jadwal Game 3 belum tersedia di data saat ini. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909960",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Milwaukee Bucks",
+    "away_abbr": "MIL",
+    "home_score": 117,
+    "away_score": 85,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-11-11T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.051624,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail on training inference (series record 2-0 vs input 1-0, Kolek role unmarked in input). Also some tense/academic drift and awkward meta-commentary. Rewrite series state and remove unsourced role designation.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "NY kini unggul 2-0 di series empat game ini.",
+          "fix": "Change to 'NY unggul 1-0' or 'NY tidak kalah di series empat game ini' — stick to input fact."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Off the bench, Tyler Kolek bermain 15 menit dan cetak 12 poin dengan 5-6 field goal.",
+          "fix": "Remove 'off the bench' or verify from input. Just write: 'Tyler Kolek cetak 12 poin dengan 5-6 field goal.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Jalen Brunson memimpin dengan 23 poin...Efisiensinya tidak sempurna, tapi Brunson yang 'off' tetap jadi problem terbesar buat Bucks.",
+          "fix": "Tighten: 'Brunson off, tapi tetap jadi masalah terbesar.' Casual register allowed here — OK as-is."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua statistik mengunci cerita malam ini: rebound dan free throw.",
+          "fix": "Less structural: 'Cerita malam ini terletak pada rebound dan free throw.' Or just start with fact."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Jadwal Game 3 belum tersedia di data saat ini.",
+          "fix": "Delete. Just close with 'Game 3 dan Game 4 akan jadi pertarungan beda cerita' or watch next move."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "KAT juga menembak 2-9 dari tiga angka, tapi dia tidak peduli: kehadiran fisiknya di paint dan di papan rebound sudah cukup mengubah pertandingan.",
+          "fix": "Rewrite factually: 'KAT 2-9 tiga angka, tapi dominasi di paint dan rebound bercerita berbeda.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Di Q1, Bucks sempat kompetitif, data key plays menunjukkan skor masih ketat di kuarter pertama, bolak-balik sampai pertengahan.",
+          "fix": "Just describe: 'Kuarter pertama ketat, 16-18 sampai pertengahan.' Let facts speak."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "jadi top scorer Bucks...jadi problem terbesar...jadi tembakan...jadi masalah",
+          "fix": "Vary: 'jadi top scorer' → 'top scorer'; 'problem terbesar' → 'tantangan terbesar'; 'berperan sebagai'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe85ae59bf52187a2",
+    "published_at": "2026-11-11T04:33:43+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

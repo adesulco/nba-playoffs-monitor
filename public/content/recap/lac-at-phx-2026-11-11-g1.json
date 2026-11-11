@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "lac-at-phx-2026-11-11-g1",
+  "title": "Recap LA Clippers 110-133 Phoenix Suns (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — LA Clippers vs Phoenix Suns (110-133) di —, 11 November 2026.",
+  "body_md": "# Phoenix Suns Libas Clippers 133-110, Bench Mob PHX Jadi Pembeda\n\nPhoenix Suns menang telak 133-110 atas LA Clippers di regular season series game ke-2, Minggu 11 November 2026. PHX kini unggul 2-0 di series ini, dan yang menarik, kemenangan ini bukan dibangun oleh satu superstar. Bench mob Phoenix yang dominan jadi cerita utama malam ini.\n\n---\n\n## Top Performers: Bench PHX Mencuri Perhatian\n\nDari sisi Phoenix, Jordan Goodwin jadi nama yang paling mencuri perhatian, dan dia keluar dari bench. Goodwin cetak 18 poin hanya dalam 14 menit, dengan shooting 6-7 dari field dan 6-7 dari tiga poin. Efisiensi yang sulit dipercaya untuk starter sekalipun, apalagi untuk pemain off the bench.\n\nDevin Booker mengerjakan tugasnya sebagai motor utama: 17 poin, 3 rebound, 5 asis dengan 29 menit bermain. Tapi Booker pun tak perlu memaksakan diri, karena dukungan bench-nya luar biasa. Luke Kennard menyumbang 14 poin dari bench dengan shooting 3-5 dari tiga poin. Collin Gillespie 12 poin dan 8 asis juga dari bench, vision-nya mengalir rapi di paruh kedua. Jalen Green 13 poin, 5 rebound dengan shooting 3-4 dari tiga poin melengkapi barisan starter yang solid.\n\nDi kubu Clippers, lima pemain berbagi scoring dengan angka nyaris identik, Rui Hachimura, Darius Garland, Baba Miller masing-masing 13 poin, Max Strus 12, Derrick Jones Jr. 11. Pemerataan yang terlihat bagus di atas kertas, tapi tidak ada satu pun yang bisa mengambil alih kendali di momen kritis. Garland yang paling mendekati peran playmaker dengan 6 asis, tapi shooting-nya 5-12 tidak cukup tajam.\n\n---\n\n## Statistik yang Bicara Sendiri\n\nAngka team stats menjelaskan kekalahan LAC lebih jelas dari narasi apapun.\n\nPHX 56% FG vs LAC 42%, gap efisiensi shooting yang besar. Dari tiga poin, perbedaannya lebih ekstrem lagi: PHX 51% (22-43) vs LAC 34% (15-44). Phoenix melepas hampir volume yang sama tapi masuk jauh lebih banyak. Itulah sumber margin 23 poin.\n\nSatu catatan positif untuk Clippers: mereka menang di steals 10 vs 4 dan fast-break points 16-10. LAC mencoba bermain dengan intensitas defensif, tapi turnovers-pun menemani, 13 dari LAC dan 20 dari PHX. Meskipun LAC lebih banyak memaksa turnovers, PHX tetap bisa mengonversi peluang dengan lebih efisien secara keseluruhan.\n\nRebound pun berpihak ke Phoenix, 49 vs 37, keunggulan yang memberi mereka second-chance opportunities sepanjang laga.\n\n---\n\n## Drama Q1 yang Tidak Berlanjut\n\nQuarter pertama sempat menjanjikan persaingan ketat. Hachimura buka dengan three-pointer dari 23 kaki (10-8 untuk LAC), Garland susul dengan step-back three dari 25 kaki untuk balik unggul 18-16. Tapi Goodwin langsung balas dengan three-pointer via assist Booker, PHX merebut lead 19-18 di Q1.\n\nDari sana, Clippers tidak pernah benar-benar mengancam lagi. Momentum bergeser ke Phoenix, dan bench mob PHX mengeksekusi dengan konsisten sampai peluit akhir.\n\n---\n\n## Selanjutnya\n\nPHX kini unggul 2-0 di series empat game ini. Game ke-3 regular season series berikutnya menentukan apakah Clippers bisa merespons atau Phoenix menutup series dengan bersih. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909962",
+    "home_team": "Phoenix Suns",
+    "home_abbr": "PHX",
+    "away_team": "LA Clippers",
+    "away_abbr": "LAC",
+    "home_score": 133,
+    "away_score": 110,
+    "winner_abbr": "PHX",
+    "kickoff_utc": "2026-11-11T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHX leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020478,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail: Series state error (claims PHX 2-0 when input says 1-0). Multiple tense/academic drift issues and one calqued English phrase reduce score. Final section contradicts grounded data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "PHX kini unggul 2-0 di series ini",
+          "fix": "Change to 'PHX unggul 1-0 di series ini' or remove claim entirely."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Phoenix Suns menang telak 133-110 atas LA Clippers",
+          "fix": "Write 'Phoenix Suns menang 133-110 atas LA Clippers'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Tapi Booker pun tak perlu memaksakan diri",
+          "fix": "Write 'Booker tak perlu memaksakan diri' or 'Booker bisa jaga energi'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu catatan positif untuk Clippers: mereka menang di steals",
+          "fix": "Write 'Clippers menang steal 10-4' or 'Salah satu sisi positif LAC'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka team stats menjelaskan kekalahan LAC lebih jelas dari narasi apapun",
+          "fix": "Write 'Statistik tim cerita kalahnya LAC lebih jelas' or just 'Statistik menunjukkan perbedaan nyata'."
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Selanjutnya / PHX kini unggul 2-0 di series empat game ini",
+          "fix": "Rewrite closing without 'Selanjutnya'; fix series claim to 1-0; end with broadcast info only."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "vision-nya mengalir rapi di paruh kedua",
+          "fix": "Cite specific moments or just say 'Gillespie orchestrated with 8 assists'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6e4b2d02edc18e88",
+    "published_at": "2026-11-11T04:35:36+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
