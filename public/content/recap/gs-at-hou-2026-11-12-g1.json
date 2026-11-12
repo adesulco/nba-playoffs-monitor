@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "gs-at-hou-2026-11-12-g1",
+  "title": "Recap Golden State Warriors 108-115 Houston Rockets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs Houston Rockets (108-115) di —, 12 November 2026.",
+  "body_md": "# Houston Rockets Hentikan Golden State 115-108, Sengun Nyaris Triple-Double\n\nHouston Rockets menang 115-108 atas Golden State Warriors, Sabtu 12 November 2026. Lima starter HOU kontribusi merata, Warriors gagal tutup gap meski sempat imbang di paruh kedua.\n\nIni Game 2 dari regular season series empat pertandingan. HOU unggul 1-0.\n\n---\n\n## Sengun Jadi Mesin, Durant Ikut Ambil Bagian\n\nAlperen Sengun jadi pemain paling mencolok malam ini, 19 poin, 13 rebound, 9 asis. Satu asis lagi, dia punya triple-double. Stat line itu bukan cuma angka: Sengun hadir di tiga sisi permainan, dari post-up sampai playmaking ke perimeter.\n\nKevin Durant 20 poin, 4 rebound, 5 asis, efisien, tidak memaksa. FG 8-17, steady tanpa harus jadi pemain yang dominasi possession. Amen Thompson 19 poin dari FG 8-11, efisiensi tertinggi di antara semua top scorer malam ini, hampir tidak ada yang terbuang. Fred VanVleet 18 poin, 6 asis, 4-7 from three, peran sebagai motor offense HOU dari lini dua berjalan lancar.\n\nJabari Smith Jr. 14 poin, 8 rebound, kontribusi dua sisi.\n\nLima starter HOU masuk double figures semua. Itu yang membuat Warriors sulit menemukan celah.\n\n---\n\n## Warriors Berjuang, Dua Orang Tidak Cukup\n\nYaxel Lendeborg jadi tumpuan GS dengan 25 poin dan 10 rebound, double-double, top scorer tim. FG 9-19, dua three-pointer. Brandin Podziemski 22 poin, 6 rebound, 4 asis, dengan 4-11 from three.\n\nDua orang itu kombinasi 47 poin. Masalahnya, Warriors butuh lebih dari itu.\n\nOff the bench, LJ Cryer 13 poin, 3-8 from three. De'Anthony Melton 11 poin, 3-7 from three, 4 asis. Will Richard 9 poin dari 19 menit.\n\n---\n\n## Baca Angkanya\n\nBox score cerita lebih banyak dari sekadar skor akhir.\n\nHOU 51% FG vs GS 41%, selisih 10 poin efisiensi lapangan, itulah margin kemenangannya. Warriors ambil lebih banyak tembakan tiga angka (51 attempt vs 36) tapi konversi lebih rendah: 33% vs 36%. Strategi volume dari luar belum kompensasi efisiensi HOU dari dalam.\n\nYang paling mencolok: points in paint 50-34 buat HOU. Sengun dan Thompson konsisten menekan ke area restricted, Warriors tidak punya jawaban. Fast-break points juga jauh, HOU 19 vs GS 7. Turnovers GS 13 vs HOU 12, selisih tipis, tapi transisi HOU lebih mematikan.\n\nGS menang di rebound total (48 vs 40) tapi keunggulan itu tidak cukup mengubah arah pertandingan.\n\n---\n\n## Q4: Sempat Dekat, Tidak Bisa Balik\n\nKey play di Q4 menceritakan semuanya. Menit 10:10, Melton masuk tembakan 25-foot three-pointer, skor jadi 85-88, GS masih dalam jangkauan. Kurang dari semenit kemudian, 9:47, Amen Thompson alley oop layup dari umpan Sengun, 85-90. HOU langsung perlebar jarak.\n\nDi 7:10, Podziemski masuk satu free throw untuk 91-96. Tapi momentum tidak balik ke Warriors. HOU kelola sisa pertandingan dan tutup 115-108.\n\n---\n\n## Selanjutnya\n\nGame 3 jadwal berikutnya dari regular season series ini. Siaran live di NBA League Pass dan Vidio.\n\nHOU datang dengan kedalaman roster yang merata. Kalau GS masih bergantung pada Lendeborg dan Podziemski sebagai dua penopang utama, path kemenangannya lebih sempit.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909974",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 115,
+    "away_score": 108,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-11-12T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040409,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong article. Voice is solid Bahasa sport press — casual, stat-grounded, minimal hedging. Numeric accuracy verified against input block. One soft connector used once (acceptable). Three low-severity phrasing notes, none blocking. Recommend pass with optional polish on suggested fixes.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya / Game 3 jadwal berikutnya",
+          "fix": "Delete 'Selanjutnya' line; start directly with 'Game 3 jadwal berikutnya...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Strategi volume dari luar belum kompensasi efisiensi HOU dari dalam",
+          "fix": "Rephrase: 'Tapi volume dari luar tidak cukup balas efisiensi HOU di dalam.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "FG 9-19, dua three-pointer",
+          "fix": "Use: 'FG 9-19, 2-7 tiga-angka' or 'dua tembakan tiga angka.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2aeadbe2b429ef8c",
+    "published_at": "2026-11-12T07:08:25+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
