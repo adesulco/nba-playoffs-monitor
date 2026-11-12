@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "orl-at-utah-2026-11-12-g1",
+  "title": "Recap Orlando Magic 123-108 Utah Jazz (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Utah Jazz (123-108) di —, 12 November 2026.",
+  "body_md": "## Franz Wagner 38 Poin, Orlando Magic Libas Utah Jazz 123-108\n\nOrlando Magic menutup regular season series melawan Utah Jazz dengan dominan, menang 123-108 dan sapu bersih dua laga. Franz Wagner jadi mesin utama dengan 38 poin, dibantu tiga starter lain yang ikut tembus angka dua digit. Jazz tak pernah punya jawaban.\n\n---\n\n## Top Performers\n\n**Franz Wagner** tampil di level yang berbeda. 38 poin, 8 rebound, shooting 13-23 dari lapangan dan 3-8 dari garis tiga angka dalam 39 menit. Bukan cuma angka, Wagner jadi tumpuan di momen krusial, termasuk driving layup dan floating jumper di Q4 yang menjaga jarak saat Jazz sempat mendekat.\n\nDi sampingnya, **Desmond Bane** mengeksekusi peran shooter dengan sempurna: 25 poin dengan 7-11 dari three-point line. Efisiensi 7-11 dari luar itu yang membuat Orlando sulit dikejar.\n\n**Anthony Black** melengkapi trio dengan all-around display: 22 poin, 7 rebound, 8 asis, nyaris triple-double, dan jadi perekat offense Orlando sepanjang laga.\n\nDari bangku cadangan, **Jevon Carter** tambah 11 poin termasuk tiga-pointer krusial di Q4 yang mendorong keunggulan jadi 98-94 saat Jazz masih dalam jangkauan.\n\nUntuk Jazz, **Darryn Peterson** paling berjuang dengan 22 poin dan 5 asis, tapi butuh 7-19 dari lapangan untuk sampai ke sana, tidak efisien. **Brice Sensabaugh** off the bench lebih tajam: 19 poin, 6-10 FG, 3-6 dari tiga angka, dan sempat membuat situasi tegang di Q4 dengan dua three-pointer beruntun yang memangkas defisit jadi 95-94. **Ace Bailey** 18 poin dan 7 rebound, tapi butuh 6-17 dari lapangan.\n\n---\n\n## Yang Bicara di Statistik\n\nDua angka paling mencolok: fast-break points 14-3 untuk ORL, dan points in paint 40-28.\n\nOrlando unggul bukan hanya dari luar, mereka mendikte ritme dan tempo. 14 fast-break points berbanding 3 menggambarkan tim yang lebih atletis dan lebih aktif dalam transisi. Jazz terlalu sering bermain half-court, dan ketika sudah masuk paint pun mereka kalah produktif 40-28.\n\nDari shooting, ORL 47% FG vs UTAH 41%, dan gap three-point lebih lebar: ORL 39% (18-46) vs UTAH 32% (14-44). Magic lebih volume dan lebih efisien dari luar sekaligus.\n\nRebound total 45-38 untuk ORL juga bukan kebetulan, Jaxson Hayes sisi Jazz memang dapat 8 rebound, tapi Wendell Carter Jr. (9 poin, 7 rebound) dan Black (7 rebound) ikut berkontribusi di papan.\n\n---\n\n## Drama Q4 yang Sempat Memanas\n\nJazz sempat membuat pertandingan lebih menarik dari yang diinginkan Orlando. Di Q4 menit 8-an, Sensabaugh berhasil membuat dua three-pointer, satu 28-footer, satu 26-footer, dan Jazz sempat memotong defisit jadi 95-94.\n\nTapi respons Orlando datang cepat. Carter nailed 24-foot three-pointer untuk dorong keunggulan jadi 98-94, lalu Wagner tambah driving layup untuk 100-96. Dari situ, momentum tidak pernah balik ke Jazz. Jarak 123-108 di peluit akhir mencerminkan Orlando yang lebih terkontrol di paruh kedua Q4.\n\n---\n\n## Penutup\n\nRegular season series selesai 2-0 untuk Orlando Magic. Laga berikutnya dapat dipantau lewat **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909973",
+    "home_team": "Utah Jazz",
+    "home_abbr": "UTAH",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 108,
+    "away_score": 123,
+    "winner_abbr": "ORL",
+    "kickoff_utc": "2026-11-12T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ORL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.038487,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 7,
+      "summary": "Solid recap with accurate stat usage and good flow. Minor issues: soft-phrase repetition, one calqued English phrase ('all-around display'), and light academic drift in stats section. No high-severity violations. Pass with notes for polish.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "menutup regular season series melawan Utah Jazz dengan dominan",
+          "fix": "Use 'selesaikan' or restructure: 'Orlando Magic tutup regular season series melawan Utah Jazz'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "tampil di level yang berbeda",
+          "fix": "Use 'tampil luar biasa' or 'main di kelas berbeda' or just cite stats directly"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "yang menjaga jarak saat Jazz sempat mendekat",
+          "fix": "Simplify: 'yang jaga jarak saat Jazz mendekat' or just restructure clause"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "melengkapi trio dengan all-around display",
+          "fix": "Use 'Black lengkapi trio dengan performa all-around' or 'Black tambahin ketiganya'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "nyaris triple-double, dan jadi perekat offense Orlando",
+          "fix": "Use 'jadi penghubung pergerakan serangan' or just 'orchestrate offense Orlando'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tapi butuh 7-19 dari lapangan untuk sampai ke sana, tidak efisien",
+          "fix": "Vary second instance: 'Peterson 7-19 dari lapangan' or 'Peterson tidak efisien'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Dua angka paling mencolok: fast-break points 14-3 untuk ORL",
+          "fix": "Merge into body or use casual opener: 'Dua angka yang bikin bedanya jelas' or just start with stat"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xc459e5fbf661a580",
+    "published_at": "2026-11-12T05:14:41+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
