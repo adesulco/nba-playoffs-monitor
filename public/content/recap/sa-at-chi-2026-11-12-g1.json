@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "sa-at-chi-2026-11-12-g1",
+  "title": "Recap San Antonio Spurs 124-119 Chicago Bulls (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — San Antonio Spurs vs Chicago Bulls (124-119) di —, 12 November 2026.",
+  "body_md": "# Spurs Tutup Seri Reguler vs Bulls 124-119, Wembanyama 32 Poin\n\nSan Antonio Spurs menang 124-119 atas Chicago Bulls, Sabtu 12 November 2026. Kemenangan ini sekaligus menutup regular season series antara dua tim, Spurs unggul 1-0.\n\nVictor Wembanyama yang jadi pembeda. Center Prancis itu mengakhiri laga dengan 32 poin dan 9 rebound, efisien dengan 13-18 dari lapangan. Bukan cuma angka, Wemby yang keep show up di momen kunci Q4 ketika Bulls sempat mengancam.\n\n---\n\n## Top Performers\n\n**SA, Wembanyama + duo playmaker**\n\nWembanyama (32 poin, 9 rebound, FG 13-18) tampil dominan sepanjang malam. Yang menarik: dua \"point guard\"-nya sama-sama mendekati double-double assist. Dylan Harper 18 poin dan 10 assist dengan 6 rebound, satu-satunya pemain di laga ini yang menyentuh dua digit di dua kategori. De'Aaron Fox 17 poin dan 9 assist, satu assist dari menyamainya. Dua playmaker ini yang menghidupkan offense SA dengan 32 assists tim secara keseluruhan.\n\nJulian Champagnie 12 poin, efisien 3-6 dari garis tiga. Stephon Castle 11 poin off 5-13 shooting, volume yang lebih tinggi tapi konsisten jadi connector di half-court.\n\n**CHI, Jalen Smith luar biasa, bench produktif**\n\nChicago seharusnya menang di atas kertas. Shooting mereka? 58% FG, 52% dari tiga angka, angka yang normalnya cukup untuk tutup laga. Jalen Smith yang paling menyala: 23 poin dengan shooting 8-9 dari lapangan dan sempurna 5-5 dari tiga. Hampir tak bisa dibendung.\n\nNic Claxton 17 poin off the bench hanya dalam 16 menit, efisiensi 5-6 FG. Caleb Wilson 15 poin, 5 rebound dalam 15 menit sebagai starter. Matas Buzelis dan Tre Jones sama-sama 13 poin. CHI punya kedalaman roster yang solid malam ini, masalahnya bukan di offense.\n\n---\n\n## Yang Membedakan: Turnover dan Fast Break\n\nDua angka yang menjelaskan hasil laga ini.\n\n**Turnover:** SA 6, CHI 19. Selisih 13 turnover itu fatal. Chicago buang terlalu banyak possessions di lapangan sendiri, dan SA tidak menyia-nyiakannya.\n\n**Fast-break points:** SA 21, CHI 6. Langsung berkaitan. Turnover CHI yang tinggi jadi umpan fast break SA berkali-kali. Sementara shooting CHI memang bagus (58% FG, 52% 3PT), tapi jumlah possessions mereka terkikis signifikan dari 19 turnover itu.\n\nSA mencatat 16 steals vs 3 milik CHI, perbedaan agresivitas defensif yang mencolok. 66 points in the paint untuk SA juga menunjukkan mereka sukses masuk ke dalam secara konsisten, bukan hanya mengandalkan perimeter.\n\nCHI lebih baik di free throw (89% vs 72%), lebih banyak rebound (40 vs 33), dan persentase shooting lebih tinggi di FG maupun tiga angka. Tapi angka-angka itu tidak cukup menutup lubang yang dibuat sendiri.\n\n---\n\n## Momen Kunci Q4\n\nBulls sempat bertahan. Masuk Q4, skor masih kompetitif, CHI sempat naik tipis sebelum Wembanyama masuk dengan jumper 18 kaki (skor 92-89, assist Harper) lalu turnaround jump shot 7 kaki (94-91, assist Castle) untuk kasih Spurs cushion kecil di awal kuarter terakhir.\n\nLaga tetap ketat sampai akhir. Noa Essengue menutup pertandingan dengan three-pointer 25 kaki di buzzer (assist Jaylin Sellers) untuk angka terakhir, sebuah garbage-time three yang memastikan skor final 124-119.\n\n---\n\n## Penutup\n\nRegular season series selesai: Spurs 1-0. Tayangan ulang tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909969",
+    "home_team": "Chicago Bulls",
+    "home_abbr": "CHI",
+    "away_team": "San Antonio Spurs",
+    "away_abbr": "SA",
+    "home_score": 119,
+    "away_score": 124,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-12T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.041678,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong article. Numeric accuracy verified against input block. Voice is conversational and mostly natural Bahasa Indonesia sport writing. Minor issues are phrasing stiffness (one 'translated English' feel) and repetitive sentence structure in the Chicago breakdown — neither breaks the voice, but both could be tightened. Passes cleanly.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik: dua \"point guard\"-nya sama-sama mendekati double-double assist.",
+          "fix": "Rewrite: 'Dua point guard-nya seduasama hampir postup assist double digit.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Hampir tak bisa dibendung.",
+          "fix": "Change to 'Gak bisa dibenerin' or just 'Sempurna malam ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Laga tetap ketat sampai akhir. Noa Essengue menutup pertandingan dengan three-pointer 25 kaki di buzzer",
+          "fix": "Change to 'Noa Essengue akhiri laga dengan three-pointer 25 kaki di buzzer' or 'Essengue tutup laga...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Hampir tak bisa dibendung. Nic Claxton 17 poin... Caleb Wilson 15 poin... Matas Buzelis dan Tre Jones sama-sama 13 poin.",
+          "fix": "Consolidate into fewer sentences or vary: 'Claxton had 17 off bench; Wilson 15; Buzelis and Jones both scored 13.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x4fdf6332b429a320",
+    "published_at": "2026-11-12T03:38:43+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
