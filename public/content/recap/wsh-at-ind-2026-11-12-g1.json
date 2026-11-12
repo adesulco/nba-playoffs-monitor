@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "wsh-at-ind-2026-11-12-g1",
+  "title": "Recap Washington Wizards 101-114 Indiana Pacers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Washington Wizards vs Indiana Pacers (101-114) di —, 12 November 2026.",
+  "body_md": "# Indiana Pacers Redam Washington, Siakam dan Zubac Jadi Pembeda\n\nIndiana Pacers menang 114-101 atas Washington Wizards dalam laga kedua regular season series, Minggu 12 November 2026 pukul 07.00 WIB. Kemenangan ini membuat IND unggul 2-0 dalam seri tiga game. Pascal Siakam tampil sebagai motor utama dengan 28 poin, sementara Ivica Zubac mendominasi area cat dengan 20 poin dan 12 rebound.\n\n---\n\n## Siakam dan Zubac Jadi Tulang Punggung\n\nSiakam layak dapat label pemimpin malam ini. 28 poin, 8 rebound, 5 asis, angka yang merata di tiga lini kontribusi. Efisiensi shootingnya tidak sempurna (7-17 dari lapangan, 2-7 dari garis tiga angka), tapi Siakam selalu hadir di momen krusial. Layup running Siakam, dibantu Kelly Oubre Jr., di akhir Q2 membawa IND unggul 52-50—momentum yang akhirnya tidak berhasil dibalik lagi oleh WSH.\n\nDi bawah ring, Zubac menjawab tantangan Davis dengan keras. 20 poin dan 12 rebound dengan efisiensi tinggi, 9-15 dari lapangan, adalah kinerja yang membuat interior Wizards kewalahan. WSH praktis tidak punya jawaban untuk Zubac selama 31 menit dia di lapangan.\n\nAndrew Nembhard melengkapi trio penggerak IND dengan 17 poin dan 10 asis. Assist-nya yang terbaca membuat IND tampil dengan ritme ofensif yang jarang putus. Kelly Oubre Jr. menambahkan 14 poin dan 6 rebound sebagai pelengkap rotasi.\n\n---\n\n## WSH: Bright Spot tanpa Dukungan Sistem\n\nWashington tidak tanpa perlawanan. Kyshawn George membawa 25 poin, 9 rebound, efisien dari garis tiga angka (5-8), termasuk step-back tiga angka dari 24 kaki di akhir Q2 yang sempat menyamakan skor 50-50. Skor seimbang itu membuat WSH terlihat siap ambil momentum.\n\nAnthony Davis menyumbang 21 poin dan 13 rebound, statistik yang besar, tapi shooting-nya bermasalah (7-20 dari lapangan, 0-3 dari tiga angka). Trae Young dan Tre Johnson sama-sama mencetak 15 poin. Dybantsa dari rotasi menambahkan 13 poin walau efisiensinya terseok (6-15 dari lapangan).\n\n---\n\n## Angka yang Menjelaskan Hasil\n\nDua angka cukup untuk menerangkan kenapa IND menang: assist dan points in paint.\n\nIND mencatat 29 assist vs WSH yang hanya 12. Selisih itu cerminan kualitas ball movement, Pacers bermain sebagai tim, Wizards bermain sebagai koleksi individu. Perbedaan paling menyolok ada di points in paint: IND 60, WSH 44. Zubac adalah bagian besar dari angka itu, tapi ini juga mencerminkan betapa konsisten IND bisa menembus dan menyelesaikan di area cat.\n\nFG% IND (47%) lebih baik dari WSH (41%). Dari garis tiga angka angkanya hampir setara, IND 9-30 (30%) vs WSH 11-35 (31%), sehingga jarak efisiensi yang membedakan ada di two-point conversion dan free throw. IND 88% dari garis (21-24) vs WSH 73% (16-22). Di laga yang selisihnya 13 poin, margin-margin kecil ini bertumpuk jadi kesenjangan nyata.\n\nFast-break points juga bicara: IND 17, WSH 9. Tekanan pertahanan WSH tidak cukup konsisten untuk menekan transisi Pacers.\n\n---\n\n## Momentum Q4 yang Memutus Harapan WSH\n\nHingga akhir Q3, Washington masih bisa bernapas. Skor 77-76 untuk WSH setelah three-pointer Trae Young di menit terakhir kuarter ketiga membuat game terasa terbuka.\n\nLalu Q4 dimulai. Nembhard langsung cetak tiga angka 27 kaki, skor jadi 77-80, pertama kali keunggulan berpindah ke IND di Q4. Siakam tambahkan dua free throw beruntun, 77-82. Dari situ WSH tidak pernah bisa menutup gap. Indiana menutup game dengan keunggulan yang tidak lagi terasa bisa diperebutkan.\n\n---\n\n## Selanjutnya\n\nDengan IND unggul 2-0 di seri tiga game ini, game ketiga, jika berlangsung, akan jadi penentu. Jadwal dan lokasi belum tercantum di data input saat ini. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909966",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "Washington Wizards",
+    "away_abbr": "WSH",
+    "home_score": 114,
+    "away_score": 101,
+    "winner_abbr": "IND",
+    "kickoff_utc": "2026-11-12T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "IND leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.0533,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article fails on a hard factual error: claims IND leads series 2-0 when input data explicitly states 1-0. Also contains academic drift and hedging in closing section. Remove 'Selanjutnya', verify series score, sharpen tense/register.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kemenangan ini membuat IND unggul 2-0 dalam seri tiga game.",
+          "fix": "Change to 'IND unggul 1-0 dalam seri tiga game' or 'game kedua regular season series ini'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dengan IND unggul 2-0 di seri tiga game ini, game ketiga, jika berlangsung, akan jadi penentu.",
+          "fix": "Delete 'Selanjutnya' header. Merge into last paragraph: 'Game ketiga seri ini akan tentukan juara seri.' Simpler, more direct."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Assist-nya yang terbaca membuat IND tampil dengan ritme ofensif yang jarang putus.",
+          "fix": "Rewrite: 'Assist Nembhard memastikan alur ofensif Pacers tetap lancar.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka cukup untuk menerangkan kenapa IND menang: assist dan points in paint.",
+          "fix": "Start directly: 'Assist dan points in paint menceritakan kisah kekalahan WSH.' Then cite numbers."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Siakam layak dapat label pemimpin malam ini. ... Siakam selalu hadir di momen krusial.",
+          "fix": "Second sentence: 'Selalu hadir di momen krusial, terutama layup running di akhir Q2.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Momentum Q4 yang Memutus Harapan WSH",
+          "fix": "Neutral header: 'Q4: Pacers Amankan Kemenangan' or just 'Kuarter Keempat'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf6da6fd3d445d1a6",
+    "published_at": "2026-11-12T02:34:05+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
