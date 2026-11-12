@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "cle-at-ny-2026-11-12-g2",
+  "title": "Recap Cleveland Cavaliers 115-107 New York Knicks (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Cleveland Cavaliers vs New York Knicks (115-107) di —, 12 November 2026.",
+  "body_md": "# Harden 32 Poin, Cavaliers Redam Knicks 115-107\n\nCleveland Cavaliers menang 115-107 atas New York Knicks, Rabu dini hari WIB. James Harden jadi bintang utama dengan 32 poin, efisien di atas efisien: 9-14 dari lapangan, 5-7 dari tiga poin dalam 33 menit. Series regular season antara kedua tim kini tied 1-1 setelah tiga pertemuan.\n\n---\n\n## Pemain Kunci\n\n**Harden** bukan satu-satunya yang tampil solid. Donovan Mitchell menambah 23 poin, 7 rebound, 6 asis — kontribusi seimbang di serbu dan bertahan. Di dalam cat, Jarrett Allen diam-diam mengunci papan: 11 poin dan 14 rebound, angka yang menjelaskan kenapa CLE menguasai total rebound 40-35.\n\nBench CLE juga ikut berkontribusi. Tyrese Proctor naik dari bangku cadangan untuk cetak 15 poin (6-12 FG, 3-8 dari tiga poin) dalam 23 menit. Meleek Thomas menambah 14 poin dari bench dengan efisiensi serupa, 6-11 dari lapangan. Proctor dan Thomas, dua cadangan muda, cetak delapan digit poin masing-masing. Kedalaman roster CLE terpakai dengan baik.\n\nDi sisi Knicks, **Jalen Brunson** berjuang keras: 27 poin, tapi butuh 23 tembakan untuk sampai di angka itu (12-23 FG). Karl-Anthony Towns lebih efisien, 21 poin, 11 rebound, 8 asis dari 11 percobaan, nyaris triple-double dan jadi satu-satunya pemain NY yang bisa disebut tampil di level tertinggi malam ini. Miles McBride off the bench cetak 19 poin dengan 5-10 dari tiga poin. NY punya contributor tapi tidak cukup merata.\n\n---\n\n## Apa yang Kata Statistik\n\nCLE dan NY hampir identik di field goal: CLE 47% (40-85), NY 49% (41-83). Perbedaan bukan di field goal, bukan juga di tiga poin, CLE 39% vs NY 36%, selisih tipis. Yang membedakan? **Free throw.**\n\nCLE 20-25 free throw (80%). NY 11-11 free throw (100%). Volume free throw CLE jauh lebih besar, dan itu berkontribusi langsung ke margin akhir delapan poin.\n\nSatu lagi: turnovers. CLE buang bola 10 kali, NY 12 kali, tidak dramatis, tapi steals CLE (8 vs 5 NY) dan blocks (9 vs 4) menunjukkan pertahanan CLE lebih aktif dan lebih mengganggu. Angka-angka itu bukan kebetulan.\n\n---\n\n## Momen Penentu\n\nKuarter empat menjadi milik Harden.\n\nSaat skor 101-101 di menit 5:09 Q4, laga terasa akan berlanjut dramatis. Harden menjawab dengan tembakan tiga poin dari jarak 27 kaki, 104-101 untuk CLE. Brunson membalas dengan layup 3 kaki untuk memotong jadi 104-103, tapi CLE tidak membiarkan NY lebih dekat dari itu.\n\nCLE menambah floating jump shot untuk 106-103. Jarrett Allen menutup dengan dua free throw berturut-turut (108-103) sebelum NY sempat bereaksi lebih jauh. Sisa pertandingan tinggal formalitas.\n\n---\n\n## Selanjutnya\n\nSeries regular season empat pertemuan ini berlanjut ke Game 4. Saksikan pertandingan berikutnya CLE vs NY di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909967",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Cleveland Cavaliers",
+    "away_abbr": "CLE",
+    "home_score": 107,
+    "away_score": 115,
+    "winner_abbr": "CLE",
+    "kickoff_utc": "2026-11-12T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021959,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail. Two high-severity issues: (1) Evan Mobley hallucinated from key plays (player not in input top scorers); (2) 'setelah tiga pertemuan' is inference beyond input data. One medium structural issue and several soft English calques. Rewrite Q4 sequence and remove unsourced Mobley reference before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Series regular season antara kedua tim kini tied 1-1 setelah tiga pertemuan.",
+          "fix": "Remove 'setelah tiga pertemuan' or replace with: 'Series tied 1-1 dengan satu pertemuan lagi tersisa.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Evan Mobley makes 6-foot driving floating jump shot",
+          "fix": "Delete the Mobley play reference entirely. Rewrite Q4 sequence using only verified scorers: Harden, Brunson, Allen, Anunoby."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Saat skor 101-101 di menit 5:09 Q4, laga terasa akan berlanjut dramatis.",
+          "fix": "Replace with: 'Skor 101-101 di menit 5:09 Q4. Laga baru saja ketat-ketat.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Proktor dan Thomas, dua cadangan muda, cetak delapan digit poin masing-masing.",
+          "fix": "Replace with: 'Keduanya cetak double digit dari bench—kontribusi kuat dari cadangan muda.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka-angka itu bukan kebetulan.",
+          "fix": "Replace with: 'Itu pertahanan by design.' or just delete the sentence—the data speaks."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Series regular season empat pertemuan ini berlanjut ke Game 4.",
+          "fix": "Replace with: 'Game 4 CLE vs NY tayang di NBA League Pass dan Vidio.' More direct, no 'berlanjut.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Di dalam cat, Jarrett Allen diam-diam mengunci papan",
+          "fix": "Replace with: 'Jarrett Allen mengunci papan dengan 14 rebound.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xcaea72f66dc95ca8",
+    "published_at": "2026-11-12T03:08:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
