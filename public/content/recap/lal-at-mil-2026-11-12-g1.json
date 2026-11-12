@@ -1,0 +1,38 @@
+{
+  "type": "recap",
+  "slug": "lal-at-mil-2026-11-12-g1",
+  "title": "Recap Los Angeles Lakers 123-112 Milwaukee Bucks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Los Angeles Lakers vs Milwaukee Bucks (123-112) di —, 12 November 2026.",
+  "body_md": "# Lakers Redam Bucks 123-112, Luka Doncic Pimpin Skuad dengan 32 Poin\n\nLos Angeles Lakers menutup regular season series melawan Milwaukee Bucks dengan kemenangan 123-112, Jumat 12 November 2026 pukul 08.00 WIB. LAL unggul 1-0 di head-to-head series musim ini. Luka Doncic kembali jadi motor utama dengan 32 poin, sementara kejutan datang dari bench, Sandro Mamukelashvili tampil efisien dengan 23 poin dalam 26 menit.\n\n---\n\n## Performa Individu\n\nDoncic bermain 32 menit sebagai starter, cetak 32 poin dengan 5 rebound dan 5 asis dari lini tembakan 10-25 dari field dan 5-12 dari garis tiga angka. Angka shooting-nya bukan yang terbaik malam ini, tapi volume dan dampaknya tetap terasa di setiap kuarter.\n\nYang menarik justru Mamukelashvili. Off the bench, center asal Georgia itu cetak 23 poin dengan efisiensi tinggi, 9-15 dari field, 5-8 dari three-point line. FG 60% dan 3PT 62,5% dari bench bukan angka biasa. Ini tipe kontribusi yang sulit dijaga lawan karena muncul dari rotasi yang tidak terduga.\n\nAustin Reaves menambah 18 poin, 3 rebound, 5 asis dengan 6-10 dari field. Walker Kessler dominan di area cat, 10 poin, 11 rebound, 3 asis. Double-double Kessler jadi fondasi keunggulan LAL di papan rebound malam ini.\n\nDi kubu Bucks, Tyler Herro jadi yang paling produktif dengan 27 poin dan 7 asis dari 8-16 field goal. Jaime Jaquez Jr. off the bench cetak 25 poin, 7-16 dari field, 2-7 dari tiga angka. Dua kontributor utama Bucks justru dari bench, tapi tidak cukup untuk menutup selisih yang sudah LAL bangun lebih awal.\n\n---\n\n## Membaca Box Score\n\nKeunggulan Lakers terlihat jelas di beberapa area krusial. LAL rebound 48 berbanding 40, angka yang menunjukkan dominasi fisik di bawah ring, Kessler jadi kontributor terbesar. Fast-break points LAL 22 berbanding 12 milik MIL. Lakers secara konsisten mengkonversi turnover dan miss lawan jadi poin transisi.\n\nDari sisi tembakan, LAL 46% FG vs MIL 43%, LAL 38% dari tiga angka vs MIL 34%. Selisihnya tidak dramatis, tapi konsisten di tiap kuarter. LAL juga unggul assists 32-25, menandakan offense yang lebih terstruktur dan melibatkan banyak opsi.\n\nTurnover sama-sama 18 untuk kedua tim, satu area yang bisa jadi evaluasi untuk Lakers, terutama menghadapi lawan yang lebih tajam di postseason. Steals LAL 14 berbanding MIL 10. keaktifan di garis pertahanan memberi LAL beberapa kali kesempatan fast break gratis.\n\nMIL mencatat 7 blocks berbanding LAL yang hanya 4, satu statistik di mana Bucks unggul. Tapi dalam konteks kekalahan 11 poin, rim protection saja tidak cukup.\n\n---\n\n## Catatan Akhir\n\nDengan kemenangan ini, LAL menutup regular season series melawan MIL dengan 1-0. Bukan sekadar soal dua poin di standings, kemenangan dengan margin 11 angka dan box score yang dominan di hampir semua kategori memberi gambaran LAL sebagai tim yang lebih lengkap malam ini.\n\nKontribusi Mamukelashvili dari bench jadi storyline yang perlu diperhatikan ke depan. Jika opsi rotasi seperti ini bisa konsisten tampil, kedalaman roster LAL jadi aset nyata.\n\nBagi yang ingin menonton siaran lanjutan, pertandingan Lakers tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909971",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Los Angeles Lakers",
+    "away_abbr": "LAL",
+    "home_score": 112,
+    "away_score": 123,
+    "winner_abbr": "LAL",
+    "kickoff_utc": "2026-11-12T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "LAL lead series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020064,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 0,
+      "summary": "",
+      "issues": []
+    },
+    "plagiarism_hash": "0xfccb6180e02fa7be",
+    "published_at": "2026-11-12T04:13:07+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
