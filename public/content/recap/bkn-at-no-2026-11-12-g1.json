@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-no-2026-11-12-g1",
+  "title": "Recap Brooklyn Nets 145-111 New Orleans Pelicans (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs New Orleans Pelicans (145-111) di —, 12 November 2026.",
+  "body_md": "# Brooklyn Nets Pukul New Orleans Pelicans 145-111, Lima Pemain Tembus Dua Digit\n\nBrooklyn Nets menghancurkan New Orleans Pelicans 145-111 dalam laga regular season, Sabtu 12 November 2026. Kemenangan 34 poin ini ditopang oleh efisiensi shooting yang luar biasa dari seluruh rotasi BKN, lima pemain tembus 16 poin atau lebih, dua di antaranya datang dari bench. Pelicans, meski punya Zion Williamson dalam mode agresif, tak punya jawaban untuk produktivitas merata yang dimunculkan Nets malam ini.\n\n---\n\n## Top Performers\n\nDua pemain BKN berbagi posisi puncak dengan 22 poin masing-masing: Michael Porter Jr. dan Egor Demin.\n\nPorter Jr. tampil efisien dari luar arc, 4-10 dari three-point line dengan total 7-14 dari lapangan, plus 6 rebound dan 3 asis dalam 28 menit. Demin, mungkin yang paling eye-catching malam ini, mengemas 22 poin hanya dalam 23 menit bermain dengan efisiensi mencolok: 5-8 dari lapangan dan 4-6 dari belakang garis. Angka shooting-nya menggambarkan pemain yang tahu betul kapan melepas tembakan.\n\nJulius Randle menyumbang 17 poin, 4 rebound, dan 5 asis, meski struggle dari lapangan dengan 6-16 FG dan 0-5 dari three. Peran facilitator-nya tetap terasa di angka asis.\n\nYang mengejutkan datang dari bench. Noah Clowney mencetak 16 poin (5-7 FG, 2-3 three) dalam 19 menit, Moritz Wagner juga 16 poin dari lapangan yang efisien, 6-8 FG, 2-4 three, plus 4 asis dalam 19 menit. Dua bench player ini combined 32 poin dengan menit bermain minimal. itulah kedalaman roster yang berbeda level.\n\nDi sisi Pelicans, Zion Williamson hampir sendirian. 29 poin dengan 8-14 dari lapangan, termasuk satu three-pointer, adalah output yang solid secara individual, tapi tim di belakangnya tak mampu mengimbangi. Jeremiah Fears (14 poin, 4 rebound, 5 asis) dan Jordan Poole (14 poin, 2-3 dari tiga angka) memberikan kontribusi, tapi tidak cukup untuk menutup selisih yang sudah terlalu lebar.\n\n---\n\n## Baca Statistik Tim\n\nAngka tim berbicara keras. BKN menembak 57% dari lapangan dibanding NO yang hanya 44%, selisih 13 persen poin yang hampir mustahil ditutup di level mana pun.\n\nDari three-point line, Nets 20-41 (49%) berbanding Pelicans 12-30 (40%). BKN bukan hanya lebih akurat, tapi juga lebih produktif secara volume, 11 makes lebih banyak dari belakang garis saja sudah berkontribusi sekitar 33 poin ekstra.\n\nRebound pun tidak kompetitif: 42 untuk BKN, 28 untuk NO. Points in paint 50-38 untuk Nets. Dua area ini menunjukkan Pelicans kehilangan battle fisik di dalam lane, bukan hanya masalah perimeter shooting.\n\nSatu catatan positif untuk NO: steals 10 berbanding 8 untuk BKN, dan fast-break points 17-14 untuk Pelicans. Tapi dalam konteks kekalahan 34 poin, angka-angka itu hanya jadi statistik hiburan.\n\n---\n\n## Outlook\n\nIni adalah Game 2 dari dua laga regular season series antara kedua tim, dan BKN mengakhirinya dengan keunggulan 1-0 di series ini. Dua tim akan jumpa lagi di laga berikutnya sesuai jadwal musim reguler NBA 2026.\n\nBagi Nets, kemenangan ini menunjukkan sesuatu yang lebih menarik dari sekadar skor: kedalaman rotasi yang bisa menghasilkan 16+ poin dari bench player dalam 19 menit. Itu bukan kebetulan, itu sistem.\n\nPelicans punya Zion, tapi 29 poin dari satu orang tidak cukup ketika lawan punya lima kontributor yang merata. Redistribusi beban scoring jadi PR utama New Orleans ke depan.\n\n*Tayang live di NBA League Pass dan Vidio.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909972",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 111,
+    "away_score": 145,
+    "winner_abbr": "BKN",
+    "kickoff_utc": "2026-11-12T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BKN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021506,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stats, natural voice, good structure. Minor code-switching awkwardness and one soft academic phrase, but nothing that breaks the voice. Pass with light polish.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "mungkin yang paling eye-catching malam ini",
+          "fix": "Rephrase: 'mungkin yang paling memukau malam ini' or just 'yang paling memukau'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua bench player ini combined 32 poin",
+          "fix": "'Dua pemain bench ini cetak 32 poin bersama' or 'Dua dari bench ini sumbang 32 poin'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Satu catatan positif untuk NO:",
+          "fix": "Just: 'NO punya beberapa angka positif:' or start with the stat directly."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6503fb6b2620c6a5",
+    "published_at": "2026-11-12T05:41:39+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
