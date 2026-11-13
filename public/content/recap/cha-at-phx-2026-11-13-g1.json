@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "cha-at-phx-2026-11-13-g1",
+  "title": "Recap Charlotte Hornets 96-101 Phoenix Suns (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Charlotte Hornets vs Phoenix Suns (96-101) di —, 13 November 2026.",
+  "body_md": "# Phoenix Suns Tutup Seri Regular Season atas Charlotte Hornets, Booker 30 Poin\n\nPhoenix Suns menutup dua laga regular season series melawan Charlotte Hornets dengan kemenangan 101-96, Sabtu 13 November 2026. Devin Booker memimpin PHX dengan 30 poin, sementara Hornets kembali tersandung kelemahan yang sama: turnover. Suns menang dua dari dua, Hornets pulang tanpa poin.\n\n---\n\n## Booker dan Turnover Charlotte yang Membunuh\n\nHornets sebetulnya punya modal. Charlotte unggul di rebound 52-31, dominasi papan yang seharusnya jadi fondasi. Efisiensi tiga angka juga berpihak ke mereka: 36% vs 30% milik Suns. Di atas kertas, dua faktor itu cukup buat menang.\n\nTapi 27 turnover CHA vs 8 turnover PHX mengubur semua itu.\n\nSelisih 19 turnover dalam satu laga bukan sekadar statistik buruk, itu bola yang diserahkan cuma-cuma ke lawan. PHX mencetak 11 steal, hampir tiga kali lipat steal Charlotte (4). Suns tak perlu dominasi serangan. mereka cukup tunggu Charlotte melakukan kesalahan, lalu konversi.\n\nBooker sendiri efisien tanpa harus kerja keras. 30 poin dari 12-20 field goal, plus 7 asis, peran ganda yang menjaga Suns tetap terkontrol sepanjang malam. Dillon Brooks menambah 15 poin (6-13 FG, 3-6 dari tiga angka), cukup untuk menjaga Charlotte tidak pernah merasa aman.\n\n---\n\n## Charlotte: Potensi Ada, Eksekusi Tidak\n\nCoby White memimpin Hornets dengan 21 poin dari 8-16 FG dalam 20 menit sebagai starter, efisien, tapi menit yang pendek. Naz Reid tampil keras di 34 menit: 16 poin, 8 rebound, 3 asis, meski perlu 18 percobaan (6-18 FG) untuk sampai ke angka itu. Grayson Allen dari bench, maaf, dari lineup starter, berkontribusi 14 poin dan 6 asis dengan shooting yang solid: 4-8 dari tiga angka.\n\nDari bench, Christian Anderson mencetak 13 poin (3-6 dari tiga angka) dan Grant Williams menambah 11 poin dalam 16 menit. Kedalaman Charlotte sebenarnya tidak buruk.\n\nProblemnya bukan siapa yang mencetak poin. Problemnya siapa yang kehilangan bola. Dengan 27 turnover, tak ada jumlah rebound atau tembakan tiga angka yang bisa menutup lubang itu.\n\n---\n\n## Momen Krusial: Kuarter Keempat\n\nCharlotte sempat menekan di Q4. Moussa Diabate layup di menit 42.2 memangkas jarak menjadi 91-94. Lalu Royce O'Neale muncul, tembakan tiga angka dari jarak 28 kaki di menit 21.2 mengubah skor menjadi 95-97, disusul free throw untuk 95-97 dari O'Neale juga.\n\nTapi momen itu tidak bertahan. Miles Bridges dua free throw menjadikan 95-99. Booker menambah satu free throw untuk 95-100. Dan Moussa Diabate menutup skor akhir 96-101 dari garis foul di sisa 2.6 detik.\n\nCharlotte tidak pernah menutup jarak itu. Suns jaga composure, eksekusi di free throw line (12-15, 80%), dan pertandingan selesai.\n\n---\n\n## Catatan Akhir\n\nDua laga, dua kekalahan untuk Charlotte. Suns tutup regular season series ini 2-0 dan pulang dengan momentum.\n\nLaga ini tayang di NBA League Pass dan Vidio. Jadwal lanjutan kedua tim belum masuk data input saat ini.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909979",
+    "home_team": "Phoenix Suns",
+    "home_abbr": "PHX",
+    "away_team": "Charlotte Hornets",
+    "away_abbr": "CHA",
+    "home_score": 101,
+    "away_score": 96,
+    "winner_abbr": "PHX",
+    "kickoff_utc": "2026-11-13T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHX leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020116,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: High-severity training-data inference (player names not in input data used in Q4 play-by-play section). Two medium issues (tense marking, mid-sentence self-correction) undermine voice. Remove Q4 detailed plays or rewrite using only input-grounded players.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Moussa Diabate layup di menit 42.2... Royce O'Neale muncul, tembakan tiga angka... Miles Bridges dua free throw",
+          "fix": "Remove Q4 play-by-play section entirely or rewrite using only Booker/White/Reid/Allen/Williams/Brooks names from input data."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Booker sendiri efisien tanpa harus kerja keras. 30 poin dari 12-20 field goal",
+          "fix": "Booker efisien tanpa harus kerja keras: 30 poin dari 12-20 field goal."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Grayson Allen dari bench, maaf, dari lineup starter, berkontribusi 14 poin",
+          "fix": "Grayson Allen starter dengan 14 poin, 6 asis, 4-8 dari tiga angka."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Dengan 27 turnover, tak ada jumlah rebound atau tembakan tiga angka yang bisa menutup lubang itu.",
+          "fix": "27 turnover itu lubang yang tidak ada rebound atau tiga angka bisa tutup."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Catatan Akhir. Dua laga, dua kekalahan untuk Charlotte.",
+          "fix": "Expand with broadcast details already in article or add next match context if available."
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Laga ini tayang di NBA League Pass dan Vidio. Jadwal lanjutan kedua tim belum masuk data input saat ini.",
+          "fix": "Delete the 'belum masuk data input' sentence entirely."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3a6e77922129fd89",
+    "published_at": "2026-11-13T04:37:36+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

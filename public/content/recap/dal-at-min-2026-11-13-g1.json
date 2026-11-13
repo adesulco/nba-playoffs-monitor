@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "dal-at-min-2026-11-13-g1",
+  "title": "Recap Dallas Mavericks 94-133 Minnesota Timberwolves (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Dallas Mavericks vs Minnesota Timberwolves (94-133) di —, 13 November 2026.",
+  "body_md": "# Minnesota Timberwolves Hancurkan Dallas Mavericks 133-94, Unggul 1-0 di Series\n\nMinnesota Timberwolves menghajar Dallas Mavericks 133-94 pada Game 2, Sabtu 13 November 2026. Kemenangan 39 poin ini menempatkan MIN unggul 1-0 di series, dominasi yang sulit dibantah dari angka mana pun.\n\n---\n\n## Semua Scorer, Semua Berkontribusi\n\nTidak ada satu bintang tunggal di MIN malam ini, justru itu yang membuatnya mengesankan.\n\nBones Hyland memimpin dengan 24 poin, 3 rebound, 8 assist, dan itu ia lakukan hanya dalam 23 menit sebagai pemain bench. Efisiensinya brutal: 7-10 FG, 5-6 tiga angka. LaMelo Ball menyusul dengan 22 poin, 3 rebound, 9 assist, dengan 6 three-pointer dari 10 percobaan. Dua pemain itu saja sudah cukup untuk menutup laga lebih awal.\n\nJaden McDaniels menambah 16 poin dan 9 rebound, kontribusi dua sisi yang solid. Jonathan Kuminga menyumbang 14 poin dan 8 rebound, dengan 5 assist yang menunjukkan keterlibatannya dalam sistem serangan. Ayo Dosunmu melengkapi dengan 18 poin dari 8-15 field goals.\n\nDi sisi DAL, Zaccharie Risacher jadi top scorer dengan 22 poin (9-14 FG, 4-8 tiga angka) dalam 25 menit dari bench. Effort individual yang layak diapresiasi, tapi tidak ada yang bisa dilakukan seorang pemain ketika tim secara kolektif kolaps. Cooper Flagg mengumpulkan 12 poin dan 7 rebound dalam 27 menit. Kyrie Irving, yang biasanya jadi andalan, hanya 10 poin dari 4-11 shooting.\n\n---\n\n## Statistik yang Bicara Sendiri\n\nAngka-angka tim MIN malam ini bukan sekadar menang, ini pernyataan.\n\nFG% MIN 58% berbanding DAL 37%. Three-point: MIN 47% dari 32 percobaan, DAL 27% dari 48 percobaan. MIN justru lebih selektif dalam mengambil tembakan tiga angka dan jauh lebih efisien. DAL mencoba lebih banyak triple tapi nyaris seperempat di antaranya masuk.\n\nRebound: 50-38 untuk MIN. Points in paint: 74-42, dua kali lipat lebih. Ini bukan kalah dalam satu aspek. ini kalah di mana-mana secara bersamaan.\n\nTurnover DAL: 19. Angka itu sendiri menjadi masalah bahkan sebelum bicara soal shooting.\n\n---\n\n## Outlook Series\n\nMIN kini unggul 1-0 dalam series tiga game ini. Dallas perlu menang di Game 3 untuk menyamakan, tapi dengan margin 39 poin di Game 2 dan persentase shooting yang sebegini jauh, ada perbaikan fundamental yang harus dilakukan dalam waktu singkat.\n\nGame 3 jadwalnya belum tertera di input, pantau informasi lanjutan di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909978",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "Dallas Mavericks",
+    "away_abbr": "DAL",
+    "home_score": 133,
+    "away_score": 94,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-11-13T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.036134,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 58,
+      "issue_count": 7,
+      "summary": "Article fails due to two high-severity training-inference errors: (1) calling a regular-season series a 'series tiga game' with playoff-style 'Game 3 to stay alive' framing, and (2) adding day-of-week not in input data. Midlevel tense/translation issues in opening paragraphs. Stat accuracy is solid but narrative frame is broken.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 2, Sabtu 13 November 2026",
+          "fix": "Remove day-of-week or verify it's actually Saturday. Clarify this is regular season, not series game."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "MIN kini unggul 1-0 dalam series tiga game ini. Dallas perlu menang di Game 3",
+          "fix": "Rewrite: 'MIN unggul 1-0 dalam tiga-game series. Seri berlanjut Game 3 di minggu depan.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Bones Hyland memimpin dengan 24 poin... dan itu ia lakukan hanya dalam 23 menit",
+          "fix": "Simplify: 'Bones Hyland pimpin dengan 24 poin, 3 rebound, 8 assist dalam 23 menit.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tidak ada satu bintang tunggal di MIN malam ini, justru itu yang membuatnya mengesankan.",
+          "fix": "Rewrite: 'MIN menang tanpa bintang tunggal — itulah yang impresif.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Jaden McDaniels menambah 16 poin dan 9 rebound, kontribusi dua sisi yang solid.",
+          "fix": "Add assists: '16 poin, 9 rebound, 3 assist — kontribusi berlapis.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Kyrie Irving, yang biasanya jadi andalan, hanya 10 poin dari 4-11 shooting.",
+          "fix": "Simply: 'Kyrie Irving hanya 10 poin dari 4-11.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "FG% MIN 58% berbanding DAL 37%... Three-point: MIN 47%",
+          "fix": "Use 'Field goal' or 'FG%' consistently throughout stats section."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x10d9b5f37549c730",
+    "published_at": "2026-11-13T04:36:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
