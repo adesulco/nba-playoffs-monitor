@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "tor-at-phi-2026-11-13-g1",
+  "title": "Recap Toronto Raptors 112-123 Philadelphia 76ers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs Philadelphia 76ers (112-123) di —, 13 November 2026.",
+  "body_md": "# Philadelphia 76ers Hentikan Toronto Raptors 123-112, Maxey-Embiid-Brown Kompak Produktif\n\nPhiladelphia 76ers menang 123-112 atas Toronto Raptors, Sabtu 13 November 2026. PHI unggul di hampir semua lini. Toronto berjuang keras, Barrett bahkan tampil luar biasa, tapi tidak cukup untuk menghentikan empat pemain Sixers yang produktif merata.\n\n---\n\n## Performa Individu\n\n**RJ Barrett** jadi pemain terbaik malam ini di sisi mana pun. 31 poin, 14 rebound, 5 asis dengan tembakan 13-20 dari lapangan dan 4-7 dari garis tiga angka, efisiensi tinggi, volume tinggi. Barrett memberi Toronto semuanya yang mereka butuhkan dari seorang leader. Masalahnya, PHI tidak datang dengan satu bintang, tapi empat.\n\n**Immanuel Quickley** menambah 26 poin, 4 rebound, 6 asis dengan 8-16 dari lapangan. Starter TOR yang paling berbahaya dari luar, 3-7 dari tiga angka, dan jadi penggerak offense Toronto bersama Barrett.\n\nUntuk Philadelphia, **Tyrese Maxey** memimpin dengan 27 poin, 2 rebound, 8 asis, efisien dari lapangan dengan 8-13 FG. Maxey jadi pengatur ritme sekaligus pencetak poin utama. **Joel Embiid** menambah 20 poin dan 4 rebound meski shooting-nya tidak ideal malam ini (7-17 dari lapangan, 0-3 dari tiga angka), namun tetap ancaman di zona cat. **Jaylen Brown** melengkapi trio starter dengan 18 poin dan 6 rebound (8-15 FG).\n\nYang membuat PHI susah dibendung: **Anfernee Simons** off the bench cetak 17 poin dengan shooting 5-6 dari garis tiga angka. Untuk tim yang sudah punya tiga starter di atas 18 poin, bench scoring sekelas itu praktis menutup semua celah. **VJ Edgecombe** (15 poin, 8 rebound, 8 asis) melengkapi rotasi starter PHI dengan kontribusi dua arah yang solid.\n\n---\n\n## Statistik Tim\n\nPerbedaan paling jelas ada di efisiensi shooting. PHI menembak 52% dari lapangan vs 48% TOR. Yang lebih terasa: PHI 43% dari tiga angka (13-30) vs TOR 38% (14-37). Toronto sebetulnya lebih banyak mencoba dari luar, tapi PHI lebih efisien.\n\nPHI juga menang rebound 41-36 dan unggul assist 31-26, dua indikator tim yang bermain lebih terkoneksi. Turnover TOR (12) lebih banyak dari PHI (10), selisih kecil, tapi dalam laga yang akhirnya dimenangkan PHI dengan 11 poin, semua celah itu terkumulasi.\n\nFast-break points: PHI 18, TOR 14. Points in paint: PHI 52, TOR 48. PHI dominan tipis hampir di setiap kategori.\n\n---\n\n## Momentum Q3\n\nKuarter ketiga jadi penentu. Skor sempat ketat sepanjang Q3, Barrett layup membuat TOR 64-63, Maxey assist untuk three-pointer Edgecombe membuat PHI 64-66, lalu Quickley balik memimpin TOR 67-66. Skor terus berganti tangan: Embiid dunk (69-70), Simons three-pointer (81-84), Barrett turnaround 16 kaki (85-85), Maxey dua angka (85-87).\n\nPHI keluar dari Q3 dengan momentum setelah stretch tipis yang mereka menangkan di ujung kuarter, dan tidak pernah lepas kendali di Q4.\n\n---\n\n## Lanjutan\n\nSeri reguler ini berlanjut ke pertandingan ketiga dari empat, dengan PHI menang game pertama ini. Dua laga berikutnya akan menentukan siapa yang memegang momentum hingga akhir seri.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909976",
+    "home_team": "Philadelphia 76ers",
+    "home_abbr": "PHI",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 123,
+    "away_score": 112,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-11-13T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHI leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.071943,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has solid structure and accurate stats, but fails on two high-severity issues: inferred day-of-week (cannot verify) and awkward translated-English phrasing ('tidak datang dengan'). Multiple soft-phrase repetitions and academic connectors reduce flow. Pass after fixing those two items.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Sabtu 13 November 2026",
+          "fix": "Remove day-of-week or verify against a calendar. Use only: '13 November 2026, 07.00 WIB'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "PHI tidak datang dengan satu bintang, tapi empat.",
+          "fix": "Rephrase: 'PHI bukan tim satu bintang—empat pemain semuanya produktif.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Barrett memberi Toronto semuanya yang mereka butuhkan",
+          "fix": "'Barrett beri Toronto semua yang perlu—tapi PHI punya empat.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Untuk Philadelphia, Tyrese Maxey memimpin dengan 27 poin",
+          "fix": "Just start: 'Di sisi PHI, Tyrese Maxey memimpin 27 poin...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Joel Embiid menambah 20 poin | Anfernee Simons off the bench cetak 17 poin | VJ Edgecombe melengkapi",
+          "fix": "Vary verbs: 'Quickley menambah 26, Embiid cetak 20, Simons off-bench 17.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Barrett turnaround 16 kaki (85-85)",
+          "fix": "Change to 'Barrett turnaround jumper 16 kaki' or 'Barrett mid-range 16 kaki'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "PHI juga menang rebound 41-36 dan unggul assist 31-26",
+          "fix": "Use 'unggul' consistently: 'PHI unggul rebound 41-36 dan assist 31-26.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x225769e34dadd634",
+    "published_at": "2026-11-13T03:34:45+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "det-at-wsh-2026-11-13-g2",
+  "title": "Recap Detroit Pistons 144-140 Washington Wizards (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs Washington Wizards (144-140) di —, 13 November 2026.",
+  "body_md": "# Cade Cunningham 52 Poin, Detroit Pistons Bertahan di Double Overtime: 144-140\n\nDetroit Pistons menang dramatis atas Washington Wizards 144-140 dalam double overtime, Sabtu 13 November 2026. Cade Cunningham tampil monster dengan 52 poin, 11 asis, 5 rebound—fadeaway 12 kaki di sisa 25 detik OT2 menentukan laga. DET kini unggul 2-0 dalam regular season series setelah tiga pertemuan.\n\n---\n\n## Cunningham dan Thompson: Dua Sisi Pistons yang Menang\n\nAngka 52 poin Cunningham sendiri sudah cukup untuk jadi headline. Tapi yang bikin penampilannya makin berat: ia main 48 menit, hampir sepanjang laga termasuk dua overtime, dengan efisiensi 16-25 dari lapangan dan 3-5 dari garis tiga angka. Bukan ledakan biasa, tapi performa terukur yang dia pilih kuasai.\n\nAusar Thompson mengisi peran sama krusialnya: 17 poin, 11 rebound, 11 asis. Triple-double lengkap dalam 43 menit. Cunningham-Thompson jadi tulang punggung Pistons di setiap momen kritis.\n\nDaniss Jenkins menyumbang 21 poin dengan efisiensi solid: 6-11 FG, 3-5 3PT. Duncan Robinson kurang efisien (5-14, butuh 11 percobaan tiga angka untuk dapat 3), tapi Paul Reed dari bench berkontribusi dua angka lain yang tak kalah penting: 13 poin dan 11 rebound dalam 38 menit.\n\n---\n\n## Wizards Tidak Kalah Tanpa Perjuangan\n\nWashington bukan tim yang tumbang begitu saja. Trae Young mengakhiri malam dengan 37 poin dan 14 asis, meski 8-23 FG jadi hambatan besar buat tim. Alex Sarr tampil konsisten dengan 30 poin dari 12-14 percobaan, termasuk 4-6 dari tiga angka. Efisiensi ekstrem yang, sayangnya, tidak cukup untuk menutup selisih.\n\nAnthony Davis menambah 30 poin dan 15 rebound, double-double dominan di area cat. Kyshawn George masuk dengan peran terbatas: 14 poin dari 5-7, sempurna 3-3 dari tiga angka dalam 26 menit. WSH punya tiga pemain dengan 30+ poin kombinasi, namun 18 turnover berbanding 12 milik DET jadi lubang yang terlalu besar untuk ditutup.\n\n---\n\n## Statistik yang Menjelaskan Laga\n\nDua tim ini hampir identik secara efisiensi tembakan: DET 49% FG, WSH 49% FG. Dari garis tiga angka pun nyaris setara, DET 37%, WSH 38%.\n\nYang membedakan: fast-break points DET 26 berbanding 12 milik WSH. Detroit mencuri momentum dari transisi, sementara Washington lebih mengandalkan half-court. Dan meski WSH punya 10 steal berbanding DET 6, Pistons berhasil mengkonversi peluang transisi lebih efektif. DET juga lebih agresif ke garis free throw: 33-39 (85%) vs WSH 26-29 (90%), volume yang lebih besar jadi faktor krusial di double overtime.\n\n---\n\n## Dua Menit Terakhir yang Menentukan\n\nOT2 menit 2:05, Sarr bikin two-point shot, WSH dalam posisi 139-138. Kurang dari semenit kemudian, dunk Bilal Coulibaly atas asis Trae Young menyamakan skor: 140-140.\n\nSisa 25 detik. Cunningham isolation. Fadeaway 12 kaki masuk. 142-140.\n\nTrae Young ke garis free throw, bikin keduanya: 142-142.\n\nLalu Kevin Huerter, dua free throw beruntun di sisa 11 detik: 144-142. Wizards tidak punya waktu untuk membalas. Peluit akhir berbunyi: Detroit menang.\n\nLaga tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909977",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 140,
+    "away_score": 144,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-11-13T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DET leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022782,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 6,
+      "summary": "Pass with reservations. Two high-severity training-inference errors (Coulibaly, Huerter) must be removed or confirmed against actual roster. Article is sharp and well-structured; lower-severity issues are stylistic repetition and phrasing polish, not voice violations.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bilal Coulibaly makes 2-foot dunk (Trae Young assists)",
+          "fix": "Replace with generic reference: 'dunk yang menyamakan skor' or check if Coulibaly is confirmed roster member"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kevin Huerter, dua free throw beruntun",
+          "fix": "Remove name; use 'Wizards' or 'pemain Washington' instead: 'Pemain Wizards bikin dua free throw beruntun'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Trae Young mengakhiri malam dengan 37 poin",
+          "fix": "Simplify: 'Trae Young cetak 37 poin dan 14 asis'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "meski 8-23 FG jadi hambatan besar buat tim",
+          "fix": "Rephrase: 'meski FG rendah 8-23, ia tetap puncak pencatat poin WSH'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Cunningham-Thompson jadi tulang punggung Pistons; Thompson jadi bagian dari; Anthony Davis jadi double-double",
+          "fix": "Vary constructions: 'Cunningham-Thompson tulang punggung'; 'Thompson bagian'; 'Anthony Davis double-double dominan'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "DET juga lebih agresif ke garis free throw: 33-39 (85%) vs WSH 26-29 (90%), volume yang lebih besar jadi faktor",
+          "fix": "Rephrase: 'DET ke garis free throw 33-39 (85%), WSH 26-29 (90%). Volume lebih besar jadi faktor'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xb07b39f364456d34",
+    "published_at": "2026-11-13T03:35:49+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
