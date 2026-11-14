@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "ny-at-ind-2026-11-14-g1",
+  "title": "Recap New York Knicks 104-106 Indiana Pacers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New York Knicks vs Indiana Pacers (104-106) di —, 14 November 2026.",
+  "body_md": "# Knicks Gagal Comeback, Kalah Tipis 104-106 dari Pacers\n\nNew York Knicks menyerah 104-106 dari Indiana Pacers dalam laga ketat yang diputuskan di detik-detik terakhir kuarter empat. Jalen Brunson tampil luar biasa dengan 33 poin dan 11 asis, tapi Knicks tetap kalah. Knicks kalah di paint 30-50 dan kehilangan lebih banyak kesempatan dari garis penalti: 10-13 (77%) berbanding 18-25 (72%) untuk Pacers.\n\n---\n\n## Top Performers\n\n**Brunson** adalah alasan Knicks nyaris menang. 33 poin, 11 asis, 11-22 dari lapangan termasuk 4-9 dari garis tiga, dia hadir di setiap momen krusial. Di Q4 sisa 26 detik, Brunson membuat driving layup untuk skor 102-106. Dua detik sebelum peluit, assist-nya menemukan Mikal Bridges yang menjebol keranjang lewat pullup 19 kaki untuk skor akhir 104-106.\n\nKarl-Anthony Towns mencetak double-double meyakinkan: 23 poin dan 15 rebound, plus 5 asis. Shoot-nya 9-19 dari lapangan dan 3-7 dari luar. KAT mengurus papan rebound sisi New York, tapi Ivica Zubac dari sisi lain lebih dominan.\n\n**Mikal Bridges** konsisten 18 poin dengan efisiensi rapi, 8-12 dari lapangan, 2-4 dari tiga. OG Anunoby berjuang di laga ini: 11 poin dari 4-13 FG dan 2-8 dari garis tiga, terlalu banyak miss di momen-momen penting.\n\nDi sisi Pacers, tidak ada satu pun bintang tunggal, mereka menang kolektif. **Pascal Siakam** memimpin dengan 19 poin (5-13 FG), dengan kontribusi penting di awal Q4 lewat pullup 17 kaki yang dikover Nembhard. **Aaron Nesmith** sangat efisien, 18 poin dari 7-10 FG, plus 7 rebound. **Kelly Oubre Jr.** menambah 16 poin.\n\nYang benar-benar merepotkan Knicks adalah Zubac-Nembhard tandem. **Ivica Zubac** 12 poin dan 13 rebound, tugasnya membangun keunggulan di paint selesai dikerjakan. **Andrew Nembhard** 12 poin dan 6 asis, plus dua pullup jumper dan satu technical free throw beruntun di Q4 yang sempat membuka jarak Pacers sampai 87-92.\n\n---\n\n## Statistik yang Menjelaskan Segalanya\n\nFG% sama persis, NY 43%, IND 43%. Tiga poin juga hampir imbang: Knicks 16-46 (35%), Pacers 10-29 (34%). Di atas kertas, dua tim bermain dengan efisiensi serupa dari lapangan.\n\nBedanya ada di dua tempat.\n\n**Paint:** Knicks 30 poin, Pacers 50 poin. Selisih 20. Di sinilah Zubac dan rotasi besar Pacers bekerja keras, dan di sinilah Knicks kehilangan laga. Statistik rebound tim pun mencerminkan ini, Pacers unggul 50 berbanding 43.\n\n**Free throw:** Pacers 18-25 (72%), Knicks 10-13 (77%). Pacers masuk ke garis dua kali lebih sering. Dalam laga yang diputuskan oleh dua poin, selisih delapan lemparan bebas itu mencukupi sebagai penentu.\n\nSatu hal menggembirakan untuk Knicks: steal 11 berbanding 6 dan fast-break points 15-9. Knicks lebih agresif di transisi. Tapi itu tidak mengimbangi kekalahan di dalam kotak.\n\n---\n\n## Clutch Time dan Setelahnya\n\nSiakam bawa IND unggul 84-87. Anunoby balas dengan tiga pointer di menit ke-10:53 Q4, skor jadi 87-87. Nembhard langsung merespons dengan pullup 19 kaki (87-89), satu technical free throw (87-90), lalu Zubac menutup dengan tip shot menjadi 87-92, four-possession swing yang nyaris mematikan peluang NY.\n\nKnicks berjuang kembali. Brunson dan Bridges mencetak gol demi gol, memangkas defisit hingga 104-106 di sisa 10 detik. Tapi tidak ada waktu tersisa untuk satu serangan lagi.\n\n---\n\n## Selanjutnya\n\nIndiana Pacers unggul 1-0 dalam seri tiga pertandingan ini. Seri berlanjut dengan game ketiga.\n\nUntuk Knicks, pertanyaannya sederhana: bagaimana mengimbangi dominasi paint Pacers? 50 poin kemasukan di dalam kotak adalah masalah yang tidak bisa diselesaikan hanya dengan Brunson 33 poin.\n\n*Siaran live di NBA League Pass dan Vidio.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909296",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "New York Knicks",
+    "away_abbr": "NY",
+    "home_score": 106,
+    "away_score": 104,
+    "winner_abbr": "IND",
+    "kickoff_utc": "2026-11-14T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "IND leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.054806,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has solid structure and mostly accurate stats, but fails on tense/phrasing (high severity: final score sequencing error, math error on free throws, awkward code-switching). Pass with major edits required before publish.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Knicks kalah di paint 30-50 dan kehilangan lebih banyak kesempatan dari garis penalti",
+          "fix": "Rephrase: 'Knicks kalah di paint 30-50, juga kurang efektif dari garis penalti: 10-13 (77%) vs 18-25 (72%)'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "assist-nya menemukan Mikal Bridges yang menjebol keranjang lewat pullup 19 kaki untuk skor akhir 104-106",
+          "fix": "Remove 'skor akhir'; just say 'skor 104-106' or 'Bridges membuat 19-footer untuk tertinggal 104-106'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Shoot-nya 9-19 dari lapangan dan 3-7 dari luar.",
+          "fix": "Rephrase: '9-19 dari lapangan dan 3-7 dari luar' (drop subject)"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dalam laga yang diputuskan oleh dua poin, selisih delapan lemparan bebas itu mencukupi sebagai penentu.",
+          "fix": "Clarify: 'Pacers masuk 8 lemparan bebas lebih banyak (18 vs 10)' or just say 'lebih sering ke garis'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Siakam bawa IND unggul 84-87. Anunoby balas dengan tiga pointer di menit ke-10:53 Q4",
+          "fix": "Rephrase: 'Sisa 10:53 Q4, Anunoby balas dengan tiga angka, skor 87-87'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Knicks berjuang kembali. Brunson dan Bridges mencetak gol demi gol, memangkas defisit",
+          "fix": "Tighten: 'Knicks balik bermain. Brunson dan Bridges mencetak gol demi gol, defisit tinggal 2'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Satu hal menggembirakan untuk Knicks: steal 11 berbanding 6 dan fast-break points 15-9.",
+          "fix": "Drop: 'Tapi Knicks unggul steal (11-6) dan fast-break points (15-9)'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Indiana Pacers unggul 1-0 dalam seri tiga pertandingan ini. Seri berlanjut dengan game ketiga.",
+          "fix": "Add: 'Game 2 tayang di NBA League Pass dan Vidio' to give reader next-step info"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe86167cb9405dc90",
+    "published_at": "2026-11-14T03:06:37+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
