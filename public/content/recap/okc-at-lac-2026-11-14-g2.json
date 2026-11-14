@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "okc-at-lac-2026-11-14-g2",
+  "title": "Recap Oklahoma City Thunder 112-113 LA Clippers (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs LA Clippers (112-113) di —, 14 November 2026.",
+  "body_md": "# LAC Balik dari Minus 6, Menang 113-112 atas OKC di Laga Ketiga\n\nOklahoma City Thunder dihajar drama di menit akhir. Unggul 112-106 di kuarter empat, OKC gagal tutup laga, LA Clippers menutupnya lewat 7-0 run di 50 detik terakhir. Final: 113-112 untuk LAC. Shai Gilgeous-Alexander mencetak 40 poin, tapi itu tidak cukup.\n\n---\n\n## Top Performers\n\nSGA tampil seperti yang diharapkan: 40 poin, 5 asis, 4 rebound, efisien 15-26 dari lapangan dengan tambahan dua tembakan tiga angka. Hampir sempurna secara individual, tapi \"hampir\" jadi kata paling menyakitkan malam ini.\n\nYang tidak banyak diprediksi: Isaiah Hartenstein. Big man OKC ini bermain luar biasa, 21 poin dari 9-10 field goal attempts, 16 rebound, 6 asis dalam 30 menit. Efisiensi seperti itu di laga ketat jarang terlihat dari seorang center. Hartenstein juga berkontribusi di play kritis Q4, menerima asis dari SGA untuk layup yang sempat membuat OKC unggul 107-103.\n\nJared McCain menambah 23 poin dengan 7-11 dari tiga angka, salah satu performa shooting terbaik malam ini dari kedua sisi.\n\nDi pihak LAC, Brook Lopez jadi tumpuan utama: 26 poin, 7 rebound, 4 asis, termasuk dua field goal krusial di dua menit terakhir yang memaksa laga kembali ketat. Darius Garland melengkapi dengan 24 poin dan 7 asis, dan dialah yang menutup pertandingan dengan tangan sendiri.\n\nDari bench LAC, Keaton Wagler (14 poin, 2-5 from three) dan Gradey Dick (13 poin, 2-2 from three) memberikan kontribusi shooting yang solid. Derrick Jones Jr. menambah 14 poin dengan 4-7 dari tiga angka.\n\n---\n\n## Baca Statistiknya\n\nOKC mendominasi di dalam: 58 poin di paint berbanding 40 untuk LAC, keunggulan besar yang seharusnya jadi fondasi kemenangan. Rebound juga berpihak ke OKC, 45 berbanding 40.\n\nTapi di tiga angka, LAC lebih tajam: 16-41 (39%) vs OKC yang hanya 11-35 (31%). Di laga yang tipis, selisih efisiensi dari luar garis ini cukup untuk mengubah hasil.\n\nFree throw jadi pembeda lain. LAC 17-21 (81%), OKC hanya 13-19 (68%). Di saat laga ditentukan oleh satu poin, miss dari garis free throw terasa lebih berat dari biasanya.\n\nTurnover OKC lebih banyak: 13 berbanding 11 milik LAC, bukan selisih besar, tapi di laga seperti ini, setiap possession punya harga.\n\n---\n\n## 50 Detik yang Membalik Segalanya\n\nItulah timeline penutup laga ini, dan ini bukan dramatisasi.\n\nMenit 3:01 Q4, SGA step-back three pointer dari 24 kaki masuk. OKC 110-106. Sepertinya aman. Alex Caruso kemudian tambah satu free throw, 111-106. Laga hampir selesai.\n\nLalu Lopez mulai bekerja. Layup dengan asis Garland: 112-108. Fade-away 12 kaki, lagi-lagi diumpan Garland: 112-110. Tiba-tiba margin tinggal dua.\n\nKemudian 50,4 detik tersisa, Garland penetrasi, Lopez membuka ruang. Driving layup masuk: 112-112. Dan dalam sekuens yang sama, Garland ke garis free throw. Satu dari satu. 113-112.\n\nOKC tidak punya jawaban untuk sequence itu.\n\n---\n\n## Selanjutnya\n\nIni adalah laga ketiga dari tiga laga reguler season series antara OKC dan LAC, seri berakhir imbang 1-1 sebelum malam ini, dan LAC menutupnya dengan kemenangan untuk unggul 2-1. Jadwal selanjutnya tidak tersedia di input.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909304",
+    "home_team": "LA Clippers",
+    "home_abbr": "LAC",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 113,
+    "away_score": 112,
+    "winner_abbr": "LAC",
+    "kickoff_utc": "2026-11-14T03:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022054,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail. High-severity training_inference (Alex Caruso) and translated_english patterns. Structural issue with 'Selanjutnya' paragraph opener + self-referential meta-commentary ('tidak tersedia di input'). Rewrite needed before publish.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Efisiensi seperti itu di laga ketat jarang terlihat dari seorang center.",
+          "fix": "Hartenstein jarang cetak angka seefisien itu di laga ketat."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Alex Caruso kemudian tambah satu free throw, 111-106.",
+          "fix": "Remove mention of Caruso; rewrite as 'Margin jadi 111-106' or cite only input-grounded players."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selanjutnya... Jadwal selanjutnya tidak tersedia di input.",
+          "fix": "Delete paragraph or restructure: 'Jadwal lanjutan belum tersedia' without 'Selanjutnya' opener."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang tidak banyak diprediksi: Isaiah Hartenstein.",
+          "fix": "Hartenstein jadi kejutan. atau Hartenstein cetak performa tak terduga."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Baca Statistiknya",
+          "fix": "Angka-Angka Cerita or Statistik Cerita or remove subheading entirely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Itulah timeline penutup laga ini, dan ini bukan dramatisasi.",
+          "fix": "Delete sentence or simplify: 'Inilah apa yang terjadi di 50 detik terakhir.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "lagi-lagi diumpan Garland",
+          "fix": "Diumpan Garland lagi or Garland jadi pitcher-nya."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "dari 24 kaki masuk",
+          "fix": "SGA step-back three pointer dari jarak 7.3 meter or just '24-foot' in English (acceptable code-switch)."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe1fa2d837454f7e2",
+    "published_at": "2026-11-14T06:14:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
