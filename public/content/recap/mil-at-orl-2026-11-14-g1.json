@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "mil-at-orl-2026-11-14-g1",
+  "title": "Recap Milwaukee Bucks 99-107 Orlando Magic (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Milwaukee Bucks vs Orlando Magic (99-107) di —, 14 November 2026.",
+  "body_md": "# Franz Wagner Triplekan Double-Double, Orlando Magic Permalukan Milwaukee Bucks 107-99\n\nOrlando Magic mengalahkan Milwaukee Bucks 107-99 dan unggul 1-0 di regular season series ini. Franz Wagner jadi bintang utama dengan 35 poin, 9 rebound, dan 12 asis, performa lengkap yang mendikte jalannya pertandingan dari awal sampai peluit akhir.\n\n---\n\n## Malam Milik Franz Wagner\n\nAngka 35-9-12 bukan cuma stat yang bagus di atas kertas. Wagner bermain 36 menit sebagai starter, mencetak 35 poin dari 13-22 field goals dengan 3 three-pointer dari 8 percobaan, sekaligus menjadi pengatur serangan utama dengan 12 asis. Semua itu dengan efisiensi yang sulit dibantah.\n\nDesmond Bane tampil solid di sisinya: 21 poin, 5 rebound, 3 asis, dengan 6-10 from three. Dua pemain ini menghasilkan lebih dari separuh poin Orlando secara gabungan, dan yang lebih penting, mereka mendistribusikan bola. ORL mencatat 29 asis tim versus 20 milik MIL. Ini bukan kebetulan.\n\nDi lini dalam, Wendell Carter Jr. dan Goga Bitadze berkontribusi masing-masing 12 poin. Carter Jr. menambahkan 8 rebound. Bitadze, yang hanya bermain 18 menit off the bench, sempurna dari lapangan: 5-5 field goals tanpa satu pun percobaan three-pointer. Tristan da Silva melengkapi rotasi starter ORL dengan 12 poin meski shooting kurang efisien (4-11 FG).\n\n---\n\n## Milwaukee Butuh Lebih dari Jaquez\n\nDi sisi Bucks, pencetak poin terbanyak justru bukan starter utama. Jaime Jaquez Jr., off the bench, tampil paling konsisten: 22 poin, 6 rebound, 4 asis, dengan shooting 8-15 dari lapangan dan 5-7 from three. Dalam 28 menit, Jaquez menghasilkan output yang lebih efisien dari siapa pun di starting lineup Milwaukee.\n\nTyler Herro sebagai starter mencatat 18 poin, tapi butuh 17 field goal attempts untuk sampai ke sana, hanya 5 yang masuk. Kuzma (14 poin, 4 rebound) dan Myles Turner (14 poin, 11 rebound) konsisten, tapi tidak cukup untuk menutup gap.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nDua statistik tim yang paling berbicara:\n\n**Fast-break points: ORL 19, MIL 4.** Milwaukee menyia-nyiakan 16 turnover, ORL mengkonversi momentum itu menjadi poin transisi. Di sisi sebaliknya, MIL mencuri bola 11 kali (vs 7 ORL), tapi fast-break points mereka hanya 4. Steals tanpa eksekusi transisi tidak cukup.\n\n**Points in paint: ORL 44, MIL 26.** Orlando mendominasi area ini sepenuhnya. Dari sana, defense MIL dipaksa memilih antara menjaga perimeter atau menutup jalur ke ring, dan Wagner bersama Bane terus menghukum keputusan itu.\n\nMenariknya, dari sisi three-point shooting, MIL justru lebih efisien secara persentase: 39% (17-44) versus ORL yang hanya 30% (15-50). Bucks juga lebih banyak meraih rebound total, 45 vs 45, imbang. Tapi free throw menjadi masalah lain: MIL menembak 58% (18-31), ORL sempurna 100% (14-14). Enam poin dari selisih free throw yang mestinya bisa lebih ketat.\n\n---\n\n## Ke Game 2\n\nORL unggul 1-0 di series regular season ini. Game selanjutnya dijadwalkan tanpa informasi venue di input data, pantau jadwal resmi via NBA League Pass atau Vidio mulai pukul 07.00 WIB untuk konfirmasi.\n\nTantangan Milwaukee jelas: hentikan transisi, kurangi turnover, dan cari jawaban atas Wagner. Kalau tidak, 35-9-12 malam ini bisa jadi template yang diulang.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909297",
+    "home_team": "Orlando Magic",
+    "home_abbr": "ORL",
+    "away_team": "Milwaukee Bucks",
+    "away_abbr": "MIL",
+    "home_score": 107,
+    "away_score": 99,
+    "winner_abbr": "ORL",
+    "kickoff_utc": "2026-11-14T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ORL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.051524,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article fails on two high-severity training-inference leaks (editor aside about missing venue data, false kickoff time for next game) plus structural/translation issues. Core stats are accurate; rewrite closing section and remove metadata comments.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game selanjutnya dijadwalkan tanpa informasi venue di input data",
+          "fix": "Delete this sentence entirely. End with 'ORL unggul 1-0 di series regular season ini.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "pantau jadwal resmi via NBA League Pass atau Vidio mulai pukul 07.00 WIB untuk konfirmasi",
+          "fix": "Remove. Write: 'Game 2 dijadwalkan segera. Pantau jadwal resmi NBA League Pass dan Vidio.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dua statistik tim yang paling berbicara",
+          "fix": "Rewrite: 'Dua statistik tim menjelaskan kekalahan MIL:' or simply 'Yang paling mencolok:'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Steals tanpa eksekusi transisi tidak cukup.",
+          "fix": "Rewrite: 'Tapi 11 steals tidak berguna tanpa fast break yang jalan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Menariknya, dari sisi three-point shooting, MIL justir lebih efisien",
+          "fix": "Start: 'MIL justru lebih efisien dari three: 39% vs 30%.' Delete 'Menariknya.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Enam poin dari selisih free throw yang mestinya bisa lebih ketat.",
+          "fix": "Rewrite: 'Free throw selisih enam poin mengubah skor akhir.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Angka 35-9-12 bukan cuma stat yang bagus di atas kertas.",
+          "fix": "Change 'cuma' to 'hanya' for consistency."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xb74b08d1bc69bca4",
+    "published_at": "2026-11-14T02:33:32+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
