@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "cle-at-mia-2026-11-14-g1",
+  "title": "Recap Cleveland Cavaliers 121-133 Miami Heat (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Cleveland Cavaliers vs Miami Heat (121-133) di —, 14 November 2026.",
+  "body_md": "# Miami Heat mengakhiri Game 2 dengan kemenangan 133-121 atas Cleveland Cavaliers, Kamis 14 November 2026. MIA unggul 1-0 di regular season series ini, dan butuh satu kemenangan lagi untuk tutup tiga game series. Dua nama yang bicara paling keras malam ini: Giannis Antetokounmpo dan Bam Adebayo, masing-masing cetak 37 poin.\n\n## Dua Mesin, Satu Malam\n\nGiannis 37 poin, 9 rebound, 2 asis, FG 15-20. Efisiensi yang hampir tidak masuk akal: 75% dari lapangan, hanya 31 menit bermain. Dia tidak memerlukan volume—setiap tembakan nyaris masuk.\n\nDi sebelahnya, Bam Adebayo juga cetak 37 poin dengan 14 rebound dan 3 asis, FG 13-19. Double-double yang agresif, dan rebound-nya jadi tulang punggung pertahanan Miami di saat Cavaliers mulai dapat momentum. Di Q4, nama Adebayo muncul tiga kali berturut-turut di scoring run yang akhirnya menutup peluang CLE: 12-foot pullup, 12-foot jumper, lalu driving layup, tiga kali dengan assist dari Andrew Wiggins, tiga kali yang mengubah selisih tipis jadi keunggulan lebih solid.\n\nDavion Mitchell melengkapi gambar itu: 22 poin, 5 rebound, dan 17 asis. Angka assist itu yang patut digarisbawahi—Davion atur serangan MIA dari awal sampai akhir. Ryan Conwell dari bench tambah 20 poin, 4-9 from three.\n\n## CLE Tidak Mati, Tapi Tidak Cukup\n\nCleveland bukan tanpa perlawanan. Donovan Mitchell cetak 25 poin, 7 asis, 5-12 dari garis tiga angka, tapi FG keseluruhannya 9-21, kurang efisien dibanding malam-malam terbaiknya. James Harden 20 poin, 8 asis, tapi dari 13 percobaan field goal hanya masuk 5. Volume besar, hasil sedang.\n\nKejutan datang dari bench: Tyrese Proctor cetak 22 poin dengan efisiensi tinggi, 7-9 dari lapangan, 5-7 dari tiga angka, hanya 27 menit. Ini bisa jadi sinyal menarik untuk Game 3. Jaylon Tyson dari starting lineup tambah 16 poin, 4-7 from three. Meleek Thomas 12 poin dalam 18 menit, aktif menjaga CLE tetap bersaing.\n\n## Yang Bicara dari Box Score\n\nCLE sebenarnya lebih baik dari three-point line: 38% (18-47) vs MIA 35% (12-34). Tapi angka itu tidak cukup menutup gap di sisi lain.\n\nMIA unggul dominan di poin dalam paint: 56 vs 40. Giannis dan Adebayo yang bertanggung jawab atas sebagian besar ini, keduanya terus-menerus masuk ke area terlarang dan CLE tidak punya jawaban konsisten. Free throw mencerminkan agresivitas yang sama: MIA ke garis 37 kali (CLE hanya 25). Dari sisi rebound, MIA juga menang jelas: 46 vs 36.\n\nSatu-satunya area CLE unggul signifikan adalah steal: 8 berbanding 1. Tapi turnover kedua tim hampir sama, CLE 10, MIA 9, sehingga keunggulan steal tidak cukup mengubah momentum.\n\n## Q3 Rata, Q4 MIA Kabur\n\nKuarter tiga sempat jadi pertandingan berbeda, skor berjalan ketat. Sekilas ada celah untuk CLE pimpin. Wiggins tutup itu dengan three dari jarak jauh, MIA unggul 89-92 jelang akhir Q3.\n\nKuarter empat adalah milik Adebayo. Tiga field goal beruntun dalam rentang tiga menit pertama, dari 91-93 jadi 93-98. Jarak yang awalnya bisa dikejar, mulai terasa terlalu jauh buat CLE untuk ditutup.\n\n## Selanjutnya\n\nGame 3 jadi penentu series. MIA unggul 1-0 dan butuh satu kemenangan lagi. Detail jadwal dan venue Game 3 belum tersedia di sistem saat ini, pantau NBA League Pass dan Vidio untuk update siaran.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909298",
+    "home_team": "Miami Heat",
+    "home_abbr": "MIA",
+    "away_team": "Cleveland Cavaliers",
+    "away_abbr": "CLE",
+    "home_score": 133,
+    "away_score": 121,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-11-14T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023556,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on one high-severity training-inference claim (series win requirement) and one high-severity translated-English phrase. Multiple soft issues (clichés, vague hedging, academic register) drag score to 62. Regenerate with stricter grounding to input data only and sharper casual register.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "MIA unggul 1-0 di regular season series ini, dan butuh satu kemenangan lagi untuk tutup tiga game series",
+          "fix": "Write only: 'MIA unggul 1-0 di series ini' without inferring win requirements."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Di sebelahnya, Bam Adebayo juga cetak 37 poin dengan 14 rebound dan 3 asis, FG 13-19. Double-double yang agresif",
+          "fix": "Rewrite: 'Bam Adebayo 37 poin, 14 rebound, 3 asis (FG 13-19). Dominan di dalam paint dan papan pantul.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka assist itu yang patut digarisbawahi",
+          "fix": "Rewrite: 'Assist rate 17 itu yang jadi beda. Davion atur tempo dari awal.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Donovan Mitchell cetak 25 poin, 7 asis, 5-12 dari garis tiga angka, tapi FG keseluruhannya 9-21, kurang efisien dibanding malam-malam terbaiknya",
+          "fix": "Rewrite: '25 poin dari 9-21 FG — jauh dari rata-rata seasonnya.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Kejutan datang dari bench: Tyrese Proctor cetak 22 poin dengan efisiensi tinggi, 7-9 dari lapangan, 5-7 dari tiga angka",
+          "fix": "Rewrite neutrally: 'Tyrese Proctor dari bench 22 poin (7-9 FG, 5-7 3PT) dalam 27 menit.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "CLE tidak punya jawaban konsisten",
+          "fix": "Optional: 'CLE kewalahan atas agresivitas Giannis-Bam di paint.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Kuarter tiga sempat jadi pertandingan berbeda, skor berjalan ketat. Sekilas ada celah untuk CLE pimpin.",
+          "fix": "Cite the actual Q3 score from key plays if available, or describe specific possession sequences."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Satu-satunya area CLE unggul signifikan adalah steal: 8 berbanding 1.",
+          "fix": "Optional: 'CLE jago di steal (8 vs 1) tapi tidak terbayar di sisi lain.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x609bd1b190c5c6e4",
+    "published_at": "2026-11-14T04:36:34+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

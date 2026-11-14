@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "utah-at-hou-2026-11-14-g1",
+  "title": "Recap Utah Jazz 118-125 Houston Rockets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Utah Jazz vs Houston Rockets (118-125) di —, 14 November 2026.",
+  "body_md": "# Sengun 43 Poin, Houston Rockets Kalahkan Utah Jazz 125-118\n\nHouston Rockets mempertegas dominasi atas Utah Jazz dengan kemenangan 125-118 di laga kedua regular season series, Sabtu 14 November 2026 pagi WIB. Alperen Sengun tampil luar biasa dengan 43 poin, 12 rebound, dan 5 asis, performa besar yang jadi fondasi kemenangan HOU. Rockets unggul 1-0 dalam regular season series empat laga ini.\n\n---\n\n## Sengun Tak Terbendung\n\nAngka 43 poin dari Sengun bukan sekadar top-scorer, itu performa yang mengubah pertandingan sejak awal. Sengun menembak 17-24 dari lapangan, efisiensi yang merepresentasikan betapa sulitnya Jazz mendisiplinkan besar asal Turki ini di dalam paint. Dua belas rebound dan lima asis melengkapi stat line-nya, menjadikannya pemain paling penting bagi Rockets.\n\nKevin Durant menambah 22 poin dengan 6 asis dari 33 menit dengan akurasi 5-14 FG. Dua tembakan three-pointer Durant masuk, termasuk satu yang krusial di Q4. Fred VanVleet konsisten dengan 17 poin dan 3-6 from three. Dari bench, Tari Eason mencatatkan double-double dengan 14 poin dan 11 rebound di 6-13 FG. Amen Thompson ikut berkontribusi dengan 12 poin dan 10 rebound, dua double-double dari satu laga, kedalaman roster HOU yang terasa di durasi penuh.\n\nDi sisi Jazz, Darryn Peterson memimpin dengan 28 poin dan 7 rebound (FG 9-20), sementara Keyonte George menyusul dengan 27 poin dan 7 asis. Ace Bailey mencatat 21 poin dari 7-13 FG. Tiga starter Jazz tembus 20-an poin, cukup banyak di atas kertas, tapi tidak cukup untuk menutup selisih yang dibuka Sengun cs.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka paling menjelaskan hasil ini: turnovers dan rebound.\n\nJazz mencatat 13 turnovers vs 8 milik HOU, selisih lima possession yang dalam pertandingan seimbang bisa menentukan winner. Jazz aktif memanfaatkan peluang transisi dengan 18 fast-break points, namun itu tidak cukup mengimbangi keunggulan Rockets di aspek lain. Rebound total HOU unggul 47-41, dengan Sengun dan Thompson mengamankan glass di kedua sisi.\n\nEfisiensi tembakan hampir sejajar: UTAH 46% FG vs HOU 47%, three-point 37% vs 35% untuk keunggulan tipis Jazz dari luar. Perbedaan hadir di free throw attempts, HOU mendapat 27-34 kali ke garis foul vs UTAH 21-26, keunggulan yang dalam pertandingan tujuh poin bisa jadi pembeda nyata.\n\n---\n\n## Clutch Time Milik Rockets\n\nLaga masih hidup di menit-menit akhir kuarter empat. Dengan skor 112-116, Durant melanjutkan dengan three-pointer dari 23 kaki (asis VanVleet) untuk membuka jarak jadi 112-119. Sengun menambah satu free throw untuk 112-117, sebelum Jazz merespons, George cetak 12-foot jumper (114-117), lalu Peterson nge-pull-up dari 13 kaki (116-117). Jazz sempat tinggal satu poin.\n\nTapi Rockets tidak panik. Amen Thompson layup dari dua kaki, asis Durant, untuk 116-119. Sengun kembali, layup untuk 116-121. Jazz masih berjuang: Mo Bamba layup (118-121). Lalu VanVleet menutup dengan 9-foot two-pointer (118-123) yang secara praktis mengakhiri perlawanan Jazz. Skor akhir 118-125.\n\nStretch itu menunjukkan kenapa HOU sulit dikalahkan saat tiga possession terakhir dibutuhkan: Durant, Sengun, Thompson, VanVleet bergantian mencetak poin. Jazz punya scorer, tapi tidak punya jawaban di possession yang benar-benar krusial.\n\n---\n\n## Selanjutnya\n\nRockets unggul 1-0 dalam regular season series. Jazz membutuhkan kemenangan di laga berikutnya untuk menjaga series tetap kompetitif. Pantau NBA League Pass dan Vidio untuk jadwal update.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909301",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "Utah Jazz",
+    "away_abbr": "UTAH",
+    "home_score": 125,
+    "away_score": 118,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-11-14T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022898,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has good stat accuracy but fails on voice: several AI-translated-English clauses ('mendisiplinkan besar', 'di atas kertas'), overly formal section structure ('Dua angka paling menjelaskan'), and hedging language in clutch recap. Regenerate sections 2 and 3 with stricter Bahasa discipline.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "betapa sulitnya Jazz mendisiplinkan besar asal Turki ini",
+          "fix": "Rewrite: 'betapa sulitnya Jazz cover Sengun, big man asal Turki ini'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Dua angka paling menjelaskan hasil ini: turnovers dan rebound.",
+          "fix": "Rewrite: 'Dua angka bicara sendiri: turnovers dan rebound.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tiga starter Jazz tembus 20-an poin, cukup banyak di atas kertas",
+          "fix": "Rewrite: 'Tiga starter Jazz cetak 20-an poin, tapi tidak cukup.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Jazz membutuhkan kemenangan di laga berikutnya untuk menjaga series tetap kompetitif.",
+          "fix": "Delete or: 'Laga berikutnya akan menentukan apakah Jazz bisa balas.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Lalu VanVleet menutup dengan 9-foot two-pointer (118-123) yang secara praktis mengakhiri perlawanan Jazz.",
+          "fix": "Rewrite: 'VanVleet dua-pointer itu selesai Jazz. Final 118-125.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Efisiensi tembakan hampir sejajar: UTAH 46% FG vs HOU 47%",
+          "fix": "Rewrite: 'UTAH cetak 46%, HOU 47% dari lapangan.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Pantau NBA League Pass dan Vidio untuk jadwal update.",
+          "fix": "Rewrite: 'Laga berikutnya di NBA League Pass dan Vidio.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x68e0d3a3f241ea94",
+    "published_at": "2026-11-14T04:40:25+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
