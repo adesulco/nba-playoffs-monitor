@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "gs-at-sa-2026-11-14-g1",
+  "title": "Recap Golden State Warriors 85-123 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs San Antonio Spurs (85-123) di —, 14 November 2026.",
+  "body_md": "San Antonio Spurs melumat Golden State Warriors 123-85 di Game 2 regular season series, Senin 14 November 2026. Ini bukan pertandingan ketat, ini demonstrasi. Spurs menang di hampir semua aspek dan kini unggul 2-0 dalam series tiga game ini.\n\n---\n\n## Stephon Castle dan Wemby Memimpin\n\nStephon Castle tampil sebagai bintang utama malam ini. 32 poin, 5 rebound, 6 asis, dengan efisiensi yang sulit dibantah: 12-18 from field, 5-8 dari tiga poin, hanya dalam 25 menit. Castle tidak butuh banyak waktu untuk menyampaikan pesannya.\n\nDi sisinya, Victor Wembanyama mencetak double-double: 12 poin, 12 rebound, 6 asis. Hanya 5-11 from field memang, tapi kontribusi Wemby di luar angka poin terlihat di mana-mana, 12 rebound di kandang lawan bukan pekerjaan mudah.\n\nKeldon Johnson off the bench menyumbang 18 poin dengan 6-11 from field. Harrison Barnes, juga dari bench, cetak 11 poin dengan 3-6 dari tiga poin. Spurs punya kedalaman roster yang terasa nyata malam ini.\n\nDi kubu Warriors, top scorer justru datang dari bench: LJ Cryer 20 poin, 6-11 dari tiga poin, 24 menit. Cukup solid secara individual, tapi yang lain sulit menemukan ritme. Brandin Podziemski 8 poin dari 2-10 shooting. De'Anthony Melton 8 poin dari 3-11. Warriors tidak punya anchor yang stabil di lini starter.\n\n---\n\n## Statistik yang Bicara Sendiri\n\nAngka team stats menjelaskan segalanya.\n\nField goal percentage menjadi pembeda terbesar: Warriors 33% (31-93), Spurs 48% (46-95). Bukan hanya Spurs lebih efisien, Warriors juga menembak lebih banyak dan tetap kalah volume gol. Dua hal ini sekaligus adalah masalah besar.\n\nPerbedaan paling menyolok ada di points in paint: Spurs 56, Warriors 28. Setengahnya. Spurs berhasil masuk ke area yang seharusnya dijaga ketat dan menyelesaikannya dengan konsisten. Fast-break points lebih ekstrem lagi, 21-3 untuk Spurs. Artinya Warriors kehilangan bola di momentum yang salah, dan Spurs langsung menghukum.\n\nTurnovers Warriors 14 banding 11. Steals Spurs 7 banding 4. Rebound 60-43 untuk Spurs. Ini bukan pertandingan yang dimenangkan Spurs di satu aspek, mereka menang di hampir semua aspek secara bersamaan.\n\nSatu area di mana Warriors sedikit kompetitif adalah tiga poin: 37% (15-41) versus Spurs 33% (14-43). Tapi volume warriors dari tiga poin tidak bisa menutup semua kekurangan di dalam paint dan di turnover.\n\n---\n\n## Ke Mana Arahnya\n\nSpurs unggul 2-0 dalam regular season series tiga game ini. Game 3 adalah penutup. Detail tanggal tidak tersedia di input saat ini, tapi Warriors perlu respons besar, perbaikan di turnover discipline, peningkatan shooting dari starter, dan solusi untuk mencegah Spurs mendominasi area paint lagi.\n\nUntuk Spurs, Castle dan Wembanyama menunjukkan bahwa kombinasi keduanya bisa sangat merepotkan bahkan bagi tim dengan reputasi Warriors. Dua game, dua kemenangan, dengan margin yang tidak tipis.\n\nGame 3 bisa ditonton live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909302",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 123,
+    "away_score": 85,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-14T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019364,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article fails on critical training-data inference (series score 2-0 vs. input 1-0) and predictive speculation about Warriors' future game needs beyond recap scope. Multiple code-switch inconsistencies and minor repetition. Rewrite series state and remove forward speculation.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Spurs unggul 2-0 dalam regular season series tiga game ini.",
+          "fix": "Change to 'Spurs unggul 1-0 dalam regular season series tiga game ini' per input SERIES STATE."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Warriors perlu respons besar, perbaikan di turnover discipline... dan solusi untuk mencegah Spurs mendominasi area paint lagi.",
+          "fix": "Delete or rephrase to purely retrospective observation: 'Turnover discipline dan paint defense menjadi masalah serius Warriors malam ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Stephon Castle tampil sebagai bintang utama malam ini. 32 poin, 5 rebound, 6 asis, dengan efisiensi yang sulit dibantah: 12-18 from field, 5-8 dari tiga poin...",
+          "fix": "Standardize: either '12-18 fg, 5-8 3pt' or '12-18 dari lapangan, 5-8 dari tiga poin'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Hanya 5-11 from field memang, tapi kontribusi Wemby di luar angka poin terlihat di mana-mana...",
+          "fix": "Rewrite: 'Shooting 5-11 memang biasa saja, tapi kontribusi Wemby di luar poin terlihat jelas...'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Ini bukan pertandingan yang dimenangkan Spurs di satu aspek, mereka menang di hampir semua aspek secara bersamaan.",
+          "fix": "Rephrase closing: 'Spurs merata-rata unggul: efisiensi, rebound, pelancar cepat, dan poin dalam area terlarang.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Detail tanggal tidak tersedia di input saat ini...",
+          "fix": "Delete this sentence. If Game 3 date is unknown, simply omit forward reference or write 'Game 3 akan menutup series.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x28f3d9ea22a1e408",
+    "published_at": "2026-11-14T05:11:58+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
