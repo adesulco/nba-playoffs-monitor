@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "por-at-sac-2026-11-14-g2",
+  "title": "Recap Portland Trail Blazers 120-107 Sacramento Kings (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs Sacramento Kings (120-107) di —, 14 November 2026.",
+  "body_md": "# Portland Trail Blazers Kalahkan Sacramento Kings 120-107, Sapu Bersih Regular Season Series\n\nPortland Trail Blazers menutup regular season series melawan Sacramento Kings dengan kemenangan meyakinkan, 120-107. Deni Avdija tampil luar biasa efisien dengan 34 poin, sementara Damian Lillard menambah 29 poin, cukup bagi Portland untuk menyapu bersih series 2-0 dan pulang tanpa satu pun kekalahan.\n\n## Deni Avdija dan Lillard Jadi Tulang Punggung\n\nAvdija jadi bintang utama malam ini. 34 poin dari 11-13 field goal, efisiensi yang jarang terlihat di level playoff. Tiga dari lima tembakan tiga angkanya masuk, dan dalam 35 menit bermain, dia nyaris tidak membuang satu pun possession. Ini bukan performa kebetulan. ini performa pemain yang sedang on form.\n\nLillard di sisi lain lebih berjuang dari sisi efisiensi, 6-18 dari field, 6-13 dari tiga angka, tapi 29 poin tetap tercetak, plus enam assist yang menjaga offense Portland bergerak. Lillard yang shooting-nya \"buruk\" pun masih bisa punya malam seperti ini. Itu yang bikin dia tetap berbahaya.\n\nToumani Camara (14 poin, 5-7 FG) dan Donovan Clingan (13 poin, 11 rebound) melengkapi starting five Portland yang solid. Clingan khususnya mendominasi area cat, double-double dengan 11 rebound dalam 27 menit bermain menjadi sinyal bahwa pemain muda ini semakin konsisten di peran andalnya.\n\n## Sacramento Punya Angka, Tapi Tidak Punya Momentum\n\nDe'Andre Hunter memimpin Kings dengan 24 poin, 5 rebound, 2 assist dari 7-13 field goal. Domantas Sabonis menyumbang double-double, 21 poin dan 12 rebound, sementara Darius Acuff Jr. mencatat 17 poin dan enam assist meski shooting-nya berat (6-19 FG). Keegan Murray (16 poin, 7 rebound) dan Zach LaVine (12 poin, 6 assist) turut berkontribusi, tapi kontribusi tersebar rata ini tidak pernah cukup untuk menutup gap yang Portland buka.\n\nSacramento unggul di beberapa area: fast-break points (20 vs 10), steals (10 vs 6), dan points in paint (46 vs 38). Tapi itu tidak cukup ketika Portland mendominasi dari tiga angka.\n\n## Three-Point Gap yang Menentukan\n\nAngka statistik paling jelas berbicara soal efisiensi dari luar. Portland shooting 40% dari tiga angka (17-42). Sacramento 32% (11-34). Selisih enam three-pointer yang masuk itu setara 18 poin, mendekati persis margin kemenangan Portland di akhir laga.\n\nPortland juga jauh lebih baik dari garis free throw: 94% (29-31) berbanding 78% (18-23) Sacramento. Ketika tembakan tiga angka sedang berjalan dan free throw tidak terbuang, hampir tidak ada tim yang bisa merespons.\n\nSacramento memiliki 29 assist berbanding 21 milik Portland, Kings lebih banyak bergerak bola, tapi ball movement yang bagus tidak otomatis berarti efisiensi. Acuff Jr. yang 6-19 menjadi ilustrasinya.\n\n## Catatan Penutup\n\nPortland menyudahi regular season series ini dengan rekor sempurna 2-0 melawan Sacramento. Bagi Trail Blazers, ini momentum yang bagus. bagi Kings, ada pertanyaan serius soal bagaimana menghentikan Avdija dan Lillard ketika keduanya panas bersamaan.\n\nLaga selanjutnya bisa disaksikan live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909303",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 107,
+    "away_score": 120,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-11-14T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019937,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has solid structure and mostly accurate stats, but suffers from translated-English phrasing, tense/structural confusion in mid-article, and AI hedging language in analytical sections. Typo (lowercase 'ini') and inconsistent stat formatting also present. Regenerate focused on flow naturalness and cutting filler analysis.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Lillard yang shooting-nya \"buruk\" pun masih bisa punya malam seperti ini.",
+          "fix": "Rephrase: 'Meski shooting-nya tidak akurat, Lillard tetap cetak 29 poin.' atau 'Saat shooting struggle, Lillard masih punya 29 poin.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Lillard di sisi lain lebih berjuang dari sisi efisiensi, 6-18 dari field",
+          "fix": "Restructure: 'Lillard 6-18 dari field, 6-13 tiga angka — less efficient, tapi 29 poin tercetak.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Ini bukan performa kebetulan. ini performa pemain yang sedang on form.",
+          "fix": "Capitalize: 'Ini performa pemain sedang on form.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka statistik paling jelas berbicara soal efisiensi dari luar.",
+          "fix": "Direct: 'Three-point efficiency jadi kunci: Portland 40%, Sacramento 32%.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Clingan khususnya mendominasi area cat, double-double dengan 11 rebound",
+          "fix": "Rewrite: 'Clingan dengan 11 rebound dominasi area cat dalam 27 menit.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Toumani Camara (14 poin, 5-7 FG)",
+          "fix": "Include: '(14 poin, 2 rebound, 5-7 FG)' for consistency with Clingan/Hunter format"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Itu yang bikin dia tetap berbahaya.",
+          "fix": "'Itu kenapa Lillard tetap ancaman, bahkan off-night.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Ketika tembakan tiga angka sedang berjalan dan free throw tidak terbuang, hampir tidak ada tim yang bisa merespons.",
+          "fix": "Delete; previous sentences already made the point stronger."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x3c4311923c04a797",
+    "published_at": "2026-11-14T05:41:40+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
