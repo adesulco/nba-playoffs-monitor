@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-mem-2026-11-15-g1",
+  "title": "Recap Brooklyn Nets 110-129 Memphis Grizzlies (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Memphis Grizzlies (110-129) di —, 15 November 2026.",
+  "body_md": "## Memphis Grizzlies Tutup Regular Season Series dengan Dominasi, Nets Kalah 110-129\n\nMemphis Grizzlies menutup regular season series melawan Brooklyn Nets dengan kemenangan meyakinkan, 129-110, di Game 2 of 2. MEM menang dua laga beruntun dan menutup seri dengan dominasi yang tak banyak diperdebatkan. Lima pemain Memphis tembus double-digit, kedalaman roster jadi pembeda nyata malam ini.\n\n---\n\n## Top Performers\n\nCedric Coward jadi pemain terbaik malam ini dengan 23 poin, 12 rebound, dan 4 asis dari 7-13 field goals, termasuk 4-6 from three. Double-double yang efisien, bukan sekadar statistik penuh. Satu momen langsung terbaca dari KEY PLAYS: step-back three-pointer dari 25 kaki di awal Q1 yang langsung memberi Memphis sinyal bahwa malam ini Coward datang dengan niat.\n\nTaylor Hendricks menambah 22 poin dan 5 rebound dari bench dengan shooting 9-13, efisiensi yang jarang terlihat dari pemain cadangan. Di sisi starter, Cam Spencer bermain rapi: 17 poin, 8 asis, 3-3 from three. Distribusi bola Memphis mengalir mulus. Cameron Boozer melengkapi dengan 15 poin, 8 rebound, 5 asis, satu lagi pemain yang mengerjakan hal-hal yang tidak selalu masuk highlight.\n\nJavon Small off the bench: 19 poin, 3-7 from three, 5 asis. Memphis dapat 41 poin dari bench, kedalaman yang Brooklyn tidak bisa jawab.\n\nDi sisi Nets, Julius Randle memimpin dengan 22 poin, 4 rebound, 5 asis dan FG 8-16. Day'Ron Sharpe menyumbang double-double: 16 poin dan 11 rebound. Noah Clowney menambah 15 poin dan 7 rebound. Angka-angkanya tidak jelek, tapi kolektif tidak cukup untuk menutup selisih yang terbentuk dari efisiensi tim.\n\n---\n\n## Apa yang Bicara di Box Score\n\nPerbedaan paling jelas: efisiensi field goal. Memphis shooting 53% (46-87), Brooklyn 44% (41-93). Selisih itu konsisten sepanjang laga dan tidak pernah benar-benar tertutup.\n\nYang lebih mencolok: points in paint. Memphis 62, Brooklyn 46. Selisih 16 poin dari area dalam itu menggambarkan bagaimana Memphis bisa terus-menerus masuk ke pertahanan Nets tanpa resistansi yang cukup.\n\nFree throws juga bercerita. Memphis 22-29 (76%), Brooklyn 11-17 (65%). Memphis bukan hanya lebih sering masuk ke garis, mereka juga lebih akurat di sana.\n\nTurnover: Brooklyn 16, Memphis 14. Tidak ada tim yang bermain bersih, tapi Nets sedikit lebih ceroboh dalam situasi yang tidak menguntungkan.\n\nSatu area Brooklyn lebih baik secara teknis: total rebound, 43 berbanding 41. Tapi keunggulan tipis di papan tidak cukup mengimbangi defisit di hampir semua kategori lain.\n\n---\n\n## Catatan Akhir Seri\n\nMemphis menutup seri 2-0. Regular season series selesai, MEM leads series 1-0 secara statistik resmi. Untuk Brooklyn, laga ini memperlihatkan masalah lama yang belum selesai: turnovers tinggi (16), shooting dari paint yang tertinggal jauh, dan bench yang belum bisa menanggung beban yang setara dengan starter.\n\nRandle dan Sharpe bermain dengan angka layak. Tapi Memphis punya Coward yang bisa cetak 23 dan Hendricks yang masuk dari bench langsung dengan 22, kedalaman roster yang levelnya berbeda.\n\nLaga selanjutnya bisa disaksikan live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909983",
+    "home_team": "Memphis Grizzlies",
+    "home_abbr": "MEM",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 129,
+    "away_score": 110,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-11-15T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MEM leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019349,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate box-score citations and natural NBA tone. Minor soft-phrase filler and one hedging phrase; no hard violations. Pass.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Javon Small off the bench: 19 poin, 3-7 from three, 5 asis.",
+          "fix": "Either cite full line 'Javon Small: 19 poin, 2 rebound, 5 asis' or keep qualitative if space tight."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Satu lagi pemain yang mengerjakan hal-hal yang tidak selalu masuk highlight.",
+          "fix": "Delete or replace with concrete action: 'rebounding tanpa drama' atau 'pertahanan solid'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Regular season series selesai, MEM leads series 1-0 secara statistik resmi.",
+          "fix": "Just write: 'MEM leads the series 1-0' atau 'Seri selesai 2-0 untuk Memphis'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa07421f9f451a724",
+    "published_at": "2026-11-15T05:37:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
