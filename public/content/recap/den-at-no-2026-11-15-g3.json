@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "den-at-no-2026-11-15-g3",
+  "title": "Recap Denver Nuggets 116-108 New Orleans Pelicans (Game 3)",
+  "description": "Recap NBA Playoffs 2026 — Denver Nuggets vs New Orleans Pelicans (116-108) di —, 15 November 2026.",
+  "body_md": "## Denver Nuggets Kalahkan New Orleans Pelicans 116-108, Sapu Bersih Regular Season Series\n\nDenver Nuggets menutup regular season series melawan New Orleans Pelicans dengan sempurna, menang 116-108 untuk sapu bersih 4-0. Nikola Jokic tampil mendominasi dengan 26 poin, 8 rebound, dan 10 asis, sementara Jamal Murray menambah 23 poin dan 9 asis. Pelicans berjuang keras, tapi DEN terlalu solid dari dalam.\n\n---\n\n## Top Performers\n\n**Nikola Jokic** kembali jadi masalah utama buat Pelicans. Dua puluh enam poin dengan efisiensi tinggi, 9-14 from field, plus satu three-pointer, dan 10 asis yang menggerakkan seluruh offense DEN. Dia yang mengatur siapa dapat bola, kapan, dari mana. Susah dimatikan karena tidak ada satu cara pun untuk melakukannya.\n\n**Jamal Murray** melengkapi dengan 23 poin dan 9 asis dari 38 menit. Shooting-nya kurang efisien malam ini, 9-16 dengan 0-3 dari tiga poin, tapi kontribusinya di playmaking tetap krusial.\n\n**Christian Braun** jadi kontributor ketiga yang solid: 17 poin, 7 rebound, 6-14 from field. Bukan malam terbaiknya dari luar, tapi kehadirannya di papan rebound dan transisi cukup berarti.\n\nDi sisi Pelicans, **Zion Williamson** adalah satu-satunya yang benar-benar membuat DEN kerepotan, 24 poin, 6 rebound, 9-16 from field termasuk 2-4 dari tiga poin. Versi Zion yang agresif menekan DEN, tapi tim tidak follow. **Saddiq Bey** mencatat 16 poin dan 4 asis tapi shooting-nya berat, 4-15 from field, 2-7 dari tiga poin. **Jeremiah Fears** mencatat 13 poin dan 7 asis. **Jaron Pierre Jr.** off the bench juga sumbang 13 poin dari 23 menit bermain.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDEN menang karena menang di dalam: *points in paint* 62-44. Itu selisih 18 poin hanya dari area post dan drive, dan itu gambaran Jokic ditambah Murray yang terus-menerus menembus ke paint dan memanfaatkan besar tubuh DEN.\n\nNO justru unggul dari tiga poin: 13-33 (39%) vs DEN yang hanya 4-16 (25%). Pelicans bikin lebih banyak three-pointer, tapi DEN bikin lebih banyak *poin* secara total. Caranya? Tembakan dari dalam, dan free throw yang lebih banyak (28-37 vs 21-33).\n\nTurnovers dua tim relatif seimbang: DEN 14, NO 11. DEN justru lebih banyak *give away* bola, tapi angka shooting dalam di paint dan asis yang efisien tetap menutup selisih itu.\n\n---\n\n## Catatan Seri\n\nDengan hasil ini, Denver Nuggets menyapu bersih New Orleans Pelicans 4-0 di regular season series ini. Dominasi yang cukup jelas, DEN konsisten, NO belum menemukan formula untuk memperlambat mesin Jokic-Murray.\n\nSiaran live tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909980",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Denver Nuggets",
+    "away_abbr": "DEN",
+    "home_score": 108,
+    "away_score": 116,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-11-15T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DEN leads series 3-0",
+    "game_number": 3,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.048342,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on two high-severity training-inference issues: (1) speculating on Zion's detailed FG/3PT performance beyond the input data block, and (2) claiming Braun contributed a rebound count that appears to be inferred. Additionally, one jarring code-switch ('Dua puluh enam poin...from field'). Fact-checking shows 70% accuracy overall but the inference gaps and one weak analytical claim ('tim tidak follow') push below pass threshold.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Christian Braun jadi kontributor ketiga yang solid: 17 poin, 7 rebound",
+          "fix": "Verify: Braun 17 pts, 7 reb, 1 ast per input. You wrote correctly but sentence structure confused rebound attribution."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Dua puluh enam poin dengan efisiensi tinggi, 9-14 from field",
+          "fix": "26 poin, 9-14 from field atau 'dua puluh enam poin, 9 dari 14 tembakan'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Zion Williamson adalah satu-satunya yang benar-benar membuat DEN kerepotan... 9-16 from field termasuk 2-4 dari tiga poin",
+          "fix": "Stick to input: 'Zion Williamson 24 poin, 6 rebound' — drop the FG% inference unless it's in numeric anchors."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Saddiq Bey mencatat 16 poin dan 4 asis tapi shooting-nya berat, 4-15 from field, 2-7 dari tiga poin",
+          "fix": "Input provides FG/3PT for ALL players in TOP SCORERS. Your citation is correct. No fix needed here; issue is style inconsistency above."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dengan hasil ini, Denver Nuggets menyapu bersih New Orleans Pelicans 4-0",
+          "fix": "No change needed; tense is natural here."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Jamal Murray melengkapi dengan 23 poin dan 9 asis dari 38 menit. Shooting-nya kurang efisien malam ini, 9-16 dengan 0-3 dari tiga poin",
+          "fix": "This is accurate; no fix needed."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Versi Zion yang agresif menekan DEN, tapi tim tidak follow.",
+          "fix": "Either delete vague assertion or cite: 'NO hanya 37-89 FG (42%), DEN 42-80 (53%)—gap besar dari bawah papan.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Jaron Pierre Jr. off the bench juga sumbang 13 poin dari 23 menit bermain",
+          "fix": "No fix needed; this is accurate."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x641327a8a291f58d",
+    "published_at": "2026-11-15T03:34:26+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
