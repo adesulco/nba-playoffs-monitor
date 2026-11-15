@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "det-at-mia-2026-11-15-g2",
+  "title": "Recap Detroit Pistons 117-137 Miami Heat (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs Miami Heat (117-137) di —, 15 November 2026.",
+  "body_md": "# Miami Heat Sikat Detroit Pistons 137-117, Giannis-Klay Kombinasi Mematikan\n\nDetroit Pistons harus pulang dengan kepala tertunduk setelah kalah 117-137 dari Miami Heat di Game 3 regular season series ini. Dengan kekalahan ini, kedua tim kembali imbang 1-1 dalam seri yang masih menyisakan satu laga lagi. Miami tampil dominan di hampir semua lini, dimotori double-double monster Giannis Antetokounmpo dan ledakan tembakan Klay Thompson dari bench.\n\n---\n\n## Giannis + Klay = Mimpi Buruk DET\n\nGiannis Antetokounmpo tampil seperti sedang tidak mau bercanda. Lini besar Miami itu mencetak 34 poin, 14 rebound, dan 8 asis dengan efisiensi yang hampir tidak masuk akal, 13-17 dari lapangan, hanya 31 menit bermain. Angka 76% dari field goal adalah peringatan yang tidak dijawab Detroit sampai akhir.\n\nYang bikin Detroit makin tersiksa, Klay Thompson hadir sebagai mimpi buruk kedua. Dua puluh enam poin dari Klay, termasuk 6-11 from the three-point line, memberi Heat dimensi serangan lain yang susah dijaga bersamaan dengan Giannis. Kalau perhatian tertuju ke post-up Giannis, Klay terbuka di sudut. Kalau recover ke Klay, Giannis cari lob atau roll ke rim.\n\nBam Adebayo melengkapi trio besar Miami dengan 20 poin dan 5 rebound, efisien 5-8 dari lapangan plus 1-2 dari luar. Davion Mitchell dari posisi point guard juga tidak main-main: 15 poin dan 9 asis, mendikte tempo dengan tenang lewat 4-7 field goal dan 3-5 from three.\n\nDi sisi Detroit, Cade Cunningham tetap berjuang. Tiga puluh tiga poin, 5 rebound, 8 asis, angka yang di laga lain bisa jadi pemenang. Tapi malam ini tidak cukup. Field goal-nya 8-20, tiga poin 3-8, dan saat dirinya bekerja keras, Heat sudah membangun margin yang nyaman. Kevin Huerter dari bench menyumbang 20 poin dan 7 asis dengan 9-15 shooting, tapi kontribusi keduanya tenggelam dalam tidal wave serangan Miami.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nDua statistik paling berbicara malam ini: fast-break points dan persentase field goal.\n\nMiami mencetak 28 fast-break points berbanding hanya 11 dari Detroit. Ini bukan sekadar keberuntungan, ini soal transisi defensif Detroit yang tidak rapi. Setiap turnover (dan Detroit melakukan 14, sama dengan Miami) langsung berubah menjadi poin untuk Heat di ujung lapangan lain.\n\nEfisiensi shooting juga bercerita jelas. Miami menembak 51% dari lapangan (44-87) dan 39% from three (16-41). Detroit? 40% dari lapangan (39-97) dan hanya 32% from three (11-34). Heat tidak hanya lebih akurat, mereka menembak lebih sedikit dan tetap mencetak lebih banyak.\n\nBlok jadi indikator lain dominasi Miami di dalam: 14 blok berbanding 6 dari Detroit. Giannis sebagai rim protector mengubah banyak drive ke rim menjadi shot terbuang.\n\n---\n\n## Setelah Q1 yang Ketat, Miami Ambil Kendali\n\nSeparuh pertama kuarter pertama cukup kompetitif. Detroit memimpin 30-29 lewat layup Ronald Holland II, sebelum Bobby Portis membalik keadaan 30-32 lewat three-pointer. Skor sempat kembali imbang 37-37 di akhir Q1 setelah Holland mencetak tiga angka dari jarak 23 kaki.\n\nMemasuki kuarter kedua, Heat mulai menarik diri. Adebayo tiga angka dari jarak 24 kaki, diikuti layup Giannis, dan dari situ, Detroit tidak pernah benar-benar bisa menyusul kembali. Momentum bergeser ke Miami dan tidak berbalik.\n\n---\n\n## Apa Selanjutnya\n\nSeri kembali imbang 1-1 dengan satu laga tersisa. Game 4, dan kemungkinan laga penentu seri ini, belum tercantum jadwalnya di data yang tersedia saat ini. Bagi Detroit, pertanyaan besarnya sederhana: bagaimana cara menghentikan Giannis dan Klay secara bersamaan? Jawaban atas pertanyaan itu yang akan menentukan akhir seri ini.\n\nSiaran langsung tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909982",
+    "home_team": "Miami Heat",
+    "home_abbr": "MIA",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 137,
+    "away_score": 117,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-11-15T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023649,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Two high-severity ungrounded player inferences (Bobby Portis, Ronald Holland II appear in KEY PLAYS but NOT in TOP SCORERS — these violate the grounding rule). Multiple medium issues with calqued English syntax and number consistency. Remove Portis and Holland completely and regenerate.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bobby Portis membalik keadaan 30-32 lewat three-pointer... Portis tiga angka dari jarak 24 kaki",
+          "fix": "Delete Bobby Portis references. Stick only to the five listed scorers per team."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ronald Holland II mencetak tiga angka... Holland mencetak tiga angka dari jarak 23 kaki",
+          "fix": "Delete Ronald Holland II references entirely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kalau perhatian tertuju ke post-up Giannis, Klay terbuka di sudut. Kalau recover ke Klay, Giannis cari lob",
+          "fix": "Rephrase: 'Fokus ke post Giannis, Klay kosong di sudut. Tutup Klay, Giannis pilih lob atau roll.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Giannis Antetokounmpo tampil seperti sedang tidak mau bercanda... Klay Thompson hadir sebagai mimia buruk kedua",
+          "fix": "Vary: 'Giannis bermain monster...' then 'Klay jadi masalah kedua...'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dua puluh enam poin dari Klay, termasuk 6-11 from the three-point line",
+          "fix": "Either: 'Dua puluh enam poin... 6-11 tiga angka' or '26 poin... 6-11 from three.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "hanya 31 menit bermain. Angka 76% dari field goal",
+          "fix": "Delete 'Angka' — rephrase: 'Field goal 76% adalah peringatan...'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Setelah Q1 yang Ketat, Miami Ambil Kendali",
+          "fix": "Write 'Setelah kuarter pertama yang ketat...'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "saat dirinya bekerja keras, Heat sudah membangun margin yang nyaman",
+          "fix": "Rephrase: 'Saat Cade bekerja keras, Heat sudah ambil margin nyaman.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x625381285cc4cee2",
+    "published_at": "2026-11-15T04:08:42+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
