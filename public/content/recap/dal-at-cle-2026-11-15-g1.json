@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "dal-at-cle-2026-11-15-g1",
+  "title": "Recap Dallas Mavericks 117-127 Cleveland Cavaliers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Dallas Mavericks vs Cleveland Cavaliers (117-127) di —, 15 November 2026.",
+  "body_md": "# Cleveland Cavaliers Tutup Dua Laga dengan Kemenangan 127-117 atas Dallas Mavericks\n\nCleveland Cavaliers mengakhiri dua pertemuan musim regular dengan kemenangan 127-117 atas Dallas Mavericks, Senin 15 November 2026 jam 07.30 WIB. CLE menutup series dua laga ini dengan clean sweep, dua menang, nol kalah. Kyrie Irving tampil heroik untuk pihak yang kalah dengan 34 poin, tapi kontribusinya tidak cukup menambal lubang di lini lain Dallas.\n\n---\n\n## Pemain Terbaik\n\nDari sisi CLE, Tyrese Proctor jadi bintang utama: **24 poin, 11 rebound, 10 asis**, triple-double yang merata di semua lini. Efisiensinya solid, 10-19 from field, 4-13 dari tiga angka. Bukan malam terbaik dari garis tiga, tapi kontribusinya sebagai playmaker terasa sepanjang 34 menit bermain.\n\nMario Hezonja mendukung dari kursi starter dengan **22 poin, 7 rebound, 4 asis**, dan ini yang mengesankan: 9-12 from field, 2-2 dari tiga angka. Efisiensi shooting-nya malam ini nyaris sempurna. Meleek Thomas ikut berkontribusi dengan **20 poin** (8-17 FG, 3-9 dari tiga), sementara Thomas Bryant double-double diam-diam: **19 poin, 11 rebound** dalam 27 menit, salah satu momen paling efisien malam ini dengan 7-12 from field. Jaylon Tyson melengkapi starting five CLE dengan **18 poin, 4 rebound, 4 asis**.\n\nLima starter CLE mencetak 18 poin atau lebih. Scoring-nya terdistribusi merata, tidak bergantung satu bintang, semua berkontribusi.\n\nDAL satu-satunya sandaran: **Kyrie Irving, 34 poin, 6 rebound, 5 asis**. Kyrie menghabiskan 37 menit, mencetak 11-25 from field dan 7-16 dari tiga angka. Volume shooting-nya tinggi karena memang dia yang harus menanggung beban. Cooper Flagg sebagai rookie andalan DAL mencatat **18 poin, 8 rebound, 5 asis**, tapi shooting-nya berjuang keras: 6-19 from field dan 0-6 dari tiga angka, malam yang sulit secara efisiensi.\n\n---\n\n## Membaca Angka\n\nBox score menjelaskan segalanya. CLE menembak 53% from field vs DAL 41%, selisih dua belas poin efisiensi yang langsung berpengaruh ke margin akhir. Dari tiga angka, CLE juga unggul: 38% vs 32% (15-40 vs 14-44).\n\nRebound jadi narasi tersendiri. CLE menguasai papan dengan **54 rebound berbanding 40**, penguasaan dominan yang memberi possession ekstra sepanjang malam. Assists-nya pun berbicara: **31 asis CLE vs 23 DAL**, gambaran betapa ball movement CLE lebih cair dan terorganisir.\n\nSatu keunggulan DAL: turnovers. Dallas menjaga bola lebih baik dengan 8 turnover berbanding 17 dari CLE, dan itu yang membuat 8 steal DAL tetap menjaga laga relatif kompetitif. Free throw juga berpihak ke DAL: 25-31 (81%) vs 16-18 (89%), volume trips ke garis lebih banyak untuk Dallas, meski CLE lebih efisien. Tapi keunggulan-keunggulan kecil ini tidak cukup untuk menutup gap shooting dan rebound.\n\n---\n\n## Momen Penentu\n\nKuarter kedua menjadi titik krusial laga. Data menunjukkan pertandingan masih ketat di pertengahan Q2, skor sempat 46-45 untuk DAL setelah dua alley oop dunk Gafford, termasuk satu yang diumpan Kyrie Irving. Tapi CLE merespons cepat lewat Bryant dan Tyson, balik memimpin. Momentum bergeser di sana, dan CLE tidak pernah benar-benar melepaskan kendali setelahnya.\n\n---\n\n## Penutup\n\nSeries dua laga ini selesai. CLE unggul 2-0 atas DAL di pertemuan regular season 2026. Dua pertandingan berikutnya dari masing-masing tim bisa dipantau live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909981",
+    "home_team": "Cleveland Cavaliers",
+    "home_abbr": "CLE",
+    "away_team": "Dallas Mavericks",
+    "away_abbr": "DAL",
+    "home_score": 127,
+    "away_score": 117,
+    "winner_abbr": "CLE",
+    "kickoff_utc": "2026-11-15T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "CLE leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022001,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Clean recap with solid structure and grounded stats. One training-inference flag (Flagg's rookie status) requires removal. Minor register inconsistency in English/Indonesian mixing. Otherwise accurate, voice consistent with rules.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Cooper Flagg sebagai rookie andalan DAL",
+          "fix": "Remove 'sebagai rookie' or rewrite: 'Cooper Flagg, andalan muda DAL'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Efisiensinya solid, 10-19 from field, 4-13 dari tiga angka.",
+          "fix": "Use consistent: '10-19 shooting, 4-13 tiga angka' or full Indonesian."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Scoring-nya terdistribusi merata, tidak bergantung satu bintang, semua berkontribusi.",
+          "fix": "Delete sentence; the box score already proves it."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xaf7bf7b25165cd8c",
+    "published_at": "2026-11-15T05:06:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
