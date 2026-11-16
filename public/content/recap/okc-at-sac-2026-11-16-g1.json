@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "okc-at-sac-2026-11-16-g1",
+  "title": "Recap Oklahoma City Thunder 125-103 Sacramento Kings (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs Sacramento Kings (125-103) di —, 16 November 2026.",
+  "body_md": "Oklahoma City Thunder menang telak atas Sacramento Kings 125-103, Senin 16 November 2026. Kemenangan 22 poin ini menempatkan OKC unggul 1-0 dalam regular season series yang berjalan empat game.\n\nShai Gilgeous-Alexander tampil mendominasi dengan 37 poin, 13-20 from field, 4-5 dari tiga poin, hanya dalam 30 menit. SGA tidak perlu bermain lama — pertandingan sudah aman.\n\n---\n\n## Performa Individu\n\n**OKC** punya lima pemain dengan 10+ poin malam ini, dan yang menarik adalah dua nama dari bench.\n\nAday Mara tampil solid dengan 16 poin dan 13 rebound dalam 26 menit. Angka rebound-nya setara Domantas Sabonis di sisi lain, padahal Sabonis main 29 menit. Efisiensinya juga bagus: 8-11 from field. Mara mengontrol paint tanpa perlu banyak touch.\n\nAjay Mitchell menyumbang 14 poin dan 5 asis dari posisi starter, sementara Alex Caruso dari bench cetak 11 poin dalam 18 menit.\n\n**Sacramento** tidak kekurangan poin, tapi sumbernya tipis.\n\nDarius Acuff Jr. leading scorer dengan 26 poin, namun butuh 25 percobaan untuk sampai ke angka itu (10-25 FG). Efisiensi yang berat. Malik Monk mencatat 14 poin dan 10 asis, salah satu playmaker terbaik malam ini dari sisi kuantitatif, meski timnya tetap kalah jauh. Domantas Sabonis 11 poin, tapi 13 rebound — dia main aktif defensif. Leaky Black dari bench juga efisien: 12 poin dengan 4-5 from three, plus 9 rebound.\n\nMasalah Kings muncul di tingkat sistem, bukan individu. Defensif kurang terkoordinasi, turnover berlebihan, dan momentum kalah cepat setelah Q2.\n\n---\n\n## Yang Bicara dari Box Score\n\nOKC cetak 58 poin dari paint vs 42 poin SAC, gap 16 poin hanya dari dalam ring. Bukan masalah tiga-pointer. OKC malah tiga-pointer-nya lebih rendah (32% vs 33%). Keunggulan Thunder datang dari fisik: 46-88 FG dibanding SAC 37-82, free throw 23-28 (82%) vs SAC 15-20 (75%).\n\nYang paling signifikan: turnover. OKC 14, Kings 22. Delapan turnover ekstra itu berubah jadi fast-break points, OKC cetak 15 fast-break points vs 9 milik Sacramento. Ketika lawan lebih ceroboh membawa bola, OKC tidak butuh banyak set play untuk memperlebarnya.\n\nSteals OKC 15 berbanding 9 juga memperlihatkan seberapa aktif pertahanan Thunder malam ini, pressing, trapping, memaksa kesalahan.\n\n---\n\n## Momentum Q2 dan Penutupan\n\nPertandingan sempat ketat di pertengahan kuarter kedua. Skor sempat naik-turun: 37-39, 40-39, 40-41, 42-41, 42-43, 45-43, 45-46, 47-46. Jadi selisih dua atau satu angka berulang kali berganti kepemilikan di Q2.\n\nOKC menutup babak kedua dengan momentum, dan dari situ Kings tidak pernah benar-benar kembali. Skor akhir 125-103 menunjukkan OKC menutup game dengan cukup dominan.\n\n---\n\n## Selanjutnya\n\nOKC pegang momentum awal. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909993",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 103,
+    "away_score": 125,
+    "winner_abbr": "OKC",
+    "kickoff_utc": "2026-11-16T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "OKC leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.040168,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: one high-severity training-inference error (player name fabrication). Multiple medium issues with tense overmarking, code-switching inconsistency, and narrative flow. Rewrite required with verification of all player names against input data.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Aday Mara tampil solid dengan 16 poin dan 13 rebound dalam 26 menit. Angka rebound-nya setara Domantas Sabonis di sisi lain, padahal Sabonis main 29 menit.",
+          "fix": "Verify player name against input data before writing. If name not in input, do not cite stats for that player."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Shai Gilgeous-Alexander tampil mendominasi dengan 37 poin, 13-20 from field, 4-5 dari tiga poin, hanya dalam 30 menit. SGA tidak perlu bermain lama — pertandingan sudah aman.",
+          "fix": "Rewrite: 'SGA tidak perlu bermain lama — pertandingan sudah putus' or drop marker entirely: 'pertandingan aman.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Efisiensinya juga bagus: 8-11 from field. Mara mengontrol paint tanpa perlu banyak touch.",
+          "fix": "Rewrite: 'Efisiensi 8-11. Mara kontrol paint tanpa banyak persentuhan.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "OKC cetak 58 poin dari paint vs 42 poin SAC, gap 16 poin hanya dari dalam ring.",
+          "fix": "Rewrite: 'OKC cetak 58 poin dari dalam ring vs 42 milik SAC, gap 16 poin.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Skor sempat naik-turun: 37-39, 40-39, 40-41, 42-41, 42-43, 45-43, 45-46, 47-46.",
+          "fix": "Integrate into narrative: 'Skor berseesawan — dari 37-39 jadi 40-41, 42-43, akhirnya 47-46 di akhir Q2.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "OKC pegang momentum awal. Tayang live di NBA League Pass dan Vidio.",
+          "fix": "Rewrite: 'Game 2 lanjut di NBA League Pass dan Vidio. OKC dalam posisi kuat momentum-wise.'  Or use one concrete closing."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x38fd73d115c1fae8",
+    "published_at": "2026-11-16T04:47:12+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
