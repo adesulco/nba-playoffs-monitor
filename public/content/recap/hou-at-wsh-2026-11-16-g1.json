@@ -1,0 +1,133 @@
+{
+  "type": "recap",
+  "slug": "hou-at-wsh-2026-11-16-g1",
+  "title": "Recap Houston Rockets 147-119 Washington Wizards (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Houston Rockets vs Washington Wizards (147-119) di —, 16 November 2026.",
+  "body_md": "# Houston Rockets Hajar Wizards 147-119, Empat Pemain Tembus 25 Poin\n\nHouston Rockets menutup regular season series melawan Washington Wizards dengan kemenangan telak 147-119. Game 2 dari 2, Rockets unggul 1-0 di head-to-head. HOU tampil dengan efisiensi tinggi yang jarang dilihat musim ini.\n\n---\n\n## Empat Pemain, Masing-Masing Ancaman Berbeda\n\nYang membuat kemenangan ini beda adalah distribusinya. Rockets tidak bergantung pada satu bintang. Punya empat sekaligus.\n\n**Amen Thompson** memimpin dengan 26 poin, 7 rebound, 7 asis. Efisiensinya mencolok: 9-11 dari lapangan, 3-3 dari tiga angka, hanya 29 menit bermain. Performa seperti itu biasanya milik seorang bintang di hari terbaiknya. Thompson melakukannya sambil tetap terlibat sebagai playmaker.\n\n**Kevin Durant** melanjutkan dengan 25 poin, 4 rebound, 5 asis, 8-13 dari lapangan, termasuk 2-3 dari tiga angka. Pullup jumper, isolation, spot-up three: Durant masih berjalan di autopilot seorang scorer kelas dunia.\n\n**Tari Eason** datang off the bench dengan 25 poin, 7 rebound, 10-14 dari lapangan dan 3-5 dari tiga angka. Bench player cetak 25 poin dengan efisiensi seperti itu adalah masalah besar buat tim lawan. Wizards tidak punya jawaban.\n\n**Alperen Sengun** melengkapi baris atas dengan 19 poin, 8 rebound, 8 asis, nyaris triple-double. 5-8 dari lapangan, peran sebagai motor offense interior yang mendistribusikan bola ke mana-mana.\n\nBogdan Bogdanovic menambahkan 12 poin, 3 rebound, 4 asis off the bench sebagai lapisan kelima yang tetap produktif.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nDua angka merangkum laga ini: **58% vs 44%** FG keseluruhan. Houston menembak jauh lebih efisien dari hampir setiap zona.\n\nTapi yang paling signifikan: poin di dalam cat 64-40 untuk HOU. Rockets secara konsisten menemukan celah ke ring, baik lewat drive Amen Thompson, post-up Sengun, maupun cut Eason. Washington kesulitan menjaga lane.\n\nRebound juga bukan pertarungan: **56-35** untuk HOU. Ketika sebuah tim menguasai papan dengan margin 21, mereka mendapatkan possession ekstra, peluang second-chance, dan ritme yang sulit dihentikan. Fast-break pun ikut bicara, 26 poin HOU dari transisi vs 14 WSH.\n\nTiga angka nyaris imbang: HOU 15-33 (45%) vs WSH 15-37 (41%). Dalam volume yang berbeda, Rockets sedikit lebih efisien. Tapi keunggulan sejati mereka bukan di luar arc, melainkan di dalam.\n\n---\n\n## Wizards Tidak Tanpa Jawaban, Hanya Tidak Cukup\n\nAlex Sarr menunjukkan mengapa dia menjadi pembicaraan: 25 poin, 9 rebound, 9-13 dari lapangan, 3-6 dari tiga angka. Di 27 menit, Sarr adalah satu-satunya pemain Wizards yang tampil setara dengan bintang HOU.\n\nAJ Dybantsa 16 poin, 7 rebound, 6-18 dari lapangan, 2-7 tiga angka. Banyak attempt, sedikit konversi.\n\nAnthony Davis bermain 31 menit dengan 14 poin, 8 rebound, 5 asis, 4-11 dari lapangan. Sebagai anchor pertahanan, margin 64-40 di poin in the paint adalah tanda yang tidak bisa diabaikan.\n\nWill Riley (14 poin off the bench, 4-6 dari lapangan) dan Kyshawn George (11 poin, 4-13 dari lapangan) melengkapi rotasi Wizards, tapi kontribusi mereka tidak cukup menutup gap yang terbuka lebar sejak kuarter pertama.\n\n---\n\n## Penutup\n\nSeries selesai 1-0 untuk HOU. Tayang ulang di NBA League Pass dan Vidio untuk yang ketinggalan.\n\nRockets pergi dari laga ini dengan pesan yang jelas: rotasi mereka dalam, shooting mereka efisien, dan floor-spacing mereka nyata. Washington punya benih talenta di Sarr dan Dybantsa, tapi jarak 28 poin malam ini menunjukkan betapa jauh perjalanan mereka yang masih harus ditempuh.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909991",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Houston Rockets",
+    "away_abbr": "HOU",
+    "home_score": 119,
+    "away_score": 147,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-11-16T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024677,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "FAIL: Article contains three hallucinated player names (Khris Middleton, Bub Carrington, Reed Sheppard) with fabricated play-by-play details not in the input data. These are high-severity training-data inferences. Remaining prose is solid Indonesian sport voice, but the factual errors are disqualifying for republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Khris Middleton makes 26-foot three point jumper",
+          "fix": "Remove this sentence or verify the player name against the actual game log provided."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Bub Carrington makes 25-foot three pointer / 4-foot two point shot",
+          "fix": "Remove all Carrington references; use only players in the input TOP SCORERS block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Reed Sheppard makes 28-foot three pointer",
+          "fix": "Delete this reference entirely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Punya empat sekaligus.",
+          "fix": "Rewrite as 'Empat pemain cetak 20+ poin dalam satu malam' or similar complete clause."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Tari Eason datang off the bench dengan 25 poin, 7 rebound, 10-14",
+          "fix": "Check input: Eason is 25 pts, 7 reb, 1 ast, FG 10-14, 3PT 3-5 per TOP SCORERS. Actually correct. No fix needed — this is verified."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Washington punya benih talenta di Sarr dan Dybantsa",
+          "fix": "Replace with concrete stat: 'Sarr dan Dybantsa cetak 41 poin gabungan, tapi sampai di sana Rockets sudah unggul 28.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "perjalanan mereka yang masih harus ditempuh",
+          "fix": "Use 'masih panjang jalan mereka' or 'mereka masih butuh waktu' — more natural."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2678c9b37c65e78a",
+    "published_at": "2026-11-16T03:11:31+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 78,
+      "headline_score": 82,
+      "headline_comment": "Clear, specific, and the '25 poin' hook is a legitimate angle — though Thompson scored 26, which is a small inaccuracy baked into the title.",
+      "lead_score": 72,
+      "lead_comment": "Lead has the score and series state but 'regular season series' framing is confusing given the LIGA tag says 'NBA Playoffs 2026' — the article never resolves which it is.",
+      "structure_score": 80,
+      "structure_comment": "Four-section arc works (distribusi → stats → Wizards → closing), but the Wizards section underdelivers on narrative and the closing paragraph adds an uncited '28 poin' when margin is 28.",
+      "voice_score": 76,
+      "voice_comment": "Mostly clean conversational register with good code-switching, but 'Yang membuat kemenangan ini beda adalah distribusinya' and 'Angka yang Menjelaskan Segalanya' drift toward generic AI-essay phrasing.",
+      "suggestion_count": 6,
+      "summary": "Solid structural recap with strong stat grounding, but the headline overstates the '25-point' angle, the regular-season-vs-playoffs framing is unresolved, and the closing drifts into generic AI wrap-up. Quick editor pass can fix all three.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Empat Pemain Tembus 25 Poin",
+          "issue": "Headline claims four players hit 25 points, but Thompson had 26, Sengun had 19, and only Durant + Eason actually hit 25 — the hook is factually loose.",
+          "fix": "Rewrite as 'Empat Pemain Houston Cetak 19+ Poin' or lean into 'Trio 25 Poin' (Thompson 26, Durant 25, Eason 25)."
+        },
+        {
+          "priority": "high",
+          "snippet": "Houston Rockets menutup regular season series melawan Washington Wizards",
+          "issue": "Input data tags LIGA as 'NBA Playoffs 2026' but SERIES STATE says 'Regular Season Series' — article picks one without flagging the contradiction, and 'menutup series' is odd for a reguler season matchup.",
+          "fix": "Clarify: either 'laga kedua dari dua pertemuan musim reguler' or drop the series framing entirely and treat it as a standalone regular season win."
+        },
+        {
+          "priority": "high",
+          "snippet": "Tari Eason datang off the bench dengan 25 poin, 7 rebound, 10-14",
+          "issue": "Eason's assist line (1 ast) is omitted while Thompson/Durant/Sengun get full stat lines — inconsistent treatment of the four featured players.",
+          "fix": "Add '1 asis' for consistency, or standardize all four to PTS/REB only."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Alex Sarr menunjukkan mengapa dia menjadi pembicaraan: 25 poin, 9 rebound, 9-13",
+          "issue": "'Menjadi pembicaraan' is vague — why is Sarr the conversation? Missed chance to anchor it (rookie, top pick, breakout season).",
+          "fix": "Replace with concrete context or cut the clause: 'Alex Sarr jadi satu-satunya ancaman nyata WSH: 25 poin, 9 rebound, 9-13 FG.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "jarak 28 poin malam ini menunjukkan betapa jauh perjalanan",
+          "issue": "Margin math checks out (147-119=28) but the closing sentence pivots into generic 'perjalanan yang masih harus ditempuh' — reads like AI inspirational wrap-up.",
+          "fix": "End on a sharper, concrete beat: 'Sarr dan Dybantsa punya potensi, tapi malam ini Rockets 28 poin lebih matang di setiap lini.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Angka yang Menjelaskan Segalanya",
+          "issue": "Section header is a translated-English cliché ('The numbers that explain everything').",
+          "fix": "Something more Indonesian-sport-press like 'Di Dalam Cat, Rockets Mendominasi' or 'Efisiensi 58% vs 44%'."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
