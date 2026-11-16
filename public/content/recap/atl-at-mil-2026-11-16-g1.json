@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "atl-at-mil-2026-11-16-g1",
+  "title": "Recap Atlanta Hawks 113-106 Milwaukee Bucks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Atlanta Hawks vs Milwaukee Bucks (113-106) di —, 16 November 2026.",
+  "body_md": "# Atlanta Hawks Balik Arah, Kalahkan Milwaukee Bucks 113-106\n\nAtlanta Hawks menutup laga kedua Regular Season Series dengan kemenangan 113-106 atas Milwaukee Bucks, Senin 16 November 2026. ATL unggul 1-0 di seri ini dan tinggal butuh satu kemenangan lagi untuk menyelesaikan seri tiga game. Kemenangan ini tidak mudah, Bucks sempat memperketat selisih di kuarter keempat sebelum Hawks menutupnya lewat free throw dan tembakan krusial di menit-menit akhir.\n\n---\n\n## Distribusi Merata Jadi Kunci ATL\n\nTidak ada satu pemain pun yang mendominasi untuk Atlanta malam ini, dan justru itu yang membuat mereka sulit dibendung.\n\nCJ McCollum dan Nickeil Alexander-Walker masing-masing menyumbang 20 poin. McCollum efisien dengan 5-10 dari lapangan, sementara Alexander-Walker main lebih banyak percobaan, 7-15 dari field, 2-8 dari tiga angka, tapi tetap produktif dengan tambahan 5 rebound dan 4 asis.\n\nDi bawah ring, Hawks dominan lewat dua pemain sekaligus. Onyeka Okongwu cetak double-double 16 poin dan 11 rebound dengan shooting 6-12 dari lapangan. Jalen Johnson tidak kalah solid: 14 poin, 11 rebound, dan 5 asis, double-double sekaligus playmaker dari posisi forward. Dari bench, Corey Kispert menambah 14 poin dalam hanya 16 menit bermain, tiga dari enam tembakan tiga angkanya masuk.\n\nUntuk Milwaukee, Kasparas Jakucionis jadi yang paling menonjol dengan 25 poin, 5 rebound, dan 5 asis, semuanya dari bench, dalam 26 menit main. Gary Trent Jr. juga keluar dari bangku cadangan dan menyumbang 18 poin meski efisiensinya kurang tajam: 7-16 dari lapangan, 4-12 dari tiga angka. Kyle Kuzma menambah 14 poin dan 6 rebound sebagai starter, sementara Brayden Burries berkontribusi 13 poin dan 8 rebound. Myles Turner hanya finish dengan 8 poin dan 7 rebound.\n\n---\n\n## ATL Menang Lewat Fast Break dan Free Throw, Bukan Efisiensi Tembakan\n\nBox score ATL vs MIL punya cerita menarik, Hawks sebenarnya tidak tembak lebih baik dari Bucks.\n\nMilwaukee justru lebih baik dari tiga angka: 18-54 (33%) vs Hawks 12-40 (30%). FG% juga berpihak ke ATL tapi tidak dramatis: 44% vs 39%. Yang benar-benar membedakan ada di dua tempat.\n\nPertama, fast-break points: ATL 24, MIL hanya 12. Hawks dua kali lebih produktif dalam transisi, dan ini bukan kebetulan. ATL mencatat 12 steal sepanjang pertandingan, cukup untuk terus menekan Bucks dalam mode kejar ketinggalan di pertahanan. MIL di sisi lain punya 20 turnover, lima lebih banyak dari Hawks.\n\nKedua, free throw: ATL 25-34, MIL hanya 14-18. Hawks lebih sering ke garis, dan meski persentasenya 74% tidak istimewa, selisih volume itu signifikan dalam pertandingan yang dimenangkan tujuh poin.\n\n---\n\n## Q4 yang Ketat, Ditutup McCollum\n\nKuarter keempat membuktikan kemenangan ini bukan formality.\n\nMyles Turner membuat layup dan free throw untuk memperketat menjadi 97-95 di menit 6:32. Alexander-Walker jawab dengan dua free throw beruntun untuk buka jarak 99-95. Jakucionis kemudian cetak running layup di menit 3:20, skor jadi 106-102, Bucks masih hidup.\n\nBrayden Burries tambah satu poin dari garis, 106-103. Lalu momen paling dramatis: Jakucionis hits 25-foot three pointer di menit 1:57, tiba-tiba 109-106, selisih hanya tiga poin. Bucks punya momentum.\n\nTapi McCollum menutupnya. Step back jumpshot 10 kaki di detik 17.5, skor jadi 111-106, dan pertandingan praktis selesai. Final: 113-106.\n\n---\n\n## Seri Belum Selesai, Game 3 Jadi Penentu\n\nATL unggul 1-0 dalam seri tiga game ini. Game 3 akan jadi laga penentuan, siapa yang menangkan itu yang menyelesaikan seri. Detail jadwal Game 3 belum tersedia di sistem saat ini.\n\nTayangan live tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909992",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Atlanta Hawks",
+    "away_abbr": "ATL",
+    "home_score": 106,
+    "away_score": 113,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-11-16T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023388,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with grounded stats and clean narrative arc. One medium awkwardness in phrasing, one low structural issue (system reference). Voice is consistent; no hard bans or serious tense violations. Pass.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Untuk Milwaukee, Kasparas Jakucionis jadi yang paling menonjol dengan 25 poin",
+          "fix": "Kasparas Jakucionis pimpin Milwaukee dengan 25 poin, 5 rebound, 5 asis dari bench"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "Hawks dua kali lebih produktif dalam transisi, dan ini bukan kebetulan",
+          "fix": "Keep as-is; this is acceptable emphasis, not overmarking"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Detail jadwal Game 3 belum tersedia di sistem saat ini",
+          "fix": "Jadwal Game 3 belum diumumkan. Follow-up article saat ada info."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa259673be448d6e0",
+    "published_at": "2026-11-16T03:44:03+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
