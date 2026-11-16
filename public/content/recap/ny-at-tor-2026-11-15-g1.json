@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "ny-at-tor-2026-11-15-g1",
+  "title": "Recap New York Knicks 112-108 Toronto Raptors (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New York Knicks vs Toronto Raptors (112-108) di —, 15 November 2026.",
+  "body_md": "# New York Knicks Kalahkan Toronto Raptors 112-108 di Overtime\n\nNew York Knicks menutup malam dengan dramatis, menang 112-108 atas Toronto Raptors setelah laga harus berlanjut ke overtime. Laga ini bukan kemenangan bersih. Knicks nyaris kehilangan momentum sebelum Jalen Brunson dan kawan-kawan menutupnya di perpanjangan waktu.\n\n---\n\n## Empat Skorer 20+ Poin, Knicks Punya Lebih Banyak\n\nKnicks menurunkan empat pemain yang tembus 20 poin di malam ini, sesuatu yang jelas lebih dari cukup di atas kertas, tapi kenyataannya butuh overtime untuk memastikan menang.\n\n**Karl-Anthony Towns** tampil sebagai motor ganda: 28 poin, 17 rebound, 3 asis. Stat line yang langka, dominan di kedua sisi bola, dengan 43 menit di lapangan. **Jalen Brunson** menyamainya di poin: 28 poin, 9 asis, dengan salah satu tembakan paling krusial malam ini di overtime.\n\nKejutan terbesar datang dari bench: **Landry Shamet**, off the bench, cetak 23 poin dengan FG 8-12 dan 4-7 dari three-point line. Efisiensi terbaik dari siapapun malam ini. Sementara **OG Anunoby** menambah 21 poin dan 9 rebound sebagai starter yang konsisten di dua sisi lapangan.\n\nMikal Bridges? Lima poin, tapi 7 rebound dan 3 asis, termasuk assist untuk fadeaway Brunson yang memutuskan laga di OT.\n\n---\n\n## Barnes Lawan Sendirian, Toronto Hampir Cukup\n\nToronto punya satu pemain yang bermain di level berbeda: **Scottie Barnes**, 30 poin, 9 rebound, 4 asis, dengan FG 13-27 dan 4-8 dari three. Tapi \"hampir cukup\" adalah tema malam ini buat Raptors.\n\n**Immanuel Quickley** menambah 17 poin, 6 rebound, 6 asis, kontribusi merata tapi FG-nya 7-18, agak boros. **RJ Barrett** 14 poin dengan 5 rebound dan 6 asis, peran facilitator yang solid. **Jamal Shead** off the bench cetak 19 poin dengan FG 7-12 dan 3-6 dari three, dua nomor yang jauh lebih akurat dari banyak rekannya.\n\nMasalah Toronto bukan skoring, mereka cetak 108 poin. Masalahnya ada di baris lain.\n\n---\n\n## Free Throw yang Memisahkan\n\nLihat angka ini: **NY 23-28 (82%) vs TOR 11-19 (58%).**\n\nItulah perbedaan paling nyata dari dua tim malam ini. Knicks lebih sering ke garis, dan jauh lebih efisien di sana. Dua free throw OG Anunoby di sisa 15 detik overtime, bikin skor 111-108. Satu free throw KAT di detik 4.6 menutup 112-108.\n\nDi sisi lain, Raptors bermain dengan fast-break lebih banyak (17 vs 9) dan points in paint yang lebih besar (52 vs 36). Toronto dominan di area dalam, Knicks membalas dari garis.\n\nDari sisi efisiensi FG keseluruhan, kedua tim sama: 44%. Tapi three-point: NY 36%, TOR 31%, gap kecil yang tetap berarti dalam laga sedekat ini.\n\n---\n\n## Momen yang Memutuskan Laga\n\nOvertime berjalan ketat. Shamet layup dengan asis KAT bikin 106-104. Toronto balas lewat alley-oop Collin Murray-Boyles dari umpan Barnes: 106-106.\n\nLalu Brunson, fadeaway 23 kaki, asis Mikal Bridges, 109-106. Toronto susul lewat dua free throw Ja'Kobe Walter: 109-108. Tapi Anunoby ke garis dua kali, 111-108. KAT tutup dari garis, 112-108.\n\nDelapan poin terakhir overtime, semua dari garis free throw, kecuali satu tembakan Brunson yang paling dingin malam ini.\n\n---\n\n## Selanjutnya\n\nLaga ini adalah Game 2 dari seri empat pertandingan regular season, NY kini unggul 1-0. Game berikutnya belum dikonfirmasi di data yang tersedia. Siaran live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909990",
+    "home_team": "Toronto Raptors",
+    "home_abbr": "TOR",
+    "away_team": "New York Knicks",
+    "away_abbr": "NY",
+    "home_score": 108,
+    "away_score": 112,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-11-15T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.043648,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate stats and good flow. Minor phrasing issues (translated English smell, one word repeat) but no hard rule violations. Pass.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Laga ini bukan kemenangan bersih. Knicks nyaris kehilangan momentum",
+          "fix": "Use 'Knicks menang tapi tidak dominan' or restructure to action."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "menutup malam dengan dramatis... menutupnya di perpanjangan waktu",
+          "fix": "Second use: 'selesaikan' or 'tentukan'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Stat line yang langka, dominan di kedua sisi bola",
+          "fix": "Combine: 'Towns dominan di kedua sisi dengan stat line yang langka.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xb21ce99b04195726",
+    "published_at": "2026-11-16T02:14:12+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

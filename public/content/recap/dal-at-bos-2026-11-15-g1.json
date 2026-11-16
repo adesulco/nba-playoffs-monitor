@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "dal-at-bos-2026-11-15-g1",
+  "title": "Recap Dallas Mavericks 94-131 Boston Celtics (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Dallas Mavericks vs Boston Celtics (94-131) di —, 15 November 2026.",
+  "body_md": "# Boston Celtics Dominasi Dallas Mavericks 131-94, Tatum Tampil Luar Biasa\n\nBoston Celtics menghajar Dallas Mavericks 131-94 di laga kedua rangkaian regular season series mereka. Jayson Tatum memimpin BOS dengan 32 poin, 6 rebound, dan 6 asis, efisien di atas efisien dengan shooting 11-18 dari lapangan dan 5-8 dari garis tiga angka. Dengan kemenangan ini, Boston unggul 2-0 dalam series dua laga ini.\n\n---\n\n## Tatum dan Dukungan Merata dari Roster\n\nTatum bermain 30 menit, cukup untuk memimpin, tidak perlu dipaksa lebih lama. FG 11-18 dan 3PT 5-8 adalah angka yang berbicara sendiri: dia tidak perlu volume besar untuk dominan.\n\nYang bikin hasil ini lebih meyakinkan adalah kontribusi merata di roster BOS. Derrick White menyumbang 16 poin dari shooting 4-9 dari tiga angka, four three-pointers dari nine attempts, angka solid untuk role-nya. Baylor Scheierman masuk dari bench, mengumpulkan 12 poin, 5 rebound, 3 asis dalam 18 menit saja. Jordan Walsh menambah 11 poin off scoring yang efisien (4-9 FG). Payton Pritchard 10 poin plus 6 asis, dia mengatur tempo dengan tenang dari bench.\n\nLima pemain Boston menembus dua digit. Ini bukan malam Tatum one-man show. Ini tim yang bermain lengkap.\n\nDari sisi Dallas, Zaccharie Risacher jadi top scorer dengan 18 poin dalam 27 menit, menariknya dia dari bench, dengan shooting terbaik di skuad DAL (FG 8-9). Cooper Flagg tampil 17 poin tapi volume FG-nya berat: 5-15, tidak efisien. Caleb Martin paling all-around di sisi DAL dengan 12 poin, 5 rebound, 5 asis.\n\n---\n\n## Box Score Bicara Jelas\n\nPerbedaan paling mencolok ada di shooting. Boston menembak 51% dari lapangan (FG 48-95) vs Dallas 40% (33-83). Dari tiga angka, selisihnya lebih lebar lagi: BOS 42% (23-55) vs DAL 34% (14-41). Dalam laga modern NBA, jarak efisiensi three-point sebesar itu hampir selalu menentukan pemenang, dan malam ini tidak berbeda.\n\nRebound pun bukan persaingan. BOS mengumpulkan 52 rebound vs DAL 38, selisih 14, yang artinya Boston punya banyak second-chance opportunities yang Dallas tidak punya.\n\nTurnovers memperburuk malam Dallas: 18 turnovers vs 13 dari Boston. Steals BOS 11 vs DAL 7 mencerminkan seberapa aktif pertahanan Boston menekan bola. Dallas sering kena trap, sering lepas bola di situasi gak perlu.\n\nFast-break points menarik: Dallas justru unggul di sini (17 vs 10), tapi itu satu-satunya area di mana mereka di atas. Ketika hampir semua kategori utama berpihak ke Boston, angka fast-break tidak cukup mengubah cerita.\n\n---\n\n## Apa Artinya Ini\n\nIni bukan Playoffs, ini regular season series dua laga, dan Boston menutupnya dengan clean sweep 2-0. Tapi margin 37 poin bukan angka yang bisa diabaikan. Selisih itu menunjukkan bahwa Dallas, setidaknya malam ini, tidak punya jawaban untuk apa yang Boston sajikan.\n\nUntuk Dallas, Cooper Flagg perlu shooting yang lebih efisien dari 5-15 FG, kapasitasnya lebih dari malam ini. Turnovers 18 kali juga masalah yang perlu dibenahi sebelum menghadapi tim-tim top Eastern Conference lainnya.\n\nBoston? Mereka bermain seperti tim yang tahu persis apa yang mereka mau lakukan.\n\n---\n\nLaga ini tayang di NBA League Pass dan Vidio. Series reguler dua laga ini resmi selesai dengan BOS 2-0.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909989",
+    "home_team": "Boston Celtics",
+    "home_abbr": "BOS",
+    "away_team": "Dallas Mavericks",
+    "away_abbr": "DAL",
+    "home_score": 131,
+    "away_score": 94,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-11-15T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BOS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020886,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail: Critical error on series state (claims 2-0 when input says 1-0), awkward English code-switch mid-sentence repeated stat, and FG stat mismatch for Derrick White. Structural writing is otherwise decent but has tense and translation drift in analysis sections.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dengan kemenangan ini, Boston unggul 2-0 dalam series dua laga ini.",
+          "fix": "Change to 'Boston unggul 1-0 dalam regular season series ini' or remove the series claim entirely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Derrick White menyumbang 16 poin dari shooting 4-9 dari tiga angka, four three-pointers dari nine attempts",
+          "fix": "Delete the English repetition: 'Derrick White menyumbang 16 poin dari shooting 4-9 dari tiga angka.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Dalam laga modern NBA, jarak efisiensi three-point sebesar itu hampir selalu menentukan pemenang",
+          "fix": "Simplify: 'Di NBA modern, selisih 8% three-point percentage biasanya menang.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Steals BOS 11 vs DAL 7 mencerminkan seberapa aktif pertahanan Boston menekan bola.",
+          "fix": "Rewrite: 'BOS steal 11 vs DAL 7. Pertahanan Boston aggressive.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Derrick White menembak 4-9 dari tiga angka, four three-pointers dari nine attempts",
+          "fix": "Change first mention to 'Derrick White menyumbang 16 poin dari FG 6-11 (3PT 4-9).'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Caleb Martin paling all-around di sisi DAL",
+          "fix": "Use 'paling lengkap' or 'paling serba bisa' instead."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x62ca6df0d555c599",
+    "published_at": "2026-11-16T02:12:30+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
