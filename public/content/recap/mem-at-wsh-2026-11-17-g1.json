@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mem-at-wsh-2026-11-17-g1",
+  "title": "Recap Memphis Grizzlies 136-120 Washington Wizards (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Memphis Grizzlies vs Washington Wizards (136-120) di —, 17 November 2026.",
+  "body_md": "# Memphis Grizzlies Kalahkan Washington Wizards 136-120, Boozer dan Edey Jadi Mesin Kemenangan\n\nMemphis Grizzlies menutup regular season series melawan Washington Wizards dengan kemenangan meyakinkan, 136-120. Cameron Boozer tampil dominan dengan 29 poin, 7 rebound, 7 assist, diikuti Zach Edey yang mencatat double-double 23 poin dan 10 rebound.\n\n---\n\n## Boozer dan Edey: Kombinasi yang Sulit Dijawab\n\nCameron Boozer jadi pemimpin di lapangan dengan efisiensi tinggi, 10-21 dari lapangan, 7-13 dari three-point line, 29 poin dalam 29 menit. Ini bukan sekadar angka. Boozer juga terlibat di play-making dengan tujuh assist, termasuk assist untuk lay-up Edey di Q3 yang sempat menyamakan kedudukan 73-73.\n\nZach Edey melengkapi gambaran itu dari dalam. Center besar ini mencatat 10-15 dari lapangan, efisiensi 67%, untuk 23 poin, plus 10 rebound dalam 21 menit. Peran Edey simpel tapi sangat efektif: catch-and-finish, menguasai cat, dan memenangkan pertempuran rebound.\n\nCedric Coward off the starting lineup juga berkontribusi nyata, 18 poin, 8 rebound, 6 assist dengan 7-10 shooting. Tidak ada yang terbuang percuma di production Coward malam ini.\n\n---\n\n## Box Score yang Bicara Sendiri\n\nFG 56% vs 47%. 3PT 43% vs 34%. Rebound 48 berbanding 31, dominasi di papan yang sangat signifikan. Assist 42 berbanding 25, menunjukkan MEM jauh lebih terkoneksi dalam ball movement. Fast-break points 19-10, points in paint 72-54.\n\nSatu-satunya area Washington unggul: turnover (12 MEM, 19 WSH, Grizzlies yang lebih ceroboh) dan steals (WSH 10, MEM 6). Tapi keunggulan turnover itu tidak cukup untuk menutup gap di efisiensi shooting dan rebound.\n\nFG 56% dan 16 three-pointers dari 37 coba menunjukkan execution yang sangat baik. Washington tidak punya jawaban untuk kombinasi itu.\n\n---\n\n## Washington Berjuang, Tapi Tidak Cukup\n\nDi sisi Wizards, Anthony Davis memimpin dengan 23 poin dari 8-15 shooting, tapi nol assist dari center yang diharapkan punya dampak lebih luas. AJ Dybantsa menyumbang 21 poin namun perlu 7-16 shooting untuk sampai ke sana, efisiensi yang tergerus.\n\nKyshawn George jadi yang paling konsisten dari sisi Washington: 18 poin dengan 7-10 shooting. George membuat layup penting di Q3 untuk 78-79, namun keunggulan Wizards tidak bertahan lama.\n\nTrae Young mengelola offense dengan 12 assist, tapi hanya 3-10 dari lapangan untuk 13 poin. Young lebih berperan sebagai playmaker daripada scorer malam ini, dan itu tidak cukup untuk menutup perbedaan kualitas individual Memphis di malam ini.\n\n---\n\n## Momen Krusial: Q3 Jadi Titik Balik\n\nKuarter ketiga adalah cerita tersendiri. Pertandingan masih terbuka, 73-73 setelah lay-up Edey. Washington balik unggul lewat layup Kyshawn George menjadi 73-75, lalu 78-79 setelah George cetak layup lagi.\n\nTapi Memphis menjawab. Boozer balas dengan two-pointer untuk 78-77, lalu Memphis lanjut dengan 24-foot three-pointer untuk 81-79. Stretch itu membalik momentum dan Memphis tidak lagi membiarkan Washington kembali bersaing secara serius.\n\n---\n\nSiaran live tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909996",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Memphis Grizzlies",
+    "away_abbr": "MEM",
+    "home_score": 120,
+    "away_score": 136,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-11-17T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MEM leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023187,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on multiple fronts: translated-English phrasing, stat verification (WSH assists unconfirmed), and training-inference mention of Jerami Grant not in input box. Rewrite for concision, verify every digit against numeric anchors.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Boozer jadi pemimpin di lapangan dengan efisiensi tinggi, 10-21 dari lapangan, 7-13 dari three-point line",
+          "fix": "Boozer caplok 10-21 FG, 7-13 3PT untuk 29 poin dalam 29 menit."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Ini bukan sekadar angka. Boozer juga terlibat di play-making dengan tujuh assist",
+          "fix": "Delete first sentence. Start: 'Boozer juga main-maker dengan 7 assist, termasuk setup untuk...'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Zach Edey melengkapi gambaran itu dari dalam. Center besar ini mencatat 10-15 dari lapangan, efisiensi 67%",
+          "fix": "Edey selesaikan dari dalam: 10-15 FG (67%) untuk 23 poin, 10 rebound dalam 21 menit."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Cedric Coward off the starting lineup juga berkontribusi nyata",
+          "fix": "Cedric Coward dari bench: 18 poin, 8 rebound, 6 assist dengan 7-10 FG."
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "Rebound 48 berbanding 31, dominasi di papan yang sangat signifikan. Assist 42 berbanding 25",
+          "fix": "Remove WSH assist figure or rewrite: 'MEM's 42 assist vs WSH's discrepancy suggests superior ball movement.' (If 25 is real, cite source.)"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "FG 56% dan 16 three-pointers dari 37 coba menunjukkan execution yang sangat baik.",
+          "fix": "16-37 3PT (43%) dan 56% FG — Memphis main sharp."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di sisi Wizards, Anthony Davis memimpin dengan 23 poin dari 8-15 shooting, tapi nol assist dari center",
+          "fix": "Anthony Davis cetak 23 poin (8-15 FG) tapi tanpa assist — impact defense-only di laga ini."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jerami Grant makes 24-foot three point jumper (Cameron Boozer assists) (score 81-79)",
+          "fix": "Remove Grant reference or verify source. Stick to confirmed scorers: Boozer, Edey, Coward, Spencer, Prosper only."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xb448e3d024498590",
+    "published_at": "2026-11-17T03:08:52+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
