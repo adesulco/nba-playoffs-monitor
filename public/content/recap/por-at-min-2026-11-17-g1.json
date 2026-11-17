@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "por-at-min-2026-11-17-g1",
+  "title": "Recap Portland Trail Blazers 98-106 Minnesota Timberwolves (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs Minnesota Timberwolves (98-106) di —, 17 November 2026.",
+  "body_md": "# Minnesota Timberwolves Tekuk Portland 106-98, Terrence Shannon Jr. Jadi Bintang dari Bench\n\nMinnesota Timberwolves menang 106-98 atas Portland Trail Blazers di Game 2 regular season series, Senin 17 November 2026. Kemenangan ini membuat MIN unggul 2-0 dalam series empat pertemuan. Pahlawan utama: Terrence Shannon Jr., 34 poin, 6 asis, 3 rebound, keluar dari bench dan jadi pemain paling dominan di lapangan malam ini.\n\n---\n\n## Top Performers\n\n**Terrence Shannon Jr.** tampil seperti starter kelas satu meski keluar dari bench. Efisiensinya mencolok: 8-11 dari lapangan, 3-4 dari tiga angka, 35 menit bermain. Angka 34 poin itu bukan sekadar volume scoring, ini adalah pemain yang tahu kapan harus menyerang.\n\nDi sisi MIN, **Rudy Gobert** mendominasi area cat: 18 poin, 15 rebound, 3 asis, 5-10 dari lapangan. Double-double yang sangat impactful, terutama di sisi rebound, Gobert mengunci papan sendiri. **Jaden McDaniels** (13 poin, 6 rebound, 3 asis) dan **Jonathan Kuminga** (13 poin, 9 rebound) menambah depth yang POR tidak punya jawaban sepanjang malam.\n\nUntuk Portland, **Deni Avdija** adalah satu-satunya yang benar-benar bersaing: 27 poin, 8 rebound, 4 asis, shooting 11-19 dari lapangan dan 3-3 dari tiga angka. Tiga dari tiga dari arc, efisiensi sempurna. Masalahnya, dia hampir sendirian. **Damian Lillard** finish dengan 9 poin dari 2-15 dari lapangan, 2-8 dari tiga angka. Malam yang ingin dilupakan oleh Lillard sesegera mungkin.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka yang menjelaskan kekalahan POR paling jelas: free throw dan fast-break points.\n\nMinnesota mendapat 30 free throw attempts versus 15 untuk Portland, selisih 15 attempt, dan MIN mengkonversi 23 dari 30 (77%). POR memang menembak lebih baik dari garis free throw (80%), tapi volume yang jauh lebih kecil membuat pengaruhnya terbatas. Ketika lawan nyaris dua kali lipat percobaan free throw kamu, ada masalah foul discipline yang serius.\n\nFast-break points lebih menyakitkan lagi: MIN 18, POR 7. Selisih 11 poin dari transisi, hampir setara dengan margin kemenangan akhir (8 poin). Di balik angka ini ada turnover: POR 14, MIN 13. Selisih tipis, tapi POR lebih sering membayar mahal dari kesalahan mereka.\n\nDari sisi shooting, dua tim hampir identik, POR 39% FG, MIN 38%. keduanya 29% dari tiga angka. Jadi bukan soal siapa yang menembak lebih baik malam ini. Ini soal siapa yang lebih disiplin menjaga bola dan memanfaatkan transisi.\n\n---\n\n## Momen Penentu\n\nPertandingan sempat berjalan ketat di awal kuarter kedua. Skor 28-28, lalu saling balas: Clingan tip shot bikin 30-30, Avdija tiga angka bikin 33-31 untuk POR, Kuminga balas tiga angka untuk MIN. Momentum sempat bolak-balik.\n\nTapi dari sana, MIN mulai membangun keunggulan perlahan. POR tidak pernah mampu merespons dengan konsisten, terutama ketika Lillard terus kesulitan menemukan ritme tembakan. Bench MIN, dipimpin Shannon Jr., memberikan energi dan poin yang bench POR tidak mampu tandingi.\n\nBlok POR sebenarnya impresif, 9 blocks versus 5 untuk MIN, tapi itu tidak cukup untuk menutup lubang yang dibuka oleh free throw deficit dan fast-break yang bocor.\n\n---\n\n## Selanjutnya\n\nMIN kini unggul 2-0 dalam series empat pertemuan regular season. Portland butuh respons cepat, dan lebih dari itu, butuh Damian Lillard yang sebenarnya. Game 3 bisa ditonton live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909999",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 106,
+    "away_score": 98,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-11-17T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022117,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Major factual error: article claims MIN leads 2-0 when input clearly states 1-0 series and this is Game 2. Second critical error: FREE THROW ATTEMPTS listed as 30 for MIN when input data shows 39. These are hard failures. Additionally, translated-English phrasing in one paragraph and slight training-inference narrative stretch on key plays. Regenerate with corrected stats and tighter grounding.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "MIN unggul 2-0 dalam series empat pertemuan",
+          "fix": "Change to 'MIN unggul 1-0 dalam series empat pertemuan' or 'MIN menang Game 2 untuk unggul 1-0'."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Minnesota mendapat 30 free throw attempts versus 15 untuk Portland",
+          "fix": "Change to '30 free throw attempts' (actual: 39). Rewrite: 'MIN 30-39 from line, POR 12-15. MIN nearly triple FTA volume.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di balik angka ini ada turnover: POR 14, MIN 13.",
+          "fix": "Rewrite: 'Penyebabnya turnover: POR 14, MIN 13. Selisih tipis, tapi POR bayar lebih mahal.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Pertandingan sempat berjalan ketat di awal kuarter kedua. Skor 28-28, lalu saling balas",
+          "fix": "Either cite exact possession sequences from KEY PLAYS or reframe as 'early Q2 was tight' without play-by-play detail."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Blok POR sebenarnya impresif, 9 blocks versus 5 untuk MIN, tapi itu tidak cukup untuk menutup lubang",
+          "fix": "Simplify: 'Blok POR impresif (9 vs 5), tapi tidak cukup tutup celah free throw.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Portland butuh respons cepat, dan lebih dari itu, butuh Damian Lillard yang sebenarnya.",
+          "fix": "Change to: 'Game 3 krusial. Lillard harus bangkit dari 2-15 shooting malam ini.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa6527de80025e7ad",
+    "published_at": "2026-11-17T03:39:49+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
