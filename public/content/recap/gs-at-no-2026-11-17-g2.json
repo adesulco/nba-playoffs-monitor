@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "gs-at-no-2026-11-17-g2",
+  "title": "Recap Golden State Warriors 94-115 New Orleans Pelicans (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs New Orleans Pelicans (94-115) di —, 17 November 2026.",
+  "body_md": "## New Orleans Pelicans Redam Golden State Warriors 115-94, Seri Regular Season Berakhir 2-1\n\nNew Orleans Pelicans menutup seri regular season melawan Golden State Warriors dengan dominan, menang 115-94 di kandang sendiri, Senin 17 November 2026. Seri tiga game ini berakhir 2-1 untuk Pelicans. Golden State kalah telak 21 poin, dan angka-angkanya tidak berbohong.\n\n---\n\n## Jeremiah Fears Tampil Luar Biasa, Bey Jadi Pencetak Tertinggi\n\nSaddiq Bey memimpin Pelicans dengan 23 poin, 6 rebound, 3 asis, efisien dari tiga poin dengan 5-8 dari belakang garis. Di sampingnya, Jeremiah Fears membukukan triple-double: 19 poin, 10 rebound, 10 asis. Derik Queen off the bench juga mengesankan, 17 poin, 10 rebound, dengan 4-5 dari three-point line.\n\nZion Williamson berkontribusi 16 poin dan 6 rebound dalam 25 menit, konsisten tanpa perlu three-pointer. Jordan Poole menambah 11 poin dan 5 asis dari bangku cadangan.\n\nDi sisi Warriors, Yaxel Lendeborg berjuang keras sebagai ujung tombak dengan 28 poin dan 8 rebound, tapi butuh 23 tembakan untuk mencapainya (9-23 dari field, 2-9 dari three). Brandin Podziemski 15 poin dengan shooting lebih efisien: 3-7 dari three-point line. Gui Santos, Will Richard, dan De'Anthony Melton masing-masing menyumbang double digit, tapi tidak cukup untuk menutup selisih.\n\n---\n\n## Efisiensi Jadi Pembeda\n\nBox score menjelaskan segalanya. Pelicans tembak 42% dari field, Warriors hanya 33%. Dari tiga poin: NO 38% (15-40), GS 24% (11-46). Warriors memang lebih rajin ke garis free throw, 27-30 berbanding 18-24, tapi keunggulan di free throw tidak bisa menutup jurang efisiensi sebesar itu.\n\nPelicans juga unggul di rebound (58 vs 50), fast-break points (24 vs 14), points in paint (44 vs 32), dan steals (10 vs 5). Warriors punya lebih banyak blok (9 vs 5), tapi pertahanan secara keseluruhan bocor, 15 turnover berbanding 11 milik Pelicans.\n\nIni bukan malam yang baik untuk Warriors. Hampir semua kategori, Pelicans lebih baik.\n\n---\n\n## Penutup\n\nSeri regular season antara kedua tim ini resmi berakhir 2-1 untuk New Orleans. Bagi Warriors, angka shooting 24% dari three-point line dalam laga penentu adalah sesuatu yang perlu dievaluasi. Bagi Pelicans, performa Fears dengan triple-double dan kolektivitas scoring dari empat pemain di atas 15 poin menjadi sinyal positif.\n\nLaga NBA berikutnya bisa disaksikan live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910000",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 115,
+    "away_score": 94,
+    "winner_abbr": "NO",
+    "kickoff_utc": "2026-11-17T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.032682,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stats and natural voice. One factual error (De'Anthony Melton listed as double-digit scorer when he had 8 points). One ambiguous efficiency claim. Minor stylistic notes on idiom and word choice.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Golden State kalah telak 21 poin, dan angka-angkanya tidak berbohong.",
+          "fix": "Delete the sentence or replace with 'Statistik membuktikannya.' or just move to next paragraph."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Di sampingnya, Jeremiah Fears membukukan triple-double: 19 poin, 10 rebound, 10 asis.",
+          "fix": "Replace 'membukukan' with 'catat' for consistency with casual voice."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Gui Santos, Will Richard, dan De'Anthony Melton masing-masing menyumbang double digit",
+          "fix": "Rewrite: 'Gui Santos 12 dan Will Richard 11 menambah skor, tapi De'Anthony Melton hanya 8 poin.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Brandin Podziemski 15 poin dengan shooting lebih efisien: 3-7 dari three-point line.",
+          "fix": "Be explicit: 'Podziemski 15 poin (3-8 FG, 3-7 three) lebih efisien dari Lendeborg.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x83f3f16b2e4d77b6",
+    "published_at": "2026-11-17T04:41:02+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
