@@ -3,7 +3,7 @@
   "slug": "gs-at-no-2026-11-17-g2",
   "title": "Recap Golden State Warriors 94-115 New Orleans Pelicans (Game 2)",
   "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs New Orleans Pelicans (94-115) di —, 17 November 2026.",
-  "body_md": "New Orleans Pelicans mengakhiri regular season series melawan Golden State Warriors dengan dominan, menang 115-94 di kandang tamu. Kemenangan ini menyamakan series 1-1 setelah tiga game pertemuan musim ini.\n\nPelicans tampil merata dari semua lini. Saddiq Bey memimpin skuad dengan 23 poin, 6 rebound, 3 asis, efisien dari tiga poin dengan 5-8 dari luar garis. Jeremiah Fears mencatat triple-double: 19 poin, 10 rebound, 10 asis. Derik Queen off the bench juga konsisten dengan 17 poin dan 10 rebound. Zion Williamson menambah 16 poin meski nihil dari tiga poin (0-0 attempted), sementara Jordan Poole mengakhiri malam dengan 11 poin dan 5 asis.\n\nDi sisi Warriors, hanya Yaxel Lendeborg yang terlihat kompetitif dengan 28 poin dan 8 rebound, tapi efisiensinya bermasalah, 9-23 dari lapangan. Brandin Podziemski menambah 15 poin, 6 rebound, 3 asis. Selebihnya kesulitan menembus pertahanan Pelicans.\n\n---\n\nStatistik tim menjelaskan selisih 21 poin ini dengan gamblang. Golden State menembak 33% dari lapangan dan hanya 24% dari tiga poin, 11-46 attempted, produktif secara volume tapi tidak secara konversi. New Orleans jauh lebih efisien: 42% FG, 38% dari tiga poin dengan 15-40. Fast-break points jadi indikator lain ketidakseimbangan laga: NO mencatat 24 lawan GS yang hanya 14. Pelicans juga unggul steals 10-5, yang langsung berdampak ke transisi ofensif mereka.\n\nWarriors memang mencatat 9 blocks dan 27-30 dari garis free throw, dua area di mana mereka unggul malam ini, tapi itu tidak cukup menutup lubang besar di perimeter defense dan turnover (GS 15, NO 11).\n\n---\n\nSeries regular season ini selesai 1-1. Tidak ada Game 4, ini game ketiga sekaligus terakhir dari pertemuan musim ini antara kedua tim. Bagaimana kelanjutan rivalry ini baru akan terlihat jika mereka bertemu lagi di playoff.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "body_md": "# New Orleans Pelicans Hajar Golden State Warriors 115-94, Jeremiah Fears Cetak Triple-Double\n\nNew Orleans Pelicans menutup regular season series melawan Golden State Warriors dengan dominan, menang 115-94 di Game 3 untuk finish 2-1 dalam seri tiga laga. Kemenangan 21 poin ini dibangun di atas efisiensi tembakan yang jauh lebih baik dari Warriors, plus penampilan luar biasa Jeremiah Fears yang mencetak triple-double.\n\n---\n\n## Penampilan Terbaik\n\nFears jadi pemain paling lengkap malam ini: 19 poin, 10 rebound, 10 asis dalam 29 menit, triple-double yang genuine, bukan angka dipaksakan. Kombinasi distribusi dan kerja keras di papan rebound mencerminkan bagaimana Pelicans membangun keunggulan, bukan lewat satu bintang tunggal, tapi lewat kontribusi merata.\n\nSaddiq Bey memimpin skor tim dengan 23 poin, 6 rebound, 3 asis, shooting 8-15 dari lapangan dan 5-8 dari garis tiga. Efisiensinya dari luar busur jadi salah satu faktor krusial malam ini. Derik Queen off the bench juga impresif: 17 poin, 10 rebound, 4-5 dari tiga poin, kontribusi bench yang sulit ditandingi Warriors. Zion Williamson menambah 16 poin meski tidak mencoba satu pun tembakan tiga, perannya lebih ke attack the paint. Jordan Poole menyumbang 11 poin dan 5 asis dari bench.\n\nDi sisi Warriors, Yaxel Lendeborg berjuang keras dengan 28 poin dan 8 rebound, tapi butuh 23 tembakan untuk sampai di angka itu, efisiensi yang bercerita sendiri. Brandin Podziemski 15 poin dengan 3-7 dari tiga poin, satu-satunya starter GS yang shooting reasonably well. Selebihnya berjuang.\n\n---\n\n## Apa yang Membedakan\n\nAngka-angkanya bicara jelas.\n\nPelicans tembak 42% dari lapangan. Warriors hanya 33%. Dari tiga poin, selisihnya lebih lebar lagi, NO 38% vs GS 24%. Warriors memang lebih rajin ke garis free throw (27-30 vs 18-24) dan punya persentase lebih tinggi (90% vs 75%), tapi itu tidak cukup untuk menutup selisih efisiensi di dua kategori utama.\n\nNO juga unggul di fast-break points 24-14, points in paint 44-32, dan rebound 58-50. Warriors punya 9 blocks berbanding 5, tapi 15 turnover berbanding 11 milik NO, terlalu banyak possession terbuang untuk tim yang sudah tertinggal di papan skor.\n\n---\n\n## Catatan Seri\n\nPelicans menutup seri tiga laga ini dengan rekor 2-1. Bukan playoff, tapi hasil yang bermakna: tim muda NO menunjukkan bahwa mereka bisa compete dan menang melawan nama besar seperti Warriors. Fears, Queen, dan Bey adalah kombinasi yang perlu diperhatikan ke depannya.\n\nUntuk Warriors, shooting 24% dari tiga poin dalam laga penentu adalah masalah serius. Lendeborg bisa mencetak angka, tapi tim butuh lebih dari satu primary scorer yang efisien.\n\nLaga ini tayang live di NBA League Pass dan Vidio.\n",
   "frontmatter": {
     "league": "nba",
     "sport": "basketball",
@@ -21,35 +21,35 @@
     "series_summary": "Series tied 1-1",
     "game_number": 2,
     "model": "claude-sonnet-4-6",
-    "cost_usd": 0.033474,
+    "cost_usd": 0.036472,
     "voice_lint": {
       "verdict": "pass",
       "score": 82,
       "issue_count": 3,
-      "summary": "Solid recap with accurate stats and clear structure. Minor phrasing awkwardness in one section ('bermasalah', 'attempted'), but no hard violations. Voice is appropriately analytical for NBA coverage.",
+      "summary": "Solid recap with strong numerical grounding and natural voice. One medium-severity translated-English phrase and minor pronoun clarity issue, both fixable. Overall voice is conversational and sport-smart.",
       "issues": [
         {
           "type": "translated_english",
           "severity": "medium",
-          "snippet": "efisiensinya bermasalah, 9-23 dari lapangan",
-          "fix": "Change to 'shooting 9-23' or 'tidak efisien, 9-23 dari lapangan'."
+          "snippet": "Fears jadi pemain paling lengkap malam ini: 19 poin, 10 rebound, 10 asis dalam 29 menit, triple-double yang genuine, bukan angka dipaksakan.",
+          "fix": "Use 'triple-double sejati' or just describe the performance without negation."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Efisiensinya dari luar busur jadi salah satu faktor krusial... Efisiensi yang bercerita sendiri.",
+          "fix": "Replace second 'efisiensi' with 'persentase' or restructure sentence."
         },
         {
           "type": "other",
           "severity": "low",
-          "snippet": "menembak 33% dari lapangan dan hanya 24% dari tiga poin, 11-46 attempted",
-          "fix": "Change to '11-46 percobaan' or just '11-46'."
-        },
-        {
-          "type": "other",
-          "severity": "low",
-          "snippet": "produktif secara volume tapi tidak secara konversi",
-          "fix": "Change to 'volume besar tapi konversi rendah' or 'banyak tembakan, sedikit gol'."
+          "snippet": "Selebihnya berjuang.",
+          "fix": "Specify: 'Pemain GS lainnya berjuang' or list by name."
         }
       ]
     },
-    "plagiarism_hash": "0x2c3ae1e3674befcc",
-    "published_at": "2026-11-17T06:12:37+00:00",
+    "plagiarism_hash": "0x0c7b356a0c4d9d8f",
+    "published_at": "2026-11-17T06:40:29+00:00",
     "version": 1,
     "manual_review": true
   },
