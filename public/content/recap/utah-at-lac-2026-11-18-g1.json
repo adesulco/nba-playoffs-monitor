@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "utah-at-lac-2026-11-18-g1",
+  "title": "Recap Utah Jazz 132-107 LA Clippers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Utah Jazz vs LA Clippers (132-107) di —, 18 November 2026.",
+  "body_md": "# Sensabaugh 40 Poin, Utah Jazz Bungkam LA Clippers 132-107\n\nUtah Jazz menang 132-107 atas LA Clippers, Senin 18 November 2026. Brice Sensabaugh meledak dengan 40 poin, 11 rebound, dan 5 asis dari bangku cadangan, performa mengesankan. Jazz unggul 1-0 di regular season series ini setelah dominasi di hampir semua aspek permainan.\n\n---\n\n## Sensabaugh dan George: Dua Mesin Pencetak Poin\n\nBrice Sensabaugh jadi cerita utama malam ini. 40 poin, 11 rebound, 5 asis, double-double dengan bonus poin yang menggelap. Efisiensinya lebih mengejutkan lagi: 16-21 from field, 8-11 dari tiga poin. Sensabaugh tampil on fire malam ini.\n\nDi sampingnya, Keyonte George mengisi peran playmaker dengan sempurna. 30 poin, 11 asis, 10-17 from field, 4-8 dari arc. George yang men-distribute sekaligus mencetak, kombinasi yang membuat Jazz sulit dibaca LAC. Dua pemain ini cetak 70 poin bersama—satu dari bangku cadangan, satu starter.\n\nMo Bamba menambah double-double: 15 poin, 10 rebound. Darryn Peterson 13 poin dengan 2-4 dari tiga poin. Jazz punya kedalaman malam ini.\n\nDari sisi LAC, Brook Lopez jadi penyumbang terbesar dengan 23 poin dan 6 rebound, 8-16 FG. Rui Hachimura tampil rapi dengan 20 poin dan 4-4 dari tiga poin, sempurna dari arc, tapi tetap tidak cukup. Darius Garland 20 poin dan 7 asis, 5-15 from field, terlalu banyak miss di saat Jazz sedang panas.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nJazz unggul di hampir semua kolom statistik yang penting.\n\nEfisiensi tembakan jadi perbedaan paling mencolok: Jazz 58% FG dibanding LAC 43%. Dari tiga poin lebih ekstrem lagi, Jazz 20-38 (53%), LAC 14-37 (38%). Ketika satu tim shooting 15 persen lebih baik dari arc, hasilnya hampir pasti seperti ini.\n\nRebound juga berpihak ke Jazz: 46 berbanding 31. Dengan offensive rebound yang terjaga, second-chance opportunity Jazz terus terbuka. Points in paint pun 48-36 untuk Jazz, mereka menang di dalam dan di luar.\n\nSatu catatan menarik untuk LAC: fast-break points 18-3, unggul jauh atas Jazz. Tapi itu tidak cukup menutup defisit yang sudah terlalu dalam. Turnovers Jazz (16) lebih banyak dari LAC (11), satu-satunya area di mana LAC menang jelas di luar fast break.\n\n---\n\n## Momentum Q4 dan Kuarter yang Memutuskan\n\nLaga sempat sengit di awal kuarter keempat. Kedudukan sempat 88-88 setelah Keaton Wagler masuk dengan layup dan free throw. LAC sempat unggul 89-88 sebentar.\n\nSensabaugh kembali dengan running jumper 24 kaki untuk 93-89. LAC sempat kembali ke 93-91 lewat Wagler, tapi Sensabaugh kembali dengan pullup 11 kaki untuk 95-91. Dari situlah Jazz tidak berhenti.\n\nSetelah stretch itu, Jazz menutup game dengan sangat rapi. Skor akhir 132-107 mencerminkan bahwa LAC tidak pernah bisa menemukan jawaban untuk tekanan Jazz yang terus-menerus.\n\n---\n\n## Selanjutnya\n\nGame 2 regular season series ini belum terdata jadwalnya di input. Yang jelas, LAC perlu solusi nyata untuk merespons, terutama cara membendung Sensabaugh yang sedang dalam performa seperti ini. Jazz tayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910006",
+    "home_team": "LA Clippers",
+    "home_abbr": "LAC",
+    "away_team": "Utah Jazz",
+    "away_abbr": "UTAH",
+    "home_score": 107,
+    "away_score": 132,
+    "winner_abbr": "UTAH",
+    "kickoff_utc": "2026-11-18T03:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "UTAH leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022272,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has strong statistical accuracy and readable structure, but fails on two high-severity issues: unprofessional fourth-wall break about missing input data, and awkward code-switching. Multiple medium issues with redundancy and filler language. Regenerate final paragraph and tighten descriptions.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 2 regular season series ini belum terdata jadwalnya di input.",
+          "fix": "Delete sentence. End with 'LAC perlu solusi nyata untuk merespons...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Efisiensinya lebih mengejutkan lagi: 16-21 from field, 8-11 dari tiga poin.",
+          "fix": "Change to '16-21 FG' or just cite the percentage: '76% from field, 73% tiga-poin.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Sensabaugh tampil on fire malam ini.",
+          "fix": "Delete or rephrase: 'Sensabaugh cetak 10-11 tiga-poin — efisiensi luar biasa.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "George yang men-distribute sekaligus mencetak, kombinasi yang membuat Jazz sulit dibaca LAC.",
+          "fix": "Rephrase: 'George assist dan cetak sekaligus—pertahanan LAC kacau membaca.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Rui Hachimura tampil rapi dengan 20 poin dan 4-4 dari tiga poin, sempurna dari arc",
+          "fix": "Condense: 'Rui Hachimura 20 poin, 4-4 tiga-poin, sempurna dari arc.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka yang Menjelaskan Segalanya",
+          "fix": "Change to 'Jazz Kuasai Tiap Statistik' or 'Perbedaan di FG% dan Rebound.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Ketika satu tim shooting 15 persen lebih baik dari arc, hasilnya hampir pasti seperti ini.",
+          "fix": "Be specific: 'LAC tidak ada jawaban untuk 53% tiga-poin Jazz.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x45ffc7b05504edb0",
+    "published_at": "2026-11-18T06:12:50+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
