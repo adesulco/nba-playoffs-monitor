@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "por-at-min-2026-11-18-g2",
+  "title": "Recap Portland Trail Blazers 105-106 Minnesota Timberwolves (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs Minnesota Timberwolves (105-106) di —, 18 November 2026.",
+  "body_md": "# Minnesota Timberwolves Curi Kemenangan Dramatis 106-105, Layup Terakhir McDaniels Tutup Laga\n\nMinnesota Timberwolves mencuri kemenangan 106-105 atas Portland Trail Blazers dalam laga NBA Playoffs yang berakhir dengan jantung berdegup kencang, layup running Jaden McDaniels di detik terakhir, 2.6 detik tersisa, membalik keadaan dari ketinggalan empat poin. MIN kini unggul 2-0 di regular season series, tinggal dua laga lagi sebelum empat game selesai.\n\n---\n\n## Top Performers\n\nAyo Dosunmu jadi penentu malam ini. Dua three-pointer di Q4 akhir, termasuk tembakan dari 23 kaki di menit 50.3 yang memotong defisit jadi satu poin, lalu diakhiri dengan asis ke McDaniels di possesi terakhir. Total: 30 poin, 4 rebound, 5 asis dengan efficiency yang solid, 11-19 from field dan 7-11 from three. Jaden McDaniels di sisinya: 22 poin, 5 rebound, 4 asis, plus dua asis kunci di Q4 dan layup penentu di ujung laga.\n\nLaMelo Ball tidak dominan secara poin, 18 poin, 9 rebound, 2 asis, tapi three-pointer dari 29 kaki di menit 1:48 Q4 yang membawa MIN ke 102-98 adalah salah satu tembakan paling penting malam ini. Off the bench, Bones Hyland tambah 13 poin dengan 3-6 from three dalam 17 menit.\n\nDamian Lillard membawa 25 poin, 3 rebound, 5 asis, tapi 8-19 from field dan permainan yang berakhir dengan kekalahan satu poin selalu terasa menyakitkan. Jrue Holiday malah tampil lebih panas: 23 poin off the bench, 5-9 from three, termasuk dua three-pointer berturut-turut di Q4 yang sempat membawa Portland memimpin 105-101 di menit 58 detik tersisa. Donovan Clingan cetak double-double 12 poin dan 12 rebound, 5 asis, satu-satunya Blazers yang finish tanpa tanda tanya.\n\n---\n\n## Baca Statistiknya\n\nPortland sebenarnya tidak kalah buruk dari sisi ball movement, 23 asis berbanding 22 MIN, 17 turnover vs 21. Unggul di paint: 42-36. Perbedaan ada di efisiensi tiga-poin: MIN 45% vs POR 36%. Di laga tipis seperti ini, selisih dua tembakan three-pointer yang masuk sudah cukup untuk membalik skor.\n\nPOR juga tidak efisien dari garis free throw: 13-20 (65%) berbanding MIN 12-24 (50%). Keduanya sama-sama bergulat di garis lemparan bebas, tapi POR meninggalkan tujuh poin di papan dari missed free throws, angka yang mahal di laga selisih satu poin.\n\n---\n\n## Drama 240 Detik Terakhir\n\nQ4 empat menit terakhir adalah roller-coaster penuh. POR sempat memimpin setelah putback dunk membawa skor 96-92, lalu tiga-pointer Dosunmu memotong jadi 96-95. Jrue Holiday balas dengan 23-footer untuk 99-95. LaMelo jawab dari 29 kaki: 102-98. Trey Lyles muncul dari nowhere dengan 25-footer memotong jadi 102-101. Holiday kembali, 24-footer lagi, 105-101, Portland tampak aman.\n\nLalu 50.3 detik tersisa: Dosunmu dari 23 kaki, 105-104. Dan di 2.6 detik terakhir, Dosunmu menemukan McDaniels di transition, running layup, 106-105. Laga selesai.\n\n---\n\n## Pertandingan Berikutnya\n\nMIN unggul 2-0 di regular season series ini. Game 4, laga keempat dari empat, akan jadi penentu. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910003",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 106,
+    "away_score": 105,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-11-18T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021787,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail due to two high-severity training-inference violations: Robert Williams III and Trey Lyles named without input verification. Additionally, multiple translated-English phrases and one spelling error. Data accuracy and player identification are non-negotiable.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Robert Williams III makes tip in dunk (score 96-92)",
+          "fix": "Delete or rewrite as 'putback dunk' without naming the player, since input data does not confirm this player was on court"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Trey Lyles muncul dari nowhere dengan 25-footer",
+          "fix": "Delete player name; rewrite as 'bench player makes 25-footer' or remove this play entirely"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Damian Lillard membawa 25 poin, 3 rebound, 5 asis, tapi 8-19 from field dan permainan",
+          "fix": "Change to 'Damian Lillard cetak 25 poin, 3 rebound, 5 asis'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "permainan yang berakhir dengan kekalahan satu poin selalu terasa menyakitkan",
+          "fix": "Simplify: 'kalah satu poin selalu menyakitkan' or 'finish dengan kekalahan sempit terasa pedih'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "lalu diakhiri dengan asis ke McDaniels di possesi terakhir",
+          "fix": "Change 'possesi' to 'posesi'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Donovan Clingan cetak double-double 12 poin dan 12 rebound, 5 asis, satu-satunya Blazers yang finish tanpa tanda tanya",
+          "fix": "Clarify: 'cetak double-double clean' or 'satu-satunya tanpa statistik aneh' — or remove phrase"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "keduanya sama-sama bergulat di garis lemparan bebas",
+          "fix": "Change to 'Keduanya bergulat di free throw line' (cut 'sama-sama')"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xd4da67bb12446f36",
+    "published_at": "2026-11-18T04:08:14+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
