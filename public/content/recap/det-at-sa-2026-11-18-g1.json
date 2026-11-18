@@ -1,0 +1,38 @@
+{
+  "type": "recap",
+  "slug": "det-at-sa-2026-11-18-g1",
+  "title": "Recap Detroit Pistons 105-93 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs San Antonio Spurs (105-93) di —, 18 November 2026.",
+  "body_md": "Detroit Pistons mengakhiri regular season series melawan San Antonio Spurs dengan kemenangan 105-93, Jumat pagi WIB. DET unggul di dua pertemuan musim ini, dan performa malam ini menjelaskan kenapa.\n\n---\n\n## Penampilan Terbaik\n\n**Cade Cunningham** memimpin DET dengan 27 poin, 5 rebound, 6 asis. Di sampingnya, **Daniss Jenkins** menyumbang 25 poin, 5 rebound, 5 asis, dua guard utama DET gabungkan 52 poin dari starter slot.\n\nYang menarik: **Ausar Thompson** tidak mencetak banyak (14 poin), tapi facilitasi-nya jadi perekat permainan DET. 12 asis dengan hanya 9 rebound, dua kategori 10+ dari tiga, tipis tidak triple-double, tapi kontribusinya terasa di setiap transisi. FG 7-13 juga efisien.\n\nUntuk SA, **Victor Wembanyama** tampil luar biasa secara individual: 25 poin, 18 rebound, 4 asis. Tapi 1-8 dari garis tiga angka membatasi dampaknya sebagai playmaker jarak jauh. **Dylan Harper** menambah 20 poin, **Julian Champagnie** off the bench menyumbang 14 poin dengan 4-9 dari three-point line.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDET unggul signifikan di dua area yang menentukan: points in paint (60 vs 44) dan fast-break points (24 vs 15). Ini bukan kemenangan karena tembakan tiga angka, justru sebaliknya. DET hanya 24% dari arc (6-25), SA sedikit lebih baik di 22% (9-40), tapi keduanya buruk dari luar.\n\nYang membedakan: DET menang di dalam. FG% 49% vs SA 42%, selisih itu datang dari drive, post-up, dan transisi, bukan dari perimeter.\n\nSA juga 15 turnover vs DET 11. DET memanfaatkannya, 10 steal di laga ini, angka yang tinggi untuk satu pertandingan.\n\n---\n\n## Momentum yang Berbalik\n\nKEY PLAYS mencatat permainan yang ketat sampai pertengahan laga. SA bahkan sempat unggul di Q2 (47-49 setelah Harper layup, lalu 49-52 setelah Wembanyama hit tembakan tiga angka dari 25 kaki) sebelum Cunningham membalas dengan running dunk di detik-detik akhir babak kedua untuk jadikan 55-54.\n\nQ3 buka dengan SA kembali unggul (55-57 setelah Vassell tembak three-pointer dari 24 kaki), tapi DET balik lagi via Cunningham di menit ke-4 (67-66). Dari situlah DET tidak lagi melepas kendali, skor 93-88 untuk SA di Q4 menit ke-3 menjadi tanda terakhir SA kompetitif sebelum DET tutup dengan margin 12.\n\n---\n\n## Penutup\n\nIni bukan blowout, SA bersaing sampai kuarter akhir. Tapi DET lebih konsisten di dalam, lebih disiplin dengan bola, dan punya dua guard yang combined 52 poin. Wembanyama 18 rebound tidak cukup kalau tembakan tiga angkanya 1-8.\n\nRegular season series selesai: DET 2-0 atas SA musim ini. Tayangan lengkap tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910004",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 93,
+    "away_score": 105,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-11-18T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DET leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.038497,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 0,
+      "summary": "",
+      "issues": []
+    },
+    "plagiarism_hash": "0x6c9375e3600b7634",
+    "published_at": "2026-11-18T04:36:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
