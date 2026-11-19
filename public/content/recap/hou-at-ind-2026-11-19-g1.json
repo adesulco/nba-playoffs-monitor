@@ -1,0 +1,45 @@
+{
+  "type": "recap",
+  "slug": "hou-at-ind-2026-11-19-g1",
+  "title": "Recap Houston Rockets 119-104 Indiana Pacers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Houston Rockets vs Indiana Pacers (119-104) di —, 19 November 2026.",
+  "body_md": "I cannot proceed with generating the article body.\n\nThe input data contains unresolved contradictions that violate the core accuracy requirement:\n\n1. **Playoffs vs. Regular Season conflict:** \"NBA Playoffs 2026\" + \"Regular Season Series\" + November date create irreconcilable framing.\n2. **Missing roster data:** KEY PLAYS reference Ivica Zubac and Alperen Sengun, neither of whom appear in the TOP SCORERS blocks. Per the hard rules, I cannot invent facts or cite players not in the verified data.\n3. **Series state ambiguity:** \"HOU leads series 1-0\" + \"Game 2 of 2\" is internally unclear — this format does not match playoff or standard regular season structure.\n\n**Per the prompt's own instructions:** \"If you genuinely cannot fix a flag without violating these rules (e.g., a HIGH-severity factual error that would require inventing a different fact), DELETE the offending span.\"\n\nIn this case, the contradictions are structural, not span-level. Deleting KEY PLAYS would remove the core content; rewriting around the Playoffs/Regular Season conflict would require inventing facts.\n\n**Action required:** The writer (Ade) must clarify:\n- Is this Regular Season or Playoffs?\n- Are Sengun and Zubac in the box score? If not, should KEY PLAYS be omitted?\n- What does \"Series 1-0, Game 2 of 2\" mean in context?\n\nOnce clarified, I will generate a clean, accurate article immediately.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910008",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "Houston Rockets",
+    "away_abbr": "HOU",
+    "home_score": 104,
+    "away_score": 119,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-11-19T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.038087,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 1,
+      "summary": "No article to review. Writer agent correctly rejected generation due to unresolvable factual conflicts in input data block. Requires Ade clarification before proceeding.",
+      "issues": [
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "No article provided — writer agent refused generation due to data contradiction",
+          "fix": "Ade must resolve: (1) Playoffs or Regular Season? (2) Include Sengun/Zubac in box score or omit KEY PLAYS? (3) Clarify series state format."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x66ca5c51503dcc17",
+    "published_at": "2026-11-19T02:33:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
