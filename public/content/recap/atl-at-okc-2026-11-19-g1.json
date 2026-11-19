@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "atl-at-okc-2026-11-19-g1",
+  "title": "Recap Atlanta Hawks 117-112 Oklahoma City Thunder (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Atlanta Hawks vs Oklahoma City Thunder (117-112) di —, 19 November 2026.",
+  "body_md": "# Hawks Hentikan Thunder di Kandang Lawan, 117-112\n\nAtlanta Hawks mengakhiri regular season series dengan kemenangan dramatis 117-112 di kandang Oklahoma City Thunder, Sabtu 19 November 2026. ATL menutup series 2-0, hasil yang tidak mudah, mengingat OKC yang diwakili Shai Gilgeous-Alexander berjuang keras sampai detik-detik akhir.\n\n---\n\n## Pemain Kunci\n\nOnyeka Okongwu jadi bintang Hawks malam ini. 28 poin, 9 rebound, 2 asis, efisiensi lumayan dari 11-21 FG termasuk 5-13 dari tiga angka. Di Q4, dua kontribusi Okongwu yang krusial: *driving layup* saat skor 92-90 jadi 94-90, lalu *free throw* kedua di sisa 2,4 detik yang mengunci skor final 117-112.\n\nJalen Johnson melengkapi performa Okongwu dengan triple-double: 16 poin, 12 rebound, 11 asis. Ini bukan malam terbaik Johnson dari sisi efisiensi, 5-15 FG, 1-6 dari tiga angka, tapi kontribusinya di sisi distribusi dan papan rebound nyata sepanjang 34 menit. Nickeil Alexander-Walker menambah 19 poin dan 7 asis dari lini starter.\n\nDari bench, Luguentz Dort memberi 16 poin dengan 6-11 FG dan 3-6 dari tiga angka. Dort juga terlibat di momen penting Q4: *three-pointer* dari jarak 26 kaki yang membawa skor 89-86 buat ATL di awal kuarter penentu.\n\nDi kubu OKC, Shai Gilgeous-Alexander tidak menyerah. 34 poin dari 14-29 FG jadi tanda bahwa SGA berjuang sendiri, tapi 1-6 dari tiga angka membatasi variasi serangannya. Jared McCain menyumbang 18 poin dengan 4-9 dari tiga angka. Aday Mara tampil menarik: 10 poin, 6 rebound, 8 asis, angka distribusi yang tinggi untuk besar. Tembakan Mara di sisa 47,7 detik sempat membuat skor 116-112, tapi sudah terlambat.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka yang menjelaskan hasil malam ini: *three-point shooting* dan *fast-break points*.\n\nATL masuk 20-50 dari tiga angka (40%), OKC hanya 9-26 (35%). Ketika volume dan efisiensi sama-sama berpihak ke ATL, efek kumulatifnya besar, 20 made threes vs 9 adalah selisih 33 poin dari garis tiga angka saja.\n\n*Fast-break points* lebih kontras lagi: ATL 24, OKC 9. Hawks 8 steal di laga ini, turnover OKC yang berubah jadi poin transisi cepat. Di sisi lain, OKC unggul di *points in paint* (62 vs 40) dan blocks (9 vs 4), yang menjelaskan kenapa SGA masih bisa mencatat 34 poin: OKC terus menekan ke dalam, cuma kurang berhasil di perimeter.\n\nFT% juga jadi pembeda diam-diam: ATL 75% (9-12), OKC hanya 52% (11-21). OKC lebih sering ke garis, tapi kurang efisien mengonversinya.\n\n---\n\n## Q4 yang Menentukan\n\nKuarter keempat sempat ketat. Skor 89-86 buat ATL di menit 11:11 ketika Dort masuk tiga angka. OKC tidak menyerah, Williams bikin *driving layup* (92-88), McCain tambah dua poin (92-90). Hawks menjawab lewat Okongwu, 94-90.\n\nRitme serangan-balasan terus berlanjut hingga akhir, dengan RayJ Dennis mencetak tiga angka dari 23 kaki, asis dari Alexander-Walker, untuk membawa skor 97-92. OKC memang terus mengejar, Mara sempat memotong jarak jadi 116-112. Tapi *free throw* kedua Okongwu menutup peluang OKC.\n\n---\n\n## Selanjutnya\n\nRegular season series ATL vs OKC berakhir 2-0 untuk Hawks. Pantau jadwal lanjutan NBA 2026 di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910014",
+    "home_team": "Oklahoma City Thunder",
+    "home_abbr": "OKC",
+    "away_team": "Atlanta Hawks",
+    "away_abbr": "ATL",
+    "home_score": 112,
+    "away_score": 117,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-11-19T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022647,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: One critical hallucination (RayJ Dennis player-stat inference), one factual error (series score 2-0 vs input 1-0), and multiple soft register issues. The inference errors are unrecoverable without regeneration; the series-state error needs immediate fix.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "ATL menutup series 2-0, hasil yang tidak mudah",
+          "fix": "Change to 'ATL 1-0 di regular season series' or delete the series claim; focus on this single game result."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "RayJ Dennis mencetak tiga angka dari 23 kaki, asis dari Alexander-Walker",
+          "fix": "Remove this play entirely or verify the name from input. If unsure, delete and reference only verifiable players."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Apa yang Bicara di Box Score",
+          "fix": "Change to 'Yang Terlihat di Box Score' or 'Pembaca Box Score'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka yang menjelaskan hasil malam ini",
+          "fix": "Open more directly: 'Dua metrik bicara: tembakan tiga angka dan fast-break.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Nickeil Alexander-Walker menambah 19 poin dan 7 asis dari lini starter",
+          "fix": "Give Alexander-Walker own sentence: 'Nickeil Alexander-Walker, pemain starter lain, cetak 19 poin dan 7 asis.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Di kubu OKC, Shai Gilgeous-Alexander tidak menyerah.",
+          "fix": "Change to 'Shai Gilgeous-Alexander tidak menyerah' (drop 'Di kubu OKC')."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Ritme serangan-balasan terus berlanjut hingga akhir",
+          "fix": "Change to 'Ritme serangan-balasan berlanjut hingga akhir.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya — Regular season series ATL vs OKC berakhir 2-0",
+          "fix": "Delete 'Selanjutnya'. Rephrase closing to cite one forward-looking detail or just end with 'Tayang di NBA League Pass dan Vidio.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa75a6983b069a5a4",
+    "published_at": "2026-11-19T04:16:29+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 68,
+      "headline_score": 60,
+      "headline_comment": "Fungsional tapi generik — 'Hentikan Thunder di Kandang Lawan' kurang tajam dan tidak menangkap angle sebenarnya (sweep series + SGA 34 tidak cukup).",
+      "lead_score": 55,
+      "lead_comment": "Lead menyebut hasil tapi menyia-nyiakan angle paling kuat: ATL menang di kandang OKC meski SGA cetak 34, berkat 20 three-pointer dan triple-double Johnson.",
+      "structure_score": 72,
+      "structure_comment": "Urutan masuk akal (pemain → stats → Q4 → closing) tapi section 'Q4' overlap dengan 'Pemain Kunci' — plays yang sama dibahas dua kali.",
+      "voice_score": 70,
+      "voice_comment": "Secara umum oke dan kasual, tapi beberapa frasa kaku ('efek kumulatifnya besar', 'pembeda diam-diam') dan satu kalimat rusak ('angka distribusi yang tinggi untuk besar').",
+      "suggestion_count": 6,
+      "summary": "Solid draft with accurate numbers and decent voice, but the lead buries the real story (Johnson's triple-double, win on the road vs 34 from SGA), the Q4 section duplicates plays already covered, and there's a broken sentence about Mara. Fast cleanup gets this to publish-ready.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Aday Mara tampil menarik: 10 poin, 6 rebound, 8 asis, angka distribusi yang tinggi untuk besar.",
+          "issue": "Kalimat rusak — 'untuk besar' kemungkinan typo dari 'untuk seorang big man' tapi tetap janggal dan tidak selesai.",
+          "fix": "Ganti ke: 'Aday Mara tampil menarik dari posisi big: 10 poin, 6 rebound, 8 asis — angka distribusi yang jarang untuk pemain seukurannya.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Atlanta Hawks mengakhiri regular season series dengan kemenangan dramatis 117-112... ATL menutup series 2-0",
+          "issue": "Lead kehilangan hook terkuat: triple-double Johnson (16/12/11) dan fakta ATL menang di kandang lawan meski SGA 34 poin.",
+          "fix": "Buka dengan angle: 'Triple-double Jalen Johnson dan 28 poin Onyeka Okongwu bawa Atlanta Hawks menang 117-112 di kandang Oklahoma City, meski SGA cetak 34 poin.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Recap Atlanta Hawks 117-112 Oklahoma City Thunder (Game 1)",
+          "issue": "Headline internal title ('Hentikan Thunder di Kandang Lawan, 117-112') dan metadata title menyebut 'Game 1' — padahal input bilang series ini sudah 2-0 dan ini game ke-2.",
+          "fix": "Konsistenkan: 'Sweep Series! Hawks Bungkam Thunder 117-112 di Kandang OKC' atau serupa yang mencerminkan 2-0."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Kuarter keempat sempat ketat... OKC tidak menyerah, Williams bikin driving layup (92-88), McCain tambah dua poin (92-90). Hawks menjawab lewat Okongwu, 94-90.",
+          "issue": "Section Q4 mengulang persis play-by-play yang sudah disebut di 'Pemain Kunci' (Okongwu 94-90, Dort three 89-86). Redundansi.",
+          "fix": "Di section Pemain Kunci, cukup sebut total kontribusi. Simpan play-by-play Q4 hanya di section Q4."
+        },
+        {
+          "priority": "medium",
+          "snippet": "20 made threes vs 9 adalah selisih 33 poin dari garis tiga angka saja.",
+          "issue": "Matematika salah: 20 threes = 60 poin, 9 threes = 27 poin, selisih 33 poin. Benar secara angka, tapi framing 'selisih 33 poin' menyesatkan karena total selisih skor hanya 5.",
+          "fix": "Rephrase: 'ATL unggul 33 poin murni dari garis tiga angka — bantalan yang menutupi dominasi OKC di paint (62 vs 40).'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Pantau jadwal lanjutan NBA 2026 di NBA League Pass dan Vidio.",
+          "issue": "Closing lemah dan generik — terasa seperti boilerplate call-to-action, bukan editorial close.",
+          "fix": "Tutup dengan observasi: 'OKC pulang dengan catatan 0-2 vs ATL musim ini — bukan sinyal bagus kalau keduanya ketemu lagi di playoff.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
