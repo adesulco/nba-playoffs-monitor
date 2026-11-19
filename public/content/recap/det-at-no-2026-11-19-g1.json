@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "det-at-no-2026-11-19-g1",
+  "title": "Recap Detroit Pistons 122-109 New Orleans Pelicans (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs New Orleans Pelicans (122-109) di —, 19 November 2026.",
+  "body_md": "Detroit Pistons mengakhiri regular season dengan kemenangan meyakinkan atas New Orleans Pelicans 122-109, Jumat 19 November 2026. Kemenangan ini sekaligus menutup head-to-head musim reguler dengan DET unggul 1-0 di seri dua game.\n\n---\n\n## Kolektif DET Terlalu Dalam untuk Pelicans\n\nTidak ada satu bintang tunggal yang mendominasi malam ini. Yang bikin Detroit merepotkan adalah kedalamannya.\n\nJohn Collins memimpin dengan 20 poin, 7 rebound, 2 asis dari posisi starter, efisien lewat 6-10 dari lapangan dengan empat three-pointer dari enam percobaan. Javonte Green menyumbang 18 poin, 7 rebound, aktif di dua sisi lapangan. Daniss Jenkins dan Paul Reed masing-masing cetak 17 poin. Jenkins menambah 9 asis sebagai playmaker, sementara Reed yang masuk dari bench menonjol dengan efisiensi tinggi: 7-9 dari lapangan dalam 20 menit. Kevin Huerter melengkapi rotasi dengan 11 poin dan 7 asis.\n\nLima pemain DET di double digit. Pelatih New Orleans tidak punya satu matchup pun yang bisa disebut \"terjaga.\"\n\n---\n\n## Zion Kerja Keras, Tapi Sendirian\n\nDi sisi Pelicans, Zion Williamson tampil keras: 24 poin, 7 rebound, shooting 9-14 dari lapangan. Ini bukan malam yang buruk untuk Zion secara personal. Masalahnya, kontribusi di sekelilingnya tidak cukup merata.\n\nJordan Poole masuk off the bench dengan 22 poin (3-5 dari three-point line), tapi Poole lebih berperan sebagai top scorer kedua yang bersifat individual, 1 rebound, 5 asis. Jeremiah Fears 16 poin, 5 rebound, 4 asis memberi distribusi yang lebih seimbang. Saddiq Bey mencatat 10 poin, 8 rebound, 6 asis tapi shooting-nya berat: 3-13 dari lapangan, 2-7 dari tiga angka.\n\nHerbert Jones hanya 9 poin. NO secara kolektif kalah distribusi.\n\n---\n\n## Angka yang Menjelaskan Selisih 13 Poin\n\nDua statistik tim paling berbicara:\n\n**Three-point shooting:** DET 17-32 (53%) vs NO 11-28 (39%). DET nyaris tembak setengah dari upaya three-pointer jadi gol. Ini selisih efisiensi yang sulit dikompensasi dalam 48 menit.\n\n**Fast-break points:** DET 21, NO 9. Pistons lebih cepat memanfaatkan turnover, DET mencatat 7 steal malam ini, dan lebih rajin berlari. Selisih 12 poin dari fast break sendiri hampir setara margin kemenangan final.\n\nRebound (38-37) dan turnover (17-16) praktis imbang. DET menang karena tembak lebih baik dan lari lebih cepat.\n\n---\n\n## Catatan Akhir\n\nIni game ke-2 dari seri dua pertandingan musim reguler. DET menutup seri 1-0. Untuk kedua tim, laga ini adalah bagian dari kalkulasi playoff seeding, tapi angka-angkanya sudah bicara sendiri soal siapa yang lebih siap malam ini.\n\nTayangan lengkap tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910013",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 109,
+    "away_score": 122,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-11-19T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DET leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.038803,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stats, natural voice, and clean structure. Minor colloquial edges and one slightly awkward phrase, but no violations of hard rules. Passes cleanly.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "DET mencatat 7 steal malam ini, dan lebih rajin berlari",
+          "fix": "Rephrase as 'DET catat 7 steal dan lebih efisien dalam transisi.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Ini bukan malam yang buruk untuk Zion secara personal. Masalahnya, kontribusi di sekelilingnya tidak cukup merata.",
+          "fix": "Combine: 'Zion cetak 24 poin efisien, tapi Pelicans kehilangan konsistensi di pemain lain.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Lima pemain DET di double digit. Pelatih New Orleans tidak punya satu matchup pun yang bisa disebut 'terjaga.'",
+          "fix": "Try: 'Defensive assignment mana pun tak bisa dibilang ideal untuk New Orleans.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x61f1fda32ea9cff0",
+    "published_at": "2026-11-19T03:40:39+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

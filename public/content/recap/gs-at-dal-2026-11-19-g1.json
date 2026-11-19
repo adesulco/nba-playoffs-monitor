@@ -1,0 +1,38 @@
+{
+  "type": "recap",
+  "slug": "gs-at-dal-2026-11-19-g1",
+  "title": "Recap Golden State Warriors 94-116 Dallas Mavericks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs Dallas Mavericks (94-116) di —, 19 November 2026.",
+  "body_md": "# Dallas Mavericks Hajar Golden State 116-94, Cooper Flagg Tampil Misterius\n\nDallas Mavericks menang telak 116-94 atas Golden State Warriors di Game 2 Regular Season Series, Sabtu 19 November 2026. Cooper Flagg cetak 33 poin, 5 rebound, 9 asis, tampil di level berbeda dari siapa pun di lapangan malam ini. DAL unggul 2-0 dalam seri empat game ini.\n\n---\n\n## Top Performers\n\n### Dallas Mavericks\n\n**Cooper Flagg** bukan sekadar top scorer, dia penguasa permainan. 33 poin dari 11-15 field goal, termasuk 3-5 dari tiga poin. Efisiensi 11-15 itu bukan keberuntungan. itu pilihan shot yang matang dan finishing yang dingin. Ditambah 9 asis, Flagg nyaris merangkap sebagai playmaker utama Dallas malam ini.\n\nDi belakangnya, **P.J. Washington** tambah 21 poin dengan shooting yang nyaris sempurna, 7-10 FG, dan yang paling menyakitkan buat Warriors: 5-7 dari tiga poin. Washington jadi sumber serangan kedua yang konsisten, bukan sekadar benefiter dari attention yang Flagg tarik.\n\n**Kyrie Irving** 17 poin, 6 rebound, 5 asis dalam 29 menit. Laga yang solid tapi tidak perlu dipaksakan, ketika Flagg dan Washington sudah memimpin, Kyrie cukup jadi pengatur arus.\n\nOff the bench, **Naji Marshall** tambah 12 poin dari 4-8 FG dengan 2-4 dari tiga poin, kontribusi yang menjaga jarak tetap aman di kuarter ketiga dan keempat.\n\n### Golden State Warriors\n\nTidak ada yang bisa disebut sebagai ledakan performa dari sisi Warriors.\n\n**Will Richard** top scorer GS dengan 20 poin dari bench, 9-13 FG, termasuk 1-5 dari tiga poin, tapi itu dalam 27 menit sebagai cadangan, bukan starter yang memimpin kebangkitan. **Charles Bassey** mencatat 10 poin dan 8 rebound sebagai salah satu titik terang Warriors di area cat. **Brandin Podziemski** dan **Yaxel Lendeborg** masing-masing 10 dan 13 poin, tapi Lendeborg membutuhkan 18 tembakan untuk 13 poin, boros.\n\n---\n\n## Yang Bicara dari Box Score\n\nDua angka merangkum mengapa skor ini wajar: **three-point percentage**.\n\nDAL menembak 41% dari tiga poin, 17-41. GS hanya 24%, 9-38. Bukan hanya akurasi yang lebih baik, Dallas juga menembak lebih banyak dan jauh lebih efisien. Washington 5-7, Flagg 3-5, Marshall 2-4, tiga pemain berbeda yang semuanya panas dari luar.\n\nSelain itu, GS catat **19 turnover** dibanding 20 milik Dallas, jadi bukan soal jaga bola. Masalahnya lebih ke efisiensi serangan: FG% Warriors 43% vs Dallas 51%. Di area cat pun Warriors sebenarnya tidak buruk, 52 poin paint vs DAL 48, tapi itu tidak cukup ketika lawan meledak dari arc.\n\n**Free throw** juga mencolok: GS 53% (9-17), DAL 79% (15-19). Warriors meninggalkan poin di garis free throw.\n\n---\n\n## Momentum dan Jarak yang Tak Pernah Menyempit\n\nLaga memang ketat di menit-menit awal Q1, Flagg buka dengan three-pointer, Bassey jawab dengan alley-oop, Podziemski cetak dua poin untuk 6-6. Tapi kemampuan Dallas memanfaatkan setiap momentum dengan shooting yang efisien, terutama dari tiga poin, membuat Warriors tidak pernah benar-benar bisa menutup jarak setelah pertengahan game.\n\nKetika Flagg dan Washington konsisten dari luar, GS tidak punya jawaban sistematis. Itu yang membedakan.\n\n---\n\n## Selanjutnya\n\nDAL unggul 2-0 di seri empat game ini. Game 3 dan Game 4 masih menentukan gambaran akhir musim regular season series ini. Jadwal lanjutan belum tersedia di data yang ada.\n\nSiaran live lewat **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910016",
+    "home_team": "Dallas Mavericks",
+    "home_abbr": "DAL",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 116,
+    "away_score": 94,
+    "winner_abbr": "DAL",
+    "kickoff_utc": "2026-11-19T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DAL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022311,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 0,
+      "summary": "",
+      "issues": []
+    },
+    "plagiarism_hash": "0x66fb75a43a01c684",
+    "published_at": "2026-11-19T03:42:36+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
