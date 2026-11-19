@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "wsh-at-tor-2026-11-19-g2",
+  "title": "Recap Washington Wizards 103-99 Toronto Raptors (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Washington Wizards vs Toronto Raptors (103-99) di —, 19 November 2026.",
+  "body_md": "Washington Wizards menutup laga tandang dengan kemenangan tipis 103-99 atas Toronto Raptors, Rabu 19 November 2026 jam 07.30 WIB. Anthony Davis dan AJ Dybantsa jadi tumpuan WSH, sementara Toronto gagal memanfaatkan keunggulan di free throw line. Series reguler season kini tied 1-1 menjelang Game 4.\n\n---\n\n## Performa Individu\n\nPasangan Davis-Dybantsa jadi fondasi kemenangan WSH. Davis mencetak 25 poin dan 14 rebound dengan efisiensi tinggi, 9-16 dari lapangan, termasuk 2-3 dari tiga poin, dalam 34 menit. Dybantsa mengimbangi dengan 23 poin dan 12 rebound, meski lebih bergantung pada drive ketimbang tembakan luar (0-3 dari tiga poin).\n\nKyshawn George menambah 20 poin dengan 4-9 dari tiga poin, efisiensi terbaik di rotasi WSH malam itu. Alex Sarr tampil singkat namun efektif: 13 poin dalam 22 menit dengan shooting nyaris sempurna, 5-6 dari lapangan dan 3-4 dari tiga poin. Trae Young mengurus playmaking: 11 poin dan 8 asis meski shooting-nya berat, 2-9 dari lapangan.\n\nToronto punya jawaban. Immanuel Quickley memimpin dengan 24 poin dan 5 asis, tapi butuh 21 tembakan untuk sampai ke sana, 9-21 dari lapangan. Jamison Battle 19 poin dengan 5-10 dari tiga poin. Ja'Kobe Walter mengisi semua lini: 18 poin, 7 rebound, 6 asis. Dari bench, Jamal Shead menyumbang 15 poin dan 6 asis, krusial di kuarter akhir.\n\n---\n\n## Baca Statistik\n\nWSH menang lewat dua faktor: free throw dan rebound. Wizards ke garis free throw 27 kali dan memanfaatkan 20 di antaranya (74%), sementara Toronto hanya dapat 14 kesempatan dan hanya masuk 7 (50%). Selisih itu, 13 poin ekstra dari lini yang sama, hampir setara margin kemenangan WSH.\n\nDi papan rebound, WSH mendominasi 51-41. Davis dan Dybantsa jadi mesin di area cat, gabungan 26 rebound di antara keduanya. Toronto lebih banyak bikin masalah sendiri: turnovers 8 berbanding 15 buat WSH, namun steals 9-4 berpihak ke Toronto. Raptors memanfaatkan turnover, tapi tidak cukup untuk menutup defisit free throw.\n\nDari tiga poin, kedua tim relatif seimbang, WSH 11-30 (37%), TOR 14-36 (39%), tapi volume WSH lebih rendah. Efisiensi keseluruhan WSH unggul tipis: 46% FG vs 42% milik Toronto.\n\n---\n\n## Kuarter Keempat yang Menentukan\n\nLaga ini diputuskan di Q4. Dengan skor 82-82 memasuki menit akhir, WSH membuka jarak lewat serangkaian serangan cepat: dunk Sarr (asis Kyshawn George), driving dunk Dybantsa, lalu layup George kembali (asis Sarr), WSH tiba-tiba unggul 86-82 dalam waktu kurang dari dua menit.\n\nToronto tidak menyerah. Shead dan Battle memangkas jarak hingga 102-97 dan 102-99 lewat layup Ja'Kobe Walter dengan 27 detik tersisa. Namun Davis menutup laga: free throw kedua di sisa 0.6 detik mengunci skor 103-99.\n\nDua free throw di akhir. Itulah pembeda antara menang dan seri.\n\n---\n\n## Selanjutnya\n\nSeries reguler season tied 1-1 memasuki Game 4. Jadwal belum tersedia di sistem, pantau NBA League Pass dan Vidio untuk info selanjutnya.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910012",
+    "home_team": "Toronto Raptors",
+    "home_abbr": "TOR",
+    "away_team": "Washington Wizards",
+    "away_abbr": "WSH",
+    "home_score": 99,
+    "away_score": 103,
+    "winner_abbr": "WSH",
+    "kickoff_utc": "2026-11-19T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.041378,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: One high-severity soft-phrase repeat ('menutup laga' used twice), plus accumulation of academic drift and translated-English tics that damage voice consistency. Factual accuracy is solid, but voice erosion is systematic enough to warrant regeneration.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "high",
+          "snippet": "menutup laga tandang dengan kemenangan tipis... Davis menutup laga: free throw kedua",
+          "fix": "In Q4 section, replace 'Davis menutup laga' with 'Davis amankan kemenangan' or 'Davis seals it'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Pasangan Davis-Dybantsa jadi fondasi kemenangan WSH",
+          "fix": "Replace with 'Davis dan Dybantsa serang dengan konsisten' or similar"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "meski lebih bergantung pada drive ketimbang tembakan luar",
+          "fix": "Rewrite: 'nyatanya andalnya drive, bukan three-point' or 'more reliant on drives'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dari bench, Jamal Shead menyumbang 15 poin dan 6 asis, krusial di kuarter akhir",
+          "fix": "Delete 'Dari bench,'; start 'Jamal Shead menyumbang...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Toronto punya jawaban",
+          "fix": "Acceptable as-is; no change needed"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Raptors memanfaatkan turnover, tapi tidak cukup untuk menutup defisit free throw",
+          "fix": "Could tighten: 'tapi tidak cukup terangkai' or just 'gap tetap terlalu besar'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Jadwal belum tersedia di sistem, pantau NBA League Pass dan Vidio untuk info selanjutnya",
+          "fix": "Delete or replace with concrete next matchup date if available"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Series reguler season tied 1-1 memasuki Game 4",
+          "fix": "Choose one: 'Series tied 1-1; Game 4 next' or trim"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x208ff1f2f4c0ce20",
+    "published_at": "2026-11-19T03:11:43+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

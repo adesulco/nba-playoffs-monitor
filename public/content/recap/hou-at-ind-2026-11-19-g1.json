@@ -3,7 +3,7 @@
   "slug": "hou-at-ind-2026-11-19-g1",
   "title": "Recap Houston Rockets 119-104 Indiana Pacers (Game 1)",
   "description": "Recap NBA Playoffs 2026 — Houston Rockets vs Indiana Pacers (119-104) di —, 19 November 2026.",
-  "body_md": "I cannot proceed with generating the article body.\n\nThe input data contains unresolved contradictions that violate the core accuracy requirement:\n\n1. **Playoffs vs. Regular Season conflict:** \"NBA Playoffs 2026\" + \"Regular Season Series\" + November date create irreconcilable framing.\n2. **Missing roster data:** KEY PLAYS reference Ivica Zubac and Alperen Sengun, neither of whom appear in the TOP SCORERS blocks. Per the hard rules, I cannot invent facts or cite players not in the verified data.\n3. **Series state ambiguity:** \"HOU leads series 1-0\" + \"Game 2 of 2\" is internally unclear — this format does not match playoff or standard regular season structure.\n\n**Per the prompt's own instructions:** \"If you genuinely cannot fix a flag without violating these rules (e.g., a HIGH-severity factual error that would require inventing a different fact), DELETE the offending span.\"\n\nIn this case, the contradictions are structural, not span-level. Deleting KEY PLAYS would remove the core content; rewriting around the Playoffs/Regular Season conflict would require inventing facts.\n\n**Action required:** The writer (Ade) must clarify:\n- Is this Regular Season or Playoffs?\n- Are Sengun and Zubac in the box score? If not, should KEY PLAYS be omitted?\n- What does \"Series 1-0, Game 2 of 2\" mean in context?\n\nOnce clarified, I will generate a clean, accurate article immediately.\n",
+  "body_md": "Beberapa hal perlu dicatat sebelum recap ini bisa akurat sepenuhnya.\n\n**Masalah di KEY PLAYS block:** tiga key play yang tercantum menyebut Ivica Zubac dan Alperen Sengun, dua pemain yang tidak ada di roster HOU maupun IND di TOP SCORERS. Nama-nama ini tidak akan dikutip dalam recap karena tidak bisa diverifikasi dari input. KEY PLAYS juga hanya mencakup awal Q1 (skor 7-8), tidak ada momentum shift yang bisa dikutip untuk Q3/Q4.\n\n**Satu inkonsistensi data:** input mencantumkan \"Regular Season Series, HOU leads series 1-0, Game 2 of 2\", framing ini tidak konsisten (regular season tidak punya \"series state\" atau head-to-head dalam format ini). Recap akan mengabaikan framing series dan menulis sebagai laga regular season biasa.\n\n---\n\n## Houston Rockets Hantam Indiana Pacers 119-104, Durant Efisien di Balik Ledakan Tembakan Tiga Angka\n\nHouston Rockets menang 119-104 atas Indiana Pacers, Rabu 19 November 2026. Kemenangan ini dibangun di atas efisiensi tembakan tiga angka yang jauh melampaui tuan rumah, 19-35 (54%) berbanding 10-34 (29%). Selisih 15 poin itu tidak sebesar yang terlihat, tapi cara HOU membangunnya cukup meyakinkan.\n\n---\n\n## Performer Utama\n\nKevin Durant memimpin Houston dengan 21 poin, 2 rebound, 3 asis dari 7-9 field goal dan 4-5 dari garis tiga angka. Efisiensi shooting Durant malam ini, 32 menit, nyaris tidak ada shot yang terbuang, adalah fondasi yang menentukan ritme HOU dari awal.\n\nReed Sheppard jadi kejutan terbesar. Keluar dari bench, Sheppard cetak 20 poin dengan 6-7 dari tiga angka dalam 25 menit. Enam dari tujuh percobaan three-pointer masuk, angka yang sulit dipertahankan, tapi cukup untuk mengubur Pacers sebelum laga masuk paruh akhir.\n\nJabari Smith Jr. menambah 17 poin (7-10 FG, 3-6 dari tiga) dan Amen Thompson mengamankan 15 poin plus 9 rebound, satu-satunya pemain dengan double-figure poin dan mendekati double-digit rebound di laga ini. Fred VanVleet berperan sebagai motor offense dengan 6 asis, paling tinggi di antara semua pemain kedua tim, di samping 15 poin dan 3-7 dari tiga angka.\n\nDi sisi Indiana, Pascal Siakam paling produktif dengan 24 poin, 4 rebound, 3 asis dari 10-17 field goal. Siakam tampil konsisten, tapi kontribusinya tidak cukup untuk menutup defisit produksi three-pointer tim. Kelly Oubre Jr. menyumbang 17 poin dari bench dengan 2-5 dari tiga, dan Quenton Jackson menambah 15 poin (6-9 FG, 2-3 dari tiga). T.J. McConnell memberi energi dari bench: 14 poin dengan 7-10 field goal yang hampir sempurna dan 5 asis.\n\n---\n\n## Yang Bicara di Box Score\n\nPerbedaan paling tajam ada di tembakan tiga angka: HOU 54%, IND 29%. Dalam laga di mana kedua tim punya field goal percentage yang identik (49%), volume dan akurasi dari luar garis menjadi pembeda tunggal yang paling menentukan.\n\nHOU juga unggul besar di total rebound: 46 berbanding 35. Amen Thompson berkontribusi signifikan di angka itu. Di sisi lain, IND punya keunggulan di fast-break points (20 berbanding 7), steals (13 berbanding 7), dan points in paint (56 berbanding 40), artinya Pacers lebih dominan di dalam dan lebih aktif memanfaatkan transisi, tapi itu tidak cukup mengimbangi penalti yang mereka bayar di tembakan jauh.\n\nTurnover menjadi catatan untuk Houston: 17 kali melepas bola berbanding 13 milik Indiana. Kalau IND bisa mengkapitalisasi transisi lebih efisien, margin akhir bisa lebih rapat.\n\n---\n\n## Selanjutnya\n\nJadwal berikutnya untuk kedua tim belum tersedia di input. Pantau update di NBA League Pass dan Vidio.\n",
   "frontmatter": {
     "league": "nba",
     "sport": "basketball",
@@ -21,23 +21,59 @@
     "series_summary": "HOU leads series 1-0",
     "game_number": 1,
     "model": "claude-sonnet-4-6",
-    "cost_usd": 0.038087,
+    "cost_usd": 0.041768,
     "voice_lint": {
-      "verdict": "fail",
-      "score": 0,
-      "issue_count": 1,
-      "summary": "No article to review. Writer agent correctly rejected generation due to unresolvable factual conflicts in input data block. Requires Ade clarification before proceeding.",
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has solid factual accuracy and voice is mostly conversational, but fails on two hard violations: meta-preamble (academic drift at start) and overused \"Selanjutnya\" filler section. Closing section header is awkward. Multiple low-medium issues with English calques and hedging language. Regenerate without preamble; trim academic connectors; tighten paragraph transitions.",
       "issues": [
         {
-          "type": "other",
+          "type": "academic_drift",
           "severity": "high",
-          "snippet": "No article provided — writer agent refused generation due to data contradiction",
-          "fix": "Ade must resolve: (1) Playoffs or Regular Season? (2) Include Sengun/Zubac in box score or omit KEY PLAYS? (3) Clarify series state format."
+          "snippet": "Beberapa hal perlu dicatat sebelum recap ini bisa akurat sepenuhnya.",
+          "fix": "Delete this entire preamble. Start directly with the match summary."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Selanjutnya, Jadwal berikutnya untuk kedua tim belum tersedia",
+          "fix": "Delete section header. Rewrite as: \"Laga berikutnya kedua tim — pantau update di NBA League Pass dan Vidio.\""
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang Bicara di Box Score — Perbedaan paling tajam ada di tembakan tiga angka",
+          "fix": "Use: \"Di Mana Perbedaannya\" or \"Box Score\" or just start with the fact."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Reed Sheppard jadi kejutan terbesar. Keluar dari bench, Sheppard cetak 20 poin",
+          "fix": "Combine: \"Reed Sheppard kejutan terbesar: 20 poin dari bench, 6-7 dari tiga dalam 25 menit.\""
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Enam dari tujuh percobaan three-pointer masuk, angka yang sulit dipertahankan",
+          "fix": "Delete the hedge. State fact: \"Enam dari tujuh percobaan three-pointer masuk.\""
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Efisiensi shooting Durant malam ini, 32 menit, nyaris tidak ada shot yang terbuang",
+          "fix": "Use: \"Durant hampir tidak ada shot yang terbuang\" or simply \"Durant jalan besar.\""
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Di sisi lain, IND punya keunggulan di fast-break points (20 berbanding 7), steals (13 berbanding 7)",
+          "fix": "Reformat: \"IND unggul di fast-break (20 vs 7), steals (13 vs 7), dan paint points (56 vs 40).\""
         }
       ]
     },
-    "plagiarism_hash": "0x66ca5c51503dcc17",
-    "published_at": "2026-11-19T02:33:15+00:00",
+    "plagiarism_hash": "0x8b5ffde024299fb4",
+    "published_at": "2026-11-19T03:08:10+00:00",
     "version": 1,
     "manual_review": true
   },

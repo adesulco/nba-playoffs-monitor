@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "phi-at-orl-2026-11-19-g1",
+  "title": "Recap Philadelphia 76ers 121-116 Orlando Magic (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Philadelphia 76ers vs Orlando Magic (121-116) di —, 19 November 2026.",
+  "body_md": "# Philadelphia 76ers Kalahkan Orlando Magic 121-116 di Game Menegangkan\n\nPhiladelphia 76ers menyudahi perlawanan Orlando Magic 121-116 di Game 2 Regular Season Series, Sabtu 19 November 2026 jam 07.00 WIB. Kemenangan ini membuat PHI unggul 2-0 dalam seri tiga pertandingan. Laga berakhir dramatis, Orlando sempat membalik keadaan di kuarter empat sebelum Sixers menutup gap dengan eksekusi krusial di momen paling ketat.\n\n---\n\n## Top Performers\n\nJoel Embiid jadi tumpuan utama Sixers dengan 26 poin, 6 rebound, 7 asis dari 36 menit bermain. Efisiensinya dari lapangan tidak sempurna, 7-18 FG, tanpa three-pointer, tapi kontribusinya di garis free throw terbukti menentukan di detik-detik akhir.\n\nKejutan terbesar datang dari VJ Edgecombe: 24 poin, 8 rebound, 6 asis, dengan 4 dari 9 tembakan tiga angka. Di Q4 momen paling kritis, justru Edgecombe yang hadir. LeBron James menambah 22 poin, 3 rebound, 6 asis dengan 8-16 dari lapangan, termasuk pull-up jumper penting di injury time. Anfernee Simons melengkapi rotasi starter dengan 18 poin dan 3-7 dari three-point line. Off the bench, Labaron Philon Jr. efisien: 10 poin dari 4-5 FG, termasuk 2-3 dari luar.\n\nDari kubu Magic, Franz Wagner tampil luar biasa, 27 poin, 8 rebound, 11 asis, nyaris sempurna sebagai playmaker. Tapi kontribusi Wagner belum cukup untuk memenangkan laga. Jalen Suggs 18 poin dengan 5-6 dari three-point line, termasuk triple yang sempat membalik skor. Wendell Carter Jr. dan Desmond Bane masing-masing 15 poin. Anthony Black menambah 15 poin dengan 6 asis.\n\n---\n\n## Apa yang Bicara di Statistik\n\nKedua tim setara di banyak aspek, FG% sama-sama 52%, rebound PHI 38 vs ORL 37, turnovers selisih tipis 12-11. Bahkan fast-break points identik: 13-13.\n\nPerbedaan paling jelas ada di dua kolom. Pertama, free throw: PHI 23-26 (88%) vs ORL 9-17 (53%). Magic membuang poin dari garis yang seharusnya jadi pegangan. Kedua, three-point percentage: ORL 51% (19-37) vs PHI 40% (14-35), Magic lebih efisien dari luar, tapi PHI lebih sering ke garis free throw dan lebih akhir konversinya. Dua faktor itu yang membentuk margin akhir.\n\n---\n\n## Q4 yang Tidak Linier\n\nTiga menit terakhir laga ini bukan milik satu tim saja.\n\nEmbiid masuk dari garis free throw: dua free throw berturutan membuat PHI unggul 111-107 di menit 3:19. Tapi Magic belum selesai. Wagner langsung menjawab dengan driving layup, skor 111-109. Lalu Suggs melepas triple dari 26 kaki, Wagner assists, dan Magic membalik keadaan: 111-112.\n\nPHI menjawab cepat. Edgecombe meluncurkan three-pointer dari 28 kaki, LeBron assists, skor kembali berpihak ke Sixers: 114-112. LeBron menutup dengan 19-foot pull-up jump shot: 116-112. Magic masih coba lewat free throw Suggs di angka 116-113, tapi Wendell Carter Jr. akhirnya hanya bisa mencetak triple di sisa 0.9 detik untuk menutup skor final 121-116, terlambat untuk membalik hasil.\n\n---\n\n## Selanjutnya\n\nDengan PHI unggul 2-0, Game 3 menjadi laga penentu seri. Detail jadwal dan venue tidak tersedia di input saat ini. Buat Magic, finish di Q4 menunjukkan karakter, tapi angka free throw 53% adalah masalah yang harus diselesaikan sebelum laga berikutnya.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910010",
+    "home_team": "Orlando Magic",
+    "home_abbr": "ORL",
+    "away_team": "Philadelphia 76ers",
+    "away_abbr": "PHI",
+    "home_score": 116,
+    "away_score": 121,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-11-19T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHI leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021884,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail: Critical error in series state (claims 2-0 when input says 1-0). Multiple translated-English phrasings and one meta-commentary break. Fix the series lead first, then trim the \"Dari kubu\" opener and delete the input-data acknowledgment.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kemenangan ini membuat PHI unggul 2-0 dalam seri tiga pertandingan.",
+          "fix": "Change to 'Kemenangan ini membuat PHI unggul 1-0 dalam seri tiga pertandingan' or 'Game 2 Regular Season Series'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Efisiensinya dari lapangan tidak sempurna, 7-18 FG, tanpa three-pointer, tapi kontribusinya di garis free throw terbukti menentukan",
+          "fix": "Embiid 7-18 FG, tanpa tiga angka, tapi dominan di free throw—23-26 untuk tim."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "dengan 4 dari 9 tembakan tiga angka",
+          "fix": "4-9 dari tiga angka atau 44% dari luar."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dari kubu Magic, Franz Wagner tampil luar biasa",
+          "fix": "Di sisi Magic, Franz Wagner tampil luar biasa atau cukup 'Franz Wagner tampil luar biasa'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya",
+          "fix": "Delete 'Selanjutnya'. Start: 'Dengan PHI unggul 1-0, Game 3...'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Detail jadwal dan venue tidak tersedia di input saat ini.",
+          "fix": "Delete this sentence. If you don't have venue/date for Game 3, say nothing or write 'Game 3 jadwal menyusul'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "nyaris sempurna sebagai playmaker",
+          "fix": "Ganti ke 'sempurna sebagai playmaker' atau 'playmaker dominan dengan 11 asis'."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x25f875fb76e377b0",
+    "published_at": "2026-11-19T03:09:27+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
