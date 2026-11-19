@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "phx-at-sac-2026-11-19-g1",
+  "title": "Recap Phoenix Suns 128-107 Sacramento Kings (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs Sacramento Kings (128-107) di —, 19 November 2026.",
+  "body_md": "# Phoenix Suns Hajar Sacramento Kings 128-107, Brooks dan Booker Kompak Cetak 29 Poin\n\nPhoenix Suns menang telak 128-107 atas Sacramento Kings di kandang SAC, Rabu 19 November 2026. Dillon Brooks dan Devin Booker masing-masing cetak 29 poin, duo yang kompak merobek pertahanan Kings dari segala sudut. PHX kini unggul 1-0 dalam regular season series empat pertemuan ini.\n\n---\n\n## Dua Kepala, Satu Niat\n\nBrooks dan Booker jadi narasi tunggal malam ini. Brooks 29 poin dari 12-18 FG dan 5-9 dari garis tiga, efisiensi yang jarang kamu lihat dari seorang perimeter defender yang juga dipakai sebagai shot-creator. Booker di sisi lain lebih banyak memimpin permainan: 29 poin, 6 asis, 10-18 FG. Dua pemain berbeda gaya, output yang identik.\n\nJalen Green melengkapi starting five PHX dengan kontribusi all-around: 18 poin, 7 rebound, 7 asis dari 6-14 FG termasuk 4-7 dari tiga angka. Angkanya mendekati triple-double tapi yang lebih penting adalah variasi kontribusinya, Green tidak hanya scoring, dia mendistribusikan bola dan menjaga papan rebound PHX tetap kompetitif.\n\nMiles Bridges chipping in 13 poin, 6 rebound, 5 asis, model forward two-way yang diam-diam merekatkan rotasi PHX. Off the bench, rookie Khaman Maluach dapat 10 poin dari 4-5 FG dalam 21 menit. Efisien.\n\n---\n\n## Acuff Jr. Berjuang Sendiri\n\nDi sisi Kings, Darius Acuff Jr. tampil luar biasa secara individual, 36 poin, 4 rebound, 6 asis, dengan 6-11 from three. Tapi SAC kalah 21 poin. Angka itu menggambarkan masalah yang lebih dalam: satu pemain tidak cukup untuk menutup selisih efisiensi tim yang sebesar ini.\n\nZach LaVine menyumbang 18 poin dari 8-12 FG, termasuk 2-6 dari tiga angka. Keegan Murray 12 poin, 7 rebound, 3 asis. Domantas Sabonis tidak dominan secara poin, hanya 8 poin dari 4-7 FG, tapi dia mencatat 13 rebound dan 8 asis, angka yang seharusnya bisa dikonversi jadi lebih banyak poin tim. Sayangnya tidak terjadi malam ini.\n\n---\n\n## Angka yang Menjelaskan Segalanya\n\nPHX menembak 57% dari lapangan, SAC 47%. Selisih itu sudah cukup menceritakan cerita. Tapi angka paling mengkhawatirkan buat Kings ada di statistik points in paint: PHX 60, SAC 42. Selisih 18 poin di area cat, artinya drive PHX konsisten menghasilkan konversi sementara pertahanan interior SAC bocor sepanjang malam.\n\nDari tiga angka, PHX 44% (15-34) vs SAC 35% (14-40). PHX lebih sedikit mencoba tapi mengkonversi lebih tinggi. SAC melepas enam tembakan tiga angka lebih banyak dari PHX tapi hasilnya sama dalam jumlah made, itu inefisiensi yang menekan.\n\nTurnovers juga berpihak ke PHX: Kings 16, Suns 12. Empat turnover lebih banyak di tingkat playoff, apalagi regular season series yang setiap poin vital, itu berkontribusi langsung ke margin.\n\n---\n\n## Momen Penentu dan Pandangan ke Depan\n\nQ1 berjalan ketat, KEY PLAYS menunjukkan kedua tim bergantian unggul di menit-menit awal, skor silih berganti antara 18-20 sampai 30-29 menjelang akhir kuarter pertama. Booker menutup Q1 dengan reverse layup dan tiga angka untuk balik unggul PHX. Dari sana, momentum tidak pernah benar-benar berbalik lagi ke Kings.\n\nPHX kini unggul 1-0 dalam regular season series. Sisa tiga pertemuan akan menentukan siapa yang mendapat keuntungan head-to-head jika persaingan klasemen mempertemukan kedua tim kembali. Untuk SAC, pertanyaannya sederhana: bagaimana menghentikan duo Brooks-Booker yang malam ini tampil di level tertinggi?\n\n---\n\nGame selanjutnya dapat disaksikan live di **NBA League Pass dan Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910018",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 107,
+    "away_score": 128,
+    "winner_abbr": "PHX",
+    "kickoff_utc": "2026-11-19T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHX leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023472,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has strong stat accuracy and logical structure but fails on pronoun discipline ('kamu' in body copy is high-severity violation per voice rules). Academic drift and translated-English idioms (sisi Kings, cerita) pull register up slightly; several soft-filler phrases ('Sayangnya tidak terjadi', 'menceritakan cerita') clutter the flow. Tighten diction and remove direct-address pronoun to reach pass threshold.",
+      "issues": [
+        {
+          "type": "pronoun_violation",
+          "severity": "high",
+          "snippet": "efisiensi yang jarang kamu lihat dari seorang perimeter defender",
+          "fix": "Remove 'kamu' entirely: 'efisiensi yang jarang terlihat dari seorang perimeter defender'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "Jalen Green melengkapi starting five PHX dengan kontribusi all-around: 18 poin",
+          "fix": "Voice fine here, but watch cumulative tense-marker density in recap body"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka itu menggambarkan masalah yang lebih dalam: satu pemain tidak cukup",
+          "fix": "Tighten: 'Angkanya cerita: satu pemain tidak cukup untuk tutup selisih efisiensi 21 poin'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di sisi Kings, Darius Acuff Jr. tampil luar biasa secara individual",
+          "fix": "Use 'Untuk Kings' or just: 'Darius Acuff Jr. tampil luar biasa secara individual, tapi...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Sayangnya tidak terjadi malam ini",
+          "fix": "Delete. End previous sentence with period or combine: 'Domantas Sabonis... tapi duo lain tidak follow.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "PHX kini unggul 1-0 dalam regular season series. Sisa tiga pertemuan akan menentukan siapa",
+          "fix": "More casual: 'Tiga pertemuan tersisa. SAC harus balik ke level permainan yang lebih tinggi.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "PHX menembak 57% dari lapangan, SAC 47%. Selisih itu sudah cukup menceritakan cerita.",
+          "fix": "Tighten: 'PHX 57%, SAC 47%. Sepuluh poin selisih sudah menjelaskan segalanya.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Game selanjutnya dapat disaksikan live di NBA League Pass dan Vidio.",
+          "fix": "Either add matchup detail or integrate into previous paragraph; standalone feels editorial template"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x0253f5f99d45dea0",
+    "published_at": "2026-11-19T08:34:48+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
