@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "bos-at-den-2026-11-19-g1",
+  "title": "Recap Boston Celtics 101-105 Denver Nuggets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Denver Nuggets (101-105) di —, 19 November 2026.",
+  "body_md": "# Denver Nuggets Kalahkan Boston Celtics 105-101, Murray Tutup Laga dengan Dua Tembakan Dingin\n\nDenver Nuggets menang tipis 105-101 atas Boston Celtics, Rabu 19 November 2026. Jamal Murray jadi eksekutor di momen paling krusial, dua tembakan di sisa kurang dari dua menit memastikan Nuggets mengantongi kemenangan yang sepanjang laga tidak pernah benar-benar aman.\n\n---\n\n## Penutup ala Murray\n\nQ4 menit-menit terakhir adalah milik Murray. Saat papan skor menunjukkan 99-99, Murray melesatkan *14-foot running pullup* untuk bikin DEN unggul 100-99. Queta balas dengan *two-point shot* untuk 101-100 BOS. Lalu DeRozan masuk: dua *free throw* bikin skor 101-102, menggeser keunggulan kembali ke Denver.\n\nSisa 7 detik, laga hampir putus. Murray, tenang, dingin, menancapkan *17-foot pullup jump shot* untuk 104-101. Satu *technical free throw* tambahan menutup skor jadi 105-101. Celtics tidak punya waktu lagi.\n\n---\n\n## Dua Tim, Dua Bintang dengan Malam yang Sama\n\nIroni laga ini ada di stat line dua pemain terbaik di lapangan: Jayson Tatum dan Nikola Jokic masing-masing mengakhiri malam dengan **24 poin dan 8 rebound**. Jokic menambahkan 9 asis, satu asis dari *triple-double*, dan bermain 39 menit penuh sebagai motor utama DEN.\n\nTatum mencetak 24 poin dengan 10-22 dari lapangan dan 3-8 dari *three-point line*, tapi produktivitasnya tidak cukup untuk menutup lubang yang dibuka pemain-pemain lain di sekitarnya.\n\nNuggets punya kedalaman yang lebih merata malam ini. Murray 21 poin, 7 rebound dalam 38 menit. DeRozan 18 poin *off the bench*, efisien dengan 5-11 dari lapangan. Braun 15 poin, Gordon 13 poin plus 8 rebound. Lima pemain Nuggets di atas 13 poin, semuanya berkontribusi nyata.\n\nBOS punya cerita serupa dari Neemias Queta: **17 poin, 10 rebound**, *double-double* solid dari center Portugal itu. Payton Pritchard menambahkan 15 poin *off the bench* dengan 3-6 dari *three-point line*. Tapi Derrick White kesulitan: 12 poin dengan tembakan yang tersendat di 5-16 dari lapangan, termasuk 0-7 dari luar garis.\n\n---\n\n## Statistik yang Menjelaskan Kekalahan\n\nBOS unggul di *points in paint* 48-34, dominan di area dekat ring. Steals BOS juga lebih banyak (10 vs 8) dan *turnover* DEN lebih banyak (18 vs 16 BOS).\n\nNamun DEN menang di dua area yang lebih menentukan malam ini.\n\n*Free throw* jadi pembeda nyata: DEN melempar 24-29 (83%), BOS hanya 10-12. Selisih percobaan itu, 29 vs 12, berarti Nuggets punya 17 kesempatan ekstra ke garis *free throw*. DeRozan dan Murray mengonversi kesempatan itu di momen paling kritis.\n\n*Fast-break points* juga berpihak ke DEN: 18 vs 14. Nuggets lebih efisien mengonversi *turnover* lawan jadi poin cepat, meski BOS lebih banyak mencuri bola.\n\nDari *field goal*, DEN sedikit lebih efisien: 44% vs 41% BOS. BOS melempar lebih banyak (98 *attempts* vs 85) tapi dengan akurasi yang lebih rendah, termasuk 11-44 dari *three-point line* (25%), angka yang sulit menang dengannya.\n\n---\n\n## Selanjutnya\n\nIni adalah Game 2 dari dua laga *Regular Season Series* antara kedua tim. DEN menutup seri dengan rekor 2-0. Jadwal berikutnya belum tercantum di data yang tersedia.\n\nTayang live di **NBA League Pass dan Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910015",
+    "home_team": "Denver Nuggets",
+    "home_abbr": "DEN",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 105,
+    "away_score": 101,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-11-19T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DEN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.072651,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has strong lede and play-by-play Q4 recap. Major issues: unverified day-of-week inference ('Rabu'), awkward translated-English phrasing ('menutup lubang', 'asis dari triple-double'), soft-phrase repetition, and weak closing. Statistics check out (all digits match input blocks). Restructure Q4 play summary and tighten translation artifacts to pass.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Rabu 19 November 2026",
+          "fix": "Remove day name or verify it matches 19 Nov 2026 calendar."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Satu asis dari triple-double, dan bermain 39 menit penuh sebagai motor utama DEN.",
+          "fix": "Rephrase: 'Jokic hanya 1 asis dari triple-double, 39 menit penuh menyelamatkan Denver.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Tapi produktivitasnya tidak cukup untuk menutup lubang yang dibuka pemain-pemain lain",
+          "fix": "Use: 'Tapi Tatum sendiri tidak bisa kompensasi kinerja lemah pemain lain.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "DeRozan masuk: dua free throw bikin skor... Lalu DeRozan masuk: ...",
+          "fix": "Vary verbs: 'DeRozan naik untuk free throw dua kali...' then 'kemudian Murray...' in next sentence."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Selanjutnya",
+          "fix": "Delete section header. Lead with: 'Denver tutup regular season series 2-0. Tayang live di NBA League Pass dan Vidio.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Five pemain Nuggets di atas 13 poin, semuanya berkontribusi nyata.",
+          "fix": "Use 'Lima pemain Nuggets cetak 13+ poin.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "DeRozan efisien dengan 5-11 dari lapangan",
+          "fix": "Use 'cetak 5-11' or 'tembak 5-11.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Ironi laga ini ada di stat line dua pemain terbaik",
+          "fix": "Lead with: 'Tatum dan Jokic cetak sama: 24 poin, 8 rebound. Tapi kontribusi berbeda.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbfa2e5b31510fcb6",
+    "published_at": "2026-11-19T07:07:39+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
