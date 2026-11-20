@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "gs-at-mem-2026-11-20-g2",
+  "title": "Recap Golden State Warriors 98-126 Memphis Grizzlies (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs Memphis Grizzlies (98-126) di —, 20 November 2026.",
+  "body_md": "# Memphis Grizzlies Pukul Golden State 126-98, Unggul 2-0 di Regular Season Series\n\nMemphis Grizzlies menang telak atas Golden State Warriors 126-98 di Game 3 regular season series, Sabtu 20 November 2026. Kemenangan ini membuat MEM unggul 2-0 di seri empat pertandingan. Bukan sekadar menang, ini pernyataan dominasi dari tim yang bermain hampir sempurna di kedua sisi lapangan.\n\n---\n\n## Memphis: Lima Pemain, Satu Narasi\n\nYang membuat kemenangan ini menarik bukan nama besarnya, tapi kedalamannya. Memphis punya lima pemain dengan 14 poin atau lebih, tanpa satu pun yang terlihat memaksakan.\n\nJaylen Wells jadi top scorer dengan 22 poin dan 7 rebound, efisiensi-nya luar biasa: 8-10 dari lapangan, 4-5 dari tiga poin, hanya bermain 24 menit. Cedric Coward menyumbang 19 poin dan 4 asis, dengan 5-9 dari tiga poin, salah satu alasan Memphis akhirnya mendominasi dari luar arc. Cameron Boozer tampil mulus dengan 16 poin, 6 rebound, 5 asis, dan 6-6 dari lapangan, zero waste, nol missed shot. Off the bench, Olivier-Maxence Prosper cetak 16 poin dan Javon Small 14 poin dengan 7 rebound serta 7 asis.\n\nSmall, dalam 25 menit, nyaris triple-double. Coward dari bench punya shooting touch yang tidak bisa dijaga GS. Memphis bermain seperti tim yang tahu persis kelebihannya.\n\n---\n\n## Three-Point Gap yang Menentukan\n\nAngka paling jelas malam ini: **MEM 15-35 dari tiga poin (43%), GS 5-29 (17%).**\n\nSelisih 10 made three-pointers itu setara sekitar 20 poin hanya dari luar arc, cukup untuk menjelaskan sebagian besar margin 28 poin. Golden State terlalu sering mengandalkan tembakan tiga angka yang tidak masuk, sementara Memphis mengeksekusi dengan konsisten.\n\nMasalah GS tidak berhenti di sana. Assists 20 vs 34 menunjukkan Memphis jauh lebih cair dalam ball movement. Turnovers GS mencapai 22, lebih tinggi dari Memphis yang 18. Dua angka ini bersamaan menggambarkan tim yang kehilangan kendali permainan sejak awal.\n\nMemphis juga unggul di fast-break points (14 vs 7), sebagian besar dikonversi dari turnover GS, dan points in paint (62 vs 54). Tidak ada area yang dikuasai Golden State malam ini.\n\n---\n\n## Sisi GS: Bassey Jadi Satu-satunya Cerita\n\nDari kubu Warriors, Charles Bassey layak dapat kredit. Center starter ini cetak 16 poin dan 13 rebound dengan shooting 6-7 dari lapangan, salah satu stat line paling efisien di tim, meski timnya kalah besar. Brandin Podziemski (15 poin) dan Will Richard (15 poin dari bench) mencoba bertahan, tapi kontribusi mereka tenggelam dalam kolaps kolektif: shooting keseluruhan 41%, tiga poin 17%.\n\nYaxel Lendeborg main 33 menit dengan 11 poin, 8 rebound, dan 7 asis, angka yang bagus secara kuantitatif, tapi GS masih kalah 28 poin. Individual bright spots tidak cukup ketika ball movement macet dan perimeter defense bocor.\n\n---\n\n## Seri Belum Selesai, Tapi Momentum Jelas\n\nMemphis memimpin 2-0 di seri empat pertandingan. Golden State butuh minimal dua kemenangan beruntun untuk membalikkan keadaan, dan malam ini tidak memberikan tanda-tanda mereka punya jawaban untuk shooting depth Memphis.\n\nGame 4 adalah kesempatan berikutnya. Jika GS tidak menemukan solusi untuk tiga poin Memphis dan mengendalikan turnover, seri ini bisa tutup lebih cepat dari yang diharapkan.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910019",
+    "home_team": "Memphis Grizzlies",
+    "home_abbr": "MEM",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 126,
+    "away_score": 98,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-11-20T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MEM leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.06706,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate stats, good structure, and clean NBA voice. Minimal drift—mostly soft stylistic notes. Voice stays grounded in data and avoids academic register. Pass.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang membuat kemenangan ini menarik bukan nama besarnya, tapi kedalamannya.",
+          "fix": "Start with concrete fact: 'Memphis menang bukan karena satu nama besar, tapi kedalaman roster.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Memphis bermain seperti tim yang tahu persis kelebihannya.",
+          "fix": "Delete or replace: 'Memphis tahu kekuatannya dan eksekusi setiap saat.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Off the bench, Olivier-Maxence Prosper cetak 16 poin",
+          "fix": "Replace 'Off the bench' with 'Dari bench' for consistency."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xeed159a1610fae84",
+    "published_at": "2026-11-20T04:06:46+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
