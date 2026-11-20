@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "por-at-mil-2026-11-20-g1",
+  "title": "Recap Portland Trail Blazers 124-114 Milwaukee Bucks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs Milwaukee Bucks (124-114) di —, 20 November 2026.",
+  "body_md": "## Portland Hentikan Milwaukee, Lillard dan Bench Depth Jadi Kunci\n\nPortland Trail Blazers menang 124-114 atas Milwaukee Bucks dalam laga kedua Regular Season Series, Sabtu 20 November 2026. Damian Lillard mengemas 33 poin untuk memimpin POR, sementara depth bench Blazers terbukti jadi pembeda, dua pemain dari bangku cadangan gabungkan 49 poin. POR kini unggul 1-0 di seri ini.\n\n---\n\n## Top Performers\n\nLillard tampil konsisten sebagai motor utama. Dari 35 menit di lapangan, dia cetak 33 poin dengan efisiensi solid: 10-18 dari field, 5-12 dari garis tiga angka. Nol assist malam ini, tapi fungsinya malam ini bukan playmaker, melainkan shot-creator yang diserahkan tugas memastikan angka terus naik.\n\nYang menarik justru datang dari bench POR. Scoot Henderson, keluar dari bangku cadangan, cetak 27 poin, 7 rebound, 3 asis, dengan efisiensi luar biasa: 8-12 dari field dan 5-6 dari tiga angka. Lima dari enam tembakan tiga angkanya masuk. Ini bukan hot streak kebetulan. ini efisiensi yang menekan. Jrue Holiday, juga dari bench, tambahkan 22 poin dan 7 asis dengan 8-14 dari field.\n\nDi sisi MIL, Tyler Herro jadi penyumbang tertinggi dengan 19 poin, tapi dia juga yang terlibat dalam momen paling menegangkan di kuarter akhir. Nate Ament (18 poin, 9 rebound) dan Kasparas Jakucionis (18 poin, bench) memberi MIL opsi skoring yang cukup bervariasi. Masalahnya bukan pada individual scoring, masalahnya ada di sisi lain stats sheet.\n\n---\n\n## Baca Statistik\n\nDua angka paling menjelaskan hasil ini: FG% dan rebound.\n\nPOR tembak 53% dari field vs MIL 44%. Perbedaan 9 poin persentase itu besar dalam konteks laga ketat, artinya dari volume tembakan yang hampir setara (POR 77 attempt, MIL 91), Blazers jauh lebih efisien. MIL butuh lebih banyak tembakan untuk mengimbangi, dan itu berkorelasi langsung dengan turnover dan pace.\n\nRebound: POR 45 vs MIL 35. Sepuluh rebound lebih banyak di laga dengan pace setinggi ini berarti banyak second-chance opportunity yang POR kendalikan. Points in paint keduanya sama, 42-42, tapi POR mengonversinya dengan lebih sedikit possession.\n\nTurnover POR (22) lebih tinggi dari MIL (17), tapi dampaknya tidak sebanding karena efisiensi shooting POR cukup tinggi untuk menutup kerugian itu. Free throw juga berpihak ke POR: 25-32 (78%) vs MIL 18-26 (69%).\n\n---\n\n## Momen Penentu\n\nKuarter keempat sempat memberi MIL secercah harapan. Dari 110-108 di menit 5:04, selisih papan skor terus bergerak tipis. Holiday buat 112-108, Herro balas dengan pullup jadi 112-110. Lalu Lillard turun tangan, tembakan tiga angka dari jarak 26 kaki mengubah skor jadi 115-110.\n\nMIL tidak berhenti. Ament bikin layup, Herro tambah driving layup, tiba-tiba skor 115-114, dua setengah menit tersisa. Tipis.\n\nTapi POR tidak panik. Donovan Clingan tip shot: 117-114. Holiday running layup setelahnya: 119-114. Dari situ MIL tidak pernah kembali dalam jangkauan.\n\n---\n\n## Selanjutnya\n\nIni adalah Game 2 dari seri dua laga. POR menutup seri Regular Season ini dengan rekor 1-0. Jadwal lanjutan tidak tersedia di data saat ini.\n\nSiaran langsung melalui NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910020",
+    "home_team": "Milwaukee Bucks",
+    "home_abbr": "MIL",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 114,
+    "away_score": 124,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-11-20T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020828,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail. High-severity training inference (Donovan Clingan not in input), machine-translation grammar error (lowercase 'ini'), and academic register drift. Remove grounded player name or verify against input data before republish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Donovan Clingan makes tip shot (score 117-114)",
+          "fix": "Remove player name; rewrite as 'Tip-in membuat skor 117-114' or check input data for actual player."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Ini bukan hot streak kebetulan. ini efisiensi yang menekan.",
+          "fix": "Revise: 'Bukan hot streak kebetulan. Efisiensi yang menekan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Sepuluh rebound lebih banyak di laga dengan pace setinggi ini berarti banyak second-chance opportunity",
+          "fix": "Simplify: 'Sepuluh rebound lebih, itu second-chance yang POR ambil.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dari 110-108 di menit 5:04, selisih papan skor terus bergerak tipis.",
+          "fix": "Revise: 'Dari 110-108 di menit 5:04, skor terus bergerak tipis.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Yang menarik justru datang dari bench POR. Scoot Henderson, keluar dari bangku cadangan",
+          "fix": "Remove 'bangku cadangan'; keep just: 'Scoot Henderson cetak 27 poin dengan efisiensi luar biasa.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Jadwal lanjutan tidak tersedia di data saat ini.",
+          "fix": "Delete or rewrite as 'Seri POR vs MIL lanjut dengan format best-of-X TBA.' (or leave blank)"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7ccbfd92c4f1d5a0",
+    "published_at": "2026-11-20T03:34:30+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

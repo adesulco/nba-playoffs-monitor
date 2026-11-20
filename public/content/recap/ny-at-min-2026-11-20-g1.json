@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "ny-at-min-2026-11-20-g1",
+  "title": "Recap New York Knicks 102-99 Minnesota Timberwolves (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New York Knicks vs Minnesota Timberwolves (102-99) di —, 20 November 2026.",
+  "body_md": "# Knicks Hentikan Timberwolves di Menit-Menit Akhir, 102-99\n\nNew York Knicks menang tipis atas Minnesota Timberwolves 102-99 dalam laga reguler NBA, Kamis 20 November 2026 pukul 08.00 WIB. Karl-Anthony Towns cetak 22 poin plus 12 rebound, sementara Jalen Brunson memastikan kemenangan lewat kontribusi 21 poin dan 7 asis. NY kini unggul 1-0 dalam regular season series dua laga ini.\n\n---\n\n## Performa Individu\n\nTowns jadi cerita utama malam ini. Dua belas rebound dan 22 poin itu memberi Knicks jangkar yang stabil di dalam, meski efisiensinya tidak sempurna: 9-20 from field, 2-8 dari garis tiga angka. Penting bukan statistiknya, tapi stabilitas dalam rebound—NY akhiri laga dengan 40 rebound berbanding 39 milik MIN.\n\nBrunson, seperti biasa, jadi pengatur tempo. Dua puluh satu poin, 7 asis, sempurna 4-5 dari tiga angka tanpa banyak kesalahan distribusi. OG Anunoby menambah 15 poin dan 7 rebound, efisien di 6-12 from field. Josh Hart konsisten dengan 11 poin dan 6 rebound, sementara Landry Shamet off the bench berkontribusi 10 poin dengan shooting solid 3-4 dari lapangan.\n\nDi kubu MIN, Jonathan Kuminga tampil paling tajam dengan 23 poin dari 7-13 from field. Jaden McDaniels mengesankan dengan 17 poin, perfect 4-4 dari three-point line. LaMelo Ball cetak 15 poin, 8 rebound, dan 8 asis, tapi shooting-nya berat: 6-21 from field, 3-10 dari tiga angka. Rudy Gobert berperan sebagai anchor pertahanan dengan 9 poin dan 7 rebound meski tanpa asis malam ini.\n\n---\n\n## Baca Statistiknya\n\nDua tim bermain di level yang hampir identik, FG% NY 45% berbanding MIN 44%, three-point percentage bahkan berbalik tipis ke MIN (45%) dibanding NY (44%). Di atas kertas, laga ini memang sedekat skornya.\n\nPerbedaan paling mencolok ada di dua area. Pertama, free throw: NY sempurna 11-11 (100%) sementara MIN meninggalkan poin di papan dengan 15-17 (88%), dua free throw yang tidak masuk berpotensi mengubah skor akhir. Kedua, fast-break points: MIN jauh lebih dominan di transition dengan 20 poin berbanding NY yang hanya cetak 3. Kalau bukan karena NY lebih rapi dalam half-court offense, 26 asis berbanding 21 dan lebih sedikit turnover (16 vs 17), margin itu bisa berbahaya.\n\n---\n\n## Momen Penentu\n\nLaga ini tidak pernah benar-benar lepas dari kontrol ketat. Di kuarter pertama, kedua tim saling balas tembak tiga angka, LaMelo Ball buka jarak dengan step-back three dari 24 kaki, lalu Josh Hart membalas dari 25 kaki. Skor silih berganti sejak menit-menit awal.\n\nYang benar-benar memutuskan: Q4 menit 2:34, Ayo Dosunmu membuka jarak dengan three-pointer 25 kaki yang diumpan LaMelo Ball untuk membawa skor 102-99. MIN tidak punya jawaban untuk tiga angka terakhir itu. Sebelumnya di Q4 menit 5:27, LaMelo Ball sempat bawa MIN mendekat lewat three-pointer 27 kaki (assist McDaniels) untuk skor 97-93, membuka peluang comeback, tapi NY tidak membiarkan keunggulan itu lepas.\n\n---\n\n## Selanjutnya\n\nIni laga kedua dan terakhir dalam regular season series NY vs MIN tahun ini. Knicks tutup seri 1-0. Pantau jadwal lanjutan kedua tim di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910021",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "New York Knicks",
+    "away_abbr": "NY",
+    "home_score": 99,
+    "away_score": 102,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-11-20T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021554,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has solid structure and mostly grounded stats, but contains multiple English phrases left in mid-sentence ('from field', 'perfect'), academic drift ('Penting bukan...', 'seperti biasa'), and one high-severity training-inference on a bench player (Ayo Dosunmu) who doesn't appear in scorers. Rewrite to cut hedging, verify all player names against input data, and Indonesianize lingering English words.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Ayo Dosunmu makes 25-foot three point jumper (LaMelo Ball assists)",
+          "fix": "Remove Dosunmu name from narrative. Rewrite Q4 moment as 'Knicks took control with a late three-pointer' or cite only verified scorers."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "9-20 from field, 2-8 dari garis tiga angka",
+          "fix": "Replace 'from field' with 'coba' or 'dari lapangan'. Write: '9-20 coba, 2-8 dari garis tiga angka'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Penting bukan statistiknya, tapi stabilitas dalam rebound",
+          "fix": "Delete the moralist framing. Just describe: 'Dua belas rebound memberi Knicks keunggulan di papan, 40-39.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Brunson, seperti biasa, jadi pengatur tempo",
+          "fix": "Remove 'seperti biasa'. Write: 'Brunson jadi pengatur tempo dengan 21 poin, 7 asis.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "perfect 4-4 dari three-point line",
+          "fix": "Write: 'sempurna 4-4' or just '4-4 dari tiga angka tanpa kecundur.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Rudy Gobert berperan sebagai anchor pertahanan dengan 9 poin dan 7 rebound meski tanpa asis",
+          "fix": "Pick one: 'Gobert anchor pertahanan: 9 poin, 7 rebound' OR just cite stats without editorial frame."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Di atas kertas, laga ini memang sedekat skornya",
+          "fix": "Write: 'Statistik seimbang: FG 45% vs 44%, three-point 44% vs 45%.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Kalau bukan karena NY lebih rapi dalam half-court offense, 26 asis berbanding 21 dan lebih sedikit turnover (16 vs 17), margin itu bisa berbahaya.",
+          "fix": "Rewrite as conditional observation: 'NY's half-court control — 26 asis, 16 TO vs MIN's 21 asis, 17 TO — offset MIN's fast-break edge.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x905df5f1f4095fa0",
+    "published_at": "2026-11-20T03:35:32+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

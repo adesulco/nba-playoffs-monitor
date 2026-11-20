@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "lac-at-sa-2026-11-20-g1",
+  "title": "Recap LA Clippers 112-124 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — LA Clippers vs San Antonio Spurs (112-124) di —, 20 November 2026.",
+  "body_md": "# Spurs Hentikan Clippers 124-112, Wembanyama Lagi-Lagi Jadi Pembeda\n\nSan Antonio Spurs menang 124-112 atas LA Clippers di Game 2 regular season series, Senin 20 November 2026. Spurs kini unggul 2-0 dalam seri empat pertemuan ini. Victor Wembanyama cetak 32 poin dan 11 rebound, tapi yang tak kalah mencolok: Stephon Castle dengan 21 poin, 6 rebound, dan 12 asis, distribusi yang membuat serangan SA terasa tak terprediksi dari mana datangnya.\n\n---\n\n## Performa Individu\n\nWembanyama tampil seperti biasa: dominan, efisien di dalam, dan mau turun ke mana saja yang dibutuhkan tim. Dari 33 menit bermain, dia cetak 32 poin dengan 11 rebound dan 3 asis. Namun angka yang lebih menarik dari laga ini justru milik Castle, 12 asis dari seorang point guard muda adalah sinyal bahwa distribusi bola Spurs makin matang. Castle juga efisien dari lapangan: 7-12 FG, termasuk 2-4 from three.\n\nJulian Champagnie memberikan 20 poin off 8-14 shooting, plus 4-9 dari garis tiga angka. Devin Vassell menambah 15 poin. De'Aaron Fox relatif tenang di angka 10 poin dan 5 asis, tapi kontribusinya terasa di momen krusial Q4.\n\nDi sisi LAC, Brook Lopez dan Darius Garland sama-sama cetak 23 poin, tapi caranya berbeda. Lopez sangat efisien: 8-10 FG, 5-7 from three, 27 menit. Garland butuh lebih banyak percobaan: 8-17 FG, 3-11 dari tiga angka. Max Strus menyumbang 18 poin dengan 5-9 three-pointer, sementara Rui Hachimura solid dengan 17 poin dan 7 rebound.\n\n---\n\n## Apa yang Bicara di Statistik\n\nClippers sebenarnya unggul dari garis tiga angka: 17-42 (40%) vs SA yang hanya 11-31 (35%). Tapi keunggulan itu tidak cukup menutup selisih di area lain. SA menang telak di points in paint, 54 berbanding 36. Ini yang paling menjelaskan hasil akhir. Wembanyama dan Spurs mengeksploitasi interior LAC sepanjang malam.\n\nSA juga unggul di asis: 37 berbanding 24, bola bergerak lebih cair, lebih sering. Satu statistik lain yang perlu dicatat: turnover kedua tim hampir seimbang (LAC 22, SA 21), tapi SA mengkapitalisasi lebih baik. Rebound pun SA unggul 36-34.\n\n---\n\n## Q4 yang Menentukan\n\nPertandingan masuk kuarter keempat dalam situasi ketat. Champagnie buka keran dengan three-pointer 25 kaki yang diasistensi Wembanyama, skor 95-98. Clippers sempat merespons lewat Lopez yang mencetak dua gol beruntun (floating layup dan three-pointer 23 kaki), membawa skor sempat menyentuh 103-105. Strus kemudian ikut menyambung dengan running jumper untuk 103-105 jadi 103-105 → sebentar kejar-kejaran.\n\nTapi SA tidak membiarkan keunggulan lepas. Fox masuk dengan pullup 12 kaki untuk 103-107, dan setelah itu Spurs menjaga jarak sampai peluit akhir. Clippers tidak pernah benar-benar bisa kembali menutup selisih.\n\n---\n\n## Selanjutnya\n\nSA kini memimpin 2-0 dalam regular season series empat pertemuan ini. Laga berikutnya jadwal belum tercantum di data yang tersedia. Siaran live tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910022",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "LA Clippers",
+    "away_abbr": "LAC",
+    "home_score": 124,
+    "away_score": 112,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-20T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020417,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail due to critical series-score claim (1-0 misreported as 2-0) and Q4 score-sequence errors that contradict key plays data. Training-inference violation on series position is high-severity. Arithmetic inconsistency in fourth quarter recap undermines factual credibility. Multiple low-medium issues with connector hedging ('perlu dicatat') and pronoun repetition. Regenerate with strict numeric verification against input data block.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Spurs kini unggul 2-0 dalam seri empat pertemuan ini",
+          "fix": "Change to 'SA memimpin 1-0 dalam regular season series empat pertemuan' or remove claim until next game result"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Spurs mengeksploitasi interior LAC sepanjang malam",
+          "fix": "Delete or rephrase: 'Wembanyama dan Spurs dominasi paint sepanjang pertandingan'"
+        },
+        {
+          "type": "other",
+          "severity": "high",
+          "snippet": "skor 103-105 → sebentar kejar-kejaran",
+          "fix": "Rewrite Q4 recap using exact scorelines from KEY PLAYS block; verify every arrow score"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu statistik lain yang perlu dicatat: turnover kedua tim hampir seimbang",
+          "fix": "Change to: 'Turnover hampir seimbang (LAC 22, SA 21), tapi SA manfaatkan lebih baik'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Laga berikutnya jadwal belum tercantum di data yang tersedia",
+          "fix": "Delete this line. Close with broadcast info only or remove final paragraph entirely"
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "low",
+          "snippet": "Dari 33 menit bermain, dia cetak 32 poin dengan 11 rebound",
+          "fix": "Second mention: 'Wembanyama cetak 32 poin' or 'Victor catat 11 rebound' to vary pronoun use"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "rebound pun SA unggul 36-34",
+          "fix": "Change to 'Rebound SA unggul 36-34' — simpler, cleaner"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x256b75e23bcfd2b4",
+    "published_at": "2026-11-20T03:36:13+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
