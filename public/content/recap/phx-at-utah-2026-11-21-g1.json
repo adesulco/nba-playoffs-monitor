@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "phx-at-utah-2026-11-21-g1",
+  "title": "Recap Phoenix Suns 111-101 Utah Jazz (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs Utah Jazz (111-101) di —, 21 November 2026.",
+  "body_md": "# Phoenix Suns menang 111-101 atas Utah Jazz di Game 2 regular season series, Sabtu 21 November 2026 pukul 09.30 WIB. PHX memimpin 1-0 dalam series ini. Devin Booker memimpin dengan 23 poin, sementara kedalaman rotasi Suns jadi pembeda di laga ini.\n\n## Top Performers\n\n**Phoenix Suns** punya lima pemain di angka dua digit, spread poin yang sulit dibendung Utah.\n\nBooker jadi tumpuan serangan dengan 23 poin dan 3 asis, shooting 9-22 from field. Bukan malam terbaik dari sisi efisiensi, tapi bebannya ringan karena support dari bench dan rotation lain solid.\n\nDillon Brooks dan Miles Bridges sama-sama cetak 18 poin. Brooks 7-14 from field dengan dua three-pointer, Bridges lebih efisien di 7-12 plus 9 rebound. Collin Gillespie off the bench tambah 16 poin, 5 asis, 3-7 from three. Jalen Green tutup lima kontributor utama PHX dengan 14 poin.\n\n**Utah Jazz** punya dua kontributor kuat yang harusnya bisa bawa laga lebih ketat.\n\nDarryn Peterson bermain keras dengan 20 poin, 10 rebound, 8 asis dalam 32 menit. Masalahnya di shooting: 7-20 from field, 0-7 dari garis tiga angka, efisiensi yang bikin 20 poinnya terasa berat.\n\nJaxson Hayes jadi high point lain dengan 18 poin dan 14 rebound, sangat efisien di 7-8 from field, seluruhnya di dalam. Brice Sensabaugh off the bench menyumbang 18 poin dengan 5-7 from three. Keyonte George 14 poin tapi berjuang keras: 4-17 from field, 0-7 dari garis tiga angka.\n\n## Yang Membedakan\n\nPHX menorehkan 17 fast-break points berbanding 5 milik Utah. Ini gap yang signifikan dan mencerminkan kemampuan Suns mengkapitalisasi turnover. Utah sendiri mencatat 15 turnover dibanding 9 milik PHX, selisih enam kepemilikan bola yang nyata di skor akhir.\n\nFree throw juga menarik. Utah justru lebih sering ke garis (21-34 vs 17-25 PHX), tapi konversinya lebih rendah: 62% vs 68% milik Suns. Utah meninggalkan 13 poin di garis free throw.\n\nDari garis tiga angka keduanya sama-sama cetak 10 three-pointer, tapi volume berbeda: PHX 10-34 (29%), Utah 10-39 (26%). Suns sedikit lebih selektif. Rebound Utah unggul tipis 52-49, tapi keunggulan ini tidak cukup untuk menutup selisih di kategori lain.\n\n## Momen Kunci\n\nSvi Mykhailiuk membuat three-pointer dari 26 kaki off asis Peterson, skor menjadi 105-101 untuk Utah. Tapi Suns balas dengan enam poin terakhir untuk menang 111-101.\n\n## Selanjutnya\n\nPHX memegang keunggulan 1-0 dalam series empat pertemuan. Game 3 dijadwalkan lanjut dalam series. Siaran live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909311",
+    "home_team": "Utah Jazz",
+    "home_abbr": "UTAH",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 101,
+    "away_score": 111,
+    "winner_abbr": "PHX",
+    "kickoff_utc": "2026-11-21T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHX leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.038294,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has strong stat accuracy but significant English syntax calquing throughout. Phrases like 'shooting 9-22 from field', 'dari garis tiga angka' repetition, and inconsistent code-switching undermine voice. 'Selanjutnya' connector repeats (violation). Rewrite to native Indonesian pacing.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "PHX menorehkan 17 fast-break points berbanding 5 milik Utah",
+          "fix": "PHX cetak 17 poin dari fast break vs 5 milik Utah"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Selanjutnya, PHX memegang keunggulan 1-0 dalam series empat pertemuan",
+          "fix": "Delete 'Selanjutnya' or restructure: 'PHX memegang keunggulan 1-0 dalam series empat pertemuan'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Booker jadi tumpuan serangan dengan 23 poin dan 3 asis, shooting 9-22 from field",
+          "fix": "Booker 23 poin, 3 asist dengan akurasi 9-22 (atau: Booker cetak 23 poin dari 22 tembakan)"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "7-14 from field dengan dua three-pointer, Bridges lebih efisien di 7-12 plus 9 rebound",
+          "fix": "Brooks 7-14 dengan dua tembakan tiga angka, Bridges lebih efisien 7-12 plus 9 rebound"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Keyonte George 14 poin tapi berjuang keras: 4-17 from field, 0-7 dari garis tiga angka",
+          "fix": "George cetak 14 poin tapi berjuang: 4-17 overall, 0-7 from deep"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 3 dijadwalkan lanjut dalam series",
+          "fix": "Delete or: 'Kedua tim akan bertemu lagi untuk Game 3 di series ini'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "NBA League Pass dan Vidio",
+          "fix": "Keep as-is since it's in input, but confirm with Vidio-specific broadcast window if available"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Momen Kunci: Svi Mykhailiuk membuat three-pointer dari 26 kaki off asis Peterson",
+          "fix": "Svi Mykhailiuk tembak tiga angka dari 26 kaki atas umpan Peterson, skor 105-101"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x5ecbd9939019f5e7",
+    "published_at": "2026-11-21T06:15:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

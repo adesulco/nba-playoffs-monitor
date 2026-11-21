@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "hou-at-den-2026-11-21-g2",
+  "title": "Recap Houston Rockets 124-133 Denver Nuggets (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Houston Rockets vs Denver Nuggets (124-133) di —, 21 November 2026.",
+  "body_md": "## Denver Tutup Seri 2-1, Jokic Jadi Playmaker Krusial di Saat Genting\n\nDenver Nuggets menang 133-124 atas Houston Rockets dan merebut seri Regular Season 2-1. Kemenangan ini bukan soal dominasi penuh empat kuarter, Rockets bersaing ketat sepanjang laga. Yang memisahkan dua tim justru terjadi di empat menit terakhir kuarter keempat, ketika Nuggets menutup pertandingan dengan 9-poin run yang praktis tak terbantahkan.\n\n---\n\n## Top Performers\n\nIroni terbesar malam ini: Alperen Sengun tampil dengan salah satu game terbaik musim ini, tapi timnya tetap kalah.\n\nSengun cetak triple-double, 28 poin, 11 rebound, 10 asis, dengan efisiensi shooting yang sulit dikritik: 9-16 from field. Tidak banyak big man yang bisa memimpin tim dalam ketiga aspek utama sekaligus. Namun triple-double Sengun itu tidak cukup ketika Rockets turnover 16 kali di sisi lain.\n\nFred VanVleet menambah 25 poin dan 9 asis, meski butuh 21 tembakan untuk sampai di angka itu (10-21 FG). Amen Thompson efisien di saat yang tepat: 22 poin dari hanya 12 percobaan (10-12 FG). Jabari Smith Jr. juga tampil meyakinkan dengan 21 poin dari 8 percobaan (7-8 FG, 3-4 from three). Kevin Durant berkontribusi 16 poin, 4 rebound, 4 asis.\n\nDi sisi Denver, Nikola Jokic mencetak 26 poin, 7 rebound, 11 asis dengan efisiensi mumpuni: 10-15 FG. Angka 11 asisnya jadi penentu naratif malam ini, bukan soal gol yang ia cetak sendiri, tapi siapa yang ia ciptakan. Cameron Johnson dan Christian Braun masing-masing 19 poin. Aaron Gordon menambah 18 poin. DeRozan masuk dari bench dengan 15 poin meski shooting malam ini tidak ideal: 4-11 FG.\n\n---\n\n## Apa yang Bicara dari Statistik\n\nDua tim memiliki FG% identik: 55 persen. Di tiga angka pun keduanya sama-sama aktif. Perbedaannya ada di efisiensi: Denver 43% from three (13-30), Houston hanya 33% (9-27). Ketika volume percobaan sebanding, selisih persentase itu berujung pada sekitar empat poin ekstra hanya dari lini tiga angka.\n\nYang lebih krusial: free throw. Houston 66% (23-35), Denver 93% (26-28). Rockets meninggalkan poin di atas papan. Nuggets nyaris tidak membuang satupun. Fast-break points juga condong ke Denver: 15 berbanding 6. Turnovers HOU 16 berbanding 10 Denver menjadi bensin untuk counter-attack itulah yang memunculkan poin transisi tersebut.\n\nSatu statistik yang berpihak ke Houston: points in paint, 62 berbanding 54. Sengun, Thompson, Durant bersama-sama menekan interior Denver. Tapi di saat konversi dari garis free throw tidak optimal, poin paint yang besar itu tidak cukup untuk menutup selisih.\n\n---\n\n## Empat Menit yang Menentukan\n\nMemasuki menit keempat kuarter terakhir, Houston masih di atas: 115-114. Dari situ Denver menutup pertandingan dengan sekuens yang nyaris tak ada celahnya.\n\nLayup Cameron Johnson dibantu Jokic: 115-116. Pullup jumper Jamal Murray dibantu Jokic lagi: 115-116 jadi 115-116, kemudian 117-116 setelah dua free throw Jokic mengunci 115-118. Driving dunk Braun memperlebar: 115-120. Jabari Smith Jr. menjawab dengan dunk dibantu Sengun: 117-120. Murray kembali dengan fadeaway dibantu Jokic: 117-122. Sengun menutup dari sisi Houston dengan dunk dibantu VanVleet: 119-124.\n\nDelapan poin terakhir Denver di stretch itu semuanya lahir dari assist Jokic atau kontribusi langsungnya. Itulah bedanya bukan hanya sebagai scorer, tapi sebagai gravity player yang memaksa pertahanan membuka celah bahkan di situasi paling kritis.\n\n---\n\n## Catatan Akhir\n\nSeri Regular Season ditutup 2-1 untuk Denver. Dengan format ini tidak ada laga lanjutan. Namun bagi Houston, laga ini menyimpan sinyal yang perlu dicatat: Sengun sudah berada di level yang bisa menandingi siapapun malam itu. Masalahnya adalah 16 turnover yang memberi Nuggets bahan bakar gratis untuk fast break mereka sendiri.\n\nLaga tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909312",
+    "home_team": "Denver Nuggets",
+    "home_abbr": "DEN",
+    "away_team": "Houston Rockets",
+    "away_abbr": "HOU",
+    "home_score": 133,
+    "away_score": 124,
+    "winner_abbr": "DEN",
+    "kickoff_utc": "2026-11-21T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.046016,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with strong stat integration and narrative flow. One medium-severity phrasing issue (translated-English inversion pattern). Two low-severity academic hedges. All numbers verified against input data. Voice is mostly natural Bahasa—passes.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka 11 asisnya jadi penentu naratif malam ini, bukan soal gol yang ia cetak sendiri, tapi siapa yang ia ciptakan.",
+          "fix": "Rewrite as: 'Angka 11 asisnya lebih penting dari 26 poinnya—Jokic jadi gravity player di moment-moment krusial.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dengan format ini tidak ada laga lanjutan.",
+          "fix": "Replace with: 'Seri best-of-3 berakhir; tidak ada Game 4.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "laga ini menyimpan sinyal yang perlu dicatat",
+          "fix": "Replace with: 'laga ini kirim pesan ke Houston'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x24df301830618380",
+    "published_at": "2026-11-21T06:16:30+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
