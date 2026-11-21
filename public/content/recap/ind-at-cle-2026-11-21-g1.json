@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "ind-at-cle-2026-11-21-g1",
+  "title": "Recap Indiana Pacers 119-128 Cleveland Cavaliers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Indiana Pacers vs Cleveland Cavaliers (119-128) di —, 21 November 2026.",
+  "body_md": "# James Harden 51 Poin, Cavaliers Kalahkan Pacers 128-119\n\nCleveland Cavaliers menang 128-119 atas Indiana Pacers, Sabtu 21 November 2026. James Harden tampil di level berbeda, 51 poin, 6 rebound, 6 asis, dan itu cukup untuk menutup perlawanan Pacers yang sebetulnya tidak pernah menyerah sepenuhnya. CLE unggul 1-0 dalam seri empat pertemuan musim reguler ini.\n\n---\n\n## Malam Milik Harden\n\n51 poin bukan angka biasa untuk regular season, apalagi untuk pemain yang sudah memasuki fase akhir karier. Harden shoot 15-26 dari lapangan dan 7-11 dari garis tiga angka, efisiensi yang tidak mencerminkan beban 40 menit yang dia tanggung. Enam asis di atas itu menunjukkan dia tidak sekadar mencetak. dia juga menggerakkan.\n\nDonovan Mitchell menambah 20 poin, 3 rebound, 3 asis, tapi malam ini bukan miliknya. Mitchell shoot 8-17, cukup solid, tapi bukan faktor penentu ketika Harden sedang on seperti ini. Dari bangku cadangan, Peyton Watson berkontribusi 15 poin dengan efisiensi bagus (6-9 FG, 3-6 dari tiga angka), sementara Mario Hezonja double-double 10 poin dan 10 rebound dalam 20 menit.\n\n---\n\n## Pacers Tidak Menyerah Begitu Saja\n\nAngka 119 bukan angka kecil untuk tim yang kalah. Indiana bermain kompetitif dari awal sampai akhir, dan box score-nya membuktikan itu.\n\nPascal Siakam dan Ivica Zubac masing-masing mencetak 21 poin. Siakam shoot 8-17 dengan dua tembakan tiga angka. Zubac lebih efisien, 8-11 dari lapangan, dominan di area cat. Kelly Oubre Jr. menambah 17 poin (6-10 FG, 3-5 dari tiga), dan Obi Toppin off the bench juga 17 poin (6-11, 2-5 dari tiga). Lima pemain Indiana menembus 12 poin ke atas, distribusi serangan yang sehat.\n\nAndrew Nembhard tidak mencetak banyak, 12 poin dari 3-10 shooting, tapi 8 asisnya jadi perekat distribusi serangan Indiana malam ini.\n\n---\n\n## Baca Statistik Tim\n\nDua tim hampir identik di angka FG%: Indiana dan Cleveland sama-sama 48 persen dari lapangan. Perbedaan tipis di tiga angka: CLE 43 persen (19-44) vs IND 41 persen (14-34). Bukan gap yang besar, tapi volume CLE dari garis tiga angka lebih tinggi, dan itu ketika Harden sedang hot, hasilnya terasa.\n\nYang menarik: Indiana unggul di beberapa area yang biasanya jadi indikator tim yang bermain lebih baik. Rebound: IND 50 vs CLE 41. Asis: IND 35 vs CLE 26. Blocks: IND 10 vs CLE 3. Fast-break points: IND 13 vs CLE 9. Points in paint: IND 52 vs CLE 48.\n\nIndiana bermain kolektif, dan permainan kolektif itu seharusnya menang, kalau bukan karena satu orang di sisi lain yang sedang tidak bisa dihentikan.\n\nFree throw juga jadi faktor. CLE shoot 85 persen dari garis (17-20), Indiana 70 persen (19-27). Lima poin dari garis yang terbuang, dalam pertandingan yang selisihnya sembilan, itu terasa.\n\n---\n\n## Momentum dan Momen Penentu\n\nData key plays menunjukkan pertandingan yang ketat hampir sepanjang babak pertama. Skor di Q1 bolak-balik tipis, 29-29 menjelang akhir kuarter pertama. Di Q2, kedua tim terus bergantian memimpin: Toppin dari garis tiga angka membalas, lalu CLE kembali unggul, lalu Zubac menyamakan dengan hook shot di 2:58, sebelum Hezonja menjawab dari 25 kaki.\n\nDetail pergeseran momentum di babak kedua hingga akhir tidak tersedia di data saat ini, tapi skor akhir 128-119 mengindikasikan Cleveland menutup pertandingan dengan cukup meyakinkan setelah pertarungan ketat di babak pertama.\n\n---\n\n## Selanjutnya\n\nDua tim akan bertemu lagi dalam seri empat pertemuan musim reguler ini, dengan CLE kini unggul 1-0. Kalau Harden bisa tampil di level 51 poin secara konsisten, Pacers perlu jawaban yang lebih dari sekadar distribusi merata, mereka butuh seseorang yang bisa matching output individual sebesar itu.\n\nPantau jadwal selanjutnya di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909307",
+    "home_team": "Cleveland Cavaliers",
+    "home_abbr": "CLE",
+    "away_team": "Indiana Pacers",
+    "away_abbr": "IND",
+    "home_score": 128,
+    "away_score": 119,
+    "winner_abbr": "CLE",
+    "kickoff_utc": "2026-11-21T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "CLE leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024856,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has solid stat verification and no hard bans, but multiple instances of academic register drift ('indikator tim yang bermain lebih baik', 'distribusi serangan yang sehat'), repetitive connectors ('lalu' chained 3x), and one incomplete sentence fragment ('dia juga menggerakkan'). Rewrites needed in 3+ places.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Enam asis di atas itu menunjukkan dia tidak sekadar mencetak. dia juga menggerakkan.",
+          "fix": "Replace with 'dia juga menggerakkan permainan' or restructure: 'bukan sekadar cetak, tapi juga atur serangan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "5 pemain Indiana menembus 12 poin ke atas, distribusi serangan yang sehat.",
+          "fix": "Change to: 'serangan Indiana datang dari mana-mana' or just 'bukan tergantung satu orang.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang menarik: Indiana unggul di beberapa area yang biasanya jadi indikator tim yang bermain lebih baik.",
+          "fix": "Change to: 'Yang menarik: Indiana unggul di stat yang biasanya pihak menang kuasai' or just cite the stats directly."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "permainan kolektif itu seharusnya menang, kalau bukan karena satu orang di sisi lain yang sedang tidak bisa dihentikan.",
+          "fix": "Delete this sentence or replace with concrete fact: 'Tapi Harden untuk 51 poin itu terlalu banyak untuk counter.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Di Q2, kedua tim terus bergantian memimpin: Toppin dari garis tiga angka membalas, lalu CLE kembali unggul, lalu Zubac menyamakan...",
+          "fix": "Break into 2–3 shorter sentences or vary connectors: 'Toppin dari tiga. CLE kembali unggul. Zubac samakan dengan hook shot.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Kalau Harden bisa tampil di level 51 poin secara konsisten, Pacers perlu jawaban...",
+          "fix": "Change to: 'Kalau Harden terus cetak 51 poin' or 'Kalau performa Harden seperti ini berlanjut.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Data key plays menunjukkan pertandingan yang ketat hampir sepanjang babak pertama.",
+          "fix": "Delete opening clause. Lead with 'Skor bolak-balik tipis di Q1: 29-29 menjelang akhir kuarter.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xa392bf7254c1fdac",
+    "published_at": "2026-11-21T03:08:28+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
