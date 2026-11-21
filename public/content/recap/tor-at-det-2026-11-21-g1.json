@@ -1,0 +1,109 @@
+{
+  "type": "recap",
+  "slug": "tor-at-det-2026-11-21-g1",
+  "title": "Recap Toronto Raptors 105-102 Detroit Pistons (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Toronto Raptors vs Detroit Pistons (105-102) di —, 21 November 2026.",
+  "body_md": "# Toronto Raptors Kalahkan Detroit Pistons 105-102 dalam Drama Clutch Time\n\nToronto Raptors menutup laga dengan kepala tegak, menang 105-102 atas Detroit Pistons dalam laga Regular Season Series Game 2, Sabtu 21 November 2026. Scottie Barnes jadi protagonis utama dengan 29 poin, tapi kemenangan ini diputuskan di 100 detik terakhir yang nyaris bikin jantung copot. TOR unggul 1-0 di series.\n\n---\n\n## Top Performers\n\n**Scottie Barnes** tampil di level berbeda malam ini. Dua puluh sembilan poin dari 14-21 field goal, efisiensi tinggi tanpa satu pun tembakan tiga angka, semua kerja keras, mid-range, dan serangan ke paint. Di tengah chaos clutch time, dia cetak fadeaway 12 kaki saat skor masih 97-97, dan closing drive layup-nya di menit terakhir yang akhirnya jadi gol penentu. Lima rebound, lima asis, Barnes bermain lengkap.\n\n**Allen Graves** pegang double-double: 20 poin dan 10 rebound dari 6-9 field goal, plus 2-4 dari tiga angka. Peran yang sering luput dari highlight tapi krusial, kehadiran fisik di paint, rebounding yang bersihkan bola untuk TOR.\n\n**Immanuel Quickley** tidak dominan secara poin (18) tapi asis-nya bicara: 10 asis, 3 turnover, dan dua free throw di 4,5 detik terakhir yang menutup pertandingan. Clutch performer tanpa banyak sorotan.\n\nDari kubu DET, **Cade Cunningham** berjuang keras: 23 poin, 9 asis, tapi FG 10-22 mencerminkan malam yang berat. Step-back three di detik ke-19,8 untuk membalik skor 101-102 sempat membuat kandang bersorak, tapi tidak cukup. **Kevin Huerter** menyumbang 20 poin dengan 4-8 dari tiga angka, solid dari luar.\n\n---\n\n## Yang Bicara di Box Score\n\nTOR menang di dalam: 55% FG vs 46% DET. Points in paint 54 berbanding 44, dominasi di area terbatas yang jadi fondasi kemenangan. Rebound juga TOR: 40 vs 33.\n\nTapi ada dua sisi lain yang lebih rumit. DET mencuri 9 steal vs TOR 6, dan memanfaatkan fast break lebih produktif: 10 poin vs 4. Turnover TOR pun lebih banyak, 15 vs 11. Artinya DET punya peluang, mereka cuma tidak bisa menutupnya.\n\nDari tiga angka, DET lebih efisien: 36% (12-33) vs TOR 32% (9-28). Tapi volume dan variasi serangan TOR ke dalam area membuat efisiensi three-point DET tidak cukup untuk menutup selisih.\n\n---\n\n## Seratus Detik yang Memutuskan\n\nLaga ini selesai di 90 detik terakhir, bukan di tiga kuarter sebelumnya.\n\nSkor 97-97 ketika Barnes cetak fadeaway 12 kaki di menit 1:33. DET langsung balas, Paul Reed layup 5 kaki off asis Cunningham, 97-99 untuk DET. Quickley jawab dengan fadeaway 7 kaki atas asis Barnes, 99-99.\n\nLalu Poeltl. Tip shot diam-diam di detik 27,1, 101-99 TOR. Cunningham tidak menyerah: step-back three angka dari 27 kaki, bola masuk, 101-102 DET. Drama.\n\nBarnes menutupnya dengan driving layup, 103-102. Quickley ditahan foul, ke garis free throw. Dua tembakan, dua masuk. 105-102. Peluit akhir.\n\nItulah cerita Game 2 ini: bukan blowout, bukan dominasi satu arah. TOR punya fondasi lebih solid di paint, DET punya chemistry dari perimeter, tapi di clutch time, Barnes dan Quickley yang lebih tenang.\n\n---\n\n## Selanjutnya\n\nSeries Regular Season ini berlanjut ke Game 3. TOR unggul 1-0 dan untuk sementara memegang momentum. Pantau jadwal lengkap dan siaran live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909308",
+    "home_team": "Detroit Pistons",
+    "home_abbr": "DET",
+    "away_team": "Toronto Raptors",
+    "away_abbr": "TOR",
+    "home_score": 102,
+    "away_score": 105,
+    "winner_abbr": "TOR",
+    "kickoff_utc": "2026-11-21T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "TOR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021213,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stats, natural clutch-time narrative, and solid voice discipline. Minor heading and word-choice polish needed; no hard violations.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Yang Bicara di Box Score",
+          "fix": "Use 'Box Score Berbicara' or 'Angka-Angka Penentu' or 'Stat Line Menentukan'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Quickley tidak dominan secara poin (18) tapi asis-nya bicara",
+          "fix": "Rephrase one: 'tapi asis-nya bikin beda' or just 'tapi asis jadi kunci'."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Itulah cerita Game 2 ini: bukan blowout, bukan dominasi",
+          "fix": "Minor: 'Itulah Game 2: tanpa blowout, tanpa dominasi sepihak.' — still conversational, tighter."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x729be376b5c166a2",
+    "published_at": "2026-11-21T03:37:28+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 62,
+      "headline_comment": "Says 'Game 1' but the input and article body call it Game 2 — factual mismatch in the title is a serious credibility problem.",
+      "lead_score": 78,
+      "lead_comment": "Lead has news, angle, and a clutch hook, but 'nyaris bikin jantung copot' leans into a cliché and 'menutup laga dengan kepala tegak' is filler.",
+      "structure_score": 80,
+      "structure_comment": "Clean four-section recap flow (lead → top performers → stats → clutch → next) that fits the genre well.",
+      "voice_score": 72,
+      "voice_comment": "Mostly on-register but slips into formal-ish connectors ('Artinya', 'Dari kubu DET') and over-uses 'tapi' as a sentence-starter crutch.",
+      "suggestion_count": 6,
+      "summary": "Solid recap with good clutch-time pacing and clean stat grounding, but the headline mislabels the game number and an internal '100 detik vs 90 detik' inconsistency needs a quick editor pass before shipping.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap Toronto Raptors 105-102 Detroit Pistons (Game 1)",
+          "issue": "Headline says Game 1, but input data and article body both state Game 2 of the series.",
+          "fix": "Change to 'Game 2' — or rework the headline to lead with Barnes/clutch angle and drop the game number entirely."
+        },
+        {
+          "priority": "high",
+          "snippet": "Laga ini selesai di 90 detik terakhir, bukan di tiga kuarter sebelumnya.",
+          "issue": "Section heading says 'Seratus Detik' but the opening line of that section says '90 detik' — internal inconsistency within the same section.",
+          "fix": "Pick one — the first clutch play is at 1:33, so 'Sembilan puluh detik terakhir' is more accurate; align heading and body."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Dua puluh sembilan poin dari 14-21 field goal, efisiensi tinggi tanpa satu pun tembakan tiga angka, semua kerja keras, mid-range, dan serangan ke paint.",
+          "issue": "Sentence fragment stacked with commas — reads like a run-on list, not a sentence.",
+          "fix": "Break into two: 'Dua puluh sembilan poin dari 14-21 field goal, tanpa satu pun tembakan tiga angka. Semua dari mid-range dan serangan ke paint.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "closing drive layup-nya di menit terakhir yang akhirnya jadi gol penentu",
+          "issue": "'Gol' is football vocabulary — NBA writing uses 'bucket', 'basket', or just describes the shot.",
+          "fix": "'Driving layup-nya di 14,3 detik terakhir yang jadi tembakan penentu.' Also adds a cite-able anchor from the input."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Step-back three di detik ke-19,8 untuk membalik skor 101-102 sempat membuat kandang bersorak",
+          "issue": "'Kandang' implies DET was home, but venue is blank in input — unsupported inference.",
+          "fix": "Remove the crowd reference or change to neutral: 'sempat memberi harapan buat DET.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "**Kevin Huerter** menyumbang 20 poin dengan 4-8 dari tiga angka, solid dari luar.",
+          "issue": "Minor stat mismatch — input shows 3PT 4-8 for Huerter, which the writer rendered correctly, but FG 7-15 and the paint/perimeter balance for DET is a missed angle worth one sentence.",
+          "fix": "Add one line connecting Huerter's shooting to DET's broader 36% 3PT edge that still wasn't enough."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
