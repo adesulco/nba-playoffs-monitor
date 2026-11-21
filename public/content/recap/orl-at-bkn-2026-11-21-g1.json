@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "orl-at-bkn-2026-11-21-g1",
+  "title": "Recap Orlando Magic 113-111 Brooklyn Nets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Brooklyn Nets (113-111) di —, 21 November 2026.",
+  "body_md": "# Franz Wagner Jadi Pahlawan, Orlando Magic Menang Tipis 113-111 atas Brooklyn Nets\n\nOrlando Magic menutup laga dengan dramatis, Franz Wagner cetak *step back jumper* di sisa 2,8 detik untuk menangkan Magic atas Brooklyn Nets 113-111. Kemenangan tipis ini menempatkan ORL unggul 2-0 dalam series tiga pertandingan Regular Season.\n\n---\n\n## Top Performers\n\nWagner bermain 36 menit dan berakhir dengan 35 poin, 5 rebound, 7 assist, performa paling lengkap di lapangan malam ini. Shooting-nya efisien di possession-possession krusial: FG 13-25, termasuk dua tembakan dari luar arc.\n\nDi sampingnya, Desmond Bane menambah 21 poin dengan 7-13 from three. Efisiensi dari luar arc Bane jadi kontribusi penting untuk ORL yang secara keseluruhan tembak 19-43 dari tiga angka, jauh lebih tajam dari BKN yang hanya 12-38.\n\nDari bangku cadangan, Nikola Vucevic masuk dengan efisiensi luar biasa: 15 poin dari FG 5-5 dan 3PT 3-3, tanpa satu pun missed shot. Anthony Black melengkapi rotasi starter ORL dengan 13 poin, 7 rebound, 6 assist dalam 37 menit.\n\nUntuk BKN, Julius Randle memberi perlawanan nyata: 27 poin, 9 rebound, 6 assist dari 39 menit bermain. Dia yang sempat bawa Nets unggul 109-111 lewat dua free throw di menit ke-1:24 kuarter empat, sebelum Wagner menutup semuanya.\n\nDay'Ron Sharpe mencatat 17 poin dan 11 rebound untuk BKN, satu-satunya pemain di laga ini yang melewati 10 rebound. Danny Wolf menyumbang 20 poin dengan 4-6 from three dalam 26 menit sebagai starter. Mikel Brown Jr. off the bench tambah 18 poin.\n\n---\n\n## Baca Statistiknya\n\nDua angka yang paling menjelaskan hasil laga ini: FG% dan 3PT%.\n\nORL tembak 48% dari lapangan, BKN 44%. Selisih tipis di field goal, tapi dari luar arc, gap-nya lebih lebar: ORL 44% (19-43) vs BKN 32% (12-38). Di laga yang berakhir dua poin, perbedaan efisiensi tiga angka itu hampir sama dengan margin kemenangan.\n\nSatu statistik yang menarik di sisi BKN: points in paint 48 vs ORL 36. Nets lebih dominan di area itu, dan itu yang membuat mereka tetap kompetitif sampai detik terakhir. Turnovers kedua tim identik: 17 masing-masing. Rebound dan assist juga sama, 41 dan 24 untuk kedua tim.\n\n---\n\n## Momentum Kuarter Empat\n\nLaga ini diputuskan dalam dua menit terakhir.\n\nMikel Brown Jr., off the bench, cetak driving layup untuk bawa BKN unggul 106-107 di menit ke-3:09. Randle kemudian tambah turnaround jump shot dari 10 kaki untuk perlebar keunggulan jadi 106-109 di menit ke-2:20.\n\nBane jawab dengan *step back* 25 kaki untuk samakan skor 109-109. Randle kembali, kali ini dari garis free throw, 1-1 dan 2-2, BKN 111-109 di sisa 1:24.\n\nWendell Carter Jr. bikin laga menegangkan lagi: two-point shot untuk 111-111 di menit ke-30,5.\n\nSisa 2,8 detik. Wagner dapat bola, isolasi, *step back* dari 14 kaki, masuk. ORL 113-111. Laga selesai.\n\n---\n\n## Selanjutnya\n\nGame 3, penutup series tiga pertandingan ini, berikutnya masuk jadwal. ORL sudah unggul 2-0 dan hanya butuh satu kemenangan lagi untuk sapu bersih series. Pantau jadwal lengkap di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909306",
+    "home_team": "Brooklyn Nets",
+    "home_abbr": "BKN",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 111,
+    "away_score": 113,
+    "winner_abbr": "ORL",
+    "kickoff_utc": "2026-11-21T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ORL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.042939,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Major factual error (series score 2-0 vs actual 1-0 from input) is an auto-fail. Multiple translated-English tics ('menambah...dengan 7-13 from three', awkward clause nesting) and inconsistent stat notation pull the score down further. Readable but sloppy for publication.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kemenangan tipis ini menempatkan ORL unggul 2-0 dalam series tiga pertandingan Regular Season.",
+          "fix": "Change to: 'Kemenangan ini menempatkan ORL unggul 1-0 dalam series tiga pertandingan Regular Season.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Di sampingnya, Desmond Bane menambah 21 poin dengan 7-13 from three.",
+          "fix": "Change to: 'Desmond Bane tambah 21 poin, 7-13 tembakan tiga angka.' or 'Bane cetak 21 poin dari 7-13 three-pointer.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka yang paling menjelaskan hasil laga ini: FG% dan 3PT%.",
+          "fix": "Change to: 'Statistik kunci laga ini: FG% dan 3PT%.' or just drop the intro and go straight to numbers."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Di menit ke-30,5.",
+          "fix": "Change to: 'di 0:30,5 kuarter keempat' or align with earlier notation style: 'di menit ke-30,5.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Efisiensi dari luar arc Bane jadi kontribusi penting untuk ORL yang secara keseluruhan tembak 19-43 dari tiga angka, jauh lebih tajam dari BKN yang hanya 12-38.",
+          "fix": "Split: 'Bane efisien dari luar. ORL overall 19-43 tiga angka (44%), jauh tajam dari BKN 12-38 (32%).'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Game 3, penutup series tiga pertandingan ini, berikutnya masuk jadwal.",
+          "fix": "Change to: 'Game 3 (series-clincher untuk ORL) belum dijadwalkan. ORL unggul 1-0 dan tinggal butuh dua menang lagi.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Pantau jadwal lengkap di NBA League Pass dan Vidio.",
+          "fix": "Delete or rewrite to concrete info: 'Game 3 tayang live di NBA League Pass dan Vidio.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x4edd63aa6445d22c",
+    "published_at": "2026-11-21T04:08:37+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
