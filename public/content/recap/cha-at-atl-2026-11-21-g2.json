@@ -1,0 +1,133 @@
+{
+  "type": "recap",
+  "slug": "cha-at-atl-2026-11-21-g2",
+  "title": "Recap Charlotte Hornets 97-111 Atlanta Hawks (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Charlotte Hornets vs Atlanta Hawks (97-111) di —, 21 November 2026.",
+  "body_md": "# Atlanta Hawks Balikkan Momentum, Kalahkan Charlotte 111-97\n\nAtlanta Hawks menutup regular season series melawan Charlotte Hornets dengan kemenangan 111-97, Sabtu 21 November 2026 pukul 07.00 WIB. Kemenangan ini membuat ATL unggul 2-0 di regular season series. Jalen Johnson tampil sebagai motor utama Hawks dengan 26 poin, 6 rebound, dan 6 asis, efisien dari mana-mana.\n\n---\n\n## Top Performers\n\n**Jalen Johnson** jadi yang paling konsisten dari sisi ATL. Dengan 26 poin dari 10-15 field goal dan 3-4 from three, shooting-nya hampir tidak ada yang terbuang. Enam asis di atas itu membuat dia bukan sekadar scorer, dia juga penggerak serangan Hawks.\n\nDi belakangnya, **Aaron Wiggins** menyumbang 19 poin dengan efisiensi solid: 7-12 field goal, 4-6 from three. Sementara **Nickeil Alexander-Walker** (17 poin) kurang efisien di 7-20 FG, tapi tetap berkontribusi di angka. **Onyeka Okongwu** pegang peran physical di dalam: 16 poin, 7 rebound, 6-10 FG. **Dyson Daniels** tutup lima besar Hawks dengan double-double: 11 poin dan 10 asis, plus 8 rebound, jadi playmaker-nya Atlanta malam ini.\n\nDari sisi Charlotte, **Moussa Diabate** punya malam terbaik secara efisiensi: 21 poin dari 9-12 FG, plus 15 rebound. Angkanya bagus, tapi tidak cukup untuk mengangkat tim. **Brandon Miller** (19 poin) berjuang di 7-18 FG dengan 5-13 from three. **Naz Reid** double-double dengan 12 poin dan 10 rebound, meski efisiensinya berat di 4-19 FG. **Coby White** (11 poin, 9 asis) jadi kreator utama Hornets, tapi 5-17 FG-nya mencerminkan betapa susahnya CHA mencari celah malam ini.\n\n---\n\n## Baca Statistik\n\nPerbedaan paling jelas ada di shooting efficiency dan turnover. ATL tembak 51% dari field, CHA hanya 40%. Dari garis tiga angka, selisihnya lebih lebar lagi: Hawks 39% (13-33) versus Hornets 24% (11-45). Charlotte melepas 45 three-point attempts, volume besar, tapi hampir seperempatnya saja yang masuk.\n\nTurnover jadi masalah lain buat Hornets: 17 kali CHA kehilangan bola versus 11 dari ATL. Itu langsung berubah jadi fast-break points, Hawks cetak 21 poin dari situasi transition, Charlotte hanya 10. Ironisnya, Hornets unggul total rebound 49-37, tapi rebound tidak banyak membantu kalau possession-nya terus dibuang.\n\nSteals juga satu arah: ATL 12, CHA 4. Defensif pressure Hawks benar-benar mempersulit rhythm half-court Charlotte.\n\n---\n\n## Momen Kunci\n\nPertandingan sempat ketat di awal. Kuarter pertama berakhir seimbang, bolak-balik, tidak ada yang bisa lepas. Momen di Q3 jadi titik penentu: setelah Naz Reid sempat bawa CHA unggul 65-63 lewat three dari jarak 26 kaki, Jalen Johnson langsung balas dengan three-pointer juga dari 24 kaki (diumpan Daniels) untuk membuat ATL kembali unggul 68-65. Momentum bergeser ke Atlanta dari situ, dan Hornets tidak pernah balik memimpin.\n\n---\n\n## Selanjutnya\n\nDengan status series 2-0 untuk Atlanta, Game 4 (laga terakhir dari empat pertemuan regular season ini) menjadi sisa satu kesempatan Charlotte untuk menutup seri dengan lebih terhormat. Jadwal dan venue belum tersedia di input data. Pantau update di **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909305",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Charlotte Hornets",
+    "away_abbr": "CHA",
+    "home_score": 111,
+    "away_score": 97,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-11-21T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.051043,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has solid structure and mostly accurate stats, but suffers from translated-English phrasing (especially subordinate clauses), academic paragraph openings, and one stat interpretation error (Daniels 'double-double' phrasing). These read as AI drift toward formality and subordination that real Indonesian sport writers avoid. Regenerate with flatter sentence structure and natural connectors.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Enam asis di atas itu membuat dia bukan sekadar scorer, dia juga penggerak serangan Hawks.",
+          "fix": "Enam asis bikin dia lebih dari sekadar scorer — dia penggerak serangan Hawks."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Turnover jadi masalah lain buat Hornets: 17 kali CHA kehilangan bola versus 11 dari ATL.",
+          "fix": "Delete 'Turnover jadi masalah lain' — just state: 'CHA 17 turnover, ATL 11.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ironisnya, Hornets unggul total rebound 49-37, tapi rebound tidak banyak membantu kalau possession-nya terus dibuang.",
+          "fix": "Split: 'Hornets unggul rebound 49-37. Tapi possession-nya terus dibuang.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dyson Daniels tutup lima besar Hawks dengan double-double: 11 poin dan 10 asis, plus 8 rebound",
+          "fix": "Dyson Daniels: 11 poin, 10 asis, 8 rebound — jadi pemain tiga stat double digit di skuad."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Di belakangnya, Aaron Wiggins ... Sementara Nickeil Alexander-Walker",
+          "fix": "Restructure with varied connectors or just: Aaron Wiggins 19 poin (7-12 FG, 4-6 3PT). Alexander-Walker..."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Momen di Q3 jadi titik penentu: setelah Naz Reid sempat bawa CHA unggul 65-63 lewat three dari jarak 26 kaki, Jalen Johnson langsung balas dengan three-pointer juga dari 24 kaki (diumpan Daniels) untuk membuat ATL kembali unggul 68-65.",
+          "fix": "Split into two: 'Naz Reid tembak three dari 26 kaki, CHA unggul 65-63. Jalen Johnson langsung balas dari 24 kaki, ATL kembali depan 68-65.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Perbedaan paling jelas ada di shooting efficiency dan turnover.",
+          "fix": "Delete opening. Start: 'ATL tembak 51%, CHA 40%. Dari garis tiga...' — let reader infer 'clear difference.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x365129f2ddc9c328",
+    "published_at": "2026-11-21T02:33:27+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 62,
+      "headline_comment": "Faktual tapi generik dan ada inkonsistensi — 'Balikkan Momentum' tidak didukung narasi (Hawks tidak pernah tertinggal signifikan), dan menyebut 'Game 2' di parentheses padahal body bilang Game 3 of 4.",
+      "lead_score": 72,
+      "lead_comment": "Lead memuat skor, waktu, dan top performer tapi kalimat 'efisien dari mana-mana' lemah dan klausa 'menutup regular season series' kontradiktif dengan paragraf penutup yang bilang masih ada Game 4.",
+      "structure_score": 80,
+      "structure_comment": "Pembagian section (Top Performers / Baca Statistik / Momen Kunci / Selanjutnya) rapi dan mengalir, tapi section 'Momen Kunci' terlalu tipis mengingat key plays data tersedia lebih banyak.",
+      "voice_score": 78,
+      "voice_comment": "Code-switching NBA term natural (field goal, three, fast-break, half-court), tense marker terkendali, tapi ada beberapa frasa kaku seperti 'efisiensinya berat' dan 'pegang peran physical di dalam' yang canggung.",
+      "suggestion_count": 6,
+      "summary": "Solid recap with clean structure and good stat integration, but two factual inconsistencies need fixing before publish: the Game 2/3 mismatch in the headline and the 'menutup series' contradiction in the lead. Headline angle also oversells a comeback that didn't happen.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap Charlotte Hornets 97-111 Atlanta Hawks (Game 2)",
+          "issue": "Judul SEO bilang Game 2, tapi input data dan body artikel menyebut Game 3 of 4 dengan status series 2-0.",
+          "fix": "Ganti '(Game 2)' jadi '(Game 3)' atau hapus parentheses — konsistenkan dengan body."
+        },
+        {
+          "priority": "high",
+          "snippet": "Atlanta Hawks menutup regular season series melawan Charlotte Hornets dengan kemenangan 111-97",
+          "issue": "Lead bilang 'menutup series' padahal section 'Selanjutnya' konfirmasi masih ada Game 4 — kontradiksi internal.",
+          "fix": "Ganti jadi 'Atlanta Hawks menang 111-97 atas Charlotte Hornets untuk ambil keunggulan 2-0 di regular season series.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Balikkan Momentum, Kalahkan Charlotte",
+          "issue": "Headline janjikan narasi comeback tapi artikel menunjukkan Hawks unggul mayoritas pertandingan — Charlotte cuma sempat memimpin 65-63 di Q3.",
+          "fix": "Pakai angle yang didukung data: 'Hawks Lanjutkan Dominasi atas Hornets' atau 'Jalen Johnson Cetak 26, Hawks Kunci Kemenangan 111-97'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Onyeka Okongwu pegang peran physical di dalam: 16 poin, 7 rebound, 6-10 FG",
+          "issue": "'Pegang peran physical di dalam' terdengar seperti terjemahan literal dari 'played a physical role inside' — tidak natural.",
+          "fix": "'Onyeka Okongwu dominan di paint dengan 16 poin dan 7 rebound, efisien 6-10 FG.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Momen di Q3 jadi titik penentu: setelah Naz Reid sempat bawa CHA unggul 65-63",
+          "issue": "Section 'Momen Kunci' cuma expand satu sequence Q3 dan mengabaikan key plays Q1 yang tersedia — missed opportunity untuk membangun arc pertandingan.",
+          "fix": "Tambah satu-dua kalimat soal Q1 yang imbang (Reid, Diabate, Daniels saling balas) sebelum masuk ke pivot Q3."
+        },
+        {
+          "priority": "low",
+          "snippet": "Naz Reid double-double dengan 12 poin dan 10 rebound, meski efisiensinya berat di 4-19 FG",
+          "issue": "'Efisiensinya berat' ambigu — bisa berarti berat sebelah atau berat untuk dicapai; pembaca harus menerka.",
+          "fix": "'Naz Reid double-double 12 poin dan 10 rebound, tapi shooting-nya payah: 4-19 FG.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
