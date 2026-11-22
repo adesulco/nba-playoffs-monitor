@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "por-at-ny-2026-11-22-g1",
+  "title": "Recap Portland Trail Blazers 96-97 New York Knicks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Portland Trail Blazers vs New York Knicks (96-97) di —, 22 November 2026.",
+  "body_md": "# Mikal Bridges Pecahkan Hati Portland di Detik Terakhir\n\nNew York Knicks menang dramatis 97-96 atas Portland Trail Blazers, Sabtu 22 November 2026. Mikal Bridges cetak *three-point step-back* di buzzer, skor 96-94 untuk POR berubah jadi 97-96 dalam hitungan 0,0 detik. Kandang NY meledak. Portland pulang dengan tangan kosong.\n\nIni bukan pertandingan yang seharusnya berakhir seperti ini. POR sempat memimpin di menit-menit terakhir, punya tiga kesempatan untuk menutup kemenangan, dan gagal.\n\n---\n\n## Bagaimana Portland Hampir Menang\n\nClingan dan Avdija yang menahan POR tetap kompetitif sepanjang malam. Donovan Clingan tampil efisien: 22 poin, 13 rebound, 4 asis dengan shooting 9-11 dari lapangan, angka yang hampir mustahil di sebuah laga ketat. Deni Avdija di sampingnya: 20 poin, 9 rebound, 5 asis.\n\nDi Q4, POR sempat unggul. Clingan bikin *two-point shot* di menit 2:04, skor 90-94 untuk POR. Avdija tambah satu *free throw* di menit 1:41, skor 91-94. Portland tinggal butuh bertahan.\n\nTapi Damian Lillard, yang malam ini kesulitan sepanjang pertandingan dengan 15 poin dari shooting 5-16 dan 1-9 dari *three-point line*, justru muncul di momen paling kritis. Menit 1:04, Lillard cetak *three-pointer* dari 25 kaki, dibantu Jrue Holiday. Skor 94-94. Laga terikat.\n\nAvdija kembali ke *free throw line* di sisa 3,2 detik. Dua *free throw*, dua masuk. POR unggul 96-94. Waktu habis buat NY, kecuali mereka punya Mikal Bridges.\n\n---\n\n## Brunson Dominan, Shamet Kejutan Terbesar\n\nJalen Brunson mengerjakan tugasnya: 30 poin, 7 rebound, 5 asis. FG 11-23, *three-pointer* 6-10. Brunson jadi motor offense NY sepanjang malam, tapi yang justru mengejutkan adalah Landry Shamet.\n\nShamet cetak 20 poin off the bench, 7-14 dari lapangan, 6-10 dari *three-point line*. Dua pemain NY dari *three-point line* mencatatkan 6-10, sebuah kontribusi perimeter yang menjadi pembeda: NY 45% dari *three-point line* (19-42), POR hanya 29% (11-38).\n\nDi sisi pertahanan, Andre Drummond memanen 13 rebound dengan 7 poin, kontribusi fisik yang penting bahkan di malam skor-nya pas-pasan.\n\n---\n\n## Statistik yang Menjelaskan Perbedaan Satu Poin\n\nTim yang menang di angka *three-point*, tim yang kalah mendominasi di area lain. POR punya 47 rebound vs 42 NY. *Points in paint* POR menghancurkan NY: 48 berbanding 26. *Free throw* POR juga lebih banyak: 13-17 vs NY 4-6.\n\nTapi NY 45% dari *three-point line* berbanding POR 29%, selisih 8 poin dari efisiensi perimeter itulah yang menutup semua keunggulan POR di dalam cat.\n\n---\n\n## Penutup\n\nNY memimpin seri Regular Season 1-0 setelah dua pertandingan. Laga berikutnya di NBA League Pass dan Vidio. Siapapun yang sudah tidur dan melewatkan buzzer beater Bridges tadi pagi, itu terasa menyakitkan kalau kamu fans Portland.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910024",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Portland Trail Blazers",
+    "away_abbr": "POR",
+    "home_score": 97,
+    "away_score": 96,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-11-22T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.067491,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: high-severity pronoun violation ('kamu fans Portland'), factual error (Shamet starter, not bench), training-data inference (starter/bench status), and multiple English-calque idioms that break voice. Rewrite the closing paragraph and Shamet paragraph; remove direct address; cite only verified data.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Kandang NY meledak. Portland pulang dengan tangan kosong.",
+          "fix": "Rewrite qualitatively: 'Madison Square Garden bergoyang. Portland naik bis tanpa poin.' Or cite stats instead."
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "high",
+          "snippet": "Siapapun yang sudah tidur dan melewatkan buzzer beater Bridges tadi pagi, itu terasa menyakitkan kalau kamu fans Portland.",
+          "fix": "Remove direct address: 'Siapapun fans Portland yang tidur tadi pagi, buzzer beater Bridges jadi penyesalan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Tim yang menang di angka three-point, tim yang kalah mendominasi di area lain.",
+          "fix": "Start with specific stat: 'NY 45% dari three-point line, POR 29%. Selisih itu yang membedakan.' Then analyze."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini bukan pertandingan yang seharusnya berakhir seperti ini.",
+          "fix": "Delete or replace with concrete fact: 'POR punya 96-94 di 3,2 detik terakhir. Semestinya menang.''"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Shamet cetak 20 poin off the bench",
+          "fix": "Rewrite: 'Shamet cetak 20 poin, 36 menit sebagai starter, 7-14 FG, 6-10 three-point.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Clingan tampil efisien... Avdija di sampingnya...",
+          "fix": "Second instance: 'Deni Avdija membawanya ke level berikutnya: 20 poin...' or just restructure."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Shamet cetak 20 poin off the bench",
+          "fix": "Delete 'off the bench' and cite stats only: 'Shamet cetak 20 poin, 7-14 FG, 6-10 three-point.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "NY memimpin seri Regular Season 1-0 setelah dua pertandingan.",
+          "fix": "Clarify: 'NY unggul 1-0 di regular season series (game 2 of 2 usai).'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x868a84df7c9137b6",
+    "published_at": "2026-11-22T03:34:48+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

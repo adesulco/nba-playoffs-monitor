@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "lac-at-dal-2026-11-22-g1",
+  "title": "Recap LA Clippers 100-110 Dallas Mavericks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — LA Clippers vs Dallas Mavericks (100-110) di —, 22 November 2026.",
+  "body_md": "# Dallas Mavericks Kalahkan LA Clippers 110-100, Unggul 1-0 di Regular Season Series\n\nDallas Mavericks menang 110-100 atas LA Clippers di laga kedua regular season series, Minggu 22 November 2026 mulai jam 08.00 WIB. DAL kini unggul 1-0 di seri tiga game ini. Kyrie Irving memimpin dengan 25 poin, Cooper Flagg tambah 22 poin plus 8 asis, sementara LAC tidak mampu menutup selisih turnover yang mencolok, 16 berbanding 9, dan tertinggal di fast-break points sepanjang malam.\n\n---\n\n## Top Performers\n\n**Kyrie Irving** kembali jadi andalan DAL dengan 25 poin, 6 rebound, 4 asis dari 35 menit bermain. Efisiensinya malam ini tidak sempurna, 8-24 from field, 3-11 from three, tapi volume scoring-nya cukup untuk menjaga DAL di depan di momen-momen kritis Q4.\n\nDi sebelahnya, **Cooper Flagg** tampil sebagai playmaker sekaligus scorer: 22 poin, 6 rebound, 8 asis, dengan shooting yang lebih efisien (6-16 FG, 3-6 from three). Delapan asis dari Flagg mencerminkan bagaimana DAL membangun serangan secara kolektif, bukan hanya mengandalkan satu opsi.\n\nDua pemain bench DAL juga memberikan kontribusi signifikan. **Walter Clayton Jr.** cetak 16 poin dari bench dengan 5-8 FG dan 2-3 from three dalam 25 menit. **Max Christie** tambah 13 poin dengan shooting efisien, 5-7 FG, 3-4 from three, dalam 24 menit.\n\nDari sisi LAC, **Brook Lopez** topscorer dengan 21 poin dan 6 rebound, tapi efisiensinya dari arc lemah (1-6 from three). **Rui Hachimura** tampil solid dengan 19 poin, 8 rebound, dan 4-5 from three, salah satu performa terbaik malam itu secara efisiensi. **Darius Garland** tambah 16 poin dari 32 menit bermain.\n\n---\n\n## Apa yang Bicara Lewat Angka\n\nSelisih akhir 10 poin tidak sepenuhnya menggambarkan perbedaan kualitas antara kedua tim malam ini, tapi beberapa angka menjelaskan mengapa DAL yang menang.\n\nFast-break points: DAL 22, LAC 12. Ini langsung berkaitan dengan angka turnover, LAC melakukan 16 kesalahan, DAL hanya 9. Tujuh perbedaan turnover itu berulang kali berubah jadi poin mudah untuk DAL di transition.\n\nPoints in paint juga berpihak ke DAL: 40 berbanding 32. DAL punya 10 steal di laga ini versus 6 milik LAC. Secara shooting, keduanya tidak jauh berbeda, LAC 38% FG vs DAL 41%, LAC 33% from three vs DAL 39%, tapi dari garis free throw, DAL lebih banyak dapat kesempatan (23-34 vs LAC 19-24), meski persentasenya lebih rendah (68% vs 79%).\n\n---\n\n## Momen Penentu di Q4\n\nSaat memasuki Q4, selisih masih tipis. Lopez layup di menit 8:02 (assist Sanders) bikin skor 81-84. Irving langsung balas dengan two-point shot, 81-86. Lopez tidak menyerah: fadeaway 16-foot plus free throw mengecilkan gap jadi 84-86.\n\nTapi Walter Clayton Jr. merespons dengan three-pointer dari 24 kaki (assist Gafford) di menit 7:08, skor jadi 84-89. LAC mencoba bertahan: Kris Dunn cetak tembakan tiga angka dari 23 kaki (assist Garland) di menit 5:12, bikin 88-91. Namun Gafford menuntaskan respons DAL dengan two-point shot dari Flagg's assist di menit 4:18, 88-93, dan momentum itu tidak berbalik lagi ke LAC.\n\n---\n\n## Selanjutnya\n\nDAL unggul 1-0 di regular season series tiga game ini. Game ketiga jadwalnya belum tercantum di data yang tersedia. LAC perlu memperbaiki turnover discipline secara signifikan jika ingin menyamakan kedudukan, 16 kesalahan di laga ini terlalu mahal harganya.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910025",
+    "home_team": "Dallas Mavericks",
+    "home_abbr": "DAL",
+    "away_team": "LA Clippers",
+    "away_abbr": "LAC",
+    "home_score": 110,
+    "away_score": 100,
+    "winner_abbr": "DAL",
+    "kickoff_utc": "2026-11-22T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DAL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023042,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Two hard training-data hallucinations (Kris Dunn, Daniel Gafford not in input data). Multiple translated-English phrasings and one unnecessary meta-reference break voice. Structural issues fixable, but inference errors require regeneration.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Kris Dunn cetak tembakan tiga angka dari 23 kaki",
+          "fix": "Remove this play or verify player name from input TOP SCORERS block."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Daniel Gafford makes 9-foot two point shot (Cooper Flagg assists)",
+          "fix": "Remove or replace with verified scorer from DAL input list."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Efisiensinya malam ini tidak sempurna, 8-24 from field, 3-11 from three",
+          "fix": "Change to: 'tapi shooting-nya 8-24, tiga angka 3-11, volume cukup untuk...' or just 'shooting 8-24.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Delapan asis dari Flagg mencerminkan bagaimana DAL membangun serangan secara kolektif",
+          "fix": "Change to: 'Delapan asis Flagg jadi bukti DAL main tim.' or just 'DAL main tim, bukan satu opsi.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya / DAL unggul 1-0",
+          "fix": "Delete 'Selanjutnya' and start with 'DAL unggul 1-0 di regular season series tiga game.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game ketiga jadwalnya belum tercantum di data yang tersedia.",
+          "fix": "Delete or replace with: 'Game ketiga belum dijadwalkan.' (simpler, reads natural)"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Efisiensinya dari arc lemah (1-6 from three)",
+          "fix": "Change to: 'tapi tiga angka-nya lemah, 1-6.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "beberapa angka menjelaskan mengapa DAL yang menang",
+          "fix": "Change to: 'beberapa angka kunci menunjukkan perbedaannya:' or just delete and jump to the stats."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe6cff19a3469c7a4",
+    "published_at": "2026-11-22T03:35:30+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

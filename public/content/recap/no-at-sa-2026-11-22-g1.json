@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "no-at-sa-2026-11-22-g1",
+  "title": "Recap New Orleans Pelicans 91-114 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — New Orleans Pelicans vs San Antonio Spurs (91-114) di —, 22 November 2026.",
+  "body_md": "# Wembanyama 50 Poin, Spurs Libas Pelicans 114-91\n\nSan Antonio Spurs menang telak 114-91 atas New Orleans Pelicans dalam laga regular season, Sabtu 22 November 2026. Victor Wembanyama cetak 50 poin dan 19 rebound, tampil seperti dari planet lain. SA kini unggul 1-0 dalam seri empat pertemuan musim ini.\n\n---\n\n## Malam Milik Wemby\n\nSusah menemukan cara lain untuk membuka recap ini selain dari angkanya langsung: 50 poin, 19 rebound, FG 20 dari 29, tiga poin 5 dari 11, dalam 32 menit. Wembanyama tidak perlu kerja lembur untuk membongkar Pelicans.\n\nYang bikin angka itu makin berat adalah efisiensinya. Dua puluh sembilan tembakan, dua puluh masuk. Itu bukan volume scorer yang hidup dari frekuensi, itu pemain yang hampir tidak bisa dijaga. Kombinasi jangkauan tangan, footwork di post, dan kemampuan pull-up tiga poin dari mana saja membuat Pelicans tidak punya jawaban tunggal yang bisa diandalkan sepanjang malam.\n\nRebound-nya pun bukan bonus. Sembilan belas rebound dari seorang center yang baru cetak 50 poin berarti dia hadir di kedua sisi lapangan secara konsisten, bukan sekadar cherry-pick di sisi ofensif.\n\n---\n\n## Pelicans Lawan, Tapi Tidak Cukup\n\nDari sisi NO, Jeremiah Fears tampil solid: 29 poin, 5 rebound, 4 asis, FG 9 dari 17. Untuk rookie atau pemain muda yang diturunkan sebagai tumpuan, itu output yang layak diacungi jempol. Jordan Poole menambah 25 poin off the bench dengan FG 9 dari 16.\n\nYang menarik dari Pelicans adalah pasangan big man mereka. Derik Queen dan Yves Missi masing-masing membawa double-double: Queen 15 poin dan 15 rebound, Missi 9 poin dan 13 rebound. Dua besar, total 28 rebound. Belum cukup untuk mengimbangi Wembanyama sendirian, tapi menunjukkan NO tidak menyerah di papan.\n\nMasalahnya ada di tempat lain.\n\n---\n\n## Angka yang Menjelaskan Selisih 23 Poin\n\nDua kolom yang paling mencolok di box score:\n\n**Tiga poin:** NO 8 dari 35 (23%), SA 19 dari 56 (34%). Pelicans lebih banyak mencoba, jauh lebih sedikit yang masuk. SA membiarkan NO menembak dari luar, dan Pelicans tidak memanfaatkannya. Delapan tembakan tiga poin masuk dari 35 percobaan itu menyakitkan.\n\n**Asis:** NO 11, SA 30. Ini bukan sekadar soal ball movement, ini soal seberapa mudah SA menciptakan tembakan terbuka versus seberapa sering NO terpaksa bermain isolation. Stephon Castle 19 poin dengan 7-12 FG dan 5 dari 7 dari tiga poin, plus 6 asis, dia jadi penggerak yang efisien di luar Wembanyama. Tanpa Castle sebagai distributor, Spurs tidak bisa memaksimalkan ruang yang diciptakan Wemby di dalam.\n\nSatu catatan positif untuk Pelicans: 48 poin di area cat vs SA 36. NO mendominasi di dalam, tapi itu tidak cukup menutup lubang yang dibuka oleh perbedaan efisiensi tiga poin dan assist yang sangat besar.\n\n---\n\n## Selanjutnya\n\nSA memimpin seri reguler season 1-0, Game 3 dari empat pertemuan musim ini belum ada jadwal resminya di input. Untuk Pelicans, pekerjaan rumah jelasnya ada di perimeter defense dan ball movement, 11 asis tidak akan cukup kalau ingin merepotkan Spurs lebih lanjut.\n\nUntuk Wembanyama: 50 poin, 19 rebound. Regular season. Di 32 menit. Silakan diproses.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910027",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "New Orleans Pelicans",
+    "away_abbr": "NO",
+    "home_score": 114,
+    "away_score": 91,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-22T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021402,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Article has strong voice and accurate stats, but fails on tense overmarking in lede, colloquial 'yang bikin' mid-paragraph, and fourth-wall metacommentary ('di input'). Soft 'Selanjutnya' connector acceptable but marginal. Overall: sharp analysis, but structural/register slips need fixing before publish.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "high",
+          "snippet": "San Antonio Spurs menang telak 114-91 atas New Orleans Pelicans dalam laga regular season, Sabtu 22 November 2026.",
+          "fix": "Drop tense marker: 'San Antonio Spurs menang telak 114-91...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Yang bikin angka itu makin berat adalah efisiensinya.",
+          "fix": "Rewrite: 'Efisiensi di balik angka itu yang bibikin berat.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Satu catatan positif untuk Pelicans: 48 poin di area cat vs SA 36.",
+          "fix": "Drop opener: 'Sisi terang Pelicans: 48 poin di area cat vs 36 SA.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 3 dari empat pertemuan musim ini belum ada jadwal resminya di input.",
+          "fix": "Delete meta-comment: 'Game 3 jadwalnya belum diumumkan.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya\\n\\nSA memimpin seri reguler season 1-0...",
+          "fix": "Replace: 'Ke Depan' or just drop and start directly with 'SA memimpin...'"
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "low",
+          "snippet": "Untuk Wembanyama: 50 poin, 19 rebound. Regular season. Di 32 menit. Silakan diproses.",
+          "fix": "Soften: 'Silakan cerna sendiri.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x41632d3630795286",
+    "published_at": "2026-11-22T03:37:28+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

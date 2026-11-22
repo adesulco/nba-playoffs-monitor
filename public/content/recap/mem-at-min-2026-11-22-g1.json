@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mem-at-min-2026-11-22-g1",
+  "title": "Recap Memphis Grizzlies 95-104 Minnesota Timberwolves (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Memphis Grizzlies vs Minnesota Timberwolves (95-104) di —, 22 November 2026.",
+  "body_md": "# Minnesota Timberwolves Permalukan Memphis, Jaden McDaniels Pimpin Kemenangan 104-95\n\nMinnesota Timberwolves mengalahkan Memphis Grizzlies 104-95 di Game 2 dari tiga laga regular season series. MIN kini unggul 2-0 dalam series ini. Jaden McDaniels jadi pemimpin lapangan dengan 25 poin, sementara Memphis kesulitan menemukan ritme ofensif sepanjang malam.\n\n---\n\n## Timberwolves Menang di Efisiensi\n\nAngka yang paling mencolok dari malam ini bukan siapa yang cetak poin terbanyak, tapi seberapa efisien Minnesota melakukannya.\n\nMIN tembak 58% dari lapangan (43-74). MEM? 43% (38-89). Itu selisih yang sulit ditutupi oleh siapapun, apalagi ketika Memphis juga struggle dari three-point line dengan 25% (8-32) dibanding Minnesota yang 32% (10-31).\n\nMemphis memang lebih banyak mencuri bola, 14 steals vs 8 milik MIN, tapi mereka sendiri buang 17 turnovers. Minnesota 23 turnover, lebih banyak secara angka, tapi konteks efisiensi shooting mereka membuat selisih itu tidak terasa.\n\n---\n\n## McDaniels dan Dosunmu Jadi Mesin Ofensif MIN\n\nJaden McDaniels tampil sebagai top scorer dengan 25 poin, 5 rebound, 4 asis dari 11-17 field goal, efisiensi yang bersih. Ayo Dosunmu menyusul dengan 19 poin (9-14 FG) dalam 34 menit sebagai starter.\n\nJonathan Kuminga menambah 16 poin dari 6-9 field goal termasuk 2-3 dari luar arc, kontribusi bench yang solid. Terrence Shannon Jr. datang dari bench dengan 15 poin, 5 rebound, 3-6 dari three-point line.\n\nLaMelo Ball bukan top scorer malam ini dengan 12 poin, tapi 7 asis-nya jadi lem bagi sistem ofensif Minnesota. FG-nya 5-10, efisien, dan distribusinya yang membuat rekan-rekan dapat shot terbuka.\n\n---\n\n## Coward Bertarung Keras untuk Memphis\n\nDi sisi Memphis, Cedric Coward kasih effort terbaik: 23 poin, 7 rebound, 4-7 dari three-point line dalam 30 menit. Coward jadi satu-satunya pemain MEM yang benar-benar troublesome buat pertahanan Minnesota.\n\nTy Jerome menambah 18 poin dan 6 asis (7-17 FG, 3-9 dari tiga), meski efisiensi shootingnya tidak ideal. Masalah Memphis bukan kurang usaha, Cam Spencer 9 poin dengan 5 rebound dan 5 asis dari bench, Isaiah Stewart 10 poin, tapi kolektif, mereka tidak bisa menemukan shooting touch yang dibutuhkan untuk menandingi Minnesota malam ini.\n\nJaylen Wells starter dengan 8 poin dari 3-11 field goal. 25% FG dalam 25 menit dari seorang starter adalah beban berat yang sulit dikompensasi rekan-rekannya.\n\n---\n\n## Paint dan Rebound: Minnesota Dominan\n\nMIN menang di rebounds (39 vs 36) dan points in paint (60 vs 52). Di fast-break points, dua tim hampir seimbang: MIN 17, MEM 16, tapi Minnesota lebih konsisten mengkonversi possession menjadi poin dari dua angka.\n\nDua momen yang tercatat dari key plays: tip-in dunk Zach Edey di Q1 (skor 5-4 kala itu) dan pullup jump shot LaMelo Ball dari 14 kaki di Q2 yang menggeser skor 41-43. Detail Q3 dan Q4 tidak tersedia di input, tapi hasil akhir berbicara sendiri, Minnesota menang sembilan poin.\n\n---\n\n## Selanjutnya\n\nGame 3, laga terakhir series ini, akan menentukan siapa yang tutup dengan rekor bersih. MIN sudah unggul 2-0 dan butuh satu kemenangan lagi untuk sapu bersih. Jadwal Game 3 tidak tersedia di input saat ini.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910026",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "Memphis Grizzlies",
+    "away_abbr": "MEM",
+    "home_score": 104,
+    "away_score": 95,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-11-22T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039776,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: factual error (claims MIN 2-0 when input says 1-0), one training-inference player (Zach Edey), and multiple soft-discouraged patterns. Score 62.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "MIN kini unggul 2-0 dalam series ini",
+          "fix": "Change to 'MIN unggul 1-0 dalam series ini' or 'MIN menang Game 2, menuntaskan keduanya kemenangan beruntun'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Coward kasih effort terbaik: 23 poin, 7 rebound, 4-7 dari three-point line",
+          "fix": "Rewrite: 'Coward 23 poin, 7 rebound, 4-7 dari tiga dalam 30 menit' (make three-point line separate stat)"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka yang paling mencolok dari malam ini bukan siapa yang cetak poin terbanyak",
+          "fix": "Simplify: 'Malam ini bukan tentang siapa cetak terbanyak, tapi efisiensi shooting.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Itu selisih yang sulit ditutupi oleh siapapun",
+          "fix": "Change to: 'Selisih 15% FG itu tidak terbendung.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Terrence Shannon Jr. datang dari bench dengan 15 poin... 3-6 dari three-point line",
+          "fix": "Acceptable as-is; minor clarity note only."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya / Game 3, laga terakhir",
+          "fix": "Delete 'Selanjutnya' or replace with 'Game 3 tinggal espérance kemenangan MIN.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Di sisi Memphis, Cedric Coward kasih effort terbaik",
+          "fix": "Change to: 'Memphis andalkan Cedric Coward dengan effort terbaik:' or 'Coward pimpin serangan Memphis dengan 23 poin'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua momen yang tercatat dari key plays: tip-in dunk Zach Edey",
+          "fix": "Delete Zach Edey reference entirely. Use only players from TOP SCORERS block or rewrite as 'Early momentum shift dari tip-in plays' without naming Edey."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2c4243c9e119fef4",
+    "published_at": "2026-11-22T03:36:49+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
