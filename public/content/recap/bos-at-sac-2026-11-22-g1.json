@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "bos-at-sac-2026-11-22-g1",
+  "title": "Recap Boston Celtics 96-97 Sacramento Kings (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Sacramento Kings (96-97) di —, 22 November 2026.",
+  "body_md": "# Sacramento Kings Kalahkan Boston Celtics 97-96, Darius Acuff Jr. dan Keegan Murray Jadi Pahlawan\n\nSacramento Kings menang dramatis 97-96 atas Boston Celtics di laga NBA Playoffs 2026, Sabtu 22 November 2026. Delapan detik tersisa, Keegan Murray menceploskan tip shot untuk membalik keunggulan 96-95 Celtics menjadi kekalahan. SAC kini unggul 1-0 dalam regular season series dua pertandingan ini, dan satu laga lebih sudah cukup untuk menutup seri.\n\n---\n\n## Top Performers\n\nDarius Acuff Jr. tampil sebagai motor utama Kings malam ini. Rookie atau bukan, 21 poin, 6 rebound, 8 asis dari Acuff Jr. adalah stat line yang jauh lebih impactful dari yang terlihat di angka mentahnya, dia yang menjaga Sacramento tetap hidup di clutch time lewat empat free throw beruntun di Q4 final. Shooting-nya memang tidak efisien (7-23 dari lapangan, 2-7 dari tiga angka), tapi ball movement dan ketenangan di garis free throw-nya yang menentukan.\n\nDe'Andre Hunter menambah 20 poin dan 6 rebound dengan efisiensi yang lebih solid: 5-11 dari lapangan. Domantas Sabonis mengerjakan tugasnya di paint, 15 poin dan 17 rebound menjadikan dia penjaga papan dominan di sisi SAC. Keegan Murray \"hanya\" cetak 15 poin dengan 12 rebound, tapi kontribusi terbesarnya datang tepat di momen yang paling dibutuhkan.\n\nDi kubu Boston, Paul George memimpin dengan 19 poin dan 8 rebound, tapi efisiensinya jauh dari ideal: 6-21 dari lapangan, 2-9 dari tiga angka. Payton Pritchard memimpin distribusi bola dengan 8 asis, sementara Mike Conley jadi kejutan off the bench, 19 poin dari hanya 18 menit bermain, dengan shooting nyaris sempurna 6-7 dari lapangan dan 4-4 dari luar busur.\n\n---\n\n## Statistik yang Menjelaskan Laga\n\nAngka-angka ini bercerita lebih jelas dari skor akhir yang tipis.\n\nCeltics menembak 34% dari lapangan dan 22% dari tiga angka, 13 bola masuk dari 58 percobaan. SAC memang tidak jauh lebih baik dari luar busur (27%, 7-26), tapi Kings lebih efisien secara keseluruhan: 41% FG vs 34% milik Boston. Selisih itu yang membuat SAC tetap kompetitif meski Boston mencatat lebih banyak steal (8 vs 4) dan rebound total sama-sama 52.\n\nYang lebih krusial: free throw. Boston hanya konversi 60% (15-25) di garis, angka yang menyakitkan di laga sempit seperti ini. Sacramento 81% (26-32). Selisih volume dan persentase free throw itu hampir setara selisih akhir satu poin.\n\nTurnovers Boston juga lebih terkontrol (11) dibanding SAC (20), tapi keunggulan di kategori itu tidak cukup untuk menutup selisih efisiensi tembakan.\n\n---\n\n## Delapan Detik yang Mengubah Segalanya\n\nDua menit terakhir laga ini layak diputar ulang.\n\nAcuff Jr. ke garis free throw dua kali di Q4: pertama untuk membawa SAC ke 92-93, kemudian menyamakan skor 94-94 setelah Queta sempat balik unggulkan Celtics. Tiap kali Boston nyaris menutup pintu, Acuff Jr. muncul dari garis dan menjaga Kings tetap bernafas.\n\nPayton Pritchard lalu menjawab dengan fadeaway 16 kaki yang masuk, 96-95 untuk Boston dengan 11,8 detik tersisa. Anfield bergemuruh, maaf, kandang SAC (nama venue tidak tersedia di data) bergemuruh. Celtics tinggal bertahan.\n\nTapi Murray tidak selesai. Tip shot di sisa lima detik, bola rebound masuk via tangannya, mengubah 96-95 menjadi 96-97. Celtics tidak sempat membalas. Peluit akhir: Kings menang.\n\n---\n\n## Penutup\n\nDengan format dua pertandingan, kemenangan ini sekaligus menutup regular season series SAC vs BOS: Kings unggul 1-0 dan seri selesai. Laga berikutnya di calendar masing-masing tim belum tercantum di data yang tersedia. Siaran live tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910028",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 97,
+    "away_score": 96,
+    "winner_abbr": "SAC",
+    "kickoff_utc": "2026-11-22T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SAC leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023226,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 61,
+      "issue_count": 8,
+      "summary": "Fail: high-severity training-data inference (Acuff Jr. 'Rookie' status, stadium name meta-correction), factual confusion about series completion, and multiple instances of translated-English phrasing. Rewrite needed for accuracy and voice repair.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Rookie atau bukan, 21 poin, 6 rebound, 8 asis dari Acuff Jr.",
+          "fix": "Delete 'Rookie atau bukan,' — just cite the stats without biography inference."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Anfield bergemuruh, maaf, kandang SAC (nama venue tidak tersedia di data) bergemuruh.",
+          "fix": "Delete stadium reference entirely. Write: 'Pritchard's fadeaway 16 kaki masuk, 96-95 untuk Boston dengan 11,8 detik tersisa.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "stat line yang jauh lebih impactful dari yang terlihat di angka mentahnya",
+          "fix": "Write: 'angka-angka Acuff Jr. menunjukkan dampak lebih besar dari sekadar poin' or simpler: 'Acuff Jr. jadi pembeda di clutch.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "satu laga lebih sudah cukup untuk menutup seri",
+          "fix": "Rewrite: 'SAC kini unggul 1-0; seri dua pertandingan usai dengan kemenangan ini.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka-angka ini bercerita lebih jelas dari skor akhir yang tipis.",
+          "fix": "Delete or compress to: 'Statistik ungkap mengapa SAC menang dengan selisih satu poin.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Angka yang menyakitkan di laga sempit seperti ini",
+          "fix": "Write: 'Angka free throw Boston fatal di laga sempit.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Laga berikutnya di calendar masing-masing tim belum tercantum di data yang tersedia.",
+          "fix": "Delete sentence entirely. End with series result and broadcast info only."
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "low",
+          "snippet": "Yang lebih krusial: free throw.",
+          "fix": "Optional: 'Tapi free throw jadi krusial:' or just 'Free throw: Boston 60% (15-25), SAC 81% (26-32).'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x02f8e9ad344526b2",
+    "published_at": "2026-11-22T06:13:24+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
