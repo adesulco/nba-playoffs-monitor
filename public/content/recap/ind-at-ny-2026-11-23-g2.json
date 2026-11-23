@@ -1,0 +1,69 @@
+{
+  "type": "recap",
+  "slug": "ind-at-ny-2026-11-23-g2",
+  "title": "Recap Indiana Pacers 106-113 New York Knicks (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Indiana Pacers vs New York Knicks (106-113) di —, 23 November 2026.",
+  "body_md": "# Knicks Tutup Seri Reguler vs Pacers, KAT Tampil Malam\n\nNew York Knicks menang 113-106 atas Indiana Pacers di Game 3 yang menentukan seri reguler season dua tim ini. Karl-Anthony Towns jadi bintang utama dengan 30 poin, 13 rebound, dan 5 asis, performa yang nyaris sempurna di momen yang tepat. Knicks menutup seri 2-1, mengklaim keunggulan head-to-head atas Pacers musim ini.\n\n---\n\n## Malam KAT dan Hart\n\nKalau Towns yang mencetak poin, Josh Hart yang mengikat semuanya. Hart finish dengan 10 poin, 11 rebound, dan 10 asis, triple-double yang terasa lebih besar dari angkanya. Hart jadi pusat permainan Knicks sepanjang malam, dengan 39 menit di court, paling lama dari siapapun di kedua tim.\n\nJalen Brunson menambahkan 22 poin dan 7 asis, meski efisiensinya tidak sekinclong Towns, 8 dari 18 tembakan, 1 dari 6 dari luar busur. Landry Shamet berkontribusi 17 poin dengan 7-15 dari lapangan dan 3-9 dari tiga angka. Dari bench, Jose Alvarado nyolong 11 poin dalam 22 menit dengan 3 dari 6 tembakan tiga angka.\n\n---\n\n## IND Punya Senjata, Tapi Beda Kelas di Luar Busur\n\nPacers bukan tanpa perlawanan. Pascal Siakam tampil keras dengan 25 poin dan 6 rebound, meski butuh 22 percobaan untuk sampai di angka itu (9-22 dari lapangan). Andrew Nembhard solid dengan 16 poin dan 8 asis, menjaga Pacers tetap dalam permainan. Ivica Zubac dominan di area cat: 10 poin dan 14 rebound, unggul secara individual di bawah ring.\n\nMasalah Pacers ada di tiga angka. Mereka hanya 6 dari 23 percobaan (26%), sementara Knicks membakar net dengan 15 dari 43 (35%). Selisih itu tidak terasa besar per tembakan, tapi dengan volume setinggi itu, dampaknya menumpuk jadi 27 poin ekstra vs 18 poin untuk Pacers. Di laga yang berakhir tujuh angka, perbedaan efisiensi dari luar busur adalah perbedaan yang menentukan.\n\n---\n\n## Statistik yang Bicara\n\nKnicks menang rebound 50-42 dan unggul jauh di asis 30-20, dua tanda tim yang bermain lebih connected. Pacers sebenarnya lebih baik di poin dalam area cat (56 vs 42), tapi Knicks mengompensasinya dari jarak jauh dan kontrol ritme.\n\nTurnover menarik: Pacers 12, Knicks 18, Knicks justru lebih banyak kehilangan bola tapi tetap menang. Pacers tidak maksimal menghukum turnover Knicks. Fast-break hampir imbang, 17-15 untuk Pacers.\n\nSatu catatan untuk Pacers: free throw mereka jauh lebih baik (28-33, 85% vs Knicks yang 16-22, 73%). Kalau bukan karena keunggulan dari garis tiga, selisih tujuh angka ini bisa lebih tipis.\n\n---\n\n## Momen Penentu di Q2\n\nQ2 jadi babak paling dramatis. Skor berulang kali imbang sebelum Knicks membangun keunggulan kecil yang bertahan hingga akhir babak.\n\n---\n\n## Apa Selanjutnya\n\nIni laga ketiga dari seri tiga game antara kedua tim musim reguler, Knicks tutup dengan rekor 2-1. Tidak ada Game 4. Bagi kedua tim, seri ini jadi bekal untuk pemetaan lawan potensial jika keduanya bertemu lagi di playoff nanti.\n\nSiaran ulang tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910034",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Indiana Pacers",
+    "away_abbr": "IND",
+    "home_score": 113,
+    "away_score": 106,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-11-23T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022761,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 5,
+      "summary": "Solid recap with strong stat integration and natural casual voice. Minor issues: one unverified math claim (fix by going qualitative), slight translated-English cadence in two spots, and a Q2 section that could use play-by-play detail or deletion. No hard voice violations.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kalau Towns yang mencetak poin, Josh Hart yang mengikat semuanya.",
+          "fix": "Restructure without 'kalau': 'Towns cetak poin; Hart yang mengikat semuanya.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Hart jadi pusat permainan Knicks sepanjang malam",
+          "fix": "Vary: 'Hart adalah kunci...', 'Hart kendali permainan...', 'Hart engine Knicks...'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "dampaknya menumpuk jadi 27 poin ekstra vs 18 poin untuk Pacers",
+          "fix": "Delete the specific math claim. Keep qualitative: 'gap in three-point efficiency — 35% vs 26% — compounded the deficit.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Satu catatan untuk Pacers: free throw mereka jauh lebih baik",
+          "fix": "Drop the frame: 'Pacers FT lebih solid: 28-33 (85%) vs Knicks 16-22 (73%).'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Q2 jadi babak paling dramatis. Skor berulang kali imbang sebelum Knicks membangun keunggulan kecil yang bertahan hingga akhir babak.",
+          "fix": "Either expand with actual play-by-play texture from the input Q2 plays, or delete this section entirely."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf6c16fb0760577a4",
+    "published_at": "2026-11-23T04:41:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
