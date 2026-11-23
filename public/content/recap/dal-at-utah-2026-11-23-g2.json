@@ -1,0 +1,109 @@
+{
+  "type": "recap",
+  "slug": "dal-at-utah-2026-11-23-g2",
+  "title": "Recap Dallas Mavericks 116-114 Utah Jazz (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Dallas Mavericks vs Utah Jazz (116-114) di —, 23 November 2026.",
+  "body_md": "# Cooper Flagg Dingin di Free Throw, Mavericks Selamat dari Comeback Gila Mykhailiuk\n\nDallas Mavericks menang dramatis 116-114 atas Utah Jazz dalam laga Regular Season, Senin 23 November 2026. Cooper Flagg cetak dua free throw krusial di sisa 3,6 detik untuk menutup pertandingan, setelah Utah nyaris membalikkan segalanya lewat ledakan Svi Mykhailiuk dari bench. DAL unggul 2-0 di regular season series ini.\n\n---\n\n## Mykhailiuk dari Bench, Flagg dari Garis\n\nCerita laga ini ada di dua ujung spektrum. Di satu sisi, Cooper Flagg, rookie yang kini jadi andalan Dallas, tampil tenang dengan 28 poin, 4 asis, 3 rebound, dan yang paling penting: dua free throw sempurna di momen paling panas laga. Di sisi lain, Svi Mykhailiuk keluar dari bench Utah dan mencatatkan 39 poin, 5 rebound, 3 asis, performa yang hampir merampas dua poin dari Dallas.\n\nMykhailiuk adalah cerita yang lebih gila. Pemain yang masuk dari bench itu menembak 12-23 from the field dan 10-15 dari three-point line. Dua tembakan tiga angka beruntun di Q4, sisa 37,4 detik (114-109) dan 15,2 detik (114-112), tiba-tiba membuat Jazz hidup kembali dari yang seharusnya sudah selesai. Lalu Isaiah Collier menutup dengan driving layup di sisa 4,7 detik: 114-114. Kandang Jazz bergejolak.\n\nTapi Flagg tidak bergeming. Free throw pertama: masuk. Free throw kedua: masuk. 116-114. Laga selesai.\n\nKyrie Irving terlibat di laga dengan 16 poin dan 8 asis, efisien dengan 4-8 from three. Zaccharie Risacher menyumbang 15 poin dan 8 rebound, paling banyak di kubu Dallas. Caleb Martin juga berkontribusi merata: 13 poin, 6 rebound, 4 asis, termasuk tembakan tiga angka yang dia cetak di Q2 atas umpan Kyrie untuk menjaga momentum Dallas (43-43). Daniel Gafford melengkapi starting five dengan 10 poin dan 4 asis.\n\nDi kubu Utah, Ace Bailey mencatat 16 poin dan 5 rebound sebagai starter. Keyonte George bermain merata dengan 15 poin, 7 asis, dan 5 rebound. Isaiah Collier menyumbang 10 poin dan 7 asis dari bench hanya dalam 13 menit, termasuk asis untuk tembakan ketiga Mykhailiuk dan layup penutup yang sempat menyamakan skor.\n\n---\n\n## Statistik yang Menjelaskan Laga\n\nDi atas kertas, dua tim ini hampir seimbang. Utah justru lebih unggul di FG% (50% vs 49%) dan 3PT% (40% vs 38%), serta mendominasi papan rebound secara signifikan: 50 berbanding 34.\n\nYang membedakan adalah turnovers dan steals. Dallas mencuri bola 16 kali berbanding hanya 6 dari Utah. Utah sendiri membuang bola 23 kali, Dallas hanya 13. Selisih turnover itu yang menjaga Dallas tetap di atas meski kalah rebound jauh.\n\nFree throw juga bercerita. Dallas 14-17 (82%) berbanding Utah 16-25 (64%). Di laga ketat, efisiensi dari garis menjadi pembeda, dan dua free throw Flagg di akhir membuktikannya secara harfiah.\n\n---\n\n## Laga Seimbang yang Berakhir di Ujung Saraf\n\nIni bukan pertandingan yang didominasi satu tim. Papan skor Q2 mencerminkan itu: 35-35, lalu 43-43 sebelum jeda. Momentum terus berpindah, dan Utah punya peluang nyata untuk menang, Mykhailiuk memastikan itu.\n\nTapi Dallas punya Flagg di momen yang tepat. Untuk laga Regular Season, ini adalah kemenangan yang dicuri lebih dari dimenangkan, dan Utah punya argumen kuat untuk menyesal dengan 23 turnover yang mereka biarkan terjadi.\n\n---\n\nHasil ini bisa disaksikan via NBA League Pass dan Vidio. Regular season series ini sudah selesai. Dallas unggul 2-0 di pertemuan musim ini dengan Utah.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910033",
+    "home_team": "Utah Jazz",
+    "home_abbr": "UTAH",
+    "away_team": "Dallas Mavericks",
+    "away_abbr": "DAL",
+    "home_score": 114,
+    "away_score": 116,
+    "winner_abbr": "DAL",
+    "kickoff_utc": "2026-11-23T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DAL leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022032,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong pass. Voice is consistent, Bahasa flows naturally, all key numbers verified against input data block. No hard violations. Two low-severity soft issues flagged for editor awareness but do not affect verdict.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Mykhailiuk adalah cerita yang lebih gila.",
+          "fix": "Rephrase: 'Mykhailiuk punya cerita lebih dramatis' or just 'Mykhailiuk cerita yang lebih gila'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Mykhailiuk dari Bench, Flagg dari Garis / Mykhailiuk adalah cerita yang lebih gila. Pemain yang masuk dari bench itu...",
+          "fix": "Second instance: 'Svi Mykhailiuk membuktikan mengapa Utah mengeluarkan strategi offensive dari kursi cadangan.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Di atas kertas, dua tim ini hampir seimbang.",
+          "fix": "Optional: 'Statistik menunjukkan kedua tim hampir seimbang' (more analytical register)."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x467a65a9b0c74da0",
+    "published_at": "2026-11-23T02:37:53+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 82,
+      "headline_score": 85,
+      "headline_comment": "Punchy, specific, names both heroes and villains — strong click earn, though 'Comeback Gila' flirts with hype cliché.",
+      "lead_score": 84,
+      "lead_comment": "Lead delivers news + angle cleanly, but 'Senin 23 November 2026' tanpa venue/tipoff time terasa setengah jalan.",
+      "structure_score": 80,
+      "structure_comment": "Three sections flow logically — drama, stats, closing — tapi closing section overlaps dengan intro section dan melemahkan impact.",
+      "voice_score": 83,
+      "voice_comment": "Natural code-switching, good pronoun-drop discipline, tapi beberapa frase masih terasa diterjemahkan ('spektrum', 'secara harfiah', 'ujung saraf').",
+      "suggestion_count": 6,
+      "summary": "Solid recap with strong narrative spine around Flagg's clutch free throws and Mykhailiuk's bench explosion, but a Game 2 vs Game 3 inconsistency and Playoffs vs Regular Season ambiguity need editor resolution before publish. Voice is largely clean with two or three translated-English tics to smooth.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Cerita laga ini ada di dua ujung spektrum.",
+          "issue": "'Dua ujung spektrum' terasa diterjemahkan dari English idiom, bukan Bahasa sport-writing natural.",
+          "fix": "Ganti dengan sesuatu lebih konkret: 'Laga ini punya dua bintang di dua kubu berbeda.'"
+        },
+        {
+          "priority": "high",
+          "snippet": "Input data menyebut series 'Game 3 of 3' dan 'DAL leads series 2-0' tapi juga 'Regular Season Series'",
+          "issue": "Headline dan opening menyebut 'Game 2' tapi input bilang Game 3 of 3 dan series sudah 2-0 — ada kontradiksi yang tidak diselesaikan.",
+          "fix": "Klarifikasi: ini game penutup season series, bukan Game 2. Headline harus diperbaiki ke 'Game Penutup' atau hapus penomoran."
+        },
+        {
+          "priority": "high",
+          "snippet": "NBA Playoffs 2026 (dari input) vs 'laga Regular Season' (di artikel)",
+          "issue": "Input liga bilang 'NBA Playoffs 2026' tapi series state bilang 'Regular Season Series' — artikel pilih regular season tanpa menjelaskan. Potensi kebingungan pembaca.",
+          "fix": "Pastikan konteks jelas di lead — kalau regular season series, sebut eksplisit ini bukan playoffs meski musim playoffs."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Hasil ini bisa disaksikan via NBA League Pass dan Vidio.",
+          "issue": "Closing paragraph mengulang info series state yang sudah disampaikan di lead, dan 'bisa disaksikan' aneh untuk laga yang sudah selesai.",
+          "fix": "Ubah ke informasi forward-looking atau potong saja — closing sebelumnya ('Dallas punya Flagg di momen yang tepat') sudah kuat."
+        },
+        {
+          "priority": "medium",
+          "snippet": "performa yang hampir merampas dua poin dari Dallas",
+          "issue": "'Dua poin' ambigu — maksudnya kemenangan? Phrasing-nya awkward untuk konteks NBA.",
+          "fix": "Ganti ke 'performa yang nyaris merampas kemenangan Dallas' atau 'nyaris membalikkan laga'."
+        },
+        {
+          "priority": "low",
+          "snippet": "Darryn Peterson makes 9-foot driving floating jump shot",
+          "issue": "Key play Q2 10:54 menyebut Darryn Peterson (pemain yang tidak muncul di top scorers manapun) — tidak digunakan di artikel, tapi juga tidak ada konteks siapa dia.",
+          "fix": "Abaikan saja (sudah benar tidak dipakai) — ini catatan untuk writer: data input punya nama yang tidak di-roster, jangan dipaksa masuk."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}

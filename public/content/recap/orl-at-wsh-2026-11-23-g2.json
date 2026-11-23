@@ -1,0 +1,109 @@
+{
+  "type": "recap",
+  "slug": "orl-at-wsh-2026-11-23-g2",
+  "title": "Recap Orlando Magic 96-116 Washington Wizards (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Orlando Magic vs Washington Wizards (96-116) di —, 23 November 2026.",
+  "body_md": "# Washington Wizards Kalahkan Orlando Magic 116-96, Pimpin Season Series 2-0\n\nWashington Wizards menang 116-96 atas Orlando Magic, Minggu 23 November 2026. Kyshawn George pimpin WSH dengan 24 poin, Anthony Davis tambah 22, sementara Trae Young jadi orchestrator dengan 11 assist. Dengan kemenangan ini, WSH unggul 2-0 di regular season series, satu laga lagi tersisa sebelum seri selesai.\n\n---\n\n## Top Performers\n\nKyshawn George jadi bintang utama WSH malam ini. 24 poin dari 9-17 field goal, termasuk 6-11 dari three-point line, menunjukkan efisiensi dari luar yang sulit dibendung. Anthony Davis melengkapi kekuatan interior WSH: 22 poin, 7 rebound, shooting 8-13 dari lapangan. Kombinasi George yang efektif dari luar dan Davis yang solid di dalam memberi Washington dua ancaman berbeda yang sulit dijawab Magic sekaligus.\n\nAJ Dybantsa, pemain muda WSH yang makin konsisten, cetak 16 poin dan 8 rebound dengan 6 asis, kontribusi all-around yang merata. Bilal Coulibaly tambah 12 poin off the bench, 4-6 dari three-pointer. Trae Young? Line-nya tidak meledak secara poin, hanya 11, tapi 11 asis-nya yang nyata. Dia yang ngatur ritme serangan Washington dari awal sampai akhir.\n\nDi sisi ORL, Franz Wagner paling lengkap: 16 poin, 8 rebound, 6 asis, tapi shooting 7-18 (0-3 dari tiga angka) mencerminkan malam yang berat untuk banyak pemain Magic secara keseluruhan. Tristan da Silva jadi penyumbang terbaik ORL dengan 18 poin off the bench, efisien dengan 6-10 FG dan 4-7 dari tiga angka. Desmond Bane 17 poin, Anthony Black 14, cukup merata, tapi tidak ada yang bisa counter ledakan kolektif Washington.\n\n---\n\n## Baca Statistik\n\nPerbedaan paling jelas ada di tiga angka: WSH masuk 22-39 dari three-point line (56%), ORL hanya 12-39 (31%). Di FG% pun sama, WSH 52% vs ORL 41%. Dua angka itu cukup menjelaskan selisih 20 poin.\n\nORL unggul jauh di points in paint (42 vs 24), artinya penetrasi ke area cat bukan masalah. Namun WSH tidak butuh menang di dalam, mereka menembak 56% dari luar dan itu menentukan. Fast-break points WSH juga lebih tinggi (18 vs 12), sebagian berkat 15 turnover ORL yang dikonversi Washington jadi poin transisi.\n\nORL memang lebih hemat bola (hanya 9 turnover vs 15 WSH), tapi keunggulan itu tidak cukup ketika efisiensi tembakan berbeda separuh lapangan.\n\n---\n\n## Outlook Series\n\nWSH kini unggul 2-0 di regular season series dengan satu game tersisa (Game 4 dari 4). Dua kemenangan beruntun ini membangun gambaran yang jelas: Washington punya kemampuan tembakan tiga angka yang dalam, dengan George sebagai anchor dari luar dan Young sebagai orchestrator yang tidak perlu mencetak banyak untuk tetap berbahaya.\n\nBagi ORL, pertanyaannya lebih soal konsistensi pertahanan luar, membiarkan lawan masuk 56% dari tiga angka adalah masalah sistematis, bukan sekadar malam buruk satu pemain.\n\nGame berikutnya bisa jadi kesempatan Magic untuk hentikan kekalahan beruntun di seri ini sebelum tutup. Pantau jadwal lengkap di **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910031",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Orlando Magic",
+    "away_abbr": "ORL",
+    "home_score": 116,
+    "away_score": 96,
+    "winner_abbr": "WSH",
+    "kickoff_utc": "2026-11-23T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "WSH leads series 2-0",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020046,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate stats, natural NBA voice, good flow. Minor translated-English stiffness in one sentence and light register drift. Passes threshold comfortably.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Kombinasi George yang efektif dari luar dan Davis yang solid di dalam memberi Washington dua ancaman berbeda yang sulit dijawab Magic sekaligus.",
+          "fix": "Restructure: 'George efektif dari luar, Davis dominan dalam—Washington punya dua ancaman bersamaan yang sulit Magic tangkal.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Di sisi ORL... tapi tidak ada yang bisa counter ledakan kolektif Washington. // WSH kini unggul 2-0... dua kemenangan beruntun ini membangun gambaran.",
+          "fix": "Acceptable; just one instance of this tone per article. No change needed."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Game berikutnya bisa jadi kesempatan Magic untuk hentikan kekalahan beruntun di seri ini sebelum tutup.",
+          "fix": "Rephrase: 'Game terakhir bisa jadi redemption Magic—kesempatan tutup seri dengan kemenangan.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2f5a7db86c3796ac",
+    "published_at": "2026-11-23T02:36:53+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "edit",
+      "overall_score": 74,
+      "headline_score": 55,
+      "headline_comment": "Says 'Game 2' but body + input data say Game 3 of 4 with series at 2-0 — internal contradiction that undermines the whole piece.",
+      "lead_score": 78,
+      "lead_comment": "Clean news-first open with score, stars, and series state, but the stock 'orchestrator' frame for Young is generic and the lead doesn't carry an angle beyond the box score.",
+      "structure_score": 80,
+      "structure_comment": "Standard top-performers / stats / outlook arc works, but 'Outlook Series' for a regular-season series-of-4 overweights the stakes and stretches thin.",
+      "voice_score": 76,
+      "voice_comment": "Mostly natural with good code-switching, but 'asis' spelling is inconsistent (also 'assist'), and a few hedged lines ('kontribusi all-around yang merata', 'cukup merata') read soft.",
+      "suggestion_count": 6,
+      "summary": "Solid stat-grounded recap with clean voice, but the headline contradicts the input data (Game 2 vs Game 3 of 4) — that's a must-fix before publish. A few hedge phrases and the oversized 'outlook' section need tightening.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Recap Orlando Magic 96-116 Washington Wizards (Game 2)",
+          "issue": "Title says Game 2 but input data explicitly states Game 3 of 4 and WSH already leads 2-0 — the body H1 is also inconsistent with the slug title.",
+          "fix": "Fix title to reflect Game 3, or align with 'WSH Pimpin Season Series 2-0' framing without a game number mismatch."
+        },
+        {
+          "priority": "high",
+          "snippet": "6-11 dari three-point line",
+          "issue": "Input data says George was 6-11 from 3PT but the anchors block lists 3PT=6-11 for George — verify: actually matches. However 'Kyshawn George: 3PT 6-11' in TOP SCORERS is correct, so this is fine. Real issue: no issue here, retract.",
+          "fix": "Ignore — on re-check this stat is accurate. Reviewer flagged in error."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Trae Young? Line-nya tidak meledak secara poin, hanya 11, tapi 11 asis-nya yang nyata.",
+          "issue": "Rhetorical question + 'asis' (should be 'assist' or 'asisnya' consistent with earlier usage) breaks the register slightly and the sentence is softer than the stat deserves — 11 assists on a 2-0 series lead is the story.",
+          "fix": ""
+        },
+        {
+          "priority": "medium",
+          "snippet": "kontribusi all-around yang merata",
+          "issue": "Hedge phrasing — 16/8/6 is a stat line worth naming directly, not softening with 'merata'.",
+          "fix": "Rewrite as something like: 'Dybantsa isi semua kolom: 16 poin, 8 rebound, 6 asisst.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Bagi ORL, pertanyaannya lebih soal konsistensi pertahanan luar, membiarkan lawan masuk 56% dari tiga angka adalah masalah sistematis",
+          "issue": "Comma splice + the phrase 'masalah sistematis' leans analytical-formal in a way that drifts from the casual register.",
+          "fix": "Break into two sentences; swap 'masalah sistematis' for something tighter like 'bukan cuma malam buruk.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "Outlook Series",
+          "issue": "Section header in English feels out-of-pattern with 'Baca Statistik' and 'Top Performers' mix — and the whole 'outlook' framing is heavy for a regular-season series of 4.",
+          "fix": "Rename to 'Jelang Game 4' or 'Apa Selanjutnya' and tighten the section to 2 short paragraphs."
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
