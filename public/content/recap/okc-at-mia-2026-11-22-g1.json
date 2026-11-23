@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "okc-at-mia-2026-11-22-g1",
+  "title": "Recap Oklahoma City Thunder 113-123 Miami Heat (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs Miami Heat (113-123) di —, 22 November 2026.",
+  "body_md": "# Bam Adebayo Triple-Double Antar Miami Heat Kalahkan OKC Thunder 123-113\n\nMiami Heat menutup regular season series melawan Oklahoma City Thunder dengan kemenangan 123-113, Minggu 23 November 2026. Heat unggul dua kali dari dua pertemuan musim ini, dan kemenangan malam ini dibangun di atas triple-double Bam Adebayo yang mendominasi dari dua sisi lapangan.\n\n---\n\n## Bam Jadi Pembeda\n\nAngka Adebayo malam ini: 24 poin, 15 rebound, 12 asis. Triple-double sempurna dengan efisiensi tinggi, FG 8-11, nol tembakan tiga angka, semua datang dari paint dan free throw line. Bukan sekadar stat line yang mentereng di kertas. Adebayo benar-benar mengontrol ritme permainan Miami sebagai playmaker sekaligus anchor di bawah ring.\n\nDi sampingnya, Pelle Larsson tampil solid dengan 21 poin, 3 rebound, 5 asis, FG 9-14, termasuk 3-7 from three. Nikola Jovic off the bench menyumbang 15 poin, 8 rebound, 3 asis dengan 3-6 from three. Davion Mitchell melengkapi empat pemain Heat di atas 14 poin dengan 14 poin, 4 rebound, 3 asis.\n\nDistribusi poin Heat merata. Simone Fontecchio menambah 11 poin dalam 15 menit dari bench. Lima pemain di double figures, ini bukan kemenangan satu bintang, ini kemenangan tim.\n\n---\n\n## OKC Punya Poin, Tapi Kurang Rebound dan Block\n\nThunder bukannya tidak melawan. Bennett Stirtz memimpin OKC dengan 21 poin off the bench, FG 7-14, 5-12 from three dalam 32 menit. Jared McCain starter menyumbang 20 poin, 2 rebound, 3 asis, diikuti Ajay Mitchell dengan 17 poin, 3 rebound, 3 asis. Josh Dix dari bench juga efisien: 13 poin, 5 rebound, 4 asis dengan FG 5-8.\n\nMasalah OKC bukan di poin, 113 bukan angka buruk. Masalahnya ada di papan dan di ring sendiri.\n\nRebound OKC 38, Miami 48. Selisih 10 rebound, dan Adebayo sendirian menyumbang 15 dari 48 itu. Lebih mencolok lagi: OKC mencatat **nol block** sepanjang pertandingan, sementara Miami memasang 7 block. Artinya Heat leluasa menyerang ke dalam paint, dan angkanya bicara: points in paint MIA 54, OKC 46. Ketika lawan bisa terus-menerus masuk ke paint tanpa hambatan, perbedaan 10 poin di papan skor akhir masuk akal.\n\n---\n\n## Baca Statistik Tim\n\nHeat FG 45-85, persentase 53%, lebih efisien dari OKC yang FG 42-92, 46%. Di tiga angka, justru OKC yang lebih tajam: 16-35, 46% berbanding Miami 15-38, 39%. Tapi Heat memanfaatkan jalur lain, free throw 18-21, 86%, sementara OKC hanya 68% (13-19). Eksekusi di garis free throw menjadi salah satu faktor yang memperlebar jarak.\n\nAssists Miami 30 berbanding OKC 24 juga mencerminkan pola yang serupa: Heat bermain lebih cair, lebih banyak share bola, lebih banyak opsi. Turnover kedua tim relatif setara, MIA 15, OKC 13, jadi bukan faktor penentu.\n\n---\n\n## Catatan Akhir\n\nMiami Heat menutup regular season head-to-head versus OKC dengan rekor sempurna 2-0. Ini bukan seri playoff, tapi bagi Heat, momentum psikologis selalu punya nilai tersendiri. Adebayo membuktikan malam ini bahwa ketika dia bermain di level triple-double, Miami sulit dikalahkan.\n\nLaga berikutnya Heat dan Thunder akan tersedia di **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910030",
+    "home_team": "Miami Heat",
+    "home_abbr": "MIA",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 123,
+    "away_score": 113,
+    "winner_abbr": "MIA",
+    "kickoff_utc": "2026-11-22T23:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020688,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stats, natural Indonesian voice, and solid structural flow. No hard violations. Minor soft-phrase and translation-feel notes, but neither blocks publication.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "stat line yang mentereng di kertas",
+          "fix": "Consider 'stat line yang mengesankan' or describe the impact instead"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Adebayo benar-benar mengontrol ritme permainan Miami",
+          "fix": "Rewrite as 'Adebayo benar-benar kuasai tempo Heat' or 'set pace permainan Miami'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Heat FG 45-85, persentase 53%",
+          "fix": "No change needed; data is accurate"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xcf5df5c077498792",
+    "published_at": "2026-11-23T02:08:43+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

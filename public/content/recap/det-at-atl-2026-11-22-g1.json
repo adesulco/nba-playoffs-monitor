@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "det-at-atl-2026-11-22-g1",
+  "title": "Recap Detroit Pistons 97-107 Atlanta Hawks (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs Atlanta Hawks (97-107) di —, 22 November 2026.",
+  "body_md": "# Atlanta Hawks Tutup Seri di Detroit, Nickeil Alexander-Walker Jadi Penentu\n\nAtlanta Hawks menang 107-97 atas Detroit Pistons di Game 2, Senin dini hari 23 November 2026. ATL unggul 2-0 dan pastikan seri reguler ini, format best-of-3, sudah berpihak ke mereka. Nickeil Alexander-Walker jadi tokoh utama dengan 27 poin, sementara Detroit sempat memimpin sebelum Hawks balik badan di kuarter terakhir.\n\n---\n\n## Top Performers\n\n**Nickeil Alexander-Walker** tampil sebagai pencetak poin terbanyak malam ini: 27 poin, 2 rebound, 1 asis dari 8-18 field goal dan 6-10 dari tiga angka. Efisiensi dari luar arc-nya yang jadi kunci, enam tembakan tiga angka masuk dari sepuluh percobaan adalah akurasi yang sulit dibendung.\n\nDi sampingnya, **Corey Kispert** off the bench menyumbang 18 poin dari 4-10 percobaan tiga angka, dua tembakan krusialnya di Q4 membalik momentum pertandingan. **Luguentz Dort**, juga dari bench, cetak 16 poin dan 7 rebound dengan dua triple penting di kuarter akhir.\n\n**Jalen Johnson** lebih terasa di papan: 12 poin dan 11 rebound dari 30 menit bermain. **Kingston Flemings** melengkapi starting five dengan 10 poin, 5 rebound, dan 6 asis, distributor yang solid meski efisiensi shootingnya tidak luar biasa (3-10).\n\nUntuk Detroit, perjuangan ada di **Ausar Thompson**: 18 poin, 11 rebound, 5 asis dari 38 menit, yang terbanyak di rotasi Pistons malam ini. **Isaiah Joe** off the bench menyumbang 19 poin (3-9 dari tiga angka), **John Collins** 18 poin dengan 4-5 dari luar arc, salah satu shooter paling efisien di lapangan. **Paul Reed** 16 poin dari bench. Detroit punya poin di mana-mana, tapi tidak ada yang cukup untuk menutup selisih.\n\n---\n\n## Apa yang Bicara di Box Score\n\nSecara keseluruhan, Detroit sebenarnya lebih efisien dari field: 42% FG vs ATL yang hanya 30% dari tiga angka. Tapi ATL melempar jauh lebih banyak, 50 percobaan tiga angka vs 32 Detroit, dan berhasil masukkan 15. Volume itu yang membedakan.\n\nYang lebih menentukan: **rebound**. ATL 62 vs DET 43, selisih 19 rebound adalah kesenjangan besar. Dari selisih itu lahir 22 fast-break points untuk ATL, dibanding 12 milik Detroit. Setiap possession ekstra berubah jadi poin transisi.\n\nDetroit sebenarnya tidak kalah di assist (30 vs 23) dan bermain bersih dari garis free throw, 100% (14-14) vs ATL 87% (20-23). Tapi turnover sama-sama 17, dan keunggulan di sana tidak terjadi. Rebounding dan volume tembakan tiga angka ATL terlalu mahal untuk dikejar.\n\n---\n\n## Q4 yang Menentukan\n\nMemasuki kuarter terakhir, Detroit masih memimpin 85-80. Dari situ, Hawks punya jawaban untuk setiap usaha Pistons.\n\nDort masuk dua kali: layup plus free throw bikin skor 85-81, lalu tembakan tiga angka dari assist Kispert membalik ke 84-85. Dort belum selesai, tiga angka lagi membuat ATL unggul 85-87. Skor bergeser cepat tanpa Detroit sempat merespons.\n\nKeunggulan Hawks tidak pernah kembali ke tangan Pistons setelah itu. Isaiah Joe sempat bikin jarak mendekat lewat triple (88-92), Paul Reed nge-dunk bikin 90-95, dan Ausar Thompson masukkan layup jadi 92-97, tapi itu sudah Q4 menit tiga. Jarak 10 poin di akhir (107-97) mencerminkan betapa kontrolnya ATL di paruh akhir kuarter keempat.\n\n---\n\n## Selanjutnya\n\nATL sudah amankan seri 2-0. Kalau ada Game 3 dalam format ini, jadwal dan venue belum tersedia di sistem saat ini. Yang jelas, Hawks pulang dengan poin di tangan, dan Nickeil Alexander-Walker memberikan malam yang sulit dilupakan.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910029",
+    "home_team": "Atlanta Hawks",
+    "home_abbr": "ATL",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 107,
+    "away_score": 97,
+    "winner_abbr": "ATL",
+    "kickoff_utc": "2026-11-22T20:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "ATL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.052831,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Major fail: John Collins is listed as DET player in input but analyzed as ATL scorer — roster confusion. Multiple academic-register phrases and translated-English syntax patterns. Soft-phrase repetition on 'masukkan'. Rewrite required.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "John Collins 18 poin dengan 4-5 dari luar arc",
+          "fix": "Remove Collins from ATL analysis. Collins is DET; rewrite that section using only ATL top-5 scorers from input data."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Yang lebih menentukan: rebound. ATL 62 vs DET 43, selisih 19 rebound adalah kesenjangan besar.",
+          "fix": "Rewrite: 'Rebound jadi poin balik: ATL 62 vs DET 43. Selisih 19 itu terlalu besar.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Efisiensi dari luar arc-nya yang jadi kunci, enam tembakan tiga angka masuk dari sepuluh percobaan adalah akurasi yang sulit dibendung.",
+          "fix": "Simplify: 'Kuncinya jadi akurasi luar arc: 6-10 triple. Sulit dibendung.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Ausar Thompson masukkan layup jadi 92-97, tapi itu sudah Q4 menit tiga.",
+          "fix": "Use variety: 'Thompson cetak layup jadi 92-97' or 'Thompson ngebola masuk jadi 92-97.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di sampingnya, Corey Kispert off the bench menyumbang 18 poin",
+          "fix": "Rewrite: 'Corey Kispert off the bench cetak 18 poin...'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "ATL sudah amankan seri 2-0. Kalau ada Game 3 dalam format ini, jadwal dan venue belum tersedia.",
+          "fix": "Rewrite: 'ATL unggul 2-0 di best-of-3. Game 3 (jika ada) jadwalnya pending.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dari situ, Hawks punya jawaban untuk setiap usaha Pistons.",
+          "fix": "Ground in data: 'Dari situ, Dort dan Kispert jadi anchor. Dua triple membuat 85-87.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x56512dab346f8bb2",
+    "published_at": "2026-11-23T02:08:08+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
