@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "sa-at-sac-2026-11-24-g3",
+  "title": "Recap San Antonio Spurs 123-107 Sacramento Kings (Game 3)",
+  "description": "Recap NBA Playoffs 2026 — San Antonio Spurs vs Sacramento Kings (123-107) di —, 24 November 2026.",
+  "body_md": "# San Antonio Spurs Tutup Musim Reguler vs Sacramento Kings dengan Dominasi 123-107\n\nSan Antonio Spurs mengakhiri seri reguler season melawan Sacramento Kings dengan kemenangan meyakinkan 123-107, 24 November 2026, pukul 10.00 WIB. Stephon Castle tampil luar biasa dengan 28 poin, 8 rebound, dan 11 asis, mendekati triple-double, sementara Spurs menutup seri 3-0.\n\n---\n\n## Pemain Kunci: Castle Pimpin, Champagnie Bakar dari Luar\n\nCastle jadi motor serangan Spurs malam ini. Sembilan dari 23 tembakan masuk, termasuk empat three-pointer dari delapan percobaan, plus 11 asis yang membuktikan dia bukan hanya pencetak poin, tapi pengatur serangan yang nyata.\n\nJulian Champagnie melengkapi performa Castle dari luar arc. Enam dari 13 three-pointer masuk dengan total 22 poin, 7 rebound, 3 asis. KEY PLAYS mencatat Champagnie mencetak tiga three-pointer, dua di antaranya diumpan Castle, termasuk satu yang membalik keunggulan di Q2 menjadi 41-40 untuk Spurs. Ketika Champagnie panas dari luar, pertahanan lawan harus memilih: keluar dan terbuka atau biarkan bola tiga masuk.\n\nLuke Kornet jadi faktor besar di area cat. Tujuh dari sepuluh tembakan masuk, 18 poin, dan 11 rebound, double-double yang efisien tanpa satu pun usaha dari luar arc. Kornet menjaga interior Spurs kokoh.\n\nDari pihak Kings, Domantas Sabonis nyaris tak bisa dihentikan secara individu: 20 poin, 12 rebound, 8 asis, dengan efisiensi tembakan 8 dari 9. Tapi kontribusinya tidak cukup ketika rekan-rekannya kesulitan. Zach LaVine 18 poin dari 17 tembakan, belum efisien. De'Andre Hunter 15 poin, 8 asis, tapi turnover tim dan persentase free throw yang buruk menghambat Kings secara keseluruhan.\n\n---\n\n## Statistik yang Menjelaskan Selisih 16 Poin\n\nAngka tim berbicara jelas. Spurs lebih efisien dari luar arc: 16 dari 46 three-pointer (35%) versus Kings yang hanya 10 dari 35 (29%). Bukan perbedaan besar secara persentase, tapi volume percobaan Spurs jauh lebih tinggi, enam belas three masuk adalah senjata yang sulit dilawan.\n\nTapi kunci sebenarnya di garis free throw. Spurs 23-25 (92%), Kings 9-14 (64%). Selisih 14 poin — hampir separuh selisih akhir.\n\nSatu-satunya area di mana Kings unggul adalah points in paint: 54 berbanding 46. Sabonis beroperasi dominan di area tersebut. Tapi keunggulan di dalam cat tidak bisa menutup kerugian di luar arc dan di garis free throw.\n\n---\n\n## Momentum Q2: Keunggulan yang Tidak Pernah Lepas\n\nPertandingan sempat ketat di awal. Q1 berjalan sengit, Kings sempat unggul tipis sebelum Spurs balik lewat three-pointer Castle dan Champagnie. Q2 mulai 38-38. Champagnie cetak dua three-pointer beruntun. Spurs unggul dan tak pernah lepas momentum. Sejak itu, Kings tidak pernah benar-benar kembali ke posisi bersaing.\n\nRebound total Spurs 52 berbanding 45 juga menunjukkan kontrol papan yang lebih baik, lebih banyak kesempatan kedua, lebih banyak kepemilikan bola.\n\n---\n\n## Penutup Seri yang Solid\n\nDengan kemenangan ini, Spurs tutup regular season series 3-0 atas Kings. Performa kolektif Spurs di seri ini, kedalaman rotasi, shooting dari luar, efisiensi free throw, menunjukkan tim yang makin matang.\n\nSaksikan aksi NBA berikutnya live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910045",
+    "home_team": "Sacramento Kings",
+    "home_abbr": "SAC",
+    "away_team": "San Antonio Spurs",
+    "away_abbr": "SA",
+    "home_score": 107,
+    "away_score": 123,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-24T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 3-0",
+    "game_number": 3,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023026,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article fails on training inference (Achiuwa/Acuff Jr. not in input), translated-English constructions, and academic drift in closing. Remove hallucinated players, tighten phrasing, replace hedging with specifics. Score penalized by high-severity issues.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Sembilan dari 23 tembakan masuk, termasuk empat three-pointer dari delapan percobaan, plus 11 asis yang membuktikan dia bukan hanya pencetak poin, tapi pengatur serangan yang nyata.",
+          "fix": "Rewrite: 'Castle 9-23 FG, 4-8 3PT, 11 ast — bukan pencetak poin semata, tapi pengatur serangan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Ketika Champagnie panas dari luar, pertahanan lawan harus memilih: keluar dan terbuka atau biarkan bola tiga masuk.",
+          "fix": "Delete or replace with concrete example from KEY PLAYS about defensive adjustments."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Angka tim berbicara jelas.",
+          "fix": "Delete opening; start directly with: 'Spurs 35% dari tiga versus Kings 29%...'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Selisih 14 poin — hampir separuh selisih akhir.",
+          "fix": "Replace em-dash with period. Rewrite: 'Selisih 14 poin free throw. Hampir setengah margin akhir.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Sejak itu, Kings tidak pernah benar-benar kembali ke posisi bersaing.",
+          "fix": "Specific: 'Spurs unggul 41-40 Q2 dan terus lari. Kings terakhir seimbang 38-38.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Precious Achiuwa makes 3-foot two point shot (Darius Acuff Jr. assists)",
+          "fix": "Delete mention of these players entirely; stick only to TOP SCORERS listed."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Zach LaVine 18 poin dari 17 tembakan, belum efisien.",
+          "fix": "Rewrite: 'LaVine 18 poin dari 8-17 FG (47%)' — cite the actual make-attempt ratio."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Dengan kemenangan ini, Spurs tutup regular season series 3-0 atas Kings. Performa kolektif Spurs di seri ini, kedalaman rotasi, shooting dari luar, efisiensi free throw, menunjukkan tim yang makin matang.",
+          "fix": "Replace with concrete observation: 'Spurs memenangkan seri reguler 3-0. Castle, Champagnie, Kornet — kedalaman offensive threatening.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x04e3d27a31bb3694",
+    "published_at": "2026-11-24T07:35:56+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
