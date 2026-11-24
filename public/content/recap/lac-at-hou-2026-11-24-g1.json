@@ -1,0 +1,38 @@
+{
+  "type": "recap",
+  "slug": "lac-at-hou-2026-11-24-g1",
+  "title": "Recap LA Clippers 104-116 Houston Rockets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — LA Clippers vs Houston Rockets (104-116) di —, 24 November 2026.",
+  "body_md": "## Houston Rockets Redam LA Clippers 116-104, Durant Tampil Perkasa\n\nHouston Rockets menang 116-104 atas LA Clippers di laga kedua dari tiga seri regular season ini. Kevin Durant memimpin dengan 32 poin, 9 rebound, 4 asis, tampil dominan di saat Rockets paling membutuhkannya. HOU kini unggul 1-0 di seri ini.\n\n---\n\n## Top Performers\n\n### Houston Rockets\n\nKevin Durant jadi pembeda utama. Laga kedua seri ini milik dia, 32 poin dengan efisiensi tinggi: 11-19 from field, 4-6 from three. Bukan cuma scoring. 9 rebound dan 4 asis membuat Durant nyaris borderline triple-double jika rebound-nya sedikit lebih banyak. Ini tipe performa yang sulit diatasi siapapun.\n\nAlperen Sengun menambah 20 poin, 8 rebound, 7 asis, sebuah stat line yang hampir sempurna untuk seorang big man modern. Asis ke-7 Sengun di laga ini menggambarkan seberapa jauh dia sudah berkembang sebagai playmaker. Amen Thompson menyumbang 20 poin dengan efisiensi mentah: 9-12 from field, termasuk satu tembakan tiga angka.\n\nJabari Smith Jr. dengan 13 poin dan 6 rebound melengkapi lini utama Rockets. Dari bench, Tari Eason cetak 10 poin dengan 2-2 from three, efisien dan tepat waktu.\n\n### LA Clippers\n\nDarius Garland adalah satu-satunya Clipper yang benar-benar menantang. 26 poin, 8 asis, 10-21 from field, Garland aktif, termasuk tiga tembakan jauh yang masuk di momentum krusial. Rui Hachimura efisien dengan 19 poin dari 7-10 field goals, tapi kontribusinya tidak cukup menambal masalah Clippers yang lebih besar.\n\nBrandon Ingram kesulitan: 16 poin tampak oke di atas kertas, tapi 6-18 from field dan 0-6 from three adalah malam buruk untuk seorang wing scorer. Ketika Ingram tidak efisien, opsi scoring LAC menjadi sangat terbatas.\n\n---\n\n## Apa yang Bicara di Angka\n\nPerbedaan paling jelas: rebounding. HOU meraup 46 rebound vs LAC yang hanya 32, selisih 14 yang menjelaskan banyak hal tentang bagaimana laga ini berjalan. Second chances, transisi, possession ekstra, Rockets memanfaatkan semua itu.\n\nDari tiga angka, Houston lebih akurat: 39% vs 29%. LAC melempar lebih banyak (38 percobaan) tapi masuknya lebih sedikit (11). Ketika volume shooting tiga angka tinggi tapi akurasi rendah, serangan terasa boros. Rockets lebih selektif dengan 31 percobaan, dan hasilnya berbeda.\n\nHOU juga unggul di paint: 54 poin vs 44. Sengun dan Durant silih berganti memaksa pertahanan LAC masuk ke situasi yang tidak nyaman. Assists total juga bercerita: 36 untuk HOU, 30 untuk LAC, Rockets lebih banyak bergerak sebagai tim.\n\nSatu-satunya area LAC memenangi statistik secara signifikan: steals (6-4). Tapi 13 turnover dari masing-masing tim berarti tekanan pertahanan kedua sisi kurang lebih sama.\n\n---\n\n## Momen Penentu\n\nQuarter ketiga menjadi medan pertempuran paling ketat. Garland hit tembakan 27 kaki untuk bawa LAC memimpin 52-51. Amen Thompson balas dengan three-pointer dari 23 kaki untuk balik unggulkan HOU 63-60. Max Strus kemudian samakan 65-65 dari 28 kaki. Laga masih terbuka.\n\nYang memutuskan datang setelah itu. Durant cetak dua poin untuk bawa HOU 67-65, dan dari sana Rockets tidak pernah benar-benar melepaskan kendali. Di Q4, saat LAC dalam posisi masih bisa mengejar, keunggulan HOU terus bertambah. Pada menit 7:31 kuarter empat, Garland masih mencetak pullup 12 kaki untuk 88-93, tapi Rockets menjawab setiap kali. Skor 95-100 di menit 4:30 menjadi momen terakhir LAC benar-benar dekat, dan Rockets menutup sisa laga dengan tenang.\n\n---\n\n## Selanjutnya\n\nSeri tiga pertandingan ini kini 1-0 untuk Houston. Laga ketiga dan terakhir seri ini akan menentukan siapa yang keluar sebagai pemenang keseluruhan. Tayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910043",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "LA Clippers",
+    "away_abbr": "LAC",
+    "home_score": 116,
+    "away_score": 104,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-11-24T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "HOU leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024196,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 0,
+      "issue_count": 0,
+      "summary": "",
+      "issues": []
+    },
+    "plagiarism_hash": "0xcee5e32f4571d6be",
+    "published_at": "2026-11-24T04:14:52+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,51 @@
+{
+  "type": "recap",
+  "slug": "phx-at-no-2026-11-24-g1",
+  "title": "Recap Phoenix Suns 123-119 New Orleans Pelicans (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs New Orleans Pelicans (123-119) di —, 24 November 2026.",
+  "body_md": "## Phoenix Suns Menang Tipis di Overtime, Poole 28 Poin Sia-Sia untuk Pelicans\n\nPhoenix Suns mempertahankan keunggulan seri dengan menang 123-119 atas New Orleans Pelicans di overtime, Senin 24 November 2026 mulai jam 08.00 WIB. PHX kini unggul 1-0 di regular season series ini. Jalen Green jadi top scorer Suns dengan 25 poin, sementara Jordan Poole tampil luar biasa dari bench Pelicans dengan 28 poin, tapi tidak cukup.\n\n---\n\n## Top Performers\n\nSuns punya distribusi scoring yang merata. Jalen Green memimpin dengan 25 poin (9-17 FG, 3-9 three-pointer), tapi Devin Booker yang jadi pengatur permainan: 22 poin, 5 rebound, 8 asis dalam 42 menit. Dua kontribusi ini membuktikan bahwa Suns tidak bergantung pada satu opsi saja.\n\nDari bench, Collin Gillespie menambah 18 poin dengan efisiensi tinggi, 7-11 FG, 3-6 dari luar arc dalam 30 menit. Miles Bridges melengkapi dengan double-double: 14 poin dan 11 rebound.\n\nPelicans? Jordan Poole hampir jadi pahlawan. Bench player ini cetak 28 poin hanya dalam 27 menit, efisiensi luar biasa dengan 9-12 FG dan 6-8 dari three-point line. Zion Williamson menyumbang 25 poin (10-18 FG), Saddiq Bey menambah 21 poin dari bench. Secara individu, Pelicans punya argumen. Secara kolektif, mereka tidak cukup.\n\n---\n\n## Apa yang Kata Statistik\n\nDua angka paling mencolok dari data tim: fast-break points dan points in the paint.\n\nNO unggul di keduanya, fast-break 24 vs 17, points in paint 62 vs 44. Artinya Pelicans lebih sering dapat poin mudah. Di atas kertas, itu seharusnya menang.\n\nTapi PHX lebih efisien dari three-point line: 38% (15-39) vs 34% (11-32) milik NO. Di overtime, perbedaan ini terasa. Gillespie dengan pullup jump shot 18-kaki di menit 1:49 OT, dibantu Booker, mengubah kedudukan menjadi 119-113 dan praktis menutup peluang comeback Pelicans.\n\nTurnovers juga menceritakan sesuatu: PHX 17, NO 19. Selisih kecil, tapi dalam laga yang diputuskan di overtime dengan margin empat poin, dua turnover ekstra itu mahal.\n\n---\n\n## Momen Penentu di Overtime\n\nOvertime ini bukan sekadar perpanjangan waktu, ini babak tersendiri.\n\nGillespie buka jalan dengan pull-up 18-kaki yang dibantu Booker (119-113). Pelicans mencoba jawab: free throw Jeremiah Fears (119-114), lalu Booker sendiri masuk satu dari dua free throw (120-114). Bey membuat three-point step-back dari 24 kaki untuk mempersingkat jarak (120-117). Tapi Bridges dan Brooks dari garis free throw menutup Suns di 123-117. Dunk Zion di 1.5 detik terakhir (123-119) hanya mempercantik angka tanpa mengubah hasil.\n\nPHX menang overtime bukan karena lebih dominan secara keseluruhan. Mereka menang karena lebih dingin di momen krusial.\n\n---\n\n## Selanjutnya\n\nLaga ketiga dari regular season series ini menentukan siapa yang tutup dengan keunggulan. Jadwal dan venue Game 3 belum tersedia di sistem saat ini. Pantau update di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910042",
+    "home_team": "New Orleans Pelicans",
+    "home_abbr": "NO",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 119,
+    "away_score": 123,
+    "winner_abbr": "PHX",
+    "kickoff_utc": "2026-11-24T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHX leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.037808,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 2,
+      "summary": "Strong recap with accurate stats, natural Bahasa voice, and clean structure. No hard violations. Soft-discouraged phrase used only once; minor player-name reference is sourced from KEY PLAYS input. Verdict: publish.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Selanjutnya / Laga ketiga dari regular season series",
+          "fix": "No action needed; within tolerance (1x per article)"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Jeremiah Fears makes free throw 2 of 2 (score 119-114)",
+          "fix": "Name appears in KEY PLAYS input block; acceptable as it's grounded in provided data"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe1537321b6894ed2",
+    "published_at": "2026-11-24T04:14:07+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
