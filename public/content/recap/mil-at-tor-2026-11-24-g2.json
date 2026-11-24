@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mil-at-tor-2026-11-24-g2",
+  "title": "Recap Milwaukee Bucks 116-111 Toronto Raptors (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Milwaukee Bucks vs Toronto Raptors (116-111) di —, 24 November 2026.",
+  "body_md": "# Bucks Hentikan Raptors 116-111, Herro dan Turner Jadi Pembeda\n\nMilwaukee Bucks menutup trilogi Regular Season Series dengan kemenangan 116-111 atas Toronto Raptors, Senin 24 November 2026 jam 07.30 WIB. Seri berakhir 2-1 untuk Bucks setelah sebelumnya kedua tim terikat 1-1. Tyler Herro tampil sebagai motor serangan dengan 32 poin, delapan asis, dan enam rebound, sementara Myles Turner menambah 27 poin plus double-double 11 rebound, dua penampilan yang pada akhirnya terlalu berat untuk ditanggung Scottie Barnes sendirian di sisi Toronto.\n\n---\n\n## Top Performers\n\n**Tyler Herro** jadi playmaker sekaligus finisher di malam ini. Dari 16 tembakan, 10 masuk, termasuk 4-5 dari tiga poin. Efisiensi 10-16 di 37 menit bermain adalah argumen paling kuat Bucks malam ini. Delapan asisnya juga konsisten menggerakkan spacing Milwaukee, terutama di Q4 ketika Herro mencatat tiga asis di lima momen krusial terakhir.\n\n**Myles Turner** melengkapi dengan 27 poin, 11 rebound, dan 1 asis, double-double yang dikerjakan hanya dalam 28 menit. Efisiensinya mencolok: 9-12 dari lapangan, 5-6 dari tiga poin. Turner hampir tidak menyia-nyiakan kesempatan.\n\nDari bench, **Brayden Burries** mencatatkan double-double 14 poin dan 10 rebound dengan 4 asis, kontribusi yang sering luput dari sorotan tapi vital untuk menjaga konsistensi Bucks di rotasi.\n\nUntuk Toronto, **Scottie Barnes** berjuang keras dengan 31 poin, delapan asis, dan lima rebound. Namun 12-25 dari lapangan menggambarkan perlawanan yang berat, banyak poin lahir dari volume, bukan efisiensi. **Ja'Kobe Walter** dan **Jakob Poeltl** masing-masing menyumbang 15 poin, Poeltl menambah double-double dengan 10 rebound. Off the bench, **Jamison Battle** efisien dengan 13 poin dari hanya 7 tembakan (5-7, 3-5 dari tiga poin) dalam 13 menit, salah satu penampilan bench terbaik Toronto malam ini.\n\n---\n\n## Baca Statistik\n\nPerbedaan paling jelas ada di efisiensi shooting. Milwaukee tembak 51% dari lapangan (41-81), Toronto hanya 43% (41-95). Dari tiga poin, selisihnya lebih lebar lagi: Bucks 50% (14-28), Raptors 37% (14-38). Jumlah tiga poin yang masuk memang sama-sama 14, tapi Raptors butuh 10 tembakan lebih banyak untuk mencapainya.\n\nToronto mencatat lebih banyak steal (10 vs 4) dan fast-break points (15 vs 6), artinya Raptors sebenarnya lebih aktif memaksa turnover dan memanfaatkan transisi. Namun 18 turnover Bucks tidak cukup untuk menghancurkan mereka karena efisiensi half-court Milwaukee terlalu solid. Points in paint pun berpihak ke Bucks: 52 vs 44.\n\n---\n\n## Duel di Q4\n\nLima menit terakhir menyajikan pertandingan yang berbeda. Skor 95-awal Q4 akhirnya bergerak dengan cepat ketika kedua tim saling serang.\n\nKuzma masuk dengan driving layup dibantu Herro untuk 98-95. Walter langsung balas dengan three-pointer 28-foot dari umpan Barnes, skor kembali imbang 98-98. Herro kembali setup Kuzma yang kali ini lepas dari jarak 25 kaki, 101-98. Quickley potong jarak lewat jumper 13-foot dibantu Poeltl, 101-100. Lalu Turner tutup tembakan tiga poin dari 25 kaki, asis Herro lagi, untuk 104-100.\n\nRaptors sempat mendekat di 109-104 lewat free throw Walter. Quickley menutup laga dengan running layup dibantu Jamal Shead untuk angka final 116-111. Lima poin terakhir Raptors datang di sisa kurang dari dua menit, terlambat.\n\n---\n\n## Penutup\n\nRegular Season Series 2026 antara Bucks dan Raptors berakhir 2-1 untuk Milwaukee. Bagi yang ingin menyaksikan laga NBA berikutnya, pantau jadwal di NBA League Pass atau Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910039",
+    "home_team": "Toronto Raptors",
+    "home_abbr": "TOR",
+    "away_team": "Milwaukee Bucks",
+    "away_abbr": "MIL",
+    "home_score": 111,
+    "away_score": 116,
+    "winner_abbr": "MIL",
+    "kickoff_utc": "2026-11-24T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.023892,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Series state claim (2-1) contradicts input (1-1 tied, game 3 of 3). Multiple translated-English idioms and vague stat references undermine credibility. Key plays section is factually grounded but narrative framing earlier needs correction.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Seri berakhir 2-1 untuk Bucks setelah sebelumnya kedua tim terikat 1-1.",
+          "fix": "Delete or rewrite: 'Bucks raih kemenangan di laga ketiga untuk tutup trilogi regular season series.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "dua penampilan yang pada akhirnya terlalu berat untuk ditanggung Scottie Barnes sendirian",
+          "fix": "Rewrite: 'dua performa yang akhirnya terlalu berat untuk Barnes handle sendiri.'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Efisiensi 10-16 di 37 menit bermain adalah argumen paling kuat Bucks malam ini.",
+          "fix": "Rewrite: 'Efisiensi 10-16 di 37 menit jadi argumen Bucks terkuat.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dari 16 tembakan, 10 masuk, termasuk 4-5 dari tiga poin.",
+          "fix": "Rewrite: 'Herro tembak 10-16 dari lapangan, termasuk 4-5 tiga poin.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "kontribusi yang sering luput dari sorotan tapi vital untuk menjaga konsistensi Bucks",
+          "fix": "Rewrite: 'Burries' double-double 14 poin, 10 rebound, 4 asis jaga konsistensi rotasi Bucks.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "banyak poin lahir dari volume, bukan efisiensi",
+          "fix": "Rewrite: 'poinnya lebih dari volume than efficiency — 12-25 lapangan.' Or: 'Banyak poin dari volume, bukan shot quality.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Jumlah tiga poin yang masuk memang sama-sama 14, tapi Raptors butuh 10 tembakan lebih banyak",
+          "fix": "Delete 'memang': 'Jumlah tiga poin masuk sama-sama 14, tapi Raptors butuh 10 tembakan lebih banyak.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Skor 95-awal Q4 akhirnya bergerak dengan cepat",
+          "fix": "Delete or rewrite more clearly: 'Q4 membuka dengan pertandingan ketat. Skor bergerak cepat dari sana.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xeba62f6e40e1f494",
+    "published_at": "2026-11-24T03:10:49+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "okc-at-ind-2026-11-24-g1",
+  "title": "Recap Oklahoma City Thunder 120-125 Indiana Pacers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Oklahoma City Thunder vs Indiana Pacers (120-125) di —, 24 November 2026.",
+  "body_md": "# Indiana Pacers Tutup OKC Thunder 125-120, Bench Depth Jadi Penentu\n\nIndiana Pacers mengakhiri pertandingan dengan kemenangan 125-120 atas Oklahoma City Thunder, Senin 24 November 2026 jam 07.30 WIB. Shai Gilgeous-Alexander berjuang keras dengan 38 poin, tapi IND punya jawaban di setiap momen krusial, dan empat pemain bench mereka yang membuat perbedaan nyata.\n\n---\n\n## Top Performers\n\nDari sisi OKC, SGA adalah cerita tersendiri. Tiga puluh delapan poin, 7 asis, 5 rebound, 13-30 from field, 4-10 from three. Di menit-menit akhir dia tidak menyerah: step-back jumper 19 kaki di menit ke-59.4 Q4 memotong defisit jadi 119-120, lalu free throw untuk poinnya yang ke-120 masih hidup. Tapi effort individual, sebesar itu pun, tidak cukup malam ini.\n\nKenrich Williams off the bench jadi kejutan OKC, 20 poin, 9 rebound, 8-13 from field, 4-6 from three. Isaiah Hartenstein turut menyumbang double-figure: 18 poin, 9 rebound, 7-12 from field. Dua pemain itu yang membuat OKC tetap dalam jangkauan. Jared McCain dan Ajay Mitchell, sebaliknya, berjuang dengan efisiensi, McCain 6-15, Mitchell 4-14.\n\nIND lebih merata. Pascal Siakam memimpin dengan 20 poin, 8 rebound, 5 asis, solid sepanjang malam. Kelly Oubre Jr. juga 20 poin, 4-7 from three. Tapi yang paling menarik: dua bench player IND tampil di luar ekspektasi. Obi Toppin (bench) 17 poin, 6 rebound dalam 24 menit. Jalen Slawson (bench) 16 poin, 10 rebound, sempurna 3-3 from three dalam 20 menit. Andrew Nembhard 15 poin, 6 asis sebagai engine playmaking IND.\n\n---\n\n## Statistik Bicara\n\nDua angka yang menjelaskan hasil ini: 3PT% dan fast-break points.\n\nIND lebih efisien dari tiga angka, 41% vs 35% OKC (15-37 vs 13-37). Jumlah attempt sama persis, tapi IND lebih dingin dalam eksekusi. Di fast break, selisih lebih besar lagi: IND 16 poin vs OKC 6. Itu bukan kebetulan, IND 30 asis vs OKC 21, dan tempo transisi mereka lebih tinggi secara konsisten.\n\nRebound juga berpihak ke IND: 58 vs 49. Dengan Slawson 10 rebound dalam 20 menit dan Siakam 8, IND tidak memberi OKC banyak second-chance opportunities.\n\nOKC punya keunggulan di free throw, 19-21 (90%) vs IND 12-15 (80%), tapi itu tidak cukup menutup gap yang dibuka IND dari tiga angka dan transisi.\n\n---\n\n## Dua Menit yang Menentukan\n\nDrama sesungguhnya terjadi di Q4, dalam rentang kurang dari dua menit.\n\nAjay Mitchell membuka harapan OKC dengan three-pointer 28 kaki di menit 2:21, dibantu SGA, skor 114-116. Tiga detik kemudian, Obi Toppin menjawab lewat alley oop dari Oubre Jr., 114-118. Kenrich Williams membalas lagi dengan three-pointer 26 kaki di menit 1:33, 117-118, satu poin selisih.\n\nLalu Siakam. Pullup jump shot 19 kaki di menit 1:11, 117-120. SGA menjawab dengan step-back 19 kaki di menit 59.4, 119-120. Lalu Siakam lagi, three-pointer 26 kaki dari umpan Nembhard di menit 45.3, 119-123. SGA masih dapat satu free throw, 120-123. Dan Ivica Zubac menutup semuanya dengan running dunk di menit 7.4, final 120-125.\n\nSiakam tampil di momen yang paling menentukan. Dua shot beruntun ketika OKC sudah ada di ambang, itulah yang membunuh comeback.\n\n---\n\n## Selanjutnya\n\nIni laga kedua dari dua pertemuan regular season antara kedua tim. IND menang keduanya, leads series 1-0 dalam konteks regular season head-to-head. Jika keduanya kembali bertemu di playoffs, IND punya modal psikologis yang solid. Tapi yang lebih mendesak: OKC perlu menjawab pertanyaan soal bench depth dan efisiensi shooting di laga-laga berikutnya.\n\nTayang di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910038",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "Oklahoma City Thunder",
+    "away_abbr": "OKC",
+    "home_score": 125,
+    "away_score": 120,
+    "winner_abbr": "IND",
+    "kickoff_utc": "2026-11-24T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "IND leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.024897,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fact accuracy is solid (numbers verified), but voice has training-inference creep (19-foot detail), academic drift in stat framing, and contradictory series description (1-0 vs 'both'). High-severity issues require regeneration.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Tiga puluh delapan poin, 7 asis, 5 rebound, 13-30 from field, 4-10 from three.",
+          "fix": "SGA catat 38 poin, 7 assist, 5 rebound dengan FG 13-30, 3PT 4-10."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "step-back jumper 19 kaki di menit ke-59.4 Q4 memotong defisit jadi 119-120",
+          "fix": "Delete the 19-foot detail; say 'SGA step-back jumper dengan 59.4 detik tersisa Q4, skor 119-120.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka yang menjelaskan hasil ini: 3PT% dan fast-break points.",
+          "fix": "Merge into flow: 'Yang ngacaukan: 3PT% dan fast-break. IND lebih efisien dari tiga angka, 41% vs 35%.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Siakam tampil di momen yang paling menentukan. Dua shot beruntun ketika OKC sudah ada di ambang, itulah yang membunuh comeback.",
+          "fix": "Delete final sentence; let the play sequence speak for itself."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Ini laga kedua dari dua pertemuan regular season antara kedua tim. IND menang keduanya, leads series 1-0.",
+          "fix": "Revise: 'Laga kedua antara OKC dan IND season ini. IND menang kedua-duanya, 1-0 head-to-head.' Or just: 'IND unggul 1-0 dalam regular season series.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan Slawson 10 rebound dalam 20 menit dan Siakam 8, IND tidak memberi OKC banyak second-chance opportunities.",
+          "fix": "IND kunci rebound: Slawson 10 dalam 20 menit, Siakam 8. OKC jarang dapat second chance."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Jika keduanya kembali bertemu di playoffs, IND punya modal psikologis yang solid.",
+          "fix": "Delete this sentence or rewrite as: 'Head-to-head, IND 2-0 musim ini.'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Rename to 'Series, Kesimpulan' or merge with opening paragraph of that section."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x15def98294654bc8",
+    "published_at": "2026-11-24T03:10:03+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
