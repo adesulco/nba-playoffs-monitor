@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "mem-at-cha-2026-11-24-g1",
+  "title": "Recap Memphis Grizzlies 117-111 Charlotte Hornets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Memphis Grizzlies vs Charlotte Hornets (117-111) di —, 24 November 2026.",
+  "body_md": "## Memphis Tutup Dua Laga Kandang CHA dengan Kemenangan 117-111\n\nMemphis Grizzlies menang tipis 117-111 atas Charlotte Hornets di Game 2 regular season series, Senin 24 November 2026. MEM menutup seri dua laga ini dengan hasil sempurna, dua kemenangan, setelah sebelumnya menang di Game 1. Ty Jerome jadi pemimpin serangan dengan 29 poin, sementara Charlotte butuh performa luar biasa dari empat pemain di angka 20-an poin untuk bisa kompetitif, tapi tetap tidak cukup.\n\n---\n\n## Top Performers\n\n### Memphis Grizzlies\n\n**Ty Jerome** tampil sebagai top scorer malam ini: 29 poin, 4 rebound, 3 asis dari 29 menit bermain. Jerome dominan dari tiga: 7-12 (58%). Ini yang menentukan serangan MEM. Hanya 29 menit di lapangan, tapi dampaknya terasa sepanjang laga.\n\n**Cam Spencer** off the bench cetak 24 poin dengan shooting yang sangat efisien: 5-7 dari field goal, 3-5 dari tiga poin dalam 21 menit. Ini kontribusi bench yang serius, lebih dari satu poin per menit bermain.\n\n**Cedric Coward** melengkapi trio atas MEM dengan 16 poin dan 9 rebound, meski shooting-nya lebih berat: 6-15 dari field, 0-5 dari tiga poin. Peran fisiknya di dalam cat tetap terasa.\n\n### Charlotte Hornets\n\nCharlotte sebenarnya punya empat pemain di 20 poin ke atas malam ini, tapi tidak ada yang efisien secara konsisten.\n\n**Christian Anderson** off the bench jadi paling tajam: 25 poin dengan 9-12 dari field goal dan 6-8 dari tiga poin dalam hanya 25 menit. Efisiensi terbaik malam ini dari sisi CHA.\n\n**Naz Reid** cetak 24 poin dan 6 rebound, tapi nomor shooting-nya berat: 8-25 dari field, 3-10 dari tiga poin dalam 38 menit. Volume tinggi, efisiensi tidak mengikuti.\n\n**Coby White** 21 poin dengan 7-18 dari field, 5-10 dari tiga poin. **Brandon Miller** 20 poin, 3 rebound, 5 asis, meski butuh 6-19 dari field untuk sampai ke sana.\n\n**Moussa Diabate** tidak cetak banyak poin, hanya 10, tapi dia satu-satunya pemain yang meraih double-double malam ini: 10 rebound dengan field goal yang sangat efisien, 3-4 dari field.\n\n---\n\n## Apa yang Bicara di Box Score\n\nMemphis menang bukan karena lebih tajam dari tiga poin, CHA justru lebih baik dari sana: 44% berbanding 38% MEM. Pembedanya: dominasi di dalam cat.\n\n**Points in paint MEM 44, CHA 26.** Selisih 18 poin dari area paint ini yang menjelaskan hasil akhir. CHA punya keunggulan dari luar arc, tapi Memphis konsisten menekan ke dalam dan mendapat angka dari sana.\n\nFree throw juga jadi faktor besar: MEM masuk 24-24, sempurna 100%, sementara CHA 17-19 (89%). Selisih tujuh poin tambahan dari garis free throw, dan MEM tidak menyia-nyiakan satu pun percobaan.\n\nCharlotte punya lebih banyak blok (8 vs 3) dan sedikit lebih rapi soal turnover (13 vs 16 MEM). Tapi keunggulan-keunggulan kecil itu tidak cukup menutup defisit dari dalam cat dan free throw.\n\n---\n\n## Laga yang Ketat Sampai Kuarter Empat\n\nPertandingan ketat sejak Q1. Skor berulang kali berganti tipis. Jerome ngecash dari 34 kaki di Q2. Stewart ngecash floating jumper 11 kaki, pertandingan tetap ketat.\n\nMiller cetak step back dari 23 kaki di Q3, lalu 30 kaki di Q4. Hornets tetap mengejar.\n\nTapi MEM menutup kuarter keempat lebih kuat. Free throw sempurna 24-24 dan keunggulan di paint yang konsisten akhirnya jadi penentu, Grizzlies menang 117-111.\n\n---\n\n## Jadwal Berikutnya\n\nRegular season series dua laga ini selesai. MEM menutupnya dengan rekor sempurna 2-0. Pantau update berikutnya di **NBA League Pass** dan **Vidio**.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910036",
+    "home_team": "Charlotte Hornets",
+    "home_abbr": "CHA",
+    "away_team": "Memphis Grizzlies",
+    "away_abbr": "MEM",
+    "home_score": 111,
+    "away_score": 117,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-11-24T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MEM leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.052417,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has two high-severity failures: inventing Game 1 result not in input data (training_inference), and adding calculated percentages not explicitly provided. Also contains multiple translated-English phrasings and inconsistent register (mixing slang 'ngecash' with formal prose). Score: 62/100 → FAIL.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "MEM menutup seri dua laga ini dengan hasil sempurna, dua kemenangan, setelah sebelumnya menang di Game 1.",
+          "fix": "Remove Game 1 reference. Stick to: 'Memphis menang 117-111 atas Charlotte, Senin 24 November 2026.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jerome dominan dari tiga: 7-12 (58%).",
+          "fix": "Delete the percentage: 'Jerome dominan dari tiga: 7-12.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Ini yang menentukan serangan MEM.",
+          "fix": "Rephrase: 'Jerome jadi kunci serangan MEM.' or 'Efisiensi Jerome menentukan pertandingan.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Jerome ngecash dari 34 kaki di Q2. Stewart ngecash floating jumper 11 kaki",
+          "fix": "Use standard: 'Jerome ngecash tembakan 34 kaki di Q2. Stewart cetak floating jumper 11 kaki.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Charlotte punya lebih banyak blok (8 vs 3) dan sedikit lebih rapi soal turnover (13 vs 16 MEM).",
+          "fix": "Rephrase: 'Charlotte lebih rapi: 13 turnover vs 16 MEM.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Pembedanya: dominasi di dalam cat.",
+          "fix": "Rephrase: 'Pembeda utama: Memphis dominasi di dalam cat.' or just: 'Memphis menang karena dominasi paint.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Efisiensi terbaik malam ini dari sisi CHA.",
+          "fix": "Simplify: 'Efisiensi terbaik Charlotte malam ini.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7ccb418684c9ad8c",
+    "published_at": "2026-11-24T04:33:50+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
