@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "cle-at-chi-2026-11-24-g2",
+  "title": "Recap Cleveland Cavaliers 108-122 Chicago Bulls (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Cleveland Cavaliers vs Chicago Bulls (108-122) di —, 24 November 2026.",
+  "body_md": "# Chicago Bulls Hantam Cavaliers 122-108, Tiga Poin Jadi Pembeda\n\nChicago Bulls menang 122-108 atas Cleveland Cavaliers di pertandingan ketiga dari empat seri regular season ini, Senin 24 November 2026. Seri kini tied 1-1. Kemenangan Bulls ditopang oleh efisiensi tiga poin yang jauh melampaui Cavaliers, 20 dari 49 percobaan (41%) berbanding 8 dari 31 (26%), dan turnover yang mahal dari Cleveland.\n\n---\n\n## Top Performers\n\n**Jordan Hawkins** jadi pemain paling mengejutkan malam ini. Off the bench, guard Bulls itu selesaikan 19 poin lewat 4 dari 10 percobaan tiga angka dalam 18 menit bermain, efisiensi tinggi untuk waktu bermain yang relatif singkat.\n\n**Buddy Hield** konsisten sebagai shooter andalan starter: 17 poin, 5 rebound, dengan 4-11 from three. Angka shooting-nya memang di bawah 50%, tapi kontribusinya di lini tiga angka tetap jadi ancaman nyata sepanjang laga.\n\n**Tre Jones** tampil sebagai playmaker sejati dari bench: 16 poin, 9 asis, 4 rebound dalam 27 menit. Sembilan asis dari seorang bench guard adalah sinyal bahwa Bulls punya kedalaman roster yang serius. **Matas Buzelis** melengkapi roster starter Bulls dengan 15 poin, 6 rebound, dan tembakan tiga angka yang efisien, 4 dari 6 percobaan.\n\nDi sisi Cleveland, **Donovan Mitchell** tetap tumpuan utama dengan 28 poin, 5 asis, 3 rebound, tapi FG 8-17 menunjukkan tekanan pertahanan Bulls terasa. **James Harden** tambahkan 21 poin dan 5 asis dari 37 menit, sementara **Jarrett Allen** efisien dengan 16 poin dari 6-7 field goal. Masalah Cleveland bukan di scorer utama, masalahnya di tim secara keseluruhan.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka yang paling menjelaskan hasil ini: tiga poin dan turnover.\n\nBulls cetak 20 tembakan tiga angka (41%), Cavaliers hanya 8 (26%). Selisih itu saja sudah berkontribusi sekitar 24 poin untuk Chicago, hampir setara dengan margin kemenangan mereka. Di era NBA modern, tim yang jauh lebih efisien dari arc hampir selalu menang.\n\nTurnover juga jadi soal: CLE 18, CHI 13. Bulls konversi tekanan itu dengan 12 steal sepanjang laga berbanding hanya 4 dari Cleveland. Fast-break points Bulls pun unggul 10 untuk Cleveland, 17 untuk Cavaliers, tapi ini sedikit diimbangi oleh Cleveland yang mendominasi di paint: 50 poin berbanding 42. Hanya saja, keunggulan di dalam kotak tidak cukup ketika tiga poin jauh tertinggal.\n\nAssists gap juga mencolok: 35 (Bulls) vs 21 (Cavaliers). Chicago main lebih connected, Cavaliers terlalu bergantung pada kreasi individual.\n\n---\n\n## Outlook Seri\n\nDengan seri masih tied 1-1 dan dua pertandingan tersisa dalam seri empat game ini, kedua tim masih berada di posisi berimbang. Tapi tren dari malam ini perlu dijawab Cleveland: 18 turnover dan persentase tiga angka yang jauh di bawah lawan bukan formula menang di level playoff.\n\nMitchell dan Harden masih menjanjikan secara individual, 28 dan 21 poin masing-masing adalah produksi yang solid. Pertanyaannya, apakah CLE bisa meningkatkan efisiensi dari arc dan menjaga bola lebih baik di game berikutnya?\n\nChicago, di sisi lain, punya jawaban dari bench dan rotation yang dalam. Hawkins 19 poin dari 18 menit adalah sesuatu yang sulit direncanakan lawan.\n\n---\n\nSaksikan kelanjutan seri ini live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401910041",
+    "home_team": "Chicago Bulls",
+    "home_abbr": "CHI",
+    "away_team": "Cleveland Cavaliers",
+    "away_abbr": "CLE",
+    "home_score": 122,
+    "away_score": 108,
+    "winner_abbr": "CHI",
+    "kickoff_utc": "2026-11-24T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020161,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stats and clear voice. Minor phrasing awkwardness and one confusing fast-break comparison, but no high-severity violations. Passes baseline.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka shooting-nya memang di bawah 50%, tapi kontribusinya di lini tiga angka tetap jadi ancaman nyata sepanjang laga.",
+          "fix": "Replace 'di lini tiga angka tetap' with just 'tiga angka tetap — persentasenya 41%, di atas rata-rata lagu ini.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Di era NBA modern, tim yang jauh lebih efisien dari arc hampir selalu menang.",
+          "fix": "Restructure: 'Di NBA, efisiensi tiga angka jauh lebih penting dari yang lain. Bulls terbukti malam ini.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "fast-break points Bulls pun unggul 10 untuk Cleveland, 17 untuk Cavaliers",
+          "fix": "Rewrite: 'Fast-break points Cleveland 17, Bulls hanya 10 — tapi keunggulan di paint tidak cukup.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6b5bf9b2a011f581",
+    "published_at": "2026-11-24T03:39:19+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
