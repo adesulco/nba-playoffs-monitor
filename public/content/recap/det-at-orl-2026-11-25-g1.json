@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "det-at-orl-2026-11-25-g1",
+  "title": "Recap Detroit Pistons 104-86 Orlando Magic (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Detroit Pistons vs Orlando Magic (104-86) di —, 25 November 2026.",
+  "body_md": "## Detroit Pistons Hantam Orlando Magic 104-86, Unggul 1-0 di Series\n\nDetroit Pistons menang telak 104-86 atas Orlando Magic, Senin 25 November 2026. Isaiah Joe tampil sebagai top scorer dengan 21 poin, sementara Daniss Jenkins mengatur serangan dengan 10 asis. DET kini unggul 1-0 di regular season series tiga game ini.\n\n---\n\n## Top Performers\n\nDari sisi DET, Isaiah Joe jadi tumpuan offense dengan 21 poin, 8-15 dari lapangan, termasuk 5-11 dari tiga angka.\n\nDaniss Jenkins bermain lebih dari sekadar pencetak angka, 15 poin, 10 asis, 6-16 dari lapangan. Sebagai playmaker, 10 asis dari Jenkins adalah fondasi dari 27 total asis DET malam ini, angka kolektif yang jauh di atas Orlando.\n\nKevin Huerter menambah 13 poin, 6 rebound, 5 asis dengan 6-10 dari lapangan. Peran serba bisa yang bikin offense DET sulit dibaca. John Collins melengkapi starting five dengan 12 poin secara efisien, 3-5 dari lapangan dan 2-4 dari tiga angka.\n\nDari bench, Ronald Holland II tampil mencolok, 13 poin dalam 17 menit, 5-9 dari lapangan dan 2-5 dari tiga angka.\n\nDi kubu ORL, Franz Wagner membawa perlawanan nyata: 20 poin, 9 rebound, 6 asis, 9-20 dari lapangan. Angka yang solid di atas kertas, tapi 0-5 dari tiga angka jadi masalah. Desmond Bane jadi top scorer ORL dengan 21 poin, 8-13 dari lapangan dan 4-7 dari tiga angka. Tristan da Silva off the bench menyumbang 16 poin, 4-11 dari tiga angka. Wendell Carter Jr. mengamankan 13 rebound, tertinggi malam ini, dengan 9 poin dari 3-10 lapangan.\n\n---\n\n## Statistik Bicara\n\nBox score menjelaskan keunggulan 18 poin DET dengan jelas.\n\nDET lebih tajam dari lapangan: 49% FG vs 41% Orlando. Dari tiga angka, selisihnya lebih lebar lagi, DET 42% (15-36) vs ORL 33% (12-36). Ketika volume tembakan tiga angka sama tapi efisiensinya berbeda sejauh itu, hasilnya hampir pasti sudah terbaca di momen-momen awal keunggulan.\n\nFast-break points: DET 19, ORL 9. DET mencatat 12 steal vs 8 milik ORL, dan ORL lebih sering kehilangan bola dengan 20 turnover vs 16 DET. Kesempatan transisi tersebut dikonversi Detroit menjadi poin mudah.\n\nRebound praktis imbang, DET 42, ORL 41. Perbedaan malam ini bukan soal papan, tapi soal efisiensi shooting dan transisi.\n\n---\n\n## Outlook Series\n\nDET unggul 1-0 di regular season series tiga game ini. Orlando perlu menjawab persoalan turnover dan efisiensi tiga angka yang lebih rendah jika ingin membalikkan series ini. Sementara DET, dengan kedalaman bench yang terbukti malam ini lewat Holland II, tampak nyaman dengan momentum di pihak mereka.\n\n---\n\n*Tayang live di NBA League Pass dan Vidio.*\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909314",
+    "home_team": "Orlando Magic",
+    "home_abbr": "ORL",
+    "away_team": "Detroit Pistons",
+    "away_abbr": "DET",
+    "home_score": 86,
+    "away_score": 104,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-11-25T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DET leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.047332,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong recap with accurate stats, natural flow, and good structural variety. Minor tense hedging and one calqued English idiom, but overall voice is solid. Pass with low-severity feedback.",
+      "issues": [
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "menang telak 104-86 atas Orlando Magic, Senin 25 November 2026",
+          "fix": "Move date to second sentence or drop if not critical to recap structure"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "low",
+          "snippet": "keunggulan 18 poin DET dengan jelas",
+          "fix": "Delete or rephrase: 'Box score menjelaskan keunggulan 18 poin DET.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Angka yang solid di atas kertas, tapi 0-5 dari tiga angka jadi masalah",
+          "fix": "Use natural Indonesian: 'Angka terlihat bagus, tapi 0-5 tiga angka memprihatinkan'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Rebound praktis imbang, DET 42, ORL 41",
+          "fix": "Tighter phrasing: 'Rebound hampir imbang (42 vs 41)'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x24d739fb7401cfb4",
+    "published_at": "2026-11-25T03:06:35+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
