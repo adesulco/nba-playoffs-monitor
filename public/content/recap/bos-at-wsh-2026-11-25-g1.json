@@ -1,0 +1,139 @@
+{
+  "type": "recap",
+  "slug": "bos-at-wsh-2026-11-25-g1",
+  "title": "Recap Boston Celtics 131-116 Washington Wizards (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Boston Celtics vs Washington Wizards (131-116) di —, 25 November 2026.",
+  "body_md": "# Tatum 41 Poin, Celtics Hantam Wizards 131-116 di Game 2\n\nBoston Celtics menang 131-116 atas Washington Wizards di Game 2 regular season series, Senin 25 November 2026. Jayson Tatum dominan dengan 41 poin dan Boston kini unggul 2-0 dalam seri empat pertemuan ini. Wizards sempat memperketat selisih di kuarter akhir, tapi Celtics cukup punya jawaban setiap kali Washington mencoba comeback.\n\n---\n\n## Top Performers\n\nTatum bermain di level berbeda malam ini. 41 poin, 6 rebound, 8 asis, efisien di luar tiga poin (6-15 from three) dan konsisten di dua poin (7-10 dari dalam garis tiga angka berdasarkan kalkulasi FG-nya yang 13-25). Tatum bukan cuma cetak angka. 8 asis menunjukkan dia aktif ciptakan peluang untuk rekan-rekannya juga.\n\nPaul George melengkapi dengan 28 poin dan 9 asis, 6-9 from three. Efisiensi dari luar yang sulit diabaikan, dan distribusinya dari posisi guard nyaris menyentuh double-double. George dan Tatum jadi backcourt yang menguras energi Wizards sepanjang malam.\n\nOff the bench, Neemias Queta jadi kejutan besar: 21 poin dari 9-11 field goal, nol from three tapi dominan di dalam. 25 menit, 21 poin, shooting hampir sempurna, kontribusi yang tak bisa dianggap remeh dari pemain rotasi.\n\nDi kubu Wizards, Anthony Davis tampil gigih dengan 33 poin dan 13 rebound. Double-double yang nyata, tapi kurang dukungan konsisten dari rekan-rekannya di saat dibutuhkan. AJ Dybantsa juga mencatatkan double-double: 20 poin, 11 rebound, 7 asis, versatilitas yang mengesankan untuk pemain muda, meski Wizards tetap tak mampu menutup gap. Kyshawn George tambahkan 24 poin dan 9 rebound, sementara Trae Young distribusikan 12 asis meski kontribusi scoringnya terbatas di 17 poin.\n\n---\n\n## Baca Statistik\n\nPerbedaan paling jelas: shooting dari luar. Boston 43% from three (22-51), Washington 33% (12-36). Selisih 10 persen dari tiga poin dalam volume tembakan setinggi itu adalah margin yang menentukan, Celtics cetak jauh lebih banyak dari garis tiga angka dan lebih efisien.\n\nTurnover juga bercerita: Wizards 14, Boston 10. Empat turnover ekstra di laga seimbang sudah mahal. di laga yang Celtics sudah unggul shooting, dampaknya berlipat.\n\nRebound nyaris imbang (BOS 46, WSH 48) dan fast-break points hampir identik (15-16). Ini bukan kemenangan karena Washington jelek, ini karena Boston memang tembak lebih baik dari luar.\n\n---\n\n## Momen Penentu\n\nDi kuarter keempat menit 3:19, Dybantsa masuk dengan lay-up untuk menjadikan skor 117-112, Washington masih hidup dan sempat membuat Celtics tak nyaman. Tapi Boston tak runtuh. Mereka tutup pertandingan dengan cukup tenang, akhirnya menang 131-116. Margin 15 poin di papan skor sebenarnya sedikit menipu seberapa dekat Washington sempat mendekati di akhir laga.\n\n---\n\n## Selanjutnya\n\nBoston unggul 2-0 dalam seri empat pertemuan. Dua game sisa menentukan siapa yang mendominasi head-to-head musim ini. Jadwal Game 3 belum tersedia di sistem saat ini.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909315",
+    "home_team": "Washington Wizards",
+    "home_abbr": "WSH",
+    "away_team": "Boston Celtics",
+    "away_abbr": "BOS",
+    "home_score": 116,
+    "away_score": 131,
+    "winner_abbr": "BOS",
+    "kickoff_utc": "2026-11-25T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "BOS leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020564,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Critical factual error: article claims Boston leads 2-0; input says 1-0 after game 2 of 4-game series. Opening paragraph is factually contradicted by closing paragraph. Additionally, translated-English phrasing in statistical analysis sections ('berdasarkan kalkulasi', 'adalah margin yang menentukan', 'di laga yang') weakens voice. Must fix series score and tighten academic register drift before publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Boston Celtics menang 131-116 atas Washington Wizards di Game 2 regular season series",
+          "fix": "Input data says 'BOS leads series 1-0' and 'Game number: 2 of 4' — this is game 2 of a 4-game regular season series, not playoffs. Rewrite as: 'di laga kedua seri reguler empat pertemuan' and remove playoff framing."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Boston kini unggul 2-0 dalam seri empat pertemuan ini",
+          "fix": "Delete or rewrite: 'Boston unggul 1-0 dalam seri empat pertemuan' (closing paragraph says this correctly; opening is contradictory)."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "7-10 dari dalam garis tiga angka berdasarkan kalkulasi FG-nya yang 13-25",
+          "fix": "Delete phrasing. Write: 'Tatum bukan cuma cetak angka; 8 asis menunjukkan dia aktif ciptakan peluang.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Perbedaan paling jelas: shooting dari luar. Boston 43% from three (22-51), Washington 33% (12-36). Selisih 10 persen dari tiga poin dalam volume tembakan setinggi itu adalah margin yang menentukan",
+          "fix": "Write: 'Boston 43% from three (22-51), Washington 33% (12-36). Perbedaan 10 persen itu yang buka keran kemenangan.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "di laga yang Celtics sudah unggul shooting, dampaknya berlipat",
+          "fix": "Write: 'Dalam laga yang Celtics sudah unggul shooting, turnovers berlipat dampaknya.' Or: 'Empat turnover ekstra di laga panas seperti ini sudah cukup mahal.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Boston tak runtuh. Mereka tutup pertandingan dengan cukup tenang",
+          "fix": "Consider: 'Boston tetap tenang. Akhir laga kelola dengan baik.'"
+        },
+        {
+          "type": "structural",
+          "severity": "medium",
+          "snippet": "Boston unggul 2-0 dalam seri empat pertemuan. Dua game sisa menentukan siapa yang mendominasi head-to-head musim ini.",
+          "fix": "Write: 'Boston unggul 1-0 dalam seri. Dua laga sisa bisa ubah keseimbangan musim ini. Game 3 jadwalnya belum tersedia.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Efisiensi dari luar yang sulit diabaikan, dan distribusinya dari posisi guard nyaris menyentuh double-double.",
+          "fix": "Write: 'George cetak 28 poin, 9 asis — nyaris double-double dari luar dengan 6-9 from three.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x257f5d98b541eca8",
+    "published_at": "2026-11-25T04:08:54+00:00",
+    "version": 1,
+    "manual_review": true,
+    "qc_review": {
+      "verdict": "regenerate",
+      "overall_score": 58,
+      "headline_score": 72,
+      "headline_comment": "Punchy dan punya angka + nama bintang, tapi menyebut 'Game 2' padahal input menyatakan BOS leads series 1-0 — ini Game 1, bukan Game 2.",
+      "lead_score": 55,
+      "lead_comment": "Lead mengulang kesalahan 'Game 2' dan 'unggul 2-0' yang kontradiksi dengan data input (series 1-0, game number 2 of 4 artinya ini pertemuan ke-2, bukan kemenangan ke-2).",
+      "structure_score": 75,
+      "structure_comment": "Alur recap solid — top performers, statistik, momen penentu, closing — tapi section 'Momen Penentu' tipis karena hanya satu key play yang tersedia di input.",
+      "voice_score": 70,
+      "voice_comment": "Register casual-informed sudah tepat dan code-switching natural, namun ada beberapa frase canggung ('kontribusi yang tak bisa dianggap remeh', 'versatilitas yang mengesankan') yang terasa ditulis-komite.",
+      "suggestion_count": 6,
+      "summary": "Voice and structure are serviceable, but two factual errors — '2-0 series lead' and Queta as bench player — contradict the input data and demand regeneration rather than a quick edit. Headline framing (Game 2) also needs reconciling with the 1-0 series state.",
+      "suggestions": [
+        {
+          "priority": "high",
+          "snippet": "Boston kini unggul 2-0 dalam seri empat pertemuan ini",
+          "issue": "Fakta salah — input menyatakan 'BOS leads series 1-0' setelah game number 2 of 4, artinya ini kemenangan pertama Boston di head-to-head musim ini, bukan 2-0.",
+          "fix": "Ganti jadi 'Boston unggul 1-0 di seri empat pertemuan musim ini' dan koreksi semua referensi 2-0 di body + closing."
+        },
+        {
+          "priority": "high",
+          "snippet": "Celtics Hantam Wizards 131-116 di Game 2",
+          "issue": "Headline menyebut Game 2, tapi konteks series (1-0 setelah 2 of 4 scheduled) ambigu — bisa jadi ini sebenarnya Game 1 regular season series. Minimal inkonsisten dengan 'unggul 2-0'.",
+          "fix": "Rekonfirmasi ini Game ke berapa; jika konsisten dengan series 1-0, headline sebaiknya 'Game 1' atau drop penomoran: 'Tatum 41 Poin, Celtics Bungkam Wizards 131-116'."
+        },
+        {
+          "priority": "high",
+          "snippet": "7-10 dari dalam garis tiga angka berdasarkan kalkulasi FG-nya yang 13-25",
+          "issue": "Penulis melakukan kalkulasi turunan (13-25 minus 6-15 = 7-10) yang tidak ada di numeric anchors — melanggar reminder input untuk hanya kutip digit literal.",
+          "fix": "Hapus sub-klausa kalkulasi; cukup 'efisien dari luar (6-15 from three) dengan FG total 13-25'."
+        },
+        {
+          "priority": "medium",
+          "snippet": "Margin 15 poin di papan skor sebenarnya sedikit menipu seberapa dekat Washington sempat mendekati",
+          "issue": "Klaim narasi 'Washington sempat dekat' hanya didukung satu data point (117-112 di menit 3:19), terlalu tipis untuk klaim seberapa dekat comeback-nya.",
+          "fix": "Lebih spesifik atau netral: 'Washington sempat memangkas ke 5 poin di menit 3:19 sebelum Boston menutup laga.'"
+        },
+        {
+          "priority": "medium",
+          "snippet": "Off the bench, Neemias Queta jadi kejutan besar: 21 poin dari 9-11 field goal",
+          "issue": "Input jelas menandai Queta sebagai 'starter', bukan bench. Fakta salah.",
+          "fix": "Hapus 'Off the bench' — tulis 'Dari starting five, Queta jadi kejutan: 21 poin dari 9-11 FG dalam 25 menit.'"
+        },
+        {
+          "priority": "low",
+          "snippet": "versatilitas yang mengesankan untuk pemain muda",
+          "issue": "Frase generik dan asumsi usia Dybantsa yang tidak ada di input data — AI tell.",
+          "fix": "Ganti dengan deskripsi fungsional: 'triple-threat lengkap: 20 poin, 11 rebound, 7 asis.'"
+        }
+      ]
+    }
+  },
+  "schema_jsonld": {}
+}
