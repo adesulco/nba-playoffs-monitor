@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "min-at-okc-2026-11-26-g1",
+  "title": "Recap Minnesota Timberwolves 113-106 Oklahoma City Thunder (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Minnesota Timberwolves vs Oklahoma City Thunder (113-106) di —, 26 November 2026.",
+  "body_md": "# Timberwolves Rebut Kandang Thunder, McDaniels Tampil Luar Biasa\n\nMinnesota Timberwolves mengalahkan Oklahoma City Thunder 113-106 di kandang OKC, Rabu 26 November 2026. Jaden McDaniels jadi bintang utama dengan 32 poin, 10 rebound, dan 5 asis, salah satu performa terbaik malam ini, sementara Shai Gilgeous-Alexander berjuang keras dengan 32 poin untuk OKC tapi tidak cukup. MIN kini unggul 1-0 dalam regular season series ini setelah memetik kemenangan tandang.\n\n---\n\n## Pemain Kunci\n\nMcDaniels tampil efisien luar biasa: 11-15 from field, 4-5 dari tiga poin, 37 menit bermain. Angka 32 poin dari efficiency setinggi itu bukan keberuntungan, ini permainan yang dikontrol dari awal sampai akhir. Ditambah double-double dengan 10 rebound dan 5 asis, McDaniels adalah pemain yang paling menentukan malam ini.\n\nLaMelo Ball melengkapi barisan starter MIN dengan 19 poin, 7 rebound, 8 asis, nyaris triple-double, hanya kurang dua rebound. Shooting-nya tidak ideal di 7-18 from field, tapi kontribusi playmaking tetap ada. Ayo Dosunmu dari shooting guard menyumbang 16 poin dengan 4-7 dari tiga poin, salah satu dari tiga MIN starter yang menembak efisien dari luar.\n\nDi bench, Trey Lyles memberikan dampak signifikan: 9 poin dan 10 rebound dalam 23 menit saja, double-double yang mahal harganya untuk OKC.\n\nDari sisi OKC, SGA berjuang. 32 poin memang angka besar, tapi dibutuhkan 26 field goal attempts dengan only 1-7 dari tiga poin. Ajay Mitchell menjadi pendukung terkuat dengan 25 poin (11-19 FG, 2-5 dari tiga poin), tanpanya, margin kemenangan MIN mungkin lebih besar. Alex Caruso dan Kenrich Williams menyumbang 11 dan 13 poin dari bench, tapi tidak cukup untuk menutup gap.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka yang menjelaskan segalanya: **MIN 44% three-point (17-39) vs OKC 33% (11-33).** Efisiensi dari luar arc itulah yang membuat MIN bisa menang di kandang lawan.\n\nRebound juga mencolok, MIN 50 vs OKC 40. Selisih 10 rebound dalam satu laga di level ini besar. Gobert dan Lyles bersama mengamankan 17 rebound, memberi MIN second-chance possessions yang OKC tidak punya.\n\nFast-break points berbicara lebih keras lagi: MIN 19, OKC 7. Turnover MIN memang lebih banyak (14 vs 9), tapi mereka berhasil mengkonversi peluang transisi dengan jauh lebih baik, dan dalam konteks laga seperti ini, itu menentukan.\n\nFG% kedua tim identik di 45%, jadi pemenangnya adalah siapa yang lebih efisien dari tiga poin dan lebih dominan di papan rebound. MIN menang di keduanya.\n\n---\n\n## Drama di Kuarter Keempat\n\nQ4 menit-menit terakhir tidak mudah untuk MIN. Dengan skor 101-99, Caruso memperkecil gap lewat layup. Gobert langsung membalas dengan alley-oop dunk dari umpan McDaniels, 103-99. SGA step back dari 14 kaki membuat 103-101. Belum selesai.\n\nMcDaniels kembali muncul: pullup jump shot dari 9 kaki, 105-101. Lalu Mitchell tembakan tiga angka dari 23 kaki, dibantu SGA, memotong menjadi 105-104. Tiga poin dalam sekejap, laga kembali hidup.\n\nDosunmu menutup ancaman itu dengan driving layup di momen paling krusial, 107-104. Mitchell masih sempat bikin layup di angka 54.7 detik terakhir (110-106), tapi waktu dan possession OKC sudah habis.\n\n---\n\n## Selanjutnya\n\nGame 2 regular season series ini akan datang. MIN membawa keunggulan 1-0 setelah menang tandang, modal psikologis yang tidak buruk. Tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909320",
+    "home_team": "Oklahoma City Thunder",
+    "home_abbr": "OKC",
+    "away_team": "Minnesota Timberwolves",
+    "away_abbr": "MIN",
+    "home_score": 106,
+    "away_score": 113,
+    "winner_abbr": "MIN",
+    "kickoff_utc": "2026-11-26T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MIN leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022358,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article is factually accurate (all numbers verified against input) but suffers from translated-English calques in stat notation ('from field', 'FG') and academic paragraph structure ('Dua angka yang menjelaskan'). Speculative hedging ('margin mungkin lebih besar') weakens analysis. Soft issues are repairable; resubmit with consistent stat notation and direct leads.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "11-15 from field, 4-5 dari tiga poin",
+          "fix": "Gunakan '11 dari 15' atau '11-15' konsisten, hindari campur 'from field'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "7-18 from field, tapi kontribusi playmaking",
+          "fix": "Tulis '7 dari 18' atau '7-18' tanpa 'from field'."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "bukan keberuntungan, ini permainan yang dikontrol",
+          "fix": "Langsung: 'McDaniels mengendalikan permainan dari awal sampai akhir.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka yang menjelaskan segalanya",
+          "fix": "Start with the finding: 'Efisiensi tiga poin MIN (44%) vs OKC (33%) jadi pembeda utama.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "11-19 FG, 2-5 dari tiga poin",
+          "fix": "Gunakan '11-19, 2-5 tiga poin' atau '11 dari 19, 2 dari 5 tiga poin'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "tanpanya, margin kemenangan MIN mungkin lebih besar",
+          "fix": "Delete or rephrase to data: 'Mitchell adalah top scorer OKC kedua setelah SGA.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Game 2 regular season series ini akan datang.",
+          "fix": "Either add kickoff date/time or delete; 'MIN leads 1-0' is enough context."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Delete header or merge paragraph into closing sentence of previous section."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x2ed36fe3b455edc2",
+    "published_at": "2026-11-26T03:36:15+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

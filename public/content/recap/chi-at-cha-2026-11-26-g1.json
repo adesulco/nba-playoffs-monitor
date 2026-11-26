@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "chi-at-cha-2026-11-26-g1",
+  "title": "Recap Chicago Bulls 107-105 Charlotte Hornets (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Chicago Bulls vs Charlotte Hornets (107-105) di —, 26 November 2026.",
+  "body_md": "## Chicago Bulls Menang Tipis 107-105, Buzelis Jadi Pahlawan di Detik Terakhir\n\nChicago Bulls selamatkan kemenangan tipis 107-105 atas Charlotte Hornets dalam laga Regular Season Series Game 2 of 3, Minggu 26 November 2026. Matas Buzelis tampil sebagai penentu di sisa-sisa waktu Q4, sementara Brandon Miller sudah mati-matian cetak 35 poin untuk CHA. CHI kini unggul 1-0 di series ini.\n\n---\n\n## Top Performers\n\nBuzelis memimpin CHI dengan 24 poin dan 5 rebound, tapi bukan soal volume scoring-nya yang paling berkesan, melainkan timing-nya. Dua free throw di detik 10.1 Q4 yang mendorong skor jadi 106-103, lalu Tre Jones menutup dengan free throw terakhir, menjaga Bulls dari kejaran Hornets yang sempat memangkas jarak jadi 106-105.\n\nDi sisi lain, Josh Giddey pelan-pelan membangun double-double: 12 poin, 11 rebound, 7 asis. Kombinasi engine play Giddey dan burst Buzelis yang jadi tulang punggung offense CHI malam ini. Patrick Williams tiba dari bench dan langsung efisien: 11 poin dengan 3-4 from three dalam 15 menit, kontribusi bench yang jauh melampaui menit mainnya.\n\nCharlotte sebenarnya punya performer kelas satu malam ini. Brandon Miller cetak 35 poin, 13-25 dari lapangan, 4-9 from three. Angka yang sangat bisa menang, tapi tidak cukup ketika enam pemain lain juga harus ikut bekerja. Moussa Diabate pegang 14 poin dan 14 rebound, papan yang dominan, namun tim tidak mampu memanfaatkannya di possession-possession kritis. Naz Reid menyumbang 18 poin dari starter slot, Coby White 11 poin dan 6 asis meski kesulitan dari lapangan dengan 3-13 FG.\n\n---\n\n## Baca Statistiknya\n\nAngka box score menjelaskan kenapa CHI menang meski kelihatan lebih cair di banyak area.\n\nShooting efficiency adalah pembeda utama: CHI 50% FG vs CHA 41%. Dari three-point line juga: CHI 42% (13-31) vs CHA 32% (11-34). Charlotte ambil lebih banyak tembakan dari deep, tapi efisiensinya kalah jauh. Di kondisi seperti ini, shooting percentage yang lebih baik biasanya menentukan, dan terbukti malam ini.\n\nCharlotte menang di rebound total (47 vs 36) dan fast-break points (14 vs 9), dua area yang seharusnya bisa mengkompensasi shooting yang jelek. Tapi CHI punya blok yang lebih solid (7 vs 3) dan 25 asis vs 20, offense yang lebih terkoordinasi secara keseluruhan. Turnover kedua tim sama: 12. Tidak ada yang bisa menyalahkan bola hilang sebagai penyebab kalah malam ini.\n\n---\n\n## Clutch Time Yang Memutuskan\n\nCharlotte sempat memberi harapan di sisa kurang dari satu menit. Coby White bikin free throw 1-2 dan 2-2 di 8.8 detik tersisa, skor jadi 106-105. Jantung berdetak.\n\nTapi CHI lebih dulu aman. Buzelis tip shot di 23.2 detik mendorong skor 104-101. Miller balas dengan driving layup (dibantu Sion James) untuk 104-103 di 18.7 detik, CHA hampir kembali. Lalu dua free throw Buzelis di 10.1 detik: 106-103. Tre Jones menutupnya dengan free throw terakhir. 107-105.\n\nCharlotte kehabisan waktu sebelum kehabisan effort.\n\n---\n\n## Selanjutnya\n\nSeries ini masih dua game tersisa. CHI unggul 1-0, Hornets butuh respons langsung di Game 3 jika tidak mau tertinggal lebih jauh. Siaran live tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909318",
+    "home_team": "Charlotte Hornets",
+    "home_abbr": "CHA",
+    "away_team": "Chicago Bulls",
+    "away_abbr": "CHI",
+    "home_score": 105,
+    "away_score": 107,
+    "winner_abbr": "CHI",
+    "kickoff_utc": "2026-11-26T00:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "CHI leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021006,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail. High-severity issues: translated English idiom, expository academic opening, unverified player name in key play. Medium issues: soft hedging, over-explanation of obvious stats, day-of-week assumed without input verification. Voice drifts toward textbook explanation rather than pace of a sharp recap.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "bukan soal volume scoring-nya yang paling berkesan, melainkan timing-nya",
+          "fix": "Rewrite: 'Yang berkesan bukan volume scoring-nya, tapi timing di clutch time.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "high",
+          "snippet": "Angka box score menjelaskan kenapa CHI menang meski kelihatan lebih cair di banyak area.",
+          "fix": "Delete or restructure: 'Efficiency adalah kunci. CHI 50% FG, CHA 41%.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Angka yang sangat bisa menang, tapi tidak cukup ketika enam pemain lain juga harus ikut bekerja.",
+          "fix": "Delete or: '35 poin dari satu pemain jarang cukup di playoff.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di kondisi seperti ini, shooting percentage yang lebih baik biasanya menentukan, dan terbukti malam ini.",
+          "fix": "Cut to: 'Better shooting wins games. CHI 50%, CHA 41%.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Turnover kedua tim sama: 12. Tidak ada yang bisa menyalahkan bola hilang sebagai penyebab kalah malam ini.",
+          "fix": "Delete second sentence. Turnover parity is the point; don't explain it."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Charlotte sempat memberi harapan di sisa kurang dari satu menit.",
+          "fix": "Replace: 'White free throws membawa CHA ke 106-105, 8.8 detik tersisa.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Minggu 26 November 2026",
+          "fix": "Remove day name or verify: use only 'Kamis 26 November 2026' if confirmed."
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "Sion James assists",
+          "fix": "Rewrite: 'Miller driving layup (assisted) 104-103' — remove unverified name."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbb2ff3b33c279cf8",
+    "published_at": "2026-11-26T03:34:52+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
