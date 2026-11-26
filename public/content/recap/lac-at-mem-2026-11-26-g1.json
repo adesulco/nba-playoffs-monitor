@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "lac-at-mem-2026-11-26-g1",
+  "title": "Recap LA Clippers 97-115 Memphis Grizzlies (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — LA Clippers vs Memphis Grizzlies (97-115) di —, 26 November 2026.",
+  "body_md": "# Memphis Grizzlies Hantam LA Clippers 115-97, Unggul 2-0 di Regular Season Series\n\nMemphis Grizzlies menang telak atas LA Clippers 115-97, Sabtu 26 November 2026. Kemenangan ini membawa MEM unggul 2-0 di regular season series, dan angka-angka di balik hasil ini cukup untuk menjelaskan kenapa.\n\n---\n\n## Memphis Merata, LA Tidak Punya Jawaban\n\nKekuatan MEM malam ini bukan satu bintang, tapi distribusi. Empat pemain Memphis menembus angka double-digit, dipimpin Jaylen Wells dengan 19 poin, 6 rebound, 1 asis dari 8-12 field goals. Efisiensi Wells yang mencolok, 67% dari lapangan, jadi simbol permainan Grizzlies secara keseluruhan.\n\nTy Jerome menyumbang 17 poin, 5 rebound, 7 asis dengan peran playmaker yang terasa di seluruh permainan. Cam Spencer off the bench masuk dengan 16 poin dari 7-10 FG, penampilan bench yang sulit direspons LAC di momentum krusial. Cedric Coward melengkapi gambaran dengan 14 poin dan 10 rebound, double-double yang memberi Memphis dominasi papan.\n\n---\n\n## Clippers: Angka Merata Tapi Tidak Cukup\n\nDi kubu LAC, Brandon Ingram memimpin dengan 18 poin, 5 rebound, 4 asis, tapi efisiensi jadi masalah: 6-19 dari lapangan, termasuk 2-6 dari three-point line. Rui Hachimura mencatat 14 poin dan 12 rebound, salah satu bright spot LAC dalam perebutan rebound, ditambah 5 asis dari 37 menit bermain.\n\nDarius Garland, Kris Dunn, dan Keaton Wagler masing-masing mencetak 12 poin. Angka yang merata di atas kertas, tapi kontribusi tersebar tanpa satu pemain yang benar-benar mengambil alih situasi ketika Memphis mulai menekan.\n\n---\n\n## Box Score yang Berbicara Sendiri\n\nStatistik tim menjelaskan selisih 18 poin dengan gamblang.\n\nMemphis menembak 49% dari lapangan (46-94), LA hanya 39% (33-85). Perbedaan lebih tajam dari three-point line: MEM 26% (11-42), LAC hanya 20% (6-30), efisiensi perimeter yang membuat setiap possession Memphis lebih bernilai.\n\nSteals jadi angka paling mencolok: Memphis mencatat 8 steal berbanding 1 untuk LA. Turnover LAC 12, MEM 8. Kombinasi itu berarti Memphis punya lebih banyak possession gratis sepanjang malam, dan mereka memanfaatkannya dengan 60 poin di paint berbanding 50 milik LA.\n\nLAC melempar lebih banyak dari garis free throw (25-28, 89%) dan menang di total rebound 48-44, tapi dua keunggulan itu tidak cukup menutup gap efisiensi dari lapangan.\n\n---\n\n## Selanjutnya\n\nDengan MEM unggul 2-0 di regular season series, Clippers perlu respons berbeda di pertemuan berikutnya, terutama soal ball security dan perimeter shooting. Pantau jadwal lanjutan di NBA League Pass atau Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909321",
+    "home_team": "Memphis Grizzlies",
+    "home_abbr": "MEM",
+    "away_team": "LA Clippers",
+    "away_abbr": "LAC",
+    "home_score": 115,
+    "away_score": 97,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-11-26T01:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "MEM leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.037456,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "FAIL: Critical training-inference error — article claims MEM leads 2-0 when input data shows series is 1-0 after this game. Multiple instances of this claim. Also: tense overmarking, academic drift, soft-phrase repetition, and 'Selanjutnya' opener. Must regenerate.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Dengan MEM unggul 2-0 di regular season series",
+          "fix": "Change 'unggul 2-0' to 'unggul 1-0' (this is game 2 of the series, MEM won game 1)"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Memphis Grizzlies menang telak atas LA Clippers 115-97, Sabtu 26 November 2026. Kemenangan ini membawa MEM unggul 2-0",
+          "fix": "Replace '2-0' with '1-0' or 'memimpin series 2-1'"
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "Ty Jerome menyumbang 17 poin, 5 rebound, 7 asis dengan peran playmaker yang terasa",
+          "fix": "Delete 'yang terasa di seluruh permainan' and tighten: 'Jerome distribusikan 17 poin, 5 rebound, 7 asis'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Efisiensi Wells yang mencolok, 67% dari lapangan, jadi simbol permainan Grizzlies",
+          "fix": "Restructure: 'Efisiensi Wells mencolok: 67% dari lapangan. Itulah simbol permainan Grizzlies.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Angka yang merata di atas kertas, tapi kontribusi tersebar tanpa satu pemain",
+          "fix": "Second use: 'Angka tersebar di LAC' or 'Poin terbagi di antara lima pemain'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Statistik tim menjelaskan selisih 18 poin dengan gamblang.",
+          "fix": "Delete or simplify: 'Box score berbicara sendiri.' or start stats paragraph directly"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Selanjutnya",
+          "fix": "Replace with: 'Laga berikutnya' or 'LAC kembali bertemu MEM di' or delete and rewrite"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6edadbe34411c7cc",
+    "published_at": "2026-11-26T04:11:32+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
