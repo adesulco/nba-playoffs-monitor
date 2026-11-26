@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "cle-at-ny-2026-11-26-g3",
+  "title": "Recap Cleveland Cavaliers 102-121 New York Knicks (Game 3)",
+  "description": "Recap NBA Playoffs 2026 — Cleveland Cavaliers vs New York Knicks (102-121) di —, 26 November 2026.",
+  "body_md": "# New York Knicks Sikat Cleveland 121-102, Jose Alvarado Jadi Bintang Tak Terduga\n\nNew York Knicks menghancurkan Cleveland Cavaliers 121-102 di Game 4, Sabtu 26 November 2026. Kemenangan ini mengunci keunggulan NY 3-1 dalam seri Regular Season. Bukan Brunson, bukan Towns yang paling merusak malam ini, melainkan Jose Alvarado, bench player yang keluar dengan 21 poin hanya dalam 19 menit, shooting 8-10 dari lapangan dan 5-7 dari tiga angka.\n\n---\n\n## Top Performers\n\n**New York Knicks** punya distribusi scoring yang merata, tapi Alvarado yang paling efisien. 21 poin, 3 asis, shooting 80% dari field, dalam 19 menit. Angka-angka itu tidak wajar untuk bench player di situasi apapun.\n\nMikal Bridges melengkapi kontribusinya dengan 19 poin, 8 rebound, 2 asis di 37 menit starter. Jalen Brunson juga 19 poin dan 5 asis, meski shooting-nya tidak meyakinkan: 6-22 dari lapangan. Brunson dapat poin-nya, tapi NY tidak butuh dia untuk efisien karena sisanya menutupi.\n\nJosh Hart malam ini bukan soal poin, 15 poin oke, tapi yang membuat Hart jadi perekat sistem NY adalah 7 rebound dan 11 asis. Triple-double yang tidak datang dengan banyak sorotan, tapi tanpanya NY tidak sebersih ini. Karl-Anthony Towns melengkapi dengan 12 poin, 10 rebound, 7 asis, efisien dan tidak memaksakan diri.\n\n**Cleveland Cavaliers** punya dua bintang yang berjuang dalam kekalahan. Donovan Mitchell 30 poin, 4 rebound, 4 asis, tapi butuh 24 tembakan dari lapangan untuk sampai ke sana (12-24). James Harden 28 poin dan 5 asis, tapi 7-19 dari lapangan dan 1-8 dari tiga angka. Dua pemain terbaik CLE mencetak 58 poin gabungan, dan tetap kalah 19.\n\n---\n\n## Apa yang Bicara di Box Score\n\nDua angka menjelaskan kekalahan CLE: FG% 41% vs NY 51%, dan tiga angka 26% vs 46%.\n\nNY melempar 37 tembakan tiga angka, masuk 17. CLE melempar 38, masuk 10. Selisih tujuh tembakan tiga angka yang masuk dari volume yang hampir sama, itu bukan malam buruk. itu perbedaan kualitas pilihan tembakan dan eksekusi.\n\nAssists gap juga tidak bisa diabaikan: NY 33, CLE 19. NY bergerak lebih banyak, menciptakan tembakan terbuka lebih sering. CLE terlalu bergantung pada kreasi individual Mitchell dan Harden, keduanya efektif, tapi tidak cukup ketika tim-nya tidak mendukung dengan shooting.\n\nFast-break points: NY 20, CLE 11. Turnover CLE yang berjumlah 15 memberi NY bensin ekstra untuk transisi.\n\n---\n\n## Momen Penentu\n\nGame ini masih ketat sampai kuarter keempat. Josh Hart membuka Q4 dengan driving layup untuk menjaga NY di depan tipis, 87-84. Dua puluh detik kemudian, Alvarado masuk dan langsung meruntuhkan pertandingan, tiga angka 23 kaki membuat skor 87-85, lalu tembakan running jump shot berikutnya dari 24 kaki mengubah skor menjadi 90-85 untuk NY. Dua tembakan Alvarado dalam waktu kurang dari satu menit, keduanya diassist Hart. CLE tidak pernah balik memimpin setelah itu.\n\n---\n\n## Selanjutnya\n\nNY kini unggul 3-1 dalam seri. Game selanjutnya di luar data yang tersedia, tapi posisi NY sangat nyaman, butuh satu kemenangan lagi untuk tutup seri. CLE harus menang tiga laga beruntun, sebuah tugas yang terlihat semakin berat dengan melihat bagaimana NY mendominasi malam ini.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909319",
+    "home_team": "New York Knicks",
+    "home_abbr": "NY",
+    "away_team": "Cleveland Cavaliers",
+    "away_abbr": "CLE",
+    "home_score": 121,
+    "away_score": 102,
+    "winner_abbr": "NY",
+    "kickoff_utc": "2026-11-26T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "NY leads series 2-1",
+    "game_number": 3,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.045131,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Article has strong game recap voice but fails on two critical fronts: (1) SERIES STATE CONTRADICTION — INPUT explicitly says NY leads 2-1 before this game; article claims 3-1 after (may be correct if clinching, but INPUT says game 4 of 4 regular season series, not playoffs); (2) STRUCTURAL CONFUSION — article treats regular season series game like a playoff series-clincher ('tutup seri', 'butuh satu kemenangan lagi'), which contradicts INPUT context. Additionally, one sentence has notably awkward English-translation rhythm. Stat accuracy is solid otherwise.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Game 4, Sabtu 26 November 2026. Kemenangan ini mengunci keunggulan NY 3-1",
+          "fix": "Change to: 'NY unggul 3-1 dalam seri' is correct IF this is the clinching win, but INPUT series state says '2-1' before this game. Clarify or remove series claim."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Brunson dapat poin-nya, tapi NY tidak butuh dia untuk efisien karena sisanya menutupi.",
+          "fix": "Rephrase: 'tapi Brunson bukan kunci malam ini — sisanya cukup tajam' or 'tim terus produktif tanpa efisiensi Brunson'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka menjelaskan kekalahan CLE: FG% 41% vs NY 51%, dan tiga angka 26% vs 46%.",
+          "fix": "Open directly: 'FG% 41% vs 51%, dan 3PT% 26% vs 46% — itu pertandingan.' Cut the section header or make it more conversational."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "itu bukan malam buruk. itu perbedaan kualitas pilihan tembakan dan eksekusi.",
+          "fix": "Merge: 'Bukan soal malam buruk — perbedaan kualitas pilihan tembakan dan eksekusi.' Or: 'CLE shooting solid tapi tidak sesolid NY.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Josh Hart membuka Q4 dengan driving layup untuk menjaga NY di depan tipis, 87-84.",
+          "fix": "Change to: 'Alvarado masuk dan langsung bawa skor 90-85' or 'tiga angka beruntun Alvarado kasih jarak.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "NY kini unggul 3-1 dalam seri. Game selanjutnya di luar data yang tersedia, tapi posisi NY sangat nyaman, butuh satu kemenangan lagi untuk tutup seri.",
+          "fix": "Clarify: 'NY menang 3-1 dalam regular season series empat pertandingan.' Remove playoff language."
+        },
+        {
+          "type": "pronoun_violation",
+          "severity": "low",
+          "snippet": "Josh Hart malam ini bukan soal poin, 15 poin oke, tapi yang membuat Hart jadi perekat sistem NY adalah 7 rebound dan 11 asis.",
+          "fix": "No fix required; acceptable casual. Just note for consistency."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Assists gap juga tidak bisa diabaikan: NY 33, CLE 19.",
+          "fix": "Tighten: 'Assists beda terang-terangan: NY 33, CLE 19.' Or just: 'NY 33 assist, CLE 19.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf670bdb32581a7b4",
+    "published_at": "2026-11-26T03:10:13+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
