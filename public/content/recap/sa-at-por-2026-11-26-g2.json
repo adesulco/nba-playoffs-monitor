@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "sa-at-por-2026-11-26-g2",
+  "title": "Recap San Antonio Spurs 111-116 Portland Trail Blazers (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — San Antonio Spurs vs Portland Trail Blazers (111-116) di —, 26 November 2026.",
+  "body_md": "# Portland Tutup Comeback Spurs, Avdija Jadi Penentu di Laga Ketiga\n\nPortland Trail Blazers menang 116-111 atas San Antonio Spurs dalam laga ketiga regular season series, Rabu 26 November 2026. Deni Avdija tampil sebagai bintang utama POR dengan 33 poin, 12 rebound, dan 7 asis, dan dialah yang tutup comeback Spurs di Q4. Series 1-1 kini jadi 2-1 untuk POR.\n\n---\n\n## Top Performers\n\n**Deni Avdija** memimpin POR dengan garis stat terlengkap malam ini: 33 poin, 12 rebound, 7 asis dengan tembakan 11-21 dari lapangan dan 5-8 dari three-point line. Beberapa poin terpentingnya datang di bawah tiga menit terakhir laga. Damian Lillard menambah 29 poin dan 7 asis meski efisiensinya tidak sempurna (7-20 FG), sementara Sidy Cissoko off the bench berkontribusi 16 poin dengan 4-10 from three.\n\nDari kubu SA, hanya ada satu narasi: **Victor Wembanyama**. Wemby tampil one-man show: 44 poin, 16 rebound dalam 35 menit, 17-30 dari lapangan, termasuk 3-9 dari tiga angka, tapi tidak cukup. Stephon Castle mendampingi dengan 20 poin dan 9 asis, sementara Devin Vassell menambah 18 poin. Namun kombinasi Castle dan Vassell sama-sama bergulat dengan efisiensi shooting, Castle 6-18, Vassell 6-16 dari lapangan.\n\n---\n\n## Baca Statistiknya\n\nPerbedaan tipis dalam skor masker perbedaan besar di tiga angka: POR 38%, SA 28%. POR membuat 19 three-pointer dari 50 percobaan, SA hanya 10-36. Di laga yang berakhir tipis lima poin, perbedaan delapan poin ekstra dari garis tiga angka itu lebih dari cukup untuk menutup selisih.\n\nSA unggul di rebound (55 vs 50) dan points in paint (38 vs 34), tapi turnovers membunuh mereka, 14 kali SA kehilangan bola, POR hanya 8. POR mengkapitalisasinya menjadi 13 fast-break points berbanding 5 untuk SA. Dalam pertandingan ketat seperti ini, 13 fast-break points vs 5 bukan detail kecil.\n\n---\n\n## Penentu Laga\n\nSpurs nyaris balik. Wemby cetak mid-range di 3:02 sisa Q4 untuk memangkas defisit jadi 107-109. Lalu di menit ke-2, dia menyelesaikan alley oop dari Castle untuk menyamakan skor 109-109. Spurs nyaris balik. Moda Center bergetar.\n\nTapi Avdija menjawab. Dua free throw menit ke-1:45 mengembalikan POR unggul 109-111. Yang lebih menyakitkan buat Spurs: 25-foot jump bank shot Avdija dengan assist Lillard di detik ke-38.6 mengubur peluang comeback, 109-114. Champagnie memperhalus angka dengan two-pointer di detik 18.5, tapi itu hanya statistik. Avdija menutupnya dengan free throw terakhir untuk skor final 116-111.\n\n---\n\n## Selanjutnya\n\nPOR kini unggul 2-1 dalam series empat laga. Game 4 menentukan siapa lanjut, SA harus menang untuk memaksa split, POR butuh sekali lagi untuk tutup series.\n\nTayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909325",
+    "home_team": "Portland Trail Blazers",
+    "home_abbr": "POR",
+    "away_team": "San Antonio Spurs",
+    "away_abbr": "SA",
+    "home_score": 116,
+    "away_score": 111,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-11-26T03:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.019603,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Solid recap with accurate stats and good game flow. Voice is mostly natural. One medium-severity translated-English clause and one soft-phrase repetition; both are low-impact. Pass.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dalam pertandingan ketat seperti ini, 13 fast-break points vs 5 bukan detail kecil.",
+          "fix": "Rephrase: '13 fast-break points vs 5 buka perbedaan besar di laga ketat kayak gini.' or just 'Selisih 13-5 fast-break points itu menentukan.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Spurs nyaris balik...Spurs nyaris balik.",
+          "fix": "Second instance: 'Spurs nyaris nyamain skor' or 'Moda Center bergetar' — already there, just delete first 'Spurs nyaris balik.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "off the bench berkontribusi 16 poin dengan 4-10 from three",
+          "fix": "Either 'dari bangku cadangan...dari tiga' or keep both English. Current mix is acceptable but slightly jarring."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xf4437bf36664f7b4",
+    "published_at": "2026-11-26T06:15:06+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
