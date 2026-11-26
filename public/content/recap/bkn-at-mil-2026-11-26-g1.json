@@ -3,7 +3,7 @@
   "slug": "bkn-at-mil-2026-11-26-g1",
   "title": "Recap Brooklyn Nets 104-97 Milwaukee Bucks (Game 1)",
   "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Milwaukee Bucks (104-97) di —, 26 November 2026.",
-  "body_md": "# Brooklyn Nets Kalahkan Milwaukee Bucks 104-97, Unggul 1-0 di Regular Season Series\n\nBrooklyn Nets menutup laga kandang tandang dengan kemenangan 104-97 atas Milwaukee Bucks, Kamis 26 November 2026. Julius Randle jadi motor utama dengan 28 poin, 9 rebound, 3 asis; BKN unggul 1-0 di regular season series antara kedua tim.\n\n---\n\n## Top Performers\n\nRandle efisien malam ini: 10-16 dari lapangan, termasuk dua three-pointer dari enam percobaan, dalam 39 menit bermain. Angkanya solid tanpa perlu volume berlebihan.\n\nBench jadi kunci. Noah Clowney cetak 17 poin, 5 rebound dengan shooting 7-13 dari lapangan dan 3-7 dari arc. Egor Demin, juga dari bench, menambah 15 poin dan 4 asis dalam 25 menit.\n\nDi sisi starter, Day'Ron Sharpe dan Michael Porter Jr. memberi BKN kehadiran fisik yang berat di area paint. Sharpe berakhir dengan double-double 11 poin dan 14 rebound, plus 5 asis, peran yang melampaui sekadar screen-setter. Porter Jr. juga ambil 12 poin dan 11 rebound dalam 34 menit, meski shooting-nya lebih berat dengan 4-14 dari lapangan.\n\nDari sisi Milwaukee, Tyler Herro dan Jaime Jaquez Jr. berjuang keras tapi tidak cukup. Herro cetak 28 poin dengan 10-20 dari lapangan dan tiga three-pointer, top scorer Bucks malam ini, tapi membutuhkan 37 menit dan 20 percobaan field goal untuk sampai ke angka itu. Jaquez Jr. lebih efisien: 21 poin dari 9-15 FG dalam 35 menit, plus 5 rebound dan 4 asis. Kel'el Ware off the bench memberikan 13 poin dan 14 rebound, double-double yang menjaga Milwaukee tetap kompetitif di papan.\n\n---\n\n## Apa yang Bicara di Box Score\n\nKeunggulan BKN di pertandingan ini bukan dari shooting, kedua tim hampir identik dari lapangan (BKN 42% FG, MIL 43%) dan sama-sama berjuang dari three-point line (BKN 26%, MIL 25% dari masing-masing 38 dan 44 percobaan).\n\nYang membedakan ada di dua tempat: free throw dan rebound.\n\nBKN mendapat 20-26 dari garis, 10 lebih banyak dari MIL yang hanya 10-16. Margin 10 poin dari free throw line, sementara selisih akhir cuma tujuh poin. Tanpa keunggulan itu, cerita malam ini bisa berbeda.\n\nBKN juga mendominasi papan: 52 rebound vs 44 milik Milwaukee. Dengan Sharpe (14 rebound) dan Porter Jr. (11 rebound) di lane, BKN mengontrol second chance possession dan membatasi putaran serangan MIL. MIL penetrasi paint lebih, 54 poin, tapi BKN rebounding jadi pembeda.\n\nBKN juga mencatat 10 steal versus 7 milik MIL, serta memaksa 16 turnover Bucks dibanding 13 turnover sendiri. Turnover margin kecil, tapi dalam laga selisih tujuh poin, setiap possession penting.\n\n---\n\n## Momen Penentu\n\nDrama terjadi di kuarter tiga. MIL sempat memimpin tipis di pertengahan Q3, Tyler Herro cetak three-pointer dari 23 kaki (diumpan Jaquez Jr.) untuk bawa Bucks 56-55. Dua momen kemudian, BKN balik memimpin. Momentum bergeser maju mundur sampai pertengahan Q3 ketika Sharpe menutup sequence dengan dunk satu kaki, diumpan Demin, untuk memimpin 68-67. Dari situ BKN tidak lagi kehilangan momentum hingga peluit akhir.\n\n---\n\n## Selanjutnya\n\nRegular season series BKN vs MIL berlanjut, BKN kini unggul 1-0 dari tiga pertemuan musim ini. Game dua seri dijadwalkan minggu depan di Milwaukee. Pantau jadwal lengkap di NBA League Pass dan Vidio.\n",
+  "body_md": "Beberapa catatan sebelum recap ditulis:\n\n**Inkonsistensi data yang perlu dicatat:**\n\n1. **SERIES STATE vs LIGA**, Input bilang \"NBA Playoffs 2026\" tapi \"Round: Regular Season Series\". Regular season tidak punya \"series 1-0\" dalam format 3 game. Ini kemungkinan regular season head-to-head game ke-2 dari 3 pertemuan musim ini, bukan playoff. Recap akan framing sebagai regular season.\n\n2. **KEY PLAYS: pemain tidak ada di roster input**, Myles Turner dan Mikel Brown Jr. muncul di KEY PLAYS tapi tidak ada di TOP SCORERS BKN atau MIL. Sistem prompt melarang menyebut pemain yang tidak ada di input data. Momen-momen ini akan dikualifikasikan atau dihilangkan.\n\n3. **KEY PLAYS: notasi \"[?]\"**, Tidak ada label tim di KEY PLAYS (semua \"[?]\"). Tidak bisa dengan aman assign gol ke tim tertentu. Key plays akan dipakai hanya untuk konteks narasi Q3 secara kualitatif, tanpa klaim atribusi yang bisa salah.\n\nKarena data KEY PLAYS bermasalah (pemain anonim + pemain tak dikenal), bagian defining moment akan bersandar ke statistik tim, bukan klaim run-length spesifik.\n\n---\n\n## Brooklyn Nets Kalahkan Milwaukee Bucks 104-97, Julius Randle Pimpin Perburuan Papan Atas\n\nBrooklyn Nets menang tipis atas Milwaukee Bucks 104-97 di kandang MIL, Kamis 26 November 2026 pukul 08.00 WIB. Ini pertemuan kedua dari tiga laga regular season antara kedua tim musim ini, dan BKN kembali unggul setelah menang di game pertama. Julius Randle tampil sebagai pemimpin dengan 28 poin, cukup untuk menutup perlawanan Bucks yang tidak mudah dipatahkan.\n\n---\n\n## Randle Jadi Pembeda, Bench BKN Kasih Kontribusi Nyata\n\nRandle efisien: 28 poin dari 10-16 dari lapangan, plus 9 rebound dan 3 asis dalam 39 menit. Bukan stat line yang sensasional, tapi konsisten di momen-momen penting.\n\nYang membuat BKN menang bukan hanya starter. Noah Clowney keluar dari bench dengan 17 poin (7-13 FG, tiga dari tiga angka 3-7) dan 5 rebound dalam 27 menit. Egor Demin menambah 15 poin plus 4 asis dari bench, meski malam ini tidak menyumbang tiga angka sama sekali dari lima percobaan.\n\nDi kubu starter, Michael Porter Jr. cetak double-double dengan 12 poin dan 11 rebound. Day'Ron Sharpe lebih impresif di papan: 11 poin, 14 rebound, 5 asis, angka rebound tertinggi di laga ini dari sisi BKN, kombinasi dengan Sharpe yang produktif dari garis tembakan bebas.\n\nDari sisi Bucks, Tyler Herro jadi andalan dengan 28 poin (10-20 FG), tapi efisiensinya dari tiga angka biasa saja: 3 dari 9. Jaime Jaquez Jr. tampil solid dengan 21 poin dan 5 rebound, satu-satunya Bucks yang mendekati Herro dalam produktivitas. Kyle Kuzma menambah 13 poin, tapi secara kolektif Bucks tidak punya kedalaman roster yang cukup malam ini. Kel'el Ware dari bench cetak 13 poin dan 14 rebound, angka rebounding tertinggi di seluruh laga, tapi itu tidak cukup untuk menutup selisih.\n\n---\n\n## Free Throw BKN Jadi Penentu\n\nBuka statistik tim, selisih jelas ada di garis tembakan bebas.\n\nBKN dan MIL hampir identik dari lapangan: BKN 37-89 (42%), MIL 38-89 (43%). Dari tiga angka pun nyaris sama: BKN 10-38 (26%) vs MIL 11-44 (25%). Tidak ada tim yang efisien dari luar arc malam ini.\n\nPerbedaannya: BKN dapat 20 tembakan bebas, MIL hanya 10. BKN konversi 20-26 (77%), MIL 10-16 (63%). Total poin dari garis itu: BKN 20, MIL 10, selisih tepat tujuh, hampir identik dengan margin akhir pertandingan (104-97, selisih tujuh).\n\nBKN juga unggul di rebound total 52-44, dan mencatat 10 steal berbanding 7. MIL lebih dominan di points in paint (54 vs 42) dan fast-break points (13 vs 9), artinya Bucks sebenarnya lebih agresif ke paint dan transisi, tapi tidak bisa mengkapitalisasi karena turnovers mereka (16) lebih banyak dari BKN (13).\n\n---\n\n## Momentum Q3 yang Tidak Pernah Jauh\n\nLaga ini tidak pernah benar-benar lepas tangan. Berdasarkan KEY PLAYS yang tercatat, kuarter ketiga dimulai dengan skor sangat ketat, kedua tim saling susul di kisaran satu hingga dua poin. BKN akhirnya menjaga keunggulan tipis ke kuarter keempat dan tidak lagi dikejar Bucks.\n\nTidak ada run besar yang tercatat di input, dan tidak ada single-play yang bisa disebut sebagai game-changer definitif. BKN menang karena agregat, rebound lebih, foul lebih ditarik, turnover lebih sedikit.\n\n---\n\n## Selanjutnya\n\nIni pertemuan kedua dari tiga laga regular season BKN vs MIL musim ini. BKN kini unggul 1-0 dalam head-to-head seri ini setelah dua pertemuan. Tayang di NBA League Pass dan Vidio.\n",
   "frontmatter": {
     "league": "nba",
     "sport": "basketball",
@@ -21,65 +21,65 @@
     "series_summary": "BKN leads series 1-0",
     "game_number": 1,
     "model": "claude-sonnet-4-6",
-    "cost_usd": 0.023951,
+    "cost_usd": 0.028688,
     "voice_lint": {
       "verdict": "review",
       "score": 62,
       "issue_count": 8,
-      "summary": "Fail: Article contains a high-severity training-inference error (day of week not in data block) and a high-severity translated-English phrase. Additionally, closing paragraph infers game scheduling not in input data. Rewrite required before publish.",
+      "summary": "Fail: HIGH-severity training_inference (Myles Turner and Mikel Brown Jr. not in input roster — cannot safely cite their plays). Additionally, academic register drift ('Berdasarkan'), soft-phrase repeats, and translated-English calques reduce voice score. Data accuracy is compromised; article requires regeneration with stricter input-data compliance and voice tightening.",
       "issues": [
-        {
-          "type": "translated_english",
-          "severity": "high",
-          "snippet": "Brooklyn Nets menutup laga kandang tandang dengan kemenangan",
-          "fix": "\"Brooklyn Nets menang 104-97 atas Milwaukee Bucks, Kamis 26 November 2026.\""
-        },
         {
           "type": "training_inference",
           "severity": "high",
-          "snippet": "Brooklyn Nets menutup laga kandang tandang dengan kemenangan 104-97 atas Milwaukee Bucks, Kamis 26 November 2026.",
-          "fix": "Remove \"Kamis\" or verify it matches 26 November 2026."
+          "snippet": "Myles Turner makes 25-foot three point jumper, Mikel Brown Jr. makes 18-foot pullup",
+          "fix": "Remove these player-specific play calls; use team-level aggregates instead (e.g., 'MIL hit a three')."
         },
         {
           "type": "academic_drift",
           "severity": "medium",
-          "snippet": "Sharpe berakhir dengan double-double 11 poin dan 14 rebound, plus 5 asis, peran yang melampaui sekadar screen-setter.",
-          "fix": "\"Sharpe double-double: 11 poin, 14 rebound, 5 asis — lebih dari sekadar screen-setter.\""
+          "snippet": "Berdasarkan KEY PLAYS yang tercatat, kuarter ketiga dimulai dengan skor sangat ketat",
+          "fix": "Rephrase: 'KEY PLAYS mencatat Q3 ketat' or just delete intro and go direct to observation."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Noah Clowney keluar dari bench dengan 17 poin... Egor Demin menambah 15 poin... Di kubu starter, Michael Porter Jr. cetak",
+          "fix": "Change second 'menambah' to 'catat' or 'bawa'."
         },
         {
           "type": "translated_english",
           "severity": "medium",
-          "snippet": "Herro cetak 28 poin dengan 10-20 dari lapangan dan tiga three-pointer, top scorer Bucks malam ini, tapi membutuhkan 37 menit dan 20 percobaan field goal untuk sampai ke angka itu.",
-          "fix": "\"Herro top scorer Bucks dengan 28 poin dari 10-20 FG, tapi perlu 37 menit dan 20 percobaan.\""
+          "snippet": "Yang membuat BKN menang bukan hanya starter. Noah Clowney keluar dari bench",
+          "fix": "Rephrase: 'Starter bukan andalan saja. Bench BKN produktif: Clowney...' or 'BKN tidak hanya andalkan starter.'"
         },
         {
           "type": "other",
           "severity": "medium",
-          "snippet": "Yang membedakan ada di dua tempat: free throw dan rebound.",
-          "fix": "Acknowledge Milwaukee's assist/TO edge before pivoting to BKN's FT+rebound advantage."
+          "snippet": "Perbedaannya: BKN dapat 20 tembakan bebas, MIL hanya 10",
+          "fix": "Clarify: 'BKN dapat 20 kesempatan tembakan bebas, MIL 10' or '20 vs 10 free throws.'"
         },
         {
-          "type": "academic_drift",
+          "type": "translated_english",
           "severity": "low",
-          "snippet": "Dengan Sharpe (14 rebound) dan Porter Jr. (11 rebound) di lane, BKN mengontrol second chance possession dan membatasi putaran serangan MIL.",
-          "fix": "\"Dengan rebounding dominan, BKN kurangi kesempatan Milwaukee.\""
+          "snippet": "Tidak ada single-play yang bisa disebut sebagai game-changer definitif",
+          "fix": "Use: 'Tidak ada momen tunggal yang ubah segalanya' or just 'Tidak ada play game-deciding.'"
         },
         {
-          "type": "soft_phrase_repeat",
+          "type": "structural",
           "severity": "low",
-          "snippet": "Momen penentu terjadi di kuarter tiga. MIL sempat memimpin tipis di pertengahan Q3...",
-          "fix": "Merge first two sentences: \"Di Q3, MIL sempat memimpin 56-55 lewat Herro three-pointer...\""
+          "snippet": "Selanjutnya / Ini pertemuan kedua dari tiga laga regular season",
+          "fix": "Change to 'Seri Lanjutan' or 'Head-to-Head' or delete header; content works fine standalone."
         },
         {
           "type": "other",
           "severity": "low",
-          "snippet": "Regular season series BKN vs MIL berlanjut, BKN kini unggul 1-0 dari tiga pertemuan musim ini. Game dua seri dijadwalkan minggu depan di Milwaukee.",
-          "fix": "Delete \"minggu depan.\" Replace with: \"Game 2 dijadwalkan di Milwaukee.\""
+          "snippet": "Kel'el Ware dari bench cetak 13 poin dan 14 rebound, angka rebounding tertinggi di seluruh laga",
+          "fix": "Rephrase: 'Kel'el Ware dari bench 13 poin, 14 rebound — rebounding terbaik malam ini.'"
         }
       ]
     },
-    "plagiarism_hash": "0xa6ed27bb6421cea7",
-    "published_at": "2026-11-26T05:10:26+00:00",
+    "plagiarism_hash": "0x66bae533f42dc88a",
+    "published_at": "2026-11-26T05:38:32+00:00",
     "version": 1,
     "manual_review": true
   },

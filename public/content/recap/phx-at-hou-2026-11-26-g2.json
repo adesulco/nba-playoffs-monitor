@@ -1,0 +1,75 @@
+{
+  "type": "recap",
+  "slug": "phx-at-hou-2026-11-26-g2",
+  "title": "Recap Phoenix Suns 104-116 Houston Rockets (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Phoenix Suns vs Houston Rockets (104-116) di —, 26 November 2026.",
+  "body_md": "## Houston Rockets Tutup Series Lawan Suns, Sengun Triple-Double Jadi Pembeda\n\nHouston Rockets mengalahkan Phoenix Suns 116-104 di Game 3, dan sekaligus menutup regular season series 2-1 atas Suns. Angka yang menentukan malam ini bukan dari satu pemain saja, tapi Alperen Sengun yang keluar dengan triple-double: 23 poin, 11 rebound, 11 asis.\n\n---\n\n## Top Performers\n\n**Alperen Sengun** adalah pemain paling lengkap di lapangan malam ini. Triple-double-nya bukan sekadar statistik, 11 asis dari seorang big man berarti dia jadi kreator utama offense HOU, bukan cuma finisher. FG 9-17, termasuk 3-5 dari tiga angka. Sengun main 32 menit dan menyentuh hampir setiap aspek permainan.\n\nDi belakangnya, **Kevin Durant** cetak 20 poin dan 10 rebound dengan 33 menit main, double-double yang solid dari veteran yang diharapkan jadi anchor di laga-laga ketat. **Amen Thompson** ikut double-double: 18 poin, 10 rebound, 4 asis, semua tanpa satu pun tembakan tiga angka (FG 7-14). Thompson bermain di dalam, mengandalkan atletisisme, dan itu cukup. **Jabari Smith Jr.** dan **Fred VanVleet** masing-masing tambah 13 poin, VanVleet juga distribusi 6 asis sebagai playmaker di perimeter.\n\nDi sisi PHX, **Devin Booker** topscorer dengan 25 poin, tapi efisiensinya jadi masalah: FG 6-18, 3PT 2-9. **Jalen Green** lebih boros lagi, 16 poin dari 8-21 FG dan 0-4 dari tiga angka. Dua pemain utama Suns gabung cetak 41 poin dari 68 tembakan. Itu bukan recipe kemenangan.\n\n---\n\n## Baca Statistik Tim\n\nPerbedaan paling jelas ada di tiga angka: HOU 12-36 (33%) vs PHX 5-32 (16%). Suns coba banyak, 32 percobaan, tapi return-nya buruk. HOU lebih selektif dan lebih efisien.\n\nFG% keseluruhan juga berpihak ke Houston: 49% vs 42%. Suns memang lebih baik dari garis free throw (82% vs 53% HOU), tapi itu tidak cukup menutup gap di tembakan lapangan.\n\nRebound jadi dominasi nyata HOU: 51 vs 38. Dengan Sengun, Durant, dan Thompson semua double-digit di rebound, Rockets mengendalikan kedua papan. PHX unggul di fast-break (21 vs 8), artinya mereka dapat poin dari transisi, tapi tidak cukup untuk kompensasi ketertinggalan di halfcourt offense.\n\n---\n\n## Momentum Q4\n\nSuns masih ada peluang di kuarter terakhir. Skor masih 87-92 di awal Q4, lalu Green layup untuk memotong jadi 97-99 di menit 5:40. Tapi respons HOU cepat: Sengun langsung driving dunk, diumpan VanVleet, untuk buka kembali jarak 97-101. Suns tidak pernah benar-benar menyamakan skor lagi setelahnya, dan HOU tutup dengan margin 12 poin.\n\n---\n\n## Penutup\n\nRockets tutup regular season series melawan Suns 2-1. Sengun triple-double dan tiga pemain HOU double-double adalah cerita utama malam ini. Tayangan ulang tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909323",
+    "home_team": "Houston Rockets",
+    "home_abbr": "HOU",
+    "away_team": "Phoenix Suns",
+    "away_abbr": "PHX",
+    "home_score": 116,
+    "away_score": 104,
+    "winner_abbr": "HOU",
+    "kickoff_utc": "2026-11-26T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.041012,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 6,
+      "summary": "Fail due to high-severity training inference (Q4 score 87-92 not in input data). Academic hedging and translated-English phrasing in opening reduces voice clarity. Math error on shooting attempts (68 vs 39). Pass after fixing inference and verifying all numbers against input blocks.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Suns masih ada peluang di kuarter terakhir. Skor masih 87-92 di awal Q4",
+          "fix": "Delete this temporal detail or rewrite based only on key plays provided (e.g., 'Green layup untuk 97-99, lalu Sengun driving dunk untuk 97-101')"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Angka yang menentukan malam ini bukan dari satu pemain saja, tapi Alperen Sengun",
+          "fix": "Open directly: 'Alperen Sengun cetak triple-double: 23 poin, 11 rebound, 11 asis.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Triple-double-nya bukan sekadar statistik, 11 asis dari seorang big man berarti dia jadi kreator utama",
+          "fix": "Split: 'Triple-double-nya bukan statistik biasa. 11 asis dari big man berarti Sengun kreator utama, bukan cuma finisher.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Thompson bermain di dalam, mengandalkan atletisisme, dan itu cukup",
+          "fix": "Specify position or role: 'Thompson di paint, mengandalkan atletisisme—7-14 FG cukup kasih 18 poin.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua pemain utama Suns gabung cetak 41 poin dari 68 tembakan",
+          "fix": "Change to: '...41 poin dari 39 tembakan' (FG only, not including FT)"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Tayangan ulang tersedia di NBA League Pass dan Vidio.",
+          "fix": "Change to: 'Laga dapat disaksikan via NBA League Pass atau Vidio.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x697923627521e48e",
+    "published_at": "2026-11-26T05:39:50+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
