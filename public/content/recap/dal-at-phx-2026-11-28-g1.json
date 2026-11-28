@@ -1,0 +1,63 @@
+{
+  "type": "recap",
+  "slug": "dal-at-phx-2026-11-28-g1",
+  "title": "Recap Dallas Mavericks 113-109 Phoenix Suns (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Dallas Mavericks vs Phoenix Suns (113-109) di —, 28 November 2026.",
+  "body_md": "# Cooper Flagg Tutup Rapat, Dallas Mavericks Tundukkan Phoenix Suns 113-109\n\nDallas Mavericks menang tipis 113-109 atas Phoenix Suns, Kamis 28 November 2026. Cooper Flagg jadi penentu di momen-momen krusial kuarter akhir, tiga score beruntun di dua menit terakhir yang membuat Suns tak punya jawaban. DAL kini unggul 1-0 di regular season series (Game 2 dari 3).\n\n---\n\n## Flagg dan Booker: Dua Narasi, Satu Pemenang\n\nCooper Flagg bermain 42 menit penuh dan keluar dengan 34 poin, 7 rebound, 8 asis. Shooting-nya tidak sempurna malam ini: 13-27 from field, 1-4 dari tiga angka. Tapi Flagg tidak butuh efisiensi untuk mendominasi. Dia butuh momen yang tepat, dan dia menemukannya di Q4.\n\nDevin Booker pikul Suns sendirian. 31 poin, 5 rebound, 5 asis, shooting 11-21 from field dan 5-10 dari tiga angka. Booker membuat Suns tetap hidup sampai detik-detik akhir, tembakan three-pointer 24 kaki dengan 6 detik tersisa memangkas jarak jadi 111-109. Tapi itu saja tidak cukup.\n\nOff the bench, Max Christie menyumbang 16 poin dengan efisiensi rapi: 5-7 from field, 2-4 dari tiga angka. Christie juga yang menutup laga lewat empat free throw beruntun di 7,7 dan 3,5 detik terakhir. Naji Marshall (14 poin, 5 asis) dan Zaccharie Risacher (10 poin, 6 rebound) melengkapi rotasi DAL yang merata.\n\nUntuk Suns, Collin Gillespie off the bench memberi kontribusi solid: 14 poin, 9 rebound, 3 asis, 6-10 from field. Miles Bridges 13 poin, Dillon Brooks 12, tapi kolektif itu tidak cukup ketika Booker tidak mendapat support di clutch time.\n\n---\n\n## Di Mana Mavericks Menang\n\nFG% dua tim hampir identik, DAL 47%, PHX 48%. Dari tiga angka, justru Suns lebih tajam: 15-40 (38%) vs DAL 9-30 (30%). Statistik tiga angka milik Suns lebih tajam. Di lapangan, belum cukup.\n\nYang membedakan adalah di dalam. Points in paint: DAL 60, PHX 38. Dallas secara konsisten menghancurkan pertahanan Suns di area dekat ring, dan itu yang membangun cushion sepanjang laga. Fast-break points ikut bicara, 15-9 untuk DAL, didukung selisih turnover yang mencolok: Dallas hanya buang bola 11 kali, Suns 18 kali.\n\nDua belas steal Dallas vs tiga milik Suns. Angka itu bukan kebetulan, itu cermin betapa ketatnya DAL menekan turnover Phoenix dan mengkonversinya jadi poin.\n\n---\n\n## Tiga Momen yang Memutuskan Laga\n\nKetika laga masuk menit-menit terakhir Q4, skor masih terlalu dekat untuk ditenangkan. Suns sempat unggul 106-105 sebelum Flagg merespons.\n\n**1:24 tersisa:** Pullup jumper 16 kaki, masuk. DAL balik unggul 107-106.\n\n**56 detik tersisa:** Tip shot di dalam, masuk. 109-106, DAL.\n\n**23,9 detik tersisa:** Turnaround jumper 13 kaki. Masuk lagi. 111-106, DAL.\n\n**6 detik tersisa:** Booker membalas dengan three-pointer 24 kaki. 111-109.\n\n**3,5 detik tersisa:** Christie menutup via dua free throw beruntun. 113-109, DAL final.\n\nTiga possession beruntun Flagg di bawah dua menit, itu yang menentukan malam ini.\n\n---\n\n## Selanjutnya\n\nGame 3 dari regular season series ini masih menunggu jadwal. Mavericks dalam posisi nyaman: Flagg sudah buktikan diri sebagai lebih dari sekedar scorer dengan 8 asis. Suns harus menemukan cara menghentikan penetrasi Dallas dan mengurangi turnover jika ingin menutup seri ini seimbang.\n\nPantau jadwal lengkap di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909332",
+    "home_team": "Phoenix Suns",
+    "home_abbr": "PHX",
+    "away_team": "Dallas Mavericks",
+    "away_abbr": "DAL",
+    "home_score": 109,
+    "away_score": 113,
+    "winner_abbr": "DAL",
+    "kickoff_utc": "2026-11-28T02:00:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DAL leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.022907,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Solid recap with accurate stats and strong narrative structure. Minor AI-translated cadence in one Flagg paragraph and one soft academic drift connector, but no hard violations. All numbers verified against input data block. Pass.",
+      "issues": [
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Flagg tidak butuh efisiensi untuk mendominasi. Dia butuh momen yang tepat",
+          "fix": "Flagg tidak perlu efisiensi untuk mendominasi—dia butuh momen tepat saja."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "Booker membuat Suns tetap hidup sampai detik-detik akhir",
+          "fix": "No fix needed; documented as single use."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "low",
+          "snippet": "Yang membedakan adalah di dalam. Points in paint",
+          "fix": "Di mana Mavericks unggul: points in paint 60-38 (atau restructure section heading)."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Dua belas steal Dallas vs tiga milik Suns. Angka itu bukan kebetulan",
+          "fix": "12 steal Dallas, 3 Suns—hasil dari penekanan ketat DAL atas turnover."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xe6d879823009c922",
+    "published_at": "2026-11-28T04:41:22+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
