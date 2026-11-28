@@ -3,7 +3,7 @@
   "slug": "mia-at-ny-2026-11-28-g1",
   "title": "Recap Miami Heat 108-105 New York Knicks (Game 1)",
   "description": "Recap NBA Playoffs 2026 — Miami Heat vs New York Knicks (108-105) di —, 28 November 2026.",
-  "body_md": "# Miami Heat Kalahkan New York Knicks 108-105, Unggul 1-0 di Regular Season Series\n\nLaga berakhir dramatis dengan dunk Pelle Larsson di sisa 7,2 detik mengunci kemenangan 108-105 atas New York Knicks, Sabtu 28 November 2026. MIA unggul 1-0 di regular season series ini setelah bertahan dari tekanan Knicks yang nyaris membalik keadaan di kuarter akhir.\n\n---\n\n## Top Performers\n\nBam Adebayo jadi tumpuan utama MIA dengan 25 poin dan 7 rebound, efisien, dengan 10-16 dari lapangan. Di sisinya, Giannis Antetokounmpo tampil dominan di area cat: 22 poin dan 23 rebound dalam 32 menit. Davion Mitchell melengkapi trio starter MIA dengan 12 poin dan 9 assist, jadi pengatur tempo yang konsisten sepanjang malam.\n\nDari sisi NY, Jalen Brunson berjuang keras, 27 poin dan 8 assist meski harus melepas 19 tembakan dari lapangan. Karl-Anthony Towns cetak double-double bersih: 19 poin dan 10 rebound dengan 4 assist. Mikal Bridges menambahkan 16 poin. Tapi upaya ketiganya tidak cukup ketika tim butuh lebih di momen paling kritis.\n\n---\n\n## Baca Statistik\n\nMIA 39-90 (43%), NY 37-79 (47%). Dari tiga poin sama-sama rendah: MIA 11-45 (24%), NY 8-32 (25%).\n\nPerbedaan terletak di turnover dan steal. MIA memaksa 17 turnover NY, sementara MIA sendiri hanya melakukan 10. Angka steal MIA, 13 berbanding 7, mencerminkan tekanan defensif konsisten sepanjang 48 menit. Points in paint juga berpihak ke MIA: 46 berbanding 42. NY punya lebih banyak fast-break points (17 vs 10), tapi momentum itu tidak cukup untuk menutup selisih di possession yang lebih penting.\n\n---\n\n## Momen Penentu\n\nQ4 menjadi babak yang mendebarkan. Adebayo cetak mid-range 13 kaki untuk buat skor 104-100, masih aman buat MIA. Brunson menjawab dengan floating jump shot 16 kaki di sisa 36,9 detik, mengecilkan selisih menjadi 104-102.\n\nWiseman memasukkan free throw di sisa 12,8 detik, skor 104-103. Lalu Mitchell naik ke garis: free throw pertama di sisa 11,7 detik menjadi 105-103, free throw kedua menjadi 106-103. Brunson merespons dengan tiga free throw berturut-turut di sisa 9,8 detik, skor bergeser jadi 106-104, kemudian 106-105. Knicks tinggal selangkah dari merebut keunggulan.\n\nLarsson tutup laga dengan dunk di sisa 7,2 detik. Skor final: 108-105.\n\n---\n\n## Selanjutnya\n\nGame 3, dan penutup regular season series ini, dijadwalkan berikutnya. MIA masuk dengan momentum dan unggul 1-0. Tayang live di NBA League Pass dan Vidio.\n",
+  "body_md": "Miami Heat menang tipis 108-105 atas New York Knicks, Sabtu dinihari 28 November 2026. Kemenangan ini datang lewat drama clutch time di kuarter empat, dan menempatkan Heat unggul 1-0 di regular season series tiga pertandingan ini.\n\nBam Adebayo jadi tumpuan Miami dengan 25 poin dan 7 rebound, efisien lewat 10-16 from field. Di sampingnya, Giannis Antetokounmpo tampil dengan 22 poin dan angka rebound yang mendominasi: 23 rebound dalam 32 menit, angka yang langsung menjelaskan mengapa MIA unggul 43-42 di papan rebound meski margin tipis. Davion Mitchell tidak cetak banyak poin, 12, tapi 9 assist-nya jadi tulang punggung ball movement Miami sepanjang malam.\n\nNew York tidak kalah bersaing. Jalen Brunson menguras tenaga selama 40 menit penuh dengan 27 poin dan 8 assist, meski efisiensi shooting-nya berat: 8-19 from field, 2-9 dari luar arc. Karl-Anthony Towns catat double-double 19 poin dan 10 rebound. Mikal Bridges tambah 16 poin dengan shooting yang lebih efisien, 7-11 from field, 2-4 dari tiga.\n\n---\n\nSecara tim, angka yang paling menjelaskan hasil akhir ada di turnover dan steal. Miami mencuri bola 13 kali, nyaris dua kali lipat New York yang hanya 7 steal. Knicks sendiri buang bola 17 kali, berbanding 10 dari Heat. Fast-break points NY memang lebih tinggi (17 vs 10), tapi steal Miami mengkonversi kesempatan di momen yang lebih krusial. Dari sisi tiga angka, keduanya sama-sama berjuang: MIA 24%, NY 25%. Laga ini dimenangkan bukan lewat shooting perimeter, tapi lewat poin dalam catatan 46-42 untuk Miami di points in paint, dan lewat free throw, MIA 70%, NY 77%, dengan volume hampir sama.\n\n---\n\nKuarter empat menjadi episode tersendiri. Adebayo cetak dua poin via 13-foot jump shot untuk buat skor 104-100, keunggulan yang terlihat cukup. Brunson jawab dengan floating jump shot untuk 104-102. Lalu James Wiseman free throw menjadikan 104-103, sebelum Davion Mitchell melengkapi dua free throw beruntun untuk dorong Miami ke 106-103. Brunson tak menyerah, dua dari tiga free throw mengecilkan defisit ke 106-105 dengan kurang dari sepuluh detik tersisa. Pelle Larsson menutupnya dengan dunk dibantu assist Mitchell: 108-105, game over.\n\n---\n\nGame 2 regular season series ini akan menentukan siapa yang unggul dua kemenangan dari tiga laga. Jadwal belum tersedia di data saat ini. Pantau update di NBA League Pass dan Vidio.\n",
   "frontmatter": {
     "league": "nba",
     "sport": "basketball",
@@ -21,116 +21,92 @@
     "series_summary": "MIA leads series 1-0",
     "game_number": 1,
     "model": "claude-sonnet-4-6",
-    "cost_usd": 0.04648,
+    "cost_usd": 0.062438,
     "voice_lint": {
-      "verdict": "fail",
-      "score": 62,
-      "issue_count": 8,
-      "summary": "Fail: Three high-severity training-inference issues (player role, narrative judgment, turnover causation inferred). Article adds analysis not grounded in input data. FT stats omitted despite being strong defensive story. Rewrite to stick strictly to factual stats.",
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 4,
+      "summary": "Strong recap with accurate stats, natural flow, and good tactical analysis. Minor phrasing issues in transitions; nothing that breaks voice integrity. Pass with low-severity notes for future refinement.",
       "issues": [
         {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "Davion Mitchell melengkapi trio starter MIA dengan 12 poin dan 9 assist, jadi pengatur tempo yang konsisten sepanjang malam.",
-          "fix": "Delete 'pengatur tempo yang konsisten sepanjang malam' — just cite the numbers."
-        },
-        {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "Jalen Brunson berjuang keras, 27 poin dan 8 assist meski harus melepas 19 tembakan dari lapangan.",
-          "fix": "Rewrite: 'Jalen Brunson cetak 27 poin dan 8 assist dengan 8-19 dari lapangan.'"
-        },
-        {
-          "type": "training_inference",
-          "severity": "high",
-          "snippet": "MIA memaksa 17 turnover NY, sementara MIA sendiri hanya melakukan 10.",
-          "fix": "Rewrite: 'NY 17 turnover, MIA 10. Perbedaan signifikan di ball control.'"
-        },
-        {
           "type": "translated_english",
           "severity": "medium",
-          "snippet": "Angka steal MIA, 13 berbanding 7, mencerminkan tekanan defensif konsisten sepanjang 48 menit.",
-          "fix": "Rewrite: 'MIA steal 13, NY 7. Defensif MIA lebih agresif.'"
+          "snippet": "Davion Mitchell tidak cetak banyak poin, 12, tapi 9 assist-nya jadi tulang punggung ball movement Miami",
+          "fix": "Rephrase: 'Davion Mitchell tidak cetak banyak poin, 12, tapi 9 assist-nya nyatain kontrol tempo Miami'."
         },
         {
-          "type": "translated_english",
-          "severity": "medium",
-          "snippet": "Brunson merespons dengan tiga free throw berturut-turut di sisa 9,8 detik, skor bergeser jadi 106-104, kemudian 106-105.",
-          "fix": "Cite exactly: 'Brunson cetak free throw di sisa 9,8 detik — skor 106-105.'"
-        },
-        {
-          "type": "other",
-          "severity": "medium",
-          "snippet": "MIA 39-90 (43%), NY 37-79 (47%). Dari tiga poin sama-sama rendah: MIA 11-45 (24%), NY 8-32 (25%).",
-          "fix": "Add FT line: 'Free throw MIA 70%, NY 77%.'"
-        },
-        {
-          "type": "soft_phrase_repeat",
+          "type": "academic_drift",
           "severity": "low",
-          "snippet": "Perbedaan terletak di turnover dan steal. ... Perbedaan signifikan di ball control.",
-          "fix": "Restructure second paragraph opener — use 'Steal jadi pembeda: ...' instead."
+          "snippet": "angka yang paling menjelaskan hasil akhir ada di turnover dan steal",
+          "fix": "Change to: 'Turnover dan steal jadi pembeda utama hasil akhir.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dari sisi tiga angka, keduanya sama-sama berjuang: MIA 24%, NY 25%",
+          "fix": "Delete 'Dari sisi'. Start: 'Tiga angka sama-sama berjuang: MIA 24%, NY 25%.'"
         },
         {
           "type": "other",
-          "severity": "medium",
-          "snippet": "Game 3, dan penutup regular season series ini, dijadwalkan berikutnya.",
-          "fix": "Rewrite: 'Game 3 jadwal menyusul. MIA tancap gas dengan unggul 1-0.'"
+          "severity": "low",
+          "snippet": "Laga ini dimenangkan bukan lewat shooting perimeter, tapi lewat poin dalam catatan 46-42",
+          "fix": "Change to: 'Laga ini dimenangkan lewat points in paint 46-42 untuk Miami.'"
         }
       ]
     },
-    "plagiarism_hash": "0xfffb61c394e38621",
-    "published_at": "2026-11-28T03:34:05+00:00",
+    "plagiarism_hash": "0x6ffb71da9401c7e0",
+    "published_at": "2026-11-28T04:06:27+00:00",
     "version": 1,
     "manual_review": true,
     "qc_review": {
       "verdict": "edit",
-      "overall_score": 74,
-      "headline_score": 62,
-      "headline_comment": "Format 'Recap ... (Game 1)' lemah, generik, dan kontradiktif dengan body yang menyebut 1-0 di regular season series — sebaiknya tegaskan narasi (Larsson walk-off dunk atau Giannis 23 rebound) bukan sekadar skor.",
+      "overall_score": 78,
+      "headline_score": 55,
+      "headline_comment": "Headline mislabels as 'Game 1' and uses English 'Recap' — inconsistent with article body which correctly calls this a regular season series opener.",
       "lead_score": 80,
-      "lead_comment": "Lead solid dengan news + angle (Larsson dunk) dan tanggal lengkap, tapi 'nyaris membalik keadaan' sedikit hedging — Knicks tidak pernah unggul di endgame, hanya mendekat.",
-      "structure_score": 78,
-      "structure_comment": "Struktur section rapi dan fungsional, tapi 'Selanjutnya' terlalu tipis dan tidak memanfaatkan status series 1-0 of 3 untuk membangun stakes Game 2 berikutnya.",
-      "voice_score": 76,
-      "voice_comment": "Register casual-informed sudah tepat dengan code-switching natural (turnover, steal, points in paint, free throw), tapi beberapa kalimat masih terasa list-like dan paragraf 'Baca Statistik' judulnya kaku.",
+      "lead_comment": "Lead delivers score, date, and stakes efficiently, but 'drama clutch time' is vague — a sharper angle (Giannis's 23 rebounds or Miami's turnover-forced win) would hook harder.",
+      "structure_score": 82,
+      "structure_comment": "Clean four-part flow (lead → stars → team stats → clutch sequence → closer), though the closer paragraph is thin and admits missing data rather than framing stakes.",
+      "voice_score": 80,
+      "voice_comment": "Code-switching is natural and tense discipline mostly holds, but a few filler phrases ('tidak kalah bersaing', 'menjadi episode tersendiri') drift toward soft cliché.",
       "suggestion_count": 6,
-      "summary": "Solid recap with accurate numbers and clean structure, but the headline buries the two best angles (walk-off dunk, Giannis 23 boards) and there's a data inconsistency between 'Game 1' and 'Game 2 of 3' that needs editor verification before publish.",
+      "summary": "Solid middle-tier recap with strong clutch-sequence writing and good stat integration, but headline factually contradicts the input data (Game 1 vs Game 2) and the closer admits missing data instead of projecting forward. Quick editorial pass can ship this.",
       "suggestions": [
         {
           "priority": "high",
           "snippet": "Recap Miami Heat 108-105 New York Knicks (Game 1)",
-          "issue": "Headline generik dan tidak menjual angle terkuat laga (walk-off dunk atau triple-double-flirt Giannis 22-23-3).",
-          "fix": "Ganti ke sesuatu seperti: 'Dunk Larsson di Detik Akhir Selamatkan Heat dari Comeback Knicks, 108-105' atau 'Giannis Cetak 23 Rebound, Heat Tahan Knicks 108-105'."
+          "issue": "Headline says 'Game 1' but input data specifies 'Game number: 2 of 3' in a regular season series — factual mismatch at the top.",
+          "fix": "Rewrite to 'Heat Tahan Knicks 108-105, Giannis Panen 23 Rebound' or similar — drop 'Game 1', lead with the angle."
         },
         {
           "priority": "high",
-          "snippet": "MIA unggul 1-0 di regular season series ini",
-          "issue": "Framing 'regular season series' membingungkan pembaca Indonesia dan headline menyebut 'Game 1' padahal input bilang 'Game number: 2 of 3' — ada inkonsistensi data yang harus diklarifikasi editor.",
-          "fix": "Konfirmasi ke data source: ini Game 1 atau Game 2? Jika Game 1, hapus 'Game number: 2 of 3' confusion di closing; samakan narasi di lead, headline, dan closing."
+          "snippet": "Jadwal belum tersedia di data saat ini. Pantau update di NBA League Pass dan Vidio.",
+          "issue": "Closing paragraph breaks the fourth wall by admitting data is missing — reads like AI, not editorial.",
+          "fix": "Cut the admission. End with a forward-looking line about what Knicks must fix (turnovers, Brunson efficiency) heading into the next game."
         },
         {
           "priority": "medium",
-          "snippet": "## Baca Statistik",
-          "issue": "Judul section terasa instruksional/kaku, tidak khas sport media Indonesia.",
-          "fix": "Ganti ke 'Statistik Bicara', 'Kunci di Angka', atau 'Beda di Turnover' yang lebih punchy dan sesuai register."
+          "snippet": "Giannis Antetokounmpo tampil dengan 22 poin dan angka rebound yang mendominasi: 23 rebound",
+          "issue": "Giannis grabbing 23 rebounds is the single most remarkable stat in the box score and deserves more than a sub-clause in paragraph two.",
+          "fix": "Elevate it — either to the lead angle or its own sentence framing it as the game's defining individual performance."
         },
         {
           "priority": "medium",
-          "snippet": "Game 3, dan penutup regular season series ini, dijadwalkan berikutnya.",
-          "issue": "Closing anti-klimaks — tidak ada tanggal, tidak ada stakes, tidak ada hook ke pembaca.",
-          "fix": "Jika Game 2 berikutnya, sebut: 'Game 2 tinggal selangkah dari seal series buat Heat. Brunson butuh bantuan lebih dari sekadar 27 poin kalau Knicks mau paksa Game 3.'"
+          "snippet": "Laga ini dimenangkan bukan lewat shooting perimeter, tapi lewat poin dalam catatan 46-42",
+          "issue": "'Poin dalam catatan' is awkward phrasing for 'points in paint' — breaks code-switching convention the article otherwise follows well.",
+          "fix": "Use 'points in paint' in English as the rest of the NBA terminology does: 'lewat points in paint 46-42 untuk Miami'."
         },
         {
           "priority": "medium",
-          "snippet": "Bam Adebayo jadi tumpuan utama MIA dengan 25 poin dan 7 rebound, efisien, dengan 10-16 dari lapangan.",
-          "issue": "Dua koma berturutan membuat ritme kalimat patah dan 'efisien' menggantung tanpa konteks.",
-          "fix": "Rapikan: 'Bam Adebayo jadi tumpuan MIA dengan 25 poin dan 7 rebound, efisien 10-16 dari lapangan.'"
+          "snippet": "Davion Mitchell tidak cetak banyak poin, 12, tapi 9 assist-nya jadi tulang punggung",
+          "issue": "Mid-sentence number insertion '12' reads clunky and interrupts flow.",
+          "fix": "Restructure: 'Davion Mitchell lebih berperan sebagai distributor — 12 poin, tapi 9 assist jadi tulang punggung ball movement Miami.'"
         },
         {
           "priority": "low",
-          "snippet": "Giannis Antetokounmpo tampil dominan di area cat: 22 poin dan 23 rebound dalam 32 menit",
-          "issue": "23 rebound adalah angka monster yang layak jadi angle utama, bukan kalimat kedua di paragraf — missed opportunity besar.",
-          "fix": "Angkat 23 rebound Giannis ke lead atau beri satu kalimat kontekstualisasi ('salah satu angka rebound terbesar musim ini') untuk memberi bobot."
+          "snippet": "New York tidak kalah bersaing.",
+          "issue": "Soft filler transition that doesn't earn its place — Brunson's 27/8 on 40 minutes speaks for itself.",
+          "fix": "Open the Knicks paragraph directly with Brunson's line, cutting the transitional hedge."
         }
       ]
     }

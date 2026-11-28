@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "mem-at-min-2026-11-28-g2",
+  "title": "Recap Memphis Grizzlies 114-109 Minnesota Timberwolves (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — Memphis Grizzlies vs Minnesota Timberwolves (114-109) di —, 28 November 2026.",
+  "body_md": "Memphis Grizzlies mengakhiri tiga laga series melawan Minnesota Timberwolves dengan kemenangan 114-109, Kamis pagi WIB. Dua kemenangan dari tiga laga, Grizzlies tutup regular season series ini lebih dominan di atas kertas.\n\nCedric Coward jadi pemimpin MEM dengan 22 poin, 3 rebound, 3 asis. Di belakangnya, Javon Small off the bench menyumbang 19 poin dengan efisiensi tinggi (7-10 dari lapangan, 3-3 dari tiga poin). Ty Jerome menambah 18 poin walau shooting-nya kurang tajam (7-18). Cam Spencer, juga dari bench, tampil lengkap: 16 poin, 6 rebound, 4 asis.\n\nDi kubu Minnesota, Ayo Dosunmu memimpin perlawanan dengan 27 poin, 8 asis, 4 rebound, penampilan terbaik di antara semua pemain malam ini. Jonathan Kuminga konsisten dengan 19 poin, 6 rebound dalam 40 menit. Jaden McDaniels menguasai papan dengan 13 poin dan 8 rebound. Namun upaya mereka tidak cukup menutup selisih lima poin di akhir.\n\n---\n\n## Statistik yang Bicara\n\nDua angka menjelaskan hasil ini: shooting percentage dan turnover.\n\nMinnesota unggul jauh dalam efisiensi tembakan, 56% field goal (MEM 47%) dan 46% dari tiga poin vs 37% milik Memphis. Dalam kondisi normal, angka itu seharusnya cukup untuk menang. Tapi tidak malam ini.\n\nMemphis mencuri kemenangan lewat dua hal: free throw agresivitas dan turnover forcing. MIN melakukan 19 turnover vs 15 milik MEM. MEM mencatatkan 12 steal, angka yang tidak biasa, dan memanfaatkan setiap kesempatan di fast break (13 poin vs 10). Di sisi lain, MEM ke garis free throw 17 kali dan mengonversi 13, kecil volumenya, tapi cukup sebagai buffer di momen kritis.\n\n---\n\n## Momen Penentu\n\nQ4 menjadi babak paling ketat. Cam Spencer membuka keunggulan MEM lewat tembakan 23 kaki (asis Ty Jerome) di menit 11:27 kuarter keempat, skor bergerak ke 85-81. MIN segera menjawab: Rudy Gobert dunk, Shannon Jr. dua kali berturut-turut, mendorong MIN ke depan 91-87.\n\nNamun di sisa-sisa akhir laga, MIN tidak mampu menjaga momentum. Dosunmu memang sempat cetak layup di sisa 31 detik untuk menjaga MIN sedekat 109-105, tapi Jerome free throw, lalu Shannon Jr. layup di 8.6 detik (112-107) menutup laga. Bones Hyland cetak dua poin terakhir untuk MIN di 1.2 detik, terlambat, final 114-109.\n\n---\n\n## Penutup\n\nMemphis Grizzlies menang seri 2-1. Tidak ada Game 4, ini seri tiga laga, dan Grizzlies ambil alih kemenangan terakhir yang dibutuhkan. Pantau update jadwal ronde selanjutnya di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909331",
+    "home_team": "Minnesota Timberwolves",
+    "home_abbr": "MIN",
+    "away_team": "Memphis Grizzlies",
+    "away_abbr": "MEM",
+    "home_score": 109,
+    "away_score": 114,
+    "winner_abbr": "MEM",
+    "kickoff_utc": "2026-11-28T01:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.039752,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "FAIL — Two hard training-inference violations (Rudy Gobert, Trey Lyles) introduce ungrounded names. Additionally, multiple translated-English phrases and academic drift undermine voice naturalness. Requires regeneration with strict input-data adherence.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Rudy Gobert dunk, Shannon Jr. dua kali berturut-turut",
+          "fix": "Delete Gobert mention or rewrite as 'MIN responded with consecutive layups' using only players in data."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Rudy Gobert dunk (Trey Lyles assists)",
+          "fix": "Remove this play entirely; it's outside your input data."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di kubu Minnesota, Ayo Dosunmu memimpin perlawanan dengan 27 poin",
+          "fix": "Use 'Minnesota diimpin Ayo Dosunmu dengan 27 poin' or just 'Ayo Dosunmu pimpin MIN'."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "penampilan terbaik di antara semua pemain malam ini",
+          "fix": "Delete phrase. End sentence at '4 rebound.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka menjelaskan hasil ini: shooting percentage dan turnover.",
+          "fix": "Restructure: 'Dua angka ubah permainan: efisiensi tembakan dan turnover.' or just delete header."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dalam kondisi normal, angka itu seharusnya cukup untuk menang.",
+          "fix": "Simplify: 'Angka segitu biasanya cukup menang. Tidak malam ini.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Di sisi lain, MEM ke garis free throw 17 kali",
+          "fix": "Change to: 'MEM naik free throw 17 kali dan konversi 13.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Memphis Grizzlies menang seri 2-1. Tidak ada Game 4, ini seri tiga laga",
+          "fix": "Merge into one sentence: 'Grizzlies unggul seri 2-1 untuk close out regular season matchup.' Then move to broadcast info."
+        }
+      ]
+    },
+    "plagiarism_hash": "0xbbed63f13008ac26",
+    "published_at": "2026-11-28T04:11:44+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

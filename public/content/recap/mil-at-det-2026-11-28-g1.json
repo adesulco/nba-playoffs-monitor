@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "mil-at-det-2026-11-28-g1",
+  "title": "Recap Milwaukee Bucks 98-113 Detroit Pistons (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Milwaukee Bucks vs Detroit Pistons (98-113) di —, 28 November 2026.",
+  "body_md": "# Detroit Pistons Redam Milwaukee Bucks 113-98, Unggul 1-0 di Regular Season Series\n\nDetroit Pistons menang 113-98 atas Milwaukee Bucks, Sabtu 28 November 2026 jam 07.30 WIB. DET unggul 1-0 di regular season series (Game 2 of 4) berkat kontribusi bench yang solid dan keunggulan di fast-break points yang tak tertandingi sepanjang malam.\n\n---\n\n## Bench DET Jadi Penentu\n\nMenariknya, tiga dari lima top scorer Detroit malam ini adalah pemain bench. Isaiah Joe memimpin dengan 22 poin off the bench, efisien dari tiga poin dengan 5-12 from three. Paul Reed menambah 14 poin plus 7 rebound dalam 23 menit, ekonomis, efektif. Elijah Harkless juga dari bench: 14 poin, 4 rebound, dan 8 asis yang menjadi motor distribusi serangan DET.\n\nDi sisi starter, Daniss Jenkins (13 poin, 3-9 from three) dan John Collins (12 poin, 8 rebound) memberikan fondasi yang cukup. Collins khususnya solid di dalam, membantu DET menguasai papan rebound meski secara total MIL masih unggul 52-49 di kategori ini.\n\nUntuk MIL, Brayden Burries jadi yang paling tajam dengan 23 poin off the bench (9-17 FG, 2-7 from three). Tyler Herro 20 poin sebagai starter, sementara Jaime Jaquez Jr. membukukan 19 poin dan 11 rebound, double-double yang solid tapi tidak cukup untuk membalik situasi.\n\n---\n\n## Angka yang Menjelaskan Kekalahan MIL\n\nDua angka paling berbicara malam ini: fast-break points dan turnover.\n\nDET mencatat 24 fast-break points, MIL hanya 11. Ketika bola hidup dan transisi cepat, Detroit jauh lebih mematikan. Ini bukan kebetulan, MIL membuang 19 kali possession via turnover, dibandingkan 13 untuk DET. Setiap kesalahan MIL hampir selalu berujung pada peluang berlari DET.\n\nDari sisi shooting, dua tim tidak terlalu berbeda: MIL 44% FG vs DET 43%, selisih tipis. Tapi DET lebih baik dari tiga poin (34%, 16-47) dibanding MIL yang berjuang di 30% (12-40). Dengan 40 percobaan tiga angka dari MIL yang hampir semuanya tidak masuk, rhythm offense Bucks terasa tertahan. DET juga lebih banyak ke garis free throw: 17-25 versus MIL 10-13.\n\nSatu-satunya keunggulan jelas MIL ada di points in paint: 50 berbanding 38. MIL menang di dalam, tapi kalah di transisi, kalah di tiga poin, dan kalah dalam menjaga bola.\n\n---\n\n## Drama Kecil di Akhir Kuarter Dua\n\nKEY PLAYS menunjukkan pertandingan sempat ketat di penghujung Q2. Skor bolak-balik: Harkless bawa DET unggul 45-44, Burries balas dengan three-pointer 23 kaki untuk MIL (47-45), Harkless lagi jawab dengan stepback dari 25 kaki (47-48), lalu Kel'el Ware tutup kuarter dengan three dari 26 kaki untuk MIL (50-48).\n\nMasuk Q3, Jenkins langsung bawa DET balik unggul 51-50 via tiga angka. Momentum bergeser. DET tidak melepaskan kendali setelahnya, dan selisih 15 poin di akhir laga (113-98) mencerminkan betapa konsisten mereka menjalankan game plan di dua kuarter terakhir.\n\n---\n\n## Selanjutnya\n\nDET unggul 1-0 di regular season series, dengan Game 3 of 4 masih menanti. Bagi MIL, perbaikan paling mendesak jelas di ball security, 19 turnover di laga ini terlalu boros untuk tim yang ingin kompetitif di sisa series. Pantau update jadwal Game 3 di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909327",
+    "home_team": "Detroit Pistons",
+    "home_abbr": "DET",
+    "away_team": "Milwaukee Bucks",
+    "away_abbr": "MIL",
+    "home_score": 113,
+    "away_score": 98,
+    "winner_abbr": "DET",
+    "kickoff_utc": "2026-11-28T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "DET leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021328,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail due to training-data inference (Myles Turner, Kel'el Ware not in input data) and translated-English phrasing ('tak tertandingi'). Remove inferred player names and tighten casual register. Otherwise solid stat-grounding and structure.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Myles Turner makes tip shot (score 44-43)... Kel'el Ware makes 26-foot three point jumper",
+          "fix": "Remove these players from the article or reference only the verifiable top-scorer data provided."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "fast-break points yang tak tertandingi sepanjang malam",
+          "fix": "Rewrite: 'keunggulan 24-11 di fast-break points' atau cukup 'menguasai transisi.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "ekonomis, efektif",
+          "fix": "Rewrite: 'efisien dan efektif' atau 'solid di dalam' (use one strong descriptor)."
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Selanjutnya... dengan Game 3 of 4 masih menanti.",
+          "fix": "Replace with 'Apa Selanjutnya' or just: 'DET unggul 1-0 di regular season series...'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Dua angka paling berbicara malam ini: fast-break points dan turnover.",
+          "fix": "Rewrite: 'Dua angka menjelaskan kekalahan MIL' (you used this as subheading; consider making prose less formal)."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Satu-satunya keunggulan jelas MIL ada di points in paint",
+          "fix": "Rewrite: 'MIL menang di dalam, tapi kalah di transisi, kalah di tiga poin...'"
+        },
+        {
+          "type": "structural",
+          "severity": "low",
+          "snippet": "KEY PLAYS menunjukkan pertandingan sempat ketat... Harkless bawa DET unggul 45-44, Burries balas dengan three-pointer",
+          "fix": "Restructure as 2–3 flowing sentences with key moments woven in, not enumerated."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x48d363d2308acfb0",
+    "published_at": "2026-11-28T04:07:29+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
