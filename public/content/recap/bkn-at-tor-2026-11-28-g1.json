@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "bkn-at-tor-2026-11-28-g1",
+  "title": "Recap Brooklyn Nets 100-124 Toronto Raptors (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Brooklyn Nets vs Toronto Raptors (100-124) di —, 28 November 2026.",
+  "body_md": "Toronto Raptors mempermalukan Brooklyn Nets 124-100 di Game 2 regular season series, Sabtu 28 November 2026. TOR kini unggul 2-0 di series. Scottie Barnes 34 poin jadi motor utama, tapi cerita sesungguhnya malam ini adalah Immanuel Quickley dengan triple-double: 24 poin, 10 rebound, 14 asis.\n\n---\n\n## Performa Top Pemain\n\nQuickley bermain 38 menit dan mengendalikan tempo sepanjang laga. Triple-double dengan 14 asis adalah angka distribusi elite, bukan sekadar scorer yang kebetulan bagus malam ini, tapi pemain yang memang memimpin offense TOR dari awal sampai akhir. FG 8-15 dan 4-8 from three menunjukkan dia tidak asal lempar. efisiensinya solid.\n\nBarnes melengkapi di sisi scoring: 34 poin dengan FG 11-20 dan 2-4 from three. Dua puluh empat poin plus 34 poin dari dua pemain yang sama, TOR tidak butuh banyak orang untuk menutup laga.\n\nCollin Murray-Boyles off the bench menyumbang 19 poin, 7 rebound, FG 4-9. Bench contribution di level itu biasanya jadi penentu kemenangan besar.\n\nJakob Poeltl mengamankan interior: 17 poin, 9 rebound, FG 7-12. Allen Graves menambah 9 poin dan 9 rebound, dua big man TOR mendominasi papan.\n\nDi sisi BKN, Julius Randle dan Mikel Brown Jr. sama-sama cetak 21 poin. Randle FG 8-18 dengan 5 asis. Brown Jr. lebih efisien dengan FG 7-10 dan 4-6 from three. Michael Porter Jr. menambah 17 poin FG 6-10 dan 3-7 from three. Angka individual tidak jelek, masalahnya bukan di scoring individu, tapi di tempat lain.\n\n---\n\n## Apa yang Bicara di Box Score\n\nRebound adalah pembeda paling jelas: TOR 44, BKN 30. Selisih 14 rebound hampir mustahil dikompensasi lewat apapun.\n\nFree throw juga mencolok. TOR 30-33 (91%) vs BKN 18-24 (75%). Selisih 12 percobaan free throw berarti TOR lebih sering masuk ke paint dan memaksa kontak, atau BKN lebih sering foul dalam posisi tidak menguntungkan. FT% TOR yang 91% menutup peluang BKN untuk memanfaatkan setiap momen.\n\nTurnover: BKN 16, TOR 14. BKN kehilangan bola lebih banyak di laga yang margin akhirnya 24 poin, setiap possession yang terbuang di laga ketat langsung berasa, apalagi di laga yang sudah berat sejak awal.\n\nAssist: TOR 33, BKN 23. TOR bermain lebih terkoneksi, 33 asis dari 41 field goal berarti hampir setiap basket lahir dari ball movement. BKN 23 asis dari 35 field goal, masih oke, tapi tidak seefisien TOR.\n\nFG% dua tim sebenarnya berdekatan: BKN 47%, TOR 49%. 3PT% juga hampir identik: BKN 34%, TOR 35%. Artinya BKN tidak kalah di sisi shooting murni, mereka kalah di rebound, free throw, dan turnover. Itu kombinasi yang sulit dibalik dalam satu laga.\n\n---\n\n## Catatan Series\n\nKuarter pertama berjalan ketat berdasarkan key plays yang ada, skor sempat 20-20 sebelum TOR perlahan membangun jarak. BKN tidak kolaps di satu kuarter. mereka terkikis secara konsisten sampai margin 24 poin di akhir.\n\nTOR kini unggul 2-0 di regular season series (4 game). BKN butuh respons yang berbeda: rebound lebih baik, foul discipline lebih ketat, dan mengurangi turnover. Angka individual masih ada, Randle, Brown Jr., Porter Jr. semua productive, tapi kolektivitas TOR terlalu besar untuk dilawan dengan output individual saja.\n\nGame 3 tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909329",
+    "home_team": "Toronto Raptors",
+    "home_abbr": "TOR",
+    "away_team": "Brooklyn Nets",
+    "away_abbr": "BKN",
+    "home_score": 124,
+    "away_score": 100,
+    "winner_abbr": "TOR",
+    "kickoff_utc": "2026-11-28T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "TOR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.042393,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Major fail: article claims TOR leads 2-0 when input explicitly states 1-0 after Game 2. Multiple translated-English phrases and academic connectors. Rewrite required; do not publish.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "TOR kini unggul 2-0 di series",
+          "fix": "Change to 'TOR unggul 1-0 di series' or 'TOR menang game kedua beruntun'."
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "triple-double adalah angka distribusi elite, bukan sekadar scorer",
+          "fix": "Rewrite: 'triple-double menunjukkan Quickley pemain lengkap, bukan sekadar scorer malam itu.'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Dua puluh empat poin plus 34 poin dari dua pemain",
+          "fix": "Change to '24 poin plus 34 poin'."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Artinya BKN tidak kalah di sisi shooting murni, mereka kalah",
+          "fix": "Delete 'Artinya' and lead directly: 'BKN tidak kalah di sisi shooting murni...'"
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "mereka terkikis secara konsisten sampai margin 24 poin di akhir",
+          "fix": "Capitalize: 'Mereka terkikis...' or combine with previous sentence."
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Bench contribution di level itu biasanya jadi penentu kemenangan besar",
+          "fix": "Rewrite: 'Bench scoring 19 poin itu adalah fondasi kemenangan besar.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Game 3 tersedia di NBA League Pass dan Vidio",
+          "fix": "Clarify: 'Game 3 tayang di NBA League Pass dan Vidio' (but verify date from input if needed)."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x6ccb61cb3481a5a0",
+    "published_at": "2026-11-28T03:12:40+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
