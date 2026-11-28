@@ -1,21 +1,22 @@
 # Gibol — where prod is right now
 
-**Living document. Update it at the end of every sprint.** Plan of record: `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`. Contract: `02-PLATFORM-CONTRACT.md`. History: `docs/archive/HANDOVER-2026-08-18.md`.
+**Living document. Update it at the end of every sprint.** Plan of record: `docs/handover-2026-11-28-playoff-pickem-v3.md` (supersedes regular-season cadence in `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md`). Contract: `02-PLATFORM-CONTRACT.md`.
 
-Last updated: **2026-10-08** · live version **v0.89.18** · branch `main` (clean, pushed, tags to v0.89.18) · S0–S3 shipped; launch blocked on three dashboard actions (§0)
+Last updated: **2026-11-28** · live version **v0.90.0** · branch `main` · **Playoff Pick'em v3** shipped (`D1`–`D7`: 5-shape bracket engine, `/simulasi` viral sandbox, `/bagan` + `Babak Baru`, Bahasa default, 3-tab shell, 1-tap Google OAuth, daily content-cron paused)
 
-## 0 · Status and next (2026-10-08, clean stop)
+## 0 · Status and next (2026-11-28 — Playoff Pick'em v3)
 
-**Where it stands.** gibol.co runs the Pick'em loop in prod on Scoring Spec v1. Checked at the stop: `verify-loop` 19/19, `verify-gugur` 14/14, `check-api-columns` 70/70, scoring parity 56/56, health `scoring.ok: true`, 135 unit tests, every workflow green. Prod has 1 real account and 2 grups, so nothing has been measured yet. EPL MD6 (10 fixtures) locks **Sat Oct 10, 18:30 WIB**; MD7 is seeded.
+**Where it stands.** Gibol (`www.gibol.co`) is now architected around **Playoff & Knockout Tentpole Windows** for Indonesian sports and international tournaments that sell in Indonesia (`M8-KO-2027` Jan 14–23 viral beta → `ID-Masters-2027` Feb 9–14 → `UCL-KO-2026-27` "Edisi Sahur" Feb 16 – Jun 5 flagship paid launch → `Sudirman Cup`, `NBA Playoffs`, `Liga 1 / EPL 5-Week Run-In`, `Indonesia Open`, `IBL Playoffs`, `AFC Asian Cup Timnas Garuda`). Legacy `EPL-2026-27` and `NBA-2026-27` backfill feeds continue scoring silently so existing prod fixtures and `Health watch` stay green, while all user-facing creation, simulator (`/simulasi`), and bracket (`/bagan`) flows spotlight the Playoff Tentpole calendar. Node function count remains **8/12** on Vercel Hobby (`get-bracket` added inside `api/pickem.js`; `g4-bracket` added inside `api/_lib/og/share4a.js`).
 
-**Blocking the public push (all Ade, dashboard only):**
+**Dashboard actions for Ade before Jan 14, 2027 M8 Knockout Public Beta:**
 
 | # | Action | Why | Done when |
 |---|---|---|---|
-| 1 | Paste `supabase/migrations/0024_leaderboard_views_close.sql` into the SQL editor, Run, confirm the "Potential issue detected" dialog | anon can read every grup's roster and points through the three leaderboard views (Supabase Advisor: 3 critical) | `node scripts/rls-attack.mjs` prints "RLS posture holds" (6 holes today) |
-| 2 | Resend SMTP per §2c (account, 3 GoDaddy DNS records, API key into Supabase SMTP, raise the email limit) | auth email is capped at 2/hour for the whole site | a magic link from `/masuk` arrives from `masuk@gibol.co`; `dig +short MX send.gibol.co` answers |
-| 3 | Clear the Supabase "Outstanding invoices" banner | service-disruption warning; one banner still showed on 2026-10-07 after Ade paid | banner gone |
-| 4 | Phone run: `gibol.co/g/FgdGibol` signed out → pick → "Klaim pick & gabung" → magic link → grup | the only loop step no script can drive (needs an inbox) | pick claimed, klasemen row present |
+| 1 | Paste `supabase/migrations/0024_leaderboard_views_close.sql` AND `supabase/migrations/0025_playoff_topologies.sql` into Supabase SQL Editor and Run | `0024` closes anon access to the 3 leaderboard views; `0025` adds `league_seasons` Trophy Case + `entry_phase` metadata | `node scripts/rls-attack.mjs` prints `"RLS posture holds"` and `league_seasons` exists |
+| 2 | Enable **Google Provider** in Supabase Dashboard → Authentication → Providers → Google (Client ID + Secret from Google Cloud Console, callback `https://egzacjfbmgbcwhtvqixc.supabase.co/auth/v1/callback`) | `Login4a.jsx` now features 1-tap `"Lanjutkan dengan Google"` (`D7`) to remove the 2/hr email friction before Resend SMTP | Tapping `"Lanjutkan dengan Google"` on `/masuk` completes PKCE sign-in and claims guest bracket/picks |
+| 3 | Resend SMTP per §2c (`masuk@gibol.co`, sender display name `Gibol`) | Lifts magic-link email fallback above Supabase's 2/hr built-in cap | Magic link from `/masuk` arrives from `masuk@gibol.co` |
+| 4 | Jan 10, 2027 (post-M8 Swiss Stage): update final Top-8 seeds in `src/pickem/playoffTopology.js` (`M8-KO-2027`) + seed match fixtures via `enter-result` | Opens official M8 Knockout bracket lock ahead of Jan 14 first match | `/simulasi/M8-KO-2027` & `/bagan/M8-KO-2027` reflect official draw |
+| 5 | Before Feb 16, 2027 (`UCL-KO-2026-27`): set `MIDTRANS_SERVER_KEY` (+ Stripe international checkout) in Vercel | Enables automated QRIS `Rp 79.000` Playoff Pass & `\$19` Diaspora Pass (`D7`); Jan M8 beta runs on Free + manual QRIS (`grant-entitlement`) | `UpgradeSheet4a` completes automated QRIS checkout |
 
 **Next for development, in order:**
 

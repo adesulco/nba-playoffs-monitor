@@ -2,11 +2,11 @@
 
 Shared context for Claude Code, Cowork, and any other agent working here. Rewritten 2026-10-01 (S3, doc 17 §2.6). Four docs are the truth; everything else is history in `docs/archive/`.
 
-> **Read in this order.** `docs/00-STATE.md` (where prod is right now, what is open, what needs Ade) → `docs/pickem-flagship/17-PLATFORM-RESET-2026-10-01.md` (plan of record, sprints S0–S4) → `docs/02-PLATFORM-CONTRACT.md` (Scoring Spec v1 + platform contract) → `docs/01-PRODUCT.md` (what we build and refuse) → `docs/03-DESIGN.md` (Sistem 4a). Where anything here conflicts with doc 17, doc 17 wins.
+> **Read in this order.** `docs/00-STATE.md` (where prod is right now, what is open, what needs Ade) → `docs/handover-2026-11-28-playoff-pickem-v3.md` (Playoff Pick'em v3 locked decisions D1–D7 & 2027–2028 tentpole plan) → `docs/02-PLATFORM-CONTRACT.md` (Scoring Spec v1 + platform contract) → `docs/01-PRODUCT.md` (what we build and refuse) → `docs/03-DESIGN.md` (Sistem 4a).
 
 ## What this repo is
 
-The Gibol web app at `www.gibol.co`: an Indonesian multi-sport Pick'em (Vite + React 18 SPA, Vercel functions under `api/`, Supabase Postgres, GitHub Actions crons). The sport hubs stay at their URLs as SEO assets. `packages/content-engine/` (Python, Kabar articles) is paused pending an Anthropic key rotation; its status is `packages/content-engine/STATUS.md`.
+The Gibol web app at `www.gibol.co`: Indonesia's prestige-only **Playoff Pick'em & Bracket Simulator** (Vite + React 18 SPA, Vercel functions under `api/`, Supabase Postgres, GitHub Actions crons). Default locale is Bahasa Indonesia (`id`, `kamu/-mu` register); Pick'em shell has 3 tabs (`Main · Grup · Skor`) plus `/simulasi/:competition` (zero-login viral bracket simulator) and `/bagan/:competition` (5-shape Playoff Bracket + `Babak Baru` 0.75× Second Chance). The sport hubs stay at their URLs as SEO assets. `packages/content-engine/` (`content-cron.yml`) is paused until Weekly Playoff Pickers (WPP) > 10,000.
 
 ## Stack
 

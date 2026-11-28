@@ -60,13 +60,13 @@ on:
   #
   # GRADUATION ORDER (uncomment a block after a week of stable runs):
   #
-  schedule:
-    # NBA recap polling — every 30 min during 02:00-08:00 UTC. NBA evening
-    # tipoffs run ~00:00-05:00 UTC, finals whistle ~02:00-08:00 UTC. Catches
-    # each recap within 30 min of game end.
-    # 13 runs/day max, most no-op (no new finished games). Cost per
-    # generated recap ~$0.04 (Sonnet). Worst case 6 games/night = $0.24/day.
-    - cron: '*/30 2-8 * * *'
+  # Playoff Pick'em v3 (2026-11-28, Decision D5): Autonomous daily content
+  # generation is paused until Weekly Playoff Pickers (WPP) > 10,000 so engineering
+  # and Vercel build focus stay 100% on the Playoff Pick'em loop. Manual
+  # workflow_dispatch remains active for curated tournament previews/recaps.
+  #
+  # schedule:
+  #   - cron: '*/30 2-8 * * *'
     #
     # Tennis weekly rankings — Monday 06:00 UTC. ~$0.01/week (Haiku).
     # - cron: '0 6 * * 1'

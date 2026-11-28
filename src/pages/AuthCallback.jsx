@@ -8,8 +8,9 @@ import SEO from '../components/SEO.jsx';
 import { claimGuestAndJoin } from '../pickem/claim.js';
 
 // Pick'em shell routes skip the favourites onboarding (doc 17 S1-5): a
-// first login from an invite must land on the grup, not on a team picker.
-const PICKEM_ROUTE = /^\/($|\?|grup(\/|$)|pick\/|g\/|skor(\/|$)|gugur\/|main(\/|$))/;
+// first login from an invite or simulator must land straight on the grup or
+// bracket, never on a team picker.
+const PICKEM_ROUTE = /^\/($|\?|grup(\/|$)|pick\/|g\/|skor(\/|$)|gugur\/|main(\/|$)|bagan(\/|$)|simulasi(\/|$)|papan(\/|$)|aturan(\/|$)|profil(\/|$))/;
 
 /**
  * /auth/callback — handles the magic-link redirect.

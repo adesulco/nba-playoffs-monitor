@@ -406,9 +406,28 @@ function GrupHomeInner() {
           </div>
         )}
 
-        {/* R4a-1 — Gugur strip (survivor). Enabled: entry into the sheet.
-            Owner + disabled: the switch-on CTA, one tap via
-            updateLeagueSettings. Everyone else + disabled: nothing. */}
+        {/* Playoff Bracket strip (Decision D4 Layer 2) */}
+        {competition?.hasBracket && competition?.topologyKey && (
+          <button
+            type="button"
+            onClick={() => navigate(`/bagan/${encodeURIComponent(league.competition)}?grup=${encodeURIComponent(league.invite_code)}`)}
+            style={S.gugurStrip}
+          >
+            <span style={{ minWidth: 0, textAlign: 'left' }}>
+              <span style={S.gugurTitle}>{tx('Playoff Bracket', 'Bagan Playoff')}</span>
+              <span style={S.gugurMeta}>
+                {tx(
+                  'Lock your full path to the Final + Babak Baru (0.75×) second chance.',
+                  'Kunci jalur juaramu sampai Final + tiket Babak Baru (0,75×).'
+                )}
+              </span>
+            </span>
+            <span style={S.gugurGo}>→</span>
+          </button>
+        )}
+
+        {/* R4a-1 — Gugur strip (survivor). Disabled on new Playoff tentpoles (D4);
+            kept active only for legacy grups whose competition hasSurvivor=true. */}
         {league?.enabled_modes?.survivor ? (
           <button
             type="button"
@@ -423,7 +442,7 @@ function GrupHomeInner() {
             </span>
             <span style={S.gugurGo}>→</span>
           </button>
-        ) : user?.id === league?.owner_id ? (
+        ) : user?.id === league?.owner_id && competition?.hasSurvivor ? (
           <button
             type="button"
             disabled={gugurToggling}

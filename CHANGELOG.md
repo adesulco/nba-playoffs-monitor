@@ -2,6 +2,16 @@
 
 Ship notes from v0.86.0 onward. Older notes (v0.1.0 – v0.85.0) live as comments in `src/lib/version.js`; that file is frozen as history and only `APP_VERSION` changes there now.
 
+## v0.90.0 — 2026-11-28 — Playoff Pick'em v3 (5-Shape Bracket, /simulasi, Bahasa Default, Google OAuth)
+
+- **Playoff Pick'em Portfolio (`D1`–`D3`):** Re-centered `src/pickem/competitions.js` around Indonesia's highest-urgency 2027–2028 Playoff & Knockout windows — `M8-KO-2027` (Jan 14–23 viral beta), `ID-Masters-2027` (Feb 9–14 Istora), `UCL-KO-2026-27` ("Edisi Sahur" Feb 16 – Jun 5 flagship paid launch), `NBA-Playoffs-2027`, `SUDIRMAN-2027`, `EPL-RUNIN-2027` & `LIGA1-RUNIN-2027` (5-week title run-ins), `ID-Open-2027`, `IBL-Playoffs-2027`, and `AFC-ASIAN-CUP-2027` (Timnas Garuda). Added `mlbb` (`#C81E3A`) and `badminton` (`#1F7A3D`) sport skins in `sportSkins.js` + `tokens-4a.css`. Legacy regular-season rows remain in background mode so prod fixtures/health checks stay green.
+- **3-Layer Playoff Mechanics (`D4`):**
+  - **Layer 1 — Zero-Login Skenario Simulator (`/simulasi`, `/simulasi/:competition`):** Client-side PlayoffLabs-style sandbox (`Simulasi4a.jsx`, Rp 0 DB cost) with 1-tap `⚡ Acak Skenario`, compact `?s=...` shareable state, dark 1080×1080 Satori PNG card (`g4-bracket` in `api/_lib/og/share4a.js`), and 1-tap `"Tantang Grup WA pakai Bagan Ini →"` conversion into `/grup/baru`.
+  - **Layer 2 — Universal 5-Shape Playoff Bracket & `Babak Baru` (`/bagan`, `/bagan/:competition`):** Pure declarative DAG (`playoffTopology.js`) supporting `single-elim`, `two-leg-ko`, `playoff-series` (Bo5/Bo7 length bonus), `double-elim` (Upper + Lower `loserOf` drop-down), and `group-plus-ko` (`groupRankOf`), plus `Babak Baru` (0.75× Second Chance re-entry). Wired end-to-end via `get-bracket` + `upsert-bracket` in `api/pickem.js` (0 net-new Vercel functions; Node budget stays 8/12) + guest claim-on-login (`claimGuestBrackets`). Disabled `Gugur` on new playoff tentpoles.
+  - **Trophy Case DDL (`0025_playoff_topologies.sql`):** Idempotent migration adding `public.league_seasons` so one WhatsApp `grup` and invite code roll over cleanly across tournaments.
+- **Focused 3-Tab Shell & Content Cron Pause (`D5`):** Trimmed `TabBar4a.jsx` to `Main · Grup · Skor` (`/kabar` remains direct-link accessible); paused autonomous daily `content-cron.yml` runs until WPP > 10k.
+- **Bahasa Indonesia Default & 1-Tap Google OAuth (`D6`, `D7`):** Versioned `gibol:lang:v2` to default to Bahasa Indonesia (`id`, `kamu/-mu` register) with automatic `en` fallback only outside Indonesian timezones/locales. Added `signInWithGoogle` inside the `src/pickem/api.js` seam and 1-tap Google button on `Login4a.jsx`.
+
 ## v0.89.18 — 2026-10-07 — profile stats + schema sweep
 
 - `/profil` showed 0 points and no national rank for everyone: `list-profile` asked `leaderboard_competition` for `first_submitted_at`, which the 0021 views dropped, so the query failed. It reads `rank, points, exact_count, nyaris_count`. The streak tile reads the `correct` streak (one row per kind since 0021; the unfiltered read errored once both kinds existed). Accuracy counts exact/margin/result tiers as correct, the same rule as the SQL engine: a nyaris point is a wrong result, and void picks are left out.

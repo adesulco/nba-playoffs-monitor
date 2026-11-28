@@ -51,6 +51,8 @@ export default function SideRail4a({ grups = [], lang = 'en', extra = null }) {
       <section style={S.card}>
         <div style={S.label}>{tx('QUICK TO', 'CEPAT KE')}</div>
         {[
+          { label: tx('Bracket simulator', 'Simulasi bagan'), meta: tx('Zero-login dream bracket', 'Coba skenario tanpa login'), to: '/simulasi' },
+          { label: tx('Playoff bracket', 'Bagan playoff'), meta: tx('Lock your tournament picks', 'Kunci bagan & Babak Baru'), to: '/bagan' },
           { label: tx('Scores', 'Skor'), meta: tx('Live, with your picks', 'Live, plus status pickmu'), to: '/skor' },
           { label: tx('Your grups', 'Grup kamu'), meta: tx('Standings & nudges', 'Klasemen & colek'), to: '/grup' },
         ].map((l) => (

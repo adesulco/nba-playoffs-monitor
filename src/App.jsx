@@ -160,6 +160,9 @@ const PapanNasional4a = lazy(() => import('./pickem/PapanNasional4a.jsx'));
 const Aturan4a       = lazy(() => import('./pickem/Aturan4a.jsx'));
 const Kabar4a        = lazy(() => import('./pickem/Kabar4a.jsx'));
 const GrupJoin       = lazy(() => import('./pickem/GrupJoin.jsx'));
+// v0.90.0 — Playoff Pick'em v3: 5-shape official Bracket (/bagan) & zero-login Simulator (/simulasi).
+const Bracket4a      = lazy(() => import('./pickem/Bracket4a.jsx'));
+const Simulasi4a     = lazy(() => import('./pickem/Simulasi4a.jsx'));
 // v0.69.0 P4 — stage-paged WC 2026 bracket builder.
 // v0.70.0 P5 — Survivor + Profile.
 // v0.71.0 P6 — Kartu Bola recap share surface.
@@ -261,7 +264,7 @@ function ConsentGate({ children }) {
 // `/^\/grup$/` is separate from `/^\/grup\//`: the bare Grup tab (GrupList)
 // is a 4a screen too, and without it the legacy masthead + footer wrapped
 // the new shell on that one tab (audit 2026-10-01).
-const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//, /^\/masuk$/, /^\/login$/, /^\/profil$/, /^\/papan$/, /^\/aturan$/, /^\/kabar$/];
+const FOUR_A_CHROME_ROUTES = [/^\/main$/, /^\/skor$/, /^\/grup$/, /^\/grup\//, /^\/pick\//, /^\/g\//, /^\/gugur\//, /^\/bagan(\/|$)/, /^\/simulasi(\/|$)/, /^\/masuk$/, /^\/login$/, /^\/profil$/, /^\/papan$/, /^\/aturan$/, /^\/kabar$/];
 
 /**
  * Renders children (the legacy masthead) only OUTSIDE the 4a shell.
@@ -443,6 +446,10 @@ export default function App() {
             <Route path="/papan" element={<PapanNasional4a />} />
             <Route path="/aturan" element={<Aturan4a />} />
             <Route path="/kabar" element={<Kabar4a />} />
+            <Route path="/bagan" element={<Bracket4a />} />
+            <Route path="/bagan/:competition" element={<Bracket4a />} />
+            <Route path="/simulasi" element={<Simulasi4a />} />
+            <Route path="/simulasi/:competition" element={<Simulasi4a />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
             {/* v0.12.5 — first-login favorites picker. Anon users get
                 redirected to /login?next=/onboarding/teams from inside
@@ -451,9 +458,9 @@ export default function App() {
             {/* v0.12.9 — edit-favorites surface. Anon users redirect
                 to /login?next=/settings/teams from inside the page. */}
             <Route path="/settings/teams" element={<SettingsTeams />} />
-            {/* S2 (doc 17 §2.5) — the legacy NBA bracket app is unmounted; its
-                URLs land on the Pick'em shell. */}
-            <Route path="/bracket/*" element={<Navigate to="/" replace />} />
+            {/* Legacy /bracket URLs redirect to the 4a Playoff Bracket (/bagan). */}
+            <Route path="/bracket" element={<Navigate to="/bagan" replace />} />
+            <Route path="/bracket/*" element={<Navigate to="/bagan" replace />} />
             <Route path="/league/*" element={<Navigate to="/grup" replace />} />
             <Route path="/leaderboard/*" element={<Navigate to="/grup" replace />} />
 

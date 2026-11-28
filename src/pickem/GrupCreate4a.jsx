@@ -9,7 +9,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { createGrup } from './api.js';
-import { COMPETITIONS, COMPETITION_ORDER, defaultCompetitionKey } from './competitions.js';
+import { COMPETITIONS, PLAYOFF_COMPETITION_ORDER, defaultPlayoffCompetitionKey } from './competitions.js';
 import TabBar4a from './components/TabBar4a.jsx';
 import { IconChevronLeft } from './components/icons4a.jsx';
 import { AuthProvider, useAuth } from '../lib/AuthContext.jsx';
@@ -39,19 +39,26 @@ function GrupCreateInner() {
 
   const choices = useMemo(() => {
     const t = Date.now();
-    return COMPETITION_ORDER
+    return PLAYOFF_COMPETITION_ORDER
       .map((k) => COMPETITIONS[k])
       .filter((c) => c && new Date(c.closeAt).getTime() > t);
   }, []);
 
+  const fromSimulasi = params.get('from') === 'simulasi';
   const [name, setName] = useState('');
-  const [competition, setCompetition] = useState(params.get('competition') || defaultCompetitionKey());
+  const [competition, setCompetition] = useState(() => {
+    const qp = params.get('competition');
+    return qp && COMPETITIONS[qp] ? qp : defaultPlayoffCompetitionKey();
+  });
   const [template, setTemplate] = useState('standar');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!authLoading && !user) navigate('/masuk?next=' + encodeURIComponent('/grup/baru'), { replace: true });
+    if (!authLoading && !user) {
+      const dest = window.location.pathname + window.location.search;
+      navigate('/masuk?next=' + encodeURIComponent(dest), { replace: true });
+    }
   }, [user, authLoading, navigate]);
 
   const submit = async (e) => {
@@ -84,6 +91,14 @@ function GrupCreateInner() {
       </header>
 
       <form className="g4-body" style={S.body} onSubmit={submit}>
+        {fromSimulasi && (
+          <div style={{ background: 'var(--g4-win-bg)', color: 'var(--g4-win)', padding: '10px 12px', borderRadius: 'var(--g4-radius-card-sm)', font: '700 12px/1.35 var(--g4-font-ui)' }}>
+            {tx(
+              'Your simulated bracket is saved on this device and ready to lock inside your new grup.',
+              'Bagan simulasimu sudah tersimpan di perangkat ini dan siap dikunci di grup barumu.'
+            )}
+          </div>
+        )}
         <label style={S.label}>
           {tx('Grup name', 'Nama grup')}
           <input

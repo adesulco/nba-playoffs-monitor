@@ -7,8 +7,8 @@
  * passes through /auth/callback). Idempotent: claimed picks leave the queue,
  * the invite is cleared once joined, and concurrent callers share one run.
  */
-import { claimGuestPredictions, getGuestInvite, clearGuestInvite } from './guestStore.js';
-import { upsertPrediction, joinGrup, leagueDetail } from './api.js';
+import { claimGuestPredictions, claimGuestBrackets, getGuestInvite, clearGuestInvite } from './guestStore.js';
+import { upsertPrediction, upsertBracket, joinGrup, leagueDetail } from './api.js';
 import { trackEvent } from '../lib/analytics.js';
 
 let running = null;
@@ -17,10 +17,12 @@ export function claimGuestAndJoin(source = 'callback') {
   if (running) return running;
   running = (async () => {
     let claim = null;
+    let bracketClaim = null;
     let joined = null;
     const invite = getGuestInvite();
     try {
       claim = await claimGuestPredictions(upsertPrediction);
+      bracketClaim = await claimGuestBrackets(upsertBracket);
       if (invite) {
         const d = await leagueDetail({ code: invite });
         if (d?.ok && d.league?.id) {
@@ -31,9 +33,16 @@ export function claimGuestAndJoin(source = 'callback') {
           clearGuestInvite();
         }
       }
-      trackEvent('pickem_claim_on_login', { source, claimed: claim?.claimed ?? 0, skipped: claim?.skipped ?? 0, invite: !!invite, joined });
+      trackEvent('pickem_claim_on_login', {
+        source,
+        claimed: claim?.claimed ?? 0,
+        brackets_claimed: bracketClaim?.claimed ?? 0,
+        skipped: claim?.skipped ?? 0,
+        invite: !!invite,
+        joined,
+      });
     } catch { /* best-effort: never block a sign-in */ }
-    return { claim, joined, invite };
+    return { claim, bracketClaim, joined, invite };
   })().finally(() => { running = null; });
   return running;
 }

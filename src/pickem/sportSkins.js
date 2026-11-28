@@ -101,7 +101,47 @@ export const SPORT_SKINS = {
       { key: 'set_count', label: { en: 'Set count', id: 'Jumlah set' }, shipped: false },
     ],
     lockVerb: { en: 'First serve', id: 'Servis pertama' },
-    rhythm: { en: 'Weekly', id: 'Mingguan' },
+    rhythm: { en: 'Final Four', id: 'Final Four' },
+    liveTile: 'set',
+  },
+  mlbb: {
+    key: 'mlbb',
+    label: 'Esports',
+    emoji: '🎮',
+    accent: 'var(--g4-sport-mlbb)',
+    accentHex: '#C81E3A',
+    eventUnit: { en: 'Series', id: 'Seri' },
+    primaryPick: 'WL',
+    primaryLabels: [
+      { value: 'H', short: '1' },
+      { value: 'A', short: '2' },
+    ],
+    allowDraw: false,
+    bonusPicks: [
+      { key: 'series_score', label: { en: 'Series score', id: 'Skor seri' }, shipped: true },
+    ],
+    lockVerb: { en: 'Draft lock', id: 'Draft terkunci' },
+    rhythm: { en: 'Double-elim bracket · Bo5 / Bo7', id: 'Bagan double-elim · Bo5 / Bo7' },
+    liveTile: 'game',
+  },
+  badminton: {
+    key: 'badminton',
+    label: 'Bulu Tangkis',
+    emoji: '🏸',
+    accent: 'var(--g4-sport-badminton)',
+    accentHex: '#1F7A3D',
+    eventUnit: { en: 'Match', id: 'Partai' },
+    primaryPick: 'WL',
+    primaryLabels: [
+      { value: 'H', short: '1' },
+      { value: 'A', short: '2' },
+    ],
+    allowDraw: false,
+    bonusPicks: [
+      { key: 'set_score', label: { en: 'Game score (2-0 / 2-1)', id: 'Skor gim (2-0 / 2-1)' }, shipped: true },
+    ],
+    lockVerb: { en: 'First serve', id: 'Servis pertama' },
+    rhythm: { en: 'BWF Knockout · R16 to Final', id: 'Fase Gugur BWF · 16 Besar ke Final' },
     liveTile: 'set',
   },
 };
@@ -129,6 +169,9 @@ export function skinForCompetition(competitionKey, competition) {
   const s = competition?.sport;
   if (s === 'nba' || s === 'basket') return skin('basket');
   if (s === 'motogp') return skin('motogp');
+  if (s === 'esports' || s === 'mlbb') return skin('mlbb');
+  if (s === 'badminton') return skin('badminton');
+  if (s === 'volleyball' || s === 'voli') return skin('voli');
   return skin(DEFAULT_SKIN);
 }
 

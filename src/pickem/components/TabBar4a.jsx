@@ -1,39 +1,27 @@
 /**
- * Bottom tab bar — Main · Grup · Skor · Kabar (R2 screen 4).
+ * Bottom tab bar — Main · Grup · Skor (Playoff Pick'em v3, Decision D5).
  *
- * The locked navigation grammar from #t4: 2px ink top border, tab-bar
- * surface, active = scarlet, inactive = muted, ~22px bottom safe-area
- * padding. Icons come from the inline-SVG set (the canvas's ▲●▶■ were
- * placeholders and explicitly not shipping).
- *
- * Kabar renders muted and inert until Kabar v1 lands in R4 — a tab that
- * navigates nowhere is worse than one that visibly isn't ready yet, and
- * the grammar stays intact either way.
+ * Trimmed from 4 tabs to the focused 3-tab Playoff shell so 100% of navigation
+ * serves the core loop (pick -> grup -> live score). /kabar remains reachable
+ * by direct URL, never crowding the bottom bar.
  */
 
 import { useNavigate } from 'react-router-dom';
-import { IconMain, IconGrup, IconSkor, IconKabar } from './icons4a.jsx';
+import { IconMain, IconGrup, IconSkor } from './icons4a.jsx';
 
-export default function TabBar4a({ active = 'main', grupCode, lang = 'en' }) {
+export default function TabBar4a({ active = 'main', grupCode, lang = 'id' }) {
   const navigate = useNavigate();
   const tx = (en, id) => (lang === 'id' ? id : en);
 
   const tabs = [
-    // '/' is the canonical Main since the 2026-08-15 root flip; '/main'
-    // stays as an alias but the shell's own nav must not send people there.
-    { key: 'main', Icon: IconMain, label: tx('Main', 'Main'), to: '/' },
+    { key: 'main', Icon: IconMain, label: tx('Play', 'Main'), to: '/' },
     {
       key: 'grup',
       Icon: IconGrup,
       label: tx('Grup', 'Grup'),
-      // Straight to the grup when we know which one; otherwise the 4a grup
-      // list. This used to fall back to /pickem/grup — the LEGACY navy
-      // screen — so the new shell's own nav leaked the old website.
       to: grupCode ? `/grup/${grupCode}` : '/grup',
     },
-    { key: 'skor', Icon: IconSkor, label: tx('Skor', 'Skor'), to: '/skor' },
-    // S3 — Kabar is a static digest of the published content (doc 17 S3).
-    { key: 'kabar', Icon: IconKabar, label: tx('Kabar', 'Kabar'), to: '/kabar' },
+    { key: 'skor', Icon: IconSkor, label: tx('Scores', 'Skor'), to: '/skor' },
   ];
 
   return (

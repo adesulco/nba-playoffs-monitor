@@ -41,10 +41,240 @@ const ESPN_FOOTBALL_KO = {
 };
 
 const ROWS = [
+  // ── Playoff Pick'em v3 Portfolio (2027–2028 Tentpoles, Decisions D1–D4) ───
+  {
+    key: 'M8-KO-2027',
+    sport: 'mlbb',
+    season: '2027',
+    tier: 'playoff',
+    topologyKey: 'M8-KO-2027',
+    label: { en: 'M8 Knockout', id: 'M8 Knockout' },
+    labelShort: { en: 'M8', id: 'M8' },
+    labelLong: { en: 'M8 World Championship 2027 Knockouts', id: 'Fase Gugur M8 World Championship 2027' },
+    structure: 'double-elim',
+    rounds: { unit: 'R', count: 6 },
+    features: { match: true, score: true, jagoan: true, bracket: true, survivor: false },
+    window: { opensAt: '2027-01-10T00:00:00Z', closesAt: '2027-01-25T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'manual', code: 'mlbb.m8', mode: 'window', status: 'upcoming',
+      from: '2027-01-14', to: '2027-01-23',
+      tricodeOverrides: {},
+    },
+    teamsLeagueKey: 'MLBB-M8',
+    scoringTemplate: 'standar',
+    sportAccent: '#C81E3A',
+  },
+  {
+    key: 'ID-Masters-2027',
+    sport: 'badminton',
+    season: '2027',
+    tier: 'playoff',
+    topologyKey: 'ID-Masters-2027',
+    label: { en: 'Indonesia Masters', id: 'Indonesia Masters' },
+    labelShort: { en: 'IDM', id: 'IDM' },
+    labelLong: { en: 'Indonesia Masters 2027 · BWF Super 500', id: 'Indonesia Masters 2027 · Istora' },
+    structure: 'single-elim',
+    rounds: { unit: 'R', count: 4 },
+    features: { match: true, score: true, jagoan: true, bracket: true, survivor: false },
+    window: { opensAt: '2027-02-05T00:00:00Z', closesAt: '2027-02-15T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'manual', code: 'bwf.idmasters', mode: 'window', status: 'upcoming',
+      from: '2027-02-09', to: '2027-02-14',
+      tricodeOverrides: {},
+    },
+    teamsLeagueKey: 'BWF-2027',
+    scoringTemplate: 'standar',
+    sportAccent: '#1F7A3D',
+  },
+  {
+    key: 'UCL-KO-2026-27',
+    sport: 'bola',
+    season: '2026-27',
+    tier: 'playoff',
+    topologyKey: 'UCL-KO-2026-27',
+    label: { en: 'UCL Knockouts', id: 'Fase Gugur UCL' },
+    labelShort: { en: 'UCL', id: 'UCL' },
+    labelLong: { en: 'UEFA Champions League 2026/27 Knockouts', id: 'Fase Gugur UCL 2026/27 · Edisi Sahur' },
+    structure: 'two-leg-ko',
+    rounds: { unit: 'R', count: 5 },
+    features: { match: true, score: true, jagoan: true, bracket: true, survivor: false },
+    window: { opensAt: '2027-02-12T00:00:00Z', closesAt: '2027-06-07T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'espn', code: 'uefa.champions', mode: 'window', status: 'upcoming',
+      from: '2027-02-16', to: '2027-06-05',
+      roundMap: ESPN_FOOTBALL_KO,
+      tricodeOverrides: {},
+    },
+    teamsLeagueKey: 'UCL-2026-27',
+    scoringTemplate: 'standar',
+    sportAccent: '#1E3FBB',
+  },
+  {
+    key: 'NBA-Playoffs-2027',
+    sport: 'basket',
+    season: '2026-27',
+    tier: 'playoff',
+    topologyKey: 'NBA-Playoffs-2027',
+    label: { en: 'NBA Playoffs', id: 'NBA Playoff' },
+    labelShort: { en: 'NBA PO', id: 'NBA PO' },
+    labelLong: { en: 'NBA Playoffs 2027', id: 'NBA Playoff 2027' },
+    structure: 'playoff-series',
+    rounds: { unit: 'R', count: 4 },
+    features: { match: true, score: true, jagoan: true, bracket: true, survivor: false },
+    window: { opensAt: '2027-04-13T00:00:00Z', closesAt: '2027-06-25T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'espn', code: 'nba', mode: 'rolling', status: 'upcoming', seasonType: 3,
+      tricodeOverrides: { SA: 'SAS', NY: 'NYK', NO: 'NOP', GS: 'GSW', WSH: 'WAS', UTAH: 'UTA' },
+    },
+    teamsLeagueKey: 'NBA',
+    scoringTemplate: 'standar',
+    sportAccent: '#E07B00',
+  },
+  {
+    key: 'SUDIRMAN-2027',
+    sport: 'badminton',
+    season: '2027',
+    tier: 'playoff',
+    topologyKey: 'SUDIRMAN-2027',
+    label: { en: 'Sudirman Cup', id: 'Piala Sudirman' },
+    labelShort: { en: 'SUD', id: 'SUD' },
+    labelLong: { en: 'BWF Sudirman Cup Finals 2027', id: 'Piala Sudirman 2027 · Beregu Campuran' },
+    structure: 'tournament',
+    rounds: { unit: 'MD', count: 6 },
+    features: { match: true, score: true, jagoan: true, bracket: true, survivor: false },
+    window: { opensAt: '2027-04-18T00:00:00Z', closesAt: '2027-05-03T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'manual', code: 'bwf.sudirman', mode: 'window', status: 'upcoming',
+      from: '2027-04-21', to: '2027-05-02',
+      tricodeOverrides: {},
+    },
+    teamsLeagueKey: 'BWF-NATIONS',
+    scoringTemplate: 'standar',
+    sportAccent: '#1F7A3D',
+  },
+  {
+    key: 'EPL-RUNIN-2027',
+    sport: 'bola',
+    season: '2026-27',
+    tier: 'playoff',
+    label: { en: 'EPL Title Run-In', id: 'Pekan Penentuan EPL' },
+    labelShort: { en: 'EPL Final', id: 'EPL Final' },
+    labelLong: { en: 'Premier League 2026/27 · Final 5 Weeks', id: '5 Pekan Penentuan EPL 2026/27' },
+    structure: 'league',
+    rounds: { unit: 'MW', count: 5 },
+    features: { match: true, score: true, jagoan: true, bracket: false, survivor: false },
+    window: { opensAt: '2027-04-24T00:00:00Z', closesAt: '2027-05-30T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'espn', code: 'eng.1', mode: 'rolling', status: 'upcoming',
+      tricodeOverrides: {},
+    },
+    teamsLeagueKey: 'EPL-2026-27',
+    scoringTemplate: 'standar',
+    sportAccent: '#D92D1C',
+  },
+  {
+    key: 'LIGA1-RUNIN-2027',
+    sport: 'bola',
+    season: '2026-27',
+    tier: 'playoff',
+    label: { en: 'Super League Run-In', id: 'Penentuan Super League' },
+    labelShort: { en: 'SL Final', id: 'SL Final' },
+    labelLong: { en: 'Super League Indonesia 2026/27 · Final 5 Weeks', id: '5 Pekan Penentuan Super League 2026/27' },
+    structure: 'league',
+    rounds: { unit: 'MW', count: 5 },
+    features: { match: true, score: true, jagoan: true, bracket: false, survivor: false },
+    window: { opensAt: '2027-04-25T00:00:00Z', closesAt: '2027-06-05T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'espn', code: 'idn.1', mode: 'rolling', status: 'upcoming',
+      tricodeOverrides: { BHA: 'BHY', PER: 'PJP', BALI: 'BLU', PSBS: 'BIA', PSIM: 'PSI', SPFC: 'SPD' },
+    },
+    teamsLeagueKey: 'LIGA1-2026-27',
+    scoringTemplate: 'standar',
+    sportAccent: '#D92D1C',
+  },
+  {
+    key: 'ID-Open-2027',
+    sport: 'badminton',
+    season: '2027',
+    tier: 'playoff',
+    topologyKey: 'ID-Open-2027',
+    label: { en: 'Indonesia Open', id: 'Indonesia Open' },
+    labelShort: { en: 'IDO', id: 'IDO' },
+    labelLong: { en: 'Indonesia Open 2027 · BWF Super 1000', id: 'Indonesia Open 2027 · Super 1000 Istora' },
+    structure: 'single-elim',
+    rounds: { unit: 'R', count: 4 },
+    features: { match: true, score: true, jagoan: true, bracket: true, survivor: false },
+    window: { opensAt: '2027-05-24T00:00:00Z', closesAt: '2027-06-07T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'manual', code: 'bwf.idopen', mode: 'window', status: 'upcoming',
+      from: '2027-05-27', to: '2027-06-06',
+      tricodeOverrides: {},
+    },
+    teamsLeagueKey: 'BWF-2027',
+    scoringTemplate: 'standar',
+    sportAccent: '#1F7A3D',
+  },
+  {
+    key: 'IBL-Playoffs-2027',
+    sport: 'basket',
+    season: '2027',
+    tier: 'playoff',
+    topologyKey: 'IBL-Playoffs-2027',
+    label: { en: 'IBL Playoffs', id: 'Playoff IBL' },
+    labelShort: { en: 'IBL PO', id: 'IBL PO' },
+    labelLong: { en: 'IBL Indonesia 2027 Best-of-5 Playoffs', id: 'Playoff IBL 2027 · Best-of-5' },
+    structure: 'playoff-series',
+    rounds: { unit: 'R', count: 3 },
+    features: { match: true, score: true, jagoan: true, bracket: true, survivor: false },
+    window: { opensAt: '2027-06-05T00:00:00Z', closesAt: '2027-07-25T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'manual', code: 'ibl.playoffs', mode: 'window', status: 'upcoming',
+      from: '2027-06-10', to: '2027-07-20',
+      tricodeOverrides: {},
+    },
+    teamsLeagueKey: 'IBL-2027',
+    scoringTemplate: 'standar',
+    sportAccent: '#E07B00',
+  },
+  {
+    key: 'AFC-ASIAN-CUP-2027',
+    sport: 'bola',
+    season: '2027-28',
+    tier: 'playoff',
+    topologyKey: 'AFC-ASIAN-CUP-2027',
+    label: { en: 'Asian Cup', id: 'Piala Asia' },
+    labelShort: { en: 'AFC', id: 'AFC' },
+    labelLong: { en: 'AFC Asian Cup Saudi Arabia 2027 · Timnas Garuda', id: 'Piala Asia AFC 2027 · Timnas Garuda' },
+    structure: 'tournament',
+    rounds: { unit: 'MD', count: 7 },
+    features: { match: true, score: true, jagoan: true, bracket: true, survivor: false },
+    window: { opensAt: '2027-12-15T00:00:00Z', closesAt: '2028-01-23T00:00:00Z' },
+    lock: { policy: 'kickoff', offsetMin: 0 },
+    feed: {
+      provider: 'espn', code: 'afc.cup', mode: 'window', status: 'upcoming',
+      from: '2027-12-23', to: '2028-01-21',
+      roundMap: ESPN_FOOTBALL_KO,
+      tricodeOverrides: {},
+    },
+    teamsLeagueKey: 'AFC2027',
+    scoringTemplate: 'standar',
+    sportAccent: '#D92D1C',
+  },
+  // ── Legacy regular-season & historical rows (kept for DB/backfill continuity)
   {
     key: 'EPL-2026-27',
     sport: 'bola',
     season: '2026-27',
+    tier: 'legacy-regular',
     label: { en: 'Premier League', id: 'Liga Inggris' },
     labelShort: { en: 'EPL', id: 'EPL' },
     labelLong: { en: 'Premier League 2026/27', id: 'Liga Inggris 2026/27' },
@@ -202,12 +432,23 @@ const ROWS = [
 ];
 
 // ── Derived legacy fields (keep existing screens working) ───────────────────
-const LEGACY_SPORT = { bola: 'football', basket: 'nba', motogp: 'motogp', voli: 'volleyball' };
+const LEGACY_SPORT = {
+  bola: 'football',
+  basket: 'nba',
+  motogp: 'motogp',
+  voli: 'volleyball',
+  mlbb: 'esports',
+  badminton: 'badminton',
+};
 
 function withLegacy(row) {
-  const shape = row.structure === 'playoff-series' ? 'playoff-series' : 'tournament-bracket';
+  const shape = row.structure === 'playoff-series' ? 'playoff-series'
+    : row.structure === 'double-elim' ? 'double-elim'
+    : row.structure === 'two-leg-ko' ? 'two-leg-ko'
+    : 'tournament-bracket';
   return Object.freeze({
     ...row,
+    tier: row.tier || 'archive',
     // legacy scalar label (Indonesian, as the old registry had it)
     labelText: row.label.id,
     legacySport: row.key === 'WC2026' ? 'fifa_wc' : LEGACY_SPORT[row.sport] || row.sport,
@@ -241,12 +482,59 @@ export const COMPETITIONS = Object.freeze(Object.fromEntries(
 ));
 
 /** Order used for the default-competition scan and any competition pills. */
-export const COMPETITION_ORDER = ['EPL-2026-27', 'LIGA1-2026-27', 'NBA-2026-27', 'AFF2026', 'NBA-Playoffs-2026', 'WC2026'];
+export const COMPETITION_ORDER = [
+  'M8-KO-2027',
+  'ID-Masters-2027',
+  'UCL-KO-2026-27',
+  'NBA-Playoffs-2027',
+  'SUDIRMAN-2027',
+  'EPL-RUNIN-2027',
+  'LIGA1-RUNIN-2027',
+  'ID-Open-2027',
+  'IBL-Playoffs-2027',
+  'AFC-ASIAN-CUP-2027',
+  'EPL-2026-27',
+  'LIGA1-2026-27',
+  'NBA-2026-27',
+  'AFF2026',
+  'NBA-Playoffs-2026',
+  'WC2026',
+];
 
-/** The rows the data pipeline should run for (feed not 'done'). */
-export const ACTIVE_FEED_KEYS = ROWS.filter((r) => r.feed.status !== 'done').map((r) => r.key);
+/** Playoff Pick'em v3 tentpoles (excludes legacy full-season & finished 2026 events). */
+export const PLAYOFF_COMPETITION_ORDER = ROWS.filter((r) => r.tier === 'playoff').map((r) => r.key);
+
+/** Competitions with a 5-shape interactive Playoff Bracket / Simulator. */
+export const BRACKET_COMPETITION_ORDER = ROWS.filter((r) => r.features.bracket && r.topologyKey).map((r) => r.key);
+
+/** The rows the data pipeline should run for right now ('live' or 'pending'). */
+export const ACTIVE_FEED_KEYS = ROWS.filter((r) => r.feed.status === 'live' || r.feed.status === 'pending').map((r) => r.key);
 
 const STORAGE_KEY = 'gibol:pickem:competition';
+
+/**
+ * Default Playoff tentpole for create-grup, bracket, and simulator surfaces:
+ * first active `tier: 'playoff'` window, else soonest upcoming Playoff window.
+ */
+export function defaultPlayoffCompetitionKey(now = new Date()) {
+  const t = now.getTime();
+  for (const key of PLAYOFF_COMPETITION_ORDER) {
+    const c = COMPETITIONS[key];
+    if (c && t >= new Date(c.openAt).getTime() && t <= new Date(c.closeAt).getTime()) return key;
+  }
+  let soonest = null;
+  let soonestTs = Infinity;
+  for (const key of PLAYOFF_COMPETITION_ORDER) {
+    const c = COMPETITIONS[key];
+    if (!c) continue;
+    const opens = new Date(c.openAt).getTime();
+    if (opens > t && opens < soonestTs) {
+      soonest = key;
+      soonestTs = opens;
+    }
+  }
+  return soonest || PLAYOFF_COMPETITION_ORDER[0] || COMPETITION_ORDER[0];
+}
 
 /**
  * Default competition for a fresh visitor: first row (in COMPETITION_ORDER)

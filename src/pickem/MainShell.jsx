@@ -22,7 +22,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { listFixtures, listPredictions, listMyGrups } from './api.js';
 import { listGuestPredictions } from './guestStore.js';
-import { COMPETITIONS, COMPETITION_ORDER, defaultCompetitionKey } from './competitions.js';
+import { COMPETITIONS, COMPETITION_ORDER, defaultCompetitionKey, defaultPlayoffCompetitionKey } from './competitions.js';
 import { skinForCompetition } from './sportSkins.js';
 import { MatchCard } from './components/primitives4a.jsx';
 import Countdown4a from './components/Countdown4a.jsx';
@@ -187,6 +187,8 @@ function MainShellInner() {
   }, [openFixtures.length, loading, now, competitionKey, lang]);
 
   const primaryGrup = grups[0] || null;
+  const playoffKey = useMemo(() => defaultPlayoffCompetitionKey(new Date(now)), [now]);
+  const playoffComp = COMPETITIONS[playoffKey];
   const isNight = scheduledTheme() === 'dark';
   const dateLabel = new Date().toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-GB', {
     day: 'numeric', month: 'short', timeZone: 'Asia/Jakarta',
@@ -198,11 +200,9 @@ function MainShellInner() {
 
   return (
     <div className="g4-shell g4-has-rail" style={S.shell}>
-      {/* Indexable since the root flip (2026-08-13) — this IS the homepage.
-          Title keeps the site's search identity; description sells the loop. */}
       <SEO
-        title="gibol — Tebak Skor Liga Inggris & multi-sport Pick'em bareng grup"
-        description="Pick pertandingan dalam 3 tap, ajak grup WhatsApp kamu, pantau klasemen. Gratis — semua demi gengsi."
+        title="gibol — Playoff Pick'em & Simulasi Bagan bareng grup WhatsApp"
+        description="Simulasikan skenario playoff dalam 30 detik, kunci bagan & tebak skor bareng grup WhatsApp kamu. Gratis — murni adu gengsi."
       />
 
       {/* Header — logo + Edisi Malam · date + avatar, over a 2px ink rule */}
@@ -361,6 +361,43 @@ function MainShellInner() {
           </button>
         )}
 
+        {/* Playoff Pick'em v3 — Zero-login Dream Bracket Simulator + Official Bracket CTA */}
+        {playoffComp && (
+          <div style={S.playoffCard}>
+            <div style={S.playoffTop}>
+              <span style={S.playoffBadge}>
+                {tx('PLAYOFF BRACKET', 'SIMULASI & BAGAN PLAYOFF')}
+              </span>
+              <span style={S.playoffSeason}>{playoffComp.season}</span>
+            </div>
+            <div style={S.playoffTitle}>
+              {lang === 'id' ? playoffComp.labelLongI18n.id : playoffComp.labelLongI18n.en}
+            </div>
+            <p style={S.playoffDesc}>
+              {tx(
+                'Build your champion scenario in 30 seconds — no account needed — then challenge your WhatsApp grup.',
+                'Racik skenario juara versi kamu dalam 30 detik tanpa akun, lalu tantang grup WhatsApp kamu.'
+              )}
+            </p>
+            <div style={S.playoffBtns}>
+              <button
+                type="button"
+                onClick={() => navigate(`/simulasi/${encodeURIComponent(playoffKey)}`)}
+                style={S.playoffPrimary}
+              >
+                {tx('Simulate Bracket →', 'Coba Simulasi →')}
+              </button>
+              <button
+                type="button"
+                onClick={() => navigate(`/bagan/${encodeURIComponent(playoffKey)}`)}
+                style={S.playoffGhost}
+              >
+                {tx('Official Bracket', 'Kunci Bagan')}
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* S3 — Papan Nasional entry. */}
         <button type="button" onClick={() => navigate('/papan')} style={S.papanRow}>
           <span style={{ flex: 1, textAlign: 'left' }}>
@@ -449,6 +486,29 @@ const S = {
     appearance: 'none', border: 'none', width: '100%', background: 'var(--g4-ink-block)', color: 'var(--g4-paper)',
     borderRadius: 'var(--g4-radius-card)', padding: '13px 16px', display: 'flex', alignItems: 'center', gap: 10,
     cursor: 'pointer', boxSizing: 'border-box', marginBottom: 'var(--g4-gap-card-sm)',
+  },
+  playoffCard: {
+    background: 'var(--g4-surface)',
+    border: '1.5px solid var(--g4-text)',
+    borderRadius: 'var(--g4-radius-card)',
+    padding: '14px 16px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+  },
+  playoffTop: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
+  playoffBadge: { font: '700 10px/1 var(--g4-font-ui)', letterSpacing: '0.5px', color: 'var(--g4-accent)' },
+  playoffSeason: { font: '700 10px/1 var(--g4-font-ui)', color: 'var(--g4-text-muted)' },
+  playoffTitle: { font: '800 17px/1.12 var(--g4-font-display)', letterSpacing: 'var(--g4-track-display)' },
+  playoffDesc: { font: '500 12px/1.45 var(--g4-font-ui)', color: 'var(--g4-text-muted)', margin: 0 },
+  playoffBtns: { display: 'flex', gap: 8, marginTop: 2 },
+  playoffPrimary: {
+    appearance: 'none', border: 'none', flex: 1, background: 'var(--g4-scarlet)', color: '#fff',
+    borderRadius: 'var(--g4-radius-pill)', padding: '11px 14px', font: '700 12px/1 var(--g4-font-ui)', cursor: 'pointer',
+  },
+  playoffGhost: {
+    appearance: 'none', border: '1.5px solid var(--g4-text)', background: 'transparent', color: 'var(--g4-text)',
+    borderRadius: 'var(--g4-radius-pill)', padding: '11px 14px', font: '700 12px/1 var(--g4-font-ui)', cursor: 'pointer',
   },
   heroBody: { padding: '14px 14px 12px' },
   heroLine: {

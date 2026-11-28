@@ -83,6 +83,21 @@ function moment(type, p) {
         ],
         cta: p.code ? `Berani coba? → gibol.co/gugur/${p.code}` : 'gibol.co',
       };
+    case 'g4-bracket':
+      return {
+        context: p.context || 'SIMULASI PLAYOFF',
+        line1: p.champ || 'Juara',
+        line2: 'versi baganmu.',
+        stats: [
+          p.runnerUp ? `${p.comp || 'Playoff'} · Final vs ${p.runnerUp}` : (p.comp || 'Bagan Playoff'),
+          p.sub || 'Berani adu skenario di grup?',
+        ],
+        cta: p.code
+          ? `Adu bagan → gibol.co/g/${p.code}`
+          : p.slug
+            ? `Coba skenariomu → gibol.co/simulasi/${p.slug}`
+            : 'gibol.co/simulasi',
+      };
     case 'g4-invite':
     default:
       return {
@@ -259,7 +274,7 @@ export function buildShare4a(type, params) {
   );
 }
 
-export const SHARE4A_TYPES = ['g4-juara', 'g4-streak', 'g4-matchday', 'g4-invite', 'g4-gugur'];
+export const SHARE4A_TYPES = ['g4-juara', 'g4-streak', 'g4-matchday', 'g4-invite', 'g4-gugur', 'g4-bracket'];
 
 /** Pixel size for a given request, so the caller can set ImageResponse. */
 export function share4aSize(params) {

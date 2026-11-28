@@ -6,11 +6,22 @@
  */
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { sendMagicLink } from './api.js';
+import { sendMagicLink, signInWithGoogle } from './api.js';
 import Logo4a from './components/Logo4a.jsx';
 import { IconChevronLeft } from './components/icons4a.jsx';
 import { useApp } from '../lib/AppContext.jsx';
 import SEO from '../components/SEO.jsx';
+
+function GoogleMark() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z" />
+      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z" />
+      <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z" />
+      <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z" />
+    </svg>
+  );
+}
 
 export default function Login4a() {
   const navigate = useNavigate();
@@ -22,8 +33,20 @@ export default function Login4a() {
 
   const [email, setEmail] = useState('');
   const [sending, setSending] = useState(false);
+  const [oauthBusy, setOauthBusy] = useState(false);
   const [sent, setSent] = useState(false);
   const [err, setErr] = useState(search.get('msg') || null);
+
+  const handleGoogle = async () => {
+    if (oauthBusy || sending) return;
+    setOauthBusy(true);
+    setErr(null);
+    const res = await signInWithGoogle({ next });
+    if (!res?.ok) {
+      setOauthBusy(false);
+      setErr(String(res?.error || tx('Google sign-in unavailable right now', 'Masuk Google belum siap saat ini')));
+    }
+  };
 
   const submit = async (e) => {
     e.preventDefault();
@@ -39,7 +62,7 @@ export default function Login4a() {
 
   return (
     <div className="g4-shell" style={S.shell}>
-      <SEO title={tx('Sign in · gibol.co', 'Masuk · gibol.co')} description={tx('Sign in to Gibol — a login link, no password.', 'Masuk ke Gibol — link login, tanpa password.')} noindex />
+      <SEO title={tx('Sign in · gibol.co', 'Masuk · gibol.co')} description={tx('Sign in to Gibol — 1-tap Google or email link, no password.', 'Masuk ke Gibol — 1-tap Google atau link email, tanpa password.')} noindex />
       <header style={S.header}>
         <button type="button" onClick={() => navigate(-1)} aria-label={tx('Back', 'Kembali')} style={S.back}>
           <IconChevronLeft size={20} />
@@ -60,11 +83,28 @@ export default function Login4a() {
           </div>
         ) : (
           <form onSubmit={submit} style={S.card}>
-            <div style={S.eyebrow}>{tx('NO PASSWORD', 'TANPA PASSWORD')}</div>
+            <div style={S.eyebrow}>{tx('1 TAP · NO PASSWORD', '1 TAP · TANPA PASSWORD')}</div>
             <h1 style={S.h1}>{tx('Sign in to Gibol', 'Masuk ke Gibol')}</h1>
             <p style={S.p}>
-              {tx('One link to your email. Your picks and your grups follow you.', 'Satu link ke emailmu. Pick dan grupmu ikut kamu.')}
+              {tx('Claim your picks and join your WhatsApp grup in seconds.', 'Klaim pickmu dan gabung ke grup WhatsApp dalam hitungan detik.')}
             </p>
+
+            <button
+              type="button"
+              onClick={handleGoogle}
+              disabled={oauthBusy || sending}
+              style={{ ...S.googleBtn, opacity: oauthBusy ? 0.65 : 1 }}
+            >
+              <GoogleMark />
+              <span>{oauthBusy ? tx('Opening Google…', 'Membuka Google…') : tx('Continue with Google', 'Lanjutkan dengan Google')}</span>
+            </button>
+
+            <div style={S.dividerRow}>
+              <span style={S.dividerLine} />
+              <span style={S.dividerText}>{tx('or use email link', 'atau pakai link email')}</span>
+              <span style={S.dividerLine} />
+            </div>
+
             <label style={S.label}>
               Email
               <input
@@ -75,11 +115,10 @@ export default function Login4a() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="nama@email.com"
                 style={S.input}
-                autoFocus
               />
             </label>
             {err && <p style={S.error}>{err}</p>}
-            <button type="submit" disabled={sending} style={{ ...S.cta, opacity: sending ? 0.6 : 1 }}>
+            <button type="submit" disabled={sending || oauthBusy} style={{ ...S.cta, opacity: sending ? 0.6 : 1 }}>
               {sending ? tx('Sending…', 'Mengirim…') : tx('Send me the link →', 'Kirim link-nya →')}
             </button>
             <p style={S.terms}>
@@ -106,6 +145,24 @@ const S = {
   label: { font: '700 11px/1 var(--g4-font-ui)', letterSpacing: '0.4px', textTransform: 'uppercase', color: 'var(--g4-text-muted)', display: 'flex', flexDirection: 'column', gap: 8 },
   input: { font: '600 16px/1.2 var(--g4-font-ui)', padding: '12px 14px', borderRadius: 'var(--g4-radius-card)', border: '1.5px solid var(--g4-text)', background: 'var(--g4-bg)', color: 'var(--g4-text)', textTransform: 'none', letterSpacing: 0 },
   error: { font: '600 12px/1.3 var(--g4-font-ui)', color: 'var(--g4-scarlet)', margin: 0 },
+  googleBtn: {
+    appearance: 'none',
+    border: '1.5px solid var(--g4-text)',
+    background: 'var(--g4-bg)',
+    color: 'var(--g4-text)',
+    font: '700 15px/1 var(--g4-font-ui)',
+    padding: '14px 16px',
+    borderRadius: 'var(--g4-radius-pill)',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    marginTop: 2,
+  },
+  dividerRow: { display: 'flex', alignItems: 'center', gap: 10, margin: '2px 0' },
+  dividerLine: { flex: 1, height: 1, background: 'var(--g4-border)' },
+  dividerText: { font: '600 11px/1 var(--g4-font-ui)', color: 'var(--g4-text-muted)' },
   cta: { appearance: 'none', border: 'none', background: 'var(--g4-scarlet)', color: '#fff', font: '700 15px/1 var(--g4-font-ui)', padding: '15px 16px', borderRadius: 'var(--g4-radius-pill)', cursor: 'pointer' },
   ghost: { appearance: 'none', border: '1.5px solid var(--g4-text)', background: 'transparent', color: 'var(--g4-text)', font: '700 13px/1 var(--g4-font-ui)', padding: '12px 16px', borderRadius: 'var(--g4-radius-pill)', cursor: 'pointer' },
   terms: { font: '500 11px/1.4 var(--g4-font-ui)', color: 'var(--g4-text-muted)', margin: 0 },

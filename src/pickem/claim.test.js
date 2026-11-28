@@ -3,11 +3,13 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const state = { invite: null, cleared: 0 };
 vi.mock('./guestStore.js', () => ({
   claimGuestPredictions: vi.fn(async () => ({ ok: true, claimed: 2, skipped: 0, failed: 0 })),
+  claimGuestBrackets: vi.fn(async () => ({ ok: true, claimed: 1 })),
   getGuestInvite: () => state.invite,
   clearGuestInvite: () => { state.cleared += 1; state.invite = null; },
 }));
 vi.mock('./api.js', () => ({
   upsertPrediction: vi.fn(),
+  upsertBracket: vi.fn(),
   leagueDetail: vi.fn(async ({ code }) => (code === 'Gone' ? { ok: false, error: 'League not found' } : { ok: true, league: { id: 'L1' } })),
   joinGrup: vi.fn(async () => ({ ok: true })),
 }));

@@ -4,7 +4,7 @@ What Gibol is, who it is for, and what it refuses to be. Condensed on 2026-10-01
 
 ## The one paragraph
 
-Gibol is Indonesia's free, multi-sport Pick'em: you open a WhatsApp invite, lock a pick in three taps without an account, and climb a klasemen with people you actually know. The sport hubs (Premier League, Liga 1, NBA, F1, tennis, World Cup) are SEO assets that feed the loop; the loop is the product. No odds, no money, no betting vocabulary, ever. Gengsi is the currency.
+Gibol is Indonesia's free, prestige-only **Playoff Pick'em**: you simulate a dream bracket in 30 seconds without logging in (`/simulasi`), challenge your WhatsApp grup (`/g/:code`), lock your tournament bracket (`/bagan`) plus round-by-round match picks, and climb a klasemen with people you actually know. Focusing on **short, high-stakes Playoff & Knockout windows** (MLBB M8/MPL, BWF Istora Super 500/1000 & Sudirman, UCL Knockouts, NBA/IBL Playoffs, Timnas Garuda Cups, and 5-week Liga 1/EPL Title Run-Ins) eliminates 38-week regular-season fatigue. No odds, no money prizes, no betting vocabulary, ever. Gengsi is the currency.
 
 ## Who
 
@@ -18,11 +18,13 @@ invite → pick (3 taps, no login wall) → lock at kickoff → scored by the cr
 
 ## Mechanics (named, never renamed)
 
-**Tebak Skor** (exact score 5 · result + margin 3 · result 2 · **Nyaris** 1), **jagoan ★** (one per matchweek, ×2), underdog (×1.5 under 30 % consensus), **Gugur** (survivor: one team a week, draw = out, life per grup), **colek** (nudge via WA), **Papan Nasional** (every grup, one board), streak board. Full numbers and edge cases: `02-PLATFORM-CONTRACT.md` §1.
+1. **Skenario & Dream Bracket Simulator (`/simulasi/:comp`)** — zero-login, zero-DB-cost top-of-funnel sandbox → 1080×1080 dark Satori Champion Card (`g4-bracket`) → 1-tap WhatsApp grup creation.
+2. **5-Shape Playoff Bracket (`/bagan/:comp`) + `Babak Baru`** — `single-elim`, `two-leg-ko`, `playoff-series` (series length bonus), `double-elim` (Upper + Lower `loserOf`), and `group-plus-ko`, plus **`Babak Baru`** (0.75× Second Chance re-entry per knockout stage so busted brackets never churn).
+3. **Tebak Skor** (exact score 5 · result + margin 3 · result 2 · **Nyaris** 1), **jagoan ★** (one per round, ×2), underdog (×1.5 under 30 % consensus), **colek** (nudge via WA), **Papan Nasional** (every grup, one board). (`Gugur` survivor is parked/disabled on new Playoff tentpoles). Full numbers: `02-PLATFORM-CONTRACT.md` §1.
 
 ## Surfaces
 
-Main (`/`), Grup (`/grup`, `/grup/:code`, `/grup/baru`), Skor (`/skor`), Kabar (`/kabar`, static digest), pick sheet (`/pick/:id`), invite landing (`/g/:code`), Gugur (`/gugur/:code`), Papan Nasional (`/papan`), rules (`/aturan`), sign-in (`/masuk`), profile (`/profil`). Mobile-first at 390 px; desktop is CSS-only (`03-DESIGN.md`).
+3-Tab Pick'em Shell (`Main · Grup · Skor`): Main (`/`), Grup (`/grup`, `/grup/:code`, `/grup/baru`), Skor (`/skor`), Simulator (`/simulasi`, `/simulasi/:comp`), Playoff Bracket (`/bagan`, `/bagan/:comp`), pick sheet (`/pick/:id`), invite landing (`/g/:code`), Papan Nasional (`/papan`), rules (`/aturan`), sign-in (`/masuk` — 1-tap Google OAuth + Magic Link), profile (`/profil`). Bahasa Indonesia (`id`) by default (`D6`). Mobile-first at 390 px; desktop is CSS-only (`03-DESIGN.md`).
 
 ## Money
 

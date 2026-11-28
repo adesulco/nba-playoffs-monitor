@@ -22,6 +22,7 @@
 
 const DEVICE_KEY = 'gibol:pickem:device-id';
 const QUEUE_KEY = 'gibol:pickem:guest-predictions';
+const BRACKET_QUEUE_KEY = 'gibol:pickem:guest-brackets';
 const NUDGE_KEY = 'gibol:pickem:nudged';
 const INVITE_KEY = 'gibol:pickem:guest-invite';
 
@@ -223,4 +224,72 @@ export async function claimGuestPredictions(upsertFn) {
 
   writeQueue(map);
   return { ok: failed === 0, claimed, skipped, failed, failures };
+}
+
+// ── Playoff Pick'em v3 — Guest Bracket / Simulator Store ────────────────────
+function readBracketQueue() {
+  if (!isBrowser) return {};
+  try {
+    const raw = localStorage.getItem(BRACKET_QUEUE_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function writeBracketQueue(map) {
+  if (!isBrowser) return;
+  try { localStorage.setItem(BRACKET_QUEUE_KEY, JSON.stringify(map)); } catch {}
+}
+
+export function saveGuestBracket({ competition, season = '2027', entryPhase = 'full', state, slots }) {
+  if (!isBrowser || !competition) return null;
+  const map = readBracketQueue();
+  const key = `${competition}::${entryPhase || 'full'}`;
+  map[key] = {
+    competition,
+    season,
+    entry_phase: entryPhase || 'full',
+    state,
+    slots: Array.isArray(slots) ? slots : [],
+    updated_at: new Date().toISOString(),
+  };
+  writeBracketQueue(map);
+  return map[key];
+}
+
+export function getGuestBracket(competition, entryPhase = 'full') {
+  if (!competition) return null;
+  const map = readBracketQueue();
+  return map[`${competition}::${entryPhase || 'full'}`] || null;
+}
+
+export function claimGuestBrackets(upsertBracketFn) {
+  if (!isBrowser || typeof upsertBracketFn !== 'function') {
+    return Promise.resolve({ ok: true, claimed: 0 });
+  }
+  return (async () => {
+    const map = readBracketQueue();
+    const entries = Object.entries(map);
+    if (!entries.length) return { ok: true, claimed: 0 };
+    let claimed = 0;
+    for (const [k, b] of entries) {
+      if (!Array.isArray(b?.slots) || !b.slots.length) continue;
+      try {
+        const res = await upsertBracketFn({
+          competition: b.competition,
+          season: b.season || '2027',
+          entry_phase: b.entry_phase || 'full',
+          slots: b.slots,
+        });
+        if (res?.ok || /locked/i.test(String(res?.error || ''))) {
+          delete map[k];
+          if (res?.ok) claimed++;
+        }
+      } catch {}
+    }
+    writeBracketQueue(map);
+    return { ok: true, claimed };
+  })();
 }

@@ -4,7 +4,10 @@ import { trackEvent } from './analytics.js';
 import { brandVariant } from './flags.js';
 
 const THEME_STORAGE_KEY = 'gibol:theme';
-const LANG_STORAGE_KEY = 'gibol:lang';
+// v0.90.0 (Decision D6) — key versioned :v2 for the Bahasa Indonesia default
+// flip. Prior builds auto-saved 'en' into 'gibol:lang' on every first visit,
+// which would otherwise strand returning Indonesian visitors in English.
+const LANG_STORAGE_KEY = 'gibol:lang:v2';
 const ACCENT_STORAGE_KEY = 'gibol:accent';
 // v0.80.0 — key versioned :v2 for the paper flip. The pre-flip effect
 // auto-saved 'default' for EVERY visitor (not just togglers), so without a
@@ -97,16 +100,24 @@ export function AppProvider({ children }) {
 
   const [lang, setLang] = useState(() => {
     try {
-      // Respect the user's explicit choice if they've toggled before.
-      // Internal storage uses ISO 639-1 'id'; the v2 UI labels it 'BI'.
-      // 'bi' is accepted as a synonym for back-compat and mapped to 'id'.
+      const url = new URL(window.location.href);
+      const qp = url.searchParams.get('lang');
+      if (qp === 'id' || qp === 'en') return qp;
+      if (qp === 'bi') return 'id';
       const saved = localStorage.getItem(LANG_STORAGE_KEY);
       if (saved === 'en' || saved === 'id') return saved;
       if (saved === 'bi') return 'id';
+      // Decision D6 — Bahasa Indonesia ('id') is the primary default. Switch
+      // automatically to 'en' only when the visitor is clearly outside
+      // Indonesian timezones AND running a non-ID/MS browser locale.
+      const tz = Intl.DateTimeFormat?.().resolvedOptions?.().timeZone || '';
+      const isIndoTz = /^Asia\/(Jakarta|Makassar|Jayapura|Pontianak)$/i.test(tz);
+      const navLang = String(navigator?.language || '').toLowerCase();
+      if (navLang && !navLang.startsWith('id') && !navLang.startsWith('ms') && tz && !isIndoTz) {
+        return 'en';
+      }
     } catch {}
-    // Default to English for all first-time visitors regardless of browser locale.
-    // Users can flip to Bahasa Indonesia via the ID/EN toggle in the TopBar.
-    return 'en';
+    return 'id';
   });
 
   useEffect(() => {

@@ -28,12 +28,29 @@ import { getSupabaseAdmin, getUserFromAuthHeader } from '../supabaseAdmin.js';
 
 const GROUP_LETTER_IDX = { A: 0, B: 1, C: 2, D: 3, E: 4, F: 5, G: 6, H: 7, I: 8, J: 9, K: 10, L: 11 };
 const VALID_KO_KEYS = ['r32', 'r16', 'qf', 'sf'];
+const VALID_SLOT_TYPES = new Set([
+  'group_rank',
+  'r32_winner',
+  'r16_winner',
+  'qf_winner',
+  'sf_winner',
+  'final_winner',
+  'champion',
+]);
 const KO_SLOT_TYPE = {
   r32:   'r32_winner',
   r16:   'r16_winner',
   qf:    'qf_winner',
   sf:    'sf_winner',
 };
+
+function resolveSeasonKey(season, entryPhase) {
+  const base = String(season || '2027').trim().slice(0, 32);
+  const phase = String(entryPhase || 'full').trim().toLowerCase();
+  if (!phase || phase === 'full') return base;
+  if (!/^[a-z0-9_-]{1,16}$/.test(phase)) return base;
+  return `${base}#${phase}`;
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -48,7 +65,7 @@ export default async function handler(req, res) {
   if (!body) return res.status(400).json({ error: 'Invalid JSON' });
 
   const competition = String(body.competition || '').trim();
-  const season = String(body.season || '2026').trim();
+  const season = resolveSeasonKey(body.season || '2027', body.entry_phase);
   if (!competition) return res.status(400).json({ error: 'competition required' });
   if (competition.length > 60) return res.status(400).json({ error: 'competition too long' });
 
@@ -136,6 +153,24 @@ export default async function handler(req, res) {
         picked_team_code: String(entry.picked_team_code).toUpperCase().slice(0, 3),
       });
     });
+  }
+
+  if (Array.isArray(body.slots)) {
+    const dedup = new Map();
+    for (const s of body.slots) {
+      if (!s || !VALID_SLOT_TYPES.has(s.slot_type)) continue;
+      const idx = Number(s.slot_index);
+      if (!Number.isInteger(idx) || idx < 1 || idx > 64) continue;
+      const code = String(s.picked_team_code || '').trim().toUpperCase().slice(0, 16);
+      if (!/^[A-Z0-9:-]{2,16}$/.test(code)) continue;
+      dedup.set(`${s.slot_type}:${idx}`, {
+        bracket_id: bracketId,
+        slot_type: s.slot_type,
+        slot_index: idx,
+        picked_team_code: code,
+      });
+    }
+    rows.push(...dedup.values());
   }
 
   if (body.final?.picked_team_code) {

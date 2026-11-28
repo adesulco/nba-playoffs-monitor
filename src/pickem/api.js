@@ -357,10 +357,36 @@ export async function upsertBracket(payload) {
       const err = normalizeError(res, data);
       return { ok: false, error: err, schemaReady: !isSchemaMissing(err) };
     }
-    trackOnce('bracket', 'pickem_bracket_saved');
+    trackOnce(`bracket:${payload?.competition || 'wc'}:${payload?.entry_phase || 'full'}`, 'pickem_bracket_saved', {
+      competition: payload?.competition,
+      entry_phase: payload?.entry_phase || 'full',
+      locked: !!payload?.lock,
+    });
+    invalidateReads('get-bracket', 'list-leaderboard', 'league-detail');
     return { ok: true, ...data };
   } catch (err) {
     return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * getPlayoffBracket({ competition, season?, entry_phase? }) → { ok, bracket, slots }
+ * Auth required. Reads the user's saved 5-shape Playoff bracket (or Babak Baru phase).
+ */
+export async function getPlayoffBracket({ competition, season = '2027', entry_phase = 'full' } = {}) {
+  const token = await readBearer();
+  if (!token) return { ok: false, error: 'not_authenticated', bracket: null, slots: [] };
+  try {
+    const { res, data } = await cachedGet(
+      buildUrl('get-bracket', { competition, season, entry_phase }),
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+    if (!res.ok || !data?.ok) {
+      return { ok: false, error: normalizeError(res, data), bracket: null, slots: [] };
+    }
+    return { ok: true, bracket: data.bracket || null, slots: data.slots || [] };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err), bracket: null, slots: [] };
   }
 }
 
@@ -534,7 +560,7 @@ export async function leaderboardNational({ league, board = 'points', limit = 50
 }
 
 /**
- * sendMagicLink({ email, next }) → { ok } — the only auth call screens make.
+ * sendMagicLink({ email, next }) → { ok } — passwordless email sign-in.
  */
 export async function sendMagicLink({ email, next = '/' }) {
   try {
@@ -543,6 +569,27 @@ export async function sendMagicLink({ email, next = '/' }) {
     const { error } = await supabase.auth.signInWithOtp({
       email: String(email).trim(),
       options: { emailRedirectTo: redirectTo, shouldCreateUser: true },
+    });
+    if (error) return { ok: false, error: error.message };
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: String(err?.message || err) };
+  }
+}
+
+/**
+ * signInWithGoogle({ next }) → { ok } — 1-tap Google OAuth via Supabase PKCE
+ * (Playoff Pick'em v3, Decision D7). Lives inside the api.js seam so screens
+ * never import Supabase directly.
+ */
+export async function signInWithGoogle({ next = '/' } = {}) {
+  try {
+    const safeNext = /^\/(?![\/\\])/.test(String(next || '')) ? next : '/';
+    const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(safeNext)}`;
+    trackEvent('pickem_oauth_start', { provider: 'google', next: safeNext });
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo },
     });
     if (error) return { ok: false, error: error.message };
     return { ok: true };

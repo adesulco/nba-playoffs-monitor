@@ -69,6 +69,8 @@ import updateProfileHandler from './_lib/pickem/update-profile.js';
 // v0.89.0 — S3: Papan Nasional + streak board.
 import leaderboardNationalHandler from './_lib/pickem/leaderboard-national.js';
 import enterResultHandler from './_lib/pickem/enter-result.js';
+// v0.90.0 — Playoff Pick'em v3 universal 5-shape bracket reader.
+import getBracketHandler from './_lib/pickem/get-bracket.js';
 
 export default async function handler(req, res) {
   const action = String(req.query?._action || req.query?.action || '').trim().toLowerCase();
@@ -109,6 +111,7 @@ export default async function handler(req, res) {
     case 'update-profile':         return updateProfileHandler(req, res);
     case 'leaderboard-national':   return leaderboardNationalHandler(req, res);
     case 'enter-result':           return enterResultHandler(req, res);
+    case 'get-bracket':            return getBracketHandler(req, res);
     default:
       return res.status(400).json({
         error: 'unknown_action',
@@ -116,7 +119,7 @@ export default async function handler(req, res) {
           'create', 'create-league', 'join-league', 'pick', 'score',
           'list-fixtures', 'upsert-prediction', 'list-leaderboard', 'score-fixture',
           'list-grups', 'list-profile',
-          'upsert-bracket', 'score-bracket',
+          'upsert-bracket', 'score-bracket', 'get-bracket',
           'upsert-survivor-pick', 'list-survivor',
           'list-predictions',
           'update-league-settings', 'league-detail', 'survivor-board', 'merge-guest',

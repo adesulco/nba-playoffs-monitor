@@ -97,6 +97,22 @@
       "destination": "/index.html"
     },
     {
+      "source": "/bagan",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/bagan/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/simulasi",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/simulasi/:path*",
+      "destination": "/index.html"
+    },
+    {
       "source": "/league/:path*",
       "destination": "/index.html"
     },
