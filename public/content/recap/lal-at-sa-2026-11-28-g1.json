@@ -1,0 +1,57 @@
+{
+  "type": "recap",
+  "slug": "lal-at-sa-2026-11-28-g1",
+  "title": "Recap Los Angeles Lakers 96-99 San Antonio Spurs (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Los Angeles Lakers vs San Antonio Spurs (96-99) di —, 28 November 2026.",
+  "body_md": "# San Antonio Spurs Kalahkan Lakers 99-96, Wembanyama dan Castle Tampil Dominan\n\nSan Antonio Spurs menang tipis atas Los Angeles Lakers 99-96 dalam laga reguler season, Senin 28 November 2026 pukul 09.30 WIB. Spurs mengambil keunggulan 1-0 dalam seri tiga pertandingan ini. Luka Doncic cetak 31 poin untuk Lakers, tapi tidak cukup, San Antonio menang di ujung laga lewat free throw-free throw krusial di detik-detik akhir.\n\n---\n\n## Pemain Kunci\n\n**Victor Wembanyama** tampil menekan sepanjang malam: 25 poin, 16 rebound, 2 asis. FG 10-25, dominasinya di area paint dan papan rebound jadi tulang punggung kemenangan Spurs. Wemby juga muncul di momen paling krusial: free throw kedua dengan sisa 1,5 detik mengunci skor 96-99.\n\n**Stephon Castle** melengkapi duo muda San Antonio dengan malam yang impresif: 26 poin, 4 rebound, 9 asis, dengan efisiensi FG 10-15 dan 4-7 dari tiga angka. Castle bukan hanya pencetak poin, 9 asis-nya menunjukkan dia yang menggerakkan seluruh offense Spurs malam ini.\n\nDari sisi Lakers, **Luka Doncic** main habis-habisan: 31 poin, 8 asis, 6 rebound dalam 39 menit. Tapi FG 14-31 dan 3PT 1-13 adalah cermin masalah Lakers lebih luas, terlalu banyak attempt, terlalu sedikit yang masuk. **Austin Reaves** tampil solid dengan 21 poin dan 5-9 dari tiga angka.\n\n---\n\n## Apa yang Angka Bicara\n\nTiga poin tipis menyembunyikan realitas: Spurs unggul di area paint 56-36. Ini bukan sekedar statistik teknis: Lakers gagal melindungi area basket sepanjang malam, dan Wembanyama plus Harper (14 poin dari bangku cadangan) terus menghantam dari dalam.\n\n**Fast-break points**: Spurs 17, Lakers 5. San Antonio menciptakan transisi, Lakers tidak. Dengan 20 turnover dari Lakers, satu lebih banyak dari Spurs, bola terus berpindah ke tangan lawan di momentum yang salah.\n\nDari tiga angka, Lakers tembak lebih banyak (42 attempt vs 29) tapi dengan persentase lebih rendah: 29% vs 34% Spurs. Reaves jadi anomali positif dengan 5-9, tapi Doncic 1-13 dari tiga angka membebani keseluruhan angka tim.\n\n---\n\n## Detik-Detik Akhir\n\nLaga ini diputuskan bukan lewat satu big play, tapi lewat serangkaian free throw di bawah satu menit terakhir.\n\nReaves sempat memangkas defisit jadi tiga poin lewat three-pointer dari 25 kaki dengan sisa 33,9 detik (93-96). LaRavia kemudian mencetak dua free throw untuk 95-96, Lakers dalam jangkauan.\n\nTapi De'Aaron Fox menjawab dengan dua free throw menjadi 95-98. Grimes menambah satu dari dua untuk 96-98. Dan Wembanyama menutup semuanya dengan free throw kedua-nya di angka 1,5 detik tersisa: skor final 96-99.\n\nLakers tidak punya waktu lagi.\n\n---\n\n## Outlook Seri\n\nSpurs mengambil keunggulan 1-0 dalam seri tiga pertandingan ini. Bagi Lakers, kekalahan hari ini melawan tim muda San Antonio adalah sinyal masalah yang lebih dalam, turnover tinggi, shooting dari luar tidak konsisten, dan pertahanan area paint yang kewalahan.\n\nGame selanjutnya tayang live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909333",
+    "home_team": "San Antonio Spurs",
+    "home_abbr": "SA",
+    "away_team": "Los Angeles Lakers",
+    "away_abbr": "LAL",
+    "home_score": 99,
+    "away_score": 96,
+    "winner_abbr": "SA",
+    "kickoff_utc": "2026-11-28T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "SA leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020786,
+    "voice_lint": {
+      "verdict": "pass",
+      "score": 82,
+      "issue_count": 3,
+      "summary": "Strong recap with accurate stats, natural Bahasa voice, and good structure. Minor soft-phrase repetition and one calqued English idiom. No hard violations.",
+      "issues": [
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "low",
+          "snippet": "tampil menekan sepanjang malam... tampil solid... tampil menekan",
+          "fix": "Use 'dominasi', 'ciptakan', 'kontrol' for first; keep 'solid' for Reaves"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Tapi FG 14-31 dan 3PT 1-13 adalah cermin masalah Lakers lebih luas",
+          "fix": "Rewrite: 'FG 14-31 dan 3PT 1-13 menunjukkan problem Lakers lebih luas'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "Austin Reaves tampil solid dengan 21 poin dan 5-9 dari tiga angka",
+          "fix": "Minor: 'Reaves cetak 21 poin, 5-9 dari tiga angka, solid di luar'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x8deb69beb025c332",
+    "published_at": "2026-11-28T05:42:50+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
