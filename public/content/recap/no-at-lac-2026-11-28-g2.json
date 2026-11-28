@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "no-at-lac-2026-11-28-g2",
+  "title": "Recap New Orleans Pelicans 105-104 LA Clippers (Game 2)",
+  "description": "Recap NBA Playoffs 2026 — New Orleans Pelicans vs LA Clippers (105-104) di —, 28 November 2026.",
+  "body_md": "# Pelicans Bertahan Hidup di Detik Terakhir, Menang 105-104 atas Clippers\n\nNew Orleans Pelicans lolos dari skenario terburuk. Brook Lopez melesatkan three-pointer dari 29 kaki di buzzer, bola masuk, seluruh Clippers bench meledak, tapi skor sudah 105-104 untuk Pelicans. Satu poin pemisah, dua sisi yang berbeda nasib.\n\n---\n\n## Dua Mesin Pencetak Poin NO\n\nZion Williamson dan Trey Murphy III masing-masing mencetak 25 poin, dua top scorer dengan angka identik, karakter berbeda.\n\nZion kerja keras di dalam: 11-15 dari lapangan, nol tembakan tiga angka yang berhasil, tapi konsisten mengancam ring LAC. Lima assist membuktikan dia bukan sekadar finisher, dia juga distributor saat pertahanan collapse ke arahnya.\n\nMurphy mengambil jalur berbeda. Dari 25 poinnya, ia berangkat dari 3-9 dari three-point line, efisiensi tidak luar biasa, tapi volume-nya membuat LAC harus tetap honor-ing pertahanan luar. Justru di momen krusial Q4, floating jump shot 5 kaki dengan assist dari Zion, Murphy yang menutup peluang LAC untuk balik memimpin.\n\nJordan Poole menambah 16 poin off the bench dengan 3-5 dari tiga angka. Derik Queen, juga dari bench, mencetak 11 poin dan 8 rebound dalam 16 menit, salah satu line paling efisien di laga ini per menit bermain.\n\n---\n\n## Garland Berjuang Sendiri\n\nDarius Garland jadi tulang punggung LAC dengan 19 poin, 3 rebound, dan 9 assist. Angka assist-nya mencerminkan usaha keras untuk menggerakkan rekan-rekannya, tapi LAC secara kolektif tidak cukup efisien.\n\nBrandon Ingram 15 poin, 0-4 dari tiga angka. Rui Hachimura 14 poin, 7 rebound, 4-8 dari three-point line, salah satu yang paling efisien dari jarak jauh di pihak LAC malam ini. Lopez 17 poin sebelum dramanya di buzzer, tapi FG-nya 4-11 sepanjang laga.\n\n---\n\n## Statistik yang Menjelaskan Segalanya\n\nNO unggul di hampir semua kategori penting:\n\n- **Points in paint**: NO 64, LAC 34, gap 30 poin. Ini yang paling menentukan. Zion dan rekan-rekannya mendominasi interior sepanjang malam.\n- **Rebounds**: NO 53, LAC 46, Pelicans lebih agresif di papan.\n- **Fast-break points**: NO 16, LAC 10, NO lebih baik mengkonversi momentum.\n- **Three-pointers**: LAC 13-45 (29%), NO 7-30 (23%), LAC lebih banyak mencoba dan lebih efisien dari luar, tapi tidak cukup untuk menutup kerugian di paint.\n\nLAC mencoba 45 three-pointer, volume agresif, tapi kelemahan di dalam ring terlalu besar untuk dikompensasi dari luar.\n\n---\n\n## Dua Menit Terakhir yang Membuat Jantung Berhenti\n\nGarland bikin dua free throw untuk memotong jarak jadi 100-96. Fears balas satu free throw, 101-96. Lalu Garland, 26-foot three-pointer, assist dari Hachimura, tiba-tiba 102-99. LAC hidup lagi.\n\nMurphy jawab dengan floating shot 5 kaki, Zion yang setup: 104-99. Ingram layup: 104-101. Herbert Jones masuk dua free throw: 105-101. Tersisa kurang dari 10 detik, pertandingan seperti sudah tutup.\n\nLalu Lopez. 29 kaki. Buzzer. Masuk. 105-104.\n\nTerlambat satu poin.\n\n---\n\n## Selanjutnya\n\nLaga ini adalah game ketiga dari regular season series yang kini berakhir 1-1 (dengan satu laga tambahan malam ini). Siaran tersedia di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909335",
+    "home_team": "LA Clippers",
+    "home_abbr": "LAC",
+    "away_team": "New Orleans Pelicans",
+    "away_abbr": "NO",
+    "home_score": 104,
+    "away_score": 105,
+    "winner_abbr": "NO",
+    "kickoff_utc": "2026-11-28T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "Series tied 1-1",
+    "game_number": 2,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.046477,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Article has solid voice and accurate stat-citations, but fails on training-inference claim about future games and over-explains tactical points academically. Rewrite the series-state closing and tighten the analytical paragraphs to pass.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Laga ini adalah game ketiga dari regular season series yang kini berakhir 1-1 (dengan satu laga tambahan malam ini).",
+          "fix": "Delete the parenthetical. State only: 'Laga ini game ketiga dari regular season series 2026 yang berakhir 1-1.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "high",
+          "snippet": "Angka assist-nya mencerminkan usaha keras untuk menggerakkan rekan-rekannya, tapi LAC secara kolektif tidak cukup efisien.",
+          "fix": "Simplify: 'Assist-nya banyak, tapi LAC tetap tidak efisien secara keseluruhan.'"
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Ini yang paling menentukan. Zion dan rekan-rekannya mendominasi interior sepanjang malam.",
+          "fix": "Delete first sentence. Lead with the stat impact: '30 poin gap di paint. Zion dan rekan-rekannya dominasi interior.'"
+        },
+        {
+          "type": "soft_phrase_repeat",
+          "severity": "medium",
+          "snippet": "Murphy yang menutup peluang LAC untuk balik memimpin. / Lopez jadi dramanya di buzzer.",
+          "fix": "First: 'Murphy tutup kesempatan LAC balik depan.' Second: already strong, keep."
+        },
+        {
+          "type": "other",
+          "severity": "medium",
+          "snippet": "Tersisa kurang dari 10 detik, pertandingan seperti sudah tutup.",
+          "fix": "Be specific: 'Herbert Jones masuk dua free throw pada 9.6 detik tersisa: 105-101. Lopez tembak di 0.0.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "low",
+          "snippet": "Murphy mengambil jalur berbeda. Dari 25 poinnya, ia berangkat dari 3-9 dari three-point line.",
+          "fix": "'Murphy rute lain. 3-9 dari tiga angka, tapi volume tetap ancam.'"
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "LAC mencoba 45 three-pointer, volume agresif, tapi kelemahan di dalam ring terlalu besar untuk dikompensasi dari luar.",
+          "fix": "Delete. The 30-point paint gap speaks for itself in prior paragraph."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x67e0a793244527e4",
+    "published_at": "2026-11-28T05:16:51+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}

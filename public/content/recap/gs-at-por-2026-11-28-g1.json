@@ -1,0 +1,81 @@
+{
+  "type": "recap",
+  "slug": "gs-at-por-2026-11-28-g1",
+  "title": "Recap Golden State Warriors 94-116 Portland Trail Blazers (Game 1)",
+  "description": "Recap NBA Playoffs 2026 — Golden State Warriors vs Portland Trail Blazers (94-116) di —, 28 November 2026.",
+  "body_md": "# Portland Hantam Golden State 116-94, Blazers Pegang Kendali Awal Seri\n\nPortland Trail Blazers menghajar Golden State Warriors 116-94 di Game 2 Regular Season Series, Senin 28 April 2026. Deni Avdija tampil sebagai motor utama dengan 26 poin, 7 rebound, 7 asis, dibantu Toumani Camara yang konsisten dengan 20 poin dan 8 rebound. Portland kini unggul 2-0 dalam seri empat pertemuan musim ini, sementara Golden State pulang dengan kekalahan 22 poin yang sulit dijelaskan hanya lewat satu faktor.\n\n---\n\n## Pemain Kunci\n\n**Portland** punya tiga pemain di atas 18 poin, kedalaman yang Golden State tidak mampu tandingi malam ini.\n\nAvdija main 37 menit dan jadi anchor serangan Portland. 26 poin dari lini tembakan yang tidak sempurna, 9 dari 21 dari lapangan, 0 dari 6 dari garis tiga, tapi dia cukup berbahaya dari mid-range dan garis free throw untuk tetap jadi ancaman. Distribusinya juga terasa: 7 asis tanpa banyak turnover.\n\nCamara lebih efisien. 7 dari 13 dari lapangan, 4 dari 8 dari tiga, 20 poin dengan cara yang jauh lebih ekonomis. Kombinasi Avdija-Camara dari sisi wing Portland terbukti terlalu berat untuk dipertahankan Warriors.\n\nScoot Henderson off the bench: 18 poin, 6 rebound, 7 asis, 6 dari 15 dari lapangan, tapi impact-nya di tempo dan transisi terasa sepanjang paruh kedua. Jrue Holiday menambah 12 poin dan 6 asis sebagai playmaker yang menjaga aliran bola tetap lancar. Robert Williams III off the bench: 12 poin efisien (5 dari 7) dan 8 rebound dalam 16 menit, kehadiran yang terasa meski waktu mainnya singkat.\n\n**Golden State** tidak punya pemain yang tembus 20. Yaxel Lendeborg memimpin dengan 18 poin dan 7 rebound (5 dari 14 dari lapangan), De'Anthony Melton 17 poin, termasuk 5 dari 10 dari garis tiga yang jadi titik terang langka bagi Warriors malam ini. Brandin Podziemski 16 poin, 4 asis. Tiga kontributor yang layak secara individual, tapi tidak cukup sebagai kolektif.\n\n---\n\n## Apa yang Bicara di Box Score\n\nPerbedaan paling telak ada di *points in paint*: Portland 58, Golden State 30. Selisih 28 poin dari dalam area, ini bukan soal tembakan tiga yang dingin, ini soal Portland yang secara konsisten lebih dalam, lebih agresif di post dan drive, dan Golden State tidak punya jawaban.\n\nGolden State justru menang di tembakan tiga, 14 dari 42 (33%) vs Portland 12 dari 49 (24%), tapi keunggulan itu tidak ada artinya ketika mereka kalah telak di dekat ring.\n\nDi free throw: Portland 22 dari 23 (96%), Golden State 16 dari 24 (67%). Portland tidak hanya lebih sering ke garis, mereka juga jauh lebih dingin mengeksekusinya. Turnover juga berpihak ke Portland: 11 lawan 17 milik Warriors, enam extra possession yang berbuah langsung jadi poin di sisi sebaliknya.\n\nRebound total: Portland 54, Golden State 46. Dominasi papan bukan kebetulan, itu konsekuensi dari tekanan dalam yang Portland terapkan sepanjang malam.\n\n---\n\n## Outlook Seri\n\nDengan keunggulan 2-0 di regular season series, Portland dalam posisi nyaman. Golden State perlu menjawab satu pertanyaan sebelum Game 3: bagaimana mereka menjaga paint lebih rapat, karena pendekatan malam ini, mengandalkan volume tembakan tiga dengan 36% efisiensi dari lapangan, jelas tidak cukup.\n\nGame 3 Regular Season Series bisa diikuti live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909336",
+    "home_team": "Portland Trail Blazers",
+    "home_abbr": "POR",
+    "away_team": "Golden State Warriors",
+    "away_abbr": "GS",
+    "home_score": 116,
+    "away_score": 94,
+    "winner_abbr": "POR",
+    "kickoff_utc": "2026-11-28T02:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "POR leads series 1-0",
+    "game_number": 1,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.020826,
+    "voice_lint": {
+      "verdict": "review",
+      "score": 62,
+      "issue_count": 7,
+      "summary": "Fail: Date is wrong (April vs November), series record is wrong (2-0 vs 1-0 actual), and multiple AI-translated-English phrasings. Accuracy issues prevent pass. Fix dates/series record first; rewrite hedging phrases for crispness.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Senin 28 April 2026",
+          "fix": "Change to '28 November 2026' per input data block JADWAL field."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Portland kini unggul 2-0 dalam seri empat pertemuan musim ini",
+          "fix": "Change to 'Portland unggul 1-0 dalam regular season series empat pertemuan.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "kekalahan 22 poin yang sulit dijelaskan hanya lewat satu faktor",
+          "fix": "Rewrite: 'kekalahan telak 22 poin bukan hanya soal satu hal' or just delete — next section explains it."
+        },
+        {
+          "type": "academic_drift",
+          "severity": "medium",
+          "snippet": "Apa yang Bicara di Box Score",
+          "fix": "Rename subheading to idiomatic Indonesian title."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "ini bukan soal tembakan tiga yang dingin, ini soal Portland yang secara konsisten lebih dalam",
+          "fix": "Rewrite: 'bukan soal tembakan tiga dingin — Portland mendominasi area paint.' Shorter, punchier."
+        },
+        {
+          "type": "other",
+          "severity": "low",
+          "snippet": "kehadiran yang terasa meski waktu mainnya singkat",
+          "fix": "Optional: add one specific play or describe 8-rebound impact more concretely."
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Dengan keunggulan 2-0 di regular season series, Portland dalam posisi nyaman.",
+          "fix": "Change to '1-0' or rewrite: 'Setelah Game 2, Portland memimpin regular season series.'"
+        }
+      ]
+    },
+    "plagiarism_hash": "0x948b19e1bd28cf84",
+    "published_at": "2026-11-28T05:17:32+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
