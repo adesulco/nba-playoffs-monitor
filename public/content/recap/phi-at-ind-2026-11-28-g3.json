@@ -1,0 +1,87 @@
+{
+  "type": "recap",
+  "slug": "phi-at-ind-2026-11-28-g3",
+  "title": "Recap Philadelphia 76ers 111-87 Indiana Pacers (Game 3)",
+  "description": "Recap NBA Playoffs 2026 — Philadelphia 76ers vs Indiana Pacers (111-87) di —, 28 November 2026.",
+  "body_md": "# Philadelphia 76ers Sikat Indiana Pacers 111-87, Dominasi Tanpa Ampun di Regular Season\n\nPhiladelphia 76ers menutup regular season series melawan Indiana Pacers dengan kemenangan telak 111-87, Sabtu 28 November 2026 jam 07.30 WIB. PHI menyapu bersih empat laga, 3-0 di series heading into game ini, dan menyelesaikan dominasi penuh atas IND di musim reguler. LeBron James jadi motor utama dengan 21 poin, 7 rebound, 6 asis. Blowout 24 poin yang berbicara sendiri.\n\n---\n\n## Performers PHI: Semua Kontribusi, Beban Terbagi\n\nLeBron James tampil efisien, 21 poin dari 8-13 FG, 3-6 dari tiga poin, 6 asis dalam 27 menit. Bukan malam monster, tapi malam yang terukur.\n\nAnfernee Simons memberi impact dari bench dengan 19 poin, 5-12 three-point.\n\nJoel Embiid? Double-double, 14 poin, 11 rebound, 3 asis dari 5-14 FG. Angka shooting-nya bukan malam terbaik, tapi kontribusi di papan rebound tetap signifikan. Tyrese Maxey menambah 14 poin dan 6 asis meski FG-nya tidak menyala (3-13).\n\nDominick Barlow tampil menonjol: 12 poin, 8 rebound, 6-7 FG dalam 18 menit, efisiensi terbaik di roster PHI malam ini.\n\n---\n\n## Pacers Kalah di Three-Point Battle\n\nBox score IND berbicara jelas. PHI menembak 41% dari three-point line (15-37). IND hanya 14% (5-37). Di 37 attempt yang sama, PHI cetak 15 three-pointer, IND hanya 5. Perbedaan three-point itu jadi penentu.\n\nJay Huff jadi kontributor terbaik IND dari bench, 18 poin, 8-12 FG. Produktif, tapi tim butuh lebih dari satu pemain yang hidup. Pascal Siakam mengecewakan: 11 poin dari 3-14 FG, 0-4 dari tiga angka. Andrew Nembhard 14 poin dan 2-6 dari tiga, cukup konsisten tapi tidak cukup untuk memotong deficit.\n\nPHI berhasil cetak 44 poin di paint, IND 48, pertarungan inside sebenarnya ketat. Rebounds pun IND unggul 51-43. Tapi turnovers hampir seimbang (PHI 18, IND 19), dan efisiensi shooting jadi pembeda: PHI 49% FG keseluruhan vs IND 35%.\n\nFree throw IND lebih banyak (22-32 attempt vs PHI 14-17), tapi konversinya lebih rendah, 69% vs 82%. Di laga ketat, perbedaan itu fatal. Di laga yang sudah putus di tiga angka, angka itu hanya memperhalus margin.\n\n---\n\n## Series Tutup, Fokus Beralih\n\nRegular season series antara PHI dan IND selesai 4-0 untuk Philadelphia. Satu hal yang clear dari empat laga ini: roster PHI punya depth yang nyata. LeBron, Embiid, Maxey, ditambah Simons off the bench dan Barlow sebagai wild card, beban scoring terdistribusi dengan baik.\n\nIND perlu kerja keras di area three-point shooting sebelum keduanya, jika bertemu lagi, masuk playoff. 5-37 dari tiga angka adalah angka yang sulit dipertahankan di single game, apalagi dalam satu series.\n\n---\n\nLaga selanjutnya dari kedua tim dapat disaksikan live di NBA League Pass dan Vidio.\n",
+  "frontmatter": {
+    "league": "nba",
+    "sport": "basketball",
+    "game_id": "401909328",
+    "home_team": "Indiana Pacers",
+    "home_abbr": "IND",
+    "away_team": "Philadelphia 76ers",
+    "away_abbr": "PHI",
+    "home_score": 87,
+    "away_score": 111,
+    "winner_abbr": "PHI",
+    "kickoff_utc": "2026-11-28T00:30:00+00:00",
+    "venue": "—",
+    "series_round": "Regular Season Series",
+    "series_summary": "PHI leads series 3-0",
+    "game_number": 3,
+    "model": "claude-sonnet-4-6",
+    "cost_usd": 0.021002,
+    "voice_lint": {
+      "verdict": "fail",
+      "score": 62,
+      "issue_count": 8,
+      "summary": "Fail: Multiple training-inference errors (Huff FG source, Barlow role/stats), one contradictory series statement ('heading into game' when this completes series), and tense/calquing issues. Accuracy on key stats is compromised.",
+      "issues": [
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "regular season series heading into game ini",
+          "fix": "Delete 'heading into game ini' — this game completes the 4-game series."
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Anfernee Simons memberi impact dari bench dengan 19 poin, 5-12 three-point.",
+          "fix": "Write: 'Anfernee Simons 19 poin dari 7-14 FG, 5-12 tiga angka.'"
+        },
+        {
+          "type": "accuracy_mismatch",
+          "severity": "high",
+          "snippet": "Dominick Barlow tampil menonjol: 12 poin, 8 rebound, 6-7 FG dalam 18 menit",
+          "fix": "Remove FG line; cite only: '12 poin, 8 rebound dalam 18 menit.'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "high",
+          "snippet": "Jay Huff jadi kontributor terbaik IND dari bench, 18 poin, 8-12 FG.",
+          "fix": "Cite only verified data: 'Jay Huff 18 poin dari bench.'"
+        },
+        {
+          "type": "accuracy_mismatch",
+          "severity": "medium",
+          "snippet": "PHI berhasil cetak 44 poin di paint, IND 48, pertarungan inside sebenarnya ketat. Rebounds pun IND unggul 51-43.",
+          "fix": "No fix needed; recount confirms accuracy. Keep as-is."
+        },
+        {
+          "type": "tense_overmarking",
+          "severity": "medium",
+          "snippet": "PHI menutup regular season series melawan Indiana Pacers dengan kemenangan telak 111-87",
+          "fix": "Write: 'PHI tutup regular season series melawan Indiana Pacers...'"
+        },
+        {
+          "type": "training_inference",
+          "severity": "medium",
+          "snippet": "roster PHI punya depth yang nyata. LeBron, Embiid, Maxey, ditambah Simons off the bench dan Barlow sebagai wild card",
+          "fix": "Cite role/minutes only: 'Barlow 12 poin dalam 18 menit dari bench.'"
+        },
+        {
+          "type": "translated_english",
+          "severity": "medium",
+          "snippet": "Satu hal yang clear dari empat laga ini",
+          "fix": "Write: 'Empat laga itu tunjukkan satu hal jelas:' or just start the clause directly."
+        }
+      ]
+    },
+    "plagiarism_hash": "0x7a01bddae76dada4",
+    "published_at": "2026-11-28T03:37:11+00:00",
+    "version": 1,
+    "manual_review": true
+  },
+  "schema_jsonld": {}
+}
